@@ -268,13 +268,22 @@ class EnvironmentConfigDatabaseConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 machine_type: str):
-        pulumi.set(__self__, "machine_type", machine_type)
+                 machine_type: Optional[str] = None,
+                 zone: Optional[str] = None):
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> str:
+    def machine_type(self) -> Optional[str]:
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[str]:
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type
@@ -1395,13 +1404,20 @@ class GetEnvironmentConfigResult(dict):
 @pulumi.output_type
 class GetEnvironmentConfigDatabaseConfigResult(dict):
     def __init__(__self__, *,
-                 machine_type: str):
+                 machine_type: str,
+                 zone: str):
         pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="machineType")
     def machine_type(self) -> str:
         return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def zone(self) -> str:
+        return pulumi.get(self, "zone")
 
 
 @pulumi.output_type

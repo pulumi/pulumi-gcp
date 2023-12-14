@@ -17,6 +17,17 @@ __all__ = [
     'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit',
     'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci',
     'FeatureFleetDefaultMemberConfigMesh',
+    'FeatureFleetDefaultMemberConfigPolicycontroller',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle',
+    'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary',
     'FeatureIamBindingCondition',
     'FeatureIamMemberCondition',
     'FeatureMembershipConfigmanagement',
@@ -37,6 +48,10 @@ __all__ = [
     'FeatureSpecMulticlusteringress',
     'FeatureState',
     'FeatureStateState',
+    'FleetDefaultClusterConfig',
+    'FleetDefaultClusterConfigBinaryAuthorizationConfig',
+    'FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding',
+    'FleetDefaultClusterConfigSecurityPostureConfig',
     'FleetState',
     'MembershipAuthority',
     'MembershipBindingState',
@@ -58,17 +73,22 @@ __all__ = [
 class FeatureFleetDefaultMemberConfig(dict):
     def __init__(__self__, *,
                  configmanagement: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagement'] = None,
-                 mesh: Optional['outputs.FeatureFleetDefaultMemberConfigMesh'] = None):
+                 mesh: Optional['outputs.FeatureFleetDefaultMemberConfigMesh'] = None,
+                 policycontroller: Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontroller'] = None):
         """
         :param 'FeatureFleetDefaultMemberConfigConfigmanagementArgs' configmanagement: Config Management spec
                Structure is documented below.
         :param 'FeatureFleetDefaultMemberConfigMeshArgs' mesh: Service Mesh spec
+               Structure is documented below.
+        :param 'FeatureFleetDefaultMemberConfigPolicycontrollerArgs' policycontroller: Policy Controller spec
                Structure is documented below.
         """
         if configmanagement is not None:
             pulumi.set(__self__, "configmanagement", configmanagement)
         if mesh is not None:
             pulumi.set(__self__, "mesh", mesh)
+        if policycontroller is not None:
+            pulumi.set(__self__, "policycontroller", policycontroller)
 
     @property
     @pulumi.getter
@@ -87,6 +107,15 @@ class FeatureFleetDefaultMemberConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "mesh")
+
+    @property
+    @pulumi.getter
+    def policycontroller(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontroller']:
+        """
+        Policy Controller spec
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policycontroller")
 
 
 @pulumi.output_type
@@ -445,6 +474,610 @@ class FeatureFleetDefaultMemberConfigMesh(dict):
         Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
         """
         return pulumi.get(self, "management")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontroller(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyControllerHubConfig":
+            suggest = "policy_controller_hub_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFleetDefaultMemberConfigPolicycontroller. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontroller.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontroller.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 policy_controller_hub_config: 'outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig',
+                 version: Optional[str] = None):
+        """
+        :param 'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs' policy_controller_hub_config: Configuration of Policy Controller
+               Structure is documented below.
+        :param str version: Configures the version of Policy Controller
+        """
+        pulumi.set(__self__, "policy_controller_hub_config", policy_controller_hub_config)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="policyControllerHubConfig")
+    def policy_controller_hub_config(self) -> 'outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig':
+        """
+        Configuration of Policy Controller
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policy_controller_hub_config")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Configures the version of Policy Controller
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "installSpec":
+            suggest = "install_spec"
+        elif key == "auditIntervalSeconds":
+            suggest = "audit_interval_seconds"
+        elif key == "constraintViolationLimit":
+            suggest = "constraint_violation_limit"
+        elif key == "deploymentConfigs":
+            suggest = "deployment_configs"
+        elif key == "exemptableNamespaces":
+            suggest = "exemptable_namespaces"
+        elif key == "logDeniesEnabled":
+            suggest = "log_denies_enabled"
+        elif key == "mutationEnabled":
+            suggest = "mutation_enabled"
+        elif key == "policyContent":
+            suggest = "policy_content"
+        elif key == "referentialRulesEnabled":
+            suggest = "referential_rules_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 install_spec: str,
+                 audit_interval_seconds: Optional[int] = None,
+                 constraint_violation_limit: Optional[int] = None,
+                 deployment_configs: Optional[Sequence['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig']] = None,
+                 exemptable_namespaces: Optional[Sequence[str]] = None,
+                 log_denies_enabled: Optional[bool] = None,
+                 monitoring: Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring'] = None,
+                 mutation_enabled: Optional[bool] = None,
+                 policy_content: Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent'] = None,
+                 referential_rules_enabled: Optional[bool] = None):
+        """
+        :param str install_spec: Configures the mode of the Policy Controller installation
+               Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
+        :param int audit_interval_seconds: Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+        :param int constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+        :param Sequence['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs'] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation").
+               Structure is documented below.
+        :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        :param bool log_denies_enabled: Logs all denies and dry run failures.
+        :param 'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs' monitoring: Monitoring specifies the configuration of monitoring Policy Controller.
+               Structure is documented below.
+        :param bool mutation_enabled: Enables the ability to mutate resources using Policy Controller.
+        :param 'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs' policy_content: Specifies the desired policy content on the cluster.
+               Structure is documented below.
+        :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        pulumi.set(__self__, "install_spec", install_spec)
+        if audit_interval_seconds is not None:
+            pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+        if constraint_violation_limit is not None:
+            pulumi.set(__self__, "constraint_violation_limit", constraint_violation_limit)
+        if deployment_configs is not None:
+            pulumi.set(__self__, "deployment_configs", deployment_configs)
+        if exemptable_namespaces is not None:
+            pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+        if log_denies_enabled is not None:
+            pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if mutation_enabled is not None:
+            pulumi.set(__self__, "mutation_enabled", mutation_enabled)
+        if policy_content is not None:
+            pulumi.set(__self__, "policy_content", policy_content)
+        if referential_rules_enabled is not None:
+            pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+
+    @property
+    @pulumi.getter(name="installSpec")
+    def install_spec(self) -> str:
+        """
+        Configures the mode of the Policy Controller installation
+        Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
+        """
+        return pulumi.get(self, "install_spec")
+
+    @property
+    @pulumi.getter(name="auditIntervalSeconds")
+    def audit_interval_seconds(self) -> Optional[int]:
+        """
+        Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        return pulumi.get(self, "audit_interval_seconds")
+
+    @property
+    @pulumi.getter(name="constraintViolationLimit")
+    def constraint_violation_limit(self) -> Optional[int]:
+        """
+        The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+        """
+        return pulumi.get(self, "constraint_violation_limit")
+
+    @property
+    @pulumi.getter(name="deploymentConfigs")
+    def deployment_configs(self) -> Optional[Sequence['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig']]:
+        """
+        Map of deployment configs to deployments ("admission", "audit", "mutation").
+        Structure is documented below.
+        """
+        return pulumi.get(self, "deployment_configs")
+
+    @property
+    @pulumi.getter(name="exemptableNamespaces")
+    def exemptable_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        return pulumi.get(self, "exemptable_namespaces")
+
+    @property
+    @pulumi.getter(name="logDeniesEnabled")
+    def log_denies_enabled(self) -> Optional[bool]:
+        """
+        Logs all denies and dry run failures.
+        """
+        return pulumi.get(self, "log_denies_enabled")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring']:
+        """
+        Monitoring specifies the configuration of monitoring Policy Controller.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter(name="mutationEnabled")
+    def mutation_enabled(self) -> Optional[bool]:
+        """
+        Enables the ability to mutate resources using Policy Controller.
+        """
+        return pulumi.get(self, "mutation_enabled")
+
+    @property
+    @pulumi.getter(name="policyContent")
+    def policy_content(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent']:
+        """
+        Specifies the desired policy content on the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policy_content")
+
+    @property
+    @pulumi.getter(name="referentialRulesEnabled")
+    def referential_rules_enabled(self) -> Optional[bool]:
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        return pulumi.get(self, "referential_rules_enabled")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "containerResources":
+            suggest = "container_resources"
+        elif key == "podAffinity":
+            suggest = "pod_affinity"
+        elif key == "podTolerations":
+            suggest = "pod_tolerations"
+        elif key == "replicaCount":
+            suggest = "replica_count"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 component: str,
+                 container_resources: Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources'] = None,
+                 pod_affinity: Optional[str] = None,
+                 pod_tolerations: Optional[Sequence['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration']] = None,
+                 replica_count: Optional[int] = None):
+        """
+        :param str component: The identifier for this object. Format specified above.
+        :param 'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs' container_resources: Container resource requirements.
+               Structure is documented below.
+        :param str pod_affinity: Pod affinity configuration.
+               Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
+        :param Sequence['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs'] pod_tolerations: Pod tolerations of node taints.
+               Structure is documented below.
+        :param int replica_count: Pod replica count.
+        """
+        pulumi.set(__self__, "component", component)
+        if container_resources is not None:
+            pulumi.set(__self__, "container_resources", container_resources)
+        if pod_affinity is not None:
+            pulumi.set(__self__, "pod_affinity", pod_affinity)
+        if pod_tolerations is not None:
+            pulumi.set(__self__, "pod_tolerations", pod_tolerations)
+        if replica_count is not None:
+            pulumi.set(__self__, "replica_count", replica_count)
+
+    @property
+    @pulumi.getter
+    def component(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter(name="containerResources")
+    def container_resources(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources']:
+        """
+        Container resource requirements.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "container_resources")
+
+    @property
+    @pulumi.getter(name="podAffinity")
+    def pod_affinity(self) -> Optional[str]:
+        """
+        Pod affinity configuration.
+        Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
+        """
+        return pulumi.get(self, "pod_affinity")
+
+    @property
+    @pulumi.getter(name="podTolerations")
+    def pod_tolerations(self) -> Optional[Sequence['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration']]:
+        """
+        Pod tolerations of node taints.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "pod_tolerations")
+
+    @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> Optional[int]:
+        """
+        Pod replica count.
+        """
+        return pulumi.get(self, "replica_count")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources(dict):
+    def __init__(__self__, *,
+                 limits: Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits'] = None,
+                 requests: Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests'] = None):
+        """
+        :param 'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs' limits: Limits describes the maximum amount of compute resources allowed for use by the running container.
+               Structure is documented below.
+        :param 'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs' requests: Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+               Structure is documented below.
+        """
+        if limits is not None:
+            pulumi.set(__self__, "limits", limits)
+        if requests is not None:
+            pulumi.set(__self__, "requests", requests)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits']:
+        """
+        Limits describes the maximum amount of compute resources allowed for use by the running container.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter
+    def requests(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests']:
+        """
+        Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits(dict):
+    def __init__(__self__, *,
+                 cpu: Optional[str] = None,
+                 memory: Optional[str] = None):
+        """
+        :param str cpu: CPU requirement expressed in Kubernetes resource units.
+        :param str memory: Memory requirement expressed in Kubernetes resource units.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[str]:
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[str]:
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests(dict):
+    def __init__(__self__, *,
+                 cpu: Optional[str] = None,
+                 memory: Optional[str] = None):
+        """
+        :param str cpu: CPU requirement expressed in Kubernetes resource units.
+        :param str memory: Memory requirement expressed in Kubernetes resource units.
+        """
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[str]:
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[str]:
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration(dict):
+    def __init__(__self__, *,
+                 effect: Optional[str] = None,
+                 key: Optional[str] = None,
+                 operator: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str effect: Matches a taint effect.
+        :param str key: Matches a taint key (not necessarily unique).
+        :param str operator: Matches a taint operator.
+        :param str value: Matches a taint value.
+        """
+        if effect is not None:
+            pulumi.set(__self__, "effect", effect)
+        if key is not None:
+            pulumi.set(__self__, "key", key)
+        if operator is not None:
+            pulumi.set(__self__, "operator", operator)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> Optional[str]:
+        """
+        Matches a taint effect.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> Optional[str]:
+        """
+        Matches a taint key (not necessarily unique).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> Optional[str]:
+        """
+        Matches a taint operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        Matches a taint value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring(dict):
+    def __init__(__self__, *,
+                 backends: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] backends: Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+               Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
+        """
+        if backends is not None:
+            pulumi.set(__self__, "backends", backends)
+
+    @property
+    @pulumi.getter
+    def backends(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+        Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
+        """
+        return pulumi.get(self, "backends")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "templateLibrary":
+            suggest = "template_library"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bundles: Optional[Sequence['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle']] = None,
+                 template_library: Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary'] = None):
+        """
+        :param Sequence['FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs'] bundles: Configures which bundles to install and their corresponding install specs.
+               Structure is documented below.
+        :param 'FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs' template_library: Configures the installation of the Template Library.
+               Structure is documented below.
+        """
+        if bundles is not None:
+            pulumi.set(__self__, "bundles", bundles)
+        if template_library is not None:
+            pulumi.set(__self__, "template_library", template_library)
+
+    @property
+    @pulumi.getter
+    def bundles(self) -> Optional[Sequence['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle']]:
+        """
+        Configures which bundles to install and their corresponding install specs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bundles")
+
+    @property
+    @pulumi.getter(name="templateLibrary")
+    def template_library(self) -> Optional['outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary']:
+        """
+        Configures the installation of the Template Library.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "template_library")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "exemptedNamespaces":
+            suggest = "exempted_namespaces"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bundle: str,
+                 exempted_namespaces: Optional[Sequence[str]] = None):
+        """
+        :param str bundle: The identifier for this object. Format specified above.
+        :param Sequence[str] exempted_namespaces: The set of namespaces to be exempted from the bundle.
+        """
+        pulumi.set(__self__, "bundle", bundle)
+        if exempted_namespaces is not None:
+            pulumi.set(__self__, "exempted_namespaces", exempted_namespaces)
+
+    @property
+    @pulumi.getter
+    def bundle(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "bundle")
+
+    @property
+    @pulumi.getter(name="exemptedNamespaces")
+    def exempted_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        The set of namespaces to be exempted from the bundle.
+        """
+        return pulumi.get(self, "exempted_namespaces")
+
+
+@pulumi.output_type
+class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary(dict):
+    def __init__(__self__, *,
+                 installation: Optional[str] = None):
+        """
+        :param str installation: Configures the manner in which the template library is installed on the cluster.
+               Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+        """
+        if installation is not None:
+            pulumi.set(__self__, "installation", installation)
+
+    @property
+    @pulumi.getter
+    def installation(self) -> Optional[str]:
+        """
+        Configures the manner in which the template library is installed on the cluster.
+        Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+        """
+        return pulumi.get(self, "installation")
 
 
 @pulumi.output_type
@@ -1027,7 +1660,7 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
         :param bool enabled: Enables the installation of Policy Controller. If false, the rest of PolicyController fields take no effect.
         :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
         :param bool log_denies_enabled: Logs all denies and dry run failures.
-        :param 'FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs' monitoring: Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
+        :param 'FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs' monitoring: Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
         :param bool mutation_enabled: Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
         :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
         :param bool template_library_installed: Installs the default template library along with Policy Controller.
@@ -1085,7 +1718,7 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
     @pulumi.getter
     def monitoring(self) -> Optional['outputs.FeatureMembershipConfigmanagementPolicyControllerMonitoring']:
         """
-        Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\\"cloudmonitoring\\", \\"prometheus\\"]. Default: [\\"cloudmonitoring\\", \\"prometheus\\"]
+        Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
         """
         return pulumi.get(self, "monitoring")
 
@@ -1519,6 +2152,189 @@ class FeatureStateState(dict):
         The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
         """
         return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class FleetDefaultClusterConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "binaryAuthorizationConfig":
+            suggest = "binary_authorization_config"
+        elif key == "securityPostureConfig":
+            suggest = "security_posture_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetDefaultClusterConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetDefaultClusterConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetDefaultClusterConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 binary_authorization_config: Optional['outputs.FleetDefaultClusterConfigBinaryAuthorizationConfig'] = None,
+                 security_posture_config: Optional['outputs.FleetDefaultClusterConfigSecurityPostureConfig'] = None):
+        """
+        :param 'FleetDefaultClusterConfigBinaryAuthorizationConfigArgs' binary_authorization_config: Enable/Disable binary authorization features for the cluster.
+               Structure is documented below.
+        :param 'FleetDefaultClusterConfigSecurityPostureConfigArgs' security_posture_config: Enable/Disable Security Posture features for the cluster.
+               Structure is documented below.
+        """
+        if binary_authorization_config is not None:
+            pulumi.set(__self__, "binary_authorization_config", binary_authorization_config)
+        if security_posture_config is not None:
+            pulumi.set(__self__, "security_posture_config", security_posture_config)
+
+    @property
+    @pulumi.getter(name="binaryAuthorizationConfig")
+    def binary_authorization_config(self) -> Optional['outputs.FleetDefaultClusterConfigBinaryAuthorizationConfig']:
+        """
+        Enable/Disable binary authorization features for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "binary_authorization_config")
+
+    @property
+    @pulumi.getter(name="securityPostureConfig")
+    def security_posture_config(self) -> Optional['outputs.FleetDefaultClusterConfigSecurityPostureConfig']:
+        """
+        Enable/Disable Security Posture features for the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "security_posture_config")
+
+
+@pulumi.output_type
+class FleetDefaultClusterConfigBinaryAuthorizationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "evaluationMode":
+            suggest = "evaluation_mode"
+        elif key == "policyBindings":
+            suggest = "policy_bindings"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetDefaultClusterConfigBinaryAuthorizationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetDefaultClusterConfigBinaryAuthorizationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetDefaultClusterConfigBinaryAuthorizationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 evaluation_mode: Optional[str] = None,
+                 policy_bindings: Optional[Sequence['outputs.FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding']] = None):
+        """
+        :param str evaluation_mode: Mode of operation for binauthz policy evaluation.
+               Possible values are: `DISABLED`, `POLICY_BINDINGS`.
+        :param Sequence['FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBindingArgs'] policy_bindings: Binauthz policies that apply to this cluster.
+               Structure is documented below.
+        """
+        if evaluation_mode is not None:
+            pulumi.set(__self__, "evaluation_mode", evaluation_mode)
+        if policy_bindings is not None:
+            pulumi.set(__self__, "policy_bindings", policy_bindings)
+
+    @property
+    @pulumi.getter(name="evaluationMode")
+    def evaluation_mode(self) -> Optional[str]:
+        """
+        Mode of operation for binauthz policy evaluation.
+        Possible values are: `DISABLED`, `POLICY_BINDINGS`.
+        """
+        return pulumi.get(self, "evaluation_mode")
+
+    @property
+    @pulumi.getter(name="policyBindings")
+    def policy_bindings(self) -> Optional[Sequence['outputs.FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding']]:
+        """
+        Binauthz policies that apply to this cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "policy_bindings")
+
+
+@pulumi.output_type
+class FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: The relative resource name of the binauthz platform policy to audit. GKE
+               platform policies have the following format:
+               `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The relative resource name of the binauthz platform policy to audit. GKE
+        platform policies have the following format:
+        `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class FleetDefaultClusterConfigSecurityPostureConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "vulnerabilityMode":
+            suggest = "vulnerability_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FleetDefaultClusterConfigSecurityPostureConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FleetDefaultClusterConfigSecurityPostureConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FleetDefaultClusterConfigSecurityPostureConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mode: Optional[str] = None,
+                 vulnerability_mode: Optional[str] = None):
+        """
+        :param str mode: Sets which mode to use for Security Posture features.
+               Possible values are: `DISABLED`, `BASIC`.
+        :param str vulnerability_mode: Sets which mode to use for vulnerability scanning.
+               Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
+        """
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if vulnerability_mode is not None:
+            pulumi.set(__self__, "vulnerability_mode", vulnerability_mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Sets which mode to use for Security Posture features.
+        Possible values are: `DISABLED`, `BASIC`.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="vulnerabilityMode")
+    def vulnerability_mode(self) -> Optional[str]:
+        """
+        Sets which mode to use for vulnerability scanning.
+        Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
+        """
+        return pulumi.get(self, "vulnerability_mode")
 
 
 @pulumi.output_type

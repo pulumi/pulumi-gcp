@@ -25,6 +25,8 @@ __all__ = [
     'RepositoryRemoteRepositoryConfigMavenRepository',
     'RepositoryRemoteRepositoryConfigNpmRepository',
     'RepositoryRemoteRepositoryConfigPythonRepository',
+    'RepositoryRemoteRepositoryConfigUpstreamCredentials',
+    'RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials',
     'RepositoryRemoteRepositoryConfigYumRepository',
     'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository',
     'RepositoryVirtualRepositoryConfig',
@@ -41,6 +43,8 @@ __all__ = [
     'GetRepositoryRemoteRepositoryConfigMavenRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigNpmRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigPythonRepositoryResult',
+    'GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult',
+    'GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialResult',
     'GetRepositoryRemoteRepositoryConfigYumRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult',
     'GetRepositoryVirtualRepositoryConfigResult',
@@ -387,6 +391,8 @@ class RepositoryRemoteRepositoryConfig(dict):
             suggest = "npm_repository"
         elif key == "pythonRepository":
             suggest = "python_repository"
+        elif key == "upstreamCredentials":
+            suggest = "upstream_credentials"
         elif key == "yumRepository":
             suggest = "yum_repository"
 
@@ -408,6 +414,7 @@ class RepositoryRemoteRepositoryConfig(dict):
                  maven_repository: Optional['outputs.RepositoryRemoteRepositoryConfigMavenRepository'] = None,
                  npm_repository: Optional['outputs.RepositoryRemoteRepositoryConfigNpmRepository'] = None,
                  python_repository: Optional['outputs.RepositoryRemoteRepositoryConfigPythonRepository'] = None,
+                 upstream_credentials: Optional['outputs.RepositoryRemoteRepositoryConfigUpstreamCredentials'] = None,
                  yum_repository: Optional['outputs.RepositoryRemoteRepositoryConfigYumRepository'] = None):
         """
         :param 'RepositoryRemoteRepositoryConfigAptRepositoryArgs' apt_repository: Specific settings for an Apt remote repository.
@@ -420,6 +427,8 @@ class RepositoryRemoteRepositoryConfig(dict):
         :param 'RepositoryRemoteRepositoryConfigNpmRepositoryArgs' npm_repository: Specific settings for an Npm remote repository.
                Structure is documented below.
         :param 'RepositoryRemoteRepositoryConfigPythonRepositoryArgs' python_repository: Specific settings for a Python remote repository.
+               Structure is documented below.
+        :param 'RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs' upstream_credentials: The credentials used to access the remote repository.
                Structure is documented below.
         :param 'RepositoryRemoteRepositoryConfigYumRepositoryArgs' yum_repository: Specific settings for an Yum remote repository.
                Structure is documented below.
@@ -436,6 +445,8 @@ class RepositoryRemoteRepositoryConfig(dict):
             pulumi.set(__self__, "npm_repository", npm_repository)
         if python_repository is not None:
             pulumi.set(__self__, "python_repository", python_repository)
+        if upstream_credentials is not None:
+            pulumi.set(__self__, "upstream_credentials", upstream_credentials)
         if yum_repository is not None:
             pulumi.set(__self__, "yum_repository", yum_repository)
 
@@ -491,6 +502,15 @@ class RepositoryRemoteRepositoryConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "python_repository")
+
+    @property
+    @pulumi.getter(name="upstreamCredentials")
+    def upstream_credentials(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigUpstreamCredentials']:
+        """
+        The credentials used to access the remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upstream_credentials")
 
     @property
     @pulumi.getter(name="yumRepository")
@@ -748,6 +768,96 @@ class RepositoryRemoteRepositoryConfigPythonRepository(dict):
         Possible values are: `PYPI`.
         """
         return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigUpstreamCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "usernamePasswordCredentials":
+            suggest = "username_password_credentials"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigUpstreamCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigUpstreamCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigUpstreamCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 username_password_credentials: Optional['outputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials'] = None):
+        """
+        :param 'RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs' username_password_credentials: Use username and password to access the remote repository.
+               Structure is documented below.
+        """
+        if username_password_credentials is not None:
+            pulumi.set(__self__, "username_password_credentials", username_password_credentials)
+
+    @property
+    @pulumi.getter(name="usernamePasswordCredentials")
+    def username_password_credentials(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials']:
+        """
+        Use username and password to access the remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "username_password_credentials")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "passwordSecretVersion":
+            suggest = "password_secret_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 password_secret_version: Optional[str] = None,
+                 username: Optional[str] = None):
+        """
+        :param str password_secret_version: The Secret Manager key version that holds the password to access the
+               remote repository. Must be in the format of
+               `projects/{project}/secrets/{secret}/versions/{version}`.
+        :param str username: The username to access the remote repository.
+        """
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[str]:
+        """
+        The Secret Manager key version that holds the password to access the
+        remote repository. Must be in the format of
+        `projects/{project}/secrets/{secret}/versions/{version}`.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[str]:
+        """
+        The username to access the remote repository.
+        """
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type
@@ -1062,6 +1172,7 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
                  maven_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryResult'],
                  npm_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigNpmRepositoryResult'],
                  python_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult'],
+                 upstream_credentials: Sequence['outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult'],
                  yum_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult']):
         pulumi.set(__self__, "apt_repositories", apt_repositories)
         pulumi.set(__self__, "description", description)
@@ -1069,6 +1180,7 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
         pulumi.set(__self__, "maven_repositories", maven_repositories)
         pulumi.set(__self__, "npm_repositories", npm_repositories)
         pulumi.set(__self__, "python_repositories", python_repositories)
+        pulumi.set(__self__, "upstream_credentials", upstream_credentials)
         pulumi.set(__self__, "yum_repositories", yum_repositories)
 
     @property
@@ -1100,6 +1212,11 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
     @pulumi.getter(name="pythonRepositories")
     def python_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigPythonRepositoryResult']:
         return pulumi.get(self, "python_repositories")
+
+    @property
+    @pulumi.getter(name="upstreamCredentials")
+    def upstream_credentials(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult']:
+        return pulumi.get(self, "upstream_credentials")
 
     @property
     @pulumi.getter(name="yumRepositories")
@@ -1184,6 +1301,37 @@ class GetRepositoryRemoteRepositoryConfigPythonRepositoryResult(dict):
     @pulumi.getter(name="publicRepository")
     def public_repository(self) -> str:
         return pulumi.get(self, "public_repository")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigUpstreamCredentialResult(dict):
+    def __init__(__self__, *,
+                 username_password_credentials: Sequence['outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialResult']):
+        pulumi.set(__self__, "username_password_credentials", username_password_credentials)
+
+    @property
+    @pulumi.getter(name="usernamePasswordCredentials")
+    def username_password_credentials(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialResult']:
+        return pulumi.get(self, "username_password_credentials")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialResult(dict):
+    def __init__(__self__, *,
+                 password_secret_version: str,
+                 username: str):
+        pulumi.set(__self__, "password_secret_version", password_secret_version)
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> str:
+        return pulumi.get(self, "password_secret_version")
+
+    @property
+    @pulumi.getter
+    def username(self) -> str:
+        return pulumi.get(self, "username")
 
 
 @pulumi.output_type

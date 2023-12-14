@@ -13,10 +13,16 @@ namespace Pulumi.Gcp.CloudIdentity.Inputs
     public sealed class GroupMembershipRoleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The MembershipRole expiry details, only supported for MEMBER role.
+        /// Other roles cannot be accompanied with MEMBER role having expiry.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("expiryDetail")]
+        public Input<Inputs.GroupMembershipRoleExpiryDetailArgs>? ExpiryDetail { get; set; }
+
+        /// <summary>
         /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
         /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-        /// 
-        /// - - -
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;

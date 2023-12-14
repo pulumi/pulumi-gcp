@@ -117,8 +117,10 @@ type Provider struct {
 	LoggingCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"lookerCustomEndpoint"`
 	MemcacheCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"memcacheCustomEndpoint"`
+	MigrationCenterCustomEndpoint          pulumi.StringPtrOutput `pulumi:"migrationCenterCustomEndpoint"`
 	MlEngineCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint               pulumi.StringPtrOutput `pulumi:"monitoringCustomEndpoint"`
+	NetappCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"netappCustomEndpoint"`
 	NetworkConnectivityCustomEndpoint      pulumi.StringPtrOutput `pulumi:"networkConnectivityCustomEndpoint"`
 	NetworkManagementCustomEndpoint        pulumi.StringPtrOutput `pulumi:"networkManagementCustomEndpoint"`
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrOutput `pulumi:"networkSecurityCustomEndpoint"`
@@ -142,6 +144,7 @@ type Provider struct {
 	RuntimeConfigCustomEndpoint            pulumi.StringPtrOutput `pulumi:"runtimeConfigCustomEndpoint"`
 	RuntimeconfigCustomEndpoint            pulumi.StringPtrOutput `pulumi:"runtimeconfigCustomEndpoint"`
 	SecretManagerCustomEndpoint            pulumi.StringPtrOutput `pulumi:"secretManagerCustomEndpoint"`
+	SecureSourceManagerCustomEndpoint      pulumi.StringPtrOutput `pulumi:"secureSourceManagerCustomEndpoint"`
 	SecurityCenterCustomEndpoint           pulumi.StringPtrOutput `pulumi:"securityCenterCustomEndpoint"`
 	SecurityScannerCustomEndpoint          pulumi.StringPtrOutput `pulumi:"securityScannerCustomEndpoint"`
 	ServiceDirectoryCustomEndpoint         pulumi.StringPtrOutput `pulumi:"serviceDirectoryCustomEndpoint"`
@@ -302,8 +305,10 @@ type providerArgs struct {
 	LoggingCustomEndpoint                  *string           `pulumi:"loggingCustomEndpoint"`
 	LookerCustomEndpoint                   *string           `pulumi:"lookerCustomEndpoint"`
 	MemcacheCustomEndpoint                 *string           `pulumi:"memcacheCustomEndpoint"`
+	MigrationCenterCustomEndpoint          *string           `pulumi:"migrationCenterCustomEndpoint"`
 	MlEngineCustomEndpoint                 *string           `pulumi:"mlEngineCustomEndpoint"`
 	MonitoringCustomEndpoint               *string           `pulumi:"monitoringCustomEndpoint"`
+	NetappCustomEndpoint                   *string           `pulumi:"netappCustomEndpoint"`
 	NetworkConnectivityCustomEndpoint      *string           `pulumi:"networkConnectivityCustomEndpoint"`
 	NetworkManagementCustomEndpoint        *string           `pulumi:"networkManagementCustomEndpoint"`
 	NetworkSecurityCustomEndpoint          *string           `pulumi:"networkSecurityCustomEndpoint"`
@@ -328,6 +333,7 @@ type providerArgs struct {
 	RuntimeconfigCustomEndpoint            *string           `pulumi:"runtimeconfigCustomEndpoint"`
 	Scopes                                 []string          `pulumi:"scopes"`
 	SecretManagerCustomEndpoint            *string           `pulumi:"secretManagerCustomEndpoint"`
+	SecureSourceManagerCustomEndpoint      *string           `pulumi:"secureSourceManagerCustomEndpoint"`
 	SecurityCenterCustomEndpoint           *string           `pulumi:"securityCenterCustomEndpoint"`
 	SecurityScannerCustomEndpoint          *string           `pulumi:"securityScannerCustomEndpoint"`
 	ServiceDirectoryCustomEndpoint         *string           `pulumi:"serviceDirectoryCustomEndpoint"`
@@ -459,8 +465,10 @@ type ProviderArgs struct {
 	LoggingCustomEndpoint                  pulumi.StringPtrInput
 	LookerCustomEndpoint                   pulumi.StringPtrInput
 	MemcacheCustomEndpoint                 pulumi.StringPtrInput
+	MigrationCenterCustomEndpoint          pulumi.StringPtrInput
 	MlEngineCustomEndpoint                 pulumi.StringPtrInput
 	MonitoringCustomEndpoint               pulumi.StringPtrInput
+	NetappCustomEndpoint                   pulumi.StringPtrInput
 	NetworkConnectivityCustomEndpoint      pulumi.StringPtrInput
 	NetworkManagementCustomEndpoint        pulumi.StringPtrInput
 	NetworkSecurityCustomEndpoint          pulumi.StringPtrInput
@@ -485,6 +493,7 @@ type ProviderArgs struct {
 	RuntimeconfigCustomEndpoint            pulumi.StringPtrInput
 	Scopes                                 pulumi.StringArrayInput
 	SecretManagerCustomEndpoint            pulumi.StringPtrInput
+	SecureSourceManagerCustomEndpoint      pulumi.StringPtrInput
 	SecurityCenterCustomEndpoint           pulumi.StringPtrInput
 	SecurityScannerCustomEndpoint          pulumi.StringPtrInput
 	ServiceDirectoryCustomEndpoint         pulumi.StringPtrInput
@@ -944,12 +953,20 @@ func (o ProviderOutput) MemcacheCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MemcacheCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) MigrationCenterCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MigrationCenterCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) MlEngineCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MlEngineCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) MonitoringCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.MonitoringCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) NetappCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.NetappCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) NetworkConnectivityCustomEndpoint() pulumi.StringPtrOutput {
@@ -1042,6 +1059,10 @@ func (o ProviderOutput) RuntimeconfigCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) SecretManagerCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecretManagerCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) SecureSourceManagerCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.SecureSourceManagerCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) SecurityCenterCustomEndpoint() pulumi.StringPtrOutput {

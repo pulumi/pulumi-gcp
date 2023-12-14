@@ -151,7 +151,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
         return this.permissions;
     }
     /**
-     * The project that the service account will be created in.
+     * The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      * 
      */
@@ -159,7 +159,7 @@ public class IAMCustomRole extends com.pulumi.resources.CustomResource {
     private Output<String> project;
 
     /**
-     * @return The project that the service account will be created in.
+     * @return The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      * 
      */

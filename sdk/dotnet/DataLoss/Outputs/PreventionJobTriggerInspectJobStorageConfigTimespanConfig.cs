@@ -16,22 +16,23 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// <summary>
         /// When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
         /// scanning files that have not been modified since the last time the JobTrigger executed. This will
-        /// be based on the time of the execution of the last run of the JobTrigger.
+        /// be based on the time of the execution of the last run of the JobTrigger or the timespan endTime
+        /// used in the last run of the JobTrigger.
         /// </summary>
         public readonly bool? EnableAutoPopulationOfTimespanConfig;
         /// <summary>
-        /// Exclude files or rows newer than this value. If set to zero, no upper time limit is applied.
+        /// Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
         /// </summary>
         public readonly string? EndTime;
         /// <summary>
-        /// Exclude files or rows older than this value.
+        /// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
         /// </summary>
         public readonly string? StartTime;
         /// <summary>
-        /// Information on where to inspect
+        /// Specification of the field containing the timestamp of scanned items.
         /// Structure is documented below.
         /// </summary>
-        public readonly Outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField TimestampField;
+        public readonly Outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField? TimestampField;
 
         [OutputConstructor]
         private PreventionJobTriggerInspectJobStorageConfigTimespanConfig(
@@ -41,7 +42,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
 
             string? startTime,
 
-            Outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField timestampField)
+            Outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField? timestampField)
         {
             EnableAutoPopulationOfTimespanConfig = enableAutoPopulationOfTimespanConfig;
             EndTime = endTime;

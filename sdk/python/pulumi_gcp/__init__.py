@@ -154,10 +154,14 @@ if typing.TYPE_CHECKING:
     looker = __looker
     import pulumi_gcp.memcache as __memcache
     memcache = __memcache
+    import pulumi_gcp.migrationcenter as __migrationcenter
+    migrationcenter = __migrationcenter
     import pulumi_gcp.ml as __ml
     ml = __ml
     import pulumi_gcp.monitoring as __monitoring
     monitoring = __monitoring
+    import pulumi_gcp.netapp as __netapp
+    netapp = __netapp
     import pulumi_gcp.networkconnectivity as __networkconnectivity
     networkconnectivity = __networkconnectivity
     import pulumi_gcp.networkmanagement as __networkmanagement
@@ -190,6 +194,8 @@ if typing.TYPE_CHECKING:
     runtimeconfig = __runtimeconfig
     import pulumi_gcp.secretmanager as __secretmanager
     secretmanager = __secretmanager
+    import pulumi_gcp.securesourcemanager as __securesourcemanager
+    securesourcemanager = __securesourcemanager
     import pulumi_gcp.securitycenter as __securitycenter
     securitycenter = __securitycenter
     import pulumi_gcp.serviceaccount as __serviceaccount
@@ -295,8 +301,10 @@ else:
     logging = _utilities.lazy_import('pulumi_gcp.logging')
     looker = _utilities.lazy_import('pulumi_gcp.looker')
     memcache = _utilities.lazy_import('pulumi_gcp.memcache')
+    migrationcenter = _utilities.lazy_import('pulumi_gcp.migrationcenter')
     ml = _utilities.lazy_import('pulumi_gcp.ml')
     monitoring = _utilities.lazy_import('pulumi_gcp.monitoring')
+    netapp = _utilities.lazy_import('pulumi_gcp.netapp')
     networkconnectivity = _utilities.lazy_import('pulumi_gcp.networkconnectivity')
     networkmanagement = _utilities.lazy_import('pulumi_gcp.networkmanagement')
     networksecurity = _utilities.lazy_import('pulumi_gcp.networksecurity')
@@ -313,6 +321,7 @@ else:
     resourcemanager = _utilities.lazy_import('pulumi_gcp.resourcemanager')
     runtimeconfig = _utilities.lazy_import('pulumi_gcp.runtimeconfig')
     secretmanager = _utilities.lazy_import('pulumi_gcp.secretmanager')
+    securesourcemanager = _utilities.lazy_import('pulumi_gcp.securesourcemanager')
     securitycenter = _utilities.lazy_import('pulumi_gcp.securitycenter')
     serviceaccount = _utilities.lazy_import('pulumi_gcp.serviceaccount')
     servicedirectory = _utilities.lazy_import('pulumi_gcp.servicedirectory')
@@ -3263,6 +3272,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataform/repositoryIamBinding",
+  "fqn": "pulumi_gcp.dataform",
+  "classes": {
+   "gcp:dataform/repositoryIamBinding:RepositoryIamBinding": "RepositoryIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataform/repositoryIamMember",
+  "fqn": "pulumi_gcp.dataform",
+  "classes": {
+   "gcp:dataform/repositoryIamMember:RepositoryIamMember": "RepositoryIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "dataform/repositoryIamPolicy",
+  "fqn": "pulumi_gcp.dataform",
+  "classes": {
+   "gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy": "RepositoryIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataform/repositoryReleaseConfig",
   "fqn": "pulumi_gcp.dataform",
   "classes": {
@@ -5239,6 +5272,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "migrationcenter/group",
+  "fqn": "pulumi_gcp.migrationcenter",
+  "classes": {
+   "gcp:migrationcenter/group:Group": "Group"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "ml/engineModel",
   "fqn": "pulumi_gcp.ml",
   "classes": {
@@ -5323,6 +5364,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.monitoring",
   "classes": {
    "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": "UptimeCheckConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "netapp/storagePool",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/storagePool:StoragePool": "StoragePool"
   }
  },
  {
@@ -6047,6 +6096,46 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "securesourcemanager/instance",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/instanceIamBinding",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding": "InstanceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/instanceIamMember",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/instanceIamMember:InstanceIamMember": "InstanceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securesourcemanager/instanceIamPolicy",
+  "fqn": "pulumi_gcp.securesourcemanager",
+  "classes": {
+   "gcp:securesourcemanager/instanceIamPolicy:InstanceIamPolicy": "InstanceIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "securitycenter/eventThreatDetectionCustomModule",
+  "fqn": "pulumi_gcp.securitycenter",
+  "classes": {
+   "gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule": "EventThreatDetectionCustomModule"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "securitycenter/folderCustomModule",
   "fqn": "pulumi_gcp.securitycenter",
   "classes": {
@@ -6655,6 +6744,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiEndpointIamBinding",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding": "AiEndpointIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiEndpointIamMember",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember": "AiEndpointIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiEndpointIamPolicy",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": "AiEndpointIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiFeatureStore",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -6771,6 +6884,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.vmwareengine",
   "classes": {
    "gcp:vmwareengine/network:Network": "Network"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vmwareengine/networkPeering",
+  "fqn": "pulumi_gcp.vmwareengine",
+  "classes": {
+   "gcp:vmwareengine/networkPeering:NetworkPeering": "NetworkPeering"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vmwareengine/networkPolicy",
+  "fqn": "pulumi_gcp.vmwareengine",
+  "classes": {
+   "gcp:vmwareengine/networkPolicy:NetworkPolicy": "NetworkPolicy"
   }
  },
  {

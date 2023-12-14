@@ -125,6 +125,98 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Enable Fleet Default Member Config Service Mesh
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     fleetDefaultMemberConfig: {
+ *         mesh: {
+ *             management: "MANAGEMENT_AUTOMATIC",
+ *         },
+ *     },
+ *     location: "global",
+ * });
+ * ```
+ * ### Enable Fleet Default Member Config Configmanagement
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     fleetDefaultMemberConfig: {
+ *         configmanagement: {
+ *             configSync: {
+ *                 git: {
+ *                     syncRepo: "https://github.com/hashicorp/terraform",
+ *                 },
+ *             },
+ *         },
+ *     },
+ *     location: "global",
+ * });
+ * ```
+ * ### Enable Fleet Default Member Config Policycontroller
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     fleetDefaultMemberConfig: {
+ *         policycontroller: {
+ *             policyControllerHubConfig: {
+ *                 auditIntervalSeconds: 30,
+ *                 exemptableNamespaces: ["foo"],
+ *                 installSpec: "INSTALL_SPEC_ENABLED",
+ *                 policyContent: {
+ *                     bundles: [{
+ *                         bundle: "policy-essentials-v2022",
+ *                         exemptedNamespaces: [
+ *                             "foo",
+ *                             "bar",
+ *                         ],
+ *                     }],
+ *                     templateLibrary: {
+ *                         installation: "ALL",
+ *                     },
+ *                 },
+ *                 referentialRulesEnabled: true,
+ *             },
+ *         },
+ *     },
+ *     location: "global",
+ * });
+ * ```
+ * ### Enable Fleet Default Member Config Policycontroller Set Empty
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     fleetDefaultMemberConfig: {
+ *         policycontroller: {
+ *             policyControllerHubConfig: {
+ *                 constraintViolationLimit: 50,
+ *                 deploymentConfigs: [{
+ *                     component: "admission",
+ *                 }],
+ *                 installSpec: "INSTALL_SPEC_ENABLED",
+ *                 logDeniesEnabled: true,
+ *                 monitoring: {},
+ *                 mutationEnabled: true,
+ *                 policyContent: {},
+ *                 referentialRulesEnabled: true,
+ *             },
+ *         },
+ *     },
+ *     location: "global",
+ * });
+ * ```
  *
  * ## Import
  *

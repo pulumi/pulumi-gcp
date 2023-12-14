@@ -14,16 +14,24 @@ namespace Pulumi.Gcp.CloudIdentity.Outputs
     public sealed class GroupMembershipRole
     {
         /// <summary>
+        /// The MembershipRole expiry details, only supported for MEMBER role.
+        /// Other roles cannot be accompanied with MEMBER role having expiry.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.GroupMembershipRoleExpiryDetail? ExpiryDetail;
+        /// <summary>
         /// The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
         /// Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string Name;
 
         [OutputConstructor]
-        private GroupMembershipRole(string name)
+        private GroupMembershipRole(
+            Outputs.GroupMembershipRoleExpiryDetail? expiryDetail,
+
+            string name)
         {
+            ExpiryDetail = expiryDetail;
             Name = name;
         }
     }

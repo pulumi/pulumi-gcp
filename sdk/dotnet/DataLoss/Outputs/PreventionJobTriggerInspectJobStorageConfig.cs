@@ -34,7 +34,7 @@ namespace Pulumi.Gcp.DataLoss.Outputs
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobStorageConfigHybridOptions? HybridOptions;
         /// <summary>
-        /// Information on where to inspect
+        /// Configuration of the timespan of the items to include in scanning
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfig? TimespanConfig;

@@ -216,9 +216,13 @@ lookerCustomEndpoint: Optional[str]
 
 memcacheCustomEndpoint: Optional[str]
 
+migrationCenterCustomEndpoint: Optional[str]
+
 mlEngineCustomEndpoint: Optional[str]
 
 monitoringCustomEndpoint: Optional[str]
+
+netappCustomEndpoint: Optional[str]
 
 networkConnectivityCustomEndpoint: Optional[str]
 
@@ -267,6 +271,8 @@ runtimeconfigCustomEndpoint: Optional[str]
 scopes: Optional[str]
 
 secretManagerCustomEndpoint: Optional[str]
+
+secureSourceManagerCustomEndpoint: Optional[str]
 
 securityCenterCustomEndpoint: Optional[str]
 

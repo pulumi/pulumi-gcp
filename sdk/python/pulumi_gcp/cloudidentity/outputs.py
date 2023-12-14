@@ -16,11 +16,13 @@ __all__ = [
     'GroupMembershipMemberKey',
     'GroupMembershipPreferredMemberKey',
     'GroupMembershipRole',
+    'GroupMembershipRoleExpiryDetail',
     'GetGroupLookupGroupKeyResult',
     'GetGroupMembershipsMembershipResult',
     'GetGroupMembershipsMembershipMemberKeyResult',
     'GetGroupMembershipsMembershipPreferredMemberKeyResult',
     'GetGroupMembershipsMembershipRoleResult',
+    'GetGroupMembershipsMembershipRoleExpiryDetailResult',
     'GetGroupsGroupResult',
     'GetGroupsGroupAdditionalGroupKeyResult',
     'GetGroupsGroupGroupKeyResult',
@@ -237,15 +239,36 @@ class GroupMembershipPreferredMemberKey(dict):
 
 @pulumi.output_type
 class GroupMembershipRole(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expiryDetail":
+            suggest = "expiry_detail"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupMembershipRole. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupMembershipRole.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupMembershipRole.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
-                 name: str):
+                 name: str,
+                 expiry_detail: Optional['outputs.GroupMembershipRoleExpiryDetail'] = None):
         """
         :param str name: The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
                Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-               
-               - - -
+        :param 'GroupMembershipRoleExpiryDetailArgs' expiry_detail: The MembershipRole expiry details, only supported for MEMBER role.
+               Other roles cannot be accompanied with MEMBER role having expiry.
+               Structure is documented below.
         """
         pulumi.set(__self__, "name", name)
+        if expiry_detail is not None:
+            pulumi.set(__self__, "expiry_detail", expiry_detail)
 
     @property
     @pulumi.getter
@@ -253,10 +276,63 @@ class GroupMembershipRole(dict):
         """
         The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
         Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="expiryDetail")
+    def expiry_detail(self) -> Optional['outputs.GroupMembershipRoleExpiryDetail']:
+        """
+        The MembershipRole expiry details, only supported for MEMBER role.
+        Other roles cannot be accompanied with MEMBER role having expiry.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "expiry_detail")
+
+
+@pulumi.output_type
+class GroupMembershipRoleExpiryDetail(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "expireTime":
+            suggest = "expire_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GroupMembershipRoleExpiryDetail. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GroupMembershipRoleExpiryDetail.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GroupMembershipRoleExpiryDetail.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 expire_time: str):
+        """
+        :param str expire_time: The time at which the MembershipRole will expire.
+               A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+               resolution and up to nine fractional digits.
+               Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+               
+               - - -
+        """
+        pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        """
+        The time at which the MembershipRole will expire.
+        A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+        resolution and up to nine fractional digits.
+        Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 
         - - -
         """
-        return pulumi.get(self, "name")
+        return pulumi.get(self, "expire_time")
 
 
 @pulumi.output_type
@@ -473,11 +549,18 @@ class GetGroupMembershipsMembershipPreferredMemberKeyResult(dict):
 @pulumi.output_type
 class GetGroupMembershipsMembershipRoleResult(dict):
     def __init__(__self__, *,
+                 expiry_details: Sequence['outputs.GetGroupMembershipsMembershipRoleExpiryDetailResult'],
                  name: str):
         """
         :param str name: The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
         """
+        pulumi.set(__self__, "expiry_details", expiry_details)
         pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="expiryDetails")
+    def expiry_details(self) -> Sequence['outputs.GetGroupMembershipsMembershipRoleExpiryDetailResult']:
+        return pulumi.get(self, "expiry_details")
 
     @property
     @pulumi.getter
@@ -486,6 +569,18 @@ class GetGroupMembershipsMembershipRoleResult(dict):
         The name of the MembershipRole. One of OWNER, MANAGER, MEMBER.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class GetGroupMembershipsMembershipRoleExpiryDetailResult(dict):
+    def __init__(__self__, *,
+                 expire_time: str):
+        pulumi.set(__self__, "expire_time", expire_time)
+
+    @property
+    @pulumi.getter(name="expireTime")
+    def expire_time(self) -> str:
+        return pulumi.get(self, "expire_time")
 
 
 @pulumi.output_type

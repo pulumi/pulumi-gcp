@@ -276,7 +276,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Enable Fleet Default Member Config Service Mesh
- * 
  * ```java
  * package generated_program;
  * 
@@ -285,6 +284,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkehub.Feature;
  * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigMeshArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -311,7 +312,6 @@ import javax.annotation.Nullable;
  * }
  * ```
  * ### Enable Fleet Default Member Config Configmanagement
- * 
  * ```java
  * package generated_program;
  * 
@@ -320,6 +320,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.gkehub.Feature;
  * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigConfigmanagementArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -340,6 +344,197 @@ import javax.annotation.Nullable;
  *                         .git(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs.builder()
  *                             .syncRepo(&#34;https://github.com/hashicorp/terraform&#34;)
  *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Enable Fleet Default Member Config Policycontroller
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
+ *                 .policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs.builder()
+ *                     .policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs.builder()
+ *                         .auditIntervalSeconds(30)
+ *                         .exemptableNamespaces(&#34;foo&#34;)
+ *                         .installSpec(&#34;INSTALL_SPEC_ENABLED&#34;)
+ *                         .policyContent(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs.builder()
+ *                             .bundles(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs.builder()
+ *                                 .bundle(&#34;policy-essentials-v2022&#34;)
+ *                                 .exemptedNamespaces(                                
+ *                                     &#34;foo&#34;,
+ *                                     &#34;bar&#34;)
+ *                                 .build())
+ *                             .templateLibrary(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs.builder()
+ *                                 .installation(&#34;ALL&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .referentialRulesEnabled(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Enable Fleet Default Member Config Policycontroller Update
+ * 
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
+ *                 .policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs.builder()
+ *                     .policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs.builder()
+ *                         .constraintViolationLimit(50)
+ *                         .deploymentConfigs(                        
+ *                             FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
+ *                                 .component(&#34;admission&#34;)
+ *                                 .podAffinity(&#34;ANTI_AFFINITY&#34;)
+ *                                 .replicaCount(2)
+ *                                 .build(),
+ *                             FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
+ *                                 .component(&#34;audit&#34;)
+ *                                 .containerResources(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesArgs.builder()
+ *                                     .limits(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimitsArgs.builder()
+ *                                         .cpu(&#34;1.5&#34;)
+ *                                         .memory(&#34;1Gi&#34;)
+ *                                         .build())
+ *                                     .requests(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequestsArgs.builder()
+ *                                         .cpu(&#34;150m&#34;)
+ *                                         .memory(&#34;500Mi&#34;)
+ *                                         .build())
+ *                                     .build())
+ *                                 .podToleration(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                                 .build())
+ *                         .installSpec(&#34;INSTALL_SPEC_SUSPENDED&#34;)
+ *                         .logDeniesEnabled(true)
+ *                         .monitoring(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs.builder()
+ *                             .backends(&#34;PROMETHEUS&#34;)
+ *                             .build())
+ *                         .mutationEnabled(true)
+ *                         .policyContent(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs.builder()
+ *                             .bundles(                            
+ *                                 FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs.builder()
+ *                                     .bundle(&#34;pci-dss-v3.2.1&#34;)
+ *                                     .exemptedNamespaces(                                    
+ *                                         &#34;baz&#34;,
+ *                                         &#34;bar&#34;)
+ *                                     .build(),
+ *                                 FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs.builder()
+ *                                     .bundle(&#34;nist-sp-800-190&#34;)
+ *                                     .exemptedNamespaces()
+ *                                     .build())
+ *                             .templateLibrary(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs.builder()
+ *                                 .installation(&#34;ALL&#34;)
+ *                                 .build())
+ *                             .build())
+ *                         .referentialRulesEnabled(true)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Enable Fleet Default Member Config Policycontroller Set Empty
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .fleetDefaultMemberConfig(FeatureFleetDefaultMemberConfigArgs.builder()
+ *                 .policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs.builder()
+ *                     .policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs.builder()
+ *                         .constraintViolationLimit(50)
+ *                         .deploymentConfigs(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs.builder()
+ *                             .component(&#34;admission&#34;)
+ *                             .build())
+ *                         .installSpec(&#34;INSTALL_SPEC_ENABLED&#34;)
+ *                         .logDeniesEnabled(true)
+ *                         .monitoring()
+ *                         .mutationEnabled(true)
+ *                         .policyContent()
+ *                         .referentialRulesEnabled(true)
  *                         .build())
  *                     .build())
  *                 .build())

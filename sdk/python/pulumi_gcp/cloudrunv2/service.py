@@ -934,6 +934,27 @@ class Service(pulumi.CustomResource):
                 )],
             ))
         ```
+        ### Cloudrunv2 Service Limits
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            ingress="INGRESS_TRAFFIC_ALL",
+            location="us-central1",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    image="us-docker.pkg.dev/cloudrun/container/hello",
+                    resources=gcp.cloudrunv2.ServiceTemplateContainerResourcesArgs(
+                        limits={
+                            "cpu": "2",
+                            "memory": "1024Mi",
+                        },
+                    ),
+                )],
+            ))
+        ```
         ### Cloudrunv2 Service Sql
 
         ```python
@@ -1262,6 +1283,27 @@ class Service(pulumi.CustomResource):
             template=gcp.cloudrunv2.ServiceTemplateArgs(
                 containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
                     image="us-docker.pkg.dev/cloudrun/container/hello",
+                )],
+            ))
+        ```
+        ### Cloudrunv2 Service Limits
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Service("default",
+            ingress="INGRESS_TRAFFIC_ALL",
+            location="us-central1",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    image="us-docker.pkg.dev/cloudrun/container/hello",
+                    resources=gcp.cloudrunv2.ServiceTemplateContainerResourcesArgs(
+                        limits={
+                            "cpu": "2",
+                            "memory": "1024Mi",
+                        },
+                    ),
                 )],
             ))
         ```

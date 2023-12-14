@@ -15,29 +15,30 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         /// <summary>
         /// When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
         /// scanning files that have not been modified since the last time the JobTrigger executed. This will
-        /// be based on the time of the execution of the last run of the JobTrigger.
+        /// be based on the time of the execution of the last run of the JobTrigger or the timespan endTime
+        /// used in the last run of the JobTrigger.
         /// </summary>
         [Input("enableAutoPopulationOfTimespanConfig")]
         public Input<bool>? EnableAutoPopulationOfTimespanConfig { get; set; }
 
         /// <summary>
-        /// Exclude files or rows newer than this value. If set to zero, no upper time limit is applied.
+        /// Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
         /// </summary>
         [Input("endTime")]
         public Input<string>? EndTime { get; set; }
 
         /// <summary>
-        /// Exclude files or rows older than this value.
+        /// Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
         /// </summary>
         [Input("startTime")]
         public Input<string>? StartTime { get; set; }
 
         /// <summary>
-        /// Information on where to inspect
+        /// Specification of the field containing the timestamp of scanned items.
         /// Structure is documented below.
         /// </summary>
-        [Input("timestampField", required: true)]
-        public Input<Inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs> TimestampField { get; set; } = null!;
+        [Input("timestampField")]
+        public Input<Inputs.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampFieldArgs>? TimestampField { get; set; }
 
         public PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs()
         {

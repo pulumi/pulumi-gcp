@@ -3605,6 +3605,11 @@ export namespace artifactregistry {
          */
         pythonRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepository>;
         /**
+         * The credentials used to access the remote repository.
+         * Structure is documented below.
+         */
+        upstreamCredentials?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentials>;
+        /**
          * Specific settings for an Yum remote repository.
          * Structure is documented below.
          */
@@ -3665,6 +3670,27 @@ export namespace artifactregistry {
          * Possible values are: `PYPI`.
          */
         publicRepository?: pulumi.Input<string>;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigUpstreamCredentials {
+        /**
+         * Use username and password to access the remote repository.
+         * Structure is documented below.
+         */
+        usernamePasswordCredentials?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials>;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials {
+        /**
+         * The Secret Manager key version that holds the password to access the
+         * remote repository. Must be in the format of
+         * `projects/{project}/secrets/{secret}/versions/{version}`.
+         */
+        passwordSecretVersion?: pulumi.Input<string>;
+        /**
+         * The username to access the remote repository.
+         */
+        username?: pulumi.Input<string>;
     }
 
     export interface RepositoryRemoteRepositoryConfigYumRepository {
@@ -4110,6 +4136,38 @@ export namespace bigquery {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+
+    export interface ConnectionSpark {
+        /**
+         * Dataproc Metastore Service configuration for the connection.
+         * Structure is documented below.
+         */
+        metastoreServiceConfig?: pulumi.Input<inputs.bigquery.ConnectionSparkMetastoreServiceConfig>;
+        /**
+         * (Output)
+         * The account ID of the service created for the purpose of this connection.
+         */
+        serviceAccountId?: pulumi.Input<string>;
+        /**
+         * Spark History Server configuration for the connection.
+         * Structure is documented below.
+         */
+        sparkHistoryServerConfig?: pulumi.Input<inputs.bigquery.ConnectionSparkSparkHistoryServerConfig>;
+    }
+
+    export interface ConnectionSparkMetastoreServiceConfig {
+        /**
+         * Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
+         */
+        metastoreService?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionSparkSparkHistoryServerConfig {
+        /**
+         * Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[clusterName].
+         */
+        dataprocCluster?: pulumi.Input<string>;
     }
 
     export interface DataTransferConfigEmailPreferences {
@@ -8296,6 +8354,20 @@ export namespace cloudbuild {
          */
         images?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+         * The location and generation of the uploaded objects will be stored in the Build resource's results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         */
+        mavenArtifacts?: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildArtifactsMavenArtifact>[]>;
+        /**
+         * Npm package to upload to Artifact Registry upon successful completion of all build steps.
+         * The location and generation of the uploaded objects will be stored in the Build resource's results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         */
+        npmPackages?: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildArtifactsNpmPackage>[]>;
+        /**
          * A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
          * Files in the workspace matching specified paths globs will be uploaded to the
          * Cloud Storage location using the builder service account's credentials.
@@ -8304,6 +8376,49 @@ export namespace cloudbuild {
          * Structure is documented below.
          */
         objects?: pulumi.Input<inputs.cloudbuild.TriggerBuildArtifactsObjects>;
+        /**
+         * Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+         * The location and generation of the uploaded objects will be stored in the Build resource's results field.
+         * If any objects fail to be pushed, the build is marked FAILURE.
+         * Structure is documented below.
+         */
+        pythonPackages?: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildArtifactsPythonPackage>[]>;
+    }
+
+    export interface TriggerBuildArtifactsMavenArtifact {
+        /**
+         * Maven artifactId value used when uploading the artifact to Artifact Registry.
+         */
+        artifactId?: pulumi.Input<string>;
+        /**
+         * Maven groupId value used when uploading the artifact to Artifact Registry.
+         */
+        groupId?: pulumi.Input<string>;
+        /**
+         * Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+         */
+        path?: pulumi.Input<string>;
+        /**
+         * Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY"
+         * Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+         */
+        repository?: pulumi.Input<string>;
+        /**
+         * Maven version value used when uploading the artifact to Artifact Registry.
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface TriggerBuildArtifactsNpmPackage {
+        /**
+         * Path to the package.json. e.g. workspace/path/to/package
+         */
+        packagePath?: pulumi.Input<string>;
+        /**
+         * Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
+         * Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+         */
+        repository?: pulumi.Input<string>;
     }
 
     export interface TriggerBuildArtifactsObjects {
@@ -8341,6 +8456,18 @@ export namespace cloudbuild {
          * nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          */
         startTime?: pulumi.Input<string>;
+    }
+
+    export interface TriggerBuildArtifactsPythonPackage {
+        /**
+         * Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+         */
+        paths?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
+         * Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+         */
+        repository?: pulumi.Input<string>;
     }
 
     export interface TriggerBuildAvailableSecrets {
@@ -9641,7 +9768,9 @@ export namespace cloudfunctionsv2 {
          */
         retryPolicy?: pulumi.Input<string>;
         /**
-         * The email of the service account for this function.
+         * Optional. The email of the trigger's service account. The service account
+         * must have permission to invoke Cloud Run services. If empty, defaults to the
+         * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
          */
         serviceAccountEmail?: pulumi.Input<string>;
         /**
@@ -9957,12 +10086,28 @@ export namespace cloudidentity {
 
     export interface GroupMembershipRole {
         /**
+         * The MembershipRole expiry details, only supported for MEMBER role.
+         * Other roles cannot be accompanied with MEMBER role having expiry.
+         * Structure is documented below.
+         */
+        expiryDetail?: pulumi.Input<inputs.cloudidentity.GroupMembershipRoleExpiryDetail>;
+        /**
          * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
          * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
+         */
+        name: pulumi.Input<string>;
+    }
+
+    export interface GroupMembershipRoleExpiryDetail {
+        /**
+         * The time at which the MembershipRole will expire.
+         * A timestamp in RFC3339 UTC "Zulu" format, with nanosecond
+         * resolution and up to nine fractional digits.
+         * Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
          *
          * - - -
          */
-        name: pulumi.Input<string>;
+        expireTime: pulumi.Input<string>;
     }
 }
 
@@ -11189,7 +11334,7 @@ export namespace cloudrunv2 {
 
     export interface JobTemplateTemplateContainerResources {
         /**
-         * Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -11499,6 +11644,9 @@ export namespace cloudrunv2 {
          * Entrypoint array. Not executed within a shell. The docker image's ENTRYPOINT is used if this is not provided. Variable references $(VAR_NAME) are expanded using the container's environment. If a variable cannot be resolved, the reference in the input string will be unchanged. The $(VAR_NAME) syntax can be escaped with a double $$, ie: $$(VAR_NAME). Escaped references will never be expanded, regardless of whether the variable exists or not. More info: https://kubernetes.io/docs/tasks/inject-data-application/define-command-argument-container/#running-a-command-in-a-shell
          */
         commands?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Containers which should be started before this container. If specified the container will wait to start until all containers with the listed names are healthy.
+         */
         dependsOns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * List of environment variables to set in the container.
@@ -11668,7 +11816,7 @@ export namespace cloudrunv2 {
          */
         cpuIdle?: pulumi.Input<boolean>;
         /**
-         * Only memory and CPU are supported. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
+         * Only memory and CPU are supported. Use key `cpu` for CPU limit and `memory` for memory limit. Note: The only supported values for CPU are '1', '2', '4', and '8'. Setting 4 CPU requires at least 2Gi of memory. The values of the map is string form of the 'quantity' k8s type: https://github.com/kubernetes/kubernetes/blob/master/staging/src/k8s.io/apimachinery/pkg/api/resource/quantity.go
          */
         limits?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
@@ -12280,7 +12428,8 @@ export namespace composer {
     }
 
     export interface EnvironmentConfigDatabaseConfig {
-        machineType: pulumi.Input<string>;
+        machineType?: pulumi.Input<string>;
+        zone?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigEncryptionConfig {
@@ -13622,6 +13771,20 @@ export namespace compute {
          * length of 1024 characters.
          */
         value: pulumi.Input<string>;
+    }
+
+    export interface GlobalForwardingRuleServiceDirectoryRegistrations {
+        /**
+         * Service Directory namespace to register the forwarding rule under.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * [Optional] Service Directory region to register this global forwarding rule under.
+         * Default to "us-central1". Only used for PSC for Google APIs. All PSC for
+         * Google APIs Forwarding Rules on the same network should use the same Service
+         * Directory region.
+         */
+        serviceDirectoryRegion?: pulumi.Input<string>;
     }
 
     export interface HaVpnGatewayVpnInterface {
@@ -24804,6 +24967,7 @@ export namespace container {
          */
         nodeLocations?: pulumi.Input<pulumi.Input<string>[]>;
         placementPolicy?: pulumi.Input<inputs.container.ClusterNodePoolPlacementPolicy>;
+        queuedProvisioning?: pulumi.Input<inputs.container.ClusterNodePoolQueuedProvisioning>;
         /**
          * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
          */
@@ -25425,6 +25589,13 @@ export namespace container {
         type: pulumi.Input<string>;
     }
 
+    export interface ClusterNodePoolQueuedProvisioning {
+        /**
+         * Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+         */
+        enabled: pulumi.Input<boolean>;
+    }
+
     export interface ClusterNodePoolUpgradeSettings {
         /**
          * Settings for blue-green upgrade strategy. To be specified when strategy is set to BLUE_GREEN. Structure is documented below.
@@ -25968,6 +26139,13 @@ export namespace container {
          * physical proximity in order to reduce network latency between nodes.
          */
         type: pulumi.Input<string>;
+    }
+
+    export interface NodePoolQueuedProvisioning {
+        /**
+         * Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface NodePoolUpgradeSettings {
@@ -27208,6 +27386,18 @@ export namespace dataform {
          * The name of the Secret Manager secret version to use as a ssh private key for Git operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*.
          */
         userPrivateKeySecretVersion: pulumi.Input<string>;
+    }
+
+    export interface RepositoryIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface RepositoryIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface RepositoryReleaseConfigCodeCompilationConfig {
@@ -31910,7 +32100,7 @@ export namespace dataloss {
          */
         hybridOptions?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigHybridOptions>;
         /**
-         * Information on where to inspect
+         * Configuration of the timespan of the items to include in scanning
          * Structure is documented below.
          */
         timespanConfig?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigTimespanConfig>;
@@ -32149,22 +32339,23 @@ export namespace dataloss {
         /**
          * When the job is started by a JobTrigger we will automatically figure out a valid startTime to avoid
          * scanning files that have not been modified since the last time the JobTrigger executed. This will
-         * be based on the time of the execution of the last run of the JobTrigger.
+         * be based on the time of the execution of the last run of the JobTrigger or the timespan endTime
+         * used in the last run of the JobTrigger.
          */
         enableAutoPopulationOfTimespanConfig?: pulumi.Input<boolean>;
         /**
-         * Exclude files or rows newer than this value. If set to zero, no upper time limit is applied.
+         * Exclude files, tables, or rows newer than this value. If not set, no upper time limit is applied.
          */
         endTime?: pulumi.Input<string>;
         /**
-         * Exclude files or rows older than this value.
+         * Exclude files, tables, or rows older than this value. If not set, no lower time limit is applied.
          */
         startTime?: pulumi.Input<string>;
         /**
-         * Information on where to inspect
+         * Specification of the field containing the timestamp of scanned items.
          * Structure is documented below.
          */
-        timestampField: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField>;
+        timestampField?: pulumi.Input<inputs.dataloss.PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField>;
     }
 
     export interface PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField {
@@ -41366,6 +41557,11 @@ export namespace gkehub {
          * Structure is documented below.
          */
         mesh?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigMesh>;
+        /**
+         * Policy Controller spec
+         * Structure is documented below.
+         */
+        policycontroller?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontroller>;
     }
 
     export interface FeatureFleetDefaultMemberConfigConfigmanagement {
@@ -41461,6 +41657,185 @@ export namespace gkehub {
          * Possible values are: `MANAGEMENT_UNSPECIFIED`, `MANAGEMENT_AUTOMATIC`, `MANAGEMENT_MANUAL`.
          */
         management: pulumi.Input<string>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontroller {
+        /**
+         * Configuration of Policy Controller
+         * Structure is documented below.
+         */
+        policyControllerHubConfig: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig>;
+        /**
+         * Configures the version of Policy Controller
+         */
+        version?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
+        /**
+         * Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+         */
+        auditIntervalSeconds?: pulumi.Input<number>;
+        /**
+         * The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+         */
+        constraintViolationLimit?: pulumi.Input<number>;
+        /**
+         * Map of deployment configs to deployments ("admission", "audit", "mutation").
+         * Structure is documented below.
+         */
+        deploymentConfigs?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig>[]>;
+        /**
+         * The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+         */
+        exemptableNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Configures the mode of the Policy Controller installation
+         * Possible values are: `INSTALL_SPEC_UNSPECIFIED`, `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED`, `INSTALL_SPEC_DETACHED`.
+         */
+        installSpec: pulumi.Input<string>;
+        /**
+         * Logs all denies and dry run failures.
+         */
+        logDeniesEnabled?: pulumi.Input<boolean>;
+        /**
+         * Monitoring specifies the configuration of monitoring Policy Controller.
+         * Structure is documented below.
+         */
+        monitoring?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring>;
+        /**
+         * Enables the ability to mutate resources using Policy Controller.
+         */
+        mutationEnabled?: pulumi.Input<boolean>;
+        /**
+         * Specifies the desired policy content on the cluster.
+         * Structure is documented below.
+         */
+        policyContent?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent>;
+        /**
+         * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+         */
+        referentialRulesEnabled?: pulumi.Input<boolean>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        component: pulumi.Input<string>;
+        /**
+         * Container resource requirements.
+         * Structure is documented below.
+         */
+        containerResources?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources>;
+        /**
+         * Pod affinity configuration.
+         * Possible values are: `AFFINITY_UNSPECIFIED`, `NO_AFFINITY`, `ANTI_AFFINITY`.
+         */
+        podAffinity?: pulumi.Input<string>;
+        /**
+         * Pod tolerations of node taints.
+         * Structure is documented below.
+         */
+        podTolerations?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration>[]>;
+        /**
+         * Pod replica count.
+         */
+        replicaCount?: pulumi.Input<number>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources {
+        /**
+         * Limits describes the maximum amount of compute resources allowed for use by the running container.
+         * Structure is documented below.
+         */
+        limits?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits>;
+        /**
+         * Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+         * Structure is documented below.
+         */
+        requests?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesLimits {
+        /**
+         * CPU requirement expressed in Kubernetes resource units.
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory requirement expressed in Kubernetes resource units.
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourcesRequests {
+        /**
+         * CPU requirement expressed in Kubernetes resource units.
+         */
+        cpu?: pulumi.Input<string>;
+        /**
+         * Memory requirement expressed in Kubernetes resource units.
+         */
+        memory?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
+        /**
+         * Matches a taint effect.
+         */
+        effect?: pulumi.Input<string>;
+        /**
+         * Matches a taint key (not necessarily unique).
+         */
+        key?: pulumi.Input<string>;
+        /**
+         * Matches a taint operator.
+         */
+        operator?: pulumi.Input<string>;
+        /**
+         * Matches a taint value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring {
+        /**
+         * Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export.
+         * Each value may be one of: `MONITORING_BACKEND_UNSPECIFIED`, `PROMETHEUS`, `CLOUD_MONITORING`.
+         */
+        backends?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent {
+        /**
+         * Configures which bundles to install and their corresponding install specs.
+         * Structure is documented below.
+         */
+        bundles?: pulumi.Input<pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle>[]>;
+        /**
+         * Configures the installation of the Template Library.
+         * Structure is documented below.
+         */
+        templateLibrary?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        bundle: pulumi.Input<string>;
+        /**
+         * The set of namespaces to be exempted from the bundle.
+         */
+        exemptedNamespaces?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+        /**
+         * Configures the manner in which the template library is installed on the cluster.
+         * Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+         */
+        installation?: pulumi.Input<string>;
     }
 
     export interface FeatureIamBindingCondition {
@@ -41618,7 +41993,7 @@ export namespace gkehub {
          */
         logDeniesEnabled?: pulumi.Input<boolean>;
         /**
-         * Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\"cloudmonitoring\", \"prometheus\"]. Default: [\"cloudmonitoring\", \"prometheus\"]
+         * Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: ["cloudmonitoring", "prometheus"]. Default: ["cloudmonitoring", "prometheus"]
          */
         monitoring?: pulumi.Input<inputs.gkehub.FeatureMembershipConfigmanagementPolicyControllerMonitoring>;
         /**
@@ -41746,6 +42121,54 @@ export namespace gkehub {
          * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
          */
         updateTime?: pulumi.Input<string>;
+    }
+
+    export interface FleetDefaultClusterConfig {
+        /**
+         * Enable/Disable binary authorization features for the cluster.
+         * Structure is documented below.
+         */
+        binaryAuthorizationConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfigBinaryAuthorizationConfig>;
+        /**
+         * Enable/Disable Security Posture features for the cluster.
+         * Structure is documented below.
+         */
+        securityPostureConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfigSecurityPostureConfig>;
+    }
+
+    export interface FleetDefaultClusterConfigBinaryAuthorizationConfig {
+        /**
+         * Mode of operation for binauthz policy evaluation.
+         * Possible values are: `DISABLED`, `POLICY_BINDINGS`.
+         */
+        evaluationMode?: pulumi.Input<string>;
+        /**
+         * Binauthz policies that apply to this cluster.
+         * Structure is documented below.
+         */
+        policyBindings?: pulumi.Input<pulumi.Input<inputs.gkehub.FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding>[]>;
+    }
+
+    export interface FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding {
+        /**
+         * The relative resource name of the binauthz platform policy to audit. GKE
+         * platform policies have the following format:
+         * `projects/{project_number}/platforms/gke/policies/{policy_id}`.
+         */
+        name?: pulumi.Input<string>;
+    }
+
+    export interface FleetDefaultClusterConfigSecurityPostureConfig {
+        /**
+         * Sets which mode to use for Security Posture features.
+         * Possible values are: `DISABLED`, `BASIC`.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * Sets which mode to use for vulnerability scanning.
+         * Possible values are: `VULNERABILITY_DISABLED`, `VULNERABILITY_BASIC`, `VULNERABILITY_ENTERPRISE`.
+         */
+        vulnerabilityMode?: pulumi.Input<string>;
     }
 
     export interface FleetState {
@@ -44153,6 +44576,28 @@ export namespace iam {
          * This can be used e.g. in UIs which allow to enter the expression.
          */
         title?: pulumi.Input<string>;
+    }
+
+    export interface WorkforcePoolAccessRestrictions {
+        /**
+         * Services allowed for web sign-in with the workforce pool.
+         * If not set by default there are no restrictions.
+         * Structure is documented below.
+         */
+        allowedServices?: pulumi.Input<pulumi.Input<inputs.iam.WorkforcePoolAccessRestrictionsAllowedService>[]>;
+        /**
+         * Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
+         * See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+         */
+        disableProgrammaticSignin?: pulumi.Input<boolean>;
+    }
+
+    export interface WorkforcePoolAccessRestrictionsAllowedService {
+        /**
+         * Domain name of the service.
+         * Example: console.cloud.google
+         */
+        domain?: pulumi.Input<string>;
     }
 
     export interface WorkforcePoolProviderOidc {
@@ -53534,6 +53979,20 @@ export namespace secretmanager {
     }
 }
 
+export namespace securesourcemanager {
+    export interface InstanceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface InstanceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+}
+
 export namespace securitycenter {
     export interface FolderCustomModuleCustomConfig {
         /**
@@ -54455,7 +54914,7 @@ export namespace sql {
         requireSsl?: pulumi.Input<boolean>;
         /**
          * Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
-         * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
+         * * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
          * * For MySQL instances, use the same value pairs as the PostgreSQL instances.
          * * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
          */
@@ -54763,6 +55222,10 @@ export namespace storage {
          * One or more matching name suffixes to satisfy this condition.
          */
         matchesSuffixes?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+         */
+        noAge?: pulumi.Input<boolean>;
         /**
          * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
          */
@@ -55630,6 +56093,18 @@ export namespace vertex {
         kmsKeyName: pulumi.Input<string>;
     }
 
+    export interface AiEndpointIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface AiEndpointIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
     export interface AiFeatureStoreEncryptionSpec {
         /**
          * The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
@@ -55932,6 +56407,30 @@ export namespace vmwareengine {
         nodeTypeId: pulumi.Input<string>;
     }
 
+    export interface NetworkPolicyExternalIp {
+        /**
+         * True if the service is enabled; false otherwise.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * State of the service. New values may be added to this enum when appropriate.
+         */
+        state?: pulumi.Input<string>;
+    }
+
+    export interface NetworkPolicyInternetAccess {
+        /**
+         * True if the service is enabled; false otherwise.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * State of the service. New values may be added to this enum when appropriate.
+         */
+        state?: pulumi.Input<string>;
+    }
+
     export interface NetworkVpcNetwork {
         /**
          * (Output)
@@ -55941,7 +56440,7 @@ export namespace vmwareengine {
         network?: pulumi.Input<string>;
         /**
          * VMware Engine network type.
-         * Possible values are: `LEGACY`.
+         * Possible values are: `LEGACY`, `STANDARD`.
          */
         type?: pulumi.Input<string>;
     }
@@ -56005,6 +56504,11 @@ export namespace vmwareengine {
     }
 
     export interface PrivateCloudNetworkConfig {
+        /**
+         * (Output)
+         * DNS Server IP of the Private Cloud.
+         */
+        dnsServerIp?: pulumi.Input<string>;
         /**
          * Management CIDR used by VMware management appliances.
          */

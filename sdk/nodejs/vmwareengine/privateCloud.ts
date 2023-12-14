@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * / Represents a private cloud resource. Private clouds are zonal resources.
+ *
+ * To get more information about PrivateCloud, see:
+ *
+ * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+ *
  * ## Example Usage
  * ### Vmware Engine Private Cloud Basic
  *
@@ -15,11 +21,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const pc_nw = new gcp.vmwareengine.Network("pc-nw", {
- *     location: "us-west1",
- *     type: "LEGACY",
+ *     location: "global",
+ *     type: "STANDARD",
  *     description: "PC network description.",
- * }, {
- *     provider: google_beta,
  * });
  * const vmw_engine_pc = new gcp.vmwareengine.PrivateCloud("vmw-engine-pc", {
  *     location: "us-west1-a",
@@ -35,40 +39,6 @@ import * as utilities from "../utilities";
  *             nodeCount: 3,
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
- * });
- * ```
- * ### Vmware Engine Private Cloud Full
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const pc_nw = new gcp.vmwareengine.Network("pc-nw", {
- *     location: "us-west1",
- *     type: "LEGACY",
- *     description: "PC network description.",
- * }, {
- *     provider: google_beta,
- * });
- * const vmw_engine_pc = new gcp.vmwareengine.PrivateCloud("vmw-engine-pc", {
- *     location: "us-west1-a",
- *     description: "Sample test PC.",
- *     networkConfig: {
- *         managementCidr: "192.168.30.0/24",
- *         vmwareEngineNetwork: pc_nw.id,
- *     },
- *     managementCluster: {
- *         clusterId: "sample-mgmt-cluster",
- *         nodeTypeConfigs: [{
- *             nodeTypeId: "standard-72",
- *             nodeCount: 3,
- *             customCoreCount: 32,
- *         }],
- *     },
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

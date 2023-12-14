@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigConfigmanagementArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigMeshArgs;
+import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerArgs;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -50,11 +51,29 @@ public final class FeatureFleetDefaultMemberConfigArgs extends com.pulumi.resour
         return Optional.ofNullable(this.mesh);
     }
 
+    /**
+     * Policy Controller spec
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="policycontroller")
+    private @Nullable Output<FeatureFleetDefaultMemberConfigPolicycontrollerArgs> policycontroller;
+
+    /**
+     * @return Policy Controller spec
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureFleetDefaultMemberConfigPolicycontrollerArgs>> policycontroller() {
+        return Optional.ofNullable(this.policycontroller);
+    }
+
     private FeatureFleetDefaultMemberConfigArgs() {}
 
     private FeatureFleetDefaultMemberConfigArgs(FeatureFleetDefaultMemberConfigArgs $) {
         this.configmanagement = $.configmanagement;
         this.mesh = $.mesh;
+        this.policycontroller = $.policycontroller;
     }
 
     public static Builder builder() {
@@ -119,6 +138,29 @@ public final class FeatureFleetDefaultMemberConfigArgs extends com.pulumi.resour
          */
         public Builder mesh(FeatureFleetDefaultMemberConfigMeshArgs mesh) {
             return mesh(Output.of(mesh));
+        }
+
+        /**
+         * @param policycontroller Policy Controller spec
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policycontroller(@Nullable Output<FeatureFleetDefaultMemberConfigPolicycontrollerArgs> policycontroller) {
+            $.policycontroller = policycontroller;
+            return this;
+        }
+
+        /**
+         * @param policycontroller Policy Controller spec
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policycontroller(FeatureFleetDefaultMemberConfigPolicycontrollerArgs policycontroller) {
+            return policycontroller(Output.of(policycontroller));
         }
 
         public FeatureFleetDefaultMemberConfigArgs build() {

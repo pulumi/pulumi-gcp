@@ -35,7 +35,7 @@ public final class FeatureMembershipConfigmanagementPolicyController {
      */
     private @Nullable Boolean logDeniesEnabled;
     /**
-     * @return Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]. Default: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]
+     * @return Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [&#34;cloudmonitoring&#34;, &#34;prometheus&#34;]. Default: [&#34;cloudmonitoring&#34;, &#34;prometheus&#34;]
      * 
      */
     private @Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring;
@@ -85,7 +85,7 @@ public final class FeatureMembershipConfigmanagementPolicyController {
         return Optional.ofNullable(this.logDeniesEnabled);
     }
     /**
-     * @return Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]. Default: [\&#34;cloudmonitoring\&#34;, \&#34;prometheus\&#34;]
+     * @return Specifies the backends Policy Controller should export metrics to. For example, to specify metrics should be exported to Cloud Monitoring and Prometheus, specify backends: [&#34;cloudmonitoring&#34;, &#34;prometheus&#34;]. Default: [&#34;cloudmonitoring&#34;, &#34;prometheus&#34;]
      * 
      */
     public Optional<FeatureMembershipConfigmanagementPolicyControllerMonitoring> monitoring() {

@@ -11,6 +11,11 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Use this data source to get details about a private cloud resource.
+//
+// To get more information about private cloud, see:
+// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+//
 // ## Example Usage
 //
 // ```go
@@ -26,8 +31,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.LookupPrivateCloud(ctx, &vmwareengine.LookupPrivateCloudArgs{
-//				Name:     "my-pc",
 //				Location: "us-central1-a",
+//				Name:     "my-pc",
 //			}, nil)
 //			if err != nil {
 //				return err

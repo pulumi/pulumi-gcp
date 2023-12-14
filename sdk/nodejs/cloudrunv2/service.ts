@@ -32,6 +32,28 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Service Limits
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     location: "us-central1",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             resources: {
+ *                 limits: {
+ *                     cpu: "2",
+ *                     memory: "1024Mi",
+ *                 },
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  * ### Cloudrunv2 Service Sql
  *
  * ```typescript

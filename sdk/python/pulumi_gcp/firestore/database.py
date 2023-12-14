@@ -19,6 +19,7 @@ class DatabaseArgs:
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -37,8 +38,14 @@ class DatabaseArgs:
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database.
-               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+               default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+               **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+               Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
+        :param pulumi.Input[str] deletion_policy: Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+               state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+               removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+               'delete_protection'.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
                component of the database's resource name. This value should be 4-63
                characters. Valid characters are /[a-z][0-9]-/ with first character
@@ -63,6 +70,8 @@ class DatabaseArgs:
             pulumi.set(__self__, "concurrency_mode", concurrency_mode)
         if delete_protection_state is not None:
             pulumi.set(__self__, "delete_protection_state", delete_protection_state)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if point_in_time_recovery_enablement is not None:
@@ -131,14 +140,31 @@ class DatabaseArgs:
     @pulumi.getter(name="deleteProtectionState")
     def delete_protection_state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of delete protection for the database.
-        Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+        default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+        **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+        Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
         """
         return pulumi.get(self, "delete_protection_state")
 
     @delete_protection_state.setter
     def delete_protection_state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_protection_state", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+        state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+        removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+        'delete_protection'.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter
@@ -196,6 +222,7 @@ class _DatabaseState:
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  earliest_version_time: Optional[pulumi.Input[str]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  key_prefix: Optional[pulumi.Input[str]] = None,
@@ -214,8 +241,14 @@ class _DatabaseState:
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] create_time: Output only. The timestamp at which this database was created.
-        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database.
-               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+               default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+               **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+               Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
+        :param pulumi.Input[str] deletion_policy: Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+               state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+               removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+               'delete_protection'.
         :param pulumi.Input[str] earliest_version_time: Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
                This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -265,6 +298,8 @@ class _DatabaseState:
             pulumi.set(__self__, "create_time", create_time)
         if delete_protection_state is not None:
             pulumi.set(__self__, "delete_protection_state", delete_protection_state)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if earliest_version_time is not None:
             pulumi.set(__self__, "earliest_version_time", earliest_version_time)
         if etag is not None:
@@ -330,14 +365,31 @@ class _DatabaseState:
     @pulumi.getter(name="deleteProtectionState")
     def delete_protection_state(self) -> Optional[pulumi.Input[str]]:
         """
-        State of delete protection for the database.
-        Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+        default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+        **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+        Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
         """
         return pulumi.get(self, "delete_protection_state")
 
     @delete_protection_state.setter
     def delete_protection_state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "delete_protection_state", value)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+        state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+        removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+        'delete_protection'.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter(name="earliestVersionTime")
@@ -509,6 +561,7 @@ class Database(pulumi.CustomResource):
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
@@ -531,6 +584,19 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Default Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            location_id="nam5",
+            project="my-project-name",
+            type="FIRESTORE_NATIVE")
+        ```
         ### Firestore Database
 
         ```python
@@ -540,10 +606,25 @@ class Database(pulumi.CustomResource):
         database = gcp.firestore.Database("database",
             app_engine_integration_mode="DISABLED",
             concurrency_mode="OPTIMISTIC",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
             location_id="nam5",
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             project="my-project-name",
             type="FIRESTORE_NATIVE")
+        ```
+        ### Firestore Default Database In Datastore Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            location_id="nam5",
+            project="my-project-name",
+            type="DATASTORE_MODE")
         ```
         ### Firestore Database In Datastore Mode
 
@@ -554,22 +635,12 @@ class Database(pulumi.CustomResource):
         datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
             app_engine_integration_mode="DISABLED",
             concurrency_mode="OPTIMISTIC",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
             location_id="nam5",
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             project="my-project-name",
             type="DATASTORE_MODE")
-        ```
-        ### Firestore Database With Delete Protection
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.firestore.Database("database",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            location_id="nam5",
-            project="my-project-name",
-            type="FIRESTORE_NATIVE")
         ```
 
         ## Import
@@ -602,8 +673,14 @@ class Database(pulumi.CustomResource):
                Possible values are: `ENABLED`, `DISABLED`.
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
-        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database.
-               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+               default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+               **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+               Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
+        :param pulumi.Input[str] deletion_policy: Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+               state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+               removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+               'delete_protection'.
         :param pulumi.Input[str] location_id: The location of the database. Available locations are listed at
                https://cloud.google.com/firestore/docs/locations.
         :param pulumi.Input[str] name: The ID to use for the database, which will become the final
@@ -651,6 +728,19 @@ class Database(pulumi.CustomResource):
             * [Official Documentation](https://cloud.google.com/firestore/docs/)
 
         ## Example Usage
+        ### Firestore Default Database
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            location_id="nam5",
+            project="my-project-name",
+            type="FIRESTORE_NATIVE")
+        ```
         ### Firestore Database
 
         ```python
@@ -660,10 +750,25 @@ class Database(pulumi.CustomResource):
         database = gcp.firestore.Database("database",
             app_engine_integration_mode="DISABLED",
             concurrency_mode="OPTIMISTIC",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
             location_id="nam5",
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             project="my-project-name",
             type="FIRESTORE_NATIVE")
+        ```
+        ### Firestore Default Database In Datastore Mode
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
+            location_id="nam5",
+            project="my-project-name",
+            type="DATASTORE_MODE")
         ```
         ### Firestore Database In Datastore Mode
 
@@ -674,22 +779,12 @@ class Database(pulumi.CustomResource):
         datastore_mode_database = gcp.firestore.Database("datastoreModeDatabase",
             app_engine_integration_mode="DISABLED",
             concurrency_mode="OPTIMISTIC",
+            delete_protection_state="DELETE_PROTECTION_ENABLED",
+            deletion_policy="DELETE",
             location_id="nam5",
             point_in_time_recovery_enablement="POINT_IN_TIME_RECOVERY_ENABLED",
             project="my-project-name",
             type="DATASTORE_MODE")
-        ```
-        ### Firestore Database With Delete Protection
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        database = gcp.firestore.Database("database",
-            delete_protection_state="DELETE_PROTECTION_ENABLED",
-            location_id="nam5",
-            project="my-project-name",
-            type="FIRESTORE_NATIVE")
         ```
 
         ## Import
@@ -734,6 +829,7 @@ class Database(pulumi.CustomResource):
                  app_engine_integration_mode: Optional[pulumi.Input[str]] = None,
                  concurrency_mode: Optional[pulumi.Input[str]] = None,
                  delete_protection_state: Optional[pulumi.Input[str]] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  location_id: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  point_in_time_recovery_enablement: Optional[pulumi.Input[str]] = None,
@@ -751,6 +847,7 @@ class Database(pulumi.CustomResource):
             __props__.__dict__["app_engine_integration_mode"] = app_engine_integration_mode
             __props__.__dict__["concurrency_mode"] = concurrency_mode
             __props__.__dict__["delete_protection_state"] = delete_protection_state
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if location_id is None and not opts.urn:
                 raise TypeError("Missing required property 'location_id'")
             __props__.__dict__["location_id"] = location_id
@@ -781,6 +878,7 @@ class Database(pulumi.CustomResource):
             concurrency_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             delete_protection_state: Optional[pulumi.Input[str]] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             earliest_version_time: Optional[pulumi.Input[str]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             key_prefix: Optional[pulumi.Input[str]] = None,
@@ -804,8 +902,14 @@ class Database(pulumi.CustomResource):
         :param pulumi.Input[str] concurrency_mode: The concurrency control mode to use for this database.
                Possible values are: `OPTIMISTIC`, `PESSIMISTIC`, `OPTIMISTIC_WITH_ENTITY_GROUPS`.
         :param pulumi.Input[str] create_time: Output only. The timestamp at which this database was created.
-        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database.
-               Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        :param pulumi.Input[str] delete_protection_state: State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+               default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+               **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+               Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
+        :param pulumi.Input[str] deletion_policy: Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+               state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+               removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+               'delete_protection'.
         :param pulumi.Input[str] earliest_version_time: Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.
                This value is continuously updated, and becomes stale the moment it is queried. If you are using this value to recover data, make sure to account for the time from the moment when the value is queried to the moment when you initiate the recovery.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -855,6 +959,7 @@ class Database(pulumi.CustomResource):
         __props__.__dict__["concurrency_mode"] = concurrency_mode
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["delete_protection_state"] = delete_protection_state
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["earliest_version_time"] = earliest_version_time
         __props__.__dict__["etag"] = etag
         __props__.__dict__["key_prefix"] = key_prefix
@@ -898,10 +1003,23 @@ class Database(pulumi.CustomResource):
     @pulumi.getter(name="deleteProtectionState")
     def delete_protection_state(self) -> pulumi.Output[str]:
         """
-        State of delete protection for the database.
-        Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+        State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+        default value is 'DELETE_PROTECTION_STATE_UNSPECIFIED', which is currently equivalent to 'DELETE_PROTECTION_DISABLED'.
+        **Note:** Additionally, to delete this database using 'terraform destroy', 'deletion_policy' must be set to 'DELETE'.
+        Possible values: ["DELETE_PROTECTION_STATE_UNSPECIFIED", "DELETE_PROTECTION_ENABLED", "DELETE_PROTECTION_DISABLED"]
         """
         return pulumi.get(self, "delete_protection_state")
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        Deletion behavior for this database. If the deletion policy is 'ABANDON', the database will be removed from Terraform
+        state but not deleted from Google Cloud upon destruction. If the deletion policy is 'DELETE', the database will both be
+        removed from Terraform state and deleted from Google Cloud upon destruction. The default value is 'ABANDON'. See also
+        'delete_protection'.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter(name="earliestVersionTime")

@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -138,6 +139,21 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
     }
 
     /**
+     * While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+     * 
+     */
+    @Import(name="noAge")
+    private @Nullable Output<Boolean> noAge;
+
+    /**
+     * @return While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+     * 
+     */
+    public Optional<Output<Boolean>> noAge() {
+        return Optional.ofNullable(this.noAge);
+    }
+
+    /**
      * Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
      * 
      */
@@ -193,6 +209,7 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
         this.matchesPrefixes = $.matchesPrefixes;
         this.matchesStorageClasses = $.matchesStorageClasses;
         this.matchesSuffixes = $.matchesSuffixes;
+        this.noAge = $.noAge;
         this.noncurrentTimeBefore = $.noncurrentTimeBefore;
         this.numNewerVersions = $.numNewerVersions;
         this.withState = $.withState;
@@ -412,6 +429,27 @@ public final class BucketLifecycleRuleConditionArgs extends com.pulumi.resources
          */
         public Builder matchesSuffixes(String... matchesSuffixes) {
             return matchesSuffixes(List.of(matchesSuffixes));
+        }
+
+        /**
+         * @param noAge While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noAge(@Nullable Output<Boolean> noAge) {
+            $.noAge = noAge;
+            return this;
+        }
+
+        /**
+         * @param noAge While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder noAge(Boolean noAge) {
+            return noAge(Output.of(noAge));
         }
 
         /**

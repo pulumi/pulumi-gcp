@@ -22,7 +22,7 @@ class GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
-    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, effective_labels=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, effective_labels=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, service_directory_registrations=None, source_ip_ranges=None, subnetwork=None, target=None):
         if allow_psc_global_access and not isinstance(allow_psc_global_access, bool):
             raise TypeError("Expected argument 'allow_psc_global_access' to be a bool")
         pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
@@ -86,6 +86,9 @@ class GetGlobalForwardingRuleResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if service_directory_registrations and not isinstance(service_directory_registrations, list):
+            raise TypeError("Expected argument 'service_directory_registrations' to be a list")
+        pulumi.set(__self__, "service_directory_registrations", service_directory_registrations)
         if source_ip_ranges and not isinstance(source_ip_ranges, list):
             raise TypeError("Expected argument 'source_ip_ranges' to be a list")
         pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
@@ -205,6 +208,11 @@ class GetGlobalForwardingRuleResult:
         return pulumi.get(self, "self_link")
 
     @property
+    @pulumi.getter(name="serviceDirectoryRegistrations")
+    def service_directory_registrations(self) -> Sequence['outputs.GetGlobalForwardingRuleServiceDirectoryRegistrationResult']:
+        return pulumi.get(self, "service_directory_registrations")
+
+    @property
     @pulumi.getter(name="sourceIpRanges")
     def source_ip_ranges(self) -> Sequence[str]:
         return pulumi.get(self, "source_ip_ranges")
@@ -247,6 +255,7 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             psc_connection_status=self.psc_connection_status,
             pulumi_labels=self.pulumi_labels,
             self_link=self.self_link,
+            service_directory_registrations=self.service_directory_registrations,
             source_ip_ranges=self.source_ip_ranges,
             subnetwork=self.subnetwork,
             target=self.target)
@@ -302,6 +311,7 @@ def get_global_forwarding_rule(name: Optional[str] = None,
         psc_connection_status=pulumi.get(__ret__, 'psc_connection_status'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         self_link=pulumi.get(__ret__, 'self_link'),
+        service_directory_registrations=pulumi.get(__ret__, 'service_directory_registrations'),
         source_ip_ranges=pulumi.get(__ret__, 'source_ip_ranges'),
         subnetwork=pulumi.get(__ret__, 'subnetwork'),
         target=pulumi.get(__ret__, 'target'))

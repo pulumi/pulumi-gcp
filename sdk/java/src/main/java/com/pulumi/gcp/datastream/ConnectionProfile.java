@@ -69,7 +69,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Datastream Connection Profile Bigquery Private Connection
+ * ### Datastream Connection Profile Postgresql Private Connection
  * ```java
  * package generated_program;
  * 
@@ -80,9 +80,19 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.datastream.PrivateConnection;
  * import com.pulumi.gcp.datastream.PrivateConnectionArgs;
  * import com.pulumi.gcp.datastream.inputs.PrivateConnectionVpcPeeringConfigArgs;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import com.pulumi.random.RandomPassword;
+ * import com.pulumi.random.RandomPasswordArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
  * import com.pulumi.gcp.datastream.ConnectionProfile;
  * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
- * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfilePostgresqlProfileArgs;
  * import com.pulumi.gcp.datastream.inputs.ConnectionProfilePrivateConnectivityArgs;
  * import java.util.List;
  * import java.util.ArrayList;
@@ -110,11 +120,57 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
+ *         var instance = new DatabaseInstance(&#34;instance&#34;, DatabaseInstanceArgs.builder()        
+ *             .databaseVersion(&#34;POSTGRES_14&#34;)
+ *             .region(&#34;us-central1&#34;)
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier(&#34;db-f1-micro&#34;)
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .authorizedNetworks(                    
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.71.242.81&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.72.28.29&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.67.6.157&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.67.234.134&#34;)
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value(&#34;34.72.239.218&#34;)
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .deletionProtection(&#34;true&#34;)
+ *             .build());
+ * 
+ *         var db = new Database(&#34;db&#34;, DatabaseArgs.builder()        
+ *             .instance(instance.name())
+ *             .build());
+ * 
+ *         var pwd = new RandomPassword(&#34;pwd&#34;, RandomPasswordArgs.builder()        
+ *             .length(16)
+ *             .special(false)
+ *             .build());
+ * 
+ *         var user = new User(&#34;user&#34;, UserArgs.builder()        
+ *             .instance(instance.name())
+ *             .password(pwd.result())
+ *             .build());
+ * 
  *         var defaultConnectionProfile = new ConnectionProfile(&#34;defaultConnectionProfile&#34;, ConnectionProfileArgs.builder()        
  *             .displayName(&#34;Connection profile&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .connectionProfileId(&#34;my-profile&#34;)
- *             .bigqueryProfile()
+ *             .postgresqlProfile(ConnectionProfilePostgresqlProfileArgs.builder()
+ *                 .hostname(instance.publicIpAddress())
+ *                 .username(user.name())
+ *                 .password(user.password())
+ *                 .database(db.name())
+ *                 .build())
  *             .privateConnectivity(ConnectionProfilePrivateConnectivityArgs.builder()
  *                 .privateConnection(privateConnection.id())
  *                 .build())

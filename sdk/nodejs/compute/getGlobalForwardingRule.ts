@@ -74,6 +74,7 @@ export interface GetGlobalForwardingRuleResult {
     readonly pscConnectionStatus: string;
     readonly pulumiLabels: {[key: string]: string};
     readonly selfLink: string;
+    readonly serviceDirectoryRegistrations: outputs.compute.GetGlobalForwardingRuleServiceDirectoryRegistration[];
     readonly sourceIpRanges: string[];
     readonly subnetwork: string;
     readonly target: string;

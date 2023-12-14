@@ -19,8 +19,11 @@ __all__ = [
     'TriggerBitbucketServerTriggerConfigPush',
     'TriggerBuild',
     'TriggerBuildArtifacts',
+    'TriggerBuildArtifactsMavenArtifact',
+    'TriggerBuildArtifactsNpmPackage',
     'TriggerBuildArtifactsObjects',
     'TriggerBuildArtifactsObjectsTiming',
+    'TriggerBuildArtifactsPythonPackage',
     'TriggerBuildAvailableSecrets',
     'TriggerBuildAvailableSecretsSecretManager',
     'TriggerBuildOptions',
@@ -50,8 +53,11 @@ __all__ = [
     'GetTriggerBitbucketServerTriggerConfigPushResult',
     'GetTriggerBuildResult',
     'GetTriggerBuildArtifactResult',
+    'GetTriggerBuildArtifactMavenArtifactResult',
+    'GetTriggerBuildArtifactNpmPackageResult',
     'GetTriggerBuildArtifactObjectResult',
     'GetTriggerBuildArtifactObjectTimingResult',
+    'GetTriggerBuildArtifactPythonPackageResult',
     'GetTriggerBuildAvailableSecretResult',
     'GetTriggerBuildAvailableSecretSecretManagerResult',
     'GetTriggerBuildOptionResult',
@@ -655,25 +661,67 @@ class TriggerBuild(dict):
 
 @pulumi.output_type
 class TriggerBuildArtifacts(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mavenArtifacts":
+            suggest = "maven_artifacts"
+        elif key == "npmPackages":
+            suggest = "npm_packages"
+        elif key == "pythonPackages":
+            suggest = "python_packages"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildArtifacts. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildArtifacts.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildArtifacts.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  images: Optional[Sequence[str]] = None,
-                 objects: Optional['outputs.TriggerBuildArtifactsObjects'] = None):
+                 maven_artifacts: Optional[Sequence['outputs.TriggerBuildArtifactsMavenArtifact']] = None,
+                 npm_packages: Optional[Sequence['outputs.TriggerBuildArtifactsNpmPackage']] = None,
+                 objects: Optional['outputs.TriggerBuildArtifactsObjects'] = None,
+                 python_packages: Optional[Sequence['outputs.TriggerBuildArtifactsPythonPackage']] = None):
         """
         :param Sequence[str] images: A list of images to be pushed upon the successful completion of all build steps.
                The images will be pushed using the builder service account's credentials.
                The digests of the pushed images will be stored in the Build resource's results field.
                If any of the images fail to be pushed, the build is marked FAILURE.
+        :param Sequence['TriggerBuildArtifactsMavenArtifactArgs'] maven_artifacts: A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+               The location and generation of the uploaded objects will be stored in the Build resource's results field.
+               If any objects fail to be pushed, the build is marked FAILURE.
+               Structure is documented below.
+        :param Sequence['TriggerBuildArtifactsNpmPackageArgs'] npm_packages: Npm package to upload to Artifact Registry upon successful completion of all build steps.
+               The location and generation of the uploaded objects will be stored in the Build resource's results field.
+               If any objects fail to be pushed, the build is marked FAILURE.
+               Structure is documented below.
         :param 'TriggerBuildArtifactsObjectsArgs' objects: A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
                Files in the workspace matching specified paths globs will be uploaded to the
                Cloud Storage location using the builder service account's credentials.
                The location and generation of the uploaded objects will be stored in the Build resource's results field.
                If any objects fail to be pushed, the build is marked FAILURE.
                Structure is documented below.
+        :param Sequence['TriggerBuildArtifactsPythonPackageArgs'] python_packages: Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+               The location and generation of the uploaded objects will be stored in the Build resource's results field.
+               If any objects fail to be pushed, the build is marked FAILURE.
+               Structure is documented below.
         """
         if images is not None:
             pulumi.set(__self__, "images", images)
+        if maven_artifacts is not None:
+            pulumi.set(__self__, "maven_artifacts", maven_artifacts)
+        if npm_packages is not None:
+            pulumi.set(__self__, "npm_packages", npm_packages)
         if objects is not None:
             pulumi.set(__self__, "objects", objects)
+        if python_packages is not None:
+            pulumi.set(__self__, "python_packages", python_packages)
 
     @property
     @pulumi.getter
@@ -687,6 +735,28 @@ class TriggerBuildArtifacts(dict):
         return pulumi.get(self, "images")
 
     @property
+    @pulumi.getter(name="mavenArtifacts")
+    def maven_artifacts(self) -> Optional[Sequence['outputs.TriggerBuildArtifactsMavenArtifact']]:
+        """
+        A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+        The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        If any objects fail to be pushed, the build is marked FAILURE.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "maven_artifacts")
+
+    @property
+    @pulumi.getter(name="npmPackages")
+    def npm_packages(self) -> Optional[Sequence['outputs.TriggerBuildArtifactsNpmPackage']]:
+        """
+        Npm package to upload to Artifact Registry upon successful completion of all build steps.
+        The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        If any objects fail to be pushed, the build is marked FAILURE.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "npm_packages")
+
+    @property
     @pulumi.getter
     def objects(self) -> Optional['outputs.TriggerBuildArtifactsObjects']:
         """
@@ -698,6 +768,155 @@ class TriggerBuildArtifacts(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "objects")
+
+    @property
+    @pulumi.getter(name="pythonPackages")
+    def python_packages(self) -> Optional[Sequence['outputs.TriggerBuildArtifactsPythonPackage']]:
+        """
+        Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+        The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        If any objects fail to be pushed, the build is marked FAILURE.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "python_packages")
+
+
+@pulumi.output_type
+class TriggerBuildArtifactsMavenArtifact(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "artifactId":
+            suggest = "artifact_id"
+        elif key == "groupId":
+            suggest = "group_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildArtifactsMavenArtifact. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildArtifactsMavenArtifact.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildArtifactsMavenArtifact.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 artifact_id: Optional[str] = None,
+                 group_id: Optional[str] = None,
+                 path: Optional[str] = None,
+                 repository: Optional[str] = None,
+                 version: Optional[str] = None):
+        """
+        :param str artifact_id: Maven artifactId value used when uploading the artifact to Artifact Registry.
+        :param str group_id: Maven groupId value used when uploading the artifact to Artifact Registry.
+        :param str path: Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        :param str repository: Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY"
+               Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+        :param str version: Maven version value used when uploading the artifact to Artifact Registry.
+        """
+        if artifact_id is not None:
+            pulumi.set(__self__, "artifact_id", artifact_id)
+        if group_id is not None:
+            pulumi.set(__self__, "group_id", group_id)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> Optional[str]:
+        """
+        Maven artifactId value used when uploading the artifact to Artifact Registry.
+        """
+        return pulumi.get(self, "artifact_id")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> Optional[str]:
+        """
+        Maven groupId value used when uploading the artifact to Artifact Registry.
+        """
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Path to an artifact in the build's workspace to be uploaded to Artifact Registry. This can be either an absolute path, e.g. /workspace/my-app/target/my-app-1.0.SNAPSHOT.jar or a relative path from /workspace, e.g. my-app/target/my-app-1.0.SNAPSHOT.jar.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[str]:
+        """
+        Artifact Registry repository, in the form "https://$REGION-maven.pkg.dev/$PROJECT/$REPOSITORY"
+        Artifact in the workspace specified by path will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Maven version value used when uploading the artifact to Artifact Registry.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class TriggerBuildArtifactsNpmPackage(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "packagePath":
+            suggest = "package_path"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TriggerBuildArtifactsNpmPackage. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TriggerBuildArtifactsNpmPackage.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TriggerBuildArtifactsNpmPackage.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 package_path: Optional[str] = None,
+                 repository: Optional[str] = None):
+        """
+        :param str package_path: Path to the package.json. e.g. workspace/path/to/package
+        :param str repository: Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
+               Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+        """
+        if package_path is not None:
+            pulumi.set(__self__, "package_path", package_path)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter(name="packagePath")
+    def package_path(self) -> Optional[str]:
+        """
+        Path to the package.json. e.g. workspace/path/to/package
+        """
+        return pulumi.get(self, "package_path")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[str]:
+        """
+        Artifact Registry repository, in the form "https://$REGION-npm.pkg.dev/$PROJECT/$REPOSITORY"
+        Npm package in the workspace specified by path will be zipped and uploaded to Artifact Registry with this location as a prefix.
+        """
+        return pulumi.get(self, "repository")
 
 
 @pulumi.output_type
@@ -813,6 +1032,39 @@ class TriggerBuildArtifactsObjectsTiming(dict):
         nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class TriggerBuildArtifactsPythonPackage(dict):
+    def __init__(__self__, *,
+                 paths: Optional[Sequence[str]] = None,
+                 repository: Optional[str] = None):
+        """
+        :param Sequence[str] paths: Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+        :param str repository: Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
+               Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        if paths is not None:
+            pulumi.set(__self__, "paths", paths)
+        if repository is not None:
+            pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Optional[Sequence[str]]:
+        """
+        Path globs used to match files in the build's workspace. For Python/ Twine, this is usually dist/*, and sometimes additionally an .asc file.
+        """
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> Optional[str]:
+        """
+        Artifact Registry repository, in the form "https://$REGION-python.pkg.dev/$PROJECT/$REPOSITORY"
+        Files in the workspace matching any path pattern will be uploaded to Artifact Registry with this location as a prefix.
+        """
+        return pulumi.get(self, "repository")
 
 
 @pulumi.output_type
@@ -3008,9 +3260,15 @@ class GetTriggerBuildResult(dict):
 class GetTriggerBuildArtifactResult(dict):
     def __init__(__self__, *,
                  images: Sequence[str],
-                 objects: Sequence['outputs.GetTriggerBuildArtifactObjectResult']):
+                 maven_artifacts: Sequence['outputs.GetTriggerBuildArtifactMavenArtifactResult'],
+                 npm_packages: Sequence['outputs.GetTriggerBuildArtifactNpmPackageResult'],
+                 objects: Sequence['outputs.GetTriggerBuildArtifactObjectResult'],
+                 python_packages: Sequence['outputs.GetTriggerBuildArtifactPythonPackageResult']):
         pulumi.set(__self__, "images", images)
+        pulumi.set(__self__, "maven_artifacts", maven_artifacts)
+        pulumi.set(__self__, "npm_packages", npm_packages)
         pulumi.set(__self__, "objects", objects)
+        pulumi.set(__self__, "python_packages", python_packages)
 
     @property
     @pulumi.getter
@@ -3018,9 +3276,83 @@ class GetTriggerBuildArtifactResult(dict):
         return pulumi.get(self, "images")
 
     @property
+    @pulumi.getter(name="mavenArtifacts")
+    def maven_artifacts(self) -> Sequence['outputs.GetTriggerBuildArtifactMavenArtifactResult']:
+        return pulumi.get(self, "maven_artifacts")
+
+    @property
+    @pulumi.getter(name="npmPackages")
+    def npm_packages(self) -> Sequence['outputs.GetTriggerBuildArtifactNpmPackageResult']:
+        return pulumi.get(self, "npm_packages")
+
+    @property
     @pulumi.getter
     def objects(self) -> Sequence['outputs.GetTriggerBuildArtifactObjectResult']:
         return pulumi.get(self, "objects")
+
+    @property
+    @pulumi.getter(name="pythonPackages")
+    def python_packages(self) -> Sequence['outputs.GetTriggerBuildArtifactPythonPackageResult']:
+        return pulumi.get(self, "python_packages")
+
+
+@pulumi.output_type
+class GetTriggerBuildArtifactMavenArtifactResult(dict):
+    def __init__(__self__, *,
+                 artifact_id: str,
+                 group_id: str,
+                 path: str,
+                 repository: str,
+                 version: str):
+        pulumi.set(__self__, "artifact_id", artifact_id)
+        pulumi.set(__self__, "group_id", group_id)
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "repository", repository)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="artifactId")
+    def artifact_id(self) -> str:
+        return pulumi.get(self, "artifact_id")
+
+    @property
+    @pulumi.getter(name="groupId")
+    def group_id(self) -> str:
+        return pulumi.get(self, "group_id")
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        return pulumi.get(self, "repository")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetTriggerBuildArtifactNpmPackageResult(dict):
+    def __init__(__self__, *,
+                 package_path: str,
+                 repository: str):
+        pulumi.set(__self__, "package_path", package_path)
+        pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter(name="packagePath")
+    def package_path(self) -> str:
+        return pulumi.get(self, "package_path")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        return pulumi.get(self, "repository")
 
 
 @pulumi.output_type
@@ -3076,6 +3408,25 @@ class GetTriggerBuildArtifactObjectTimingResult(dict):
     @pulumi.getter(name="startTime")
     def start_time(self) -> str:
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class GetTriggerBuildArtifactPythonPackageResult(dict):
+    def __init__(__self__, *,
+                 paths: Sequence[str],
+                 repository: str):
+        pulumi.set(__self__, "paths", paths)
+        pulumi.set(__self__, "repository", repository)
+
+    @property
+    @pulumi.getter
+    def paths(self) -> Sequence[str]:
+        return pulumi.get(self, "paths")
+
+    @property
+    @pulumi.getter
+    def repository(self) -> str:
+        return pulumi.get(self, "repository")
 
 
 @pulumi.output_type

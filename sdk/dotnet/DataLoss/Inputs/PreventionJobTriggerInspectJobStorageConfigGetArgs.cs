@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.DataLoss.Inputs
         public Input<Inputs.PreventionJobTriggerInspectJobStorageConfigHybridOptionsGetArgs>? HybridOptions { get; set; }
 
         /// <summary>
-        /// Information on where to inspect
+        /// Configuration of the timespan of the items to include in scanning
         /// Structure is documented below.
         /// </summary>
         [Input("timespanConfig")]

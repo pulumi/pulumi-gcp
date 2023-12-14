@@ -761,6 +761,28 @@ class Job(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Cloudrunv2 Job Limits
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            location="us-central1",
+            template=gcp.cloudrunv2.JobTemplateArgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        resources=gcp.cloudrunv2.JobTemplateTemplateContainerResourcesArgs(
+                            limits={
+                                "cpu": "2",
+                                "memory": "1024Mi",
+                            },
+                        ),
+                    )],
+                ),
+            ))
+        ```
         ### Cloudrunv2 Job Sql
 
         ```python
@@ -1046,6 +1068,28 @@ class Job(pulumi.CustomResource):
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
                         image="us-docker.pkg.dev/cloudrun/container/hello",
+                    )],
+                ),
+            ))
+        ```
+        ### Cloudrunv2 Job Limits
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.cloudrunv2.Job("default",
+            location="us-central1",
+            template=gcp.cloudrunv2.JobTemplateArgs(
+                template=gcp.cloudrunv2.JobTemplateTemplateArgs(
+                    containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
+                        image="us-docker.pkg.dev/cloudrun/container/hello",
+                        resources=gcp.cloudrunv2.JobTemplateTemplateContainerResourcesArgs(
+                            limits={
+                                "cpu": "2",
+                                "memory": "1024Mi",
+                            },
+                        ),
                     )],
                 ),
             ))

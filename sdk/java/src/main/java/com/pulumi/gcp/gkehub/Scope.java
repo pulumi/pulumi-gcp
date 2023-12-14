@@ -54,7 +54,7 @@ import javax.annotation.Nullable;
  *                 Map.entry(&#34;keyb&#34;, &#34;valueb&#34;),
  *                 Map.entry(&#34;keyc&#34;, &#34;valuec&#34;)
  *             ))
- *             .scopeId(&#34;tf-test-scope%{random_suffix}&#34;)
+ *             .scopeId(&#34;my-scope&#34;)
  *             .build());
  * 
  *     }

@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *         keyb: "valueb",
  *         keyc: "valuec",
  *     },
- *     scopeId: "tf-test-scope%{random_suffix}",
+ *     scopeId: "my-scope",
  * });
  * ```
  *

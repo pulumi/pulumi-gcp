@@ -69,6 +69,48 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloudrunv2 Service Limits
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Service(&#34;default&#34;, ServiceArgs.builder()        
+ *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .resources(ServiceTemplateContainerResourcesArgs.builder()
+ *                         .limits(Map.ofEntries(
+ *                             Map.entry(&#34;cpu&#34;, &#34;2&#34;),
+ *                             Map.entry(&#34;memory&#34;, &#34;1024Mi&#34;)
+ *                         ))
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Cloudrunv2 Service Sql
  * ```java
  * package generated_program;

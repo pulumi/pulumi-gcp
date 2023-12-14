@@ -15,6 +15,7 @@ import com.pulumi.gcp.bigquery.outputs.ConnectionAzure;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudResource;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudSpanner;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudSql;
+import com.pulumi.gcp.bigquery.outputs.ConnectionSpark;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -365,6 +366,67 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Bigquery Connection Spark
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.Cluster;
+ * import com.pulumi.gcp.dataproc.ClusterArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigSoftwareConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigMasterConfigDiskConfigArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionSparkArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionSparkSparkHistoryServerConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basic = new Cluster(&#34;basic&#34;, ClusterArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .clusterConfig(ClusterClusterConfigArgs.builder()
+ *                 .softwareConfig(ClusterClusterConfigSoftwareConfigArgs.builder()
+ *                     .overrideProperties(Map.of(&#34;dataproc:dataproc.allow.zero.workers&#34;, &#34;true&#34;))
+ *                     .build())
+ *                 .masterConfig(ClusterClusterConfigMasterConfigArgs.builder()
+ *                     .numInstances(1)
+ *                     .machineType(&#34;e2-standard-2&#34;)
+ *                     .diskConfig(ClusterClusterConfigMasterConfigDiskConfigArgs.builder()
+ *                         .bootDiskSizeGb(35)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var connection = new Connection(&#34;connection&#34;, ConnectionArgs.builder()        
+ *             .connectionId(&#34;my-connection&#34;)
+ *             .location(&#34;US&#34;)
+ *             .friendlyName(&#34;👋&#34;)
+ *             .description(&#34;a riveting description&#34;)
+ *             .spark(ConnectionSparkArgs.builder()
+ *                 .sparkHistoryServerConfig(ConnectionSparkSparkHistoryServerConfigArgs.builder()
+ *                     .dataprocCluster(basic.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -586,6 +648,22 @@ public class Connection extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Container for connection properties to execute stored procedures for Apache Spark. resources.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="spark", refs={ConnectionSpark.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionSpark> spark;
+
+    /**
+     * @return Container for connection properties to execute stored procedures for Apache Spark. resources.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionSpark>> spark() {
+        return Codegen.optional(this.spark);
     }
 
     /**

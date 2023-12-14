@@ -35,10 +35,25 @@ export type FolderSink = import("./folderSink").FolderSink;
 export const FolderSink: typeof import("./folderSink").FolderSink = null as any;
 utilities.lazyLoad(exports, ["FolderSink"], () => require("./folderSink"));
 
+export { GetFolderSettingsArgs, GetFolderSettingsResult, GetFolderSettingsOutputArgs } from "./getFolderSettings";
+export const getFolderSettings: typeof import("./getFolderSettings").getFolderSettings = null as any;
+export const getFolderSettingsOutput: typeof import("./getFolderSettings").getFolderSettingsOutput = null as any;
+utilities.lazyLoad(exports, ["getFolderSettings","getFolderSettingsOutput"], () => require("./getFolderSettings"));
+
+export { GetOrganizationSettingsArgs, GetOrganizationSettingsResult, GetOrganizationSettingsOutputArgs } from "./getOrganizationSettings";
+export const getOrganizationSettings: typeof import("./getOrganizationSettings").getOrganizationSettings = null as any;
+export const getOrganizationSettingsOutput: typeof import("./getOrganizationSettings").getOrganizationSettingsOutput = null as any;
+utilities.lazyLoad(exports, ["getOrganizationSettings","getOrganizationSettingsOutput"], () => require("./getOrganizationSettings"));
+
 export { GetProjectCmekSettingsArgs, GetProjectCmekSettingsResult, GetProjectCmekSettingsOutputArgs } from "./getProjectCmekSettings";
 export const getProjectCmekSettings: typeof import("./getProjectCmekSettings").getProjectCmekSettings = null as any;
 export const getProjectCmekSettingsOutput: typeof import("./getProjectCmekSettings").getProjectCmekSettingsOutput = null as any;
 utilities.lazyLoad(exports, ["getProjectCmekSettings","getProjectCmekSettingsOutput"], () => require("./getProjectCmekSettings"));
+
+export { GetProjectSettingsArgs, GetProjectSettingsResult, GetProjectSettingsOutputArgs } from "./getProjectSettings";
+export const getProjectSettings: typeof import("./getProjectSettings").getProjectSettings = null as any;
+export const getProjectSettingsOutput: typeof import("./getProjectSettings").getProjectSettingsOutput = null as any;
+utilities.lazyLoad(exports, ["getProjectSettings","getProjectSettingsOutput"], () => require("./getProjectSettings"));
 
 export { GetSinkArgs, GetSinkResult, GetSinkOutputArgs } from "./getSink";
 export const getSink: typeof import("./getSink").getSink = null as any;

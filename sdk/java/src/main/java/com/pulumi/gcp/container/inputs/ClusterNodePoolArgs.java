@@ -10,6 +10,7 @@ import com.pulumi.gcp.container.inputs.ClusterNodePoolManagementArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolPlacementPolicyArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolQueuedProvisioningArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolUpgradeSettingsArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -208,6 +209,13 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         return Optional.ofNullable(this.placementPolicy);
     }
 
+    @Import(name="queuedProvisioning")
+    private @Nullable Output<ClusterNodePoolQueuedProvisioningArgs> queuedProvisioning;
+
+    public Optional<Output<ClusterNodePoolQueuedProvisioningArgs>> queuedProvisioning() {
+        return Optional.ofNullable(this.queuedProvisioning);
+    }
+
     /**
      * Specifies the upgrade settings for NAP created node pools. Structure is documented below.
      * 
@@ -246,6 +254,7 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
         this.nodeCount = $.nodeCount;
         this.nodeLocations = $.nodeLocations;
         this.placementPolicy = $.placementPolicy;
+        this.queuedProvisioning = $.queuedProvisioning;
         this.upgradeSettings = $.upgradeSettings;
         this.version = $.version;
     }
@@ -529,6 +538,15 @@ public final class ClusterNodePoolArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder placementPolicy(ClusterNodePoolPlacementPolicyArgs placementPolicy) {
             return placementPolicy(Output.of(placementPolicy));
+        }
+
+        public Builder queuedProvisioning(@Nullable Output<ClusterNodePoolQueuedProvisioningArgs> queuedProvisioning) {
+            $.queuedProvisioning = queuedProvisioning;
+            return this;
+        }
+
+        public Builder queuedProvisioning(ClusterNodePoolQueuedProvisioningArgs queuedProvisioning) {
+            return queuedProvisioning(Output.of(queuedProvisioning));
         }
 
         /**

@@ -150,8 +150,6 @@ export class GroupMembership extends pulumi.CustomResource {
     /**
      * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
      * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-     *
-     * - - -
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
@@ -237,8 +235,6 @@ export interface GroupMembershipState {
     /**
      * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
      * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**

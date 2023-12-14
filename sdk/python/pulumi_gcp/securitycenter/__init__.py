@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .event_threat_detection_custom_module import *
 from .folder_custom_module import *
 from .get_source_iam_policy import *
 from .instance_iam_binding import *

@@ -23,6 +23,9 @@ __all__ = [
     'ConnectionCloudSqlCredential',
     'ConnectionIamBindingCondition',
     'ConnectionIamMemberCondition',
+    'ConnectionSpark',
+    'ConnectionSparkMetastoreServiceConfig',
+    'ConnectionSparkSparkHistoryServerConfig',
     'DataTransferConfigEmailPreferences',
     'DataTransferConfigScheduleOptions',
     'DataTransferConfigSensitiveParams',
@@ -754,6 +757,148 @@ class ConnectionIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class ConnectionSpark(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metastoreServiceConfig":
+            suggest = "metastore_service_config"
+        elif key == "serviceAccountId":
+            suggest = "service_account_id"
+        elif key == "sparkHistoryServerConfig":
+            suggest = "spark_history_server_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionSpark. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionSpark.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionSpark.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metastore_service_config: Optional['outputs.ConnectionSparkMetastoreServiceConfig'] = None,
+                 service_account_id: Optional[str] = None,
+                 spark_history_server_config: Optional['outputs.ConnectionSparkSparkHistoryServerConfig'] = None):
+        """
+        :param 'ConnectionSparkMetastoreServiceConfigArgs' metastore_service_config: Dataproc Metastore Service configuration for the connection.
+               Structure is documented below.
+        :param str service_account_id: (Output)
+               The account ID of the service created for the purpose of this connection.
+        :param 'ConnectionSparkSparkHistoryServerConfigArgs' spark_history_server_config: Spark History Server configuration for the connection.
+               Structure is documented below.
+        """
+        if metastore_service_config is not None:
+            pulumi.set(__self__, "metastore_service_config", metastore_service_config)
+        if service_account_id is not None:
+            pulumi.set(__self__, "service_account_id", service_account_id)
+        if spark_history_server_config is not None:
+            pulumi.set(__self__, "spark_history_server_config", spark_history_server_config)
+
+    @property
+    @pulumi.getter(name="metastoreServiceConfig")
+    def metastore_service_config(self) -> Optional['outputs.ConnectionSparkMetastoreServiceConfig']:
+        """
+        Dataproc Metastore Service configuration for the connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metastore_service_config")
+
+    @property
+    @pulumi.getter(name="serviceAccountId")
+    def service_account_id(self) -> Optional[str]:
+        """
+        (Output)
+        The account ID of the service created for the purpose of this connection.
+        """
+        return pulumi.get(self, "service_account_id")
+
+    @property
+    @pulumi.getter(name="sparkHistoryServerConfig")
+    def spark_history_server_config(self) -> Optional['outputs.ConnectionSparkSparkHistoryServerConfig']:
+        """
+        Spark History Server configuration for the connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spark_history_server_config")
+
+
+@pulumi.output_type
+class ConnectionSparkMetastoreServiceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "metastoreService":
+            suggest = "metastore_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionSparkMetastoreServiceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionSparkMetastoreServiceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionSparkMetastoreServiceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 metastore_service: Optional[str] = None):
+        """
+        :param str metastore_service: Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
+        """
+        if metastore_service is not None:
+            pulumi.set(__self__, "metastore_service", metastore_service)
+
+    @property
+    @pulumi.getter(name="metastoreService")
+    def metastore_service(self) -> Optional[str]:
+        """
+        Resource name of an existing Dataproc Metastore service in the form of projects/[projectId]/locations/[region]/services/[serviceId].
+        """
+        return pulumi.get(self, "metastore_service")
+
+
+@pulumi.output_type
+class ConnectionSparkSparkHistoryServerConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dataprocCluster":
+            suggest = "dataproc_cluster"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ConnectionSparkSparkHistoryServerConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ConnectionSparkSparkHistoryServerConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ConnectionSparkSparkHistoryServerConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dataproc_cluster: Optional[str] = None):
+        """
+        :param str dataproc_cluster: Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+        """
+        if dataproc_cluster is not None:
+            pulumi.set(__self__, "dataproc_cluster", dataproc_cluster)
+
+    @property
+    @pulumi.getter(name="dataprocCluster")
+    def dataproc_cluster(self) -> Optional[str]:
+        """
+        Resource name of an existing Dataproc Cluster to act as a Spark History Server for the connection if the form of projects/[projectId]/regions/[region]/clusters/[cluster_name].
+        """
+        return pulumi.get(self, "dataproc_cluster")
 
 
 @pulumi.output_type

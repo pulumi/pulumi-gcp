@@ -8,8 +8,13 @@ import typing
 from .cluster import *
 from .get_cluster import *
 from .get_network import *
+from .get_network_peering import *
+from .get_network_policy import *
+from .get_nsx_credentials import *
 from .get_private_cloud import *
 from .network import *
+from .network_peering import *
+from .network_policy import *
 from .private_cloud import *
 from ._inputs import *
 from . import outputs

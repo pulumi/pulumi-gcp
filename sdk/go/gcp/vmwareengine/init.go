@@ -25,6 +25,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &Cluster{}
 	case "gcp:vmwareengine/network:Network":
 		r = &Network{}
+	case "gcp:vmwareengine/networkPeering:NetworkPeering":
+		r = &NetworkPeering{}
+	case "gcp:vmwareengine/networkPolicy:NetworkPolicy":
+		r = &NetworkPolicy{}
 	case "gcp:vmwareengine/privateCloud:PrivateCloud":
 		r = &PrivateCloud{}
 	default:
@@ -48,6 +52,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vmwareengine/network",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vmwareengine/networkPeering",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vmwareengine/networkPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

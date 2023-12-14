@@ -41,7 +41,7 @@ import (
 //					"keyb": pulumi.String("valueb"),
 //					"keyc": pulumi.String("valuec"),
 //				},
-//				ScopeId: pulumi.String("tf-test-scope%{random_suffix}"),
+//				ScopeId: pulumi.String("my-scope"),
 //			})
 //			if err != nil {
 //				return err

@@ -199,8 +199,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies a custom placement policy for the
         /// nodes.
-        /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Output("placementPolicy")]
         public Output<Outputs.NodePoolPlacementPolicy?> PlacementPolicy { get; private set; } = null!;
@@ -211,6 +209,15 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies node pool-level settings of queued provisioning.
+        /// Structure is documented below.
+        /// 
+        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+        /// </summary>
+        [Output("queuedProvisioning")]
+        public Output<Outputs.NodePoolQueuedProvisioning?> QueuedProvisioning { get; private set; } = null!;
 
         /// <summary>
         /// Specify node upgrade settings to change how GKE upgrades nodes.
@@ -386,8 +393,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies a custom placement policy for the
         /// nodes.
-        /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("placementPolicy")]
         public Input<Inputs.NodePoolPlacementPolicyArgs>? PlacementPolicy { get; set; }
@@ -398,6 +403,15 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Specifies node pool-level settings of queued provisioning.
+        /// Structure is documented below.
+        /// 
+        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+        /// </summary>
+        [Input("queuedProvisioning")]
+        public Input<Inputs.NodePoolQueuedProvisioningArgs>? QueuedProvisioning { get; set; }
 
         /// <summary>
         /// Specify node upgrade settings to change how GKE upgrades nodes.
@@ -562,8 +576,6 @@ namespace Pulumi.Gcp.Container
         /// <summary>
         /// Specifies a custom placement policy for the
         /// nodes.
-        /// 
-        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
         /// </summary>
         [Input("placementPolicy")]
         public Input<Inputs.NodePoolPlacementPolicyGetArgs>? PlacementPolicy { get; set; }
@@ -574,6 +586,15 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Specifies node pool-level settings of queued provisioning.
+        /// Structure is documented below.
+        /// 
+        /// &lt;a name="nested_autoscaling"&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+        /// </summary>
+        [Input("queuedProvisioning")]
+        public Input<Inputs.NodePoolQueuedProvisioningGetArgs>? QueuedProvisioning { get; set; }
 
         /// <summary>
         /// Specify node upgrade settings to change how GKE upgrades nodes.

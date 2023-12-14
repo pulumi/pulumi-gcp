@@ -4,7 +4,10 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.cloudbuild.outputs.TriggerBuildArtifactsMavenArtifact;
+import com.pulumi.gcp.cloudbuild.outputs.TriggerBuildArtifactsNpmPackage;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBuildArtifactsObjects;
+import com.pulumi.gcp.cloudbuild.outputs.TriggerBuildArtifactsPythonPackage;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -22,6 +25,22 @@ public final class TriggerBuildArtifacts {
      */
     private @Nullable List<String> images;
     /**
+     * @return A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<TriggerBuildArtifactsMavenArtifact> mavenArtifacts;
+    /**
+     * @return Npm package to upload to Artifact Registry upon successful completion of all build steps.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<TriggerBuildArtifactsNpmPackage> npmPackages;
+    /**
      * @return A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
      * Files in the workspace matching specified paths globs will be uploaded to the
      * Cloud Storage location using the builder service account&#39;s credentials.
@@ -31,6 +50,14 @@ public final class TriggerBuildArtifacts {
      * 
      */
     private @Nullable TriggerBuildArtifactsObjects objects;
+    /**
+     * @return Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable List<TriggerBuildArtifactsPythonPackage> pythonPackages;
 
     private TriggerBuildArtifacts() {}
     /**
@@ -44,6 +71,26 @@ public final class TriggerBuildArtifacts {
         return this.images == null ? List.of() : this.images;
     }
     /**
+     * @return A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    public List<TriggerBuildArtifactsMavenArtifact> mavenArtifacts() {
+        return this.mavenArtifacts == null ? List.of() : this.mavenArtifacts;
+    }
+    /**
+     * @return Npm package to upload to Artifact Registry upon successful completion of all build steps.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    public List<TriggerBuildArtifactsNpmPackage> npmPackages() {
+        return this.npmPackages == null ? List.of() : this.npmPackages;
+    }
+    /**
      * @return A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
      * Files in the workspace matching specified paths globs will be uploaded to the
      * Cloud Storage location using the builder service account&#39;s credentials.
@@ -54,6 +101,16 @@ public final class TriggerBuildArtifacts {
      */
     public Optional<TriggerBuildArtifactsObjects> objects() {
         return Optional.ofNullable(this.objects);
+    }
+    /**
+     * @return Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+     * The location and generation of the uploaded objects will be stored in the Build resource&#39;s results field.
+     * If any objects fail to be pushed, the build is marked FAILURE.
+     * Structure is documented below.
+     * 
+     */
+    public List<TriggerBuildArtifactsPythonPackage> pythonPackages() {
+        return this.pythonPackages == null ? List.of() : this.pythonPackages;
     }
 
     public static Builder builder() {
@@ -66,12 +123,18 @@ public final class TriggerBuildArtifacts {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> images;
+        private @Nullable List<TriggerBuildArtifactsMavenArtifact> mavenArtifacts;
+        private @Nullable List<TriggerBuildArtifactsNpmPackage> npmPackages;
         private @Nullable TriggerBuildArtifactsObjects objects;
+        private @Nullable List<TriggerBuildArtifactsPythonPackage> pythonPackages;
         public Builder() {}
         public Builder(TriggerBuildArtifacts defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.images = defaults.images;
+    	      this.mavenArtifacts = defaults.mavenArtifacts;
+    	      this.npmPackages = defaults.npmPackages;
     	      this.objects = defaults.objects;
+    	      this.pythonPackages = defaults.pythonPackages;
         }
 
         @CustomType.Setter
@@ -83,14 +146,41 @@ public final class TriggerBuildArtifacts {
             return images(List.of(images));
         }
         @CustomType.Setter
+        public Builder mavenArtifacts(@Nullable List<TriggerBuildArtifactsMavenArtifact> mavenArtifacts) {
+            this.mavenArtifacts = mavenArtifacts;
+            return this;
+        }
+        public Builder mavenArtifacts(TriggerBuildArtifactsMavenArtifact... mavenArtifacts) {
+            return mavenArtifacts(List.of(mavenArtifacts));
+        }
+        @CustomType.Setter
+        public Builder npmPackages(@Nullable List<TriggerBuildArtifactsNpmPackage> npmPackages) {
+            this.npmPackages = npmPackages;
+            return this;
+        }
+        public Builder npmPackages(TriggerBuildArtifactsNpmPackage... npmPackages) {
+            return npmPackages(List.of(npmPackages));
+        }
+        @CustomType.Setter
         public Builder objects(@Nullable TriggerBuildArtifactsObjects objects) {
             this.objects = objects;
             return this;
         }
+        @CustomType.Setter
+        public Builder pythonPackages(@Nullable List<TriggerBuildArtifactsPythonPackage> pythonPackages) {
+            this.pythonPackages = pythonPackages;
+            return this;
+        }
+        public Builder pythonPackages(TriggerBuildArtifactsPythonPackage... pythonPackages) {
+            return pythonPackages(List.of(pythonPackages));
+        }
         public TriggerBuildArtifacts build() {
             final var _resultValue = new TriggerBuildArtifacts();
             _resultValue.images = images;
+            _resultValue.mavenArtifacts = mavenArtifacts;
+            _resultValue.npmPackages = npmPackages;
             _resultValue.objects = objects;
+            _resultValue.pythonPackages = pythonPackages;
             return _resultValue;
         }
     }

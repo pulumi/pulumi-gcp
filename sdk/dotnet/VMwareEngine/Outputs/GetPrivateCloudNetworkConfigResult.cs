@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     [OutputType]
     public sealed class GetPrivateCloudNetworkConfigResult
     {
+        public readonly string DnsServerIp;
         public readonly string ManagementCidr;
         public readonly int ManagementIpAddressLayoutVersion;
         public readonly string VmwareEngineNetwork;
@@ -20,6 +21,8 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
 
         [OutputConstructor]
         private GetPrivateCloudNetworkConfigResult(
+            string dnsServerIp,
+
             string managementCidr,
 
             int managementIpAddressLayoutVersion,
@@ -28,6 +31,7 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
 
             string vmwareEngineNetworkCanonical)
         {
+            DnsServerIp = dnsServerIp;
             ManagementCidr = managementCidr;
             ManagementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
             VmwareEngineNetwork = vmwareEngineNetwork;

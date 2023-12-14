@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.iam.WorkforcePoolArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolState;
+import com.pulumi.gcp.iam.outputs.WorkforcePoolAccessRestrictions;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Optional;
@@ -69,6 +70,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.iam.WorkforcePool;
  * import com.pulumi.gcp.iam.WorkforcePoolArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkforcePoolAccessRestrictionsArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -83,6 +85,12 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var example = new WorkforcePool(&#34;example&#34;, WorkforcePoolArgs.builder()        
+ *             .accessRestrictions(WorkforcePoolAccessRestrictionsArgs.builder()
+ *                 .allowedServices(WorkforcePoolAccessRestrictionsAllowedServiceArgs.builder()
+ *                     .domain(&#34;backstory.chronicle.security&#34;)
+ *                     .build())
+ *                 .disableProgrammaticSignin(false)
+ *                 .build())
  *             .description(&#34;A sample workforce pool.&#34;)
  *             .disabled(false)
  *             .displayName(&#34;Display name&#34;)
@@ -119,6 +127,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:iam/workforcePool:WorkforcePool")
 public class WorkforcePool extends com.pulumi.resources.CustomResource {
+    /**
+     * Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+     * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="accessRestrictions", refs={WorkforcePoolAccessRestrictions.class}, tree="[0]")
+    private Output</* @Nullable */ WorkforcePoolAccessRestrictions> accessRestrictions;
+
+    /**
+     * @return Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+     * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<WorkforcePoolAccessRestrictions>> accessRestrictions() {
+        return Codegen.optional(this.accessRestrictions);
+    }
     /**
      * A user-specified description of the pool. Cannot exceed 256 characters.
      * 

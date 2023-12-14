@@ -126,6 +126,8 @@ class ProjectDefaultConfig(pulumi.CustomResource):
                  sign_in: Optional[pulumi.Input[pulumi.InputType['ProjectDefaultConfigSignInArgs']]] = None,
                  __props__=None):
         """
+        > **Warning:** `identityplatform.Config` is deprecated and will be removed in the next major release of the provider. Use the `identityplatform.Config` resource instead. It contains a more comprehensive list of fields, and was created before `identityplatform.ProjectDefaultConfig` was added.
+
         There is no persistent data associated with this resource.
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,
@@ -197,6 +199,8 @@ class ProjectDefaultConfig(pulumi.CustomResource):
                  args: Optional[ProjectDefaultConfigArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        > **Warning:** `identityplatform.Config` is deprecated and will be removed in the next major release of the provider. Use the `identityplatform.Config` resource instead. It contains a more comprehensive list of fields, and was created before `identityplatform.ProjectDefaultConfig` was added.
+
         There is no persistent data associated with this resource.
 
         > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,

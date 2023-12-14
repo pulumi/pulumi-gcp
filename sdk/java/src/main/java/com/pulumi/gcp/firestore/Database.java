@@ -30,6 +30,39 @@ import javax.annotation.Nullable;
  *     * [Official Documentation](https://cloud.google.com/firestore/docs/)
  * 
  * ## Example Usage
+ * ### Firestore Default Database
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Firestore Database
  * ```java
  * package generated_program;
@@ -55,10 +88,45 @@ import javax.annotation.Nullable;
  *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
  *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
  *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
  *             .locationId(&#34;nam5&#34;)
  *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .type(&#34;FIRESTORE_NATIVE&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Firestore Default Database In Datastore Mode
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firestore.Database;
+ * import com.pulumi.gcp.firestore.DatabaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var datastoreModeDatabase = new Database(&#34;datastoreModeDatabase&#34;, DatabaseArgs.builder()        
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
+ *             .locationId(&#34;nam5&#34;)
+ *             .project(&#34;my-project-name&#34;)
+ *             .type(&#34;DATASTORE_MODE&#34;)
  *             .build());
  * 
  *     }
@@ -89,42 +157,12 @@ import javax.annotation.Nullable;
  *         var datastoreModeDatabase = new Database(&#34;datastoreModeDatabase&#34;, DatabaseArgs.builder()        
  *             .appEngineIntegrationMode(&#34;DISABLED&#34;)
  *             .concurrencyMode(&#34;OPTIMISTIC&#34;)
+ *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
+ *             .deletionPolicy(&#34;DELETE&#34;)
  *             .locationId(&#34;nam5&#34;)
  *             .pointInTimeRecoveryEnablement(&#34;POINT_IN_TIME_RECOVERY_ENABLED&#34;)
  *             .project(&#34;my-project-name&#34;)
  *             .type(&#34;DATASTORE_MODE&#34;)
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### Firestore Database With Delete Protection
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.firestore.Database;
- * import com.pulumi.gcp.firestore.DatabaseArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var database = new Database(&#34;database&#34;, DatabaseArgs.builder()        
- *             .deleteProtectionState(&#34;DELETE_PROTECTION_ENABLED&#34;)
- *             .locationId(&#34;nam5&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .type(&#34;FIRESTORE_NATIVE&#34;)
  *             .build());
  * 
  *     }
@@ -205,20 +243,44 @@ public class Database extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * State of delete protection for the database.
-     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+     * default value is &#39;DELETE_PROTECTION_STATE_UNSPECIFIED&#39;, which is currently equivalent to &#39;DELETE_PROTECTION_DISABLED&#39;.
+     * **Note:** Additionally, to delete this database using &#39;terraform destroy&#39;, &#39;deletion_policy&#39; must be set to &#39;DELETE&#39;.
+     * Possible values: [&#34;DELETE_PROTECTION_STATE_UNSPECIFIED&#34;, &#34;DELETE_PROTECTION_ENABLED&#34;, &#34;DELETE_PROTECTION_DISABLED&#34;]
      * 
      */
     @Export(name="deleteProtectionState", refs={String.class}, tree="[0]")
     private Output<String> deleteProtectionState;
 
     /**
-     * @return State of delete protection for the database.
-     * Possible values are: `DELETE_PROTECTION_STATE_UNSPECIFIED`, `DELETE_PROTECTION_ENABLED`, `DELETE_PROTECTION_DISABLED`.
+     * @return State of delete protection for the database. When delete protection is enabled, this database cannot be deleted. The
+     * default value is &#39;DELETE_PROTECTION_STATE_UNSPECIFIED&#39;, which is currently equivalent to &#39;DELETE_PROTECTION_DISABLED&#39;.
+     * **Note:** Additionally, to delete this database using &#39;terraform destroy&#39;, &#39;deletion_policy&#39; must be set to &#39;DELETE&#39;.
+     * Possible values: [&#34;DELETE_PROTECTION_STATE_UNSPECIFIED&#34;, &#34;DELETE_PROTECTION_ENABLED&#34;, &#34;DELETE_PROTECTION_DISABLED&#34;]
      * 
      */
     public Output<String> deleteProtectionState() {
         return this.deleteProtectionState;
+    }
+    /**
+     * Deletion behavior for this database. If the deletion policy is &#39;ABANDON&#39;, the database will be removed from Terraform
+     * state but not deleted from Google Cloud upon destruction. If the deletion policy is &#39;DELETE&#39;, the database will both be
+     * removed from Terraform state and deleted from Google Cloud upon destruction. The default value is &#39;ABANDON&#39;. See also
+     * &#39;delete_protection&#39;.
+     * 
+     */
+    @Export(name="deletionPolicy", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deletionPolicy;
+
+    /**
+     * @return Deletion behavior for this database. If the deletion policy is &#39;ABANDON&#39;, the database will be removed from Terraform
+     * state but not deleted from Google Cloud upon destruction. If the deletion policy is &#39;DELETE&#39;, the database will both be
+     * removed from Terraform state and deleted from Google Cloud upon destruction. The default value is &#39;ABANDON&#39;. See also
+     * &#39;delete_protection&#39;.
+     * 
+     */
+    public Output<Optional<String>> deletionPolicy() {
+        return Codegen.optional(this.deletionPolicy);
     }
     /**
      * Output only. The earliest timestamp at which older versions of the data can be read from the database. See versionRetentionPeriod above; this field is populated with now - versionRetentionPeriod.

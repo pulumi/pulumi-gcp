@@ -10,6 +10,7 @@ import com.pulumi.gcp.bigquery.inputs.ConnectionAzureArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudResourceArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSpannerArgs;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlArgs;
+import com.pulumi.gcp.bigquery.inputs.ConnectionSparkArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -194,6 +195,23 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Container for connection properties to execute stored procedures for Apache Spark. resources.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="spark")
+    private @Nullable Output<ConnectionSparkArgs> spark;
+
+    /**
+     * @return Container for connection properties to execute stored procedures for Apache Spark. resources.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionSparkArgs>> spark() {
+        return Optional.ofNullable(this.spark);
+    }
+
     private ConnectionArgs() {}
 
     private ConnectionArgs(ConnectionArgs $) {
@@ -207,6 +225,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         this.friendlyName = $.friendlyName;
         this.location = $.location;
         this.project = $.project;
+        this.spark = $.spark;
     }
 
     public static Builder builder() {
@@ -459,6 +478,29 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param spark Container for connection properties to execute stored procedures for Apache Spark. resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spark(@Nullable Output<ConnectionSparkArgs> spark) {
+            $.spark = spark;
+            return this;
+        }
+
+        /**
+         * @param spark Container for connection properties to execute stored procedures for Apache Spark. resources.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder spark(ConnectionSparkArgs spark) {
+            return spark(Output.of(spark));
         }
 
         public ConnectionArgs build() {

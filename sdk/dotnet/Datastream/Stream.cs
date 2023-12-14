@@ -191,6 +191,10 @@ namespace Pulumi.Gcp.Datastream
     ///                                         },
     ///                                     },
     ///                                 },
+    ///                                 new Gcp.Datastream.Inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableArgs
+    ///                                 {
+    ///                                     Table = "includedTable_2",
+    ///                                 },
     ///                             },
     ///                         },
     ///                     },

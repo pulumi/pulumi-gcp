@@ -78,7 +78,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The project that the service account will be created in.
+     * The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      * 
      */
@@ -86,7 +86,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> project;
 
     /**
-     * @return The project that the service account will be created in.
+     * @return The project that the custom role will be created in.
      * Defaults to the provider project configuration.
      * 
      */
@@ -269,7 +269,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project The project that the service account will be created in.
+         * @param project The project that the custom role will be created in.
          * Defaults to the provider project configuration.
          * 
          * @return builder
@@ -281,7 +281,7 @@ public final class IAMCustomRoleState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param project The project that the service account will be created in.
+         * @param project The project that the custom role will be created in.
          * Defaults to the provider project configuration.
          * 
          * @return builder

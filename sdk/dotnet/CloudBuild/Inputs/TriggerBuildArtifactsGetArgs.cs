@@ -27,6 +27,36 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
             set => _images = value;
         }
 
+        [Input("mavenArtifacts")]
+        private InputList<Inputs.TriggerBuildArtifactsMavenArtifactGetArgs>? _mavenArtifacts;
+
+        /// <summary>
+        /// A Maven artifact to upload to Artifact Registry upon successful completion of all build steps.
+        /// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        /// If any objects fail to be pushed, the build is marked FAILURE.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.TriggerBuildArtifactsMavenArtifactGetArgs> MavenArtifacts
+        {
+            get => _mavenArtifacts ?? (_mavenArtifacts = new InputList<Inputs.TriggerBuildArtifactsMavenArtifactGetArgs>());
+            set => _mavenArtifacts = value;
+        }
+
+        [Input("npmPackages")]
+        private InputList<Inputs.TriggerBuildArtifactsNpmPackageGetArgs>? _npmPackages;
+
+        /// <summary>
+        /// Npm package to upload to Artifact Registry upon successful completion of all build steps.
+        /// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        /// If any objects fail to be pushed, the build is marked FAILURE.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.TriggerBuildArtifactsNpmPackageGetArgs> NpmPackages
+        {
+            get => _npmPackages ?? (_npmPackages = new InputList<Inputs.TriggerBuildArtifactsNpmPackageGetArgs>());
+            set => _npmPackages = value;
+        }
+
         /// <summary>
         /// A list of objects to be uploaded to Cloud Storage upon successful completion of all build steps.
         /// Files in the workspace matching specified paths globs will be uploaded to the
@@ -37,6 +67,21 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         /// </summary>
         [Input("objects")]
         public Input<Inputs.TriggerBuildArtifactsObjectsGetArgs>? Objects { get; set; }
+
+        [Input("pythonPackages")]
+        private InputList<Inputs.TriggerBuildArtifactsPythonPackageGetArgs>? _pythonPackages;
+
+        /// <summary>
+        /// Python package to upload to Artifact Registry upon successful completion of all build steps. A package can encapsulate multiple objects to be uploaded to a single repository.
+        /// The location and generation of the uploaded objects will be stored in the Build resource's results field.
+        /// If any objects fail to be pushed, the build is marked FAILURE.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.TriggerBuildArtifactsPythonPackageGetArgs> PythonPackages
+        {
+            get => _pythonPackages ?? (_pythonPackages = new InputList<Inputs.TriggerBuildArtifactsPythonPackageGetArgs>());
+            set => _pythonPackages = value;
+        }
 
         public TriggerBuildArtifactsGetArgs()
         {

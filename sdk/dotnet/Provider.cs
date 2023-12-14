@@ -315,11 +315,17 @@ namespace Pulumi.Gcp
         [Output("memcacheCustomEndpoint")]
         public Output<string?> MemcacheCustomEndpoint { get; private set; } = null!;
 
+        [Output("migrationCenterCustomEndpoint")]
+        public Output<string?> MigrationCenterCustomEndpoint { get; private set; } = null!;
+
         [Output("mlEngineCustomEndpoint")]
         public Output<string?> MlEngineCustomEndpoint { get; private set; } = null!;
 
         [Output("monitoringCustomEndpoint")]
         public Output<string?> MonitoringCustomEndpoint { get; private set; } = null!;
+
+        [Output("netappCustomEndpoint")]
+        public Output<string?> NetappCustomEndpoint { get; private set; } = null!;
 
         [Output("networkConnectivityCustomEndpoint")]
         public Output<string?> NetworkConnectivityCustomEndpoint { get; private set; } = null!;
@@ -389,6 +395,9 @@ namespace Pulumi.Gcp
 
         [Output("secretManagerCustomEndpoint")]
         public Output<string?> SecretManagerCustomEndpoint { get; private set; } = null!;
+
+        [Output("secureSourceManagerCustomEndpoint")]
+        public Output<string?> SecureSourceManagerCustomEndpoint { get; private set; } = null!;
 
         [Output("securityCenterCustomEndpoint")]
         public Output<string?> SecurityCenterCustomEndpoint { get; private set; } = null!;
@@ -806,11 +815,17 @@ namespace Pulumi.Gcp
         [Input("memcacheCustomEndpoint")]
         public Input<string>? MemcacheCustomEndpoint { get; set; }
 
+        [Input("migrationCenterCustomEndpoint")]
+        public Input<string>? MigrationCenterCustomEndpoint { get; set; }
+
         [Input("mlEngineCustomEndpoint")]
         public Input<string>? MlEngineCustomEndpoint { get; set; }
 
         [Input("monitoringCustomEndpoint")]
         public Input<string>? MonitoringCustomEndpoint { get; set; }
+
+        [Input("netappCustomEndpoint")]
+        public Input<string>? NetappCustomEndpoint { get; set; }
 
         [Input("networkConnectivityCustomEndpoint")]
         public Input<string>? NetworkConnectivityCustomEndpoint { get; set; }
@@ -888,6 +903,9 @@ namespace Pulumi.Gcp
 
         [Input("secretManagerCustomEndpoint")]
         public Input<string>? SecretManagerCustomEndpoint { get; set; }
+
+        [Input("secureSourceManagerCustomEndpoint")]
+        public Input<string>? SecureSourceManagerCustomEndpoint { get; set; }
 
         [Input("securityCenterCustomEndpoint")]
         public Input<string>? SecurityCenterCustomEndpoint { get; set; }

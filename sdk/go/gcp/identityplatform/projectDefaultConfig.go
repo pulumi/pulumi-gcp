@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// > **Warning:** `identityplatform.Config` is deprecated and will be removed in the next major release of the provider. Use the `identityplatform.Config` resource instead. It contains a more comprehensive list of fields, and was created before `identityplatform.ProjectDefaultConfig` was added.
+//
 // There is no persistent data associated with this resource.
 //
 // > **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,

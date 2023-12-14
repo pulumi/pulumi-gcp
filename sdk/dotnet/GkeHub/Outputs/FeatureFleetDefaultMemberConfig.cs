@@ -23,15 +23,23 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureFleetDefaultMemberConfigMesh? Mesh;
+        /// <summary>
+        /// Policy Controller spec
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.FeatureFleetDefaultMemberConfigPolicycontroller? Policycontroller;
 
         [OutputConstructor]
         private FeatureFleetDefaultMemberConfig(
             Outputs.FeatureFleetDefaultMemberConfigConfigmanagement? configmanagement,
 
-            Outputs.FeatureFleetDefaultMemberConfigMesh? mesh)
+            Outputs.FeatureFleetDefaultMemberConfigMesh? mesh,
+
+            Outputs.FeatureFleetDefaultMemberConfigPolicycontroller? policycontroller)
         {
             Configmanagement = configmanagement;
             Mesh = mesh;
+            Policycontroller = policycontroller;
         }
     }
 }

@@ -5,8 +5,11 @@ package com.pulumi.gcp.cloudidentity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipRoleExpiryDetailArgs;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class GroupMembershipRoleArgs extends com.pulumi.resources.ResourceArgs {
@@ -14,10 +17,27 @@ public final class GroupMembershipRoleArgs extends com.pulumi.resources.Resource
     public static final GroupMembershipRoleArgs Empty = new GroupMembershipRoleArgs();
 
     /**
+     * The MembershipRole expiry details, only supported for MEMBER role.
+     * Other roles cannot be accompanied with MEMBER role having expiry.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="expiryDetail")
+    private @Nullable Output<GroupMembershipRoleExpiryDetailArgs> expiryDetail;
+
+    /**
+     * @return The MembershipRole expiry details, only supported for MEMBER role.
+     * Other roles cannot be accompanied with MEMBER role having expiry.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<GroupMembershipRoleExpiryDetailArgs>> expiryDetail() {
+        return Optional.ofNullable(this.expiryDetail);
+    }
+
+    /**
      * The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
      * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-     * 
-     * ***
      * 
      */
     @Import(name="name", required=true)
@@ -27,8 +47,6 @@ public final class GroupMembershipRoleArgs extends com.pulumi.resources.Resource
      * @return The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
      * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
      * 
-     * ***
-     * 
      */
     public Output<String> name() {
         return this.name;
@@ -37,6 +55,7 @@ public final class GroupMembershipRoleArgs extends com.pulumi.resources.Resource
     private GroupMembershipRoleArgs() {}
 
     private GroupMembershipRoleArgs(GroupMembershipRoleArgs $) {
+        this.expiryDetail = $.expiryDetail;
         this.name = $.name;
     }
 
@@ -59,10 +78,33 @@ public final class GroupMembershipRoleArgs extends com.pulumi.resources.Resource
         }
 
         /**
+         * @param expiryDetail The MembershipRole expiry details, only supported for MEMBER role.
+         * Other roles cannot be accompanied with MEMBER role having expiry.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiryDetail(@Nullable Output<GroupMembershipRoleExpiryDetailArgs> expiryDetail) {
+            $.expiryDetail = expiryDetail;
+            return this;
+        }
+
+        /**
+         * @param expiryDetail The MembershipRole expiry details, only supported for MEMBER role.
+         * Other roles cannot be accompanied with MEMBER role having expiry.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder expiryDetail(GroupMembershipRoleExpiryDetailArgs expiryDetail) {
+            return expiryDetail(Output.of(expiryDetail));
+        }
+
+        /**
          * @param name The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
          * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-         * 
-         * ***
          * 
          * @return builder
          * 
@@ -75,8 +117,6 @@ public final class GroupMembershipRoleArgs extends com.pulumi.resources.Resource
         /**
          * @param name The name of the MembershipRole. Must be one of OWNER, MANAGER, MEMBER.
          * Possible values are: `OWNER`, `MANAGER`, `MEMBER`.
-         * 
-         * ***
          * 
          * @return builder
          * 

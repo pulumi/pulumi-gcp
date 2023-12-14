@@ -29,7 +29,7 @@ class FeatureMembershipArgs:
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
         :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
-        :param pulumi.Input[str] membership_location: The location of the membership
+        :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
         :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
@@ -97,7 +97,7 @@ class FeatureMembershipArgs:
     @pulumi.getter(name="membershipLocation")
     def membership_location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the membership
+        The location of the membership, for example, "us-central1". Default is "global".
         """
         return pulumi.get(self, "membership_location")
 
@@ -146,7 +146,7 @@ class _FeatureMembershipState:
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
-        :param pulumi.Input[str] membership_location: The location of the membership
+        :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
         :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
@@ -217,7 +217,7 @@ class _FeatureMembershipState:
     @pulumi.getter(name="membershipLocation")
     def membership_location(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of the membership
+        The location of the membership, for example, "us-central1". Default is "global".
         """
         return pulumi.get(self, "membership_location")
 
@@ -275,22 +275,19 @@ class FeatureMembership(pulumi.CustomResource):
 
         cluster = gcp.container.Cluster("cluster",
             location="us-central1-a",
-            initial_node_count=1,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         feature = gcp.gkehub.Feature("feature",
             location="global",
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         feature_member = gcp.gkehub.FeatureMembership("featureMember",
             location="global",
             feature=feature.name,
@@ -302,8 +299,7 @@ class FeatureMembership(pulumi.CustomResource):
                         sync_repo="https://github.com/hashicorp/terraform",
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Config Management With OCI
 
@@ -313,22 +309,19 @@ class FeatureMembership(pulumi.CustomResource):
 
         cluster = gcp.container.Cluster("cluster",
             location="us-central1-a",
-            initial_node_count=1,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         feature = gcp.gkehub.Feature("feature",
             location="global",
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         feature_member = gcp.gkehub.FeatureMembership("featureMember",
             location="global",
             feature=feature.name,
@@ -344,8 +337,7 @@ class FeatureMembership(pulumi.CustomResource):
                         gcp_service_account_email="sa@project-id.iam.gserviceaccount.com",
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Multi Cluster Service Discovery
 
@@ -354,11 +346,10 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         feature = gcp.gkehub.Feature("feature",
-            location="global",
             labels={
                 "foo": "bar",
             },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="global")
         ```
         ### Service Mesh
 
@@ -368,26 +359,58 @@ class FeatureMembership(pulumi.CustomResource):
 
         cluster = gcp.container.Cluster("cluster",
             location="us-central1-a",
-            initial_node_count=1,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        feature = gcp.gkehub.Feature("feature", location="global",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        feature = gcp.gkehub.Feature("feature", location="global")
         feature_member = gcp.gkehub.FeatureMembership("featureMember",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
             mesh=gcp.gkehub.FeatureMembershipMeshArgs(
                 management="MANAGEMENT_AUTOMATIC",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        ```
+        ### Config Management With Regional Membership
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            location="us-central1",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            labels={
+                "foo": "bar",
+            })
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            membership_location=membership.location,
+            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
+                version="1.6.2",
+                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
+                    git=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs(
+                        sync_repo="https://github.com/hashicorp/terraform",
+                    ),
+                ),
+            ))
         ```
 
         ## Import
@@ -420,7 +443,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
-        :param pulumi.Input[str] membership_location: The location of the membership
+        :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
         :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
@@ -442,22 +465,19 @@ class FeatureMembership(pulumi.CustomResource):
 
         cluster = gcp.container.Cluster("cluster",
             location="us-central1-a",
-            initial_node_count=1,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         feature = gcp.gkehub.Feature("feature",
             location="global",
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         feature_member = gcp.gkehub.FeatureMembership("featureMember",
             location="global",
             feature=feature.name,
@@ -469,8 +489,7 @@ class FeatureMembership(pulumi.CustomResource):
                         sync_repo="https://github.com/hashicorp/terraform",
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Config Management With OCI
 
@@ -480,22 +499,19 @@ class FeatureMembership(pulumi.CustomResource):
 
         cluster = gcp.container.Cluster("cluster",
             location="us-central1-a",
-            initial_node_count=1,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         feature = gcp.gkehub.Feature("feature",
             location="global",
             labels={
                 "foo": "bar",
-            },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            })
         feature_member = gcp.gkehub.FeatureMembership("featureMember",
             location="global",
             feature=feature.name,
@@ -511,8 +527,7 @@ class FeatureMembership(pulumi.CustomResource):
                         gcp_service_account_email="sa@project-id.iam.gserviceaccount.com",
                     ),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         ```
         ### Multi Cluster Service Discovery
 
@@ -521,11 +536,10 @@ class FeatureMembership(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         feature = gcp.gkehub.Feature("feature",
-            location="global",
             labels={
                 "foo": "bar",
             },
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            location="global")
         ```
         ### Service Mesh
 
@@ -535,26 +549,58 @@ class FeatureMembership(pulumi.CustomResource):
 
         cluster = gcp.container.Cluster("cluster",
             location="us-central1-a",
-            initial_node_count=1,
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            initial_node_count=1)
         membership = gcp.gkehub.Membership("membership",
             membership_id="my-membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
                     resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
                 ),
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
-        feature = gcp.gkehub.Feature("feature", location="global",
-        opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        feature = gcp.gkehub.Feature("feature", location="global")
         feature_member = gcp.gkehub.FeatureMembership("featureMember",
             location="global",
             feature=feature.name,
             membership=membership.membership_id,
             mesh=gcp.gkehub.FeatureMembershipMeshArgs(
                 management="MANAGEMENT_AUTOMATIC",
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
+        ```
+        ### Config Management With Regional Membership
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            location="us-central1",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            labels={
+                "foo": "bar",
+            })
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            membership_location=membership.location,
+            configmanagement=gcp.gkehub.FeatureMembershipConfigmanagementArgs(
+                version="1.6.2",
+                config_sync=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncArgs(
+                    git=gcp.gkehub.FeatureMembershipConfigmanagementConfigSyncGitArgs(
+                        sync_repo="https://github.com/hashicorp/terraform",
+                    ),
+                ),
+            ))
         ```
 
         ## Import
@@ -653,7 +699,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[str] feature: The name of the feature
         :param pulumi.Input[str] location: The location of the feature
         :param pulumi.Input[str] membership: The name of the membership
-        :param pulumi.Input[str] membership_location: The location of the membership
+        :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
         :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
@@ -706,7 +752,7 @@ class FeatureMembership(pulumi.CustomResource):
     @pulumi.getter(name="membershipLocation")
     def membership_location(self) -> pulumi.Output[Optional[str]]:
         """
-        The location of the membership
+        The location of the membership, for example, "us-central1". Default is "global".
         """
         return pulumi.get(self, "membership_location")
 

@@ -24,6 +24,8 @@ __all__ = [
     'RepositoryRemoteRepositoryConfigMavenRepositoryArgs',
     'RepositoryRemoteRepositoryConfigNpmRepositoryArgs',
     'RepositoryRemoteRepositoryConfigPythonRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs',
+    'RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs',
     'RepositoryRemoteRepositoryConfigYumRepositoryArgs',
     'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs',
     'RepositoryVirtualRepositoryConfigArgs',
@@ -349,6 +351,7 @@ class RepositoryRemoteRepositoryConfigArgs:
                  maven_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryArgs']] = None,
                  npm_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs']] = None,
                  python_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']] = None,
+                 upstream_credentials: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']] = None,
                  yum_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs'] apt_repository: Specific settings for an Apt remote repository.
@@ -361,6 +364,8 @@ class RepositoryRemoteRepositoryConfigArgs:
         :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryArgs'] npm_repository: Specific settings for an Npm remote repository.
                Structure is documented below.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs'] python_repository: Specific settings for a Python remote repository.
+               Structure is documented below.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs'] upstream_credentials: The credentials used to access the remote repository.
                Structure is documented below.
         :param pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs'] yum_repository: Specific settings for an Yum remote repository.
                Structure is documented below.
@@ -377,6 +382,8 @@ class RepositoryRemoteRepositoryConfigArgs:
             pulumi.set(__self__, "npm_repository", npm_repository)
         if python_repository is not None:
             pulumi.set(__self__, "python_repository", python_repository)
+        if upstream_credentials is not None:
+            pulumi.set(__self__, "upstream_credentials", upstream_credentials)
         if yum_repository is not None:
             pulumi.set(__self__, "yum_repository", yum_repository)
 
@@ -456,6 +463,19 @@ class RepositoryRemoteRepositoryConfigArgs:
     @python_repository.setter
     def python_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryArgs']]):
         pulumi.set(self, "python_repository", value)
+
+    @property
+    @pulumi.getter(name="upstreamCredentials")
+    def upstream_credentials(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']]:
+        """
+        The credentials used to access the remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upstream_credentials")
+
+    @upstream_credentials.setter
+    def upstream_credentials(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs']]):
+        pulumi.set(self, "upstream_credentials", value)
 
     @property
     @pulumi.getter(name="yumRepository")
@@ -641,6 +661,74 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
     @public_repository.setter
     def public_repository(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "public_repository", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs:
+    def __init__(__self__, *,
+                 username_password_credentials: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']] = None):
+        """
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs'] username_password_credentials: Use username and password to access the remote repository.
+               Structure is documented below.
+        """
+        if username_password_credentials is not None:
+            pulumi.set(__self__, "username_password_credentials", username_password_credentials)
+
+    @property
+    @pulumi.getter(name="usernamePasswordCredentials")
+    def username_password_credentials(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']]:
+        """
+        Use username and password to access the remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "username_password_credentials")
+
+    @username_password_credentials.setter
+    def username_password_credentials(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs']]):
+        pulumi.set(self, "username_password_credentials", value)
+
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs:
+    def __init__(__self__, *,
+                 password_secret_version: Optional[pulumi.Input[str]] = None,
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] password_secret_version: The Secret Manager key version that holds the password to access the
+               remote repository. Must be in the format of
+               `projects/{project}/secrets/{secret}/versions/{version}`.
+        :param pulumi.Input[str] username: The username to access the remote repository.
+        """
+        if password_secret_version is not None:
+            pulumi.set(__self__, "password_secret_version", password_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="passwordSecretVersion")
+    def password_secret_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Secret Manager key version that holds the password to access the
+        remote repository. Must be in the format of
+        `projects/{project}/secrets/{secret}/versions/{version}`.
+        """
+        return pulumi.get(self, "password_secret_version")
+
+    @password_secret_version.setter
+    def password_secret_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "password_secret_version", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        The username to access the remote repository.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
 
 
 @pulumi.input_type

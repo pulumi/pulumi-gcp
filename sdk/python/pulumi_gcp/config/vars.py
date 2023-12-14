@@ -429,12 +429,20 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('memcacheCustomEndpoint')
 
     @property
+    def migration_center_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('migrationCenterCustomEndpoint')
+
+    @property
     def ml_engine_custom_endpoint(self) -> Optional[str]:
         return __config__.get('mlEngineCustomEndpoint')
 
     @property
     def monitoring_custom_endpoint(self) -> Optional[str]:
         return __config__.get('monitoringCustomEndpoint')
+
+    @property
+    def netapp_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('netappCustomEndpoint')
 
     @property
     def network_connectivity_custom_endpoint(self) -> Optional[str]:
@@ -531,6 +539,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def secret_manager_custom_endpoint(self) -> Optional[str]:
         return __config__.get('secretManagerCustomEndpoint')
+
+    @property
+    def secure_source_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('secureSourceManagerCustomEndpoint')
 
     @property
     def security_center_custom_endpoint(self) -> Optional[str]:

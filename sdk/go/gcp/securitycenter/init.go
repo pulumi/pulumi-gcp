@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:securitycenter/eventThreatDetectionCustomModule:EventThreatDetectionCustomModule":
+		r = &EventThreatDetectionCustomModule{}
 	case "gcp:securitycenter/folderCustomModule:FolderCustomModule":
 		r = &FolderCustomModule{}
 	case "gcp:securitycenter/instanceIamBinding:InstanceIamBinding":
@@ -58,6 +60,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"securitycenter/eventThreatDetectionCustomModule",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"securitycenter/folderCustomModule",

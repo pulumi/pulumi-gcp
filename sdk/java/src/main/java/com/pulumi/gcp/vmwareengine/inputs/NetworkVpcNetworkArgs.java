@@ -36,7 +36,7 @@ public final class NetworkVpcNetworkArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      * 
      */
     @Import(name="type")
@@ -44,7 +44,7 @@ public final class NetworkVpcNetworkArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -103,7 +103,7 @@ public final class NetworkVpcNetworkArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type VMware Engine network type.
-         * Possible values are: `LEGACY`.
+         * Possible values are: `LEGACY`, `STANDARD`.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class NetworkVpcNetworkArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param type VMware Engine network type.
-         * Possible values are: `LEGACY`.
+         * Possible values are: `LEGACY`, `STANDARD`.
          * 
          * @return builder
          * 

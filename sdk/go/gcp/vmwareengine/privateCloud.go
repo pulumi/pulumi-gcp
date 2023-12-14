@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// / Represents a private cloud resource. Private clouds are zonal resources.
+//
+// To get more information about PrivateCloud, see:
+//
+// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+//
 // ## Example Usage
 // ### Vmware Engine Private Cloud Basic
 //
@@ -28,10 +34,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "pc-nw", &vmwareengine.NetworkArgs{
-//				Location:    pulumi.String("us-west1"),
-//				Type:        pulumi.String("LEGACY"),
+//				Location:    pulumi.String("global"),
+//				Type:        pulumi.String("STANDARD"),
 //				Description: pulumi.String("PC network description."),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -51,55 +57,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Vmware Engine Private Cloud Full
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vmwareengine"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "pc-nw", &vmwareengine.NetworkArgs{
-//				Location:    pulumi.String("us-west1"),
-//				Type:        pulumi.String("LEGACY"),
-//				Description: pulumi.String("PC network description."),
-//			}, pulumi.Provider(google_beta))
-//			if err != nil {
-//				return err
-//			}
-//			_, err = vmwareengine.NewPrivateCloud(ctx, "vmw-engine-pc", &vmwareengine.PrivateCloudArgs{
-//				Location:    pulumi.String("us-west1-a"),
-//				Description: pulumi.String("Sample test PC."),
-//				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
-//					ManagementCidr:      pulumi.String("192.168.30.0/24"),
-//					VmwareEngineNetwork: pc_nw.ID(),
-//				},
-//				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
-//					ClusterId: pulumi.String("sample-mgmt-cluster"),
-//					NodeTypeConfigs: vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArray{
-//						&vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs{
-//							NodeTypeId:      pulumi.String("standard-72"),
-//							NodeCount:       pulumi.Int(3),
-//							CustomCoreCount: pulumi.Int(32),
-//						},
-//					},
-//				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

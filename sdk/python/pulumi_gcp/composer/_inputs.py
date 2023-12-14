@@ -246,17 +246,30 @@ class EnvironmentConfigArgs:
 @pulumi.input_type
 class EnvironmentConfigDatabaseConfigArgs:
     def __init__(__self__, *,
-                 machine_type: pulumi.Input[str]):
-        pulumi.set(__self__, "machine_type", machine_type)
+                 machine_type: Optional[pulumi.Input[str]] = None,
+                 zone: Optional[pulumi.Input[str]] = None):
+        if machine_type is not None:
+            pulumi.set(__self__, "machine_type", machine_type)
+        if zone is not None:
+            pulumi.set(__self__, "zone", zone)
 
     @property
     @pulumi.getter(name="machineType")
-    def machine_type(self) -> pulumi.Input[str]:
+    def machine_type(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "machine_type")
 
     @machine_type.setter
-    def machine_type(self, value: pulumi.Input[str]):
+    def machine_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "machine_type", value)
+
+    @property
+    @pulumi.getter
+    def zone(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "zone")
+
+    @zone.setter
+    def zone(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "zone", value)
 
 
 @pulumi.input_type

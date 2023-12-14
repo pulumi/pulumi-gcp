@@ -17,7 +17,44 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Provides connectivity for VMware Engine private clouds.
+ * 
+ * To get more information about Network, see:
+ * 
+ * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+ * 
  * ## Example Usage
+ * ### Vmware Engine Network Standard
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.vmwareengine.Network;
+ * import com.pulumi.gcp.vmwareengine.NetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var vmw_engine_network = new Network(&#34;vmw-engine-network&#34;, NetworkArgs.builder()        
+ *             .description(&#34;VMwareEngine standard network sample&#34;)
+ *             .location(&#34;global&#34;)
+ *             .type(&#34;STANDARD&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -124,7 +161,7 @@ public class Network extends com.pulumi.resources.CustomResource {
     }
     /**
      * VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -132,7 +169,7 @@ public class Network extends com.pulumi.resources.CustomResource {
 
     /**
      * @return VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      * 
      */
     public Output<String> type() {

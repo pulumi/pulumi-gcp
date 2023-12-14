@@ -263,6 +263,57 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Connection Spark
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var basic = new Gcp.Dataproc.Cluster("basic", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         ClusterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigArgs
+    ///         {
+    ///             SoftwareConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigSoftwareConfigArgs
+    ///             {
+    ///                 OverrideProperties = 
+    ///                 {
+    ///                     { "dataproc:dataproc.allow.zero.workers", "true" },
+    ///                 },
+    ///             },
+    ///             MasterConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigArgs
+    ///             {
+    ///                 NumInstances = 1,
+    ///                 MachineType = "e2-standard-2",
+    ///                 DiskConfig = new Gcp.Dataproc.Inputs.ClusterClusterConfigMasterConfigDiskConfigArgs
+    ///                 {
+    ///                     BootDiskSizeGb = 35,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var connection = new Gcp.BigQuery.Connection("connection", new()
+    ///     {
+    ///         ConnectionId = "my-connection",
+    ///         Location = "US",
+    ///         FriendlyName = "👋",
+    ///         Description = "a riveting description",
+    ///         Spark = new Gcp.BigQuery.Inputs.ConnectionSparkArgs
+    ///         {
+    ///             SparkHistoryServerConfig = new Gcp.BigQuery.Inputs.ConnectionSparkSparkHistoryServerConfigArgs
+    ///             {
+    ///                 DataprocCluster = basic.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -375,6 +426,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// Container for connection properties to execute stored procedures for Apache Spark. resources.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("spark")]
+        public Output<Outputs.ConnectionSpark?> Spark { get; private set; } = null!;
 
 
         /// <summary>
@@ -494,6 +552,13 @@ namespace Pulumi.Gcp.BigQuery
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Container for connection properties to execute stored procedures for Apache Spark. resources.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("spark")]
+        public Input<Inputs.ConnectionSparkArgs>? Spark { get; set; }
+
         public ConnectionArgs()
         {
         }
@@ -586,6 +651,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Container for connection properties to execute stored procedures for Apache Spark. resources.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("spark")]
+        public Input<Inputs.ConnectionSparkGetArgs>? Spark { get; set; }
 
         public ConnectionState()
         {

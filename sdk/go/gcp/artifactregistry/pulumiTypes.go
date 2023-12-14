@@ -1135,6 +1135,9 @@ type RepositoryRemoteRepositoryConfig struct {
 	// Specific settings for a Python remote repository.
 	// Structure is documented below.
 	PythonRepository *RepositoryRemoteRepositoryConfigPythonRepository `pulumi:"pythonRepository"`
+	// The credentials used to access the remote repository.
+	// Structure is documented below.
+	UpstreamCredentials *RepositoryRemoteRepositoryConfigUpstreamCredentials `pulumi:"upstreamCredentials"`
 	// Specific settings for an Yum remote repository.
 	// Structure is documented below.
 	YumRepository *RepositoryRemoteRepositoryConfigYumRepository `pulumi:"yumRepository"`
@@ -1169,6 +1172,9 @@ type RepositoryRemoteRepositoryConfigArgs struct {
 	// Specific settings for a Python remote repository.
 	// Structure is documented below.
 	PythonRepository RepositoryRemoteRepositoryConfigPythonRepositoryPtrInput `pulumi:"pythonRepository"`
+	// The credentials used to access the remote repository.
+	// Structure is documented below.
+	UpstreamCredentials RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrInput `pulumi:"upstreamCredentials"`
 	// Specific settings for an Yum remote repository.
 	// Structure is documented below.
 	YumRepository RepositoryRemoteRepositoryConfigYumRepositoryPtrInput `pulumi:"yumRepository"`
@@ -1296,6 +1302,14 @@ func (o RepositoryRemoteRepositoryConfigOutput) PythonRepository() RepositoryRem
 	}).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
 }
 
+// The credentials used to access the remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigOutput) UpstreamCredentials() RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigUpstreamCredentials {
+		return v.UpstreamCredentials
+	}).(RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput)
+}
+
 // Specific settings for an Yum remote repository.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigOutput) YumRepository() RepositoryRemoteRepositoryConfigYumRepositoryPtrOutput {
@@ -1391,6 +1405,17 @@ func (o RepositoryRemoteRepositoryConfigPtrOutput) PythonRepository() Repository
 		}
 		return v.PythonRepository
 	}).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
+}
+
+// The credentials used to access the remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigPtrOutput) UpstreamCredentials() RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigUpstreamCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.UpstreamCredentials
+	}).(RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput)
 }
 
 // Specific settings for an Yum remote repository.
@@ -2284,6 +2309,317 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) PublicReposit
 			return nil
 		}
 		return v.PublicRepository
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigUpstreamCredentials struct {
+	// Use username and password to access the remote repository.
+	// Structure is documented below.
+	UsernamePasswordCredentials *RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials `pulumi:"usernamePasswordCredentials"`
+}
+
+// RepositoryRemoteRepositoryConfigUpstreamCredentialsInput is an input type that accepts RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs and RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigUpstreamCredentialsInput` via:
+//
+//	RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs{...}
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigUpstreamCredentialsOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput
+	ToRepositoryRemoteRepositoryConfigUpstreamCredentialsOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput
+}
+
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs struct {
+	// Use username and password to access the remote repository.
+	// Structure is documented below.
+	UsernamePasswordCredentials RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrInput `pulumi:"usernamePasswordCredentials"`
+}
+
+func (RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentials)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput {
+	return i.ToRepositoryRemoteRepositoryConfigUpstreamCredentialsOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput).ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs, RepositoryRemoteRepositoryConfigUpstreamCredentialsPtr and RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput
+	ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigUpstreamCredentialsPtrType RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs
+
+func RepositoryRemoteRepositoryConfigUpstreamCredentialsPtr(v *RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs) RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrInput {
+	return (*repositoryRemoteRepositoryConfigUpstreamCredentialsPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigUpstreamCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigUpstreamCredentials)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigUpstreamCredentialsPtrType) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigUpstreamCredentialsPtrType) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentials)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigUpstreamCredentials) *RepositoryRemoteRepositoryConfigUpstreamCredentials {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput)
+}
+
+// Use username and password to access the remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput) UsernamePasswordCredentials() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigUpstreamCredentials) *RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials {
+		return v.UsernamePasswordCredentials
+	}).(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigUpstreamCredentials)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput) Elem() RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigUpstreamCredentials) RepositoryRemoteRepositoryConfigUpstreamCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigUpstreamCredentials
+		return ret
+	}).(RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput)
+}
+
+// Use username and password to access the remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput) UsernamePasswordCredentials() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigUpstreamCredentials) *RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials {
+		if v == nil {
+			return nil
+		}
+		return v.UsernamePasswordCredentials
+	}).(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials struct {
+	// The Secret Manager key version that holds the password to access the
+	// remote repository. Must be in the format of
+	// `projects/{project}/secrets/{secret}/versions/{version}`.
+	PasswordSecretVersion *string `pulumi:"passwordSecretVersion"`
+	// The username to access the remote repository.
+	Username *string `pulumi:"username"`
+}
+
+// RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsInput is an input type that accepts RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs and RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsInput` via:
+//
+//	RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs{...}
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput
+	ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput
+}
+
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs struct {
+	// The Secret Manager key version that holds the password to access the
+	// remote repository. Must be in the format of
+	// `projects/{project}/secrets/{secret}/versions/{version}`.
+	PasswordSecretVersion pulumi.StringPtrInput `pulumi:"passwordSecretVersion"`
+	// The username to access the remote repository.
+	Username pulumi.StringPtrInput `pulumi:"username"`
+}
+
+func (RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput {
+	return i.ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput).ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs, RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtr and RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput
+	ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrType RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs
+
+func RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtr(v *RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrInput {
+	return (*repositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrType) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrType) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials) *RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput)
+}
+
+// The Secret Manager key version that holds the password to access the
+// remote repository. Must be in the format of
+// `projects/{project}/secrets/{secret}/versions/{version}`.
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials) *string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to access the remote repository.
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials) *string {
+		return v.Username
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput) ToRepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput) Elem() RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials) RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials
+		return ret
+	}).(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput)
+}
+
+// The Secret Manager key version that holds the password to access the
+// remote repository. Must be in the format of
+// `projects/{project}/secrets/{secret}/versions/{version}`.
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput) PasswordSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PasswordSecretVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The username to access the remote repository.
+func (o RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput) Username() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Username
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -3388,13 +3724,14 @@ func (o GetRepositoryMavenConfigArrayOutput) Index(i pulumi.IntInput) GetReposit
 }
 
 type GetRepositoryRemoteRepositoryConfig struct {
-	AptRepositories    []GetRepositoryRemoteRepositoryConfigAptRepository    `pulumi:"aptRepositories"`
-	Description        string                                                `pulumi:"description"`
-	DockerRepositories []GetRepositoryRemoteRepositoryConfigDockerRepository `pulumi:"dockerRepositories"`
-	MavenRepositories  []GetRepositoryRemoteRepositoryConfigMavenRepository  `pulumi:"mavenRepositories"`
-	NpmRepositories    []GetRepositoryRemoteRepositoryConfigNpmRepository    `pulumi:"npmRepositories"`
-	PythonRepositories []GetRepositoryRemoteRepositoryConfigPythonRepository `pulumi:"pythonRepositories"`
-	YumRepositories    []GetRepositoryRemoteRepositoryConfigYumRepository    `pulumi:"yumRepositories"`
+	AptRepositories     []GetRepositoryRemoteRepositoryConfigAptRepository      `pulumi:"aptRepositories"`
+	Description         string                                                  `pulumi:"description"`
+	DockerRepositories  []GetRepositoryRemoteRepositoryConfigDockerRepository   `pulumi:"dockerRepositories"`
+	MavenRepositories   []GetRepositoryRemoteRepositoryConfigMavenRepository    `pulumi:"mavenRepositories"`
+	NpmRepositories     []GetRepositoryRemoteRepositoryConfigNpmRepository      `pulumi:"npmRepositories"`
+	PythonRepositories  []GetRepositoryRemoteRepositoryConfigPythonRepository   `pulumi:"pythonRepositories"`
+	UpstreamCredentials []GetRepositoryRemoteRepositoryConfigUpstreamCredential `pulumi:"upstreamCredentials"`
+	YumRepositories     []GetRepositoryRemoteRepositoryConfigYumRepository      `pulumi:"yumRepositories"`
 }
 
 // GetRepositoryRemoteRepositoryConfigInput is an input type that accepts GetRepositoryRemoteRepositoryConfigArgs and GetRepositoryRemoteRepositoryConfigOutput values.
@@ -3409,13 +3746,14 @@ type GetRepositoryRemoteRepositoryConfigInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigArgs struct {
-	AptRepositories    GetRepositoryRemoteRepositoryConfigAptRepositoryArrayInput    `pulumi:"aptRepositories"`
-	Description        pulumi.StringInput                                            `pulumi:"description"`
-	DockerRepositories GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput `pulumi:"dockerRepositories"`
-	MavenRepositories  GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput  `pulumi:"mavenRepositories"`
-	NpmRepositories    GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput    `pulumi:"npmRepositories"`
-	PythonRepositories GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput `pulumi:"pythonRepositories"`
-	YumRepositories    GetRepositoryRemoteRepositoryConfigYumRepositoryArrayInput    `pulumi:"yumRepositories"`
+	AptRepositories     GetRepositoryRemoteRepositoryConfigAptRepositoryArrayInput      `pulumi:"aptRepositories"`
+	Description         pulumi.StringInput                                              `pulumi:"description"`
+	DockerRepositories  GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput   `pulumi:"dockerRepositories"`
+	MavenRepositories   GetRepositoryRemoteRepositoryConfigMavenRepositoryArrayInput    `pulumi:"mavenRepositories"`
+	NpmRepositories     GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput      `pulumi:"npmRepositories"`
+	PythonRepositories  GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput   `pulumi:"pythonRepositories"`
+	UpstreamCredentials GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayInput `pulumi:"upstreamCredentials"`
+	YumRepositories     GetRepositoryRemoteRepositoryConfigYumRepositoryArrayInput      `pulumi:"yumRepositories"`
 }
 
 func (GetRepositoryRemoteRepositoryConfigArgs) ElementType() reflect.Type {
@@ -3501,6 +3839,12 @@ func (o GetRepositoryRemoteRepositoryConfigOutput) PythonRepositories() GetRepos
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigPythonRepository {
 		return v.PythonRepositories
 	}).(GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput)
+}
+
+func (o GetRepositoryRemoteRepositoryConfigOutput) UpstreamCredentials() GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigUpstreamCredential {
+		return v.UpstreamCredentials
+	}).(GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput)
 }
 
 func (o GetRepositoryRemoteRepositoryConfigOutput) YumRepositories() GetRepositoryRemoteRepositoryConfigYumRepositoryArrayOutput {
@@ -4105,6 +4449,206 @@ func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput) Index(i 
 	}).(GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput)
 }
 
+type GetRepositoryRemoteRepositoryConfigUpstreamCredential struct {
+	UsernamePasswordCredentials []GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential `pulumi:"usernamePasswordCredentials"`
+}
+
+// GetRepositoryRemoteRepositoryConfigUpstreamCredentialInput is an input type that accepts GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs and GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigUpstreamCredentialInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs{...}
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput
+	ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs struct {
+	UsernamePasswordCredentials GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayInput `pulumi:"usernamePasswordCredentials"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredential)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigUpstreamCredentialArray and GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigUpstreamCredentialArray{ GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs{...} }
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialArray []GetRepositoryRemoteRepositoryConfigUpstreamCredentialInput
+
+func (GetRepositoryRemoteRepositoryConfigUpstreamCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigUpstreamCredential)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigUpstreamCredentialArray) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigUpstreamCredentialArray) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredential)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput) UsernamePasswordCredentials() GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigUpstreamCredential) []GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential {
+		return v.UsernamePasswordCredentials
+	}).(GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigUpstreamCredential)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigUpstreamCredential {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigUpstreamCredential)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential struct {
+	PasswordSecretVersion string `pulumi:"passwordSecretVersion"`
+	Username              string `pulumi:"username"`
+}
+
+// GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialInput is an input type that accepts GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs and GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs{...}
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput
+	ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs struct {
+	PasswordSecretVersion pulumi.StringInput `pulumi:"passwordSecretVersion"`
+	Username              pulumi.StringInput `pulumi:"username"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArray and GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArray{ GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs{...} }
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArray []GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialInput
+
+func (GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArray) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArray) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput) PasswordSecretVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential) string {
+		return v.PasswordSecretVersion
+	}).(pulumi.StringOutput)
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential) string {
+		return v.Username
+	}).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput() GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput) ToGetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput)
+}
+
 type GetRepositoryRemoteRepositoryConfigYumRepository struct {
 	PublicRepositories []GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepository `pulumi:"publicRepositories"`
 }
@@ -4536,6 +5080,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigNpmRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigNpmRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigPythonRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigPythonRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigPythonRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentialsInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigYumRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigYumRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigYumRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigYumRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{})
@@ -4568,6 +5116,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigNpmRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigPythonRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredentialInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigUpstreamCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigUpstreamCredentialArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigYumRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigYumRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigYumRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigYumRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryArgs{})
@@ -4604,6 +5156,10 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPythonRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigUpstreamCredentialsOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigUpstreamCredentialsPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigYumRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigYumRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryOutput{})
@@ -4636,6 +5192,10 @@ func init() {
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigNpmRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigPythonRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigUpstreamCredentialOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigUpstreamCredentialArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredentialArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigYumRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigYumRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryOutput{})

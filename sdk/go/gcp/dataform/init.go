@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:dataform/repository:Repository":
 		r = &Repository{}
+	case "gcp:dataform/repositoryIamBinding:RepositoryIamBinding":
+		r = &RepositoryIamBinding{}
+	case "gcp:dataform/repositoryIamMember:RepositoryIamMember":
+		r = &RepositoryIamMember{}
+	case "gcp:dataform/repositoryIamPolicy:RepositoryIamPolicy":
+		r = &RepositoryIamPolicy{}
 	case "gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig":
 		r = &RepositoryReleaseConfig{}
 	case "gcp:dataform/repositoryWorkflowConfig:RepositoryWorkflowConfig":
@@ -43,6 +49,21 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataform/repository",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataform/repositoryIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataform/repositoryIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataform/repositoryIamPolicy",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

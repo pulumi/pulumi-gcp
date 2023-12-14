@@ -46,6 +46,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly ImmutableArray<string> MatchesSuffixes;
         /// <summary>
+        /// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+        /// </summary>
+        public readonly bool? NoAge;
+        /// <summary>
         /// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
         /// </summary>
         public readonly string? NoncurrentTimeBefore;
@@ -76,6 +80,8 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             ImmutableArray<string> matchesSuffixes,
 
+            bool? noAge,
+
             string? noncurrentTimeBefore,
 
             int? numNewerVersions,
@@ -90,6 +96,7 @@ namespace Pulumi.Gcp.Storage.Outputs
             MatchesPrefixes = matchesPrefixes;
             MatchesStorageClasses = matchesStorageClasses;
             MatchesSuffixes = matchesSuffixes;
+            NoAge = noAge;
             NoncurrentTimeBefore = noncurrentTimeBefore;
             NumNewerVersions = numNewerVersions;
             WithState = withState;

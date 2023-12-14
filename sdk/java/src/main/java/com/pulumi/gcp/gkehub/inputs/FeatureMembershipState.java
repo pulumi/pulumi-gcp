@@ -78,14 +78,14 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
     }
 
     /**
-     * The location of the membership
+     * The location of the membership, for example, &#34;us-central1&#34;. Default is &#34;global&#34;.
      * 
      */
     @Import(name="membershipLocation")
     private @Nullable Output<String> membershipLocation;
 
     /**
-     * @return The location of the membership
+     * @return The location of the membership, for example, &#34;us-central1&#34;. Default is &#34;global&#34;.
      * 
      */
     public Optional<Output<String>> membershipLocation() {
@@ -237,7 +237,7 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param membershipLocation The location of the membership
+         * @param membershipLocation The location of the membership, for example, &#34;us-central1&#34;. Default is &#34;global&#34;.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param membershipLocation The location of the membership
+         * @param membershipLocation The location of the membership, for example, &#34;us-central1&#34;. Default is &#34;global&#34;.
          * 
          * @return builder
          * 

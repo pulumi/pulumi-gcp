@@ -10,7 +10,32 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.VMwareEngine
 {
     /// <summary>
+    /// Provides connectivity for VMware Engine private clouds.
+    /// 
+    /// To get more information about Network, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+    /// 
     /// ## Example Usage
+    /// ### Vmware Engine Network Standard
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var vmw_engine_network = new Gcp.VMwareEngine.Network("vmw-engine-network", new()
+    ///     {
+    ///         Description = "VMwareEngine standard network sample",
+    ///         Location = "global",
+    ///         Type = "STANDARD",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -75,7 +100,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// VMware Engine network type.
-        /// Possible values are: `LEGACY`.
+        /// Possible values are: `LEGACY`, `STANDARD`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -170,7 +195,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// VMware Engine network type.
-        /// Possible values are: `LEGACY`.
+        /// Possible values are: `LEGACY`, `STANDARD`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -219,7 +244,7 @@ namespace Pulumi.Gcp.VMwareEngine
 
         /// <summary>
         /// VMware Engine network type.
-        /// Possible values are: `LEGACY`.
+        /// Possible values are: `LEGACY`, `STANDARD`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

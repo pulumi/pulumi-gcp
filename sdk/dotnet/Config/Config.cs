@@ -753,6 +753,13 @@ namespace Pulumi.Gcp
             set => _memcacheCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _migrationCenterCustomEndpoint = new __Value<string?>(() => __config.Get("migrationCenterCustomEndpoint"));
+        public static string? MigrationCenterCustomEndpoint
+        {
+            get => _migrationCenterCustomEndpoint.Get();
+            set => _migrationCenterCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _mlEngineCustomEndpoint = new __Value<string?>(() => __config.Get("mlEngineCustomEndpoint"));
         public static string? MlEngineCustomEndpoint
         {
@@ -765,6 +772,13 @@ namespace Pulumi.Gcp
         {
             get => _monitoringCustomEndpoint.Get();
             set => _monitoringCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _netappCustomEndpoint = new __Value<string?>(() => __config.Get("netappCustomEndpoint"));
+        public static string? NetappCustomEndpoint
+        {
+            get => _netappCustomEndpoint.Get();
+            set => _netappCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _networkConnectivityCustomEndpoint = new __Value<string?>(() => __config.Get("networkConnectivityCustomEndpoint"));
@@ -933,6 +947,13 @@ namespace Pulumi.Gcp
         {
             get => _secretManagerCustomEndpoint.Get();
             set => _secretManagerCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _secureSourceManagerCustomEndpoint = new __Value<string?>(() => __config.Get("secureSourceManagerCustomEndpoint"));
+        public static string? SecureSourceManagerCustomEndpoint
+        {
+            get => _secureSourceManagerCustomEndpoint.Get();
+            set => _secureSourceManagerCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _securityCenterCustomEndpoint = new __Value<string?>(() => __config.Get("securityCenterCustomEndpoint"));

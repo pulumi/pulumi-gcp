@@ -10,6 +10,7 @@ import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDo
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigMavenRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigNpmRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigPythonRepositoryArgs;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigYumRepositoryArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -122,6 +123,23 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
     }
 
     /**
+     * The credentials used to access the remote repository.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="upstreamCredentials")
+    private @Nullable Output<RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs> upstreamCredentials;
+
+    /**
+     * @return The credentials used to access the remote repository.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs>> upstreamCredentials() {
+        return Optional.ofNullable(this.upstreamCredentials);
+    }
+
+    /**
      * Specific settings for an Yum remote repository.
      * Structure is documented below.
      * 
@@ -147,6 +165,7 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
         this.mavenRepository = $.mavenRepository;
         this.npmRepository = $.npmRepository;
         this.pythonRepository = $.pythonRepository;
+        this.upstreamCredentials = $.upstreamCredentials;
         this.yumRepository = $.yumRepository;
     }
 
@@ -302,6 +321,29 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
          */
         public Builder pythonRepository(RepositoryRemoteRepositoryConfigPythonRepositoryArgs pythonRepository) {
             return pythonRepository(Output.of(pythonRepository));
+        }
+
+        /**
+         * @param upstreamCredentials The credentials used to access the remote repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreamCredentials(@Nullable Output<RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs> upstreamCredentials) {
+            $.upstreamCredentials = upstreamCredentials;
+            return this;
+        }
+
+        /**
+         * @param upstreamCredentials The credentials used to access the remote repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs upstreamCredentials) {
+            return upstreamCredentials(Output.of(upstreamCredentials));
         }
 
         /**

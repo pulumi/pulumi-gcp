@@ -232,7 +232,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The link to service attachment of PSC instance.
+     * the URI that points to the service attachment of the instance.
      */
     public /*out*/ readonly pscServiceAttachmentLink!: pulumi.Output<string>;
     /**
@@ -441,7 +441,7 @@ export interface DatabaseInstanceState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The link to service attachment of PSC instance.
+     * the URI that points to the service attachment of the instance.
      */
     pscServiceAttachmentLink?: pulumi.Input<string>;
     /**

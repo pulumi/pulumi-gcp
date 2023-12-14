@@ -16,19 +16,37 @@ __all__ = ['FleetArgs', 'Fleet']
 @pulumi.input_type
 class FleetArgs:
     def __init__(__self__, *,
+                 default_cluster_config: Optional[pulumi.Input['FleetDefaultClusterConfigArgs']] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Fleet resource.
+        :param pulumi.Input['FleetDefaultClusterConfigArgs'] default_cluster_config: The default cluster configurations to apply across the fleet.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
+        if default_cluster_config is not None:
+            pulumi.set(__self__, "default_cluster_config", default_cluster_config)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+
+    @property
+    @pulumi.getter(name="defaultClusterConfig")
+    def default_cluster_config(self) -> Optional[pulumi.Input['FleetDefaultClusterConfigArgs']]:
+        """
+        The default cluster configurations to apply across the fleet.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_cluster_config")
+
+    @default_cluster_config.setter
+    def default_cluster_config(self, value: Optional[pulumi.Input['FleetDefaultClusterConfigArgs']]):
+        pulumi.set(self, "default_cluster_config", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -61,6 +79,7 @@ class FleetArgs:
 class _FleetState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 default_cluster_config: Optional[pulumi.Input['FleetDefaultClusterConfigArgs']] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -70,6 +89,8 @@ class _FleetState:
         """
         Input properties used for looking up and filtering Fleet resources.
         :param pulumi.Input[str] create_time: The time the fleet was created, in RFC3339 text format.
+        :param pulumi.Input['FleetDefaultClusterConfigArgs'] default_cluster_config: The default cluster configurations to apply across the fleet.
+               Structure is documented below.
         :param pulumi.Input[str] delete_time: The time the fleet was deleted, in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
@@ -84,6 +105,8 @@ class _FleetState:
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if default_cluster_config is not None:
+            pulumi.set(__self__, "default_cluster_config", default_cluster_config)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
         if display_name is not None:
@@ -108,6 +131,19 @@ class _FleetState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="defaultClusterConfig")
+    def default_cluster_config(self) -> Optional[pulumi.Input['FleetDefaultClusterConfigArgs']]:
+        """
+        The default cluster configurations to apply across the fleet.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_cluster_config")
+
+    @default_cluster_config.setter
+    def default_cluster_config(self, value: Optional[pulumi.Input['FleetDefaultClusterConfigArgs']]):
+        pulumi.set(self, "default_cluster_config", value)
 
     @property
     @pulumi.getter(name="deleteTime")
@@ -192,6 +228,7 @@ class Fleet(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_cluster_config: Optional[pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -211,7 +248,14 @@ class Fleet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.gkehub.Fleet("default", display_name="my production fleet")
+        default = gcp.gkehub.Fleet("default",
+            default_cluster_config=gcp.gkehub.FleetDefaultClusterConfigArgs(
+                security_posture_config=gcp.gkehub.FleetDefaultClusterConfigSecurityPostureConfigArgs(
+                    mode="DISABLED",
+                    vulnerability_mode="VULNERABILITY_DISABLED",
+                ),
+            ),
+            display_name="my production fleet")
         ```
 
         ## Import
@@ -236,6 +280,8 @@ class Fleet(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']] default_cluster_config: The default cluster configurations to apply across the fleet.
+               Structure is documented below.
         :param pulumi.Input[str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -263,7 +309,14 @@ class Fleet(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.gkehub.Fleet("default", display_name="my production fleet")
+        default = gcp.gkehub.Fleet("default",
+            default_cluster_config=gcp.gkehub.FleetDefaultClusterConfigArgs(
+                security_posture_config=gcp.gkehub.FleetDefaultClusterConfigSecurityPostureConfigArgs(
+                    mode="DISABLED",
+                    vulnerability_mode="VULNERABILITY_DISABLED",
+                ),
+            ),
+            display_name="my production fleet")
         ```
 
         ## Import
@@ -301,6 +354,7 @@ class Fleet(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 default_cluster_config: Optional[pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -312,6 +366,7 @@ class Fleet(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = FleetArgs.__new__(FleetArgs)
 
+            __props__.__dict__["default_cluster_config"] = default_cluster_config
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
@@ -330,6 +385,7 @@ class Fleet(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            default_cluster_config: Optional[pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -344,6 +400,8 @@ class Fleet(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: The time the fleet was created, in RFC3339 text format.
+        :param pulumi.Input[pulumi.InputType['FleetDefaultClusterConfigArgs']] default_cluster_config: The default cluster configurations to apply across the fleet.
+               Structure is documented below.
         :param pulumi.Input[str] delete_time: The time the fleet was deleted, in RFC3339 text format.
         :param pulumi.Input[str] display_name: A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
                Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
@@ -361,6 +419,7 @@ class Fleet(pulumi.CustomResource):
         __props__ = _FleetState.__new__(_FleetState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["default_cluster_config"] = default_cluster_config
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["project"] = project
@@ -376,6 +435,15 @@ class Fleet(pulumi.CustomResource):
         The time the fleet was created, in RFC3339 text format.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="defaultClusterConfig")
+    def default_cluster_config(self) -> pulumi.Output[Optional['outputs.FleetDefaultClusterConfig']]:
+        """
+        The default cluster configurations to apply across the fleet.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "default_cluster_config")
 
     @property
     @pulumi.getter(name="deleteTime")

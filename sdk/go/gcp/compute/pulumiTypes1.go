@@ -13,6 +13,170 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort struct {
+	// The HTTP status code used to abort the request.
+	// The value must be between 200 and 599 inclusive.
+	HttpStatus *int `pulumi:"httpStatus"`
+	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage *float64 `pulumi:"percentage"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs and URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput
+	ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs struct {
+	// The HTTP status code used to abort the request.
+	// The value must be between 200 and 599 inclusive.
+	HttpStatus pulumi.IntPtrInput `pulumi:"httpStatus"`
+	// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+	// The value must be between 0.0 and 100.0 inclusive.
+	Percentage pulumi.Float64PtrInput `pulumi:"percentage"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput).ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs, URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtr and URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrType URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs
+
+func URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtr(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrType) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrType) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The HTTP status code used to abort the request.
+// The value must be between 200 and 599 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort) *int { return v.HttpStatus }).(pulumi.IntPtrOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort) *float64 { return v.Percentage }).(pulumi.Float64PtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput)
+}
+
+// The HTTP status code used to abort the request.
+// The value must be between 200 and 599 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput) HttpStatus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort) *int {
+		if v == nil {
+			return nil
+		}
+		return v.HttpStatus
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of traffic (connections/operations/requests) which will be aborted as part of fault injection.
+// The value must be between 0.0 and 100.0 inclusive.
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput) Percentage() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Percentage
+	}).(pulumi.Float64PtrOutput)
+}
+
 type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay struct {
 	// Specifies the value of the fixed delay interval.
 	// Structure is documented below.
@@ -5938,6 +6102,106 @@ func (o GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleMetadataFilterFilterLabel {
 		return vs[0].([]GetGlobalForwardingRuleMetadataFilterFilterLabel)[vs[1].(int)]
 	}).(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput)
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistration struct {
+	Namespace              string `pulumi:"namespace"`
+	ServiceDirectoryRegion string `pulumi:"serviceDirectoryRegion"`
+}
+
+// GetGlobalForwardingRuleServiceDirectoryRegistrationInput is an input type that accepts GetGlobalForwardingRuleServiceDirectoryRegistrationArgs and GetGlobalForwardingRuleServiceDirectoryRegistrationOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleServiceDirectoryRegistrationInput` via:
+//
+//	GetGlobalForwardingRuleServiceDirectoryRegistrationArgs{...}
+type GetGlobalForwardingRuleServiceDirectoryRegistrationInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationOutput
+	ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationOutput
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistrationArgs struct {
+	Namespace              pulumi.StringInput `pulumi:"namespace"`
+	ServiceDirectoryRegion pulumi.StringInput `pulumi:"serviceDirectoryRegion"`
+}
+
+func (GetGlobalForwardingRuleServiceDirectoryRegistrationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleServiceDirectoryRegistrationArgs) ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return i.ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleServiceDirectoryRegistrationArgs) ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleServiceDirectoryRegistrationOutput)
+}
+
+// GetGlobalForwardingRuleServiceDirectoryRegistrationArrayInput is an input type that accepts GetGlobalForwardingRuleServiceDirectoryRegistrationArray and GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput values.
+// You can construct a concrete instance of `GetGlobalForwardingRuleServiceDirectoryRegistrationArrayInput` via:
+//
+//	GetGlobalForwardingRuleServiceDirectoryRegistrationArray{ GetGlobalForwardingRuleServiceDirectoryRegistrationArgs{...} }
+type GetGlobalForwardingRuleServiceDirectoryRegistrationArrayInput interface {
+	pulumi.Input
+
+	ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput
+	ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistrationArray []GetGlobalForwardingRuleServiceDirectoryRegistrationInput
+
+func (GetGlobalForwardingRuleServiceDirectoryRegistrationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (i GetGlobalForwardingRuleServiceDirectoryRegistrationArray) ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return i.ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(context.Background())
+}
+
+func (i GetGlobalForwardingRuleServiceDirectoryRegistrationArray) ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput)
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistrationOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetGlobalForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ToGetGlobalForwardingRuleServiceDirectoryRegistrationOutputWithContext(ctx context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleServiceDirectoryRegistration) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationOutput) ServiceDirectoryRegion() pulumi.StringOutput {
+	return o.ApplyT(func(v GetGlobalForwardingRuleServiceDirectoryRegistration) string { return v.ServiceDirectoryRegion }).(pulumi.StringOutput)
+}
+
+type GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetGlobalForwardingRuleServiceDirectoryRegistration)(nil)).Elem()
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput) ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput() GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput) ToGetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutputWithContext(ctx context.Context) GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput {
+	return o
+}
+
+func (o GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput) Index(i pulumi.IntInput) GetGlobalForwardingRuleServiceDirectoryRegistrationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetGlobalForwardingRuleServiceDirectoryRegistration {
+		return vs[0].([]GetGlobalForwardingRuleServiceDirectoryRegistration)[vs[1].(int)]
+	}).(GetGlobalForwardingRuleServiceDirectoryRegistrationOutput)
 }
 
 type GetHcVpnGatewayVpnInterface struct {
@@ -19608,6 +19872,8 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayArgs{})
@@ -19698,6 +19964,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterArrayInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabelInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterFilterLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleMetadataFilterFilterLabelArrayInput)(nil)).Elem(), GetGlobalForwardingRuleMetadataFilterFilterLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleServiceDirectoryRegistrationInput)(nil)).Elem(), GetGlobalForwardingRuleServiceDirectoryRegistrationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetGlobalForwardingRuleServiceDirectoryRegistrationArrayInput)(nil)).Elem(), GetGlobalForwardingRuleServiceDirectoryRegistrationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHcVpnGatewayVpnInterfaceInput)(nil)).Elem(), GetHcVpnGatewayVpnInterfaceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHcVpnGatewayVpnInterfaceArrayInput)(nil)).Elem(), GetHcVpnGatewayVpnInterfaceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetHealthCheckGrpcHealthCheckInput)(nil)).Elem(), GetHealthCheckGrpcHealthCheckArgs{})
@@ -19928,6 +20196,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayFixedDelayOutput{})
@@ -20018,6 +20288,8 @@ func init() {
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterArrayOutput{})
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelOutput{})
 	pulumi.RegisterOutputType(GetGlobalForwardingRuleMetadataFilterFilterLabelArrayOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleServiceDirectoryRegistrationOutput{})
+	pulumi.RegisterOutputType(GetGlobalForwardingRuleServiceDirectoryRegistrationArrayOutput{})
 	pulumi.RegisterOutputType(GetHcVpnGatewayVpnInterfaceOutput{})
 	pulumi.RegisterOutputType(GetHcVpnGatewayVpnInterfaceArrayOutput{})
 	pulumi.RegisterOutputType(GetHealthCheckGrpcHealthCheckOutput{})

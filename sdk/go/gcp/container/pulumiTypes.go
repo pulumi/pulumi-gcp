@@ -24040,8 +24040,9 @@ type ClusterNodePool struct {
 	// locations. In contrast, in a regional cluster, cluster master nodes are present
 	// in multiple zones in the region. For that reason, regional clusters should be
 	// preferred.
-	NodeLocations   []string                        `pulumi:"nodeLocations"`
-	PlacementPolicy *ClusterNodePoolPlacementPolicy `pulumi:"placementPolicy"`
+	NodeLocations      []string                           `pulumi:"nodeLocations"`
+	PlacementPolicy    *ClusterNodePoolPlacementPolicy    `pulumi:"placementPolicy"`
+	QueuedProvisioning *ClusterNodePoolQueuedProvisioning `pulumi:"queuedProvisioning"`
 	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
 	UpgradeSettings *ClusterNodePoolUpgradeSettings `pulumi:"upgradeSettings"`
 	Version         *string                         `pulumi:"version"`
@@ -24099,8 +24100,9 @@ type ClusterNodePoolArgs struct {
 	// locations. In contrast, in a regional cluster, cluster master nodes are present
 	// in multiple zones in the region. For that reason, regional clusters should be
 	// preferred.
-	NodeLocations   pulumi.StringArrayInput                `pulumi:"nodeLocations"`
-	PlacementPolicy ClusterNodePoolPlacementPolicyPtrInput `pulumi:"placementPolicy"`
+	NodeLocations      pulumi.StringArrayInput                   `pulumi:"nodeLocations"`
+	PlacementPolicy    ClusterNodePoolPlacementPolicyPtrInput    `pulumi:"placementPolicy"`
+	QueuedProvisioning ClusterNodePoolQueuedProvisioningPtrInput `pulumi:"queuedProvisioning"`
 	// Specifies the upgrade settings for NAP created node pools. Structure is documented below.
 	UpgradeSettings ClusterNodePoolUpgradeSettingsPtrInput `pulumi:"upgradeSettings"`
 	Version         pulumi.StringPtrInput                  `pulumi:"version"`
@@ -24236,6 +24238,10 @@ func (o ClusterNodePoolOutput) NodeLocations() pulumi.StringArrayOutput {
 
 func (o ClusterNodePoolOutput) PlacementPolicy() ClusterNodePoolPlacementPolicyPtrOutput {
 	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolPlacementPolicy { return v.PlacementPolicy }).(ClusterNodePoolPlacementPolicyPtrOutput)
+}
+
+func (o ClusterNodePoolOutput) QueuedProvisioning() ClusterNodePoolQueuedProvisioningPtrOutput {
+	return o.ApplyT(func(v ClusterNodePool) *ClusterNodePoolQueuedProvisioning { return v.QueuedProvisioning }).(ClusterNodePoolQueuedProvisioningPtrOutput)
 }
 
 // Specifies the upgrade settings for NAP created node pools. Structure is documented below.
@@ -30917,6 +30923,143 @@ func (o ClusterNodePoolPlacementPolicyPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolQueuedProvisioning struct {
+	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterNodePoolQueuedProvisioningInput is an input type that accepts ClusterNodePoolQueuedProvisioningArgs and ClusterNodePoolQueuedProvisioningOutput values.
+// You can construct a concrete instance of `ClusterNodePoolQueuedProvisioningInput` via:
+//
+//	ClusterNodePoolQueuedProvisioningArgs{...}
+type ClusterNodePoolQueuedProvisioningInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolQueuedProvisioningOutput() ClusterNodePoolQueuedProvisioningOutput
+	ToClusterNodePoolQueuedProvisioningOutputWithContext(context.Context) ClusterNodePoolQueuedProvisioningOutput
+}
+
+type ClusterNodePoolQueuedProvisioningArgs struct {
+	// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterNodePoolQueuedProvisioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (i ClusterNodePoolQueuedProvisioningArgs) ToClusterNodePoolQueuedProvisioningOutput() ClusterNodePoolQueuedProvisioningOutput {
+	return i.ToClusterNodePoolQueuedProvisioningOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolQueuedProvisioningArgs) ToClusterNodePoolQueuedProvisioningOutputWithContext(ctx context.Context) ClusterNodePoolQueuedProvisioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolQueuedProvisioningOutput)
+}
+
+func (i ClusterNodePoolQueuedProvisioningArgs) ToClusterNodePoolQueuedProvisioningPtrOutput() ClusterNodePoolQueuedProvisioningPtrOutput {
+	return i.ToClusterNodePoolQueuedProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolQueuedProvisioningArgs) ToClusterNodePoolQueuedProvisioningPtrOutputWithContext(ctx context.Context) ClusterNodePoolQueuedProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolQueuedProvisioningOutput).ToClusterNodePoolQueuedProvisioningPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolQueuedProvisioningPtrInput is an input type that accepts ClusterNodePoolQueuedProvisioningArgs, ClusterNodePoolQueuedProvisioningPtr and ClusterNodePoolQueuedProvisioningPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolQueuedProvisioningPtrInput` via:
+//
+//	        ClusterNodePoolQueuedProvisioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolQueuedProvisioningPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolQueuedProvisioningPtrOutput() ClusterNodePoolQueuedProvisioningPtrOutput
+	ToClusterNodePoolQueuedProvisioningPtrOutputWithContext(context.Context) ClusterNodePoolQueuedProvisioningPtrOutput
+}
+
+type clusterNodePoolQueuedProvisioningPtrType ClusterNodePoolQueuedProvisioningArgs
+
+func ClusterNodePoolQueuedProvisioningPtr(v *ClusterNodePoolQueuedProvisioningArgs) ClusterNodePoolQueuedProvisioningPtrInput {
+	return (*clusterNodePoolQueuedProvisioningPtrType)(v)
+}
+
+func (*clusterNodePoolQueuedProvisioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (i *clusterNodePoolQueuedProvisioningPtrType) ToClusterNodePoolQueuedProvisioningPtrOutput() ClusterNodePoolQueuedProvisioningPtrOutput {
+	return i.ToClusterNodePoolQueuedProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolQueuedProvisioningPtrType) ToClusterNodePoolQueuedProvisioningPtrOutputWithContext(ctx context.Context) ClusterNodePoolQueuedProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolQueuedProvisioningPtrOutput)
+}
+
+type ClusterNodePoolQueuedProvisioningOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolQueuedProvisioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (o ClusterNodePoolQueuedProvisioningOutput) ToClusterNodePoolQueuedProvisioningOutput() ClusterNodePoolQueuedProvisioningOutput {
+	return o
+}
+
+func (o ClusterNodePoolQueuedProvisioningOutput) ToClusterNodePoolQueuedProvisioningOutputWithContext(ctx context.Context) ClusterNodePoolQueuedProvisioningOutput {
+	return o
+}
+
+func (o ClusterNodePoolQueuedProvisioningOutput) ToClusterNodePoolQueuedProvisioningPtrOutput() ClusterNodePoolQueuedProvisioningPtrOutput {
+	return o.ToClusterNodePoolQueuedProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolQueuedProvisioningOutput) ToClusterNodePoolQueuedProvisioningPtrOutputWithContext(ctx context.Context) ClusterNodePoolQueuedProvisioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolQueuedProvisioning) *ClusterNodePoolQueuedProvisioning {
+		return &v
+	}).(ClusterNodePoolQueuedProvisioningPtrOutput)
+}
+
+// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+func (o ClusterNodePoolQueuedProvisioningOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterNodePoolQueuedProvisioning) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterNodePoolQueuedProvisioningPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolQueuedProvisioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (o ClusterNodePoolQueuedProvisioningPtrOutput) ToClusterNodePoolQueuedProvisioningPtrOutput() ClusterNodePoolQueuedProvisioningPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolQueuedProvisioningPtrOutput) ToClusterNodePoolQueuedProvisioningPtrOutputWithContext(ctx context.Context) ClusterNodePoolQueuedProvisioningPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolQueuedProvisioningPtrOutput) Elem() ClusterNodePoolQueuedProvisioningOutput {
+	return o.ApplyT(func(v *ClusterNodePoolQueuedProvisioning) ClusterNodePoolQueuedProvisioning {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolQueuedProvisioning
+		return ret
+	}).(ClusterNodePoolQueuedProvisioningOutput)
+}
+
+// Enable Binary Authorization for this cluster. Deprecated in favor of `evaluationMode`.
+func (o ClusterNodePoolQueuedProvisioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolQueuedProvisioning) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterNodePoolUpgradeSettings struct {
@@ -39132,6 +39275,143 @@ func (o NodePoolPlacementPolicyPtrOutput) Type() pulumi.StringPtrOutput {
 		}
 		return &v.Type
 	}).(pulumi.StringPtrOutput)
+}
+
+type NodePoolQueuedProvisioning struct {
+	// Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// NodePoolQueuedProvisioningInput is an input type that accepts NodePoolQueuedProvisioningArgs and NodePoolQueuedProvisioningOutput values.
+// You can construct a concrete instance of `NodePoolQueuedProvisioningInput` via:
+//
+//	NodePoolQueuedProvisioningArgs{...}
+type NodePoolQueuedProvisioningInput interface {
+	pulumi.Input
+
+	ToNodePoolQueuedProvisioningOutput() NodePoolQueuedProvisioningOutput
+	ToNodePoolQueuedProvisioningOutputWithContext(context.Context) NodePoolQueuedProvisioningOutput
+}
+
+type NodePoolQueuedProvisioningArgs struct {
+	// Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (NodePoolQueuedProvisioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (i NodePoolQueuedProvisioningArgs) ToNodePoolQueuedProvisioningOutput() NodePoolQueuedProvisioningOutput {
+	return i.ToNodePoolQueuedProvisioningOutputWithContext(context.Background())
+}
+
+func (i NodePoolQueuedProvisioningArgs) ToNodePoolQueuedProvisioningOutputWithContext(ctx context.Context) NodePoolQueuedProvisioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolQueuedProvisioningOutput)
+}
+
+func (i NodePoolQueuedProvisioningArgs) ToNodePoolQueuedProvisioningPtrOutput() NodePoolQueuedProvisioningPtrOutput {
+	return i.ToNodePoolQueuedProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolQueuedProvisioningArgs) ToNodePoolQueuedProvisioningPtrOutputWithContext(ctx context.Context) NodePoolQueuedProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolQueuedProvisioningOutput).ToNodePoolQueuedProvisioningPtrOutputWithContext(ctx)
+}
+
+// NodePoolQueuedProvisioningPtrInput is an input type that accepts NodePoolQueuedProvisioningArgs, NodePoolQueuedProvisioningPtr and NodePoolQueuedProvisioningPtrOutput values.
+// You can construct a concrete instance of `NodePoolQueuedProvisioningPtrInput` via:
+//
+//	        NodePoolQueuedProvisioningArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolQueuedProvisioningPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolQueuedProvisioningPtrOutput() NodePoolQueuedProvisioningPtrOutput
+	ToNodePoolQueuedProvisioningPtrOutputWithContext(context.Context) NodePoolQueuedProvisioningPtrOutput
+}
+
+type nodePoolQueuedProvisioningPtrType NodePoolQueuedProvisioningArgs
+
+func NodePoolQueuedProvisioningPtr(v *NodePoolQueuedProvisioningArgs) NodePoolQueuedProvisioningPtrInput {
+	return (*nodePoolQueuedProvisioningPtrType)(v)
+}
+
+func (*nodePoolQueuedProvisioningPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (i *nodePoolQueuedProvisioningPtrType) ToNodePoolQueuedProvisioningPtrOutput() NodePoolQueuedProvisioningPtrOutput {
+	return i.ToNodePoolQueuedProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolQueuedProvisioningPtrType) ToNodePoolQueuedProvisioningPtrOutputWithContext(ctx context.Context) NodePoolQueuedProvisioningPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolQueuedProvisioningPtrOutput)
+}
+
+type NodePoolQueuedProvisioningOutput struct{ *pulumi.OutputState }
+
+func (NodePoolQueuedProvisioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (o NodePoolQueuedProvisioningOutput) ToNodePoolQueuedProvisioningOutput() NodePoolQueuedProvisioningOutput {
+	return o
+}
+
+func (o NodePoolQueuedProvisioningOutput) ToNodePoolQueuedProvisioningOutputWithContext(ctx context.Context) NodePoolQueuedProvisioningOutput {
+	return o
+}
+
+func (o NodePoolQueuedProvisioningOutput) ToNodePoolQueuedProvisioningPtrOutput() NodePoolQueuedProvisioningPtrOutput {
+	return o.ToNodePoolQueuedProvisioningPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolQueuedProvisioningOutput) ToNodePoolQueuedProvisioningPtrOutputWithContext(ctx context.Context) NodePoolQueuedProvisioningPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolQueuedProvisioning) *NodePoolQueuedProvisioning {
+		return &v
+	}).(NodePoolQueuedProvisioningPtrOutput)
+}
+
+// Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
+func (o NodePoolQueuedProvisioningOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v NodePoolQueuedProvisioning) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type NodePoolQueuedProvisioningPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolQueuedProvisioningPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (o NodePoolQueuedProvisioningPtrOutput) ToNodePoolQueuedProvisioningPtrOutput() NodePoolQueuedProvisioningPtrOutput {
+	return o
+}
+
+func (o NodePoolQueuedProvisioningPtrOutput) ToNodePoolQueuedProvisioningPtrOutputWithContext(ctx context.Context) NodePoolQueuedProvisioningPtrOutput {
+	return o
+}
+
+func (o NodePoolQueuedProvisioningPtrOutput) Elem() NodePoolQueuedProvisioningOutput {
+	return o.ApplyT(func(v *NodePoolQueuedProvisioning) NodePoolQueuedProvisioning {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolQueuedProvisioning
+		return ret
+	}).(NodePoolQueuedProvisioningOutput)
+}
+
+// Makes nodes obtainable through the [ProvisioningRequest API](https://cloud.google.com/kubernetes-engine/docs/how-to/provisioningrequest) exclusively.
+func (o NodePoolQueuedProvisioningPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NodePoolQueuedProvisioning) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type NodePoolUpgradeSettings struct {
@@ -47569,15 +47849,16 @@ type GetClusterNodePool struct {
 	Managements              []GetClusterNodePoolManagement  `pulumi:"managements"`
 	MaxPodsPerNode           int                             `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
-	Name              string                              `pulumi:"name"`
-	NamePrefix        string                              `pulumi:"namePrefix"`
-	NetworkConfigs    []GetClusterNodePoolNetworkConfig   `pulumi:"networkConfigs"`
-	NodeConfigs       []GetClusterNodePoolNodeConfig      `pulumi:"nodeConfigs"`
-	NodeCount         int                                 `pulumi:"nodeCount"`
-	NodeLocations     []string                            `pulumi:"nodeLocations"`
-	PlacementPolicies []GetClusterNodePoolPlacementPolicy `pulumi:"placementPolicies"`
-	UpgradeSettings   []GetClusterNodePoolUpgradeSetting  `pulumi:"upgradeSettings"`
-	Version           string                              `pulumi:"version"`
+	Name                string                                 `pulumi:"name"`
+	NamePrefix          string                                 `pulumi:"namePrefix"`
+	NetworkConfigs      []GetClusterNodePoolNetworkConfig      `pulumi:"networkConfigs"`
+	NodeConfigs         []GetClusterNodePoolNodeConfig         `pulumi:"nodeConfigs"`
+	NodeCount           int                                    `pulumi:"nodeCount"`
+	NodeLocations       []string                               `pulumi:"nodeLocations"`
+	PlacementPolicies   []GetClusterNodePoolPlacementPolicy    `pulumi:"placementPolicies"`
+	QueuedProvisionings []GetClusterNodePoolQueuedProvisioning `pulumi:"queuedProvisionings"`
+	UpgradeSettings     []GetClusterNodePoolUpgradeSetting     `pulumi:"upgradeSettings"`
+	Version             string                                 `pulumi:"version"`
 }
 
 // GetClusterNodePoolInput is an input type that accepts GetClusterNodePoolArgs and GetClusterNodePoolOutput values.
@@ -47599,15 +47880,16 @@ type GetClusterNodePoolArgs struct {
 	Managements              GetClusterNodePoolManagementArrayInput  `pulumi:"managements"`
 	MaxPodsPerNode           pulumi.IntInput                         `pulumi:"maxPodsPerNode"`
 	// The name of the cluster.
-	Name              pulumi.StringInput                          `pulumi:"name"`
-	NamePrefix        pulumi.StringInput                          `pulumi:"namePrefix"`
-	NetworkConfigs    GetClusterNodePoolNetworkConfigArrayInput   `pulumi:"networkConfigs"`
-	NodeConfigs       GetClusterNodePoolNodeConfigArrayInput      `pulumi:"nodeConfigs"`
-	NodeCount         pulumi.IntInput                             `pulumi:"nodeCount"`
-	NodeLocations     pulumi.StringArrayInput                     `pulumi:"nodeLocations"`
-	PlacementPolicies GetClusterNodePoolPlacementPolicyArrayInput `pulumi:"placementPolicies"`
-	UpgradeSettings   GetClusterNodePoolUpgradeSettingArrayInput  `pulumi:"upgradeSettings"`
-	Version           pulumi.StringInput                          `pulumi:"version"`
+	Name                pulumi.StringInput                             `pulumi:"name"`
+	NamePrefix          pulumi.StringInput                             `pulumi:"namePrefix"`
+	NetworkConfigs      GetClusterNodePoolNetworkConfigArrayInput      `pulumi:"networkConfigs"`
+	NodeConfigs         GetClusterNodePoolNodeConfigArrayInput         `pulumi:"nodeConfigs"`
+	NodeCount           pulumi.IntInput                                `pulumi:"nodeCount"`
+	NodeLocations       pulumi.StringArrayInput                        `pulumi:"nodeLocations"`
+	PlacementPolicies   GetClusterNodePoolPlacementPolicyArrayInput    `pulumi:"placementPolicies"`
+	QueuedProvisionings GetClusterNodePoolQueuedProvisioningArrayInput `pulumi:"queuedProvisionings"`
+	UpgradeSettings     GetClusterNodePoolUpgradeSettingArrayInput     `pulumi:"upgradeSettings"`
+	Version             pulumi.StringInput                             `pulumi:"version"`
 }
 
 func (GetClusterNodePoolArgs) ElementType() reflect.Type {
@@ -47712,6 +47994,10 @@ func (o GetClusterNodePoolOutput) NodeLocations() pulumi.StringArrayOutput {
 
 func (o GetClusterNodePoolOutput) PlacementPolicies() GetClusterNodePoolPlacementPolicyArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePool) []GetClusterNodePoolPlacementPolicy { return v.PlacementPolicies }).(GetClusterNodePoolPlacementPolicyArrayOutput)
+}
+
+func (o GetClusterNodePoolOutput) QueuedProvisionings() GetClusterNodePoolQueuedProvisioningArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePool) []GetClusterNodePoolQueuedProvisioning { return v.QueuedProvisionings }).(GetClusterNodePoolQueuedProvisioningArrayOutput)
 }
 
 func (o GetClusterNodePoolOutput) UpgradeSettings() GetClusterNodePoolUpgradeSettingArrayOutput {
@@ -51510,6 +51796,100 @@ func (o GetClusterNodePoolPlacementPolicyArrayOutput) Index(i pulumi.IntInput) G
 	}).(GetClusterNodePoolPlacementPolicyOutput)
 }
 
+type GetClusterNodePoolQueuedProvisioning struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterNodePoolQueuedProvisioningInput is an input type that accepts GetClusterNodePoolQueuedProvisioningArgs and GetClusterNodePoolQueuedProvisioningOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolQueuedProvisioningInput` via:
+//
+//	GetClusterNodePoolQueuedProvisioningArgs{...}
+type GetClusterNodePoolQueuedProvisioningInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolQueuedProvisioningOutput() GetClusterNodePoolQueuedProvisioningOutput
+	ToGetClusterNodePoolQueuedProvisioningOutputWithContext(context.Context) GetClusterNodePoolQueuedProvisioningOutput
+}
+
+type GetClusterNodePoolQueuedProvisioningArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterNodePoolQueuedProvisioningArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolQueuedProvisioningArgs) ToGetClusterNodePoolQueuedProvisioningOutput() GetClusterNodePoolQueuedProvisioningOutput {
+	return i.ToGetClusterNodePoolQueuedProvisioningOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolQueuedProvisioningArgs) ToGetClusterNodePoolQueuedProvisioningOutputWithContext(ctx context.Context) GetClusterNodePoolQueuedProvisioningOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolQueuedProvisioningOutput)
+}
+
+// GetClusterNodePoolQueuedProvisioningArrayInput is an input type that accepts GetClusterNodePoolQueuedProvisioningArray and GetClusterNodePoolQueuedProvisioningArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolQueuedProvisioningArrayInput` via:
+//
+//	GetClusterNodePoolQueuedProvisioningArray{ GetClusterNodePoolQueuedProvisioningArgs{...} }
+type GetClusterNodePoolQueuedProvisioningArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolQueuedProvisioningArrayOutput() GetClusterNodePoolQueuedProvisioningArrayOutput
+	ToGetClusterNodePoolQueuedProvisioningArrayOutputWithContext(context.Context) GetClusterNodePoolQueuedProvisioningArrayOutput
+}
+
+type GetClusterNodePoolQueuedProvisioningArray []GetClusterNodePoolQueuedProvisioningInput
+
+func (GetClusterNodePoolQueuedProvisioningArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolQueuedProvisioningArray) ToGetClusterNodePoolQueuedProvisioningArrayOutput() GetClusterNodePoolQueuedProvisioningArrayOutput {
+	return i.ToGetClusterNodePoolQueuedProvisioningArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolQueuedProvisioningArray) ToGetClusterNodePoolQueuedProvisioningArrayOutputWithContext(ctx context.Context) GetClusterNodePoolQueuedProvisioningArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolQueuedProvisioningArrayOutput)
+}
+
+type GetClusterNodePoolQueuedProvisioningOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolQueuedProvisioningOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolQueuedProvisioningOutput) ToGetClusterNodePoolQueuedProvisioningOutput() GetClusterNodePoolQueuedProvisioningOutput {
+	return o
+}
+
+func (o GetClusterNodePoolQueuedProvisioningOutput) ToGetClusterNodePoolQueuedProvisioningOutputWithContext(ctx context.Context) GetClusterNodePoolQueuedProvisioningOutput {
+	return o
+}
+
+func (o GetClusterNodePoolQueuedProvisioningOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterNodePoolQueuedProvisioning) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterNodePoolQueuedProvisioningArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolQueuedProvisioningArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolQueuedProvisioning)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolQueuedProvisioningArrayOutput) ToGetClusterNodePoolQueuedProvisioningArrayOutput() GetClusterNodePoolQueuedProvisioningArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolQueuedProvisioningArrayOutput) ToGetClusterNodePoolQueuedProvisioningArrayOutputWithContext(ctx context.Context) GetClusterNodePoolQueuedProvisioningArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolQueuedProvisioningArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolQueuedProvisioningOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolQueuedProvisioning {
+		return vs[0].([]GetClusterNodePoolQueuedProvisioning)[vs[1].(int)]
+	}).(GetClusterNodePoolQueuedProvisioningOutput)
+}
+
 type GetClusterNodePoolUpgradeSetting struct {
 	BlueGreenSettings []GetClusterNodePoolUpgradeSettingBlueGreenSetting `pulumi:"blueGreenSettings"`
 	MaxSurge          int                                                `pulumi:"maxSurge"`
@@ -53795,6 +54175,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrInput)(nil)).Elem(), ClusterNodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolPlacementPolicyInput)(nil)).Elem(), ClusterNodePoolPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolPlacementPolicyPtrInput)(nil)).Elem(), ClusterNodePoolPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolQueuedProvisioningInput)(nil)).Elem(), ClusterNodePoolQueuedProvisioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolQueuedProvisioningPtrInput)(nil)).Elem(), ClusterNodePoolQueuedProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolUpgradeSettingsInput)(nil)).Elem(), ClusterNodePoolUpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolUpgradeSettingsPtrInput)(nil)).Elem(), ClusterNodePoolUpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolUpgradeSettingsBlueGreenSettingsInput)(nil)).Elem(), ClusterNodePoolUpgradeSettingsBlueGreenSettingsArgs{})
@@ -53893,6 +54275,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigWorkloadMetadataConfigPtrInput)(nil)).Elem(), NodePoolNodeConfigWorkloadMetadataConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPlacementPolicyInput)(nil)).Elem(), NodePoolPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolPlacementPolicyPtrInput)(nil)).Elem(), NodePoolPlacementPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolQueuedProvisioningInput)(nil)).Elem(), NodePoolQueuedProvisioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolQueuedProvisioningPtrInput)(nil)).Elem(), NodePoolQueuedProvisioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolUpgradeSettingsInput)(nil)).Elem(), NodePoolUpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolUpgradeSettingsPtrInput)(nil)).Elem(), NodePoolUpgradeSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolUpgradeSettingsBlueGreenSettingsInput)(nil)).Elem(), NodePoolUpgradeSettingsBlueGreenSettingsArgs{})
@@ -54121,6 +54505,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNodeConfigWorkloadMetadataConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolPlacementPolicyInput)(nil)).Elem(), GetClusterNodePoolPlacementPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolPlacementPolicyArrayInput)(nil)).Elem(), GetClusterNodePoolPlacementPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolQueuedProvisioningInput)(nil)).Elem(), GetClusterNodePoolQueuedProvisioningArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolQueuedProvisioningArrayInput)(nil)).Elem(), GetClusterNodePoolQueuedProvisioningArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolUpgradeSettingInput)(nil)).Elem(), GetClusterNodePoolUpgradeSettingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolUpgradeSettingArrayInput)(nil)).Elem(), GetClusterNodePoolUpgradeSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolUpgradeSettingBlueGreenSettingInput)(nil)).Elem(), GetClusterNodePoolUpgradeSettingBlueGreenSettingArgs{})
@@ -54515,6 +54901,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigWorkloadMetadataConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolPlacementPolicyPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolQueuedProvisioningOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolQueuedProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolUpgradeSettingsOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolUpgradeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolUpgradeSettingsBlueGreenSettingsOutput{})
@@ -54613,6 +55001,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNodeConfigWorkloadMetadataConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(NodePoolPlacementPolicyPtrOutput{})
+	pulumi.RegisterOutputType(NodePoolQueuedProvisioningOutput{})
+	pulumi.RegisterOutputType(NodePoolQueuedProvisioningPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolUpgradeSettingsOutput{})
 	pulumi.RegisterOutputType(NodePoolUpgradeSettingsPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolUpgradeSettingsBlueGreenSettingsOutput{})
@@ -54841,6 +55231,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigWorkloadMetadataConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolPlacementPolicyOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolPlacementPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolQueuedProvisioningOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolQueuedProvisioningArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolUpgradeSettingOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolUpgradeSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolUpgradeSettingBlueGreenSettingOutput{})

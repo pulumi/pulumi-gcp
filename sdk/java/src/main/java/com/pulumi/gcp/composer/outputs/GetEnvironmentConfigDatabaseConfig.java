@@ -10,10 +10,14 @@ import java.util.Objects;
 @CustomType
 public final class GetEnvironmentConfigDatabaseConfig {
     private String machineType;
+    private String zone;
 
     private GetEnvironmentConfigDatabaseConfig() {}
     public String machineType() {
         return this.machineType;
+    }
+    public String zone() {
+        return this.zone;
     }
 
     public static Builder builder() {
@@ -26,10 +30,12 @@ public final class GetEnvironmentConfigDatabaseConfig {
     @CustomType.Builder
     public static final class Builder {
         private String machineType;
+        private String zone;
         public Builder() {}
         public Builder(GetEnvironmentConfigDatabaseConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.machineType = defaults.machineType;
+    	      this.zone = defaults.zone;
         }
 
         @CustomType.Setter
@@ -37,9 +43,15 @@ public final class GetEnvironmentConfigDatabaseConfig {
             this.machineType = Objects.requireNonNull(machineType);
             return this;
         }
+        @CustomType.Setter
+        public Builder zone(String zone) {
+            this.zone = Objects.requireNonNull(zone);
+            return this;
+        }
         public GetEnvironmentConfigDatabaseConfig build() {
             final var _resultValue = new GetEnvironmentConfigDatabaseConfig();
             _resultValue.machineType = machineType;
+            _resultValue.zone = zone;
             return _resultValue;
         }
     }

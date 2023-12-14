@@ -180,6 +180,41 @@ import * as utilities from "../utilities";
  *     location: "US",
  * });
  * ```
+ * ### Bigquery Connection Spark
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.dataproc.Cluster("basic", {
+ *     region: "us-central1",
+ *     clusterConfig: {
+ *         softwareConfig: {
+ *             overrideProperties: {
+ *                 "dataproc:dataproc.allow.zero.workers": "true",
+ *             },
+ *         },
+ *         masterConfig: {
+ *             numInstances: 1,
+ *             machineType: "e2-standard-2",
+ *             diskConfig: {
+ *                 bootDiskSizeGb: 35,
+ *             },
+ *         },
+ *     },
+ * });
+ * const connection = new gcp.bigquery.Connection("connection", {
+ *     connectionId: "my-connection",
+ *     location: "US",
+ *     friendlyName: "👋",
+ *     description: "a riveting description",
+ *     spark: {
+ *         sparkHistoryServerConfig: {
+ *             dataprocCluster: basic.id,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -294,6 +329,11 @@ export class Connection extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * Container for connection properties to execute stored procedures for Apache Spark. resources.
+     * Structure is documented below.
+     */
+    public readonly spark!: pulumi.Output<outputs.bigquery.ConnectionSpark | undefined>;
 
     /**
      * Create a Connection resource with the given unique name, arguments, and options.
@@ -320,6 +360,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["spark"] = state ? state.spark : undefined;
         } else {
             const args = argsOrState as ConnectionArgs | undefined;
             resourceInputs["aws"] = args ? args.aws : undefined;
@@ -332,6 +373,7 @@ export class Connection extends pulumi.CustomResource {
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["spark"] = args ? args.spark : undefined;
             resourceInputs["hasCredential"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
         }
@@ -405,6 +447,11 @@ export interface ConnectionState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Container for connection properties to execute stored procedures for Apache Spark. resources.
+     * Structure is documented below.
+     */
+    spark?: pulumi.Input<inputs.bigquery.ConnectionSpark>;
 }
 
 /**
@@ -463,4 +510,9 @@ export interface ConnectionArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Container for connection properties to execute stored procedures for Apache Spark. resources.
+     * Structure is documented below.
+     */
+    spark?: pulumi.Input<inputs.bigquery.ConnectionSpark>;
 }

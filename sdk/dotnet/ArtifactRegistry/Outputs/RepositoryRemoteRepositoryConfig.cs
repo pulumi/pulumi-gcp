@@ -43,6 +43,11 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly Outputs.RepositoryRemoteRepositoryConfigPythonRepository? PythonRepository;
         /// <summary>
+        /// The credentials used to access the remote repository.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RepositoryRemoteRepositoryConfigUpstreamCredentials? UpstreamCredentials;
+        /// <summary>
         /// Specific settings for an Yum remote repository.
         /// Structure is documented below.
         /// </summary>
@@ -62,6 +67,8 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
 
             Outputs.RepositoryRemoteRepositoryConfigPythonRepository? pythonRepository,
 
+            Outputs.RepositoryRemoteRepositoryConfigUpstreamCredentials? upstreamCredentials,
+
             Outputs.RepositoryRemoteRepositoryConfigYumRepository? yumRepository)
         {
             AptRepository = aptRepository;
@@ -70,6 +77,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
             MavenRepository = mavenRepository;
             NpmRepository = npmRepository;
             PythonRepository = pythonRepository;
+            UpstreamCredentials = upstreamCredentials;
             YumRepository = yumRepository;
         }
     }

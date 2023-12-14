@@ -34,7 +34,9 @@ namespace Pulumi.Gcp.CloudFunctionsV2.Outputs
         /// </summary>
         public readonly string? RetryPolicy;
         /// <summary>
-        /// The email of the service account for this function.
+        /// Optional. The email of the trigger's service account. The service account
+        /// must have permission to invoke Cloud Run services. If empty, defaults to the
+        /// Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
         /// </summary>
         public readonly string? ServiceAccountEmail;
         /// <summary>

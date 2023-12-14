@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -37,6 +39,12 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const example = new gcp.iam.WorkforcePool("example", {
+ *     accessRestrictions: {
+ *         allowedServices: [{
+ *             domain: "backstory.chronicle.security",
+ *         }],
+ *         disableProgrammaticSignin: false,
+ *     },
  *     description: "A sample workforce pool.",
  *     disabled: false,
  *     displayName: "Display name",
@@ -95,6 +103,12 @@ export class WorkforcePool extends pulumi.CustomResource {
         return obj['__pulumiType'] === WorkforcePool.__pulumiType;
     }
 
+    /**
+     * Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+     * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+     * Structure is documented below.
+     */
+    public readonly accessRestrictions!: pulumi.Output<outputs.iam.WorkforcePoolAccessRestrictions | undefined>;
     /**
      * A user-specified description of the pool. Cannot exceed 256 characters.
      */
@@ -165,6 +179,7 @@ export class WorkforcePool extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as WorkforcePoolState | undefined;
+            resourceInputs["accessRestrictions"] = state ? state.accessRestrictions : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -185,6 +200,7 @@ export class WorkforcePool extends pulumi.CustomResource {
             if ((!args || args.workforcePoolId === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'workforcePoolId'");
             }
+            resourceInputs["accessRestrictions"] = args ? args.accessRestrictions : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -204,6 +220,12 @@ export class WorkforcePool extends pulumi.CustomResource {
  * Input properties used for looking up and filtering WorkforcePool resources.
  */
 export interface WorkforcePoolState {
+    /**
+     * Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+     * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+     * Structure is documented below.
+     */
+    accessRestrictions?: pulumi.Input<inputs.iam.WorkforcePoolAccessRestrictions>;
     /**
      * A user-specified description of the pool. Cannot exceed 256 characters.
      */
@@ -266,6 +288,12 @@ export interface WorkforcePoolState {
  * The set of arguments for constructing a WorkforcePool resource.
  */
 export interface WorkforcePoolArgs {
+    /**
+     * Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+     * sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+     * Structure is documented below.
+     */
+    accessRestrictions?: pulumi.Input<inputs.iam.WorkforcePoolAccessRestrictions>;
     /**
      * A user-specified description of the pool. Cannot exceed 256 characters.
      */

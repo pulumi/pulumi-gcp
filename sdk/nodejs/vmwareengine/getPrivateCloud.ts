@@ -7,6 +7,11 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Use this data source to get details about a private cloud resource.
+ *
+ * To get more information about private cloud, see:
+ * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -14,8 +19,8 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const myPc = gcp.vmwareengine.getPrivateCloud({
- *     name: "my-pc",
  *     location: "us-central1-a",
+ *     name: "my-pc",
  * });
  * ```
  */
@@ -71,6 +76,11 @@ export interface GetPrivateCloudResult {
     readonly vcenters: outputs.vmwareengine.GetPrivateCloudVcenter[];
 }
 /**
+ * Use this data source to get details about a private cloud resource.
+ *
+ * To get more information about private cloud, see:
+ * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -78,8 +88,8 @@ export interface GetPrivateCloudResult {
  * import * as gcp from "@pulumi/gcp";
  *
  * const myPc = gcp.vmwareengine.getPrivateCloud({
- *     name: "my-pc",
  *     location: "us-central1-a",
+ *     name: "my-pc",
  * });
  * ```
  */

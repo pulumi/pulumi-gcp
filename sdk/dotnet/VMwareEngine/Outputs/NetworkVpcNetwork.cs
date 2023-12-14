@@ -21,7 +21,7 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
         public readonly string? Network;
         /// <summary>
         /// VMware Engine network type.
-        /// Possible values are: `LEGACY`.
+        /// Possible values are: `LEGACY`, `STANDARD`.
         /// </summary>
         public readonly string? Type;
 

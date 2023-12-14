@@ -1185,6 +1185,8 @@ type BucketLifecycleRuleCondition struct {
 	MatchesStorageClasses []string `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes []string `pulumi:"matchesSuffixes"`
+	// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+	NoAge *bool `pulumi:"noAge"`
 	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
 	NoncurrentTimeBefore *string `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
@@ -1221,6 +1223,8 @@ type BucketLifecycleRuleConditionArgs struct {
 	MatchesStorageClasses pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
 	// One or more matching name suffixes to satisfy this condition.
 	MatchesSuffixes pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
+	// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+	NoAge pulumi.BoolPtrInput `pulumi:"noAge"`
 	// Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
 	NoncurrentTimeBefore pulumi.StringPtrInput `pulumi:"noncurrentTimeBefore"`
 	// Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
@@ -1293,6 +1297,11 @@ func (o BucketLifecycleRuleConditionOutput) MatchesStorageClasses() pulumi.Strin
 // One or more matching name suffixes to satisfy this condition.
 func (o BucketLifecycleRuleConditionOutput) MatchesSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v BucketLifecycleRuleCondition) []string { return v.MatchesSuffixes }).(pulumi.StringArrayOutput)
+}
+
+// While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+func (o BucketLifecycleRuleConditionOutput) NoAge() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v BucketLifecycleRuleCondition) *bool { return v.NoAge }).(pulumi.BoolPtrOutput)
 }
 
 // Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
@@ -7706,6 +7715,7 @@ type GetBucketLifecycleRuleCondition struct {
 	MatchesPrefixes         []string `pulumi:"matchesPrefixes"`
 	MatchesStorageClasses   []string `pulumi:"matchesStorageClasses"`
 	MatchesSuffixes         []string `pulumi:"matchesSuffixes"`
+	NoAge                   bool     `pulumi:"noAge"`
 	NoncurrentTimeBefore    string   `pulumi:"noncurrentTimeBefore"`
 	NumNewerVersions        int      `pulumi:"numNewerVersions"`
 	WithState               string   `pulumi:"withState"`
@@ -7731,6 +7741,7 @@ type GetBucketLifecycleRuleConditionArgs struct {
 	MatchesPrefixes         pulumi.StringArrayInput `pulumi:"matchesPrefixes"`
 	MatchesStorageClasses   pulumi.StringArrayInput `pulumi:"matchesStorageClasses"`
 	MatchesSuffixes         pulumi.StringArrayInput `pulumi:"matchesSuffixes"`
+	NoAge                   pulumi.BoolInput        `pulumi:"noAge"`
 	NoncurrentTimeBefore    pulumi.StringInput      `pulumi:"noncurrentTimeBefore"`
 	NumNewerVersions        pulumi.IntInput         `pulumi:"numNewerVersions"`
 	WithState               pulumi.StringInput      `pulumi:"withState"`
@@ -7817,6 +7828,10 @@ func (o GetBucketLifecycleRuleConditionOutput) MatchesStorageClasses() pulumi.St
 
 func (o GetBucketLifecycleRuleConditionOutput) MatchesSuffixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) []string { return v.MatchesSuffixes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetBucketLifecycleRuleConditionOutput) NoAge() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetBucketLifecycleRuleCondition) bool { return v.NoAge }).(pulumi.BoolOutput)
 }
 
 func (o GetBucketLifecycleRuleConditionOutput) NoncurrentTimeBefore() pulumi.StringOutput {

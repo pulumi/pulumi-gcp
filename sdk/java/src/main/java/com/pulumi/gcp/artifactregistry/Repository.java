@@ -172,10 +172,17 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var my_repo_upstream = new Repository(&#34;my-repo-upstream&#34;, RepositoryArgs.builder()        
+ *         var my_repo_upstream_1 = new Repository(&#34;my-repo-upstream-1&#34;, RepositoryArgs.builder()        
  *             .location(&#34;us-central1&#34;)
- *             .repositoryId(&#34;my-repository-upstream&#34;)
- *             .description(&#34;example docker repository (upstream source)&#34;)
+ *             .repositoryId(&#34;my-repository-upstream-1&#34;)
+ *             .description(&#34;example docker repository (upstream source) 1&#34;)
+ *             .format(&#34;DOCKER&#34;)
+ *             .build());
+ * 
+ *         var my_repo_upstream_2 = new Repository(&#34;my-repo-upstream-2&#34;, RepositoryArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryId(&#34;my-repository-upstream-2&#34;)
+ *             .description(&#34;example docker repository (upstream source) 2&#34;)
  *             .format(&#34;DOCKER&#34;)
  *             .build());
  * 
@@ -186,11 +193,17 @@ import javax.annotation.Nullable;
  *             .format(&#34;DOCKER&#34;)
  *             .mode(&#34;VIRTUAL_REPOSITORY&#34;)
  *             .virtualRepositoryConfig(RepositoryVirtualRepositoryConfigArgs.builder()
- *                 .upstreamPolicies(RepositoryVirtualRepositoryConfigUpstreamPolicyArgs.builder()
- *                     .id(&#34;my-repository-upstream&#34;)
- *                     .repository(my_repo_upstream.id())
- *                     .priority(1)
- *                     .build())
+ *                 .upstreamPolicies(                
+ *                     RepositoryVirtualRepositoryConfigUpstreamPolicyArgs.builder()
+ *                         .id(&#34;my-repository-upstream-1&#34;)
+ *                         .repository(my_repo_upstream_1.id())
+ *                         .priority(20)
+ *                         .build(),
+ *                     RepositoryVirtualRepositoryConfigUpstreamPolicyArgs.builder()
+ *                         .id(&#34;my-repository-upstream-2&#34;)
+ *                         .repository(my_repo_upstream_2.id())
+ *                         .priority(10)
+ *                         .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn()
@@ -399,6 +412,85 @@ import javax.annotation.Nullable;
  *             .build(), CustomResourceOptions.builder()
  *                 .provider(google_beta)
  *                 .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Artifact Registry Repository Remote Custom
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var example_custom_remote_secret = new Secret(&#34;example-custom-remote-secret&#34;, SecretArgs.builder()        
+ *             .secretId(&#34;example-secret&#34;)
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto()
+ *                 .build())
+ *             .build());
+ * 
+ *         var example_custom_remote_secretVersion = new SecretVersion(&#34;example-custom-remote-secretVersion&#34;, SecretVersionArgs.builder()        
+ *             .secret(example_custom_remote_secret.id())
+ *             .secretData(&#34;remote-password&#34;)
+ *             .build());
+ * 
+ *         var secret_access = new SecretIamMember(&#34;secret-access&#34;, SecretIamMemberArgs.builder()        
+ *             .secretId(example_custom_remote_secret.id())
+ *             .role(&#34;roles/secretmanager.secretAccessor&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-artifactregistry.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *         var my_repo = new Repository(&#34;my-repo&#34;, RepositoryArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .repositoryId(&#34;example-custom-remote&#34;)
+ *             .description(&#34;example remote docker repository with credentials&#34;)
+ *             .format(&#34;DOCKER&#34;)
+ *             .mode(&#34;REMOTE_REPOSITORY&#34;)
+ *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
+ *                 .description(&#34;docker hub with custom credentials&#34;)
+ *                 .dockerRepository(RepositoryRemoteRepositoryConfigDockerRepositoryArgs.builder()
+ *                     .publicRepository(&#34;DOCKER_HUB&#34;)
+ *                     .build())
+ *                 .upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs.builder()
+ *                     .usernamePasswordCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs.builder()
+ *                         .username(&#34;remote-username&#34;)
+ *                         .passwordSecretVersion(example_custom_remote_secretVersion.name())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
  * 
  *     }
  * }

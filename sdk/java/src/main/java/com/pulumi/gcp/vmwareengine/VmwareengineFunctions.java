@@ -11,11 +11,20 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetNetworkArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPlainArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyPlainArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudPlainArgs;
 import com.pulumi.gcp.vmwareengine.outputs.GetClusterResult;
+import com.pulumi.gcp.vmwareengine.outputs.GetNetworkPeeringResult;
+import com.pulumi.gcp.vmwareengine.outputs.GetNetworkPolicyResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkResult;
+import com.pulumi.gcp.vmwareengine.outputs.GetNsxCredentialsResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -165,6 +174,11 @@ public final class VmwareengineFunctions {
         return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get details about a VMwareEngine network resource.
+     * 
+     * To get more information about VMwareEngine Network, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -188,8 +202,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;us-central1-default&#34;)
      *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;us-central1-default&#34;)
      *             .build());
      * 
      *     }
@@ -201,6 +215,11 @@ public final class VmwareengineFunctions {
         return getNetwork(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get details about a VMwareEngine network resource.
+     * 
+     * To get more information about VMwareEngine Network, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -224,8 +243,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;us-central1-default&#34;)
      *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;us-central1-default&#34;)
      *             .build());
      * 
      *     }
@@ -237,6 +256,11 @@ public final class VmwareengineFunctions {
         return getNetworkPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get details about a VMwareEngine network resource.
+     * 
+     * To get more information about VMwareEngine Network, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -260,8 +284,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;us-central1-default&#34;)
      *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;us-central1-default&#34;)
      *             .build());
      * 
      *     }
@@ -273,6 +297,11 @@ public final class VmwareengineFunctions {
         return Deployment.getInstance().invoke("gcp:vmwareengine/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get details about a VMwareEngine network resource.
+     * 
+     * To get more information about VMwareEngine Network, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -296,8 +325,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myNw = VmwareengineFunctions.getNetwork(GetNetworkArgs.builder()
-     *             .name(&#34;us-central1-default&#34;)
      *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;us-central1-default&#34;)
      *             .build());
      * 
      *     }
@@ -309,6 +338,495 @@ public final class VmwareengineFunctions {
         return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getNetwork:getNetwork", TypeShape.of(GetNetworkResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get details about a network peering resource.
+     * 
+     * To get more information about network peering, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPeerings)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNetworkPeering = VmwareengineFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+     *             .name(&#34;my-network-peering&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworkPeeringResult> getNetworkPeering(GetNetworkPeeringArgs args) {
+        return getNetworkPeering(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a network peering resource.
+     * 
+     * To get more information about network peering, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPeerings)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNetworkPeering = VmwareengineFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+     *             .name(&#34;my-network-peering&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworkPeeringResult> getNetworkPeeringPlain(GetNetworkPeeringPlainArgs args) {
+        return getNetworkPeeringPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a network peering resource.
+     * 
+     * To get more information about network peering, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPeerings)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNetworkPeering = VmwareengineFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+     *             .name(&#34;my-network-peering&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworkPeeringResult> getNetworkPeering(GetNetworkPeeringArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getNetworkPeering:getNetworkPeering", TypeShape.of(GetNetworkPeeringResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a network peering resource.
+     * 
+     * To get more information about network peering, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPeerings)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNetworkPeering = VmwareengineFunctions.getNetworkPeering(GetNetworkPeeringArgs.builder()
+     *             .name(&#34;my-network-peering&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworkPeeringResult> getNetworkPeeringPlain(GetNetworkPeeringPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getNetworkPeering:getNetworkPeering", TypeShape.of(GetNetworkPeeringResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a network policy resource.
+     * 
+     * To get more information about network policy, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-network-policy&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworkPolicyResult> getNetworkPolicy(GetNetworkPolicyArgs args) {
+        return getNetworkPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a network policy resource.
+     * 
+     * To get more information about network policy, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-network-policy&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworkPolicyResult> getNetworkPolicyPlain(GetNetworkPolicyPlainArgs args) {
+        return getNetworkPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a network policy resource.
+     * 
+     * To get more information about network policy, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-network-policy&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNetworkPolicyResult> getNetworkPolicy(GetNetworkPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", TypeShape.of(GetNetworkPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a network policy resource.
+     * 
+     * To get more information about network policy, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myNetworkPolicy = VmwareengineFunctions.getNetworkPolicy(GetNetworkPolicyArgs.builder()
+     *             .location(&#34;us-central1&#34;)
+     *             .name(&#34;my-network-policy&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNetworkPolicyResult> getNetworkPolicyPlain(GetNetworkPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", TypeShape.of(GetNetworkPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get NSX credentials for a Private Cloud.
+     * 
+     * To get more information about private cloud NSX credentials, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getNsxCredentials(GetNsxCredentialsArgs.builder()
+     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNsxCredentialsResult> getNsxCredentials(GetNsxCredentialsArgs args) {
+        return getNsxCredentials(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get NSX credentials for a Private Cloud.
+     * 
+     * To get more information about private cloud NSX credentials, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getNsxCredentials(GetNsxCredentialsArgs.builder()
+     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNsxCredentialsResult> getNsxCredentialsPlain(GetNsxCredentialsPlainArgs args) {
+        return getNsxCredentialsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get NSX credentials for a Private Cloud.
+     * 
+     * To get more information about private cloud NSX credentials, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getNsxCredentials(GetNsxCredentialsArgs.builder()
+     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetNsxCredentialsResult> getNsxCredentials(GetNsxCredentialsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", TypeShape.of(GetNsxCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get NSX credentials for a Private Cloud.
+     * 
+     * To get more information about private cloud NSX credentials, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showNsxCredentials)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getNsxCredentials(GetNsxCredentialsArgs.builder()
+     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetNsxCredentialsResult> getNsxCredentialsPlain(GetNsxCredentialsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", TypeShape.of(GetNsxCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a private cloud resource.
+     * 
+     * To get more information about private cloud, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -332,8 +850,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .name(&#34;my-pc&#34;)
      *             .location(&#34;us-central1-a&#34;)
+     *             .name(&#34;my-pc&#34;)
      *             .build());
      * 
      *     }
@@ -345,6 +863,11 @@ public final class VmwareengineFunctions {
         return getPrivateCloud(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get details about a private cloud resource.
+     * 
+     * To get more information about private cloud, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -368,8 +891,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .name(&#34;my-pc&#34;)
      *             .location(&#34;us-central1-a&#34;)
+     *             .name(&#34;my-pc&#34;)
      *             .build());
      * 
      *     }
@@ -381,6 +904,11 @@ public final class VmwareengineFunctions {
         return getPrivateCloudPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get details about a private cloud resource.
+     * 
+     * To get more information about private cloud, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -404,8 +932,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .name(&#34;my-pc&#34;)
      *             .location(&#34;us-central1-a&#34;)
+     *             .name(&#34;my-pc&#34;)
      *             .build());
      * 
      *     }
@@ -417,6 +945,11 @@ public final class VmwareengineFunctions {
         return Deployment.getInstance().invoke("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", TypeShape.of(GetPrivateCloudResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get details about a private cloud resource.
+     * 
+     * To get more information about private cloud, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -440,8 +973,8 @@ public final class VmwareengineFunctions {
      * 
      *     public static void stack(Context ctx) {
      *         final var myPc = VmwareengineFunctions.getPrivateCloud(GetPrivateCloudArgs.builder()
-     *             .name(&#34;my-pc&#34;)
      *             .location(&#34;us-central1-a&#34;)
+     *             .name(&#34;my-pc&#34;)
      *             .build());
      * 
      *     }

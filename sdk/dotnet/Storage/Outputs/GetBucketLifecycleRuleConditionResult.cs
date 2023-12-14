@@ -21,6 +21,7 @@ namespace Pulumi.Gcp.Storage.Outputs
         public readonly ImmutableArray<string> MatchesPrefixes;
         public readonly ImmutableArray<string> MatchesStorageClasses;
         public readonly ImmutableArray<string> MatchesSuffixes;
+        public readonly bool NoAge;
         public readonly string NoncurrentTimeBefore;
         public readonly int NumNewerVersions;
         public readonly string WithState;
@@ -43,6 +44,8 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             ImmutableArray<string> matchesSuffixes,
 
+            bool noAge,
+
             string noncurrentTimeBefore,
 
             int numNewerVersions,
@@ -57,6 +60,7 @@ namespace Pulumi.Gcp.Storage.Outputs
             MatchesPrefixes = matchesPrefixes;
             MatchesStorageClasses = matchesStorageClasses;
             MatchesSuffixes = matchesSuffixes;
+            NoAge = noAge;
             NoncurrentTimeBefore = noncurrentTimeBefore;
             NumNewerVersions = numNewerVersions;
             WithState = withState;

@@ -25,7 +25,7 @@ class NetworkArgs:
         The set of arguments for constructing a Network resource.
         :param pulumi.Input[str] location: The location where the VMwareEngineNetwork should reside.
         :param pulumi.Input[str] type: VMware Engine network type.
-               Possible values are: `LEGACY`.
+               Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[str] description: User-provided description for this VMware Engine network.
         :param pulumi.Input[str] name: The ID of the VMwareEngineNetwork.
                
@@ -60,7 +60,7 @@ class NetworkArgs:
     def type(self) -> pulumi.Input[str]:
         """
         VMware Engine network type.
-        Possible values are: `LEGACY`.
+        Possible values are: `LEGACY`, `STANDARD`.
         """
         return pulumi.get(self, "type")
 
@@ -132,7 +132,7 @@ class _NetworkState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: State of the VMware Engine network.
         :param pulumi.Input[str] type: VMware Engine network type.
-               Possible values are: `LEGACY`.
+               Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkVpcNetworkArgs']]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
                the internet, and other Google Cloud services.
@@ -224,7 +224,7 @@ class _NetworkState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         VMware Engine network type.
-        Possible values are: `LEGACY`.
+        Possible values are: `LEGACY`, `STANDARD`.
         """
         return pulumi.get(self, "type")
 
@@ -271,7 +271,24 @@ class Network(pulumi.CustomResource):
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Provides connectivity for VMware Engine private clouds.
+
+        To get more information about Network, see:
+
+        * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+
         ## Example Usage
+        ### Vmware Engine Network Standard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
+            description="VMwareEngine standard network sample",
+            location="global",
+            type="STANDARD")
+        ```
 
         ## Import
 
@@ -308,7 +325,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] type: VMware Engine network type.
-               Possible values are: `LEGACY`.
+               Possible values are: `LEGACY`, `STANDARD`.
         """
         ...
     @overload
@@ -317,7 +334,24 @@ class Network(pulumi.CustomResource):
                  args: NetworkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Provides connectivity for VMware Engine private clouds.
+
+        To get more information about Network, see:
+
+        * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+
         ## Example Usage
+        ### Vmware Engine Network Standard
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        vmw_engine_network = gcp.vmwareengine.Network("vmw-engine-network",
+            description="VMwareEngine standard network sample",
+            location="global",
+            type="STANDARD")
+        ```
 
         ## Import
 
@@ -419,7 +453,7 @@ class Network(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: State of the VMware Engine network.
         :param pulumi.Input[str] type: VMware Engine network type.
-               Possible values are: `LEGACY`.
+               Possible values are: `LEGACY`, `STANDARD`.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['NetworkVpcNetworkArgs']]]] vpc_networks: VMware Engine service VPC networks that provide connectivity from a private cloud to customer projects,
                the internet, and other Google Cloud services.
@@ -488,7 +522,7 @@ class Network(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         VMware Engine network type.
-        Possible values are: `LEGACY`.
+        Possible values are: `LEGACY`, `STANDARD`.
         """
         return pulumi.get(self, "type")
 

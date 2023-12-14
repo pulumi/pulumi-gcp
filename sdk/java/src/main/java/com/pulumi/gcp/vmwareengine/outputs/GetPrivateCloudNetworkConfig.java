@@ -10,12 +10,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetPrivateCloudNetworkConfig {
+    private String dnsServerIp;
     private String managementCidr;
     private Integer managementIpAddressLayoutVersion;
     private String vmwareEngineNetwork;
     private String vmwareEngineNetworkCanonical;
 
     private GetPrivateCloudNetworkConfig() {}
+    public String dnsServerIp() {
+        return this.dnsServerIp;
+    }
     public String managementCidr() {
         return this.managementCidr;
     }
@@ -38,6 +42,7 @@ public final class GetPrivateCloudNetworkConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String dnsServerIp;
         private String managementCidr;
         private Integer managementIpAddressLayoutVersion;
         private String vmwareEngineNetwork;
@@ -45,12 +50,18 @@ public final class GetPrivateCloudNetworkConfig {
         public Builder() {}
         public Builder(GetPrivateCloudNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dnsServerIp = defaults.dnsServerIp;
     	      this.managementCidr = defaults.managementCidr;
     	      this.managementIpAddressLayoutVersion = defaults.managementIpAddressLayoutVersion;
     	      this.vmwareEngineNetwork = defaults.vmwareEngineNetwork;
     	      this.vmwareEngineNetworkCanonical = defaults.vmwareEngineNetworkCanonical;
         }
 
+        @CustomType.Setter
+        public Builder dnsServerIp(String dnsServerIp) {
+            this.dnsServerIp = Objects.requireNonNull(dnsServerIp);
+            return this;
+        }
         @CustomType.Setter
         public Builder managementCidr(String managementCidr) {
             this.managementCidr = Objects.requireNonNull(managementCidr);
@@ -73,6 +84,7 @@ public final class GetPrivateCloudNetworkConfig {
         }
         public GetPrivateCloudNetworkConfig build() {
             final var _resultValue = new GetPrivateCloudNetworkConfig();
+            _resultValue.dnsServerIp = dnsServerIp;
             _resultValue.managementCidr = managementCidr;
             _resultValue.managementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
             _resultValue.vmwareEngineNetwork = vmwareEngineNetwork;

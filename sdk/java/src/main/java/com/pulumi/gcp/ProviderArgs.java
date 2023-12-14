@@ -741,6 +741,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.memcacheCustomEndpoint);
     }
 
+    @Import(name="migrationCenterCustomEndpoint")
+    private @Nullable Output<String> migrationCenterCustomEndpoint;
+
+    public Optional<Output<String>> migrationCenterCustomEndpoint() {
+        return Optional.ofNullable(this.migrationCenterCustomEndpoint);
+    }
+
     @Import(name="mlEngineCustomEndpoint")
     private @Nullable Output<String> mlEngineCustomEndpoint;
 
@@ -753,6 +760,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> monitoringCustomEndpoint() {
         return Optional.ofNullable(this.monitoringCustomEndpoint);
+    }
+
+    @Import(name="netappCustomEndpoint")
+    private @Nullable Output<String> netappCustomEndpoint;
+
+    public Optional<Output<String>> netappCustomEndpoint() {
+        return Optional.ofNullable(this.netappCustomEndpoint);
     }
 
     @Import(name="networkConnectivityCustomEndpoint")
@@ -921,6 +935,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> secretManagerCustomEndpoint() {
         return Optional.ofNullable(this.secretManagerCustomEndpoint);
+    }
+
+    @Import(name="secureSourceManagerCustomEndpoint")
+    private @Nullable Output<String> secureSourceManagerCustomEndpoint;
+
+    public Optional<Output<String>> secureSourceManagerCustomEndpoint() {
+        return Optional.ofNullable(this.secureSourceManagerCustomEndpoint);
     }
 
     @Import(name="securityCenterCustomEndpoint")
@@ -1197,8 +1218,10 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.loggingCustomEndpoint = $.loggingCustomEndpoint;
         this.lookerCustomEndpoint = $.lookerCustomEndpoint;
         this.memcacheCustomEndpoint = $.memcacheCustomEndpoint;
+        this.migrationCenterCustomEndpoint = $.migrationCenterCustomEndpoint;
         this.mlEngineCustomEndpoint = $.mlEngineCustomEndpoint;
         this.monitoringCustomEndpoint = $.monitoringCustomEndpoint;
+        this.netappCustomEndpoint = $.netappCustomEndpoint;
         this.networkConnectivityCustomEndpoint = $.networkConnectivityCustomEndpoint;
         this.networkManagementCustomEndpoint = $.networkManagementCustomEndpoint;
         this.networkSecurityCustomEndpoint = $.networkSecurityCustomEndpoint;
@@ -1223,6 +1246,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.runtimeconfigCustomEndpoint = $.runtimeconfigCustomEndpoint;
         this.scopes = $.scopes;
         this.secretManagerCustomEndpoint = $.secretManagerCustomEndpoint;
+        this.secureSourceManagerCustomEndpoint = $.secureSourceManagerCustomEndpoint;
         this.securityCenterCustomEndpoint = $.securityCenterCustomEndpoint;
         this.securityScannerCustomEndpoint = $.securityScannerCustomEndpoint;
         this.serviceDirectoryCustomEndpoint = $.serviceDirectoryCustomEndpoint;
@@ -2198,6 +2222,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return memcacheCustomEndpoint(Output.of(memcacheCustomEndpoint));
         }
 
+        public Builder migrationCenterCustomEndpoint(@Nullable Output<String> migrationCenterCustomEndpoint) {
+            $.migrationCenterCustomEndpoint = migrationCenterCustomEndpoint;
+            return this;
+        }
+
+        public Builder migrationCenterCustomEndpoint(String migrationCenterCustomEndpoint) {
+            return migrationCenterCustomEndpoint(Output.of(migrationCenterCustomEndpoint));
+        }
+
         public Builder mlEngineCustomEndpoint(@Nullable Output<String> mlEngineCustomEndpoint) {
             $.mlEngineCustomEndpoint = mlEngineCustomEndpoint;
             return this;
@@ -2214,6 +2247,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder monitoringCustomEndpoint(String monitoringCustomEndpoint) {
             return monitoringCustomEndpoint(Output.of(monitoringCustomEndpoint));
+        }
+
+        public Builder netappCustomEndpoint(@Nullable Output<String> netappCustomEndpoint) {
+            $.netappCustomEndpoint = netappCustomEndpoint;
+            return this;
+        }
+
+        public Builder netappCustomEndpoint(String netappCustomEndpoint) {
+            return netappCustomEndpoint(Output.of(netappCustomEndpoint));
         }
 
         public Builder networkConnectivityCustomEndpoint(@Nullable Output<String> networkConnectivityCustomEndpoint) {
@@ -2434,6 +2476,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder secretManagerCustomEndpoint(String secretManagerCustomEndpoint) {
             return secretManagerCustomEndpoint(Output.of(secretManagerCustomEndpoint));
+        }
+
+        public Builder secureSourceManagerCustomEndpoint(@Nullable Output<String> secureSourceManagerCustomEndpoint) {
+            $.secureSourceManagerCustomEndpoint = secureSourceManagerCustomEndpoint;
+            return this;
+        }
+
+        public Builder secureSourceManagerCustomEndpoint(String secureSourceManagerCustomEndpoint) {
+            return secureSourceManagerCustomEndpoint(Output.of(secureSourceManagerCustomEndpoint));
         }
 
         public Builder securityCenterCustomEndpoint(@Nullable Output<String> securityCenterCustomEndpoint) {

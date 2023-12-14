@@ -88,7 +88,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigArgs extends com.p
     }
 
     /**
-     * Information on where to inspect
+     * Configuration of the timespan of the items to include in scanning
      * Structure is documented below.
      * 
      */
@@ -96,7 +96,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigArgs extends com.p
     private @Nullable Output<PreventionJobTriggerInspectJobStorageConfigTimespanConfigArgs> timespanConfig;
 
     /**
-     * @return Information on where to inspect
+     * @return Configuration of the timespan of the items to include in scanning
      * Structure is documented below.
      * 
      */
@@ -225,7 +225,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigArgs extends com.p
         }
 
         /**
-         * @param timespanConfig Information on where to inspect
+         * @param timespanConfig Configuration of the timespan of the items to include in scanning
          * Structure is documented below.
          * 
          * @return builder
@@ -237,7 +237,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigArgs extends com.p
         }
 
         /**
-         * @param timespanConfig Information on where to inspect
+         * @param timespanConfig Configuration of the timespan of the items to include in scanning
          * Structure is documented below.
          * 
          * @return builder

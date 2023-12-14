@@ -753,10 +753,15 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_repo_upstream = gcp.artifactregistry.Repository("my-repo-upstream",
+        my_repo_upstream_1 = gcp.artifactregistry.Repository("my-repo-upstream-1",
             location="us-central1",
-            repository_id="my-repository-upstream",
-            description="example docker repository (upstream source)",
+            repository_id="my-repository-upstream-1",
+            description="example docker repository (upstream source) 1",
+            format="DOCKER")
+        my_repo_upstream_2 = gcp.artifactregistry.Repository("my-repo-upstream-2",
+            location="us-central1",
+            repository_id="my-repository-upstream-2",
+            description="example docker repository (upstream source) 2",
             format="DOCKER")
         my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
@@ -765,11 +770,18 @@ class Repository(pulumi.CustomResource):
             format="DOCKER",
             mode="VIRTUAL_REPOSITORY",
             virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
-                upstream_policies=[gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
-                    id="my-repository-upstream",
-                    repository=my_repo_upstream.id,
-                    priority=1,
-                )],
+                upstream_policies=[
+                    gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
+                        id="my-repository-upstream-1",
+                        repository=my_repo_upstream_1.id,
+                        priority=20,
+                    ),
+                    gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
+                        id="my-repository-upstream-2",
+                        repository=my_repo_upstream_2.id,
+                        priority=10,
+                    ),
+                ],
             ),
             opts=pulumi.ResourceOptions(depends_on=[]))
         ```
@@ -887,6 +899,44 @@ class Repository(pulumi.CustomResource):
                 ),
             ],
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Artifact Registry Repository Remote Custom
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_custom_remote_secret = gcp.secretmanager.Secret("example-custom-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_custom_remote_secret_version = gcp.secretmanager.SecretVersion("example-custom-remote-secretVersion",
+            secret=example_custom_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_custom_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-custom-remote",
+            description="example remote docker repository with credentials",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="docker hub with custom credentials",
+                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
+                    public_repository="DOCKER_HUB",
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_custom_remote_secret_version.name,
+                    ),
+                ),
+            ))
         ```
 
         ## Import
@@ -1030,10 +1080,15 @@ class Repository(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_repo_upstream = gcp.artifactregistry.Repository("my-repo-upstream",
+        my_repo_upstream_1 = gcp.artifactregistry.Repository("my-repo-upstream-1",
             location="us-central1",
-            repository_id="my-repository-upstream",
-            description="example docker repository (upstream source)",
+            repository_id="my-repository-upstream-1",
+            description="example docker repository (upstream source) 1",
+            format="DOCKER")
+        my_repo_upstream_2 = gcp.artifactregistry.Repository("my-repo-upstream-2",
+            location="us-central1",
+            repository_id="my-repository-upstream-2",
+            description="example docker repository (upstream source) 2",
             format="DOCKER")
         my_repo = gcp.artifactregistry.Repository("my-repo",
             location="us-central1",
@@ -1042,11 +1097,18 @@ class Repository(pulumi.CustomResource):
             format="DOCKER",
             mode="VIRTUAL_REPOSITORY",
             virtual_repository_config=gcp.artifactregistry.RepositoryVirtualRepositoryConfigArgs(
-                upstream_policies=[gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
-                    id="my-repository-upstream",
-                    repository=my_repo_upstream.id,
-                    priority=1,
-                )],
+                upstream_policies=[
+                    gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
+                        id="my-repository-upstream-1",
+                        repository=my_repo_upstream_1.id,
+                        priority=20,
+                    ),
+                    gcp.artifactregistry.RepositoryVirtualRepositoryConfigUpstreamPolicyArgs(
+                        id="my-repository-upstream-2",
+                        repository=my_repo_upstream_2.id,
+                        priority=10,
+                    ),
+                ],
             ),
             opts=pulumi.ResourceOptions(depends_on=[]))
         ```
@@ -1164,6 +1226,44 @@ class Repository(pulumi.CustomResource):
                 ),
             ],
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Artifact Registry Repository Remote Custom
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_custom_remote_secret = gcp.secretmanager.Secret("example-custom-remote-secret",
+            secret_id="example-secret",
+            replication=gcp.secretmanager.SecretReplicationArgs(
+                auto=gcp.secretmanager.SecretReplicationAutoArgs(),
+            ))
+        example_custom_remote_secret_version = gcp.secretmanager.SecretVersion("example-custom-remote-secretVersion",
+            secret=example_custom_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_custom_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-custom-remote",
+            description="example remote docker repository with credentials",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config=gcp.artifactregistry.RepositoryRemoteRepositoryConfigArgs(
+                description="docker hub with custom credentials",
+                docker_repository=gcp.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryArgs(
+                    public_repository="DOCKER_HUB",
+                ),
+                upstream_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs(
+                    username_password_credentials=gcp.artifactregistry.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs(
+                        username="remote-username",
+                        password_secret_version=example_custom_remote_secret_version.name,
+                    ),
+                ),
+            ))
         ```
 
         ## Import

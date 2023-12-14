@@ -21,6 +21,12 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * / Represents a private cloud resource. Private clouds are zonal resources.
+ * 
+ * To get more information about PrivateCloud, see:
+ * 
+ * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+ * 
  * ## Example Usage
  * ### Vmware Engine Private Cloud Basic
  * ```java
@@ -35,7 +41,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
  * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
- * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -50,12 +55,10 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var pc_nw = new Network(&#34;pc-nw&#34;, NetworkArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .type(&#34;LEGACY&#34;)
+ *             .location(&#34;global&#34;)
+ *             .type(&#34;STANDARD&#34;)
  *             .description(&#34;PC network description.&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *         var vmw_engine_pc = new PrivateCloud(&#34;vmw-engine-pc&#34;, PrivateCloudArgs.builder()        
  *             .location(&#34;us-west1-a&#34;)
@@ -71,66 +74,7 @@ import javax.annotation.Nullable;
  *                     .nodeCount(3)
  *                     .build())
  *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *     }
- * }
- * ```
- * ### Vmware Engine Private Cloud Full
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.vmwareengine.Network;
- * import com.pulumi.gcp.vmwareengine.NetworkArgs;
- * import com.pulumi.gcp.vmwareengine.PrivateCloud;
- * import com.pulumi.gcp.vmwareengine.PrivateCloudArgs;
- * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
- * import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
- * import com.pulumi.resources.CustomResourceOptions;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var pc_nw = new Network(&#34;pc-nw&#34;, NetworkArgs.builder()        
- *             .location(&#34;us-west1&#34;)
- *             .type(&#34;LEGACY&#34;)
- *             .description(&#34;PC network description.&#34;)
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
- * 
- *         var vmw_engine_pc = new PrivateCloud(&#34;vmw-engine-pc&#34;, PrivateCloudArgs.builder()        
- *             .location(&#34;us-west1-a&#34;)
- *             .description(&#34;Sample test PC.&#34;)
- *             .networkConfig(PrivateCloudNetworkConfigArgs.builder()
- *                 .managementCidr(&#34;192.168.30.0/24&#34;)
- *                 .vmwareEngineNetwork(pc_nw.id())
- *                 .build())
- *             .managementCluster(PrivateCloudManagementClusterArgs.builder()
- *                 .clusterId(&#34;sample-mgmt-cluster&#34;)
- *                 .nodeTypeConfigs(PrivateCloudManagementClusterNodeTypeConfigArgs.builder()
- *                     .nodeTypeId(&#34;standard-72&#34;)
- *                     .nodeCount(3)
- *                     .customCoreCount(32)
- *                     .build())
- *                 .build())
- *             .build(), CustomResourceOptions.builder()
- *                 .provider(google_beta)
- *                 .build());
+ *             .build());
  * 
  *     }
  * }

@@ -833,6 +833,14 @@ Object.defineProperty(exports, "memcacheCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const migrationCenterCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "migrationCenterCustomEndpoint", {
+    get() {
+        return __config.get("migrationCenterCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const mlEngineCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "mlEngineCustomEndpoint", {
     get() {
@@ -845,6 +853,14 @@ export declare const monitoringCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "monitoringCustomEndpoint", {
     get() {
         return __config.get("monitoringCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const netappCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "netappCustomEndpoint", {
+    get() {
+        return __config.get("netappCustomEndpoint");
     },
     enumerable: true,
 });
@@ -1037,6 +1053,14 @@ export declare const secretManagerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "secretManagerCustomEndpoint", {
     get() {
         return __config.get("secretManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const secureSourceManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "secureSourceManagerCustomEndpoint", {
+    get() {
+        return __config.get("secureSourceManagerCustomEndpoint");
     },
     enumerable: true,
 });

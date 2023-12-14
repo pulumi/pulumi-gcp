@@ -38,7 +38,9 @@ public final class FunctionEventTrigger {
      */
     private @Nullable String retryPolicy;
     /**
-     * @return The email of the service account for this function.
+     * @return Optional. The email of the trigger&#39;s service account. The service account
+     * must have permission to invoke Cloud Run services. If empty, defaults to the
+     * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
      * 
      */
     private @Nullable String serviceAccountEmail;
@@ -91,7 +93,9 @@ public final class FunctionEventTrigger {
         return Optional.ofNullable(this.retryPolicy);
     }
     /**
-     * @return The email of the service account for this function.
+     * @return Optional. The email of the trigger&#39;s service account. The service account
+     * must have permission to invoke Cloud Run services. If empty, defaults to the
+     * Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
      * 
      */
     public Optional<String> serviceAccountEmail() {

@@ -1075,6 +1075,276 @@ func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Title() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkforcePoolAccessRestrictions struct {
+	// Services allowed for web sign-in with the workforce pool.
+	// If not set by default there are no restrictions.
+	// Structure is documented below.
+	AllowedServices []WorkforcePoolAccessRestrictionsAllowedService `pulumi:"allowedServices"`
+	// Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
+	// See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+	DisableProgrammaticSignin *bool `pulumi:"disableProgrammaticSignin"`
+}
+
+// WorkforcePoolAccessRestrictionsInput is an input type that accepts WorkforcePoolAccessRestrictionsArgs and WorkforcePoolAccessRestrictionsOutput values.
+// You can construct a concrete instance of `WorkforcePoolAccessRestrictionsInput` via:
+//
+//	WorkforcePoolAccessRestrictionsArgs{...}
+type WorkforcePoolAccessRestrictionsInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolAccessRestrictionsOutput() WorkforcePoolAccessRestrictionsOutput
+	ToWorkforcePoolAccessRestrictionsOutputWithContext(context.Context) WorkforcePoolAccessRestrictionsOutput
+}
+
+type WorkforcePoolAccessRestrictionsArgs struct {
+	// Services allowed for web sign-in with the workforce pool.
+	// If not set by default there are no restrictions.
+	// Structure is documented below.
+	AllowedServices WorkforcePoolAccessRestrictionsAllowedServiceArrayInput `pulumi:"allowedServices"`
+	// Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
+	// See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+	DisableProgrammaticSignin pulumi.BoolPtrInput `pulumi:"disableProgrammaticSignin"`
+}
+
+func (WorkforcePoolAccessRestrictionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolAccessRestrictions)(nil)).Elem()
+}
+
+func (i WorkforcePoolAccessRestrictionsArgs) ToWorkforcePoolAccessRestrictionsOutput() WorkforcePoolAccessRestrictionsOutput {
+	return i.ToWorkforcePoolAccessRestrictionsOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolAccessRestrictionsArgs) ToWorkforcePoolAccessRestrictionsOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolAccessRestrictionsOutput)
+}
+
+func (i WorkforcePoolAccessRestrictionsArgs) ToWorkforcePoolAccessRestrictionsPtrOutput() WorkforcePoolAccessRestrictionsPtrOutput {
+	return i.ToWorkforcePoolAccessRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolAccessRestrictionsArgs) ToWorkforcePoolAccessRestrictionsPtrOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolAccessRestrictionsOutput).ToWorkforcePoolAccessRestrictionsPtrOutputWithContext(ctx)
+}
+
+// WorkforcePoolAccessRestrictionsPtrInput is an input type that accepts WorkforcePoolAccessRestrictionsArgs, WorkforcePoolAccessRestrictionsPtr and WorkforcePoolAccessRestrictionsPtrOutput values.
+// You can construct a concrete instance of `WorkforcePoolAccessRestrictionsPtrInput` via:
+//
+//	        WorkforcePoolAccessRestrictionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkforcePoolAccessRestrictionsPtrInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolAccessRestrictionsPtrOutput() WorkforcePoolAccessRestrictionsPtrOutput
+	ToWorkforcePoolAccessRestrictionsPtrOutputWithContext(context.Context) WorkforcePoolAccessRestrictionsPtrOutput
+}
+
+type workforcePoolAccessRestrictionsPtrType WorkforcePoolAccessRestrictionsArgs
+
+func WorkforcePoolAccessRestrictionsPtr(v *WorkforcePoolAccessRestrictionsArgs) WorkforcePoolAccessRestrictionsPtrInput {
+	return (*workforcePoolAccessRestrictionsPtrType)(v)
+}
+
+func (*workforcePoolAccessRestrictionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolAccessRestrictions)(nil)).Elem()
+}
+
+func (i *workforcePoolAccessRestrictionsPtrType) ToWorkforcePoolAccessRestrictionsPtrOutput() WorkforcePoolAccessRestrictionsPtrOutput {
+	return i.ToWorkforcePoolAccessRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (i *workforcePoolAccessRestrictionsPtrType) ToWorkforcePoolAccessRestrictionsPtrOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolAccessRestrictionsPtrOutput)
+}
+
+type WorkforcePoolAccessRestrictionsOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolAccessRestrictionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolAccessRestrictions)(nil)).Elem()
+}
+
+func (o WorkforcePoolAccessRestrictionsOutput) ToWorkforcePoolAccessRestrictionsOutput() WorkforcePoolAccessRestrictionsOutput {
+	return o
+}
+
+func (o WorkforcePoolAccessRestrictionsOutput) ToWorkforcePoolAccessRestrictionsOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsOutput {
+	return o
+}
+
+func (o WorkforcePoolAccessRestrictionsOutput) ToWorkforcePoolAccessRestrictionsPtrOutput() WorkforcePoolAccessRestrictionsPtrOutput {
+	return o.ToWorkforcePoolAccessRestrictionsPtrOutputWithContext(context.Background())
+}
+
+func (o WorkforcePoolAccessRestrictionsOutput) ToWorkforcePoolAccessRestrictionsPtrOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkforcePoolAccessRestrictions) *WorkforcePoolAccessRestrictions {
+		return &v
+	}).(WorkforcePoolAccessRestrictionsPtrOutput)
+}
+
+// Services allowed for web sign-in with the workforce pool.
+// If not set by default there are no restrictions.
+// Structure is documented below.
+func (o WorkforcePoolAccessRestrictionsOutput) AllowedServices() WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput {
+	return o.ApplyT(func(v WorkforcePoolAccessRestrictions) []WorkforcePoolAccessRestrictionsAllowedService {
+		return v.AllowedServices
+	}).(WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput)
+}
+
+// Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
+// See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+func (o WorkforcePoolAccessRestrictionsOutput) DisableProgrammaticSignin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolAccessRestrictions) *bool { return v.DisableProgrammaticSignin }).(pulumi.BoolPtrOutput)
+}
+
+type WorkforcePoolAccessRestrictionsPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolAccessRestrictionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkforcePoolAccessRestrictions)(nil)).Elem()
+}
+
+func (o WorkforcePoolAccessRestrictionsPtrOutput) ToWorkforcePoolAccessRestrictionsPtrOutput() WorkforcePoolAccessRestrictionsPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolAccessRestrictionsPtrOutput) ToWorkforcePoolAccessRestrictionsPtrOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsPtrOutput {
+	return o
+}
+
+func (o WorkforcePoolAccessRestrictionsPtrOutput) Elem() WorkforcePoolAccessRestrictionsOutput {
+	return o.ApplyT(func(v *WorkforcePoolAccessRestrictions) WorkforcePoolAccessRestrictions {
+		if v != nil {
+			return *v
+		}
+		var ret WorkforcePoolAccessRestrictions
+		return ret
+	}).(WorkforcePoolAccessRestrictionsOutput)
+}
+
+// Services allowed for web sign-in with the workforce pool.
+// If not set by default there are no restrictions.
+// Structure is documented below.
+func (o WorkforcePoolAccessRestrictionsPtrOutput) AllowedServices() WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput {
+	return o.ApplyT(func(v *WorkforcePoolAccessRestrictions) []WorkforcePoolAccessRestrictionsAllowedService {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedServices
+	}).(WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput)
+}
+
+// Disable programmatic sign-in by disabling token issue via the Security Token API endpoint.
+// See [Security Token Service API](https://cloud.google.com/iam/docs/reference/sts/rest).
+func (o WorkforcePoolAccessRestrictionsPtrOutput) DisableProgrammaticSignin() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkforcePoolAccessRestrictions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableProgrammaticSignin
+	}).(pulumi.BoolPtrOutput)
+}
+
+type WorkforcePoolAccessRestrictionsAllowedService struct {
+	// Domain name of the service.
+	// Example: console.cloud.google
+	Domain *string `pulumi:"domain"`
+}
+
+// WorkforcePoolAccessRestrictionsAllowedServiceInput is an input type that accepts WorkforcePoolAccessRestrictionsAllowedServiceArgs and WorkforcePoolAccessRestrictionsAllowedServiceOutput values.
+// You can construct a concrete instance of `WorkforcePoolAccessRestrictionsAllowedServiceInput` via:
+//
+//	WorkforcePoolAccessRestrictionsAllowedServiceArgs{...}
+type WorkforcePoolAccessRestrictionsAllowedServiceInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolAccessRestrictionsAllowedServiceOutput() WorkforcePoolAccessRestrictionsAllowedServiceOutput
+	ToWorkforcePoolAccessRestrictionsAllowedServiceOutputWithContext(context.Context) WorkforcePoolAccessRestrictionsAllowedServiceOutput
+}
+
+type WorkforcePoolAccessRestrictionsAllowedServiceArgs struct {
+	// Domain name of the service.
+	// Example: console.cloud.google
+	Domain pulumi.StringPtrInput `pulumi:"domain"`
+}
+
+func (WorkforcePoolAccessRestrictionsAllowedServiceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolAccessRestrictionsAllowedService)(nil)).Elem()
+}
+
+func (i WorkforcePoolAccessRestrictionsAllowedServiceArgs) ToWorkforcePoolAccessRestrictionsAllowedServiceOutput() WorkforcePoolAccessRestrictionsAllowedServiceOutput {
+	return i.ToWorkforcePoolAccessRestrictionsAllowedServiceOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolAccessRestrictionsAllowedServiceArgs) ToWorkforcePoolAccessRestrictionsAllowedServiceOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsAllowedServiceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolAccessRestrictionsAllowedServiceOutput)
+}
+
+// WorkforcePoolAccessRestrictionsAllowedServiceArrayInput is an input type that accepts WorkforcePoolAccessRestrictionsAllowedServiceArray and WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput values.
+// You can construct a concrete instance of `WorkforcePoolAccessRestrictionsAllowedServiceArrayInput` via:
+//
+//	WorkforcePoolAccessRestrictionsAllowedServiceArray{ WorkforcePoolAccessRestrictionsAllowedServiceArgs{...} }
+type WorkforcePoolAccessRestrictionsAllowedServiceArrayInput interface {
+	pulumi.Input
+
+	ToWorkforcePoolAccessRestrictionsAllowedServiceArrayOutput() WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput
+	ToWorkforcePoolAccessRestrictionsAllowedServiceArrayOutputWithContext(context.Context) WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput
+}
+
+type WorkforcePoolAccessRestrictionsAllowedServiceArray []WorkforcePoolAccessRestrictionsAllowedServiceInput
+
+func (WorkforcePoolAccessRestrictionsAllowedServiceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkforcePoolAccessRestrictionsAllowedService)(nil)).Elem()
+}
+
+func (i WorkforcePoolAccessRestrictionsAllowedServiceArray) ToWorkforcePoolAccessRestrictionsAllowedServiceArrayOutput() WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput {
+	return i.ToWorkforcePoolAccessRestrictionsAllowedServiceArrayOutputWithContext(context.Background())
+}
+
+func (i WorkforcePoolAccessRestrictionsAllowedServiceArray) ToWorkforcePoolAccessRestrictionsAllowedServiceArrayOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput)
+}
+
+type WorkforcePoolAccessRestrictionsAllowedServiceOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolAccessRestrictionsAllowedServiceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkforcePoolAccessRestrictionsAllowedService)(nil)).Elem()
+}
+
+func (o WorkforcePoolAccessRestrictionsAllowedServiceOutput) ToWorkforcePoolAccessRestrictionsAllowedServiceOutput() WorkforcePoolAccessRestrictionsAllowedServiceOutput {
+	return o
+}
+
+func (o WorkforcePoolAccessRestrictionsAllowedServiceOutput) ToWorkforcePoolAccessRestrictionsAllowedServiceOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsAllowedServiceOutput {
+	return o
+}
+
+// Domain name of the service.
+// Example: console.cloud.google
+func (o WorkforcePoolAccessRestrictionsAllowedServiceOutput) Domain() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v WorkforcePoolAccessRestrictionsAllowedService) *string { return v.Domain }).(pulumi.StringPtrOutput)
+}
+
+type WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput struct{ *pulumi.OutputState }
+
+func (WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]WorkforcePoolAccessRestrictionsAllowedService)(nil)).Elem()
+}
+
+func (o WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput) ToWorkforcePoolAccessRestrictionsAllowedServiceArrayOutput() WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput {
+	return o
+}
+
+func (o WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput) ToWorkforcePoolAccessRestrictionsAllowedServiceArrayOutputWithContext(ctx context.Context) WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput {
+	return o
+}
+
+func (o WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput) Index(i pulumi.IntInput) WorkforcePoolAccessRestrictionsAllowedServiceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) WorkforcePoolAccessRestrictionsAllowedService {
+		return vs[0].([]WorkforcePoolAccessRestrictionsAllowedService)[vs[1].(int)]
+	}).(WorkforcePoolAccessRestrictionsAllowedServiceOutput)
+}
+
 type WorkforcePoolProviderOidc struct {
 	// The client ID. Must match the audience claim of the JWT issued by the identity provider.
 	ClientId string `pulumi:"clientId"`
@@ -2891,6 +3161,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRulePtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionPtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsPtrInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsAllowedServiceInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsAllowedServiceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsAllowedServiceArrayInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsAllowedServiceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcPtrInput)(nil)).Elem(), WorkforcePoolProviderOidcArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolProviderOidcClientSecretInput)(nil)).Elem(), WorkforcePoolProviderOidcClientSecretArgs{})
@@ -2923,6 +3197,10 @@ func init() {
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRulePtrOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsPtrOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsAllowedServiceOutput{})
+	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsAllowedServiceArrayOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolProviderOidcClientSecretOutput{})

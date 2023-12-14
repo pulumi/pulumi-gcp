@@ -2999,7 +2999,7 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
 	RequireSsl *bool `pulumi:"requireSsl"`
 	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
-	// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
+	// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
 	// * For MySQL instances, use the same value pairs as the PostgreSQL instances.
 	// * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
 	SslMode *string `pulumi:"sslMode"`
@@ -3036,7 +3036,7 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	// Whether SSL connections over IP are enforced or not. To change this field, also set the corresponding value in `sslMode`.
 	RequireSsl pulumi.BoolPtrInput `pulumi:"requireSsl"`
 	// Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
-	// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
+	// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
 	// * For MySQL instances, use the same value pairs as the PostgreSQL instances.
 	// * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
 	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
@@ -3165,7 +3165,7 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) RequireSsl() pulumi.BoolP
 }
 
 // Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
-// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
+// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
 // * For MySQL instances, use the same value pairs as the PostgreSQL instances.
 // * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) SslMode() pulumi.StringPtrOutput {
@@ -3271,7 +3271,7 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) RequireSsl() pulumi.Bo
 }
 
 // Specify how SSL connection should be enforced in DB connections. This field provides more SSL enforcment options compared to `requireSsl`. To change this field, also set the correspoding value in `requireSsl`.
-// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
+// * For PostgreSQL instances, the value pairs are listed in the [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1beta4/instances#ipconfiguration) for `sslMode` field.
 // * For MySQL instances, use the same value pairs as the PostgreSQL instances.
 // * For SQL Server instances, set it to `ALLOW_UNENCRYPTED_AND_ENCRYPTED` when `require_ssl=false` and `ENCRYPTED_ONLY` otherwise.
 func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) SslMode() pulumi.StringPtrOutput {

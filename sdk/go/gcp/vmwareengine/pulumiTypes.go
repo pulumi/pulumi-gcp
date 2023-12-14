@@ -137,13 +137,333 @@ func (o ClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodeTy
 	}).(ClusterNodeTypeConfigOutput)
 }
 
+type NetworkPolicyExternalIp struct {
+	// True if the service is enabled; false otherwise.
+	Enabled *bool `pulumi:"enabled"`
+	// (Output)
+	// State of the service. New values may be added to this enum when appropriate.
+	State *string `pulumi:"state"`
+}
+
+// NetworkPolicyExternalIpInput is an input type that accepts NetworkPolicyExternalIpArgs and NetworkPolicyExternalIpOutput values.
+// You can construct a concrete instance of `NetworkPolicyExternalIpInput` via:
+//
+//	NetworkPolicyExternalIpArgs{...}
+type NetworkPolicyExternalIpInput interface {
+	pulumi.Input
+
+	ToNetworkPolicyExternalIpOutput() NetworkPolicyExternalIpOutput
+	ToNetworkPolicyExternalIpOutputWithContext(context.Context) NetworkPolicyExternalIpOutput
+}
+
+type NetworkPolicyExternalIpArgs struct {
+	// True if the service is enabled; false otherwise.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// (Output)
+	// State of the service. New values may be added to this enum when appropriate.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (NetworkPolicyExternalIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyExternalIp)(nil)).Elem()
+}
+
+func (i NetworkPolicyExternalIpArgs) ToNetworkPolicyExternalIpOutput() NetworkPolicyExternalIpOutput {
+	return i.ToNetworkPolicyExternalIpOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicyExternalIpArgs) ToNetworkPolicyExternalIpOutputWithContext(ctx context.Context) NetworkPolicyExternalIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyExternalIpOutput)
+}
+
+func (i NetworkPolicyExternalIpArgs) ToNetworkPolicyExternalIpPtrOutput() NetworkPolicyExternalIpPtrOutput {
+	return i.ToNetworkPolicyExternalIpPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicyExternalIpArgs) ToNetworkPolicyExternalIpPtrOutputWithContext(ctx context.Context) NetworkPolicyExternalIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyExternalIpOutput).ToNetworkPolicyExternalIpPtrOutputWithContext(ctx)
+}
+
+// NetworkPolicyExternalIpPtrInput is an input type that accepts NetworkPolicyExternalIpArgs, NetworkPolicyExternalIpPtr and NetworkPolicyExternalIpPtrOutput values.
+// You can construct a concrete instance of `NetworkPolicyExternalIpPtrInput` via:
+//
+//	        NetworkPolicyExternalIpArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkPolicyExternalIpPtrInput interface {
+	pulumi.Input
+
+	ToNetworkPolicyExternalIpPtrOutput() NetworkPolicyExternalIpPtrOutput
+	ToNetworkPolicyExternalIpPtrOutputWithContext(context.Context) NetworkPolicyExternalIpPtrOutput
+}
+
+type networkPolicyExternalIpPtrType NetworkPolicyExternalIpArgs
+
+func NetworkPolicyExternalIpPtr(v *NetworkPolicyExternalIpArgs) NetworkPolicyExternalIpPtrInput {
+	return (*networkPolicyExternalIpPtrType)(v)
+}
+
+func (*networkPolicyExternalIpPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPolicyExternalIp)(nil)).Elem()
+}
+
+func (i *networkPolicyExternalIpPtrType) ToNetworkPolicyExternalIpPtrOutput() NetworkPolicyExternalIpPtrOutput {
+	return i.ToNetworkPolicyExternalIpPtrOutputWithContext(context.Background())
+}
+
+func (i *networkPolicyExternalIpPtrType) ToNetworkPolicyExternalIpPtrOutputWithContext(ctx context.Context) NetworkPolicyExternalIpPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyExternalIpPtrOutput)
+}
+
+type NetworkPolicyExternalIpOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicyExternalIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyExternalIp)(nil)).Elem()
+}
+
+func (o NetworkPolicyExternalIpOutput) ToNetworkPolicyExternalIpOutput() NetworkPolicyExternalIpOutput {
+	return o
+}
+
+func (o NetworkPolicyExternalIpOutput) ToNetworkPolicyExternalIpOutputWithContext(ctx context.Context) NetworkPolicyExternalIpOutput {
+	return o
+}
+
+func (o NetworkPolicyExternalIpOutput) ToNetworkPolicyExternalIpPtrOutput() NetworkPolicyExternalIpPtrOutput {
+	return o.ToNetworkPolicyExternalIpPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkPolicyExternalIpOutput) ToNetworkPolicyExternalIpPtrOutputWithContext(ctx context.Context) NetworkPolicyExternalIpPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPolicyExternalIp) *NetworkPolicyExternalIp {
+		return &v
+	}).(NetworkPolicyExternalIpPtrOutput)
+}
+
+// True if the service is enabled; false otherwise.
+func (o NetworkPolicyExternalIpOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyExternalIp) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// State of the service. New values may be added to this enum when appropriate.
+func (o NetworkPolicyExternalIpOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyExternalIp) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type NetworkPolicyExternalIpPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicyExternalIpPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPolicyExternalIp)(nil)).Elem()
+}
+
+func (o NetworkPolicyExternalIpPtrOutput) ToNetworkPolicyExternalIpPtrOutput() NetworkPolicyExternalIpPtrOutput {
+	return o
+}
+
+func (o NetworkPolicyExternalIpPtrOutput) ToNetworkPolicyExternalIpPtrOutputWithContext(ctx context.Context) NetworkPolicyExternalIpPtrOutput {
+	return o
+}
+
+func (o NetworkPolicyExternalIpPtrOutput) Elem() NetworkPolicyExternalIpOutput {
+	return o.ApplyT(func(v *NetworkPolicyExternalIp) NetworkPolicyExternalIp {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPolicyExternalIp
+		return ret
+	}).(NetworkPolicyExternalIpOutput)
+}
+
+// True if the service is enabled; false otherwise.
+func (o NetworkPolicyExternalIpPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkPolicyExternalIp) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// State of the service. New values may be added to this enum when appropriate.
+func (o NetworkPolicyExternalIpPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkPolicyExternalIp) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
+type NetworkPolicyInternetAccess struct {
+	// True if the service is enabled; false otherwise.
+	Enabled *bool `pulumi:"enabled"`
+	// (Output)
+	// State of the service. New values may be added to this enum when appropriate.
+	State *string `pulumi:"state"`
+}
+
+// NetworkPolicyInternetAccessInput is an input type that accepts NetworkPolicyInternetAccessArgs and NetworkPolicyInternetAccessOutput values.
+// You can construct a concrete instance of `NetworkPolicyInternetAccessInput` via:
+//
+//	NetworkPolicyInternetAccessArgs{...}
+type NetworkPolicyInternetAccessInput interface {
+	pulumi.Input
+
+	ToNetworkPolicyInternetAccessOutput() NetworkPolicyInternetAccessOutput
+	ToNetworkPolicyInternetAccessOutputWithContext(context.Context) NetworkPolicyInternetAccessOutput
+}
+
+type NetworkPolicyInternetAccessArgs struct {
+	// True if the service is enabled; false otherwise.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// (Output)
+	// State of the service. New values may be added to this enum when appropriate.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (NetworkPolicyInternetAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyInternetAccess)(nil)).Elem()
+}
+
+func (i NetworkPolicyInternetAccessArgs) ToNetworkPolicyInternetAccessOutput() NetworkPolicyInternetAccessOutput {
+	return i.ToNetworkPolicyInternetAccessOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicyInternetAccessArgs) ToNetworkPolicyInternetAccessOutputWithContext(ctx context.Context) NetworkPolicyInternetAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyInternetAccessOutput)
+}
+
+func (i NetworkPolicyInternetAccessArgs) ToNetworkPolicyInternetAccessPtrOutput() NetworkPolicyInternetAccessPtrOutput {
+	return i.ToNetworkPolicyInternetAccessPtrOutputWithContext(context.Background())
+}
+
+func (i NetworkPolicyInternetAccessArgs) ToNetworkPolicyInternetAccessPtrOutputWithContext(ctx context.Context) NetworkPolicyInternetAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyInternetAccessOutput).ToNetworkPolicyInternetAccessPtrOutputWithContext(ctx)
+}
+
+// NetworkPolicyInternetAccessPtrInput is an input type that accepts NetworkPolicyInternetAccessArgs, NetworkPolicyInternetAccessPtr and NetworkPolicyInternetAccessPtrOutput values.
+// You can construct a concrete instance of `NetworkPolicyInternetAccessPtrInput` via:
+//
+//	        NetworkPolicyInternetAccessArgs{...}
+//
+//	or:
+//
+//	        nil
+type NetworkPolicyInternetAccessPtrInput interface {
+	pulumi.Input
+
+	ToNetworkPolicyInternetAccessPtrOutput() NetworkPolicyInternetAccessPtrOutput
+	ToNetworkPolicyInternetAccessPtrOutputWithContext(context.Context) NetworkPolicyInternetAccessPtrOutput
+}
+
+type networkPolicyInternetAccessPtrType NetworkPolicyInternetAccessArgs
+
+func NetworkPolicyInternetAccessPtr(v *NetworkPolicyInternetAccessArgs) NetworkPolicyInternetAccessPtrInput {
+	return (*networkPolicyInternetAccessPtrType)(v)
+}
+
+func (*networkPolicyInternetAccessPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPolicyInternetAccess)(nil)).Elem()
+}
+
+func (i *networkPolicyInternetAccessPtrType) ToNetworkPolicyInternetAccessPtrOutput() NetworkPolicyInternetAccessPtrOutput {
+	return i.ToNetworkPolicyInternetAccessPtrOutputWithContext(context.Background())
+}
+
+func (i *networkPolicyInternetAccessPtrType) ToNetworkPolicyInternetAccessPtrOutputWithContext(ctx context.Context) NetworkPolicyInternetAccessPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NetworkPolicyInternetAccessPtrOutput)
+}
+
+type NetworkPolicyInternetAccessOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicyInternetAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NetworkPolicyInternetAccess)(nil)).Elem()
+}
+
+func (o NetworkPolicyInternetAccessOutput) ToNetworkPolicyInternetAccessOutput() NetworkPolicyInternetAccessOutput {
+	return o
+}
+
+func (o NetworkPolicyInternetAccessOutput) ToNetworkPolicyInternetAccessOutputWithContext(ctx context.Context) NetworkPolicyInternetAccessOutput {
+	return o
+}
+
+func (o NetworkPolicyInternetAccessOutput) ToNetworkPolicyInternetAccessPtrOutput() NetworkPolicyInternetAccessPtrOutput {
+	return o.ToNetworkPolicyInternetAccessPtrOutputWithContext(context.Background())
+}
+
+func (o NetworkPolicyInternetAccessOutput) ToNetworkPolicyInternetAccessPtrOutputWithContext(ctx context.Context) NetworkPolicyInternetAccessPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NetworkPolicyInternetAccess) *NetworkPolicyInternetAccess {
+		return &v
+	}).(NetworkPolicyInternetAccessPtrOutput)
+}
+
+// True if the service is enabled; false otherwise.
+func (o NetworkPolicyInternetAccessOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyInternetAccess) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// State of the service. New values may be added to this enum when appropriate.
+func (o NetworkPolicyInternetAccessOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NetworkPolicyInternetAccess) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type NetworkPolicyInternetAccessPtrOutput struct{ *pulumi.OutputState }
+
+func (NetworkPolicyInternetAccessPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NetworkPolicyInternetAccess)(nil)).Elem()
+}
+
+func (o NetworkPolicyInternetAccessPtrOutput) ToNetworkPolicyInternetAccessPtrOutput() NetworkPolicyInternetAccessPtrOutput {
+	return o
+}
+
+func (o NetworkPolicyInternetAccessPtrOutput) ToNetworkPolicyInternetAccessPtrOutputWithContext(ctx context.Context) NetworkPolicyInternetAccessPtrOutput {
+	return o
+}
+
+func (o NetworkPolicyInternetAccessPtrOutput) Elem() NetworkPolicyInternetAccessOutput {
+	return o.ApplyT(func(v *NetworkPolicyInternetAccess) NetworkPolicyInternetAccess {
+		if v != nil {
+			return *v
+		}
+		var ret NetworkPolicyInternetAccess
+		return ret
+	}).(NetworkPolicyInternetAccessOutput)
+}
+
+// True if the service is enabled; false otherwise.
+func (o NetworkPolicyInternetAccessPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *NetworkPolicyInternetAccess) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// State of the service. New values may be added to this enum when appropriate.
+func (o NetworkPolicyInternetAccessPtrOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NetworkPolicyInternetAccess) *string {
+		if v == nil {
+			return nil
+		}
+		return v.State
+	}).(pulumi.StringPtrOutput)
+}
+
 type NetworkVpcNetwork struct {
 	// (Output)
 	// The relative resource name of the service VPC network this VMware Engine network is attached to.
 	// For example: projects/123123/global/networks/my-network
 	Network *string `pulumi:"network"`
 	// VMware Engine network type.
-	// Possible values are: `LEGACY`.
+	// Possible values are: `LEGACY`, `STANDARD`.
 	Type *string `pulumi:"type"`
 }
 
@@ -164,7 +484,7 @@ type NetworkVpcNetworkArgs struct {
 	// For example: projects/123123/global/networks/my-network
 	Network pulumi.StringPtrInput `pulumi:"network"`
 	// VMware Engine network type.
-	// Possible values are: `LEGACY`.
+	// Possible values are: `LEGACY`, `STANDARD`.
 	Type pulumi.StringPtrInput `pulumi:"type"`
 }
 
@@ -227,7 +547,7 @@ func (o NetworkVpcNetworkOutput) Network() pulumi.StringPtrOutput {
 }
 
 // VMware Engine network type.
-// Possible values are: `LEGACY`.
+// Possible values are: `LEGACY`, `STANDARD`.
 func (o NetworkVpcNetworkOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v NetworkVpcNetwork) *string { return v.Type }).(pulumi.StringPtrOutput)
 }
@@ -696,6 +1016,9 @@ func (o PrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulumi.I
 }
 
 type PrivateCloudNetworkConfig struct {
+	// (Output)
+	// DNS Server IP of the Private Cloud.
+	DnsServerIp *string `pulumi:"dnsServerIp"`
 	// Management CIDR used by VMware management appliances.
 	ManagementCidr string `pulumi:"managementCidr"`
 	// (Output)
@@ -728,6 +1051,9 @@ type PrivateCloudNetworkConfigInput interface {
 }
 
 type PrivateCloudNetworkConfigArgs struct {
+	// (Output)
+	// DNS Server IP of the Private Cloud.
+	DnsServerIp pulumi.StringPtrInput `pulumi:"dnsServerIp"`
 	// Management CIDR used by VMware management appliances.
 	ManagementCidr pulumi.StringInput `pulumi:"managementCidr"`
 	// (Output)
@@ -825,6 +1151,12 @@ func (o PrivateCloudNetworkConfigOutput) ToPrivateCloudNetworkConfigPtrOutputWit
 	}).(PrivateCloudNetworkConfigPtrOutput)
 }
 
+// (Output)
+// DNS Server IP of the Private Cloud.
+func (o PrivateCloudNetworkConfigOutput) DnsServerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrivateCloudNetworkConfig) *string { return v.DnsServerIp }).(pulumi.StringPtrOutput)
+}
+
 // Management CIDR used by VMware management appliances.
 func (o PrivateCloudNetworkConfigOutput) ManagementCidr() pulumi.StringOutput {
 	return o.ApplyT(func(v PrivateCloudNetworkConfig) string { return v.ManagementCidr }).(pulumi.StringOutput)
@@ -877,6 +1209,17 @@ func (o PrivateCloudNetworkConfigPtrOutput) Elem() PrivateCloudNetworkConfigOutp
 		var ret PrivateCloudNetworkConfig
 		return ret
 	}).(PrivateCloudNetworkConfigOutput)
+}
+
+// (Output)
+// DNS Server IP of the Private Cloud.
+func (o PrivateCloudNetworkConfigPtrOutput) DnsServerIp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateCloudNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServerIp
+	}).(pulumi.StringPtrOutput)
 }
 
 // Management CIDR used by VMware management appliances.
@@ -1287,6 +1630,206 @@ func (o GetClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) GetCluster
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodeTypeConfig {
 		return vs[0].([]GetClusterNodeTypeConfig)[vs[1].(int)]
 	}).(GetClusterNodeTypeConfigOutput)
+}
+
+type GetNetworkPolicyExternalIp struct {
+	Enabled bool   `pulumi:"enabled"`
+	State   string `pulumi:"state"`
+}
+
+// GetNetworkPolicyExternalIpInput is an input type that accepts GetNetworkPolicyExternalIpArgs and GetNetworkPolicyExternalIpOutput values.
+// You can construct a concrete instance of `GetNetworkPolicyExternalIpInput` via:
+//
+//	GetNetworkPolicyExternalIpArgs{...}
+type GetNetworkPolicyExternalIpInput interface {
+	pulumi.Input
+
+	ToGetNetworkPolicyExternalIpOutput() GetNetworkPolicyExternalIpOutput
+	ToGetNetworkPolicyExternalIpOutputWithContext(context.Context) GetNetworkPolicyExternalIpOutput
+}
+
+type GetNetworkPolicyExternalIpArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	State   pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetNetworkPolicyExternalIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPolicyExternalIp)(nil)).Elem()
+}
+
+func (i GetNetworkPolicyExternalIpArgs) ToGetNetworkPolicyExternalIpOutput() GetNetworkPolicyExternalIpOutput {
+	return i.ToGetNetworkPolicyExternalIpOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPolicyExternalIpArgs) ToGetNetworkPolicyExternalIpOutputWithContext(ctx context.Context) GetNetworkPolicyExternalIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPolicyExternalIpOutput)
+}
+
+// GetNetworkPolicyExternalIpArrayInput is an input type that accepts GetNetworkPolicyExternalIpArray and GetNetworkPolicyExternalIpArrayOutput values.
+// You can construct a concrete instance of `GetNetworkPolicyExternalIpArrayInput` via:
+//
+//	GetNetworkPolicyExternalIpArray{ GetNetworkPolicyExternalIpArgs{...} }
+type GetNetworkPolicyExternalIpArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkPolicyExternalIpArrayOutput() GetNetworkPolicyExternalIpArrayOutput
+	ToGetNetworkPolicyExternalIpArrayOutputWithContext(context.Context) GetNetworkPolicyExternalIpArrayOutput
+}
+
+type GetNetworkPolicyExternalIpArray []GetNetworkPolicyExternalIpInput
+
+func (GetNetworkPolicyExternalIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPolicyExternalIp)(nil)).Elem()
+}
+
+func (i GetNetworkPolicyExternalIpArray) ToGetNetworkPolicyExternalIpArrayOutput() GetNetworkPolicyExternalIpArrayOutput {
+	return i.ToGetNetworkPolicyExternalIpArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPolicyExternalIpArray) ToGetNetworkPolicyExternalIpArrayOutputWithContext(ctx context.Context) GetNetworkPolicyExternalIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPolicyExternalIpArrayOutput)
+}
+
+type GetNetworkPolicyExternalIpOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPolicyExternalIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPolicyExternalIp)(nil)).Elem()
+}
+
+func (o GetNetworkPolicyExternalIpOutput) ToGetNetworkPolicyExternalIpOutput() GetNetworkPolicyExternalIpOutput {
+	return o
+}
+
+func (o GetNetworkPolicyExternalIpOutput) ToGetNetworkPolicyExternalIpOutputWithContext(ctx context.Context) GetNetworkPolicyExternalIpOutput {
+	return o
+}
+
+func (o GetNetworkPolicyExternalIpOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkPolicyExternalIp) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetNetworkPolicyExternalIpOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPolicyExternalIp) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetNetworkPolicyExternalIpArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPolicyExternalIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPolicyExternalIp)(nil)).Elem()
+}
+
+func (o GetNetworkPolicyExternalIpArrayOutput) ToGetNetworkPolicyExternalIpArrayOutput() GetNetworkPolicyExternalIpArrayOutput {
+	return o
+}
+
+func (o GetNetworkPolicyExternalIpArrayOutput) ToGetNetworkPolicyExternalIpArrayOutputWithContext(ctx context.Context) GetNetworkPolicyExternalIpArrayOutput {
+	return o
+}
+
+func (o GetNetworkPolicyExternalIpArrayOutput) Index(i pulumi.IntInput) GetNetworkPolicyExternalIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkPolicyExternalIp {
+		return vs[0].([]GetNetworkPolicyExternalIp)[vs[1].(int)]
+	}).(GetNetworkPolicyExternalIpOutput)
+}
+
+type GetNetworkPolicyInternetAccess struct {
+	Enabled bool   `pulumi:"enabled"`
+	State   string `pulumi:"state"`
+}
+
+// GetNetworkPolicyInternetAccessInput is an input type that accepts GetNetworkPolicyInternetAccessArgs and GetNetworkPolicyInternetAccessOutput values.
+// You can construct a concrete instance of `GetNetworkPolicyInternetAccessInput` via:
+//
+//	GetNetworkPolicyInternetAccessArgs{...}
+type GetNetworkPolicyInternetAccessInput interface {
+	pulumi.Input
+
+	ToGetNetworkPolicyInternetAccessOutput() GetNetworkPolicyInternetAccessOutput
+	ToGetNetworkPolicyInternetAccessOutputWithContext(context.Context) GetNetworkPolicyInternetAccessOutput
+}
+
+type GetNetworkPolicyInternetAccessArgs struct {
+	Enabled pulumi.BoolInput   `pulumi:"enabled"`
+	State   pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetNetworkPolicyInternetAccessArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPolicyInternetAccess)(nil)).Elem()
+}
+
+func (i GetNetworkPolicyInternetAccessArgs) ToGetNetworkPolicyInternetAccessOutput() GetNetworkPolicyInternetAccessOutput {
+	return i.ToGetNetworkPolicyInternetAccessOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPolicyInternetAccessArgs) ToGetNetworkPolicyInternetAccessOutputWithContext(ctx context.Context) GetNetworkPolicyInternetAccessOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPolicyInternetAccessOutput)
+}
+
+// GetNetworkPolicyInternetAccessArrayInput is an input type that accepts GetNetworkPolicyInternetAccessArray and GetNetworkPolicyInternetAccessArrayOutput values.
+// You can construct a concrete instance of `GetNetworkPolicyInternetAccessArrayInput` via:
+//
+//	GetNetworkPolicyInternetAccessArray{ GetNetworkPolicyInternetAccessArgs{...} }
+type GetNetworkPolicyInternetAccessArrayInput interface {
+	pulumi.Input
+
+	ToGetNetworkPolicyInternetAccessArrayOutput() GetNetworkPolicyInternetAccessArrayOutput
+	ToGetNetworkPolicyInternetAccessArrayOutputWithContext(context.Context) GetNetworkPolicyInternetAccessArrayOutput
+}
+
+type GetNetworkPolicyInternetAccessArray []GetNetworkPolicyInternetAccessInput
+
+func (GetNetworkPolicyInternetAccessArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPolicyInternetAccess)(nil)).Elem()
+}
+
+func (i GetNetworkPolicyInternetAccessArray) ToGetNetworkPolicyInternetAccessArrayOutput() GetNetworkPolicyInternetAccessArrayOutput {
+	return i.ToGetNetworkPolicyInternetAccessArrayOutputWithContext(context.Background())
+}
+
+func (i GetNetworkPolicyInternetAccessArray) ToGetNetworkPolicyInternetAccessArrayOutputWithContext(ctx context.Context) GetNetworkPolicyInternetAccessArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetNetworkPolicyInternetAccessArrayOutput)
+}
+
+type GetNetworkPolicyInternetAccessOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPolicyInternetAccessOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetNetworkPolicyInternetAccess)(nil)).Elem()
+}
+
+func (o GetNetworkPolicyInternetAccessOutput) ToGetNetworkPolicyInternetAccessOutput() GetNetworkPolicyInternetAccessOutput {
+	return o
+}
+
+func (o GetNetworkPolicyInternetAccessOutput) ToGetNetworkPolicyInternetAccessOutputWithContext(ctx context.Context) GetNetworkPolicyInternetAccessOutput {
+	return o
+}
+
+func (o GetNetworkPolicyInternetAccessOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetNetworkPolicyInternetAccess) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+func (o GetNetworkPolicyInternetAccessOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetNetworkPolicyInternetAccess) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetNetworkPolicyInternetAccessArrayOutput struct{ *pulumi.OutputState }
+
+func (GetNetworkPolicyInternetAccessArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetNetworkPolicyInternetAccess)(nil)).Elem()
+}
+
+func (o GetNetworkPolicyInternetAccessArrayOutput) ToGetNetworkPolicyInternetAccessArrayOutput() GetNetworkPolicyInternetAccessArrayOutput {
+	return o
+}
+
+func (o GetNetworkPolicyInternetAccessArrayOutput) ToGetNetworkPolicyInternetAccessArrayOutputWithContext(ctx context.Context) GetNetworkPolicyInternetAccessArrayOutput {
+	return o
+}
+
+func (o GetNetworkPolicyInternetAccessArrayOutput) Index(i pulumi.IntInput) GetNetworkPolicyInternetAccessOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetNetworkPolicyInternetAccess {
+		return vs[0].([]GetNetworkPolicyInternetAccess)[vs[1].(int)]
+	}).(GetNetworkPolicyInternetAccessOutput)
 }
 
 type GetNetworkVpcNetwork struct {
@@ -1710,6 +2253,7 @@ func (o GetPrivateCloudManagementClusterNodeTypeConfigArrayOutput) Index(i pulum
 }
 
 type GetPrivateCloudNetworkConfig struct {
+	DnsServerIp                      string `pulumi:"dnsServerIp"`
 	ManagementCidr                   string `pulumi:"managementCidr"`
 	ManagementIpAddressLayoutVersion int    `pulumi:"managementIpAddressLayoutVersion"`
 	VmwareEngineNetwork              string `pulumi:"vmwareEngineNetwork"`
@@ -1728,6 +2272,7 @@ type GetPrivateCloudNetworkConfigInput interface {
 }
 
 type GetPrivateCloudNetworkConfigArgs struct {
+	DnsServerIp                      pulumi.StringInput `pulumi:"dnsServerIp"`
 	ManagementCidr                   pulumi.StringInput `pulumi:"managementCidr"`
 	ManagementIpAddressLayoutVersion pulumi.IntInput    `pulumi:"managementIpAddressLayoutVersion"`
 	VmwareEngineNetwork              pulumi.StringInput `pulumi:"vmwareEngineNetwork"`
@@ -1783,6 +2328,10 @@ func (o GetPrivateCloudNetworkConfigOutput) ToGetPrivateCloudNetworkConfigOutput
 
 func (o GetPrivateCloudNetworkConfigOutput) ToGetPrivateCloudNetworkConfigOutputWithContext(ctx context.Context) GetPrivateCloudNetworkConfigOutput {
 	return o
+}
+
+func (o GetPrivateCloudNetworkConfigOutput) DnsServerIp() pulumi.StringOutput {
+	return o.ApplyT(func(v GetPrivateCloudNetworkConfig) string { return v.DnsServerIp }).(pulumi.StringOutput)
 }
 
 func (o GetPrivateCloudNetworkConfigOutput) ManagementCidr() pulumi.StringOutput {
@@ -2048,6 +2597,10 @@ func (o GetPrivateCloudVcenterArrayOutput) Index(i pulumi.IntInput) GetPrivateCl
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigInput)(nil)).Elem(), ClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigArrayInput)(nil)).Elem(), ClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyExternalIpInput)(nil)).Elem(), NetworkPolicyExternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyExternalIpPtrInput)(nil)).Elem(), NetworkPolicyExternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyInternetAccessInput)(nil)).Elem(), NetworkPolicyInternetAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyInternetAccessPtrInput)(nil)).Elem(), NetworkPolicyInternetAccessArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkVpcNetworkInput)(nil)).Elem(), NetworkVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkVpcNetworkArrayInput)(nil)).Elem(), NetworkVpcNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudHcxInput)(nil)).Elem(), PrivateCloudHcxArgs{})
@@ -2064,6 +2617,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudVcenterArrayInput)(nil)).Elem(), PrivateCloudVcenterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigInput)(nil)).Elem(), GetClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPolicyExternalIpInput)(nil)).Elem(), GetNetworkPolicyExternalIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPolicyExternalIpArrayInput)(nil)).Elem(), GetNetworkPolicyExternalIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPolicyInternetAccessInput)(nil)).Elem(), GetNetworkPolicyInternetAccessArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPolicyInternetAccessArrayInput)(nil)).Elem(), GetNetworkPolicyInternetAccessArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkVpcNetworkInput)(nil)).Elem(), GetNetworkVpcNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkVpcNetworkArrayInput)(nil)).Elem(), GetNetworkVpcNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudHcxInput)(nil)).Elem(), GetPrivateCloudHcxArgs{})
@@ -2080,6 +2637,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudVcenterArrayInput)(nil)).Elem(), GetPrivateCloudVcenterArray{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(NetworkPolicyExternalIpOutput{})
+	pulumi.RegisterOutputType(NetworkPolicyExternalIpPtrOutput{})
+	pulumi.RegisterOutputType(NetworkPolicyInternetAccessOutput{})
+	pulumi.RegisterOutputType(NetworkPolicyInternetAccessPtrOutput{})
 	pulumi.RegisterOutputType(NetworkVpcNetworkOutput{})
 	pulumi.RegisterOutputType(NetworkVpcNetworkArrayOutput{})
 	pulumi.RegisterOutputType(PrivateCloudHcxOutput{})
@@ -2096,6 +2657,10 @@ func init() {
 	pulumi.RegisterOutputType(PrivateCloudVcenterArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkPolicyExternalIpOutput{})
+	pulumi.RegisterOutputType(GetNetworkPolicyExternalIpArrayOutput{})
+	pulumi.RegisterOutputType(GetNetworkPolicyInternetAccessOutput{})
+	pulumi.RegisterOutputType(GetNetworkPolicyInternetAccessArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkVpcNetworkOutput{})
 	pulumi.RegisterOutputType(GetNetworkVpcNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudHcxOutput{})

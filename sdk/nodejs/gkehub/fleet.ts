@@ -22,7 +22,15 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.gkehub.Fleet("default", {displayName: "my production fleet"});
+ * const _default = new gcp.gkehub.Fleet("default", {
+ *     defaultClusterConfig: {
+ *         securityPostureConfig: {
+ *             mode: "DISABLED",
+ *             vulnerabilityMode: "VULNERABILITY_DISABLED",
+ *         },
+ *     },
+ *     displayName: "my production fleet",
+ * });
  * ```
  *
  * ## Import
@@ -78,6 +86,11 @@ export class Fleet extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * The default cluster configurations to apply across the fleet.
+     * Structure is documented below.
+     */
+    public readonly defaultClusterConfig!: pulumi.Output<outputs.gkehub.FleetDefaultClusterConfig | undefined>;
+    /**
      * The time the fleet was deleted, in RFC3339 text format.
      */
     public /*out*/ readonly deleteTime!: pulumi.Output<string>;
@@ -121,6 +134,7 @@ export class Fleet extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as FleetState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["defaultClusterConfig"] = state ? state.defaultClusterConfig : undefined;
             resourceInputs["deleteTime"] = state ? state.deleteTime : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -129,6 +143,7 @@ export class Fleet extends pulumi.CustomResource {
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as FleetArgs | undefined;
+            resourceInputs["defaultClusterConfig"] = args ? args.defaultClusterConfig : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -150,6 +165,11 @@ export interface FleetState {
      * The time the fleet was created, in RFC3339 text format.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The default cluster configurations to apply across the fleet.
+     * Structure is documented below.
+     */
+    defaultClusterConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfig>;
     /**
      * The time the fleet was deleted, in RFC3339 text format.
      */
@@ -185,6 +205,11 @@ export interface FleetState {
  * The set of arguments for constructing a Fleet resource.
  */
 export interface FleetArgs {
+    /**
+     * The default cluster configurations to apply across the fleet.
+     * Structure is documented below.
+     */
+    defaultClusterConfig?: pulumi.Input<inputs.gkehub.FleetDefaultClusterConfig>;
     /**
      * A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
      * Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.

@@ -911,7 +911,9 @@ type FunctionEventTrigger struct {
 	// Retried execution is charged as any other execution.
 	// Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
 	RetryPolicy *string `pulumi:"retryPolicy"`
-	// The email of the service account for this function.
+	// Optional. The email of the trigger's service account. The service account
+	// must have permission to invoke Cloud Run services. If empty, defaults to the
+	// Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
 	ServiceAccountEmail *string `pulumi:"serviceAccountEmail"`
 	// (Output)
 	// Output only. The resource name of the Eventarc trigger.
@@ -947,7 +949,9 @@ type FunctionEventTriggerArgs struct {
 	// Retried execution is charged as any other execution.
 	// Possible values are: `RETRY_POLICY_UNSPECIFIED`, `RETRY_POLICY_DO_NOT_RETRY`, `RETRY_POLICY_RETRY`.
 	RetryPolicy pulumi.StringPtrInput `pulumi:"retryPolicy"`
-	// The email of the service account for this function.
+	// Optional. The email of the trigger's service account. The service account
+	// must have permission to invoke Cloud Run services. If empty, defaults to the
+	// Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
 	ServiceAccountEmail pulumi.StringPtrInput `pulumi:"serviceAccountEmail"`
 	// (Output)
 	// Output only. The resource name of the Eventarc trigger.
@@ -1060,7 +1064,9 @@ func (o FunctionEventTriggerOutput) RetryPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.RetryPolicy }).(pulumi.StringPtrOutput)
 }
 
-// The email of the service account for this function.
+// Optional. The email of the trigger's service account. The service account
+// must have permission to invoke Cloud Run services. If empty, defaults to the
+// Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
 func (o FunctionEventTriggerOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FunctionEventTrigger) *string { return v.ServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
@@ -1147,7 +1153,9 @@ func (o FunctionEventTriggerPtrOutput) RetryPolicy() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// The email of the service account for this function.
+// Optional. The email of the trigger's service account. The service account
+// must have permission to invoke Cloud Run services. If empty, defaults to the
+// Compute Engine default service account: {project_number}-compute@developer.gserviceaccount.com.
 func (o FunctionEventTriggerPtrOutput) ServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FunctionEventTrigger) *string {
 		if v == nil {

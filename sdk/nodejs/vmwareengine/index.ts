@@ -20,6 +20,21 @@ export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
 export const getNetworkOutput: typeof import("./getNetwork").getNetworkOutput = null as any;
 utilities.lazyLoad(exports, ["getNetwork","getNetworkOutput"], () => require("./getNetwork"));
 
+export { GetNetworkPeeringArgs, GetNetworkPeeringResult, GetNetworkPeeringOutputArgs } from "./getNetworkPeering";
+export const getNetworkPeering: typeof import("./getNetworkPeering").getNetworkPeering = null as any;
+export const getNetworkPeeringOutput: typeof import("./getNetworkPeering").getNetworkPeeringOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkPeering","getNetworkPeeringOutput"], () => require("./getNetworkPeering"));
+
+export { GetNetworkPolicyArgs, GetNetworkPolicyResult, GetNetworkPolicyOutputArgs } from "./getNetworkPolicy";
+export const getNetworkPolicy: typeof import("./getNetworkPolicy").getNetworkPolicy = null as any;
+export const getNetworkPolicyOutput: typeof import("./getNetworkPolicy").getNetworkPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getNetworkPolicy","getNetworkPolicyOutput"], () => require("./getNetworkPolicy"));
+
+export { GetNsxCredentialsArgs, GetNsxCredentialsResult, GetNsxCredentialsOutputArgs } from "./getNsxCredentials";
+export const getNsxCredentials: typeof import("./getNsxCredentials").getNsxCredentials = null as any;
+export const getNsxCredentialsOutput: typeof import("./getNsxCredentials").getNsxCredentialsOutput = null as any;
+utilities.lazyLoad(exports, ["getNsxCredentials","getNsxCredentialsOutput"], () => require("./getNsxCredentials"));
+
 export { GetPrivateCloudArgs, GetPrivateCloudResult, GetPrivateCloudOutputArgs } from "./getPrivateCloud";
 export const getPrivateCloud: typeof import("./getPrivateCloud").getPrivateCloud = null as any;
 export const getPrivateCloudOutput: typeof import("./getPrivateCloud").getPrivateCloudOutput = null as any;
@@ -29,6 +44,16 @@ export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
 utilities.lazyLoad(exports, ["Network"], () => require("./network"));
+
+export { NetworkPeeringArgs, NetworkPeeringState } from "./networkPeering";
+export type NetworkPeering = import("./networkPeering").NetworkPeering;
+export const NetworkPeering: typeof import("./networkPeering").NetworkPeering = null as any;
+utilities.lazyLoad(exports, ["NetworkPeering"], () => require("./networkPeering"));
+
+export { NetworkPolicyArgs, NetworkPolicyState } from "./networkPolicy";
+export type NetworkPolicy = import("./networkPolicy").NetworkPolicy;
+export const NetworkPolicy: typeof import("./networkPolicy").NetworkPolicy = null as any;
+utilities.lazyLoad(exports, ["NetworkPolicy"], () => require("./networkPolicy"));
 
 export { PrivateCloudArgs, PrivateCloudState } from "./privateCloud";
 export type PrivateCloud = import("./privateCloud").PrivateCloud;
@@ -44,6 +69,10 @@ const _module = {
                 return new Cluster(name, <any>undefined, { urn })
             case "gcp:vmwareengine/network:Network":
                 return new Network(name, <any>undefined, { urn })
+            case "gcp:vmwareengine/networkPeering:NetworkPeering":
+                return new NetworkPeering(name, <any>undefined, { urn })
+            case "gcp:vmwareengine/networkPolicy:NetworkPolicy":
+                return new NetworkPolicy(name, <any>undefined, { urn })
             case "gcp:vmwareengine/privateCloud:PrivateCloud":
                 return new PrivateCloud(name, <any>undefined, { urn })
             default:
@@ -53,4 +82,6 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/cluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/network", _module)
+pulumi.runtime.registerResourceModule("gcp", "vmwareengine/networkPeering", _module)
+pulumi.runtime.registerResourceModule("gcp", "vmwareengine/networkPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/privateCloud", _module)

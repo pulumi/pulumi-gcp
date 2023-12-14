@@ -67,6 +67,14 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := iam.NewWorkforcePool(ctx, "example", &iam.WorkforcePoolArgs{
+//				AccessRestrictions: &iam.WorkforcePoolAccessRestrictionsArgs{
+//					AllowedServices: iam.WorkforcePoolAccessRestrictionsAllowedServiceArray{
+//						&iam.WorkforcePoolAccessRestrictionsAllowedServiceArgs{
+//							Domain: pulumi.String("backstory.chronicle.security"),
+//						},
+//					},
+//					DisableProgrammaticSignin: pulumi.Bool(false),
+//				},
 //				Description:     pulumi.String("A sample workforce pool."),
 //				Disabled:        pulumi.Bool(false),
 //				DisplayName:     pulumi.String("Display name"),
@@ -112,6 +120,10 @@ import (
 type WorkforcePool struct {
 	pulumi.CustomResourceState
 
+	// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+	// Structure is documented below.
+	AccessRestrictions WorkforcePoolAccessRestrictionsPtrOutput `pulumi:"accessRestrictions"`
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -190,6 +202,10 @@ func GetWorkforcePool(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering WorkforcePool resources.
 type workforcePoolState struct {
+	// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+	// Structure is documented below.
+	AccessRestrictions *WorkforcePoolAccessRestrictions `pulumi:"accessRestrictions"`
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -230,6 +246,10 @@ type workforcePoolState struct {
 }
 
 type WorkforcePoolState struct {
+	// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+	// Structure is documented below.
+	AccessRestrictions WorkforcePoolAccessRestrictionsPtrInput
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -274,6 +294,10 @@ func (WorkforcePoolState) ElementType() reflect.Type {
 }
 
 type workforcePoolArgs struct {
+	// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+	// Structure is documented below.
+	AccessRestrictions *WorkforcePoolAccessRestrictions `pulumi:"accessRestrictions"`
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description *string `pulumi:"description"`
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -301,6 +325,10 @@ type workforcePoolArgs struct {
 
 // The set of arguments for constructing a WorkforcePool resource.
 type WorkforcePoolArgs struct {
+	// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+	// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+	// Structure is documented below.
+	AccessRestrictions WorkforcePoolAccessRestrictionsPtrInput
 	// A user-specified description of the pool. Cannot exceed 256 characters.
 	Description pulumi.StringPtrInput
 	// Whether the pool is disabled. You cannot use a disabled pool to exchange tokens,
@@ -411,6 +439,13 @@ func (o WorkforcePoolOutput) ToWorkforcePoolOutput() WorkforcePoolOutput {
 
 func (o WorkforcePoolOutput) ToWorkforcePoolOutputWithContext(ctx context.Context) WorkforcePoolOutput {
 	return o
+}
+
+// Configure access restrictions on the workforce pool users. This is an optional field. If specified web
+// sign-in can be restricted to given set of services or programmatic sign-in can be disabled for pool users.
+// Structure is documented below.
+func (o WorkforcePoolOutput) AccessRestrictions() WorkforcePoolAccessRestrictionsPtrOutput {
+	return o.ApplyT(func(v *WorkforcePool) WorkforcePoolAccessRestrictionsPtrOutput { return v.AccessRestrictions }).(WorkforcePoolAccessRestrictionsPtrOutput)
 }
 
 // A user-specified description of the pool. Cannot exceed 256 characters.

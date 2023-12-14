@@ -20,7 +20,7 @@ public final class NetworkVpcNetwork {
     private @Nullable String network;
     /**
      * @return VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      * 
      */
     private @Nullable String type;
@@ -37,7 +37,7 @@ public final class NetworkVpcNetwork {
     }
     /**
      * @return VMware Engine network type.
-     * Possible values are: `LEGACY`.
+     * Possible values are: `LEGACY`, `STANDARD`.
      * 
      */
     public Optional<String> type() {

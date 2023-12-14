@@ -35,6 +35,12 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gkehub.NewFleet(ctx, "default", &gkehub.FleetArgs{
+//				DefaultClusterConfig: &gkehub.FleetDefaultClusterConfigArgs{
+//					SecurityPostureConfig: &gkehub.FleetDefaultClusterConfigSecurityPostureConfigArgs{
+//						Mode:              pulumi.String("DISABLED"),
+//						VulnerabilityMode: pulumi.String("VULNERABILITY_DISABLED"),
+//					},
+//				},
 //				DisplayName: pulumi.String("my production fleet"),
 //			})
 //			if err != nil {
@@ -76,6 +82,9 @@ type Fleet struct {
 
 	// The time the fleet was created, in RFC3339 text format.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The default cluster configurations to apply across the fleet.
+	// Structure is documented below.
+	DefaultClusterConfig FleetDefaultClusterConfigPtrOutput `pulumi:"defaultClusterConfig"`
 	// The time the fleet was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringOutput `pulumi:"deleteTime"`
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
@@ -127,6 +136,9 @@ func GetFleet(ctx *pulumi.Context,
 type fleetState struct {
 	// The time the fleet was created, in RFC3339 text format.
 	CreateTime *string `pulumi:"createTime"`
+	// The default cluster configurations to apply across the fleet.
+	// Structure is documented below.
+	DefaultClusterConfig *FleetDefaultClusterConfig `pulumi:"defaultClusterConfig"`
 	// The time the fleet was deleted, in RFC3339 text format.
 	DeleteTime *string `pulumi:"deleteTime"`
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
@@ -149,6 +161,9 @@ type fleetState struct {
 type FleetState struct {
 	// The time the fleet was created, in RFC3339 text format.
 	CreateTime pulumi.StringPtrInput
+	// The default cluster configurations to apply across the fleet.
+	// Structure is documented below.
+	DefaultClusterConfig FleetDefaultClusterConfigPtrInput
 	// The time the fleet was deleted, in RFC3339 text format.
 	DeleteTime pulumi.StringPtrInput
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
@@ -173,6 +188,9 @@ func (FleetState) ElementType() reflect.Type {
 }
 
 type fleetArgs struct {
+	// The default cluster configurations to apply across the fleet.
+	// Structure is documented below.
+	DefaultClusterConfig *FleetDefaultClusterConfig `pulumi:"defaultClusterConfig"`
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
 	// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
 	DisplayName *string `pulumi:"displayName"`
@@ -183,6 +201,9 @@ type fleetArgs struct {
 
 // The set of arguments for constructing a Fleet resource.
 type FleetArgs struct {
+	// The default cluster configurations to apply across the fleet.
+	// Structure is documented below.
+	DefaultClusterConfig FleetDefaultClusterConfigPtrInput
 	// A user-assigned display name of the Fleet. When present, it must be between 4 to 30 characters.
 	// Allowed characters are: lowercase and uppercase letters, numbers, hyphen, single-quote, double-quote, space, and exclamation point.
 	DisplayName pulumi.StringPtrInput
@@ -281,6 +302,12 @@ func (o FleetOutput) ToFleetOutputWithContext(ctx context.Context) FleetOutput {
 // The time the fleet was created, in RFC3339 text format.
 func (o FleetOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Fleet) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// The default cluster configurations to apply across the fleet.
+// Structure is documented below.
+func (o FleetOutput) DefaultClusterConfig() FleetDefaultClusterConfigPtrOutput {
+	return o.ApplyT(func(v *Fleet) FleetDefaultClusterConfigPtrOutput { return v.DefaultClusterConfig }).(FleetDefaultClusterConfigPtrOutput)
 }
 
 // The time the fleet was deleted, in RFC3339 text format.

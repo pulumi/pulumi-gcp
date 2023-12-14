@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigConfigmanagement;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigMesh;
+import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigPolicycontroller;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -24,6 +25,12 @@ public final class FeatureFleetDefaultMemberConfig {
      * 
      */
     private @Nullable FeatureFleetDefaultMemberConfigMesh mesh;
+    /**
+     * @return Policy Controller spec
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable FeatureFleetDefaultMemberConfigPolicycontroller policycontroller;
 
     private FeatureFleetDefaultMemberConfig() {}
     /**
@@ -42,6 +49,14 @@ public final class FeatureFleetDefaultMemberConfig {
     public Optional<FeatureFleetDefaultMemberConfigMesh> mesh() {
         return Optional.ofNullable(this.mesh);
     }
+    /**
+     * @return Policy Controller spec
+     * Structure is documented below.
+     * 
+     */
+    public Optional<FeatureFleetDefaultMemberConfigPolicycontroller> policycontroller() {
+        return Optional.ofNullable(this.policycontroller);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -54,11 +69,13 @@ public final class FeatureFleetDefaultMemberConfig {
     public static final class Builder {
         private @Nullable FeatureFleetDefaultMemberConfigConfigmanagement configmanagement;
         private @Nullable FeatureFleetDefaultMemberConfigMesh mesh;
+        private @Nullable FeatureFleetDefaultMemberConfigPolicycontroller policycontroller;
         public Builder() {}
         public Builder(FeatureFleetDefaultMemberConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configmanagement = defaults.configmanagement;
     	      this.mesh = defaults.mesh;
+    	      this.policycontroller = defaults.policycontroller;
         }
 
         @CustomType.Setter
@@ -71,10 +88,16 @@ public final class FeatureFleetDefaultMemberConfig {
             this.mesh = mesh;
             return this;
         }
+        @CustomType.Setter
+        public Builder policycontroller(@Nullable FeatureFleetDefaultMemberConfigPolicycontroller policycontroller) {
+            this.policycontroller = policycontroller;
+            return this;
+        }
         public FeatureFleetDefaultMemberConfig build() {
             final var _resultValue = new FeatureFleetDefaultMemberConfig();
             _resultValue.configmanagement = configmanagement;
             _resultValue.mesh = mesh;
+            _resultValue.policycontroller = policycontroller;
             return _resultValue;
         }
     }

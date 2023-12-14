@@ -15,6 +15,7 @@ import com.pulumi.gcp.container.outputs.NodePoolManagement;
 import com.pulumi.gcp.container.outputs.NodePoolNetworkConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNodeConfig;
 import com.pulumi.gcp.container.outputs.NodePoolPlacementPolicy;
+import com.pulumi.gcp.container.outputs.NodePoolQueuedProvisioning;
 import com.pulumi.gcp.container.outputs.NodePoolUpgradeSettings;
 import java.lang.Integer;
 import java.lang.String;
@@ -429,8 +430,6 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      * Specifies a custom placement policy for the
      * nodes.
      * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
-     * 
      */
     @Export(name="placementPolicy", refs={NodePoolPlacementPolicy.class}, tree="[0]")
     private Output</* @Nullable */ NodePoolPlacementPolicy> placementPolicy;
@@ -438,8 +437,6 @@ public class NodePool extends com.pulumi.resources.CustomResource {
     /**
      * @return Specifies a custom placement policy for the
      * nodes.
-     * 
-     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
      * 
      */
     public Output<Optional<NodePoolPlacementPolicy>> placementPolicy() {
@@ -460,6 +457,26 @@ public class NodePool extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * Specifies node pool-level settings of queued provisioning.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * 
+     */
+    @Export(name="queuedProvisioning", refs={NodePoolQueuedProvisioning.class}, tree="[0]")
+    private Output</* @Nullable */ NodePoolQueuedProvisioning> queuedProvisioning;
+
+    /**
+     * @return Specifies node pool-level settings of queued provisioning.
+     * Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_autoscaling&#34;&gt;&lt;/a&gt;The `autoscaling` block supports (either total or per zone limits are required):
+     * 
+     */
+    public Output<Optional<NodePoolQueuedProvisioning>> queuedProvisioning() {
+        return Codegen.optional(this.queuedProvisioning);
     }
     /**
      * Specify node upgrade settings to change how GKE upgrades nodes.

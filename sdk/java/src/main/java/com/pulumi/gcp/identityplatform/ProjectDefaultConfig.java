@@ -16,6 +16,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * &gt; **Warning:** `gcp.identityplatform.Config` is deprecated and will be removed in the next major release of the provider. Use the `gcp.identityplatform.Config` resource instead. It contains a more comprehensive list of fields, and was created before `gcp.identityplatform.ProjectDefaultConfig` was added.
+ * 
  * There is no persistent data associated with this resource.
  * 
  * &gt; **Warning:** If you are using User ADCs (Application Default Credentials) with this resource,

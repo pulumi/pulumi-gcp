@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
     public sealed class PrivateCloudNetworkConfig
     {
         /// <summary>
+        /// (Output)
+        /// DNS Server IP of the Private Cloud.
+        /// </summary>
+        public readonly string? DnsServerIp;
+        /// <summary>
         /// Management CIDR used by VMware management appliances.
         /// </summary>
         public readonly string ManagementCidr;
@@ -42,6 +47,8 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
 
         [OutputConstructor]
         private PrivateCloudNetworkConfig(
+            string? dnsServerIp,
+
             string managementCidr,
 
             int? managementIpAddressLayoutVersion,
@@ -50,6 +57,7 @@ namespace Pulumi.Gcp.VMwareEngine.Outputs
 
             string? vmwareEngineNetworkCanonical)
         {
+            DnsServerIp = dnsServerIp;
             ManagementCidr = managementCidr;
             ManagementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
             VmwareEngineNetwork = vmwareEngineNetwork;

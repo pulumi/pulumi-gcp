@@ -5,7 +5,11 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .get_repository_iam_policy import *
 from .repository import *
+from .repository_iam_binding import *
+from .repository_iam_member import *
+from .repository_iam_policy import *
 from .repository_release_config import *
 from .repository_workflow_config import *
 from ._inputs import *

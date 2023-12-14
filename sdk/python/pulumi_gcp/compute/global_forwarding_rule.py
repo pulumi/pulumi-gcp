@@ -30,6 +30,7 @@ class GlobalForwardingRuleArgs:
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 service_directory_registrations: Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
@@ -157,6 +158,9 @@ class GlobalForwardingRuleArgs:
                cannot have overlapping `portRange`s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs'] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+               Currently, only supports a single Service Directory resource.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
                belong to for this Forwarding Rule, used in internal load balancing and
@@ -192,6 +196,8 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "port_range", port_range)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if service_directory_registrations is not None:
+            pulumi.set(__self__, "service_directory_registrations", service_directory_registrations)
         if source_ip_ranges is not None:
             pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
         if subnetwork is not None:
@@ -475,6 +481,20 @@ class GlobalForwardingRuleArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="serviceDirectoryRegistrations")
+    def service_directory_registrations(self) -> Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]:
+        """
+        Service Directory resources to register this forwarding rule with.
+        Currently, only supports a single Service Directory resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_registrations")
+
+    @service_directory_registrations.setter
+    def service_directory_registrations(self, value: Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]):
+        pulumi.set(self, "service_directory_registrations", value)
+
+    @property
     @pulumi.getter(name="sourceIpRanges")
     def source_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -527,6 +547,7 @@ class _GlobalForwardingRuleState:
                  psc_connection_status: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
+                 service_directory_registrations: Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None):
@@ -650,6 +671,9 @@ class _GlobalForwardingRuleState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs'] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+               Currently, only supports a single Service Directory resource.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
                belong to for this Forwarding Rule, used in internal load balancing and
@@ -712,6 +736,8 @@ class _GlobalForwardingRuleState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if self_link is not None:
             pulumi.set(__self__, "self_link", self_link)
+        if service_directory_registrations is not None:
+            pulumi.set(__self__, "service_directory_registrations", service_directory_registrations)
         if source_ip_ranges is not None:
             pulumi.set(__self__, "source_ip_ranges", source_ip_ranges)
         if subnetwork is not None:
@@ -1058,6 +1084,20 @@ class _GlobalForwardingRuleState:
         pulumi.set(self, "self_link", value)
 
     @property
+    @pulumi.getter(name="serviceDirectoryRegistrations")
+    def service_directory_registrations(self) -> Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]:
+        """
+        Service Directory resources to register this forwarding rule with.
+        Currently, only supports a single Service Directory resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_registrations")
+
+    @service_directory_registrations.setter
+    def service_directory_registrations(self, value: Optional[pulumi.Input['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]):
+        pulumi.set(self, "service_directory_registrations", value)
+
+    @property
     @pulumi.getter(name="sourceIpRanges")
     def source_ip_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
@@ -1130,6 +1170,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -1208,6 +1249,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
             network=network.id,
             ip_address=default_global_address.id,
             load_balancing_scheme="",
+            service_directory_registrations=gcp.compute.GlobalForwardingRuleServiceDirectoryRegistrationsArgs(
+                namespace="sd-namespace",
+                service_directory_region="europe-west3",
+            ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Private Service Connect Google Apis No Automate Dns
@@ -1379,6 +1424,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
                cannot have overlapping `portRange`s.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+               Currently, only supports a single Service Directory resource.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
                belong to for this Forwarding Rule, used in internal load balancing and
@@ -1481,6 +1529,10 @@ class GlobalForwardingRule(pulumi.CustomResource):
             network=network.id,
             ip_address=default_global_address.id,
             load_balancing_scheme="",
+            service_directory_registrations=gcp.compute.GlobalForwardingRuleServiceDirectoryRegistrationsArgs(
+                namespace="sd-namespace",
+                service_directory_region="europe-west3",
+            ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Private Service Connect Google Apis No Automate Dns
@@ -1569,6 +1621,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
                  source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  target: Optional[pulumi.Input[str]] = None,
@@ -1594,6 +1647,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["no_automate_dns_zone"] = no_automate_dns_zone
             __props__.__dict__["port_range"] = port_range
             __props__.__dict__["project"] = project
+            __props__.__dict__["service_directory_registrations"] = service_directory_registrations
             __props__.__dict__["source_ip_ranges"] = source_ip_ranges
             __props__.__dict__["subnetwork"] = subnetwork
             if target is None and not opts.urn:
@@ -1638,6 +1692,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             psc_connection_status: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
+            service_directory_registrations: Optional[pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']]] = None,
             source_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             subnetwork: Optional[pulumi.Input[str]] = None,
             target: Optional[pulumi.Input[str]] = None) -> 'GlobalForwardingRule':
@@ -1766,6 +1821,9 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] self_link: The URI of the created resource.
+        :param pulumi.Input[pulumi.InputType['GlobalForwardingRuleServiceDirectoryRegistrationsArgs']] service_directory_registrations: Service Directory resources to register this forwarding rule with.
+               Currently, only supports a single Service Directory resource.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_ip_ranges: If not empty, this Forwarding Rule will only forward the traffic when the source IP address matches one of the IP addresses or CIDR ranges set here. Note that a Forwarding Rule can only have up to 64 source IP ranges, and this field can only be used with a regional Forwarding Rule whose scheme is EXTERNAL. Each sourceIpRange entry should be either an IP address (for example, 1.2.3.4) or a CIDR range (for example, 1.2.3.0/24).
         :param pulumi.Input[str] subnetwork: This field identifies the subnetwork that the load balanced IP should
                belong to for this Forwarding Rule, used in internal load balancing and
@@ -1812,6 +1870,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["psc_connection_status"] = psc_connection_status
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["self_link"] = self_link
+        __props__.__dict__["service_directory_registrations"] = service_directory_registrations
         __props__.__dict__["source_ip_ranges"] = source_ip_ranges
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["target"] = target
@@ -2074,6 +2133,16 @@ class GlobalForwardingRule(pulumi.CustomResource):
         The URI of the created resource.
         """
         return pulumi.get(self, "self_link")
+
+    @property
+    @pulumi.getter(name="serviceDirectoryRegistrations")
+    def service_directory_registrations(self) -> pulumi.Output['outputs.GlobalForwardingRuleServiceDirectoryRegistrations']:
+        """
+        Service Directory resources to register this forwarding rule with.
+        Currently, only supports a single Service Directory resource.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_registrations")
 
     @property
     @pulumi.getter(name="sourceIpRanges")

@@ -481,6 +481,8 @@ class BucketLifecycleRuleCondition(dict):
             suggest = "matches_storage_classes"
         elif key == "matchesSuffixes":
             suggest = "matches_suffixes"
+        elif key == "noAge":
+            suggest = "no_age"
         elif key == "noncurrentTimeBefore":
             suggest = "noncurrent_time_before"
         elif key == "numNewerVersions":
@@ -508,6 +510,7 @@ class BucketLifecycleRuleCondition(dict):
                  matches_prefixes: Optional[Sequence[str]] = None,
                  matches_storage_classes: Optional[Sequence[str]] = None,
                  matches_suffixes: Optional[Sequence[str]] = None,
+                 no_age: Optional[bool] = None,
                  noncurrent_time_before: Optional[str] = None,
                  num_newer_versions: Optional[int] = None,
                  with_state: Optional[str] = None):
@@ -520,6 +523,7 @@ class BucketLifecycleRuleCondition(dict):
         :param Sequence[str] matches_prefixes: One or more matching name prefixes to satisfy this condition.
         :param Sequence[str] matches_storage_classes: [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of objects to satisfy this condition. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`, `DURABLE_REDUCED_AVAILABILITY`.
         :param Sequence[str] matches_suffixes: One or more matching name suffixes to satisfy this condition.
+        :param bool no_age: While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
         :param str noncurrent_time_before: Relevant only for versioned objects. The date in RFC 3339 (e.g. `2017-06-13`) when the object became nonconcurrent.
         :param int num_newer_versions: Relevant only for versioned objects. The number of newer versions of an object to satisfy this condition.
         :param str with_state: Match to live and/or archived objects. Unversioned buckets have only live objects. Supported values include: `"LIVE"`, `"ARCHIVED"`, `"ANY"`.
@@ -540,6 +544,8 @@ class BucketLifecycleRuleCondition(dict):
             pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
         if matches_suffixes is not None:
             pulumi.set(__self__, "matches_suffixes", matches_suffixes)
+        if no_age is not None:
+            pulumi.set(__self__, "no_age", no_age)
         if noncurrent_time_before is not None:
             pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         if num_newer_versions is not None:
@@ -610,6 +616,14 @@ class BucketLifecycleRuleCondition(dict):
         One or more matching name suffixes to satisfy this condition.
         """
         return pulumi.get(self, "matches_suffixes")
+
+    @property
+    @pulumi.getter(name="noAge")
+    def no_age(self) -> Optional[bool]:
+        """
+        While set `true`, `age` value will be omitted. **Note** Required to set `true` when `age` is unset in the config file.
+        """
+        return pulumi.get(self, "no_age")
 
     @property
     @pulumi.getter(name="noncurrentTimeBefore")
@@ -2647,6 +2661,7 @@ class GetBucketLifecycleRuleConditionResult(dict):
                  matches_prefixes: Sequence[str],
                  matches_storage_classes: Sequence[str],
                  matches_suffixes: Sequence[str],
+                 no_age: bool,
                  noncurrent_time_before: str,
                  num_newer_versions: int,
                  with_state: str):
@@ -2658,6 +2673,7 @@ class GetBucketLifecycleRuleConditionResult(dict):
         pulumi.set(__self__, "matches_prefixes", matches_prefixes)
         pulumi.set(__self__, "matches_storage_classes", matches_storage_classes)
         pulumi.set(__self__, "matches_suffixes", matches_suffixes)
+        pulumi.set(__self__, "no_age", no_age)
         pulumi.set(__self__, "noncurrent_time_before", noncurrent_time_before)
         pulumi.set(__self__, "num_newer_versions", num_newer_versions)
         pulumi.set(__self__, "with_state", with_state)
@@ -2701,6 +2717,11 @@ class GetBucketLifecycleRuleConditionResult(dict):
     @pulumi.getter(name="matchesSuffixes")
     def matches_suffixes(self) -> Sequence[str]:
         return pulumi.get(self, "matches_suffixes")
+
+    @property
+    @pulumi.getter(name="noAge")
+    def no_age(self) -> bool:
+        return pulumi.get(self, "no_age")
 
     @property
     @pulumi.getter(name="noncurrentTimeBefore")

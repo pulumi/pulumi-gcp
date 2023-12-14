@@ -9,6 +9,7 @@ import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigD
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigMavenRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigNpmRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigPythonRepository;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigUpstreamCredentials;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigYumRepository;
 import java.lang.String;
 import java.util.Objects;
@@ -52,6 +53,12 @@ public final class RepositoryRemoteRepositoryConfig {
      * 
      */
     private @Nullable RepositoryRemoteRepositoryConfigPythonRepository pythonRepository;
+    /**
+     * @return The credentials used to access the remote repository.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RepositoryRemoteRepositoryConfigUpstreamCredentials upstreamCredentials;
     /**
      * @return Specific settings for an Yum remote repository.
      * Structure is documented below.
@@ -108,6 +115,14 @@ public final class RepositoryRemoteRepositoryConfig {
         return Optional.ofNullable(this.pythonRepository);
     }
     /**
+     * @return The credentials used to access the remote repository.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RepositoryRemoteRepositoryConfigUpstreamCredentials> upstreamCredentials() {
+        return Optional.ofNullable(this.upstreamCredentials);
+    }
+    /**
      * @return Specific settings for an Yum remote repository.
      * Structure is documented below.
      * 
@@ -131,6 +146,7 @@ public final class RepositoryRemoteRepositoryConfig {
         private @Nullable RepositoryRemoteRepositoryConfigMavenRepository mavenRepository;
         private @Nullable RepositoryRemoteRepositoryConfigNpmRepository npmRepository;
         private @Nullable RepositoryRemoteRepositoryConfigPythonRepository pythonRepository;
+        private @Nullable RepositoryRemoteRepositoryConfigUpstreamCredentials upstreamCredentials;
         private @Nullable RepositoryRemoteRepositoryConfigYumRepository yumRepository;
         public Builder() {}
         public Builder(RepositoryRemoteRepositoryConfig defaults) {
@@ -141,6 +157,7 @@ public final class RepositoryRemoteRepositoryConfig {
     	      this.mavenRepository = defaults.mavenRepository;
     	      this.npmRepository = defaults.npmRepository;
     	      this.pythonRepository = defaults.pythonRepository;
+    	      this.upstreamCredentials = defaults.upstreamCredentials;
     	      this.yumRepository = defaults.yumRepository;
         }
 
@@ -175,6 +192,11 @@ public final class RepositoryRemoteRepositoryConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder upstreamCredentials(@Nullable RepositoryRemoteRepositoryConfigUpstreamCredentials upstreamCredentials) {
+            this.upstreamCredentials = upstreamCredentials;
+            return this;
+        }
+        @CustomType.Setter
         public Builder yumRepository(@Nullable RepositoryRemoteRepositoryConfigYumRepository yumRepository) {
             this.yumRepository = yumRepository;
             return this;
@@ -187,6 +209,7 @@ public final class RepositoryRemoteRepositoryConfig {
             _resultValue.mavenRepository = mavenRepository;
             _resultValue.npmRepository = npmRepository;
             _resultValue.pythonRepository = pythonRepository;
+            _resultValue.upstreamCredentials = upstreamCredentials;
             _resultValue.yumRepository = yumRepository;
             return _resultValue;
         }
