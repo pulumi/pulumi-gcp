@@ -1,0 +1,41 @@
+From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
+From: Guinevere Saenger <guinevere@pulumi.com>
+Date: Thu, 16 Nov 2023 13:58:59 -0800
+Subject: [PATCH 11/11] Remove pattern string from compute forwarding rules
+
+
+diff --git a/website/docs/r/compute_forwarding_rule.html.markdown b/website/docs/r/compute_forwarding_rule.html.markdown
+index 4c6774f39..b31c6012d 100644
+--- a/website/docs/r/compute_forwarding_rule.html.markdown
++++ b/website/docs/r/compute_forwarding_rule.html.markdown
+@@ -1437,7 +1437,7 @@ The following arguments are supported:
+   For internal forwarding rules within the same VPC network, two or more
+   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+   cannot have overlapping `portRange`s.
+-  @pattern: \d+(?:-\d+)?
++  
+ 
+ * `ports` -
+   (Optional)
+@@ -1458,7 +1458,7 @@ The following arguments are supported:
+   For internal forwarding rules within the same VPC network, two or more
+   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair if
+   they share at least one port number.
+-  @pattern: \d+(?:-\d+)?
++  
+ 
+ * `subnetwork` -
+   (Optional)
+diff --git a/website/docs/r/compute_global_forwarding_rule.html.markdown b/website/docs/r/compute_global_forwarding_rule.html.markdown
+index 2de7959c1..6b19cf241 100644
+--- a/website/docs/r/compute_global_forwarding_rule.html.markdown
++++ b/website/docs/r/compute_global_forwarding_rule.html.markdown
+@@ -1341,7 +1341,7 @@ The following arguments are supported:
+   For internal forwarding rules within the same VPC network, two or more
+   forwarding rules cannot use the same `[IPAddress, IPProtocol]` pair, and
+   cannot have overlapping `portRange`s.
+-  @pattern: \d+(?:-\d+)?
++  
+ 
+ * `subnetwork` -
+   (Optional)
