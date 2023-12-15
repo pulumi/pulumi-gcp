@@ -213,3 +213,71 @@ func TestBucketBooleanLabel(t *testing.T) {
 	  }
 	]`)
 }
+
+func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
+	replay.ReplaySequence(t, providerServer(t), `
+	[	
+		{
+			"method": "/pulumirpc.ResourceProvider/Configure",
+			"request": {
+			  "variables": {
+			"gcp:config:project": "pulumi-development"
+			  },
+			  "args": {
+			"project": "pulumi-development",
+			"version": "7.2.1"
+			  },
+			  "acceptSecrets": true,
+			  "acceptResources": true,
+			  "sendsOldInputs": true,
+			  "sendsOldInputsToDelete": true
+			},
+			"response": {
+			  "supportsPreview": true
+			}
+		},
+		{
+		"method": "/pulumirpc.ResourceProvider/Create",
+		"request": {
+			"urn": "urn:pulumi:dev::gcp_node_pool::gcp:container/nodePool:NodePool::gpu-node-pool",
+			"properties": {
+				"__defaults": [
+					"name"
+				],
+				"cluster": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
+				"initialNodeCount": 1,
+				"name": "gpu-node-pool-c90bfc0",
+				"nodeConfig": {
+					"__defaults": [
+						"preemptible",
+						"spot"
+					],
+					"diskSizeGb": 50,
+					"guestAccelerators": [
+						{
+							"__defaults": [],
+							"count": 1,
+							"type": "nvidia-tesla-t4"
+						}
+					],
+					"machineType": "n1-highmem-8",
+					"oauthScopes": [
+						"https://www.googleapis.com/auth/cloud-platform"
+					],
+					"preemptible": false,
+					"spot": false
+				}
+			},
+			"preview": true
+		},
+		"response": {
+			"id": "gpu-node-pool-c90bfc0"
+		},
+		"metadata": {
+			"kind": "resource",
+			"mode": "client",
+			"name": "gcp"
+		}
+	}]`,
+	)
+}
