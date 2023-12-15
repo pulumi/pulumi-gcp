@@ -215,6 +215,9 @@ func TestBucketBooleanLabel(t *testing.T) {
 }
 
 func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
 	replay.ReplaySequence(t, providerServer(t), `
 	[	
 		{
