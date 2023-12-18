@@ -385,7 +385,7 @@ var metadata []byte
 func Provider() tfbridge.ProviderInfo {
 	p := pf.MuxShimWithDisjointgPF(
 		context.Background(),
-		shimv2.NewProvider(gcpProvider.Provider()),
+		shimv2.NewProvider(gcpProvider.Provider(), shimv2.WithDiffStrategy(shimv2.PlanState)),
 		gcpPFProvider.New(version.Version)) // this probably should be TF version but it does not seem to matter
 	prov := tfbridge.ProviderInfo{
 		P:                           p,
