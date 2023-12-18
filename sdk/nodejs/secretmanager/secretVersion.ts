@@ -92,7 +92,7 @@ import * as utilities from "../utilities";
  * const secret_version_base64 = new gcp.secretmanager.SecretVersion("secret-version-base64", {
  *     secret: secret_basic.id,
  *     isSecretDataBase64: true,
- *     secretData: Buffer.from(fs.readFileSync("secret-data.pfx"), 'binary').toString('base64'),
+ *     secretData: Buffer.from(fs.readFileSync("secret-data.pfx", 'binary')).toString('base64'),
  * });
  * ```
  *
