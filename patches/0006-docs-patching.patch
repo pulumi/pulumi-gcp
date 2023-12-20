@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
-From: Guinevere Saenger <guinevere@pulumi.com>
-Date: Wed, 4 Oct 2023 12:52:40 -0700
-Subject: [PATCH 06/10] docs patching
+From: Anton Tayanovskyy <anton@pulumi.com>
+Date: Wed, 20 Dec 2023 13:33:12 -0600
+Subject: [PATCH 10/10] docs patching
 
 
 diff --git a/website/docs/r/api_gateway_api.html.markdown b/website/docs/r/api_gateway_api.html.markdown
@@ -90,10 +90,10 @@ index 956a1a11e..7f511dfc6 100644
  
  ```hcl
 diff --git a/website/docs/r/apigee_instance.html.markdown b/website/docs/r/apigee_instance.html.markdown
-index 7f4761559..f3284206c 100644
+index 2455fcf2a..1d0cef901 100644
 --- a/website/docs/r/apigee_instance.html.markdown
 +++ b/website/docs/r/apigee_instance.html.markdown
-@@ -197,7 +197,7 @@ resource "google_kms_crypto_key_iam_binding" "apigee_sa_keyuser" {
+@@ -195,7 +195,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
  resource "google_apigee_organization" "apigee_org" {
    analytics_region                     = "us-central1"
    display_name                         = "apigee-org"
@@ -102,7 +102,7 @@ index 7f4761559..f3284206c 100644
    project_id                           = data.google_client_config.current.project
    authorized_network                   = google_compute_network.apigee_network.id
    runtime_database_encryption_key_name = google_kms_crypto_key.apigee_key.id
-@@ -211,7 +211,7 @@ resource "google_apigee_organization" "apigee_org" {
+@@ -209,7 +209,7 @@ resource "google_apigee_organization" "apigee_org" {
  resource "google_apigee_instance" "apigee_instance" {
    name                     = "my-instance-name"
    location                 = "us-central1"
@@ -112,10 +112,10 @@ index 7f4761559..f3284206c 100644
    org_id                   = google_apigee_organization.apigee_org.id
    disk_encryption_key_name = google_kms_crypto_key.apigee_key.id
 diff --git a/website/docs/r/apigee_organization.html.markdown b/website/docs/r/apigee_organization.html.markdown
-index 34c818adb..ffbefe6d7 100644
+index 1bc68938b..bca136ef2 100644
 --- a/website/docs/r/apigee_organization.html.markdown
 +++ b/website/docs/r/apigee_organization.html.markdown
-@@ -128,7 +128,7 @@ resource "google_kms_crypto_key_iam_binding" "apigee_sa_keyuser" {
+@@ -126,7 +126,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
  resource "google_apigee_organization" "org" {
    analytics_region                     = "us-central1"
    display_name                         = "apigee-org"
@@ -1241,7 +1241,7 @@ index 6e4633c88..128d65379 100644
  }
  
 diff --git a/website/docs/r/compute_per_instance_config.html.markdown b/website/docs/r/compute_per_instance_config.html.markdown
-index f85d8d85e..5d007716e 100644
+index 437f59619..edddacf73 100644
 --- a/website/docs/r/compute_per_instance_config.html.markdown
 +++ b/website/docs/r/compute_per_instance_config.html.markdown
 @@ -60,7 +60,7 @@ resource "google_compute_instance_template" "igm-basic" {
@@ -1417,7 +1417,7 @@ index d9af4946a..384920e51 100644
  
  * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
 diff --git a/website/docs/r/compute_region_per_instance_config.html.markdown b/website/docs/r/compute_region_per_instance_config.html.markdown
-index 2d1697d9f..cf5976e3a 100644
+index ed718f83b..2e44278c3 100644
 --- a/website/docs/r/compute_region_per_instance_config.html.markdown
 +++ b/website/docs/r/compute_region_per_instance_config.html.markdown
 @@ -61,7 +61,7 @@ resource "google_compute_instance_template" "igm-basic" {
@@ -1853,7 +1853,7 @@ index 9db13a01f..145a05e51 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=vpn_tunnel_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 7ec0fb4e1..5e119dd02 100644
+index 157bfb70f..4c2f9ca99 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -6,12 +6,6 @@ description: |-
@@ -2056,9 +2056,16 @@ index 7ec0fb4e1..5e119dd02 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -957,6 +969,14 @@ sole_tenant_config {
+@@ -957,12 +969,20 @@ sole_tenant_config {
  
  * `threads_per_core` - (Required) The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
+ 
+-* `network_performance_config` - (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)) Network bandwidth tier configuration.
++* `network_performance_config` - (Optional) Network bandwidth tier configuration.
+ 
+ <a name="network_performance_config"></a>The `network_performance_config` block supports:
+ 
+ * `total_egress_bandwidth_tier` (Required) - Specifies the total network bandwidth tier for the NodePool.
  
 +<a name="nested_network_config"></a>The `network_config` block supports:
 +
@@ -2071,7 +2078,16 @@ index 7ec0fb4e1..5e119dd02 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -1102,7 +1122,7 @@ for more details. This field only applies to private clusters, when
+@@ -995,7 +1015,7 @@ sole_tenant_config {
+ * `count` (Required) - The number of the guest accelerator cards exposed to this instance.
+ 
+ * `gpu_driver_installation_config` (Optional) - Configuration for auto installation of GPU driver. Structure is [documented below](#nested_gpu_driver_installation_config).
+-  
++
+ * `gpu_partition_size` (Optional) - Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
+ 
+ * `gpu_sharing_config` (Optional) - Configuration for GPU sharing. Structure is [documented below](#nested_gpu_sharing_config).
+@@ -1108,7 +1128,7 @@ for more details. This field only applies to private clusters, when
  `enable_private_nodes` is `true`.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -2080,7 +2096,7 @@ index 7ec0fb4e1..5e119dd02 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1205,9 +1225,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1211,9 +1231,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2092,6 +2108,15 @@ index 7ec0fb4e1..5e119dd02 100644
 +  * GKE_METADATA: Run the GKE Metadata Server on this node. The GKE Metadata Server exposes a metadata API to workloads that is compatible with the V1 Compute Metadata APIs exposed by the Compute Engine and App Engine Metadata Servers. This feature can only be enabled if [workload identity](https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity) is enabled at the cluster level.
  
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
+ 
+@@ -1339,7 +1359,7 @@ exported:
+ 
+ * `node_config.0.effective_taints` - List of kubernetes taints applied to each node. Structure is [documented above](#nested_taint).
+ 
+-* `fleet.0.membership` - The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview). 
++* `fleet.0.membership` - The resource name of the fleet Membership resource associated to this cluster with format `//gkehub.googleapis.com/projects/{{project}}/locations/{{location}}/memberships/{{name}}`. See the official doc for [fleet management](https://cloud.google.com/kubernetes-engine/docs/fleets-overview).
+ 
+ ## Timeouts
  
 diff --git a/website/docs/r/container_node_pool.html.markdown b/website/docs/r/container_node_pool.html.markdown
 index 3649ce923..8084646dd 100644
@@ -4063,7 +4088,7 @@ index 9b96d4463..6bc7816be 100644
  ## Example Usage
  
 diff --git a/website/docs/r/storage_bucket.html.markdown b/website/docs/r/storage_bucket.html.markdown
-index 0131446ff..6e752d2fe 100644
+index 2389ac04b..6e4c4ff45 100644
 --- a/website/docs/r/storage_bucket.html.markdown
 +++ b/website/docs/r/storage_bucket.html.markdown
 @@ -93,7 +93,7 @@ The following arguments are supported:
@@ -4075,7 +4100,7 @@ index 0131446ff..6e752d2fe 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
      is not provided, the provider project is used.
-@@ -223,9 +223,9 @@ The following arguments are supported:
+@@ -225,9 +225,9 @@ The following arguments are supported:
    until a relevant action has occurred which triggers its creation.
    You should use the [`google_storage_project_service_account`](/docs/providers/google/d/storage_project_service_account.html) data source to obtain the email
    address for the service account when configuring IAM policy on the Cloud KMS key.
