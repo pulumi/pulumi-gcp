@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.NodePoolNetworkConfigAdditionalNodeNetworkConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNetworkConfigAdditionalPodNetworkConfig;
+import com.pulumi.gcp.container.outputs.NodePoolNetworkConfigNetworkPerformanceConfig;
 import com.pulumi.gcp.container.outputs.NodePoolNetworkConfigPodCidrOverprovisionConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -38,6 +39,7 @@ public final class NodePoolNetworkConfig {
      * 
      */
     private @Nullable Boolean enablePrivateNodes;
+    private @Nullable NodePoolNetworkConfigNetworkPerformanceConfig networkPerformanceConfig;
     private @Nullable NodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
     /**
      * @return The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -81,6 +83,9 @@ public final class NodePoolNetworkConfig {
     public Optional<Boolean> enablePrivateNodes() {
         return Optional.ofNullable(this.enablePrivateNodes);
     }
+    public Optional<NodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfig() {
+        return Optional.ofNullable(this.networkPerformanceConfig);
+    }
     public Optional<NodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfig() {
         return Optional.ofNullable(this.podCidrOverprovisionConfig);
     }
@@ -112,6 +117,7 @@ public final class NodePoolNetworkConfig {
         private @Nullable List<NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
         private @Nullable Boolean createPodRange;
         private @Nullable Boolean enablePrivateNodes;
+        private @Nullable NodePoolNetworkConfigNetworkPerformanceConfig networkPerformanceConfig;
         private @Nullable NodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig;
         private @Nullable String podIpv4CidrBlock;
         private @Nullable String podRange;
@@ -122,6 +128,7 @@ public final class NodePoolNetworkConfig {
     	      this.additionalPodNetworkConfigs = defaults.additionalPodNetworkConfigs;
     	      this.createPodRange = defaults.createPodRange;
     	      this.enablePrivateNodes = defaults.enablePrivateNodes;
+    	      this.networkPerformanceConfig = defaults.networkPerformanceConfig;
     	      this.podCidrOverprovisionConfig = defaults.podCidrOverprovisionConfig;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
@@ -154,6 +161,11 @@ public final class NodePoolNetworkConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder networkPerformanceConfig(@Nullable NodePoolNetworkConfigNetworkPerformanceConfig networkPerformanceConfig) {
+            this.networkPerformanceConfig = networkPerformanceConfig;
+            return this;
+        }
+        @CustomType.Setter
         public Builder podCidrOverprovisionConfig(@Nullable NodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig) {
             this.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             return this;
@@ -174,6 +186,7 @@ public final class NodePoolNetworkConfig {
             _resultValue.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
             _resultValue.createPodRange = createPodRange;
             _resultValue.enablePrivateNodes = enablePrivateNodes;
+            _resultValue.networkPerformanceConfig = networkPerformanceConfig;
             _resultValue.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             _resultValue.podIpv4CidrBlock = podIpv4CidrBlock;
             _resultValue.podRange = podRange;

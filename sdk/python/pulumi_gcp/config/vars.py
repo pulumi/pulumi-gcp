@@ -629,6 +629,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('vpcAccessCustomEndpoint')
 
     @property
+    def workbench_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('workbenchCustomEndpoint')
+
+    @property
     def workflows_custom_endpoint(self) -> Optional[str]:
         return __config__.get('workflowsCustomEndpoint')
 

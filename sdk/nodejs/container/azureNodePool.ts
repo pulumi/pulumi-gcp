@@ -75,6 +75,9 @@ import * as utilities from "../utilities";
  *         tags: {
  *             owner: "mmv2",
  *         },
+ *         labels: {
+ *             key_one: "label_one",
+ *         },
  *         vmSize: "Standard_DS2_v2",
  *     },
  *     location: "us-west1",

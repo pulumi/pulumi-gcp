@@ -461,6 +461,20 @@ public class Bucket extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retentionPolicy);
     }
     /**
+     * The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `&#34;DEFAULT&#34;` sets default replication. `&#34;ASYNC_TURBO&#34;` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `&#34;DEFAULT&#34;` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+     * 
+     */
+    @Export(name="rpo", refs={String.class}, tree="[0]")
+    private Output<String> rpo;
+
+    /**
+     * @return The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `&#34;DEFAULT&#34;` sets default replication. `&#34;ASYNC_TURBO&#34;` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `&#34;DEFAULT&#34;` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+     * 
+     */
+    public Output<String> rpo() {
+        return this.rpo;
+    }
+    /**
      * The URI of the created resource.
      * 
      */

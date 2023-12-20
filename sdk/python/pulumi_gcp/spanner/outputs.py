@@ -141,7 +141,11 @@ class InstanceAutoscalingConfig(dict):
                  autoscaling_targets: Optional['outputs.InstanceAutoscalingConfigAutoscalingTargets'] = None):
         """
         :param 'InstanceAutoscalingConfigAutoscalingLimitsArgs' autoscaling_limits: Defines scale in controls to reduce the risk of response latency
-               and outages due to abrupt scale-in events
+               and outages due to abrupt scale-in events. Users can define the minimum and
+               maximum compute capacity allocated to the instance, and the autoscaler will
+               only scale within that range. Users can either use nodes or processing
+               units to specify the limits, but should use the same unit to set both the
+               min_limit and max_limit.
                Structure is documented below.
         :param 'InstanceAutoscalingConfigAutoscalingTargetsArgs' autoscaling_targets: Defines scale in controls to reduce the risk of response latency
                and outages due to abrupt scale-in events
@@ -157,7 +161,11 @@ class InstanceAutoscalingConfig(dict):
     def autoscaling_limits(self) -> Optional['outputs.InstanceAutoscalingConfigAutoscalingLimits']:
         """
         Defines scale in controls to reduce the risk of response latency
-        and outages due to abrupt scale-in events
+        and outages due to abrupt scale-in events. Users can define the minimum and
+        maximum compute capacity allocated to the instance, and the autoscaler will
+        only scale within that range. Users can either use nodes or processing
+        units to specify the limits, but should use the same unit to set both the
+        min_limit and max_limit.
         Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_limits")
@@ -178,8 +186,12 @@ class InstanceAutoscalingConfigAutoscalingLimits(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "maxProcessingUnits":
+        if key == "maxNodes":
+            suggest = "max_nodes"
+        elif key == "maxProcessingUnits":
             suggest = "max_processing_units"
+        elif key == "minNodes":
+            suggest = "min_nodes"
         elif key == "minProcessingUnits":
             suggest = "min_processing_units"
 
@@ -195,19 +207,38 @@ class InstanceAutoscalingConfigAutoscalingLimits(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 max_nodes: Optional[int] = None,
                  max_processing_units: Optional[int] = None,
+                 min_nodes: Optional[int] = None,
                  min_processing_units: Optional[int] = None):
         """
+        :param int max_nodes: Specifies maximum number of nodes allocated to the instance. If set, this number
+               should be greater than or equal to min_nodes.
         :param int max_processing_units: Specifies maximum number of processing units allocated to the instance.
                If set, this number should be multiples of 1000 and be greater than or equal to
                min_processing_units.
+        :param int min_nodes: Specifies number of nodes allocated to the instance. If set, this number
+               should be greater than or equal to 1.
         :param int min_processing_units: Specifies minimum number of processing units allocated to the instance.
                If set, this number should be multiples of 1000.
         """
+        if max_nodes is not None:
+            pulumi.set(__self__, "max_nodes", max_nodes)
         if max_processing_units is not None:
             pulumi.set(__self__, "max_processing_units", max_processing_units)
+        if min_nodes is not None:
+            pulumi.set(__self__, "min_nodes", min_nodes)
         if min_processing_units is not None:
             pulumi.set(__self__, "min_processing_units", min_processing_units)
+
+    @property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> Optional[int]:
+        """
+        Specifies maximum number of nodes allocated to the instance. If set, this number
+        should be greater than or equal to min_nodes.
+        """
+        return pulumi.get(self, "max_nodes")
 
     @property
     @pulumi.getter(name="maxProcessingUnits")
@@ -218,6 +249,15 @@ class InstanceAutoscalingConfigAutoscalingLimits(dict):
         min_processing_units.
         """
         return pulumi.get(self, "max_processing_units")
+
+    @property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> Optional[int]:
+        """
+        Specifies number of nodes allocated to the instance. If set, this number
+        should be greater than or equal to 1.
+        """
+        return pulumi.get(self, "min_nodes")
 
     @property
     @pulumi.getter(name="minProcessingUnits")
@@ -363,15 +403,29 @@ class GetInstanceAutoscalingConfigResult(dict):
 @pulumi.output_type
 class GetInstanceAutoscalingConfigAutoscalingLimitResult(dict):
     def __init__(__self__, *,
+                 max_nodes: int,
                  max_processing_units: int,
+                 min_nodes: int,
                  min_processing_units: int):
+        pulumi.set(__self__, "max_nodes", max_nodes)
         pulumi.set(__self__, "max_processing_units", max_processing_units)
+        pulumi.set(__self__, "min_nodes", min_nodes)
         pulumi.set(__self__, "min_processing_units", min_processing_units)
+
+    @property
+    @pulumi.getter(name="maxNodes")
+    def max_nodes(self) -> int:
+        return pulumi.get(self, "max_nodes")
 
     @property
     @pulumi.getter(name="maxProcessingUnits")
     def max_processing_units(self) -> int:
         return pulumi.get(self, "max_processing_units")
+
+    @property
+    @pulumi.getter(name="minNodes")
+    def min_nodes(self) -> int:
+        return pulumi.get(self, "min_nodes")
 
     @property
     @pulumi.getter(name="minProcessingUnits")

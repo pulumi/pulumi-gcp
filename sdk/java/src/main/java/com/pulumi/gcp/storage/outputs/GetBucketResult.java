@@ -44,6 +44,7 @@ public final class GetBucketResult {
     private Map<String,String> pulumiLabels;
     private Boolean requesterPays;
     private List<GetBucketRetentionPolicy> retentionPolicies;
+    private String rpo;
     private String selfLink;
     private String storageClass;
     private Boolean uniformBucketLevelAccess;
@@ -113,6 +114,9 @@ public final class GetBucketResult {
     public List<GetBucketRetentionPolicy> retentionPolicies() {
         return this.retentionPolicies;
     }
+    public String rpo() {
+        return this.rpo;
+    }
     public String selfLink() {
         return this.selfLink;
     }
@@ -160,6 +164,7 @@ public final class GetBucketResult {
         private Map<String,String> pulumiLabels;
         private Boolean requesterPays;
         private List<GetBucketRetentionPolicy> retentionPolicies;
+        private String rpo;
         private String selfLink;
         private String storageClass;
         private Boolean uniformBucketLevelAccess;
@@ -188,6 +193,7 @@ public final class GetBucketResult {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.requesterPays = defaults.requesterPays;
     	      this.retentionPolicies = defaults.retentionPolicies;
+    	      this.rpo = defaults.rpo;
     	      this.selfLink = defaults.selfLink;
     	      this.storageClass = defaults.storageClass;
     	      this.uniformBucketLevelAccess = defaults.uniformBucketLevelAccess;
@@ -313,6 +319,11 @@ public final class GetBucketResult {
             return retentionPolicies(List.of(retentionPolicies));
         }
         @CustomType.Setter
+        public Builder rpo(String rpo) {
+            this.rpo = Objects.requireNonNull(rpo);
+            return this;
+        }
+        @CustomType.Setter
         public Builder selfLink(String selfLink) {
             this.selfLink = Objects.requireNonNull(selfLink);
             return this;
@@ -369,6 +380,7 @@ public final class GetBucketResult {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.requesterPays = requesterPays;
             _resultValue.retentionPolicies = retentionPolicies;
+            _resultValue.rpo = rpo;
             _resultValue.selfLink = selfLink;
             _resultValue.storageClass = storageClass;
             _resultValue.uniformBucketLevelAccess = uniformBucketLevelAccess;

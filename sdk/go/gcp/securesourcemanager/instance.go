@@ -16,8 +16,9 @@ import (
 //
 // To get more information about Instance, see:
 //
+// * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
 // * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/secure-source-manager/overview/overview)
+//   - [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
 //
 // ## Example Usage
 // ### Secure Source Manager Instance Basic
@@ -40,6 +41,61 @@ import (
 //					"foo": pulumi.String("bar"),
 //				},
 //				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Secure Source Manager Instance Cmek
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/kms"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			keyRing, err := kms.NewKeyRing(ctx, "keyRing", &kms.KeyRingArgs{
+//				Location: pulumi.String("us-central1"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cryptoKey, err := kms.NewCryptoKey(ctx, "cryptoKey", &kms.CryptoKeyArgs{
+//				KeyRing: keyRing.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			project, err := organizations.LookupProject(ctx, nil, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = kms.NewCryptoKeyIAMMember(ctx, "cryptoKeyBinding", &kms.CryptoKeyIAMMemberArgs{
+//				CryptoKeyId: cryptoKey.ID(),
+//				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
+//				Location:   pulumi.String("us-central1"),
+//				InstanceId: pulumi.String("my-instance"),
+//				KmsKey:     cryptoKey.ID(),
 //			})
 //			if err != nil {
 //				return err
@@ -94,10 +150,15 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// A list of hostnames for this instance.
+	// Structure is documented below.
+	HostConfigs InstanceHostConfigArrayOutput `pulumi:"hostConfigs"`
 	// The name for the Instance.
 	//
 	// ***
 	InstanceId pulumi.StringOutput `pulumi:"instanceId"`
+	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// Labels as key value pairs.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -107,6 +168,9 @@ type Instance struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// The resource name for the Instance.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Private settings for private instance.
+	// Structure is documented below.
+	PrivateConfig InstancePrivateConfigPtrOutput `pulumi:"privateConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -115,6 +179,8 @@ type Instance struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The current state of the Instance.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Provides information about the current instance state.
+	StateNote pulumi.StringOutput `pulumi:"stateNote"`
 	// Time the Instance was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
@@ -164,10 +230,15 @@ type instanceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// A list of hostnames for this instance.
+	// Structure is documented below.
+	HostConfigs []InstanceHostConfig `pulumi:"hostConfigs"`
 	// The name for the Instance.
 	//
 	// ***
 	InstanceId *string `pulumi:"instanceId"`
+	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	KmsKey *string `pulumi:"kmsKey"`
 	// Labels as key value pairs.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -177,6 +248,9 @@ type instanceState struct {
 	Location *string `pulumi:"location"`
 	// The resource name for the Instance.
 	Name *string `pulumi:"name"`
+	// Private settings for private instance.
+	// Structure is documented below.
+	PrivateConfig *InstancePrivateConfig `pulumi:"privateConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -185,6 +259,8 @@ type instanceState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The current state of the Instance.
 	State *string `pulumi:"state"`
+	// Provides information about the current instance state.
+	StateNote *string `pulumi:"stateNote"`
 	// Time the Instance was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
 }
@@ -194,10 +270,15 @@ type InstanceState struct {
 	CreateTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// A list of hostnames for this instance.
+	// Structure is documented below.
+	HostConfigs InstanceHostConfigArrayInput
 	// The name for the Instance.
 	//
 	// ***
 	InstanceId pulumi.StringPtrInput
+	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	KmsKey pulumi.StringPtrInput
 	// Labels as key value pairs.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -207,6 +288,9 @@ type InstanceState struct {
 	Location pulumi.StringPtrInput
 	// The resource name for the Instance.
 	Name pulumi.StringPtrInput
+	// Private settings for private instance.
+	// Structure is documented below.
+	PrivateConfig InstancePrivateConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -215,6 +299,8 @@ type InstanceState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The current state of the Instance.
 	State pulumi.StringPtrInput
+	// Provides information about the current instance state.
+	StateNote pulumi.StringPtrInput
 	// Time the Instance was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
 }
@@ -228,6 +314,8 @@ type instanceArgs struct {
 	//
 	// ***
 	InstanceId string `pulumi:"instanceId"`
+	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	KmsKey *string `pulumi:"kmsKey"`
 	// Labels as key value pairs.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -235,6 +323,9 @@ type instanceArgs struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The location for the Instance.
 	Location string `pulumi:"location"`
+	// Private settings for private instance.
+	// Structure is documented below.
+	PrivateConfig *InstancePrivateConfig `pulumi:"privateConfig"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -246,6 +337,8 @@ type InstanceArgs struct {
 	//
 	// ***
 	InstanceId pulumi.StringInput
+	// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	KmsKey pulumi.StringPtrInput
 	// Labels as key value pairs.
 	//
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -253,6 +346,9 @@ type InstanceArgs struct {
 	Labels pulumi.StringMapInput
 	// The location for the Instance.
 	Location pulumi.StringInput
+	// Private settings for private instance.
+	// Structure is documented below.
+	PrivateConfig InstancePrivateConfigPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -355,11 +451,22 @@ func (o InstanceOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// A list of hostnames for this instance.
+// Structure is documented below.
+func (o InstanceOutput) HostConfigs() InstanceHostConfigArrayOutput {
+	return o.ApplyT(func(v *Instance) InstanceHostConfigArrayOutput { return v.HostConfigs }).(InstanceHostConfigArrayOutput)
+}
+
 // The name for the Instance.
 //
 // ***
 func (o InstanceOutput) InstanceId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.InstanceId }).(pulumi.StringOutput)
+}
+
+// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+func (o InstanceOutput) KmsKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
 
 // Labels as key value pairs.
@@ -380,6 +487,12 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Private settings for private instance.
+// Structure is documented below.
+func (o InstanceOutput) PrivateConfig() InstancePrivateConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstancePrivateConfigPtrOutput { return v.PrivateConfig }).(InstancePrivateConfigPtrOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o InstanceOutput) Project() pulumi.StringOutput {
@@ -395,6 +508,11 @@ func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 // The current state of the Instance.
 func (o InstanceOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Provides information about the current instance state.
+func (o InstanceOutput) StateNote() pulumi.StringOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.StateNote }).(pulumi.StringOutput)
 }
 
 // Time the Instance was updated in UTC.

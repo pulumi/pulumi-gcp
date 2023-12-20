@@ -12,6 +12,7 @@ import com.pulumi.gcp.bigquery.DatasetArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetState;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccess;
 import com.pulumi.gcp.bigquery.outputs.DatasetDefaultEncryptionConfiguration;
+import com.pulumi.gcp.bigquery.outputs.DatasetExternalDatasetReference;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -276,6 +277,46 @@ import javax.annotation.Nullable;
  *                         .build())
  *                     .build())
  *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Bigquery Dataset External Reference Aws Docs
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.inputs.DatasetExternalDatasetReferenceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var dataset = new Dataset(&#34;dataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;example_dataset&#34;)
+ *             .friendlyName(&#34;test&#34;)
+ *             .description(&#34;This is a test description&#34;)
+ *             .location(&#34;aws-us-east-1&#34;)
+ *             .externalDatasetReference(DatasetExternalDatasetReferenceArgs.builder()
+ *                 .externalSource(&#34;aws-glue://arn:aws:glue:us-east-1:999999999999:database/database&#34;)
+ *                 .connection(&#34;projects/project/locations/aws-us-east-1/connections/connection&#34;)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
  * 
  *     }
  * }
@@ -547,6 +588,20 @@ public class Dataset extends com.pulumi.resources.CustomResource {
      */
     public Output<String> etag() {
         return this.etag;
+    }
+    /**
+     * Information about the external metadata storage where the dataset is defined.
+     * 
+     */
+    @Export(name="externalDatasetReference", refs={DatasetExternalDatasetReference.class}, tree="[0]")
+    private Output</* @Nullable */ DatasetExternalDatasetReference> externalDatasetReference;
+
+    /**
+     * @return Information about the external metadata storage where the dataset is defined.
+     * 
+     */
+    public Output<Optional<DatasetExternalDatasetReference>> externalDatasetReference() {
+        return Codegen.optional(this.externalDatasetReference);
     }
     /**
      * A descriptive name for the dataset

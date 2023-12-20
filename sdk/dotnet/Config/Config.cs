@@ -1103,6 +1103,13 @@ namespace Pulumi.Gcp
             set => _vpcAccessCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _workbenchCustomEndpoint = new __Value<string?>(() => __config.Get("workbenchCustomEndpoint"));
+        public static string? WorkbenchCustomEndpoint
+        {
+            get => _workbenchCustomEndpoint.Get();
+            set => _workbenchCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _workflowsCustomEndpoint = new __Value<string?>(() => __config.Get("workflowsCustomEndpoint"));
         public static string? WorkflowsCustomEndpoint
         {

@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// endpoint via private networking.
         /// </summary>
         public readonly bool? EnablePrivateNodes;
+        /// <summary>
+        /// Network bandwidth tier configuration.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfig? NetworkPerformanceConfig;
         public readonly Outputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig? PodCidrOverprovisionConfig;
         /// <summary>
         /// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -46,6 +50,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             bool? enablePrivateNodes,
 
+            Outputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfig? networkPerformanceConfig,
+
             Outputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig? podCidrOverprovisionConfig,
 
             string? podIpv4CidrBlock,
@@ -56,6 +62,7 @@ namespace Pulumi.Gcp.Container.Outputs
             AdditionalPodNetworkConfigs = additionalPodNetworkConfigs;
             CreatePodRange = createPodRange;
             EnablePrivateNodes = enablePrivateNodes;
+            NetworkPerformanceConfig = networkPerformanceConfig;
             PodCidrOverprovisionConfig = podCidrOverprovisionConfig;
             PodIpv4CidrBlock = podIpv4CidrBlock;
             PodRange = podRange;

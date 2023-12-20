@@ -235,6 +235,27 @@ public final class AlertPolicyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The severity of an alert policy indicates how important incidents generated
+     * by that policy are. The severity level will be displayed on the Incident
+     * detail page and in notifications.
+     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     * 
+     */
+    @Import(name="severity")
+    private @Nullable Output<String> severity;
+
+    /**
+     * @return The severity of an alert policy indicates how important incidents generated
+     * by that policy are. The severity level will be displayed on the Incident
+     * detail page and in notifications.
+     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     * 
+     */
+    public Optional<Output<String>> severity() {
+        return Optional.ofNullable(this.severity);
+    }
+
+    /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
      * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -270,6 +291,7 @@ public final class AlertPolicyState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.notificationChannels = $.notificationChannels;
         this.project = $.project;
+        this.severity = $.severity;
         this.userLabels = $.userLabels;
     }
 
@@ -604,6 +626,33 @@ public final class AlertPolicyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param severity The severity of an alert policy indicates how important incidents generated
+         * by that policy are. The severity level will be displayed on the Incident
+         * detail page and in notifications.
+         * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder severity(@Nullable Output<String> severity) {
+            $.severity = severity;
+            return this;
+        }
+
+        /**
+         * @param severity The severity of an alert policy indicates how important incidents generated
+         * by that policy are. The severity level will be displayed on the Incident
+         * detail page and in notifications.
+         * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder severity(String severity) {
+            return severity(Output.of(severity));
         }
 
         /**

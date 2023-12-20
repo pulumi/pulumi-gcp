@@ -72,6 +72,7 @@ export interface GetPrivateCloudResult {
     readonly nsxes: outputs.vmwareengine.GetPrivateCloudNsx[];
     readonly project?: string;
     readonly state: string;
+    readonly type: string;
     readonly uid: string;
     readonly vcenters: outputs.vmwareengine.GetPrivateCloudVcenter[];
 }

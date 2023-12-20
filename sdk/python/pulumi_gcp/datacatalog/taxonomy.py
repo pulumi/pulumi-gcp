@@ -22,6 +22,7 @@ class TaxonomyArgs:
         """
         The set of arguments for constructing a Taxonomy resource.
         :param pulumi.Input[str] display_name: User defined name of this taxonomy.
+               The taxonomy display name must be unique within an organization.
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
@@ -53,6 +54,7 @@ class TaxonomyArgs:
     def display_name(self) -> pulumi.Input[str]:
         """
         User defined name of this taxonomy.
+        The taxonomy display name must be unique within an organization.
         It must: contain only unicode letters, numbers, underscores, dashes
         and spaces; not start or end with spaces; and be at most 200 bytes
         long when encoded in UTF-8.
@@ -138,6 +140,7 @@ class _TaxonomyState:
                tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
                long when encoded in UTF-8. If not set, defaults to an empty description.
         :param pulumi.Input[str] display_name: User defined name of this taxonomy.
+               The taxonomy display name must be unique within an organization.
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
@@ -196,6 +199,7 @@ class _TaxonomyState:
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
         User defined name of this taxonomy.
+        The taxonomy display name must be unique within an organization.
         It must: contain only unicode letters, numbers, underscores, dashes
         and spaces; not start or end with spaces; and be at most 200 bytes
         long when encoded in UTF-8.
@@ -306,6 +310,7 @@ class Taxonomy(pulumi.CustomResource):
                tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
                long when encoded in UTF-8. If not set, defaults to an empty description.
         :param pulumi.Input[str] display_name: User defined name of this taxonomy.
+               The taxonomy display name must be unique within an organization.
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
@@ -427,6 +432,7 @@ class Taxonomy(pulumi.CustomResource):
                tabs, newlines, carriage returns and page breaks; and be at most 2000 bytes
                long when encoded in UTF-8. If not set, defaults to an empty description.
         :param pulumi.Input[str] display_name: User defined name of this taxonomy.
+               The taxonomy display name must be unique within an organization.
                It must: contain only unicode letters, numbers, underscores, dashes
                and spaces; not start or end with spaces; and be at most 200 bytes
                long when encoded in UTF-8.
@@ -476,6 +482,7 @@ class Taxonomy(pulumi.CustomResource):
     def display_name(self) -> pulumi.Output[str]:
         """
         User defined name of this taxonomy.
+        The taxonomy display name must be unique within an organization.
         It must: contain only unicode letters, numbers, underscores, dashes
         and spaces; not start or end with spaces; and be at most 200 bytes
         long when encoded in UTF-8.

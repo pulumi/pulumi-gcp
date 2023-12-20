@@ -16,6 +16,7 @@ import com.pulumi.gcp.notebooks.outputs.RuntimeSoftwareConfig;
 import com.pulumi.gcp.notebooks.outputs.RuntimeVirtualMachine;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -231,6 +232,7 @@ import javax.annotation.Nullable;
  *                 .accessType(&#34;SINGLE_USER&#34;)
  *                 .runtimeOwner(&#34;admin@hashicorptest.com&#34;)
  *                 .build())
+ *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
  *             .location(&#34;us-central1&#34;)
  *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
  *                 .kernels(RuntimeSoftwareConfigKernelArgs.builder()
@@ -287,6 +289,7 @@ import javax.annotation.Nullable;
  *                 .accessType(&#34;SINGLE_USER&#34;)
  *                 .runtimeOwner(&#34;admin@hashicorptest.com&#34;)
  *                 .build())
+ *             .labels(Map.of(&#34;k&#34;, &#34;val&#34;))
  *             .location(&#34;us-central1&#34;)
  *             .softwareConfig(RuntimeSoftwareConfigArgs.builder()
  *                 .postStartupScriptBehavior(&#34;RUN_EVERY_START&#34;)
@@ -352,6 +355,20 @@ public class Runtime extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.accessConfig);
     }
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * The health state of this runtime. For a list of possible output
      * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
      * reference/rest/v1/projects.locations.runtimes#healthstate`.
@@ -368,6 +385,36 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      */
     public Output<String> healthState() {
         return this.healthState;
+    }
+    /**
+     * The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * A reference to the zone where the machine resides.
@@ -434,6 +481,22 @@ public class Runtime extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * The config settings for software inside the runtime.
@@ -514,6 +577,10 @@ public class Runtime extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

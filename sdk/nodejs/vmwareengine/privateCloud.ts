@@ -7,7 +7,7 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * / Represents a private cloud resource. Private clouds are zonal resources.
+ * Represents a private cloud resource. Private clouds are zonal resources.
  *
  * To get more information about PrivateCloud, see:
  *
@@ -37,6 +37,35 @@ import * as utilities from "../utilities";
  *         nodeTypeConfigs: [{
  *             nodeTypeId: "standard-72",
  *             nodeCount: 3,
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Vmware Engine Private Cloud Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pc_nw = new gcp.vmwareengine.Network("pc-nw", {
+ *     location: "global",
+ *     type: "STANDARD",
+ *     description: "PC network description.",
+ * });
+ * const vmw_engine_pc = new gcp.vmwareengine.PrivateCloud("vmw-engine-pc", {
+ *     location: "us-west1-a",
+ *     description: "Sample test PC.",
+ *     type: "TIME_LIMITED",
+ *     networkConfig: {
+ *         managementCidr: "192.168.30.0/24",
+ *         vmwareEngineNetwork: pc_nw.id,
+ *     },
+ *     managementCluster: {
+ *         clusterId: "sample-mgmt-cluster",
+ *         nodeTypeConfigs: [{
+ *             nodeTypeId: "standard-72",
+ *             nodeCount: 1,
+ *             customCoreCount: 32,
  *         }],
  *     },
  * });
@@ -137,6 +166,12 @@ export class PrivateCloud extends pulumi.CustomResource {
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
+     * Initial type of the private cloud.
+     * Default value is `STANDARD`.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`.
+     */
+    public readonly type!: pulumi.Output<string | undefined>;
+    /**
      * System-generated unique identifier for the resource.
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
@@ -168,6 +203,7 @@ export class PrivateCloud extends pulumi.CustomResource {
             resourceInputs["nsxes"] = state ? state.nsxes : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["vcenters"] = state ? state.vcenters : undefined;
         } else {
@@ -187,6 +223,7 @@ export class PrivateCloud extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["type"] = args ? args.type : undefined;
             resourceInputs["hcxes"] = undefined /*out*/;
             resourceInputs["nsxes"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
@@ -245,6 +282,12 @@ export interface PrivateCloudState {
      */
     state?: pulumi.Input<string>;
     /**
+     * Initial type of the private cloud.
+     * Default value is `STANDARD`.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`.
+     */
+    type?: pulumi.Input<string>;
+    /**
      * System-generated unique identifier for the resource.
      */
     uid?: pulumi.Input<string>;
@@ -286,4 +329,10 @@ export interface PrivateCloudArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Initial type of the private cloud.
+     * Default value is `STANDARD`.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`.
+     */
+    type?: pulumi.Input<string>;
 }

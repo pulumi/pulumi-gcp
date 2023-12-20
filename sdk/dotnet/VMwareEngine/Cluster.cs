@@ -10,6 +10,12 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.VMwareEngine
 {
     /// <summary>
+    /// A cluster in a private cloud.
+    /// 
+    /// To get more information about Cluster, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+    /// 
     /// ## Example Usage
     /// ### Vmware Engine Cluster Basic
     /// 
@@ -23,12 +29,9 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var cluster_nw = new Gcp.VMwareEngine.Network("cluster-nw", new()
     ///     {
-    ///         Location = "us-west1",
-    ///         Type = "LEGACY",
+    ///         Type = "STANDARD",
+    ///         Location = "global",
     ///         Description = "PC network description.",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var cluster_pc = new Gcp.VMwareEngine.PrivateCloud("cluster-pc", new()
@@ -52,9 +55,6 @@ namespace Pulumi.Gcp.VMwareEngine
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var vmw_engine_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-engine-ext-cluster", new()
@@ -68,9 +68,6 @@ namespace Pulumi.Gcp.VMwareEngine
     ///                 NodeCount = 3,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });
@@ -87,12 +84,9 @@ namespace Pulumi.Gcp.VMwareEngine
     /// {
     ///     var cluster_nw = new Gcp.VMwareEngine.Network("cluster-nw", new()
     ///     {
-    ///         Location = "us-west1",
-    ///         Type = "LEGACY",
+    ///         Type = "STANDARD",
+    ///         Location = "global",
     ///         Description = "PC network description.",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var cluster_pc = new Gcp.VMwareEngine.PrivateCloud("cluster-pc", new()
@@ -117,9 +111,6 @@ namespace Pulumi.Gcp.VMwareEngine
     ///                 },
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     ///     var vmw_ext_cluster = new Gcp.VMwareEngine.Cluster("vmw-ext-cluster", new()
@@ -134,9 +125,6 @@ namespace Pulumi.Gcp.VMwareEngine
     ///                 CustomCoreCount = 32,
     ///             },
     ///         },
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         Provider = google_beta,
     ///     });
     /// 
     /// });

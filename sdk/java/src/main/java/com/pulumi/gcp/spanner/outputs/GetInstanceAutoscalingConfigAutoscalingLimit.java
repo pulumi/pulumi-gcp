@@ -9,12 +9,20 @@ import java.util.Objects;
 
 @CustomType
 public final class GetInstanceAutoscalingConfigAutoscalingLimit {
+    private Integer maxNodes;
     private Integer maxProcessingUnits;
+    private Integer minNodes;
     private Integer minProcessingUnits;
 
     private GetInstanceAutoscalingConfigAutoscalingLimit() {}
+    public Integer maxNodes() {
+        return this.maxNodes;
+    }
     public Integer maxProcessingUnits() {
         return this.maxProcessingUnits;
+    }
+    public Integer minNodes() {
+        return this.minNodes;
     }
     public Integer minProcessingUnits() {
         return this.minProcessingUnits;
@@ -29,18 +37,32 @@ public final class GetInstanceAutoscalingConfigAutoscalingLimit {
     }
     @CustomType.Builder
     public static final class Builder {
+        private Integer maxNodes;
         private Integer maxProcessingUnits;
+        private Integer minNodes;
         private Integer minProcessingUnits;
         public Builder() {}
         public Builder(GetInstanceAutoscalingConfigAutoscalingLimit defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.maxNodes = defaults.maxNodes;
     	      this.maxProcessingUnits = defaults.maxProcessingUnits;
+    	      this.minNodes = defaults.minNodes;
     	      this.minProcessingUnits = defaults.minProcessingUnits;
         }
 
         @CustomType.Setter
+        public Builder maxNodes(Integer maxNodes) {
+            this.maxNodes = Objects.requireNonNull(maxNodes);
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxProcessingUnits(Integer maxProcessingUnits) {
             this.maxProcessingUnits = Objects.requireNonNull(maxProcessingUnits);
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minNodes(Integer minNodes) {
+            this.minNodes = Objects.requireNonNull(minNodes);
             return this;
         }
         @CustomType.Setter
@@ -50,7 +72,9 @@ public final class GetInstanceAutoscalingConfigAutoscalingLimit {
         }
         public GetInstanceAutoscalingConfigAutoscalingLimit build() {
             final var _resultValue = new GetInstanceAutoscalingConfigAutoscalingLimit();
+            _resultValue.maxNodes = maxNodes;
             _resultValue.maxProcessingUnits = maxProcessingUnits;
+            _resultValue.minNodes = minNodes;
             _resultValue.minProcessingUnits = minProcessingUnits;
             return _resultValue;
         }

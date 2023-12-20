@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetDefaultEncryptionConfigurationArgs;
+import com.pulumi.gcp.bigquery.inputs.DatasetExternalDatasetReferenceArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -226,6 +227,21 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Information about the external metadata storage where the dataset is defined.
+     * 
+     */
+    @Import(name="externalDatasetReference")
+    private @Nullable Output<DatasetExternalDatasetReferenceArgs> externalDatasetReference;
+
+    /**
+     * @return Information about the external metadata storage where the dataset is defined.
+     * 
+     */
+    public Optional<Output<DatasetExternalDatasetReferenceArgs>> externalDatasetReference() {
+        return Optional.ofNullable(this.externalDatasetReference);
+    }
+
+    /**
      * A descriptive name for the dataset
      * 
      */
@@ -379,6 +395,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         this.defaultTableExpirationMs = $.defaultTableExpirationMs;
         this.deleteContentsOnDestroy = $.deleteContentsOnDestroy;
         this.description = $.description;
+        this.externalDatasetReference = $.externalDatasetReference;
         this.friendlyName = $.friendlyName;
         this.isCaseInsensitive = $.isCaseInsensitive;
         this.labels = $.labels;
@@ -667,6 +684,27 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder description(String description) {
             return description(Output.of(description));
+        }
+
+        /**
+         * @param externalDatasetReference Information about the external metadata storage where the dataset is defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalDatasetReference(@Nullable Output<DatasetExternalDatasetReferenceArgs> externalDatasetReference) {
+            $.externalDatasetReference = externalDatasetReference;
+            return this;
+        }
+
+        /**
+         * @param externalDatasetReference Information about the external metadata storage where the dataset is defined.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalDatasetReference(DatasetExternalDatasetReferenceArgs externalDatasetReference) {
+            return externalDatasetReference(Output.of(externalDatasetReference));
         }
 
         /**

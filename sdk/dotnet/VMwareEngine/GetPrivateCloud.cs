@@ -152,6 +152,7 @@ namespace Pulumi.Gcp.VMwareEngine
         public readonly ImmutableArray<Outputs.GetPrivateCloudNsxResult> Nsxes;
         public readonly string? Project;
         public readonly string State;
+        public readonly string Type;
         public readonly string Uid;
         public readonly ImmutableArray<Outputs.GetPrivateCloudVcenterResult> Vcenters;
 
@@ -177,6 +178,8 @@ namespace Pulumi.Gcp.VMwareEngine
 
             string state,
 
+            string type,
+
             string uid,
 
             ImmutableArray<Outputs.GetPrivateCloudVcenterResult> vcenters)
@@ -191,6 +194,7 @@ namespace Pulumi.Gcp.VMwareEngine
             Nsxes = nsxes;
             Project = project;
             State = state;
+            Type = type;
             Uid = uid;
             Vcenters = vcenters;
         }

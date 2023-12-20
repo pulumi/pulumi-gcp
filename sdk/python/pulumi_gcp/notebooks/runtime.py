@@ -18,6 +18,7 @@ class RuntimeArgs:
     def __init__(__self__, *,
                  location: pulumi.Input[str],
                  access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
@@ -30,6 +31,15 @@ class RuntimeArgs:
                - - -
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
+               contain 1 to 63 characters, and must conform to [RFC 1035]
+               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               empty, but, if present, must contain 1 to 63 characters, and must
+               conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+               more than 32 labels can be associated with a cluster.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -41,6 +51,8 @@ class RuntimeArgs:
         pulumi.set(__self__, "location", location)
         if access_config is not None:
             pulumi.set(__self__, "access_config", access_config)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if project is not None:
@@ -77,6 +89,26 @@ class RuntimeArgs:
     @access_config.setter
     def access_config(self, value: Optional[pulumi.Input['RuntimeAccessConfigArgs']]):
         pulumi.set(self, "access_config", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels to associate with this runtime. Label **keys** must
+        contain 1 to 63 characters, and must conform to [RFC 1035]
+        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        empty, but, if present, must contain 1 to 63 characters, and must
+        conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+        more than 32 labels can be associated with a cluster.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -134,11 +166,14 @@ class RuntimeArgs:
 class _RuntimeState:
     def __init__(__self__, *,
                  access_config: Optional[pulumi.Input['RuntimeAccessConfigArgs']] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  health_state: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  metrics: Optional[pulumi.Input[Sequence[pulumi.Input['RuntimeMetricArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  software_config: Optional[pulumi.Input['RuntimeSoftwareConfigArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  virtual_machine: Optional[pulumi.Input['RuntimeVirtualMachineArgs']] = None):
@@ -146,9 +181,19 @@ class _RuntimeState:
         Input properties used for looking up and filtering Runtime resources.
         :param pulumi.Input['RuntimeAccessConfigArgs'] access_config: The config settings for accessing runtime.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] health_state: The health state of this runtime. For a list of possible output
                values, see `https://cloud.google.com/vertex-ai/docs/workbench/
                reference/rest/v1/projects.locations.runtimes#healthstate`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
+               contain 1 to 63 characters, and must conform to [RFC 1035]
+               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               empty, but, if present, must contain 1 to 63 characters, and must
+               conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+               more than 32 labels can be associated with a cluster.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
                
                
@@ -159,6 +204,8 @@ class _RuntimeState:
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input['RuntimeSoftwareConfigArgs'] software_config: The config settings for software inside the runtime.
                Structure is documented below.
         :param pulumi.Input[str] state: The state of this runtime.
@@ -167,8 +214,12 @@ class _RuntimeState:
         """
         if access_config is not None:
             pulumi.set(__self__, "access_config", access_config)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if health_state is not None:
             pulumi.set(__self__, "health_state", health_state)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if metrics is not None:
@@ -177,6 +228,8 @@ class _RuntimeState:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if software_config is not None:
             pulumi.set(__self__, "software_config", software_config)
         if state is not None:
@@ -198,6 +251,18 @@ class _RuntimeState:
         pulumi.set(self, "access_config", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter(name="healthState")
     def health_state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -210,6 +275,26 @@ class _RuntimeState:
     @health_state.setter
     def health_state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "health_state", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The labels to associate with this runtime. Label **keys** must
+        contain 1 to 63 characters, and must conform to [RFC 1035]
+        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        empty, but, if present, must contain 1 to 63 characters, and must
+        conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+        more than 32 labels can be associated with a cluster.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -266,6 +351,19 @@ class _RuntimeState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
+
+    @property
     @pulumi.getter(name="softwareConfig")
     def software_config(self) -> Optional[pulumi.Input['RuntimeSoftwareConfigArgs']]:
         """
@@ -310,6 +408,7 @@ class Runtime(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -430,6 +529,9 @@ class Runtime(pulumi.CustomResource):
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
+            labels={
+                "k": "val",
+            },
             location="us-central1",
             software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
                 kernels=[gcp.notebooks.RuntimeSoftwareConfigKernelArgs(
@@ -460,6 +562,9 @@ class Runtime(pulumi.CustomResource):
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
+            labels={
+                "k": "val",
+            },
             location="us-central1",
             software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
                 post_startup_script_behavior="RUN_EVERY_START",
@@ -505,6 +610,15 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
+               contain 1 to 63 characters, and must conform to [RFC 1035]
+               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               empty, but, if present, must contain 1 to 63 characters, and must
+               conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+               more than 32 labels can be associated with a cluster.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
                
                
@@ -637,6 +751,9 @@ class Runtime(pulumi.CustomResource):
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
+            labels={
+                "k": "val",
+            },
             location="us-central1",
             software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
                 kernels=[gcp.notebooks.RuntimeSoftwareConfigKernelArgs(
@@ -667,6 +784,9 @@ class Runtime(pulumi.CustomResource):
                 access_type="SINGLE_USER",
                 runtime_owner="admin@hashicorptest.com",
             ),
+            labels={
+                "k": "val",
+            },
             location="us-central1",
             software_config=gcp.notebooks.RuntimeSoftwareConfigArgs(
                 post_startup_script_behavior="RUN_EVERY_START",
@@ -724,6 +844,7 @@ class Runtime(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -739,6 +860,7 @@ class Runtime(pulumi.CustomResource):
             __props__ = RuntimeArgs.__new__(RuntimeArgs)
 
             __props__.__dict__["access_config"] = access_config
+            __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
@@ -746,9 +868,13 @@ class Runtime(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["software_config"] = software_config
             __props__.__dict__["virtual_machine"] = virtual_machine
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["health_state"] = None
             __props__.__dict__["metrics"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Runtime, __self__).__init__(
             'gcp:notebooks/runtime:Runtime',
             resource_name,
@@ -760,11 +886,14 @@ class Runtime(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_config: Optional[pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             health_state: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             metrics: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RuntimeMetricArgs']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             software_config: Optional[pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             virtual_machine: Optional[pulumi.Input[pulumi.InputType['RuntimeVirtualMachineArgs']]] = None) -> 'Runtime':
@@ -777,9 +906,19 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['RuntimeAccessConfigArgs']] access_config: The config settings for accessing runtime.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] health_state: The health state of this runtime. For a list of possible output
                values, see `https://cloud.google.com/vertex-ai/docs/workbench/
                reference/rest/v1/projects.locations.runtimes#healthstate`.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: The labels to associate with this runtime. Label **keys** must
+               contain 1 to 63 characters, and must conform to [RFC 1035]
+               (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+               empty, but, if present, must contain 1 to 63 characters, and must
+               conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+               more than 32 labels can be associated with a cluster.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: A reference to the zone where the machine resides.
                
                
@@ -790,6 +929,8 @@ class Runtime(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name specified for the Notebook runtime.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['RuntimeSoftwareConfigArgs']] software_config: The config settings for software inside the runtime.
                Structure is documented below.
         :param pulumi.Input[str] state: The state of this runtime.
@@ -801,11 +942,14 @@ class Runtime(pulumi.CustomResource):
         __props__ = _RuntimeState.__new__(_RuntimeState)
 
         __props__.__dict__["access_config"] = access_config
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["health_state"] = health_state
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["metrics"] = metrics
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["software_config"] = software_config
         __props__.__dict__["state"] = state
         __props__.__dict__["virtual_machine"] = virtual_machine
@@ -821,6 +965,14 @@ class Runtime(pulumi.CustomResource):
         return pulumi.get(self, "access_config")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter(name="healthState")
     def health_state(self) -> pulumi.Output[str]:
         """
@@ -829,6 +981,22 @@ class Runtime(pulumi.CustomResource):
         reference/rest/v1/projects.locations.runtimes#healthstate`.
         """
         return pulumi.get(self, "health_state")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        The labels to associate with this runtime. Label **keys** must
+        contain 1 to 63 characters, and must conform to [RFC 1035]
+        (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+        empty, but, if present, must contain 1 to 63 characters, and must
+        conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+        more than 32 labels can be associated with a cluster.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -867,6 +1035,15 @@ class Runtime(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter(name="softwareConfig")

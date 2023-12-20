@@ -5,7 +5,10 @@ package com.pulumi.gcp.securesourcemanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.securesourcemanager.inputs.InstanceHostConfigArgs;
+import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,6 +50,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A list of hostnames for this instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="hostConfigs")
+    private @Nullable Output<List<InstanceHostConfigArgs>> hostConfigs;
+
+    /**
+     * @return A list of hostnames for this instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<InstanceHostConfigArgs>>> hostConfigs() {
+        return Optional.ofNullable(this.hostConfigs);
+    }
+
+    /**
      * The name for the Instance.
      * 
      * ***
@@ -63,6 +83,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> instanceId() {
         return Optional.ofNullable(this.instanceId);
+    }
+
+    /**
+     * Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * 
+     */
+    @Import(name="kmsKey")
+    private @Nullable Output<String> kmsKey;
+
+    /**
+     * @return Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * 
+     */
+    public Optional<Output<String>> kmsKey() {
+        return Optional.ofNullable(this.kmsKey);
     }
 
     /**
@@ -117,6 +152,23 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Private settings for private instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="privateConfig")
+    private @Nullable Output<InstancePrivateConfigArgs> privateConfig;
+
+    /**
+     * @return Private settings for private instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePrivateConfigArgs>> privateConfig() {
+        return Optional.ofNullable(this.privateConfig);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -166,6 +218,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Provides information about the current instance state.
+     * 
+     */
+    @Import(name="stateNote")
+    private @Nullable Output<String> stateNote;
+
+    /**
+     * @return Provides information about the current instance state.
+     * 
+     */
+    public Optional<Output<String>> stateNote() {
+        return Optional.ofNullable(this.stateNote);
+    }
+
+    /**
      * Time the Instance was updated in UTC.
      * 
      */
@@ -185,13 +252,17 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private InstanceState(InstanceState $) {
         this.createTime = $.createTime;
         this.effectiveLabels = $.effectiveLabels;
+        this.hostConfigs = $.hostConfigs;
         this.instanceId = $.instanceId;
+        this.kmsKey = $.kmsKey;
         this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
+        this.privateConfig = $.privateConfig;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.state = $.state;
+        this.stateNote = $.stateNote;
         this.updateTime = $.updateTime;
     }
 
@@ -256,6 +327,40 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param hostConfigs A list of hostnames for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostConfigs(@Nullable Output<List<InstanceHostConfigArgs>> hostConfigs) {
+            $.hostConfigs = hostConfigs;
+            return this;
+        }
+
+        /**
+         * @param hostConfigs A list of hostnames for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostConfigs(List<InstanceHostConfigArgs> hostConfigs) {
+            return hostConfigs(Output.of(hostConfigs));
+        }
+
+        /**
+         * @param hostConfigs A list of hostnames for this instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostConfigs(InstanceHostConfigArgs... hostConfigs) {
+            return hostConfigs(List.of(hostConfigs));
+        }
+
+        /**
          * @param instanceId The name for the Instance.
          * 
          * ***
@@ -278,6 +383,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param kmsKey Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(@Nullable Output<String> kmsKey) {
+            $.kmsKey = kmsKey;
+            return this;
+        }
+
+        /**
+         * @param kmsKey Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(String kmsKey) {
+            return kmsKey(Output.of(kmsKey));
         }
 
         /**
@@ -350,6 +476,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param privateConfig Private settings for private instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateConfig(@Nullable Output<InstancePrivateConfigArgs> privateConfig) {
+            $.privateConfig = privateConfig;
+            return this;
+        }
+
+        /**
+         * @param privateConfig Private settings for private instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateConfig(InstancePrivateConfigArgs privateConfig) {
+            return privateConfig(Output.of(privateConfig));
+        }
+
+        /**
          * @param project The ID of the project in which the resource belongs.
          * If it is not provided, the provider project is used.
          * 
@@ -414,6 +563,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder state(String state) {
             return state(Output.of(state));
+        }
+
+        /**
+         * @param stateNote Provides information about the current instance state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateNote(@Nullable Output<String> stateNote) {
+            $.stateNote = stateNote;
+            return this;
+        }
+
+        /**
+         * @param stateNote Provides information about the current instance state.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stateNote(String stateNote) {
+            return stateNote(Output.of(stateNote));
         }
 
         /**

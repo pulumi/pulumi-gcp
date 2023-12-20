@@ -139,14 +139,11 @@ namespace Pulumi.Gcp.Apigee
     ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("apigeeSaKeyuser", new()
+    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMMember("apigeeSaKeyuser", new()
     ///     {
     ///         CryptoKeyId = apigeeKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Members = new[]
-    ///         {
-    ///             apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         },
+    ///         Member = apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
     ///     var org = new Gcp.Apigee.Organization("org", new()
@@ -199,14 +196,11 @@ namespace Pulumi.Gcp.Apigee
     ///         Provider = google_beta,
     ///     });
     /// 
-    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMBinding("apigeeSaKeyuser", new()
+    ///     var apigeeSaKeyuser = new Gcp.Kms.CryptoKeyIAMMember("apigeeSaKeyuser", new()
     ///     {
     ///         CryptoKeyId = apigeeKey.Id,
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
-    ///         Members = new[]
-    ///         {
-    ///             apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         },
+    ///         Member = apigeeSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
     ///     var org = new Gcp.Apigee.Organization("org", new()

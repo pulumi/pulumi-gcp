@@ -72,10 +72,10 @@ import * as utilities from "../utilities";
  * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
  * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
  * const project = gcp.organizations.getProject({});
- * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding", {
+ * const cryptoKeyMember = new gcp.kms.CryptoKeyIAMMember("cryptoKeyMember", {
  *     cryptoKeyId: cryptoKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`)],
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-datafusion.iam.gserviceaccount.com`),
  * });
  * const cmek = new gcp.datafusion.Instance("cmek", {
  *     region: "us-central1",
@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *         keyReference: cryptoKey.id,
  *     },
  * }, {
- *     dependsOn: [cryptoKeyBinding],
+ *     dependsOn: [cryptoKeyMember],
  * });
  * ```
  * ### Data Fusion Instance Enterprise

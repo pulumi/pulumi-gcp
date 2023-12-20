@@ -11,6 +11,7 @@ import com.pulumi.gcp.notebooks.inputs.RuntimeSoftwareConfigArgs;
 import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineArgs;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -38,6 +39,21 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Import(name="effectiveLabels")
+    private @Nullable Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> effectiveLabels() {
+        return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
      * The health state of this runtime. For a list of possible output
      * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
      * reference/rest/v1/projects.locations.runtimes#healthstate`.
@@ -54,6 +70,37 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> healthState() {
         return Optional.ofNullable(this.healthState);
+    }
+
+    /**
+     * The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -127,6 +174,23 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Import(name="pulumiLabels")
+    private @Nullable Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> pulumiLabels() {
+        return Optional.ofNullable(this.pulumiLabels);
+    }
+
+    /**
      * The config settings for software inside the runtime.
      * Structure is documented below.
      * 
@@ -179,11 +243,14 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
 
     private RuntimeState(RuntimeState $) {
         this.accessConfig = $.accessConfig;
+        this.effectiveLabels = $.effectiveLabels;
         this.healthState = $.healthState;
+        this.labels = $.labels;
         this.location = $.location;
         this.metrics = $.metrics;
         this.name = $.name;
         this.project = $.project;
+        this.pulumiLabels = $.pulumiLabels;
         this.softwareConfig = $.softwareConfig;
         this.state = $.state;
         this.virtualMachine = $.virtualMachine;
@@ -231,6 +298,27 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(@Nullable Output<Map<String,String>> effectiveLabels) {
+            $.effectiveLabels = effectiveLabels;
+            return this;
+        }
+
+        /**
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder effectiveLabels(Map<String,String> effectiveLabels) {
+            return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
          * @param healthState The health state of this runtime. For a list of possible output
          * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
          * reference/rest/v1/projects.locations.runtimes#healthstate`.
@@ -253,6 +341,43 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder healthState(String healthState) {
             return healthState(Output.of(healthState));
+        }
+
+        /**
+         * @param labels The labels to associate with this runtime. Label **keys** must
+         * contain 1 to 63 characters, and must conform to [RFC 1035]
+         * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+         * empty, but, if present, must contain 1 to 63 characters, and must
+         * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+         * more than 32 labels can be associated with a cluster.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels The labels to associate with this runtime. Label **keys** must
+         * contain 1 to 63 characters, and must conform to [RFC 1035]
+         * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+         * empty, but, if present, must contain 1 to 63 characters, and must
+         * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+         * more than 32 labels can be associated with a cluster.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**
@@ -359,6 +484,29 @@ public final class RuntimeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(@Nullable Output<Map<String,String>> pulumiLabels) {
+            $.pulumiLabels = pulumiLabels;
+            return this;
+        }
+
+        /**
+         * @param pulumiLabels The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pulumiLabels(Map<String,String> pulumiLabels) {
+            return pulumiLabels(Output.of(pulumiLabels));
         }
 
         /**

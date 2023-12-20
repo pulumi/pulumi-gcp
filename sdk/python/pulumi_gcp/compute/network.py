@@ -255,6 +255,7 @@ class _NetworkState:
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
+                 numeric_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None):
@@ -296,6 +297,7 @@ class _NetworkState:
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
+        :param pulumi.Input[str] numeric_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -324,6 +326,8 @@ class _NetworkState:
             pulumi.set(__self__, "name", name)
         if network_firewall_policy_enforcement_order is not None:
             pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
+        if numeric_id is not None:
+            pulumi.set(__self__, "numeric_id", numeric_id)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if routing_mode is not None:
@@ -465,6 +469,18 @@ class _NetworkState:
     @network_firewall_policy_enforcement_order.setter
     def network_firewall_policy_enforcement_order(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network_firewall_policy_enforcement_order", value)
+
+    @property
+    @pulumi.getter(name="numericId")
+    def numeric_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "numeric_id")
+
+    @numeric_id.setter
+    def numeric_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "numeric_id", value)
 
     @property
     @pulumi.getter
@@ -751,6 +767,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["routing_mode"] = routing_mode
             __props__.__dict__["gateway_ipv4"] = None
+            __props__.__dict__["numeric_id"] = None
             __props__.__dict__["self_link"] = None
         super(Network, __self__).__init__(
             'gcp:compute/network:Network',
@@ -771,6 +788,7 @@ class Network(pulumi.CustomResource):
             mtu: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
+            numeric_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             routing_mode: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None) -> 'Network':
@@ -817,6 +835,7 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
+        :param pulumi.Input[str] numeric_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -840,6 +859,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
         __props__.__dict__["network_firewall_policy_enforcement_order"] = network_firewall_policy_enforcement_order
+        __props__.__dict__["numeric_id"] = numeric_id
         __props__.__dict__["project"] = project
         __props__.__dict__["routing_mode"] = routing_mode
         __props__.__dict__["self_link"] = self_link
@@ -943,6 +963,14 @@ class Network(pulumi.CustomResource):
         Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         """
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
+
+    @property
+    @pulumi.getter(name="numericId")
+    def numeric_id(self) -> pulumi.Output[str]:
+        """
+        The unique identifier for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "numeric_id")
 
     @property
     @pulumi.getter

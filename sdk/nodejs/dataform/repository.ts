@@ -32,6 +32,11 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * const dataformRespository = new gcp.dataform.Repository("dataformRespository", {
+ *     displayName: "dataform_repository",
+ *     npmrcEnvironmentVariablesSecretVersion: secretVersion.id,
+ *     labels: {
+ *         label_foo1: "label-bar1",
+ *     },
  *     gitRemoteSettings: {
  *         url: gitRepository.url,
  *         defaultBranch: "main",
@@ -146,10 +151,26 @@ export class Repository extends pulumi.CustomResource {
     }
 
     /**
+     * Optional. The repository's user-friendly name.
+     */
+    public readonly displayName!: pulumi.Output<string | undefined>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * Optional. If set, configures this repository to be linked to a Git remote.
      * Structure is documented below.
      */
     public readonly gitRemoteSettings!: pulumi.Output<outputs.dataform.RepositoryGitRemoteSettings | undefined>;
+    /**
+     * Optional. Repository user labels.
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * The repository's name.
      *
@@ -158,10 +179,19 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
+     */
+    public readonly npmrcEnvironmentVariablesSecretVersion!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * A reference to the region
      */
@@ -189,22 +219,34 @@ export class Repository extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as RepositoryState | undefined;
+            resourceInputs["displayName"] = state ? state.displayName : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["gitRemoteSettings"] = state ? state.gitRemoteSettings : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = state ? state.npmrcEnvironmentVariablesSecretVersion : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["serviceAccount"] = state ? state.serviceAccount : undefined;
             resourceInputs["workspaceCompilationOverrides"] = state ? state.workspaceCompilationOverrides : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
+            resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["gitRemoteSettings"] = args ? args.gitRemoteSettings : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["npmrcEnvironmentVariablesSecretVersion"] = args ? args.npmrcEnvironmentVariablesSecretVersion : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
             resourceInputs["workspaceCompilationOverrides"] = args ? args.workspaceCompilationOverrides : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Repository.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -214,10 +256,26 @@ export class Repository extends pulumi.CustomResource {
  */
 export interface RepositoryState {
     /**
+     * Optional. The repository's user-friendly name.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * Optional. If set, configures this repository to be linked to a Git remote.
      * Structure is documented below.
      */
     gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings>;
+    /**
+     * Optional. Repository user labels.
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The repository's name.
      *
@@ -226,10 +284,19 @@ export interface RepositoryState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
+     */
+    npmrcEnvironmentVariablesSecretVersion?: pulumi.Input<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the region
      */
@@ -250,10 +317,22 @@ export interface RepositoryState {
  */
 export interface RepositoryArgs {
     /**
+     * Optional. The repository's user-friendly name.
+     */
+    displayName?: pulumi.Input<string>;
+    /**
      * Optional. If set, configures this repository to be linked to a Git remote.
      * Structure is documented below.
      */
     gitRemoteSettings?: pulumi.Input<inputs.dataform.RepositoryGitRemoteSettings>;
+    /**
+     * Optional. Repository user labels.
+     * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The repository's name.
      *
@@ -261,6 +340,10 @@ export interface RepositoryArgs {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*&#47;secrets/*&#47;versions/*. The file itself must be in a JSON format.
+     */
+    npmrcEnvironmentVariablesSecretVersion?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

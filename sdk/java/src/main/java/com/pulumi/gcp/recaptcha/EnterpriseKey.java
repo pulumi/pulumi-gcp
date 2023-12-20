@@ -13,6 +13,7 @@ import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyState;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyAndroidSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyIosSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyTestingOptions;
+import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyWafSettings;
 import com.pulumi.gcp.recaptcha.outputs.EnterpriseKeyWebSettings;
 import java.lang.Object;
 import java.lang.String;
@@ -138,6 +139,55 @@ import javax.annotation.Nullable;
  *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
  *                 .allowAllDomains(true)
  *                 .integrationType(&#34;SCORE&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Waf_key
+ * A basic test of recaptcha enterprise key that includes WAF settings
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKey;
+ * import com.pulumi.gcp.recaptcha.EnterpriseKeyArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWafSettingsArgs;
+ * import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var primary = new EnterpriseKey(&#34;primary&#34;, EnterpriseKeyArgs.builder()        
+ *             .displayName(&#34;display-name-one&#34;)
+ *             .labels(Map.of(&#34;label-one&#34;, &#34;value-one&#34;))
+ *             .project(&#34;my-project-name&#34;)
+ *             .testingOptions(EnterpriseKeyTestingOptionsArgs.builder()
+ *                 .testingChallenge(&#34;NOCAPTCHA&#34;)
+ *                 .testingScore(0.5)
+ *                 .build())
+ *             .wafSettings(EnterpriseKeyWafSettingsArgs.builder()
+ *                 .wafFeature(&#34;CHALLENGE_PAGE&#34;)
+ *                 .wafService(&#34;CA&#34;)
+ *                 .build())
+ *             .webSettings(EnterpriseKeyWebSettingsArgs.builder()
+ *                 .allowAllDomains(true)
+ *                 .allowedDomains()
+ *                 .challengeSecurityPreference(&#34;USABILITY&#34;)
+ *                 .integrationType(&#34;INVISIBLE&#34;)
  *                 .build())
  *             .build());
  * 
@@ -408,6 +458,20 @@ public class EnterpriseKey extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<EnterpriseKeyTestingOptions>> testingOptions() {
         return Codegen.optional(this.testingOptions);
+    }
+    /**
+     * Settings specific to keys that can be used for WAF (Web Application Firewall).
+     * 
+     */
+    @Export(name="wafSettings", refs={EnterpriseKeyWafSettings.class}, tree="[0]")
+    private Output</* @Nullable */ EnterpriseKeyWafSettings> wafSettings;
+
+    /**
+     * @return Settings specific to keys that can be used for WAF (Web Application Firewall).
+     * 
+     */
+    public Output<Optional<EnterpriseKeyWafSettings>> wafSettings() {
+        return Codegen.optional(this.wafSettings);
     }
     /**
      * Settings for keys that can be used by websites.

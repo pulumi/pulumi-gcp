@@ -162,6 +162,25 @@ import * as utilities from "../utilities";
  *     ],
  * });
  * ```
+ * ### Bigquery Dataset External Reference Aws Docs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const dataset = new gcp.bigquery.Dataset("dataset", {
+ *     datasetId: "example_dataset",
+ *     friendlyName: "test",
+ *     description: "This is a test description",
+ *     location: "aws-us-east-1",
+ *     externalDatasetReference: {
+ *         externalSource: "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+ *         connection: "projects/project/locations/aws-us-east-1/connections/connection",
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  *
  * ## Import
  *
@@ -304,6 +323,10 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * Information about the external metadata storage where the dataset is defined.
+     */
+    public readonly externalDatasetReference!: pulumi.Output<outputs.bigquery.DatasetExternalDatasetReference | undefined>;
+    /**
      * A descriptive name for the dataset
      */
     public readonly friendlyName!: pulumi.Output<string | undefined>;
@@ -389,6 +412,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
+            resourceInputs["externalDatasetReference"] = state ? state.externalDatasetReference : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
             resourceInputs["isCaseInsensitive"] = state ? state.isCaseInsensitive : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -412,6 +436,7 @@ export class Dataset extends pulumi.CustomResource {
             resourceInputs["defaultTableExpirationMs"] = args ? args.defaultTableExpirationMs : undefined;
             resourceInputs["deleteContentsOnDestroy"] = args ? args.deleteContentsOnDestroy : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["externalDatasetReference"] = args ? args.externalDatasetReference : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["isCaseInsensitive"] = args ? args.isCaseInsensitive : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -525,6 +550,10 @@ export interface DatasetState {
      * A hash of the resource.
      */
     etag?: pulumi.Input<string>;
+    /**
+     * Information about the external metadata storage where the dataset is defined.
+     */
+    externalDatasetReference?: pulumi.Input<inputs.bigquery.DatasetExternalDatasetReference>;
     /**
      * A descriptive name for the dataset
      */
@@ -667,6 +696,10 @@ export interface DatasetArgs {
      * A user-friendly description of the dataset
      */
     description?: pulumi.Input<string>;
+    /**
+     * Information about the external metadata storage where the dataset is defined.
+     */
+    externalDatasetReference?: pulumi.Input<inputs.bigquery.DatasetExternalDatasetReference>;
     /**
      * A descriptive name for the dataset
      */

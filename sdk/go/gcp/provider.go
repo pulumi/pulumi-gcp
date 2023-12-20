@@ -165,6 +165,7 @@ type Provider struct {
 	VertexAiCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             pulumi.StringPtrOutput `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                pulumi.StringPtrOutput `pulumi:"vpcAccessCustomEndpoint"`
+	WorkbenchCustomEndpoint                pulumi.StringPtrOutput `pulumi:"workbenchCustomEndpoint"`
 	WorkflowsCustomEndpoint                pulumi.StringPtrOutput `pulumi:"workflowsCustomEndpoint"`
 	WorkstationsCustomEndpoint             pulumi.StringPtrOutput `pulumi:"workstationsCustomEndpoint"`
 	Zone                                   pulumi.StringPtrOutput `pulumi:"zone"`
@@ -355,6 +356,7 @@ type providerArgs struct {
 	VertexAiCustomEndpoint                 *string           `pulumi:"vertexAiCustomEndpoint"`
 	VmwareengineCustomEndpoint             *string           `pulumi:"vmwareengineCustomEndpoint"`
 	VpcAccessCustomEndpoint                *string           `pulumi:"vpcAccessCustomEndpoint"`
+	WorkbenchCustomEndpoint                *string           `pulumi:"workbenchCustomEndpoint"`
 	WorkflowsCustomEndpoint                *string           `pulumi:"workflowsCustomEndpoint"`
 	WorkstationsCustomEndpoint             *string           `pulumi:"workstationsCustomEndpoint"`
 	Zone                                   *string           `pulumi:"zone"`
@@ -515,6 +517,7 @@ type ProviderArgs struct {
 	VertexAiCustomEndpoint                 pulumi.StringPtrInput
 	VmwareengineCustomEndpoint             pulumi.StringPtrInput
 	VpcAccessCustomEndpoint                pulumi.StringPtrInput
+	WorkbenchCustomEndpoint                pulumi.StringPtrInput
 	WorkflowsCustomEndpoint                pulumi.StringPtrInput
 	WorkstationsCustomEndpoint             pulumi.StringPtrInput
 	Zone                                   pulumi.StringPtrInput
@@ -1143,6 +1146,10 @@ func (o ProviderOutput) VmwareengineCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) VpcAccessCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.VpcAccessCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) WorkbenchCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.WorkbenchCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) WorkflowsCustomEndpoint() pulumi.StringPtrOutput {

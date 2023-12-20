@@ -12,12 +12,24 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceAutoscalingConfigAutoscalingLimits {
     /**
+     * @return Specifies maximum number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to min_nodes.
+     * 
+     */
+    private @Nullable Integer maxNodes;
+    /**
      * @return Specifies maximum number of processing units allocated to the instance.
      * If set, this number should be multiples of 1000 and be greater than or equal to
      * min_processing_units.
      * 
      */
     private @Nullable Integer maxProcessingUnits;
+    /**
+     * @return Specifies number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to 1.
+     * 
+     */
+    private @Nullable Integer minNodes;
     /**
      * @return Specifies minimum number of processing units allocated to the instance.
      * If set, this number should be multiples of 1000.
@@ -27,6 +39,14 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
 
     private InstanceAutoscalingConfigAutoscalingLimits() {}
     /**
+     * @return Specifies maximum number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to min_nodes.
+     * 
+     */
+    public Optional<Integer> maxNodes() {
+        return Optional.ofNullable(this.maxNodes);
+    }
+    /**
      * @return Specifies maximum number of processing units allocated to the instance.
      * If set, this number should be multiples of 1000 and be greater than or equal to
      * min_processing_units.
@@ -34,6 +54,14 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
      */
     public Optional<Integer> maxProcessingUnits() {
         return Optional.ofNullable(this.maxProcessingUnits);
+    }
+    /**
+     * @return Specifies number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to 1.
+     * 
+     */
+    public Optional<Integer> minNodes() {
+        return Optional.ofNullable(this.minNodes);
     }
     /**
      * @return Specifies minimum number of processing units allocated to the instance.
@@ -53,18 +81,32 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable Integer maxNodes;
         private @Nullable Integer maxProcessingUnits;
+        private @Nullable Integer minNodes;
         private @Nullable Integer minProcessingUnits;
         public Builder() {}
         public Builder(InstanceAutoscalingConfigAutoscalingLimits defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.maxNodes = defaults.maxNodes;
     	      this.maxProcessingUnits = defaults.maxProcessingUnits;
+    	      this.minNodes = defaults.minNodes;
     	      this.minProcessingUnits = defaults.minProcessingUnits;
         }
 
         @CustomType.Setter
+        public Builder maxNodes(@Nullable Integer maxNodes) {
+            this.maxNodes = maxNodes;
+            return this;
+        }
+        @CustomType.Setter
         public Builder maxProcessingUnits(@Nullable Integer maxProcessingUnits) {
             this.maxProcessingUnits = maxProcessingUnits;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder minNodes(@Nullable Integer minNodes) {
+            this.minNodes = minNodes;
             return this;
         }
         @CustomType.Setter
@@ -74,7 +116,9 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
         }
         public InstanceAutoscalingConfigAutoscalingLimits build() {
             final var _resultValue = new InstanceAutoscalingConfigAutoscalingLimits();
+            _resultValue.maxNodes = maxNodes;
             _resultValue.maxProcessingUnits = maxProcessingUnits;
+            _resultValue.minNodes = minNodes;
             _resultValue.minProcessingUnits = minProcessingUnits;
             return _resultValue;
         }

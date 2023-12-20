@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:vmwareengine/cluster:Cluster":
 		r = &Cluster{}
+	case "gcp:vmwareengine/externalAddress:ExternalAddress":
+		r = &ExternalAddress{}
 	case "gcp:vmwareengine/network:Network":
 		r = &Network{}
 	case "gcp:vmwareengine/networkPeering:NetworkPeering":
@@ -31,6 +33,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &NetworkPolicy{}
 	case "gcp:vmwareengine/privateCloud:PrivateCloud":
 		r = &PrivateCloud{}
+	case "gcp:vmwareengine/subnet:Subnet":
+		r = &Subnet{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -51,6 +55,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"vmwareengine/externalAddress",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"vmwareengine/network",
 		&module{version},
 	)
@@ -67,6 +76,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vmwareengine/privateCloud",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vmwareengine/subnet",
 		&module{version},
 	)
 }

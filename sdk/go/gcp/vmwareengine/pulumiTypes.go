@@ -1526,6 +1526,118 @@ func (o PrivateCloudVcenterArrayOutput) Index(i pulumi.IntInput) PrivateCloudVce
 	}).(PrivateCloudVcenterOutput)
 }
 
+type SubnetDhcpAddressRange struct {
+	// (Output)
+	// The first IP address of the range.
+	FirstAddress *string `pulumi:"firstAddress"`
+	// (Output)
+	// The last IP address of the range.
+	LastAddress *string `pulumi:"lastAddress"`
+}
+
+// SubnetDhcpAddressRangeInput is an input type that accepts SubnetDhcpAddressRangeArgs and SubnetDhcpAddressRangeOutput values.
+// You can construct a concrete instance of `SubnetDhcpAddressRangeInput` via:
+//
+//	SubnetDhcpAddressRangeArgs{...}
+type SubnetDhcpAddressRangeInput interface {
+	pulumi.Input
+
+	ToSubnetDhcpAddressRangeOutput() SubnetDhcpAddressRangeOutput
+	ToSubnetDhcpAddressRangeOutputWithContext(context.Context) SubnetDhcpAddressRangeOutput
+}
+
+type SubnetDhcpAddressRangeArgs struct {
+	// (Output)
+	// The first IP address of the range.
+	FirstAddress pulumi.StringPtrInput `pulumi:"firstAddress"`
+	// (Output)
+	// The last IP address of the range.
+	LastAddress pulumi.StringPtrInput `pulumi:"lastAddress"`
+}
+
+func (SubnetDhcpAddressRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetDhcpAddressRange)(nil)).Elem()
+}
+
+func (i SubnetDhcpAddressRangeArgs) ToSubnetDhcpAddressRangeOutput() SubnetDhcpAddressRangeOutput {
+	return i.ToSubnetDhcpAddressRangeOutputWithContext(context.Background())
+}
+
+func (i SubnetDhcpAddressRangeArgs) ToSubnetDhcpAddressRangeOutputWithContext(ctx context.Context) SubnetDhcpAddressRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetDhcpAddressRangeOutput)
+}
+
+// SubnetDhcpAddressRangeArrayInput is an input type that accepts SubnetDhcpAddressRangeArray and SubnetDhcpAddressRangeArrayOutput values.
+// You can construct a concrete instance of `SubnetDhcpAddressRangeArrayInput` via:
+//
+//	SubnetDhcpAddressRangeArray{ SubnetDhcpAddressRangeArgs{...} }
+type SubnetDhcpAddressRangeArrayInput interface {
+	pulumi.Input
+
+	ToSubnetDhcpAddressRangeArrayOutput() SubnetDhcpAddressRangeArrayOutput
+	ToSubnetDhcpAddressRangeArrayOutputWithContext(context.Context) SubnetDhcpAddressRangeArrayOutput
+}
+
+type SubnetDhcpAddressRangeArray []SubnetDhcpAddressRangeInput
+
+func (SubnetDhcpAddressRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetDhcpAddressRange)(nil)).Elem()
+}
+
+func (i SubnetDhcpAddressRangeArray) ToSubnetDhcpAddressRangeArrayOutput() SubnetDhcpAddressRangeArrayOutput {
+	return i.ToSubnetDhcpAddressRangeArrayOutputWithContext(context.Background())
+}
+
+func (i SubnetDhcpAddressRangeArray) ToSubnetDhcpAddressRangeArrayOutputWithContext(ctx context.Context) SubnetDhcpAddressRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SubnetDhcpAddressRangeArrayOutput)
+}
+
+type SubnetDhcpAddressRangeOutput struct{ *pulumi.OutputState }
+
+func (SubnetDhcpAddressRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SubnetDhcpAddressRange)(nil)).Elem()
+}
+
+func (o SubnetDhcpAddressRangeOutput) ToSubnetDhcpAddressRangeOutput() SubnetDhcpAddressRangeOutput {
+	return o
+}
+
+func (o SubnetDhcpAddressRangeOutput) ToSubnetDhcpAddressRangeOutputWithContext(ctx context.Context) SubnetDhcpAddressRangeOutput {
+	return o
+}
+
+// (Output)
+// The first IP address of the range.
+func (o SubnetDhcpAddressRangeOutput) FirstAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetDhcpAddressRange) *string { return v.FirstAddress }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The last IP address of the range.
+func (o SubnetDhcpAddressRangeOutput) LastAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SubnetDhcpAddressRange) *string { return v.LastAddress }).(pulumi.StringPtrOutput)
+}
+
+type SubnetDhcpAddressRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (SubnetDhcpAddressRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SubnetDhcpAddressRange)(nil)).Elem()
+}
+
+func (o SubnetDhcpAddressRangeArrayOutput) ToSubnetDhcpAddressRangeArrayOutput() SubnetDhcpAddressRangeArrayOutput {
+	return o
+}
+
+func (o SubnetDhcpAddressRangeArrayOutput) ToSubnetDhcpAddressRangeArrayOutputWithContext(ctx context.Context) SubnetDhcpAddressRangeArrayOutput {
+	return o
+}
+
+func (o SubnetDhcpAddressRangeArrayOutput) Index(i pulumi.IntInput) SubnetDhcpAddressRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SubnetDhcpAddressRange {
+		return vs[0].([]SubnetDhcpAddressRange)[vs[1].(int)]
+	}).(SubnetDhcpAddressRangeOutput)
+}
+
 type GetClusterNodeTypeConfig struct {
 	CustomCoreCount int    `pulumi:"customCoreCount"`
 	NodeCount       int    `pulumi:"nodeCount"`
@@ -2594,6 +2706,106 @@ func (o GetPrivateCloudVcenterArrayOutput) Index(i pulumi.IntInput) GetPrivateCl
 	}).(GetPrivateCloudVcenterOutput)
 }
 
+type GetSubnetDhcpAddressRange struct {
+	FirstAddress string `pulumi:"firstAddress"`
+	LastAddress  string `pulumi:"lastAddress"`
+}
+
+// GetSubnetDhcpAddressRangeInput is an input type that accepts GetSubnetDhcpAddressRangeArgs and GetSubnetDhcpAddressRangeOutput values.
+// You can construct a concrete instance of `GetSubnetDhcpAddressRangeInput` via:
+//
+//	GetSubnetDhcpAddressRangeArgs{...}
+type GetSubnetDhcpAddressRangeInput interface {
+	pulumi.Input
+
+	ToGetSubnetDhcpAddressRangeOutput() GetSubnetDhcpAddressRangeOutput
+	ToGetSubnetDhcpAddressRangeOutputWithContext(context.Context) GetSubnetDhcpAddressRangeOutput
+}
+
+type GetSubnetDhcpAddressRangeArgs struct {
+	FirstAddress pulumi.StringInput `pulumi:"firstAddress"`
+	LastAddress  pulumi.StringInput `pulumi:"lastAddress"`
+}
+
+func (GetSubnetDhcpAddressRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetDhcpAddressRange)(nil)).Elem()
+}
+
+func (i GetSubnetDhcpAddressRangeArgs) ToGetSubnetDhcpAddressRangeOutput() GetSubnetDhcpAddressRangeOutput {
+	return i.ToGetSubnetDhcpAddressRangeOutputWithContext(context.Background())
+}
+
+func (i GetSubnetDhcpAddressRangeArgs) ToGetSubnetDhcpAddressRangeOutputWithContext(ctx context.Context) GetSubnetDhcpAddressRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetDhcpAddressRangeOutput)
+}
+
+// GetSubnetDhcpAddressRangeArrayInput is an input type that accepts GetSubnetDhcpAddressRangeArray and GetSubnetDhcpAddressRangeArrayOutput values.
+// You can construct a concrete instance of `GetSubnetDhcpAddressRangeArrayInput` via:
+//
+//	GetSubnetDhcpAddressRangeArray{ GetSubnetDhcpAddressRangeArgs{...} }
+type GetSubnetDhcpAddressRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetSubnetDhcpAddressRangeArrayOutput() GetSubnetDhcpAddressRangeArrayOutput
+	ToGetSubnetDhcpAddressRangeArrayOutputWithContext(context.Context) GetSubnetDhcpAddressRangeArrayOutput
+}
+
+type GetSubnetDhcpAddressRangeArray []GetSubnetDhcpAddressRangeInput
+
+func (GetSubnetDhcpAddressRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubnetDhcpAddressRange)(nil)).Elem()
+}
+
+func (i GetSubnetDhcpAddressRangeArray) ToGetSubnetDhcpAddressRangeArrayOutput() GetSubnetDhcpAddressRangeArrayOutput {
+	return i.ToGetSubnetDhcpAddressRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetSubnetDhcpAddressRangeArray) ToGetSubnetDhcpAddressRangeArrayOutputWithContext(ctx context.Context) GetSubnetDhcpAddressRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSubnetDhcpAddressRangeArrayOutput)
+}
+
+type GetSubnetDhcpAddressRangeOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetDhcpAddressRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSubnetDhcpAddressRange)(nil)).Elem()
+}
+
+func (o GetSubnetDhcpAddressRangeOutput) ToGetSubnetDhcpAddressRangeOutput() GetSubnetDhcpAddressRangeOutput {
+	return o
+}
+
+func (o GetSubnetDhcpAddressRangeOutput) ToGetSubnetDhcpAddressRangeOutputWithContext(ctx context.Context) GetSubnetDhcpAddressRangeOutput {
+	return o
+}
+
+func (o GetSubnetDhcpAddressRangeOutput) FirstAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetDhcpAddressRange) string { return v.FirstAddress }).(pulumi.StringOutput)
+}
+
+func (o GetSubnetDhcpAddressRangeOutput) LastAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSubnetDhcpAddressRange) string { return v.LastAddress }).(pulumi.StringOutput)
+}
+
+type GetSubnetDhcpAddressRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSubnetDhcpAddressRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSubnetDhcpAddressRange)(nil)).Elem()
+}
+
+func (o GetSubnetDhcpAddressRangeArrayOutput) ToGetSubnetDhcpAddressRangeArrayOutput() GetSubnetDhcpAddressRangeArrayOutput {
+	return o
+}
+
+func (o GetSubnetDhcpAddressRangeArrayOutput) ToGetSubnetDhcpAddressRangeArrayOutputWithContext(ctx context.Context) GetSubnetDhcpAddressRangeArrayOutput {
+	return o
+}
+
+func (o GetSubnetDhcpAddressRangeArrayOutput) Index(i pulumi.IntInput) GetSubnetDhcpAddressRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSubnetDhcpAddressRange {
+		return vs[0].([]GetSubnetDhcpAddressRange)[vs[1].(int)]
+	}).(GetSubnetDhcpAddressRangeOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigInput)(nil)).Elem(), ClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigArrayInput)(nil)).Elem(), ClusterNodeTypeConfigArray{})
@@ -2615,6 +2827,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudNsxArrayInput)(nil)).Elem(), PrivateCloudNsxArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudVcenterInput)(nil)).Elem(), PrivateCloudVcenterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrivateCloudVcenterArrayInput)(nil)).Elem(), PrivateCloudVcenterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpAddressRangeInput)(nil)).Elem(), SubnetDhcpAddressRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpAddressRangeArrayInput)(nil)).Elem(), SubnetDhcpAddressRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigInput)(nil)).Elem(), GetClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetClusterNodeTypeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPolicyExternalIpInput)(nil)).Elem(), GetNetworkPolicyExternalIpArgs{})
@@ -2635,6 +2849,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudNsxArrayInput)(nil)).Elem(), GetPrivateCloudNsxArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudVcenterInput)(nil)).Elem(), GetPrivateCloudVcenterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetPrivateCloudVcenterArrayInput)(nil)).Elem(), GetPrivateCloudVcenterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpAddressRangeInput)(nil)).Elem(), GetSubnetDhcpAddressRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpAddressRangeArrayInput)(nil)).Elem(), GetSubnetDhcpAddressRangeArray{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyExternalIpOutput{})
@@ -2655,6 +2871,8 @@ func init() {
 	pulumi.RegisterOutputType(PrivateCloudNsxArrayOutput{})
 	pulumi.RegisterOutputType(PrivateCloudVcenterOutput{})
 	pulumi.RegisterOutputType(PrivateCloudVcenterArrayOutput{})
+	pulumi.RegisterOutputType(SubnetDhcpAddressRangeOutput{})
+	pulumi.RegisterOutputType(SubnetDhcpAddressRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkPolicyExternalIpOutput{})
@@ -2675,4 +2893,6 @@ func init() {
 	pulumi.RegisterOutputType(GetPrivateCloudNsxArrayOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudVcenterOutput{})
 	pulumi.RegisterOutputType(GetPrivateCloudVcenterArrayOutput{})
+	pulumi.RegisterOutputType(GetSubnetDhcpAddressRangeOutput{})
+	pulumi.RegisterOutputType(GetSubnetDhcpAddressRangeArrayOutput{})
 }

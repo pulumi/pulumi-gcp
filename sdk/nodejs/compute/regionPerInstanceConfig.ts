@@ -189,6 +189,11 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
      */
     public readonly regionInstanceGroupManager!: pulumi.Output<string>;
     /**
+     * When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     */
+    public readonly removeInstanceOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
      * State will be removed on the next instance recreation or update.
@@ -215,6 +220,7 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["regionInstanceGroupManager"] = state ? state.regionInstanceGroupManager : undefined;
+            resourceInputs["removeInstanceOnDestroy"] = state ? state.removeInstanceOnDestroy : undefined;
             resourceInputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
         } else {
             const args = argsOrState as RegionPerInstanceConfigArgs | undefined;
@@ -228,6 +234,7 @@ export class RegionPerInstanceConfig extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["regionInstanceGroupManager"] = args ? args.regionInstanceGroupManager : undefined;
+            resourceInputs["removeInstanceOnDestroy"] = args ? args.removeInstanceOnDestroy : undefined;
             resourceInputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -283,6 +290,11 @@ export interface RegionPerInstanceConfigState {
      */
     regionInstanceGroupManager?: pulumi.Input<string>;
     /**
+     * When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     */
+    removeInstanceOnDestroy?: pulumi.Input<boolean>;
+    /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
      * State will be removed on the next instance recreation or update.
@@ -337,6 +349,11 @@ export interface RegionPerInstanceConfigArgs {
      * - - -
      */
     regionInstanceGroupManager: pulumi.Input<string>;
+    /**
+     * When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     */
+    removeInstanceOnDestroy?: pulumi.Input<boolean>;
     /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.

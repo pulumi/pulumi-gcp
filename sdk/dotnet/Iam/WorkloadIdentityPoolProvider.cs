@@ -160,6 +160,77 @@ namespace Pulumi.Gcp.Iam
     /// 
     /// });
     /// ```
+    /// ### Iam Workload Identity Pool Provider Saml Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.arn" },
+    ///             { "attribute.aws_account", "assertion.account" },
+    ///             { "attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"" },
+    ///         },
+    ///         Saml = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderSamlArgs
+    ///         {
+    ///             IdpMetadataXml = File.ReadAllText("test-fixtures/metadata.xml"),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Iam Workload Identity Pool Provider Saml Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.IO;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pool = new Gcp.Iam.WorkloadIdentityPool("pool", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = "example-pool",
+    ///     });
+    /// 
+    ///     var example = new Gcp.Iam.WorkloadIdentityPoolProvider("example", new()
+    ///     {
+    ///         WorkloadIdentityPoolId = pool.WorkloadIdentityPoolId,
+    ///         WorkloadIdentityPoolProviderId = "example-prvdr",
+    ///         DisplayName = "Name of provider",
+    ///         Description = "SAML 2.0 identity pool provider for automated test",
+    ///         Disabled = true,
+    ///         AttributeMapping = 
+    ///         {
+    ///             { "google.subject", "assertion.arn" },
+    ///             { "attribute.aws_account", "assertion.account" },
+    ///             { "attribute.environment", "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"" },
+    ///         },
+    ///         Saml = new Gcp.Iam.Inputs.WorkloadIdentityPoolProviderSamlArgs
+    ///         {
+    ///             IdpMetadataXml = File.ReadAllText("test-fixtures/metadata.xml"),
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Iam Workload Identity Pool Provider Oidc Upload Key
     /// 
     /// ```csharp
@@ -306,7 +377,7 @@ namespace Pulumi.Gcp.Iam
         public Output<ImmutableDictionary<string, string>?> AttributeMapping { get; private set; } = null!;
 
         /// <summary>
-        /// An Amazon Web Services identity provider. Not compatible with the property oidc.
+        /// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
         /// Structure is documented below.
         /// </summary>
         [Output("aws")]
@@ -339,7 +410,7 @@ namespace Pulumi.Gcp.Iam
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        /// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
         /// Structure is documented below.
         /// </summary>
         [Output("oidc")]
@@ -351,6 +422,13 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("saml")]
+        public Output<Outputs.WorkloadIdentityPoolProviderSaml?> Saml { get; private set; } = null!;
 
         /// <summary>
         /// The state of the provider.
@@ -506,7 +584,7 @@ namespace Pulumi.Gcp.Iam
         }
 
         /// <summary>
-        /// An Amazon Web Services identity provider. Not compatible with the property oidc.
+        /// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
         /// Structure is documented below.
         /// </summary>
         [Input("aws")]
@@ -532,7 +610,7 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? DisplayName { get; set; }
 
         /// <summary>
-        /// An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        /// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
         /// Structure is documented below.
         /// </summary>
         [Input("oidc")]
@@ -544,6 +622,13 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("saml")]
+        public Input<Inputs.WorkloadIdentityPoolProviderSamlArgs>? Saml { get; set; }
 
         /// <summary>
         /// The ID used for the pool, which is the final component of the pool resource name. This
@@ -649,7 +734,7 @@ namespace Pulumi.Gcp.Iam
         }
 
         /// <summary>
-        /// An Amazon Web Services identity provider. Not compatible with the property oidc.
+        /// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
         /// Structure is documented below.
         /// </summary>
         [Input("aws")]
@@ -682,7 +767,7 @@ namespace Pulumi.Gcp.Iam
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        /// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
         /// Structure is documented below.
         /// </summary>
         [Input("oidc")]
@@ -694,6 +779,13 @@ namespace Pulumi.Gcp.Iam
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("saml")]
+        public Input<Inputs.WorkloadIdentityPoolProviderSamlGetArgs>? Saml { get; set; }
 
         /// <summary>
         /// The state of the provider.

@@ -63,6 +63,7 @@ from .get_network_peering import *
 from .get_networks import *
 from .get_node_types import *
 from .get_region_backend_service_iam_policy import *
+from .get_region_disk import *
 from .get_region_disk_iam_policy import *
 from .get_region_instance_group import *
 from .get_region_instance_template import *

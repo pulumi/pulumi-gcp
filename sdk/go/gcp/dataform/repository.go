@@ -49,6 +49,11 @@ import (
 //				return err
 //			}
 //			_, err = dataform.NewRepository(ctx, "dataformRespository", &dataform.RepositoryArgs{
+//				DisplayName:                            pulumi.String("dataform_repository"),
+//				NpmrcEnvironmentVariablesSecretVersion: secretVersion.ID(),
+//				Labels: pulumi.StringMap{
+//					"label_foo1": pulumi.String("label-bar1"),
+//				},
 //				GitRemoteSettings: &dataform.RepositoryGitRemoteSettingsArgs{
 //					Url:                              gitRepository.Url,
 //					DefaultBranch:                    pulumi.String("main"),
@@ -169,16 +174,31 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
+	// Optional. The repository's user-friendly name.
+	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings RepositoryGitRemoteSettingsPtrOutput `pulumi:"gitRemoteSettings"`
+	// Optional. Repository user labels.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The repository's name.
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
+	NpmrcEnvironmentVariablesSecretVersion pulumi.StringPtrOutput `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// A reference to the region
 	Region pulumi.StringPtrOutput `pulumi:"region"`
 	// The service account to run workflow invocations under.
@@ -195,6 +215,11 @@ func NewRepository(ctx *pulumi.Context,
 		args = &RepositoryArgs{}
 	}
 
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Repository
 	err := ctx.RegisterResource("gcp:dataform/repository:Repository", name, args, &resource, opts...)
@@ -218,16 +243,31 @@ func GetRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
+	// Optional. The repository's user-friendly name.
+	DisplayName *string `pulumi:"displayName"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings *RepositoryGitRemoteSettings `pulumi:"gitRemoteSettings"`
+	// Optional. Repository user labels.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The repository's name.
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
+	NpmrcEnvironmentVariablesSecretVersion *string `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// A reference to the region
 	Region *string `pulumi:"region"`
 	// The service account to run workflow invocations under.
@@ -238,16 +278,31 @@ type repositoryState struct {
 }
 
 type RepositoryState struct {
+	// Optional. The repository's user-friendly name.
+	DisplayName pulumi.StringPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings RepositoryGitRemoteSettingsPtrInput
+	// Optional. Repository user labels.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The repository's name.
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
+	NpmrcEnvironmentVariablesSecretVersion pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// A reference to the region
 	Region pulumi.StringPtrInput
 	// The service account to run workflow invocations under.
@@ -262,13 +317,23 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
+	// Optional. The repository's user-friendly name.
+	DisplayName *string `pulumi:"displayName"`
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings *RepositoryGitRemoteSettings `pulumi:"gitRemoteSettings"`
+	// Optional. Repository user labels.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// The repository's name.
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
+	NpmrcEnvironmentVariablesSecretVersion *string `pulumi:"npmrcEnvironmentVariablesSecretVersion"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -283,13 +348,23 @@ type repositoryArgs struct {
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
+	// Optional. The repository's user-friendly name.
+	DisplayName pulumi.StringPtrInput
 	// Optional. If set, configures this repository to be linked to a Git remote.
 	// Structure is documented below.
 	GitRemoteSettings RepositoryGitRemoteSettingsPtrInput
+	// Optional. Repository user labels.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// The repository's name.
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
+	NpmrcEnvironmentVariablesSecretVersion pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -389,10 +464,29 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 	return o
 }
 
+// Optional. The repository's user-friendly name.
+func (o RepositoryOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o RepositoryOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // Optional. If set, configures this repository to be linked to a Git remote.
 // Structure is documented below.
 func (o RepositoryOutput) GitRemoteSettings() RepositoryGitRemoteSettingsPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryGitRemoteSettingsPtrOutput { return v.GitRemoteSettings }).(RepositoryGitRemoteSettingsPtrOutput)
+}
+
+// Optional. Repository user labels.
+// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o RepositoryOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // The repository's name.
@@ -402,10 +496,21 @@ func (o RepositoryOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
+// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
+func (o RepositoryOutput) NpmrcEnvironmentVariablesSecretVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringPtrOutput { return v.NpmrcEnvironmentVariablesSecretVersion }).(pulumi.StringPtrOutput)
+}
+
 // The ID of the project in which the resource belongs.
 // If it is not provided, the provider project is used.
 func (o RepositoryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o RepositoryOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // A reference to the region

@@ -13,6 +13,702 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type PolicyDryRunSpec struct {
+	// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+	Etag *string `pulumi:"etag"`
+	// Determines the inheritance behavior for this policy. If `inheritFromParent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+	InheritFromParent *bool `pulumi:"inheritFromParent"`
+	// Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
+	Reset *bool `pulumi:"reset"`
+	// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+	Rules []PolicyDryRunSpecRule `pulumi:"rules"`
+	// Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// PolicyDryRunSpecInput is an input type that accepts PolicyDryRunSpecArgs and PolicyDryRunSpecOutput values.
+// You can construct a concrete instance of `PolicyDryRunSpecInput` via:
+//
+//	PolicyDryRunSpecArgs{...}
+type PolicyDryRunSpecInput interface {
+	pulumi.Input
+
+	ToPolicyDryRunSpecOutput() PolicyDryRunSpecOutput
+	ToPolicyDryRunSpecOutputWithContext(context.Context) PolicyDryRunSpecOutput
+}
+
+type PolicyDryRunSpecArgs struct {
+	// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+	Etag pulumi.StringPtrInput `pulumi:"etag"`
+	// Determines the inheritance behavior for this policy. If `inheritFromParent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+	InheritFromParent pulumi.BoolPtrInput `pulumi:"inheritFromParent"`
+	// Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
+	Reset pulumi.BoolPtrInput `pulumi:"reset"`
+	// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+	Rules PolicyDryRunSpecRuleArrayInput `pulumi:"rules"`
+	// Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (PolicyDryRunSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyDryRunSpec)(nil)).Elem()
+}
+
+func (i PolicyDryRunSpecArgs) ToPolicyDryRunSpecOutput() PolicyDryRunSpecOutput {
+	return i.ToPolicyDryRunSpecOutputWithContext(context.Background())
+}
+
+func (i PolicyDryRunSpecArgs) ToPolicyDryRunSpecOutputWithContext(ctx context.Context) PolicyDryRunSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecOutput)
+}
+
+func (i PolicyDryRunSpecArgs) ToPolicyDryRunSpecPtrOutput() PolicyDryRunSpecPtrOutput {
+	return i.ToPolicyDryRunSpecPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyDryRunSpecArgs) ToPolicyDryRunSpecPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecOutput).ToPolicyDryRunSpecPtrOutputWithContext(ctx)
+}
+
+// PolicyDryRunSpecPtrInput is an input type that accepts PolicyDryRunSpecArgs, PolicyDryRunSpecPtr and PolicyDryRunSpecPtrOutput values.
+// You can construct a concrete instance of `PolicyDryRunSpecPtrInput` via:
+//
+//	        PolicyDryRunSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyDryRunSpecPtrInput interface {
+	pulumi.Input
+
+	ToPolicyDryRunSpecPtrOutput() PolicyDryRunSpecPtrOutput
+	ToPolicyDryRunSpecPtrOutputWithContext(context.Context) PolicyDryRunSpecPtrOutput
+}
+
+type policyDryRunSpecPtrType PolicyDryRunSpecArgs
+
+func PolicyDryRunSpecPtr(v *PolicyDryRunSpecArgs) PolicyDryRunSpecPtrInput {
+	return (*policyDryRunSpecPtrType)(v)
+}
+
+func (*policyDryRunSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyDryRunSpec)(nil)).Elem()
+}
+
+func (i *policyDryRunSpecPtrType) ToPolicyDryRunSpecPtrOutput() PolicyDryRunSpecPtrOutput {
+	return i.ToPolicyDryRunSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *policyDryRunSpecPtrType) ToPolicyDryRunSpecPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecPtrOutput)
+}
+
+type PolicyDryRunSpecOutput struct{ *pulumi.OutputState }
+
+func (PolicyDryRunSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyDryRunSpec)(nil)).Elem()
+}
+
+func (o PolicyDryRunSpecOutput) ToPolicyDryRunSpecOutput() PolicyDryRunSpecOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecOutput) ToPolicyDryRunSpecOutputWithContext(ctx context.Context) PolicyDryRunSpecOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecOutput) ToPolicyDryRunSpecPtrOutput() PolicyDryRunSpecPtrOutput {
+	return o.ToPolicyDryRunSpecPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyDryRunSpecOutput) ToPolicyDryRunSpecPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyDryRunSpec) *PolicyDryRunSpec {
+		return &v
+	}).(PolicyDryRunSpecPtrOutput)
+}
+
+// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+func (o PolicyDryRunSpecOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpec) *string { return v.Etag }).(pulumi.StringPtrOutput)
+}
+
+// Determines the inheritance behavior for this policy. If `inheritFromParent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+func (o PolicyDryRunSpecOutput) InheritFromParent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpec) *bool { return v.InheritFromParent }).(pulumi.BoolPtrOutput)
+}
+
+// Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
+func (o PolicyDryRunSpecOutput) Reset() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpec) *bool { return v.Reset }).(pulumi.BoolPtrOutput)
+}
+
+// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+func (o PolicyDryRunSpecOutput) Rules() PolicyDryRunSpecRuleArrayOutput {
+	return o.ApplyT(func(v PolicyDryRunSpec) []PolicyDryRunSpecRule { return v.Rules }).(PolicyDryRunSpecRuleArrayOutput)
+}
+
+// Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+func (o PolicyDryRunSpecOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpec) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type PolicyDryRunSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyDryRunSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyDryRunSpec)(nil)).Elem()
+}
+
+func (o PolicyDryRunSpecPtrOutput) ToPolicyDryRunSpecPtrOutput() PolicyDryRunSpecPtrOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecPtrOutput) ToPolicyDryRunSpecPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecPtrOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecPtrOutput) Elem() PolicyDryRunSpecOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpec) PolicyDryRunSpec {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyDryRunSpec
+		return ret
+	}).(PolicyDryRunSpecOutput)
+}
+
+// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+func (o PolicyDryRunSpecPtrOutput) Etag() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Etag
+	}).(pulumi.StringPtrOutput)
+}
+
+// Determines the inheritance behavior for this policy. If `inheritFromParent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+func (o PolicyDryRunSpecPtrOutput) InheritFromParent() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.InheritFromParent
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
+func (o PolicyDryRunSpecPtrOutput) Reset() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpec) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Reset
+	}).(pulumi.BoolPtrOutput)
+}
+
+// In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+func (o PolicyDryRunSpecPtrOutput) Rules() PolicyDryRunSpecRuleArrayOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpec) []PolicyDryRunSpecRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(PolicyDryRunSpecRuleArrayOutput)
+}
+
+// Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+func (o PolicyDryRunSpecPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpec) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyDryRunSpecRule struct {
+	// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+	AllowAll *string `pulumi:"allowAll"`
+	// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+	Condition *PolicyDryRunSpecRuleCondition `pulumi:"condition"`
+	// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+	DenyAll *string `pulumi:"denyAll"`
+	// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+	Enforce *string `pulumi:"enforce"`
+	// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+	Values *PolicyDryRunSpecRuleValues `pulumi:"values"`
+}
+
+// PolicyDryRunSpecRuleInput is an input type that accepts PolicyDryRunSpecRuleArgs and PolicyDryRunSpecRuleOutput values.
+// You can construct a concrete instance of `PolicyDryRunSpecRuleInput` via:
+//
+//	PolicyDryRunSpecRuleArgs{...}
+type PolicyDryRunSpecRuleInput interface {
+	pulumi.Input
+
+	ToPolicyDryRunSpecRuleOutput() PolicyDryRunSpecRuleOutput
+	ToPolicyDryRunSpecRuleOutputWithContext(context.Context) PolicyDryRunSpecRuleOutput
+}
+
+type PolicyDryRunSpecRuleArgs struct {
+	// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+	AllowAll pulumi.StringPtrInput `pulumi:"allowAll"`
+	// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+	Condition PolicyDryRunSpecRuleConditionPtrInput `pulumi:"condition"`
+	// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+	DenyAll pulumi.StringPtrInput `pulumi:"denyAll"`
+	// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+	Enforce pulumi.StringPtrInput `pulumi:"enforce"`
+	// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+	Values PolicyDryRunSpecRuleValuesPtrInput `pulumi:"values"`
+}
+
+func (PolicyDryRunSpecRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyDryRunSpecRule)(nil)).Elem()
+}
+
+func (i PolicyDryRunSpecRuleArgs) ToPolicyDryRunSpecRuleOutput() PolicyDryRunSpecRuleOutput {
+	return i.ToPolicyDryRunSpecRuleOutputWithContext(context.Background())
+}
+
+func (i PolicyDryRunSpecRuleArgs) ToPolicyDryRunSpecRuleOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecRuleOutput)
+}
+
+// PolicyDryRunSpecRuleArrayInput is an input type that accepts PolicyDryRunSpecRuleArray and PolicyDryRunSpecRuleArrayOutput values.
+// You can construct a concrete instance of `PolicyDryRunSpecRuleArrayInput` via:
+//
+//	PolicyDryRunSpecRuleArray{ PolicyDryRunSpecRuleArgs{...} }
+type PolicyDryRunSpecRuleArrayInput interface {
+	pulumi.Input
+
+	ToPolicyDryRunSpecRuleArrayOutput() PolicyDryRunSpecRuleArrayOutput
+	ToPolicyDryRunSpecRuleArrayOutputWithContext(context.Context) PolicyDryRunSpecRuleArrayOutput
+}
+
+type PolicyDryRunSpecRuleArray []PolicyDryRunSpecRuleInput
+
+func (PolicyDryRunSpecRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyDryRunSpecRule)(nil)).Elem()
+}
+
+func (i PolicyDryRunSpecRuleArray) ToPolicyDryRunSpecRuleArrayOutput() PolicyDryRunSpecRuleArrayOutput {
+	return i.ToPolicyDryRunSpecRuleArrayOutputWithContext(context.Background())
+}
+
+func (i PolicyDryRunSpecRuleArray) ToPolicyDryRunSpecRuleArrayOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecRuleArrayOutput)
+}
+
+type PolicyDryRunSpecRuleOutput struct{ *pulumi.OutputState }
+
+func (PolicyDryRunSpecRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyDryRunSpecRule)(nil)).Elem()
+}
+
+func (o PolicyDryRunSpecRuleOutput) ToPolicyDryRunSpecRuleOutput() PolicyDryRunSpecRuleOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleOutput) ToPolicyDryRunSpecRuleOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleOutput {
+	return o
+}
+
+// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+func (o PolicyDryRunSpecRuleOutput) AllowAll() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRule) *string { return v.AllowAll }).(pulumi.StringPtrOutput)
+}
+
+// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+func (o PolicyDryRunSpecRuleOutput) Condition() PolicyDryRunSpecRuleConditionPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRule) *PolicyDryRunSpecRuleCondition { return v.Condition }).(PolicyDryRunSpecRuleConditionPtrOutput)
+}
+
+// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+func (o PolicyDryRunSpecRuleOutput) DenyAll() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRule) *string { return v.DenyAll }).(pulumi.StringPtrOutput)
+}
+
+// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+func (o PolicyDryRunSpecRuleOutput) Enforce() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRule) *string { return v.Enforce }).(pulumi.StringPtrOutput)
+}
+
+// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+func (o PolicyDryRunSpecRuleOutput) Values() PolicyDryRunSpecRuleValuesPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRule) *PolicyDryRunSpecRuleValues { return v.Values }).(PolicyDryRunSpecRuleValuesPtrOutput)
+}
+
+type PolicyDryRunSpecRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (PolicyDryRunSpecRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PolicyDryRunSpecRule)(nil)).Elem()
+}
+
+func (o PolicyDryRunSpecRuleArrayOutput) ToPolicyDryRunSpecRuleArrayOutput() PolicyDryRunSpecRuleArrayOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleArrayOutput) ToPolicyDryRunSpecRuleArrayOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleArrayOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleArrayOutput) Index(i pulumi.IntInput) PolicyDryRunSpecRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PolicyDryRunSpecRule {
+		return vs[0].([]PolicyDryRunSpecRule)[vs[1].(int)]
+	}).(PolicyDryRunSpecRuleOutput)
+}
+
+type PolicyDryRunSpecRuleCondition struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression *string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// PolicyDryRunSpecRuleConditionInput is an input type that accepts PolicyDryRunSpecRuleConditionArgs and PolicyDryRunSpecRuleConditionOutput values.
+// You can construct a concrete instance of `PolicyDryRunSpecRuleConditionInput` via:
+//
+//	PolicyDryRunSpecRuleConditionArgs{...}
+type PolicyDryRunSpecRuleConditionInput interface {
+	pulumi.Input
+
+	ToPolicyDryRunSpecRuleConditionOutput() PolicyDryRunSpecRuleConditionOutput
+	ToPolicyDryRunSpecRuleConditionOutputWithContext(context.Context) PolicyDryRunSpecRuleConditionOutput
+}
+
+type PolicyDryRunSpecRuleConditionArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (PolicyDryRunSpecRuleConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyDryRunSpecRuleCondition)(nil)).Elem()
+}
+
+func (i PolicyDryRunSpecRuleConditionArgs) ToPolicyDryRunSpecRuleConditionOutput() PolicyDryRunSpecRuleConditionOutput {
+	return i.ToPolicyDryRunSpecRuleConditionOutputWithContext(context.Background())
+}
+
+func (i PolicyDryRunSpecRuleConditionArgs) ToPolicyDryRunSpecRuleConditionOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecRuleConditionOutput)
+}
+
+func (i PolicyDryRunSpecRuleConditionArgs) ToPolicyDryRunSpecRuleConditionPtrOutput() PolicyDryRunSpecRuleConditionPtrOutput {
+	return i.ToPolicyDryRunSpecRuleConditionPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyDryRunSpecRuleConditionArgs) ToPolicyDryRunSpecRuleConditionPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecRuleConditionOutput).ToPolicyDryRunSpecRuleConditionPtrOutputWithContext(ctx)
+}
+
+// PolicyDryRunSpecRuleConditionPtrInput is an input type that accepts PolicyDryRunSpecRuleConditionArgs, PolicyDryRunSpecRuleConditionPtr and PolicyDryRunSpecRuleConditionPtrOutput values.
+// You can construct a concrete instance of `PolicyDryRunSpecRuleConditionPtrInput` via:
+//
+//	        PolicyDryRunSpecRuleConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyDryRunSpecRuleConditionPtrInput interface {
+	pulumi.Input
+
+	ToPolicyDryRunSpecRuleConditionPtrOutput() PolicyDryRunSpecRuleConditionPtrOutput
+	ToPolicyDryRunSpecRuleConditionPtrOutputWithContext(context.Context) PolicyDryRunSpecRuleConditionPtrOutput
+}
+
+type policyDryRunSpecRuleConditionPtrType PolicyDryRunSpecRuleConditionArgs
+
+func PolicyDryRunSpecRuleConditionPtr(v *PolicyDryRunSpecRuleConditionArgs) PolicyDryRunSpecRuleConditionPtrInput {
+	return (*policyDryRunSpecRuleConditionPtrType)(v)
+}
+
+func (*policyDryRunSpecRuleConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyDryRunSpecRuleCondition)(nil)).Elem()
+}
+
+func (i *policyDryRunSpecRuleConditionPtrType) ToPolicyDryRunSpecRuleConditionPtrOutput() PolicyDryRunSpecRuleConditionPtrOutput {
+	return i.ToPolicyDryRunSpecRuleConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *policyDryRunSpecRuleConditionPtrType) ToPolicyDryRunSpecRuleConditionPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecRuleConditionPtrOutput)
+}
+
+type PolicyDryRunSpecRuleConditionOutput struct{ *pulumi.OutputState }
+
+func (PolicyDryRunSpecRuleConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyDryRunSpecRuleCondition)(nil)).Elem()
+}
+
+func (o PolicyDryRunSpecRuleConditionOutput) ToPolicyDryRunSpecRuleConditionOutput() PolicyDryRunSpecRuleConditionOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleConditionOutput) ToPolicyDryRunSpecRuleConditionOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleConditionOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleConditionOutput) ToPolicyDryRunSpecRuleConditionPtrOutput() PolicyDryRunSpecRuleConditionPtrOutput {
+	return o.ToPolicyDryRunSpecRuleConditionPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyDryRunSpecRuleConditionOutput) ToPolicyDryRunSpecRuleConditionPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyDryRunSpecRuleCondition) *PolicyDryRunSpecRuleCondition {
+		return &v
+	}).(PolicyDryRunSpecRuleConditionPtrOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o PolicyDryRunSpecRuleConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRuleCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o PolicyDryRunSpecRuleConditionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRuleCondition) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o PolicyDryRunSpecRuleConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRuleCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o PolicyDryRunSpecRuleConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRuleCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type PolicyDryRunSpecRuleConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyDryRunSpecRuleConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyDryRunSpecRuleCondition)(nil)).Elem()
+}
+
+func (o PolicyDryRunSpecRuleConditionPtrOutput) ToPolicyDryRunSpecRuleConditionPtrOutput() PolicyDryRunSpecRuleConditionPtrOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleConditionPtrOutput) ToPolicyDryRunSpecRuleConditionPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleConditionPtrOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleConditionPtrOutput) Elem() PolicyDryRunSpecRuleConditionOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpecRuleCondition) PolicyDryRunSpecRuleCondition {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyDryRunSpecRuleCondition
+		return ret
+	}).(PolicyDryRunSpecRuleConditionOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o PolicyDryRunSpecRuleConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpecRuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o PolicyDryRunSpecRuleConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpecRuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o PolicyDryRunSpecRuleConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpecRuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o PolicyDryRunSpecRuleConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpecRuleCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type PolicyDryRunSpecRuleValues struct {
+	// List of values allowed at this resource.
+	AllowedValues []string `pulumi:"allowedValues"`
+	// List of values denied at this resource.
+	DeniedValues []string `pulumi:"deniedValues"`
+}
+
+// PolicyDryRunSpecRuleValuesInput is an input type that accepts PolicyDryRunSpecRuleValuesArgs and PolicyDryRunSpecRuleValuesOutput values.
+// You can construct a concrete instance of `PolicyDryRunSpecRuleValuesInput` via:
+//
+//	PolicyDryRunSpecRuleValuesArgs{...}
+type PolicyDryRunSpecRuleValuesInput interface {
+	pulumi.Input
+
+	ToPolicyDryRunSpecRuleValuesOutput() PolicyDryRunSpecRuleValuesOutput
+	ToPolicyDryRunSpecRuleValuesOutputWithContext(context.Context) PolicyDryRunSpecRuleValuesOutput
+}
+
+type PolicyDryRunSpecRuleValuesArgs struct {
+	// List of values allowed at this resource.
+	AllowedValues pulumi.StringArrayInput `pulumi:"allowedValues"`
+	// List of values denied at this resource.
+	DeniedValues pulumi.StringArrayInput `pulumi:"deniedValues"`
+}
+
+func (PolicyDryRunSpecRuleValuesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyDryRunSpecRuleValues)(nil)).Elem()
+}
+
+func (i PolicyDryRunSpecRuleValuesArgs) ToPolicyDryRunSpecRuleValuesOutput() PolicyDryRunSpecRuleValuesOutput {
+	return i.ToPolicyDryRunSpecRuleValuesOutputWithContext(context.Background())
+}
+
+func (i PolicyDryRunSpecRuleValuesArgs) ToPolicyDryRunSpecRuleValuesOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleValuesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecRuleValuesOutput)
+}
+
+func (i PolicyDryRunSpecRuleValuesArgs) ToPolicyDryRunSpecRuleValuesPtrOutput() PolicyDryRunSpecRuleValuesPtrOutput {
+	return i.ToPolicyDryRunSpecRuleValuesPtrOutputWithContext(context.Background())
+}
+
+func (i PolicyDryRunSpecRuleValuesArgs) ToPolicyDryRunSpecRuleValuesPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecRuleValuesOutput).ToPolicyDryRunSpecRuleValuesPtrOutputWithContext(ctx)
+}
+
+// PolicyDryRunSpecRuleValuesPtrInput is an input type that accepts PolicyDryRunSpecRuleValuesArgs, PolicyDryRunSpecRuleValuesPtr and PolicyDryRunSpecRuleValuesPtrOutput values.
+// You can construct a concrete instance of `PolicyDryRunSpecRuleValuesPtrInput` via:
+//
+//	        PolicyDryRunSpecRuleValuesArgs{...}
+//
+//	or:
+//
+//	        nil
+type PolicyDryRunSpecRuleValuesPtrInput interface {
+	pulumi.Input
+
+	ToPolicyDryRunSpecRuleValuesPtrOutput() PolicyDryRunSpecRuleValuesPtrOutput
+	ToPolicyDryRunSpecRuleValuesPtrOutputWithContext(context.Context) PolicyDryRunSpecRuleValuesPtrOutput
+}
+
+type policyDryRunSpecRuleValuesPtrType PolicyDryRunSpecRuleValuesArgs
+
+func PolicyDryRunSpecRuleValuesPtr(v *PolicyDryRunSpecRuleValuesArgs) PolicyDryRunSpecRuleValuesPtrInput {
+	return (*policyDryRunSpecRuleValuesPtrType)(v)
+}
+
+func (*policyDryRunSpecRuleValuesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyDryRunSpecRuleValues)(nil)).Elem()
+}
+
+func (i *policyDryRunSpecRuleValuesPtrType) ToPolicyDryRunSpecRuleValuesPtrOutput() PolicyDryRunSpecRuleValuesPtrOutput {
+	return i.ToPolicyDryRunSpecRuleValuesPtrOutputWithContext(context.Background())
+}
+
+func (i *policyDryRunSpecRuleValuesPtrType) ToPolicyDryRunSpecRuleValuesPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleValuesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PolicyDryRunSpecRuleValuesPtrOutput)
+}
+
+type PolicyDryRunSpecRuleValuesOutput struct{ *pulumi.OutputState }
+
+func (PolicyDryRunSpecRuleValuesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PolicyDryRunSpecRuleValues)(nil)).Elem()
+}
+
+func (o PolicyDryRunSpecRuleValuesOutput) ToPolicyDryRunSpecRuleValuesOutput() PolicyDryRunSpecRuleValuesOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleValuesOutput) ToPolicyDryRunSpecRuleValuesOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleValuesOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleValuesOutput) ToPolicyDryRunSpecRuleValuesPtrOutput() PolicyDryRunSpecRuleValuesPtrOutput {
+	return o.ToPolicyDryRunSpecRuleValuesPtrOutputWithContext(context.Background())
+}
+
+func (o PolicyDryRunSpecRuleValuesOutput) ToPolicyDryRunSpecRuleValuesPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleValuesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PolicyDryRunSpecRuleValues) *PolicyDryRunSpecRuleValues {
+		return &v
+	}).(PolicyDryRunSpecRuleValuesPtrOutput)
+}
+
+// List of values allowed at this resource.
+func (o PolicyDryRunSpecRuleValuesOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRuleValues) []string { return v.AllowedValues }).(pulumi.StringArrayOutput)
+}
+
+// List of values denied at this resource.
+func (o PolicyDryRunSpecRuleValuesOutput) DeniedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PolicyDryRunSpecRuleValues) []string { return v.DeniedValues }).(pulumi.StringArrayOutput)
+}
+
+type PolicyDryRunSpecRuleValuesPtrOutput struct{ *pulumi.OutputState }
+
+func (PolicyDryRunSpecRuleValuesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PolicyDryRunSpecRuleValues)(nil)).Elem()
+}
+
+func (o PolicyDryRunSpecRuleValuesPtrOutput) ToPolicyDryRunSpecRuleValuesPtrOutput() PolicyDryRunSpecRuleValuesPtrOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleValuesPtrOutput) ToPolicyDryRunSpecRuleValuesPtrOutputWithContext(ctx context.Context) PolicyDryRunSpecRuleValuesPtrOutput {
+	return o
+}
+
+func (o PolicyDryRunSpecRuleValuesPtrOutput) Elem() PolicyDryRunSpecRuleValuesOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpecRuleValues) PolicyDryRunSpecRuleValues {
+		if v != nil {
+			return *v
+		}
+		var ret PolicyDryRunSpecRuleValues
+		return ret
+	}).(PolicyDryRunSpecRuleValuesOutput)
+}
+
+// List of values allowed at this resource.
+func (o PolicyDryRunSpecRuleValuesPtrOutput) AllowedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpecRuleValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.AllowedValues
+	}).(pulumi.StringArrayOutput)
+}
+
+// List of values denied at this resource.
+func (o PolicyDryRunSpecRuleValuesPtrOutput) DeniedValues() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *PolicyDryRunSpecRuleValues) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DeniedValues
+	}).(pulumi.StringArrayOutput)
+}
+
 type PolicySpec struct {
 	// An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
 	Etag *string `pulumi:"etag"`
@@ -710,6 +1406,14 @@ func (o PolicySpecRuleValuesPtrOutput) DeniedValues() pulumi.StringArrayOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDryRunSpecInput)(nil)).Elem(), PolicyDryRunSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDryRunSpecPtrInput)(nil)).Elem(), PolicyDryRunSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDryRunSpecRuleInput)(nil)).Elem(), PolicyDryRunSpecRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDryRunSpecRuleArrayInput)(nil)).Elem(), PolicyDryRunSpecRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDryRunSpecRuleConditionInput)(nil)).Elem(), PolicyDryRunSpecRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDryRunSpecRuleConditionPtrInput)(nil)).Elem(), PolicyDryRunSpecRuleConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDryRunSpecRuleValuesInput)(nil)).Elem(), PolicyDryRunSpecRuleValuesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PolicyDryRunSpecRuleValuesPtrInput)(nil)).Elem(), PolicyDryRunSpecRuleValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecInput)(nil)).Elem(), PolicySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecPtrInput)(nil)).Elem(), PolicySpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleInput)(nil)).Elem(), PolicySpecRuleArgs{})
@@ -718,6 +1422,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleConditionPtrInput)(nil)).Elem(), PolicySpecRuleConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleValuesInput)(nil)).Elem(), PolicySpecRuleValuesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PolicySpecRuleValuesPtrInput)(nil)).Elem(), PolicySpecRuleValuesArgs{})
+	pulumi.RegisterOutputType(PolicyDryRunSpecOutput{})
+	pulumi.RegisterOutputType(PolicyDryRunSpecPtrOutput{})
+	pulumi.RegisterOutputType(PolicyDryRunSpecRuleOutput{})
+	pulumi.RegisterOutputType(PolicyDryRunSpecRuleArrayOutput{})
+	pulumi.RegisterOutputType(PolicyDryRunSpecRuleConditionOutput{})
+	pulumi.RegisterOutputType(PolicyDryRunSpecRuleConditionPtrOutput{})
+	pulumi.RegisterOutputType(PolicyDryRunSpecRuleValuesOutput{})
+	pulumi.RegisterOutputType(PolicyDryRunSpecRuleValuesPtrOutput{})
 	pulumi.RegisterOutputType(PolicySpecOutput{})
 	pulumi.RegisterOutputType(PolicySpecPtrOutput{})
 	pulumi.RegisterOutputType(PolicySpecRuleOutput{})

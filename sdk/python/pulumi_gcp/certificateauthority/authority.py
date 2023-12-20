@@ -983,14 +983,14 @@ class Authority(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         privateca_sa = gcp.projects.ServiceIdentity("privatecaSa", service="privateca.googleapis.com")
-        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserSignerverifier",
+        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
-            members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserViewer",
+            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserViewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
-            members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         default = gcp.certificateauthority.Authority("default",
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority",
@@ -1281,14 +1281,14 @@ class Authority(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         privateca_sa = gcp.projects.ServiceIdentity("privatecaSa", service="privateca.googleapis.com")
-        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserSignerverifier",
+        privateca_sa_keyuser_signerverifier = gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/cloudkms.signerVerifier",
-            members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])
-        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserViewer",
+            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
+        privateca_sa_keyuser_viewer = gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserViewer",
             crypto_key_id="projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
             role="roles/viewer",
-            members=[privateca_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+            member=privateca_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         default = gcp.certificateauthority.Authority("default",
             pool="ca-pool",
             certificate_authority_id="my-certificate-authority",

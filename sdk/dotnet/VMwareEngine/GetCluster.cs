@@ -12,6 +12,11 @@ namespace Pulumi.Gcp.VMwareEngine
     public static class GetCluster
     {
         /// <summary>
+        /// Use this data source to get details about a cluster resource.
+        /// 
+        /// To get more information about private cloud cluster, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}
@@ -39,6 +44,11 @@ namespace Pulumi.Gcp.VMwareEngine
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetClusterResult>("gcp:vmwareengine/getCluster:getCluster", args ?? new GetClusterArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Use this data source to get details about a cluster resource.
+        /// 
+        /// To get more information about private cloud cluster, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+        /// 
         /// {{% examples %}}
         /// ## Example Usage
         /// {{% example %}}

@@ -114,6 +114,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
     }
     /**
      * User defined name of this taxonomy.
+     * The taxonomy display name must be unique within an organization.
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
@@ -126,6 +127,7 @@ public class Taxonomy extends com.pulumi.resources.CustomResource {
 
     /**
      * @return User defined name of this taxonomy.
+     * The taxonomy display name must be unique within an organization.
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.

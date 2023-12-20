@@ -43,6 +43,12 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("enablePrivateNodes")]
         public Input<bool>? EnablePrivateNodes { get; set; }
 
+        /// <summary>
+        /// Network bandwidth tier configuration.
+        /// </summary>
+        [Input("networkPerformanceConfig")]
+        public Input<Inputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfigGetArgs>? NetworkPerformanceConfig { get; set; }
+
         [Input("podCidrOverprovisionConfig")]
         public Input<Inputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigGetArgs>? PodCidrOverprovisionConfig { get; set; }
 

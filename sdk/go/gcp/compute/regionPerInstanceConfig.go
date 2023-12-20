@@ -197,6 +197,9 @@ type RegionPerInstanceConfig struct {
 	//
 	// ***
 	RegionInstanceGroupManager pulumi.StringOutput `pulumi:"regionInstanceGroupManager"`
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy pulumi.BoolPtrOutput `pulumi:"removeInstanceOnDestroy"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -264,6 +267,9 @@ type regionPerInstanceConfigState struct {
 	//
 	// ***
 	RegionInstanceGroupManager *string `pulumi:"regionInstanceGroupManager"`
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy *bool `pulumi:"removeInstanceOnDestroy"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -299,6 +305,9 @@ type RegionPerInstanceConfigState struct {
 	//
 	// ***
 	RegionInstanceGroupManager pulumi.StringPtrInput
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy pulumi.BoolPtrInput
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -338,6 +347,9 @@ type regionPerInstanceConfigArgs struct {
 	//
 	// ***
 	RegionInstanceGroupManager string `pulumi:"regionInstanceGroupManager"`
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy *bool `pulumi:"removeInstanceOnDestroy"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -374,6 +386,9 @@ type RegionPerInstanceConfigArgs struct {
 	//
 	// ***
 	RegionInstanceGroupManager pulumi.StringInput
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy pulumi.BoolPtrInput
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -516,6 +531,12 @@ func (o RegionPerInstanceConfigOutput) Region() pulumi.StringOutput {
 // ***
 func (o RegionPerInstanceConfigOutput) RegionInstanceGroupManager() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionPerInstanceConfig) pulumi.StringOutput { return v.RegionInstanceGroupManager }).(pulumi.StringOutput)
+}
+
+// When true, deleting this config will immediately remove the underlying instance.
+// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+func (o RegionPerInstanceConfigOutput) RemoveInstanceOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RegionPerInstanceConfig) pulumi.BoolPtrOutput { return v.RemoveInstanceOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // When true, deleting this config will immediately remove any specified state from the underlying instance.

@@ -205,6 +205,21 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="numericId")
+    private @Nullable Output<String> numericId;
+
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<String>> numericId() {
+        return Optional.ofNullable(this.numericId);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -273,6 +288,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         this.mtu = $.mtu;
         this.name = $.name;
         this.networkFirewallPolicyEnforcementOrder = $.networkFirewallPolicyEnforcementOrder;
+        this.numericId = $.numericId;
         this.project = $.project;
         this.routingMode = $.routingMode;
         this.selfLink = $.selfLink;
@@ -535,6 +551,27 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networkFirewallPolicyEnforcementOrder(String networkFirewallPolicyEnforcementOrder) {
             return networkFirewallPolicyEnforcementOrder(Output.of(networkFirewallPolicyEnforcementOrder));
+        }
+
+        /**
+         * @param numericId The unique identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numericId(@Nullable Output<String> numericId) {
+            $.numericId = numericId;
+            return this;
+        }
+
+        /**
+         * @param numericId The unique identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder numericId(String numericId) {
+            return numericId(Output.of(numericId));
         }
 
         /**

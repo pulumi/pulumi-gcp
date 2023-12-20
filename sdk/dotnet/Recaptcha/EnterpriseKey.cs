@@ -99,6 +99,45 @@ namespace Pulumi.Gcp.Recaptcha
     /// 
     /// });
     /// ```
+    /// ### Waf_key
+    /// A basic test of recaptcha enterprise key that includes WAF settings
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.Recaptcha.EnterpriseKey("primary", new()
+    ///     {
+    ///         DisplayName = "display-name-one",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Project = "my-project-name",
+    ///         TestingOptions = new Gcp.Recaptcha.Inputs.EnterpriseKeyTestingOptionsArgs
+    ///         {
+    ///             TestingChallenge = "NOCAPTCHA",
+    ///             TestingScore = 0.5,
+    ///         },
+    ///         WafSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWafSettingsArgs
+    ///         {
+    ///             WafFeature = "CHALLENGE_PAGE",
+    ///             WafService = "CA",
+    ///         },
+    ///         WebSettings = new Gcp.Recaptcha.Inputs.EnterpriseKeyWebSettingsArgs
+    ///         {
+    ///             AllowAllDomains = true,
+    ///             AllowedDomains = new() { },
+    ///             ChallengeSecurityPreference = "USABILITY",
+    ///             IntegrationType = "INVISIBLE",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Web_key
     /// A basic test of recaptcha enterprise key that can be used by websites
     /// ```csharp
@@ -262,6 +301,12 @@ namespace Pulumi.Gcp.Recaptcha
         public Output<Outputs.EnterpriseKeyTestingOptions?> TestingOptions { get; private set; } = null!;
 
         /// <summary>
+        /// Settings specific to keys that can be used for WAF (Web Application Firewall).
+        /// </summary>
+        [Output("wafSettings")]
+        public Output<Outputs.EnterpriseKeyWafSettings?> WafSettings { get; private set; } = null!;
+
+        /// <summary>
         /// Settings for keys that can be used by websites.
         /// </summary>
         [Output("webSettings")]
@@ -366,6 +411,12 @@ namespace Pulumi.Gcp.Recaptcha
         /// </summary>
         [Input("testingOptions")]
         public Input<Inputs.EnterpriseKeyTestingOptionsArgs>? TestingOptions { get; set; }
+
+        /// <summary>
+        /// Settings specific to keys that can be used for WAF (Web Application Firewall).
+        /// </summary>
+        [Input("wafSettings")]
+        public Input<Inputs.EnterpriseKeyWafSettingsArgs>? WafSettings { get; set; }
 
         /// <summary>
         /// Settings for keys that can be used by websites.
@@ -473,6 +524,12 @@ namespace Pulumi.Gcp.Recaptcha
         /// </summary>
         [Input("testingOptions")]
         public Input<Inputs.EnterpriseKeyTestingOptionsGetArgs>? TestingOptions { get; set; }
+
+        /// <summary>
+        /// Settings specific to keys that can be used for WAF (Web Application Firewall).
+        /// </summary>
+        [Input("wafSettings")]
+        public Input<Inputs.EnterpriseKeyWafSettingsGetArgs>? WafSettings { get; set; }
 
         /// <summary>
         /// Settings for keys that can be used by websites.

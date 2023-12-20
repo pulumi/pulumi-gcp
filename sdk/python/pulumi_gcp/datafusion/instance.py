@@ -1030,17 +1030,17 @@ class Instance(pulumi.CustomResource):
         key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         project = gcp.organizations.get_project()
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+        crypto_key_member = gcp.kms.CryptoKeyIAMMember("cryptoKeyMember",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
         cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
             crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
                 key_reference=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
 
@@ -1225,17 +1225,17 @@ class Instance(pulumi.CustomResource):
         key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         project = gcp.organizations.get_project()
-        crypto_key_binding = gcp.kms.CryptoKeyIAMBinding("cryptoKeyBinding",
+        crypto_key_member = gcp.kms.CryptoKeyIAMMember("cryptoKeyMember",
             crypto_key_id=crypto_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com"])
+            member=f"serviceAccount:service-{project.number}@gcp-sa-datafusion.iam.gserviceaccount.com")
         cmek = gcp.datafusion.Instance("cmek",
             region="us-central1",
             type="BASIC",
             crypto_key_config=gcp.datafusion.InstanceCryptoKeyConfigArgs(
                 key_reference=crypto_key.id,
             ),
-            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_member]))
         ```
         ### Data Fusion Instance Enterprise
 

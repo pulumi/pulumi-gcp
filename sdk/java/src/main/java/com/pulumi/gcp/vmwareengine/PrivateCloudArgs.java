@@ -113,6 +113,25 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Initial type of the private cloud.
+     * Default value is `STANDARD`.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`.
+     * 
+     */
+    @Import(name="type")
+    private @Nullable Output<String> type;
+
+    /**
+     * @return Initial type of the private cloud.
+     * Default value is `STANDARD`.
+     * Possible values are: `STANDARD`, `TIME_LIMITED`.
+     * 
+     */
+    public Optional<Output<String>> type() {
+        return Optional.ofNullable(this.type);
+    }
+
     private PrivateCloudArgs() {}
 
     private PrivateCloudArgs(PrivateCloudArgs $) {
@@ -122,6 +141,7 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.networkConfig = $.networkConfig;
         this.project = $.project;
+        this.type = $.type;
     }
 
     public static Builder builder() {
@@ -272,6 +292,31 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param type Initial type of the private cloud.
+         * Default value is `STANDARD`.
+         * Possible values are: `STANDARD`, `TIME_LIMITED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(@Nullable Output<String> type) {
+            $.type = type;
+            return this;
+        }
+
+        /**
+         * @param type Initial type of the private cloud.
+         * Default value is `STANDARD`.
+         * Possible values are: `STANDARD`, `TIME_LIMITED`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder type(String type) {
+            return type(Output.of(type));
         }
 
         public PrivateCloudArgs build() {

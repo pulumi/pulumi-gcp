@@ -31,6 +31,7 @@ public final class GetPrivateCloudResult {
     private List<GetPrivateCloudNsx> nsxes;
     private @Nullable String project;
     private String state;
+    private String type;
     private String uid;
     private List<GetPrivateCloudVcenter> vcenters;
 
@@ -69,6 +70,9 @@ public final class GetPrivateCloudResult {
     public String state() {
         return this.state;
     }
+    public String type() {
+        return this.type;
+    }
     public String uid() {
         return this.uid;
     }
@@ -95,6 +99,7 @@ public final class GetPrivateCloudResult {
         private List<GetPrivateCloudNsx> nsxes;
         private @Nullable String project;
         private String state;
+        private String type;
         private String uid;
         private List<GetPrivateCloudVcenter> vcenters;
         public Builder() {}
@@ -110,6 +115,7 @@ public final class GetPrivateCloudResult {
     	      this.nsxes = defaults.nsxes;
     	      this.project = defaults.project;
     	      this.state = defaults.state;
+    	      this.type = defaults.type;
     	      this.uid = defaults.uid;
     	      this.vcenters = defaults.vcenters;
         }
@@ -177,6 +183,11 @@ public final class GetPrivateCloudResult {
             return this;
         }
         @CustomType.Setter
+        public Builder type(String type) {
+            this.type = Objects.requireNonNull(type);
+            return this;
+        }
+        @CustomType.Setter
         public Builder uid(String uid) {
             this.uid = Objects.requireNonNull(uid);
             return this;
@@ -201,6 +212,7 @@ public final class GetPrivateCloudResult {
             _resultValue.nsxes = nsxes;
             _resultValue.project = project;
             _resultValue.state = state;
+            _resultValue.type = type;
             _resultValue.uid = uid;
             _resultValue.vcenters = vcenters;
             return _resultValue;

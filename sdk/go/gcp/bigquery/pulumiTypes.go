@@ -4437,6 +4437,166 @@ func (o DatasetDefaultEncryptionConfigurationPtrOutput) KmsKeyName() pulumi.Stri
 	}).(pulumi.StringPtrOutput)
 }
 
+type DatasetExternalDatasetReference struct {
+	// The connection id that is used to access the externalSource.
+	// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+	Connection string `pulumi:"connection"`
+	// External source that backs this dataset.
+	ExternalSource string `pulumi:"externalSource"`
+}
+
+// DatasetExternalDatasetReferenceInput is an input type that accepts DatasetExternalDatasetReferenceArgs and DatasetExternalDatasetReferenceOutput values.
+// You can construct a concrete instance of `DatasetExternalDatasetReferenceInput` via:
+//
+//	DatasetExternalDatasetReferenceArgs{...}
+type DatasetExternalDatasetReferenceInput interface {
+	pulumi.Input
+
+	ToDatasetExternalDatasetReferenceOutput() DatasetExternalDatasetReferenceOutput
+	ToDatasetExternalDatasetReferenceOutputWithContext(context.Context) DatasetExternalDatasetReferenceOutput
+}
+
+type DatasetExternalDatasetReferenceArgs struct {
+	// The connection id that is used to access the externalSource.
+	// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+	Connection pulumi.StringInput `pulumi:"connection"`
+	// External source that backs this dataset.
+	ExternalSource pulumi.StringInput `pulumi:"externalSource"`
+}
+
+func (DatasetExternalDatasetReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetExternalDatasetReference)(nil)).Elem()
+}
+
+func (i DatasetExternalDatasetReferenceArgs) ToDatasetExternalDatasetReferenceOutput() DatasetExternalDatasetReferenceOutput {
+	return i.ToDatasetExternalDatasetReferenceOutputWithContext(context.Background())
+}
+
+func (i DatasetExternalDatasetReferenceArgs) ToDatasetExternalDatasetReferenceOutputWithContext(ctx context.Context) DatasetExternalDatasetReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetExternalDatasetReferenceOutput)
+}
+
+func (i DatasetExternalDatasetReferenceArgs) ToDatasetExternalDatasetReferencePtrOutput() DatasetExternalDatasetReferencePtrOutput {
+	return i.ToDatasetExternalDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i DatasetExternalDatasetReferenceArgs) ToDatasetExternalDatasetReferencePtrOutputWithContext(ctx context.Context) DatasetExternalDatasetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetExternalDatasetReferenceOutput).ToDatasetExternalDatasetReferencePtrOutputWithContext(ctx)
+}
+
+// DatasetExternalDatasetReferencePtrInput is an input type that accepts DatasetExternalDatasetReferenceArgs, DatasetExternalDatasetReferencePtr and DatasetExternalDatasetReferencePtrOutput values.
+// You can construct a concrete instance of `DatasetExternalDatasetReferencePtrInput` via:
+//
+//	        DatasetExternalDatasetReferenceArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatasetExternalDatasetReferencePtrInput interface {
+	pulumi.Input
+
+	ToDatasetExternalDatasetReferencePtrOutput() DatasetExternalDatasetReferencePtrOutput
+	ToDatasetExternalDatasetReferencePtrOutputWithContext(context.Context) DatasetExternalDatasetReferencePtrOutput
+}
+
+type datasetExternalDatasetReferencePtrType DatasetExternalDatasetReferenceArgs
+
+func DatasetExternalDatasetReferencePtr(v *DatasetExternalDatasetReferenceArgs) DatasetExternalDatasetReferencePtrInput {
+	return (*datasetExternalDatasetReferencePtrType)(v)
+}
+
+func (*datasetExternalDatasetReferencePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetExternalDatasetReference)(nil)).Elem()
+}
+
+func (i *datasetExternalDatasetReferencePtrType) ToDatasetExternalDatasetReferencePtrOutput() DatasetExternalDatasetReferencePtrOutput {
+	return i.ToDatasetExternalDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (i *datasetExternalDatasetReferencePtrType) ToDatasetExternalDatasetReferencePtrOutputWithContext(ctx context.Context) DatasetExternalDatasetReferencePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetExternalDatasetReferencePtrOutput)
+}
+
+type DatasetExternalDatasetReferenceOutput struct{ *pulumi.OutputState }
+
+func (DatasetExternalDatasetReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetExternalDatasetReference)(nil)).Elem()
+}
+
+func (o DatasetExternalDatasetReferenceOutput) ToDatasetExternalDatasetReferenceOutput() DatasetExternalDatasetReferenceOutput {
+	return o
+}
+
+func (o DatasetExternalDatasetReferenceOutput) ToDatasetExternalDatasetReferenceOutputWithContext(ctx context.Context) DatasetExternalDatasetReferenceOutput {
+	return o
+}
+
+func (o DatasetExternalDatasetReferenceOutput) ToDatasetExternalDatasetReferencePtrOutput() DatasetExternalDatasetReferencePtrOutput {
+	return o.ToDatasetExternalDatasetReferencePtrOutputWithContext(context.Background())
+}
+
+func (o DatasetExternalDatasetReferenceOutput) ToDatasetExternalDatasetReferencePtrOutputWithContext(ctx context.Context) DatasetExternalDatasetReferencePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetExternalDatasetReference) *DatasetExternalDatasetReference {
+		return &v
+	}).(DatasetExternalDatasetReferencePtrOutput)
+}
+
+// The connection id that is used to access the externalSource.
+// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+func (o DatasetExternalDatasetReferenceOutput) Connection() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetExternalDatasetReference) string { return v.Connection }).(pulumi.StringOutput)
+}
+
+// External source that backs this dataset.
+func (o DatasetExternalDatasetReferenceOutput) ExternalSource() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetExternalDatasetReference) string { return v.ExternalSource }).(pulumi.StringOutput)
+}
+
+type DatasetExternalDatasetReferencePtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetExternalDatasetReferencePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetExternalDatasetReference)(nil)).Elem()
+}
+
+func (o DatasetExternalDatasetReferencePtrOutput) ToDatasetExternalDatasetReferencePtrOutput() DatasetExternalDatasetReferencePtrOutput {
+	return o
+}
+
+func (o DatasetExternalDatasetReferencePtrOutput) ToDatasetExternalDatasetReferencePtrOutputWithContext(ctx context.Context) DatasetExternalDatasetReferencePtrOutput {
+	return o
+}
+
+func (o DatasetExternalDatasetReferencePtrOutput) Elem() DatasetExternalDatasetReferenceOutput {
+	return o.ApplyT(func(v *DatasetExternalDatasetReference) DatasetExternalDatasetReference {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetExternalDatasetReference
+		return ret
+	}).(DatasetExternalDatasetReferenceOutput)
+}
+
+// The connection id that is used to access the externalSource.
+// Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+func (o DatasetExternalDatasetReferencePtrOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetExternalDatasetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Connection
+	}).(pulumi.StringPtrOutput)
+}
+
+// External source that backs this dataset.
+func (o DatasetExternalDatasetReferencePtrOutput) ExternalSource() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetExternalDatasetReference) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ExternalSource
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatasetIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -14175,6 +14335,106 @@ func (o GetDatasetDefaultEncryptionConfigurationArrayOutput) Index(i pulumi.IntI
 	}).(GetDatasetDefaultEncryptionConfigurationOutput)
 }
 
+type GetDatasetExternalDatasetReference struct {
+	Connection     string `pulumi:"connection"`
+	ExternalSource string `pulumi:"externalSource"`
+}
+
+// GetDatasetExternalDatasetReferenceInput is an input type that accepts GetDatasetExternalDatasetReferenceArgs and GetDatasetExternalDatasetReferenceOutput values.
+// You can construct a concrete instance of `GetDatasetExternalDatasetReferenceInput` via:
+//
+//	GetDatasetExternalDatasetReferenceArgs{...}
+type GetDatasetExternalDatasetReferenceInput interface {
+	pulumi.Input
+
+	ToGetDatasetExternalDatasetReferenceOutput() GetDatasetExternalDatasetReferenceOutput
+	ToGetDatasetExternalDatasetReferenceOutputWithContext(context.Context) GetDatasetExternalDatasetReferenceOutput
+}
+
+type GetDatasetExternalDatasetReferenceArgs struct {
+	Connection     pulumi.StringInput `pulumi:"connection"`
+	ExternalSource pulumi.StringInput `pulumi:"externalSource"`
+}
+
+func (GetDatasetExternalDatasetReferenceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetExternalDatasetReference)(nil)).Elem()
+}
+
+func (i GetDatasetExternalDatasetReferenceArgs) ToGetDatasetExternalDatasetReferenceOutput() GetDatasetExternalDatasetReferenceOutput {
+	return i.ToGetDatasetExternalDatasetReferenceOutputWithContext(context.Background())
+}
+
+func (i GetDatasetExternalDatasetReferenceArgs) ToGetDatasetExternalDatasetReferenceOutputWithContext(ctx context.Context) GetDatasetExternalDatasetReferenceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetExternalDatasetReferenceOutput)
+}
+
+// GetDatasetExternalDatasetReferenceArrayInput is an input type that accepts GetDatasetExternalDatasetReferenceArray and GetDatasetExternalDatasetReferenceArrayOutput values.
+// You can construct a concrete instance of `GetDatasetExternalDatasetReferenceArrayInput` via:
+//
+//	GetDatasetExternalDatasetReferenceArray{ GetDatasetExternalDatasetReferenceArgs{...} }
+type GetDatasetExternalDatasetReferenceArrayInput interface {
+	pulumi.Input
+
+	ToGetDatasetExternalDatasetReferenceArrayOutput() GetDatasetExternalDatasetReferenceArrayOutput
+	ToGetDatasetExternalDatasetReferenceArrayOutputWithContext(context.Context) GetDatasetExternalDatasetReferenceArrayOutput
+}
+
+type GetDatasetExternalDatasetReferenceArray []GetDatasetExternalDatasetReferenceInput
+
+func (GetDatasetExternalDatasetReferenceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetExternalDatasetReference)(nil)).Elem()
+}
+
+func (i GetDatasetExternalDatasetReferenceArray) ToGetDatasetExternalDatasetReferenceArrayOutput() GetDatasetExternalDatasetReferenceArrayOutput {
+	return i.ToGetDatasetExternalDatasetReferenceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatasetExternalDatasetReferenceArray) ToGetDatasetExternalDatasetReferenceArrayOutputWithContext(ctx context.Context) GetDatasetExternalDatasetReferenceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetExternalDatasetReferenceArrayOutput)
+}
+
+type GetDatasetExternalDatasetReferenceOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetExternalDatasetReferenceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetExternalDatasetReference)(nil)).Elem()
+}
+
+func (o GetDatasetExternalDatasetReferenceOutput) ToGetDatasetExternalDatasetReferenceOutput() GetDatasetExternalDatasetReferenceOutput {
+	return o
+}
+
+func (o GetDatasetExternalDatasetReferenceOutput) ToGetDatasetExternalDatasetReferenceOutputWithContext(ctx context.Context) GetDatasetExternalDatasetReferenceOutput {
+	return o
+}
+
+func (o GetDatasetExternalDatasetReferenceOutput) Connection() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetExternalDatasetReference) string { return v.Connection }).(pulumi.StringOutput)
+}
+
+func (o GetDatasetExternalDatasetReferenceOutput) ExternalSource() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetExternalDatasetReference) string { return v.ExternalSource }).(pulumi.StringOutput)
+}
+
+type GetDatasetExternalDatasetReferenceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetExternalDatasetReferenceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetExternalDatasetReference)(nil)).Elem()
+}
+
+func (o GetDatasetExternalDatasetReferenceArrayOutput) ToGetDatasetExternalDatasetReferenceArrayOutput() GetDatasetExternalDatasetReferenceArrayOutput {
+	return o
+}
+
+func (o GetDatasetExternalDatasetReferenceArrayOutput) ToGetDatasetExternalDatasetReferenceArrayOutputWithContext(ctx context.Context) GetDatasetExternalDatasetReferenceArrayOutput {
+	return o
+}
+
+func (o GetDatasetExternalDatasetReferenceArrayOutput) Index(i pulumi.IntInput) GetDatasetExternalDatasetReferenceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatasetExternalDatasetReference {
+		return vs[0].([]GetDatasetExternalDatasetReference)[vs[1].(int)]
+	}).(GetDatasetExternalDatasetReferenceOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AppProfileSingleClusterRoutingPtrInput)(nil)).Elem(), AppProfileSingleClusterRoutingArgs{})
@@ -14228,6 +14488,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessViewPtrInput)(nil)).Elem(), DatasetAccessViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetDefaultEncryptionConfigurationInput)(nil)).Elem(), DatasetDefaultEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetDefaultEncryptionConfigurationPtrInput)(nil)).Elem(), DatasetDefaultEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetExternalDatasetReferenceInput)(nil)).Elem(), DatasetExternalDatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetExternalDatasetReferencePtrInput)(nil)).Elem(), DatasetExternalDatasetReferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamBindingConditionInput)(nil)).Elem(), DatasetIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamBindingConditionPtrInput)(nil)).Elem(), DatasetIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetIamMemberConditionInput)(nil)).Elem(), DatasetIamMemberConditionArgs{})
@@ -14328,6 +14590,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetAccessViewArrayInput)(nil)).Elem(), GetDatasetAccessViewArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetDefaultEncryptionConfigurationInput)(nil)).Elem(), GetDatasetDefaultEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetDefaultEncryptionConfigurationArrayInput)(nil)).Elem(), GetDatasetDefaultEncryptionConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetExternalDatasetReferenceArrayInput)(nil)).Elem(), GetDatasetExternalDatasetReferenceArray{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingOutput{})
 	pulumi.RegisterOutputType(AppProfileSingleClusterRoutingPtrOutput{})
 	pulumi.RegisterOutputType(AppProfileStandardIsolationOutput{})
@@ -14380,6 +14644,8 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessViewPtrOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(DatasetDefaultEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DatasetExternalDatasetReferenceOutput{})
+	pulumi.RegisterOutputType(DatasetExternalDatasetReferencePtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DatasetIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatasetIamMemberConditionOutput{})
@@ -14480,4 +14746,6 @@ func init() {
 	pulumi.RegisterOutputType(GetDatasetAccessViewArrayOutput{})
 	pulumi.RegisterOutputType(GetDatasetDefaultEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatasetDefaultEncryptionConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetDatasetExternalDatasetReferenceOutput{})
+	pulumi.RegisterOutputType(GetDatasetExternalDatasetReferenceArrayOutput{})
 }

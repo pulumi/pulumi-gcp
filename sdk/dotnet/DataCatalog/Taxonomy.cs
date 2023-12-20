@@ -79,6 +79,7 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// User defined name of this taxonomy.
+        /// The taxonomy display name must be unique within an organization.
         /// It must: contain only unicode letters, numbers, underscores, dashes
         /// and spaces; not start or end with spaces; and be at most 200 bytes
         /// long when encoded in UTF-8.
@@ -179,6 +180,7 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// User defined name of this taxonomy.
+        /// The taxonomy display name must be unique within an organization.
         /// It must: contain only unicode letters, numbers, underscores, dashes
         /// and spaces; not start or end with spaces; and be at most 200 bytes
         /// long when encoded in UTF-8.
@@ -234,6 +236,7 @@ namespace Pulumi.Gcp.DataCatalog
 
         /// <summary>
         /// User defined name of this taxonomy.
+        /// The taxonomy display name must be unique within an organization.
         /// It must: contain only unicode letters, numbers, underscores, dashes
         /// and spaces; not start or end with spaces; and be at most 200 bytes
         /// long when encoded in UTF-8.

@@ -224,6 +224,8 @@ if typing.TYPE_CHECKING:
     vmwareengine = __vmwareengine
     import pulumi_gcp.vpcaccess as __vpcaccess
     vpcaccess = __vpcaccess
+    import pulumi_gcp.workbench as __workbench
+    workbench = __workbench
     import pulumi_gcp.workflows as __workflows
     workflows = __workflows
     import pulumi_gcp.workstations as __workstations
@@ -336,6 +338,7 @@ else:
     vertex = _utilities.lazy_import('pulumi_gcp.vertex')
     vmwareengine = _utilities.lazy_import('pulumi_gcp.vmwareengine')
     vpcaccess = _utilities.lazy_import('pulumi_gcp.vpcaccess')
+    workbench = _utilities.lazy_import('pulumi_gcp.workbench')
     workflows = _utilities.lazy_import('pulumi_gcp.workflows')
     workstations = _utilities.lazy_import('pulumi_gcp.workstations')
 
@@ -6880,6 +6883,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vmwareengine/externalAddress",
+  "fqn": "pulumi_gcp.vmwareengine",
+  "classes": {
+   "gcp:vmwareengine/externalAddress:ExternalAddress": "ExternalAddress"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vmwareengine/network",
   "fqn": "pulumi_gcp.vmwareengine",
   "classes": {
@@ -6912,10 +6923,50 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vmwareengine/subnet",
+  "fqn": "pulumi_gcp.vmwareengine",
+  "classes": {
+   "gcp:vmwareengine/subnet:Subnet": "Subnet"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vpcaccess/connector",
   "fqn": "pulumi_gcp.vpcaccess",
   "classes": {
    "gcp:vpcaccess/connector:Connector": "Connector"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workbench/instance",
+  "fqn": "pulumi_gcp.workbench",
+  "classes": {
+   "gcp:workbench/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workbench/instanceIamBinding",
+  "fqn": "pulumi_gcp.workbench",
+  "classes": {
+   "gcp:workbench/instanceIamBinding:InstanceIamBinding": "InstanceIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workbench/instanceIamMember",
+  "fqn": "pulumi_gcp.workbench",
+  "classes": {
+   "gcp:workbench/instanceIamMember:InstanceIamMember": "InstanceIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "workbench/instanceIamPolicy",
+  "fqn": "pulumi_gcp.workbench",
+  "classes": {
+   "gcp:workbench/instanceIamPolicy:InstanceIamPolicy": "InstanceIamPolicy"
   }
  },
  {

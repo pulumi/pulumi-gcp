@@ -192,6 +192,62 @@ import (
 //	}
 //
 // ```
+// ### Dry_run_spec
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/orgpolicy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := orgpolicy.NewCustomConstraint(ctx, "constraint", &orgpolicy.CustomConstraintArgs{
+//				ActionType:  pulumi.String("ALLOW"),
+//				Condition:   pulumi.String("resource.management.autoUpgrade == false"),
+//				Description: pulumi.String("Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced."),
+//				DisplayName: pulumi.String("Disable GKE auto upgrade"),
+//				MethodTypes: pulumi.StringArray{
+//					pulumi.String("CREATE"),
+//				},
+//				Parent: pulumi.String("organizations/123456789"),
+//				ResourceTypes: pulumi.StringArray{
+//					pulumi.String("container.googleapis.com/NodePool"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+//				DryRunSpec: &orgpolicy.PolicyDryRunSpecArgs{
+//					InheritFromParent: pulumi.Bool(false),
+//					Reset:             pulumi.Bool(false),
+//					Rules: orgpolicy.PolicyDryRunSpecRuleArray{
+//						&orgpolicy.PolicyDryRunSpecRuleArgs{
+//							Enforce: pulumi.String("FALSE"),
+//						},
+//					},
+//				},
+//				Parent: pulumi.String("organizations/123456789"),
+//				Spec: &orgpolicy.PolicySpecArgs{
+//					Rules: orgpolicy.PolicySpecRuleArray{
+//						&orgpolicy.PolicySpecRuleArgs{
+//							Enforce: pulumi.String("FALSE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -215,6 +271,8 @@ import (
 type Policy struct {
 	pulumi.CustomResourceState
 
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	DryRunSpec PolicyDryRunSpecPtrOutput `pulumi:"dryRunSpec"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the resource.
@@ -258,6 +316,8 @@ func GetPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Policy resources.
 type policyState struct {
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	DryRunSpec *PolicyDryRunSpec `pulumi:"dryRunSpec"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name *string `pulumi:"name"`
 	// The parent of the resource.
@@ -269,6 +329,8 @@ type policyState struct {
 }
 
 type PolicyState struct {
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	DryRunSpec PolicyDryRunSpecPtrInput
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringPtrInput
 	// The parent of the resource.
@@ -284,6 +346,8 @@ func (PolicyState) ElementType() reflect.Type {
 }
 
 type policyArgs struct {
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	DryRunSpec *PolicyDryRunSpec `pulumi:"dryRunSpec"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name *string `pulumi:"name"`
 	// The parent of the resource.
@@ -296,6 +360,8 @@ type policyArgs struct {
 
 // The set of arguments for constructing a Policy resource.
 type PolicyArgs struct {
+	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+	DryRunSpec PolicyDryRunSpecPtrInput
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringPtrInput
 	// The parent of the resource.
@@ -391,6 +457,11 @@ func (o PolicyOutput) ToPolicyOutput() PolicyOutput {
 
 func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutput {
 	return o
+}
+
+// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+func (o PolicyOutput) DryRunSpec() PolicyDryRunSpecPtrOutput {
+	return o.ApplyT(func(v *Policy) PolicyDryRunSpecPtrOutput { return v.DryRunSpec }).(PolicyDryRunSpecPtrOutput)
 }
 
 // Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.

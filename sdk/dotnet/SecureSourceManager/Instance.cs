@@ -14,8 +14,9 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// To get more information about Instance, see:
     /// 
+    /// * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
     /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/secure-source-manager/overview/overview)
+    ///     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
     /// 
     /// ## Example Usage
     /// ### Secure Source Manager Instance Basic
@@ -36,6 +37,44 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///             { "foo", "bar" },
     ///         },
     ///         Location = "us-central1",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Secure Source Manager Instance Cmek
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var keyRing = new Gcp.Kms.KeyRing("keyRing", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///     });
+    /// 
+    ///     var cryptoKey = new Gcp.Kms.CryptoKey("cryptoKey", new()
+    ///     {
+    ///         KeyRing = keyRing.Id,
+    ///     });
+    /// 
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMMember("cryptoKeyBinding", new()
+    ///     {
+    ///         CryptoKeyId = cryptoKey.Id,
+    ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-sourcemanager.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var @default = new Gcp.SecureSourceManager.Instance("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         InstanceId = "my-instance",
+    ///         KmsKey = cryptoKey.Id,
     ///     });
     /// 
     /// });
@@ -85,6 +124,13 @@ namespace Pulumi.Gcp.SecureSourceManager
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// A list of hostnames for this instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("hostConfigs")]
+        public Output<ImmutableArray<Outputs.InstanceHostConfig>> HostConfigs { get; private set; } = null!;
+
+        /// <summary>
         /// The name for the Instance.
         /// 
         /// 
@@ -92,6 +138,12 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Output("instanceId")]
         public Output<string> InstanceId { get; private set; } = null!;
+
+        /// <summary>
+        /// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// </summary>
+        [Output("kmsKey")]
+        public Output<string?> KmsKey { get; private set; } = null!;
 
         /// <summary>
         /// Labels as key value pairs.
@@ -115,6 +167,13 @@ namespace Pulumi.Gcp.SecureSourceManager
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Private settings for private instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("privateConfig")]
+        public Output<Outputs.InstancePrivateConfig?> PrivateConfig { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -133,6 +192,12 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Provides information about the current instance state.
+        /// </summary>
+        [Output("stateNote")]
+        public Output<string> StateNote { get; private set; } = null!;
 
         /// <summary>
         /// Time the Instance was updated in UTC.
@@ -200,6 +265,12 @@ namespace Pulumi.Gcp.SecureSourceManager
         [Input("instanceId", required: true)]
         public Input<string> InstanceId { get; set; } = null!;
 
+        /// <summary>
+        /// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
@@ -220,6 +291,13 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
+
+        /// <summary>
+        /// Private settings for private instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("privateConfig")]
+        public Input<Inputs.InstancePrivateConfigArgs>? PrivateConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -258,6 +336,19 @@ namespace Pulumi.Gcp.SecureSourceManager
             }
         }
 
+        [Input("hostConfigs")]
+        private InputList<Inputs.InstanceHostConfigGetArgs>? _hostConfigs;
+
+        /// <summary>
+        /// A list of hostnames for this instance.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.InstanceHostConfigGetArgs> HostConfigs
+        {
+            get => _hostConfigs ?? (_hostConfigs = new InputList<Inputs.InstanceHostConfigGetArgs>());
+            set => _hostConfigs = value;
+        }
+
         /// <summary>
         /// The name for the Instance.
         /// 
@@ -266,6 +357,12 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Input("instanceId")]
         public Input<string>? InstanceId { get; set; }
+
+        /// <summary>
+        /// Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// </summary>
+        [Input("kmsKey")]
+        public Input<string>? KmsKey { get; set; }
 
         [Input("labels")]
         private InputMap<string>? _labels;
@@ -293,6 +390,13 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Private settings for private instance.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("privateConfig")]
+        public Input<Inputs.InstancePrivateConfigGetArgs>? PrivateConfig { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -323,6 +427,12 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Provides information about the current instance state.
+        /// </summary>
+        [Input("stateNote")]
+        public Input<string>? StateNote { get; set; }
 
         /// <summary>
         /// Time the Instance was updated in UTC.

@@ -16,6 +16,23 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
     public static final InstanceAutoscalingConfigAutoscalingLimitsArgs Empty = new InstanceAutoscalingConfigAutoscalingLimitsArgs();
 
     /**
+     * Specifies maximum number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to min_nodes.
+     * 
+     */
+    @Import(name="maxNodes")
+    private @Nullable Output<Integer> maxNodes;
+
+    /**
+     * @return Specifies maximum number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to min_nodes.
+     * 
+     */
+    public Optional<Output<Integer>> maxNodes() {
+        return Optional.ofNullable(this.maxNodes);
+    }
+
+    /**
      * Specifies maximum number of processing units allocated to the instance.
      * If set, this number should be multiples of 1000 and be greater than or equal to
      * min_processing_units.
@@ -32,6 +49,23 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
      */
     public Optional<Output<Integer>> maxProcessingUnits() {
         return Optional.ofNullable(this.maxProcessingUnits);
+    }
+
+    /**
+     * Specifies number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to 1.
+     * 
+     */
+    @Import(name="minNodes")
+    private @Nullable Output<Integer> minNodes;
+
+    /**
+     * @return Specifies number of nodes allocated to the instance. If set, this number
+     * should be greater than or equal to 1.
+     * 
+     */
+    public Optional<Output<Integer>> minNodes() {
+        return Optional.ofNullable(this.minNodes);
     }
 
     /**
@@ -54,7 +88,9 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
     private InstanceAutoscalingConfigAutoscalingLimitsArgs() {}
 
     private InstanceAutoscalingConfigAutoscalingLimitsArgs(InstanceAutoscalingConfigAutoscalingLimitsArgs $) {
+        this.maxNodes = $.maxNodes;
         this.maxProcessingUnits = $.maxProcessingUnits;
+        this.minNodes = $.minNodes;
         this.minProcessingUnits = $.minProcessingUnits;
     }
 
@@ -74,6 +110,29 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
 
         public Builder(InstanceAutoscalingConfigAutoscalingLimitsArgs defaults) {
             $ = new InstanceAutoscalingConfigAutoscalingLimitsArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param maxNodes Specifies maximum number of nodes allocated to the instance. If set, this number
+         * should be greater than or equal to min_nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxNodes(@Nullable Output<Integer> maxNodes) {
+            $.maxNodes = maxNodes;
+            return this;
+        }
+
+        /**
+         * @param maxNodes Specifies maximum number of nodes allocated to the instance. If set, this number
+         * should be greater than or equal to min_nodes.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder maxNodes(Integer maxNodes) {
+            return maxNodes(Output.of(maxNodes));
         }
 
         /**
@@ -99,6 +158,29 @@ public final class InstanceAutoscalingConfigAutoscalingLimitsArgs extends com.pu
          */
         public Builder maxProcessingUnits(Integer maxProcessingUnits) {
             return maxProcessingUnits(Output.of(maxProcessingUnits));
+        }
+
+        /**
+         * @param minNodes Specifies number of nodes allocated to the instance. If set, this number
+         * should be greater than or equal to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodes(@Nullable Output<Integer> minNodes) {
+            $.minNodes = minNodes;
+            return this;
+        }
+
+        /**
+         * @param minNodes Specifies number of nodes allocated to the instance. If set, this number
+         * should be greater than or equal to 1.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder minNodes(Integer minNodes) {
+            return minNodes(Output.of(minNodes));
         }
 
         /**

@@ -37,6 +37,7 @@ __all__ = [
     'DatasetAccessRoutine',
     'DatasetAccessView',
     'DatasetDefaultEncryptionConfiguration',
+    'DatasetExternalDatasetReference',
     'DatasetIamBindingCondition',
     'DatasetIamMemberCondition',
     'IamBindingCondition',
@@ -88,6 +89,7 @@ __all__ = [
     'GetDatasetAccessRoutineResult',
     'GetDatasetAccessViewResult',
     'GetDatasetDefaultEncryptionConfigurationResult',
+    'GetDatasetExternalDatasetReferenceResult',
 ]
 
 @pulumi.output_type
@@ -1596,6 +1598,54 @@ class DatasetDefaultEncryptionConfiguration(dict):
         access to this encryption key.
         """
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class DatasetExternalDatasetReference(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "externalSource":
+            suggest = "external_source"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatasetExternalDatasetReference. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatasetExternalDatasetReference.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatasetExternalDatasetReference.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection: str,
+                 external_source: str):
+        """
+        :param str connection: The connection id that is used to access the externalSource.
+               Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+        :param str external_source: External source that backs this dataset.
+        """
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "external_source", external_source)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> str:
+        """
+        The connection id that is used to access the externalSource.
+        Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter(name="externalSource")
+    def external_source(self) -> str:
+        """
+        External source that backs this dataset.
+        """
+        return pulumi.get(self, "external_source")
 
 
 @pulumi.output_type
@@ -5448,5 +5498,24 @@ class GetDatasetDefaultEncryptionConfigurationResult(dict):
     @pulumi.getter(name="kmsKeyName")
     def kms_key_name(self) -> str:
         return pulumi.get(self, "kms_key_name")
+
+
+@pulumi.output_type
+class GetDatasetExternalDatasetReferenceResult(dict):
+    def __init__(__self__, *,
+                 connection: str,
+                 external_source: str):
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "external_source", external_source)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> str:
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter(name="externalSource")
+    def external_source(self) -> str:
+        return pulumi.get(self, "external_source")
 
 

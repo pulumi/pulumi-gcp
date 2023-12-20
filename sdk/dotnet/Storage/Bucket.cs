@@ -274,6 +274,12 @@ namespace Pulumi.Gcp.Storage
         public Output<Outputs.BucketRetentionPolicy?> RetentionPolicy { get; private set; } = null!;
 
         /// <summary>
+        /// The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+        /// </summary>
+        [Output("rpo")]
+        public Output<string> Rpo { get; private set; } = null!;
+
+        /// <summary>
         /// The URI of the created resource.
         /// </summary>
         [Output("selfLink")]
@@ -480,6 +486,12 @@ namespace Pulumi.Gcp.Storage
         public Input<Inputs.BucketRetentionPolicyArgs>? RetentionPolicy { get; set; }
 
         /// <summary>
+        /// The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+        /// </summary>
+        [Input("rpo")]
+        public Input<string>? Rpo { get; set; }
+
+        /// <summary>
         /// The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
         /// </summary>
         [Input("storageClass")]
@@ -662,6 +674,12 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         [Input("retentionPolicy")]
         public Input<Inputs.BucketRetentionPolicyGetArgs>? RetentionPolicy { get; set; }
+
+        /// <summary>
+        /// The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+        /// </summary>
+        [Input("rpo")]
+        public Input<string>? Rpo { get; set; }
 
         /// <summary>
         /// The URI of the created resource.

@@ -164,6 +164,7 @@ __all__ = [
     'ClusterNodePoolNetworkConfig',
     'ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig',
     'ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig',
+    'ClusterNodePoolNetworkConfigNetworkPerformanceConfig',
     'ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig',
     'ClusterNodePoolNodeConfig',
     'ClusterNodePoolNodeConfigAdvancedMachineFeatures',
@@ -214,6 +215,7 @@ __all__ = [
     'NodePoolNetworkConfig',
     'NodePoolNetworkConfigAdditionalNodeNetworkConfig',
     'NodePoolNetworkConfigAdditionalPodNetworkConfig',
+    'NodePoolNetworkConfigNetworkPerformanceConfig',
     'NodePoolNetworkConfigPodCidrOverprovisionConfig',
     'NodePoolNodeConfig',
     'NodePoolNodeConfigAdvancedMachineFeatures',
@@ -329,6 +331,7 @@ __all__ = [
     'GetClusterNodePoolNetworkConfigResult',
     'GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigResult',
     'GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult',
+    'GetClusterNodePoolNetworkConfigNetworkPerformanceConfigResult',
     'GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult',
     'GetClusterNodePoolNodeConfigResult',
     'GetClusterNodePoolNodeConfigAdvancedMachineFeatureResult',
@@ -3379,6 +3382,7 @@ class AzureNodePoolConfig(dict):
     def __init__(__self__, *,
                  ssh_config: 'outputs.AzureNodePoolConfigSshConfig',
                  image_type: Optional[str] = None,
+                 labels: Optional[Mapping[str, str]] = None,
                  proxy_config: Optional['outputs.AzureNodePoolConfigProxyConfig'] = None,
                  root_volume: Optional['outputs.AzureNodePoolConfigRootVolume'] = None,
                  tags: Optional[Mapping[str, str]] = None,
@@ -3386,6 +3390,7 @@ class AzureNodePoolConfig(dict):
         """
         :param 'AzureNodePoolConfigSshConfigArgs' ssh_config: SSH configuration for how to access the node pool machines.
         :param str image_type: (Beta only) The OS image type to use on node pool instances.
+        :param Mapping[str, str] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param 'AzureNodePoolConfigProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param 'AzureNodePoolConfigRootVolumeArgs' root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
         :param Mapping[str, str] tags: Optional. A set of tags to apply to all underlying Azure resources for this node pool. This currently only includes Virtual Machine Scale Sets. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
@@ -3394,6 +3399,8 @@ class AzureNodePoolConfig(dict):
         pulumi.set(__self__, "ssh_config", ssh_config)
         if image_type is not None:
             pulumi.set(__self__, "image_type", image_type)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if proxy_config is not None:
             pulumi.set(__self__, "proxy_config", proxy_config)
         if root_volume is not None:
@@ -3418,6 +3425,14 @@ class AzureNodePoolConfig(dict):
         (Beta only) The OS image type to use on node pool instances.
         """
         return pulumi.get(self, "image_type")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[Mapping[str, str]]:
+        """
+        Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter(name="proxyConfig")
@@ -8368,6 +8383,8 @@ class ClusterNodePoolNetworkConfig(dict):
             suggest = "create_pod_range"
         elif key == "enablePrivateNodes":
             suggest = "enable_private_nodes"
+        elif key == "networkPerformanceConfig":
+            suggest = "network_performance_config"
         elif key == "podCidrOverprovisionConfig":
             suggest = "pod_cidr_overprovision_config"
         elif key == "podIpv4CidrBlock":
@@ -8391,6 +8408,7 @@ class ClusterNodePoolNetworkConfig(dict):
                  additional_pod_network_configs: Optional[Sequence['outputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig']] = None,
                  create_pod_range: Optional[bool] = None,
                  enable_private_nodes: Optional[bool] = None,
+                 network_performance_config: Optional['outputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfig'] = None,
                  pod_cidr_overprovision_config: Optional['outputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig'] = None,
                  pod_ipv4_cidr_block: Optional[str] = None,
                  pod_range: Optional[str] = None):
@@ -8400,6 +8418,7 @@ class ClusterNodePoolNetworkConfig(dict):
                creating a private endpoint on the cluster. In a private cluster, nodes only
                have RFC 1918 private addresses and communicate with the master's private
                endpoint via private networking.
+        :param 'ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs' network_performance_config: Network bandwidth tier configuration.
         :param str pod_ipv4_cidr_block: The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
         :param str pod_range: The ID of the secondary range for pod IPs. If `create_pod_range` is true, this ID is used for the new range. If `create_pod_range` is false, uses an existing secondary range with this ID.
         """
@@ -8411,6 +8430,8 @@ class ClusterNodePoolNetworkConfig(dict):
             pulumi.set(__self__, "create_pod_range", create_pod_range)
         if enable_private_nodes is not None:
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if pod_cidr_overprovision_config is not None:
             pulumi.set(__self__, "pod_cidr_overprovision_config", pod_cidr_overprovision_config)
         if pod_ipv4_cidr_block is not None:
@@ -8446,6 +8467,14 @@ class ClusterNodePoolNetworkConfig(dict):
         endpoint via private networking.
         """
         return pulumi.get(self, "enable_private_nodes")
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional['outputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfig']:
+        """
+        Network bandwidth tier configuration.
+        """
+        return pulumi.get(self, "network_performance_config")
 
     @property
     @pulumi.getter(name="podCidrOverprovisionConfig")
@@ -8560,6 +8589,41 @@ class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig(dict):
         subnetwork in which the cluster's instances are launched.
         """
         return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class ClusterNodePoolNetworkConfigNetworkPerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolNetworkConfigNetworkPerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolNetworkConfigNetworkPerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolNetworkConfigNetworkPerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        """
+        :param str total_egress_bandwidth_tier: Specifies the total network bandwidth tier for the NodePool.
+        """
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        """
+        Specifies the total network bandwidth tier for the NodePool.
+        """
+        return pulumi.get(self, "total_egress_bandwidth_tier")
 
 
 @pulumi.output_type
@@ -11345,6 +11409,8 @@ class NodePoolNetworkConfig(dict):
             suggest = "create_pod_range"
         elif key == "enablePrivateNodes":
             suggest = "enable_private_nodes"
+        elif key == "networkPerformanceConfig":
+            suggest = "network_performance_config"
         elif key == "podCidrOverprovisionConfig":
             suggest = "pod_cidr_overprovision_config"
         elif key == "podIpv4CidrBlock":
@@ -11368,6 +11434,7 @@ class NodePoolNetworkConfig(dict):
                  additional_pod_network_configs: Optional[Sequence['outputs.NodePoolNetworkConfigAdditionalPodNetworkConfig']] = None,
                  create_pod_range: Optional[bool] = None,
                  enable_private_nodes: Optional[bool] = None,
+                 network_performance_config: Optional['outputs.NodePoolNetworkConfigNetworkPerformanceConfig'] = None,
                  pod_cidr_overprovision_config: Optional['outputs.NodePoolNetworkConfigPodCidrOverprovisionConfig'] = None,
                  pod_ipv4_cidr_block: Optional[str] = None,
                  pod_range: Optional[str] = None):
@@ -11389,6 +11456,8 @@ class NodePoolNetworkConfig(dict):
             pulumi.set(__self__, "create_pod_range", create_pod_range)
         if enable_private_nodes is not None:
             pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+        if network_performance_config is not None:
+            pulumi.set(__self__, "network_performance_config", network_performance_config)
         if pod_cidr_overprovision_config is not None:
             pulumi.set(__self__, "pod_cidr_overprovision_config", pod_cidr_overprovision_config)
         if pod_ipv4_cidr_block is not None:
@@ -11429,6 +11498,11 @@ class NodePoolNetworkConfig(dict):
         Whether nodes have internal IP addresses only.
         """
         return pulumi.get(self, "enable_private_nodes")
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfig")
+    def network_performance_config(self) -> Optional['outputs.NodePoolNetworkConfigNetworkPerformanceConfig']:
+        return pulumi.get(self, "network_performance_config")
 
     @property
     @pulumi.getter(name="podCidrOverprovisionConfig")
@@ -11543,6 +11617,35 @@ class NodePoolNetworkConfigAdditionalPodNetworkConfig(dict):
         Name of the subnetwork where the additional pod network belongs.
         """
         return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class NodePoolNetworkConfigNetworkPerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "totalEgressBandwidthTier":
+            suggest = "total_egress_bandwidth_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in NodePoolNetworkConfigNetworkPerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        NodePoolNetworkConfigNetworkPerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        NodePoolNetworkConfigNetworkPerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        return pulumi.get(self, "total_egress_bandwidth_tier")
 
 
 @pulumi.output_type
@@ -14934,6 +15037,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
                  additional_pod_network_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult'],
                  create_pod_range: bool,
                  enable_private_nodes: bool,
+                 network_performance_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigNetworkPerformanceConfigResult'],
                  pod_cidr_overprovision_configs: Sequence['outputs.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigResult'],
                  pod_ipv4_cidr_block: str,
                  pod_range: str):
@@ -14941,6 +15045,7 @@ class GetClusterNodePoolNetworkConfigResult(dict):
         pulumi.set(__self__, "additional_pod_network_configs", additional_pod_network_configs)
         pulumi.set(__self__, "create_pod_range", create_pod_range)
         pulumi.set(__self__, "enable_private_nodes", enable_private_nodes)
+        pulumi.set(__self__, "network_performance_configs", network_performance_configs)
         pulumi.set(__self__, "pod_cidr_overprovision_configs", pod_cidr_overprovision_configs)
         pulumi.set(__self__, "pod_ipv4_cidr_block", pod_ipv4_cidr_block)
         pulumi.set(__self__, "pod_range", pod_range)
@@ -14964,6 +15069,11 @@ class GetClusterNodePoolNetworkConfigResult(dict):
     @pulumi.getter(name="enablePrivateNodes")
     def enable_private_nodes(self) -> bool:
         return pulumi.get(self, "enable_private_nodes")
+
+    @property
+    @pulumi.getter(name="networkPerformanceConfigs")
+    def network_performance_configs(self) -> Sequence['outputs.GetClusterNodePoolNetworkConfigNetworkPerformanceConfigResult']:
+        return pulumi.get(self, "network_performance_configs")
 
     @property
     @pulumi.getter(name="podCidrOverprovisionConfigs")
@@ -15024,6 +15134,18 @@ class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigResult(dict):
     @pulumi.getter
     def subnetwork(self) -> str:
         return pulumi.get(self, "subnetwork")
+
+
+@pulumi.output_type
+class GetClusterNodePoolNetworkConfigNetworkPerformanceConfigResult(dict):
+    def __init__(__self__, *,
+                 total_egress_bandwidth_tier: str):
+        pulumi.set(__self__, "total_egress_bandwidth_tier", total_egress_bandwidth_tier)
+
+    @property
+    @pulumi.getter(name="totalEgressBandwidthTier")
+    def total_egress_bandwidth_tier(self) -> str:
+        return pulumi.get(self, "total_egress_bandwidth_tier")
 
 
 @pulumi.output_type

@@ -150,6 +150,7 @@ namespace Pulumi.Gcp.Iam
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetWorkloadIdentityPoolProviderOidcResult> Oidcs;
         public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetWorkloadIdentityPoolProviderSamlResult> Samls;
         public readonly string State;
         public readonly string WorkloadIdentityPoolId;
         public readonly string WorkloadIdentityPoolProviderId;
@@ -176,6 +177,8 @@ namespace Pulumi.Gcp.Iam
 
             string? project,
 
+            ImmutableArray<Outputs.GetWorkloadIdentityPoolProviderSamlResult> samls,
+
             string state,
 
             string workloadIdentityPoolId,
@@ -192,6 +195,7 @@ namespace Pulumi.Gcp.Iam
             Name = name;
             Oidcs = oidcs;
             Project = project;
+            Samls = samls;
             State = state;
             WorkloadIdentityPoolId = workloadIdentityPoolId;
             WorkloadIdentityPoolProviderId = workloadIdentityPoolProviderId;

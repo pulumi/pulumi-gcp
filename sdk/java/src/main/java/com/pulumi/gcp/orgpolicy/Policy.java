@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.orgpolicy.PolicyArgs;
 import com.pulumi.gcp.orgpolicy.inputs.PolicyState;
+import com.pulumi.gcp.orgpolicy.outputs.PolicyDryRunSpec;
 import com.pulumi.gcp.orgpolicy.outputs.PolicySpec;
 import java.lang.String;
 import java.util.Optional;
@@ -200,6 +201,61 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dry_run_spec
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.orgpolicy.CustomConstraint;
+ * import com.pulumi.gcp.orgpolicy.CustomConstraintArgs;
+ * import com.pulumi.gcp.orgpolicy.Policy;
+ * import com.pulumi.gcp.orgpolicy.PolicyArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicyDryRunSpecArgs;
+ * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var constraint = new CustomConstraint(&#34;constraint&#34;, CustomConstraintArgs.builder()        
+ *             .actionType(&#34;ALLOW&#34;)
+ *             .condition(&#34;resource.management.autoUpgrade == false&#34;)
+ *             .description(&#34;Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.&#34;)
+ *             .displayName(&#34;Disable GKE auto upgrade&#34;)
+ *             .methodTypes(&#34;CREATE&#34;)
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .resourceTypes(&#34;container.googleapis.com/NodePool&#34;)
+ *             .build());
+ * 
+ *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
+ *             .dryRunSpec(PolicyDryRunSpecArgs.builder()
+ *                 .inheritFromParent(false)
+ *                 .reset(false)
+ *                 .rules(PolicyDryRunSpecRuleArgs.builder()
+ *                     .enforce(&#34;FALSE&#34;)
+ *                     .build())
+ *                 .build())
+ *             .parent(&#34;organizations/123456789&#34;)
+ *             .spec(PolicySpecArgs.builder()
+ *                 .rules(PolicySpecRuleArgs.builder()
+ *                     .enforce(&#34;FALSE&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -220,6 +276,20 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:orgpolicy/policy:Policy")
 public class Policy extends com.pulumi.resources.CustomResource {
+    /**
+     * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+     * 
+     */
+    @Export(name="dryRunSpec", refs={PolicyDryRunSpec.class}, tree="[0]")
+    private Output</* @Nullable */ PolicyDryRunSpec> dryRunSpec;
+
+    /**
+     * @return Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+     * 
+     */
+    public Output<Optional<PolicyDryRunSpec>> dryRunSpec() {
+        return Codegen.optional(this.dryRunSpec);
+    }
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, &#34;projects/123/policies/compute.disableSerialPortAccess&#34;. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      * 

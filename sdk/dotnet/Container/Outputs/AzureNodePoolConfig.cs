@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
+        /// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? Labels;
+        /// <summary>
         /// Proxy configuration for outbound HTTP(S) traffic.
         /// </summary>
         public readonly Outputs.AzureNodePoolConfigProxyConfig? ProxyConfig;
@@ -42,6 +46,8 @@ namespace Pulumi.Gcp.Container.Outputs
         private AzureNodePoolConfig(
             string? imageType,
 
+            ImmutableDictionary<string, string>? labels,
+
             Outputs.AzureNodePoolConfigProxyConfig? proxyConfig,
 
             Outputs.AzureNodePoolConfigRootVolume? rootVolume,
@@ -53,6 +59,7 @@ namespace Pulumi.Gcp.Container.Outputs
             string? vmSize)
         {
             ImageType = imageType;
+            Labels = labels;
             ProxyConfig = proxyConfig;
             RootVolume = rootVolume;
             SshConfig = sshConfig;

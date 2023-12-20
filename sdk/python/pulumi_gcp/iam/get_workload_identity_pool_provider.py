@@ -22,7 +22,7 @@ class GetWorkloadIdentityPoolProviderResult:
     """
     A collection of values returned by getWorkloadIdentityPoolProvider.
     """
-    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, description=None, disabled=None, display_name=None, id=None, name=None, oidcs=None, project=None, state=None, workload_identity_pool_id=None, workload_identity_pool_provider_id=None):
+    def __init__(__self__, attribute_condition=None, attribute_mapping=None, aws=None, description=None, disabled=None, display_name=None, id=None, name=None, oidcs=None, project=None, samls=None, state=None, workload_identity_pool_id=None, workload_identity_pool_provider_id=None):
         if attribute_condition and not isinstance(attribute_condition, str):
             raise TypeError("Expected argument 'attribute_condition' to be a str")
         pulumi.set(__self__, "attribute_condition", attribute_condition)
@@ -53,6 +53,9 @@ class GetWorkloadIdentityPoolProviderResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if samls and not isinstance(samls, list):
+            raise TypeError("Expected argument 'samls' to be a list")
+        pulumi.set(__self__, "samls", samls)
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
@@ -118,6 +121,11 @@ class GetWorkloadIdentityPoolProviderResult:
 
     @property
     @pulumi.getter
+    def samls(self) -> Sequence['outputs.GetWorkloadIdentityPoolProviderSamlResult']:
+        return pulumi.get(self, "samls")
+
+    @property
+    @pulumi.getter
     def state(self) -> str:
         return pulumi.get(self, "state")
 
@@ -148,6 +156,7 @@ class AwaitableGetWorkloadIdentityPoolProviderResult(GetWorkloadIdentityPoolProv
             name=self.name,
             oidcs=self.oidcs,
             project=self.project,
+            samls=self.samls,
             state=self.state,
             workload_identity_pool_id=self.workload_identity_pool_id,
             workload_identity_pool_provider_id=self.workload_identity_pool_provider_id)
@@ -198,6 +207,7 @@ def get_workload_identity_pool_provider(project: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         oidcs=pulumi.get(__ret__, 'oidcs'),
         project=pulumi.get(__ret__, 'project'),
+        samls=pulumi.get(__ret__, 'samls'),
         state=pulumi.get(__ret__, 'state'),
         workload_identity_pool_id=pulumi.get(__ret__, 'workload_identity_pool_id'),
         workload_identity_pool_provider_id=pulumi.get(__ret__, 'workload_identity_pool_provider_id'))

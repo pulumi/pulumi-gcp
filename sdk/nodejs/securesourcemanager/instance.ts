@@ -2,6 +2,8 @@
 // *** Do not edit by hand unless you're certain you know what you are doing! ***
 
 import * as pulumi from "@pulumi/pulumi";
+import * as inputs from "../types/input";
+import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
@@ -9,8 +11,9 @@ import * as utilities from "../utilities";
  *
  * To get more information about Instance, see:
  *
+ * * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/secure-source-manager/overview/overview)
+ *     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
  *
  * ## Example Usage
  * ### Secure Source Manager Instance Basic
@@ -25,6 +28,26 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     location: "us-central1",
+ * });
+ * ```
+ * ### Secure Source Manager Instance Cmek
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
+ * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
+ * const project = gcp.organizations.getProject({});
+ * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMMember("cryptoKeyBinding", {
+ *     cryptoKeyId: cryptoKey.id,
+ *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`),
+ * });
+ * const _default = new gcp.securesourcemanager.Instance("default", {
+ *     location: "us-central1",
+ *     instanceId: "my-instance",
+ *     kmsKey: cryptoKey.id,
  * });
  * ```
  *
@@ -93,12 +116,21 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * A list of hostnames for this instance.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly hostConfigs!: pulumi.Output<outputs.securesourcemanager.InstanceHostConfig[]>;
+    /**
      * The name for the Instance.
      *
      *
      * - - -
      */
     public readonly instanceId!: pulumi.Output<string>;
+    /**
+     * Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     */
+    public readonly kmsKey!: pulumi.Output<string | undefined>;
     /**
      * Labels as key value pairs.
      *
@@ -115,6 +147,11 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
+     * Private settings for private instance.
+     * Structure is documented below.
+     */
+    public readonly privateConfig!: pulumi.Output<outputs.securesourcemanager.InstancePrivateConfig | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -128,6 +165,10 @@ export class Instance extends pulumi.CustomResource {
      * The current state of the Instance.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
+    /**
+     * Provides information about the current instance state.
+     */
+    public /*out*/ readonly stateNote!: pulumi.Output<string>;
     /**
      * Time the Instance was updated in UTC.
      */
@@ -148,13 +189,17 @@ export class Instance extends pulumi.CustomResource {
             const state = argsOrState as InstanceState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["hostConfigs"] = state ? state.hostConfigs : undefined;
             resourceInputs["instanceId"] = state ? state.instanceId : undefined;
+            resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["privateConfig"] = state ? state.privateConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
+            resourceInputs["stateNote"] = state ? state.stateNote : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
@@ -165,14 +210,18 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["instanceId"] = args ? args.instanceId : undefined;
+            resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
+            resourceInputs["privateConfig"] = args ? args.privateConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["hostConfigs"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
+            resourceInputs["stateNote"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -195,12 +244,21 @@ export interface InstanceState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * A list of hostnames for this instance.
+     * Structure is documented below.
+     */
+    hostConfigs?: pulumi.Input<pulumi.Input<inputs.securesourcemanager.InstanceHostConfig>[]>;
+    /**
      * The name for the Instance.
      *
      *
      * - - -
      */
     instanceId?: pulumi.Input<string>;
+    /**
+     * Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     */
+    kmsKey?: pulumi.Input<string>;
     /**
      * Labels as key value pairs.
      *
@@ -217,6 +275,11 @@ export interface InstanceState {
      */
     name?: pulumi.Input<string>;
     /**
+     * Private settings for private instance.
+     * Structure is documented below.
+     */
+    privateConfig?: pulumi.Input<inputs.securesourcemanager.InstancePrivateConfig>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -230,6 +293,10 @@ export interface InstanceState {
      * The current state of the Instance.
      */
     state?: pulumi.Input<string>;
+    /**
+     * Provides information about the current instance state.
+     */
+    stateNote?: pulumi.Input<string>;
     /**
      * Time the Instance was updated in UTC.
      */
@@ -248,6 +315,10 @@ export interface InstanceArgs {
      */
     instanceId: pulumi.Input<string>;
     /**
+     * Customer-managed encryption key name, in the format projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     */
+    kmsKey?: pulumi.Input<string>;
+    /**
      * Labels as key value pairs.
      *
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -258,6 +329,11 @@ export interface InstanceArgs {
      * The location for the Instance.
      */
     location: pulumi.Input<string>;
+    /**
+     * Private settings for private instance.
+     * Structure is documented below.
+     */
+    privateConfig?: pulumi.Input<inputs.securesourcemanager.InstancePrivateConfig>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

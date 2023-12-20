@@ -10,6 +10,8 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.securesourcemanager.InstanceArgs;
 import com.pulumi.gcp.securesourcemanager.inputs.InstanceState;
+import com.pulumi.gcp.securesourcemanager.outputs.InstanceHostConfig;
+import com.pulumi.gcp.securesourcemanager.outputs.InstancePrivateConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -21,8 +23,9 @@ import javax.annotation.Nullable;
  * 
  * To get more information about Instance, see:
  * 
+ * * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
  * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/secure-source-manager/overview/overview)
+ *     * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
  * 
  * ## Example Usage
  * ### Secure Source Manager Instance Basic
@@ -51,6 +54,61 @@ import javax.annotation.Nullable;
  *             .instanceId(&#34;my-instance&#34;)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Secure Source Manager Instance Cmek
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.kms.KeyRing;
+ * import com.pulumi.gcp.kms.KeyRingArgs;
+ * import com.pulumi.gcp.kms.CryptoKey;
+ * import com.pulumi.gcp.kms.CryptoKeyArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .build());
+ * 
+ *         var cryptoKey = new CryptoKey(&#34;cryptoKey&#34;, CryptoKeyArgs.builder()        
+ *             .keyRing(keyRing.id())
+ *             .build());
+ * 
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var cryptoKeyBinding = new CryptoKeyIAMMember(&#34;cryptoKeyBinding&#34;, CryptoKeyIAMMemberArgs.builder()        
+ *             .cryptoKeyId(cryptoKey.id())
+ *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
+ *             .member(String.format(&#34;serviceAccount:service-%s@gcp-sa-sourcemanager.iam.gserviceaccount.com&#34;, project.applyValue(getProjectResult -&gt; getProjectResult.number())))
+ *             .build());
+ * 
+ *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .instanceId(&#34;my-instance&#34;)
+ *             .kmsKey(cryptoKey.id())
  *             .build());
  * 
  *     }
@@ -117,6 +175,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * A list of hostnames for this instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="hostConfigs", refs={List.class,InstanceHostConfig.class}, tree="[0,1]")
+    private Output<List<InstanceHostConfig>> hostConfigs;
+
+    /**
+     * @return A list of hostnames for this instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<InstanceHostConfig>> hostConfigs() {
+        return this.hostConfigs;
+    }
+    /**
      * The name for the Instance.
      * 
      * ***
@@ -133,6 +207,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+    /**
+     * Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * 
+     */
+    @Export(name="kmsKey", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> kmsKey;
+
+    /**
+     * @return Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * 
+     */
+    public Output<Optional<String>> kmsKey() {
+        return Codegen.optional(this.kmsKey);
     }
     /**
      * Labels as key value pairs.
@@ -183,6 +271,22 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Private settings for private instance.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="privateConfig", refs={InstancePrivateConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstancePrivateConfig> privateConfig;
+
+    /**
+     * @return Private settings for private instance.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstancePrivateConfig>> privateConfig() {
+        return Codegen.optional(this.privateConfig);
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -227,6 +331,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> state() {
         return this.state;
+    }
+    /**
+     * Provides information about the current instance state.
+     * 
+     */
+    @Export(name="stateNote", refs={String.class}, tree="[0]")
+    private Output<String> stateNote;
+
+    /**
+     * @return Provides information about the current instance state.
+     * 
+     */
+    public Output<String> stateNote() {
+        return this.stateNote;
     }
     /**
      * Time the Instance was updated in UTC.

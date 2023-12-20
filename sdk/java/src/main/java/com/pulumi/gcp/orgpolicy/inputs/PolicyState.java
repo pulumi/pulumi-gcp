@@ -5,6 +5,7 @@ package com.pulumi.gcp.orgpolicy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.orgpolicy.inputs.PolicyDryRunSpecArgs;
 import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -15,6 +16,21 @@ import javax.annotation.Nullable;
 public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
     public static final PolicyState Empty = new PolicyState();
+
+    /**
+     * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+     * 
+     */
+    @Import(name="dryRunSpec")
+    private @Nullable Output<PolicyDryRunSpecArgs> dryRunSpec;
+
+    /**
+     * @return Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+     * 
+     */
+    public Optional<Output<PolicyDryRunSpecArgs>> dryRunSpec() {
+        return Optional.ofNullable(this.dryRunSpec);
+    }
 
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, &#34;projects/123/policies/compute.disableSerialPortAccess&#34;. Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
@@ -68,6 +84,7 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
     private PolicyState() {}
 
     private PolicyState(PolicyState $) {
+        this.dryRunSpec = $.dryRunSpec;
         this.name = $.name;
         this.parent = $.parent;
         this.spec = $.spec;
@@ -89,6 +106,27 @@ public final class PolicyState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(PolicyState defaults) {
             $ = new PolicyState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param dryRunSpec Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRunSpec(@Nullable Output<PolicyDryRunSpecArgs> dryRunSpec) {
+            $.dryRunSpec = dryRunSpec;
+            return this;
+        }
+
+        /**
+         * @param dryRunSpec Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it&#39;s enforced.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dryRunSpec(PolicyDryRunSpecArgs dryRunSpec) {
+            return dryRunSpec(Output.of(dryRunSpec));
         }
 
         /**

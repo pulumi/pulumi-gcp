@@ -6,6 +6,7 @@ package com.pulumi.gcp.iam.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderAw;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderOidc;
+import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderSaml;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -30,6 +31,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
     private String name;
     private List<GetWorkloadIdentityPoolProviderOidc> oidcs;
     private @Nullable String project;
+    private List<GetWorkloadIdentityPoolProviderSaml> samls;
     private String state;
     private String workloadIdentityPoolId;
     private String workloadIdentityPoolProviderId;
@@ -69,6 +71,9 @@ public final class GetWorkloadIdentityPoolProviderResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public List<GetWorkloadIdentityPoolProviderSaml> samls() {
+        return this.samls;
+    }
     public String state() {
         return this.state;
     }
@@ -98,6 +103,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
         private String name;
         private List<GetWorkloadIdentityPoolProviderOidc> oidcs;
         private @Nullable String project;
+        private List<GetWorkloadIdentityPoolProviderSaml> samls;
         private String state;
         private String workloadIdentityPoolId;
         private String workloadIdentityPoolProviderId;
@@ -114,6 +120,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
     	      this.name = defaults.name;
     	      this.oidcs = defaults.oidcs;
     	      this.project = defaults.project;
+    	      this.samls = defaults.samls;
     	      this.state = defaults.state;
     	      this.workloadIdentityPoolId = defaults.workloadIdentityPoolId;
     	      this.workloadIdentityPoolProviderId = defaults.workloadIdentityPoolProviderId;
@@ -176,6 +183,14 @@ public final class GetWorkloadIdentityPoolProviderResult {
             return this;
         }
         @CustomType.Setter
+        public Builder samls(List<GetWorkloadIdentityPoolProviderSaml> samls) {
+            this.samls = Objects.requireNonNull(samls);
+            return this;
+        }
+        public Builder samls(GetWorkloadIdentityPoolProviderSaml... samls) {
+            return samls(List.of(samls));
+        }
+        @CustomType.Setter
         public Builder state(String state) {
             this.state = Objects.requireNonNull(state);
             return this;
@@ -202,6 +217,7 @@ public final class GetWorkloadIdentityPoolProviderResult {
             _resultValue.name = name;
             _resultValue.oidcs = oidcs;
             _resultValue.project = project;
+            _resultValue.samls = samls;
             _resultValue.state = state;
             _resultValue.workloadIdentityPoolId = workloadIdentityPoolId;
             _resultValue.workloadIdentityPoolProviderId = workloadIdentityPoolProviderId;

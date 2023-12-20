@@ -17,6 +17,7 @@ __all__ = ['PolicyArgs', 'Policy']
 class PolicyArgs:
     def __init__(__self__, *,
                  parent: pulumi.Input[str],
+                 dry_run_spec: Optional[pulumi.Input['PolicyDryRunSpecArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['PolicySpecArgs']] = None):
         """
@@ -26,10 +27,13 @@ class PolicyArgs:
                
                
                - - -
+        :param pulumi.Input['PolicyDryRunSpecArgs'] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input['PolicySpecArgs'] spec: Basic information about the Organization Policy.
         """
         pulumi.set(__self__, "parent", parent)
+        if dry_run_spec is not None:
+            pulumi.set(__self__, "dry_run_spec", dry_run_spec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if spec is not None:
@@ -50,6 +54,18 @@ class PolicyArgs:
     @parent.setter
     def parent(self, value: pulumi.Input[str]):
         pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="dryRunSpec")
+    def dry_run_spec(self) -> Optional[pulumi.Input['PolicyDryRunSpecArgs']]:
+        """
+        Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        """
+        return pulumi.get(self, "dry_run_spec")
+
+    @dry_run_spec.setter
+    def dry_run_spec(self, value: Optional[pulumi.Input['PolicyDryRunSpecArgs']]):
+        pulumi.set(self, "dry_run_spec", value)
 
     @property
     @pulumi.getter
@@ -79,11 +95,13 @@ class PolicyArgs:
 @pulumi.input_type
 class _PolicyState:
     def __init__(__self__, *,
+                 dry_run_spec: Optional[pulumi.Input['PolicyDryRunSpecArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['PolicySpecArgs']] = None):
         """
         Input properties used for looking up and filtering Policy resources.
+        :param pulumi.Input['PolicyDryRunSpecArgs'] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[str] parent: The parent of the resource.
                
@@ -92,12 +110,26 @@ class _PolicyState:
                - - -
         :param pulumi.Input['PolicySpecArgs'] spec: Basic information about the Organization Policy.
         """
+        if dry_run_spec is not None:
+            pulumi.set(__self__, "dry_run_spec", dry_run_spec)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parent is not None:
             pulumi.set(__self__, "parent", parent)
         if spec is not None:
             pulumi.set(__self__, "spec", spec)
+
+    @property
+    @pulumi.getter(name="dryRunSpec")
+    def dry_run_spec(self) -> Optional[pulumi.Input['PolicyDryRunSpecArgs']]:
+        """
+        Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        """
+        return pulumi.get(self, "dry_run_spec")
+
+    @dry_run_spec.setter
+    def dry_run_spec(self, value: Optional[pulumi.Input['PolicyDryRunSpecArgs']]):
+        pulumi.set(self, "dry_run_spec", value)
 
     @property
     @pulumi.getter
@@ -145,6 +177,7 @@ class Policy(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dry_run_spec: Optional[pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None,
@@ -235,6 +268,34 @@ class Policy(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Dry_run_spec
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        constraint = gcp.orgpolicy.CustomConstraint("constraint",
+            action_type="ALLOW",
+            condition="resource.management.autoUpgrade == false",
+            description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+            display_name="Disable GKE auto upgrade",
+            method_types=["CREATE"],
+            parent="organizations/123456789",
+            resource_types=["container.googleapis.com/NodePool"])
+        primary = gcp.orgpolicy.Policy("primary",
+            dry_run_spec=gcp.orgpolicy.PolicyDryRunSpecArgs(
+                inherit_from_parent=False,
+                reset=False,
+                rules=[gcp.orgpolicy.PolicyDryRunSpecRuleArgs(
+                    enforce="FALSE",
+                )],
+            ),
+            parent="organizations/123456789",
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    enforce="FALSE",
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -254,6 +315,7 @@ class Policy(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[str] parent: The parent of the resource.
                
@@ -354,6 +416,34 @@ class Policy(pulumi.CustomResource):
                 ],
             ))
         ```
+        ### Dry_run_spec
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        constraint = gcp.orgpolicy.CustomConstraint("constraint",
+            action_type="ALLOW",
+            condition="resource.management.autoUpgrade == false",
+            description="Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+            display_name="Disable GKE auto upgrade",
+            method_types=["CREATE"],
+            parent="organizations/123456789",
+            resource_types=["container.googleapis.com/NodePool"])
+        primary = gcp.orgpolicy.Policy("primary",
+            dry_run_spec=gcp.orgpolicy.PolicyDryRunSpecArgs(
+                inherit_from_parent=False,
+                reset=False,
+                rules=[gcp.orgpolicy.PolicyDryRunSpecRuleArgs(
+                    enforce="FALSE",
+                )],
+            ),
+            parent="organizations/123456789",
+            spec=gcp.orgpolicy.PolicySpecArgs(
+                rules=[gcp.orgpolicy.PolicySpecRuleArgs(
+                    enforce="FALSE",
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -386,6 +476,7 @@ class Policy(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dry_run_spec: Optional[pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None,
@@ -398,6 +489,7 @@ class Policy(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = PolicyArgs.__new__(PolicyArgs)
 
+            __props__.__dict__["dry_run_spec"] = dry_run_spec
             __props__.__dict__["name"] = name
             if parent is None and not opts.urn:
                 raise TypeError("Missing required property 'parent'")
@@ -413,6 +505,7 @@ class Policy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            dry_run_spec: Optional[pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             spec: Optional[pulumi.Input[pulumi.InputType['PolicySpecArgs']]] = None) -> 'Policy':
@@ -423,6 +516,7 @@ class Policy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[pulumi.InputType['PolicyDryRunSpecArgs']] dry_run_spec: Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
         :param pulumi.Input[str] name: Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         :param pulumi.Input[str] parent: The parent of the resource.
                
@@ -435,10 +529,19 @@ class Policy(pulumi.CustomResource):
 
         __props__ = _PolicyState.__new__(_PolicyState)
 
+        __props__.__dict__["dry_run_spec"] = dry_run_spec
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["spec"] = spec
         return Policy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="dryRunSpec")
+    def dry_run_spec(self) -> pulumi.Output[Optional['outputs.PolicyDryRunSpec']]:
+        """
+        Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        """
+        return pulumi.get(self, "dry_run_spec")
 
     @property
     @pulumi.getter

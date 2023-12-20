@@ -474,6 +474,9 @@ public final class Config {
     public Optional<String> vpcAccessCustomEndpoint() {
         return Codegen.stringProp("vpcAccessCustomEndpoint").config(config).get();
     }
+    public Optional<String> workbenchCustomEndpoint() {
+        return Codegen.stringProp("workbenchCustomEndpoint").config(config).get();
+    }
     public Optional<String> workflowsCustomEndpoint() {
         return Codegen.stringProp("workflowsCustomEndpoint").config(config).get();
     }

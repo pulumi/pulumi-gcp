@@ -79,6 +79,7 @@ type LookupBucketResult struct {
 	PulumiLabels             map[string]string          `pulumi:"pulumiLabels"`
 	RequesterPays            bool                       `pulumi:"requesterPays"`
 	RetentionPolicies        []GetBucketRetentionPolicy `pulumi:"retentionPolicies"`
+	Rpo                      string                     `pulumi:"rpo"`
 	SelfLink                 string                     `pulumi:"selfLink"`
 	StorageClass             string                     `pulumi:"storageClass"`
 	UniformBucketLevelAccess bool                       `pulumi:"uniformBucketLevelAccess"`
@@ -200,6 +201,10 @@ func (o LookupBucketResultOutput) RequesterPays() pulumi.BoolOutput {
 
 func (o LookupBucketResultOutput) RetentionPolicies() GetBucketRetentionPolicyArrayOutput {
 	return o.ApplyT(func(v LookupBucketResult) []GetBucketRetentionPolicy { return v.RetentionPolicies }).(GetBucketRetentionPolicyArrayOutput)
+}
+
+func (o LookupBucketResultOutput) Rpo() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupBucketResult) string { return v.Rpo }).(pulumi.StringOutput)
 }
 
 func (o LookupBucketResultOutput) SelfLink() pulumi.StringOutput {

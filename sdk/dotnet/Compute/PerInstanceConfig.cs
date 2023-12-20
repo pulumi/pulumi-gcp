@@ -205,6 +205,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// When true, deleting this config will immediately remove the underlying instance.
+        /// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+        /// </summary>
+        [Output("removeInstanceOnDestroy")]
+        public Output<bool?> RemoveInstanceOnDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// When true, deleting this config will immediately remove any specified state from the underlying instance.
         /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
         /// State will be removed on the next instance recreation or update.
@@ -316,6 +323,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// When true, deleting this config will immediately remove the underlying instance.
+        /// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+        /// </summary>
+        [Input("removeInstanceOnDestroy")]
+        public Input<bool>? RemoveInstanceOnDestroy { get; set; }
+
+        /// <summary>
         /// When true, deleting this config will immediately remove any specified state from the underlying instance.
         /// When false, deleting this config will *not* immediately remove any state from the underlying instance.
         /// State will be removed on the next instance recreation or update.
@@ -387,6 +401,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// When true, deleting this config will immediately remove the underlying instance.
+        /// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+        /// </summary>
+        [Input("removeInstanceOnDestroy")]
+        public Input<bool>? RemoveInstanceOnDestroy { get; set; }
 
         /// <summary>
         /// When true, deleting this config will immediately remove any specified state from the underlying instance.

@@ -22,7 +22,7 @@ class GetPrivateCloudResult:
     """
     A collection of values returned by getPrivateCloud.
     """
-    def __init__(__self__, description=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, project=None, state=None, uid=None, vcenters=None):
+    def __init__(__self__, description=None, hcxes=None, id=None, location=None, management_clusters=None, name=None, network_configs=None, nsxes=None, project=None, state=None, type=None, uid=None, vcenters=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -53,6 +53,9 @@ class GetPrivateCloudResult:
         if state and not isinstance(state, str):
             raise TypeError("Expected argument 'state' to be a str")
         pulumi.set(__self__, "state", state)
+        if type and not isinstance(type, str):
+            raise TypeError("Expected argument 'type' to be a str")
+        pulumi.set(__self__, "type", type)
         if uid and not isinstance(uid, str):
             raise TypeError("Expected argument 'uid' to be a str")
         pulumi.set(__self__, "uid", uid)
@@ -115,6 +118,11 @@ class GetPrivateCloudResult:
 
     @property
     @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+    @property
+    @pulumi.getter
     def uid(self) -> str:
         return pulumi.get(self, "uid")
 
@@ -140,6 +148,7 @@ class AwaitableGetPrivateCloudResult(GetPrivateCloudResult):
             nsxes=self.nsxes,
             project=self.project,
             state=self.state,
+            type=self.type,
             uid=self.uid,
             vcenters=self.vcenters)
 
@@ -190,6 +199,7 @@ def get_private_cloud(location: Optional[str] = None,
         nsxes=pulumi.get(__ret__, 'nsxes'),
         project=pulumi.get(__ret__, 'project'),
         state=pulumi.get(__ret__, 'state'),
+        type=pulumi.get(__ret__, 'type'),
         uid=pulumi.get(__ret__, 'uid'),
         vcenters=pulumi.get(__ret__, 'vcenters'))
 

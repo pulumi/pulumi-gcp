@@ -126,6 +126,7 @@ import javax.annotation.Nullable;
  *                     .sizeGib(32)
  *                     .build())
  *                 .tags(Map.of(&#34;owner&#34;, &#34;mmv2&#34;))
+ *                 .labels(Map.of(&#34;key_one&#34;, &#34;label_one&#34;))
  *                 .vmSize(&#34;Standard_DS2_v2&#34;)
  *                 .build())
  *             .location(&#34;us-west1&#34;)

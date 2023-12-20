@@ -220,6 +220,10 @@ export class Bucket extends pulumi.CustomResource {
      */
     public readonly retentionPolicy!: pulumi.Output<outputs.storage.BucketRetentionPolicy | undefined>;
     /**
+     * The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+     */
+    public readonly rpo!: pulumi.Output<string>;
+    /**
      * The URI of the created resource.
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
@@ -275,6 +279,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["requesterPays"] = state ? state.requesterPays : undefined;
             resourceInputs["retentionPolicy"] = state ? state.retentionPolicy : undefined;
+            resourceInputs["rpo"] = state ? state.rpo : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["storageClass"] = state ? state.storageClass : undefined;
             resourceInputs["uniformBucketLevelAccess"] = state ? state.uniformBucketLevelAccess : undefined;
@@ -302,6 +307,7 @@ export class Bucket extends pulumi.CustomResource {
             resourceInputs["publicAccessPrevention"] = args ? args.publicAccessPrevention : undefined;
             resourceInputs["requesterPays"] = args ? args.requesterPays : undefined;
             resourceInputs["retentionPolicy"] = args ? args.retentionPolicy : undefined;
+            resourceInputs["rpo"] = args ? args.rpo : undefined;
             resourceInputs["storageClass"] = args ? args.storageClass : undefined;
             resourceInputs["uniformBucketLevelAccess"] = args ? args.uniformBucketLevelAccess : undefined;
             resourceInputs["versioning"] = args ? args.versioning : undefined;
@@ -401,6 +407,10 @@ export interface BucketState {
      */
     retentionPolicy?: pulumi.Input<inputs.storage.BucketRetentionPolicy>;
     /**
+     * The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+     */
+    rpo?: pulumi.Input<string>;
+    /**
      * The URI of the created resource.
      */
     selfLink?: pulumi.Input<string>;
@@ -499,6 +509,10 @@ export interface BucketArgs {
      * Configuration of the bucket's data retention policy for how long objects in the bucket should be retained. Structure is documented below.
      */
     retentionPolicy?: pulumi.Input<inputs.storage.BucketRetentionPolicy>;
+    /**
+     * The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `"DEFAULT"` sets default replication. `"ASYNC_TURBO"` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `"DEFAULT"` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+     */
+    rpo?: pulumi.Input<string>;
     /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      */

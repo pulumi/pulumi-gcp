@@ -189,6 +189,9 @@ type PerInstanceConfig struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy pulumi.BoolPtrOutput `pulumi:"removeInstanceOnDestroy"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -256,6 +259,9 @@ type perInstanceConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy *bool `pulumi:"removeInstanceOnDestroy"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -291,6 +297,9 @@ type PerInstanceConfigState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy pulumi.BoolPtrInput
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -330,6 +339,9 @@ type perInstanceConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy *bool `pulumi:"removeInstanceOnDestroy"`
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -366,6 +378,9 @@ type PerInstanceConfigArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// When true, deleting this config will immediately remove the underlying instance.
+	// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+	RemoveInstanceOnDestroy pulumi.BoolPtrInput
 	// When true, deleting this config will immediately remove any specified state from the underlying instance.
 	// When false, deleting this config will *not* immediately remove any state from the underlying instance.
 	// State will be removed on the next instance recreation or update.
@@ -503,6 +518,12 @@ func (o PerInstanceConfigOutput) PreservedState() PerInstanceConfigPreservedStat
 // If it is not provided, the provider project is used.
 func (o PerInstanceConfigOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *PerInstanceConfig) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// When true, deleting this config will immediately remove the underlying instance.
+// When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+func (o PerInstanceConfigOutput) RemoveInstanceOnDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *PerInstanceConfig) pulumi.BoolPtrOutput { return v.RemoveInstanceOnDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // When true, deleting this config will immediately remove any specified state from the underlying instance.

@@ -174,6 +174,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly vertexAiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vmwareengineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly vpcAccessCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly workbenchCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly workflowsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly workstationsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly zone!: pulumi.Output<string | undefined>;
@@ -342,6 +343,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["vertexAiCustomEndpoint"] = args ? args.vertexAiCustomEndpoint : undefined;
             resourceInputs["vmwareengineCustomEndpoint"] = args ? args.vmwareengineCustomEndpoint : undefined;
             resourceInputs["vpcAccessCustomEndpoint"] = args ? args.vpcAccessCustomEndpoint : undefined;
+            resourceInputs["workbenchCustomEndpoint"] = args ? args.workbenchCustomEndpoint : undefined;
             resourceInputs["workflowsCustomEndpoint"] = args ? args.workflowsCustomEndpoint : undefined;
             resourceInputs["workstationsCustomEndpoint"] = args ? args.workstationsCustomEndpoint : undefined;
             resourceInputs["zone"] = (args ? args.zone : undefined) ?? utilities.getEnv("GOOGLE_ZONE", "GCLOUD_ZONE", "CLOUDSDK_COMPUTE_ZONE");
@@ -508,6 +510,7 @@ export interface ProviderArgs {
     vertexAiCustomEndpoint?: pulumi.Input<string>;
     vmwareengineCustomEndpoint?: pulumi.Input<string>;
     vpcAccessCustomEndpoint?: pulumi.Input<string>;
+    workbenchCustomEndpoint?: pulumi.Input<string>;
     workflowsCustomEndpoint?: pulumi.Input<string>;
     workstationsCustomEndpoint?: pulumi.Input<string>;
     zone?: pulumi.Input<string>;

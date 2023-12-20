@@ -25,6 +25,7 @@ __all__ = [
     'WorkforcePoolProviderSamlArgs',
     'WorkloadIdentityPoolProviderAwsArgs',
     'WorkloadIdentityPoolProviderOidcArgs',
+    'WorkloadIdentityPoolProviderSamlArgs',
 ]
 
 @pulumi.input_type
@@ -888,5 +889,27 @@ class WorkloadIdentityPoolProviderOidcArgs:
     @jwks_json.setter
     def jwks_json(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "jwks_json", value)
+
+
+@pulumi.input_type
+class WorkloadIdentityPoolProviderSamlArgs:
+    def __init__(__self__, *,
+                 idp_metadata_xml: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] idp_metadata_xml: SAML Identity provider configuration metadata xml doc.
+        """
+        pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
+
+    @property
+    @pulumi.getter(name="idpMetadataXml")
+    def idp_metadata_xml(self) -> pulumi.Input[str]:
+        """
+        SAML Identity provider configuration metadata xml doc.
+        """
+        return pulumi.get(self, "idp_metadata_xml")
+
+    @idp_metadata_xml.setter
+    def idp_metadata_xml(self, value: pulumi.Input[str]):
+        pulumi.set(self, "idp_metadata_xml", value)
 
 

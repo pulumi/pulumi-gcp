@@ -13,12 +13,26 @@ namespace Pulumi.Gcp.Spanner.Inputs
     public sealed class InstanceAutoscalingConfigAutoscalingLimitsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Specifies maximum number of nodes allocated to the instance. If set, this number
+        /// should be greater than or equal to min_nodes.
+        /// </summary>
+        [Input("maxNodes")]
+        public Input<int>? MaxNodes { get; set; }
+
+        /// <summary>
         /// Specifies maximum number of processing units allocated to the instance.
         /// If set, this number should be multiples of 1000 and be greater than or equal to
         /// min_processing_units.
         /// </summary>
         [Input("maxProcessingUnits")]
         public Input<int>? MaxProcessingUnits { get; set; }
+
+        /// <summary>
+        /// Specifies number of nodes allocated to the instance. If set, this number
+        /// should be greater than or equal to 1.
+        /// </summary>
+        [Input("minNodes")]
+        public Input<int>? MinNodes { get; set; }
 
         /// <summary>
         /// Specifies minimum number of processing units allocated to the instance.

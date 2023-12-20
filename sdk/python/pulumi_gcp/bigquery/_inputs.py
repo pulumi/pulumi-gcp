@@ -36,6 +36,7 @@ __all__ = [
     'DatasetAccessRoutineArgs',
     'DatasetAccessViewArgs',
     'DatasetDefaultEncryptionConfigurationArgs',
+    'DatasetExternalDatasetReferenceArgs',
     'DatasetIamBindingConditionArgs',
     'DatasetIamMemberConditionArgs',
     'IamBindingConditionArgs',
@@ -1448,6 +1449,45 @@ class DatasetDefaultEncryptionConfigurationArgs:
     @kms_key_name.setter
     def kms_key_name(self, value: pulumi.Input[str]):
         pulumi.set(self, "kms_key_name", value)
+
+
+@pulumi.input_type
+class DatasetExternalDatasetReferenceArgs:
+    def __init__(__self__, *,
+                 connection: pulumi.Input[str],
+                 external_source: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] connection: The connection id that is used to access the externalSource.
+               Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+        :param pulumi.Input[str] external_source: External source that backs this dataset.
+        """
+        pulumi.set(__self__, "connection", connection)
+        pulumi.set(__self__, "external_source", external_source)
+
+    @property
+    @pulumi.getter
+    def connection(self) -> pulumi.Input[str]:
+        """
+        The connection id that is used to access the externalSource.
+        Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+        """
+        return pulumi.get(self, "connection")
+
+    @connection.setter
+    def connection(self, value: pulumi.Input[str]):
+        pulumi.set(self, "connection", value)
+
+    @property
+    @pulumi.getter(name="externalSource")
+    def external_source(self) -> pulumi.Input[str]:
+        """
+        External source that backs this dataset.
+        """
+        return pulumi.get(self, "external_source")
+
+    @external_source.setter
+    def external_source(self, value: pulumi.Input[str]):
+        pulumi.set(self, "external_source", value)
 
 
 @pulumi.input_type

@@ -181,6 +181,9 @@ import (
 //					AccessType:   pulumi.String("SINGLE_USER"),
 //					RuntimeOwner: pulumi.String("admin@hashicorptest.com"),
 //				},
+//				Labels: pulumi.StringMap{
+//					"k": pulumi.String("val"),
+//				},
 //				Location: pulumi.String("us-central1"),
 //				SoftwareConfig: &notebooks.RuntimeSoftwareConfigArgs{
 //					Kernels: notebooks.RuntimeSoftwareConfigKernelArray{
@@ -228,6 +231,9 @@ import (
 //				AccessConfig: &notebooks.RuntimeAccessConfigArgs{
 //					AccessType:   pulumi.String("SINGLE_USER"),
 //					RuntimeOwner: pulumi.String("admin@hashicorptest.com"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"k": pulumi.String("val"),
 //				},
 //				Location: pulumi.String("us-central1"),
 //				SoftwareConfig: &notebooks.RuntimeSoftwareConfigArgs{
@@ -291,10 +297,22 @@ type Runtime struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrOutput `pulumi:"accessConfig"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The health state of this runtime. For a list of possible output
 	// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
 	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState pulumi.StringOutput `pulumi:"healthState"`
+	// The labels to associate with this runtime. Label **keys** must
+	// contain 1 to 63 characters, and must conform to [RFC 1035]
+	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// empty, but, if present, must contain 1 to 63 characters, and must
+	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+	// more than 32 labels can be associated with a cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
 	//
 	// ***
@@ -308,6 +326,9 @@ type Runtime struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The config settings for software inside the runtime.
 	// Structure is documented below.
 	SoftwareConfig RuntimeSoftwareConfigOutput `pulumi:"softwareConfig"`
@@ -328,6 +349,11 @@ func NewRuntime(ctx *pulumi.Context,
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
 	}
+	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"effectiveLabels",
+		"pulumiLabels",
+	})
+	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Runtime
 	err := ctx.RegisterResource("gcp:notebooks/runtime:Runtime", name, args, &resource, opts...)
@@ -354,10 +380,22 @@ type runtimeState struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The health state of this runtime. For a list of possible output
 	// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
 	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState *string `pulumi:"healthState"`
+	// The labels to associate with this runtime. Label **keys** must
+	// contain 1 to 63 characters, and must conform to [RFC 1035]
+	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// empty, but, if present, must contain 1 to 63 characters, and must
+	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+	// more than 32 labels can be associated with a cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
 	//
 	// ***
@@ -371,6 +409,9 @@ type runtimeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The config settings for software inside the runtime.
 	// Structure is documented below.
 	SoftwareConfig *RuntimeSoftwareConfig `pulumi:"softwareConfig"`
@@ -385,10 +426,22 @@ type RuntimeState struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrInput
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+	EffectiveLabels pulumi.StringMapInput
 	// The health state of this runtime. For a list of possible output
 	// values, see `https://cloud.google.com/vertex-ai/docs/workbench/
 	// reference/rest/v1/projects.locations.runtimes#healthstate`.
 	HealthState pulumi.StringPtrInput
+	// The labels to associate with this runtime. Label **keys** must
+	// contain 1 to 63 characters, and must conform to [RFC 1035]
+	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// empty, but, if present, must contain 1 to 63 characters, and must
+	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+	// more than 32 labels can be associated with a cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
 	//
 	// ***
@@ -402,6 +455,9 @@ type RuntimeState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput
 	// The config settings for software inside the runtime.
 	// Structure is documented below.
 	SoftwareConfig RuntimeSoftwareConfigPtrInput
@@ -420,6 +476,16 @@ type runtimeArgs struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig *RuntimeAccessConfig `pulumi:"accessConfig"`
+	// The labels to associate with this runtime. Label **keys** must
+	// contain 1 to 63 characters, and must conform to [RFC 1035]
+	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// empty, but, if present, must contain 1 to 63 characters, and must
+	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+	// more than 32 labels can be associated with a cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels map[string]string `pulumi:"labels"`
 	// A reference to the zone where the machine resides.
 	//
 	// ***
@@ -442,6 +508,16 @@ type RuntimeArgs struct {
 	// The config settings for accessing runtime.
 	// Structure is documented below.
 	AccessConfig RuntimeAccessConfigPtrInput
+	// The labels to associate with this runtime. Label **keys** must
+	// contain 1 to 63 characters, and must conform to [RFC 1035]
+	// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+	// empty, but, if present, must contain 1 to 63 characters, and must
+	// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+	// more than 32 labels can be associated with a cluster.
+	//
+	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+	Labels pulumi.StringMapInput
 	// A reference to the zone where the machine resides.
 	//
 	// ***
@@ -552,11 +628,29 @@ func (o RuntimeOutput) AccessConfig() RuntimeAccessConfigPtrOutput {
 	return o.ApplyT(func(v *Runtime) RuntimeAccessConfigPtrOutput { return v.AccessConfig }).(RuntimeAccessConfigPtrOutput)
 }
 
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+func (o RuntimeOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
 // The health state of this runtime. For a list of possible output
 // values, see `https://cloud.google.com/vertex-ai/docs/workbench/
 // reference/rest/v1/projects.locations.runtimes#healthstate`.
 func (o RuntimeOutput) HealthState() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.HealthState }).(pulumi.StringOutput)
+}
+
+// The labels to associate with this runtime. Label **keys** must
+// contain 1 to 63 characters, and must conform to [RFC 1035]
+// (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+// empty, but, if present, must contain 1 to 63 characters, and must
+// conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+// more than 32 labels can be associated with a cluster.
+//
+// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+func (o RuntimeOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
 // A reference to the zone where the machine resides.
@@ -582,6 +676,12 @@ func (o RuntimeOutput) Name() pulumi.StringOutput {
 // If it is not provided, the provider project is used.
 func (o RuntimeOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Runtime) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
+func (o RuntimeOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Runtime) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
 // The config settings for software inside the runtime.

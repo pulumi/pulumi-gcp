@@ -78,6 +78,7 @@ type LookupPrivateCloudResult struct {
 	Nsxes              []GetPrivateCloudNsx               `pulumi:"nsxes"`
 	Project            *string                            `pulumi:"project"`
 	State              string                             `pulumi:"state"`
+	Type               string                             `pulumi:"type"`
 	Uid                string                             `pulumi:"uid"`
 	Vcenters           []GetPrivateCloudVcenter           `pulumi:"vcenters"`
 }
@@ -166,6 +167,10 @@ func (o LookupPrivateCloudResultOutput) Project() pulumi.StringPtrOutput {
 
 func (o LookupPrivateCloudResultOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.State }).(pulumi.StringOutput)
+}
+
+func (o LookupPrivateCloudResultOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupPrivateCloudResult) string { return v.Type }).(pulumi.StringOutput)
 }
 
 func (o LookupPrivateCloudResultOutput) Uid() pulumi.StringOutput {

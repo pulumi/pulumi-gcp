@@ -151,12 +151,10 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			cryptoKeyBinding, err := kms.NewCryptoKeyIAMBinding(ctx, "cryptoKeyBinding", &kms.CryptoKeyIAMBindingArgs{
+//			cryptoKeyMember, err := kms.NewCryptoKeyIAMMember(ctx, "cryptoKeyMember", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: cryptoKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Members: pulumi.StringArray{
-//					pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datafusion.iam.gserviceaccount.com", project.Number)),
-//				},
+//				Member:      pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-datafusion.iam.gserviceaccount.com", project.Number)),
 //			})
 //			if err != nil {
 //				return err
@@ -168,7 +166,7 @@ import (
 //					KeyReference: cryptoKey.ID(),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				cryptoKeyBinding,
+//				cryptoKeyMember,
 //			}))
 //			if err != nil {
 //				return err

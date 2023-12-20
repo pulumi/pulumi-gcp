@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * A cluster in a private cloud.
+ *
+ * To get more information about Cluster, see:
+ *
+ * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+ *
  * ## Example Usage
  * ### Vmware Engine Cluster Basic
  *
@@ -15,11 +21,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_nw = new gcp.vmwareengine.Network("cluster-nw", {
- *     location: "us-west1",
- *     type: "LEGACY",
+ *     type: "STANDARD",
+ *     location: "global",
  *     description: "PC network description.",
- * }, {
- *     provider: google_beta,
  * });
  * const cluster_pc = new gcp.vmwareengine.PrivateCloud("cluster-pc", {
  *     location: "us-west1-a",
@@ -35,8 +39,6 @@ import * as utilities from "../utilities";
  *             nodeCount: 3,
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const vmw_engine_ext_cluster = new gcp.vmwareengine.Cluster("vmw-engine-ext-cluster", {
  *     parent: cluster_pc.id,
@@ -44,8 +46,6 @@ import * as utilities from "../utilities";
  *         nodeTypeId: "standard-72",
  *         nodeCount: 3,
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  * ### Vmware Engine Cluster Full
@@ -55,11 +55,9 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const cluster_nw = new gcp.vmwareengine.Network("cluster-nw", {
- *     location: "us-west1",
- *     type: "LEGACY",
+ *     type: "STANDARD",
+ *     location: "global",
  *     description: "PC network description.",
- * }, {
- *     provider: google_beta,
  * });
  * const cluster_pc = new gcp.vmwareengine.PrivateCloud("cluster-pc", {
  *     location: "us-west1-a",
@@ -76,8 +74,6 @@ import * as utilities from "../utilities";
  *             customCoreCount: 32,
  *         }],
  *     },
- * }, {
- *     provider: google_beta,
  * });
  * const vmw_ext_cluster = new gcp.vmwareengine.Cluster("vmw-ext-cluster", {
  *     parent: cluster_pc.id,
@@ -86,8 +82,6 @@ import * as utilities from "../utilities";
  *         nodeCount: 3,
  *         customCoreCount: 32,
  *     }],
- * }, {
- *     provider: google_beta,
  * });
  * ```
  *

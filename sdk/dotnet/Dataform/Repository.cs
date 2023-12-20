@@ -51,6 +51,12 @@ namespace Pulumi.Gcp.Dataform
     /// 
     ///     var dataformRespository = new Gcp.Dataform.Repository("dataformRespository", new()
     ///     {
+    ///         DisplayName = "dataform_repository",
+    ///         NpmrcEnvironmentVariablesSecretVersion = secretVersion.Id,
+    ///         Labels = 
+    ///         {
+    ///             { "label_foo1", "label-bar1" },
+    ///         },
     ///         GitRemoteSettings = new Gcp.Dataform.Inputs.RepositoryGitRemoteSettingsArgs
     ///         {
     ///             Url = gitRepository.Url,
@@ -167,11 +173,33 @@ namespace Pulumi.Gcp.Dataform
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// Optional. The repository's user-friendly name.
+        /// </summary>
+        [Output("displayName")]
+        public Output<string?> DisplayName { get; private set; } = null!;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        [Output("effectiveLabels")]
+        public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. If set, configures this repository to be linked to a Git remote.
         /// Structure is documented below.
         /// </summary>
         [Output("gitRemoteSettings")]
         public Output<Outputs.RepositoryGitRemoteSettings?> GitRemoteSettings { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. Repository user labels.
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// </summary>
+        [Output("labels")]
+        public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
         /// The repository's name.
@@ -183,11 +211,24 @@ namespace Pulumi.Gcp.Dataform
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
+        /// </summary>
+        [Output("npmrcEnvironmentVariablesSecretVersion")]
+        public Output<string?> NpmrcEnvironmentVariablesSecretVersion { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        [Output("pulumiLabels")]
+        public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
         /// A reference to the region
@@ -231,6 +272,11 @@ namespace Pulumi.Gcp.Dataform
             var defaultOptions = new CustomResourceOptions
             {
                 Version = Utilities.Version,
+                AdditionalSecretOutputs =
+                {
+                    "effectiveLabels",
+                    "pulumiLabels",
+                },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
             // Override the ID if one was specified for consistency with other language SDKs.
@@ -255,11 +301,33 @@ namespace Pulumi.Gcp.Dataform
     public sealed class RepositoryArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The repository's user-friendly name.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        /// <summary>
         /// Optional. If set, configures this repository to be linked to a Git remote.
         /// Structure is documented below.
         /// </summary>
         [Input("gitRemoteSettings")]
         public Input<Inputs.RepositoryGitRemoteSettingsArgs>? GitRemoteSettings { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Optional. Repository user labels.
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The repository's name.
@@ -269,6 +337,12 @@ namespace Pulumi.Gcp.Dataform
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
+        /// </summary>
+        [Input("npmrcEnvironmentVariablesSecretVersion")]
+        public Input<string>? NpmrcEnvironmentVariablesSecretVersion { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -305,11 +379,49 @@ namespace Pulumi.Gcp.Dataform
     public sealed class RepositoryState : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. The repository's user-friendly name.
+        /// </summary>
+        [Input("displayName")]
+        public Input<string>? DisplayName { get; set; }
+
+        [Input("effectiveLabels")]
+        private InputMap<string>? _effectiveLabels;
+
+        /// <summary>
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// </summary>
+        public InputMap<string> EffectiveLabels
+        {
+            get => _effectiveLabels ?? (_effectiveLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
+
+        /// <summary>
         /// Optional. If set, configures this repository to be linked to a Git remote.
         /// Structure is documented below.
         /// </summary>
         [Input("gitRemoteSettings")]
         public Input<Inputs.RepositoryGitRemoteSettingsGetArgs>? GitRemoteSettings { get; set; }
+
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Optional. Repository user labels.
+        /// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// 
+        /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        /// Please refer to the field `effective_labels` for all of the labels present on the resource.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
 
         /// <summary>
         /// The repository's name.
@@ -321,11 +433,34 @@ namespace Pulumi.Gcp.Dataform
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*/secrets/*/versions/*. The file itself must be in a JSON format.
+        /// </summary>
+        [Input("npmrcEnvironmentVariablesSecretVersion")]
+        public Input<string>? NpmrcEnvironmentVariablesSecretVersion { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        [Input("pulumiLabels")]
+        private InputMap<string>? _pulumiLabels;
+
+        /// <summary>
+        /// The combination of labels configured directly on the resource
+        /// and default labels configured on the provider.
+        /// </summary>
+        public InputMap<string> PulumiLabels
+        {
+            get => _pulumiLabels ?? (_pulumiLabels = new InputMap<string>());
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
+                _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
+        }
 
         /// <summary>
         /// A reference to the region

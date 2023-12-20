@@ -623,6 +623,10 @@ __all__ = [
     'GetInstanceTemplateSchedulingNodeAffinityResult',
     'GetInstanceTemplateServiceAccountResult',
     'GetInstanceTemplateShieldedInstanceConfigResult',
+    'GetRegionDiskAsyncPrimaryDiskResult',
+    'GetRegionDiskDiskEncryptionKeyResult',
+    'GetRegionDiskGuestOsFeatureResult',
+    'GetRegionDiskSourceSnapshotEncryptionKeyResult',
     'GetRegionInstanceGroupInstanceResult',
     'GetRegionInstanceGroupInstanceNamedPortResult',
     'GetRegionInstanceTemplateAdvancedMachineFeatureResult',
@@ -40270,6 +40274,82 @@ class GetInstanceTemplateShieldedInstanceConfigResult(dict):
         - Use a virtualized trusted platform module, which is a specialized computer chip you can use to encrypt objects like keys and certificates. Defaults to true.
         """
         return pulumi.get(self, "enable_vtpm")
+
+
+@pulumi.output_type
+class GetRegionDiskAsyncPrimaryDiskResult(dict):
+    def __init__(__self__, *,
+                 disk: str):
+        pulumi.set(__self__, "disk", disk)
+
+    @property
+    @pulumi.getter
+    def disk(self) -> str:
+        return pulumi.get(self, "disk")
+
+
+@pulumi.output_type
+class GetRegionDiskDiskEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str,
+                 raw_key: str,
+                 sha256: str):
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> str:
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        return pulumi.get(self, "sha256")
+
+
+@pulumi.output_type
+class GetRegionDiskGuestOsFeatureResult(dict):
+    def __init__(__self__, *,
+                 type: str):
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetRegionDiskSourceSnapshotEncryptionKeyResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str,
+                 raw_key: str,
+                 sha256: str):
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        pulumi.set(__self__, "raw_key", raw_key)
+        pulumi.set(__self__, "sha256", sha256)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="rawKey")
+    def raw_key(self) -> str:
+        return pulumi.get(self, "raw_key")
+
+    @property
+    @pulumi.getter
+    def sha256(self) -> str:
+        return pulumi.get(self, "sha256")
 
 
 @pulumi.output_type

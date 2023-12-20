@@ -8,6 +8,8 @@ import pulumi
 import pulumi.runtime
 from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
+from . import outputs
+from ._inputs import *
 
 __all__ = ['InstanceArgs', 'Instance']
 
@@ -16,7 +18,9 @@ class InstanceArgs:
     def __init__(__self__, *,
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 private_config: Optional[pulumi.Input['InstancePrivateConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -25,17 +29,24 @@ class InstanceArgs:
                
                - - -
         :param pulumi.Input[str] location: The location for the Instance.
+        :param pulumi.Input[str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
+        :param pulumi.Input['InstancePrivateConfigArgs'] private_config: Private settings for private instance.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if private_config is not None:
+            pulumi.set(__self__, "private_config", private_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -67,6 +78,18 @@ class InstanceArgs:
         pulumi.set(self, "location", value)
 
     @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -80,6 +103,19 @@ class InstanceArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="privateConfig")
+    def private_config(self) -> Optional[pulumi.Input['InstancePrivateConfigArgs']]:
+        """
+        Private settings for private instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_config")
+
+    @private_config.setter
+    def private_config(self, value: Optional[pulumi.Input['InstancePrivateConfigArgs']]):
+        pulumi.set(self, "private_config", value)
 
     @property
     @pulumi.getter
@@ -100,53 +136,71 @@ class _InstanceState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 host_configs: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceHostConfigArgs']]]] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 private_config: Optional[pulumi.Input['InstancePrivateConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 state_note: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceHostConfigArgs']]] host_configs: A list of hostnames for this instance.
+               Structure is documented below.
         :param pulumi.Input[str] instance_id: The name for the Instance.
                
                
                - - -
+        :param pulumi.Input[str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the Instance.
         :param pulumi.Input[str] name: The resource name for the Instance.
+        :param pulumi.Input['InstancePrivateConfigArgs'] private_config: Private settings for private instance.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: The current state of the Instance.
+        :param pulumi.Input[str] state_note: Provides information about the current instance state.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if host_configs is not None:
+            pulumi.set(__self__, "host_configs", host_configs)
         if instance_id is not None:
             pulumi.set(__self__, "instance_id", instance_id)
+        if kms_key is not None:
+            pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if location is not None:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if private_config is not None:
+            pulumi.set(__self__, "private_config", private_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if state_note is not None:
+            pulumi.set(__self__, "state_note", state_note)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -175,6 +229,19 @@ class _InstanceState:
         pulumi.set(self, "effective_labels", value)
 
     @property
+    @pulumi.getter(name="hostConfigs")
+    def host_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceHostConfigArgs']]]]:
+        """
+        A list of hostnames for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "host_configs")
+
+    @host_configs.setter
+    def host_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceHostConfigArgs']]]]):
+        pulumi.set(self, "host_configs", value)
+
+    @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -188,6 +255,18 @@ class _InstanceState:
     @instance_id.setter
     def instance_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_id", value)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> Optional[pulumi.Input[str]]:
+        """
+        Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @kms_key.setter
+    def kms_key(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "kms_key", value)
 
     @property
     @pulumi.getter
@@ -229,6 +308,19 @@ class _InstanceState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="privateConfig")
+    def private_config(self) -> Optional[pulumi.Input['InstancePrivateConfigArgs']]:
+        """
+        Private settings for private instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_config")
+
+    @private_config.setter
+    def private_config(self, value: Optional[pulumi.Input['InstancePrivateConfigArgs']]):
+        pulumi.set(self, "private_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -267,6 +359,18 @@ class _InstanceState:
         pulumi.set(self, "state", value)
 
     @property
+    @pulumi.getter(name="stateNote")
+    def state_note(self) -> Optional[pulumi.Input[str]]:
+        """
+        Provides information about the current instance state.
+        """
+        return pulumi.get(self, "state_note")
+
+    @state_note.setter
+    def state_note(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state_note", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -285,8 +389,10 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 private_config: Optional[pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -294,8 +400,9 @@ class Instance(pulumi.CustomResource):
 
         To get more information about Instance, see:
 
+        * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/secure-source-manager/overview/overview)
+            * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
 
         ## Example Usage
         ### Secure Source Manager Instance Basic
@@ -310,6 +417,24 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             },
             location="us-central1")
+        ```
+        ### Secure Source Manager Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        project = gcp.organizations.get_project()
+        crypto_key_binding = gcp.kms.CryptoKeyIAMMember("cryptoKeyBinding",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
+        default = gcp.securesourcemanager.Instance("default",
+            location="us-central1",
+            instance_id="my-instance",
+            kms_key=crypto_key.id)
         ```
 
         ## Import
@@ -346,11 +471,14 @@ class Instance(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the Instance.
+        :param pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']] private_config: Private settings for private instance.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -365,8 +493,9 @@ class Instance(pulumi.CustomResource):
 
         To get more information about Instance, see:
 
+        * [API documentation](https://cloud.google.com/secure-source-manager/docs/reference/rest/v1/projects.locations.instances)
         * How-to Guides
-            * [Official Documentation](https://cloud.google.com/secure-source-manager/overview/overview)
+            * [Official Documentation](https://cloud.google.com/secure-source-manager/docs/create-instance)
 
         ## Example Usage
         ### Secure Source Manager Instance Basic
@@ -381,6 +510,24 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             },
             location="us-central1")
+        ```
+        ### Secure Source Manager Instance Cmek
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
+        crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
+        project = gcp.organizations.get_project()
+        crypto_key_binding = gcp.kms.CryptoKeyIAMMember("cryptoKeyBinding",
+            crypto_key_id=crypto_key.id,
+            role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
+        default = gcp.securesourcemanager.Instance("default",
+            location="us-central1",
+            instance_id="my-instance",
+            kms_key=crypto_key.id)
         ```
 
         ## Import
@@ -427,8 +574,10 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  instance_id: Optional[pulumi.Input[str]] = None,
+                 kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
+                 private_config: Optional[pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -442,16 +591,20 @@ class Instance(pulumi.CustomResource):
             if instance_id is None and not opts.urn:
                 raise TypeError("Missing required property 'instance_id'")
             __props__.__dict__["instance_id"] = instance_id
+            __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
+            __props__.__dict__["private_config"] = private_config
             __props__.__dict__["project"] = project
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["host_configs"] = None
             __props__.__dict__["name"] = None
             __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["state"] = None
+            __props__.__dict__["state_note"] = None
             __props__.__dict__["update_time"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -467,13 +620,17 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            host_configs: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceHostConfigArgs']]]]] = None,
             instance_id: Optional[pulumi.Input[str]] = None,
+            kms_key: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            private_config: Optional[pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            state_note: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
@@ -484,21 +641,27 @@ class Instance(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['InstanceHostConfigArgs']]]] host_configs: A list of hostnames for this instance.
+               Structure is documented below.
         :param pulumi.Input[str] instance_id: The name for the Instance.
                
                
                - - -
+        :param pulumi.Input[str] kms_key: Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location for the Instance.
         :param pulumi.Input[str] name: The resource name for the Instance.
+        :param pulumi.Input[pulumi.InputType['InstancePrivateConfigArgs']] private_config: Private settings for private instance.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: The current state of the Instance.
+        :param pulumi.Input[str] state_note: Provides information about the current instance state.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -507,13 +670,17 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["host_configs"] = host_configs
         __props__.__dict__["instance_id"] = instance_id
+        __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
+        __props__.__dict__["private_config"] = private_config
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["state"] = state
+        __props__.__dict__["state_note"] = state_note
         __props__.__dict__["update_time"] = update_time
         return Instance(resource_name, opts=opts, __props__=__props__)
 
@@ -534,6 +701,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "effective_labels")
 
     @property
+    @pulumi.getter(name="hostConfigs")
+    def host_configs(self) -> pulumi.Output[Sequence['outputs.InstanceHostConfig']]:
+        """
+        A list of hostnames for this instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "host_configs")
+
+    @property
     @pulumi.getter(name="instanceId")
     def instance_id(self) -> pulumi.Output[str]:
         """
@@ -543,6 +719,14 @@ class Instance(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "instance_id")
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> pulumi.Output[Optional[str]]:
+        """
+        Customer-managed encryption key name, in the format projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        """
+        return pulumi.get(self, "kms_key")
 
     @property
     @pulumi.getter
@@ -572,6 +756,15 @@ class Instance(pulumi.CustomResource):
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="privateConfig")
+    def private_config(self) -> pulumi.Output[Optional['outputs.InstancePrivateConfig']]:
+        """
+        Private settings for private instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_config")
+
+    @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
@@ -596,6 +789,14 @@ class Instance(pulumi.CustomResource):
         The current state of the Instance.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter(name="stateNote")
+    def state_note(self) -> pulumi.Output[str]:
+        """
+        Provides information about the current instance state.
+        """
+        return pulumi.get(self, "state_note")
 
     @property
     @pulumi.getter(name="updateTime")

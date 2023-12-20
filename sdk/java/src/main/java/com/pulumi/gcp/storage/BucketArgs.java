@@ -278,6 +278,21 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `&#34;DEFAULT&#34;` sets default replication. `&#34;ASYNC_TURBO&#34;` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `&#34;DEFAULT&#34;` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+     * 
+     */
+    @Import(name="rpo")
+    private @Nullable Output<String> rpo;
+
+    /**
+     * @return The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `&#34;DEFAULT&#34;` sets default replication. `&#34;ASYNC_TURBO&#34;` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `&#34;DEFAULT&#34;` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+     * 
+     */
+    public Optional<Output<String>> rpo() {
+        return Optional.ofNullable(this.rpo);
+    }
+
+    /**
      * The [Storage Class](https://cloud.google.com/storage/docs/storage-classes) of the new bucket. Supported values include: `STANDARD`, `MULTI_REGIONAL`, `REGIONAL`, `NEARLINE`, `COLDLINE`, `ARCHIVE`.
      * 
      */
@@ -356,6 +371,7 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         this.publicAccessPrevention = $.publicAccessPrevention;
         this.requesterPays = $.requesterPays;
         this.retentionPolicy = $.retentionPolicy;
+        this.rpo = $.rpo;
         this.storageClass = $.storageClass;
         this.uniformBucketLevelAccess = $.uniformBucketLevelAccess;
         this.versioning = $.versioning;
@@ -744,6 +760,27 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder retentionPolicy(BucketRetentionPolicyArgs retentionPolicy) {
             return retentionPolicy(Output.of(retentionPolicy));
+        }
+
+        /**
+         * @param rpo The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `&#34;DEFAULT&#34;` sets default replication. `&#34;ASYNC_TURBO&#34;` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `&#34;DEFAULT&#34;` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rpo(@Nullable Output<String> rpo) {
+            $.rpo = rpo;
+            return this;
+        }
+
+        /**
+         * @param rpo The recovery point objective for cross-region replication of the bucket. Applicable only for dual and multi-region buckets. `&#34;DEFAULT&#34;` sets default replication. `&#34;ASYNC_TURBO&#34;` value enables turbo replication, valid for dual-region buckets only. See [Turbo Replication](https://cloud.google.com/storage/docs/managing-turbo-replication) for more information. If rpo is not specified at bucket creation, it defaults to `&#34;DEFAULT&#34;` for dual and multi-region buckets. **NOTE** If used with single-region bucket, It will throw an error.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rpo(String rpo) {
+            return rpo(Output.of(rpo));
         }
 
         /**

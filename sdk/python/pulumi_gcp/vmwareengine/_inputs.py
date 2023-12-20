@@ -20,6 +20,7 @@ __all__ = [
     'PrivateCloudNetworkConfigArgs',
     'PrivateCloudNsxArgs',
     'PrivateCloudVcenterArgs',
+    'SubnetDhcpAddressRangeArgs',
 ]
 
 @pulumi.input_type
@@ -648,5 +649,48 @@ class PrivateCloudVcenterArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
+
+
+@pulumi.input_type
+class SubnetDhcpAddressRangeArgs:
+    def __init__(__self__, *,
+                 first_address: Optional[pulumi.Input[str]] = None,
+                 last_address: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] first_address: (Output)
+               The first IP address of the range.
+        :param pulumi.Input[str] last_address: (Output)
+               The last IP address of the range.
+        """
+        if first_address is not None:
+            pulumi.set(__self__, "first_address", first_address)
+        if last_address is not None:
+            pulumi.set(__self__, "last_address", last_address)
+
+    @property
+    @pulumi.getter(name="firstAddress")
+    def first_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The first IP address of the range.
+        """
+        return pulumi.get(self, "first_address")
+
+    @first_address.setter
+    def first_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "first_address", value)
+
+    @property
+    @pulumi.getter(name="lastAddress")
+    def last_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The last IP address of the range.
+        """
+        return pulumi.get(self, "last_address")
+
+    @last_address.setter
+    def last_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_address", value)
 
 

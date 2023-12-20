@@ -6,15 +6,20 @@ from .. import _utilities
 import typing
 # Export this package's modules as members:
 from .cluster import *
+from .external_address import *
 from .get_cluster import *
+from .get_external_address import *
 from .get_network import *
 from .get_network_peering import *
 from .get_network_policy import *
 from .get_nsx_credentials import *
 from .get_private_cloud import *
+from .get_subnet import *
+from .get_vcenter_credentials import *
 from .network import *
 from .network_peering import *
 from .network_policy import *
 from .private_cloud import *
+from .subnet import *
 from ._inputs import *
 from . import outputs

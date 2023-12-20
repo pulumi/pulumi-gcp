@@ -251,6 +251,34 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Bigquery Dataset External Reference Aws Docs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var dataset = new Gcp.BigQuery.Dataset("dataset", new()
+    ///     {
+    ///         DatasetId = "example_dataset",
+    ///         FriendlyName = "test",
+    ///         Description = "This is a test description",
+    ///         Location = "aws-us-east-1",
+    ///         ExternalDatasetReference = new Gcp.BigQuery.Inputs.DatasetExternalDatasetReferenceArgs
+    ///         {
+    ///             ExternalSource = "aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+    ///             Connection = "projects/project/locations/aws-us-east-1/connections/connection",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -388,6 +416,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("etag")]
         public Output<string> Etag { get; private set; } = null!;
+
+        /// <summary>
+        /// Information about the external metadata storage where the dataset is defined.
+        /// </summary>
+        [Output("externalDatasetReference")]
+        public Output<Outputs.DatasetExternalDatasetReference?> ExternalDatasetReference { get; private set; } = null!;
 
         /// <summary>
         /// A descriptive name for the dataset
@@ -619,6 +653,12 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// Information about the external metadata storage where the dataset is defined.
+        /// </summary>
+        [Input("externalDatasetReference")]
+        public Input<Inputs.DatasetExternalDatasetReferenceArgs>? ExternalDatasetReference { get; set; }
+
+        /// <summary>
         /// A descriptive name for the dataset
         /// </summary>
         [Input("friendlyName")]
@@ -818,6 +858,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("etag")]
         public Input<string>? Etag { get; set; }
+
+        /// <summary>
+        /// Information about the external metadata storage where the dataset is defined.
+        /// </summary>
+        [Input("externalDatasetReference")]
+        public Input<Inputs.DatasetExternalDatasetReferenceGetArgs>? ExternalDatasetReference { get; set; }
 
         /// <summary>
         /// A descriptive name for the dataset

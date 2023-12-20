@@ -615,6 +615,9 @@ class AzureNodePool(pulumi.CustomResource):
                 tags={
                     "owner": "mmv2",
                 },
+                labels={
+                    "key_one": "label_one",
+                },
                 vm_size="Standard_DS2_v2",
             ),
             location="us-west1",
@@ -744,6 +747,9 @@ class AzureNodePool(pulumi.CustomResource):
                 ),
                 tags={
                     "owner": "mmv2",
+                },
+                labels={
+                    "key_one": "label_one",
                 },
                 vm_size="Standard_DS2_v2",
             ),

@@ -18,6 +18,18 @@ namespace Pulumi.Gcp.Container.Inputs
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 
+        [Input("labels")]
+        private InputMap<string>? _labels;
+
+        /// <summary>
+        /// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        /// </summary>
+        public InputMap<string> Labels
+        {
+            get => _labels ?? (_labels = new InputMap<string>());
+            set => _labels = value;
+        }
+
         /// <summary>
         /// Proxy configuration for outbound HTTP(S) traffic.
         /// </summary>

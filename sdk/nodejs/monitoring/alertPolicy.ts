@@ -241,6 +241,13 @@ export class AlertPolicy extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * The severity of an alert policy indicates how important incidents generated
+     * by that policy are. The severity level will be displayed on the Incident
+     * detail page and in notifications.
+     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     */
+    public readonly severity!: pulumi.Output<string | undefined>;
+    /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
      * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -272,6 +279,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationChannels"] = state ? state.notificationChannels : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["severity"] = state ? state.severity : undefined;
             resourceInputs["userLabels"] = state ? state.userLabels : undefined;
         } else {
             const args = argsOrState as AlertPolicyArgs | undefined;
@@ -292,6 +300,7 @@ export class AlertPolicy extends pulumi.CustomResource {
             resourceInputs["enabled"] = args ? args.enabled : undefined;
             resourceInputs["notificationChannels"] = args ? args.notificationChannels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["severity"] = args ? args.severity : undefined;
             resourceInputs["userLabels"] = args ? args.userLabels : undefined;
             resourceInputs["creationRecords"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -377,6 +386,13 @@ export interface AlertPolicyState {
      */
     project?: pulumi.Input<string>;
     /**
+     * The severity of an alert policy indicates how important incidents generated
+     * by that policy are. The severity level will be displayed on the Incident
+     * detail page and in notifications.
+     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     */
+    severity?: pulumi.Input<string>;
+    /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
      * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -444,6 +460,13 @@ export interface AlertPolicyArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The severity of an alert policy indicates how important incidents generated
+     * by that policy are. The severity level will be displayed on the Incident
+     * detail page and in notifications.
+     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     */
+    severity?: pulumi.Input<string>;
     /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited

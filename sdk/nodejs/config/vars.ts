@@ -1233,6 +1233,14 @@ Object.defineProperty(exports, "vpcAccessCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const workbenchCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "workbenchCustomEndpoint", {
+    get() {
+        return __config.get("workbenchCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const workflowsCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "workflowsCustomEndpoint", {
     get() {
