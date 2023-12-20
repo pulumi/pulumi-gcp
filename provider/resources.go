@@ -143,6 +143,7 @@ const (
 	gcpVMwareEngine             = "VMwareEngine"             // VMWare Engine
 	gcpVertex                   = "Vertex"                   // Vertex
 	gcpVpcAccess                = "VpcAccess"                // VPC Access
+	gcpWorkbench                = "Workbench"                // Workbench
 	gcpWorkflows                = "Workflows"                // Workflows
 	gcpWorkstations             = "Workstations"             // Workstations
 )
@@ -258,6 +259,7 @@ var moduleMapping = map[string]string{
 	"vertex":                          gcpVertex,
 	"vmwareengine":                    gcpVMwareEngine,
 	"vpc_access":                      gcpVpcAccess,
+	"workbench":                       gcpWorkbench,
 	"workflows":                       gcpWorkflows,
 	"workstations":                    gcpWorkstations,
 }
