@@ -3927,6 +3927,9 @@ func Provider() tfbridge.ProviderInfo {
 		"google_vertex_ai_endpoint_iam_binding",
 		"google_vertex_ai_endpoint_iam_member",
 		"google_vertex_ai_endpoint_iam_policy",
+		"google_workbench_instance_iam_binding",
+		"google_workbench_instance_iam_member",
+		"google_workbench_instance_iam_policy",
 	}
 
 	for _, name := range allowMissingResourceDocs {
