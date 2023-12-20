@@ -51956,5 +51956,700 @@
             "workflowsCustomEndpoint": "workflows_custom_endpoint",
             "workstationsCustomEndpoint": "workstations_custom_endpoint"
         }
+    },
+    "traverse-effects": {
+        "resources": {
+            "google_active_directory_domain": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_active_directory_peering": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_alloydb_backup": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_alloydb_cluster": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_alloydb_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_api_gateway_api": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_api_gateway_api_config": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_api_gateway_gateway": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_artifact_registry_repository": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_assured_workloads_workload": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_beyondcorp_app_connection": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_beyondcorp_app_connector": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_beyondcorp_app_gateway": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_bigquery_dataset": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_bigquery_job": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_bigquery_table": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_bigtable_instance": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_certificate_manager_certificate": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_certificate_manager_certificate_issuance_config": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_certificate_manager_certificate_map": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_certificate_manager_certificate_map_entry": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_certificate_manager_dns_authorization": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_certificate_manager_trust_config": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_cloud_run_domain_mapping": [
+                "metadata.$.effective_labels",
+                "metadata.$.terraform_labels"
+            ],
+            "google_cloud_run_service": [
+                "metadata.$.effective_labels",
+                "metadata.$.terraform_labels"
+            ],
+            "google_cloud_run_v2_job": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_cloud_run_v2_service": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_clouddeploy_delivery_pipeline": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_clouddeploy_target": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_cloudfunctions2_function": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_cloudfunctions_function": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_composer_environment": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_address": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_compute_disk": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_external_vpn_gateway": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_forwarding_rule": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_global_address": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_global_forwarding_rule": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_compute_image": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_compute_instance": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_compute_instance_from_machine_image": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_compute_instance_from_template": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_compute_instance_template": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_region_disk": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_region_instance_template": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_snapshot": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_compute_vpn_tunnel": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_data_fusion_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_database_migration_service_connection_profile": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_database_migration_service_private_connection": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataflow_flex_template_job": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataflow_job": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataplex_asset": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataplex_datascan": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataplex_lake": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_dataplex_task": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_dataplex_zone": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataproc_cluster": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataproc_job": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataproc_metastore_federation": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataproc_metastore_service": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dataproc_workflow_template": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_datastream_connection_profile": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_datastream_private_connection": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_datastream_stream": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_dialogflow_cx_intent": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_dns_managed_zone": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_edgecontainer_cluster": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_edgecontainer_node_pool": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_edgecontainer_vpn_connection": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_eventarc_trigger": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_filestore_backup": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_filestore_instance": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_filestore_snapshot": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_firebase_hosting_channel": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gke_backup_backup_plan": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_gke_backup_restore_plan": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gke_hub_feature": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gke_hub_membership": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gke_hub_membership_binding": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gke_hub_namespace": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gke_hub_scope": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_gke_hub_scope_rbac_role_binding": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_healthcare_consent_store": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_healthcare_dicom_store": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_healthcare_fhir_store": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_healthcare_hl7_v2_store": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_integration_connectors_connection": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_kms_crypto_key": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_memcache_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_migration_center_group": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_ml_engine_model": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_netapp_storage_pool": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_connectivity_hub": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_connectivity_policy_based_route": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_connectivity_service_connection_policy": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_connectivity_spoke": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_management_connectivity_test": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_security_address_group": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_security_authorization_policy": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_security_client_tls_policy": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_security_server_tls_policy": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_services_edge_cache_keyset": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_services_edge_cache_origin": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_services_edge_cache_service": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_services_endpoint_policy": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_services_gateway": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_services_grpc_route": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_services_http_route": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_services_mesh": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_network_services_service_binding": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_network_services_tcp_route": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_notebooks_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_privateca_ca_pool": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_privateca_certificate": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_privateca_certificate_authority": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_privateca_certificate_template": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_project": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_pubsub_subscription": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_pubsub_topic": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_recaptcha_enterprise_key": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_redis_instance": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_secret_manager_secret": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_secure_source_manager_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_service_directory_namespace": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_spanner_instance": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_storage_bucket": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_tpu_node": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_tpu_v2_vm": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_vertex_ai_dataset": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_vertex_ai_endpoint": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_vertex_ai_featurestore": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_vertex_ai_featurestore_entitytype": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_vertex_ai_featurestore_entitytype_feature": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_vertex_ai_index": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_vertex_ai_index_endpoint": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_vertex_ai_tensorboard": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_workflows_workflow": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_workstations_workstation": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_workstations_workstation_cluster": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_workstations_workstation_config": [
+                "effective_labels",
+                "terraform_labels"
+            ]
+        },
+        "dataSources": {
+            "google_artifact_registry_repository": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_beyondcorp_app_connection": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_beyondcorp_app_connector": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_beyondcorp_app_gateway": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_bigquery_dataset": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_certificate_manager_certificate_map": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_cloud_run_service": [
+                "metadata.$.effective_labels",
+                "metadata.$.terraform_labels"
+            ],
+            "google_cloud_run_v2_job": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_cloud_run_v2_service": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_cloudfunctions2_function": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_cloudfunctions_function": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_composer_environment": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_compute_disk": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_forwarding_rule": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_global_forwarding_rule": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_instance": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_compute_instance_template": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_region_instance_template": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_snapshot": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_firebase_hosting_channel": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_kms_crypto_key": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_privateca_certificate_authority": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_project": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_pubsub_subscription": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_pubsub_topic": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_redis_instance": [
+                "terraform_labels",
+                "effective_labels"
+            ],
+            "google_secret_manager_secret": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_secret_manager_secrets": [
+                "secrets.$.terraform_labels",
+                "secrets.$.effective_labels"
+            ],
+            "google_spanner_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_storage_bucket": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_vertex_ai_index": [
+                "effective_labels",
+                "terraform_labels"
+            ]
+        },
+        "config": null
     }
 }

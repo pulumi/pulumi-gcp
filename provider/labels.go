@@ -4,10 +4,9 @@ package gcp
 
 import (
 	"context"
-	"fmt"
 
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge"
-	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
+	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 )
 
@@ -18,119 +17,39 @@ import (
 // called "terraform_labels", overriding these with "pulumiLabels" via
 // tfbridge.SchemaInfo.
 func fixLabelNames(prov *tfbridge.ProviderInfo) {
-	// Recursively applies the label fix and gathers resource paths to pulumiLabels
-	var apply func(string, shim.Schema, *tfbridge.SchemaInfo, *[]resource.PropertyPath, resource.PropertyPath)
-	apply = func(key string, m shim.Schema, info *tfbridge.SchemaInfo,
-		paths *[]resource.PropertyPath,
-		currentPath resource.PropertyPath,
-	) {
-		if key == "terraform_labels" {
-			info.Name = "pulumiLabels"
-			// Gather all paths to pulumiLabels
-			for _, v := range currentPath {
-				if v, ok := v.(string); ok && v == "*" {
-					panic(fmt.Sprintf("at path %s: globs are not supported", currentPath))
-				}
-			}
-			// we need to reset the `terraformLabels` key that we wrote to currentPath to be `pulumiLabels`
-			currentPath = currentPath[:len(currentPath)-1]
-			currentPath = append(currentPath, info.Name)
-			*paths = append(*paths, currentPath)
+	toUpdate := map[string][]resource.PropertyPath{}
 
-			// This field represents an aggregate of resource-level `labels` and provider-level `defaultLabels` fields.
-			// To avoid leaking secrets set via Input on those fields, we mark this field as unconditionally Secret.
-			info.Secret = tfbridge.True()
+	prov.MustTraverseProperties("fix-label-names", func(ctx tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
+		path := ctx.SchemaPath()
+		key, ok := path[len(path)-1].(walk.GetAttrStep)
+		if !ok {
+			return tfbridge.PropertyVisitResult{}, nil
 		}
-		// Also set `effectiveLabels` to Secret.
-		if key == "effective_labels" {
-			info.Secret = tfbridge.True()
-		}
+		switch key.Name {
+		case "terraform_labels":
+			ctx.SchemaInfo().Name = "pulumiLabels"
 
-		if m == nil {
-			return
-		}
-
-		switch elem := m.Elem().(type) {
-		case shim.Resource: // this is a nested object
-			obj := elem.Schema()
-			if info.Elem == nil {
-				info.Elem = new(tfbridge.SchemaInfo)
+			// We only apply this transform for resources
+			if root, ok := ctx.Root.(tfbridge.VisitResourceRoot); ok {
+				toUpdate[root.TfToken] = append(toUpdate[root.TfToken],
+					tfbridge.SchemaPathToPropertyPath(path, ctx.EnclosingSchemaMap(), ctx.EnclosingSchemaInfoMap()))
 			}
 
-			if info.Elem.Fields == nil {
-				info.Elem.Fields = make(map[string]*tfbridge.SchemaInfo, obj.Len())
-			}
-			obj.Range(func(key string, m shim.Schema) bool {
-				i, ok := info.Elem.Fields[key]
-				if !ok {
-					i = new(tfbridge.SchemaInfo)
-					info.Elem.Fields[key] = i
-				}
-				pulumiKey := tfbridge.TerraformToPulumiNameV2(key, obj, info.Elem.Fields)
-				currentPath = append(currentPath, pulumiKey)
-				apply(key, m, i, paths, currentPath)
-				return true
-			})
-		case shim.Schema: // this is a map or array or a Set
-			if info.Elem == nil {
-				info.Elem = new(tfbridge.SchemaInfo)
-			}
-			currentPath = append(currentPath, "*")
-			apply("", elem, info.Elem, paths, currentPath)
+			ctx.SchemaInfo().Secret = tfbridge.True()
+
+		// This field represents an aggregate of resource-level `labels` and provider-level `defaultLabels` fields.
+		// To avoid leaking secrets set via Input on those fields, we mark this field as unconditionally Secret.
+		case "effective_labels":
+			ctx.SchemaInfo().Secret = tfbridge.True()
+		default:
+			return tfbridge.PropertyVisitResult{}, nil
 		}
+		return tfbridge.PropertyVisitResult{HasEffect: true}, nil
+	})
+
+	for token, labelPaths := range toUpdate {
+		prov.Resources[token].TransformFromState = ensureLabelPathsExist(labelPaths)
 	}
-	// update takes a terraform schema map and a pulumi schema info map of a given resource, and calls `apply` to do
-	// necessary resource transformations.
-	// - Rename terraformLabels to pulumiLabels at schema generation time
-	// - Create a collection of resource property paths that have this pulumiLabels key amd return it.
-	update := func(s shim.SchemaMap, fields *map[string]*tfbridge.SchemaInfo) []resource.PropertyPath {
-		var paths []resource.PropertyPath
-
-		if *fields == nil {
-			*fields = make(map[string]*tfbridge.SchemaInfo, s.Len())
-		}
-		s.Range(func(key string, m shim.Schema) bool {
-			pulumiKey := tfbridge.TerraformToPulumiNameV2(key, s, *fields)
-			currentPath := resource.PropertyPath{pulumiKey}
-			i, ok := (*fields)[key]
-			if !ok {
-				i = new(tfbridge.SchemaInfo)
-				(*fields)[key] = i
-			}
-			apply(key, m, i, &paths, currentPath)
-			return true
-		})
-		return paths
-	}
-
-	rMap := prov.P.ResourcesMap()
-	for token, info := range prov.Resources {
-		// Rename pulumiLabel fields and obtain paths
-		labelPaths := update(rMap.Get(token).Schema(), &info.Fields)
-		if len(labelPaths) > 0 {
-			oldTFS := info.TransformFromState
-			info.TransformFromState = func(ctx context.Context, pm resource.PropertyMap) (resource.PropertyMap, error) {
-				var err error
-				if oldTFS != nil {
-					pm, err = oldTFS(ctx, pm)
-					if err != nil {
-						return pm, err
-					}
-				}
-				pm, err = ensureLabelPathsExist(labelPaths)(ctx, pm)
-				if err != nil {
-					return pm, err
-				}
-				return pm, nil
-			}
-		}
-	}
-
-	dMap := prov.P.DataSourcesMap()
-	for token, info := range prov.DataSources {
-		update(dMap.Get(token).Schema(), &info.Fields)
-	}
-
 }
 
 // pulumiLabels represents a field added upstream via a custom diff, as terraform_labels.
