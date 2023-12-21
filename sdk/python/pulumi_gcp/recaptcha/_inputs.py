@@ -13,6 +13,7 @@ __all__ = [
     'EnterpriseKeyAndroidSettingsArgs',
     'EnterpriseKeyIosSettingsArgs',
     'EnterpriseKeyTestingOptionsArgs',
+    'EnterpriseKeyWafSettingsArgs',
     'EnterpriseKeyWebSettingsArgs',
 ]
 
@@ -131,6 +132,43 @@ class EnterpriseKeyTestingOptionsArgs:
     @testing_score.setter
     def testing_score(self, value: Optional[pulumi.Input[float]]):
         pulumi.set(self, "testing_score", value)
+
+
+@pulumi.input_type
+class EnterpriseKeyWafSettingsArgs:
+    def __init__(__self__, *,
+                 waf_feature: pulumi.Input[str],
+                 waf_service: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] waf_feature: Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+        :param pulumi.Input[str] waf_service: The WAF service that uses this key. Possible values: CA, FASTLY
+        """
+        pulumi.set(__self__, "waf_feature", waf_feature)
+        pulumi.set(__self__, "waf_service", waf_service)
+
+    @property
+    @pulumi.getter(name="wafFeature")
+    def waf_feature(self) -> pulumi.Input[str]:
+        """
+        Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+        """
+        return pulumi.get(self, "waf_feature")
+
+    @waf_feature.setter
+    def waf_feature(self, value: pulumi.Input[str]):
+        pulumi.set(self, "waf_feature", value)
+
+    @property
+    @pulumi.getter(name="wafService")
+    def waf_service(self) -> pulumi.Input[str]:
+        """
+        The WAF service that uses this key. Possible values: CA, FASTLY
+        """
+        return pulumi.get(self, "waf_service")
+
+    @waf_service.setter
+    def waf_service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "waf_service", value)
 
 
 @pulumi.input_type

@@ -176,6 +176,8 @@ type Network struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrOutput `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NumericId pulumi.StringOutput `pulumi:"numericId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -264,6 +266,8 @@ type networkState struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NumericId *string `pulumi:"numericId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -323,6 +327,8 @@ type NetworkState struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NumericId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -606,6 +612,11 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 // Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 func (o NetworkOutput) NetworkFirewallPolicyEnforcementOrder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.NetworkFirewallPolicyEnforcementOrder }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o NetworkOutput) NumericId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.NumericId }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

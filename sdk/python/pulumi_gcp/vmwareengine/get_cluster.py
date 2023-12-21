@@ -103,6 +103,11 @@ def get_cluster(name: Optional[str] = None,
                 parent: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetClusterResult:
     """
+    Use this data source to get details about a cluster resource.
+
+    To get more information about private cloud cluster, see:
+    * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+
     ## Example Usage
 
     ```python
@@ -138,6 +143,11 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
                        parent: Optional[pulumi.Input[str]] = None,
                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
+    Use this data source to get details about a cluster resource.
+
+    To get more information about private cloud cluster, see:
+    * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+
     ## Example Usage
 
     ```python

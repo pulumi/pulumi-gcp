@@ -47,6 +47,30 @@ import * as utilities from "../utilities";
  *     processingUnits: 200,
  * });
  * ```
+ * ### Spanner Instance With Autoscaling
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.spanner.Instance("example", {
+ *     autoscalingConfig: {
+ *         autoscalingLimits: {
+ *             maxProcessingUnits: 3000,
+ *             minProcessingUnits: 2000,
+ *         },
+ *         autoscalingTargets: {
+ *             highPriorityCpuUtilizationPercent: 75,
+ *             storageUtilizationPercent: 90,
+ *         },
+ *     },
+ *     config: "regional-us-central1",
+ *     displayName: "Test Spanner Instance",
+ *     labels: {
+ *         foo: "bar",
+ *     },
+ * });
+ * ```
  * ### Spanner Instance Multi Regional
  *
  * ```typescript

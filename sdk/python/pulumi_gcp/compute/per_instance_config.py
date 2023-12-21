@@ -22,6 +22,7 @@ class PerInstanceConfigArgs:
                  name: Optional[pulumi.Input[str]] = None,
                  preserved_state: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -47,6 +48,8 @@ class PerInstanceConfigArgs:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] remove_instance_on_destroy: When true, deleting this config will immediately remove the underlying instance.
+               When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -63,6 +66,8 @@ class PerInstanceConfigArgs:
             pulumi.set(__self__, "preserved_state", preserved_state)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if remove_instance_on_destroy is not None:
+            pulumi.set(__self__, "remove_instance_on_destroy", remove_instance_on_destroy)
         if remove_instance_state_on_destroy is not None:
             pulumi.set(__self__, "remove_instance_state_on_destroy", remove_instance_state_on_destroy)
         if zone is not None:
@@ -156,6 +161,19 @@ class PerInstanceConfigArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="removeInstanceOnDestroy")
+    def remove_instance_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, deleting this config will immediately remove the underlying instance.
+        When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+        """
+        return pulumi.get(self, "remove_instance_on_destroy")
+
+    @remove_instance_on_destroy.setter
+    def remove_instance_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_instance_on_destroy", value)
+
+    @property
     @pulumi.getter(name="removeInstanceStateOnDestroy")
     def remove_instance_state_on_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -191,6 +209,7 @@ class _PerInstanceConfigState:
                  name: Optional[pulumi.Input[str]] = None,
                  preserved_state: Optional[pulumi.Input['PerInstanceConfigPreservedStateArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -216,6 +235,8 @@ class _PerInstanceConfigState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] remove_instance_on_destroy: When true, deleting this config will immediately remove the underlying instance.
+               When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -233,6 +254,8 @@ class _PerInstanceConfigState:
             pulumi.set(__self__, "preserved_state", preserved_state)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if remove_instance_on_destroy is not None:
+            pulumi.set(__self__, "remove_instance_on_destroy", remove_instance_on_destroy)
         if remove_instance_state_on_destroy is not None:
             pulumi.set(__self__, "remove_instance_state_on_destroy", remove_instance_state_on_destroy)
         if zone is not None:
@@ -326,6 +349,19 @@ class _PerInstanceConfigState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="removeInstanceOnDestroy")
+    def remove_instance_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, deleting this config will immediately remove the underlying instance.
+        When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+        """
+        return pulumi.get(self, "remove_instance_on_destroy")
+
+    @remove_instance_on_destroy.setter
+    def remove_instance_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_instance_on_destroy", value)
+
+    @property
     @pulumi.getter(name="removeInstanceStateOnDestroy")
     def remove_instance_state_on_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -363,6 +399,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -488,6 +525,8 @@ class PerInstanceConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] remove_instance_on_destroy: When true, deleting this config will immediately remove the underlying instance.
+               When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -619,6 +658,7 @@ class PerInstanceConfig(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -638,6 +678,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["preserved_state"] = preserved_state
             __props__.__dict__["project"] = project
+            __props__.__dict__["remove_instance_on_destroy"] = remove_instance_on_destroy
             __props__.__dict__["remove_instance_state_on_destroy"] = remove_instance_state_on_destroy
             __props__.__dict__["zone"] = zone
         super(PerInstanceConfig, __self__).__init__(
@@ -656,6 +697,7 @@ class PerInstanceConfig(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             preserved_state: Optional[pulumi.Input[pulumi.InputType['PerInstanceConfigPreservedStateArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
             remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'PerInstanceConfig':
         """
@@ -686,6 +728,8 @@ class PerInstanceConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[bool] remove_instance_on_destroy: When true, deleting this config will immediately remove the underlying instance.
+               When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -701,6 +745,7 @@ class PerInstanceConfig(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["preserved_state"] = preserved_state
         __props__.__dict__["project"] = project
+        __props__.__dict__["remove_instance_on_destroy"] = remove_instance_on_destroy
         __props__.__dict__["remove_instance_state_on_destroy"] = remove_instance_state_on_destroy
         __props__.__dict__["zone"] = zone
         return PerInstanceConfig(resource_name, opts=opts, __props__=__props__)
@@ -767,6 +812,15 @@ class PerInstanceConfig(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="removeInstanceOnDestroy")
+    def remove_instance_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When true, deleting this config will immediately remove the underlying instance.
+        When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+        """
+        return pulumi.get(self, "remove_instance_on_destroy")
 
     @property
     @pulumi.getter(name="removeInstanceStateOnDestroy")

@@ -9456,6 +9456,8 @@ func (o AzureNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 type AzureNodePoolConfig struct {
 	// (Beta only) The OS image type to use on node pool instances.
 	ImageType *string `pulumi:"imageType"`
+	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels map[string]string `pulumi:"labels"`
 	// Proxy configuration for outbound HTTP(S) traffic.
 	ProxyConfig *AzureNodePoolConfigProxyConfig `pulumi:"proxyConfig"`
 	// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
@@ -9482,6 +9484,8 @@ type AzureNodePoolConfigInput interface {
 type AzureNodePoolConfigArgs struct {
 	// (Beta only) The OS image type to use on node pool instances.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
+	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// Proxy configuration for outbound HTTP(S) traffic.
 	ProxyConfig AzureNodePoolConfigProxyConfigPtrInput `pulumi:"proxyConfig"`
 	// Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
@@ -9576,6 +9580,11 @@ func (o AzureNodePoolConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureNodePoolConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
+// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o AzureNodePoolConfigOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AzureNodePoolConfig) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
 // Proxy configuration for outbound HTTP(S) traffic.
 func (o AzureNodePoolConfigOutput) ProxyConfig() AzureNodePoolConfigProxyConfigPtrOutput {
 	return o.ApplyT(func(v AzureNodePoolConfig) *AzureNodePoolConfigProxyConfig { return v.ProxyConfig }).(AzureNodePoolConfigProxyConfigPtrOutput)
@@ -9633,6 +9642,16 @@ func (o AzureNodePoolConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 		}
 		return v.ImageType
 	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o AzureNodePoolConfigPtrOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *AzureNodePoolConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Labels
+	}).(pulumi.StringMapOutput)
 }
 
 // Proxy configuration for outbound HTTP(S) traffic.
@@ -25409,7 +25428,9 @@ type ClusterNodePoolNetworkConfig struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes         *bool                                                   `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes *bool `pulumi:"enablePrivateNodes"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig   *ClusterNodePoolNetworkConfigNetworkPerformanceConfig   `pulumi:"networkPerformanceConfig"`
 	PodCidrOverprovisionConfig *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
@@ -25437,7 +25458,9 @@ type ClusterNodePoolNetworkConfigArgs struct {
 	// creating a private endpoint on the cluster. In a private cluster, nodes only
 	// have RFC 1918 private addresses and communicate with the master's private
 	// endpoint via private networking.
-	EnablePrivateNodes         pulumi.BoolPtrInput                                            `pulumi:"enablePrivateNodes"`
+	EnablePrivateNodes pulumi.BoolPtrInput `pulumi:"enablePrivateNodes"`
+	// Network bandwidth tier configuration.
+	NetworkPerformanceConfig   ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrInput   `pulumi:"networkPerformanceConfig"`
 	PodCidrOverprovisionConfig ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
@@ -25547,6 +25570,13 @@ func (o ClusterNodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrO
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
+// Network bandwidth tier configuration.
+func (o ClusterNodePoolNetworkConfigOutput) NetworkPerformanceConfig() ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+		return v.NetworkPerformanceConfig
+	}).(ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
+}
+
 func (o ClusterNodePoolNetworkConfigOutput) PodCidrOverprovisionConfig() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNetworkConfig) *ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
 		return v.PodCidrOverprovisionConfig
@@ -25626,6 +25656,16 @@ func (o ClusterNodePoolNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolP
 		}
 		return v.EnablePrivateNodes
 	}).(pulumi.BoolPtrOutput)
+}
+
+// Network bandwidth tier configuration.
+func (o ClusterNodePoolNetworkConfigPtrOutput) NetworkPerformanceConfig() ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfig) *ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkPerformanceConfig
+	}).(ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
 }
 
 func (o ClusterNodePoolNetworkConfigPtrOutput) PodCidrOverprovisionConfig() ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
@@ -25882,6 +25922,143 @@ func (o ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) Index
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
 		return vs[0].([]ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)[vs[1].(int)]
 	}).(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
+}
+
+type ClusterNodePoolNetworkConfigNetworkPerformanceConfig struct {
+	// Specifies the total network bandwidth tier for the NodePool.
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// ClusterNodePoolNetworkConfigNetworkPerformanceConfigInput is an input type that accepts ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs and ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigNetworkPerformanceConfigInput` via:
+//
+//	ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{...}
+type ClusterNodePoolNetworkConfigNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput() ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput
+	ToClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(context.Context) ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput
+}
+
+type ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs struct {
+	// Specifies the total network bandwidth tier for the NodePool.
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput() ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return i.ToClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput)
+}
+
+func (i ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return i.ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput).ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrInput is an input type that accepts ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs, ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtr and ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrInput` via:
+//
+//	        ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput
+	ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(context.Context) ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput
+}
+
+type clusterNodePoolNetworkConfigNetworkPerformanceConfigPtrType ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs
+
+func ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtr(v *ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrInput {
+	return (*clusterNodePoolNetworkConfigNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*clusterNodePoolNetworkConfigNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolNetworkConfigNetworkPerformanceConfigPtrType) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return i.ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolNetworkConfigNetworkPerformanceConfigPtrType) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
+}
+
+type ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput() ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o.ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolNetworkConfigNetworkPerformanceConfig) *ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+		return &v
+	}).(ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
+}
+
+// Specifies the total network bandwidth tier for the NodePool.
+func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterNodePoolNetworkConfigNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) ToClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) Elem() ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfigNetworkPerformanceConfig) ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolNetworkConfigNetworkPerformanceConfig
+		return ret
+	}).(ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput)
+}
+
+// Specifies the total network bandwidth tier for the NodePool.
+func (o ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNetworkConfigNetworkPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig struct {
@@ -34800,6 +34977,7 @@ type NodePoolNetworkConfig struct {
 	CreatePodRange *bool `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
 	EnablePrivateNodes         *bool                                            `pulumi:"enablePrivateNodes"`
+	NetworkPerformanceConfig   *NodePoolNetworkConfigNetworkPerformanceConfig   `pulumi:"networkPerformanceConfig"`
 	PodCidrOverprovisionConfig *NodePoolNetworkConfigPodCidrOverprovisionConfig `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock *string `pulumi:"podIpv4CidrBlock"`
@@ -34829,6 +35007,7 @@ type NodePoolNetworkConfigArgs struct {
 	CreatePodRange pulumi.BoolPtrInput `pulumi:"createPodRange"`
 	// Whether nodes have internal IP addresses only.
 	EnablePrivateNodes         pulumi.BoolPtrInput                                     `pulumi:"enablePrivateNodes"`
+	NetworkPerformanceConfig   NodePoolNetworkConfigNetworkPerformanceConfigPtrInput   `pulumi:"networkPerformanceConfig"`
 	PodCidrOverprovisionConfig NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput `pulumi:"podCidrOverprovisionConfig"`
 	// The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
 	PodIpv4CidrBlock pulumi.StringPtrInput `pulumi:"podIpv4CidrBlock"`
@@ -34939,6 +35118,12 @@ func (o NodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *bool { return v.EnablePrivateNodes }).(pulumi.BoolPtrOutput)
 }
 
+func (o NodePoolNetworkConfigOutput) NetworkPerformanceConfig() NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfig) *NodePoolNetworkConfigNetworkPerformanceConfig {
+		return v.NetworkPerformanceConfig
+	}).(NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
+}
+
 func (o NodePoolNetworkConfigOutput) PodCidrOverprovisionConfig() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
 	return o.ApplyT(func(v NodePoolNetworkConfig) *NodePoolNetworkConfigPodCidrOverprovisionConfig {
 		return v.PodCidrOverprovisionConfig
@@ -35019,6 +35204,15 @@ func (o NodePoolNetworkConfigPtrOutput) EnablePrivateNodes() pulumi.BoolPtrOutpu
 		}
 		return v.EnablePrivateNodes
 	}).(pulumi.BoolPtrOutput)
+}
+
+func (o NodePoolNetworkConfigPtrOutput) NetworkPerformanceConfig() NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfig) *NodePoolNetworkConfigNetworkPerformanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.NetworkPerformanceConfig
+	}).(NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
 }
 
 func (o NodePoolNetworkConfigPtrOutput) PodCidrOverprovisionConfig() NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput {
@@ -35269,6 +35463,139 @@ func (o NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) Index(i pulu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) NodePoolNetworkConfigAdditionalPodNetworkConfig {
 		return vs[0].([]NodePoolNetworkConfigAdditionalPodNetworkConfig)[vs[1].(int)]
 	}).(NodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
+}
+
+type NodePoolNetworkConfigNetworkPerformanceConfig struct {
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// NodePoolNetworkConfigNetworkPerformanceConfigInput is an input type that accepts NodePoolNetworkConfigNetworkPerformanceConfigArgs and NodePoolNetworkConfigNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigNetworkPerformanceConfigInput` via:
+//
+//	NodePoolNetworkConfigNetworkPerformanceConfigArgs{...}
+type NodePoolNetworkConfigNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigNetworkPerformanceConfigOutput() NodePoolNetworkConfigNetworkPerformanceConfigOutput
+	ToNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(context.Context) NodePoolNetworkConfigNetworkPerformanceConfigOutput
+}
+
+type NodePoolNetworkConfigNetworkPerformanceConfigArgs struct {
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (NodePoolNetworkConfigNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i NodePoolNetworkConfigNetworkPerformanceConfigArgs) ToNodePoolNetworkConfigNetworkPerformanceConfigOutput() NodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return i.ToNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigNetworkPerformanceConfigArgs) ToNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigNetworkPerformanceConfigOutput)
+}
+
+func (i NodePoolNetworkConfigNetworkPerformanceConfigArgs) ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return i.ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i NodePoolNetworkConfigNetworkPerformanceConfigArgs) ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigNetworkPerformanceConfigOutput).ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// NodePoolNetworkConfigNetworkPerformanceConfigPtrInput is an input type that accepts NodePoolNetworkConfigNetworkPerformanceConfigArgs, NodePoolNetworkConfigNetworkPerformanceConfigPtr and NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `NodePoolNetworkConfigNetworkPerformanceConfigPtrInput` via:
+//
+//	        NodePoolNetworkConfigNetworkPerformanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type NodePoolNetworkConfigNetworkPerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput
+	ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(context.Context) NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput
+}
+
+type nodePoolNetworkConfigNetworkPerformanceConfigPtrType NodePoolNetworkConfigNetworkPerformanceConfigArgs
+
+func NodePoolNetworkConfigNetworkPerformanceConfigPtr(v *NodePoolNetworkConfigNetworkPerformanceConfigArgs) NodePoolNetworkConfigNetworkPerformanceConfigPtrInput {
+	return (*nodePoolNetworkConfigNetworkPerformanceConfigPtrType)(v)
+}
+
+func (*nodePoolNetworkConfigNetworkPerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i *nodePoolNetworkConfigNetworkPerformanceConfigPtrType) ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return i.ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *nodePoolNetworkConfigNetworkPerformanceConfigPtrType) ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
+}
+
+type NodePoolNetworkConfigNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*NodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigNetworkPerformanceConfigOutput) ToNodePoolNetworkConfigNetworkPerformanceConfigOutput() NodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigNetworkPerformanceConfigOutput) ToNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(ctx context.Context) NodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigNetworkPerformanceConfigOutput) ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o.ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o NodePoolNetworkConfigNetworkPerformanceConfigOutput) ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v NodePoolNetworkConfigNetworkPerformanceConfig) *NodePoolNetworkConfigNetworkPerformanceConfig {
+		return &v
+	}).(NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput)
+}
+
+func (o NodePoolNetworkConfigNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v NodePoolNetworkConfigNetworkPerformanceConfig) string { return v.TotalEgressBandwidthTier }).(pulumi.StringOutput)
+}
+
+type NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**NodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput() NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) ToNodePoolNetworkConfigNetworkPerformanceConfigPtrOutputWithContext(ctx context.Context) NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput {
+	return o
+}
+
+func (o NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) Elem() NodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfigNetworkPerformanceConfig) NodePoolNetworkConfigNetworkPerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret NodePoolNetworkConfigNetworkPerformanceConfig
+		return ret
+	}).(NodePoolNetworkConfigNetworkPerformanceConfigOutput)
+}
+
+func (o NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput) TotalEgressBandwidthTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNetworkConfigNetworkPerformanceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.TotalEgressBandwidthTier
+	}).(pulumi.StringPtrOutput)
 }
 
 type NodePoolNetworkConfigPodCidrOverprovisionConfig struct {
@@ -48731,6 +49058,7 @@ type GetClusterNodePoolNetworkConfig struct {
 	AdditionalPodNetworkConfigs  []GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig  `pulumi:"additionalPodNetworkConfigs"`
 	CreatePodRange               bool                                                         `pulumi:"createPodRange"`
 	EnablePrivateNodes           bool                                                         `pulumi:"enablePrivateNodes"`
+	NetworkPerformanceConfigs    []GetClusterNodePoolNetworkConfigNetworkPerformanceConfig    `pulumi:"networkPerformanceConfigs"`
 	PodCidrOverprovisionConfigs  []GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig  `pulumi:"podCidrOverprovisionConfigs"`
 	PodIpv4CidrBlock             string                                                       `pulumi:"podIpv4CidrBlock"`
 	PodRange                     string                                                       `pulumi:"podRange"`
@@ -48752,6 +49080,7 @@ type GetClusterNodePoolNetworkConfigArgs struct {
 	AdditionalPodNetworkConfigs  GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput  `pulumi:"additionalPodNetworkConfigs"`
 	CreatePodRange               pulumi.BoolInput                                                     `pulumi:"createPodRange"`
 	EnablePrivateNodes           pulumi.BoolInput                                                     `pulumi:"enablePrivateNodes"`
+	NetworkPerformanceConfigs    GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput    `pulumi:"networkPerformanceConfigs"`
 	PodCidrOverprovisionConfigs  GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput  `pulumi:"podCidrOverprovisionConfigs"`
 	PodIpv4CidrBlock             pulumi.StringInput                                                   `pulumi:"podIpv4CidrBlock"`
 	PodRange                     pulumi.StringInput                                                   `pulumi:"podRange"`
@@ -48826,6 +49155,12 @@ func (o GetClusterNodePoolNetworkConfigOutput) CreatePodRange() pulumi.BoolOutpu
 
 func (o GetClusterNodePoolNetworkConfigOutput) EnablePrivateNodes() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) bool { return v.EnablePrivateNodes }).(pulumi.BoolOutput)
+}
+
+func (o GetClusterNodePoolNetworkConfigOutput) NetworkPerformanceConfigs() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfig) []GetClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+		return v.NetworkPerformanceConfigs
+	}).(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput)
 }
 
 func (o GetClusterNodePoolNetworkConfigOutput) PodCidrOverprovisionConfigs() GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput {
@@ -49066,6 +49401,102 @@ func (o GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput) In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
 		return vs[0].([]GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput)
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfig struct {
+	TotalEgressBandwidthTier string `pulumi:"totalEgressBandwidthTier"`
+}
+
+// GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput is an input type that accepts GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs and GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput` via:
+//
+//	GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{...}
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput
+	ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs struct {
+	TotalEgressBandwidthTier pulumi.StringInput `pulumi:"totalEgressBandwidthTier"`
+}
+
+func (GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return i.ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput)
+}
+
+// GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput is an input type that accepts GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray and GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput` via:
+//
+//	GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray{ GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{...} }
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput
+	ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutputWithContext(context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray []GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput
+
+func (GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return i.ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput)
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput) TotalEgressBandwidthTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNetworkConfigNetworkPerformanceConfig) string {
+		return v.TotalEgressBandwidthTier
+	}).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput() GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput) ToGetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+		return vs[0].([]GetClusterNodePoolNetworkConfigNetworkPerformanceConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput)
 }
 
 type GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig struct {
@@ -54125,6 +54556,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput)(nil)).Elem(), ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput)(nil)).Elem(), ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigNetworkPerformanceConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrInput)(nil)).Elem(), ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput)(nil)).Elem(), ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolNodeConfigInput)(nil)).Elem(), ClusterNodePoolNodeConfigArgs{})
@@ -54225,6 +54658,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput)(nil)).Elem(), NodePoolNetworkConfigAdditionalNodeNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigAdditionalPodNetworkConfigInput)(nil)).Elem(), NodePoolNetworkConfigAdditionalPodNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput)(nil)).Elem(), NodePoolNetworkConfigAdditionalPodNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigNetworkPerformanceConfigInput)(nil)).Elem(), NodePoolNetworkConfigNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigNetworkPerformanceConfigPtrInput)(nil)).Elem(), NodePoolNetworkConfigNetworkPerformanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), NodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNetworkConfigPodCidrOverprovisionConfigPtrInput)(nil)).Elem(), NodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolNodeConfigInput)(nil)).Elem(), NodePoolNodeConfigArgs{})
@@ -54455,6 +54890,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigNetworkPerformanceConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayInput)(nil)).Elem(), GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolNodeConfigInput)(nil)).Elem(), GetClusterNodePoolNodeConfigArgs{})
@@ -54851,6 +55288,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigNetworkPerformanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolNodeConfigOutput{})
@@ -54951,6 +55390,8 @@ func init() {
 	pulumi.RegisterOutputType(NodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigAdditionalPodNetworkConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(NodePoolNetworkConfigNetworkPerformanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
 	pulumi.RegisterOutputType(NodePoolNetworkConfigPodCidrOverprovisionConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolNodeConfigOutput{})
@@ -55181,6 +55622,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigNetworkPerformanceConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolNodeConfigOutput{})

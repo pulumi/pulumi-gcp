@@ -321,6 +321,20 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkFirewallPolicyEnforcementOrder);
     }
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="numericId", refs={String.class}, tree="[0]")
+    private Output<String> numericId;
+
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<String> numericId() {
+        return this.numericId;
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 

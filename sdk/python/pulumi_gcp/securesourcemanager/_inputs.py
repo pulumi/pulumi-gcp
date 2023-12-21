@@ -10,9 +10,90 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'InstanceHostConfigArgs',
     'InstanceIamBindingConditionArgs',
     'InstanceIamMemberConditionArgs',
+    'InstancePrivateConfigArgs',
 ]
+
+@pulumi.input_type
+class InstanceHostConfigArgs:
+    def __init__(__self__, *,
+                 api: Optional[pulumi.Input[str]] = None,
+                 git_http: Optional[pulumi.Input[str]] = None,
+                 git_ssh: Optional[pulumi.Input[str]] = None,
+                 html: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] api: (Output)
+               API hostname.
+        :param pulumi.Input[str] git_http: (Output)
+               Git HTTP hostname.
+        :param pulumi.Input[str] git_ssh: (Output)
+               Git SSH hostname.
+        :param pulumi.Input[str] html: (Output)
+               HTML hostname.
+        """
+        if api is not None:
+            pulumi.set(__self__, "api", api)
+        if git_http is not None:
+            pulumi.set(__self__, "git_http", git_http)
+        if git_ssh is not None:
+            pulumi.set(__self__, "git_ssh", git_ssh)
+        if html is not None:
+            pulumi.set(__self__, "html", html)
+
+    @property
+    @pulumi.getter
+    def api(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        API hostname.
+        """
+        return pulumi.get(self, "api")
+
+    @api.setter
+    def api(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "api", value)
+
+    @property
+    @pulumi.getter(name="gitHttp")
+    def git_http(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Git HTTP hostname.
+        """
+        return pulumi.get(self, "git_http")
+
+    @git_http.setter
+    def git_http(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "git_http", value)
+
+    @property
+    @pulumi.getter(name="gitSsh")
+    def git_ssh(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Git SSH hostname.
+        """
+        return pulumi.get(self, "git_ssh")
+
+    @git_ssh.setter
+    def git_ssh(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "git_ssh", value)
+
+    @property
+    @pulumi.getter
+    def html(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        HTML hostname.
+        """
+        return pulumi.get(self, "html")
+
+    @html.setter
+    def html(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "html", value)
+
 
 @pulumi.input_type
 class InstanceIamBindingConditionArgs:
@@ -90,5 +171,78 @@ class InstanceIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class InstancePrivateConfigArgs:
+    def __init__(__self__, *,
+                 ca_pool: pulumi.Input[str],
+                 is_private: pulumi.Input[bool],
+                 http_service_attachment: Optional[pulumi.Input[str]] = None,
+                 ssh_service_attachment: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ca_pool: CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+        :param pulumi.Input[bool] is_private: 'Indicate if it's private instance.'
+        :param pulumi.Input[str] http_service_attachment: (Output)
+               Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+        :param pulumi.Input[str] ssh_service_attachment: (Output)
+               Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+        """
+        pulumi.set(__self__, "ca_pool", ca_pool)
+        pulumi.set(__self__, "is_private", is_private)
+        if http_service_attachment is not None:
+            pulumi.set(__self__, "http_service_attachment", http_service_attachment)
+        if ssh_service_attachment is not None:
+            pulumi.set(__self__, "ssh_service_attachment", ssh_service_attachment)
+
+    @property
+    @pulumi.getter(name="caPool")
+    def ca_pool(self) -> pulumi.Input[str]:
+        """
+        CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+        """
+        return pulumi.get(self, "ca_pool")
+
+    @ca_pool.setter
+    def ca_pool(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ca_pool", value)
+
+    @property
+    @pulumi.getter(name="isPrivate")
+    def is_private(self) -> pulumi.Input[bool]:
+        """
+        'Indicate if it's private instance.'
+        """
+        return pulumi.get(self, "is_private")
+
+    @is_private.setter
+    def is_private(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "is_private", value)
+
+    @property
+    @pulumi.getter(name="httpServiceAttachment")
+    def http_service_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+        """
+        return pulumi.get(self, "http_service_attachment")
+
+    @http_service_attachment.setter
+    def http_service_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "http_service_attachment", value)
+
+    @property
+    @pulumi.getter(name="sshServiceAttachment")
+    def ssh_service_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+        """
+        return pulumi.get(self, "ssh_service_attachment")
+
+    @ssh_service_attachment.setter
+    def ssh_service_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssh_service_attachment", value)
 
 

@@ -22,7 +22,7 @@ class GetDatasetResult:
     """
     A collection of values returned by getDataset.
     """
-    def __init__(__self__, accesses=None, creation_time=None, dataset_id=None, default_collation=None, default_encryption_configurations=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, effective_labels=None, etag=None, friendly_name=None, id=None, is_case_insensitive=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, project=None, pulumi_labels=None, self_link=None, storage_billing_model=None):
+    def __init__(__self__, accesses=None, creation_time=None, dataset_id=None, default_collation=None, default_encryption_configurations=None, default_partition_expiration_ms=None, default_table_expiration_ms=None, delete_contents_on_destroy=None, description=None, effective_labels=None, etag=None, external_dataset_references=None, friendly_name=None, id=None, is_case_insensitive=None, labels=None, last_modified_time=None, location=None, max_time_travel_hours=None, project=None, pulumi_labels=None, self_link=None, storage_billing_model=None):
         if accesses and not isinstance(accesses, list):
             raise TypeError("Expected argument 'accesses' to be a list")
         pulumi.set(__self__, "accesses", accesses)
@@ -56,6 +56,9 @@ class GetDatasetResult:
         if etag and not isinstance(etag, str):
             raise TypeError("Expected argument 'etag' to be a str")
         pulumi.set(__self__, "etag", etag)
+        if external_dataset_references and not isinstance(external_dataset_references, list):
+            raise TypeError("Expected argument 'external_dataset_references' to be a list")
+        pulumi.set(__self__, "external_dataset_references", external_dataset_references)
         if friendly_name and not isinstance(friendly_name, str):
             raise TypeError("Expected argument 'friendly_name' to be a str")
         pulumi.set(__self__, "friendly_name", friendly_name)
@@ -146,6 +149,11 @@ class GetDatasetResult:
         return pulumi.get(self, "etag")
 
     @property
+    @pulumi.getter(name="externalDatasetReferences")
+    def external_dataset_references(self) -> Sequence['outputs.GetDatasetExternalDatasetReferenceResult']:
+        return pulumi.get(self, "external_dataset_references")
+
+    @property
     @pulumi.getter(name="friendlyName")
     def friendly_name(self) -> str:
         return pulumi.get(self, "friendly_name")
@@ -221,6 +229,7 @@ class AwaitableGetDatasetResult(GetDatasetResult):
             description=self.description,
             effective_labels=self.effective_labels,
             etag=self.etag,
+            external_dataset_references=self.external_dataset_references,
             friendly_name=self.friendly_name,
             id=self.id,
             is_case_insensitive=self.is_case_insensitive,
@@ -275,6 +284,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         description=pulumi.get(__ret__, 'description'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         etag=pulumi.get(__ret__, 'etag'),
+        external_dataset_references=pulumi.get(__ret__, 'external_dataset_references'),
         friendly_name=pulumi.get(__ret__, 'friendly_name'),
         id=pulumi.get(__ret__, 'id'),
         is_case_insensitive=pulumi.get(__ret__, 'is_case_insensitive'),

@@ -151,6 +151,23 @@ public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     * 
+     */
+    @Import(name="removeInstanceOnDestroy")
+    private @Nullable Output<Boolean> removeInstanceOnDestroy;
+
+    /**
+     * @return When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     * 
+     */
+    public Optional<Output<Boolean>> removeInstanceOnDestroy() {
+        return Optional.ofNullable(this.removeInstanceOnDestroy);
+    }
+
+    /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
      * State will be removed on the next instance recreation or update.
@@ -179,6 +196,7 @@ public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.Reso
         this.project = $.project;
         this.region = $.region;
         this.regionInstanceGroupManager = $.regionInstanceGroupManager;
+        this.removeInstanceOnDestroy = $.removeInstanceOnDestroy;
         this.removeInstanceStateOnDestroy = $.removeInstanceStateOnDestroy;
     }
 
@@ -373,6 +391,29 @@ public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.Reso
          */
         public Builder regionInstanceGroupManager(String regionInstanceGroupManager) {
             return regionInstanceGroupManager(Output.of(regionInstanceGroupManager));
+        }
+
+        /**
+         * @param removeInstanceOnDestroy When true, deleting this config will immediately remove the underlying instance.
+         * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeInstanceOnDestroy(@Nullable Output<Boolean> removeInstanceOnDestroy) {
+            $.removeInstanceOnDestroy = removeInstanceOnDestroy;
+            return this;
+        }
+
+        /**
+         * @param removeInstanceOnDestroy When true, deleting this config will immediately remove the underlying instance.
+         * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder removeInstanceOnDestroy(Boolean removeInstanceOnDestroy) {
+            return removeInstanceOnDestroy(Output.of(removeInstanceOnDestroy));
         }
 
         /**

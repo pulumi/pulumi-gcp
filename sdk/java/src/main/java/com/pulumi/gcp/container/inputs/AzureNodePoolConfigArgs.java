@@ -35,6 +35,21 @@ public final class AzureNodePoolConfigArgs extends com.pulumi.resources.Resource
     }
 
     /**
+     * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * Proxy configuration for outbound HTTP(S) traffic.
      * 
      */
@@ -113,6 +128,7 @@ public final class AzureNodePoolConfigArgs extends com.pulumi.resources.Resource
 
     private AzureNodePoolConfigArgs(AzureNodePoolConfigArgs $) {
         this.imageType = $.imageType;
+        this.labels = $.labels;
         this.proxyConfig = $.proxyConfig;
         this.rootVolume = $.rootVolume;
         this.sshConfig = $.sshConfig;
@@ -157,6 +173,27 @@ public final class AzureNodePoolConfigArgs extends com.pulumi.resources.Resource
          */
         public Builder imageType(String imageType) {
             return imageType(Output.of(imageType));
+        }
+
+        /**
+         * @param labels Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

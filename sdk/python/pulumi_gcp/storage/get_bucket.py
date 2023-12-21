@@ -22,7 +22,7 @@ class GetBucketResult:
     """
     A collection of values returned by getBucket.
     """
-    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
+    def __init__(__self__, autoclasses=None, cors=None, custom_placement_configs=None, default_event_based_hold=None, effective_labels=None, enable_object_retention=None, encryptions=None, force_destroy=None, id=None, labels=None, lifecycle_rules=None, location=None, loggings=None, name=None, project=None, public_access_prevention=None, pulumi_labels=None, requester_pays=None, retention_policies=None, rpo=None, self_link=None, storage_class=None, uniform_bucket_level_access=None, url=None, versionings=None, websites=None):
         if autoclasses and not isinstance(autoclasses, list):
             raise TypeError("Expected argument 'autoclasses' to be a list")
         pulumi.set(__self__, "autoclasses", autoclasses)
@@ -80,6 +80,9 @@ class GetBucketResult:
         if retention_policies and not isinstance(retention_policies, list):
             raise TypeError("Expected argument 'retention_policies' to be a list")
         pulumi.set(__self__, "retention_policies", retention_policies)
+        if rpo and not isinstance(rpo, str):
+            raise TypeError("Expected argument 'rpo' to be a str")
+        pulumi.set(__self__, "rpo", rpo)
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
@@ -198,6 +201,11 @@ class GetBucketResult:
         return pulumi.get(self, "retention_policies")
 
     @property
+    @pulumi.getter
+    def rpo(self) -> str:
+        return pulumi.get(self, "rpo")
+
+    @property
     @pulumi.getter(name="selfLink")
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
@@ -253,6 +261,7 @@ class AwaitableGetBucketResult(GetBucketResult):
             pulumi_labels=self.pulumi_labels,
             requester_pays=self.requester_pays,
             retention_policies=self.retention_policies,
+            rpo=self.rpo,
             self_link=self.self_link,
             storage_class=self.storage_class,
             uniform_bucket_level_access=self.uniform_bucket_level_access,
@@ -306,6 +315,7 @@ def get_bucket(name: Optional[str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         requester_pays=pulumi.get(__ret__, 'requester_pays'),
         retention_policies=pulumi.get(__ret__, 'retention_policies'),
+        rpo=pulumi.get(__ret__, 'rpo'),
         self_link=pulumi.get(__ret__, 'self_link'),
         storage_class=pulumi.get(__ret__, 'storage_class'),
         uniform_bucket_level_access=pulumi.get(__ret__, 'uniform_bucket_level_access'),

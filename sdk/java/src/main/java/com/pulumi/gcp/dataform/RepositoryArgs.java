@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsArgs;
 import com.pulumi.gcp.dataform.inputs.RepositoryWorkspaceCompilationOverridesArgs;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -16,6 +17,21 @@ import javax.annotation.Nullable;
 public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final RepositoryArgs Empty = new RepositoryArgs();
+
+    /**
+     * Optional. The repository&#39;s user-friendly name.
+     * 
+     */
+    @Import(name="displayName")
+    private @Nullable Output<String> displayName;
+
+    /**
+     * @return Optional. The repository&#39;s user-friendly name.
+     * 
+     */
+    public Optional<Output<String>> displayName() {
+        return Optional.ofNullable(this.displayName);
+    }
 
     /**
      * Optional. If set, configures this repository to be linked to a Git remote.
@@ -35,6 +51,29 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. Repository user labels.
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Optional. Repository user labels.
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * The repository&#39;s name.
      * 
      * ***
@@ -51,6 +90,21 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
+    }
+
+    /**
+     * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+     * 
+     */
+    @Import(name="npmrcEnvironmentVariablesSecretVersion")
+    private @Nullable Output<String> npmrcEnvironmentVariablesSecretVersion;
+
+    /**
+     * @return Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+     * 
+     */
+    public Optional<Output<String>> npmrcEnvironmentVariablesSecretVersion() {
+        return Optional.ofNullable(this.npmrcEnvironmentVariablesSecretVersion);
     }
 
     /**
@@ -120,8 +174,11 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     private RepositoryArgs() {}
 
     private RepositoryArgs(RepositoryArgs $) {
+        this.displayName = $.displayName;
         this.gitRemoteSettings = $.gitRemoteSettings;
+        this.labels = $.labels;
         this.name = $.name;
+        this.npmrcEnvironmentVariablesSecretVersion = $.npmrcEnvironmentVariablesSecretVersion;
         this.project = $.project;
         this.region = $.region;
         this.serviceAccount = $.serviceAccount;
@@ -144,6 +201,27 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(RepositoryArgs defaults) {
             $ = new RepositoryArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param displayName Optional. The repository&#39;s user-friendly name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(@Nullable Output<String> displayName) {
+            $.displayName = displayName;
+            return this;
+        }
+
+        /**
+         * @param displayName Optional. The repository&#39;s user-friendly name.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder displayName(String displayName) {
+            return displayName(Output.of(displayName));
         }
 
         /**
@@ -170,6 +248,35 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param labels Optional. Repository user labels.
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Optional. Repository user labels.
+         * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
+        }
+
+        /**
          * @param name The repository&#39;s name.
          * 
          * ***
@@ -192,6 +299,27 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder npmrcEnvironmentVariablesSecretVersion(@Nullable Output<String> npmrcEnvironmentVariablesSecretVersion) {
+            $.npmrcEnvironmentVariablesSecretVersion = npmrcEnvironmentVariablesSecretVersion;
+            return this;
+        }
+
+        /**
+         * @param npmrcEnvironmentVariablesSecretVersion Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder npmrcEnvironmentVariablesSecretVersion(String npmrcEnvironmentVariablesSecretVersion) {
+            return npmrcEnvironmentVariablesSecretVersion(Output.of(npmrcEnvironmentVariablesSecretVersion));
         }
 
         /**

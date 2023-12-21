@@ -277,6 +277,38 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Dataset External Reference Aws Docs
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := bigquery.NewDataset(ctx, "dataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("example_dataset"),
+//				FriendlyName: pulumi.String("test"),
+//				Description:  pulumi.String("This is a test description"),
+//				Location:     pulumi.String("aws-us-east-1"),
+//				ExternalDatasetReference: &bigquery.DatasetExternalDatasetReferenceArgs{
+//					ExternalSource: pulumi.String("aws-glue://arn:aws:glue:us-east-1:999999999999:database/database"),
+//					Connection:     pulumi.String("projects/project/locations/aws-us-east-1/connections/connection"),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -377,6 +409,8 @@ type Dataset struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// Information about the external metadata storage where the dataset is defined.
+	ExternalDatasetReference DatasetExternalDatasetReferencePtrOutput `pulumi:"externalDatasetReference"`
 	// A descriptive name for the dataset
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
 	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
@@ -523,6 +557,8 @@ type datasetState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag *string `pulumi:"etag"`
+	// Information about the external metadata storage where the dataset is defined.
+	ExternalDatasetReference *DatasetExternalDatasetReference `pulumi:"externalDatasetReference"`
 	// A descriptive name for the dataset
 	FriendlyName *string `pulumi:"friendlyName"`
 	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
@@ -632,6 +668,8 @@ type DatasetState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// A hash of the resource.
 	Etag pulumi.StringPtrInput
+	// Information about the external metadata storage where the dataset is defined.
+	ExternalDatasetReference DatasetExternalDatasetReferencePtrInput
 	// A descriptive name for the dataset
 	FriendlyName pulumi.StringPtrInput
 	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
@@ -738,6 +776,8 @@ type datasetArgs struct {
 	DeleteContentsOnDestroy *bool `pulumi:"deleteContentsOnDestroy"`
 	// A user-friendly description of the dataset
 	Description *string `pulumi:"description"`
+	// Information about the external metadata storage where the dataset is defined.
+	ExternalDatasetReference *DatasetExternalDatasetReference `pulumi:"externalDatasetReference"`
 	// A descriptive name for the dataset
 	FriendlyName *string `pulumi:"friendlyName"`
 	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
@@ -833,6 +873,8 @@ type DatasetArgs struct {
 	DeleteContentsOnDestroy pulumi.BoolPtrInput
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrInput
+	// Information about the external metadata storage where the dataset is defined.
+	ExternalDatasetReference DatasetExternalDatasetReferencePtrInput
 	// A descriptive name for the dataset
 	FriendlyName pulumi.StringPtrInput
 	// TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
@@ -1053,6 +1095,11 @@ func (o DatasetOutput) EffectiveLabels() pulumi.StringMapOutput {
 // A hash of the resource.
 func (o DatasetOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
+}
+
+// Information about the external metadata storage where the dataset is defined.
+func (o DatasetOutput) ExternalDatasetReference() DatasetExternalDatasetReferencePtrOutput {
+	return o.ApplyT(func(v *Dataset) DatasetExternalDatasetReferencePtrOutput { return v.ExternalDatasetReference }).(DatasetExternalDatasetReferencePtrOutput)
 }
 
 // A descriptive name for the dataset

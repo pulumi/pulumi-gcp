@@ -10,10 +10,20 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ExternalAddressArgs, ExternalAddressState } from "./externalAddress";
+export type ExternalAddress = import("./externalAddress").ExternalAddress;
+export const ExternalAddress: typeof import("./externalAddress").ExternalAddress = null as any;
+utilities.lazyLoad(exports, ["ExternalAddress"], () => require("./externalAddress"));
+
 export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getCluster";
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+
+export { GetExternalAddressArgs, GetExternalAddressResult, GetExternalAddressOutputArgs } from "./getExternalAddress";
+export const getExternalAddress: typeof import("./getExternalAddress").getExternalAddress = null as any;
+export const getExternalAddressOutput: typeof import("./getExternalAddress").getExternalAddressOutput = null as any;
+utilities.lazyLoad(exports, ["getExternalAddress","getExternalAddressOutput"], () => require("./getExternalAddress"));
 
 export { GetNetworkArgs, GetNetworkResult, GetNetworkOutputArgs } from "./getNetwork";
 export const getNetwork: typeof import("./getNetwork").getNetwork = null as any;
@@ -40,6 +50,16 @@ export const getPrivateCloud: typeof import("./getPrivateCloud").getPrivateCloud
 export const getPrivateCloudOutput: typeof import("./getPrivateCloud").getPrivateCloudOutput = null as any;
 utilities.lazyLoad(exports, ["getPrivateCloud","getPrivateCloudOutput"], () => require("./getPrivateCloud"));
 
+export { GetSubnetArgs, GetSubnetResult, GetSubnetOutputArgs } from "./getSubnet";
+export const getSubnet: typeof import("./getSubnet").getSubnet = null as any;
+export const getSubnetOutput: typeof import("./getSubnet").getSubnetOutput = null as any;
+utilities.lazyLoad(exports, ["getSubnet","getSubnetOutput"], () => require("./getSubnet"));
+
+export { GetVcenterCredentialsArgs, GetVcenterCredentialsResult, GetVcenterCredentialsOutputArgs } from "./getVcenterCredentials";
+export const getVcenterCredentials: typeof import("./getVcenterCredentials").getVcenterCredentials = null as any;
+export const getVcenterCredentialsOutput: typeof import("./getVcenterCredentials").getVcenterCredentialsOutput = null as any;
+utilities.lazyLoad(exports, ["getVcenterCredentials","getVcenterCredentialsOutput"], () => require("./getVcenterCredentials"));
+
 export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
@@ -60,6 +80,11 @@ export type PrivateCloud = import("./privateCloud").PrivateCloud;
 export const PrivateCloud: typeof import("./privateCloud").PrivateCloud = null as any;
 utilities.lazyLoad(exports, ["PrivateCloud"], () => require("./privateCloud"));
 
+export { SubnetArgs, SubnetState } from "./subnet";
+export type Subnet = import("./subnet").Subnet;
+export const Subnet: typeof import("./subnet").Subnet = null as any;
+utilities.lazyLoad(exports, ["Subnet"], () => require("./subnet"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -67,6 +92,8 @@ const _module = {
         switch (type) {
             case "gcp:vmwareengine/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "gcp:vmwareengine/externalAddress:ExternalAddress":
+                return new ExternalAddress(name, <any>undefined, { urn })
             case "gcp:vmwareengine/network:Network":
                 return new Network(name, <any>undefined, { urn })
             case "gcp:vmwareengine/networkPeering:NetworkPeering":
@@ -75,13 +102,17 @@ const _module = {
                 return new NetworkPolicy(name, <any>undefined, { urn })
             case "gcp:vmwareengine/privateCloud:PrivateCloud":
                 return new PrivateCloud(name, <any>undefined, { urn })
+            case "gcp:vmwareengine/subnet:Subnet":
+                return new Subnet(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/cluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "vmwareengine/externalAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/network", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/networkPeering", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/networkPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/privateCloud", _module)
+pulumi.runtime.registerResourceModule("gcp", "vmwareengine/subnet", _module)

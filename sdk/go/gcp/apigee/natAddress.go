@@ -89,14 +89,12 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMBinding(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMBindingArgs{
+//			apigeeSaKeyuser, err := kms.NewCryptoKeyIAMMember(ctx, "apigeeSaKeyuser", &kms.CryptoKeyIAMMemberArgs{
 //				CryptoKeyId: apigeeKey.ID(),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
-//				Members: pulumi.StringArray{
-//					apigeeSa.Email.ApplyT(func(email string) (string, error) {
-//						return fmt.Sprintf("serviceAccount:%v", email), nil
-//					}).(pulumi.StringOutput),
-//				},
+//				Member: apigeeSa.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
 //			})
 //			if err != nil {
 //				return err

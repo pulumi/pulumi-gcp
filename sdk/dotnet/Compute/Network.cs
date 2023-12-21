@@ -181,6 +181,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> NetworkFirewallPolicyEnforcementOrder { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("numericId")]
+        public Output<string> NumericId { get; private set; } = null!;
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -430,6 +436,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkFirewallPolicyEnforcementOrder")]
         public Input<string>? NetworkFirewallPolicyEnforcementOrder { get; set; }
+
+        /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("numericId")]
+        public Input<string>? NumericId { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

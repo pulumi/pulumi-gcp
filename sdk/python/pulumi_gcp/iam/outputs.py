@@ -26,9 +26,11 @@ __all__ = [
     'WorkforcePoolProviderSaml',
     'WorkloadIdentityPoolProviderAws',
     'WorkloadIdentityPoolProviderOidc',
+    'WorkloadIdentityPoolProviderSaml',
     'GetTestablePermissionsPermissionResult',
     'GetWorkloadIdentityPoolProviderAwResult',
     'GetWorkloadIdentityPoolProviderOidcResult',
+    'GetWorkloadIdentityPoolProviderSamlResult',
 ]
 
 @pulumi.output_type
@@ -956,6 +958,41 @@ class WorkloadIdentityPoolProviderOidc(dict):
 
 
 @pulumi.output_type
+class WorkloadIdentityPoolProviderSaml(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "idpMetadataXml":
+            suggest = "idp_metadata_xml"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkloadIdentityPoolProviderSaml. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkloadIdentityPoolProviderSaml.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkloadIdentityPoolProviderSaml.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 idp_metadata_xml: str):
+        """
+        :param str idp_metadata_xml: SAML Identity provider configuration metadata xml doc.
+        """
+        pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
+
+    @property
+    @pulumi.getter(name="idpMetadataXml")
+    def idp_metadata_xml(self) -> str:
+        """
+        SAML Identity provider configuration metadata xml doc.
+        """
+        return pulumi.get(self, "idp_metadata_xml")
+
+
+@pulumi.output_type
 class GetTestablePermissionsPermissionResult(dict):
     def __init__(__self__, *,
                  api_disabled: bool,
@@ -1053,5 +1090,17 @@ class GetWorkloadIdentityPoolProviderOidcResult(dict):
     @pulumi.getter(name="jwksJson")
     def jwks_json(self) -> str:
         return pulumi.get(self, "jwks_json")
+
+
+@pulumi.output_type
+class GetWorkloadIdentityPoolProviderSamlResult(dict):
+    def __init__(__self__, *,
+                 idp_metadata_xml: str):
+        pulumi.set(__self__, "idp_metadata_xml", idp_metadata_xml)
+
+    @property
+    @pulumi.getter(name="idpMetadataXml")
+    def idp_metadata_xml(self) -> str:
+        return pulumi.get(self, "idp_metadata_xml")
 
 

@@ -77,6 +77,7 @@ type LookupWorkloadIdentityPoolProviderResult struct {
 	Name                           string                                `pulumi:"name"`
 	Oidcs                          []GetWorkloadIdentityPoolProviderOidc `pulumi:"oidcs"`
 	Project                        *string                               `pulumi:"project"`
+	Samls                          []GetWorkloadIdentityPoolProviderSaml `pulumi:"samls"`
 	State                          string                                `pulumi:"state"`
 	WorkloadIdentityPoolId         string                                `pulumi:"workloadIdentityPoolId"`
 	WorkloadIdentityPoolProviderId string                                `pulumi:"workloadIdentityPoolProviderId"`
@@ -168,6 +169,10 @@ func (o LookupWorkloadIdentityPoolProviderResultOutput) Oidcs() GetWorkloadIdent
 
 func (o LookupWorkloadIdentityPoolProviderResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupWorkloadIdentityPoolProviderResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupWorkloadIdentityPoolProviderResultOutput) Samls() GetWorkloadIdentityPoolProviderSamlArrayOutput {
+	return o.ApplyT(func(v LookupWorkloadIdentityPoolProviderResult) []GetWorkloadIdentityPoolProviderSaml { return v.Samls }).(GetWorkloadIdentityPoolProviderSamlArrayOutput)
 }
 
 func (o LookupWorkloadIdentityPoolProviderResultOutput) State() pulumi.StringOutput {

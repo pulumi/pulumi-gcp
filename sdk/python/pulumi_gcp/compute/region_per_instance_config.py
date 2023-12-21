@@ -23,6 +23,7 @@ class RegionPerInstanceConfigArgs:
                  preserved_state: Optional[pulumi.Input['RegionPerInstanceConfigPreservedStateArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a RegionPerInstanceConfig resource.
@@ -48,6 +49,8 @@ class RegionPerInstanceConfigArgs:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: Region where the containing instance group manager is located
+        :param pulumi.Input[bool] remove_instance_on_destroy: When true, deleting this config will immediately remove the underlying instance.
+               When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -65,6 +68,8 @@ class RegionPerInstanceConfigArgs:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if remove_instance_on_destroy is not None:
+            pulumi.set(__self__, "remove_instance_on_destroy", remove_instance_on_destroy)
         if remove_instance_state_on_destroy is not None:
             pulumi.set(__self__, "remove_instance_state_on_destroy", remove_instance_state_on_destroy)
 
@@ -168,6 +173,19 @@ class RegionPerInstanceConfigArgs:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="removeInstanceOnDestroy")
+    def remove_instance_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, deleting this config will immediately remove the underlying instance.
+        When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+        """
+        return pulumi.get(self, "remove_instance_on_destroy")
+
+    @remove_instance_on_destroy.setter
+    def remove_instance_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_instance_on_destroy", value)
+
+    @property
     @pulumi.getter(name="removeInstanceStateOnDestroy")
     def remove_instance_state_on_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -192,6 +210,7 @@ class _RegionPerInstanceConfigState:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  region_instance_group_manager: Optional[pulumi.Input[str]] = None,
+                 remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering RegionPerInstanceConfig resources.
@@ -217,6 +236,8 @@ class _RegionPerInstanceConfigState:
                
                
                - - -
+        :param pulumi.Input[bool] remove_instance_on_destroy: When true, deleting this config will immediately remove the underlying instance.
+               When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -235,6 +256,8 @@ class _RegionPerInstanceConfigState:
             pulumi.set(__self__, "region", region)
         if region_instance_group_manager is not None:
             pulumi.set(__self__, "region_instance_group_manager", region_instance_group_manager)
+        if remove_instance_on_destroy is not None:
+            pulumi.set(__self__, "remove_instance_on_destroy", remove_instance_on_destroy)
         if remove_instance_state_on_destroy is not None:
             pulumi.set(__self__, "remove_instance_state_on_destroy", remove_instance_state_on_destroy)
 
@@ -338,6 +361,19 @@ class _RegionPerInstanceConfigState:
         pulumi.set(self, "region_instance_group_manager", value)
 
     @property
+    @pulumi.getter(name="removeInstanceOnDestroy")
+    def remove_instance_on_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        When true, deleting this config will immediately remove the underlying instance.
+        When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+        """
+        return pulumi.get(self, "remove_instance_on_destroy")
+
+    @remove_instance_on_destroy.setter
+    def remove_instance_on_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "remove_instance_on_destroy", value)
+
+    @property
     @pulumi.getter(name="removeInstanceStateOnDestroy")
     def remove_instance_state_on_destroy(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -364,6 +400,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  region_instance_group_manager: Optional[pulumi.Input[str]] = None,
+                 remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
@@ -495,6 +532,8 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[bool] remove_instance_on_destroy: When true, deleting this config will immediately remove the underlying instance.
+               When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -632,6 +671,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  region_instance_group_manager: Optional[pulumi.Input[str]] = None,
+                 remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
                  remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -651,6 +691,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             if region_instance_group_manager is None and not opts.urn:
                 raise TypeError("Missing required property 'region_instance_group_manager'")
             __props__.__dict__["region_instance_group_manager"] = region_instance_group_manager
+            __props__.__dict__["remove_instance_on_destroy"] = remove_instance_on_destroy
             __props__.__dict__["remove_instance_state_on_destroy"] = remove_instance_state_on_destroy
         super(RegionPerInstanceConfig, __self__).__init__(
             'gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig',
@@ -669,6 +710,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             region_instance_group_manager: Optional[pulumi.Input[str]] = None,
+            remove_instance_on_destroy: Optional[pulumi.Input[bool]] = None,
             remove_instance_state_on_destroy: Optional[pulumi.Input[bool]] = None) -> 'RegionPerInstanceConfig':
         """
         Get an existing RegionPerInstanceConfig resource's state with the given name, id, and optional extra
@@ -699,6 +741,8 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[bool] remove_instance_on_destroy: When true, deleting this config will immediately remove the underlying instance.
+               When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
         :param pulumi.Input[bool] remove_instance_state_on_destroy: When true, deleting this config will immediately remove any specified state from the underlying instance.
                When false, deleting this config will *not* immediately remove any state from the underlying instance.
                State will be removed on the next instance recreation or update.
@@ -714,6 +758,7 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
         __props__.__dict__["region_instance_group_manager"] = region_instance_group_manager
+        __props__.__dict__["remove_instance_on_destroy"] = remove_instance_on_destroy
         __props__.__dict__["remove_instance_state_on_destroy"] = remove_instance_state_on_destroy
         return RegionPerInstanceConfig(resource_name, opts=opts, __props__=__props__)
 
@@ -787,6 +832,15 @@ class RegionPerInstanceConfig(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "region_instance_group_manager")
+
+    @property
+    @pulumi.getter(name="removeInstanceOnDestroy")
+    def remove_instance_on_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        When true, deleting this config will immediately remove the underlying instance.
+        When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+        """
+        return pulumi.get(self, "remove_instance_on_destroy")
 
     @property
     @pulumi.getter(name="removeInstanceStateOnDestroy")

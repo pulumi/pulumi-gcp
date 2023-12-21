@@ -295,6 +295,11 @@ export const getRegionBackendServiceIamPolicy: typeof import("./getRegionBackend
 export const getRegionBackendServiceIamPolicyOutput: typeof import("./getRegionBackendServiceIamPolicy").getRegionBackendServiceIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionBackendServiceIamPolicy","getRegionBackendServiceIamPolicyOutput"], () => require("./getRegionBackendServiceIamPolicy"));
 
+export { GetRegionDiskArgs, GetRegionDiskResult, GetRegionDiskOutputArgs } from "./getRegionDisk";
+export const getRegionDisk: typeof import("./getRegionDisk").getRegionDisk = null as any;
+export const getRegionDiskOutput: typeof import("./getRegionDisk").getRegionDiskOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionDisk","getRegionDiskOutput"], () => require("./getRegionDisk"));
+
 export { GetRegionDiskIamPolicyArgs, GetRegionDiskIamPolicyResult, GetRegionDiskIamPolicyOutputArgs } from "./getRegionDiskIamPolicy";
 export const getRegionDiskIamPolicy: typeof import("./getRegionDiskIamPolicy").getRegionDiskIamPolicy = null as any;
 export const getRegionDiskIamPolicyOutput: typeof import("./getRegionDiskIamPolicy").getRegionDiskIamPolicyOutput = null as any;

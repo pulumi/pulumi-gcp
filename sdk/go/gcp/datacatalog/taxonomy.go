@@ -82,6 +82,7 @@ type Taxonomy struct {
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// User defined name of this taxonomy.
+	// The taxonomy display name must be unique within an organization.
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
@@ -140,6 +141,7 @@ type taxonomyState struct {
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description *string `pulumi:"description"`
 	// User defined name of this taxonomy.
+	// The taxonomy display name must be unique within an organization.
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
@@ -166,6 +168,7 @@ type TaxonomyState struct {
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description pulumi.StringPtrInput
 	// User defined name of this taxonomy.
+	// The taxonomy display name must be unique within an organization.
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
@@ -196,6 +199,7 @@ type taxonomyArgs struct {
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description *string `pulumi:"description"`
 	// User defined name of this taxonomy.
+	// The taxonomy display name must be unique within an organization.
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
@@ -220,6 +224,7 @@ type TaxonomyArgs struct {
 	// long when encoded in UTF-8. If not set, defaults to an empty description.
 	Description pulumi.StringPtrInput
 	// User defined name of this taxonomy.
+	// The taxonomy display name must be unique within an organization.
 	// It must: contain only unicode letters, numbers, underscores, dashes
 	// and spaces; not start or end with spaces; and be at most 200 bytes
 	// long when encoded in UTF-8.
@@ -335,6 +340,7 @@ func (o TaxonomyOutput) Description() pulumi.StringPtrOutput {
 }
 
 // User defined name of this taxonomy.
+// The taxonomy display name must be unique within an organization.
 // It must: contain only unicode letters, numbers, underscores, dashes
 // and spaces; not start or end with spaces; and be at most 200 bytes
 // long when encoded in UTF-8.

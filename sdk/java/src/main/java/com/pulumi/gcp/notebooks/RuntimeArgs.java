@@ -9,6 +9,7 @@ import com.pulumi.gcp.notebooks.inputs.RuntimeAccessConfigArgs;
 import com.pulumi.gcp.notebooks.inputs.RuntimeSoftwareConfigArgs;
 import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineArgs;
 import java.lang.String;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -33,6 +34,37 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<RuntimeAccessConfigArgs>> accessConfig() {
         return Optional.ofNullable(this.accessConfig);
+    }
+
+    /**
+     * The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
     }
 
     /**
@@ -124,6 +156,7 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
 
     private RuntimeArgs(RuntimeArgs $) {
         this.accessConfig = $.accessConfig;
+        this.labels = $.labels;
         this.location = $.location;
         this.name = $.name;
         this.project = $.project;
@@ -170,6 +203,43 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accessConfig(RuntimeAccessConfigArgs accessConfig) {
             return accessConfig(Output.of(accessConfig));
+        }
+
+        /**
+         * @param labels The labels to associate with this runtime. Label **keys** must
+         * contain 1 to 63 characters, and must conform to [RFC 1035]
+         * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+         * empty, but, if present, must contain 1 to 63 characters, and must
+         * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+         * more than 32 labels can be associated with a cluster.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels The labels to associate with this runtime. Label **keys** must
+         * contain 1 to 63 characters, and must conform to [RFC 1035]
+         * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+         * empty, but, if present, must contain 1 to 63 characters, and must
+         * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+         * more than 32 labels can be associated with a cluster.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

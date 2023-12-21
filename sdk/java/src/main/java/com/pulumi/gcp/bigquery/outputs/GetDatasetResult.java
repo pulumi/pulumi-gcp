@@ -6,6 +6,7 @@ package com.pulumi.gcp.bigquery.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccess;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetDefaultEncryptionConfiguration;
+import com.pulumi.gcp.bigquery.outputs.GetDatasetExternalDatasetReference;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -28,6 +29,7 @@ public final class GetDatasetResult {
     private String description;
     private Map<String,String> effectiveLabels;
     private String etag;
+    private List<GetDatasetExternalDatasetReference> externalDatasetReferences;
     private String friendlyName;
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -77,6 +79,9 @@ public final class GetDatasetResult {
     }
     public String etag() {
         return this.etag;
+    }
+    public List<GetDatasetExternalDatasetReference> externalDatasetReferences() {
+        return this.externalDatasetReferences;
     }
     public String friendlyName() {
         return this.friendlyName;
@@ -136,6 +141,7 @@ public final class GetDatasetResult {
         private String description;
         private Map<String,String> effectiveLabels;
         private String etag;
+        private List<GetDatasetExternalDatasetReference> externalDatasetReferences;
         private String friendlyName;
         private String id;
         private Boolean isCaseInsensitive;
@@ -161,6 +167,7 @@ public final class GetDatasetResult {
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.etag = defaults.etag;
+    	      this.externalDatasetReferences = defaults.externalDatasetReferences;
     	      this.friendlyName = defaults.friendlyName;
     	      this.id = defaults.id;
     	      this.isCaseInsensitive = defaults.isCaseInsensitive;
@@ -236,6 +243,14 @@ public final class GetDatasetResult {
             return this;
         }
         @CustomType.Setter
+        public Builder externalDatasetReferences(List<GetDatasetExternalDatasetReference> externalDatasetReferences) {
+            this.externalDatasetReferences = Objects.requireNonNull(externalDatasetReferences);
+            return this;
+        }
+        public Builder externalDatasetReferences(GetDatasetExternalDatasetReference... externalDatasetReferences) {
+            return externalDatasetReferences(List.of(externalDatasetReferences));
+        }
+        @CustomType.Setter
         public Builder friendlyName(String friendlyName) {
             this.friendlyName = Objects.requireNonNull(friendlyName);
             return this;
@@ -303,6 +318,7 @@ public final class GetDatasetResult {
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.etag = etag;
+            _resultValue.externalDatasetReferences = externalDatasetReferences;
             _resultValue.friendlyName = friendlyName;
             _resultValue.id = id;
             _resultValue.isCaseInsensitive = isCaseInsensitive;

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyAndroidSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyIosSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
+import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWafSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyWebSettingsArgs;
 import java.lang.String;
 import java.util.Map;
@@ -121,6 +122,21 @@ public final class EnterpriseKeyArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Settings specific to keys that can be used for WAF (Web Application Firewall).
+     * 
+     */
+    @Import(name="wafSettings")
+    private @Nullable Output<EnterpriseKeyWafSettingsArgs> wafSettings;
+
+    /**
+     * @return Settings specific to keys that can be used for WAF (Web Application Firewall).
+     * 
+     */
+    public Optional<Output<EnterpriseKeyWafSettingsArgs>> wafSettings() {
+        return Optional.ofNullable(this.wafSettings);
+    }
+
+    /**
      * Settings for keys that can be used by websites.
      * 
      */
@@ -144,6 +160,7 @@ public final class EnterpriseKeyArgs extends com.pulumi.resources.ResourceArgs {
         this.labels = $.labels;
         this.project = $.project;
         this.testingOptions = $.testingOptions;
+        this.wafSettings = $.wafSettings;
         this.webSettings = $.webSettings;
     }
 
@@ -299,6 +316,27 @@ public final class EnterpriseKeyArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder testingOptions(EnterpriseKeyTestingOptionsArgs testingOptions) {
             return testingOptions(Output.of(testingOptions));
+        }
+
+        /**
+         * @param wafSettings Settings specific to keys that can be used for WAF (Web Application Firewall).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wafSettings(@Nullable Output<EnterpriseKeyWafSettingsArgs> wafSettings) {
+            $.wafSettings = wafSettings;
+            return this;
+        }
+
+        /**
+         * @param wafSettings Settings specific to keys that can be used for WAF (Web Application Firewall).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder wafSettings(EnterpriseKeyWafSettingsArgs wafSettings) {
+            return wafSettings(Output.of(wafSettings));
         }
 
         /**

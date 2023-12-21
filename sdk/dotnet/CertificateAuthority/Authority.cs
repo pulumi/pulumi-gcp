@@ -241,24 +241,18 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///         Service = "privateca.googleapis.com",
     ///     });
     /// 
-    ///     var privatecaSaKeyuserSignerverifier = new Gcp.Kms.CryptoKeyIAMBinding("privatecaSaKeyuserSignerverifier", new()
+    ///     var privatecaSaKeyuserSignerverifier = new Gcp.Kms.CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier", new()
     ///     {
     ///         CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         Role = "roles/cloudkms.signerVerifier",
-    ///         Members = new[]
-    ///         {
-    ///             privatecaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         },
+    ///         Member = privatecaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var privatecaSaKeyuserViewer = new Gcp.Kms.CryptoKeyIAMBinding("privatecaSaKeyuserViewer", new()
+    ///     var privatecaSaKeyuserViewer = new Gcp.Kms.CryptoKeyIAMMember("privatecaSaKeyuserViewer", new()
     ///     {
     ///         CryptoKeyId = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
     ///         Role = "roles/viewer",
-    ///         Members = new[]
-    ///         {
-    ///             privatecaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
-    ///         },
+    ///         Member = privatecaSa.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
     ///     var @default = new Gcp.CertificateAuthority.Authority("default", new()

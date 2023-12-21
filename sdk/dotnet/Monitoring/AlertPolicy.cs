@@ -304,6 +304,15 @@ namespace Pulumi.Gcp.Monitoring
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// The severity of an alert policy indicates how important incidents generated
+        /// by that policy are. The severity level will be displayed on the Incident
+        /// detail page and in notifications.
+        /// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+        /// </summary>
+        [Output("severity")]
+        public Output<string?> Severity { get; private set; } = null!;
+
+        /// <summary>
         /// This field is intended to be used for organizing and identifying the AlertPolicy
         /// objects.The field can contain up to 64 entries. Each key and value is limited
         /// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -441,6 +450,15 @@ namespace Pulumi.Gcp.Monitoring
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// The severity of an alert policy indicates how important incidents generated
+        /// by that policy are. The severity level will be displayed on the Incident
+        /// detail page and in notifications.
+        /// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+        /// </summary>
+        [Input("severity")]
+        public Input<string>? Severity { get; set; }
+
         [Input("userLabels")]
         private InputMap<string>? _userLabels;
 
@@ -573,6 +591,15 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// The severity of an alert policy indicates how important incidents generated
+        /// by that policy are. The severity level will be displayed on the Incident
+        /// detail page and in notifications.
+        /// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+        /// </summary>
+        [Input("severity")]
+        public Input<string>? Severity { get; set; }
 
         [Input("userLabels")]
         private InputMap<string>? _userLabels;

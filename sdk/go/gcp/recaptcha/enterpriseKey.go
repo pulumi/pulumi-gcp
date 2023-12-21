@@ -118,6 +118,49 @@ import (
 //	}
 //
 // ```
+// ### Waf_key
+// A basic test of recaptcha enterprise key that includes WAF settings
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/recaptcha"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := recaptcha.NewEnterpriseKey(ctx, "primary", &recaptcha.EnterpriseKeyArgs{
+//				DisplayName: pulumi.String("display-name-one"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Project: pulumi.String("my-project-name"),
+//				TestingOptions: &recaptcha.EnterpriseKeyTestingOptionsArgs{
+//					TestingChallenge: pulumi.String("NOCAPTCHA"),
+//					TestingScore:     pulumi.Float64(0.5),
+//				},
+//				WafSettings: &recaptcha.EnterpriseKeyWafSettingsArgs{
+//					WafFeature: pulumi.String("CHALLENGE_PAGE"),
+//					WafService: pulumi.String("CA"),
+//				},
+//				WebSettings: &recaptcha.EnterpriseKeyWebSettingsArgs{
+//					AllowAllDomains:             pulumi.Bool(true),
+//					AllowedDomains:              pulumi.StringArray{},
+//					ChallengeSecurityPreference: pulumi.String("USABILITY"),
+//					IntegrationType:             pulumi.String("INVISIBLE"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Web_key
 // A basic test of recaptcha enterprise key that can be used by websites
 // ```go
@@ -255,6 +298,8 @@ type EnterpriseKey struct {
 	PulumiLabels pulumi.MapOutput `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrOutput `pulumi:"testingOptions"`
+	// Settings specific to keys that can be used for WAF (Web Application Firewall).
+	WafSettings EnterpriseKeyWafSettingsPtrOutput `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
 	WebSettings EnterpriseKeyWebSettingsPtrOutput `pulumi:"webSettings"`
 }
@@ -322,6 +367,8 @@ type enterpriseKeyState struct {
 	PulumiLabels map[string]interface{} `pulumi:"pulumiLabels"`
 	// Options for user acceptance testing.
 	TestingOptions *EnterpriseKeyTestingOptions `pulumi:"testingOptions"`
+	// Settings specific to keys that can be used for WAF (Web Application Firewall).
+	WafSettings *EnterpriseKeyWafSettings `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
 	WebSettings *EnterpriseKeyWebSettings `pulumi:"webSettings"`
 }
@@ -352,6 +399,8 @@ type EnterpriseKeyState struct {
 	PulumiLabels pulumi.MapInput
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrInput
+	// Settings specific to keys that can be used for WAF (Web Application Firewall).
+	WafSettings EnterpriseKeyWafSettingsPtrInput
 	// Settings for keys that can be used by websites.
 	WebSettings EnterpriseKeyWebSettingsPtrInput
 }
@@ -378,6 +427,8 @@ type enterpriseKeyArgs struct {
 	Project *string `pulumi:"project"`
 	// Options for user acceptance testing.
 	TestingOptions *EnterpriseKeyTestingOptions `pulumi:"testingOptions"`
+	// Settings specific to keys that can be used for WAF (Web Application Firewall).
+	WafSettings *EnterpriseKeyWafSettings `pulumi:"wafSettings"`
 	// Settings for keys that can be used by websites.
 	WebSettings *EnterpriseKeyWebSettings `pulumi:"webSettings"`
 }
@@ -401,6 +452,8 @@ type EnterpriseKeyArgs struct {
 	Project pulumi.StringPtrInput
 	// Options for user acceptance testing.
 	TestingOptions EnterpriseKeyTestingOptionsPtrInput
+	// Settings specific to keys that can be used for WAF (Web Application Firewall).
+	WafSettings EnterpriseKeyWafSettingsPtrInput
 	// Settings for keys that can be used by websites.
 	WebSettings EnterpriseKeyWebSettingsPtrInput
 }
@@ -545,6 +598,11 @@ func (o EnterpriseKeyOutput) PulumiLabels() pulumi.MapOutput {
 // Options for user acceptance testing.
 func (o EnterpriseKeyOutput) TestingOptions() EnterpriseKeyTestingOptionsPtrOutput {
 	return o.ApplyT(func(v *EnterpriseKey) EnterpriseKeyTestingOptionsPtrOutput { return v.TestingOptions }).(EnterpriseKeyTestingOptionsPtrOutput)
+}
+
+// Settings specific to keys that can be used for WAF (Web Application Firewall).
+func (o EnterpriseKeyOutput) WafSettings() EnterpriseKeyWafSettingsPtrOutput {
+	return o.ApplyT(func(v *EnterpriseKey) EnterpriseKeyWafSettingsPtrOutput { return v.WafSettings }).(EnterpriseKeyWafSettingsPtrOutput)
 }
 
 // Settings for keys that can be used by websites.

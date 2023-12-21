@@ -271,6 +271,22 @@ public class PerInstanceConfig extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     * 
+     */
+    @Export(name="removeInstanceOnDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> removeInstanceOnDestroy;
+
+    /**
+     * @return When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     * 
+     */
+    public Output<Optional<Boolean>> removeInstanceOnDestroy() {
+        return Codegen.optional(this.removeInstanceOnDestroy);
+    }
+    /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
      * State will be removed on the next instance recreation or update.

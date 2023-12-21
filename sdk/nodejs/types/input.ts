@@ -4359,6 +4359,18 @@ export namespace bigquery {
         kmsKeyName: pulumi.Input<string>;
     }
 
+    export interface DatasetExternalDatasetReference {
+        /**
+         * The connection id that is used to access the externalSource.
+         * Format: projects/{projectId}/locations/{locationId}/connections/{connectionId}
+         */
+        connection: pulumi.Input<string>;
+        /**
+         * External source that backs this dataset.
+         */
+        externalSource: pulumi.Input<string>;
+    }
+
     export interface DatasetIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -23655,6 +23667,10 @@ export namespace container {
          */
         imageType?: pulumi.Input<string>;
         /**
+         * Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
          * Proxy configuration for outbound HTTP(S) traffic.
          */
         proxyConfig?: pulumi.Input<inputs.container.AzureNodePoolConfigProxyConfig>;
@@ -25053,6 +25069,10 @@ export namespace container {
          * endpoint via private networking.
          */
         enablePrivateNodes?: pulumi.Input<boolean>;
+        /**
+         * Network bandwidth tier configuration.
+         */
+        networkPerformanceConfig?: pulumi.Input<inputs.container.ClusterNodePoolNetworkConfigNetworkPerformanceConfig>;
         podCidrOverprovisionConfig?: pulumi.Input<inputs.container.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig>;
         /**
          * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -25086,6 +25106,13 @@ export namespace container {
          * subnetwork in which the cluster's instances are launched.
          */
         subnetwork?: pulumi.Input<string>;
+    }
+
+    export interface ClusterNodePoolNetworkConfigNetworkPerformanceConfig {
+        /**
+         * Specifies the total network bandwidth tier for the NodePool.
+         */
+        totalEgressBandwidthTier: pulumi.Input<string>;
     }
 
     export interface ClusterNodePoolNetworkConfigPodCidrOverprovisionConfig {
@@ -25911,6 +25938,7 @@ export namespace container {
          * Whether nodes have internal IP addresses only.
          */
         enablePrivateNodes?: pulumi.Input<boolean>;
+        networkPerformanceConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfigNetworkPerformanceConfig>;
         podCidrOverprovisionConfig?: pulumi.Input<inputs.container.NodePoolNetworkConfigPodCidrOverprovisionConfig>;
         /**
          * The IP address range for pod IPs in this node pool. Only applicable if createPodRange is true. Set to blank to have a range chosen with the default size. Set to /netmask (e.g. /14) to have a range chosen with a specific netmask. Set to a CIDR notation (e.g. 10.96.0.0/14) to pick a specific range to use.
@@ -25946,6 +25974,10 @@ export namespace container {
          * Name of the subnetwork where the additional pod network belongs.
          */
         subnetwork?: pulumi.Input<string>;
+    }
+
+    export interface NodePoolNetworkConfigNetworkPerformanceConfig {
+        totalEgressBandwidthTier: pulumi.Input<string>;
     }
 
     export interface NodePoolNetworkConfigPodCidrOverprovisionConfig {
@@ -44734,6 +44766,13 @@ export namespace iam {
          */
         jwksJson?: pulumi.Input<string>;
     }
+
+    export interface WorkloadIdentityPoolProviderSaml {
+        /**
+         * SAML Identity provider configuration metadata xml doc.
+         */
+        idpMetadataXml: pulumi.Input<string>;
+    }
 }
 
 export namespace iap {
@@ -51058,6 +51097,82 @@ export namespace organizations {
 }
 
 export namespace orgpolicy {
+    export interface PolicyDryRunSpec {
+        /**
+         * An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+         */
+        etag?: pulumi.Input<string>;
+        /**
+         * Determines the inheritance behavior for this policy. If `inheritFromParent` is true, policy rules set higher up in the hierarchy (up to the closest root) are inherited and present in the effective policy. If it is false, then no rules are inherited, and this policy becomes the new root for evaluation. This field can be set only for policies which configure list constraints.
+         */
+        inheritFromParent?: pulumi.Input<boolean>;
+        /**
+         * Ignores policies set above this resource and restores the `constraintDefault` enforcement behavior of the specific constraint at this resource. This field can be set in policies for either list or boolean constraints. If set, `rules` must be empty and `inheritFromParent` must be set to false.
+         */
+        reset?: pulumi.Input<boolean>;
+        /**
+         * In policies for boolean constraints, the following requirements apply: - There must be one and only one policy rule where condition is unset. - Boolean policy rules with conditions must set `enforced` to the opposite of the policy rule without a condition. - During policy evaluation, policy rules with conditions that are true for a target resource take precedence.
+         */
+        rules?: pulumi.Input<pulumi.Input<inputs.orgpolicy.PolicyDryRunSpecRule>[]>;
+        /**
+         * Output only. The time stamp this was previously updated. This represents the last time a call to `CreatePolicy` or `UpdatePolicy` was made for that policy.
+         */
+        updateTime?: pulumi.Input<string>;
+    }
+
+    export interface PolicyDryRunSpecRule {
+        /**
+         * Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+         */
+        allowAll?: pulumi.Input<string>;
+        /**
+         * A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
+         */
+        condition?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpecRuleCondition>;
+        /**
+         * Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+         */
+        denyAll?: pulumi.Input<string>;
+        /**
+         * If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+         */
+        enforce?: pulumi.Input<string>;
+        /**
+         * List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
+         */
+        values?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpecRuleValues>;
+    }
+
+    export interface PolicyDryRunSpecRuleCondition {
+        /**
+         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression?: pulumi.Input<string>;
+        /**
+         * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    export interface PolicyDryRunSpecRuleValues {
+        /**
+         * List of values allowed at this resource.
+         */
+        allowedValues?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * List of values denied at this resource.
+         */
+        deniedValues?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface PolicySpec {
         /**
          * An opaque tag indicating the current version of the `Policy`, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the `Policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current `Policy` to use when executing a read-modify-write loop. When the `Policy` is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
@@ -53576,6 +53691,17 @@ export namespace recaptcha {
         testingScore?: pulumi.Input<number>;
     }
 
+    export interface EnterpriseKeyWafSettings {
+        /**
+         * Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+         */
+        wafFeature: pulumi.Input<string>;
+        /**
+         * The WAF service that uses this key. Possible values: CA, FASTLY
+         */
+        wafService: pulumi.Input<string>;
+    }
+
     export interface EnterpriseKeyWebSettings {
         /**
          * If set to true, it means allowedDomains will not be enforced.
@@ -53980,6 +54106,29 @@ export namespace secretmanager {
 }
 
 export namespace securesourcemanager {
+    export interface InstanceHostConfig {
+        /**
+         * (Output)
+         * API hostname.
+         */
+        api?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Git HTTP hostname.
+         */
+        gitHttp?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Git SSH hostname.
+         */
+        gitSsh?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * HTML hostname.
+         */
+        html?: pulumi.Input<string>;
+    }
+
     export interface InstanceIamBindingCondition {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
@@ -53990,6 +54139,27 @@ export namespace securesourcemanager {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+
+    export interface InstancePrivateConfig {
+        /**
+         * CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+         */
+        caPool: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+         */
+        httpServiceAttachment?: pulumi.Input<string>;
+        /**
+         * 'Indicate if it's private instance.'
+         */
+        isPrivate: pulumi.Input<boolean>;
+        /**
+         * (Output)
+         * Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+         */
+        sshServiceAttachment?: pulumi.Input<string>;
     }
 }
 
@@ -54516,7 +54686,11 @@ export namespace spanner {
     export interface InstanceAutoscalingConfig {
         /**
          * Defines scale in controls to reduce the risk of response latency
-         * and outages due to abrupt scale-in events
+         * and outages due to abrupt scale-in events. Users can define the minimum and
+         * maximum compute capacity allocated to the instance, and the autoscaler will
+         * only scale within that range. Users can either use nodes or processing
+         * units to specify the limits, but should use the same unit to set both the
+         * minLimit and max_limit.
          * Structure is documented below.
          */
         autoscalingLimits?: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAutoscalingLimits>;
@@ -54530,11 +54704,21 @@ export namespace spanner {
 
     export interface InstanceAutoscalingConfigAutoscalingLimits {
         /**
+         * Specifies maximum number of nodes allocated to the instance. If set, this number
+         * should be greater than or equal to min_nodes.
+         */
+        maxNodes?: pulumi.Input<number>;
+        /**
          * Specifies maximum number of processing units allocated to the instance.
          * If set, this number should be multiples of 1000 and be greater than or equal to
          * min_processing_units.
          */
         maxProcessingUnits?: pulumi.Input<number>;
+        /**
+         * Specifies number of nodes allocated to the instance. If set, this number
+         * should be greater than or equal to 1.
+         */
+        minNodes?: pulumi.Input<number>;
         /**
          * Specifies minimum number of processing units allocated to the instance.
          * If set, this number should be multiples of 1000.
@@ -56576,6 +56760,19 @@ export namespace vmwareengine {
          */
         version?: pulumi.Input<string>;
     }
+
+    export interface SubnetDhcpAddressRange {
+        /**
+         * (Output)
+         * The first IP address of the range.
+         */
+        firstAddress?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The last IP address of the range.
+         */
+        lastAddress?: pulumi.Input<string>;
+    }
 }
 
 export namespace vpcaccess {
@@ -56591,6 +56788,235 @@ export namespace vpcaccess {
         projectId?: pulumi.Input<string>;
     }
 
+}
+
+export namespace workbench {
+    export interface InstanceGceSetup {
+        /**
+         * The hardware accelerators used on this instance. If you use accelerators, make sure that your configuration has
+         * [enough vCPUs and memory to support the `machineType` you have selected](https://cloud.google.com/compute/docs/gpus/#gpus-list).
+         * Currently supports only one accelerator configuration.
+         * Structure is documented below.
+         */
+        acceleratorConfigs?: pulumi.Input<pulumi.Input<inputs.workbench.InstanceGceSetupAcceleratorConfig>[]>;
+        /**
+         * The definition of a boot disk.
+         * Structure is documented below.
+         */
+        bootDisk?: pulumi.Input<inputs.workbench.InstanceGceSetupBootDisk>;
+        /**
+         * Data disks attached to the VM instance. Currently supports only one data disk.
+         * Structure is documented below.
+         */
+        dataDisks?: pulumi.Input<inputs.workbench.InstanceGceSetupDataDisks>;
+        /**
+         * Optional. If true, no external IP will be assigned to this VM instance.
+         */
+        disablePublicIp?: pulumi.Input<boolean>;
+        /**
+         * Optional. Flag to enable ip forwarding or not, default false/off.
+         * https://cloud.google.com/vpc/docs/using-routes#canipforward
+         */
+        enableIpForwarding?: pulumi.Input<boolean>;
+        /**
+         * Optional. The machine type of the VM instance. https://cloud.google.com/compute/docs/machine-resource
+         */
+        machineType?: pulumi.Input<string>;
+        /**
+         * Optional. Custom metadata to apply to this instance.
+         */
+        metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The network interfaces for the VM. Supports only one interface.
+         * Structure is documented below.
+         */
+        networkInterfaces?: pulumi.Input<pulumi.Input<inputs.workbench.InstanceGceSetupNetworkInterface>[]>;
+        /**
+         * The service account that serves as an identity for the VM instance. Currently supports only one service account.
+         * Structure is documented below.
+         */
+        serviceAccounts?: pulumi.Input<pulumi.Input<inputs.workbench.InstanceGceSetupServiceAccount>[]>;
+        /**
+         * Optional. The Compute Engine tags to add to instance (see [Tagging
+         * instances](https://cloud.google.com/compute/docs/label-or-tag-resources#tags)).
+         */
+        tags?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Definition of a custom Compute Engine virtual machine image for starting
+         * a workbench instance with the environment installed directly on the VM.
+         * Structure is documented below.
+         */
+        vmImage?: pulumi.Input<inputs.workbench.InstanceGceSetupVmImage>;
+    }
+
+    export interface InstanceGceSetupAcceleratorConfig {
+        /**
+         * Optional. Count of cores of this accelerator.
+         */
+        coreCount?: pulumi.Input<string>;
+        /**
+         * Optional. Type of this accelerator.
+         * Possible values are: `NVIDIA_TESLA_P100`, `NVIDIA_TESLA_V100`, `NVIDIA_TESLA_P4`, `NVIDIA_TESLA_T4`, `NVIDIA_TESLA_A100`, `NVIDIA_A100_80GB`, `NVIDIA_L4`, `NVIDIA_TESLA_T4_VWS`, `NVIDIA_TESLA_P100_VWS`, `NVIDIA_TESLA_P4_VWS`.
+         */
+        type?: pulumi.Input<string>;
+    }
+
+    export interface InstanceGceSetupBootDisk {
+        /**
+         * Optional. Input only. Disk encryption method used on the boot and
+         * data disks, defaults to GMEK.
+         * Possible values are: `GMEK`, `CMEK`.
+         */
+        diskEncryption?: pulumi.Input<string>;
+        /**
+         * Optional. The size of the boot disk in GB attached to this instance,
+         * up to a maximum of 64000 GB (64 TB). If not specified, this defaults to the
+         * recommended value of 150GB.
+         */
+        diskSizeGb?: pulumi.Input<string>;
+        /**
+         * Optional. Indicates the type of the disk.
+         * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+         */
+        diskType?: pulumi.Input<string>;
+        /**
+         * 'Optional. Input only. The KMS key used to encrypt the disks, only
+         * applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
+         * Learn more about using your own encryption keys.'
+         */
+        kmsKey?: pulumi.Input<string>;
+    }
+
+    export interface InstanceGceSetupDataDisks {
+        /**
+         * Optional. Input only. Disk encryption method used on the boot
+         * and data disks, defaults to GMEK.
+         * Possible values are: `GMEK`, `CMEK`.
+         */
+        diskEncryption?: pulumi.Input<string>;
+        /**
+         * Optional. The size of the disk in GB attached to this VM instance,
+         * up to a maximum of 64000 GB (64 TB). If not specified, this defaults to
+         * 100.
+         */
+        diskSizeGb?: pulumi.Input<string>;
+        /**
+         * Optional. Input only. Indicates the type of the disk.
+         * Possible values are: `PD_STANDARD`, `PD_SSD`, `PD_BALANCED`, `PD_EXTREME`.
+         */
+        diskType?: pulumi.Input<string>;
+        /**
+         * 'Optional. Input only. The KMS key used to encrypt the disks,
+         * only applicable if diskEncryption is CMEK. Format: `projects/{project_id}/locations/{location}/keyRings/{key_ring_id}/cryptoKeys/{key_id}`
+         * Learn more about using your own encryption keys.'
+         */
+        kmsKey?: pulumi.Input<string>;
+    }
+
+    export interface InstanceGceSetupNetworkInterface {
+        /**
+         * Optional. The name of the VPC that this VM instance is in.
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * Optional. The type of vNIC to be used on this interface. This
+         * may be gVNIC or VirtioNet.
+         * Possible values are: `VIRTIO_NET`, `GVNIC`.
+         */
+        nicType?: pulumi.Input<string>;
+        /**
+         * Optional. The name of the subnet that this VM instance is in.
+         */
+        subnet?: pulumi.Input<string>;
+    }
+
+    export interface InstanceGceSetupServiceAccount {
+        /**
+         * Optional. Email address of the service account.
+         */
+        email?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The list of scopes to be made available for this
+         * service account. Set by the CLH to https://www.googleapis.com/auth/cloud-platform
+         */
+        scopes?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface InstanceGceSetupVmImage {
+        /**
+         * Optional. Use this VM image family to find the image; the newest
+         * image in this family will be used.
+         */
+        family?: pulumi.Input<string>;
+        /**
+         * Optional. Use VM image name to find the image.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The name of the Google Cloud project that this VM image belongs to.
+         * Format: {project_id}
+         */
+        project?: pulumi.Input<string>;
+    }
+
+    export interface InstanceHealthInfo {
+    }
+
+    export interface InstanceIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface InstanceIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface InstanceUpgradeHistory {
+        /**
+         * Optional. Action. Rolloback or Upgrade.
+         */
+        action?: pulumi.Input<string>;
+        /**
+         * Optional. The container image before this instance upgrade.
+         */
+        containerImage?: pulumi.Input<string>;
+        /**
+         * An RFC3339 timestamp in UTC time. This in the format of yyyy-MM-ddTHH:mm:ss.SSSZ.
+         * The milliseconds portion (".SSS") is optional.
+         */
+        createTime?: pulumi.Input<string>;
+        /**
+         * Optional. The framework of this workbench instance.
+         */
+        framework?: pulumi.Input<string>;
+        /**
+         * Optional. The snapshot of the boot disk of this workbench instance before upgrade.
+         */
+        snapshot?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The state of this instance upgrade history entry.
+         */
+        state?: pulumi.Input<string>;
+        /**
+         * Optional. Target VM Version, like m63.
+         */
+        targetVersion?: pulumi.Input<string>;
+        /**
+         * Optional. The version of the workbench instance before this upgrade.
+         */
+        version?: pulumi.Input<string>;
+        /**
+         * Definition of a custom Compute Engine virtual machine image for starting
+         * a workbench instance with the environment installed directly on the VM.
+         * Structure is documented below.
+         */
+        vmImage?: pulumi.Input<string>;
+    }
 }
 
 export namespace workstations {

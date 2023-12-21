@@ -614,10 +614,10 @@ class Organization(pulumi.CustomResource):
             project=google_project["project"]["project_id"],
             service=google_project_service["apigee"]["service"],
             opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMMember("apigeeSaKeyuser",
             crypto_key_id=apigee_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+            member=apigee_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         org = gcp.apigee.Organization("org",
             analytics_region="us-central1",
             display_name="apigee-org",
@@ -643,10 +643,10 @@ class Organization(pulumi.CustomResource):
             project=google_project["project"]["project_id"],
             service=google_project_service["apigee"]["service"],
             opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMMember("apigeeSaKeyuser",
             crypto_key_id=apigee_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+            member=apigee_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         org = gcp.apigee.Organization("org",
             analytics_region="us-central1",
             display_name="apigee-org",
@@ -786,10 +786,10 @@ class Organization(pulumi.CustomResource):
             project=google_project["project"]["project_id"],
             service=google_project_service["apigee"]["service"],
             opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMMember("apigeeSaKeyuser",
             crypto_key_id=apigee_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+            member=apigee_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         org = gcp.apigee.Organization("org",
             analytics_region="us-central1",
             display_name="apigee-org",
@@ -815,10 +815,10 @@ class Organization(pulumi.CustomResource):
             project=google_project["project"]["project_id"],
             service=google_project_service["apigee"]["service"],
             opts=pulumi.ResourceOptions(provider=google_beta))
-        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser",
+        apigee_sa_keyuser = gcp.kms.CryptoKeyIAMMember("apigeeSaKeyuser",
             crypto_key_id=apigee_key.id,
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
-            members=[apigee_sa.email.apply(lambda email: f"serviceAccount:{email}")])
+            member=apigee_sa.email.apply(lambda email: f"serviceAccount:{email}"))
         org = gcp.apigee.Organization("org",
             analytics_region="us-central1",
             display_name="apigee-org",

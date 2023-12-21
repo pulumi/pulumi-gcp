@@ -212,6 +212,12 @@ class Cluster(pulumi.CustomResource):
                  parent: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A cluster in a private cloud.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+
         ## Example Usage
         ### Vmware Engine Cluster Basic
 
@@ -220,10 +226,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster_nw = gcp.vmwareengine.Network("cluster-nw",
-            location="us-west1",
-            type="LEGACY",
-            description="PC network description.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            type="STANDARD",
+            location="global",
+            description="PC network description.")
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
             description="Sample test PC.",
@@ -237,15 +242,13 @@ class Cluster(pulumi.CustomResource):
                     node_type_id="standard-72",
                     node_count=3,
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         vmw_engine_ext_cluster = gcp.vmwareengine.Cluster("vmw-engine-ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
                 node_type_id="standard-72",
                 node_count=3,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Vmware Engine Cluster Full
 
@@ -254,10 +257,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster_nw = gcp.vmwareengine.Network("cluster-nw",
-            location="us-west1",
-            type="LEGACY",
-            description="PC network description.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            type="STANDARD",
+            location="global",
+            description="PC network description.")
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
             description="Sample test PC.",
@@ -272,16 +274,14 @@ class Cluster(pulumi.CustomResource):
                     node_count=3,
                     custom_core_count=32,
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
                 node_type_id="standard-72",
                 node_count=3,
                 custom_core_count=32,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import
@@ -320,6 +320,12 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A cluster in a private cloud.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+
         ## Example Usage
         ### Vmware Engine Cluster Basic
 
@@ -328,10 +334,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster_nw = gcp.vmwareengine.Network("cluster-nw",
-            location="us-west1",
-            type="LEGACY",
-            description="PC network description.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            type="STANDARD",
+            location="global",
+            description="PC network description.")
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
             description="Sample test PC.",
@@ -345,15 +350,13 @@ class Cluster(pulumi.CustomResource):
                     node_type_id="standard-72",
                     node_count=3,
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         vmw_engine_ext_cluster = gcp.vmwareengine.Cluster("vmw-engine-ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
                 node_type_id="standard-72",
                 node_count=3,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
         ### Vmware Engine Cluster Full
 
@@ -362,10 +365,9 @@ class Cluster(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         cluster_nw = gcp.vmwareengine.Network("cluster-nw",
-            location="us-west1",
-            type="LEGACY",
-            description="PC network description.",
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            type="STANDARD",
+            location="global",
+            description="PC network description.")
         cluster_pc = gcp.vmwareengine.PrivateCloud("cluster-pc",
             location="us-west1-a",
             description="Sample test PC.",
@@ -380,16 +382,14 @@ class Cluster(pulumi.CustomResource):
                     node_count=3,
                     custom_core_count=32,
                 )],
-            ),
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            ))
         vmw_ext_cluster = gcp.vmwareengine.Cluster("vmw-ext-cluster",
             parent=cluster_pc.id,
             node_type_configs=[gcp.vmwareengine.ClusterNodeTypeConfigArgs(
                 node_type_id="standard-72",
                 node_count=3,
                 custom_core_count=32,
-            )],
-            opts=pulumi.ResourceOptions(provider=google_beta))
+            )])
         ```
 
         ## Import

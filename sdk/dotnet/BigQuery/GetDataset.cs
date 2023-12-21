@@ -132,6 +132,7 @@ namespace Pulumi.Gcp.BigQuery
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string Etag;
+        public readonly ImmutableArray<Outputs.GetDatasetExternalDatasetReferenceResult> ExternalDatasetReferences;
         public readonly string FriendlyName;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
@@ -171,6 +172,8 @@ namespace Pulumi.Gcp.BigQuery
 
             string etag,
 
+            ImmutableArray<Outputs.GetDatasetExternalDatasetReferenceResult> externalDatasetReferences,
+
             string friendlyName,
 
             string id,
@@ -204,6 +207,7 @@ namespace Pulumi.Gcp.BigQuery
             Description = description;
             EffectiveLabels = effectiveLabels;
             Etag = etag;
+            ExternalDatasetReferences = externalDatasetReferences;
             FriendlyName = friendlyName;
             Id = id;
             IsCaseInsensitive = isCaseInsensitive;

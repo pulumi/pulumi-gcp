@@ -481,6 +481,162 @@ func (o EnterpriseKeyTestingOptionsPtrOutput) TestingScore() pulumi.Float64PtrOu
 	}).(pulumi.Float64PtrOutput)
 }
 
+type EnterpriseKeyWafSettings struct {
+	// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+	WafFeature string `pulumi:"wafFeature"`
+	// The WAF service that uses this key. Possible values: CA, FASTLY
+	WafService string `pulumi:"wafService"`
+}
+
+// EnterpriseKeyWafSettingsInput is an input type that accepts EnterpriseKeyWafSettingsArgs and EnterpriseKeyWafSettingsOutput values.
+// You can construct a concrete instance of `EnterpriseKeyWafSettingsInput` via:
+//
+//	EnterpriseKeyWafSettingsArgs{...}
+type EnterpriseKeyWafSettingsInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyWafSettingsOutput() EnterpriseKeyWafSettingsOutput
+	ToEnterpriseKeyWafSettingsOutputWithContext(context.Context) EnterpriseKeyWafSettingsOutput
+}
+
+type EnterpriseKeyWafSettingsArgs struct {
+	// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+	WafFeature pulumi.StringInput `pulumi:"wafFeature"`
+	// The WAF service that uses this key. Possible values: CA, FASTLY
+	WafService pulumi.StringInput `pulumi:"wafService"`
+}
+
+func (EnterpriseKeyWafSettingsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyWafSettings)(nil)).Elem()
+}
+
+func (i EnterpriseKeyWafSettingsArgs) ToEnterpriseKeyWafSettingsOutput() EnterpriseKeyWafSettingsOutput {
+	return i.ToEnterpriseKeyWafSettingsOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyWafSettingsArgs) ToEnterpriseKeyWafSettingsOutputWithContext(ctx context.Context) EnterpriseKeyWafSettingsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWafSettingsOutput)
+}
+
+func (i EnterpriseKeyWafSettingsArgs) ToEnterpriseKeyWafSettingsPtrOutput() EnterpriseKeyWafSettingsPtrOutput {
+	return i.ToEnterpriseKeyWafSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i EnterpriseKeyWafSettingsArgs) ToEnterpriseKeyWafSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWafSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWafSettingsOutput).ToEnterpriseKeyWafSettingsPtrOutputWithContext(ctx)
+}
+
+// EnterpriseKeyWafSettingsPtrInput is an input type that accepts EnterpriseKeyWafSettingsArgs, EnterpriseKeyWafSettingsPtr and EnterpriseKeyWafSettingsPtrOutput values.
+// You can construct a concrete instance of `EnterpriseKeyWafSettingsPtrInput` via:
+//
+//	        EnterpriseKeyWafSettingsArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnterpriseKeyWafSettingsPtrInput interface {
+	pulumi.Input
+
+	ToEnterpriseKeyWafSettingsPtrOutput() EnterpriseKeyWafSettingsPtrOutput
+	ToEnterpriseKeyWafSettingsPtrOutputWithContext(context.Context) EnterpriseKeyWafSettingsPtrOutput
+}
+
+type enterpriseKeyWafSettingsPtrType EnterpriseKeyWafSettingsArgs
+
+func EnterpriseKeyWafSettingsPtr(v *EnterpriseKeyWafSettingsArgs) EnterpriseKeyWafSettingsPtrInput {
+	return (*enterpriseKeyWafSettingsPtrType)(v)
+}
+
+func (*enterpriseKeyWafSettingsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyWafSettings)(nil)).Elem()
+}
+
+func (i *enterpriseKeyWafSettingsPtrType) ToEnterpriseKeyWafSettingsPtrOutput() EnterpriseKeyWafSettingsPtrOutput {
+	return i.ToEnterpriseKeyWafSettingsPtrOutputWithContext(context.Background())
+}
+
+func (i *enterpriseKeyWafSettingsPtrType) ToEnterpriseKeyWafSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWafSettingsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnterpriseKeyWafSettingsPtrOutput)
+}
+
+type EnterpriseKeyWafSettingsOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyWafSettingsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnterpriseKeyWafSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyWafSettingsOutput) ToEnterpriseKeyWafSettingsOutput() EnterpriseKeyWafSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyWafSettingsOutput) ToEnterpriseKeyWafSettingsOutputWithContext(ctx context.Context) EnterpriseKeyWafSettingsOutput {
+	return o
+}
+
+func (o EnterpriseKeyWafSettingsOutput) ToEnterpriseKeyWafSettingsPtrOutput() EnterpriseKeyWafSettingsPtrOutput {
+	return o.ToEnterpriseKeyWafSettingsPtrOutputWithContext(context.Background())
+}
+
+func (o EnterpriseKeyWafSettingsOutput) ToEnterpriseKeyWafSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWafSettingsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnterpriseKeyWafSettings) *EnterpriseKeyWafSettings {
+		return &v
+	}).(EnterpriseKeyWafSettingsPtrOutput)
+}
+
+// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+func (o EnterpriseKeyWafSettingsOutput) WafFeature() pulumi.StringOutput {
+	return o.ApplyT(func(v EnterpriseKeyWafSettings) string { return v.WafFeature }).(pulumi.StringOutput)
+}
+
+// The WAF service that uses this key. Possible values: CA, FASTLY
+func (o EnterpriseKeyWafSettingsOutput) WafService() pulumi.StringOutput {
+	return o.ApplyT(func(v EnterpriseKeyWafSettings) string { return v.WafService }).(pulumi.StringOutput)
+}
+
+type EnterpriseKeyWafSettingsPtrOutput struct{ *pulumi.OutputState }
+
+func (EnterpriseKeyWafSettingsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnterpriseKeyWafSettings)(nil)).Elem()
+}
+
+func (o EnterpriseKeyWafSettingsPtrOutput) ToEnterpriseKeyWafSettingsPtrOutput() EnterpriseKeyWafSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyWafSettingsPtrOutput) ToEnterpriseKeyWafSettingsPtrOutputWithContext(ctx context.Context) EnterpriseKeyWafSettingsPtrOutput {
+	return o
+}
+
+func (o EnterpriseKeyWafSettingsPtrOutput) Elem() EnterpriseKeyWafSettingsOutput {
+	return o.ApplyT(func(v *EnterpriseKeyWafSettings) EnterpriseKeyWafSettings {
+		if v != nil {
+			return *v
+		}
+		var ret EnterpriseKeyWafSettings
+		return ret
+	}).(EnterpriseKeyWafSettingsOutput)
+}
+
+// Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+func (o EnterpriseKeyWafSettingsPtrOutput) WafFeature() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseKeyWafSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WafFeature
+	}).(pulumi.StringPtrOutput)
+}
+
+// The WAF service that uses this key. Possible values: CA, FASTLY
+func (o EnterpriseKeyWafSettingsPtrOutput) WafService() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnterpriseKeyWafSettings) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WafService
+	}).(pulumi.StringPtrOutput)
+}
+
 type EnterpriseKeyWebSettings struct {
 	// If set to true, it means allowedDomains will not be enforced.
 	AllowAllDomains *bool `pulumi:"allowAllDomains"`
@@ -701,6 +857,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyIosSettingsPtrInput)(nil)).Elem(), EnterpriseKeyIosSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyTestingOptionsInput)(nil)).Elem(), EnterpriseKeyTestingOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyTestingOptionsPtrInput)(nil)).Elem(), EnterpriseKeyTestingOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWafSettingsInput)(nil)).Elem(), EnterpriseKeyWafSettingsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWafSettingsPtrInput)(nil)).Elem(), EnterpriseKeyWafSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsInput)(nil)).Elem(), EnterpriseKeyWebSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnterpriseKeyWebSettingsPtrInput)(nil)).Elem(), EnterpriseKeyWebSettingsArgs{})
 	pulumi.RegisterOutputType(EnterpriseKeyAndroidSettingsOutput{})
@@ -709,6 +867,8 @@ func init() {
 	pulumi.RegisterOutputType(EnterpriseKeyIosSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyTestingOptionsOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyTestingOptionsPtrOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyWafSettingsOutput{})
+	pulumi.RegisterOutputType(EnterpriseKeyWafSettingsPtrOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsOutput{})
 	pulumi.RegisterOutputType(EnterpriseKeyWebSettingsPtrOutput{})
 }

@@ -24,6 +24,7 @@ class AlertPolicyArgs:
                  enabled: Optional[pulumi.Input[bool]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a AlertPolicy resource.
@@ -57,6 +58,10 @@ class AlertPolicyArgs:
                `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] severity: The severity of an alert policy indicates how important incidents generated
+               by that policy are. The severity level will be displayed on the Incident
+               detail page and in notifications.
+               Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
                objects.The field can contain up to 64 entries. Each key and value is limited
                to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -76,6 +81,8 @@ class AlertPolicyArgs:
             pulumi.set(__self__, "notification_channels", notification_channels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
 
@@ -198,6 +205,21 @@ class AlertPolicyArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The severity of an alert policy indicates how important incidents generated
+        by that policy are. The severity level will be displayed on the Incident
+        detail page and in notifications.
+        Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "severity", value)
+
+    @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -227,6 +249,7 @@ class _AlertPolicyState:
                  name: Optional[pulumi.Input[str]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering AlertPolicy resources.
@@ -271,6 +294,10 @@ class _AlertPolicyState:
                `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] severity: The severity of an alert policy indicates how important incidents generated
+               by that policy are. The severity level will be displayed on the Incident
+               detail page and in notifications.
+               Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
                objects.The field can contain up to 64 entries. Each key and value is limited
                to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -297,6 +324,8 @@ class _AlertPolicyState:
             pulumi.set(__self__, "notification_channels", notification_channels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
         if user_labels is not None:
             pulumi.set(__self__, "user_labels", user_labels)
 
@@ -452,6 +481,21 @@ class _AlertPolicyState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter
+    def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        The severity of an alert policy indicates how important incidents generated
+        by that policy are. The severity level will be displayed on the Incident
+        detail page and in notifications.
+        Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "severity", value)
+
+    @property
     @pulumi.getter(name="userLabels")
     def user_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
@@ -481,6 +525,7 @@ class AlertPolicy(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
@@ -646,6 +691,10 @@ class AlertPolicy(pulumi.CustomResource):
                `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] severity: The severity of an alert policy indicates how important incidents generated
+               by that policy are. The severity level will be displayed on the Incident
+               detail page and in notifications.
+               Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
                objects.The field can contain up to 64 entries. Each key and value is limited
                to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -812,6 +861,7 @@ class AlertPolicy(pulumi.CustomResource):
                  enabled: Optional[pulumi.Input[bool]] = None,
                  notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 severity: Optional[pulumi.Input[str]] = None,
                  user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -836,6 +886,7 @@ class AlertPolicy(pulumi.CustomResource):
             __props__.__dict__["enabled"] = enabled
             __props__.__dict__["notification_channels"] = notification_channels
             __props__.__dict__["project"] = project
+            __props__.__dict__["severity"] = severity
             __props__.__dict__["user_labels"] = user_labels
             __props__.__dict__["creation_records"] = None
             __props__.__dict__["name"] = None
@@ -859,6 +910,7 @@ class AlertPolicy(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             notification_channels: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            severity: Optional[pulumi.Input[str]] = None,
             user_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'AlertPolicy':
         """
         Get an existing AlertPolicy resource's state with the given name, id, and optional extra
@@ -908,6 +960,10 @@ class AlertPolicy(pulumi.CustomResource):
                `projects/[PROJECT_ID]/notificationChannels/[CHANNEL_ID]`
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] severity: The severity of an alert policy indicates how important incidents generated
+               by that policy are. The severity level will be displayed on the Incident
+               detail page and in notifications.
+               Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_labels: This field is intended to be used for organizing and identifying the AlertPolicy
                objects.The field can contain up to 64 entries. Each key and value is limited
                to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -928,6 +984,7 @@ class AlertPolicy(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_channels"] = notification_channels
         __props__.__dict__["project"] = project
+        __props__.__dict__["severity"] = severity
         __props__.__dict__["user_labels"] = user_labels
         return AlertPolicy(resource_name, opts=opts, __props__=__props__)
 
@@ -1041,6 +1098,17 @@ class AlertPolicy(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> pulumi.Output[Optional[str]]:
+        """
+        The severity of an alert policy indicates how important incidents generated
+        by that policy are. The severity level will be displayed on the Incident
+        detail page and in notifications.
+        Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+        """
+        return pulumi.get(self, "severity")
 
     @property
     @pulumi.getter(name="userLabels")

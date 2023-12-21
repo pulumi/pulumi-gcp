@@ -13,16 +13,24 @@ namespace Pulumi.Gcp.Spanner.Outputs
     [OutputType]
     public sealed class GetInstanceAutoscalingConfigAutoscalingLimitResult
     {
+        public readonly int MaxNodes;
         public readonly int MaxProcessingUnits;
+        public readonly int MinNodes;
         public readonly int MinProcessingUnits;
 
         [OutputConstructor]
         private GetInstanceAutoscalingConfigAutoscalingLimitResult(
+            int maxNodes,
+
             int maxProcessingUnits,
+
+            int minNodes,
 
             int minProcessingUnits)
         {
+            MaxNodes = maxNodes;
             MaxProcessingUnits = maxProcessingUnits;
+            MinNodes = minNodes;
             MinProcessingUnits = minProcessingUnits;
         }
     }

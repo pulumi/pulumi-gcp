@@ -24,6 +24,7 @@ class DatasetArgs:
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_dataset_reference: Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -84,6 +85,7 @@ class DatasetArgs:
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
+        :param pulumi.Input['DatasetExternalDatasetReferenceArgs'] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
@@ -126,6 +128,8 @@ class DatasetArgs:
             pulumi.set(__self__, "delete_contents_on_destroy", delete_contents_on_destroy)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if external_dataset_reference is not None:
+            pulumi.set(__self__, "external_dataset_reference", external_dataset_reference)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
         if is_case_insensitive is not None:
@@ -281,6 +285,18 @@ class DatasetArgs:
         pulumi.set(self, "description", value)
 
     @property
+    @pulumi.getter(name="externalDatasetReference")
+    def external_dataset_reference(self) -> Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']]:
+        """
+        Information about the external metadata storage where the dataset is defined.
+        """
+        return pulumi.get(self, "external_dataset_reference")
+
+    @external_dataset_reference.setter
+    def external_dataset_reference(self, value: Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']]):
+        pulumi.set(self, "external_dataset_reference", value)
+
+    @property
     @pulumi.getter(name="friendlyName")
     def friendly_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -398,6 +414,7 @@ class _DatasetState:
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
+                 external_dataset_reference: Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -465,6 +482,7 @@ class _DatasetState:
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A hash of the resource.
+        :param pulumi.Input['DatasetExternalDatasetReferenceArgs'] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
@@ -519,6 +537,8 @@ class _DatasetState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
+        if external_dataset_reference is not None:
+            pulumi.set(__self__, "external_dataset_reference", external_dataset_reference)
         if friendly_name is not None:
             pulumi.set(__self__, "friendly_name", friendly_name)
         if is_case_insensitive is not None:
@@ -717,6 +737,18 @@ class _DatasetState:
         pulumi.set(self, "etag", value)
 
     @property
+    @pulumi.getter(name="externalDatasetReference")
+    def external_dataset_reference(self) -> Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']]:
+        """
+        Information about the external metadata storage where the dataset is defined.
+        """
+        return pulumi.get(self, "external_dataset_reference")
+
+    @external_dataset_reference.setter
+    def external_dataset_reference(self, value: Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']]):
+        pulumi.set(self, "external_dataset_reference", value)
+
+    @property
     @pulumi.getter(name="friendlyName")
     def friendly_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -871,6 +903,7 @@ class Dataset(pulumi.CustomResource):
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1029,6 +1062,23 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
+        ### Bigquery Dataset External Reference Aws Docs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="aws-us-east-1",
+            external_dataset_reference=gcp.bigquery.DatasetExternalDatasetReferenceArgs(
+                external_source="aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+                connection="projects/project/locations/aws-us-east-1/connections/connection",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1107,6 +1157,7 @@ class Dataset(pulumi.CustomResource):
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
+        :param pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
@@ -1290,6 +1341,23 @@ class Dataset(pulumi.CustomResource):
                 ),
             ])
         ```
+        ### Bigquery Dataset External Reference Aws Docs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        dataset = gcp.bigquery.Dataset("dataset",
+            dataset_id="example_dataset",
+            friendly_name="test",
+            description="This is a test description",
+            location="aws-us-east-1",
+            external_dataset_reference=gcp.bigquery.DatasetExternalDatasetReferenceArgs(
+                external_source="aws-glue://arn:aws:glue:us-east-1:999999999999:database/database",
+                connection="projects/project/locations/aws-us-east-1/connections/connection",
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
 
         ## Import
 
@@ -1338,6 +1406,7 @@ class Dataset(pulumi.CustomResource):
                  default_table_expiration_ms: Optional[pulumi.Input[int]] = None,
                  delete_contents_on_destroy: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  is_case_insensitive: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1364,6 +1433,7 @@ class Dataset(pulumi.CustomResource):
             __props__.__dict__["default_table_expiration_ms"] = default_table_expiration_ms
             __props__.__dict__["delete_contents_on_destroy"] = delete_contents_on_destroy
             __props__.__dict__["description"] = description
+            __props__.__dict__["external_dataset_reference"] = external_dataset_reference
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["is_case_insensitive"] = is_case_insensitive
             __props__.__dict__["labels"] = labels
@@ -1400,6 +1470,7 @@ class Dataset(pulumi.CustomResource):
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
+            external_dataset_reference: Optional[pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             is_case_insensitive: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1472,6 +1543,7 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A hash of the resource.
+        :param pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
@@ -1519,6 +1591,7 @@ class Dataset(pulumi.CustomResource):
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
+        __props__.__dict__["external_dataset_reference"] = external_dataset_reference
         __props__.__dict__["friendly_name"] = friendly_name
         __props__.__dict__["is_case_insensitive"] = is_case_insensitive
         __props__.__dict__["labels"] = labels
@@ -1662,6 +1735,14 @@ class Dataset(pulumi.CustomResource):
         A hash of the resource.
         """
         return pulumi.get(self, "etag")
+
+    @property
+    @pulumi.getter(name="externalDatasetReference")
+    def external_dataset_reference(self) -> pulumi.Output[Optional['outputs.DatasetExternalDatasetReference']]:
+        """
+        Information about the external metadata storage where the dataset is defined.
+        """
+        return pulumi.get(self, "external_dataset_reference")
 
     @property
     @pulumi.getter(name="friendlyName")

@@ -84,10 +84,10 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser", {
+ * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMMember("apigeeSaKeyuser", {
  *     cryptoKeyId: apigeeKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [pulumi.interpolate`serviceAccount:${apigeeSa.email}`],
+ *     member: pulumi.interpolate`serviceAccount:${apigeeSa.email}`,
  * });
  * const org = new gcp.apigee.Organization("org", {
  *     analyticsRegion: "us-central1",
@@ -118,10 +118,10 @@ import * as utilities from "../utilities";
  * }, {
  *     provider: google_beta,
  * });
- * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMBinding("apigeeSaKeyuser", {
+ * const apigeeSaKeyuser = new gcp.kms.CryptoKeyIAMMember("apigeeSaKeyuser", {
  *     cryptoKeyId: apigeeKey.id,
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
- *     members: [pulumi.interpolate`serviceAccount:${apigeeSa.email}`],
+ *     member: pulumi.interpolate`serviceAccount:${apigeeSa.email}`,
  * });
  * const org = new gcp.apigee.Organization("org", {
  *     analyticsRegion: "us-central1",

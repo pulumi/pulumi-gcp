@@ -316,6 +316,8 @@ vmwareengineCustomEndpoint: Optional[str]
 
 vpcAccessCustomEndpoint: Optional[str]
 
+workbenchCustomEndpoint: Optional[str]
+
 workflowsCustomEndpoint: Optional[str]
 
 workstationsCustomEndpoint: Optional[str]

@@ -85,6 +85,7 @@ export class Taxonomy extends pulumi.CustomResource {
     public readonly description!: pulumi.Output<string | undefined>;
     /**
      * User defined name of this taxonomy.
+     * The taxonomy display name must be unique within an organization.
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
@@ -162,6 +163,7 @@ export interface TaxonomyState {
     description?: pulumi.Input<string>;
     /**
      * User defined name of this taxonomy.
+     * The taxonomy display name must be unique within an organization.
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
@@ -204,6 +206,7 @@ export interface TaxonomyArgs {
     description?: pulumi.Input<string>;
     /**
      * User defined name of this taxonomy.
+     * The taxonomy display name must be unique within an organization.
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.

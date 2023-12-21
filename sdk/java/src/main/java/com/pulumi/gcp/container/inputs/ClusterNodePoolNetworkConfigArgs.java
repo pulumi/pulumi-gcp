@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigAdditionalNodeNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigAdditionalPodNetworkConfigArgs;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -70,6 +71,21 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         return Optional.ofNullable(this.enablePrivateNodes);
     }
 
+    /**
+     * Network bandwidth tier configuration.
+     * 
+     */
+    @Import(name="networkPerformanceConfig")
+    private @Nullable Output<ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs> networkPerformanceConfig;
+
+    /**
+     * @return Network bandwidth tier configuration.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
+        return Optional.ofNullable(this.networkPerformanceConfig);
+    }
+
     @Import(name="podCidrOverprovisionConfig")
     private @Nullable Output<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig;
 
@@ -114,6 +130,7 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
         this.additionalPodNetworkConfigs = $.additionalPodNetworkConfigs;
         this.createPodRange = $.createPodRange;
         this.enablePrivateNodes = $.enablePrivateNodes;
+        this.networkPerformanceConfig = $.networkPerformanceConfig;
         this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
         this.podIpv4CidrBlock = $.podIpv4CidrBlock;
         this.podRange = $.podRange;
@@ -209,6 +226,27 @@ public final class ClusterNodePoolNetworkConfigArgs extends com.pulumi.resources
          */
         public Builder enablePrivateNodes(Boolean enablePrivateNodes) {
             return enablePrivateNodes(Output.of(enablePrivateNodes));
+        }
+
+        /**
+         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPerformanceConfig(@Nullable Output<ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs> networkPerformanceConfig) {
+            $.networkPerformanceConfig = networkPerformanceConfig;
+            return this;
+        }
+
+        /**
+         * @param networkPerformanceConfig Network bandwidth tier configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkPerformanceConfig(ClusterNodePoolNetworkConfigNetworkPerformanceConfigArgs networkPerformanceConfig) {
+            return networkPerformanceConfig(Output.of(networkPerformanceConfig));
         }
 
         public Builder podCidrOverprovisionConfig(@Nullable Output<ClusterNodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig) {

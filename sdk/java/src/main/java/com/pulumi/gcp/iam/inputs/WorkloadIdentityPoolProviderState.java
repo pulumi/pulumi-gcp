@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderAwsArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;
+import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderSamlArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -218,7 +219,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
     }
 
     /**
-     * An Amazon Web Services identity provider. Not compatible with the property oidc.
+     * An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      * 
      */
@@ -226,7 +227,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
     private @Nullable Output<WorkloadIdentityPoolProviderAwsArgs> aws;
 
     /**
-     * @return An Amazon Web Services identity provider. Not compatible with the property oidc.
+     * @return An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      * 
      */
@@ -299,7 +300,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
     }
 
     /**
-     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      * 
      */
@@ -307,7 +308,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
     private @Nullable Output<WorkloadIdentityPoolProviderOidcArgs> oidc;
 
     /**
-     * @return An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+     * @return An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      * 
      */
@@ -330,6 +331,23 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
      */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
+    }
+
+    /**
+     * An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="saml")
+    private @Nullable Output<WorkloadIdentityPoolProviderSamlArgs> saml;
+
+    /**
+     * @return An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<WorkloadIdentityPoolProviderSamlArgs>> saml() {
+        return Optional.ofNullable(this.saml);
     }
 
     /**
@@ -413,6 +431,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         this.name = $.name;
         this.oidc = $.oidc;
         this.project = $.project;
+        this.saml = $.saml;
         this.state = $.state;
         this.workloadIdentityPoolId = $.workloadIdentityPoolId;
         this.workloadIdentityPoolProviderId = $.workloadIdentityPoolProviderId;
@@ -647,7 +666,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         }
 
         /**
-         * @param aws An Amazon Web Services identity provider. Not compatible with the property oidc.
+         * @param aws An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
          * Structure is documented below.
          * 
          * @return builder
@@ -659,7 +678,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         }
 
         /**
-         * @param aws An Amazon Web Services identity provider. Not compatible with the property oidc.
+         * @param aws An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
          * Structure is documented below.
          * 
          * @return builder
@@ -758,7 +777,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         }
 
         /**
-         * @param oidc An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+         * @param oidc An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
          * Structure is documented below.
          * 
          * @return builder
@@ -770,7 +789,7 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
         }
 
         /**
-         * @param oidc An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+         * @param oidc An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
          * Structure is documented below.
          * 
          * @return builder
@@ -801,6 +820,29 @@ public final class WorkloadIdentityPoolProviderState extends com.pulumi.resource
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param saml An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saml(@Nullable Output<WorkloadIdentityPoolProviderSamlArgs> saml) {
+            $.saml = saml;
+            return this;
+        }
+
+        /**
+         * @param saml An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder saml(WorkloadIdentityPoolProviderSamlArgs saml) {
+            return saml(Output.of(saml));
         }
 
         /**

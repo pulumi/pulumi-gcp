@@ -12,6 +12,12 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A cluster in a private cloud.
+//
+// To get more information about Cluster, see:
+//
+// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+//
 // ## Example Usage
 // ### Vmware Engine Cluster Basic
 //
@@ -28,10 +34,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
-//				Location:    pulumi.String("us-west1"),
-//				Type:        pulumi.String("LEGACY"),
+//				Type:        pulumi.String("STANDARD"),
+//				Location:    pulumi.String("global"),
 //				Description: pulumi.String("PC network description."),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -51,7 +57,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -63,7 +69,7 @@ import (
 //						NodeCount:  pulumi.Int(3),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -87,10 +93,10 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
-//				Location:    pulumi.String("us-west1"),
-//				Type:        pulumi.String("LEGACY"),
+//				Type:        pulumi.String("STANDARD"),
+//				Location:    pulumi.String("global"),
 //				Description: pulumi.String("PC network description."),
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -111,7 +117,7 @@ import (
 //						},
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}
@@ -124,7 +130,7 @@ import (
 //						CustomCoreCount: pulumi.Int(32),
 //					},
 //				},
-//			}, pulumi.Provider(google_beta))
+//			})
 //			if err != nil {
 //				return err
 //			}

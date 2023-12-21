@@ -13,6 +13,8 @@ import com.pulumi.gcp.dataform.inputs.RepositoryState;
 import com.pulumi.gcp.dataform.outputs.RepositoryGitRemoteSettings;
 import com.pulumi.gcp.dataform.outputs.RepositoryWorkspaceCompilationOverrides;
 import java.lang.String;
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
@@ -72,6 +74,9 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var dataformRespository = new Repository(&#34;dataformRespository&#34;, RepositoryArgs.builder()        
+ *             .displayName(&#34;dataform_repository&#34;)
+ *             .npmrcEnvironmentVariablesSecretVersion(secretVersion.id())
+ *             .labels(Map.of(&#34;label_foo1&#34;, &#34;label-bar1&#34;))
  *             .gitRemoteSettings(RepositoryGitRemoteSettingsArgs.builder()
  *                 .url(gitRepository.url())
  *                 .defaultBranch(&#34;main&#34;)
@@ -198,6 +203,34 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dataform/repository:Repository")
 public class Repository extends com.pulumi.resources.CustomResource {
     /**
+     * Optional. The repository&#39;s user-friendly name.
+     * 
+     */
+    @Export(name="displayName", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> displayName;
+
+    /**
+     * @return Optional. The repository&#39;s user-friendly name.
+     * 
+     */
+    public Output<Optional<String>> displayName() {
+        return Codegen.optional(this.displayName);
+    }
+    /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveLabels;
+
+    /**
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * 
+     */
+    public Output<Map<String,String>> effectiveLabels() {
+        return this.effectiveLabels;
+    }
+    /**
      * Optional. If set, configures this repository to be linked to a Git remote.
      * Structure is documented below.
      * 
@@ -212,6 +245,28 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RepositoryGitRemoteSettings>> gitRemoteSettings() {
         return Codegen.optional(this.gitRemoteSettings);
+    }
+    /**
+     * Optional. Repository user labels.
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Export(name="labels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> labels;
+
+    /**
+     * @return Optional. Repository user labels.
+     * An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> labels() {
+        return Codegen.optional(this.labels);
     }
     /**
      * The repository&#39;s name.
@@ -232,6 +287,20 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
+     * Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+     * 
+     */
+    @Export(name="npmrcEnvironmentVariablesSecretVersion", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> npmrcEnvironmentVariablesSecretVersion;
+
+    /**
+     * @return Optional. The name of the Secret Manager secret version to be used to interpolate variables into the .npmrc file for package installation operations. Must be in the format projects/*{@literal /}secrets/*{@literal /}versions/*. The file itself must be in a JSON format.
+     * 
+     */
+    public Output<Optional<String>> npmrcEnvironmentVariablesSecretVersion() {
+        return Codegen.optional(this.npmrcEnvironmentVariablesSecretVersion);
+    }
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -246,6 +315,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> pulumiLabels;
+
+    /**
+     * @return The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     * 
+     */
+    public Output<Map<String,String>> pulumiLabels() {
+        return this.pulumiLabels;
     }
     /**
      * A reference to the region
@@ -324,6 +409,10 @@ public class Repository extends com.pulumi.resources.CustomResource {
     private static com.pulumi.resources.CustomResourceOptions makeResourceOptions(@Nullable com.pulumi.resources.CustomResourceOptions options, @Nullable Output<String> id) {
         var defaultOptions = com.pulumi.resources.CustomResourceOptions.builder()
             .version(Utilities.getVersion())
+            .additionalSecretOutputs(List.of(
+                "effectiveLabels",
+                "pulumiLabels"
+            ))
             .build();
         return com.pulumi.resources.CustomResourceOptions.merge(defaultOptions, options, id);
     }

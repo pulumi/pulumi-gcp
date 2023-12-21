@@ -277,6 +277,11 @@ type AlertPolicy struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// The severity of an alert policy indicates how important incidents generated
+	// by that policy are. The severity level will be displayed on the Incident
+	// detail page and in notifications.
+	// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+	Severity pulumi.StringPtrOutput `pulumi:"severity"`
 	// This field is intended to be used for organizing and identifying the AlertPolicy
 	// objects.The field can contain up to 64 entries. Each key and value is limited
 	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -375,6 +380,11 @@ type alertPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The severity of an alert policy indicates how important incidents generated
+	// by that policy are. The severity level will be displayed on the Incident
+	// detail page and in notifications.
+	// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+	Severity *string `pulumi:"severity"`
 	// This field is intended to be used for organizing and identifying the AlertPolicy
 	// objects.The field can contain up to 64 entries. Each key and value is limited
 	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -435,6 +445,11 @@ type AlertPolicyState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The severity of an alert policy indicates how important incidents generated
+	// by that policy are. The severity level will be displayed on the Incident
+	// detail page and in notifications.
+	// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+	Severity pulumi.StringPtrInput
 	// This field is intended to be used for organizing and identifying the AlertPolicy
 	// objects.The field can contain up to 64 entries. Each key and value is limited
 	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -486,6 +501,11 @@ type alertPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// The severity of an alert policy indicates how important incidents generated
+	// by that policy are. The severity level will be displayed on the Incident
+	// detail page and in notifications.
+	// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+	Severity *string `pulumi:"severity"`
 	// This field is intended to be used for organizing and identifying the AlertPolicy
 	// objects.The field can contain up to 64 entries. Each key and value is limited
 	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -534,6 +554,11 @@ type AlertPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// The severity of an alert policy indicates how important incidents generated
+	// by that policy are. The severity level will be displayed on the Incident
+	// detail page and in notifications.
+	// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+	Severity pulumi.StringPtrInput
 	// This field is intended to be used for organizing and identifying the AlertPolicy
 	// objects.The field can contain up to 64 entries. Each key and value is limited
 	// to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values
@@ -708,6 +733,14 @@ func (o AlertPolicyOutput) NotificationChannels() pulumi.StringArrayOutput {
 // If it is not provided, the provider project is used.
 func (o AlertPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *AlertPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// The severity of an alert policy indicates how important incidents generated
+// by that policy are. The severity level will be displayed on the Incident
+// detail page and in notifications.
+// Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+func (o AlertPolicyOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AlertPolicy) pulumi.StringPtrOutput { return v.Severity }).(pulumi.StringPtrOutput)
 }
 
 // This field is intended to be used for organizing and identifying the AlertPolicy

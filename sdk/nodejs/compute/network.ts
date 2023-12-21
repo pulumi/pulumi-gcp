@@ -163,6 +163,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string | undefined>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly numericId!: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -203,6 +207,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["mtu"] = state ? state.mtu : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = state ? state.networkFirewallPolicyEnforcementOrder : undefined;
+            resourceInputs["numericId"] = state ? state.numericId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["routingMode"] = state ? state.routingMode : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -219,6 +224,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["routingMode"] = args ? args.routingMode : undefined;
             resourceInputs["gatewayIpv4"] = undefined /*out*/;
+            resourceInputs["numericId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -293,6 +299,10 @@ export interface NetworkState {
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
     networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
+    /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    numericId?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

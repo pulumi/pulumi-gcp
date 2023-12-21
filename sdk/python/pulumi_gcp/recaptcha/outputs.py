@@ -13,6 +13,7 @@ __all__ = [
     'EnterpriseKeyAndroidSettings',
     'EnterpriseKeyIosSettings',
     'EnterpriseKeyTestingOptions',
+    'EnterpriseKeyWafSettings',
     'EnterpriseKeyWebSettings',
 ]
 
@@ -164,6 +165,54 @@ class EnterpriseKeyTestingOptions(dict):
         All assessments for this Key will return this score. Must be between 0 (likely not legitimate) and 1 (likely legitimate) inclusive.
         """
         return pulumi.get(self, "testing_score")
+
+
+@pulumi.output_type
+class EnterpriseKeyWafSettings(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "wafFeature":
+            suggest = "waf_feature"
+        elif key == "wafService":
+            suggest = "waf_service"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnterpriseKeyWafSettings. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnterpriseKeyWafSettings.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnterpriseKeyWafSettings.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 waf_feature: str,
+                 waf_service: str):
+        """
+        :param str waf_feature: Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+        :param str waf_service: The WAF service that uses this key. Possible values: CA, FASTLY
+        """
+        pulumi.set(__self__, "waf_feature", waf_feature)
+        pulumi.set(__self__, "waf_service", waf_service)
+
+    @property
+    @pulumi.getter(name="wafFeature")
+    def waf_feature(self) -> str:
+        """
+        Supported WAF features. For more information, see https://cloud.google.com/recaptcha-enterprise/docs/usecase#comparison_of_features. Possible values: CHALLENGE_PAGE, SESSION_TOKEN, ACTION_TOKEN, EXPRESS
+        """
+        return pulumi.get(self, "waf_feature")
+
+    @property
+    @pulumi.getter(name="wafService")
+    def waf_service(self) -> str:
+        """
+        The WAF service that uses this key. Possible values: CA, FASTLY
+        """
+        return pulumi.get(self, "waf_service")
 
 
 @pulumi.output_type

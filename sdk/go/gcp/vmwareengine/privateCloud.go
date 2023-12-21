@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// / Represents a private cloud resource. Private clouds are zonal resources.
+// Represents a private cloud resource. Private clouds are zonal resources.
 //
 // To get more information about PrivateCloud, see:
 //
@@ -54,6 +54,55 @@ import (
 //						&vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs{
 //							NodeTypeId: pulumi.String("standard-72"),
 //							NodeCount:  pulumi.Int(3),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Vmware Engine Private Cloud Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/vmwareengine"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := vmwareengine.NewNetwork(ctx, "pc-nw", &vmwareengine.NetworkArgs{
+//				Location:    pulumi.String("global"),
+//				Type:        pulumi.String("STANDARD"),
+//				Description: pulumi.String("PC network description."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = vmwareengine.NewPrivateCloud(ctx, "vmw-engine-pc", &vmwareengine.PrivateCloudArgs{
+//				Location:    pulumi.String("us-west1-a"),
+//				Description: pulumi.String("Sample test PC."),
+//				Type:        pulumi.String("TIME_LIMITED"),
+//				NetworkConfig: &vmwareengine.PrivateCloudNetworkConfigArgs{
+//					ManagementCidr:      pulumi.String("192.168.30.0/24"),
+//					VmwareEngineNetwork: pc_nw.ID(),
+//				},
+//				ManagementCluster: &vmwareengine.PrivateCloudManagementClusterArgs{
+//					ClusterId: pulumi.String("sample-mgmt-cluster"),
+//					NodeTypeConfigs: vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArray{
+//						&vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs{
+//							NodeTypeId:      pulumi.String("standard-72"),
+//							NodeCount:       pulumi.Int(1),
+//							CustomCoreCount: pulumi.Int(32),
 //						},
 //					},
 //				},
@@ -125,6 +174,10 @@ type PrivateCloud struct {
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringOutput `pulumi:"state"`
+	// Initial type of the private cloud.
+	// Default value is `STANDARD`.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`.
+	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Details about a vCenter Server management appliance.
@@ -195,6 +248,10 @@ type privateCloudState struct {
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State *string `pulumi:"state"`
+	// Initial type of the private cloud.
+	// Default value is `STANDARD`.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`.
+	Type *string `pulumi:"type"`
 	// System-generated unique identifier for the resource.
 	Uid *string `pulumi:"uid"`
 	// Details about a vCenter Server management appliance.
@@ -227,6 +284,10 @@ type PrivateCloudState struct {
 	// State of the appliance.
 	// Possible values are: `ACTIVE`, `CREATING`.
 	State pulumi.StringPtrInput
+	// Initial type of the private cloud.
+	// Default value is `STANDARD`.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`.
+	Type pulumi.StringPtrInput
 	// System-generated unique identifier for the resource.
 	Uid pulumi.StringPtrInput
 	// Details about a vCenter Server management appliance.
@@ -254,6 +315,10 @@ type privateCloudArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Initial type of the private cloud.
+	// Default value is `STANDARD`.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`.
+	Type *string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a PrivateCloud resource.
@@ -273,6 +338,10 @@ type PrivateCloudArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Initial type of the private cloud.
+	// Default value is `STANDARD`.
+	// Possible values are: `STANDARD`, `TIME_LIMITED`.
+	Type pulumi.StringPtrInput
 }
 
 func (PrivateCloudArgs) ElementType() reflect.Type {
@@ -411,6 +480,13 @@ func (o PrivateCloudOutput) Project() pulumi.StringOutput {
 // Possible values are: `ACTIVE`, `CREATING`.
 func (o PrivateCloudOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *PrivateCloud) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
+}
+
+// Initial type of the private cloud.
+// Default value is `STANDARD`.
+// Possible values are: `STANDARD`, `TIME_LIMITED`.
+func (o PrivateCloudOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrivateCloud) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }
 
 // System-generated unique identifier for the resource.

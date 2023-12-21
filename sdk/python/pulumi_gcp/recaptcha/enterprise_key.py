@@ -22,6 +22,7 @@ class EnterpriseKeyArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
+                 waf_settings: Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']] = None,
                  web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
         """
         The set of arguments for constructing a EnterpriseKey resource.
@@ -38,6 +39,7 @@ class EnterpriseKeyArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
+        :param pulumi.Input['EnterpriseKeyWafSettingsArgs'] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
         pulumi.set(__self__, "display_name", display_name)
@@ -51,6 +53,8 @@ class EnterpriseKeyArgs:
             pulumi.set(__self__, "project", project)
         if testing_options is not None:
             pulumi.set(__self__, "testing_options", testing_options)
+        if waf_settings is not None:
+            pulumi.set(__self__, "waf_settings", waf_settings)
         if web_settings is not None:
             pulumi.set(__self__, "web_settings", web_settings)
 
@@ -134,6 +138,18 @@ class EnterpriseKeyArgs:
         pulumi.set(self, "testing_options", value)
 
     @property
+    @pulumi.getter(name="wafSettings")
+    def waf_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']]:
+        """
+        Settings specific to keys that can be used for WAF (Web Application Firewall).
+        """
+        return pulumi.get(self, "waf_settings")
+
+    @waf_settings.setter
+    def waf_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']]):
+        pulumi.set(self, "waf_settings", value)
+
+    @property
     @pulumi.getter(name="webSettings")
     def web_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]:
         """
@@ -159,6 +175,7 @@ class _EnterpriseKeyState:
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  testing_options: Optional[pulumi.Input['EnterpriseKeyTestingOptionsArgs']] = None,
+                 waf_settings: Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']] = None,
                  web_settings: Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']] = None):
         """
         Input properties used for looking up and filtering EnterpriseKey resources.
@@ -179,6 +196,7 @@ class _EnterpriseKeyState:
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input['EnterpriseKeyTestingOptionsArgs'] testing_options: Options for user acceptance testing.
+        :param pulumi.Input['EnterpriseKeyWafSettingsArgs'] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input['EnterpriseKeyWebSettingsArgs'] web_settings: Settings for keys that can be used by websites.
         """
         if android_settings is not None:
@@ -201,6 +219,8 @@ class _EnterpriseKeyState:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if testing_options is not None:
             pulumi.set(__self__, "testing_options", testing_options)
+        if waf_settings is not None:
+            pulumi.set(__self__, "waf_settings", waf_settings)
         if web_settings is not None:
             pulumi.set(__self__, "web_settings", web_settings)
 
@@ -332,6 +352,18 @@ class _EnterpriseKeyState:
         pulumi.set(self, "testing_options", value)
 
     @property
+    @pulumi.getter(name="wafSettings")
+    def waf_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']]:
+        """
+        Settings specific to keys that can be used for WAF (Web Application Firewall).
+        """
+        return pulumi.get(self, "waf_settings")
+
+    @waf_settings.setter
+    def waf_settings(self, value: Optional[pulumi.Input['EnterpriseKeyWafSettingsArgs']]):
+        pulumi.set(self, "waf_settings", value)
+
+    @property
     @pulumi.getter(name="webSettings")
     def web_settings(self) -> Optional[pulumi.Input['EnterpriseKeyWebSettingsArgs']]:
         """
@@ -355,6 +387,7 @@ class EnterpriseKey(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
+                 waf_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']]] = None,
                  web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None,
                  __props__=None):
         """
@@ -414,6 +447,33 @@ class EnterpriseKey(pulumi.CustomResource):
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
                 allow_all_domains=True,
                 integration_type="SCORE",
+            ))
+        ```
+        ### Waf_key
+        A basic test of recaptcha enterprise key that includes WAF settings
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_challenge="NOCAPTCHA",
+                testing_score=0.5,
+            ),
+            waf_settings=gcp.recaptcha.EnterpriseKeyWafSettingsArgs(
+                waf_feature="CHALLENGE_PAGE",
+                waf_service="CA",
+            ),
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                allow_all_domains=True,
+                allowed_domains=[],
+                challenge_security_preference="USABILITY",
+                integration_type="INVISIBLE",
             ))
         ```
         ### Web_key
@@ -501,6 +561,7 @@ class EnterpriseKey(pulumi.CustomResource):
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']] web_settings: Settings for keys that can be used by websites.
         """
         ...
@@ -566,6 +627,33 @@ class EnterpriseKey(pulumi.CustomResource):
             web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
                 allow_all_domains=True,
                 integration_type="SCORE",
+            ))
+        ```
+        ### Waf_key
+        A basic test of recaptcha enterprise key that includes WAF settings
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        primary = gcp.recaptcha.EnterpriseKey("primary",
+            display_name="display-name-one",
+            labels={
+                "label-one": "value-one",
+            },
+            project="my-project-name",
+            testing_options=gcp.recaptcha.EnterpriseKeyTestingOptionsArgs(
+                testing_challenge="NOCAPTCHA",
+                testing_score=0.5,
+            ),
+            waf_settings=gcp.recaptcha.EnterpriseKeyWafSettingsArgs(
+                waf_feature="CHALLENGE_PAGE",
+                waf_service="CA",
+            ),
+            web_settings=gcp.recaptcha.EnterpriseKeyWebSettingsArgs(
+                allow_all_domains=True,
+                allowed_domains=[],
+                challenge_security_preference="USABILITY",
+                integration_type="INVISIBLE",
             ))
         ```
         ### Web_key
@@ -659,6 +747,7 @@ class EnterpriseKey(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
+                 waf_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']]] = None,
                  web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -677,6 +766,7 @@ class EnterpriseKey(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["project"] = project
             __props__.__dict__["testing_options"] = testing_options
+            __props__.__dict__["waf_settings"] = waf_settings
             __props__.__dict__["web_settings"] = web_settings
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
@@ -704,6 +794,7 @@ class EnterpriseKey(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
             testing_options: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']]] = None,
+            waf_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']]] = None,
             web_settings: Optional[pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']]] = None) -> 'EnterpriseKey':
         """
         Get an existing EnterpriseKey resource's state with the given name, id, and optional extra
@@ -729,6 +820,7 @@ class EnterpriseKey(pulumi.CustomResource):
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Mapping[str, Any]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyTestingOptionsArgs']] testing_options: Options for user acceptance testing.
+        :param pulumi.Input[pulumi.InputType['EnterpriseKeyWafSettingsArgs']] waf_settings: Settings specific to keys that can be used for WAF (Web Application Firewall).
         :param pulumi.Input[pulumi.InputType['EnterpriseKeyWebSettingsArgs']] web_settings: Settings for keys that can be used by websites.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -745,6 +837,7 @@ class EnterpriseKey(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["testing_options"] = testing_options
+        __props__.__dict__["waf_settings"] = waf_settings
         __props__.__dict__["web_settings"] = web_settings
         return EnterpriseKey(resource_name, opts=opts, __props__=__props__)
 
@@ -834,6 +927,14 @@ class EnterpriseKey(pulumi.CustomResource):
         Options for user acceptance testing.
         """
         return pulumi.get(self, "testing_options")
+
+    @property
+    @pulumi.getter(name="wafSettings")
+    def waf_settings(self) -> pulumi.Output[Optional['outputs.EnterpriseKeyWafSettings']]:
+        """
+        Settings specific to keys that can be used for WAF (Web Application Firewall).
+        """
+        return pulumi.get(self, "waf_settings")
 
     @property
     @pulumi.getter(name="webSettings")

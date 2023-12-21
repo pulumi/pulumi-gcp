@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.VMwareEngine
 {
     /// <summary>
-    /// / Represents a private cloud resource. Private clouds are zonal resources.
+    /// Represents a private cloud resource. Private clouds are zonal resources.
     /// 
     /// To get more information about PrivateCloud, see:
     /// 
@@ -52,6 +52,50 @@ namespace Pulumi.Gcp.VMwareEngine
     ///                 {
     ///                     NodeTypeId = "standard-72",
     ///                     NodeCount = 3,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Vmware Engine Private Cloud Full
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var pc_nw = new Gcp.VMwareEngine.Network("pc-nw", new()
+    ///     {
+    ///         Location = "global",
+    ///         Type = "STANDARD",
+    ///         Description = "PC network description.",
+    ///     });
+    /// 
+    ///     var vmw_engine_pc = new Gcp.VMwareEngine.PrivateCloud("vmw-engine-pc", new()
+    ///     {
+    ///         Location = "us-west1-a",
+    ///         Description = "Sample test PC.",
+    ///         Type = "TIME_LIMITED",
+    ///         NetworkConfig = new Gcp.VMwareEngine.Inputs.PrivateCloudNetworkConfigArgs
+    ///         {
+    ///             ManagementCidr = "192.168.30.0/24",
+    ///             VmwareEngineNetwork = pc_nw.Id,
+    ///         },
+    ///         ManagementCluster = new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterArgs
+    ///         {
+    ///             ClusterId = "sample-mgmt-cluster",
+    ///             NodeTypeConfigs = new[]
+    ///             {
+    ///                 new Gcp.VMwareEngine.Inputs.PrivateCloudManagementClusterNodeTypeConfigArgs
+    ///                 {
+    ///                     NodeTypeId = "standard-72",
+    ///                     NodeCount = 1,
+    ///                     CustomCoreCount = 32,
     ///                 },
     ///             },
     ///         },
@@ -146,6 +190,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
+
+        /// <summary>
+        /// Initial type of the private cloud.
+        /// Default value is `STANDARD`.
+        /// Possible values are: `STANDARD`, `TIME_LIMITED`.
+        /// </summary>
+        [Output("type")]
+        public Output<string?> Type { get; private set; } = null!;
 
         /// <summary>
         /// System-generated unique identifier for the resource.
@@ -245,6 +297,14 @@ namespace Pulumi.Gcp.VMwareEngine
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        /// <summary>
+        /// Initial type of the private cloud.
+        /// Default value is `STANDARD`.
+        /// Possible values are: `STANDARD`, `TIME_LIMITED`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
+
         public PrivateCloudArgs()
         {
         }
@@ -324,6 +384,14 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }
+
+        /// <summary>
+        /// Initial type of the private cloud.
+        /// Default value is `STANDARD`.
+        /// Possible values are: `STANDARD`, `TIME_LIMITED`.
+        /// </summary>
+        [Input("type")]
+        public Input<string>? Type { get; set; }
 
         /// <summary>
         /// System-generated unique identifier for the resource.

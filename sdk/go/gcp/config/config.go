@@ -486,6 +486,9 @@ func GetVmwareengineCustomEndpoint(ctx *pulumi.Context) string {
 func GetVpcAccessCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:vpcAccessCustomEndpoint")
 }
+func GetWorkbenchCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:workbenchCustomEndpoint")
+}
 func GetWorkflowsCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:workflowsCustomEndpoint")
 }

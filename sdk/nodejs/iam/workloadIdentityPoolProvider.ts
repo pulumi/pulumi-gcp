@@ -105,6 +105,51 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Iam Workload Identity Pool Provider Saml Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
+ * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "example-prvdr",
+ *     attributeMapping: {
+ *         "google.subject": "assertion.arn",
+ *         "attribute.aws_account": "assertion.account",
+ *         "attribute.environment": "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"",
+ *     },
+ *     saml: {
+ *         idpMetadataXml: fs.readFileSync("test-fixtures/metadata.xml", "utf8"),
+ *     },
+ * });
+ * ```
+ * ### Iam Workload Identity Pool Provider Saml Full
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as fs from "fs";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const pool = new gcp.iam.WorkloadIdentityPool("pool", {workloadIdentityPoolId: "example-pool"});
+ * const example = new gcp.iam.WorkloadIdentityPoolProvider("example", {
+ *     workloadIdentityPoolId: pool.workloadIdentityPoolId,
+ *     workloadIdentityPoolProviderId: "example-prvdr",
+ *     displayName: "Name of provider",
+ *     description: "SAML 2.0 identity pool provider for automated test",
+ *     disabled: true,
+ *     attributeMapping: {
+ *         "google.subject": "assertion.arn",
+ *         "attribute.aws_account": "assertion.account",
+ *         "attribute.environment": "assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\"",
+ *     },
+ *     saml: {
+ *         idpMetadataXml: fs.readFileSync("test-fixtures/metadata.xml", "utf8"),
+ *     },
+ * });
+ * ```
  * ### Iam Workload Identity Pool Provider Oidc Upload Key
  *
  * ```typescript
@@ -246,7 +291,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      */
     public readonly attributeMapping!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * An Amazon Web Services identity provider. Not compatible with the property oidc.
+     * An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      */
     public readonly aws!: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderAws | undefined>;
@@ -269,7 +314,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      */
     public readonly oidc!: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderOidc | undefined>;
@@ -278,6 +323,11 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+     * Structure is documented below.
+     */
+    public readonly saml!: pulumi.Output<outputs.iam.WorkloadIdentityPoolProviderSaml | undefined>;
     /**
      * The state of the provider.
      * * STATE_UNSPECIFIED: State unspecified.
@@ -326,6 +376,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["oidc"] = state ? state.oidc : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["saml"] = state ? state.saml : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["workloadIdentityPoolId"] = state ? state.workloadIdentityPoolId : undefined;
             resourceInputs["workloadIdentityPoolProviderId"] = state ? state.workloadIdentityPoolProviderId : undefined;
@@ -345,6 +396,7 @@ export class WorkloadIdentityPoolProvider extends pulumi.CustomResource {
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["oidc"] = args ? args.oidc : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["saml"] = args ? args.saml : undefined;
             resourceInputs["workloadIdentityPoolId"] = args ? args.workloadIdentityPoolId : undefined;
             resourceInputs["workloadIdentityPoolProviderId"] = args ? args.workloadIdentityPoolProviderId : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -414,7 +466,7 @@ export interface WorkloadIdentityPoolProviderState {
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * An Amazon Web Services identity provider. Not compatible with the property oidc.
+     * An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      */
     aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws>;
@@ -437,7 +489,7 @@ export interface WorkloadIdentityPoolProviderState {
      */
     name?: pulumi.Input<string>;
     /**
-     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      */
     oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc>;
@@ -446,6 +498,11 @@ export interface WorkloadIdentityPoolProviderState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+     * Structure is documented below.
+     */
+    saml?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderSaml>;
     /**
      * The state of the provider.
      * * STATE_UNSPECIFIED: State unspecified.
@@ -532,7 +589,7 @@ export interface WorkloadIdentityPoolProviderArgs {
      */
     attributeMapping?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * An Amazon Web Services identity provider. Not compatible with the property oidc.
+     * An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      */
     aws?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderAws>;
@@ -550,7 +607,7 @@ export interface WorkloadIdentityPoolProviderArgs {
      */
     displayName?: pulumi.Input<string>;
     /**
-     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      */
     oidc?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderOidc>;
@@ -559,6 +616,11 @@ export interface WorkloadIdentityPoolProviderArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+     * Structure is documented below.
+     */
+    saml?: pulumi.Input<inputs.iam.WorkloadIdentityPoolProviderSaml>;
     /**
      * The ID used for the pool, which is the final component of the pool resource name. This
      * value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix

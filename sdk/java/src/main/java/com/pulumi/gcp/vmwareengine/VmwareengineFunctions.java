@@ -10,6 +10,8 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterPlainArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetNetworkArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetNetworkPeeringPlainArgs;
@@ -20,16 +22,28 @@ import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetNsxCredentialsPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetPrivateCloudPlainArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetSubnetPlainArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsPlainArgs;
 import com.pulumi.gcp.vmwareengine.outputs.GetClusterResult;
+import com.pulumi.gcp.vmwareengine.outputs.GetExternalAddressResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkPolicyResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetNsxCredentialsResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudResult;
+import com.pulumi.gcp.vmwareengine.outputs.GetSubnetResult;
+import com.pulumi.gcp.vmwareengine.outputs.GetVcenterCredentialsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class VmwareengineFunctions {
     /**
+     * Use this data source to get details about a cluster resource.
+     * 
+     * To get more information about private cloud cluster, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -66,6 +80,11 @@ public final class VmwareengineFunctions {
         return getCluster(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get details about a cluster resource.
+     * 
+     * To get more information about private cloud cluster, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -102,6 +121,11 @@ public final class VmwareengineFunctions {
         return getClusterPlain(args, InvokeOptions.Empty);
     }
     /**
+     * Use this data source to get details about a cluster resource.
+     * 
+     * To get more information about private cloud cluster, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -138,6 +162,11 @@ public final class VmwareengineFunctions {
         return Deployment.getInstance().invoke("gcp:vmwareengine/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Use this data source to get details about a cluster resource.
+     * 
+     * To get more information about private cloud cluster, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.clusters)
+     * 
      * ## Example Usage
      * ```java
      * package generated_program;
@@ -172,6 +201,170 @@ public final class VmwareengineFunctions {
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a external address resource.
+     * 
+     * To get more information about external address, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myExternalAddress = VmwareengineFunctions.getExternalAddress(GetExternalAddressArgs.builder()
+     *             .name(&#34;my-external-address&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetExternalAddressResult> getExternalAddress(GetExternalAddressArgs args) {
+        return getExternalAddress(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a external address resource.
+     * 
+     * To get more information about external address, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myExternalAddress = VmwareengineFunctions.getExternalAddress(GetExternalAddressArgs.builder()
+     *             .name(&#34;my-external-address&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetExternalAddressResult> getExternalAddressPlain(GetExternalAddressPlainArgs args) {
+        return getExternalAddressPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a external address resource.
+     * 
+     * To get more information about external address, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myExternalAddress = VmwareengineFunctions.getExternalAddress(GetExternalAddressArgs.builder()
+     *             .name(&#34;my-external-address&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetExternalAddressResult> getExternalAddress(GetExternalAddressArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getExternalAddress:getExternalAddress", TypeShape.of(GetExternalAddressResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a external address resource.
+     * 
+     * To get more information about external address, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myExternalAddress = VmwareengineFunctions.getExternalAddress(GetExternalAddressArgs.builder()
+     *             .name(&#34;my-external-address&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetExternalAddressResult> getExternalAddressPlain(GetExternalAddressPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getExternalAddress:getExternalAddress", TypeShape.of(GetExternalAddressResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get details about a VMwareEngine network resource.
@@ -984,5 +1177,329 @@ public final class VmwareengineFunctions {
      */
     public static CompletableFuture<GetPrivateCloudResult> getPrivateCloudPlain(GetPrivateCloudPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", TypeShape.of(GetPrivateCloudResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a subnet. Management subnets support only read operations and should be configured through this data source. User defined subnets can be configured using the resource as well as the datasource.
+     * 
+     * To get more information about private cloud subnet, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySubnet = VmwareengineFunctions.getSubnet(GetSubnetArgs.builder()
+     *             .name(&#34;service-1&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args) {
+        return getSubnet(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a subnet. Management subnets support only read operations and should be configured through this data source. User defined subnets can be configured using the resource as well as the datasource.
+     * 
+     * To get more information about private cloud subnet, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySubnet = VmwareengineFunctions.getSubnet(GetSubnetArgs.builder()
+     *             .name(&#34;service-1&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSubnetResult> getSubnetPlain(GetSubnetPlainArgs args) {
+        return getSubnetPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a subnet. Management subnets support only read operations and should be configured through this data source. User defined subnets can be configured using the resource as well as the datasource.
+     * 
+     * To get more information about private cloud subnet, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySubnet = VmwareengineFunctions.getSubnet(GetSubnetArgs.builder()
+     *             .name(&#34;service-1&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetSubnetResult> getSubnet(GetSubnetArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getSubnet:getSubnet", TypeShape.of(GetSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a subnet. Management subnets support only read operations and should be configured through this data source. User defined subnets can be configured using the resource as well as the datasource.
+     * 
+     * To get more information about private cloud subnet, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetSubnetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var mySubnet = VmwareengineFunctions.getSubnet(GetSubnetArgs.builder()
+     *             .name(&#34;service-1&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetSubnetResult> getSubnetPlain(GetSubnetPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getSubnet:getSubnet", TypeShape.of(GetSubnetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Vcenter credentials for a Private Cloud.
+     * 
+     * To get more information about private cloud Vcenter credentials, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getVcenterCredentials(GetVcenterCredentialsArgs.builder()
+     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVcenterCredentialsResult> getVcenterCredentials(GetVcenterCredentialsArgs args) {
+        return getVcenterCredentials(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get Vcenter credentials for a Private Cloud.
+     * 
+     * To get more information about private cloud Vcenter credentials, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getVcenterCredentials(GetVcenterCredentialsArgs.builder()
+     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVcenterCredentialsResult> getVcenterCredentialsPlain(GetVcenterCredentialsPlainArgs args) {
+        return getVcenterCredentialsPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get Vcenter credentials for a Private Cloud.
+     * 
+     * To get more information about private cloud Vcenter credentials, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getVcenterCredentials(GetVcenterCredentialsArgs.builder()
+     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetVcenterCredentialsResult> getVcenterCredentials(GetVcenterCredentialsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", TypeShape.of(GetVcenterCredentialsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get Vcenter credentials for a Private Cloud.
+     * 
+     * To get more information about private cloud Vcenter credentials, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds/showVcenterCredentials)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var ds = VmwareengineFunctions.getVcenterCredentials(GetVcenterCredentialsArgs.builder()
+     *             .parent(&#34;projects/my-project/locations/us-west1-a/privateClouds/my-cloud&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetVcenterCredentialsResult> getVcenterCredentialsPlain(GetVcenterCredentialsPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", TypeShape.of(GetVcenterCredentialsResult.class), args, Utilities.withVersion(options));
     }
 }

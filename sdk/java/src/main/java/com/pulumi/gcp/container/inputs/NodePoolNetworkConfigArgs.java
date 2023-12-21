@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigAdditionalNodeNetworkConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigAdditionalPodNetworkConfigArgs;
+import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigNetworkPerformanceConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNetworkConfigPodCidrOverprovisionConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -84,6 +85,13 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         return Optional.ofNullable(this.enablePrivateNodes);
     }
 
+    @Import(name="networkPerformanceConfig")
+    private @Nullable Output<NodePoolNetworkConfigNetworkPerformanceConfigArgs> networkPerformanceConfig;
+
+    public Optional<Output<NodePoolNetworkConfigNetworkPerformanceConfigArgs>> networkPerformanceConfig() {
+        return Optional.ofNullable(this.networkPerformanceConfig);
+    }
+
     @Import(name="podCidrOverprovisionConfig")
     private @Nullable Output<NodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig;
 
@@ -128,6 +136,7 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
         this.additionalPodNetworkConfigs = $.additionalPodNetworkConfigs;
         this.createPodRange = $.createPodRange;
         this.enablePrivateNodes = $.enablePrivateNodes;
+        this.networkPerformanceConfig = $.networkPerformanceConfig;
         this.podCidrOverprovisionConfig = $.podCidrOverprovisionConfig;
         this.podIpv4CidrBlock = $.podIpv4CidrBlock;
         this.podRange = $.podRange;
@@ -259,6 +268,15 @@ public final class NodePoolNetworkConfigArgs extends com.pulumi.resources.Resour
          */
         public Builder enablePrivateNodes(Boolean enablePrivateNodes) {
             return enablePrivateNodes(Output.of(enablePrivateNodes));
+        }
+
+        public Builder networkPerformanceConfig(@Nullable Output<NodePoolNetworkConfigNetworkPerformanceConfigArgs> networkPerformanceConfig) {
+            $.networkPerformanceConfig = networkPerformanceConfig;
+            return this;
+        }
+
+        public Builder networkPerformanceConfig(NodePoolNetworkConfigNetworkPerformanceConfigArgs networkPerformanceConfig) {
+            return networkPerformanceConfig(Output.of(networkPerformanceConfig));
         }
 
         public Builder podCidrOverprovisionConfig(@Nullable Output<NodePoolNetworkConfigPodCidrOverprovisionConfigArgs> podCidrOverprovisionConfig) {

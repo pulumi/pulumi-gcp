@@ -110,6 +110,10 @@ namespace Pulumi.Gcp.Container
     ///             {
     ///                 { "owner", "mmv2" },
     ///             },
+    ///             Labels = 
+    ///             {
+    ///                 { "key_one", "label_one" },
+    ///             },
     ///             VmSize = "Standard_DS2_v2",
     ///         },
     ///         Location = "us-west1",

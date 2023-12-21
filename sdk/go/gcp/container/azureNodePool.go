@@ -107,6 +107,9 @@ import (
 //					Tags: pulumi.StringMap{
 //						"owner": pulumi.String("mmv2"),
 //					},
+//					Labels: pulumi.StringMap{
+//						"key_one": pulumi.String("label_one"),
+//					},
 //					VmSize: pulumi.String("Standard_DS2_v2"),
 //				},
 //				Location: pulumi.String("us-west1"),

@@ -12,6 +12,7 @@ import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderState;
 import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolProviderAws;
 import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolProviderOidc;
+import com.pulumi.gcp.iam.outputs.WorkloadIdentityPoolProviderSaml;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -209,6 +210,99 @@ import javax.annotation.Nullable;
  *                     &#34;https://example.com/gcp-oidc-federation&#34;,
  *                     &#34;example.com/gcp-oidc-federation&#34;)
  *                 .issuerUri(&#34;https://sts.windows.net/azure-tenant-id&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Iam Workload Identity Pool Provider Saml Basic
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPool;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderSamlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *             .build());
+ * 
+ *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
+ *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
+ *             .attributeMapping(Map.ofEntries(
+ *                 Map.entry(&#34;google.subject&#34;, &#34;assertion.arn&#34;),
+ *                 Map.entry(&#34;attribute.aws_account&#34;, &#34;assertion.account&#34;),
+ *                 Map.entry(&#34;attribute.environment&#34;, &#34;assertion.arn.contains(\&#34;:instance-profile/Production\&#34;) ? \&#34;prod\&#34; : \&#34;test\&#34;&#34;)
+ *             ))
+ *             .saml(WorkloadIdentityPoolProviderSamlArgs.builder()
+ *                 .idpMetadataXml(Files.readString(Paths.get(&#34;test-fixtures/metadata.xml&#34;)))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Iam Workload Identity Pool Provider Saml Full
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPool;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolArgs;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProvider;
+ * import com.pulumi.gcp.iam.WorkloadIdentityPoolProviderArgs;
+ * import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderSamlArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var pool = new WorkloadIdentityPool(&#34;pool&#34;, WorkloadIdentityPoolArgs.builder()        
+ *             .workloadIdentityPoolId(&#34;example-pool&#34;)
+ *             .build());
+ * 
+ *         var example = new WorkloadIdentityPoolProvider(&#34;example&#34;, WorkloadIdentityPoolProviderArgs.builder()        
+ *             .workloadIdentityPoolId(pool.workloadIdentityPoolId())
+ *             .workloadIdentityPoolProviderId(&#34;example-prvdr&#34;)
+ *             .displayName(&#34;Name of provider&#34;)
+ *             .description(&#34;SAML 2.0 identity pool provider for automated test&#34;)
+ *             .disabled(true)
+ *             .attributeMapping(Map.ofEntries(
+ *                 Map.entry(&#34;google.subject&#34;, &#34;assertion.arn&#34;),
+ *                 Map.entry(&#34;attribute.aws_account&#34;, &#34;assertion.account&#34;),
+ *                 Map.entry(&#34;attribute.environment&#34;, &#34;assertion.arn.contains(\&#34;:instance-profile/Production\&#34;) ? \&#34;prod\&#34; : \&#34;test\&#34;&#34;)
+ *             ))
+ *             .saml(WorkloadIdentityPoolProviderSamlArgs.builder()
+ *                 .idpMetadataXml(Files.readString(Paths.get(&#34;test-fixtures/metadata.xml&#34;)))
  *                 .build())
  *             .build());
  * 
@@ -498,7 +592,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
         return Codegen.optional(this.attributeMapping);
     }
     /**
-     * An Amazon Web Services identity provider. Not compatible with the property oidc.
+     * An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      * 
      */
@@ -506,7 +600,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
     private Output</* @Nullable */ WorkloadIdentityPoolProviderAws> aws;
 
     /**
-     * @return An Amazon Web Services identity provider. Not compatible with the property oidc.
+     * @return An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
      * Structure is documented below.
      * 
      */
@@ -574,7 +668,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
         return this.name;
     }
     /**
-     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+     * An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      * 
      */
@@ -582,7 +676,7 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
     private Output</* @Nullable */ WorkloadIdentityPoolProviderOidc> oidc;
 
     /**
-     * @return An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+     * @return An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
      * Structure is documented below.
      * 
      */
@@ -604,6 +698,22 @@ public class WorkloadIdentityPoolProvider extends com.pulumi.resources.CustomRes
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="saml", refs={WorkloadIdentityPoolProviderSaml.class}, tree="[0]")
+    private Output</* @Nullable */ WorkloadIdentityPoolProviderSaml> saml;
+
+    /**
+     * @return An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<WorkloadIdentityPoolProviderSaml>> saml() {
+        return Codegen.optional(this.saml);
     }
     /**
      * The state of the provider.

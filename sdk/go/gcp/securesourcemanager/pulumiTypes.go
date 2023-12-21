@@ -13,6 +13,142 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type InstanceHostConfig struct {
+	// (Output)
+	// API hostname.
+	Api *string `pulumi:"api"`
+	// (Output)
+	// Git HTTP hostname.
+	GitHttp *string `pulumi:"gitHttp"`
+	// (Output)
+	// Git SSH hostname.
+	GitSsh *string `pulumi:"gitSsh"`
+	// (Output)
+	// HTML hostname.
+	Html *string `pulumi:"html"`
+}
+
+// InstanceHostConfigInput is an input type that accepts InstanceHostConfigArgs and InstanceHostConfigOutput values.
+// You can construct a concrete instance of `InstanceHostConfigInput` via:
+//
+//	InstanceHostConfigArgs{...}
+type InstanceHostConfigInput interface {
+	pulumi.Input
+
+	ToInstanceHostConfigOutput() InstanceHostConfigOutput
+	ToInstanceHostConfigOutputWithContext(context.Context) InstanceHostConfigOutput
+}
+
+type InstanceHostConfigArgs struct {
+	// (Output)
+	// API hostname.
+	Api pulumi.StringPtrInput `pulumi:"api"`
+	// (Output)
+	// Git HTTP hostname.
+	GitHttp pulumi.StringPtrInput `pulumi:"gitHttp"`
+	// (Output)
+	// Git SSH hostname.
+	GitSsh pulumi.StringPtrInput `pulumi:"gitSsh"`
+	// (Output)
+	// HTML hostname.
+	Html pulumi.StringPtrInput `pulumi:"html"`
+}
+
+func (InstanceHostConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceHostConfig)(nil)).Elem()
+}
+
+func (i InstanceHostConfigArgs) ToInstanceHostConfigOutput() InstanceHostConfigOutput {
+	return i.ToInstanceHostConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceHostConfigArgs) ToInstanceHostConfigOutputWithContext(ctx context.Context) InstanceHostConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceHostConfigOutput)
+}
+
+// InstanceHostConfigArrayInput is an input type that accepts InstanceHostConfigArray and InstanceHostConfigArrayOutput values.
+// You can construct a concrete instance of `InstanceHostConfigArrayInput` via:
+//
+//	InstanceHostConfigArray{ InstanceHostConfigArgs{...} }
+type InstanceHostConfigArrayInput interface {
+	pulumi.Input
+
+	ToInstanceHostConfigArrayOutput() InstanceHostConfigArrayOutput
+	ToInstanceHostConfigArrayOutputWithContext(context.Context) InstanceHostConfigArrayOutput
+}
+
+type InstanceHostConfigArray []InstanceHostConfigInput
+
+func (InstanceHostConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceHostConfig)(nil)).Elem()
+}
+
+func (i InstanceHostConfigArray) ToInstanceHostConfigArrayOutput() InstanceHostConfigArrayOutput {
+	return i.ToInstanceHostConfigArrayOutputWithContext(context.Background())
+}
+
+func (i InstanceHostConfigArray) ToInstanceHostConfigArrayOutputWithContext(ctx context.Context) InstanceHostConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceHostConfigArrayOutput)
+}
+
+type InstanceHostConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceHostConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceHostConfig)(nil)).Elem()
+}
+
+func (o InstanceHostConfigOutput) ToInstanceHostConfigOutput() InstanceHostConfigOutput {
+	return o
+}
+
+func (o InstanceHostConfigOutput) ToInstanceHostConfigOutputWithContext(ctx context.Context) InstanceHostConfigOutput {
+	return o
+}
+
+// (Output)
+// API hostname.
+func (o InstanceHostConfigOutput) Api() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceHostConfig) *string { return v.Api }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Git HTTP hostname.
+func (o InstanceHostConfigOutput) GitHttp() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceHostConfig) *string { return v.GitHttp }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Git SSH hostname.
+func (o InstanceHostConfigOutput) GitSsh() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceHostConfig) *string { return v.GitSsh }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// HTML hostname.
+func (o InstanceHostConfigOutput) Html() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstanceHostConfig) *string { return v.Html }).(pulumi.StringPtrOutput)
+}
+
+type InstanceHostConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (InstanceHostConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]InstanceHostConfig)(nil)).Elem()
+}
+
+func (o InstanceHostConfigArrayOutput) ToInstanceHostConfigArrayOutput() InstanceHostConfigArrayOutput {
+	return o
+}
+
+func (o InstanceHostConfigArrayOutput) ToInstanceHostConfigArrayOutputWithContext(ctx context.Context) InstanceHostConfigArrayOutput {
+	return o
+}
+
+func (o InstanceHostConfigArrayOutput) Index(i pulumi.IntInput) InstanceHostConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) InstanceHostConfig {
+		return vs[0].([]InstanceHostConfig)[vs[1].(int)]
+	}).(InstanceHostConfigOutput)
+}
+
 type InstanceIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -339,13 +475,223 @@ func (o InstanceIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstancePrivateConfig struct {
+	// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+	CaPool string `pulumi:"caPool"`
+	// (Output)
+	// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+	HttpServiceAttachment *string `pulumi:"httpServiceAttachment"`
+	// 'Indicate if it's private instance.'
+	IsPrivate bool `pulumi:"isPrivate"`
+	// (Output)
+	// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+	SshServiceAttachment *string `pulumi:"sshServiceAttachment"`
+}
+
+// InstancePrivateConfigInput is an input type that accepts InstancePrivateConfigArgs and InstancePrivateConfigOutput values.
+// You can construct a concrete instance of `InstancePrivateConfigInput` via:
+//
+//	InstancePrivateConfigArgs{...}
+type InstancePrivateConfigInput interface {
+	pulumi.Input
+
+	ToInstancePrivateConfigOutput() InstancePrivateConfigOutput
+	ToInstancePrivateConfigOutputWithContext(context.Context) InstancePrivateConfigOutput
+}
+
+type InstancePrivateConfigArgs struct {
+	// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+	CaPool pulumi.StringInput `pulumi:"caPool"`
+	// (Output)
+	// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+	HttpServiceAttachment pulumi.StringPtrInput `pulumi:"httpServiceAttachment"`
+	// 'Indicate if it's private instance.'
+	IsPrivate pulumi.BoolInput `pulumi:"isPrivate"`
+	// (Output)
+	// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+	SshServiceAttachment pulumi.StringPtrInput `pulumi:"sshServiceAttachment"`
+}
+
+func (InstancePrivateConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePrivateConfig)(nil)).Elem()
+}
+
+func (i InstancePrivateConfigArgs) ToInstancePrivateConfigOutput() InstancePrivateConfigOutput {
+	return i.ToInstancePrivateConfigOutputWithContext(context.Background())
+}
+
+func (i InstancePrivateConfigArgs) ToInstancePrivateConfigOutputWithContext(ctx context.Context) InstancePrivateConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePrivateConfigOutput)
+}
+
+func (i InstancePrivateConfigArgs) ToInstancePrivateConfigPtrOutput() InstancePrivateConfigPtrOutput {
+	return i.ToInstancePrivateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePrivateConfigArgs) ToInstancePrivateConfigPtrOutputWithContext(ctx context.Context) InstancePrivateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePrivateConfigOutput).ToInstancePrivateConfigPtrOutputWithContext(ctx)
+}
+
+// InstancePrivateConfigPtrInput is an input type that accepts InstancePrivateConfigArgs, InstancePrivateConfigPtr and InstancePrivateConfigPtrOutput values.
+// You can construct a concrete instance of `InstancePrivateConfigPtrInput` via:
+//
+//	        InstancePrivateConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePrivateConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstancePrivateConfigPtrOutput() InstancePrivateConfigPtrOutput
+	ToInstancePrivateConfigPtrOutputWithContext(context.Context) InstancePrivateConfigPtrOutput
+}
+
+type instancePrivateConfigPtrType InstancePrivateConfigArgs
+
+func InstancePrivateConfigPtr(v *InstancePrivateConfigArgs) InstancePrivateConfigPtrInput {
+	return (*instancePrivateConfigPtrType)(v)
+}
+
+func (*instancePrivateConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePrivateConfig)(nil)).Elem()
+}
+
+func (i *instancePrivateConfigPtrType) ToInstancePrivateConfigPtrOutput() InstancePrivateConfigPtrOutput {
+	return i.ToInstancePrivateConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePrivateConfigPtrType) ToInstancePrivateConfigPtrOutputWithContext(ctx context.Context) InstancePrivateConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePrivateConfigPtrOutput)
+}
+
+type InstancePrivateConfigOutput struct{ *pulumi.OutputState }
+
+func (InstancePrivateConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePrivateConfig)(nil)).Elem()
+}
+
+func (o InstancePrivateConfigOutput) ToInstancePrivateConfigOutput() InstancePrivateConfigOutput {
+	return o
+}
+
+func (o InstancePrivateConfigOutput) ToInstancePrivateConfigOutputWithContext(ctx context.Context) InstancePrivateConfigOutput {
+	return o
+}
+
+func (o InstancePrivateConfigOutput) ToInstancePrivateConfigPtrOutput() InstancePrivateConfigPtrOutput {
+	return o.ToInstancePrivateConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePrivateConfigOutput) ToInstancePrivateConfigPtrOutputWithContext(ctx context.Context) InstancePrivateConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePrivateConfig) *InstancePrivateConfig {
+		return &v
+	}).(InstancePrivateConfigPtrOutput)
+}
+
+// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+func (o InstancePrivateConfigOutput) CaPool() pulumi.StringOutput {
+	return o.ApplyT(func(v InstancePrivateConfig) string { return v.CaPool }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+func (o InstancePrivateConfigOutput) HttpServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePrivateConfig) *string { return v.HttpServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+// 'Indicate if it's private instance.'
+func (o InstancePrivateConfigOutput) IsPrivate() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstancePrivateConfig) bool { return v.IsPrivate }).(pulumi.BoolOutput)
+}
+
+// (Output)
+// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+func (o InstancePrivateConfigOutput) SshServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v InstancePrivateConfig) *string { return v.SshServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+type InstancePrivateConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePrivateConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePrivateConfig)(nil)).Elem()
+}
+
+func (o InstancePrivateConfigPtrOutput) ToInstancePrivateConfigPtrOutput() InstancePrivateConfigPtrOutput {
+	return o
+}
+
+func (o InstancePrivateConfigPtrOutput) ToInstancePrivateConfigPtrOutputWithContext(ctx context.Context) InstancePrivateConfigPtrOutput {
+	return o
+}
+
+func (o InstancePrivateConfigPtrOutput) Elem() InstancePrivateConfigOutput {
+	return o.ApplyT(func(v *InstancePrivateConfig) InstancePrivateConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePrivateConfig
+		return ret
+	}).(InstancePrivateConfigOutput)
+}
+
+// CA pool resource, resource must in the format of `projects/{project}/locations/{location}/caPools/{ca_pool}`.
+func (o InstancePrivateConfigPtrOutput) CaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePrivateConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.CaPool
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Service Attachment for HTTP, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+func (o InstancePrivateConfigPtrOutput) HttpServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePrivateConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HttpServiceAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+// 'Indicate if it's private instance.'
+func (o InstancePrivateConfigPtrOutput) IsPrivate() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstancePrivateConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.IsPrivate
+	}).(pulumi.BoolPtrOutput)
+}
+
+// (Output)
+// Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
+func (o InstancePrivateConfigPtrOutput) SshServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *InstancePrivateConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SshServiceAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceHostConfigInput)(nil)).Elem(), InstanceHostConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceHostConfigArrayInput)(nil)).Elem(), InstanceHostConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamBindingConditionPtrInput)(nil)).Elem(), InstanceIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigInput)(nil)).Elem(), InstancePrivateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigPtrInput)(nil)).Elem(), InstancePrivateConfigArgs{})
+	pulumi.RegisterOutputType(InstanceHostConfigOutput{})
+	pulumi.RegisterOutputType(InstanceHostConfigArrayOutput{})
 	pulumi.RegisterOutputType(InstanceIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(InstancePrivateConfigOutput{})
+	pulumi.RegisterOutputType(InstancePrivateConfigPtrOutput{})
 }

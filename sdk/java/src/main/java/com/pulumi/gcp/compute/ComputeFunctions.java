@@ -70,8 +70,10 @@ import com.pulumi.gcp.compute.inputs.GetNodeTypesArgs;
 import com.pulumi.gcp.compute.inputs.GetNodeTypesPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionBackendServiceIamPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionDiskIamPolicyPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetRegionDiskPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceGroupPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionInstanceTemplateArgs;
@@ -139,6 +141,7 @@ import com.pulumi.gcp.compute.outputs.GetNetworksResult;
 import com.pulumi.gcp.compute.outputs.GetNodeTypesResult;
 import com.pulumi.gcp.compute.outputs.GetRegionBackendServiceIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskIamPolicyResult;
+import com.pulumi.gcp.compute.outputs.GetRegionDiskResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
@@ -6507,6 +6510,230 @@ public final class ComputeFunctions {
     }
     public static CompletableFuture<GetRegionBackendServiceIamPolicyResult> getRegionBackendServiceIamPolicyPlain(GetRegionBackendServiceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", TypeShape.of(GetRegionBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Compute Regional Persistent disks.
+     * 
+     * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+     *             .name(&#34;persistent-regional-disk&#34;)
+     *             .project(&#34;example&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .type(&#34;pd-ssd&#34;)
+     *             .physicalBlockSizeBytes(4096)
+     *             .replicaZones(            
+     *                 &#34;us-central1-a&#34;,
+     *                 &#34;us-central1-f&#34;)
+     *             .build());
+     * 
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
+     *                 .source(data.google_compute_disk().disk().self_link())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionDiskResult> getRegionDisk(GetRegionDiskArgs args) {
+        return getRegionDisk(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Compute Regional Persistent disks.
+     * 
+     * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+     *             .name(&#34;persistent-regional-disk&#34;)
+     *             .project(&#34;example&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .type(&#34;pd-ssd&#34;)
+     *             .physicalBlockSizeBytes(4096)
+     *             .replicaZones(            
+     *                 &#34;us-central1-a&#34;,
+     *                 &#34;us-central1-f&#34;)
+     *             .build());
+     * 
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
+     *                 .source(data.google_compute_disk().disk().self_link())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionDiskResult> getRegionDiskPlain(GetRegionDiskPlainArgs args) {
+        return getRegionDiskPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Get information about a Google Compute Regional Persistent disks.
+     * 
+     * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+     *             .name(&#34;persistent-regional-disk&#34;)
+     *             .project(&#34;example&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .type(&#34;pd-ssd&#34;)
+     *             .physicalBlockSizeBytes(4096)
+     *             .replicaZones(            
+     *                 &#34;us-central1-a&#34;,
+     *                 &#34;us-central1-f&#34;)
+     *             .build());
+     * 
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
+     *                 .source(data.google_compute_disk().disk().self_link())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetRegionDiskResult> getRegionDisk(GetRegionDiskArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getRegionDisk:getRegionDisk", TypeShape.of(GetRegionDiskResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Compute Regional Persistent disks.
+     * 
+     * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+     * 
+     * ## Example Usage
+     * 
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetRegionDiskArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var disk = ComputeFunctions.getRegionDisk(GetRegionDiskArgs.builder()
+     *             .name(&#34;persistent-regional-disk&#34;)
+     *             .project(&#34;example&#34;)
+     *             .region(&#34;us-central1&#34;)
+     *             .type(&#34;pd-ssd&#34;)
+     *             .physicalBlockSizeBytes(4096)
+     *             .replicaZones(            
+     *                 &#34;us-central1-a&#34;,
+     *                 &#34;us-central1-f&#34;)
+     *             .build());
+     * 
+     *         var default_ = new Instance(&#34;default&#34;, InstanceArgs.builder()        
+     *             .attachedDisks(InstanceAttachedDiskArgs.builder()
+     *                 .source(data.google_compute_disk().disk().self_link())
+     *                 .build())
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetRegionDiskResult> getRegionDiskPlain(GetRegionDiskPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getRegionDisk:getRegionDisk", TypeShape.of(GetRegionDiskResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for regiondisk

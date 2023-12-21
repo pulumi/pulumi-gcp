@@ -73,6 +73,7 @@ type LookupDatasetResult struct {
 	Description                     string                                     `pulumi:"description"`
 	EffectiveLabels                 map[string]string                          `pulumi:"effectiveLabels"`
 	Etag                            string                                     `pulumi:"etag"`
+	ExternalDatasetReferences       []GetDatasetExternalDatasetReference       `pulumi:"externalDatasetReferences"`
 	FriendlyName                    string                                     `pulumi:"friendlyName"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                  string            `pulumi:"id"`
@@ -172,6 +173,10 @@ func (o LookupDatasetResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 
 func (o LookupDatasetResultOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupDatasetResult) string { return v.Etag }).(pulumi.StringOutput)
+}
+
+func (o LookupDatasetResultOutput) ExternalDatasetReferences() GetDatasetExternalDatasetReferenceArrayOutput {
+	return o.ApplyT(func(v LookupDatasetResult) []GetDatasetExternalDatasetReference { return v.ExternalDatasetReferences }).(GetDatasetExternalDatasetReferenceArrayOutput)
 }
 
 func (o LookupDatasetResultOutput) FriendlyName() pulumi.StringOutput {

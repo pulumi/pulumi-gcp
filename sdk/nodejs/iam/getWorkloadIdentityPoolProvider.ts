@@ -71,6 +71,7 @@ export interface GetWorkloadIdentityPoolProviderResult {
     readonly name: string;
     readonly oidcs: outputs.iam.GetWorkloadIdentityPoolProviderOidc[];
     readonly project?: string;
+    readonly samls: outputs.iam.GetWorkloadIdentityPoolProviderSaml[];
     readonly state: string;
     readonly workloadIdentityPoolId: string;
     readonly workloadIdentityPoolProviderId: string;

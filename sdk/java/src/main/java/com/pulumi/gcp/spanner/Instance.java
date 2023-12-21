@@ -94,6 +94,50 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Spanner Instance With Autoscaling
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.spanner.Instance;
+ * import com.pulumi.gcp.spanner.InstanceArgs;
+ * import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigArgs;
+ * import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigAutoscalingLimitsArgs;
+ * import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigAutoscalingTargetsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Instance(&#34;example&#34;, InstanceArgs.builder()        
+ *             .autoscalingConfig(InstanceAutoscalingConfigArgs.builder()
+ *                 .autoscalingLimits(InstanceAutoscalingConfigAutoscalingLimitsArgs.builder()
+ *                     .maxProcessingUnits(3000)
+ *                     .minProcessingUnits(2000)
+ *                     .build())
+ *                 .autoscalingTargets(InstanceAutoscalingConfigAutoscalingTargetsArgs.builder()
+ *                     .highPriorityCpuUtilizationPercent(75)
+ *                     .storageUtilizationPercent(90)
+ *                     .build())
+ *                 .build())
+ *             .config(&#34;regional-us-central1&#34;)
+ *             .displayName(&#34;Test Spanner Instance&#34;)
+ *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Spanner Instance Multi Regional
  * ```java
  * package generated_program;

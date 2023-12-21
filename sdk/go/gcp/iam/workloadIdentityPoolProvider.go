@@ -186,6 +186,109 @@ import (
 //	}
 //
 // ```
+// ### Iam Workload Identity Pool Provider Saml Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject":        pulumi.String("assertion.arn"),
+//					"attribute.aws_account": pulumi.String("assertion.account"),
+//					"attribute.environment": pulumi.String("assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""),
+//				},
+//				Saml: &iam.WorkloadIdentityPoolProviderSamlArgs{
+//					IdpMetadataXml: readFileOrPanic("test-fixtures/metadata.xml"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Iam Workload Identity Pool Provider Saml Full
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"os"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/iam"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func readFileOrPanic(path string) pulumi.StringPtrInput {
+//		data, err := os.ReadFile(path)
+//		if err != nil {
+//			panic(err.Error())
+//		}
+//		return pulumi.String(string(data))
+//	}
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			pool, err := iam.NewWorkloadIdentityPool(ctx, "pool", &iam.WorkloadIdentityPoolArgs{
+//				WorkloadIdentityPoolId: pulumi.String("example-pool"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = iam.NewWorkloadIdentityPoolProvider(ctx, "example", &iam.WorkloadIdentityPoolProviderArgs{
+//				WorkloadIdentityPoolId:         pool.WorkloadIdentityPoolId,
+//				WorkloadIdentityPoolProviderId: pulumi.String("example-prvdr"),
+//				DisplayName:                    pulumi.String("Name of provider"),
+//				Description:                    pulumi.String("SAML 2.0 identity pool provider for automated test"),
+//				Disabled:                       pulumi.Bool(true),
+//				AttributeMapping: pulumi.StringMap{
+//					"google.subject":        pulumi.String("assertion.arn"),
+//					"attribute.aws_account": pulumi.String("assertion.account"),
+//					"attribute.environment": pulumi.String("assertion.arn.contains(\":instance-profile/Production\") ? \"prod\" : \"test\""),
+//				},
+//				Saml: &iam.WorkloadIdentityPoolProviderSamlArgs{
+//					IdpMetadataXml: readFileOrPanic("test-fixtures/metadata.xml"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Iam Workload Identity Pool Provider Oidc Upload Key
 //
 // ```go
@@ -340,7 +443,7 @@ type WorkloadIdentityPoolProvider struct {
 	// }
 	// ```
 	AttributeMapping pulumi.StringMapOutput `pulumi:"attributeMapping"`
-	// An Amazon Web Services identity provider. Not compatible with the property oidc.
+	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws WorkloadIdentityPoolProviderAwsPtrOutput `pulumi:"aws"`
 	// A description for the provider. Cannot exceed 256 characters.
@@ -353,12 +456,15 @@ type WorkloadIdentityPoolProvider struct {
 	// The resource name of the provider as
 	// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
 	// Structure is documented below.
 	Oidc WorkloadIdentityPoolProviderOidcPtrOutput `pulumi:"oidc"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+	// Structure is documented below.
+	Saml WorkloadIdentityPoolProviderSamlPtrOutput `pulumi:"saml"`
 	// The state of the provider.
 	// * STATE_UNSPECIFIED: State unspecified.
 	// * ACTIVE: The provider is active, and may be used to validate authentication credentials.
@@ -485,7 +591,7 @@ type workloadIdentityPoolProviderState struct {
 	// }
 	// ```
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
-	// An Amazon Web Services identity provider. Not compatible with the property oidc.
+	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws *WorkloadIdentityPoolProviderAws `pulumi:"aws"`
 	// A description for the provider. Cannot exceed 256 characters.
@@ -498,12 +604,15 @@ type workloadIdentityPoolProviderState struct {
 	// The resource name of the provider as
 	// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
 	Name *string `pulumi:"name"`
-	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
 	// Structure is documented below.
 	Oidc *WorkloadIdentityPoolProviderOidc `pulumi:"oidc"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+	// Structure is documented below.
+	Saml *WorkloadIdentityPoolProviderSaml `pulumi:"saml"`
 	// The state of the provider.
 	// * STATE_UNSPECIFIED: State unspecified.
 	// * ACTIVE: The provider is active, and may be used to validate authentication credentials.
@@ -595,7 +704,7 @@ type WorkloadIdentityPoolProviderState struct {
 	// }
 	// ```
 	AttributeMapping pulumi.StringMapInput
-	// An Amazon Web Services identity provider. Not compatible with the property oidc.
+	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws WorkloadIdentityPoolProviderAwsPtrInput
 	// A description for the provider. Cannot exceed 256 characters.
@@ -608,12 +717,15 @@ type WorkloadIdentityPoolProviderState struct {
 	// The resource name of the provider as
 	// `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
 	Name pulumi.StringPtrInput
-	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
 	// Structure is documented below.
 	Oidc WorkloadIdentityPoolProviderOidcPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+	// Structure is documented below.
+	Saml WorkloadIdentityPoolProviderSamlPtrInput
 	// The state of the provider.
 	// * STATE_UNSPECIFIED: State unspecified.
 	// * ACTIVE: The provider is active, and may be used to validate authentication credentials.
@@ -709,7 +821,7 @@ type workloadIdentityPoolProviderArgs struct {
 	// }
 	// ```
 	AttributeMapping map[string]string `pulumi:"attributeMapping"`
-	// An Amazon Web Services identity provider. Not compatible with the property oidc.
+	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws *WorkloadIdentityPoolProviderAws `pulumi:"aws"`
 	// A description for the provider. Cannot exceed 256 characters.
@@ -719,12 +831,15 @@ type workloadIdentityPoolProviderArgs struct {
 	Disabled *bool `pulumi:"disabled"`
 	// A display name for the provider. Cannot exceed 32 characters.
 	DisplayName *string `pulumi:"displayName"`
-	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
 	// Structure is documented below.
 	Oidc *WorkloadIdentityPoolProviderOidc `pulumi:"oidc"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+	// Structure is documented below.
+	Saml *WorkloadIdentityPoolProviderSaml `pulumi:"saml"`
 	// The ID used for the pool, which is the final component of the pool resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
@@ -809,7 +924,7 @@ type WorkloadIdentityPoolProviderArgs struct {
 	// }
 	// ```
 	AttributeMapping pulumi.StringMapInput
-	// An Amazon Web Services identity provider. Not compatible with the property oidc.
+	// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 	// Structure is documented below.
 	Aws WorkloadIdentityPoolProviderAwsPtrInput
 	// A description for the provider. Cannot exceed 256 characters.
@@ -819,12 +934,15 @@ type WorkloadIdentityPoolProviderArgs struct {
 	Disabled pulumi.BoolPtrInput
 	// A display name for the provider. Cannot exceed 32 characters.
 	DisplayName pulumi.StringPtrInput
-	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+	// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
 	// Structure is documented below.
 	Oidc WorkloadIdentityPoolProviderOidcPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+	// Structure is documented below.
+	Saml WorkloadIdentityPoolProviderSamlPtrInput
 	// The ID used for the pool, which is the final component of the pool resource name. This
 	// value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
 	// `gcp-` is reserved for use by Google, and may not be specified.
@@ -1008,7 +1126,7 @@ func (o WorkloadIdentityPoolProviderOutput) AttributeMapping() pulumi.StringMapO
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringMapOutput { return v.AttributeMapping }).(pulumi.StringMapOutput)
 }
 
-// An Amazon Web Services identity provider. Not compatible with the property oidc.
+// An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
 // Structure is documented below.
 func (o WorkloadIdentityPoolProviderOutput) Aws() WorkloadIdentityPoolProviderAwsPtrOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) WorkloadIdentityPoolProviderAwsPtrOutput { return v.Aws }).(WorkloadIdentityPoolProviderAwsPtrOutput)
@@ -1036,7 +1154,7 @@ func (o WorkloadIdentityPoolProviderOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+// An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
 // Structure is documented below.
 func (o WorkloadIdentityPoolProviderOutput) Oidc() WorkloadIdentityPoolProviderOidcPtrOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) WorkloadIdentityPoolProviderOidcPtrOutput { return v.Oidc }).(WorkloadIdentityPoolProviderOidcPtrOutput)
@@ -1046,6 +1164,12 @@ func (o WorkloadIdentityPoolProviderOutput) Oidc() WorkloadIdentityPoolProviderO
 // If it is not provided, the provider project is used.
 func (o WorkloadIdentityPoolProviderOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+// Structure is documented below.
+func (o WorkloadIdentityPoolProviderOutput) Saml() WorkloadIdentityPoolProviderSamlPtrOutput {
+	return o.ApplyT(func(v *WorkloadIdentityPoolProvider) WorkloadIdentityPoolProviderSamlPtrOutput { return v.Saml }).(WorkloadIdentityPoolProviderSamlPtrOutput)
 }
 
 // The state of the provider.

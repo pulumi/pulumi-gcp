@@ -5,6 +5,7 @@ package com.pulumi.gcp.securesourcemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -33,6 +34,21 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Output<String> instanceId() {
         return this.instanceId;
+    }
+
+    /**
+     * Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * 
+     */
+    @Import(name="kmsKey")
+    private @Nullable Output<String> kmsKey;
+
+    /**
+     * @return Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+     * 
+     */
+    public Optional<Output<String>> kmsKey() {
+        return Optional.ofNullable(this.kmsKey);
     }
 
     /**
@@ -72,6 +88,23 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Private settings for private instance.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="privateConfig")
+    private @Nullable Output<InstancePrivateConfigArgs> privateConfig;
+
+    /**
+     * @return Private settings for private instance.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstancePrivateConfigArgs>> privateConfig() {
+        return Optional.ofNullable(this.privateConfig);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -92,8 +125,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
 
     private InstanceArgs(InstanceArgs $) {
         this.instanceId = $.instanceId;
+        this.kmsKey = $.kmsKey;
         this.labels = $.labels;
         this.location = $.location;
+        this.privateConfig = $.privateConfig;
         this.project = $.project;
     }
 
@@ -138,6 +173,27 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder instanceId(String instanceId) {
             return instanceId(Output.of(instanceId));
+        }
+
+        /**
+         * @param kmsKey Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(@Nullable Output<String> kmsKey) {
+            $.kmsKey = kmsKey;
+            return this;
+        }
+
+        /**
+         * @param kmsKey Customer-managed encryption key name, in the format projects/*{@literal /}locations/*{@literal /}keyRings/*{@literal /}cryptoKeys/*.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder kmsKey(String kmsKey) {
+            return kmsKey(Output.of(kmsKey));
         }
 
         /**
@@ -186,6 +242,29 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder location(String location) {
             return location(Output.of(location));
+        }
+
+        /**
+         * @param privateConfig Private settings for private instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateConfig(@Nullable Output<InstancePrivateConfigArgs> privateConfig) {
+            $.privateConfig = privateConfig;
+            return this;
+        }
+
+        /**
+         * @param privateConfig Private settings for private instance.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateConfig(InstancePrivateConfigArgs privateConfig) {
+            return privateConfig(Output.of(privateConfig));
         }
 
         /**

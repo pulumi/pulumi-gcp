@@ -68,6 +68,34 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Waf_key
+ * A basic test of recaptcha enterprise key that includes WAF settings
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.recaptcha.EnterpriseKey("primary", {
+ *     displayName: "display-name-one",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     project: "my-project-name",
+ *     testingOptions: {
+ *         testingChallenge: "NOCAPTCHA",
+ *         testingScore: 0.5,
+ *     },
+ *     wafSettings: {
+ *         wafFeature: "CHALLENGE_PAGE",
+ *         wafService: "CA",
+ *     },
+ *     webSettings: {
+ *         allowAllDomains: true,
+ *         allowedDomains: [],
+ *         challengeSecurityPreference: "USABILITY",
+ *         integrationType: "INVISIBLE",
+ *     },
+ * });
+ * ```
  * ### Web_key
  * A basic test of recaptcha enterprise key that can be used by websites
  * ```typescript
@@ -216,6 +244,10 @@ export class EnterpriseKey extends pulumi.CustomResource {
      */
     public readonly testingOptions!: pulumi.Output<outputs.recaptcha.EnterpriseKeyTestingOptions | undefined>;
     /**
+     * Settings specific to keys that can be used for WAF (Web Application Firewall).
+     */
+    public readonly wafSettings!: pulumi.Output<outputs.recaptcha.EnterpriseKeyWafSettings | undefined>;
+    /**
      * Settings for keys that can be used by websites.
      */
     public readonly webSettings!: pulumi.Output<outputs.recaptcha.EnterpriseKeyWebSettings | undefined>;
@@ -243,6 +275,7 @@ export class EnterpriseKey extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["testingOptions"] = state ? state.testingOptions : undefined;
+            resourceInputs["wafSettings"] = state ? state.wafSettings : undefined;
             resourceInputs["webSettings"] = state ? state.webSettings : undefined;
         } else {
             const args = argsOrState as EnterpriseKeyArgs | undefined;
@@ -255,6 +288,7 @@ export class EnterpriseKey extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["testingOptions"] = args ? args.testingOptions : undefined;
+            resourceInputs["wafSettings"] = args ? args.wafSettings : undefined;
             resourceInputs["webSettings"] = args ? args.webSettings : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -320,6 +354,10 @@ export interface EnterpriseKeyState {
      */
     testingOptions?: pulumi.Input<inputs.recaptcha.EnterpriseKeyTestingOptions>;
     /**
+     * Settings specific to keys that can be used for WAF (Web Application Firewall).
+     */
+    wafSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWafSettings>;
+    /**
      * Settings for keys that can be used by websites.
      */
     webSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWebSettings>;
@@ -360,6 +398,10 @@ export interface EnterpriseKeyArgs {
      * Options for user acceptance testing.
      */
     testingOptions?: pulumi.Input<inputs.recaptcha.EnterpriseKeyTestingOptions>;
+    /**
+     * Settings specific to keys that can be used for WAF (Web Application Firewall).
+     */
+    wafSettings?: pulumi.Input<inputs.recaptcha.EnterpriseKeyWafSettings>;
     /**
      * Settings for keys that can be used by websites.
      */

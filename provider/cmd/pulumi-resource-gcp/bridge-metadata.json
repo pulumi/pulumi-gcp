@@ -2147,6 +2147,9 @@
                     },
                     "default_encryption_configuration": {
                         "maxItemsOne": true
+                    },
+                    "external_dataset_reference": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -8802,6 +8805,9 @@
                                             "additional_pod_network_configs": {
                                                 "maxItemsOne": false
                                             },
+                                            "network_performance_config": {
+                                                "maxItemsOne": true
+                                            },
                                             "pod_cidr_overprovision_config": {
                                                 "maxItemsOne": true
                                             }
@@ -9074,6 +9080,9 @@
                                 },
                                 "additional_pod_network_configs": {
                                     "maxItemsOne": false
+                                },
+                                "network_performance_config": {
+                                    "maxItemsOne": true
                                 },
                                 "pod_cidr_overprovision_config": {
                                     "maxItemsOne": true
@@ -16593,6 +16602,9 @@
                                 }
                             }
                         }
+                    },
+                    "saml": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -18966,6 +18978,36 @@
                 "current": "gcp:orgpolicy/policy:Policy",
                 "majorVersion": 7,
                 "fields": {
+                    "dry_run_spec": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "rules": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "condition": {
+                                                "maxItemsOne": true
+                                            },
+                                            "values": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "allowed_values": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "denied_values": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
                     "spec": {
                         "maxItemsOne": true,
                         "elem": {
@@ -20843,6 +20885,9 @@
                     "testing_options": {
                         "maxItemsOne": true
                     },
+                    "waf_settings": {
+                        "maxItemsOne": true
+                    },
                     "web_settings": {
                         "maxItemsOne": true,
                         "elem": {
@@ -21216,7 +21261,15 @@
             },
             "google_secure_source_manager_instance": {
                 "current": "gcp:securesourcemanager/instance:Instance",
-                "majorVersion": 7
+                "majorVersion": 7,
+                "fields": {
+                    "host_config": {
+                        "maxItemsOne": false
+                    },
+                    "private_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_secure_source_manager_instance_iam_binding": {
                 "current": "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding",
@@ -22364,6 +22417,10 @@
                     }
                 }
             },
+            "google_vmwareengine_external_address": {
+                "current": "gcp:vmwareengine/externalAddress:ExternalAddress",
+                "majorVersion": 7
+            },
             "google_vmwareengine_network": {
                 "current": "gcp:vmwareengine/network:Network",
                 "majorVersion": 7,
@@ -22417,6 +22474,15 @@
                     }
                 }
             },
+            "google_vmwareengine_subnet": {
+                "current": "gcp:vmwareengine/subnet:Subnet",
+                "majorVersion": 7,
+                "fields": {
+                    "dhcp_address_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_vpc_access_connector": {
                 "current": "gcp:vpcaccess/connector:Connector",
                 "majorVersion": 7,
@@ -22428,6 +22494,81 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "google_workbench_instance": {
+                "current": "gcp:workbench/instance:Instance",
+                "majorVersion": 7,
+                "fields": {
+                    "gce_setup": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "accelerator_configs": {
+                                    "maxItemsOne": false
+                                },
+                                "boot_disk": {
+                                    "maxItemsOne": true
+                                },
+                                "data_disks": {
+                                    "maxItemsOne": true
+                                },
+                                "network_interfaces": {
+                                    "maxItemsOne": false
+                                },
+                                "service_accounts": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "scopes": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "tags": {
+                                    "maxItemsOne": false
+                                },
+                                "vm_image": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "health_info": {
+                        "maxItemsOne": false
+                    },
+                    "instance_owners": {
+                        "maxItemsOne": false
+                    },
+                    "upgrade_history": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_workbench_instance_iam_binding": {
+                "current": "gcp:workbench/instanceIamBinding:InstanceIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_workbench_instance_iam_member": {
+                "current": "gcp:workbench/instanceIamMember:InstanceIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_workbench_instance_iam_policy": {
+                "current": "gcp:workbench/instanceIamPolicy:InstanceIamPolicy",
+                "majorVersion": 7
             },
             "google_workflows_workflow": {
                 "current": "gcp:workflows/workflow:Workflow",
@@ -22877,6 +23018,9 @@
                         }
                     },
                     "default_encryption_configuration": {
+                        "maxItemsOne": false
+                    },
+                    "external_dataset_reference": {
                         "maxItemsOne": false
                     }
                 }
@@ -24592,6 +24736,33 @@
                 "current": "gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy",
                 "majorVersion": 7
             },
+            "google_compute_region_disk": {
+                "current": "gcp:compute/getRegionDisk:getRegionDisk",
+                "majorVersion": 7,
+                "fields": {
+                    "async_primary_disk": {
+                        "maxItemsOne": false
+                    },
+                    "disk_encryption_key": {
+                        "maxItemsOne": false
+                    },
+                    "guest_os_features": {
+                        "maxItemsOne": false
+                    },
+                    "licenses": {
+                        "maxItemsOne": false
+                    },
+                    "replica_zones": {
+                        "maxItemsOne": false
+                    },
+                    "source_snapshot_encryption_key": {
+                        "maxItemsOne": false
+                    },
+                    "users": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_compute_region_disk_iam_policy": {
                 "current": "gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy",
                 "majorVersion": 7
@@ -25418,6 +25589,9 @@
                                             "additional_pod_network_configs": {
                                                 "maxItemsOne": false
                                             },
+                                            "network_performance_config": {
+                                                "maxItemsOne": false
+                                            },
                                             "pod_cidr_overprovision_config": {
                                                 "maxItemsOne": false
                                             }
@@ -26028,6 +26202,9 @@
                                 }
                             }
                         }
+                    },
+                    "saml": {
+                        "maxItemsOne": false
                     }
                 }
             },
@@ -27267,6 +27444,10 @@
                     }
                 }
             },
+            "google_vmwareengine_external_address": {
+                "current": "gcp:vmwareengine/getExternalAddress:getExternalAddress",
+                "majorVersion": 7
+            },
             "google_vmwareengine_network": {
                 "current": "gcp:vmwareengine/getNetwork:getNetwork",
                 "majorVersion": 7,
@@ -27324,6 +27505,19 @@
                     }
                 }
             },
+            "google_vmwareengine_subnet": {
+                "current": "gcp:vmwareengine/getSubnet:getSubnet",
+                "majorVersion": 7,
+                "fields": {
+                    "dhcp_address_ranges": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_vmwareengine_vcenter_credentials": {
+                "current": "gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials",
+                "majorVersion": 7
+            },
             "google_vpc_access_connector": {
                 "current": "gcp:vpcaccess/getConnector:getConnector",
                 "majorVersion": 7,
@@ -27335,6 +27529,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_workbench_instance_iam_policy": {
+                "current": "gcp:workbench/getInstanceIamPolicy:getInstanceIamPolicy",
+                "majorVersion": 7
             },
             "google_workstations_workstation_config_iam_policy": {
                 "current": "gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy",
@@ -28204,11 +28402,17 @@
             "gcp:vertex/aiMetadataStore:AiMetadataStore": 0,
             "gcp:vertex/aiTensorboard:AiTensorboard": 0,
             "gcp:vmwareengine/cluster:Cluster": 0,
+            "gcp:vmwareengine/externalAddress:ExternalAddress": 0,
             "gcp:vmwareengine/network:Network": 0,
             "gcp:vmwareengine/networkPeering:NetworkPeering": 0,
             "gcp:vmwareengine/networkPolicy:NetworkPolicy": 0,
             "gcp:vmwareengine/privateCloud:PrivateCloud": 0,
+            "gcp:vmwareengine/subnet:Subnet": 0,
             "gcp:vpcaccess/connector:Connector": 0,
+            "gcp:workbench/instance:Instance": 0,
+            "gcp:workbench/instanceIamBinding:InstanceIamBinding": 0,
+            "gcp:workbench/instanceIamMember:InstanceIamMember": 0,
+            "gcp:workbench/instanceIamPolicy:InstanceIamPolicy": 0,
             "gcp:workflows/workflow:Workflow": 0,
             "gcp:workstations/workstation:Workstation": 0,
             "gcp:workstations/workstationCluster:WorkstationCluster": 0,
@@ -28306,6 +28510,7 @@
             "gcp:compute/getNetworks:getNetworks": 0,
             "gcp:compute/getNodeTypes:getNodeTypes": 0,
             "gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy": 0,
+            "gcp:compute/getRegionDisk:getRegionDisk": 0,
             "gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy": 0,
             "gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup": 0,
             "gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate": 0,
@@ -28482,12 +28687,16 @@
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": 0,
             "gcp:vertex/getAiIndex:getAiIndex": 0,
             "gcp:vmwareengine/getCluster:getCluster": 0,
+            "gcp:vmwareengine/getExternalAddress:getExternalAddress": 0,
             "gcp:vmwareengine/getNetwork:getNetwork": 0,
             "gcp:vmwareengine/getNetworkPeering:getNetworkPeering": 0,
             "gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy": 0,
             "gcp:vmwareengine/getNsxCredentials:getNsxCredentials": 0,
             "gcp:vmwareengine/getPrivateCloud:getPrivateCloud": 0,
+            "gcp:vmwareengine/getSubnet:getSubnet": 0,
+            "gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials": 0,
             "gcp:vpcaccess/getConnector:getConnector": 0,
+            "gcp:workbench/getInstanceIamPolicy:getInstanceIamPolicy": 0,
             "gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy": 0,
             "gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy": 0
         }
@@ -29311,11 +29520,17 @@
             "gcp:vertex/aiMetadataStore:AiMetadataStore": "google_vertex_ai_metadata_store",
             "gcp:vertex/aiTensorboard:AiTensorboard": "google_vertex_ai_tensorboard",
             "gcp:vmwareengine/cluster:Cluster": "google_vmwareengine_cluster",
+            "gcp:vmwareengine/externalAddress:ExternalAddress": "google_vmwareengine_external_address",
             "gcp:vmwareengine/network:Network": "google_vmwareengine_network",
             "gcp:vmwareengine/networkPeering:NetworkPeering": "google_vmwareengine_network_peering",
             "gcp:vmwareengine/networkPolicy:NetworkPolicy": "google_vmwareengine_network_policy",
             "gcp:vmwareengine/privateCloud:PrivateCloud": "google_vmwareengine_private_cloud",
+            "gcp:vmwareengine/subnet:Subnet": "google_vmwareengine_subnet",
             "gcp:vpcaccess/connector:Connector": "google_vpc_access_connector",
+            "gcp:workbench/instance:Instance": "google_workbench_instance",
+            "gcp:workbench/instanceIamBinding:InstanceIamBinding": "google_workbench_instance_iam_binding",
+            "gcp:workbench/instanceIamMember:InstanceIamMember": "google_workbench_instance_iam_member",
+            "gcp:workbench/instanceIamPolicy:InstanceIamPolicy": "google_workbench_instance_iam_policy",
             "gcp:workflows/workflow:Workflow": "google_workflows_workflow",
             "gcp:workstations/workstation:Workstation": "google_workstations_workstation",
             "gcp:workstations/workstationCluster:WorkstationCluster": "google_workstations_workstation_cluster",
@@ -29413,6 +29628,7 @@
             "gcp:compute/getNetworks:getNetworks": "google_compute_networks",
             "gcp:compute/getNodeTypes:getNodeTypes": "google_compute_node_types",
             "gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy": "google_compute_region_backend_service_iam_policy",
+            "gcp:compute/getRegionDisk:getRegionDisk": "google_compute_region_disk",
             "gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy": "google_compute_region_disk_iam_policy",
             "gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup": "google_compute_region_instance_group",
             "gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate": "google_compute_region_instance_template",
@@ -29589,12 +29805,16 @@
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": "google_vertex_ai_featurestore_iam_policy",
             "gcp:vertex/getAiIndex:getAiIndex": "google_vertex_ai_index",
             "gcp:vmwareengine/getCluster:getCluster": "google_vmwareengine_cluster",
+            "gcp:vmwareengine/getExternalAddress:getExternalAddress": "google_vmwareengine_external_address",
             "gcp:vmwareengine/getNetwork:getNetwork": "google_vmwareengine_network",
             "gcp:vmwareengine/getNetworkPeering:getNetworkPeering": "google_vmwareengine_network_peering",
             "gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy": "google_vmwareengine_network_policy",
             "gcp:vmwareengine/getNsxCredentials:getNsxCredentials": "google_vmwareengine_nsx_credentials",
             "gcp:vmwareengine/getPrivateCloud:getPrivateCloud": "google_vmwareengine_private_cloud",
+            "gcp:vmwareengine/getSubnet:getSubnet": "google_vmwareengine_subnet",
+            "gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials": "google_vmwareengine_vcenter_credentials",
             "gcp:vpcaccess/getConnector:getConnector": "google_vpc_access_connector",
+            "gcp:workbench/getInstanceIamPolicy:getInstanceIamPolicy": "google_workbench_instance_iam_policy",
             "gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy": "google_workstations_workstation_config_iam_policy",
             "gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy": "google_workstations_workstation_iam_policy"
         },
@@ -31068,6 +31288,9 @@
             "gcp:bigquery/DatasetDefaultEncryptionConfiguration:DatasetDefaultEncryptionConfiguration": {
                 "kmsKeyName": "kms_key_name"
             },
+            "gcp:bigquery/DatasetExternalDatasetReference:DatasetExternalDatasetReference": {
+                "externalSource": "external_source"
+            },
             "gcp:bigquery/JobCopy:JobCopy": {
                 "createDisposition": "create_disposition",
                 "destinationEncryptionConfiguration": "destination_encryption_configuration",
@@ -31323,6 +31546,7 @@
                 "defaultTableExpirationMs": "default_table_expiration_ms",
                 "deleteContentsOnDestroy": "delete_contents_on_destroy",
                 "effectiveLabels": "effective_labels",
+                "externalDatasetReference": "external_dataset_reference",
                 "friendlyName": "friendly_name",
                 "isCaseInsensitive": "is_case_insensitive",
                 "lastModifiedTime": "last_modified_time",
@@ -31364,6 +31588,7 @@
                 "defaultTableExpirationMs": "default_table_expiration_ms",
                 "deleteContentsOnDestroy": "delete_contents_on_destroy",
                 "effectiveLabels": "effective_labels",
+                "externalDatasetReferences": "external_dataset_reference",
                 "friendlyName": "friendly_name",
                 "isCaseInsensitive": "is_case_insensitive",
                 "lastModifiedTime": "last_modified_time",
@@ -31401,6 +31626,9 @@
             },
             "gcp:bigquery/getDatasetDefaultEncryptionConfiguration:getDatasetDefaultEncryptionConfiguration": {
                 "kmsKeyName": "kms_key_name"
+            },
+            "gcp:bigquery/getDatasetExternalDatasetReference:getDatasetExternalDatasetReference": {
+                "externalSource": "external_source"
             },
             "gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy": {
                 "datasetId": "dataset_id",
@@ -36821,8 +37049,34 @@
             "gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy": {
                 "policyData": "policy_data"
             },
+            "gcp:compute/getRegionDisk:getRegionDisk": {
+                "asyncPrimaryDisks": "async_primary_disk",
+                "creationTimestamp": "creation_timestamp",
+                "diskEncryptionKeys": "disk_encryption_key",
+                "effectiveLabels": "effective_labels",
+                "guestOsFeatures": "guest_os_features",
+                "labelFingerprint": "label_fingerprint",
+                "lastAttachTimestamp": "last_attach_timestamp",
+                "lastDetachTimestamp": "last_detach_timestamp",
+                "physicalBlockSizeBytes": "physical_block_size_bytes",
+                "pulumiLabels": "terraform_labels",
+                "replicaZones": "replica_zones",
+                "selfLink": "self_link",
+                "sourceDisk": "source_disk",
+                "sourceDiskId": "source_disk_id",
+                "sourceSnapshotEncryptionKeys": "source_snapshot_encryption_key",
+                "sourceSnapshotId": "source_snapshot_id"
+            },
+            "gcp:compute/getRegionDiskDiskEncryptionKey:getRegionDiskDiskEncryptionKey": {
+                "kmsKeyName": "kms_key_name",
+                "rawKey": "raw_key"
+            },
             "gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy": {
                 "policyData": "policy_data"
+            },
+            "gcp:compute/getRegionDiskSourceSnapshotEncryptionKey:getRegionDiskSourceSnapshotEncryptionKey": {
+                "kmsKeyName": "kms_key_name",
+                "rawKey": "raw_key"
             },
             "gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup": {
                 "selfLink": "self_link"
@@ -37444,6 +37698,7 @@
                 "gatewayIpv4": "gateway_ipv4",
                 "internalIpv6Range": "internal_ipv6_range",
                 "networkFirewallPolicyEnforcementOrder": "network_firewall_policy_enforcement_order",
+                "numericId": "numeric_id",
                 "routingMode": "routing_mode",
                 "selfLink": "self_link"
             },
@@ -37553,6 +37808,7 @@
                 "minimalAction": "minimal_action",
                 "mostDisruptiveAllowedAction": "most_disruptive_allowed_action",
                 "preservedState": "preserved_state",
+                "removeInstanceOnDestroy": "remove_instance_on_destroy",
                 "removeInstanceStateOnDestroy": "remove_instance_state_on_destroy"
             },
             "gcp:compute/projectDefaultNetworkTier:ProjectDefaultNetworkTier": {
@@ -37725,6 +37981,7 @@
                 "mostDisruptiveAllowedAction": "most_disruptive_allowed_action",
                 "preservedState": "preserved_state",
                 "regionInstanceGroupManager": "region_instance_group_manager",
+                "removeInstanceOnDestroy": "remove_instance_on_destroy",
                 "removeInstanceStateOnDestroy": "remove_instance_state_on_destroy"
             },
             "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy": {
@@ -38533,6 +38790,7 @@
                 "additionalPodNetworkConfigs": "additional_pod_network_configs",
                 "createPodRange": "create_pod_range",
                 "enablePrivateNodes": "enable_private_nodes",
+                "networkPerformanceConfig": "network_performance_config",
                 "podCidrOverprovisionConfig": "pod_cidr_overprovision_config",
                 "podIpv4CidrBlock": "pod_ipv4_cidr_block",
                 "podRange": "pod_range"
@@ -38540,6 +38798,9 @@
             "gcp:container/ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig:ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig": {
                 "maxPodsPerNode": "max_pods_per_node",
                 "secondaryPodRange": "secondary_pod_range"
+            },
+            "gcp:container/ClusterNodePoolNetworkConfigNetworkPerformanceConfig:ClusterNodePoolNetworkConfigNetworkPerformanceConfig": {
+                "totalEgressBandwidthTier": "total_egress_bandwidth_tier"
             },
             "gcp:container/ClusterNodePoolNodeConfig:ClusterNodePoolNodeConfig": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -38695,6 +38956,7 @@
                 "additionalPodNetworkConfigs": "additional_pod_network_configs",
                 "createPodRange": "create_pod_range",
                 "enablePrivateNodes": "enable_private_nodes",
+                "networkPerformanceConfig": "network_performance_config",
                 "podCidrOverprovisionConfig": "pod_cidr_overprovision_config",
                 "podIpv4CidrBlock": "pod_ipv4_cidr_block",
                 "podRange": "pod_range"
@@ -38702,6 +38964,9 @@
             "gcp:container/NodePoolNetworkConfigAdditionalPodNetworkConfig:NodePoolNetworkConfigAdditionalPodNetworkConfig": {
                 "maxPodsPerNode": "max_pods_per_node",
                 "secondaryPodRange": "secondary_pod_range"
+            },
+            "gcp:container/NodePoolNetworkConfigNetworkPerformanceConfig:NodePoolNetworkConfigNetworkPerformanceConfig": {
+                "totalEgressBandwidthTier": "total_egress_bandwidth_tier"
             },
             "gcp:container/NodePoolNodeConfig:NodePoolNodeConfig": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -39280,6 +39545,7 @@
                 "additionalPodNetworkConfigs": "additional_pod_network_configs",
                 "createPodRange": "create_pod_range",
                 "enablePrivateNodes": "enable_private_nodes",
+                "networkPerformanceConfigs": "network_performance_config",
                 "podCidrOverprovisionConfigs": "pod_cidr_overprovision_config",
                 "podIpv4CidrBlock": "pod_ipv4_cidr_block",
                 "podRange": "pod_range"
@@ -39287,6 +39553,9 @@
             "gcp:container/getClusterNodePoolNetworkConfigAdditionalPodNetworkConfig:getClusterNodePoolNetworkConfigAdditionalPodNetworkConfig": {
                 "maxPodsPerNode": "max_pods_per_node",
                 "secondaryPodRange": "secondary_pod_range"
+            },
+            "gcp:container/getClusterNodePoolNetworkConfigNetworkPerformanceConfig:getClusterNodePoolNetworkConfigNetworkPerformanceConfig": {
+                "totalEgressBandwidthTier": "total_egress_bandwidth_tier"
             },
             "gcp:container/getClusterNodePoolNodeConfig:getClusterNodePoolNodeConfig": {
                 "advancedMachineFeatures": "advanced_machine_features",
@@ -39882,7 +40151,11 @@
                 "policyData": "policy_data"
             },
             "gcp:dataform/repository:Repository": {
+                "displayName": "display_name",
+                "effectiveLabels": "effective_labels",
                 "gitRemoteSettings": "git_remote_settings",
+                "npmrcEnvironmentVariablesSecretVersion": "npmrc_environment_variables_secret_version",
+                "pulumiLabels": "terraform_labels",
                 "serviceAccount": "service_account",
                 "workspaceCompilationOverrides": "workspace_compilation_overrides"
             },
@@ -44255,6 +44528,9 @@
                 "issuerUri": "issuer_uri",
                 "jwksJson": "jwks_json"
             },
+            "gcp:iam/WorkloadIdentityPoolProviderSaml:WorkloadIdentityPoolProviderSaml": {
+                "idpMetadataXml": "idp_metadata_xml"
+            },
             "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy": {
                 "displayName": "display_name"
             },
@@ -44281,6 +44557,7 @@
                 "attributeMapping": "attribute_mapping",
                 "displayName": "display_name",
                 "oidcs": "oidc",
+                "samls": "saml",
                 "workloadIdentityPoolId": "workload_identity_pool_id",
                 "workloadIdentityPoolProviderId": "workload_identity_pool_provider_id"
             },
@@ -44291,6 +44568,9 @@
                 "allowedAudiences": "allowed_audiences",
                 "issuerUri": "issuer_uri",
                 "jwksJson": "jwks_json"
+            },
+            "gcp:iam/getWorkloadIdentityPoolProviderSaml:getWorkloadIdentityPoolProviderSaml": {
+                "idpMetadataXml": "idp_metadata_xml"
             },
             "gcp:iam/workforcePool:WorkforcePool": {
                 "accessRestrictions": "access_restrictions",
@@ -44722,6 +45002,7 @@
                 "vertexAiCustomEndpoint": "vertex_ai_custom_endpoint",
                 "vmwareengineCustomEndpoint": "vmwareengine_custom_endpoint",
                 "vpcAccessCustomEndpoint": "vpc_access_custom_endpoint",
+                "workbenchCustomEndpoint": "workbench_custom_endpoint",
                 "workflowsCustomEndpoint": "workflows_custom_endpoint",
                 "workstationsCustomEndpoint": "workstations_custom_endpoint"
             },
@@ -46307,7 +46588,9 @@
             },
             "gcp:notebooks/runtime:Runtime": {
                 "accessConfig": "access_config",
+                "effectiveLabels": "effective_labels",
                 "healthState": "health_state",
+                "pulumiLabels": "terraform_labels",
                 "softwareConfig": "software_config",
                 "virtualMachine": "virtual_machine"
             },
@@ -46439,6 +46722,18 @@
                 "pulumiLabels": "terraform_labels",
                 "skipDelete": "skip_delete"
             },
+            "gcp:orgpolicy/PolicyDryRunSpec:PolicyDryRunSpec": {
+                "inheritFromParent": "inherit_from_parent",
+                "updateTime": "update_time"
+            },
+            "gcp:orgpolicy/PolicyDryRunSpecRule:PolicyDryRunSpecRule": {
+                "allowAll": "allow_all",
+                "denyAll": "deny_all"
+            },
+            "gcp:orgpolicy/PolicyDryRunSpecRuleValues:PolicyDryRunSpecRuleValues": {
+                "allowedValues": "allowed_values",
+                "deniedValues": "denied_values"
+            },
             "gcp:orgpolicy/PolicySpec:PolicySpec": {
                 "inheritFromParent": "inherit_from_parent",
                 "updateTime": "update_time"
@@ -46457,6 +46752,9 @@
                 "methodTypes": "method_types",
                 "resourceTypes": "resource_types",
                 "updateTime": "update_time"
+            },
+            "gcp:orgpolicy/policy:Policy": {
+                "dryRunSpec": "dry_run_spec"
             },
             "gcp:osconfig/GuestPoliciesAssignment:GuestPoliciesAssignment": {
                 "groupLabels": "group_labels",
@@ -47046,6 +47344,10 @@
                 "testingChallenge": "testing_challenge",
                 "testingScore": "testing_score"
             },
+            "gcp:recaptcha/EnterpriseKeyWafSettings:EnterpriseKeyWafSettings": {
+                "wafFeature": "waf_feature",
+                "wafService": "waf_service"
+            },
             "gcp:recaptcha/EnterpriseKeyWebSettings:EnterpriseKeyWebSettings": {
                 "allowAllDomains": "allow_all_domains",
                 "allowAmpTraffic": "allow_amp_traffic",
@@ -47061,6 +47363,7 @@
                 "iosSettings": "ios_settings",
                 "pulumiLabels": "terraform_labels",
                 "testingOptions": "testing_options",
+                "wafSettings": "waf_settings",
                 "webSettings": "web_settings"
             },
             "gcp:redis/ClusterDiscoveryEndpoint:ClusterDiscoveryEndpoint": {
@@ -47332,6 +47635,16 @@
                 "isSecretDataBase64": "is_secret_data_base64",
                 "secretData": "secret_data"
             },
+            "gcp:securesourcemanager/InstanceHostConfig:InstanceHostConfig": {
+                "gitHttp": "git_http",
+                "gitSsh": "git_ssh"
+            },
+            "gcp:securesourcemanager/InstancePrivateConfig:InstancePrivateConfig": {
+                "caPool": "ca_pool",
+                "httpServiceAttachment": "http_service_attachment",
+                "isPrivate": "is_private",
+                "sshServiceAttachment": "ssh_service_attachment"
+            },
             "gcp:securesourcemanager/getInstanceIamPolicy:getInstanceIamPolicy": {
                 "instanceId": "instance_id",
                 "policyData": "policy_data"
@@ -47339,8 +47652,12 @@
             "gcp:securesourcemanager/instance:Instance": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
+                "hostConfigs": "host_config",
                 "instanceId": "instance_id",
+                "kmsKey": "kms_key",
+                "privateConfig": "private_config",
                 "pulumiLabels": "terraform_labels",
+                "stateNote": "state_note",
                 "updateTime": "update_time"
             },
             "gcp:securesourcemanager/instanceIamBinding:InstanceIamBinding": {
@@ -47554,7 +47871,9 @@
                 "autoscalingTargets": "autoscaling_targets"
             },
             "gcp:spanner/InstanceAutoscalingConfigAutoscalingLimits:InstanceAutoscalingConfigAutoscalingLimits": {
+                "maxNodes": "max_nodes",
                 "maxProcessingUnits": "max_processing_units",
+                "minNodes": "min_nodes",
                 "minProcessingUnits": "min_processing_units"
             },
             "gcp:spanner/InstanceAutoscalingConfigAutoscalingTargets:InstanceAutoscalingConfigAutoscalingTargets": {
@@ -47589,7 +47908,9 @@
                 "autoscalingTargets": "autoscaling_targets"
             },
             "gcp:spanner/getInstanceAutoscalingConfigAutoscalingLimit:getInstanceAutoscalingConfigAutoscalingLimit": {
+                "maxNodes": "max_nodes",
                 "maxProcessingUnits": "max_processing_units",
+                "minNodes": "min_nodes",
                 "minProcessingUnits": "min_processing_units"
             },
             "gcp:spanner/getInstanceAutoscalingConfigAutoscalingTarget:getInstanceAutoscalingConfigAutoscalingTarget": {
@@ -48868,8 +49189,18 @@
             "gcp:vmwareengine/PrivateCloudVcenter:PrivateCloudVcenter": {
                 "internalIp": "internal_ip"
             },
+            "gcp:vmwareengine/SubnetDhcpAddressRange:SubnetDhcpAddressRange": {
+                "firstAddress": "first_address",
+                "lastAddress": "last_address"
+            },
             "gcp:vmwareengine/cluster:Cluster": {
                 "nodeTypeConfigs": "node_type_configs"
+            },
+            "gcp:vmwareengine/externalAddress:ExternalAddress": {
+                "createTime": "create_time",
+                "externalIp": "external_ip",
+                "internalIp": "internal_ip",
+                "updateTime": "update_time"
             },
             "gcp:vmwareengine/getCluster:getCluster": {
                 "nodeTypeConfigs": "node_type_configs"
@@ -48878,6 +49209,12 @@
                 "customCoreCount": "custom_core_count",
                 "nodeCount": "node_count",
                 "nodeTypeId": "node_type_id"
+            },
+            "gcp:vmwareengine/getExternalAddress:getExternalAddress": {
+                "createTime": "create_time",
+                "externalIp": "external_ip",
+                "internalIp": "internal_ip",
+                "updateTime": "update_time"
             },
             "gcp:vmwareengine/getNetwork:getNetwork": {
                 "vpcNetworks": "vpc_networks"
@@ -48936,6 +49273,20 @@
             "gcp:vmwareengine/getPrivateCloudVcenter:getPrivateCloudVcenter": {
                 "internalIp": "internal_ip"
             },
+            "gcp:vmwareengine/getSubnet:getSubnet": {
+                "createTime": "create_time",
+                "dhcpAddressRanges": "dhcp_address_ranges",
+                "gatewayId": "gateway_id",
+                "gatewayIp": "gateway_ip",
+                "ipCidrRange": "ip_cidr_range",
+                "standardConfig": "standard_config",
+                "updateTime": "update_time",
+                "vlanId": "vlan_id"
+            },
+            "gcp:vmwareengine/getSubnetDhcpAddressRange:getSubnetDhcpAddressRange": {
+                "firstAddress": "first_address",
+                "lastAddress": "last_address"
+            },
             "gcp:vmwareengine/network:Network": {
                 "vpcNetworks": "vpc_networks"
             },
@@ -48968,6 +49319,16 @@
                 "nsxes": "nsx",
                 "vcenters": "vcenter"
             },
+            "gcp:vmwareengine/subnet:Subnet": {
+                "createTime": "create_time",
+                "dhcpAddressRanges": "dhcp_address_ranges",
+                "gatewayId": "gateway_id",
+                "gatewayIp": "gateway_ip",
+                "ipCidrRange": "ip_cidr_range",
+                "standardConfig": "standard_config",
+                "updateTime": "update_time",
+                "vlanId": "vlan_id"
+            },
             "gcp:vpcaccess/ConnectorSubnet:ConnectorSubnet": {
                 "projectId": "project_id"
             },
@@ -48994,6 +49355,61 @@
             },
             "gcp:vpcaccess/getConnectorSubnet:getConnectorSubnet": {
                 "projectId": "project_id"
+            },
+            "gcp:workbench/InstanceGceSetup:InstanceGceSetup": {
+                "acceleratorConfigs": "accelerator_configs",
+                "bootDisk": "boot_disk",
+                "dataDisks": "data_disks",
+                "disablePublicIp": "disable_public_ip",
+                "enableIpForwarding": "enable_ip_forwarding",
+                "machineType": "machine_type",
+                "networkInterfaces": "network_interfaces",
+                "serviceAccounts": "service_accounts",
+                "vmImage": "vm_image"
+            },
+            "gcp:workbench/InstanceGceSetupAcceleratorConfig:InstanceGceSetupAcceleratorConfig": {
+                "coreCount": "core_count"
+            },
+            "gcp:workbench/InstanceGceSetupBootDisk:InstanceGceSetupBootDisk": {
+                "diskEncryption": "disk_encryption",
+                "diskSizeGb": "disk_size_gb",
+                "diskType": "disk_type",
+                "kmsKey": "kms_key"
+            },
+            "gcp:workbench/InstanceGceSetupDataDisks:InstanceGceSetupDataDisks": {
+                "diskEncryption": "disk_encryption",
+                "diskSizeGb": "disk_size_gb",
+                "diskType": "disk_type",
+                "kmsKey": "kms_key"
+            },
+            "gcp:workbench/InstanceGceSetupNetworkInterface:InstanceGceSetupNetworkInterface": {
+                "nicType": "nic_type"
+            },
+            "gcp:workbench/InstanceUpgradeHistory:InstanceUpgradeHistory": {
+                "containerImage": "container_image",
+                "createTime": "create_time",
+                "targetVersion": "target_version",
+                "vmImage": "vm_image"
+            },
+            "gcp:workbench/getInstanceIamPolicy:getInstanceIamPolicy": {
+                "policyData": "policy_data"
+            },
+            "gcp:workbench/instance:Instance": {
+                "createTime": "create_time",
+                "disableProxyAccess": "disable_proxy_access",
+                "effectiveLabels": "effective_labels",
+                "gceSetup": "gce_setup",
+                "healthInfos": "health_info",
+                "healthState": "health_state",
+                "instanceId": "instance_id",
+                "instanceOwners": "instance_owners",
+                "proxyUri": "proxy_uri",
+                "pulumiLabels": "terraform_labels",
+                "updateTime": "update_time",
+                "upgradeHistories": "upgrade_history"
+            },
+            "gcp:workbench/instanceIamPolicy:InstanceIamPolicy": {
+                "policyData": "policy_data"
             },
             "gcp:workflows/workflow:Workflow": {
                 "createTime": "create_time",
@@ -49280,6 +49696,7 @@
             "vertexAiCustomEndpoint": "vertex_ai_custom_endpoint",
             "vmwareengineCustomEndpoint": "vmwareengine_custom_endpoint",
             "vpcAccessCustomEndpoint": "vpc_access_custom_endpoint",
+            "workbenchCustomEndpoint": "workbench_custom_endpoint",
             "workflowsCustomEndpoint": "workflows_custom_endpoint",
             "workstationsCustomEndpoint": "workstations_custom_endpoint"
         }

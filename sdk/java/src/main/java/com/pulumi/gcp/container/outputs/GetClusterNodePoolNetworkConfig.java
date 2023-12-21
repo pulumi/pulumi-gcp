@@ -6,6 +6,7 @@ package com.pulumi.gcp.container.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigNetworkPerformanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -18,6 +19,7 @@ public final class GetClusterNodePoolNetworkConfig {
     private List<GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
     private Boolean createPodRange;
     private Boolean enablePrivateNodes;
+    private List<GetClusterNodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfigs;
     private List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
     private String podIpv4CidrBlock;
     private String podRange;
@@ -34,6 +36,9 @@ public final class GetClusterNodePoolNetworkConfig {
     }
     public Boolean enablePrivateNodes() {
         return this.enablePrivateNodes;
+    }
+    public List<GetClusterNodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfigs() {
+        return this.networkPerformanceConfigs;
     }
     public List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs() {
         return this.podCidrOverprovisionConfigs;
@@ -58,6 +63,7 @@ public final class GetClusterNodePoolNetworkConfig {
         private List<GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs;
         private Boolean createPodRange;
         private Boolean enablePrivateNodes;
+        private List<GetClusterNodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfigs;
         private List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs;
         private String podIpv4CidrBlock;
         private String podRange;
@@ -68,6 +74,7 @@ public final class GetClusterNodePoolNetworkConfig {
     	      this.additionalPodNetworkConfigs = defaults.additionalPodNetworkConfigs;
     	      this.createPodRange = defaults.createPodRange;
     	      this.enablePrivateNodes = defaults.enablePrivateNodes;
+    	      this.networkPerformanceConfigs = defaults.networkPerformanceConfigs;
     	      this.podCidrOverprovisionConfigs = defaults.podCidrOverprovisionConfigs;
     	      this.podIpv4CidrBlock = defaults.podIpv4CidrBlock;
     	      this.podRange = defaults.podRange;
@@ -100,6 +107,14 @@ public final class GetClusterNodePoolNetworkConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder networkPerformanceConfigs(List<GetClusterNodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfigs) {
+            this.networkPerformanceConfigs = Objects.requireNonNull(networkPerformanceConfigs);
+            return this;
+        }
+        public Builder networkPerformanceConfigs(GetClusterNodePoolNetworkConfigNetworkPerformanceConfig... networkPerformanceConfigs) {
+            return networkPerformanceConfigs(List.of(networkPerformanceConfigs));
+        }
+        @CustomType.Setter
         public Builder podCidrOverprovisionConfigs(List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs) {
             this.podCidrOverprovisionConfigs = Objects.requireNonNull(podCidrOverprovisionConfigs);
             return this;
@@ -123,6 +138,7 @@ public final class GetClusterNodePoolNetworkConfig {
             _resultValue.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
             _resultValue.createPodRange = createPodRange;
             _resultValue.enablePrivateNodes = enablePrivateNodes;
+            _resultValue.networkPerformanceConfigs = networkPerformanceConfigs;
             _resultValue.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
             _resultValue.podIpv4CidrBlock = podIpv4CidrBlock;
             _resultValue.podRange = podRange;

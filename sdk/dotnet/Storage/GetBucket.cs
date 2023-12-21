@@ -131,6 +131,7 @@ namespace Pulumi.Gcp.Storage
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         public readonly bool RequesterPays;
         public readonly ImmutableArray<Outputs.GetBucketRetentionPolicyResult> RetentionPolicies;
+        public readonly string Rpo;
         public readonly string SelfLink;
         public readonly string StorageClass;
         public readonly bool UniformBucketLevelAccess;
@@ -178,6 +179,8 @@ namespace Pulumi.Gcp.Storage
 
             ImmutableArray<Outputs.GetBucketRetentionPolicyResult> retentionPolicies,
 
+            string rpo,
+
             string selfLink,
 
             string storageClass,
@@ -209,6 +212,7 @@ namespace Pulumi.Gcp.Storage
             PulumiLabels = pulumiLabels;
             RequesterPays = requesterPays;
             RetentionPolicies = retentionPolicies;
+            Rpo = rpo;
             SelfLink = selfLink;
             StorageClass = storageClass;
             UniformBucketLevelAccess = uniformBucketLevelAccess;

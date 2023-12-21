@@ -442,6 +442,26 @@ public class AlertPolicy extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * The severity of an alert policy indicates how important incidents generated
+     * by that policy are. The severity level will be displayed on the Incident
+     * detail page and in notifications.
+     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     * 
+     */
+    @Export(name="severity", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> severity;
+
+    /**
+     * @return The severity of an alert policy indicates how important incidents generated
+     * by that policy are. The severity level will be displayed on the Incident
+     * detail page and in notifications.
+     * Possible values are: `CRITICAL`, `ERROR`, `WARNING`.
+     * 
+     */
+    public Output<Optional<String>> severity() {
+        return Codegen.optional(this.severity);
+    }
+    /**
      * This field is intended to be used for organizing and identifying the AlertPolicy
      * objects.The field can contain up to 64 entries. Each key and value is limited
      * to 63 Unicode characters or 128 bytes, whichever is smaller. Labels and values

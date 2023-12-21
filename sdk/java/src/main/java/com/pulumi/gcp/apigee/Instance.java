@@ -238,8 +238,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.projects.ServiceIdentity;
  * import com.pulumi.gcp.projects.ServiceIdentityArgs;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
- * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+ * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.apigee.Organization;
  * import com.pulumi.gcp.apigee.OrganizationArgs;
  * import com.pulumi.gcp.apigee.Instance;
@@ -290,10 +290,10 @@ import javax.annotation.Nullable;
  *                 .provider(google_beta)
  *                 .build());
  * 
- *         var apigeeSaKeyuser = new CryptoKeyIAMBinding(&#34;apigeeSaKeyuser&#34;, CryptoKeyIAMBindingArgs.builder()        
+ *         var apigeeSaKeyuser = new CryptoKeyIAMMember(&#34;apigeeSaKeyuser&#34;, CryptoKeyIAMMemberArgs.builder()        
  *             .cryptoKeyId(apigeeKey.id())
  *             .role(&#34;roles/cloudkms.cryptoKeyEncrypterDecrypter&#34;)
- *             .members(apigeeSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
+ *             .member(apigeeSa.email().applyValue(email -&gt; String.format(&#34;serviceAccount:%s&#34;, email)))
  *             .build());
  * 
  *         var apigeeOrg = new Organization(&#34;apigeeOrg&#34;, OrganizationArgs.builder()        

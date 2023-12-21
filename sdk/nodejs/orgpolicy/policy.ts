@@ -99,6 +99,36 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dry_run_spec
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const constraint = new gcp.orgpolicy.CustomConstraint("constraint", {
+ *     actionType: "ALLOW",
+ *     condition: "resource.management.autoUpgrade == false",
+ *     description: "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+ *     displayName: "Disable GKE auto upgrade",
+ *     methodTypes: ["CREATE"],
+ *     parent: "organizations/123456789",
+ *     resourceTypes: ["container.googleapis.com/NodePool"],
+ * });
+ * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     dryRunSpec: {
+ *         inheritFromParent: false,
+ *         reset: false,
+ *         rules: [{
+ *             enforce: "FALSE",
+ *         }],
+ *     },
+ *     parent: "organizations/123456789",
+ *     spec: {
+ *         rules: [{
+ *             enforce: "FALSE",
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -145,6 +175,10 @@ export class Policy extends pulumi.CustomResource {
     }
 
     /**
+     * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+     */
+    public readonly dryRunSpec!: pulumi.Output<outputs.orgpolicy.PolicyDryRunSpec | undefined>;
+    /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */
     public readonly name!: pulumi.Output<string>;
@@ -174,6 +208,7 @@ export class Policy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
+            resourceInputs["dryRunSpec"] = state ? state.dryRunSpec : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
@@ -182,6 +217,7 @@ export class Policy extends pulumi.CustomResource {
             if ((!args || args.parent === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'parent'");
             }
+            resourceInputs["dryRunSpec"] = args ? args.dryRunSpec : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
@@ -195,6 +231,10 @@ export class Policy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Policy resources.
  */
 export interface PolicyState {
+    /**
+     * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+     */
+    dryRunSpec?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpec>;
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */
@@ -217,6 +257,10 @@ export interface PolicyState {
  * The set of arguments for constructing a Policy resource.
  */
 export interface PolicyArgs {
+    /**
+     * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+     */
+    dryRunSpec?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpec>;
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */

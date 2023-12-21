@@ -121,6 +121,7 @@ import * as types from "./types";
 import * as vertex from "./vertex";
 import * as vmwareengine from "./vmwareengine";
 import * as vpcaccess from "./vpcaccess";
+import * as workbench from "./workbench";
 import * as workflows from "./workflows";
 import * as workstations from "./workstations";
 
@@ -233,6 +234,7 @@ export {
     vertex,
     vmwareengine,
     vpcaccess,
+    workbench,
     workflows,
     workstations,
 };

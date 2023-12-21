@@ -123,6 +123,9 @@ import * as utilities from "../utilities";
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
  *     },
+ *     labels: {
+ *         k: "val",
+ *     },
  *     location: "us-central1",
  *     softwareConfig: {
  *         kernels: [{
@@ -153,6 +156,9 @@ import * as utilities from "../utilities";
  *     accessConfig: {
  *         accessType: "SINGLE_USER",
  *         runtimeOwner: "admin@hashicorptest.com",
+ *     },
+ *     labels: {
+ *         k: "val",
  *     },
  *     location: "us-central1",
  *     softwareConfig: {
@@ -230,11 +236,27 @@ export class Runtime extends pulumi.CustomResource {
      */
     public readonly accessConfig!: pulumi.Output<outputs.notebooks.RuntimeAccessConfig | undefined>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
      * The health state of this runtime. For a list of possible output
      * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
      * reference/rest/v1/projects.locations.runtimes#healthstate`.
      */
     public /*out*/ readonly healthState!: pulumi.Output<string>;
+    /**
+     * The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
      * A reference to the zone where the machine resides.
      *
@@ -257,6 +279,11 @@ export class Runtime extends pulumi.CustomResource {
      * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The config settings for software inside the runtime.
      * Structure is documented below.
@@ -286,11 +313,14 @@ export class Runtime extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as RuntimeState | undefined;
             resourceInputs["accessConfig"] = state ? state.accessConfig : undefined;
+            resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["healthState"] = state ? state.healthState : undefined;
+            resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["metrics"] = state ? state.metrics : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["softwareConfig"] = state ? state.softwareConfig : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["virtualMachine"] = state ? state.virtualMachine : undefined;
@@ -300,16 +330,21 @@ export class Runtime extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["accessConfig"] = args ? args.accessConfig : undefined;
+            resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["softwareConfig"] = args ? args.softwareConfig : undefined;
             resourceInputs["virtualMachine"] = args ? args.virtualMachine : undefined;
+            resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["healthState"] = undefined /*out*/;
             resourceInputs["metrics"] = undefined /*out*/;
+            resourceInputs["pulumiLabels"] = undefined /*out*/;
             resourceInputs["state"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
+        const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
+        opts = pulumi.mergeOptions(opts, secretOpts);
         super(Runtime.__pulumiType, name, resourceInputs, opts);
     }
 }
@@ -324,11 +359,27 @@ export interface RuntimeState {
      */
     accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig>;
     /**
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     */
+    effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The health state of this runtime. For a list of possible output
      * values, see `https://cloud.google.com/vertex-ai/docs/workbench/
      * reference/rest/v1/projects.locations.runtimes#healthstate`.
      */
     healthState?: pulumi.Input<string>;
+    /**
+     * The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
      *
@@ -351,6 +402,11 @@ export interface RuntimeState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
+     */
+    pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The config settings for software inside the runtime.
      * Structure is documented below.
@@ -376,6 +432,18 @@ export interface RuntimeArgs {
      * Structure is documented below.
      */
     accessConfig?: pulumi.Input<inputs.notebooks.RuntimeAccessConfig>;
+    /**
+     * The labels to associate with this runtime. Label **keys** must
+     * contain 1 to 63 characters, and must conform to [RFC 1035]
+     * (https://www.ietf.org/rfc/rfc1035.txt). Label **values** may be
+     * empty, but, if present, must contain 1 to 63 characters, and must
+     * conform to [RFC 1035](https://www.ietf.org/rfc/rfc1035.txt). No
+     * more than 32 labels can be associated with a cluster.
+     *
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effectiveLabels` for all of the labels present on the resource.
+     */
+    labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * A reference to the zone where the machine resides.
      *

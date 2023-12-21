@@ -56,6 +56,7 @@ public final class TaxonomyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * User defined name of this taxonomy.
+     * The taxonomy display name must be unique within an organization.
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
@@ -68,6 +69,7 @@ public final class TaxonomyArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return User defined name of this taxonomy.
+     * The taxonomy display name must be unique within an organization.
      * It must: contain only unicode letters, numbers, underscores, dashes
      * and spaces; not start or end with spaces; and be at most 200 bytes
      * long when encoded in UTF-8.
@@ -203,6 +205,7 @@ public final class TaxonomyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName User defined name of this taxonomy.
+         * The taxonomy display name must be unique within an organization.
          * It must: contain only unicode letters, numbers, underscores, dashes
          * and spaces; not start or end with spaces; and be at most 200 bytes
          * long when encoded in UTF-8.
@@ -219,6 +222,7 @@ public final class TaxonomyArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param displayName User defined name of this taxonomy.
+         * The taxonomy display name must be unique within an organization.
          * It must: contain only unicode letters, numbers, underscores, dashes
          * and spaces; not start or end with spaces; and be at most 200 bytes
          * long when encoded in UTF-8.

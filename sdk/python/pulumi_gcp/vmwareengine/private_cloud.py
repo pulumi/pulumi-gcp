@@ -21,7 +21,8 @@ class PrivateCloudArgs:
                  network_config: pulumi.Input['PrivateCloudNetworkConfigArgs'],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PrivateCloud resource.
         :param pulumi.Input[str] location: The location where the PrivateCloud should reside.
@@ -33,6 +34,9 @@ class PrivateCloudArgs:
         :param pulumi.Input[str] name: The ID of the PrivateCloud.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] type: Initial type of the private cloud.
+               Default value is `STANDARD`.
+               Possible values are: `STANDARD`, `TIME_LIMITED`.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "management_cluster", management_cluster)
@@ -43,6 +47,8 @@ class PrivateCloudArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
 
     @property
     @pulumi.getter
@@ -119,6 +125,20 @@ class PrivateCloudArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial type of the private cloud.
+        Default value is `STANDARD`.
+        Possible values are: `STANDARD`, `TIME_LIMITED`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
 
 @pulumi.input_type
 class _PrivateCloudState:
@@ -132,6 +152,7 @@ class _PrivateCloudState:
                  nsxes: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudNsxArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  vcenters: Optional[pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]]] = None):
         """
@@ -151,6 +172,9 @@ class _PrivateCloudState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
+        :param pulumi.Input[str] type: Initial type of the private cloud.
+               Default value is `STANDARD`.
+               Possible values are: `STANDARD`, `TIME_LIMITED`.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input['PrivateCloudVcenterArgs']]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
@@ -173,6 +197,8 @@ class _PrivateCloudState:
             pulumi.set(__self__, "project", project)
         if state is not None:
             pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
         if uid is not None:
             pulumi.set(__self__, "uid", uid)
         if vcenters is not None:
@@ -294,6 +320,20 @@ class _PrivateCloudState:
 
     @property
     @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Initial type of the private cloud.
+        Default value is `STANDARD`.
+        Possible values are: `STANDARD`, `TIME_LIMITED`.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter
     def uid(self) -> Optional[pulumi.Input[str]]:
         """
         System-generated unique identifier for the resource.
@@ -329,9 +369,10 @@ class PrivateCloud(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        / Represents a private cloud resource. Private clouds are zonal resources.
+        Represents a private cloud resource. Private clouds are zonal resources.
 
         To get more information about PrivateCloud, see:
 
@@ -360,6 +401,33 @@ class PrivateCloud(pulumi.CustomResource):
                 node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
                     node_type_id="standard-72",
                     node_count=3,
+                )],
+            ))
+        ```
+        ### Vmware Engine Private Cloud Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pc_nw = gcp.vmwareengine.Network("pc-nw",
+            location="global",
+            type="STANDARD",
+            description="PC network description.")
+        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
+            location="us-west1-a",
+            description="Sample test PC.",
+            type="TIME_LIMITED",
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+                management_cidr="192.168.30.0/24",
+                vmware_engine_network=pc_nw.id,
+            ),
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+                cluster_id="sample-mgmt-cluster",
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                    node_type_id="standard-72",
+                    node_count=1,
+                    custom_core_count=32,
                 )],
             ))
         ```
@@ -399,6 +467,9 @@ class PrivateCloud(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] type: Initial type of the private cloud.
+               Default value is `STANDARD`.
+               Possible values are: `STANDARD`, `TIME_LIMITED`.
         """
         ...
     @overload
@@ -407,7 +478,7 @@ class PrivateCloud(pulumi.CustomResource):
                  args: PrivateCloudArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        / Represents a private cloud resource. Private clouds are zonal resources.
+        Represents a private cloud resource. Private clouds are zonal resources.
 
         To get more information about PrivateCloud, see:
 
@@ -436,6 +507,33 @@ class PrivateCloud(pulumi.CustomResource):
                 node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
                     node_type_id="standard-72",
                     node_count=3,
+                )],
+            ))
+        ```
+        ### Vmware Engine Private Cloud Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pc_nw = gcp.vmwareengine.Network("pc-nw",
+            location="global",
+            type="STANDARD",
+            description="PC network description.")
+        vmw_engine_pc = gcp.vmwareengine.PrivateCloud("vmw-engine-pc",
+            location="us-west1-a",
+            description="Sample test PC.",
+            type="TIME_LIMITED",
+            network_config=gcp.vmwareengine.PrivateCloudNetworkConfigArgs(
+                management_cidr="192.168.30.0/24",
+                vmware_engine_network=pc_nw.id,
+            ),
+            management_cluster=gcp.vmwareengine.PrivateCloudManagementClusterArgs(
+                cluster_id="sample-mgmt-cluster",
+                node_type_configs=[gcp.vmwareengine.PrivateCloudManagementClusterNodeTypeConfigArgs(
+                    node_type_id="standard-72",
+                    node_count=1,
+                    custom_core_count=32,
                 )],
             ))
         ```
@@ -485,6 +583,7 @@ class PrivateCloud(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[pulumi.InputType['PrivateCloudNetworkConfigArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -506,6 +605,7 @@ class PrivateCloud(pulumi.CustomResource):
                 raise TypeError("Missing required property 'network_config'")
             __props__.__dict__["network_config"] = network_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["type"] = type
             __props__.__dict__["hcxes"] = None
             __props__.__dict__["nsxes"] = None
             __props__.__dict__["state"] = None
@@ -530,6 +630,7 @@ class PrivateCloud(pulumi.CustomResource):
             nsxes: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudNsxArgs']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
+            type: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             vcenters: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudVcenterArgs']]]]] = None) -> 'PrivateCloud':
         """
@@ -554,6 +655,9 @@ class PrivateCloud(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: State of the appliance.
                Possible values are: `ACTIVE`, `CREATING`.
+        :param pulumi.Input[str] type: Initial type of the private cloud.
+               Default value is `STANDARD`.
+               Possible values are: `STANDARD`, `TIME_LIMITED`.
         :param pulumi.Input[str] uid: System-generated unique identifier for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['PrivateCloudVcenterArgs']]]] vcenters: Details about a vCenter Server management appliance.
                Structure is documented below.
@@ -571,6 +675,7 @@ class PrivateCloud(pulumi.CustomResource):
         __props__.__dict__["nsxes"] = nsxes
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
+        __props__.__dict__["type"] = type
         __props__.__dict__["uid"] = uid
         __props__.__dict__["vcenters"] = vcenters
         return PrivateCloud(resource_name, opts=opts, __props__=__props__)
@@ -652,6 +757,16 @@ class PrivateCloud(pulumi.CustomResource):
         Possible values are: `ACTIVE`, `CREATING`.
         """
         return pulumi.get(self, "state")
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Initial type of the private cloud.
+        Default value is `STANDARD`.
+        Possible values are: `STANDARD`, `TIME_LIMITED`.
+        """
+        return pulumi.get(self, "type")
 
     @property
     @pulumi.getter

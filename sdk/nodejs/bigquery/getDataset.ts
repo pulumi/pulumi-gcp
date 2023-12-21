@@ -62,6 +62,7 @@ export interface GetDatasetResult {
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly etag: string;
+    readonly externalDatasetReferences: outputs.bigquery.GetDatasetExternalDatasetReference[];
     readonly friendlyName: string;
     /**
      * The provider-assigned unique ID for this managed resource.

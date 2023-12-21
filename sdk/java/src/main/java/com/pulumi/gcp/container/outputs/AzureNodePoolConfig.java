@@ -21,6 +21,11 @@ public final class AzureNodePoolConfig {
      */
     private @Nullable String imageType;
     /**
+     * @return Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    private @Nullable Map<String,String> labels;
+    /**
      * @return Proxy configuration for outbound HTTP(S) traffic.
      * 
      */
@@ -53,6 +58,13 @@ public final class AzureNodePoolConfig {
      */
     public Optional<String> imageType() {
         return Optional.ofNullable(this.imageType);
+    }
+    /**
+     * @return Optional. The initial labels assigned to nodes of this node pool. An object containing a list of &#34;key&#34;: value pairs. Example: { &#34;name&#34;: &#34;wrench&#34;, &#34;mass&#34;: &#34;1.3kg&#34;, &#34;count&#34;: &#34;3&#34; }.
+     * 
+     */
+    public Map<String,String> labels() {
+        return this.labels == null ? Map.of() : this.labels;
     }
     /**
      * @return Proxy configuration for outbound HTTP(S) traffic.
@@ -100,6 +112,7 @@ public final class AzureNodePoolConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String imageType;
+        private @Nullable Map<String,String> labels;
         private @Nullable AzureNodePoolConfigProxyConfig proxyConfig;
         private @Nullable AzureNodePoolConfigRootVolume rootVolume;
         private AzureNodePoolConfigSshConfig sshConfig;
@@ -109,6 +122,7 @@ public final class AzureNodePoolConfig {
         public Builder(AzureNodePoolConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.imageType = defaults.imageType;
+    	      this.labels = defaults.labels;
     	      this.proxyConfig = defaults.proxyConfig;
     	      this.rootVolume = defaults.rootVolume;
     	      this.sshConfig = defaults.sshConfig;
@@ -119,6 +133,11 @@ public final class AzureNodePoolConfig {
         @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
             this.imageType = imageType;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder labels(@Nullable Map<String,String> labels) {
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
@@ -149,6 +168,7 @@ public final class AzureNodePoolConfig {
         public AzureNodePoolConfig build() {
             final var _resultValue = new AzureNodePoolConfig();
             _resultValue.imageType = imageType;
+            _resultValue.labels = labels;
             _resultValue.proxyConfig = proxyConfig;
             _resultValue.rootVolume = rootVolume;
             _resultValue.sshConfig = sshConfig;

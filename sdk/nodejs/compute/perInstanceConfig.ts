@@ -179,6 +179,11 @@ export class PerInstanceConfig extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     */
+    public readonly removeInstanceOnDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
      * State will be removed on the next instance recreation or update.
@@ -208,6 +213,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["preservedState"] = state ? state.preservedState : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["removeInstanceOnDestroy"] = state ? state.removeInstanceOnDestroy : undefined;
             resourceInputs["removeInstanceStateOnDestroy"] = state ? state.removeInstanceStateOnDestroy : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -221,6 +227,7 @@ export class PerInstanceConfig extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["preservedState"] = args ? args.preservedState : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["removeInstanceOnDestroy"] = args ? args.removeInstanceOnDestroy : undefined;
             resourceInputs["removeInstanceStateOnDestroy"] = args ? args.removeInstanceStateOnDestroy : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
         }
@@ -272,6 +279,11 @@ export interface PerInstanceConfigState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     */
+    removeInstanceOnDestroy?: pulumi.Input<boolean>;
     /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.
@@ -327,6 +339,11 @@ export interface PerInstanceConfigArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * When true, deleting this config will immediately remove the underlying instance.
+     * When false, deleting this config will use the behavior as determined by remove_instance_on_destroy.
+     */
+    removeInstanceOnDestroy?: pulumi.Input<boolean>;
     /**
      * When true, deleting this config will immediately remove any specified state from the underlying instance.
      * When false, deleting this config will *not* immediately remove any state from the underlying instance.

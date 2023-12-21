@@ -519,6 +519,29 @@ class Instance(pulumi.CustomResource):
             },
             processing_units=200)
         ```
+        ### Spanner Instance With Autoscaling
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            autoscaling_config=gcp.spanner.InstanceAutoscalingConfigArgs(
+                autoscaling_limits=gcp.spanner.InstanceAutoscalingConfigAutoscalingLimitsArgs(
+                    max_processing_units=3000,
+                    min_processing_units=2000,
+                ),
+                autoscaling_targets=gcp.spanner.InstanceAutoscalingConfigAutoscalingTargetsArgs(
+                    high_priority_cpu_utilization_percent=75,
+                    storage_utilization_percent=90,
+                ),
+            ),
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
+            labels={
+                "foo": "bar",
+            })
+        ```
         ### Spanner Instance Multi Regional
 
         ```python
@@ -639,6 +662,29 @@ class Instance(pulumi.CustomResource):
                 "foo": "bar",
             },
             processing_units=200)
+        ```
+        ### Spanner Instance With Autoscaling
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.spanner.Instance("example",
+            autoscaling_config=gcp.spanner.InstanceAutoscalingConfigArgs(
+                autoscaling_limits=gcp.spanner.InstanceAutoscalingConfigAutoscalingLimitsArgs(
+                    max_processing_units=3000,
+                    min_processing_units=2000,
+                ),
+                autoscaling_targets=gcp.spanner.InstanceAutoscalingConfigAutoscalingTargetsArgs(
+                    high_priority_cpu_utilization_percent=75,
+                    storage_utilization_percent=90,
+                ),
+            ),
+            config="regional-us-central1",
+            display_name="Test Spanner Instance",
+            labels={
+                "foo": "bar",
+            })
         ```
         ### Spanner Instance Multi Regional
 

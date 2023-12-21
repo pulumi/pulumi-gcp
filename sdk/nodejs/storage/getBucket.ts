@@ -67,6 +67,7 @@ export interface GetBucketResult {
     readonly pulumiLabels: {[key: string]: string};
     readonly requesterPays: boolean;
     readonly retentionPolicies: outputs.storage.GetBucketRetentionPolicy[];
+    readonly rpo: string;
     readonly selfLink: string;
     readonly storageClass: string;
     readonly uniformBucketLevelAccess: boolean;

@@ -21,6 +21,7 @@ __all__ = [
     'PrivateCloudNetworkConfig',
     'PrivateCloudNsx',
     'PrivateCloudVcenter',
+    'SubnetDhcpAddressRange',
     'GetClusterNodeTypeConfigResult',
     'GetNetworkPolicyExternalIpResult',
     'GetNetworkPolicyInternetAccessResult',
@@ -31,6 +32,7 @@ __all__ = [
     'GetPrivateCloudNetworkConfigResult',
     'GetPrivateCloudNsxResult',
     'GetPrivateCloudVcenterResult',
+    'GetSubnetDhcpAddressRangeResult',
 ]
 
 @pulumi.output_type
@@ -675,6 +677,60 @@ class PrivateCloudVcenter(dict):
 
 
 @pulumi.output_type
+class SubnetDhcpAddressRange(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "firstAddress":
+            suggest = "first_address"
+        elif key == "lastAddress":
+            suggest = "last_address"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SubnetDhcpAddressRange. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SubnetDhcpAddressRange.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SubnetDhcpAddressRange.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 first_address: Optional[str] = None,
+                 last_address: Optional[str] = None):
+        """
+        :param str first_address: (Output)
+               The first IP address of the range.
+        :param str last_address: (Output)
+               The last IP address of the range.
+        """
+        if first_address is not None:
+            pulumi.set(__self__, "first_address", first_address)
+        if last_address is not None:
+            pulumi.set(__self__, "last_address", last_address)
+
+    @property
+    @pulumi.getter(name="firstAddress")
+    def first_address(self) -> Optional[str]:
+        """
+        (Output)
+        The first IP address of the range.
+        """
+        return pulumi.get(self, "first_address")
+
+    @property
+    @pulumi.getter(name="lastAddress")
+    def last_address(self) -> Optional[str]:
+        """
+        (Output)
+        The last IP address of the range.
+        """
+        return pulumi.get(self, "last_address")
+
+
+@pulumi.output_type
 class GetClusterNodeTypeConfigResult(dict):
     def __init__(__self__, *,
                  custom_core_count: int,
@@ -939,5 +995,24 @@ class GetPrivateCloudVcenterResult(dict):
     @pulumi.getter
     def version(self) -> str:
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetSubnetDhcpAddressRangeResult(dict):
+    def __init__(__self__, *,
+                 first_address: str,
+                 last_address: str):
+        pulumi.set(__self__, "first_address", first_address)
+        pulumi.set(__self__, "last_address", last_address)
+
+    @property
+    @pulumi.getter(name="firstAddress")
+    def first_address(self) -> str:
+        return pulumi.get(self, "first_address")
+
+    @property
+    @pulumi.getter(name="lastAddress")
+    def last_address(self) -> str:
+        return pulumi.get(self, "last_address")
 
 

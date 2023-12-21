@@ -25,7 +25,8 @@ class WorkloadIdentityPoolProviderArgs:
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 saml: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']] = None):
         """
         The set of arguments for constructing a WorkloadIdentityPoolProvider resource.
         :param pulumi.Input[str] workload_identity_pool_id: The ID used for the pool, which is the final component of the pool resource name. This
@@ -85,16 +86,18 @@ class WorkloadIdentityPoolProviderArgs:
                ```python
                import pulumi
                ```
-        :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc.
+        :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
-        :param pulumi.Input['WorkloadIdentityPoolProviderOidcArgs'] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        :param pulumi.Input['WorkloadIdentityPoolProviderOidcArgs'] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['WorkloadIdentityPoolProviderSamlArgs'] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+               Structure is documented below.
         """
         pulumi.set(__self__, "workload_identity_pool_id", workload_identity_pool_id)
         pulumi.set(__self__, "workload_identity_pool_provider_id", workload_identity_pool_provider_id)
@@ -114,6 +117,8 @@ class WorkloadIdentityPoolProviderArgs:
             pulumi.set(__self__, "oidc", oidc)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
 
     @property
     @pulumi.getter(name="workloadIdentityPoolId")
@@ -220,7 +225,7 @@ class WorkloadIdentityPoolProviderArgs:
     @pulumi.getter
     def aws(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']]:
         """
-        An Amazon Web Services identity provider. Not compatible with the property oidc.
+        An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
         Structure is documented below.
         """
         return pulumi.get(self, "aws")
@@ -270,7 +275,7 @@ class WorkloadIdentityPoolProviderArgs:
     @pulumi.getter
     def oidc(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']]:
         """
-        An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
         Structure is documented below.
         """
         return pulumi.get(self, "oidc")
@@ -292,6 +297,19 @@ class WorkloadIdentityPoolProviderArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']]:
+        """
+        An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']]):
+        pulumi.set(self, "saml", value)
+
 
 @pulumi.input_type
 class _WorkloadIdentityPoolProviderState:
@@ -305,6 +323,7 @@ class _WorkloadIdentityPoolProviderState:
                  name: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 saml: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None):
@@ -358,7 +377,7 @@ class _WorkloadIdentityPoolProviderState:
                ```python
                import pulumi
                ```
-        :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc.
+        :param pulumi.Input['WorkloadIdentityPoolProviderAwsArgs'] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -366,10 +385,12 @@ class _WorkloadIdentityPoolProviderState:
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input[str] name: The resource name of the provider as
                `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
-        :param pulumi.Input['WorkloadIdentityPoolProviderOidcArgs'] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        :param pulumi.Input['WorkloadIdentityPoolProviderOidcArgs'] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['WorkloadIdentityPoolProviderSamlArgs'] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+               Structure is documented below.
         :param pulumi.Input[str] state: The state of the provider.
                * STATE_UNSPECIFIED: State unspecified.
                * ACTIVE: The provider is active, and may be used to validate authentication credentials.
@@ -405,6 +426,8 @@ class _WorkloadIdentityPoolProviderState:
             pulumi.set(__self__, "oidc", oidc)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if saml is not None:
+            pulumi.set(__self__, "saml", saml)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if workload_identity_pool_id is not None:
@@ -486,7 +509,7 @@ class _WorkloadIdentityPoolProviderState:
     @pulumi.getter
     def aws(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderAwsArgs']]:
         """
-        An Amazon Web Services identity provider. Not compatible with the property oidc.
+        An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
         Structure is documented below.
         """
         return pulumi.get(self, "aws")
@@ -549,7 +572,7 @@ class _WorkloadIdentityPoolProviderState:
     @pulumi.getter
     def oidc(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderOidcArgs']]:
         """
-        An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
         Structure is documented below.
         """
         return pulumi.get(self, "oidc")
@@ -570,6 +593,19 @@ class _WorkloadIdentityPoolProviderState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def saml(self) -> Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']]:
+        """
+        An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "saml")
+
+    @saml.setter
+    def saml(self, value: Optional[pulumi.Input['WorkloadIdentityPoolProviderSamlArgs']]):
+        pulumi.set(self, "saml", value)
 
     @property
     @pulumi.getter
@@ -634,6 +670,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 saml: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -730,6 +767,47 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                     "example.com/gcp-oidc-federation",
                 ],
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
+            ))
+        ```
+        ### Iam Workload Identity Pool Provider Saml Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.arn",
+                "attribute.aws_account": "assertion.account",
+                "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
+            },
+            saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
+                idp_metadata_xml=(lambda path: open(path).read())("test-fixtures/metadata.xml"),
+            ))
+        ```
+        ### Iam Workload Identity Pool Provider Saml Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="SAML 2.0 identity pool provider for automated test",
+            disabled=True,
+            attribute_mapping={
+                "google.subject": "assertion.arn",
+                "attribute.aws_account": "assertion.account",
+                "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
+            },
+            saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
+                idp_metadata_xml=(lambda path: open(path).read())("test-fixtures/metadata.xml"),
             ))
         ```
         ### Iam Workload Identity Pool Provider Oidc Upload Key
@@ -839,16 +917,18 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                ```python
                import pulumi
                ```
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc.
+        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
                However, existing tokens still grant access.
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+               Structure is documented below.
         :param pulumi.Input[str] workload_identity_pool_id: The ID used for the pool, which is the final component of the pool resource name. This
                value should be 4-32 characters, and may contain the characters [a-z0-9-]. The prefix
                `gcp-` is reserved for use by Google, and may not be specified.
@@ -960,6 +1040,47 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                 issuer_uri="https://sts.windows.net/azure-tenant-id",
             ))
         ```
+        ### Iam Workload Identity Pool Provider Saml Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            attribute_mapping={
+                "google.subject": "assertion.arn",
+                "attribute.aws_account": "assertion.account",
+                "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
+            },
+            saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
+                idp_metadata_xml=(lambda path: open(path).read())("test-fixtures/metadata.xml"),
+            ))
+        ```
+        ### Iam Workload Identity Pool Provider Saml Full
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        pool = gcp.iam.WorkloadIdentityPool("pool", workload_identity_pool_id="example-pool")
+        example = gcp.iam.WorkloadIdentityPoolProvider("example",
+            workload_identity_pool_id=pool.workload_identity_pool_id,
+            workload_identity_pool_provider_id="example-prvdr",
+            display_name="Name of provider",
+            description="SAML 2.0 identity pool provider for automated test",
+            disabled=True,
+            attribute_mapping={
+                "google.subject": "assertion.arn",
+                "attribute.aws_account": "assertion.account",
+                "attribute.environment": "assertion.arn.contains(\\":instance-profile/Production\\") ? \\"prod\\" : \\"test\\"",
+            },
+            saml=gcp.iam.WorkloadIdentityPoolProviderSamlArgs(
+                idp_metadata_xml=(lambda path: open(path).read())("test-fixtures/metadata.xml"),
+            ))
+        ```
         ### Iam Workload Identity Pool Provider Oidc Upload Key
 
         ```python
@@ -1040,6 +1161,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                  display_name: Optional[pulumi.Input[str]] = None,
                  oidc: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 saml: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']]] = None,
                  workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
                  workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -1059,6 +1181,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["oidc"] = oidc
             __props__.__dict__["project"] = project
+            __props__.__dict__["saml"] = saml
             if workload_identity_pool_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workload_identity_pool_id'")
             __props__.__dict__["workload_identity_pool_id"] = workload_identity_pool_id
@@ -1086,6 +1209,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             oidc: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            saml: Optional[pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']]] = None,
             state: Optional[pulumi.Input[str]] = None,
             workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
             workload_identity_pool_provider_id: Optional[pulumi.Input[str]] = None) -> 'WorkloadIdentityPoolProvider':
@@ -1144,7 +1268,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
                ```python
                import pulumi
                ```
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc.
+        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderAwsArgs']] aws: An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
                Structure is documented below.
         :param pulumi.Input[str] description: A description for the provider. Cannot exceed 256 characters.
         :param pulumi.Input[bool] disabled: Whether the provider is disabled. You cannot use a disabled provider to exchange tokens.
@@ -1152,10 +1276,12 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: A display name for the provider. Cannot exceed 32 characters.
         :param pulumi.Input[str] name: The resource name of the provider as
                `projects/{project_number}/locations/global/workloadIdentityPools/{workload_identity_pool_id}/providers/{workload_identity_pool_provider_id}`.
-        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderOidcArgs']] oidc: An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[pulumi.InputType['WorkloadIdentityPoolProviderSamlArgs']] saml: An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+               Structure is documented below.
         :param pulumi.Input[str] state: The state of the provider.
                * STATE_UNSPECIFIED: State unspecified.
                * ACTIVE: The provider is active, and may be used to validate authentication credentials.
@@ -1186,6 +1312,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["oidc"] = oidc
         __props__.__dict__["project"] = project
+        __props__.__dict__["saml"] = saml
         __props__.__dict__["state"] = state
         __props__.__dict__["workload_identity_pool_id"] = workload_identity_pool_id
         __props__.__dict__["workload_identity_pool_provider_id"] = workload_identity_pool_provider_id
@@ -1257,7 +1384,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     @pulumi.getter
     def aws(self) -> pulumi.Output[Optional['outputs.WorkloadIdentityPoolProviderAws']]:
         """
-        An Amazon Web Services identity provider. Not compatible with the property oidc.
+        An Amazon Web Services identity provider. Not compatible with the property oidc or saml.
         Structure is documented below.
         """
         return pulumi.get(self, "aws")
@@ -1300,7 +1427,7 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
     @pulumi.getter
     def oidc(self) -> pulumi.Output[Optional['outputs.WorkloadIdentityPoolProviderOidc']]:
         """
-        An OpenId Connect 1.0 identity provider. Not compatible with the property aws.
+        An OpenId Connect 1.0 identity provider. Not compatible with the property aws or saml.
         Structure is documented below.
         """
         return pulumi.get(self, "oidc")
@@ -1313,6 +1440,15 @@ class WorkloadIdentityPoolProvider(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def saml(self) -> pulumi.Output[Optional['outputs.WorkloadIdentityPoolProviderSaml']]:
+        """
+        An SAML 2.0 identity provider. Not compatible with the property oidc or aws.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "saml")
 
     @property
     @pulumi.getter

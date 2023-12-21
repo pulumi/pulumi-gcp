@@ -159,6 +159,61 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     /// });
     /// ```
+    /// ### Dry_run_spec
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var constraint = new Gcp.OrgPolicy.CustomConstraint("constraint", new()
+    ///     {
+    ///         ActionType = "ALLOW",
+    ///         Condition = "resource.management.autoUpgrade == false",
+    ///         Description = "Only allow GKE NodePool resource to be created or updated if AutoUpgrade is not enabled where this custom constraint is enforced.",
+    ///         DisplayName = "Disable GKE auto upgrade",
+    ///         MethodTypes = new[]
+    ///         {
+    ///             "CREATE",
+    ///         },
+    ///         Parent = "organizations/123456789",
+    ///         ResourceTypes = new[]
+    ///         {
+    ///             "container.googleapis.com/NodePool",
+    ///         },
+    ///     });
+    /// 
+    ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
+    ///     {
+    ///         DryRunSpec = new Gcp.OrgPolicy.Inputs.PolicyDryRunSpecArgs
+    ///         {
+    ///             InheritFromParent = false,
+    ///             Reset = false,
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.OrgPolicy.Inputs.PolicyDryRunSpecRuleArgs
+    ///                 {
+    ///                     Enforce = "FALSE",
+    ///                 },
+    ///             },
+    ///         },
+    ///         Parent = "organizations/123456789",
+    ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
+    ///         {
+    ///             Rules = new[]
+    ///             {
+    ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
+    ///                 {
+    ///                     Enforce = "FALSE",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -179,6 +234,12 @@ namespace Pulumi.Gcp.OrgPolicy
     [GcpResourceType("gcp:orgpolicy/policy:Policy")]
     public partial class Policy : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// </summary>
+        [Output("dryRunSpec")]
+        public Output<Outputs.PolicyDryRunSpec?> DryRunSpec { get; private set; } = null!;
+
         /// <summary>
         /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         /// </summary>
@@ -248,6 +309,12 @@ namespace Pulumi.Gcp.OrgPolicy
     public sealed class PolicyArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// </summary>
+        [Input("dryRunSpec")]
+        public Input<Inputs.PolicyDryRunSpecArgs>? DryRunSpec { get; set; }
+
+        /// <summary>
         /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         /// </summary>
         [Input("name")]
@@ -277,6 +344,12 @@ namespace Pulumi.Gcp.OrgPolicy
 
     public sealed class PolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
+        /// </summary>
+        [Input("dryRunSpec")]
+        public Input<Inputs.PolicyDryRunSpecGetArgs>? DryRunSpec { get; set; }
+
         /// <summary>
         /// Immutable. The resource name of the Policy. Must be one of the following forms, where constraint_name is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
         /// </summary>

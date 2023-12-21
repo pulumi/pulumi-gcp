@@ -174,15 +174,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const privatecaSa = new gcp.projects.ServiceIdentity("privatecaSa", {service: "privateca.googleapis.com"});
- * const privatecaSaKeyuserSignerverifier = new gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserSignerverifier", {
+ * const privatecaSaKeyuserSignerverifier = new gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserSignerverifier", {
  *     cryptoKeyId: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
  *     role: "roles/cloudkms.signerVerifier",
- *     members: [pulumi.interpolate`serviceAccount:${privatecaSa.email}`],
+ *     member: pulumi.interpolate`serviceAccount:${privatecaSa.email}`,
  * });
- * const privatecaSaKeyuserViewer = new gcp.kms.CryptoKeyIAMBinding("privatecaSaKeyuserViewer", {
+ * const privatecaSaKeyuserViewer = new gcp.kms.CryptoKeyIAMMember("privatecaSaKeyuserViewer", {
  *     cryptoKeyId: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key",
  *     role: "roles/viewer",
- *     members: [pulumi.interpolate`serviceAccount:${privatecaSa.email}`],
+ *     member: pulumi.interpolate`serviceAccount:${privatecaSa.email}`,
  * });
  * const _default = new gcp.certificateauthority.Authority("default", {
  *     pool: "ca-pool",

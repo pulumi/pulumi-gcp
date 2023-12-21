@@ -13935,6 +13935,406 @@ func (o GetInstanceTemplateShieldedInstanceConfigArrayOutput) Index(i pulumi.Int
 	}).(GetInstanceTemplateShieldedInstanceConfigOutput)
 }
 
+type GetRegionDiskAsyncPrimaryDisk struct {
+	Disk string `pulumi:"disk"`
+}
+
+// GetRegionDiskAsyncPrimaryDiskInput is an input type that accepts GetRegionDiskAsyncPrimaryDiskArgs and GetRegionDiskAsyncPrimaryDiskOutput values.
+// You can construct a concrete instance of `GetRegionDiskAsyncPrimaryDiskInput` via:
+//
+//	GetRegionDiskAsyncPrimaryDiskArgs{...}
+type GetRegionDiskAsyncPrimaryDiskInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskAsyncPrimaryDiskOutput() GetRegionDiskAsyncPrimaryDiskOutput
+	ToGetRegionDiskAsyncPrimaryDiskOutputWithContext(context.Context) GetRegionDiskAsyncPrimaryDiskOutput
+}
+
+type GetRegionDiskAsyncPrimaryDiskArgs struct {
+	Disk pulumi.StringInput `pulumi:"disk"`
+}
+
+func (GetRegionDiskAsyncPrimaryDiskArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (i GetRegionDiskAsyncPrimaryDiskArgs) ToGetRegionDiskAsyncPrimaryDiskOutput() GetRegionDiskAsyncPrimaryDiskOutput {
+	return i.ToGetRegionDiskAsyncPrimaryDiskOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskAsyncPrimaryDiskArgs) ToGetRegionDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetRegionDiskAsyncPrimaryDiskOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskAsyncPrimaryDiskOutput)
+}
+
+// GetRegionDiskAsyncPrimaryDiskArrayInput is an input type that accepts GetRegionDiskAsyncPrimaryDiskArray and GetRegionDiskAsyncPrimaryDiskArrayOutput values.
+// You can construct a concrete instance of `GetRegionDiskAsyncPrimaryDiskArrayInput` via:
+//
+//	GetRegionDiskAsyncPrimaryDiskArray{ GetRegionDiskAsyncPrimaryDiskArgs{...} }
+type GetRegionDiskAsyncPrimaryDiskArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskAsyncPrimaryDiskArrayOutput() GetRegionDiskAsyncPrimaryDiskArrayOutput
+	ToGetRegionDiskAsyncPrimaryDiskArrayOutputWithContext(context.Context) GetRegionDiskAsyncPrimaryDiskArrayOutput
+}
+
+type GetRegionDiskAsyncPrimaryDiskArray []GetRegionDiskAsyncPrimaryDiskInput
+
+func (GetRegionDiskAsyncPrimaryDiskArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (i GetRegionDiskAsyncPrimaryDiskArray) ToGetRegionDiskAsyncPrimaryDiskArrayOutput() GetRegionDiskAsyncPrimaryDiskArrayOutput {
+	return i.ToGetRegionDiskAsyncPrimaryDiskArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskAsyncPrimaryDiskArray) ToGetRegionDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetRegionDiskAsyncPrimaryDiskArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskAsyncPrimaryDiskArrayOutput)
+}
+
+type GetRegionDiskAsyncPrimaryDiskOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskAsyncPrimaryDiskOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskOutput) ToGetRegionDiskAsyncPrimaryDiskOutput() GetRegionDiskAsyncPrimaryDiskOutput {
+	return o
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskOutput) ToGetRegionDiskAsyncPrimaryDiskOutputWithContext(ctx context.Context) GetRegionDiskAsyncPrimaryDiskOutput {
+	return o
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskOutput) Disk() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskAsyncPrimaryDisk) string { return v.Disk }).(pulumi.StringOutput)
+}
+
+type GetRegionDiskAsyncPrimaryDiskArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskAsyncPrimaryDiskArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskAsyncPrimaryDisk)(nil)).Elem()
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskArrayOutput) ToGetRegionDiskAsyncPrimaryDiskArrayOutput() GetRegionDiskAsyncPrimaryDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskArrayOutput) ToGetRegionDiskAsyncPrimaryDiskArrayOutputWithContext(ctx context.Context) GetRegionDiskAsyncPrimaryDiskArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskAsyncPrimaryDiskArrayOutput) Index(i pulumi.IntInput) GetRegionDiskAsyncPrimaryDiskOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionDiskAsyncPrimaryDisk {
+		return vs[0].([]GetRegionDiskAsyncPrimaryDisk)[vs[1].(int)]
+	}).(GetRegionDiskAsyncPrimaryDiskOutput)
+}
+
+type GetRegionDiskDiskEncryptionKey struct {
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	RawKey     string `pulumi:"rawKey"`
+	Sha256     string `pulumi:"sha256"`
+}
+
+// GetRegionDiskDiskEncryptionKeyInput is an input type that accepts GetRegionDiskDiskEncryptionKeyArgs and GetRegionDiskDiskEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetRegionDiskDiskEncryptionKeyInput` via:
+//
+//	GetRegionDiskDiskEncryptionKeyArgs{...}
+type GetRegionDiskDiskEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskDiskEncryptionKeyOutput() GetRegionDiskDiskEncryptionKeyOutput
+	ToGetRegionDiskDiskEncryptionKeyOutputWithContext(context.Context) GetRegionDiskDiskEncryptionKeyOutput
+}
+
+type GetRegionDiskDiskEncryptionKeyArgs struct {
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	RawKey     pulumi.StringInput `pulumi:"rawKey"`
+	Sha256     pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetRegionDiskDiskEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskDiskEncryptionKeyArgs) ToGetRegionDiskDiskEncryptionKeyOutput() GetRegionDiskDiskEncryptionKeyOutput {
+	return i.ToGetRegionDiskDiskEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskDiskEncryptionKeyArgs) ToGetRegionDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskDiskEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskDiskEncryptionKeyOutput)
+}
+
+// GetRegionDiskDiskEncryptionKeyArrayInput is an input type that accepts GetRegionDiskDiskEncryptionKeyArray and GetRegionDiskDiskEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetRegionDiskDiskEncryptionKeyArrayInput` via:
+//
+//	GetRegionDiskDiskEncryptionKeyArray{ GetRegionDiskDiskEncryptionKeyArgs{...} }
+type GetRegionDiskDiskEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskDiskEncryptionKeyArrayOutput() GetRegionDiskDiskEncryptionKeyArrayOutput
+	ToGetRegionDiskDiskEncryptionKeyArrayOutputWithContext(context.Context) GetRegionDiskDiskEncryptionKeyArrayOutput
+}
+
+type GetRegionDiskDiskEncryptionKeyArray []GetRegionDiskDiskEncryptionKeyInput
+
+func (GetRegionDiskDiskEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskDiskEncryptionKeyArray) ToGetRegionDiskDiskEncryptionKeyArrayOutput() GetRegionDiskDiskEncryptionKeyArrayOutput {
+	return i.ToGetRegionDiskDiskEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskDiskEncryptionKeyArray) ToGetRegionDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskDiskEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskDiskEncryptionKeyArrayOutput)
+}
+
+type GetRegionDiskDiskEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskDiskEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskDiskEncryptionKeyOutput) ToGetRegionDiskDiskEncryptionKeyOutput() GetRegionDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionDiskDiskEncryptionKeyOutput) ToGetRegionDiskDiskEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskDiskEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionDiskDiskEncryptionKeyOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+func (o GetRegionDiskDiskEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+func (o GetRegionDiskDiskEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskDiskEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetRegionDiskDiskEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskDiskEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskDiskEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskDiskEncryptionKeyArrayOutput) ToGetRegionDiskDiskEncryptionKeyArrayOutput() GetRegionDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskDiskEncryptionKeyArrayOutput) ToGetRegionDiskDiskEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskDiskEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskDiskEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetRegionDiskDiskEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionDiskDiskEncryptionKey {
+		return vs[0].([]GetRegionDiskDiskEncryptionKey)[vs[1].(int)]
+	}).(GetRegionDiskDiskEncryptionKeyOutput)
+}
+
+type GetRegionDiskGuestOsFeature struct {
+	Type string `pulumi:"type"`
+}
+
+// GetRegionDiskGuestOsFeatureInput is an input type that accepts GetRegionDiskGuestOsFeatureArgs and GetRegionDiskGuestOsFeatureOutput values.
+// You can construct a concrete instance of `GetRegionDiskGuestOsFeatureInput` via:
+//
+//	GetRegionDiskGuestOsFeatureArgs{...}
+type GetRegionDiskGuestOsFeatureInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskGuestOsFeatureOutput() GetRegionDiskGuestOsFeatureOutput
+	ToGetRegionDiskGuestOsFeatureOutputWithContext(context.Context) GetRegionDiskGuestOsFeatureOutput
+}
+
+type GetRegionDiskGuestOsFeatureArgs struct {
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetRegionDiskGuestOsFeatureArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (i GetRegionDiskGuestOsFeatureArgs) ToGetRegionDiskGuestOsFeatureOutput() GetRegionDiskGuestOsFeatureOutput {
+	return i.ToGetRegionDiskGuestOsFeatureOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskGuestOsFeatureArgs) ToGetRegionDiskGuestOsFeatureOutputWithContext(ctx context.Context) GetRegionDiskGuestOsFeatureOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskGuestOsFeatureOutput)
+}
+
+// GetRegionDiskGuestOsFeatureArrayInput is an input type that accepts GetRegionDiskGuestOsFeatureArray and GetRegionDiskGuestOsFeatureArrayOutput values.
+// You can construct a concrete instance of `GetRegionDiskGuestOsFeatureArrayInput` via:
+//
+//	GetRegionDiskGuestOsFeatureArray{ GetRegionDiskGuestOsFeatureArgs{...} }
+type GetRegionDiskGuestOsFeatureArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskGuestOsFeatureArrayOutput() GetRegionDiskGuestOsFeatureArrayOutput
+	ToGetRegionDiskGuestOsFeatureArrayOutputWithContext(context.Context) GetRegionDiskGuestOsFeatureArrayOutput
+}
+
+type GetRegionDiskGuestOsFeatureArray []GetRegionDiskGuestOsFeatureInput
+
+func (GetRegionDiskGuestOsFeatureArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (i GetRegionDiskGuestOsFeatureArray) ToGetRegionDiskGuestOsFeatureArrayOutput() GetRegionDiskGuestOsFeatureArrayOutput {
+	return i.ToGetRegionDiskGuestOsFeatureArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskGuestOsFeatureArray) ToGetRegionDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) GetRegionDiskGuestOsFeatureArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskGuestOsFeatureArrayOutput)
+}
+
+type GetRegionDiskGuestOsFeatureOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskGuestOsFeatureOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (o GetRegionDiskGuestOsFeatureOutput) ToGetRegionDiskGuestOsFeatureOutput() GetRegionDiskGuestOsFeatureOutput {
+	return o
+}
+
+func (o GetRegionDiskGuestOsFeatureOutput) ToGetRegionDiskGuestOsFeatureOutputWithContext(ctx context.Context) GetRegionDiskGuestOsFeatureOutput {
+	return o
+}
+
+func (o GetRegionDiskGuestOsFeatureOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskGuestOsFeature) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetRegionDiskGuestOsFeatureArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskGuestOsFeatureArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskGuestOsFeature)(nil)).Elem()
+}
+
+func (o GetRegionDiskGuestOsFeatureArrayOutput) ToGetRegionDiskGuestOsFeatureArrayOutput() GetRegionDiskGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskGuestOsFeatureArrayOutput) ToGetRegionDiskGuestOsFeatureArrayOutputWithContext(ctx context.Context) GetRegionDiskGuestOsFeatureArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskGuestOsFeatureArrayOutput) Index(i pulumi.IntInput) GetRegionDiskGuestOsFeatureOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionDiskGuestOsFeature {
+		return vs[0].([]GetRegionDiskGuestOsFeature)[vs[1].(int)]
+	}).(GetRegionDiskGuestOsFeatureOutput)
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKey struct {
+	KmsKeyName string `pulumi:"kmsKeyName"`
+	RawKey     string `pulumi:"rawKey"`
+	Sha256     string `pulumi:"sha256"`
+}
+
+// GetRegionDiskSourceSnapshotEncryptionKeyInput is an input type that accepts GetRegionDiskSourceSnapshotEncryptionKeyArgs and GetRegionDiskSourceSnapshotEncryptionKeyOutput values.
+// You can construct a concrete instance of `GetRegionDiskSourceSnapshotEncryptionKeyInput` via:
+//
+//	GetRegionDiskSourceSnapshotEncryptionKeyArgs{...}
+type GetRegionDiskSourceSnapshotEncryptionKeyInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskSourceSnapshotEncryptionKeyOutput() GetRegionDiskSourceSnapshotEncryptionKeyOutput
+	ToGetRegionDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Context) GetRegionDiskSourceSnapshotEncryptionKeyOutput
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKeyArgs struct {
+	KmsKeyName pulumi.StringInput `pulumi:"kmsKeyName"`
+	RawKey     pulumi.StringInput `pulumi:"rawKey"`
+	Sha256     pulumi.StringInput `pulumi:"sha256"`
+}
+
+func (GetRegionDiskSourceSnapshotEncryptionKeyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskSourceSnapshotEncryptionKeyArgs) ToGetRegionDiskSourceSnapshotEncryptionKeyOutput() GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return i.ToGetRegionDiskSourceSnapshotEncryptionKeyOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskSourceSnapshotEncryptionKeyArgs) ToGetRegionDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskSourceSnapshotEncryptionKeyOutput)
+}
+
+// GetRegionDiskSourceSnapshotEncryptionKeyArrayInput is an input type that accepts GetRegionDiskSourceSnapshotEncryptionKeyArray and GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput values.
+// You can construct a concrete instance of `GetRegionDiskSourceSnapshotEncryptionKeyArrayInput` via:
+//
+//	GetRegionDiskSourceSnapshotEncryptionKeyArray{ GetRegionDiskSourceSnapshotEncryptionKeyArgs{...} }
+type GetRegionDiskSourceSnapshotEncryptionKeyArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput
+	ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Context) GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKeyArray []GetRegionDiskSourceSnapshotEncryptionKeyInput
+
+func (GetRegionDiskSourceSnapshotEncryptionKeyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (i GetRegionDiskSourceSnapshotEncryptionKeyArray) ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return i.ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionDiskSourceSnapshotEncryptionKeyArray) ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput)
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKeyOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskSourceSnapshotEncryptionKeyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) ToGetRegionDiskSourceSnapshotEncryptionKeyOutput() GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) ToGetRegionDiskSourceSnapshotEncryptionKeyOutputWithContext(ctx context.Context) GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceSnapshotEncryptionKey) string { return v.KmsKeyName }).(pulumi.StringOutput)
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) RawKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceSnapshotEncryptionKey) string { return v.RawKey }).(pulumi.StringOutput)
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyOutput) Sha256() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionDiskSourceSnapshotEncryptionKey) string { return v.Sha256 }).(pulumi.StringOutput)
+}
+
+type GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionDiskSourceSnapshotEncryptionKey)(nil)).Elem()
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutput() GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput) ToGetRegionDiskSourceSnapshotEncryptionKeyArrayOutputWithContext(ctx context.Context) GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput {
+	return o
+}
+
+func (o GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput) Index(i pulumi.IntInput) GetRegionDiskSourceSnapshotEncryptionKeyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionDiskSourceSnapshotEncryptionKey {
+		return vs[0].([]GetRegionDiskSourceSnapshotEncryptionKey)[vs[1].(int)]
+	}).(GetRegionDiskSourceSnapshotEncryptionKeyOutput)
+}
+
 type GetRegionInstanceGroupInstance struct {
 	// URL to the instance.
 	Instance string `pulumi:"instance"`
@@ -20096,6 +20496,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateServiceAccountArrayInput)(nil)).Elem(), GetInstanceTemplateServiceAccountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateShieldedInstanceConfigInput)(nil)).Elem(), GetInstanceTemplateShieldedInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceTemplateShieldedInstanceConfigArrayInput)(nil)).Elem(), GetInstanceTemplateShieldedInstanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskAsyncPrimaryDiskInput)(nil)).Elem(), GetRegionDiskAsyncPrimaryDiskArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskAsyncPrimaryDiskArrayInput)(nil)).Elem(), GetRegionDiskAsyncPrimaryDiskArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskDiskEncryptionKeyInput)(nil)).Elem(), GetRegionDiskDiskEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskDiskEncryptionKeyArrayInput)(nil)).Elem(), GetRegionDiskDiskEncryptionKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskGuestOsFeatureInput)(nil)).Elem(), GetRegionDiskGuestOsFeatureArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskGuestOsFeatureArrayInput)(nil)).Elem(), GetRegionDiskGuestOsFeatureArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKeyInput)(nil)).Elem(), GetRegionDiskSourceSnapshotEncryptionKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionDiskSourceSnapshotEncryptionKeyArrayInput)(nil)).Elem(), GetRegionDiskSourceSnapshotEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceInput)(nil)).Elem(), GetRegionInstanceGroupInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceArrayInput)(nil)).Elem(), GetRegionInstanceGroupInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionInstanceGroupInstanceNamedPortInput)(nil)).Elem(), GetRegionInstanceGroupInstanceNamedPortArgs{})
@@ -20420,6 +20828,14 @@ func init() {
 	pulumi.RegisterOutputType(GetInstanceTemplateServiceAccountArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateShieldedInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GetInstanceTemplateShieldedInstanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskAsyncPrimaryDiskOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskAsyncPrimaryDiskArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskDiskEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskDiskEncryptionKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskGuestOsFeatureOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskGuestOsFeatureArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskSourceSnapshotEncryptionKeyOutput{})
+	pulumi.RegisterOutputType(GetRegionDiskSourceSnapshotEncryptionKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionInstanceGroupInstanceNamedPortOutput{})
