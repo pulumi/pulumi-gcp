@@ -56,7 +56,7 @@ import (
 //			}
 //			_, err = storage.NewBucketObject(ctx, "defaultBucketObject", &storage.BucketObjectArgs{
 //				Bucket: defaultBucket.Name,
-//				Content: pulumi.All(basicWebApp.AppId, basicWebAppConfig, basicWebAppConfig, "TODO: Lookup", "TODO: Lookup", "TODO: Lookup", "TODO: Lookup").ApplyT(func(_args []interface{}) (string, error) {
+//				Content: pulumi.All(basicWebApp.AppId, basicWebAppConfig, basicWebAppConfig, "TODO: call lookup", "TODO: call lookup", "TODO: call lookup", "TODO: call lookup").ApplyT(func(_args []interface{}) (string, error) {
 //					appId := _args[0].(string)
 //					basicWebAppConfig := _args[1].(firebase.GetWebAppConfigResult)
 //					basicWebAppConfig1 := _args[2].(firebase.GetWebAppConfigResult)
