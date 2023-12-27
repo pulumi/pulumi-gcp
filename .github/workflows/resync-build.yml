@@ -65,7 +65,9 @@ jobs:
       with:
         repo: pulumi/pulumictl
     - name: Install Pulumi CLI
-      uses: pulumi/action-install-pulumi-cli@v2
+      uses: pulumi/actions@v4
+      with:
+        pulumi-version: ^3
     - name: Setup DotNet
       uses: actions/setup-dotnet@v3
       with:
