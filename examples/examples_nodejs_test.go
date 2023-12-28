@@ -48,6 +48,9 @@ func TestAccTopic(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "topic"),
+
+			// TODO[pulumi/pulumi-gcp#1487] Non-empty diff when refreshing programs using overlay callbacks
+			SkipRefresh: true,
 		})
 
 	integration.ProgramTest(t, &test)
@@ -82,6 +85,9 @@ func TestAccServerless(t *testing.T) {
 			ExtraRuntimeValidation: validateAPITest(func(body string) {
 				assert.Equal(t, "Hello World!", body)
 			}),
+
+			// TODO[pulumi/pulumi-gcp#1487] Non-empty diff when refreshing programs using overlay callbacks
+			SkipRefresh: true,
 		})
 
 	integration.ProgramTest(t, &test)

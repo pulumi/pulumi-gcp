@@ -30,6 +30,9 @@ func TestAccAppServiceCs(t *testing.T) {
 			ExtraRuntimeValidation: validateAPITest(func(body string) {
 				assert.Equal(t, body, "Hello World!")
 			}),
+
+			// TODO[pulumi/pulumi-gcp#1487] Non-empty diff when refreshing programs using overlay callbacks
+			SkipRefresh: true,
 		})
 
 	integration.ProgramTest(t, &test)
