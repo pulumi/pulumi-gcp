@@ -19,7 +19,10 @@ import (
 func fixLabelNames(prov *tfbridge.ProviderInfo) {
 	toUpdate := map[string][]resource.PropertyPath{}
 
-	prov.MustTraverseProperties("fix-label-names", func(ctx tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
+	visitor := func(ctx tfbridge.PropertyVisitInfo) (tfbridge.PropertyVisitResult, error) {
+		if ctx.Root.PulumiToken() == "" { // Skip unmapped resources and functions
+			return tfbridge.PropertyVisitResult{}, nil
+		}
 		path := ctx.SchemaPath()
 		key, ok := path[len(path)-1].(walk.GetAttrStep)
 		if !ok {
@@ -45,7 +48,9 @@ func fixLabelNames(prov *tfbridge.ProviderInfo) {
 			return tfbridge.PropertyVisitResult{}, nil
 		}
 		return tfbridge.PropertyVisitResult{HasEffect: true}, nil
-	})
+	}
+
+	prov.MustTraverseProperties("fix-label-names", visitor)
 
 	for token, labelPaths := range toUpdate {
 		prov.Resources[token].TransformFromState = ensureLabelPathsExist(labelPaths)
