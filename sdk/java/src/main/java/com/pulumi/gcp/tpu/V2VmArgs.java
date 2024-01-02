@@ -5,6 +5,7 @@ package com.pulumi.gcp.tpu;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.tpu.inputs.V2VmAcceleratorConfigArgs;
 import com.pulumi.gcp.tpu.inputs.V2VmDataDiskArgs;
 import com.pulumi.gcp.tpu.inputs.V2VmNetworkConfigArgs;
@@ -736,7 +737,9 @@ public final class V2VmArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public V2VmArgs build() {
-            $.runtimeVersion = Objects.requireNonNull($.runtimeVersion, "expected parameter 'runtimeVersion' to be non-null");
+            if ($.runtimeVersion == null) {
+                throw new MissingRequiredPropertyException("V2VmArgs", "runtimeVersion");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.appengine.inputs.StandardAppVersionAutomaticScalingArgs;
 import com.pulumi.gcp.appengine.inputs.StandardAppVersionBasicScalingArgs;
 import com.pulumi.gcp.appengine.inputs.StandardAppVersionDeploymentArgs;
@@ -925,10 +926,18 @@ public final class StandardAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         public StandardAppVersionArgs build() {
-            $.deployment = Objects.requireNonNull($.deployment, "expected parameter 'deployment' to be non-null");
-            $.entrypoint = Objects.requireNonNull($.entrypoint, "expected parameter 'entrypoint' to be non-null");
-            $.runtime = Objects.requireNonNull($.runtime, "expected parameter 'runtime' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.deployment == null) {
+                throw new MissingRequiredPropertyException("StandardAppVersionArgs", "deployment");
+            }
+            if ($.entrypoint == null) {
+                throw new MissingRequiredPropertyException("StandardAppVersionArgs", "entrypoint");
+            }
+            if ($.runtime == null) {
+                throw new MissingRequiredPropertyException("StandardAppVersionArgs", "runtime");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("StandardAppVersionArgs", "service");
+            }
             return $;
         }
     }

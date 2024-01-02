@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class URLMapTestArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public URLMapTestArgs build() {
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("URLMapTestArgs", "host");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("URLMapTestArgs", "path");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("URLMapTestArgs", "service");
+            }
             return $;
         }
     }

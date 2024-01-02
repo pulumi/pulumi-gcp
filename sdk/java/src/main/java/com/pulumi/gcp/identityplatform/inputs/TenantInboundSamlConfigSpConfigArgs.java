@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigSpConfigSpCertificateArgs;
 import java.lang.String;
 import java.util.List;
@@ -182,8 +183,12 @@ public final class TenantInboundSamlConfigSpConfigArgs extends com.pulumi.resour
         }
 
         public TenantInboundSamlConfigSpConfigArgs build() {
-            $.callbackUri = Objects.requireNonNull($.callbackUri, "expected parameter 'callbackUri' to be non-null");
-            $.spEntityId = Objects.requireNonNull($.spEntityId, "expected parameter 'spEntityId' to be non-null");
+            if ($.callbackUri == null) {
+                throw new MissingRequiredPropertyException("TenantInboundSamlConfigSpConfigArgs", "callbackUri");
+            }
+            if ($.spEntityId == null) {
+                throw new MissingRequiredPropertyException("TenantInboundSamlConfigSpConfigArgs", "spEntityId");
+            }
             return $;
         }
     }

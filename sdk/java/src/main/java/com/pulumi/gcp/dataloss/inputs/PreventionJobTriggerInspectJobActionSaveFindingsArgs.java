@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsArgs extends 
         }
 
         public PreventionJobTriggerInspectJobActionSaveFindingsArgs build() {
-            $.outputConfig = Objects.requireNonNull($.outputConfig, "expected parameter 'outputConfig' to be non-null");
+            if ($.outputConfig == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobActionSaveFindingsArgs", "outputConfig");
+            }
             return $;
         }
     }

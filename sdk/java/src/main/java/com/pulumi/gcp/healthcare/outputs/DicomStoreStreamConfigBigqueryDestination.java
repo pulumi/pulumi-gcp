@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class DicomStoreStreamConfigBigqueryDestination {
 
         @CustomType.Setter
         public Builder tableUri(String tableUri) {
-            this.tableUri = Objects.requireNonNull(tableUri);
+            if (tableUri == null) {
+              throw new MissingRequiredPropertyException("DicomStoreStreamConfigBigqueryDestination", "tableUri");
+            }
+            this.tableUri = tableUri;
             return this;
         }
         public DicomStoreStreamConfigBigqueryDestination build() {

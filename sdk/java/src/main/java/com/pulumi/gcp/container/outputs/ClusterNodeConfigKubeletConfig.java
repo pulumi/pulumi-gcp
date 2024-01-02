@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -110,21 +111,27 @@ public final class ClusterNodeConfigKubeletConfig {
 
         @CustomType.Setter
         public Builder cpuCfsQuota(@Nullable Boolean cpuCfsQuota) {
+
             this.cpuCfsQuota = cpuCfsQuota;
             return this;
         }
         @CustomType.Setter
         public Builder cpuCfsQuotaPeriod(@Nullable String cpuCfsQuotaPeriod) {
+
             this.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
-            this.cpuManagerPolicy = Objects.requireNonNull(cpuManagerPolicy);
+            if (cpuManagerPolicy == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeConfigKubeletConfig", "cpuManagerPolicy");
+            }
+            this.cpuManagerPolicy = cpuManagerPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder podPidsLimit(@Nullable Integer podPidsLimit) {
+
             this.podPidsLimit = podPidsLimit;
             return this;
         }

@@ -63,11 +63,13 @@ public final class RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig {
 
         @CustomType.Setter
         public Builder coreCount(@Nullable Integer coreCount) {
+
             this.coreCount = coreCount;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

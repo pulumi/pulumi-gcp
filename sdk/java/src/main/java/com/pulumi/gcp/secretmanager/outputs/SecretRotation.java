@@ -62,11 +62,13 @@ public final class SecretRotation {
 
         @CustomType.Setter
         public Builder nextRotationTime(@Nullable String nextRotationTime) {
+
             this.nextRotationTime = nextRotationTime;
             return this;
         }
         @CustomType.Setter
         public Builder rotationPeriod(@Nullable String rotationPeriod) {
+
             this.rotationPeriod = rotationPeriod;
             return this;
         }

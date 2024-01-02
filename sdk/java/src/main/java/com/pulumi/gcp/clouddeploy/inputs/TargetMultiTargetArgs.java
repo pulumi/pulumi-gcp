@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class TargetMultiTargetArgs extends com.pulumi.resources.ResourceAr
         }
 
         public TargetMultiTargetArgs build() {
-            $.targetIds = Objects.requireNonNull($.targetIds, "expected parameter 'targetIds' to be non-null");
+            if ($.targetIds == null) {
+                throw new MissingRequiredPropertyException("TargetMultiTargetArgs", "targetIds");
+            }
             return $;
         }
     }

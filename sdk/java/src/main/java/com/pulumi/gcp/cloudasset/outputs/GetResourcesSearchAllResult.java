@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudasset.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -156,7 +157,10 @@ public final class GetResourcesSearchAllResult {
 
         @CustomType.Setter
         public Builder additionalAttributes(List<String> additionalAttributes) {
-            this.additionalAttributes = Objects.requireNonNull(additionalAttributes);
+            if (additionalAttributes == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllResult", "additionalAttributes");
+            }
+            this.additionalAttributes = additionalAttributes;
             return this;
         }
         public Builder additionalAttributes(String... additionalAttributes) {
@@ -164,37 +168,58 @@ public final class GetResourcesSearchAllResult {
         }
         @CustomType.Setter
         public Builder assetType(String assetType) {
-            this.assetType = Objects.requireNonNull(assetType);
+            if (assetType == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllResult", "assetType");
+            }
+            this.assetType = assetType;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkTags(List<String> networkTags) {
-            this.networkTags = Objects.requireNonNull(networkTags);
+            if (networkTags == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllResult", "networkTags");
+            }
+            this.networkTags = networkTags;
             return this;
         }
         public Builder networkTags(String... networkTags) {
@@ -202,7 +227,10 @@ public final class GetResourcesSearchAllResult {
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetResourcesSearchAllResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class LiteTopicPartitionConfigCapacity {
 
         @CustomType.Setter
         public Builder publishMibPerSec(Integer publishMibPerSec) {
-            this.publishMibPerSec = Objects.requireNonNull(publishMibPerSec);
+            if (publishMibPerSec == null) {
+              throw new MissingRequiredPropertyException("LiteTopicPartitionConfigCapacity", "publishMibPerSec");
+            }
+            this.publishMibPerSec = publishMibPerSec;
             return this;
         }
         @CustomType.Setter
         public Builder subscribeMibPerSec(Integer subscribeMibPerSec) {
-            this.subscribeMibPerSec = Objects.requireNonNull(subscribeMibPerSec);
+            if (subscribeMibPerSec == null) {
+              throw new MissingRequiredPropertyException("LiteTopicPartitionConfigCapacity", "subscribeMibPerSec");
+            }
+            this.subscribeMibPerSec = subscribeMibPerSec;
             return this;
         }
         public LiteTopicPartitionConfigCapacity build() {

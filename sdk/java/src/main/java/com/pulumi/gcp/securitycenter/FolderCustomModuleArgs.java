@@ -5,6 +5,7 @@ package com.pulumi.gcp.securitycenter;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securitycenter.inputs.FolderCustomModuleCustomConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -210,10 +211,18 @@ public final class FolderCustomModuleArgs extends com.pulumi.resources.ResourceA
         }
 
         public FolderCustomModuleArgs build() {
-            $.customConfig = Objects.requireNonNull($.customConfig, "expected parameter 'customConfig' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.enablementState = Objects.requireNonNull($.enablementState, "expected parameter 'enablementState' to be non-null");
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
+            if ($.customConfig == null) {
+                throw new MissingRequiredPropertyException("FolderCustomModuleArgs", "customConfig");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("FolderCustomModuleArgs", "displayName");
+            }
+            if ($.enablementState == null) {
+                throw new MissingRequiredPropertyException("FolderCustomModuleArgs", "enablementState");
+            }
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("FolderCustomModuleArgs", "folder");
+            }
             return $;
         }
     }

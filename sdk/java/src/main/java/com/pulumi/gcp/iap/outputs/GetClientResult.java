@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iap.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -66,27 +67,42 @@ public final class GetClientResult {
 
         @CustomType.Setter
         public Builder brand(String brand) {
-            this.brand = Objects.requireNonNull(brand);
+            if (brand == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "brand");
+            }
+            this.brand = brand;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetClientResult", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         public GetClientResult build() {

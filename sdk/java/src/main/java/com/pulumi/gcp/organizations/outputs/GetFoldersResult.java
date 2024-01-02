@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.organizations.outputs.GetFoldersFolder;
 import java.lang.String;
 import java.util.List;
@@ -64,7 +65,10 @@ public final class GetFoldersResult {
 
         @CustomType.Setter
         public Builder folders(List<GetFoldersFolder> folders) {
-            this.folders = Objects.requireNonNull(folders);
+            if (folders == null) {
+              throw new MissingRequiredPropertyException("GetFoldersResult", "folders");
+            }
+            this.folders = folders;
             return this;
         }
         public Builder folders(GetFoldersFolder... folders) {
@@ -72,12 +76,18 @@ public final class GetFoldersResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFoldersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parentId(String parentId) {
-            this.parentId = Objects.requireNonNull(parentId);
+            if (parentId == null) {
+              throw new MissingRequiredPropertyException("GetFoldersResult", "parentId");
+            }
+            this.parentId = parentId;
             return this;
         }
         public GetFoldersResult build() {

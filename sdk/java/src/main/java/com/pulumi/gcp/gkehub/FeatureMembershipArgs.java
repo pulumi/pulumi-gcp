@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipMeshArgs;
 import java.lang.String;
@@ -300,9 +301,15 @@ public final class FeatureMembershipArgs extends com.pulumi.resources.ResourceAr
         }
 
         public FeatureMembershipArgs build() {
-            $.feature = Objects.requireNonNull($.feature, "expected parameter 'feature' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.membership = Objects.requireNonNull($.membership, "expected parameter 'membership' to be non-null");
+            if ($.feature == null) {
+                throw new MissingRequiredPropertyException("FeatureMembershipArgs", "feature");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("FeatureMembershipArgs", "location");
+            }
+            if ($.membership == null) {
+                throw new MissingRequiredPropertyException("FeatureMembershipArgs", "membership");
+            }
             return $;
         }
     }

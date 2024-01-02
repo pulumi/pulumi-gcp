@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudasset;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudasset.inputs.FolderFeedConditionArgs;
 import com.pulumi.gcp.cloudasset.inputs.FolderFeedFeedOutputConfigArgs;
 import java.lang.String;
@@ -429,10 +430,18 @@ public final class FolderFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FolderFeedArgs build() {
-            $.billingProject = Objects.requireNonNull($.billingProject, "expected parameter 'billingProject' to be non-null");
-            $.feedId = Objects.requireNonNull($.feedId, "expected parameter 'feedId' to be non-null");
-            $.feedOutputConfig = Objects.requireNonNull($.feedOutputConfig, "expected parameter 'feedOutputConfig' to be non-null");
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
+            if ($.billingProject == null) {
+                throw new MissingRequiredPropertyException("FolderFeedArgs", "billingProject");
+            }
+            if ($.feedId == null) {
+                throw new MissingRequiredPropertyException("FolderFeedArgs", "feedId");
+            }
+            if ($.feedOutputConfig == null) {
+                throw new MissingRequiredPropertyException("FolderFeedArgs", "feedOutputConfig");
+            }
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("FolderFeedArgs", "folder");
+            }
             return $;
         }
     }

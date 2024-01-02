@@ -5,6 +5,7 @@ package com.pulumi.gcp.containeranalysis.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityHintArgs;
 import java.util.Objects;
 
@@ -106,7 +107,9 @@ public final class NoteAttestationAuthorityArgs extends com.pulumi.resources.Res
         }
 
         public NoteAttestationAuthorityArgs build() {
-            $.hint = Objects.requireNonNull($.hint, "expected parameter 'hint' to be non-null");
+            if ($.hint == null) {
+                throw new MissingRequiredPropertyException("NoteAttestationAuthorityArgs", "hint");
+            }
             return $;
         }
     }

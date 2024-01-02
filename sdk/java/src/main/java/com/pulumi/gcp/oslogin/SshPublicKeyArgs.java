@@ -5,6 +5,7 @@ package com.pulumi.gcp.oslogin;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -195,8 +196,12 @@ public final class SshPublicKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SshPublicKeyArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("SshPublicKeyArgs", "key");
+            }
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("SshPublicKeyArgs", "user");
+            }
             return $;
         }
     }

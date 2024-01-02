@@ -44,6 +44,7 @@ public final class CxAgentSpeechToTextSettings {
 
         @CustomType.Setter
         public Builder enableSpeechAdaptation(@Nullable Boolean enableSpeechAdaptation) {
+
             this.enableSpeechAdaptation = enableSpeechAdaptation;
             return this;
         }

@@ -206,11 +206,13 @@ public final class CertificateCertificateDescriptionX509DescriptionNameConstrain
 
         @CustomType.Setter
         public Builder critical(@Nullable Boolean critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder excludedDnsNames(@Nullable List<String> excludedDnsNames) {
+
             this.excludedDnsNames = excludedDnsNames;
             return this;
         }
@@ -219,6 +221,7 @@ public final class CertificateCertificateDescriptionX509DescriptionNameConstrain
         }
         @CustomType.Setter
         public Builder excludedEmailAddresses(@Nullable List<String> excludedEmailAddresses) {
+
             this.excludedEmailAddresses = excludedEmailAddresses;
             return this;
         }
@@ -227,6 +230,7 @@ public final class CertificateCertificateDescriptionX509DescriptionNameConstrain
         }
         @CustomType.Setter
         public Builder excludedIpRanges(@Nullable List<String> excludedIpRanges) {
+
             this.excludedIpRanges = excludedIpRanges;
             return this;
         }
@@ -235,6 +239,7 @@ public final class CertificateCertificateDescriptionX509DescriptionNameConstrain
         }
         @CustomType.Setter
         public Builder excludedUris(@Nullable List<String> excludedUris) {
+
             this.excludedUris = excludedUris;
             return this;
         }
@@ -243,6 +248,7 @@ public final class CertificateCertificateDescriptionX509DescriptionNameConstrain
         }
         @CustomType.Setter
         public Builder permittedDnsNames(@Nullable List<String> permittedDnsNames) {
+
             this.permittedDnsNames = permittedDnsNames;
             return this;
         }
@@ -251,6 +257,7 @@ public final class CertificateCertificateDescriptionX509DescriptionNameConstrain
         }
         @CustomType.Setter
         public Builder permittedEmailAddresses(@Nullable List<String> permittedEmailAddresses) {
+
             this.permittedEmailAddresses = permittedEmailAddresses;
             return this;
         }
@@ -259,6 +266,7 @@ public final class CertificateCertificateDescriptionX509DescriptionNameConstrain
         }
         @CustomType.Setter
         public Builder permittedIpRanges(@Nullable List<String> permittedIpRanges) {
+
             this.permittedIpRanges = permittedIpRanges;
             return this;
         }
@@ -267,6 +275,7 @@ public final class CertificateCertificateDescriptionX509DescriptionNameConstrain
         }
         @CustomType.Setter
         public Builder permittedUris(@Nullable List<String> permittedUris) {
+
             this.permittedUris = permittedUris;
             return this;
         }

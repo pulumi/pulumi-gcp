@@ -132,36 +132,43 @@ public final class KeystoresAliasesSelfSignedCertSubject {
 
         @CustomType.Setter
         public Builder commonName(@Nullable String commonName) {
+
             this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
         public Builder countryCode(@Nullable String countryCode) {
+
             this.countryCode = countryCode;
             return this;
         }
         @CustomType.Setter
         public Builder email(@Nullable String email) {
+
             this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder locality(@Nullable String locality) {
+
             this.locality = locality;
             return this;
         }
         @CustomType.Setter
         public Builder org(@Nullable String org) {
+
             this.org = org;
             return this;
         }
         @CustomType.Setter
         public Builder orgUnit(@Nullable String orgUnit) {
+
             this.orgUnit = orgUnit;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

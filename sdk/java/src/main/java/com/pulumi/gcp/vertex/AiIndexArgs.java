@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiIndexMetadataArgs;
 import java.lang.String;
 import java.util.Map;
@@ -332,7 +333,9 @@ public final class AiIndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AiIndexArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AiIndexArgs", "displayName");
+            }
             return $;
         }
     }

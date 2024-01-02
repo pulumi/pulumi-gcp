@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.inputs.TargetAnthosClusterArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetGkeArgs;
@@ -570,7 +571,9 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TargetArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("TargetArgs", "location");
+            }
             return $;
         }
     }

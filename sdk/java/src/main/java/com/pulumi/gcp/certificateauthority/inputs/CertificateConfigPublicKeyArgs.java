@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class CertificateConfigPublicKeyArgs extends com.pulumi.resources.R
         }
 
         public CertificateConfigPublicKeyArgs build() {
-            $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
+            if ($.format == null) {
+                throw new MissingRequiredPropertyException("CertificateConfigPublicKeyArgs", "format");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.memcache.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.memcache.outputs.InstanceMaintenancePolicyWeeklyMaintenanceWindow;
 import java.lang.String;
 import java.util.List;
@@ -110,22 +111,28 @@ public final class InstanceMaintenancePolicy {
 
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder weeklyMaintenanceWindows(List<InstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows) {
-            this.weeklyMaintenanceWindows = Objects.requireNonNull(weeklyMaintenanceWindows);
+            if (weeklyMaintenanceWindows == null) {
+              throw new MissingRequiredPropertyException("InstanceMaintenancePolicy", "weeklyMaintenanceWindows");
+            }
+            this.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
             return this;
         }
         public Builder weeklyMaintenanceWindows(InstanceMaintenancePolicyWeeklyMaintenanceWindow... weeklyMaintenanceWindows) {

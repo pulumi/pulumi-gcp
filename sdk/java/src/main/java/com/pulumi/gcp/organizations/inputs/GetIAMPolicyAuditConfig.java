@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.organizations.inputs.GetIAMPolicyAuditConfigAuditLogConfig;
 import java.lang.String;
 import java.util.List;
@@ -102,8 +103,12 @@ public final class GetIAMPolicyAuditConfig extends com.pulumi.resources.InvokeAr
         }
 
         public GetIAMPolicyAuditConfig build() {
-            $.auditLogConfigs = Objects.requireNonNull($.auditLogConfigs, "expected parameter 'auditLogConfigs' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.auditLogConfigs == null) {
+                throw new MissingRequiredPropertyException("GetIAMPolicyAuditConfig", "auditLogConfigs");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("GetIAMPolicyAuditConfig", "service");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -166,8 +167,12 @@ public final class IAMMemberConditionArgs extends com.pulumi.resources.ResourceA
         }
 
         public IAMMemberConditionArgs build() {
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("IAMMemberConditionArgs", "expression");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("IAMMemberConditionArgs", "title");
+            }
             return $;
         }
     }

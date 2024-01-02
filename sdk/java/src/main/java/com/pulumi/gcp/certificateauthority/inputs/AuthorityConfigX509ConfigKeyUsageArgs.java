@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsageArgs;
@@ -176,8 +177,12 @@ public final class AuthorityConfigX509ConfigKeyUsageArgs extends com.pulumi.reso
         }
 
         public AuthorityConfigX509ConfigKeyUsageArgs build() {
-            $.baseKeyUsage = Objects.requireNonNull($.baseKeyUsage, "expected parameter 'baseKeyUsage' to be non-null");
-            $.extendedKeyUsage = Objects.requireNonNull($.extendedKeyUsage, "expected parameter 'extendedKeyUsage' to be non-null");
+            if ($.baseKeyUsage == null) {
+                throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigKeyUsageArgs", "baseKeyUsage");
+            }
+            if ($.extendedKeyUsage == null) {
+                throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigKeyUsageArgs", "extendedKeyUsage");
+            }
             return $;
         }
     }

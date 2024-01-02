@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudasset.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -199,7 +200,9 @@ public final class FolderFeedConditionArgs extends com.pulumi.resources.Resource
         }
 
         public FolderFeedConditionArgs build() {
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("FolderFeedConditionArgs", "expression");
+            }
             return $;
         }
     }

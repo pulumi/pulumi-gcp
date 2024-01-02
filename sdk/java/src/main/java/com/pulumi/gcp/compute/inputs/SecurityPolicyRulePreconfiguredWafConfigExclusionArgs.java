@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCookyArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeaderArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParamArgs;
@@ -326,7 +327,9 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusionArgs extends
         }
 
         public SecurityPolicyRulePreconfiguredWafConfigExclusionArgs build() {
-            $.targetRuleSet = Objects.requireNonNull($.targetRuleSet, "expected parameter 'targetRuleSet' to be non-null");
+            if ($.targetRuleSet == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRulePreconfiguredWafConfigExclusionArgs", "targetRuleSet");
+            }
             return $;
         }
     }

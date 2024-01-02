@@ -60,11 +60,13 @@ public final class EnterpriseKeyIosSettings {
 
         @CustomType.Setter
         public Builder allowAllBundleIds(@Nullable Boolean allowAllBundleIds) {
+
             this.allowAllBundleIds = allowAllBundleIds;
             return this;
         }
         @CustomType.Setter
         public Builder allowedBundleIds(@Nullable List<String> allowedBundleIds) {
+
             this.allowedBundleIds = allowedBundleIds;
             return this;
         }

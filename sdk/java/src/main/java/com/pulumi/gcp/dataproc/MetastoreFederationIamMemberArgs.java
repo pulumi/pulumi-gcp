@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreFederationIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -266,9 +267,15 @@ public final class MetastoreFederationIamMemberArgs extends com.pulumi.resources
         }
 
         public MetastoreFederationIamMemberArgs build() {
-            $.federationId = Objects.requireNonNull($.federationId, "expected parameter 'federationId' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.federationId == null) {
+                throw new MissingRequiredPropertyException("MetastoreFederationIamMemberArgs", "federationId");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("MetastoreFederationIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("MetastoreFederationIamMemberArgs", "role");
+            }
             return $;
         }
     }

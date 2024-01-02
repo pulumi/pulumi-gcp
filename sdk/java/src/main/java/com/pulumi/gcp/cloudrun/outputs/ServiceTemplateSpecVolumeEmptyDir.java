@@ -62,11 +62,13 @@ public final class ServiceTemplateSpecVolumeEmptyDir {
 
         @CustomType.Setter
         public Builder medium(@Nullable String medium) {
+
             this.medium = medium;
             return this;
         }
         @CustomType.Setter
         public Builder sizeLimit(@Nullable String sizeLimit) {
+
             this.sizeLimit = sizeLimit;
             return this;
         }

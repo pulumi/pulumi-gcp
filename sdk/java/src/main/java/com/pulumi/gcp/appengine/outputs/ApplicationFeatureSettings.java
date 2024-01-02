@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ApplicationFeatureSettings {
 
         @CustomType.Setter
         public Builder splitHealthChecks(Boolean splitHealthChecks) {
-            this.splitHealthChecks = Objects.requireNonNull(splitHealthChecks);
+            if (splitHealthChecks == null) {
+              throw new MissingRequiredPropertyException("ApplicationFeatureSettings", "splitHealthChecks");
+            }
+            this.splitHealthChecks = splitHealthChecks;
             return this;
         }
         public ApplicationFeatureSettings build() {

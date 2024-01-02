@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,7 +53,10 @@ public final class DicomStoreNotificationConfig {
 
         @CustomType.Setter
         public Builder pubsubTopic(String pubsubTopic) {
-            this.pubsubTopic = Objects.requireNonNull(pubsubTopic);
+            if (pubsubTopic == null) {
+              throw new MissingRequiredPropertyException("DicomStoreNotificationConfig", "pubsubTopic");
+            }
+            this.pubsubTopic = pubsubTopic;
             return this;
         }
         public DicomStoreNotificationConfig build() {

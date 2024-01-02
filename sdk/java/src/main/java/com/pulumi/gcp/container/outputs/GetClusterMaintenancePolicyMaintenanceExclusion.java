@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption;
 import java.lang.String;
 import java.util.List;
@@ -54,17 +55,26 @@ public final class GetClusterMaintenancePolicyMaintenanceExclusion {
 
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicyMaintenanceExclusion", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder exclusionName(String exclusionName) {
-            this.exclusionName = Objects.requireNonNull(exclusionName);
+            if (exclusionName == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicyMaintenanceExclusion", "exclusionName");
+            }
+            this.exclusionName = exclusionName;
             return this;
         }
         @CustomType.Setter
         public Builder exclusionOptions(List<GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption> exclusionOptions) {
-            this.exclusionOptions = Objects.requireNonNull(exclusionOptions);
+            if (exclusionOptions == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicyMaintenanceExclusion", "exclusionOptions");
+            }
+            this.exclusionOptions = exclusionOptions;
             return this;
         }
         public Builder exclusionOptions(GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption... exclusionOptions) {
@@ -72,7 +82,10 @@ public final class GetClusterMaintenancePolicyMaintenanceExclusion {
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicyMaintenanceExclusion", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         public GetClusterMaintenancePolicyMaintenanceExclusion build() {

@@ -91,16 +91,19 @@ public final class HostingCustomDomainCert {
 
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder verification(@Nullable HostingCustomDomainCertVerification verification) {
+
             this.verification = verification;
             return this;
         }

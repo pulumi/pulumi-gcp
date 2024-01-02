@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes;
@@ -114,26 +115,33 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
 
         @CustomType.Setter
         public Builder dictionary(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionary dictionary) {
+
             this.dictionary = dictionary;
             return this;
         }
         @CustomType.Setter
         public Builder excludeByHotword(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotword excludeByHotword) {
+
             this.excludeByHotword = excludeByHotword;
             return this;
         }
         @CustomType.Setter
         public Builder excludeInfoTypes(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes) {
+
             this.excludeInfoTypes = excludeInfoTypes;
             return this;
         }
         @CustomType.Setter
         public Builder matchingType(String matchingType) {
-            this.matchingType = Objects.requireNonNull(matchingType);
+            if (matchingType == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule", "matchingType");
+            }
+            this.matchingType = matchingType;
             return this;
         }
         @CustomType.Setter
         public Builder regex(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleRegex regex) {
+
             this.regex = regex;
             return this;
         }

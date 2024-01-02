@@ -5,6 +5,7 @@ package com.pulumi.gcp.artifactregistry.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyConditionArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyMostRecentVersionsArgs;
 import java.lang.String;
@@ -129,7 +130,9 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
         }
 
         public RepositoryCleanupPolicyArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("RepositoryCleanupPolicyArgs", "id");
+            }
             return $;
         }
     }

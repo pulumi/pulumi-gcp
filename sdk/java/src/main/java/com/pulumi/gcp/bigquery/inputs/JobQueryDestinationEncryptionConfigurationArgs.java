@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -121,7 +122,9 @@ public final class JobQueryDestinationEncryptionConfigurationArgs extends com.pu
         }
 
         public JobQueryDestinationEncryptionConfigurationArgs build() {
-            $.kmsKeyName = Objects.requireNonNull($.kmsKeyName, "expected parameter 'kmsKeyName' to be non-null");
+            if ($.kmsKeyName == null) {
+                throw new MissingRequiredPropertyException("JobQueryDestinationEncryptionConfigurationArgs", "kmsKeyName");
+            }
             return $;
         }
     }

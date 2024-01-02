@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigCaOption;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigKeyUsage;
@@ -70,7 +71,10 @@ public final class GetAuthorityConfigX509Config {
 
         @CustomType.Setter
         public Builder additionalExtensions(List<GetAuthorityConfigX509ConfigAdditionalExtension> additionalExtensions) {
-            this.additionalExtensions = Objects.requireNonNull(additionalExtensions);
+            if (additionalExtensions == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509Config", "additionalExtensions");
+            }
+            this.additionalExtensions = additionalExtensions;
             return this;
         }
         public Builder additionalExtensions(GetAuthorityConfigX509ConfigAdditionalExtension... additionalExtensions) {
@@ -78,7 +82,10 @@ public final class GetAuthorityConfigX509Config {
         }
         @CustomType.Setter
         public Builder aiaOcspServers(List<String> aiaOcspServers) {
-            this.aiaOcspServers = Objects.requireNonNull(aiaOcspServers);
+            if (aiaOcspServers == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509Config", "aiaOcspServers");
+            }
+            this.aiaOcspServers = aiaOcspServers;
             return this;
         }
         public Builder aiaOcspServers(String... aiaOcspServers) {
@@ -86,7 +93,10 @@ public final class GetAuthorityConfigX509Config {
         }
         @CustomType.Setter
         public Builder caOptions(List<GetAuthorityConfigX509ConfigCaOption> caOptions) {
-            this.caOptions = Objects.requireNonNull(caOptions);
+            if (caOptions == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509Config", "caOptions");
+            }
+            this.caOptions = caOptions;
             return this;
         }
         public Builder caOptions(GetAuthorityConfigX509ConfigCaOption... caOptions) {
@@ -94,7 +104,10 @@ public final class GetAuthorityConfigX509Config {
         }
         @CustomType.Setter
         public Builder keyUsages(List<GetAuthorityConfigX509ConfigKeyUsage> keyUsages) {
-            this.keyUsages = Objects.requireNonNull(keyUsages);
+            if (keyUsages == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509Config", "keyUsages");
+            }
+            this.keyUsages = keyUsages;
             return this;
         }
         public Builder keyUsages(GetAuthorityConfigX509ConfigKeyUsage... keyUsages) {
@@ -102,7 +115,10 @@ public final class GetAuthorityConfigX509Config {
         }
         @CustomType.Setter
         public Builder nameConstraints(List<GetAuthorityConfigX509ConfigNameConstraint> nameConstraints) {
-            this.nameConstraints = Objects.requireNonNull(nameConstraints);
+            if (nameConstraints == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509Config", "nameConstraints");
+            }
+            this.nameConstraints = nameConstraints;
             return this;
         }
         public Builder nameConstraints(GetAuthorityConfigX509ConfigNameConstraint... nameConstraints) {
@@ -110,7 +126,10 @@ public final class GetAuthorityConfigX509Config {
         }
         @CustomType.Setter
         public Builder policyIds(List<GetAuthorityConfigX509ConfigPolicyId> policyIds) {
-            this.policyIds = Objects.requireNonNull(policyIds);
+            if (policyIds == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509Config", "policyIds");
+            }
+            this.policyIds = policyIds;
             return this;
         }
         public Builder policyIds(GetAuthorityConfigX509ConfigPolicyId... policyIds) {

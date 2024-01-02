@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs;
 import com.pulumi.gcp.compute.inputs.ResourcePolicyInstanceSchedulePolicyVmStopScheduleArgs;
 import java.lang.String;
@@ -238,7 +239,9 @@ public final class ResourcePolicyInstanceSchedulePolicyArgs extends com.pulumi.r
         }
 
         public ResourcePolicyInstanceSchedulePolicyArgs build() {
-            $.timeZone = Objects.requireNonNull($.timeZone, "expected parameter 'timeZone' to be non-null");
+            if ($.timeZone == null) {
+                throw new MissingRequiredPropertyException("ResourcePolicyInstanceSchedulePolicyArgs", "timeZone");
+            }
             return $;
         }
     }

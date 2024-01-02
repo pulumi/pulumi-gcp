@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrict
 
         @CustomType.Setter
         public Builder maxValue(String maxValue) {
-            this.maxValue = Objects.requireNonNull(maxValue);
+            if (maxValue == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions", "maxValue");
+            }
+            this.maxValue = maxValue;
             return this;
         }
         @CustomType.Setter
         public Builder minValue(String minValue) {
-            this.minValue = Objects.requireNonNull(minValue);
+            if (minValue == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions", "minValue");
+            }
+            this.minValue = minValue;
             return this;
         }
         public GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions build() {

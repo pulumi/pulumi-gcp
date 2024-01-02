@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class AutoscalerAutoscalingPolicyLoadBalancingUtilization {
 
         @CustomType.Setter
         public Builder target(Double target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicyLoadBalancingUtilization", "target");
+            }
+            this.target = target;
             return this;
         }
         public AutoscalerAutoscalingPolicyLoadBalancingUtilization build() {

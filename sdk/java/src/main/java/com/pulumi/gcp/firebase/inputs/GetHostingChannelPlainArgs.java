@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firebase.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetHostingChannelPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetHostingChannelPlainArgs build() {
-            $.channelId = Objects.requireNonNull($.channelId, "expected parameter 'channelId' to be non-null");
-            $.siteId = Objects.requireNonNull($.siteId, "expected parameter 'siteId' to be non-null");
+            if ($.channelId == null) {
+                throw new MissingRequiredPropertyException("GetHostingChannelPlainArgs", "channelId");
+            }
+            if ($.siteId == null) {
+                throw new MissingRequiredPropertyException("GetHostingChannelPlainArgs", "siteId");
+            }
             return $;
         }
     }

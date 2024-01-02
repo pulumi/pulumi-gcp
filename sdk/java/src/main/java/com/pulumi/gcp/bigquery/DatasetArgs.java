@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetDefaultEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetExternalDatasetReferenceArgs;
@@ -893,7 +894,9 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DatasetArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("DatasetArgs", "datasetId");
+            }
             return $;
         }
     }

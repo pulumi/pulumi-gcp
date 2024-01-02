@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class EndpointPolicyEndpointMatcherArgs extends com.pulumi.resource
         }
 
         public EndpointPolicyEndpointMatcherArgs build() {
-            $.metadataLabelMatcher = Objects.requireNonNull($.metadataLabelMatcher, "expected parameter 'metadataLabelMatcher' to be non-null");
+            if ($.metadataLabelMatcher == null) {
+                throw new MissingRequiredPropertyException("EndpointPolicyEndpointMatcherArgs", "metadataLabelMatcher");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class LiteSubscriptionDeliveryConfig {
 
         @CustomType.Setter
         public Builder deliveryRequirement(String deliveryRequirement) {
-            this.deliveryRequirement = Objects.requireNonNull(deliveryRequirement);
+            if (deliveryRequirement == null) {
+              throw new MissingRequiredPropertyException("LiteSubscriptionDeliveryConfig", "deliveryRequirement");
+            }
+            this.deliveryRequirement = deliveryRequirement;
             return this;
         }
         public LiteSubscriptionDeliveryConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -236,9 +237,15 @@ public final class EnvReferencesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EnvReferencesArgs build() {
-            $.envId = Objects.requireNonNull($.envId, "expected parameter 'envId' to be non-null");
-            $.refers = Objects.requireNonNull($.refers, "expected parameter 'refers' to be non-null");
-            $.resourceType = Objects.requireNonNull($.resourceType, "expected parameter 'resourceType' to be non-null");
+            if ($.envId == null) {
+                throw new MissingRequiredPropertyException("EnvReferencesArgs", "envId");
+            }
+            if ($.refers == null) {
+                throw new MissingRequiredPropertyException("EnvReferencesArgs", "refers");
+            }
+            if ($.resourceType == null) {
+                throw new MissingRequiredPropertyException("EnvReferencesArgs", "resourceType");
+            }
             return $;
         }
     }

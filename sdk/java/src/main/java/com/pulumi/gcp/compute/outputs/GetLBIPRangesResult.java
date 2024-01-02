@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -71,7 +72,10 @@ public final class GetLBIPRangesResult {
 
         @CustomType.Setter
         public Builder httpSslTcpInternals(List<String> httpSslTcpInternals) {
-            this.httpSslTcpInternals = Objects.requireNonNull(httpSslTcpInternals);
+            if (httpSslTcpInternals == null) {
+              throw new MissingRequiredPropertyException("GetLBIPRangesResult", "httpSslTcpInternals");
+            }
+            this.httpSslTcpInternals = httpSslTcpInternals;
             return this;
         }
         public Builder httpSslTcpInternals(String... httpSslTcpInternals) {
@@ -79,12 +83,18 @@ public final class GetLBIPRangesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLBIPRangesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder networks(List<String> networks) {
-            this.networks = Objects.requireNonNull(networks);
+            if (networks == null) {
+              throw new MissingRequiredPropertyException("GetLBIPRangesResult", "networks");
+            }
+            this.networks = networks;
             return this;
         }
         public Builder networks(String... networks) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRule;
 import java.util.List;
@@ -63,6 +64,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSet {
 
         @CustomType.Setter
         public Builder infoTypes(@Nullable List<PreventionJobTriggerInspectJobInspectConfigRuleSetInfoType> infoTypes) {
+
             this.infoTypes = infoTypes;
             return this;
         }
@@ -71,7 +73,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSet {
         }
         @CustomType.Setter
         public Builder rules(List<PreventionJobTriggerInspectJobInspectConfigRuleSetRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobInspectConfigRuleSet", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(PreventionJobTriggerInspectJobInspectConfigRuleSetRule... rules) {

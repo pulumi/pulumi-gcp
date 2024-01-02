@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingActiveDirectoryConfig;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingAdvancedMachineFeature;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingBackupConfiguration;
@@ -206,12 +207,18 @@ public final class GetDatabaseInstanceSetting {
 
         @CustomType.Setter
         public Builder activationPolicy(String activationPolicy) {
-            this.activationPolicy = Objects.requireNonNull(activationPolicy);
+            if (activationPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "activationPolicy");
+            }
+            this.activationPolicy = activationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder activeDirectoryConfigs(List<GetDatabaseInstanceSettingActiveDirectoryConfig> activeDirectoryConfigs) {
-            this.activeDirectoryConfigs = Objects.requireNonNull(activeDirectoryConfigs);
+            if (activeDirectoryConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "activeDirectoryConfigs");
+            }
+            this.activeDirectoryConfigs = activeDirectoryConfigs;
             return this;
         }
         public Builder activeDirectoryConfigs(GetDatabaseInstanceSettingActiveDirectoryConfig... activeDirectoryConfigs) {
@@ -219,7 +226,10 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder advancedMachineFeatures(List<GetDatabaseInstanceSettingAdvancedMachineFeature> advancedMachineFeatures) {
-            this.advancedMachineFeatures = Objects.requireNonNull(advancedMachineFeatures);
+            if (advancedMachineFeatures == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "advancedMachineFeatures");
+            }
+            this.advancedMachineFeatures = advancedMachineFeatures;
             return this;
         }
         public Builder advancedMachineFeatures(GetDatabaseInstanceSettingAdvancedMachineFeature... advancedMachineFeatures) {
@@ -227,12 +237,18 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder availabilityType(String availabilityType) {
-            this.availabilityType = Objects.requireNonNull(availabilityType);
+            if (availabilityType == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "availabilityType");
+            }
+            this.availabilityType = availabilityType;
             return this;
         }
         @CustomType.Setter
         public Builder backupConfigurations(List<GetDatabaseInstanceSettingBackupConfiguration> backupConfigurations) {
-            this.backupConfigurations = Objects.requireNonNull(backupConfigurations);
+            if (backupConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "backupConfigurations");
+            }
+            this.backupConfigurations = backupConfigurations;
             return this;
         }
         public Builder backupConfigurations(GetDatabaseInstanceSettingBackupConfiguration... backupConfigurations) {
@@ -240,17 +256,26 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder collation(String collation) {
-            this.collation = Objects.requireNonNull(collation);
+            if (collation == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "collation");
+            }
+            this.collation = collation;
             return this;
         }
         @CustomType.Setter
         public Builder connectorEnforcement(String connectorEnforcement) {
-            this.connectorEnforcement = Objects.requireNonNull(connectorEnforcement);
+            if (connectorEnforcement == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "connectorEnforcement");
+            }
+            this.connectorEnforcement = connectorEnforcement;
             return this;
         }
         @CustomType.Setter
         public Builder dataCacheConfigs(List<GetDatabaseInstanceSettingDataCacheConfig> dataCacheConfigs) {
-            this.dataCacheConfigs = Objects.requireNonNull(dataCacheConfigs);
+            if (dataCacheConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "dataCacheConfigs");
+            }
+            this.dataCacheConfigs = dataCacheConfigs;
             return this;
         }
         public Builder dataCacheConfigs(GetDatabaseInstanceSettingDataCacheConfig... dataCacheConfigs) {
@@ -258,7 +283,10 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder databaseFlags(List<GetDatabaseInstanceSettingDatabaseFlag> databaseFlags) {
-            this.databaseFlags = Objects.requireNonNull(databaseFlags);
+            if (databaseFlags == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "databaseFlags");
+            }
+            this.databaseFlags = databaseFlags;
             return this;
         }
         public Builder databaseFlags(GetDatabaseInstanceSettingDatabaseFlag... databaseFlags) {
@@ -266,12 +294,18 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder deletionProtectionEnabled(Boolean deletionProtectionEnabled) {
-            this.deletionProtectionEnabled = Objects.requireNonNull(deletionProtectionEnabled);
+            if (deletionProtectionEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "deletionProtectionEnabled");
+            }
+            this.deletionProtectionEnabled = deletionProtectionEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder denyMaintenancePeriods(List<GetDatabaseInstanceSettingDenyMaintenancePeriod> denyMaintenancePeriods) {
-            this.denyMaintenancePeriods = Objects.requireNonNull(denyMaintenancePeriods);
+            if (denyMaintenancePeriods == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "denyMaintenancePeriods");
+            }
+            this.denyMaintenancePeriods = denyMaintenancePeriods;
             return this;
         }
         public Builder denyMaintenancePeriods(GetDatabaseInstanceSettingDenyMaintenancePeriod... denyMaintenancePeriods) {
@@ -279,32 +313,50 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder diskAutoresize(Boolean diskAutoresize) {
-            this.diskAutoresize = Objects.requireNonNull(diskAutoresize);
+            if (diskAutoresize == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "diskAutoresize");
+            }
+            this.diskAutoresize = diskAutoresize;
             return this;
         }
         @CustomType.Setter
         public Builder diskAutoresizeLimit(Integer diskAutoresizeLimit) {
-            this.diskAutoresizeLimit = Objects.requireNonNull(diskAutoresizeLimit);
+            if (diskAutoresizeLimit == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "diskAutoresizeLimit");
+            }
+            this.diskAutoresizeLimit = diskAutoresizeLimit;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(Integer diskSize) {
-            this.diskSize = Objects.requireNonNull(diskSize);
+            if (diskSize == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "diskSize");
+            }
+            this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder edition(String edition) {
-            this.edition = Objects.requireNonNull(edition);
+            if (edition == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "edition");
+            }
+            this.edition = edition;
             return this;
         }
         @CustomType.Setter
         public Builder insightsConfigs(List<GetDatabaseInstanceSettingInsightsConfig> insightsConfigs) {
-            this.insightsConfigs = Objects.requireNonNull(insightsConfigs);
+            if (insightsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "insightsConfigs");
+            }
+            this.insightsConfigs = insightsConfigs;
             return this;
         }
         public Builder insightsConfigs(GetDatabaseInstanceSettingInsightsConfig... insightsConfigs) {
@@ -312,7 +364,10 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder ipConfigurations(List<GetDatabaseInstanceSettingIpConfiguration> ipConfigurations) {
-            this.ipConfigurations = Objects.requireNonNull(ipConfigurations);
+            if (ipConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "ipConfigurations");
+            }
+            this.ipConfigurations = ipConfigurations;
             return this;
         }
         public Builder ipConfigurations(GetDatabaseInstanceSettingIpConfiguration... ipConfigurations) {
@@ -320,7 +375,10 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder locationPreferences(List<GetDatabaseInstanceSettingLocationPreference> locationPreferences) {
-            this.locationPreferences = Objects.requireNonNull(locationPreferences);
+            if (locationPreferences == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "locationPreferences");
+            }
+            this.locationPreferences = locationPreferences;
             return this;
         }
         public Builder locationPreferences(GetDatabaseInstanceSettingLocationPreference... locationPreferences) {
@@ -328,7 +386,10 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder maintenanceWindows(List<GetDatabaseInstanceSettingMaintenanceWindow> maintenanceWindows) {
-            this.maintenanceWindows = Objects.requireNonNull(maintenanceWindows);
+            if (maintenanceWindows == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "maintenanceWindows");
+            }
+            this.maintenanceWindows = maintenanceWindows;
             return this;
         }
         public Builder maintenanceWindows(GetDatabaseInstanceSettingMaintenanceWindow... maintenanceWindows) {
@@ -336,7 +397,10 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder passwordValidationPolicies(List<GetDatabaseInstanceSettingPasswordValidationPolicy> passwordValidationPolicies) {
-            this.passwordValidationPolicies = Objects.requireNonNull(passwordValidationPolicies);
+            if (passwordValidationPolicies == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "passwordValidationPolicies");
+            }
+            this.passwordValidationPolicies = passwordValidationPolicies;
             return this;
         }
         public Builder passwordValidationPolicies(GetDatabaseInstanceSettingPasswordValidationPolicy... passwordValidationPolicies) {
@@ -344,12 +408,18 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder pricingPlan(String pricingPlan) {
-            this.pricingPlan = Objects.requireNonNull(pricingPlan);
+            if (pricingPlan == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "pricingPlan");
+            }
+            this.pricingPlan = pricingPlan;
             return this;
         }
         @CustomType.Setter
         public Builder sqlServerAuditConfigs(List<GetDatabaseInstanceSettingSqlServerAuditConfig> sqlServerAuditConfigs) {
-            this.sqlServerAuditConfigs = Objects.requireNonNull(sqlServerAuditConfigs);
+            if (sqlServerAuditConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "sqlServerAuditConfigs");
+            }
+            this.sqlServerAuditConfigs = sqlServerAuditConfigs;
             return this;
         }
         public Builder sqlServerAuditConfigs(GetDatabaseInstanceSettingSqlServerAuditConfig... sqlServerAuditConfigs) {
@@ -357,22 +427,34 @@ public final class GetDatabaseInstanceSetting {
         }
         @CustomType.Setter
         public Builder tier(String tier) {
-            this.tier = Objects.requireNonNull(tier);
+            if (tier == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "tier");
+            }
+            this.tier = tier;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(String timeZone) {
-            this.timeZone = Objects.requireNonNull(timeZone);
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "timeZone");
+            }
+            this.timeZone = timeZone;
             return this;
         }
         @CustomType.Setter
         public Builder userLabels(Map<String,String> userLabels) {
-            this.userLabels = Objects.requireNonNull(userLabels);
+            if (userLabels == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "userLabels");
+            }
+            this.userLabels = userLabels;
             return this;
         }
         @CustomType.Setter
         public Builder version(Integer version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSetting", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetDatabaseInstanceSetting build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,7 +53,10 @@ public final class ClusterReleaseChannel {
 
         @CustomType.Setter
         public Builder channel(String channel) {
-            this.channel = Objects.requireNonNull(channel);
+            if (channel == null) {
+              throw new MissingRequiredPropertyException("ClusterReleaseChannel", "channel");
+            }
+            this.channel = channel;
             return this;
         }
         public ClusterReleaseChannel build() {

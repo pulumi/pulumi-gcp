@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.AzureNodePoolConfigProxyConfig;
 import com.pulumi.gcp.container.outputs.AzureNodePoolConfigRootVolume;
 import com.pulumi.gcp.container.outputs.AzureNodePoolConfigSshConfig;
@@ -132,36 +133,45 @@ public final class AzureNodePoolConfig {
 
         @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
+
             this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder proxyConfig(@Nullable AzureNodePoolConfigProxyConfig proxyConfig) {
+
             this.proxyConfig = proxyConfig;
             return this;
         }
         @CustomType.Setter
         public Builder rootVolume(@Nullable AzureNodePoolConfigRootVolume rootVolume) {
+
             this.rootVolume = rootVolume;
             return this;
         }
         @CustomType.Setter
         public Builder sshConfig(AzureNodePoolConfigSshConfig sshConfig) {
-            this.sshConfig = Objects.requireNonNull(sshConfig);
+            if (sshConfig == null) {
+              throw new MissingRequiredPropertyException("AzureNodePoolConfig", "sshConfig");
+            }
+            this.sshConfig = sshConfig;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder vmSize(@Nullable String vmSize) {
+
             this.vmSize = vmSize;
             return this;
         }

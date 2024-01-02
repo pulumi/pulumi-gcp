@@ -62,11 +62,13 @@ public final class SubscriptionRetryPolicy {
 
         @CustomType.Setter
         public Builder maximumBackoff(@Nullable String maximumBackoff) {
+
             this.maximumBackoff = maximumBackoff;
             return this;
         }
         @CustomType.Setter
         public Builder minimumBackoff(@Nullable String minimumBackoff) {
+
             this.minimumBackoff = minimumBackoff;
             return this;
         }

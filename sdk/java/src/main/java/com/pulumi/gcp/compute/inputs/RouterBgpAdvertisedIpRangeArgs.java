@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class RouterBgpAdvertisedIpRangeArgs extends com.pulumi.resources.R
         }
 
         public RouterBgpAdvertisedIpRangeArgs build() {
-            $.range = Objects.requireNonNull($.range, "expected parameter 'range' to be non-null");
+            if ($.range == null) {
+                throw new MissingRequiredPropertyException("RouterBgpAdvertisedIpRangeArgs", "range");
+            }
             return $;
         }
     }

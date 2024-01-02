@@ -4,6 +4,7 @@
 package com.pulumi.gcp.serviceaccount.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -84,6 +85,7 @@ public final class GetAccountJwtResult {
 
         @CustomType.Setter
         public Builder delegates(@Nullable List<String> delegates) {
+
             this.delegates = delegates;
             return this;
         }
@@ -92,27 +94,40 @@ public final class GetAccountJwtResult {
         }
         @CustomType.Setter
         public Builder expiresIn(@Nullable Integer expiresIn) {
+
             this.expiresIn = expiresIn;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountJwtResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder jwt(String jwt) {
-            this.jwt = Objects.requireNonNull(jwt);
+            if (jwt == null) {
+              throw new MissingRequiredPropertyException("GetAccountJwtResult", "jwt");
+            }
+            this.jwt = jwt;
             return this;
         }
         @CustomType.Setter
         public Builder payload(String payload) {
-            this.payload = Objects.requireNonNull(payload);
+            if (payload == null) {
+              throw new MissingRequiredPropertyException("GetAccountJwtResult", "payload");
+            }
+            this.payload = payload;
             return this;
         }
         @CustomType.Setter
         public Builder targetServiceAccount(String targetServiceAccount) {
-            this.targetServiceAccount = Objects.requireNonNull(targetServiceAccount);
+            if (targetServiceAccount == null) {
+              throw new MissingRequiredPropertyException("GetAccountJwtResult", "targetServiceAccount");
+            }
+            this.targetServiceAccount = targetServiceAccount;
             return this;
         }
         public GetAccountJwtResult build() {

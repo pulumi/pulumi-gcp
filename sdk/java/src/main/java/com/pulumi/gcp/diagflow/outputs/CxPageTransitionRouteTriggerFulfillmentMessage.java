@@ -176,41 +176,49 @@ public final class CxPageTransitionRouteTriggerFulfillmentMessage {
 
         @CustomType.Setter
         public Builder channel(@Nullable String channel) {
+
             this.channel = channel;
             return this;
         }
         @CustomType.Setter
         public Builder conversationSuccess(@Nullable CxPageTransitionRouteTriggerFulfillmentMessageConversationSuccess conversationSuccess) {
+
             this.conversationSuccess = conversationSuccess;
             return this;
         }
         @CustomType.Setter
         public Builder liveAgentHandoff(@Nullable CxPageTransitionRouteTriggerFulfillmentMessageLiveAgentHandoff liveAgentHandoff) {
+
             this.liveAgentHandoff = liveAgentHandoff;
             return this;
         }
         @CustomType.Setter
         public Builder outputAudioText(@Nullable CxPageTransitionRouteTriggerFulfillmentMessageOutputAudioText outputAudioText) {
+
             this.outputAudioText = outputAudioText;
             return this;
         }
         @CustomType.Setter
         public Builder payload(@Nullable String payload) {
+
             this.payload = payload;
             return this;
         }
         @CustomType.Setter
         public Builder playAudio(@Nullable CxPageTransitionRouteTriggerFulfillmentMessagePlayAudio playAudio) {
+
             this.playAudio = playAudio;
             return this;
         }
         @CustomType.Setter
         public Builder telephonyTransferCall(@Nullable CxPageTransitionRouteTriggerFulfillmentMessageTelephonyTransferCall telephonyTransferCall) {
+
             this.telephonyTransferCall = telephonyTransferCall;
             return this;
         }
         @CustomType.Setter
         public Builder text(@Nullable CxPageTransitionRouteTriggerFulfillmentMessageText text) {
+
             this.text = text;
             return this;
         }

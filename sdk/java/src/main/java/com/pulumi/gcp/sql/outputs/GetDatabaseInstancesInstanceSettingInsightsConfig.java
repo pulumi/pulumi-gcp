@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetDatabaseInstancesInstanceSettingInsightsConfig {
 
         @CustomType.Setter
         public Builder queryInsightsEnabled(Boolean queryInsightsEnabled) {
-            this.queryInsightsEnabled = Objects.requireNonNull(queryInsightsEnabled);
+            if (queryInsightsEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingInsightsConfig", "queryInsightsEnabled");
+            }
+            this.queryInsightsEnabled = queryInsightsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder queryPlansPerMinute(Integer queryPlansPerMinute) {
-            this.queryPlansPerMinute = Objects.requireNonNull(queryPlansPerMinute);
+            if (queryPlansPerMinute == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingInsightsConfig", "queryPlansPerMinute");
+            }
+            this.queryPlansPerMinute = queryPlansPerMinute;
             return this;
         }
         @CustomType.Setter
         public Builder queryStringLength(Integer queryStringLength) {
-            this.queryStringLength = Objects.requireNonNull(queryStringLength);
+            if (queryStringLength == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingInsightsConfig", "queryStringLength");
+            }
+            this.queryStringLength = queryStringLength;
             return this;
         }
         @CustomType.Setter
         public Builder recordApplicationTags(Boolean recordApplicationTags) {
-            this.recordApplicationTags = Objects.requireNonNull(recordApplicationTags);
+            if (recordApplicationTags == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingInsightsConfig", "recordApplicationTags");
+            }
+            this.recordApplicationTags = recordApplicationTags;
             return this;
         }
         @CustomType.Setter
         public Builder recordClientAddress(Boolean recordClientAddress) {
-            this.recordClientAddress = Objects.requireNonNull(recordClientAddress);
+            if (recordClientAddress == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingInsightsConfig", "recordClientAddress");
+            }
+            this.recordClientAddress = recordClientAddress;
             return this;
         }
         public GetDatabaseInstancesInstanceSettingInsightsConfig build() {

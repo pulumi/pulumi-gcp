@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataflow.outputs.PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment;
 import java.lang.Boolean;
 import java.lang.String;
@@ -111,26 +112,33 @@ public final class PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters
 
         @CustomType.Setter
         public Builder environment(@Nullable PipelineWorkloadDataflowLaunchTemplateRequestLaunchParametersEnvironment environment) {
+
             this.environment = environment;
             return this;
         }
         @CustomType.Setter
         public Builder jobName(String jobName) {
-            this.jobName = Objects.requireNonNull(jobName);
+            if (jobName == null) {
+              throw new MissingRequiredPropertyException("PipelineWorkloadDataflowLaunchTemplateRequestLaunchParameters", "jobName");
+            }
+            this.jobName = jobName;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable Map<String,String> parameters) {
+
             this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder transformNameMapping(@Nullable Map<String,String> transformNameMapping) {
+
             this.transformNameMapping = transformNameMapping;
             return this;
         }
         @CustomType.Setter
         public Builder update(@Nullable Boolean update) {
+
             this.update = update;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionCloudStorageConfigAvroConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -140,36 +141,45 @@ public final class SubscriptionCloudStorageConfig {
 
         @CustomType.Setter
         public Builder avroConfig(@Nullable SubscriptionCloudStorageConfigAvroConfig avroConfig) {
+
             this.avroConfig = avroConfig;
             return this;
         }
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("SubscriptionCloudStorageConfig", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder filenamePrefix(@Nullable String filenamePrefix) {
+
             this.filenamePrefix = filenamePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder filenameSuffix(@Nullable String filenameSuffix) {
+
             this.filenameSuffix = filenameSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder maxBytes(@Nullable Integer maxBytes) {
+
             this.maxBytes = maxBytes;
             return this;
         }
         @CustomType.Setter
         public Builder maxDuration(@Nullable String maxDuration) {
+
             this.maxDuration = maxDuration;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ServerTlsPolicyServerCertificateCertificateProviderInstance {
 
         @CustomType.Setter
         public Builder pluginInstance(String pluginInstance) {
-            this.pluginInstance = Objects.requireNonNull(pluginInstance);
+            if (pluginInstance == null) {
+              throw new MissingRequiredPropertyException("ServerTlsPolicyServerCertificateCertificateProviderInstance", "pluginInstance");
+            }
+            this.pluginInstance = pluginInstance;
             return this;
         }
         public ServerTlsPolicyServerCertificateCertificateProviderInstance build() {

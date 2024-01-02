@@ -4,6 +4,7 @@
 package com.pulumi.gcp.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyVersionPublicKey;
 import java.lang.Integer;
 import java.lang.String;
@@ -129,32 +130,50 @@ public final class GetKMSCryptoKeyVersionResult {
 
         @CustomType.Setter
         public Builder algorithm(String algorithm) {
-            this.algorithm = Objects.requireNonNull(algorithm);
+            if (algorithm == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyVersionResult", "algorithm");
+            }
+            this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoKey(String cryptoKey) {
-            this.cryptoKey = Objects.requireNonNull(cryptoKey);
+            if (cryptoKey == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyVersionResult", "cryptoKey");
+            }
+            this.cryptoKey = cryptoKey;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyVersionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyVersionResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder protectionLevel(String protectionLevel) {
-            this.protectionLevel = Objects.requireNonNull(protectionLevel);
+            if (protectionLevel == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyVersionResult", "protectionLevel");
+            }
+            this.protectionLevel = protectionLevel;
             return this;
         }
         @CustomType.Setter
         public Builder publicKeys(List<GetKMSCryptoKeyVersionPublicKey> publicKeys) {
-            this.publicKeys = Objects.requireNonNull(publicKeys);
+            if (publicKeys == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyVersionResult", "publicKeys");
+            }
+            this.publicKeys = publicKeys;
             return this;
         }
         public Builder publicKeys(GetKMSCryptoKeyVersionPublicKey... publicKeys) {
@@ -162,11 +181,15 @@ public final class GetKMSCryptoKeyVersionResult {
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyVersionResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable Integer version) {
+
             this.version = version;
             return this;
         }

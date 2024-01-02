@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfigAutoscalingMetricsCollection;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfigConfigEncryption;
 import com.pulumi.gcp.container.outputs.AwsNodePoolConfigInstancePlacement;
@@ -236,51 +237,65 @@ public final class AwsNodePoolConfig {
 
         @CustomType.Setter
         public Builder autoscalingMetricsCollection(@Nullable AwsNodePoolConfigAutoscalingMetricsCollection autoscalingMetricsCollection) {
+
             this.autoscalingMetricsCollection = autoscalingMetricsCollection;
             return this;
         }
         @CustomType.Setter
         public Builder configEncryption(AwsNodePoolConfigConfigEncryption configEncryption) {
-            this.configEncryption = Objects.requireNonNull(configEncryption);
+            if (configEncryption == null) {
+              throw new MissingRequiredPropertyException("AwsNodePoolConfig", "configEncryption");
+            }
+            this.configEncryption = configEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder iamInstanceProfile(String iamInstanceProfile) {
-            this.iamInstanceProfile = Objects.requireNonNull(iamInstanceProfile);
+            if (iamInstanceProfile == null) {
+              throw new MissingRequiredPropertyException("AwsNodePoolConfig", "iamInstanceProfile");
+            }
+            this.iamInstanceProfile = iamInstanceProfile;
             return this;
         }
         @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
+
             this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder instancePlacement(@Nullable AwsNodePoolConfigInstancePlacement instancePlacement) {
+
             this.instancePlacement = instancePlacement;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder proxyConfig(@Nullable AwsNodePoolConfigProxyConfig proxyConfig) {
+
             this.proxyConfig = proxyConfig;
             return this;
         }
         @CustomType.Setter
         public Builder rootVolume(@Nullable AwsNodePoolConfigRootVolume rootVolume) {
+
             this.rootVolume = rootVolume;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
+
             this.securityGroupIds = securityGroupIds;
             return this;
         }
@@ -289,21 +304,25 @@ public final class AwsNodePoolConfig {
         }
         @CustomType.Setter
         public Builder spotConfig(@Nullable AwsNodePoolConfigSpotConfig spotConfig) {
+
             this.spotConfig = spotConfig;
             return this;
         }
         @CustomType.Setter
         public Builder sshConfig(@Nullable AwsNodePoolConfigSshConfig sshConfig) {
+
             this.sshConfig = sshConfig;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<AwsNodePoolConfigTaint> taints) {
+
             this.taints = taints;
             return this;
         }

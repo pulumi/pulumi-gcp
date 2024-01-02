@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -262,10 +263,18 @@ public final class FlowhookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FlowhookArgs build() {
-            $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
-            $.flowHookPoint = Objects.requireNonNull($.flowHookPoint, "expected parameter 'flowHookPoint' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.sharedflow = Objects.requireNonNull($.sharedflow, "expected parameter 'sharedflow' to be non-null");
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("FlowhookArgs", "environment");
+            }
+            if ($.flowHookPoint == null) {
+                throw new MissingRequiredPropertyException("FlowhookArgs", "flowHookPoint");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("FlowhookArgs", "orgId");
+            }
+            if ($.sharedflow == null) {
+                throw new MissingRequiredPropertyException("FlowhookArgs", "sharedflow");
+            }
             return $;
         }
     }

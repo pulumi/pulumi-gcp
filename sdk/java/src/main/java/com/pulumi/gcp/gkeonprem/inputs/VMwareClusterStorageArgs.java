@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class VMwareClusterStorageArgs extends com.pulumi.resources.Resourc
         }
 
         public VMwareClusterStorageArgs build() {
-            $.vsphereCsiDisabled = Objects.requireNonNull($.vsphereCsiDisabled, "expected parameter 'vsphereCsiDisabled' to be non-null");
+            if ($.vsphereCsiDisabled == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterStorageArgs", "vsphereCsiDisabled");
+            }
             return $;
         }
     }

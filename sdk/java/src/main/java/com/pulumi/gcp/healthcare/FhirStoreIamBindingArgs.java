@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -209,9 +210,15 @@ public final class FhirStoreIamBindingArgs extends com.pulumi.resources.Resource
         }
 
         public FhirStoreIamBindingArgs build() {
-            $.fhirStoreId = Objects.requireNonNull($.fhirStoreId, "expected parameter 'fhirStoreId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.fhirStoreId == null) {
+                throw new MissingRequiredPropertyException("FhirStoreIamBindingArgs", "fhirStoreId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("FhirStoreIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("FhirStoreIamBindingArgs", "role");
+            }
             return $;
         }
     }

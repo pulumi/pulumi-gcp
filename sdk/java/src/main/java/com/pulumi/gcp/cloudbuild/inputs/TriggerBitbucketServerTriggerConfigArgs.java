@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBitbucketServerTriggerConfigPullRequestArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBitbucketServerTriggerConfigPushArgs;
 import java.lang.String;
@@ -238,9 +239,15 @@ public final class TriggerBitbucketServerTriggerConfigArgs extends com.pulumi.re
         }
 
         public TriggerBitbucketServerTriggerConfigArgs build() {
-            $.bitbucketServerConfigResource = Objects.requireNonNull($.bitbucketServerConfigResource, "expected parameter 'bitbucketServerConfigResource' to be non-null");
-            $.projectKey = Objects.requireNonNull($.projectKey, "expected parameter 'projectKey' to be non-null");
-            $.repoSlug = Objects.requireNonNull($.repoSlug, "expected parameter 'repoSlug' to be non-null");
+            if ($.bitbucketServerConfigResource == null) {
+                throw new MissingRequiredPropertyException("TriggerBitbucketServerTriggerConfigArgs", "bitbucketServerConfigResource");
+            }
+            if ($.projectKey == null) {
+                throw new MissingRequiredPropertyException("TriggerBitbucketServerTriggerConfigArgs", "projectKey");
+            }
+            if ($.repoSlug == null) {
+                throw new MissingRequiredPropertyException("TriggerBitbucketServerTriggerConfigArgs", "repoSlug");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.securitycenter.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securitycenter.inputs.OrganizationCustomModuleCustomConfigCustomOutputArgs;
 import com.pulumi.gcp.securitycenter.inputs.OrganizationCustomModuleCustomConfigPredicateArgs;
 import com.pulumi.gcp.securitycenter.inputs.OrganizationCustomModuleCustomConfigResourceSelectorArgs;
@@ -304,10 +305,18 @@ public final class OrganizationCustomModuleCustomConfigArgs extends com.pulumi.r
         }
 
         public OrganizationCustomModuleCustomConfigArgs build() {
-            $.predicate = Objects.requireNonNull($.predicate, "expected parameter 'predicate' to be non-null");
-            $.recommendation = Objects.requireNonNull($.recommendation, "expected parameter 'recommendation' to be non-null");
-            $.resourceSelector = Objects.requireNonNull($.resourceSelector, "expected parameter 'resourceSelector' to be non-null");
-            $.severity = Objects.requireNonNull($.severity, "expected parameter 'severity' to be non-null");
+            if ($.predicate == null) {
+                throw new MissingRequiredPropertyException("OrganizationCustomModuleCustomConfigArgs", "predicate");
+            }
+            if ($.recommendation == null) {
+                throw new MissingRequiredPropertyException("OrganizationCustomModuleCustomConfigArgs", "recommendation");
+            }
+            if ($.resourceSelector == null) {
+                throw new MissingRequiredPropertyException("OrganizationCustomModuleCustomConfigArgs", "resourceSelector");
+            }
+            if ($.severity == null) {
+                throw new MissingRequiredPropertyException("OrganizationCustomModuleCustomConfigArgs", "severity");
+            }
             return $;
         }
     }

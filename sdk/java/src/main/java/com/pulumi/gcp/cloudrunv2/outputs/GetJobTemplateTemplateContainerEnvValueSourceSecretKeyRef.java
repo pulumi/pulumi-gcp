@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef {
 
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetJobTemplateTemplateContainerEnvValueSourceSecretKeyRef build() {

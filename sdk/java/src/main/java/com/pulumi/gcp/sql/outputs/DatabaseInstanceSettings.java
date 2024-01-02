@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsActiveDirectoryConfig;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsAdvancedMachineFeatures;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsBackupConfiguration;
@@ -328,46 +329,55 @@ public final class DatabaseInstanceSettings {
 
         @CustomType.Setter
         public Builder activationPolicy(@Nullable String activationPolicy) {
+
             this.activationPolicy = activationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder activeDirectoryConfig(@Nullable DatabaseInstanceSettingsActiveDirectoryConfig activeDirectoryConfig) {
+
             this.activeDirectoryConfig = activeDirectoryConfig;
             return this;
         }
         @CustomType.Setter
         public Builder advancedMachineFeatures(@Nullable DatabaseInstanceSettingsAdvancedMachineFeatures advancedMachineFeatures) {
+
             this.advancedMachineFeatures = advancedMachineFeatures;
             return this;
         }
         @CustomType.Setter
         public Builder availabilityType(@Nullable String availabilityType) {
+
             this.availabilityType = availabilityType;
             return this;
         }
         @CustomType.Setter
         public Builder backupConfiguration(@Nullable DatabaseInstanceSettingsBackupConfiguration backupConfiguration) {
+
             this.backupConfiguration = backupConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder collation(@Nullable String collation) {
+
             this.collation = collation;
             return this;
         }
         @CustomType.Setter
         public Builder connectorEnforcement(@Nullable String connectorEnforcement) {
+
             this.connectorEnforcement = connectorEnforcement;
             return this;
         }
         @CustomType.Setter
         public Builder dataCacheConfig(@Nullable DatabaseInstanceSettingsDataCacheConfig dataCacheConfig) {
+
             this.dataCacheConfig = dataCacheConfig;
             return this;
         }
         @CustomType.Setter
         public Builder databaseFlags(@Nullable List<DatabaseInstanceSettingsDatabaseFlag> databaseFlags) {
+
             this.databaseFlags = databaseFlags;
             return this;
         }
@@ -376,91 +386,111 @@ public final class DatabaseInstanceSettings {
         }
         @CustomType.Setter
         public Builder deletionProtectionEnabled(@Nullable Boolean deletionProtectionEnabled) {
+
             this.deletionProtectionEnabled = deletionProtectionEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder denyMaintenancePeriod(@Nullable DatabaseInstanceSettingsDenyMaintenancePeriod denyMaintenancePeriod) {
+
             this.denyMaintenancePeriod = denyMaintenancePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder diskAutoresize(@Nullable Boolean diskAutoresize) {
+
             this.diskAutoresize = diskAutoresize;
             return this;
         }
         @CustomType.Setter
         public Builder diskAutoresizeLimit(@Nullable Integer diskAutoresizeLimit) {
+
             this.diskAutoresizeLimit = diskAutoresizeLimit;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
+
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder edition(@Nullable String edition) {
+
             this.edition = edition;
             return this;
         }
         @CustomType.Setter
         public Builder insightsConfig(@Nullable DatabaseInstanceSettingsInsightsConfig insightsConfig) {
+
             this.insightsConfig = insightsConfig;
             return this;
         }
         @CustomType.Setter
         public Builder ipConfiguration(@Nullable DatabaseInstanceSettingsIpConfiguration ipConfiguration) {
+
             this.ipConfiguration = ipConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder locationPreference(@Nullable DatabaseInstanceSettingsLocationPreference locationPreference) {
+
             this.locationPreference = locationPreference;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindow(@Nullable DatabaseInstanceSettingsMaintenanceWindow maintenanceWindow) {
+
             this.maintenanceWindow = maintenanceWindow;
             return this;
         }
         @CustomType.Setter
         public Builder passwordValidationPolicy(@Nullable DatabaseInstanceSettingsPasswordValidationPolicy passwordValidationPolicy) {
+
             this.passwordValidationPolicy = passwordValidationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder pricingPlan(@Nullable String pricingPlan) {
+
             this.pricingPlan = pricingPlan;
             return this;
         }
         @CustomType.Setter
         public Builder sqlServerAuditConfig(@Nullable DatabaseInstanceSettingsSqlServerAuditConfig sqlServerAuditConfig) {
+
             this.sqlServerAuditConfig = sqlServerAuditConfig;
             return this;
         }
         @CustomType.Setter
         public Builder tier(String tier) {
-            this.tier = Objects.requireNonNull(tier);
+            if (tier == null) {
+              throw new MissingRequiredPropertyException("DatabaseInstanceSettings", "tier");
+            }
+            this.tier = tier;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
+
             this.timeZone = timeZone;
             return this;
         }
         @CustomType.Setter
         public Builder userLabels(@Nullable Map<String,String> userLabels) {
+
             this.userLabels = userLabels;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable Integer version) {
+
             this.version = version;
             return this;
         }

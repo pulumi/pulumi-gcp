@@ -46,6 +46,7 @@ public final class MembershipRbacRoleBindingState {
 
         @CustomType.Setter
         public Builder code(@Nullable String code) {
+
             this.code = code;
             return this;
         }

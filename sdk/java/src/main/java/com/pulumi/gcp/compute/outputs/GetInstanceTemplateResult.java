@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateAdvancedMachineFeature;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateConfidentialInstanceConfig;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateDisk;
@@ -510,7 +511,10 @@ public final class GetInstanceTemplateResult {
 
         @CustomType.Setter
         public Builder advancedMachineFeatures(List<GetInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures) {
-            this.advancedMachineFeatures = Objects.requireNonNull(advancedMachineFeatures);
+            if (advancedMachineFeatures == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "advancedMachineFeatures");
+            }
+            this.advancedMachineFeatures = advancedMachineFeatures;
             return this;
         }
         public Builder advancedMachineFeatures(GetInstanceTemplateAdvancedMachineFeature... advancedMachineFeatures) {
@@ -518,12 +522,18 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder canIpForward(Boolean canIpForward) {
-            this.canIpForward = Objects.requireNonNull(canIpForward);
+            if (canIpForward == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "canIpForward");
+            }
+            this.canIpForward = canIpForward;
             return this;
         }
         @CustomType.Setter
         public Builder confidentialInstanceConfigs(List<GetInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs) {
-            this.confidentialInstanceConfigs = Objects.requireNonNull(confidentialInstanceConfigs);
+            if (confidentialInstanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "confidentialInstanceConfigs");
+            }
+            this.confidentialInstanceConfigs = confidentialInstanceConfigs;
             return this;
         }
         public Builder confidentialInstanceConfigs(GetInstanceTemplateConfidentialInstanceConfig... confidentialInstanceConfigs) {
@@ -531,12 +541,18 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disks(List<GetInstanceTemplateDisk> disks) {
-            this.disks = Objects.requireNonNull(disks);
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "disks");
+            }
+            this.disks = disks;
             return this;
         }
         public Builder disks(GetInstanceTemplateDisk... disks) {
@@ -544,22 +560,32 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder enableDisplay(Boolean enableDisplay) {
-            this.enableDisplay = Objects.requireNonNull(enableDisplay);
+            if (enableDisplay == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "enableDisplay");
+            }
+            this.enableDisplay = enableDisplay;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable String filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder guestAccelerators(List<GetInstanceTemplateGuestAccelerator> guestAccelerators) {
-            this.guestAccelerators = Objects.requireNonNull(guestAccelerators);
+            if (guestAccelerators == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "guestAccelerators");
+            }
+            this.guestAccelerators = guestAccelerators;
             return this;
         }
         public Builder guestAccelerators(GetInstanceTemplateGuestAccelerator... guestAccelerators) {
@@ -567,62 +593,94 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceDescription(String instanceDescription) {
-            this.instanceDescription = Objects.requireNonNull(instanceDescription);
+            if (instanceDescription == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "instanceDescription");
+            }
+            this.instanceDescription = instanceDescription;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder metadataFingerprint(String metadataFingerprint) {
-            this.metadataFingerprint = Objects.requireNonNull(metadataFingerprint);
+            if (metadataFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "metadataFingerprint");
+            }
+            this.metadataFingerprint = metadataFingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder metadataStartupScript(String metadataStartupScript) {
-            this.metadataStartupScript = Objects.requireNonNull(metadataStartupScript);
+            if (metadataStartupScript == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "metadataStartupScript");
+            }
+            this.metadataStartupScript = metadataStartupScript;
             return this;
         }
         @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
-            this.minCpuPlatform = Objects.requireNonNull(minCpuPlatform);
+            if (minCpuPlatform == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "minCpuPlatform");
+            }
+            this.minCpuPlatform = minCpuPlatform;
             return this;
         }
         @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
+
             this.mostRecent = mostRecent;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namePrefix(String namePrefix) {
-            this.namePrefix = Objects.requireNonNull(namePrefix);
+            if (namePrefix == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "namePrefix");
+            }
+            this.namePrefix = namePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaces(List<GetInstanceTemplateNetworkInterface> networkInterfaces) {
-            this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
+            if (networkInterfaces == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "networkInterfaces");
+            }
+            this.networkInterfaces = networkInterfaces;
             return this;
         }
         public Builder networkInterfaces(GetInstanceTemplateNetworkInterface... networkInterfaces) {
@@ -630,7 +688,10 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder networkPerformanceConfigs(List<GetInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs) {
-            this.networkPerformanceConfigs = Objects.requireNonNull(networkPerformanceConfigs);
+            if (networkPerformanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "networkPerformanceConfigs");
+            }
+            this.networkPerformanceConfigs = networkPerformanceConfigs;
             return this;
         }
         public Builder networkPerformanceConfigs(GetInstanceTemplateNetworkPerformanceConfig... networkPerformanceConfigs) {
@@ -638,22 +699,32 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder reservationAffinities(List<GetInstanceTemplateReservationAffinity> reservationAffinities) {
-            this.reservationAffinities = Objects.requireNonNull(reservationAffinities);
+            if (reservationAffinities == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "reservationAffinities");
+            }
+            this.reservationAffinities = reservationAffinities;
             return this;
         }
         public Builder reservationAffinities(GetInstanceTemplateReservationAffinity... reservationAffinities) {
@@ -661,7 +732,10 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
-            this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
+            if (resourcePolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "resourcePolicies");
+            }
+            this.resourcePolicies = resourcePolicies;
             return this;
         }
         public Builder resourcePolicies(String... resourcePolicies) {
@@ -669,7 +743,10 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder schedulings(List<GetInstanceTemplateScheduling> schedulings) {
-            this.schedulings = Objects.requireNonNull(schedulings);
+            if (schedulings == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "schedulings");
+            }
+            this.schedulings = schedulings;
             return this;
         }
         public Builder schedulings(GetInstanceTemplateScheduling... schedulings) {
@@ -677,17 +754,24 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder selfLinkUnique(@Nullable String selfLinkUnique) {
+
             this.selfLinkUnique = selfLinkUnique;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccounts(List<GetInstanceTemplateServiceAccount> serviceAccounts) {
-            this.serviceAccounts = Objects.requireNonNull(serviceAccounts);
+            if (serviceAccounts == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "serviceAccounts");
+            }
+            this.serviceAccounts = serviceAccounts;
             return this;
         }
         public Builder serviceAccounts(GetInstanceTemplateServiceAccount... serviceAccounts) {
@@ -695,7 +779,10 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder shieldedInstanceConfigs(List<GetInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs) {
-            this.shieldedInstanceConfigs = Objects.requireNonNull(shieldedInstanceConfigs);
+            if (shieldedInstanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "shieldedInstanceConfigs");
+            }
+            this.shieldedInstanceConfigs = shieldedInstanceConfigs;
             return this;
         }
         public Builder shieldedInstanceConfigs(GetInstanceTemplateShieldedInstanceConfig... shieldedInstanceConfigs) {
@@ -703,7 +790,10 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -711,7 +801,10 @@ public final class GetInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder tagsFingerprint(String tagsFingerprint) {
-            this.tagsFingerprint = Objects.requireNonNull(tagsFingerprint);
+            if (tagsFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateResult", "tagsFingerprint");
+            }
+            this.tagsFingerprint = tagsFingerprint;
             return this;
         }
         public GetInstanceTemplateResult build() {

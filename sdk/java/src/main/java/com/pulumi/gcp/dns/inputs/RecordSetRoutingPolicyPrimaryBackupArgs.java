@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs;
 import java.lang.Boolean;
@@ -210,8 +211,12 @@ public final class RecordSetRoutingPolicyPrimaryBackupArgs extends com.pulumi.re
         }
 
         public RecordSetRoutingPolicyPrimaryBackupArgs build() {
-            $.backupGeos = Objects.requireNonNull($.backupGeos, "expected parameter 'backupGeos' to be non-null");
-            $.primary = Objects.requireNonNull($.primary, "expected parameter 'primary' to be non-null");
+            if ($.backupGeos == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupArgs", "backupGeos");
+            }
+            if ($.primary == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupArgs", "primary");
+            }
             return $;
         }
     }

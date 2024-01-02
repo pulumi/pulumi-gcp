@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class StreamSourceConfigOracleSourceConfigIncludeObjects {
 
         @CustomType.Setter
         public Builder oracleSchemas(List<StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema> oracleSchemas) {
-            this.oracleSchemas = Objects.requireNonNull(oracleSchemas);
+            if (oracleSchemas == null) {
+              throw new MissingRequiredPropertyException("StreamSourceConfigOracleSourceConfigIncludeObjects", "oracleSchemas");
+            }
+            this.oracleSchemas = oracleSchemas;
             return this;
         }
         public Builder oracleSchemas(StreamSourceConfigOracleSourceConfigIncludeObjectsOracleSchema... oracleSchemas) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class GetRegionInstanceTemplateShieldedInstanceConfig {
 
         @CustomType.Setter
         public Builder enableIntegrityMonitoring(Boolean enableIntegrityMonitoring) {
-            this.enableIntegrityMonitoring = Objects.requireNonNull(enableIntegrityMonitoring);
+            if (enableIntegrityMonitoring == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateShieldedInstanceConfig", "enableIntegrityMonitoring");
+            }
+            this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder enableSecureBoot(Boolean enableSecureBoot) {
-            this.enableSecureBoot = Objects.requireNonNull(enableSecureBoot);
+            if (enableSecureBoot == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateShieldedInstanceConfig", "enableSecureBoot");
+            }
+            this.enableSecureBoot = enableSecureBoot;
             return this;
         }
         @CustomType.Setter
         public Builder enableVtpm(Boolean enableVtpm) {
-            this.enableVtpm = Objects.requireNonNull(enableVtpm);
+            if (enableVtpm == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateShieldedInstanceConfig", "enableVtpm");
+            }
+            this.enableVtpm = enableVtpm;
             return this;
         }
         public GetRegionInstanceTemplateShieldedInstanceConfig build() {

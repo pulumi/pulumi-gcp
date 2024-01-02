@@ -61,11 +61,13 @@ public final class AiFeatureStoreOnlineServingConfig {
 
         @CustomType.Setter
         public Builder fixedNodeCount(@Nullable Integer fixedNodeCount) {
+
             this.fixedNodeCount = fixedNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder scaling(@Nullable AiFeatureStoreOnlineServingConfigScaling scaling) {
+
             this.scaling = scaling;
             return this;
         }

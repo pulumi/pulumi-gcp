@@ -44,6 +44,7 @@ public final class AwsClusterLoggingConfigComponentConfig {
 
         @CustomType.Setter
         public Builder enableComponents(@Nullable List<String> enableComponents) {
+
             this.enableComponents = enableComponents;
             return this;
         }

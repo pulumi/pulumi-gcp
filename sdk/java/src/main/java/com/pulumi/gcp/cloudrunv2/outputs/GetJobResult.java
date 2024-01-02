@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobBinaryAuthorization;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobCondition;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobLatestCreatedExecution;
@@ -221,12 +222,18 @@ public final class GetJobResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder binaryAuthorizations(List<GetJobBinaryAuthorization> binaryAuthorizations) {
-            this.binaryAuthorizations = Objects.requireNonNull(binaryAuthorizations);
+            if (binaryAuthorizations == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "binaryAuthorizations");
+            }
+            this.binaryAuthorizations = binaryAuthorizations;
             return this;
         }
         public Builder binaryAuthorizations(GetJobBinaryAuthorization... binaryAuthorizations) {
@@ -234,17 +241,26 @@ public final class GetJobResult {
         }
         @CustomType.Setter
         public Builder client(String client) {
-            this.client = Objects.requireNonNull(client);
+            if (client == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "client");
+            }
+            this.client = client;
             return this;
         }
         @CustomType.Setter
         public Builder clientVersion(String clientVersion) {
-            this.clientVersion = Objects.requireNonNull(clientVersion);
+            if (clientVersion == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "clientVersion");
+            }
+            this.clientVersion = clientVersion;
             return this;
         }
         @CustomType.Setter
         public Builder conditions(List<GetJobCondition> conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         public Builder conditions(GetJobCondition... conditions) {
@@ -252,67 +268,106 @@ public final class GetJobResult {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder creator(String creator) {
-            this.creator = Objects.requireNonNull(creator);
+            if (creator == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "creator");
+            }
+            this.creator = creator;
             return this;
         }
         @CustomType.Setter
         public Builder deleteTime(String deleteTime) {
-            this.deleteTime = Objects.requireNonNull(deleteTime);
+            if (deleteTime == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "deleteTime");
+            }
+            this.deleteTime = deleteTime;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
-            this.effectiveAnnotations = Objects.requireNonNull(effectiveAnnotations);
+            if (effectiveAnnotations == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "effectiveAnnotations");
+            }
+            this.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder executionCount(Integer executionCount) {
-            this.executionCount = Objects.requireNonNull(executionCount);
+            if (executionCount == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "executionCount");
+            }
+            this.executionCount = executionCount;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder generation(String generation) {
-            this.generation = Objects.requireNonNull(generation);
+            if (generation == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "generation");
+            }
+            this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifier(String lastModifier) {
-            this.lastModifier = Objects.requireNonNull(lastModifier);
+            if (lastModifier == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "lastModifier");
+            }
+            this.lastModifier = lastModifier;
             return this;
         }
         @CustomType.Setter
         public Builder latestCreatedExecutions(List<GetJobLatestCreatedExecution> latestCreatedExecutions) {
-            this.latestCreatedExecutions = Objects.requireNonNull(latestCreatedExecutions);
+            if (latestCreatedExecutions == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "latestCreatedExecutions");
+            }
+            this.latestCreatedExecutions = latestCreatedExecutions;
             return this;
         }
         public Builder latestCreatedExecutions(GetJobLatestCreatedExecution... latestCreatedExecutions) {
@@ -320,42 +375,62 @@ public final class GetJobResult {
         }
         @CustomType.Setter
         public Builder launchStage(String launchStage) {
-            this.launchStage = Objects.requireNonNull(launchStage);
+            if (launchStage == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "launchStage");
+            }
+            this.launchStage = launchStage;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder observedGeneration(String observedGeneration) {
-            this.observedGeneration = Objects.requireNonNull(observedGeneration);
+            if (observedGeneration == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "observedGeneration");
+            }
+            this.observedGeneration = observedGeneration;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder reconciling(Boolean reconciling) {
-            this.reconciling = Objects.requireNonNull(reconciling);
+            if (reconciling == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "reconciling");
+            }
+            this.reconciling = reconciling;
             return this;
         }
         @CustomType.Setter
         public Builder templates(List<GetJobTemplate> templates) {
-            this.templates = Objects.requireNonNull(templates);
+            if (templates == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "templates");
+            }
+            this.templates = templates;
             return this;
         }
         public Builder templates(GetJobTemplate... templates) {
@@ -363,7 +438,10 @@ public final class GetJobResult {
         }
         @CustomType.Setter
         public Builder terminalConditions(List<GetJobTerminalCondition> terminalConditions) {
-            this.terminalConditions = Objects.requireNonNull(terminalConditions);
+            if (terminalConditions == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "terminalConditions");
+            }
+            this.terminalConditions = terminalConditions;
             return this;
         }
         public Builder terminalConditions(GetJobTerminalCondition... terminalConditions) {
@@ -371,12 +449,18 @@ public final class GetJobResult {
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetJobResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetJobResult build() {

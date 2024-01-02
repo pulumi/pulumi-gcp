@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -223,7 +224,9 @@ public final class RegionDiskIamPolicyArgs extends com.pulumi.resources.Resource
         }
 
         public RegionDiskIamPolicyArgs build() {
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("RegionDiskIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

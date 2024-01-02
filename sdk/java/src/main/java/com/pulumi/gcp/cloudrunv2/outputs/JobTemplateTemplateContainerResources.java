@@ -44,6 +44,7 @@ public final class JobTemplateTemplateContainerResources {
 
         @CustomType.Setter
         public Builder limits(@Nullable Map<String,String> limits) {
+
             this.limits = limits;
             return this;
         }

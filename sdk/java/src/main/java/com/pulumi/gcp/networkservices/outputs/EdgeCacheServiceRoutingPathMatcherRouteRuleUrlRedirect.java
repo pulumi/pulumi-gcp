@@ -129,31 +129,37 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect {
 
         @CustomType.Setter
         public Builder hostRedirect(@Nullable String hostRedirect) {
+
             this.hostRedirect = hostRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder httpsRedirect(@Nullable Boolean httpsRedirect) {
+
             this.httpsRedirect = httpsRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder pathRedirect(@Nullable String pathRedirect) {
+
             this.pathRedirect = pathRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder prefixRedirect(@Nullable String prefixRedirect) {
+
             this.prefixRedirect = prefixRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder redirectResponseCode(@Nullable String redirectResponseCode) {
+
             this.redirectResponseCode = redirectResponseCode;
             return this;
         }
         @CustomType.Setter
         public Builder stripQuery(@Nullable Boolean stripQuery) {
+
             this.stripQuery = stripQuery;
             return this;
         }

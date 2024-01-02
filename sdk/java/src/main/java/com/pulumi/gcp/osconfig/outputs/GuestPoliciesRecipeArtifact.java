@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.GuestPoliciesRecipeArtifactGcs;
 import com.pulumi.gcp.osconfig.outputs.GuestPoliciesRecipeArtifactRemote;
 import java.lang.Boolean;
@@ -99,21 +100,27 @@ public final class GuestPoliciesRecipeArtifact {
 
         @CustomType.Setter
         public Builder allowInsecure(@Nullable Boolean allowInsecure) {
+
             this.allowInsecure = allowInsecure;
             return this;
         }
         @CustomType.Setter
         public Builder gcs(@Nullable GuestPoliciesRecipeArtifactGcs gcs) {
+
             this.gcs = gcs;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesRecipeArtifact", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder remote(@Nullable GuestPoliciesRecipeArtifactRemote remote) {
+
             this.remote = remote;
             return this;
         }

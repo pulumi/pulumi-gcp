@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -72,12 +73,18 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
 
         @CustomType.Setter
         public Builder includeHost(Boolean includeHost) {
-            this.includeHost = Objects.requireNonNull(includeHost);
+            if (includeHost == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicyCacheKeyPolicy", "includeHost");
+            }
+            this.includeHost = includeHost;
             return this;
         }
         @CustomType.Setter
         public Builder includeHttpHeaders(List<String> includeHttpHeaders) {
-            this.includeHttpHeaders = Objects.requireNonNull(includeHttpHeaders);
+            if (includeHttpHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicyCacheKeyPolicy", "includeHttpHeaders");
+            }
+            this.includeHttpHeaders = includeHttpHeaders;
             return this;
         }
         public Builder includeHttpHeaders(String... includeHttpHeaders) {
@@ -85,7 +92,10 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
         }
         @CustomType.Setter
         public Builder includeNamedCookies(List<String> includeNamedCookies) {
-            this.includeNamedCookies = Objects.requireNonNull(includeNamedCookies);
+            if (includeNamedCookies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicyCacheKeyPolicy", "includeNamedCookies");
+            }
+            this.includeNamedCookies = includeNamedCookies;
             return this;
         }
         public Builder includeNamedCookies(String... includeNamedCookies) {
@@ -93,17 +103,26 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
         }
         @CustomType.Setter
         public Builder includeProtocol(Boolean includeProtocol) {
-            this.includeProtocol = Objects.requireNonNull(includeProtocol);
+            if (includeProtocol == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicyCacheKeyPolicy", "includeProtocol");
+            }
+            this.includeProtocol = includeProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder includeQueryString(Boolean includeQueryString) {
-            this.includeQueryString = Objects.requireNonNull(includeQueryString);
+            if (includeQueryString == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicyCacheKeyPolicy", "includeQueryString");
+            }
+            this.includeQueryString = includeQueryString;
             return this;
         }
         @CustomType.Setter
         public Builder queryStringBlacklists(List<String> queryStringBlacklists) {
-            this.queryStringBlacklists = Objects.requireNonNull(queryStringBlacklists);
+            if (queryStringBlacklists == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicyCacheKeyPolicy", "queryStringBlacklists");
+            }
+            this.queryStringBlacklists = queryStringBlacklists;
             return this;
         }
         public Builder queryStringBlacklists(String... queryStringBlacklists) {
@@ -111,7 +130,10 @@ public final class GetBackendServiceCdnPolicyCacheKeyPolicy {
         }
         @CustomType.Setter
         public Builder queryStringWhitelists(List<String> queryStringWhitelists) {
-            this.queryStringWhitelists = Objects.requireNonNull(queryStringWhitelists);
+            if (queryStringWhitelists == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicyCacheKeyPolicy", "queryStringWhitelists");
+            }
+            this.queryStringWhitelists = queryStringWhitelists;
             return this;
         }
         public Builder queryStringWhitelists(String... queryStringWhitelists) {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsActiveDirectoryConfigArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
@@ -810,7 +811,9 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         public DatabaseInstanceSettingsArgs build() {
-            $.tier = Objects.requireNonNull($.tier, "expected parameter 'tier' to be non-null");
+            if ($.tier == null) {
+                throw new MissingRequiredPropertyException("DatabaseInstanceSettingsArgs", "tier");
+            }
             return $;
         }
     }

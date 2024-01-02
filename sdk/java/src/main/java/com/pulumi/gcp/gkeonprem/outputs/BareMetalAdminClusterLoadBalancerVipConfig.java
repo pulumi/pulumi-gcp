@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class BareMetalAdminClusterLoadBalancerVipConfig {
 
         @CustomType.Setter
         public Builder controlPlaneVip(String controlPlaneVip) {
-            this.controlPlaneVip = Objects.requireNonNull(controlPlaneVip);
+            if (controlPlaneVip == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterLoadBalancerVipConfig", "controlPlaneVip");
+            }
+            this.controlPlaneVip = controlPlaneVip;
             return this;
         }
         public BareMetalAdminClusterLoadBalancerVipConfig build() {

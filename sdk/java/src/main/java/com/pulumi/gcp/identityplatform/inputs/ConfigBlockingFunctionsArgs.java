@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsForwardInboundCredentialsArgs;
 import com.pulumi.gcp.identityplatform.inputs.ConfigBlockingFunctionsTriggerArgs;
 import java.util.List;
@@ -134,7 +135,9 @@ public final class ConfigBlockingFunctionsArgs extends com.pulumi.resources.Reso
         }
 
         public ConfigBlockingFunctionsArgs build() {
-            $.triggers = Objects.requireNonNull($.triggers, "expected parameter 'triggers' to be non-null");
+            if ($.triggers == null) {
+                throw new MissingRequiredPropertyException("ConfigBlockingFunctionsArgs", "triggers");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.GetBucketAutoclass;
 import com.pulumi.gcp.storage.outputs.GetBucketCor;
 import com.pulumi.gcp.storage.outputs.GetBucketCustomPlacementConfig;
@@ -204,7 +205,10 @@ public final class GetBucketResult {
 
         @CustomType.Setter
         public Builder autoclasses(List<GetBucketAutoclass> autoclasses) {
-            this.autoclasses = Objects.requireNonNull(autoclasses);
+            if (autoclasses == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "autoclasses");
+            }
+            this.autoclasses = autoclasses;
             return this;
         }
         public Builder autoclasses(GetBucketAutoclass... autoclasses) {
@@ -212,7 +216,10 @@ public final class GetBucketResult {
         }
         @CustomType.Setter
         public Builder cors(List<GetBucketCor> cors) {
-            this.cors = Objects.requireNonNull(cors);
+            if (cors == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "cors");
+            }
+            this.cors = cors;
             return this;
         }
         public Builder cors(GetBucketCor... cors) {
@@ -220,7 +227,10 @@ public final class GetBucketResult {
         }
         @CustomType.Setter
         public Builder customPlacementConfigs(List<GetBucketCustomPlacementConfig> customPlacementConfigs) {
-            this.customPlacementConfigs = Objects.requireNonNull(customPlacementConfigs);
+            if (customPlacementConfigs == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "customPlacementConfigs");
+            }
+            this.customPlacementConfigs = customPlacementConfigs;
             return this;
         }
         public Builder customPlacementConfigs(GetBucketCustomPlacementConfig... customPlacementConfigs) {
@@ -228,22 +238,34 @@ public final class GetBucketResult {
         }
         @CustomType.Setter
         public Builder defaultEventBasedHold(Boolean defaultEventBasedHold) {
-            this.defaultEventBasedHold = Objects.requireNonNull(defaultEventBasedHold);
+            if (defaultEventBasedHold == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "defaultEventBasedHold");
+            }
+            this.defaultEventBasedHold = defaultEventBasedHold;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder enableObjectRetention(Boolean enableObjectRetention) {
-            this.enableObjectRetention = Objects.requireNonNull(enableObjectRetention);
+            if (enableObjectRetention == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "enableObjectRetention");
+            }
+            this.enableObjectRetention = enableObjectRetention;
             return this;
         }
         @CustomType.Setter
         public Builder encryptions(List<GetBucketEncryption> encryptions) {
-            this.encryptions = Objects.requireNonNull(encryptions);
+            if (encryptions == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "encryptions");
+            }
+            this.encryptions = encryptions;
             return this;
         }
         public Builder encryptions(GetBucketEncryption... encryptions) {
@@ -251,22 +273,34 @@ public final class GetBucketResult {
         }
         @CustomType.Setter
         public Builder forceDestroy(Boolean forceDestroy) {
-            this.forceDestroy = Objects.requireNonNull(forceDestroy);
+            if (forceDestroy == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "forceDestroy");
+            }
+            this.forceDestroy = forceDestroy;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder lifecycleRules(List<GetBucketLifecycleRule> lifecycleRules) {
-            this.lifecycleRules = Objects.requireNonNull(lifecycleRules);
+            if (lifecycleRules == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "lifecycleRules");
+            }
+            this.lifecycleRules = lifecycleRules;
             return this;
         }
         public Builder lifecycleRules(GetBucketLifecycleRule... lifecycleRules) {
@@ -274,12 +308,18 @@ public final class GetBucketResult {
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder loggings(List<GetBucketLogging> loggings) {
-            this.loggings = Objects.requireNonNull(loggings);
+            if (loggings == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "loggings");
+            }
+            this.loggings = loggings;
             return this;
         }
         public Builder loggings(GetBucketLogging... loggings) {
@@ -287,32 +327,50 @@ public final class GetBucketResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder publicAccessPrevention(String publicAccessPrevention) {
-            this.publicAccessPrevention = Objects.requireNonNull(publicAccessPrevention);
+            if (publicAccessPrevention == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "publicAccessPrevention");
+            }
+            this.publicAccessPrevention = publicAccessPrevention;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder requesterPays(Boolean requesterPays) {
-            this.requesterPays = Objects.requireNonNull(requesterPays);
+            if (requesterPays == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "requesterPays");
+            }
+            this.requesterPays = requesterPays;
             return this;
         }
         @CustomType.Setter
         public Builder retentionPolicies(List<GetBucketRetentionPolicy> retentionPolicies) {
-            this.retentionPolicies = Objects.requireNonNull(retentionPolicies);
+            if (retentionPolicies == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "retentionPolicies");
+            }
+            this.retentionPolicies = retentionPolicies;
             return this;
         }
         public Builder retentionPolicies(GetBucketRetentionPolicy... retentionPolicies) {
@@ -320,32 +378,50 @@ public final class GetBucketResult {
         }
         @CustomType.Setter
         public Builder rpo(String rpo) {
-            this.rpo = Objects.requireNonNull(rpo);
+            if (rpo == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "rpo");
+            }
+            this.rpo = rpo;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder storageClass(String storageClass) {
-            this.storageClass = Objects.requireNonNull(storageClass);
+            if (storageClass == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "storageClass");
+            }
+            this.storageClass = storageClass;
             return this;
         }
         @CustomType.Setter
         public Builder uniformBucketLevelAccess(Boolean uniformBucketLevelAccess) {
-            this.uniformBucketLevelAccess = Objects.requireNonNull(uniformBucketLevelAccess);
+            if (uniformBucketLevelAccess == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "uniformBucketLevelAccess");
+            }
+            this.uniformBucketLevelAccess = uniformBucketLevelAccess;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "url");
+            }
+            this.url = url;
             return this;
         }
         @CustomType.Setter
         public Builder versionings(List<GetBucketVersioning> versionings) {
-            this.versionings = Objects.requireNonNull(versionings);
+            if (versionings == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "versionings");
+            }
+            this.versionings = versionings;
             return this;
         }
         public Builder versionings(GetBucketVersioning... versionings) {
@@ -353,7 +429,10 @@ public final class GetBucketResult {
         }
         @CustomType.Setter
         public Builder websites(List<GetBucketWebsite> websites) {
-            this.websites = Objects.requireNonNull(websites);
+            if (websites == null) {
+              throw new MissingRequiredPropertyException("GetBucketResult", "websites");
+            }
+            this.websites = websites;
             return this;
         }
         public Builder websites(GetBucketWebsite... websites) {

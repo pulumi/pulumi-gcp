@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig;
 import java.lang.Integer;
@@ -62,12 +63,18 @@ public final class GetClusterNodePoolNodeConfigGuestAccelerator {
 
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigGuestAccelerator", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder gpuDriverInstallationConfigs(List<GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig> gpuDriverInstallationConfigs) {
-            this.gpuDriverInstallationConfigs = Objects.requireNonNull(gpuDriverInstallationConfigs);
+            if (gpuDriverInstallationConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigGuestAccelerator", "gpuDriverInstallationConfigs");
+            }
+            this.gpuDriverInstallationConfigs = gpuDriverInstallationConfigs;
             return this;
         }
         public Builder gpuDriverInstallationConfigs(GetClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig... gpuDriverInstallationConfigs) {
@@ -75,12 +82,18 @@ public final class GetClusterNodePoolNodeConfigGuestAccelerator {
         }
         @CustomType.Setter
         public Builder gpuPartitionSize(String gpuPartitionSize) {
-            this.gpuPartitionSize = Objects.requireNonNull(gpuPartitionSize);
+            if (gpuPartitionSize == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigGuestAccelerator", "gpuPartitionSize");
+            }
+            this.gpuPartitionSize = gpuPartitionSize;
             return this;
         }
         @CustomType.Setter
         public Builder gpuSharingConfigs(List<GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig> gpuSharingConfigs) {
-            this.gpuSharingConfigs = Objects.requireNonNull(gpuSharingConfigs);
+            if (gpuSharingConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigGuestAccelerator", "gpuSharingConfigs");
+            }
+            this.gpuSharingConfigs = gpuSharingConfigs;
             return this;
         }
         public Builder gpuSharingConfigs(GetClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig... gpuSharingConfigs) {
@@ -88,7 +101,10 @@ public final class GetClusterNodePoolNodeConfigGuestAccelerator {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfigGuestAccelerator", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetClusterNodePoolNodeConfigGuestAccelerator build() {

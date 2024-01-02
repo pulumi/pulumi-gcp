@@ -62,11 +62,13 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite {
 
         @CustomType.Setter
         public Builder hostRewrite(@Nullable String hostRewrite) {
+
             this.hostRewrite = hostRewrite;
             return this;
         }
         @CustomType.Setter
         public Builder pathPrefixRewrite(@Nullable String pathPrefixRewrite) {
+
             this.pathPrefixRewrite = pathPrefixRewrite;
             return this;
         }

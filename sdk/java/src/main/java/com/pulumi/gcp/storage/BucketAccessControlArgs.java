@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -218,8 +219,12 @@ public final class BucketAccessControlArgs extends com.pulumi.resources.Resource
         }
 
         public BucketAccessControlArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.entity = Objects.requireNonNull($.entity, "expected parameter 'entity' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("BucketAccessControlArgs", "bucket");
+            }
+            if ($.entity == null) {
+                throw new MissingRequiredPropertyException("BucketAccessControlArgs", "entity");
+            }
             return $;
         }
     }

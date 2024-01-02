@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudasset.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class GetResourcesSearchAllPlainArgs extends com.pulumi.resources.I
         }
 
         public GetResourcesSearchAllPlainArgs build() {
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("GetResourcesSearchAllPlainArgs", "scope");
+            }
             return $;
         }
     }

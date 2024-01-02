@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.AssetIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -296,11 +297,21 @@ public final class AssetIamMemberArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public AssetIamMemberArgs build() {
-            $.asset = Objects.requireNonNull($.asset, "expected parameter 'asset' to be non-null");
-            $.dataplexZone = Objects.requireNonNull($.dataplexZone, "expected parameter 'dataplexZone' to be non-null");
-            $.lake = Objects.requireNonNull($.lake, "expected parameter 'lake' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.asset == null) {
+                throw new MissingRequiredPropertyException("AssetIamMemberArgs", "asset");
+            }
+            if ($.dataplexZone == null) {
+                throw new MissingRequiredPropertyException("AssetIamMemberArgs", "dataplexZone");
+            }
+            if ($.lake == null) {
+                throw new MissingRequiredPropertyException("AssetIamMemberArgs", "lake");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("AssetIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AssetIamMemberArgs", "role");
+            }
             return $;
         }
     }

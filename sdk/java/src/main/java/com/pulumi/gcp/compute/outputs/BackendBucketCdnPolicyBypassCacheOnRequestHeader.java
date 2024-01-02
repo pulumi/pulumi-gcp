@@ -44,6 +44,7 @@ public final class BackendBucketCdnPolicyBypassCacheOnRequestHeader {
 
         @CustomType.Setter
         public Builder headerName(@Nullable String headerName) {
+
             this.headerName = headerName;
             return this;
         }

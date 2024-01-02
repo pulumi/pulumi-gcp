@@ -62,11 +62,13 @@ public final class StreamDestinationConfigGcsDestinationConfigJsonFileFormat {
 
         @CustomType.Setter
         public Builder compression(@Nullable String compression) {
+
             this.compression = compression;
             return this;
         }
         @CustomType.Setter
         public Builder schemaFileFormat(@Nullable String schemaFileFormat) {
+
             this.schemaFileFormat = schemaFileFormat;
             return this;
         }

@@ -146,6 +146,7 @@ public final class TaskSpark {
 
         @CustomType.Setter
         public Builder archiveUris(@Nullable List<String> archiveUris) {
+
             this.archiveUris = archiveUris;
             return this;
         }
@@ -154,6 +155,7 @@ public final class TaskSpark {
         }
         @CustomType.Setter
         public Builder fileUris(@Nullable List<String> fileUris) {
+
             this.fileUris = fileUris;
             return this;
         }
@@ -162,31 +164,37 @@ public final class TaskSpark {
         }
         @CustomType.Setter
         public Builder infrastructureSpec(@Nullable TaskSparkInfrastructureSpec infrastructureSpec) {
+
             this.infrastructureSpec = infrastructureSpec;
             return this;
         }
         @CustomType.Setter
         public Builder mainClass(@Nullable String mainClass) {
+
             this.mainClass = mainClass;
             return this;
         }
         @CustomType.Setter
         public Builder mainJarFileUri(@Nullable String mainJarFileUri) {
+
             this.mainJarFileUri = mainJarFileUri;
             return this;
         }
         @CustomType.Setter
         public Builder pythonScriptFile(@Nullable String pythonScriptFile) {
+
             this.pythonScriptFile = pythonScriptFile;
             return this;
         }
         @CustomType.Setter
         public Builder sqlScript(@Nullable String sqlScript) {
+
             this.sqlScript = sqlScript;
             return this;
         }
         @CustomType.Setter
         public Builder sqlScriptFile(@Nullable String sqlScriptFile) {
+
             this.sqlScriptFile = sqlScriptFile;
             return this;
         }

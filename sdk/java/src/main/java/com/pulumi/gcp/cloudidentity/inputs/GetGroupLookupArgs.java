@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudidentity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class GetGroupLookupArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetGroupLookupArgs build() {
-            $.groupKey = Objects.requireNonNull($.groupKey, "expected parameter 'groupKey' to be non-null");
+            if ($.groupKey == null) {
+                throw new MissingRequiredPropertyException("GetGroupLookupArgs", "groupKey");
+            }
             return $;
         }
     }

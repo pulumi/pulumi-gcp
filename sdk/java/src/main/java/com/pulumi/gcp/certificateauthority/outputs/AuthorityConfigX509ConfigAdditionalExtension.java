@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509ConfigAdditionalExtensionObjectId;
 import java.lang.Boolean;
 import java.lang.String;
@@ -76,17 +77,26 @@ public final class AuthorityConfigX509ConfigAdditionalExtension {
 
         @CustomType.Setter
         public Builder critical(Boolean critical) {
-            this.critical = Objects.requireNonNull(critical);
+            if (critical == null) {
+              throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigAdditionalExtension", "critical");
+            }
+            this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(AuthorityConfigX509ConfigAdditionalExtensionObjectId objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigAdditionalExtension", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigAdditionalExtension", "value");
+            }
+            this.value = value;
             return this;
         }
         public AuthorityConfigX509ConfigAdditionalExtension build() {

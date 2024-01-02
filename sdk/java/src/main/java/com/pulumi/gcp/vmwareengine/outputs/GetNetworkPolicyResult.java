@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkPolicyExternalIp;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkPolicyInternetAccess;
 import java.lang.String;
@@ -119,22 +120,34 @@ public final class GetNetworkPolicyResult {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder edgeServicesCidr(String edgeServicesCidr) {
-            this.edgeServicesCidr = Objects.requireNonNull(edgeServicesCidr);
+            if (edgeServicesCidr == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "edgeServicesCidr");
+            }
+            this.edgeServicesCidr = edgeServicesCidr;
             return this;
         }
         @CustomType.Setter
         public Builder externalIps(List<GetNetworkPolicyExternalIp> externalIps) {
-            this.externalIps = Objects.requireNonNull(externalIps);
+            if (externalIps == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "externalIps");
+            }
+            this.externalIps = externalIps;
             return this;
         }
         public Builder externalIps(GetNetworkPolicyExternalIp... externalIps) {
@@ -142,12 +155,18 @@ public final class GetNetworkPolicyResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internetAccesses(List<GetNetworkPolicyInternetAccess> internetAccesses) {
-            this.internetAccesses = Objects.requireNonNull(internetAccesses);
+            if (internetAccesses == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "internetAccesses");
+            }
+            this.internetAccesses = internetAccesses;
             return this;
         }
         public Builder internetAccesses(GetNetworkPolicyInternetAccess... internetAccesses) {
@@ -155,37 +174,56 @@ public final class GetNetworkPolicyResult {
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder vmwareEngineNetwork(String vmwareEngineNetwork) {
-            this.vmwareEngineNetwork = Objects.requireNonNull(vmwareEngineNetwork);
+            if (vmwareEngineNetwork == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "vmwareEngineNetwork");
+            }
+            this.vmwareEngineNetwork = vmwareEngineNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder vmwareEngineNetworkCanonical(String vmwareEngineNetworkCanonical) {
-            this.vmwareEngineNetworkCanonical = Objects.requireNonNull(vmwareEngineNetworkCanonical);
+            if (vmwareEngineNetworkCanonical == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPolicyResult", "vmwareEngineNetworkCanonical");
+            }
+            this.vmwareEngineNetworkCanonical = vmwareEngineNetworkCanonical;
             return this;
         }
         public GetNetworkPolicyResult build() {

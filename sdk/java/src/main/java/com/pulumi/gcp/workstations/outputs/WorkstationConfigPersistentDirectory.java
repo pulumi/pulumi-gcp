@@ -61,11 +61,13 @@ public final class WorkstationConfigPersistentDirectory {
 
         @CustomType.Setter
         public Builder gcePd(@Nullable WorkstationConfigPersistentDirectoryGcePd gcePd) {
+
             this.gcePd = gcePd;
             return this;
         }
         @CustomType.Setter
         public Builder mountPath(@Nullable String mountPath) {
+
             this.mountPath = mountPath;
             return this;
         }

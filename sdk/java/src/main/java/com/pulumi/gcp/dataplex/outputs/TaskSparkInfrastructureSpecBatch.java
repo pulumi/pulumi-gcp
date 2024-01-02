@@ -58,11 +58,13 @@ public final class TaskSparkInfrastructureSpecBatch {
 
         @CustomType.Setter
         public Builder executorsCount(@Nullable Integer executorsCount) {
+
             this.executorsCount = executorsCount;
             return this;
         }
         @CustomType.Setter
         public Builder maxExecutorsCount(@Nullable Integer maxExecutorsCount) {
+
             this.maxExecutorsCount = maxExecutorsCount;
             return this;
         }

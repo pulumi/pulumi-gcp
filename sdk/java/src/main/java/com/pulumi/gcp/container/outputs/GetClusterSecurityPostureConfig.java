@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClusterSecurityPostureConfig {
 
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetClusterSecurityPostureConfig", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder vulnerabilityMode(String vulnerabilityMode) {
-            this.vulnerabilityMode = Objects.requireNonNull(vulnerabilityMode);
+            if (vulnerabilityMode == null) {
+              throw new MissingRequiredPropertyException("GetClusterSecurityPostureConfig", "vulnerabilityMode");
+            }
+            this.vulnerabilityMode = vulnerabilityMode;
             return this;
         }
         public GetClusterSecurityPostureConfig build() {

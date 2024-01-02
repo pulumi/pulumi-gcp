@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -124,7 +125,9 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
         }
 
         public FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs build() {
-            $.bundle = Objects.requireNonNull($.bundle, "expected parameter 'bundle' to be non-null");
+            if ($.bundle == null) {
+                throw new MissingRequiredPropertyException("FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs", "bundle");
+            }
             return $;
         }
     }

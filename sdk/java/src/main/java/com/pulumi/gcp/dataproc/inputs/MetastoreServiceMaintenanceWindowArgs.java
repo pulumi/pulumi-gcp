@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -116,8 +117,12 @@ public final class MetastoreServiceMaintenanceWindowArgs extends com.pulumi.reso
         }
 
         public MetastoreServiceMaintenanceWindowArgs build() {
-            $.dayOfWeek = Objects.requireNonNull($.dayOfWeek, "expected parameter 'dayOfWeek' to be non-null");
-            $.hourOfDay = Objects.requireNonNull($.hourOfDay, "expected parameter 'hourOfDay' to be non-null");
+            if ($.dayOfWeek == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceMaintenanceWindowArgs", "dayOfWeek");
+            }
+            if ($.hourOfDay == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceMaintenanceWindowArgs", "hourOfDay");
+            }
             return $;
         }
     }

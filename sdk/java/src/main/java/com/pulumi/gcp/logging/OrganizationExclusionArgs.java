@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -237,8 +238,12 @@ public final class OrganizationExclusionArgs extends com.pulumi.resources.Resour
         }
 
         public OrganizationExclusionArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("OrganizationExclusionArgs", "filter");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("OrganizationExclusionArgs", "orgId");
+            }
             return $;
         }
     }

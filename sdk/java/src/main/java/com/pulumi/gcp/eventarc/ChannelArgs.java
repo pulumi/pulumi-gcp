@@ -5,6 +5,7 @@ package com.pulumi.gcp.eventarc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -232,7 +233,9 @@ public final class ChannelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ChannelArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ChannelArgs", "location");
+            }
             return $;
         }
     }

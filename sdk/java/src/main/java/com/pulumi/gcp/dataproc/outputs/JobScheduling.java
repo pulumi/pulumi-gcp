@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class JobScheduling {
 
         @CustomType.Setter
         public Builder maxFailuresPerHour(Integer maxFailuresPerHour) {
-            this.maxFailuresPerHour = Objects.requireNonNull(maxFailuresPerHour);
+            if (maxFailuresPerHour == null) {
+              throw new MissingRequiredPropertyException("JobScheduling", "maxFailuresPerHour");
+            }
+            this.maxFailuresPerHour = maxFailuresPerHour;
             return this;
         }
         @CustomType.Setter
         public Builder maxFailuresTotal(Integer maxFailuresTotal) {
-            this.maxFailuresTotal = Objects.requireNonNull(maxFailuresTotal);
+            if (maxFailuresTotal == null) {
+              throw new MissingRequiredPropertyException("JobScheduling", "maxFailuresTotal");
+            }
+            this.maxFailuresTotal = maxFailuresTotal;
             return this;
         }
         public JobScheduling build() {

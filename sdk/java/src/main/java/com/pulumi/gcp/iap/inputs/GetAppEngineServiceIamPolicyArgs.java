@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -154,8 +155,12 @@ public final class GetAppEngineServiceIamPolicyArgs extends com.pulumi.resources
         }
 
         public GetAppEngineServiceIamPolicyArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("GetAppEngineServiceIamPolicyArgs", "appId");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("GetAppEngineServiceIamPolicyArgs", "service");
+            }
             return $;
         }
     }

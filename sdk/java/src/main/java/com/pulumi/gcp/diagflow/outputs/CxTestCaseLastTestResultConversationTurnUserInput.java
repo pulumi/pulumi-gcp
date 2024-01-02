@@ -90,21 +90,25 @@ public final class CxTestCaseLastTestResultConversationTurnUserInput {
 
         @CustomType.Setter
         public Builder enableSentimentAnalysis(@Nullable Boolean enableSentimentAnalysis) {
+
             this.enableSentimentAnalysis = enableSentimentAnalysis;
             return this;
         }
         @CustomType.Setter
         public Builder injectedParameters(@Nullable String injectedParameters) {
+
             this.injectedParameters = injectedParameters;
             return this;
         }
         @CustomType.Setter
         public Builder input(@Nullable CxTestCaseLastTestResultConversationTurnUserInputInput input) {
+
             this.input = input;
             return this;
         }
         @CustomType.Setter
         public Builder isWebhookEnabled(@Nullable Boolean isWebhookEnabled) {
+
             this.isWebhookEnabled = isWebhookEnabled;
             return this;
         }

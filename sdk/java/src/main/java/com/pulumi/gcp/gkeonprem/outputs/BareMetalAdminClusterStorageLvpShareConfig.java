@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterStorageLvpShareConfigLvpConfig;
 import java.lang.Integer;
 import java.util.Objects;
@@ -61,11 +62,15 @@ public final class BareMetalAdminClusterStorageLvpShareConfig {
 
         @CustomType.Setter
         public Builder lvpConfig(BareMetalAdminClusterStorageLvpShareConfigLvpConfig lvpConfig) {
-            this.lvpConfig = Objects.requireNonNull(lvpConfig);
+            if (lvpConfig == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterStorageLvpShareConfig", "lvpConfig");
+            }
+            this.lvpConfig = lvpConfig;
             return this;
         }
         @CustomType.Setter
         public Builder sharedPathPvCount(@Nullable Integer sharedPathPvCount) {
+
             this.sharedPathPvCount = sharedPathPvCount;
             return this;
         }

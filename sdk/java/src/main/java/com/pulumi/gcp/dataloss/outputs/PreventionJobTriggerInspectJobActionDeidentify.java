@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig;
 import java.lang.String;
@@ -107,11 +108,15 @@ public final class PreventionJobTriggerInspectJobActionDeidentify {
 
         @CustomType.Setter
         public Builder cloudStorageOutput(String cloudStorageOutput) {
-            this.cloudStorageOutput = Objects.requireNonNull(cloudStorageOutput);
+            if (cloudStorageOutput == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobActionDeidentify", "cloudStorageOutput");
+            }
+            this.cloudStorageOutput = cloudStorageOutput;
             return this;
         }
         @CustomType.Setter
         public Builder fileTypesToTransforms(@Nullable List<String> fileTypesToTransforms) {
+
             this.fileTypesToTransforms = fileTypesToTransforms;
             return this;
         }
@@ -120,11 +125,13 @@ public final class PreventionJobTriggerInspectJobActionDeidentify {
         }
         @CustomType.Setter
         public Builder transformationConfig(@Nullable PreventionJobTriggerInspectJobActionDeidentifyTransformationConfig transformationConfig) {
+
             this.transformationConfig = transformationConfig;
             return this;
         }
         @CustomType.Setter
         public Builder transformationDetailsStorageConfig(@Nullable PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig transformationDetailsStorageConfig) {
+
             this.transformationDetailsStorageConfig = transformationDetailsStorageConfig;
             return this;
         }

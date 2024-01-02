@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionApiConfigArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionDeploymentArgs;
@@ -1250,10 +1251,18 @@ public final class FlexibleAppVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         public FlexibleAppVersionArgs build() {
-            $.livenessCheck = Objects.requireNonNull($.livenessCheck, "expected parameter 'livenessCheck' to be non-null");
-            $.readinessCheck = Objects.requireNonNull($.readinessCheck, "expected parameter 'readinessCheck' to be non-null");
-            $.runtime = Objects.requireNonNull($.runtime, "expected parameter 'runtime' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.livenessCheck == null) {
+                throw new MissingRequiredPropertyException("FlexibleAppVersionArgs", "livenessCheck");
+            }
+            if ($.readinessCheck == null) {
+                throw new MissingRequiredPropertyException("FlexibleAppVersionArgs", "readinessCheck");
+            }
+            if ($.runtime == null) {
+                throw new MissingRequiredPropertyException("FlexibleAppVersionArgs", "runtime");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("FlexibleAppVersionArgs", "service");
+            }
             return $;
         }
     }

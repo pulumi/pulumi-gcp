@@ -148,36 +148,43 @@ public final class GuestPoliciesRecipeInstallStep {
 
         @CustomType.Setter
         public Builder archiveExtraction(@Nullable GuestPoliciesRecipeInstallStepArchiveExtraction archiveExtraction) {
+
             this.archiveExtraction = archiveExtraction;
             return this;
         }
         @CustomType.Setter
         public Builder dpkgInstallation(@Nullable GuestPoliciesRecipeInstallStepDpkgInstallation dpkgInstallation) {
+
             this.dpkgInstallation = dpkgInstallation;
             return this;
         }
         @CustomType.Setter
         public Builder fileCopy(@Nullable GuestPoliciesRecipeInstallStepFileCopy fileCopy) {
+
             this.fileCopy = fileCopy;
             return this;
         }
         @CustomType.Setter
         public Builder fileExec(@Nullable GuestPoliciesRecipeInstallStepFileExec fileExec) {
+
             this.fileExec = fileExec;
             return this;
         }
         @CustomType.Setter
         public Builder msiInstallation(@Nullable GuestPoliciesRecipeInstallStepMsiInstallation msiInstallation) {
+
             this.msiInstallation = msiInstallation;
             return this;
         }
         @CustomType.Setter
         public Builder rpmInstallation(@Nullable GuestPoliciesRecipeInstallStepRpmInstallation rpmInstallation) {
+
             this.rpmInstallation = rpmInstallation;
             return this;
         }
         @CustomType.Setter
         public Builder scriptRun(@Nullable GuestPoliciesRecipeInstallStepScriptRun scriptRun) {
+
             this.scriptRun = scriptRun;
             return this;
         }

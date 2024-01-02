@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs;
 import java.lang.Boolean;
@@ -273,7 +274,9 @@ public final class ConnectionEventingConfigAuthConfigAdditionalVariableArgs exte
         }
 
         public ConnectionEventingConfigAuthConfigAdditionalVariableArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("ConnectionEventingConfigAuthConfigAdditionalVariableArgs", "key");
+            }
             return $;
         }
     }

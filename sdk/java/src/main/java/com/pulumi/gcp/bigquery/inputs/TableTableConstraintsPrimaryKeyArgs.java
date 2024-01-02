@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class TableTableConstraintsPrimaryKeyArgs extends com.pulumi.resour
         }
 
         public TableTableConstraintsPrimaryKeyArgs build() {
-            $.columns = Objects.requireNonNull($.columns, "expected parameter 'columns' to be non-null");
+            if ($.columns == null) {
+                throw new MissingRequiredPropertyException("TableTableConstraintsPrimaryKeyArgs", "columns");
+            }
             return $;
         }
     }

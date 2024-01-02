@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterClusterOperationsArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterControlPlaneArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterLoadBalancerArgs;
@@ -734,7 +735,9 @@ public final class BareMetalAdminClusterArgs extends com.pulumi.resources.Resour
         }
 
         public BareMetalAdminClusterArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("BareMetalAdminClusterArgs", "location");
+            }
             return $;
         }
     }

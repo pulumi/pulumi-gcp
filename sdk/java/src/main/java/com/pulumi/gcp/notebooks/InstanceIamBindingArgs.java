@@ -5,6 +5,7 @@ package com.pulumi.gcp.notebooks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.notebooks.inputs.InstanceIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -287,9 +288,15 @@ public final class InstanceIamBindingArgs extends com.pulumi.resources.ResourceA
         }
 
         public InstanceIamBindingArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("InstanceIamBindingArgs", "instanceName");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("InstanceIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("InstanceIamBindingArgs", "role");
+            }
             return $;
         }
     }

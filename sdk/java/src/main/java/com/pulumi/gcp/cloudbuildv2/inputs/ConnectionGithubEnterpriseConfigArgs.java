@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuildv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -337,7 +338,9 @@ public final class ConnectionGithubEnterpriseConfigArgs extends com.pulumi.resou
         }
 
         public ConnectionGithubEnterpriseConfigArgs build() {
-            $.hostUri = Objects.requireNonNull($.hostUri, "expected parameter 'hostUri' to be non-null");
+            if ($.hostUri == null) {
+                throw new MissingRequiredPropertyException("ConnectionGithubEnterpriseConfigArgs", "hostUri");
+            }
             return $;
         }
     }

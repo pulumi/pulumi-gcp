@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class GetHl7V2StoreIamPolicyArgs extends com.pulumi.resources.Invok
         }
 
         public GetHl7V2StoreIamPolicyArgs build() {
-            $.hl7V2StoreId = Objects.requireNonNull($.hl7V2StoreId, "expected parameter 'hl7V2StoreId' to be non-null");
+            if ($.hl7V2StoreId == null) {
+                throw new MissingRequiredPropertyException("GetHl7V2StoreIamPolicyArgs", "hl7V2StoreId");
+            }
             return $;
         }
     }

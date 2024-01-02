@@ -76,11 +76,13 @@ public final class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpB
 
         @CustomType.Setter
         public Builder gateway(@Nullable String gateway) {
+
             this.gateway = gateway;
             return this;
         }
         @CustomType.Setter
         public Builder ips(@Nullable List<VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlockIp> ips) {
+
             this.ips = ips;
             return this;
         }
@@ -89,6 +91,7 @@ public final class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpB
         }
         @CustomType.Setter
         public Builder netmask(@Nullable String netmask) {
+
             this.netmask = netmask;
             return this;
         }

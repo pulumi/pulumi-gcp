@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class DatascanDataQualitySpecRuleTableConditionExpectation {
 
         @CustomType.Setter
         public Builder sqlExpression(String sqlExpression) {
-            this.sqlExpression = Objects.requireNonNull(sqlExpression);
+            if (sqlExpression == null) {
+              throw new MissingRequiredPropertyException("DatascanDataQualitySpecRuleTableConditionExpectation", "sqlExpression");
+            }
+            this.sqlExpression = sqlExpression;
             return this;
         }
         public DatascanDataQualitySpecRuleTableConditionExpectation build() {

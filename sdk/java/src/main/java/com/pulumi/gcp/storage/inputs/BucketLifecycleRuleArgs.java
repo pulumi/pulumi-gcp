@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleActionArgs;
 import com.pulumi.gcp.storage.inputs.BucketLifecycleRuleConditionArgs;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class BucketLifecycleRuleArgs extends com.pulumi.resources.Resource
         }
 
         public BucketLifecycleRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.condition = Objects.requireNonNull($.condition, "expected parameter 'condition' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("BucketLifecycleRuleArgs", "action");
+            }
+            if ($.condition == null) {
+                throw new MissingRequiredPropertyException("BucketLifecycleRuleArgs", "condition");
+            }
             return $;
         }
     }

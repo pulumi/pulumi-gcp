@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateNetworkInterfaceAccessConfig;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateNetworkInterfaceAliasIpRange;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig;
@@ -181,7 +182,10 @@ public final class GetRegionInstanceTemplateNetworkInterface {
 
         @CustomType.Setter
         public Builder accessConfigs(List<GetRegionInstanceTemplateNetworkInterfaceAccessConfig> accessConfigs) {
-            this.accessConfigs = Objects.requireNonNull(accessConfigs);
+            if (accessConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "accessConfigs");
+            }
+            this.accessConfigs = accessConfigs;
             return this;
         }
         public Builder accessConfigs(GetRegionInstanceTemplateNetworkInterfaceAccessConfig... accessConfigs) {
@@ -189,7 +193,10 @@ public final class GetRegionInstanceTemplateNetworkInterface {
         }
         @CustomType.Setter
         public Builder aliasIpRanges(List<GetRegionInstanceTemplateNetworkInterfaceAliasIpRange> aliasIpRanges) {
-            this.aliasIpRanges = Objects.requireNonNull(aliasIpRanges);
+            if (aliasIpRanges == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "aliasIpRanges");
+            }
+            this.aliasIpRanges = aliasIpRanges;
             return this;
         }
         public Builder aliasIpRanges(GetRegionInstanceTemplateNetworkInterfaceAliasIpRange... aliasIpRanges) {
@@ -197,12 +204,18 @@ public final class GetRegionInstanceTemplateNetworkInterface {
         }
         @CustomType.Setter
         public Builder internalIpv6PrefixLength(Integer internalIpv6PrefixLength) {
-            this.internalIpv6PrefixLength = Objects.requireNonNull(internalIpv6PrefixLength);
+            if (internalIpv6PrefixLength == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "internalIpv6PrefixLength");
+            }
+            this.internalIpv6PrefixLength = internalIpv6PrefixLength;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6AccessConfigs(List<GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs) {
-            this.ipv6AccessConfigs = Objects.requireNonNull(ipv6AccessConfigs);
+            if (ipv6AccessConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "ipv6AccessConfigs");
+            }
+            this.ipv6AccessConfigs = ipv6AccessConfigs;
             return this;
         }
         public Builder ipv6AccessConfigs(GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig... ipv6AccessConfigs) {
@@ -210,52 +223,82 @@ public final class GetRegionInstanceTemplateNetworkInterface {
         }
         @CustomType.Setter
         public Builder ipv6AccessType(String ipv6AccessType) {
-            this.ipv6AccessType = Objects.requireNonNull(ipv6AccessType);
+            if (ipv6AccessType == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "ipv6AccessType");
+            }
+            this.ipv6AccessType = ipv6AccessType;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(String ipv6Address) {
-            this.ipv6Address = Objects.requireNonNull(ipv6Address);
+            if (ipv6Address == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "ipv6Address");
+            }
+            this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder networkIp(String networkIp) {
-            this.networkIp = Objects.requireNonNull(networkIp);
+            if (networkIp == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "networkIp");
+            }
+            this.networkIp = networkIp;
             return this;
         }
         @CustomType.Setter
         public Builder nicType(String nicType) {
-            this.nicType = Objects.requireNonNull(nicType);
+            if (nicType == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "nicType");
+            }
+            this.nicType = nicType;
             return this;
         }
         @CustomType.Setter
         public Builder queueCount(Integer queueCount) {
-            this.queueCount = Objects.requireNonNull(queueCount);
+            if (queueCount == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "queueCount");
+            }
+            this.queueCount = queueCount;
             return this;
         }
         @CustomType.Setter
         public Builder stackType(String stackType) {
-            this.stackType = Objects.requireNonNull(stackType);
+            if (stackType == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "stackType");
+            }
+            this.stackType = stackType;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
-            this.subnetwork = Objects.requireNonNull(subnetwork);
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder subnetworkProject(String subnetworkProject) {
-            this.subnetworkProject = Objects.requireNonNull(subnetworkProject);
+            if (subnetworkProject == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterface", "subnetworkProject");
+            }
+            this.subnetworkProject = subnetworkProject;
             return this;
         }
         public GetRegionInstanceTemplateNetworkInterface build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.TaskNotebookInfrastructureSpecArgs;
 import java.lang.String;
 import java.util.List;
@@ -213,7 +214,9 @@ public final class TaskNotebookArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TaskNotebookArgs build() {
-            $.notebook = Objects.requireNonNull($.notebook, "expected parameter 'notebook' to be non-null");
+            if ($.notebook == null) {
+                throw new MissingRequiredPropertyException("TaskNotebookArgs", "notebook");
+            }
             return $;
         }
     }

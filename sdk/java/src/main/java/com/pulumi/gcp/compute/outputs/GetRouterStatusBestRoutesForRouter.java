@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -148,77 +149,122 @@ public final class GetRouterStatusBestRoutesForRouter {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destRange(String destRange) {
-            this.destRange = Objects.requireNonNull(destRange);
+            if (destRange == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "destRange");
+            }
+            this.destRange = destRange;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopGateway(String nextHopGateway) {
-            this.nextHopGateway = Objects.requireNonNull(nextHopGateway);
+            if (nextHopGateway == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "nextHopGateway");
+            }
+            this.nextHopGateway = nextHopGateway;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopIlb(String nextHopIlb) {
-            this.nextHopIlb = Objects.requireNonNull(nextHopIlb);
+            if (nextHopIlb == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "nextHopIlb");
+            }
+            this.nextHopIlb = nextHopIlb;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopInstance(String nextHopInstance) {
-            this.nextHopInstance = Objects.requireNonNull(nextHopInstance);
+            if (nextHopInstance == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "nextHopInstance");
+            }
+            this.nextHopInstance = nextHopInstance;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopInstanceZone(String nextHopInstanceZone) {
-            this.nextHopInstanceZone = Objects.requireNonNull(nextHopInstanceZone);
+            if (nextHopInstanceZone == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "nextHopInstanceZone");
+            }
+            this.nextHopInstanceZone = nextHopInstanceZone;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopIp(String nextHopIp) {
-            this.nextHopIp = Objects.requireNonNull(nextHopIp);
+            if (nextHopIp == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "nextHopIp");
+            }
+            this.nextHopIp = nextHopIp;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopNetwork(String nextHopNetwork) {
-            this.nextHopNetwork = Objects.requireNonNull(nextHopNetwork);
+            if (nextHopNetwork == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "nextHopNetwork");
+            }
+            this.nextHopNetwork = nextHopNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder nextHopVpnTunnel(String nextHopVpnTunnel) {
-            this.nextHopVpnTunnel = Objects.requireNonNull(nextHopVpnTunnel);
+            if (nextHopVpnTunnel == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "nextHopVpnTunnel");
+            }
+            this.nextHopVpnTunnel = nextHopVpnTunnel;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusBestRoutesForRouter", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {

@@ -44,6 +44,7 @@ public final class InboundSamlConfigSpConfigSpCertificate {
 
         @CustomType.Setter
         public Builder x509Certificate(@Nullable String x509Certificate) {
+
             this.x509Certificate = x509Certificate;
             return this;
         }

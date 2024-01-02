@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -61,11 +62,15 @@ public final class TableView {
 
         @CustomType.Setter
         public Builder query(String query) {
-            this.query = Objects.requireNonNull(query);
+            if (query == null) {
+              throw new MissingRequiredPropertyException("TableView", "query");
+            }
+            this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder useLegacySql(@Nullable Boolean useLegacySql) {
+
             this.useLegacySql = useLegacySql;
             return this;
         }

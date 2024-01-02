@@ -58,11 +58,13 @@ public final class AzureClusterFleet {
 
         @CustomType.Setter
         public Builder membership(@Nullable String membership) {
+
             this.membership = membership;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }

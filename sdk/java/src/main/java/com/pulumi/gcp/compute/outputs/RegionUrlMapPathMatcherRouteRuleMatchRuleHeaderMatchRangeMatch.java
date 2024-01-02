@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatc
 
         @CustomType.Setter
         public Builder rangeEnd(Integer rangeEnd) {
-            this.rangeEnd = Objects.requireNonNull(rangeEnd);
+            if (rangeEnd == null) {
+              throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch", "rangeEnd");
+            }
+            this.rangeEnd = rangeEnd;
             return this;
         }
         @CustomType.Setter
         public Builder rangeStart(Integer rangeStart) {
-            this.rangeStart = Objects.requireNonNull(rangeStart);
+            if (rangeStart == null) {
+              throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch", "rangeStart");
+            }
+            this.rangeStart = rangeStart;
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatch build() {

@@ -94,21 +94,25 @@ public final class VMwareClusterLoadBalancerManualLbConfig {
 
         @CustomType.Setter
         public Builder controlPlaneNodePort(@Nullable Integer controlPlaneNodePort) {
+
             this.controlPlaneNodePort = controlPlaneNodePort;
             return this;
         }
         @CustomType.Setter
         public Builder ingressHttpNodePort(@Nullable Integer ingressHttpNodePort) {
+
             this.ingressHttpNodePort = ingressHttpNodePort;
             return this;
         }
         @CustomType.Setter
         public Builder ingressHttpsNodePort(@Nullable Integer ingressHttpsNodePort) {
+
             this.ingressHttpsNodePort = ingressHttpsNodePort;
             return this;
         }
         @CustomType.Setter
         public Builder konnectivityServerNodePort(@Nullable Integer konnectivityServerNodePort) {
+
             this.konnectivityServerNodePort = konnectivityServerNodePort;
             return this;
         }

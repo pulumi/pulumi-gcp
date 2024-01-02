@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -93,7 +94,9 @@ public final class GetFolderPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetFolderPlainArgs build() {
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("GetFolderPlainArgs", "folder");
+            }
             return $;
         }
     }

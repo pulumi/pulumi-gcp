@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -49,7 +50,10 @@ public final class SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
 
         @CustomType.Setter
         public Builder contentTypes(List<String> contentTypes) {
-            this.contentTypes = Objects.requireNonNull(contentTypes);
+            if (contentTypes == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyAdvancedOptionsConfigJsonCustomConfig", "contentTypes");
+            }
+            this.contentTypes = contentTypes;
             return this;
         }
         public Builder contentTypes(String... contentTypes) {

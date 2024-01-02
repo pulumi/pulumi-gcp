@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class ConnectionAwsAccessRoleArgs extends com.pulumi.resources.Reso
         }
 
         public ConnectionAwsAccessRoleArgs build() {
-            $.iamRoleId = Objects.requireNonNull($.iamRoleId, "expected parameter 'iamRoleId' to be non-null");
+            if ($.iamRoleId == null) {
+                throw new MissingRequiredPropertyException("ConnectionAwsAccessRoleArgs", "iamRoleId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeSecretItemArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -168,7 +169,9 @@ public final class ServiceTemplateVolumeSecretArgs extends com.pulumi.resources.
         }
 
         public ServiceTemplateVolumeSecretArgs build() {
-            $.secret = Objects.requireNonNull($.secret, "expected parameter 'secret' to be non-null");
+            if ($.secret == null) {
+                throw new MissingRequiredPropertyException("ServiceTemplateVolumeSecretArgs", "secret");
+            }
             return $;
         }
     }

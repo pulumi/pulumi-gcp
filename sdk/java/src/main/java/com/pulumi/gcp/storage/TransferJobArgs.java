@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.TransferJobEventStreamArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobScheduleArgs;
@@ -314,8 +315,12 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TransferJobArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.transferSpec = Objects.requireNonNull($.transferSpec, "expected parameter 'transferSpec' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("TransferJobArgs", "description");
+            }
+            if ($.transferSpec == null) {
+                throw new MissingRequiredPropertyException("TransferJobArgs", "transferSpec");
+            }
             return $;
         }
     }

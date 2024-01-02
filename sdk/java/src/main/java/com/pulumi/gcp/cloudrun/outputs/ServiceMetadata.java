@@ -236,51 +236,61 @@ public final class ServiceMetadata {
 
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,String> annotations) {
+
             this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveAnnotations(@Nullable Map<String,String> effectiveAnnotations) {
+
             this.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(@Nullable Map<String,String> effectiveLabels) {
+
             this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder generation(@Nullable Integer generation) {
+
             this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(@Nullable Map<String,String> pulumiLabels) {
+
             this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder resourceVersion(@Nullable String resourceVersion) {
+
             this.resourceVersion = resourceVersion;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(@Nullable String selfLink) {
+
             this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder uid(@Nullable String uid) {
+
             this.uid = uid;
             return this;
         }

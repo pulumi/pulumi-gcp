@@ -102,21 +102,25 @@ public final class NodePoolUpgradeSettings {
 
         @CustomType.Setter
         public Builder blueGreenSettings(@Nullable NodePoolUpgradeSettingsBlueGreenSettings blueGreenSettings) {
+
             this.blueGreenSettings = blueGreenSettings;
             return this;
         }
         @CustomType.Setter
         public Builder maxSurge(@Nullable Integer maxSurge) {
+
             this.maxSurge = maxSurge;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailable(@Nullable Integer maxUnavailable) {
+
             this.maxUnavailable = maxUnavailable;
             return this;
         }
         @CustomType.Setter
         public Builder strategy(@Nullable String strategy) {
+
             this.strategy = strategy;
             return this;
         }

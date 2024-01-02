@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigee.inputs.KeystoresAliasesKeyCertFileCertsInfoArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -348,11 +349,21 @@ public final class KeystoresAliasesKeyCertFileArgs extends com.pulumi.resources.
         }
 
         public KeystoresAliasesKeyCertFileArgs build() {
-            $.alias = Objects.requireNonNull($.alias, "expected parameter 'alias' to be non-null");
-            $.cert = Objects.requireNonNull($.cert, "expected parameter 'cert' to be non-null");
-            $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
-            $.keystore = Objects.requireNonNull($.keystore, "expected parameter 'keystore' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            if ($.alias == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesKeyCertFileArgs", "alias");
+            }
+            if ($.cert == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesKeyCertFileArgs", "cert");
+            }
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesKeyCertFileArgs", "environment");
+            }
+            if ($.keystore == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesKeyCertFileArgs", "keystore");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesKeyCertFileArgs", "orgId");
+            }
             return $;
         }
     }

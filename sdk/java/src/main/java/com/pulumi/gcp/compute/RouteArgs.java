@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -696,8 +697,12 @@ public final class RouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouteArgs build() {
-            $.destRange = Objects.requireNonNull($.destRange, "expected parameter 'destRange' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.destRange == null) {
+                throw new MissingRequiredPropertyException("RouteArgs", "destRange");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("RouteArgs", "network");
+            }
             return $;
         }
     }

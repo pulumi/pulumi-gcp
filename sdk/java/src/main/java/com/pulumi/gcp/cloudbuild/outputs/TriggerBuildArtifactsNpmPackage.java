@@ -60,11 +60,13 @@ public final class TriggerBuildArtifactsNpmPackage {
 
         @CustomType.Setter
         public Builder packagePath(@Nullable String packagePath) {
+
             this.packagePath = packagePath;
             return this;
         }
         @CustomType.Setter
         public Builder repository(@Nullable String repository) {
+
             this.repository = repository;
             return this;
         }

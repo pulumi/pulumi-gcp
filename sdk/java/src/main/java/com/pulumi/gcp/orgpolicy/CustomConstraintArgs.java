@@ -5,6 +5,7 @@ package com.pulumi.gcp.orgpolicy;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -368,11 +369,21 @@ public final class CustomConstraintArgs extends com.pulumi.resources.ResourceArg
         }
 
         public CustomConstraintArgs build() {
-            $.actionType = Objects.requireNonNull($.actionType, "expected parameter 'actionType' to be non-null");
-            $.condition = Objects.requireNonNull($.condition, "expected parameter 'condition' to be non-null");
-            $.methodTypes = Objects.requireNonNull($.methodTypes, "expected parameter 'methodTypes' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
-            $.resourceTypes = Objects.requireNonNull($.resourceTypes, "expected parameter 'resourceTypes' to be non-null");
+            if ($.actionType == null) {
+                throw new MissingRequiredPropertyException("CustomConstraintArgs", "actionType");
+            }
+            if ($.condition == null) {
+                throw new MissingRequiredPropertyException("CustomConstraintArgs", "condition");
+            }
+            if ($.methodTypes == null) {
+                throw new MissingRequiredPropertyException("CustomConstraintArgs", "methodTypes");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("CustomConstraintArgs", "parent");
+            }
+            if ($.resourceTypes == null) {
+                throw new MissingRequiredPropertyException("CustomConstraintArgs", "resourceTypes");
+            }
             return $;
         }
     }

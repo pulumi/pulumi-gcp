@@ -237,16 +237,19 @@ public final class ClusterNodePool {
 
         @CustomType.Setter
         public Builder autoscaling(@Nullable ClusterNodePoolAutoscaling autoscaling) {
+
             this.autoscaling = autoscaling;
             return this;
         }
         @CustomType.Setter
         public Builder initialNodeCount(@Nullable Integer initialNodeCount) {
+
             this.initialNodeCount = initialNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceGroupUrls(@Nullable List<String> instanceGroupUrls) {
+
             this.instanceGroupUrls = instanceGroupUrls;
             return this;
         }
@@ -255,6 +258,7 @@ public final class ClusterNodePool {
         }
         @CustomType.Setter
         public Builder managedInstanceGroupUrls(@Nullable List<String> managedInstanceGroupUrls) {
+
             this.managedInstanceGroupUrls = managedInstanceGroupUrls;
             return this;
         }
@@ -263,41 +267,49 @@ public final class ClusterNodePool {
         }
         @CustomType.Setter
         public Builder management(@Nullable ClusterNodePoolManagement management) {
+
             this.management = management;
             return this;
         }
         @CustomType.Setter
         public Builder maxPodsPerNode(@Nullable Integer maxPodsPerNode) {
+
             this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namePrefix(@Nullable String namePrefix) {
+
             this.namePrefix = namePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder networkConfig(@Nullable ClusterNodePoolNetworkConfig networkConfig) {
+
             this.networkConfig = networkConfig;
             return this;
         }
         @CustomType.Setter
         public Builder nodeConfig(@Nullable ClusterNodePoolNodeConfig nodeConfig) {
+
             this.nodeConfig = nodeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
+
             this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodeLocations(@Nullable List<String> nodeLocations) {
+
             this.nodeLocations = nodeLocations;
             return this;
         }
@@ -306,21 +318,25 @@ public final class ClusterNodePool {
         }
         @CustomType.Setter
         public Builder placementPolicy(@Nullable ClusterNodePoolPlacementPolicy placementPolicy) {
+
             this.placementPolicy = placementPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder queuedProvisioning(@Nullable ClusterNodePoolQueuedProvisioning queuedProvisioning) {
+
             this.queuedProvisioning = queuedProvisioning;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeSettings(@Nullable ClusterNodePoolUpgradeSettings upgradeSettings) {
+
             this.upgradeSettings = upgradeSettings;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

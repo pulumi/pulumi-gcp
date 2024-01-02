@@ -5,6 +5,7 @@ package com.pulumi.gcp.billing.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetAccountIamPolicyArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetAccountIamPolicyArgs build() {
-            $.billingAccountId = Objects.requireNonNull($.billingAccountId, "expected parameter 'billingAccountId' to be non-null");
+            if ($.billingAccountId == null) {
+                throw new MissingRequiredPropertyException("GetAccountIamPolicyArgs", "billingAccountId");
+            }
             return $;
         }
     }

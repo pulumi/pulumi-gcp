@@ -62,6 +62,7 @@ public final class ConnectionEventingConfigRegistrationDestinationConfig {
 
         @CustomType.Setter
         public Builder destinations(@Nullable List<ConnectionEventingConfigRegistrationDestinationConfigDestination> destinations) {
+
             this.destinations = destinations;
             return this;
         }
@@ -70,6 +71,7 @@ public final class ConnectionEventingConfigRegistrationDestinationConfig {
         }
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }

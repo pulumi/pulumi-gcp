@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage;
@@ -49,7 +50,10 @@ public final class GetAuthorityConfigX509ConfigKeyUsage {
 
         @CustomType.Setter
         public Builder baseKeyUsages(List<GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage> baseKeyUsages) {
-            this.baseKeyUsages = Objects.requireNonNull(baseKeyUsages);
+            if (baseKeyUsages == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsage", "baseKeyUsages");
+            }
+            this.baseKeyUsages = baseKeyUsages;
             return this;
         }
         public Builder baseKeyUsages(GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage... baseKeyUsages) {
@@ -57,7 +61,10 @@ public final class GetAuthorityConfigX509ConfigKeyUsage {
         }
         @CustomType.Setter
         public Builder extendedKeyUsages(List<GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage> extendedKeyUsages) {
-            this.extendedKeyUsages = Objects.requireNonNull(extendedKeyUsages);
+            if (extendedKeyUsages == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsage", "extendedKeyUsages");
+            }
+            this.extendedKeyUsages = extendedKeyUsages;
             return this;
         }
         public Builder extendedKeyUsages(GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage... extendedKeyUsages) {
@@ -65,7 +72,10 @@ public final class GetAuthorityConfigX509ConfigKeyUsage {
         }
         @CustomType.Setter
         public Builder unknownExtendedKeyUsages(List<GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
-            this.unknownExtendedKeyUsages = Objects.requireNonNull(unknownExtendedKeyUsages);
+            if (unknownExtendedKeyUsages == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsage", "unknownExtendedKeyUsages");
+            }
+            this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
             return this;
         }
         public Builder unknownExtendedKeyUsages(GetAuthorityConfigX509ConfigKeyUsageUnknownExtendedKeyUsage... unknownExtendedKeyUsages) {

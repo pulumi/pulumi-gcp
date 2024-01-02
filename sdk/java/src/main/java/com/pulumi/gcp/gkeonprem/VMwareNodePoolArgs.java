@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolNodePoolAutoscalingArgs;
 import java.lang.String;
@@ -390,9 +391,15 @@ public final class VMwareNodePoolArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public VMwareNodePoolArgs build() {
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.vmwareCluster = Objects.requireNonNull($.vmwareCluster, "expected parameter 'vmwareCluster' to be non-null");
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("VMwareNodePoolArgs", "config");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("VMwareNodePoolArgs", "location");
+            }
+            if ($.vmwareCluster == null) {
+                throw new MissingRequiredPropertyException("VMwareNodePoolArgs", "vmwareCluster");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetTiersTier;
 import java.lang.String;
 import java.util.List;
@@ -64,17 +65,26 @@ public final class GetTiersResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTiersResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetTiersResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder tiers(List<GetTiersTier> tiers) {
-            this.tiers = Objects.requireNonNull(tiers);
+            if (tiers == null) {
+              throw new MissingRequiredPropertyException("GetTiersResult", "tiers");
+            }
+            this.tiers = tiers;
             return this;
         }
         public Builder tiers(GetTiersTier... tiers) {

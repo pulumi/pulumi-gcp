@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigCaOptions;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigKeyUsage;
@@ -132,6 +133,7 @@ public final class CertificateConfigX509Config {
 
         @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<CertificateConfigX509ConfigAdditionalExtension> additionalExtensions) {
+
             this.additionalExtensions = additionalExtensions;
             return this;
         }
@@ -140,6 +142,7 @@ public final class CertificateConfigX509Config {
         }
         @CustomType.Setter
         public Builder aiaOcspServers(@Nullable List<String> aiaOcspServers) {
+
             this.aiaOcspServers = aiaOcspServers;
             return this;
         }
@@ -148,21 +151,27 @@ public final class CertificateConfigX509Config {
         }
         @CustomType.Setter
         public Builder caOptions(@Nullable CertificateConfigX509ConfigCaOptions caOptions) {
+
             this.caOptions = caOptions;
             return this;
         }
         @CustomType.Setter
         public Builder keyUsage(CertificateConfigX509ConfigKeyUsage keyUsage) {
-            this.keyUsage = Objects.requireNonNull(keyUsage);
+            if (keyUsage == null) {
+              throw new MissingRequiredPropertyException("CertificateConfigX509Config", "keyUsage");
+            }
+            this.keyUsage = keyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder nameConstraints(@Nullable CertificateConfigX509ConfigNameConstraints nameConstraints) {
+
             this.nameConstraints = nameConstraints;
             return this;
         }
         @CustomType.Setter
         public Builder policyIds(@Nullable List<CertificateConfigX509ConfigPolicyId> policyIds) {
+
             this.policyIds = policyIds;
             return this;
         }

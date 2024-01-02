@@ -64,6 +64,7 @@ public final class ServicePerimeterSpecVpcAccessibleServices {
 
         @CustomType.Setter
         public Builder allowedServices(@Nullable List<String> allowedServices) {
+
             this.allowedServices = allowedServices;
             return this;
         }
@@ -72,6 +73,7 @@ public final class ServicePerimeterSpecVpcAccessibleServices {
         }
         @CustomType.Setter
         public Builder enableRestriction(@Nullable Boolean enableRestriction) {
+
             this.enableRestriction = enableRestriction;
             return this;
         }

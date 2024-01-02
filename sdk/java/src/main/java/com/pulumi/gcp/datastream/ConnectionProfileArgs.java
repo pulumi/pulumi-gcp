@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileForwardSshConnectivityArgs;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileGcsProfileArgs;
@@ -535,9 +536,15 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ConnectionProfileArgs build() {
-            $.connectionProfileId = Objects.requireNonNull($.connectionProfileId, "expected parameter 'connectionProfileId' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.connectionProfileId == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileArgs", "connectionProfileId");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileArgs", "displayName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileArgs", "location");
+            }
             return $;
         }
     }

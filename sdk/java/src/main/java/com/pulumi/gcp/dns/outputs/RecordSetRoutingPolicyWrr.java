@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyWrrHealthCheckedTargets;
 import java.lang.Double;
 import java.lang.String;
@@ -77,11 +78,13 @@ public final class RecordSetRoutingPolicyWrr {
 
         @CustomType.Setter
         public Builder healthCheckedTargets(@Nullable RecordSetRoutingPolicyWrrHealthCheckedTargets healthCheckedTargets) {
+
             this.healthCheckedTargets = healthCheckedTargets;
             return this;
         }
         @CustomType.Setter
         public Builder rrdatas(@Nullable List<String> rrdatas) {
+
             this.rrdatas = rrdatas;
             return this;
         }
@@ -90,7 +93,10 @@ public final class RecordSetRoutingPolicyWrr {
         }
         @CustomType.Setter
         public Builder weight(Double weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyWrr", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public RecordSetRoutingPolicyWrr build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetSubnetDhcpAddressRange {
 
         @CustomType.Setter
         public Builder firstAddress(String firstAddress) {
-            this.firstAddress = Objects.requireNonNull(firstAddress);
+            if (firstAddress == null) {
+              throw new MissingRequiredPropertyException("GetSubnetDhcpAddressRange", "firstAddress");
+            }
+            this.firstAddress = firstAddress;
             return this;
         }
         @CustomType.Setter
         public Builder lastAddress(String lastAddress) {
-            this.lastAddress = Objects.requireNonNull(lastAddress);
+            if (lastAddress == null) {
+              throw new MissingRequiredPropertyException("GetSubnetDhcpAddressRange", "lastAddress");
+            }
+            this.lastAddress = lastAddress;
             return this;
         }
         public GetSubnetDhcpAddressRange build() {

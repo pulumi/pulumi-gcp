@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class StandardAppVersionDeploymentFileArgs extends com.pulumi.resou
         }
 
         public StandardAppVersionDeploymentFileArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.sourceUrl = Objects.requireNonNull($.sourceUrl, "expected parameter 'sourceUrl' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("StandardAppVersionDeploymentFileArgs", "name");
+            }
+            if ($.sourceUrl == null) {
+                throw new MissingRequiredPropertyException("StandardAppVersionDeploymentFileArgs", "sourceUrl");
+            }
             return $;
         }
     }

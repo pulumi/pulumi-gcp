@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,17 +87,22 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
 
         @CustomType.Setter
         public Builder datasetIdPrefix(@Nullable String datasetIdPrefix) {
+
             this.datasetIdPrefix = datasetIdPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
+
             this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate", "location");
+            }
+            this.location = location;
             return this;
         }
         public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate build() {

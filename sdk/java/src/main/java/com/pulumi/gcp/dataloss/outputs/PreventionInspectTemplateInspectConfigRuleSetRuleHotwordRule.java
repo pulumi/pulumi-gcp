@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity;
@@ -86,17 +87,26 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule 
 
         @CustomType.Setter
         public Builder hotwordRegex(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex hotwordRegex) {
-            this.hotwordRegex = Objects.requireNonNull(hotwordRegex);
+            if (hotwordRegex == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule", "hotwordRegex");
+            }
+            this.hotwordRegex = hotwordRegex;
             return this;
         }
         @CustomType.Setter
         public Builder likelihoodAdjustment(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment likelihoodAdjustment) {
-            this.likelihoodAdjustment = Objects.requireNonNull(likelihoodAdjustment);
+            if (likelihoodAdjustment == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule", "likelihoodAdjustment");
+            }
+            this.likelihoodAdjustment = likelihoodAdjustment;
             return this;
         }
         @CustomType.Setter
         public Builder proximity(PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximity proximity) {
-            this.proximity = Objects.requireNonNull(proximity);
+            if (proximity == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule", "proximity");
+            }
+            this.proximity = proximity;
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule build() {

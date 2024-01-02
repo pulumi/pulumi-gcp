@@ -4,6 +4,7 @@
 package com.pulumi.gcp.spanner.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetInstanceAutoscalingConfigAutoscalingTarget {
 
         @CustomType.Setter
         public Builder highPriorityCpuUtilizationPercent(Integer highPriorityCpuUtilizationPercent) {
-            this.highPriorityCpuUtilizationPercent = Objects.requireNonNull(highPriorityCpuUtilizationPercent);
+            if (highPriorityCpuUtilizationPercent == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAutoscalingTarget", "highPriorityCpuUtilizationPercent");
+            }
+            this.highPriorityCpuUtilizationPercent = highPriorityCpuUtilizationPercent;
             return this;
         }
         @CustomType.Setter
         public Builder storageUtilizationPercent(Integer storageUtilizationPercent) {
-            this.storageUtilizationPercent = Objects.requireNonNull(storageUtilizationPercent);
+            if (storageUtilizationPercent == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAutoscalingTarget", "storageUtilizationPercent");
+            }
+            this.storageUtilizationPercent = storageUtilizationPercent;
             return this;
         }
         public GetInstanceAutoscalingConfigAutoscalingTarget build() {

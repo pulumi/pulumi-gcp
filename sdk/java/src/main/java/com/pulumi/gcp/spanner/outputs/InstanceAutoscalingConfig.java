@@ -75,11 +75,13 @@ public final class InstanceAutoscalingConfig {
 
         @CustomType.Setter
         public Builder autoscalingLimits(@Nullable InstanceAutoscalingConfigAutoscalingLimits autoscalingLimits) {
+
             this.autoscalingLimits = autoscalingLimits;
             return this;
         }
         @CustomType.Setter
         public Builder autoscalingTargets(@Nullable InstanceAutoscalingConfigAutoscalingTargets autoscalingTargets) {
+
             this.autoscalingTargets = autoscalingTargets;
             return this;
         }

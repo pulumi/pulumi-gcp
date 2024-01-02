@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firebase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,26 +77,39 @@ public final class GetAppleAppConfigResult {
 
         @CustomType.Setter
         public Builder appId(String appId) {
-            this.appId = Objects.requireNonNull(appId);
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("GetAppleAppConfigResult", "appId");
+            }
+            this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder configFileContents(String configFileContents) {
-            this.configFileContents = Objects.requireNonNull(configFileContents);
+            if (configFileContents == null) {
+              throw new MissingRequiredPropertyException("GetAppleAppConfigResult", "configFileContents");
+            }
+            this.configFileContents = configFileContents;
             return this;
         }
         @CustomType.Setter
         public Builder configFilename(String configFilename) {
-            this.configFilename = Objects.requireNonNull(configFilename);
+            if (configFilename == null) {
+              throw new MissingRequiredPropertyException("GetAppleAppConfigResult", "configFilename");
+            }
+            this.configFilename = configFilename;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppleAppConfigResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }

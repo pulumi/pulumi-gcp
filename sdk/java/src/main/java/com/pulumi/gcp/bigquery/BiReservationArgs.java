@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.BiReservationPreferredTableArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -217,7 +218,9 @@ public final class BiReservationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BiReservationArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("BiReservationArgs", "location");
+            }
             return $;
         }
     }

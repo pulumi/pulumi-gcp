@@ -63,11 +63,13 @@ public final class ClusterControlPlane {
 
         @CustomType.Setter
         public Builder local(@Nullable ClusterControlPlaneLocal local) {
+
             this.local = local;
             return this;
         }
         @CustomType.Setter
         public Builder remote(@Nullable ClusterControlPlaneRemote remote) {
+
             this.remote = remote;
             return this;
         }

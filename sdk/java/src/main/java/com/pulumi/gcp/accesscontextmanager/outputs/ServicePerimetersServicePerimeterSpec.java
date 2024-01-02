@@ -166,6 +166,7 @@ public final class ServicePerimetersServicePerimeterSpec {
 
         @CustomType.Setter
         public Builder accessLevels(@Nullable List<String> accessLevels) {
+
             this.accessLevels = accessLevels;
             return this;
         }
@@ -174,6 +175,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         }
         @CustomType.Setter
         public Builder egressPolicies(@Nullable List<ServicePerimetersServicePerimeterSpecEgressPolicy> egressPolicies) {
+
             this.egressPolicies = egressPolicies;
             return this;
         }
@@ -182,6 +184,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         }
         @CustomType.Setter
         public Builder ingressPolicies(@Nullable List<ServicePerimetersServicePerimeterSpecIngressPolicy> ingressPolicies) {
+
             this.ingressPolicies = ingressPolicies;
             return this;
         }
@@ -190,6 +193,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         }
         @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
+
             this.resources = resources;
             return this;
         }
@@ -198,6 +202,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         }
         @CustomType.Setter
         public Builder restrictedServices(@Nullable List<String> restrictedServices) {
+
             this.restrictedServices = restrictedServices;
             return this;
         }
@@ -206,6 +211,7 @@ public final class ServicePerimetersServicePerimeterSpec {
         }
         @CustomType.Setter
         public Builder vpcAccessibleServices(@Nullable ServicePerimetersServicePerimeterSpecVpcAccessibleServices vpcAccessibleServices) {
+
             this.vpcAccessibleServices = vpcAccessibleServices;
             return this;
         }

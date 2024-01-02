@@ -63,11 +63,13 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRule {
 
         @CustomType.Setter
         public Builder exclusionRule(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule exclusionRule) {
+
             this.exclusionRule = exclusionRule;
             return this;
         }
         @CustomType.Setter
         public Builder hotwordRule(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRule hotwordRule) {
+
             this.hotwordRule = hotwordRule;
             return this;
         }

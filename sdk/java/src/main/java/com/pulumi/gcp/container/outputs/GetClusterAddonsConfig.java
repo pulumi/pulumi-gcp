@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigCloudrunConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigConfigConnectorConfig;
 import com.pulumi.gcp.container.outputs.GetClusterAddonsConfigDnsCacheConfig;
@@ -112,7 +113,10 @@ public final class GetClusterAddonsConfig {
 
         @CustomType.Setter
         public Builder cloudrunConfigs(List<GetClusterAddonsConfigCloudrunConfig> cloudrunConfigs) {
-            this.cloudrunConfigs = Objects.requireNonNull(cloudrunConfigs);
+            if (cloudrunConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "cloudrunConfigs");
+            }
+            this.cloudrunConfigs = cloudrunConfigs;
             return this;
         }
         public Builder cloudrunConfigs(GetClusterAddonsConfigCloudrunConfig... cloudrunConfigs) {
@@ -120,7 +124,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder configConnectorConfigs(List<GetClusterAddonsConfigConfigConnectorConfig> configConnectorConfigs) {
-            this.configConnectorConfigs = Objects.requireNonNull(configConnectorConfigs);
+            if (configConnectorConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "configConnectorConfigs");
+            }
+            this.configConnectorConfigs = configConnectorConfigs;
             return this;
         }
         public Builder configConnectorConfigs(GetClusterAddonsConfigConfigConnectorConfig... configConnectorConfigs) {
@@ -128,7 +135,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder dnsCacheConfigs(List<GetClusterAddonsConfigDnsCacheConfig> dnsCacheConfigs) {
-            this.dnsCacheConfigs = Objects.requireNonNull(dnsCacheConfigs);
+            if (dnsCacheConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "dnsCacheConfigs");
+            }
+            this.dnsCacheConfigs = dnsCacheConfigs;
             return this;
         }
         public Builder dnsCacheConfigs(GetClusterAddonsConfigDnsCacheConfig... dnsCacheConfigs) {
@@ -136,7 +146,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder gcePersistentDiskCsiDriverConfigs(List<GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig> gcePersistentDiskCsiDriverConfigs) {
-            this.gcePersistentDiskCsiDriverConfigs = Objects.requireNonNull(gcePersistentDiskCsiDriverConfigs);
+            if (gcePersistentDiskCsiDriverConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "gcePersistentDiskCsiDriverConfigs");
+            }
+            this.gcePersistentDiskCsiDriverConfigs = gcePersistentDiskCsiDriverConfigs;
             return this;
         }
         public Builder gcePersistentDiskCsiDriverConfigs(GetClusterAddonsConfigGcePersistentDiskCsiDriverConfig... gcePersistentDiskCsiDriverConfigs) {
@@ -144,7 +157,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder gcpFilestoreCsiDriverConfigs(List<GetClusterAddonsConfigGcpFilestoreCsiDriverConfig> gcpFilestoreCsiDriverConfigs) {
-            this.gcpFilestoreCsiDriverConfigs = Objects.requireNonNull(gcpFilestoreCsiDriverConfigs);
+            if (gcpFilestoreCsiDriverConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "gcpFilestoreCsiDriverConfigs");
+            }
+            this.gcpFilestoreCsiDriverConfigs = gcpFilestoreCsiDriverConfigs;
             return this;
         }
         public Builder gcpFilestoreCsiDriverConfigs(GetClusterAddonsConfigGcpFilestoreCsiDriverConfig... gcpFilestoreCsiDriverConfigs) {
@@ -152,7 +168,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder gcsFuseCsiDriverConfigs(List<GetClusterAddonsConfigGcsFuseCsiDriverConfig> gcsFuseCsiDriverConfigs) {
-            this.gcsFuseCsiDriverConfigs = Objects.requireNonNull(gcsFuseCsiDriverConfigs);
+            if (gcsFuseCsiDriverConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "gcsFuseCsiDriverConfigs");
+            }
+            this.gcsFuseCsiDriverConfigs = gcsFuseCsiDriverConfigs;
             return this;
         }
         public Builder gcsFuseCsiDriverConfigs(GetClusterAddonsConfigGcsFuseCsiDriverConfig... gcsFuseCsiDriverConfigs) {
@@ -160,7 +179,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder gkeBackupAgentConfigs(List<GetClusterAddonsConfigGkeBackupAgentConfig> gkeBackupAgentConfigs) {
-            this.gkeBackupAgentConfigs = Objects.requireNonNull(gkeBackupAgentConfigs);
+            if (gkeBackupAgentConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "gkeBackupAgentConfigs");
+            }
+            this.gkeBackupAgentConfigs = gkeBackupAgentConfigs;
             return this;
         }
         public Builder gkeBackupAgentConfigs(GetClusterAddonsConfigGkeBackupAgentConfig... gkeBackupAgentConfigs) {
@@ -168,7 +190,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder horizontalPodAutoscalings(List<GetClusterAddonsConfigHorizontalPodAutoscaling> horizontalPodAutoscalings) {
-            this.horizontalPodAutoscalings = Objects.requireNonNull(horizontalPodAutoscalings);
+            if (horizontalPodAutoscalings == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "horizontalPodAutoscalings");
+            }
+            this.horizontalPodAutoscalings = horizontalPodAutoscalings;
             return this;
         }
         public Builder horizontalPodAutoscalings(GetClusterAddonsConfigHorizontalPodAutoscaling... horizontalPodAutoscalings) {
@@ -176,7 +201,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder httpLoadBalancings(List<GetClusterAddonsConfigHttpLoadBalancing> httpLoadBalancings) {
-            this.httpLoadBalancings = Objects.requireNonNull(httpLoadBalancings);
+            if (httpLoadBalancings == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "httpLoadBalancings");
+            }
+            this.httpLoadBalancings = httpLoadBalancings;
             return this;
         }
         public Builder httpLoadBalancings(GetClusterAddonsConfigHttpLoadBalancing... httpLoadBalancings) {
@@ -184,7 +212,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder istioConfigs(List<GetClusterAddonsConfigIstioConfig> istioConfigs) {
-            this.istioConfigs = Objects.requireNonNull(istioConfigs);
+            if (istioConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "istioConfigs");
+            }
+            this.istioConfigs = istioConfigs;
             return this;
         }
         public Builder istioConfigs(GetClusterAddonsConfigIstioConfig... istioConfigs) {
@@ -192,7 +223,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder kalmConfigs(List<GetClusterAddonsConfigKalmConfig> kalmConfigs) {
-            this.kalmConfigs = Objects.requireNonNull(kalmConfigs);
+            if (kalmConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "kalmConfigs");
+            }
+            this.kalmConfigs = kalmConfigs;
             return this;
         }
         public Builder kalmConfigs(GetClusterAddonsConfigKalmConfig... kalmConfigs) {
@@ -200,7 +234,10 @@ public final class GetClusterAddonsConfig {
         }
         @CustomType.Setter
         public Builder networkPolicyConfigs(List<GetClusterAddonsConfigNetworkPolicyConfig> networkPolicyConfigs) {
-            this.networkPolicyConfigs = Objects.requireNonNull(networkPolicyConfigs);
+            if (networkPolicyConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfig", "networkPolicyConfigs");
+            }
+            this.networkPolicyConfigs = networkPolicyConfigs;
             return this;
         }
         public Builder networkPolicyConfigs(GetClusterAddonsConfigNetworkPolicyConfig... networkPolicyConfigs) {

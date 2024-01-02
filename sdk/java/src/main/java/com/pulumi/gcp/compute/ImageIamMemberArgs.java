@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ImageIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -269,9 +270,15 @@ public final class ImageIamMemberArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ImageIamMemberArgs build() {
-            $.image = Objects.requireNonNull($.image, "expected parameter 'image' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.image == null) {
+                throw new MissingRequiredPropertyException("ImageIamMemberArgs", "image");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("ImageIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ImageIamMemberArgs", "role");
+            }
             return $;
         }
     }

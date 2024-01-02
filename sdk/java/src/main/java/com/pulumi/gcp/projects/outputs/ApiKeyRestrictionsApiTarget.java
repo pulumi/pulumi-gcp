@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,6 +59,7 @@ public final class ApiKeyRestrictionsApiTarget {
 
         @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
+
             this.methods = methods;
             return this;
         }
@@ -66,7 +68,10 @@ public final class ApiKeyRestrictionsApiTarget {
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("ApiKeyRestrictionsApiTarget", "service");
+            }
+            this.service = service;
             return this;
         }
         public ApiKeyRestrictionsApiTarget build() {

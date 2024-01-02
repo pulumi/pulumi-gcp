@@ -67,11 +67,13 @@ public final class AlertPolicyConditionConditionAbsentTrigger {
 
         @CustomType.Setter
         public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder percent(@Nullable Double percent) {
+
             this.percent = percent;
             return this;
         }

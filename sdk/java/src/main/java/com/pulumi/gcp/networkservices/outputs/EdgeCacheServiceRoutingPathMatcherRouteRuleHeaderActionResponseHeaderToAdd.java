@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,16 +74,23 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRespon
 
         @CustomType.Setter
         public Builder headerName(String headerName) {
-            this.headerName = Objects.requireNonNull(headerName);
+            if (headerName == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd", "headerName");
+            }
+            this.headerName = headerName;
             return this;
         }
         @CustomType.Setter
         public Builder headerValue(String headerValue) {
-            this.headerValue = Objects.requireNonNull(headerValue);
+            if (headerValue == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd", "headerValue");
+            }
+            this.headerValue = headerValue;
             return this;
         }
         @CustomType.Setter
         public Builder replace(@Nullable Boolean replace) {
+
             this.replace = replace;
             return this;
         }

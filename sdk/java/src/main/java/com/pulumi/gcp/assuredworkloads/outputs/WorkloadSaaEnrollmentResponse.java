@@ -43,6 +43,7 @@ public final class WorkloadSaaEnrollmentResponse {
 
         @CustomType.Setter
         public Builder setupErrors(@Nullable List<String> setupErrors) {
+
             this.setupErrors = setupErrors;
             return this;
         }
@@ -51,6 +52,7 @@ public final class WorkloadSaaEnrollmentResponse {
         }
         @CustomType.Setter
         public Builder setupStatus(@Nullable String setupStatus) {
+
             this.setupStatus = setupStatus;
             return this;
         }

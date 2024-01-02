@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock;
 import java.lang.Boolean;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
 
         @CustomType.Setter
         public Builder cidrBlocks(List<GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
-            this.cidrBlocks = Objects.requireNonNull(cidrBlocks);
+            if (cidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigMasterAuthorizedNetworksConfig", "cidrBlocks");
+            }
+            this.cidrBlocks = cidrBlocks;
             return this;
         }
         public Builder cidrBlocks(GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlock... cidrBlocks) {
@@ -50,7 +54,10 @@ public final class GetEnvironmentConfigMasterAuthorizedNetworksConfig {
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigMasterAuthorizedNetworksConfig", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         public GetEnvironmentConfigMasterAuthorizedNetworksConfig build() {

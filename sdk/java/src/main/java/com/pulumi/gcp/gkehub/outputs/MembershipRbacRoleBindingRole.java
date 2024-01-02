@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class MembershipRbacRoleBindingRole {
 
         @CustomType.Setter
         public Builder predefinedRole(String predefinedRole) {
-            this.predefinedRole = Objects.requireNonNull(predefinedRole);
+            if (predefinedRole == null) {
+              throw new MissingRequiredPropertyException("MembershipRbacRoleBindingRole", "predefinedRole");
+            }
+            this.predefinedRole = predefinedRole;
             return this;
         }
         public MembershipRbacRoleBindingRole build() {

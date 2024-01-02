@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingIpConfigurationPscConfig;
 import java.lang.Boolean;
@@ -80,12 +81,18 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
 
         @CustomType.Setter
         public Builder allocatedIpRange(String allocatedIpRange) {
-            this.allocatedIpRange = Objects.requireNonNull(allocatedIpRange);
+            if (allocatedIpRange == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfiguration", "allocatedIpRange");
+            }
+            this.allocatedIpRange = allocatedIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder authorizedNetworks(List<GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork> authorizedNetworks) {
-            this.authorizedNetworks = Objects.requireNonNull(authorizedNetworks);
+            if (authorizedNetworks == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfiguration", "authorizedNetworks");
+            }
+            this.authorizedNetworks = authorizedNetworks;
             return this;
         }
         public Builder authorizedNetworks(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetwork... authorizedNetworks) {
@@ -93,22 +100,34 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
         }
         @CustomType.Setter
         public Builder enablePrivatePathForGoogleCloudServices(Boolean enablePrivatePathForGoogleCloudServices) {
-            this.enablePrivatePathForGoogleCloudServices = Objects.requireNonNull(enablePrivatePathForGoogleCloudServices);
+            if (enablePrivatePathForGoogleCloudServices == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfiguration", "enablePrivatePathForGoogleCloudServices");
+            }
+            this.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4Enabled(Boolean ipv4Enabled) {
-            this.ipv4Enabled = Objects.requireNonNull(ipv4Enabled);
+            if (ipv4Enabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfiguration", "ipv4Enabled");
+            }
+            this.ipv4Enabled = ipv4Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder privateNetwork(String privateNetwork) {
-            this.privateNetwork = Objects.requireNonNull(privateNetwork);
+            if (privateNetwork == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfiguration", "privateNetwork");
+            }
+            this.privateNetwork = privateNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder pscConfigs(List<GetDatabaseInstanceSettingIpConfigurationPscConfig> pscConfigs) {
-            this.pscConfigs = Objects.requireNonNull(pscConfigs);
+            if (pscConfigs == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfiguration", "pscConfigs");
+            }
+            this.pscConfigs = pscConfigs;
             return this;
         }
         public Builder pscConfigs(GetDatabaseInstanceSettingIpConfigurationPscConfig... pscConfigs) {
@@ -116,12 +135,18 @@ public final class GetDatabaseInstanceSettingIpConfiguration {
         }
         @CustomType.Setter
         public Builder requireSsl(Boolean requireSsl) {
-            this.requireSsl = Objects.requireNonNull(requireSsl);
+            if (requireSsl == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfiguration", "requireSsl");
+            }
+            this.requireSsl = requireSsl;
             return this;
         }
         @CustomType.Setter
         public Builder sslMode(String sslMode) {
-            this.sslMode = Objects.requireNonNull(sslMode);
+            if (sslMode == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfiguration", "sslMode");
+            }
+            this.sslMode = sslMode;
             return this;
         }
         public GetDatabaseInstanceSettingIpConfiguration build() {

@@ -137,16 +137,19 @@ public final class SloBasicSli {
 
         @CustomType.Setter
         public Builder availability(@Nullable SloBasicSliAvailability availability) {
+
             this.availability = availability;
             return this;
         }
         @CustomType.Setter
         public Builder latency(@Nullable SloBasicSliLatency latency) {
+
             this.latency = latency;
             return this;
         }
         @CustomType.Setter
         public Builder locations(@Nullable List<String> locations) {
+
             this.locations = locations;
             return this;
         }
@@ -155,6 +158,7 @@ public final class SloBasicSli {
         }
         @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
+
             this.methods = methods;
             return this;
         }
@@ -163,6 +167,7 @@ public final class SloBasicSli {
         }
         @CustomType.Setter
         public Builder versions(@Nullable List<String> versions) {
+
             this.versions = versions;
             return this;
         }

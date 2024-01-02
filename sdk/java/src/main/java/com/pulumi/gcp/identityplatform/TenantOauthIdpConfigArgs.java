@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -348,10 +349,18 @@ public final class TenantOauthIdpConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public TenantOauthIdpConfigArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.issuer = Objects.requireNonNull($.issuer, "expected parameter 'issuer' to be non-null");
-            $.tenant = Objects.requireNonNull($.tenant, "expected parameter 'tenant' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("TenantOauthIdpConfigArgs", "clientId");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("TenantOauthIdpConfigArgs", "displayName");
+            }
+            if ($.issuer == null) {
+                throw new MissingRequiredPropertyException("TenantOauthIdpConfigArgs", "issuer");
+            }
+            if ($.tenant == null) {
+                throw new MissingRequiredPropertyException("TenantOauthIdpConfigArgs", "tenant");
+            }
             return $;
         }
     }

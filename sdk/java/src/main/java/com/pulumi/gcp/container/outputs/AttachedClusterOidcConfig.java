@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,11 +59,15 @@ public final class AttachedClusterOidcConfig {
 
         @CustomType.Setter
         public Builder issuerUrl(String issuerUrl) {
-            this.issuerUrl = Objects.requireNonNull(issuerUrl);
+            if (issuerUrl == null) {
+              throw new MissingRequiredPropertyException("AttachedClusterOidcConfig", "issuerUrl");
+            }
+            this.issuerUrl = issuerUrl;
             return this;
         }
         @CustomType.Setter
         public Builder jwks(@Nullable String jwks) {
+
             this.jwks = jwks;
             return this;
         }

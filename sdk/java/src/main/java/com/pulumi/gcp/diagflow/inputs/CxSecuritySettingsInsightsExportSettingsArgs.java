@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class CxSecuritySettingsInsightsExportSettingsArgs extends com.pulu
         }
 
         public CxSecuritySettingsInsightsExportSettingsArgs build() {
-            $.enableInsightsExport = Objects.requireNonNull($.enableInsightsExport, "expected parameter 'enableInsightsExport' to be non-null");
+            if ($.enableInsightsExport == null) {
+                throw new MissingRequiredPropertyException("CxSecuritySettingsInsightsExportSettingsArgs", "enableInsightsExport");
+            }
             return $;
         }
     }

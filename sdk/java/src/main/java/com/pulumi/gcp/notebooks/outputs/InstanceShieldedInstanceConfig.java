@@ -86,16 +86,19 @@ public final class InstanceShieldedInstanceConfig {
 
         @CustomType.Setter
         public Builder enableIntegrityMonitoring(@Nullable Boolean enableIntegrityMonitoring) {
+
             this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder enableSecureBoot(@Nullable Boolean enableSecureBoot) {
+
             this.enableSecureBoot = enableSecureBoot;
             return this;
         }
         @CustomType.Setter
         public Builder enableVtpm(@Nullable Boolean enableVtpm) {
+
             this.enableVtpm = enableVtpm;
             return this;
         }

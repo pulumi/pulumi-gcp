@@ -50,6 +50,7 @@ public final class VMwareClusterFleet {
 
         @CustomType.Setter
         public Builder membership(@Nullable String membership) {
+
             this.membership = membership;
             return this;
         }

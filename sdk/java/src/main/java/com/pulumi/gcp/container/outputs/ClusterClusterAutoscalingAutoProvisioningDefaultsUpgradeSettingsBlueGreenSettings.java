@@ -59,11 +59,13 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSetti
 
         @CustomType.Setter
         public Builder nodePoolSoakDuration(@Nullable String nodePoolSoakDuration) {
+
             this.nodePoolSoakDuration = nodePoolSoakDuration;
             return this;
         }
         @CustomType.Setter
         public Builder standardRolloutPolicy(@Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy standardRolloutPolicy) {
+
             this.standardRolloutPolicy = standardRolloutPolicy;
             return this;
         }

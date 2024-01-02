@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetBackendBucketCdnPolicy;
 import java.lang.Boolean;
 import java.lang.String;
@@ -113,12 +114,18 @@ public final class GetBackendBucketResult {
 
         @CustomType.Setter
         public Builder bucketName(String bucketName) {
-            this.bucketName = Objects.requireNonNull(bucketName);
+            if (bucketName == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "bucketName");
+            }
+            this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder cdnPolicies(List<GetBackendBucketCdnPolicy> cdnPolicies) {
-            this.cdnPolicies = Objects.requireNonNull(cdnPolicies);
+            if (cdnPolicies == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "cdnPolicies");
+            }
+            this.cdnPolicies = cdnPolicies;
             return this;
         }
         public Builder cdnPolicies(GetBackendBucketCdnPolicy... cdnPolicies) {
@@ -126,17 +133,26 @@ public final class GetBackendBucketResult {
         }
         @CustomType.Setter
         public Builder compressionMode(String compressionMode) {
-            this.compressionMode = Objects.requireNonNull(compressionMode);
+            if (compressionMode == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "compressionMode");
+            }
+            this.compressionMode = compressionMode;
             return this;
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
-            this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder customResponseHeaders(List<String> customResponseHeaders) {
-            this.customResponseHeaders = Objects.requireNonNull(customResponseHeaders);
+            if (customResponseHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "customResponseHeaders");
+            }
+            this.customResponseHeaders = customResponseHeaders;
             return this;
         }
         public Builder customResponseHeaders(String... customResponseHeaders) {
@@ -144,37 +160,56 @@ public final class GetBackendBucketResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder edgeSecurityPolicy(String edgeSecurityPolicy) {
-            this.edgeSecurityPolicy = Objects.requireNonNull(edgeSecurityPolicy);
+            if (edgeSecurityPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "edgeSecurityPolicy");
+            }
+            this.edgeSecurityPolicy = edgeSecurityPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder enableCdn(Boolean enableCdn) {
-            this.enableCdn = Objects.requireNonNull(enableCdn);
+            if (enableCdn == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "enableCdn");
+            }
+            this.enableCdn = enableCdn;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         public GetBackendBucketResult build() {

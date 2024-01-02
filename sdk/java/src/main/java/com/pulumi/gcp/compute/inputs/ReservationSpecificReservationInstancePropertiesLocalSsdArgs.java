@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class ReservationSpecificReservationInstancePropertiesLocalSsdArgs 
         }
 
         public ReservationSpecificReservationInstancePropertiesLocalSsdArgs build() {
-            $.diskSizeGb = Objects.requireNonNull($.diskSizeGb, "expected parameter 'diskSizeGb' to be non-null");
+            if ($.diskSizeGb == null) {
+                throw new MissingRequiredPropertyException("ReservationSpecificReservationInstancePropertiesLocalSsdArgs", "diskSizeGb");
+            }
             return $;
         }
     }

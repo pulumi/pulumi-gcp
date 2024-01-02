@@ -59,11 +59,13 @@ public final class ClusterProtectConfig {
 
         @CustomType.Setter
         public Builder workloadConfig(@Nullable ClusterProtectConfigWorkloadConfig workloadConfig) {
+
             this.workloadConfig = workloadConfig;
             return this;
         }
         @CustomType.Setter
         public Builder workloadVulnerabilityMode(@Nullable String workloadVulnerabilityMode) {
+
             this.workloadVulnerabilityMode = workloadVulnerabilityMode;
             return this;
         }

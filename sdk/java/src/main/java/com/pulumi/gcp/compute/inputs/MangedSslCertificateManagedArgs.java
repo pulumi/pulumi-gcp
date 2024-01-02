@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class MangedSslCertificateManagedArgs extends com.pulumi.resources.
         }
 
         public MangedSslCertificateManagedArgs build() {
-            $.domains = Objects.requireNonNull($.domains, "expected parameter 'domains' to be non-null");
+            if ($.domains == null) {
+                throw new MissingRequiredPropertyException("MangedSslCertificateManagedArgs", "domains");
+            }
             return $;
         }
     }

@@ -46,6 +46,7 @@ public final class V2VmNetworkEndpointAccessConfig {
 
         @CustomType.Setter
         public Builder externalIp(@Nullable String externalIp) {
+
             this.externalIp = externalIp;
             return this;
         }

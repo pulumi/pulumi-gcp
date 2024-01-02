@@ -53,6 +53,7 @@ public final class ManagedZonePrivateVisibilityConfig {
 
         @CustomType.Setter
         public Builder gkeClusters(@Nullable List<ManagedZonePrivateVisibilityConfigGkeCluster> gkeClusters) {
+
             this.gkeClusters = gkeClusters;
             return this;
         }
@@ -61,6 +62,7 @@ public final class ManagedZonePrivateVisibilityConfig {
         }
         @CustomType.Setter
         public Builder networks(@Nullable List<ManagedZonePrivateVisibilityConfigNetwork> networks) {
+
             this.networks = networks;
             return this;
         }

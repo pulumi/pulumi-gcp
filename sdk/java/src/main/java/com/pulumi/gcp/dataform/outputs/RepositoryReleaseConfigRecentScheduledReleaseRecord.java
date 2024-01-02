@@ -82,11 +82,13 @@ public final class RepositoryReleaseConfigRecentScheduledReleaseRecord {
 
         @CustomType.Setter
         public Builder compilationResult(@Nullable String compilationResult) {
+
             this.compilationResult = compilationResult;
             return this;
         }
         @CustomType.Setter
         public Builder errorStatuses(@Nullable List<RepositoryReleaseConfigRecentScheduledReleaseRecordErrorStatus> errorStatuses) {
+
             this.errorStatuses = errorStatuses;
             return this;
         }
@@ -95,6 +97,7 @@ public final class RepositoryReleaseConfigRecentScheduledReleaseRecord {
         }
         @CustomType.Setter
         public Builder releaseTime(@Nullable String releaseTime) {
+
             this.releaseTime = releaseTime;
             return this;
         }

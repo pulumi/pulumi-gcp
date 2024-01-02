@@ -59,11 +59,13 @@ public final class JobBinaryAuthorization {
 
         @CustomType.Setter
         public Builder breakglassJustification(@Nullable String breakglassJustification) {
+
             this.breakglassJustification = breakglassJustification;
             return this;
         }
         @CustomType.Setter
         public Builder useDefault(@Nullable Boolean useDefault) {
+
             this.useDefault = useDefault;
             return this;
         }

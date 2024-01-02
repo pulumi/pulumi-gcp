@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,7 +42,10 @@ public final class GetBackendBucketCdnPolicyCacheKeyPolicy {
 
         @CustomType.Setter
         public Builder includeHttpHeaders(List<String> includeHttpHeaders) {
-            this.includeHttpHeaders = Objects.requireNonNull(includeHttpHeaders);
+            if (includeHttpHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketCdnPolicyCacheKeyPolicy", "includeHttpHeaders");
+            }
+            this.includeHttpHeaders = includeHttpHeaders;
             return this;
         }
         public Builder includeHttpHeaders(String... includeHttpHeaders) {
@@ -49,7 +53,10 @@ public final class GetBackendBucketCdnPolicyCacheKeyPolicy {
         }
         @CustomType.Setter
         public Builder queryStringWhitelists(List<String> queryStringWhitelists) {
-            this.queryStringWhitelists = Objects.requireNonNull(queryStringWhitelists);
+            if (queryStringWhitelists == null) {
+              throw new MissingRequiredPropertyException("GetBackendBucketCdnPolicyCacheKeyPolicy", "queryStringWhitelists");
+            }
+            this.queryStringWhitelists = queryStringWhitelists;
             return this;
         }
         public Builder queryStringWhitelists(String... queryStringWhitelists) {

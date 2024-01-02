@@ -5,6 +5,7 @@ package com.pulumi.gcp.recaptcha;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyAndroidSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyIosSettingsArgs;
 import com.pulumi.gcp.recaptcha.inputs.EnterpriseKeyTestingOptionsArgs;
@@ -361,7 +362,9 @@ public final class EnterpriseKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EnterpriseKeyArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("EnterpriseKeyArgs", "displayName");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -173,7 +174,9 @@ public final class EnvGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EnvGroupArgs build() {
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("EnvGroupArgs", "orgId");
+            }
             return $;
         }
     }

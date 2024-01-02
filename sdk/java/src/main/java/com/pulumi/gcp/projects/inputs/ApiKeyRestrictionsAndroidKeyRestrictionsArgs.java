@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.projects.inputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictionsArgs extends com.pulu
         }
 
         public ApiKeyRestrictionsAndroidKeyRestrictionsArgs build() {
-            $.allowedApplications = Objects.requireNonNull($.allowedApplications, "expected parameter 'allowedApplications' to be non-null");
+            if ($.allowedApplications == null) {
+                throw new MissingRequiredPropertyException("ApiKeyRestrictionsAndroidKeyRestrictionsArgs", "allowedApplications");
+            }
             return $;
         }
     }

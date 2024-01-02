@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.outputs.MetricMetricDescriptorLabel;
 import java.lang.String;
 import java.util.List;
@@ -130,11 +131,13 @@ public final class MetricMetricDescriptor {
 
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable List<MetricMetricDescriptorLabel> labels) {
+
             this.labels = labels;
             return this;
         }
@@ -143,17 +146,24 @@ public final class MetricMetricDescriptor {
         }
         @CustomType.Setter
         public Builder metricKind(String metricKind) {
-            this.metricKind = Objects.requireNonNull(metricKind);
+            if (metricKind == null) {
+              throw new MissingRequiredPropertyException("MetricMetricDescriptor", "metricKind");
+            }
+            this.metricKind = metricKind;
             return this;
         }
         @CustomType.Setter
         public Builder unit(@Nullable String unit) {
+
             this.unit = unit;
             return this;
         }
         @CustomType.Setter
         public Builder valueType(String valueType) {
-            this.valueType = Objects.requireNonNull(valueType);
+            if (valueType == null) {
+              throw new MissingRequiredPropertyException("MetricMetricDescriptor", "valueType");
+            }
+            this.valueType = valueType;
             return this;
         }
         public MetricMetricDescriptor build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -125,7 +126,9 @@ public final class OsPolicyAssignmentInstanceFilterInventoryArgs extends com.pul
         }
 
         public OsPolicyAssignmentInstanceFilterInventoryArgs build() {
-            $.osShortName = Objects.requireNonNull($.osShortName, "expected parameter 'osShortName' to be non-null");
+            if ($.osShortName == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentInstanceFilterInventoryArgs", "osShortName");
+            }
             return $;
         }
     }

@@ -73,16 +73,19 @@ public final class ServiceConnectionPolicyPscConnectionErrorInfo {
 
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder reason(@Nullable String reason) {
+
             this.reason = reason;
             return this;
         }

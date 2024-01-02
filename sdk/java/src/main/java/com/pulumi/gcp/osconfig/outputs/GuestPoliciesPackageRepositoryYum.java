@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -89,16 +90,21 @@ public final class GuestPoliciesPackageRepositoryYum {
 
         @CustomType.Setter
         public Builder baseUrl(String baseUrl) {
-            this.baseUrl = Objects.requireNonNull(baseUrl);
+            if (baseUrl == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryYum", "baseUrl");
+            }
+            this.baseUrl = baseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder gpgKeys(@Nullable List<String> gpgKeys) {
+
             this.gpgKeys = gpgKeys;
             return this;
         }
@@ -107,7 +113,10 @@ public final class GuestPoliciesPackageRepositoryYum {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryYum", "id");
+            }
+            this.id = id;
             return this;
         }
         public GuestPoliciesPackageRepositoryYum build() {

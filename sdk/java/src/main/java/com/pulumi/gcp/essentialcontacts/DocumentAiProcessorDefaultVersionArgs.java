@@ -5,6 +5,7 @@ package com.pulumi.gcp.essentialcontacts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -123,8 +124,12 @@ public final class DocumentAiProcessorDefaultVersionArgs extends com.pulumi.reso
         }
 
         public DocumentAiProcessorDefaultVersionArgs build() {
-            $.processor = Objects.requireNonNull($.processor, "expected parameter 'processor' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.processor == null) {
+                throw new MissingRequiredPropertyException("DocumentAiProcessorDefaultVersionArgs", "processor");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("DocumentAiProcessorDefaultVersionArgs", "version");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerEnvValueSource;
 import java.lang.String;
 import java.util.Objects;
@@ -75,16 +76,21 @@ public final class ServiceTemplateContainerEnv {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ServiceTemplateContainerEnv", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder valueSource(@Nullable ServiceTemplateContainerEnvValueSource valueSource) {
+
             this.valueSource = valueSource;
             return this;
         }

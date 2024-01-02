@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class AzureNodePoolConfigSshConfigArgs extends com.pulumi.resources
         }
 
         public AzureNodePoolConfigSshConfigArgs build() {
-            $.authorizedKey = Objects.requireNonNull($.authorizedKey, "expected parameter 'authorizedKey' to be non-null");
+            if ($.authorizedKey == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolConfigSshConfigArgs", "authorizedKey");
+            }
             return $;
         }
     }

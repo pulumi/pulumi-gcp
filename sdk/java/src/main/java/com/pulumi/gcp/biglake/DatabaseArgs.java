@@ -5,6 +5,7 @@ package com.pulumi.gcp.biglake;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.biglake.inputs.DatabaseHiveOptionsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -192,9 +193,15 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DatabaseArgs build() {
-            $.catalog = Objects.requireNonNull($.catalog, "expected parameter 'catalog' to be non-null");
-            $.hiveOptions = Objects.requireNonNull($.hiveOptions, "expected parameter 'hiveOptions' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.catalog == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "catalog");
+            }
+            if ($.hiveOptions == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "hiveOptions");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "type");
+            }
             return $;
         }
     }

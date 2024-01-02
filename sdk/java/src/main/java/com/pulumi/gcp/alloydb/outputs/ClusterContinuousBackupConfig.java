@@ -78,16 +78,19 @@ public final class ClusterContinuousBackupConfig {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionConfig(@Nullable ClusterContinuousBackupConfigEncryptionConfig encryptionConfig) {
+
             this.encryptionConfig = encryptionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder recoveryWindowDays(@Nullable Integer recoveryWindowDays) {
+
             this.recoveryWindowDays = recoveryWindowDays;
             return this;
         }

@@ -79,41 +79,49 @@ public final class EnvironmentConfigPrivateEnvironmentConfig {
 
         @CustomType.Setter
         public Builder cloudComposerConnectionSubnetwork(@Nullable String cloudComposerConnectionSubnetwork) {
+
             this.cloudComposerConnectionSubnetwork = cloudComposerConnectionSubnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder cloudComposerNetworkIpv4CidrBlock(@Nullable String cloudComposerNetworkIpv4CidrBlock) {
+
             this.cloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder cloudSqlIpv4CidrBlock(@Nullable String cloudSqlIpv4CidrBlock) {
+
             this.cloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder connectionType(@Nullable String connectionType) {
+
             this.connectionType = connectionType;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateEndpoint(@Nullable Boolean enablePrivateEndpoint) {
+
             this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivatelyUsedPublicIps(@Nullable Boolean enablePrivatelyUsedPublicIps) {
+
             this.enablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
             return this;
         }
         @CustomType.Setter
         public Builder masterIpv4CidrBlock(@Nullable String masterIpv4CidrBlock) {
+
             this.masterIpv4CidrBlock = masterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder webServerIpv4CidrBlock(@Nullable String webServerIpv4CidrBlock) {
+
             this.webServerIpv4CidrBlock = webServerIpv4CidrBlock;
             return this;
         }

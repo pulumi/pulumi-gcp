@@ -46,6 +46,7 @@ public final class ServiceTemplateContainerEnvValueSource {
 
         @CustomType.Setter
         public Builder secretKeyRef(@Nullable ServiceTemplateContainerEnvValueSourceSecretKeyRef secretKeyRef) {
+
             this.secretKeyRef = secretKeyRef;
             return this;
         }

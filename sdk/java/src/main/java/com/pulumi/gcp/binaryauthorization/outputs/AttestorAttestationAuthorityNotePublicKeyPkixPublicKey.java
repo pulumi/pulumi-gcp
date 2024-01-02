@@ -72,11 +72,13 @@ public final class AttestorAttestationAuthorityNotePublicKeyPkixPublicKey {
 
         @CustomType.Setter
         public Builder publicKeyPem(@Nullable String publicKeyPem) {
+
             this.publicKeyPem = publicKeyPem;
             return this;
         }
         @CustomType.Setter
         public Builder signatureAlgorithm(@Nullable String signatureAlgorithm) {
+
             this.signatureAlgorithm = signatureAlgorithm;
             return this;
         }

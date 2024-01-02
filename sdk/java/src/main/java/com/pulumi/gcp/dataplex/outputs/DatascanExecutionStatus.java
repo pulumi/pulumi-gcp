@@ -62,11 +62,13 @@ public final class DatascanExecutionStatus {
 
         @CustomType.Setter
         public Builder latestJobEndTime(@Nullable String latestJobEndTime) {
+
             this.latestJobEndTime = latestJobEndTime;
             return this;
         }
         @CustomType.Setter
         public Builder latestJobStartTime(@Nullable String latestJobStartTime) {
+
             this.latestJobStartTime = latestJobStartTime;
             return this;
         }

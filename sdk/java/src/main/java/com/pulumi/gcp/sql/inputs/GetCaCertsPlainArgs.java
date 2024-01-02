@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +93,9 @@ public final class GetCaCertsPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetCaCertsPlainArgs build() {
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("GetCaCertsPlainArgs", "instance");
+            }
             return $;
         }
     }

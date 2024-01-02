@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet;
 import java.lang.Integer;
 import java.lang.String;
@@ -135,21 +136,27 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
 
         @CustomType.Setter
         public Builder bytesLimitPerFile(@Nullable Integer bytesLimitPerFile) {
+
             this.bytesLimitPerFile = bytesLimitPerFile;
             return this;
         }
         @CustomType.Setter
         public Builder bytesLimitPerFilePercent(@Nullable Integer bytesLimitPerFilePercent) {
+
             this.bytesLimitPerFilePercent = bytesLimitPerFilePercent;
             return this;
         }
         @CustomType.Setter
         public Builder fileSet(PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSet fileSet) {
-            this.fileSet = Objects.requireNonNull(fileSet);
+            if (fileSet == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions", "fileSet");
+            }
+            this.fileSet = fileSet;
             return this;
         }
         @CustomType.Setter
         public Builder fileTypes(@Nullable List<String> fileTypes) {
+
             this.fileTypes = fileTypes;
             return this;
         }
@@ -158,11 +165,13 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
         }
         @CustomType.Setter
         public Builder filesLimitPercent(@Nullable Integer filesLimitPercent) {
+
             this.filesLimitPercent = filesLimitPercent;
             return this;
         }
         @CustomType.Setter
         public Builder sampleMethod(@Nullable String sampleMethod) {
+
             this.sampleMethod = sampleMethod;
             return this;
         }

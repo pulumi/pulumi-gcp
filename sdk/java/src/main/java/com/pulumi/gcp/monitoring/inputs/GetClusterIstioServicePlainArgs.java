@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -200,10 +201,18 @@ public final class GetClusterIstioServicePlainArgs extends com.pulumi.resources.
         }
 
         public GetClusterIstioServicePlainArgs build() {
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
-            $.serviceNamespace = Objects.requireNonNull($.serviceNamespace, "expected parameter 'serviceNamespace' to be non-null");
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("GetClusterIstioServicePlainArgs", "clusterName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("GetClusterIstioServicePlainArgs", "location");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetClusterIstioServicePlainArgs", "serviceName");
+            }
+            if ($.serviceNamespace == null) {
+                throw new MissingRequiredPropertyException("GetClusterIstioServicePlainArgs", "serviceNamespace");
+            }
             return $;
         }
     }

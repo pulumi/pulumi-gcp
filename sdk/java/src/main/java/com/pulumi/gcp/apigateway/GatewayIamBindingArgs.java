@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigateway.inputs.GatewayIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -279,9 +280,15 @@ public final class GatewayIamBindingArgs extends com.pulumi.resources.ResourceAr
         }
 
         public GatewayIamBindingArgs build() {
-            $.gateway = Objects.requireNonNull($.gateway, "expected parameter 'gateway' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.gateway == null) {
+                throw new MissingRequiredPropertyException("GatewayIamBindingArgs", "gateway");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("GatewayIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("GatewayIamBindingArgs", "role");
+            }
             return $;
         }
     }

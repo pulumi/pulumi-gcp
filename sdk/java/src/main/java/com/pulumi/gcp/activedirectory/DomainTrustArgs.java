@@ -5,6 +5,7 @@ package com.pulumi.gcp.activedirectory;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -375,12 +376,24 @@ public final class DomainTrustArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainTrustArgs build() {
-            $.domain = Objects.requireNonNull($.domain, "expected parameter 'domain' to be non-null");
-            $.targetDnsIpAddresses = Objects.requireNonNull($.targetDnsIpAddresses, "expected parameter 'targetDnsIpAddresses' to be non-null");
-            $.targetDomainName = Objects.requireNonNull($.targetDomainName, "expected parameter 'targetDomainName' to be non-null");
-            $.trustDirection = Objects.requireNonNull($.trustDirection, "expected parameter 'trustDirection' to be non-null");
-            $.trustHandshakeSecret = Objects.requireNonNull($.trustHandshakeSecret, "expected parameter 'trustHandshakeSecret' to be non-null");
-            $.trustType = Objects.requireNonNull($.trustType, "expected parameter 'trustType' to be non-null");
+            if ($.domain == null) {
+                throw new MissingRequiredPropertyException("DomainTrustArgs", "domain");
+            }
+            if ($.targetDnsIpAddresses == null) {
+                throw new MissingRequiredPropertyException("DomainTrustArgs", "targetDnsIpAddresses");
+            }
+            if ($.targetDomainName == null) {
+                throw new MissingRequiredPropertyException("DomainTrustArgs", "targetDomainName");
+            }
+            if ($.trustDirection == null) {
+                throw new MissingRequiredPropertyException("DomainTrustArgs", "trustDirection");
+            }
+            if ($.trustHandshakeSecret == null) {
+                throw new MissingRequiredPropertyException("DomainTrustArgs", "trustHandshakeSecret");
+            }
+            if ($.trustType == null) {
+                throw new MissingRequiredPropertyException("DomainTrustArgs", "trustType");
+            }
             return $;
         }
     }

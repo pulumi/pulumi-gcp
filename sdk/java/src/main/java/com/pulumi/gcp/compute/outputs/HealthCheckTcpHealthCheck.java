@@ -137,31 +137,37 @@ public final class HealthCheckTcpHealthCheck {
 
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder portName(@Nullable String portName) {
+
             this.portName = portName;
             return this;
         }
         @CustomType.Setter
         public Builder portSpecification(@Nullable String portSpecification) {
+
             this.portSpecification = portSpecification;
             return this;
         }
         @CustomType.Setter
         public Builder proxyHeader(@Nullable String proxyHeader) {
+
             this.proxyHeader = proxyHeader;
             return this;
         }
         @CustomType.Setter
         public Builder request(@Nullable String request) {
+
             this.request = request;
             return this;
         }
         @CustomType.Setter
         public Builder response(@Nullable String response) {
+
             this.response = response;
             return this;
         }

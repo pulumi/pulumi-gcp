@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509ConfigAdditionalExtensionObjectId;
 import java.lang.Boolean;
 import java.lang.String;
@@ -49,12 +50,18 @@ public final class GetAuthorityConfigX509ConfigAdditionalExtension {
 
         @CustomType.Setter
         public Builder critical(Boolean critical) {
-            this.critical = Objects.requireNonNull(critical);
+            if (critical == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigAdditionalExtension", "critical");
+            }
+            this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder objectIds(List<GetAuthorityConfigX509ConfigAdditionalExtensionObjectId> objectIds) {
-            this.objectIds = Objects.requireNonNull(objectIds);
+            if (objectIds == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigAdditionalExtension", "objectIds");
+            }
+            this.objectIds = objectIds;
             return this;
         }
         public Builder objectIds(GetAuthorityConfigX509ConfigAdditionalExtensionObjectId... objectIds) {
@@ -62,7 +69,10 @@ public final class GetAuthorityConfigX509ConfigAdditionalExtension {
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigAdditionalExtension", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetAuthorityConfigX509ConfigAdditionalExtension build() {

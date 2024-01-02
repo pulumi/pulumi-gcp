@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration;
 import java.lang.Integer;
 import java.lang.String;
@@ -74,12 +75,18 @@ public final class GetEnvironmentConfigSoftwareConfig {
 
         @CustomType.Setter
         public Builder airflowConfigOverrides(Map<String,String> airflowConfigOverrides) {
-            this.airflowConfigOverrides = Objects.requireNonNull(airflowConfigOverrides);
+            if (airflowConfigOverrides == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigSoftwareConfig", "airflowConfigOverrides");
+            }
+            this.airflowConfigOverrides = airflowConfigOverrides;
             return this;
         }
         @CustomType.Setter
         public Builder cloudDataLineageIntegrations(List<GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration> cloudDataLineageIntegrations) {
-            this.cloudDataLineageIntegrations = Objects.requireNonNull(cloudDataLineageIntegrations);
+            if (cloudDataLineageIntegrations == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigSoftwareConfig", "cloudDataLineageIntegrations");
+            }
+            this.cloudDataLineageIntegrations = cloudDataLineageIntegrations;
             return this;
         }
         public Builder cloudDataLineageIntegrations(GetEnvironmentConfigSoftwareConfigCloudDataLineageIntegration... cloudDataLineageIntegrations) {
@@ -87,27 +94,42 @@ public final class GetEnvironmentConfigSoftwareConfig {
         }
         @CustomType.Setter
         public Builder envVariables(Map<String,String> envVariables) {
-            this.envVariables = Objects.requireNonNull(envVariables);
+            if (envVariables == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigSoftwareConfig", "envVariables");
+            }
+            this.envVariables = envVariables;
             return this;
         }
         @CustomType.Setter
         public Builder imageVersion(String imageVersion) {
-            this.imageVersion = Objects.requireNonNull(imageVersion);
+            if (imageVersion == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigSoftwareConfig", "imageVersion");
+            }
+            this.imageVersion = imageVersion;
             return this;
         }
         @CustomType.Setter
         public Builder pypiPackages(Map<String,String> pypiPackages) {
-            this.pypiPackages = Objects.requireNonNull(pypiPackages);
+            if (pypiPackages == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigSoftwareConfig", "pypiPackages");
+            }
+            this.pypiPackages = pypiPackages;
             return this;
         }
         @CustomType.Setter
         public Builder pythonVersion(String pythonVersion) {
-            this.pythonVersion = Objects.requireNonNull(pythonVersion);
+            if (pythonVersion == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigSoftwareConfig", "pythonVersion");
+            }
+            this.pythonVersion = pythonVersion;
             return this;
         }
         @CustomType.Setter
         public Builder schedulerCount(Integer schedulerCount) {
-            this.schedulerCount = Objects.requireNonNull(schedulerCount);
+            if (schedulerCount == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigSoftwareConfig", "schedulerCount");
+            }
+            this.schedulerCount = schedulerCount;
             return this;
         }
         public GetEnvironmentConfigSoftwareConfig build() {

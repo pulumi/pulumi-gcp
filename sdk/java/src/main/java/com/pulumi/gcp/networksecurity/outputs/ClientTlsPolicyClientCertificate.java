@@ -63,11 +63,13 @@ public final class ClientTlsPolicyClientCertificate {
 
         @CustomType.Setter
         public Builder certificateProviderInstance(@Nullable ClientTlsPolicyClientCertificateCertificateProviderInstance certificateProviderInstance) {
+
             this.certificateProviderInstance = certificateProviderInstance;
             return this;
         }
         @CustomType.Setter
         public Builder grpcEndpoint(@Nullable ClientTlsPolicyClientCertificateGrpcEndpoint grpcEndpoint) {
+
             this.grpcEndpoint = grpcEndpoint;
             return this;
         }

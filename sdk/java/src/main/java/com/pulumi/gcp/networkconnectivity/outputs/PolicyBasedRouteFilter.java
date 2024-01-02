@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkconnectivity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,21 +93,27 @@ public final class PolicyBasedRouteFilter {
 
         @CustomType.Setter
         public Builder destRange(@Nullable String destRange) {
+
             this.destRange = destRange;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(@Nullable String ipProtocol) {
+
             this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder protocolVersion(String protocolVersion) {
-            this.protocolVersion = Objects.requireNonNull(protocolVersion);
+            if (protocolVersion == null) {
+              throw new MissingRequiredPropertyException("PolicyBasedRouteFilter", "protocolVersion");
+            }
+            this.protocolVersion = protocolVersion;
             return this;
         }
         @CustomType.Setter
         public Builder srcRange(@Nullable String srcRange) {
+
             this.srcRange = srcRange;
             return this;
         }

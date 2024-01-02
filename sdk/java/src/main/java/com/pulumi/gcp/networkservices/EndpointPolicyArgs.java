@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherArgs;
 import com.pulumi.gcp.networkservices.inputs.EndpointPolicyTrafficPortSelectorArgs;
 import java.lang.String;
@@ -436,8 +437,12 @@ public final class EndpointPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public EndpointPolicyArgs build() {
-            $.endpointMatcher = Objects.requireNonNull($.endpointMatcher, "expected parameter 'endpointMatcher' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.endpointMatcher == null) {
+                throw new MissingRequiredPropertyException("EndpointPolicyArgs", "endpointMatcher");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("EndpointPolicyArgs", "type");
+            }
             return $;
         }
     }

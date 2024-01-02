@@ -176,41 +176,49 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessage {
 
         @CustomType.Setter
         public Builder channel(@Nullable String channel) {
+
             this.channel = channel;
             return this;
         }
         @CustomType.Setter
         public Builder conversationSuccess(@Nullable CxFlowEventHandlerTriggerFulfillmentMessageConversationSuccess conversationSuccess) {
+
             this.conversationSuccess = conversationSuccess;
             return this;
         }
         @CustomType.Setter
         public Builder liveAgentHandoff(@Nullable CxFlowEventHandlerTriggerFulfillmentMessageLiveAgentHandoff liveAgentHandoff) {
+
             this.liveAgentHandoff = liveAgentHandoff;
             return this;
         }
         @CustomType.Setter
         public Builder outputAudioText(@Nullable CxFlowEventHandlerTriggerFulfillmentMessageOutputAudioText outputAudioText) {
+
             this.outputAudioText = outputAudioText;
             return this;
         }
         @CustomType.Setter
         public Builder payload(@Nullable String payload) {
+
             this.payload = payload;
             return this;
         }
         @CustomType.Setter
         public Builder playAudio(@Nullable CxFlowEventHandlerTriggerFulfillmentMessagePlayAudio playAudio) {
+
             this.playAudio = playAudio;
             return this;
         }
         @CustomType.Setter
         public Builder telephonyTransferCall(@Nullable CxFlowEventHandlerTriggerFulfillmentMessageTelephonyTransferCall telephonyTransferCall) {
+
             this.telephonyTransferCall = telephonyTransferCall;
             return this;
         }
         @CustomType.Setter
         public Builder text(@Nullable CxFlowEventHandlerTriggerFulfillmentMessageText text) {
+
             this.text = text;
             return this;
         }

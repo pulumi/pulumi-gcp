@@ -5,6 +5,7 @@ package com.pulumi.gcp.securitycenter;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -178,8 +179,12 @@ public final class SourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SourceArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("SourceArgs", "displayName");
+            }
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("SourceArgs", "organization");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -231,8 +232,12 @@ public final class MetastoreServiceIamPolicyArgs extends com.pulumi.resources.Re
         }
 
         public MetastoreServiceIamPolicyArgs build() {
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
-            $.serviceId = Objects.requireNonNull($.serviceId, "expected parameter 'serviceId' to be non-null");
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceIamPolicyArgs", "policyData");
+            }
+            if ($.serviceId == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceIamPolicyArgs", "serviceId");
+            }
             return $;
         }
     }

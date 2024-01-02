@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefaultNodeConfigDefault;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetClusterNodePoolDefault {
 
         @CustomType.Setter
         public Builder nodeConfigDefaults(List<GetClusterNodePoolDefaultNodeConfigDefault> nodeConfigDefaults) {
-            this.nodeConfigDefaults = Objects.requireNonNull(nodeConfigDefaults);
+            if (nodeConfigDefaults == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolDefault", "nodeConfigDefaults");
+            }
+            this.nodeConfigDefaults = nodeConfigDefaults;
             return this;
         }
         public Builder nodeConfigDefaults(GetClusterNodePoolDefaultNodeConfigDefault... nodeConfigDefaults) {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -290,10 +291,18 @@ public final class MembershipBindingArgs extends com.pulumi.resources.ResourceAr
         }
 
         public MembershipBindingArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.membershipBindingId = Objects.requireNonNull($.membershipBindingId, "expected parameter 'membershipBindingId' to be non-null");
-            $.membershipId = Objects.requireNonNull($.membershipId, "expected parameter 'membershipId' to be non-null");
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("MembershipBindingArgs", "location");
+            }
+            if ($.membershipBindingId == null) {
+                throw new MissingRequiredPropertyException("MembershipBindingArgs", "membershipBindingId");
+            }
+            if ($.membershipId == null) {
+                throw new MissingRequiredPropertyException("MembershipBindingArgs", "membershipId");
+            }
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("MembershipBindingArgs", "scope");
+            }
             return $;
         }
     }

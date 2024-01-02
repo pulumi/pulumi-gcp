@@ -114,26 +114,31 @@ public final class InstanceServerCaCert {
 
         @CustomType.Setter
         public Builder cert(@Nullable String cert) {
+
             this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(@Nullable String expireTime) {
+
             this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder serialNumber(@Nullable String serialNumber) {
+
             this.serialNumber = serialNumber;
             return this;
         }
         @CustomType.Setter
         public Builder sha1Fingerprint(@Nullable String sha1Fingerprint) {
+
             this.sha1Fingerprint = sha1Fingerprint;
             return this;
         }

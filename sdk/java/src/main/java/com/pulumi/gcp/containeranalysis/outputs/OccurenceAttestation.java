@@ -4,6 +4,7 @@
 package com.pulumi.gcp.containeranalysis.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.containeranalysis.outputs.OccurenceAttestationSignature;
 import java.lang.String;
 import java.util.List;
@@ -70,12 +71,18 @@ public final class OccurenceAttestation {
 
         @CustomType.Setter
         public Builder serializedPayload(String serializedPayload) {
-            this.serializedPayload = Objects.requireNonNull(serializedPayload);
+            if (serializedPayload == null) {
+              throw new MissingRequiredPropertyException("OccurenceAttestation", "serializedPayload");
+            }
+            this.serializedPayload = serializedPayload;
             return this;
         }
         @CustomType.Setter
         public Builder signatures(List<OccurenceAttestationSignature> signatures) {
-            this.signatures = Objects.requireNonNull(signatures);
+            if (signatures == null) {
+              throw new MissingRequiredPropertyException("OccurenceAttestation", "signatures");
+            }
+            this.signatures = signatures;
             return this;
         }
         public Builder signatures(OccurenceAttestationSignature... signatures) {

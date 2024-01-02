@@ -46,6 +46,7 @@ public final class MembershipEndpoint {
 
         @CustomType.Setter
         public Builder gkeCluster(@Nullable MembershipEndpointGkeCluster gkeCluster) {
+
             this.gkeCluster = gkeCluster;
             return this;
         }

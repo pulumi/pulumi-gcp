@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.outputs.ZoneDiscoverySpecCsvOptions;
 import com.pulumi.gcp.dataplex.outputs.ZoneDiscoverySpecJsonOptions;
 import java.lang.Boolean;
@@ -118,16 +119,21 @@ public final class ZoneDiscoverySpec {
 
         @CustomType.Setter
         public Builder csvOptions(@Nullable ZoneDiscoverySpecCsvOptions csvOptions) {
+
             this.csvOptions = csvOptions;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("ZoneDiscoverySpec", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder excludePatterns(@Nullable List<String> excludePatterns) {
+
             this.excludePatterns = excludePatterns;
             return this;
         }
@@ -136,6 +142,7 @@ public final class ZoneDiscoverySpec {
         }
         @CustomType.Setter
         public Builder includePatterns(@Nullable List<String> includePatterns) {
+
             this.includePatterns = includePatterns;
             return this;
         }
@@ -144,11 +151,13 @@ public final class ZoneDiscoverySpec {
         }
         @CustomType.Setter
         public Builder jsonOptions(@Nullable ZoneDiscoverySpecJsonOptions jsonOptions) {
+
             this.jsonOptions = jsonOptions;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(@Nullable String schedule) {
+
             this.schedule = schedule;
             return this;
         }

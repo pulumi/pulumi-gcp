@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,22 +93,28 @@ public final class TriggerPubsubConfig {
 
         @CustomType.Setter
         public Builder serviceAccountEmail(@Nullable String serviceAccountEmail) {
+
             this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder subscription(@Nullable String subscription) {
+
             this.subscription = subscription;
             return this;
         }
         @CustomType.Setter
         public Builder topic(String topic) {
-            this.topic = Objects.requireNonNull(topic);
+            if (topic == null) {
+              throw new MissingRequiredPropertyException("TriggerPubsubConfig", "topic");
+            }
+            this.topic = topic;
             return this;
         }
         public TriggerPubsubConfig build() {

@@ -44,11 +44,13 @@ public final class RepositoryCleanupPolicyMostRecentVersions {
 
         @CustomType.Setter
         public Builder keepCount(@Nullable Integer keepCount) {
+
             this.keepCount = keepCount;
             return this;
         }
         @CustomType.Setter
         public Builder packageNamePrefixes(@Nullable List<String> packageNamePrefixes) {
+
             this.packageNamePrefixes = packageNamePrefixes;
             return this;
         }

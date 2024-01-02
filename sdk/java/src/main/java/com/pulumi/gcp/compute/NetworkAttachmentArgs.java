@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -382,8 +383,12 @@ public final class NetworkAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         public NetworkAttachmentArgs build() {
-            $.connectionPreference = Objects.requireNonNull($.connectionPreference, "expected parameter 'connectionPreference' to be non-null");
-            $.subnetworks = Objects.requireNonNull($.subnetworks, "expected parameter 'subnetworks' to be non-null");
+            if ($.connectionPreference == null) {
+                throw new MissingRequiredPropertyException("NetworkAttachmentArgs", "connectionPreference");
+            }
+            if ($.subnetworks == null) {
+                throw new MissingRequiredPropertyException("NetworkAttachmentArgs", "subnetworks");
+            }
             return $;
         }
     }

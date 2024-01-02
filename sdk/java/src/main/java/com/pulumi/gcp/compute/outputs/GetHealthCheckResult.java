@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckGrpcHealthCheck;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckHttp2HealthCheck;
 import com.pulumi.gcp.compute.outputs.GetHealthCheckHttpHealthCheck;
@@ -155,22 +156,34 @@ public final class GetHealthCheckResult {
 
         @CustomType.Setter
         public Builder checkIntervalSec(Integer checkIntervalSec) {
-            this.checkIntervalSec = Objects.requireNonNull(checkIntervalSec);
+            if (checkIntervalSec == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "checkIntervalSec");
+            }
+            this.checkIntervalSec = checkIntervalSec;
             return this;
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
-            this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder grpcHealthChecks(List<GetHealthCheckGrpcHealthCheck> grpcHealthChecks) {
-            this.grpcHealthChecks = Objects.requireNonNull(grpcHealthChecks);
+            if (grpcHealthChecks == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "grpcHealthChecks");
+            }
+            this.grpcHealthChecks = grpcHealthChecks;
             return this;
         }
         public Builder grpcHealthChecks(GetHealthCheckGrpcHealthCheck... grpcHealthChecks) {
@@ -178,12 +191,18 @@ public final class GetHealthCheckResult {
         }
         @CustomType.Setter
         public Builder healthyThreshold(Integer healthyThreshold) {
-            this.healthyThreshold = Objects.requireNonNull(healthyThreshold);
+            if (healthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "healthyThreshold");
+            }
+            this.healthyThreshold = healthyThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder http2HealthChecks(List<GetHealthCheckHttp2HealthCheck> http2HealthChecks) {
-            this.http2HealthChecks = Objects.requireNonNull(http2HealthChecks);
+            if (http2HealthChecks == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "http2HealthChecks");
+            }
+            this.http2HealthChecks = http2HealthChecks;
             return this;
         }
         public Builder http2HealthChecks(GetHealthCheckHttp2HealthCheck... http2HealthChecks) {
@@ -191,7 +210,10 @@ public final class GetHealthCheckResult {
         }
         @CustomType.Setter
         public Builder httpHealthChecks(List<GetHealthCheckHttpHealthCheck> httpHealthChecks) {
-            this.httpHealthChecks = Objects.requireNonNull(httpHealthChecks);
+            if (httpHealthChecks == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "httpHealthChecks");
+            }
+            this.httpHealthChecks = httpHealthChecks;
             return this;
         }
         public Builder httpHealthChecks(GetHealthCheckHttpHealthCheck... httpHealthChecks) {
@@ -199,7 +221,10 @@ public final class GetHealthCheckResult {
         }
         @CustomType.Setter
         public Builder httpsHealthChecks(List<GetHealthCheckHttpsHealthCheck> httpsHealthChecks) {
-            this.httpsHealthChecks = Objects.requireNonNull(httpsHealthChecks);
+            if (httpsHealthChecks == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "httpsHealthChecks");
+            }
+            this.httpsHealthChecks = httpsHealthChecks;
             return this;
         }
         public Builder httpsHealthChecks(GetHealthCheckHttpsHealthCheck... httpsHealthChecks) {
@@ -207,12 +232,18 @@ public final class GetHealthCheckResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logConfigs(List<GetHealthCheckLogConfig> logConfigs) {
-            this.logConfigs = Objects.requireNonNull(logConfigs);
+            if (logConfigs == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "logConfigs");
+            }
+            this.logConfigs = logConfigs;
             return this;
         }
         public Builder logConfigs(GetHealthCheckLogConfig... logConfigs) {
@@ -220,22 +251,32 @@ public final class GetHealthCheckResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder sslHealthChecks(List<GetHealthCheckSslHealthCheck> sslHealthChecks) {
-            this.sslHealthChecks = Objects.requireNonNull(sslHealthChecks);
+            if (sslHealthChecks == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "sslHealthChecks");
+            }
+            this.sslHealthChecks = sslHealthChecks;
             return this;
         }
         public Builder sslHealthChecks(GetHealthCheckSslHealthCheck... sslHealthChecks) {
@@ -243,7 +284,10 @@ public final class GetHealthCheckResult {
         }
         @CustomType.Setter
         public Builder tcpHealthChecks(List<GetHealthCheckTcpHealthCheck> tcpHealthChecks) {
-            this.tcpHealthChecks = Objects.requireNonNull(tcpHealthChecks);
+            if (tcpHealthChecks == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "tcpHealthChecks");
+            }
+            this.tcpHealthChecks = tcpHealthChecks;
             return this;
         }
         public Builder tcpHealthChecks(GetHealthCheckTcpHealthCheck... tcpHealthChecks) {
@@ -251,17 +295,26 @@ public final class GetHealthCheckResult {
         }
         @CustomType.Setter
         public Builder timeoutSec(Integer timeoutSec) {
-            this.timeoutSec = Objects.requireNonNull(timeoutSec);
+            if (timeoutSec == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "timeoutSec");
+            }
+            this.timeoutSec = timeoutSec;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder unhealthyThreshold(Integer unhealthyThreshold) {
-            this.unhealthyThreshold = Objects.requireNonNull(unhealthyThreshold);
+            if (unhealthyThreshold == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckResult", "unhealthyThreshold");
+            }
+            this.unhealthyThreshold = unhealthyThreshold;
             return this;
         }
         public GetHealthCheckResult build() {

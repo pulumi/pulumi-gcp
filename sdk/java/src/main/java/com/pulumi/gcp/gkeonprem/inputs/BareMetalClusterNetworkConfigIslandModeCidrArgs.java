@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -132,8 +133,12 @@ public final class BareMetalClusterNetworkConfigIslandModeCidrArgs extends com.p
         }
 
         public BareMetalClusterNetworkConfigIslandModeCidrArgs build() {
-            $.podAddressCidrBlocks = Objects.requireNonNull($.podAddressCidrBlocks, "expected parameter 'podAddressCidrBlocks' to be non-null");
-            $.serviceAddressCidrBlocks = Objects.requireNonNull($.serviceAddressCidrBlocks, "expected parameter 'serviceAddressCidrBlocks' to be non-null");
+            if ($.podAddressCidrBlocks == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterNetworkConfigIslandModeCidrArgs", "podAddressCidrBlocks");
+            }
+            if ($.serviceAddressCidrBlocks == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterNetworkConfigIslandModeCidrArgs", "serviceAddressCidrBlocks");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,17 +55,26 @@ public final class GetJobLatestCreatedExecution {
 
         @CustomType.Setter
         public Builder completionTime(String completionTime) {
-            this.completionTime = Objects.requireNonNull(completionTime);
+            if (completionTime == null) {
+              throw new MissingRequiredPropertyException("GetJobLatestCreatedExecution", "completionTime");
+            }
+            this.completionTime = completionTime;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetJobLatestCreatedExecution", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetJobLatestCreatedExecution", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetJobLatestCreatedExecution build() {

@@ -101,21 +101,25 @@ public final class ManagedZoneDnssecConfigDefaultKeySpec {
 
         @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
+
             this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder keyLength(@Nullable Integer keyLength) {
+
             this.keyLength = keyLength;
             return this;
         }
         @CustomType.Setter
         public Builder keyType(@Nullable String keyType) {
+
             this.keyType = keyType;
             return this;
         }
         @CustomType.Setter
         public Builder kind(@Nullable String kind) {
+
             this.kind = kind;
             return this;
         }

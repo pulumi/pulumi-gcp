@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudHcx;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudManagementCluster;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudNetworkConfig;
@@ -122,12 +123,18 @@ public final class GetPrivateCloudResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder hcxes(List<GetPrivateCloudHcx> hcxes) {
-            this.hcxes = Objects.requireNonNull(hcxes);
+            if (hcxes == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "hcxes");
+            }
+            this.hcxes = hcxes;
             return this;
         }
         public Builder hcxes(GetPrivateCloudHcx... hcxes) {
@@ -135,17 +142,26 @@ public final class GetPrivateCloudResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder managementClusters(List<GetPrivateCloudManagementCluster> managementClusters) {
-            this.managementClusters = Objects.requireNonNull(managementClusters);
+            if (managementClusters == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "managementClusters");
+            }
+            this.managementClusters = managementClusters;
             return this;
         }
         public Builder managementClusters(GetPrivateCloudManagementCluster... managementClusters) {
@@ -153,12 +169,18 @@ public final class GetPrivateCloudResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkConfigs(List<GetPrivateCloudNetworkConfig> networkConfigs) {
-            this.networkConfigs = Objects.requireNonNull(networkConfigs);
+            if (networkConfigs == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "networkConfigs");
+            }
+            this.networkConfigs = networkConfigs;
             return this;
         }
         public Builder networkConfigs(GetPrivateCloudNetworkConfig... networkConfigs) {
@@ -166,7 +188,10 @@ public final class GetPrivateCloudResult {
         }
         @CustomType.Setter
         public Builder nsxes(List<GetPrivateCloudNsx> nsxes) {
-            this.nsxes = Objects.requireNonNull(nsxes);
+            if (nsxes == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "nsxes");
+            }
+            this.nsxes = nsxes;
             return this;
         }
         public Builder nsxes(GetPrivateCloudNsx... nsxes) {
@@ -174,27 +199,40 @@ public final class GetPrivateCloudResult {
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         @CustomType.Setter
         public Builder vcenters(List<GetPrivateCloudVcenter> vcenters) {
-            this.vcenters = Objects.requireNonNull(vcenters);
+            if (vcenters == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudResult", "vcenters");
+            }
+            this.vcenters = vcenters;
             return this;
         }
         public Builder vcenters(GetPrivateCloudVcenter... vcenters) {

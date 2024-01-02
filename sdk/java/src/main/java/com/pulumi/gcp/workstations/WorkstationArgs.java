@@ -5,6 +5,7 @@ package com.pulumi.gcp.workstations;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -401,10 +402,18 @@ public final class WorkstationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkstationArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.workstationClusterId = Objects.requireNonNull($.workstationClusterId, "expected parameter 'workstationClusterId' to be non-null");
-            $.workstationConfigId = Objects.requireNonNull($.workstationConfigId, "expected parameter 'workstationConfigId' to be non-null");
-            $.workstationId = Objects.requireNonNull($.workstationId, "expected parameter 'workstationId' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("WorkstationArgs", "location");
+            }
+            if ($.workstationClusterId == null) {
+                throw new MissingRequiredPropertyException("WorkstationArgs", "workstationClusterId");
+            }
+            if ($.workstationConfigId == null) {
+                throw new MissingRequiredPropertyException("WorkstationArgs", "workstationConfigId");
+            }
+            if ($.workstationId == null) {
+                throw new MissingRequiredPropertyException("WorkstationArgs", "workstationId");
+            }
             return $;
         }
     }

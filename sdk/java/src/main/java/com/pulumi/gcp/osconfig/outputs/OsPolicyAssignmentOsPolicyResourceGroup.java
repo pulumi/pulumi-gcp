@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResource;
 import java.util.List;
@@ -79,6 +80,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroup {
 
         @CustomType.Setter
         public Builder inventoryFilters(@Nullable List<OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter> inventoryFilters) {
+
             this.inventoryFilters = inventoryFilters;
             return this;
         }
@@ -87,7 +89,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroup {
         }
         @CustomType.Setter
         public Builder resources(List<OsPolicyAssignmentOsPolicyResourceGroupResource> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroup", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(OsPolicyAssignmentOsPolicyResourceGroupResource... resources) {

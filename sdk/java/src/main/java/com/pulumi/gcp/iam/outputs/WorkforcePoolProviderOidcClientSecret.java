@@ -46,6 +46,7 @@ public final class WorkforcePoolProviderOidcClientSecret {
 
         @CustomType.Setter
         public Builder value(@Nullable WorkforcePoolProviderOidcClientSecretValue value) {
+
             this.value = value;
             return this;
         }

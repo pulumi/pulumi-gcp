@@ -62,11 +62,13 @@ public final class RegionInstanceGroupManagerAllInstancesConfig {
 
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
+
             this.metadata = metadata;
             return this;
         }

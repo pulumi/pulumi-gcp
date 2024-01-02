@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterLoadBalancerBgpLbConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterLoadBalancerManualLbConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterLoadBalancerMetalLbConfig;
@@ -114,27 +115,36 @@ public final class BareMetalClusterLoadBalancer {
 
         @CustomType.Setter
         public Builder bgpLbConfig(@Nullable BareMetalClusterLoadBalancerBgpLbConfig bgpLbConfig) {
+
             this.bgpLbConfig = bgpLbConfig;
             return this;
         }
         @CustomType.Setter
         public Builder manualLbConfig(@Nullable BareMetalClusterLoadBalancerManualLbConfig manualLbConfig) {
+
             this.manualLbConfig = manualLbConfig;
             return this;
         }
         @CustomType.Setter
         public Builder metalLbConfig(@Nullable BareMetalClusterLoadBalancerMetalLbConfig metalLbConfig) {
+
             this.metalLbConfig = metalLbConfig;
             return this;
         }
         @CustomType.Setter
         public Builder portConfig(BareMetalClusterLoadBalancerPortConfig portConfig) {
-            this.portConfig = Objects.requireNonNull(portConfig);
+            if (portConfig == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancer", "portConfig");
+            }
+            this.portConfig = portConfig;
             return this;
         }
         @CustomType.Setter
         public Builder vipConfig(BareMetalClusterLoadBalancerVipConfig vipConfig) {
-            this.vipConfig = Objects.requireNonNull(vipConfig);
+            if (vipConfig == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancer", "vipConfig");
+            }
+            this.vipConfig = vipConfig;
             return this;
         }
         public BareMetalClusterLoadBalancer build() {

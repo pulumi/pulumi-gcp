@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -247,9 +248,15 @@ public final class GuestPoliciesPackageRepositoryAptArgs extends com.pulumi.reso
         }
 
         public GuestPoliciesPackageRepositoryAptArgs build() {
-            $.components = Objects.requireNonNull($.components, "expected parameter 'components' to be non-null");
-            $.distribution = Objects.requireNonNull($.distribution, "expected parameter 'distribution' to be non-null");
-            $.uri = Objects.requireNonNull($.uri, "expected parameter 'uri' to be non-null");
+            if ($.components == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryAptArgs", "components");
+            }
+            if ($.distribution == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryAptArgs", "distribution");
+            }
+            if ($.uri == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryAptArgs", "uri");
+            }
             return $;
         }
     }

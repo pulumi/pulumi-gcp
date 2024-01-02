@@ -229,16 +229,19 @@ public final class AlertPolicyConditionConditionAbsentAggregation {
 
         @CustomType.Setter
         public Builder alignmentPeriod(@Nullable String alignmentPeriod) {
+
             this.alignmentPeriod = alignmentPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder crossSeriesReducer(@Nullable String crossSeriesReducer) {
+
             this.crossSeriesReducer = crossSeriesReducer;
             return this;
         }
         @CustomType.Setter
         public Builder groupByFields(@Nullable List<String> groupByFields) {
+
             this.groupByFields = groupByFields;
             return this;
         }
@@ -247,6 +250,7 @@ public final class AlertPolicyConditionConditionAbsentAggregation {
         }
         @CustomType.Setter
         public Builder perSeriesAligner(@Nullable String perSeriesAligner) {
+
             this.perSeriesAligner = perSeriesAligner;
             return this;
         }

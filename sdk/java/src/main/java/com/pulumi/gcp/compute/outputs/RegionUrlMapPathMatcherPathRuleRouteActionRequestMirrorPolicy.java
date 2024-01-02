@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy
 
         @CustomType.Setter
         public Builder backendService(String backendService) {
-            this.backendService = Objects.requireNonNull(backendService);
+            if (backendService == null) {
+              throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy", "backendService");
+            }
+            this.backendService = backendService;
             return this;
         }
         public RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy build() {

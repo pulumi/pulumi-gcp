@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelsAccessLevelBasic;
 import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelsAccessLevelCustom;
 import java.lang.String;
@@ -112,27 +113,36 @@ public final class AccessLevelsAccessLevel {
 
         @CustomType.Setter
         public Builder basic(@Nullable AccessLevelsAccessLevelBasic basic) {
+
             this.basic = basic;
             return this;
         }
         @CustomType.Setter
         public Builder custom(@Nullable AccessLevelsAccessLevelCustom custom) {
+
             this.custom = custom;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("AccessLevelsAccessLevel", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("AccessLevelsAccessLevel", "title");
+            }
+            this.title = title;
             return this;
         }
         public AccessLevelsAccessLevel build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctionsv2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -282,9 +283,15 @@ public final class FunctionIamMemberArgs extends com.pulumi.resources.ResourceAr
         }
 
         public FunctionIamMemberArgs build() {
-            $.cloudFunction = Objects.requireNonNull($.cloudFunction, "expected parameter 'cloudFunction' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.cloudFunction == null) {
+                throw new MissingRequiredPropertyException("FunctionIamMemberArgs", "cloudFunction");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("FunctionIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("FunctionIamMemberArgs", "role");
+            }
             return $;
         }
     }

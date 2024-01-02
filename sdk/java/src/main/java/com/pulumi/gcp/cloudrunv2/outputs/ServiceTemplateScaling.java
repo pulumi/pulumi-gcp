@@ -58,11 +58,13 @@ public final class ServiceTemplateScaling {
 
         @CustomType.Setter
         public Builder maxInstanceCount(@Nullable Integer maxInstanceCount) {
+
             this.maxInstanceCount = maxInstanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder minInstanceCount(@Nullable Integer minInstanceCount) {
+
             this.minInstanceCount = minInstanceCount;
             return this;
         }

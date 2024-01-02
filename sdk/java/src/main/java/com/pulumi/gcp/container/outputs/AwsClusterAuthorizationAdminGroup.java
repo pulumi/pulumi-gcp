@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class AwsClusterAuthorizationAdminGroup {
 
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("AwsClusterAuthorizationAdminGroup", "group");
+            }
+            this.group = group;
             return this;
         }
         public AwsClusterAuthorizationAdminGroup build() {

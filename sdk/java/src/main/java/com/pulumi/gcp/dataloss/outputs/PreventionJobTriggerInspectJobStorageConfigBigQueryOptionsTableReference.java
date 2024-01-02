@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTab
 
         @CustomType.Setter
         public Builder datasetId(String datasetId) {
-            this.datasetId = Objects.requireNonNull(datasetId);
+            if (datasetId == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference", "datasetId");
+            }
+            this.datasetId = datasetId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder tableId(String tableId) {
-            this.tableId = Objects.requireNonNull(tableId);
+            if (tableId == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference", "tableId");
+            }
+            this.tableId = tableId;
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctions.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionEventTriggerFailurePolicyArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -163,8 +164,12 @@ public final class FunctionEventTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         public FunctionEventTriggerArgs build() {
-            $.eventType = Objects.requireNonNull($.eventType, "expected parameter 'eventType' to be non-null");
-            $.resource = Objects.requireNonNull($.resource, "expected parameter 'resource' to be non-null");
+            if ($.eventType == null) {
+                throw new MissingRequiredPropertyException("FunctionEventTriggerArgs", "eventType");
+            }
+            if ($.resource == null) {
+                throw new MissingRequiredPropertyException("FunctionEventTriggerArgs", "resource");
+            }
             return $;
         }
     }

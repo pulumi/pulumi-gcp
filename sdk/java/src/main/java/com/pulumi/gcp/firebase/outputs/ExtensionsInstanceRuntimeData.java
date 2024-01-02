@@ -78,16 +78,19 @@ public final class ExtensionsInstanceRuntimeData {
 
         @CustomType.Setter
         public Builder fatalError(@Nullable ExtensionsInstanceRuntimeDataFatalError fatalError) {
+
             this.fatalError = fatalError;
             return this;
         }
         @CustomType.Setter
         public Builder processingState(@Nullable ExtensionsInstanceRuntimeDataProcessingState processingState) {
+
             this.processingState = processingState;
             return this;
         }
         @CustomType.Setter
         public Builder stateUpdateTime(@Nullable String stateUpdateTime) {
+
             this.stateUpdateTime = stateUpdateTime;
             return this;
         }

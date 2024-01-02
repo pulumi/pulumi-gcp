@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.TableRangePartitioningRangeArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -120,8 +121,12 @@ public final class TableRangePartitioningArgs extends com.pulumi.resources.Resou
         }
 
         public TableRangePartitioningArgs build() {
-            $.field = Objects.requireNonNull($.field, "expected parameter 'field' to be non-null");
-            $.range = Objects.requireNonNull($.range, "expected parameter 'range' to be non-null");
+            if ($.field == null) {
+                throw new MissingRequiredPropertyException("TableRangePartitioningArgs", "field");
+            }
+            if ($.range == null) {
+                throw new MissingRequiredPropertyException("TableRangePartitioningArgs", "range");
+            }
             return $;
         }
     }

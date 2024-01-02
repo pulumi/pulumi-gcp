@@ -5,6 +5,7 @@ package com.pulumi.gcp.serviceaccount;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -295,7 +296,9 @@ public final class KeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public KeyArgs build() {
-            $.serviceAccountId = Objects.requireNonNull($.serviceAccountId, "expected parameter 'serviceAccountId' to be non-null");
+            if ($.serviceAccountId == null) {
+                throw new MissingRequiredPropertyException("KeyArgs", "serviceAccountId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -110,7 +111,9 @@ public final class GetClusterIamPolicyArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetClusterIamPolicyArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("GetClusterIamPolicyArgs", "cluster");
+            }
             return $;
         }
     }

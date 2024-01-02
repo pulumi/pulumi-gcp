@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
 
         @CustomType.Setter
         public Builder phaseConfigs(List<DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig> phaseConfigs) {
-            this.phaseConfigs = Objects.requireNonNull(phaseConfigs);
+            if (phaseConfigs == null) {
+              throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment", "phaseConfigs");
+            }
+            this.phaseConfigs = phaseConfigs;
             return this;
         }
         public Builder phaseConfigs(DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig... phaseConfigs) {

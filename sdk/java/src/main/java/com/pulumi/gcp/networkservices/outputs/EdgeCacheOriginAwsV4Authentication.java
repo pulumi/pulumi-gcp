@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -72,17 +73,26 @@ public final class EdgeCacheOriginAwsV4Authentication {
 
         @CustomType.Setter
         public Builder accessKeyId(String accessKeyId) {
-            this.accessKeyId = Objects.requireNonNull(accessKeyId);
+            if (accessKeyId == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheOriginAwsV4Authentication", "accessKeyId");
+            }
+            this.accessKeyId = accessKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder originRegion(String originRegion) {
-            this.originRegion = Objects.requireNonNull(originRegion);
+            if (originRegion == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheOriginAwsV4Authentication", "originRegion");
+            }
+            this.originRegion = originRegion;
             return this;
         }
         @CustomType.Setter
         public Builder secretAccessKeyVersion(String secretAccessKeyVersion) {
-            this.secretAccessKeyVersion = Objects.requireNonNull(secretAccessKeyVersion);
+            if (secretAccessKeyVersion == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheOriginAwsV4Authentication", "secretAccessKeyVersion");
+            }
+            this.secretAccessKeyVersion = secretAccessKeyVersion;
             return this;
         }
         public EdgeCacheOriginAwsV4Authentication build() {

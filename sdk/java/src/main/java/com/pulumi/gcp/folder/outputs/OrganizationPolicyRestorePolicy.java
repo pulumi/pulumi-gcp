@@ -4,6 +4,7 @@
 package com.pulumi.gcp.folder.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class OrganizationPolicyRestorePolicy {
 
         @CustomType.Setter("default")
         public Builder default_(Boolean default_) {
-            this.default_ = Objects.requireNonNull(default_);
+            if (default_ == null) {
+              throw new MissingRequiredPropertyException("OrganizationPolicyRestorePolicy", "default_");
+            }
+            this.default_ = default_;
             return this;
         }
         public OrganizationPolicyRestorePolicy build() {

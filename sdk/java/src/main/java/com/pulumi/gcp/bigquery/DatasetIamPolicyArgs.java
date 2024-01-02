@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -194,8 +195,12 @@ public final class DatasetIamPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DatasetIamPolicyArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("DatasetIamPolicyArgs", "datasetId");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("DatasetIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

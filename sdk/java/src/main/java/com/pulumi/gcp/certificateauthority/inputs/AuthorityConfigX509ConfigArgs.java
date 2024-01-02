@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigAdditionalExtensionArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigCaOptionsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigKeyUsageArgs;
@@ -324,8 +325,12 @@ public final class AuthorityConfigX509ConfigArgs extends com.pulumi.resources.Re
         }
 
         public AuthorityConfigX509ConfigArgs build() {
-            $.caOptions = Objects.requireNonNull($.caOptions, "expected parameter 'caOptions' to be non-null");
-            $.keyUsage = Objects.requireNonNull($.keyUsage, "expected parameter 'keyUsage' to be non-null");
+            if ($.caOptions == null) {
+                throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigArgs", "caOptions");
+            }
+            if ($.keyUsage == null) {
+                throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigArgs", "keyUsage");
+            }
             return $;
         }
     }

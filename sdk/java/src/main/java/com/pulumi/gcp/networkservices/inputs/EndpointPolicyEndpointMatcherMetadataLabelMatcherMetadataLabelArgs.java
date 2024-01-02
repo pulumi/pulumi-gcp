@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabe
         }
 
         public EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs build() {
-            $.labelName = Objects.requireNonNull($.labelName, "expected parameter 'labelName' to be non-null");
-            $.labelValue = Objects.requireNonNull($.labelValue, "expected parameter 'labelValue' to be non-null");
+            if ($.labelName == null) {
+                throw new MissingRequiredPropertyException("EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs", "labelName");
+            }
+            if ($.labelValue == null) {
+                throw new MissingRequiredPropertyException("EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs", "labelValue");
+            }
             return $;
         }
     }

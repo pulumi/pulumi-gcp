@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.MachineImageMachineImageEncryptionKeyArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -295,7 +296,9 @@ public final class MachineImageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MachineImageArgs build() {
-            $.sourceInstance = Objects.requireNonNull($.sourceInstance, "expected parameter 'sourceInstance' to be non-null");
+            if ($.sourceInstance == null) {
+                throw new MissingRequiredPropertyException("MachineImageArgs", "sourceInstance");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -120,62 +121,96 @@ public final class GetProjectResult {
 
         @CustomType.Setter
         public Builder autoCreateNetwork(Boolean autoCreateNetwork) {
-            this.autoCreateNetwork = Objects.requireNonNull(autoCreateNetwork);
+            if (autoCreateNetwork == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "autoCreateNetwork");
+            }
+            this.autoCreateNetwork = autoCreateNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder billingAccount(String billingAccount) {
-            this.billingAccount = Objects.requireNonNull(billingAccount);
+            if (billingAccount == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "billingAccount");
+            }
+            this.billingAccount = billingAccount;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder folderId(String folderId) {
-            this.folderId = Objects.requireNonNull(folderId);
+            if (folderId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "folderId");
+            }
+            this.folderId = folderId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder number(String number) {
-            this.number = Objects.requireNonNull(number);
+            if (number == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "number");
+            }
+            this.number = number;
             return this;
         }
         @CustomType.Setter
         public Builder orgId(String orgId) {
-            this.orgId = Objects.requireNonNull(orgId);
+            if (orgId == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "orgId");
+            }
+            this.orgId = orgId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder skipDelete(Boolean skipDelete) {
-            this.skipDelete = Objects.requireNonNull(skipDelete);
+            if (skipDelete == null) {
+              throw new MissingRequiredPropertyException("GetProjectResult", "skipDelete");
+            }
+            this.skipDelete = skipDelete;
             return this;
         }
         public GetProjectResult build() {

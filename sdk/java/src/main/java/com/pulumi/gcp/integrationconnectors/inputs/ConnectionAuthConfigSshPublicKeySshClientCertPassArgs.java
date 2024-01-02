@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPassArgs extends
         }
 
         public ConnectionAuthConfigSshPublicKeySshClientCertPassArgs build() {
-            $.secretVersion = Objects.requireNonNull($.secretVersion, "expected parameter 'secretVersion' to be non-null");
+            if ($.secretVersion == null) {
+                throw new MissingRequiredPropertyException("ConnectionAuthConfigSshPublicKeySshClientCertPassArgs", "secretVersion");
+            }
             return $;
         }
     }

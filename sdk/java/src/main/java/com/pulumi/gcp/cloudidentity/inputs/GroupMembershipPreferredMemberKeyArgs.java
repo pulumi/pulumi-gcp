@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudidentity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -153,7 +154,9 @@ public final class GroupMembershipPreferredMemberKeyArgs extends com.pulumi.reso
         }
 
         public GroupMembershipPreferredMemberKeyArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GroupMembershipPreferredMemberKeyArgs", "id");
+            }
             return $;
         }
     }

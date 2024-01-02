@@ -78,16 +78,19 @@ public final class TriggerRepositoryEventConfig {
 
         @CustomType.Setter
         public Builder pullRequest(@Nullable TriggerRepositoryEventConfigPullRequest pullRequest) {
+
             this.pullRequest = pullRequest;
             return this;
         }
         @CustomType.Setter
         public Builder push(@Nullable TriggerRepositoryEventConfigPush push) {
+
             this.push = push;
             return this;
         }
         @CustomType.Setter
         public Builder repository(@Nullable String repository) {
+
             this.repository = repository;
             return this;
         }

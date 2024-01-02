@@ -72,11 +72,13 @@ public final class RegionNetworkEndpointGroupCloudFunction {
 
         @CustomType.Setter
         public Builder function(@Nullable String function) {
+
             this.function = function;
             return this;
         }
         @CustomType.Setter
         public Builder urlMask(@Nullable String urlMask) {
+
             this.urlMask = urlMask;
             return this;
         }

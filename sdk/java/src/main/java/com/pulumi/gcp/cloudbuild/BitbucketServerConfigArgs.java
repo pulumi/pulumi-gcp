@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.inputs.BitbucketServerConfigConnectedRepositoryArgs;
 import com.pulumi.gcp.cloudbuild.inputs.BitbucketServerConfigSecretsArgs;
 import java.lang.String;
@@ -455,12 +456,24 @@ public final class BitbucketServerConfigArgs extends com.pulumi.resources.Resour
         }
 
         public BitbucketServerConfigArgs build() {
-            $.apiKey = Objects.requireNonNull($.apiKey, "expected parameter 'apiKey' to be non-null");
-            $.configId = Objects.requireNonNull($.configId, "expected parameter 'configId' to be non-null");
-            $.hostUri = Objects.requireNonNull($.hostUri, "expected parameter 'hostUri' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.secrets = Objects.requireNonNull($.secrets, "expected parameter 'secrets' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.apiKey == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigArgs", "apiKey");
+            }
+            if ($.configId == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigArgs", "configId");
+            }
+            if ($.hostUri == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigArgs", "hostUri");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigArgs", "location");
+            }
+            if ($.secrets == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigArgs", "secrets");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigArgs", "username");
+            }
             return $;
         }
     }

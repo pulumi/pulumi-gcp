@@ -4,6 +4,7 @@
 package com.pulumi.gcp.workstations.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -124,8 +125,12 @@ public final class GetWorkstationConfigIamPolicyPlainArgs extends com.pulumi.res
         }
 
         public GetWorkstationConfigIamPolicyPlainArgs build() {
-            $.workstationClusterId = Objects.requireNonNull($.workstationClusterId, "expected parameter 'workstationClusterId' to be non-null");
-            $.workstationConfigId = Objects.requireNonNull($.workstationConfigId, "expected parameter 'workstationConfigId' to be non-null");
+            if ($.workstationClusterId == null) {
+                throw new MissingRequiredPropertyException("GetWorkstationConfigIamPolicyPlainArgs", "workstationClusterId");
+            }
+            if ($.workstationConfigId == null) {
+                throw new MissingRequiredPropertyException("GetWorkstationConfigIamPolicyPlainArgs", "workstationConfigId");
+            }
             return $;
         }
     }

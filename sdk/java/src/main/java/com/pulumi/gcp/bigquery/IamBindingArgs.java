@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.IamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -271,10 +272,18 @@ public final class IamBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IamBindingArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.tableId = Objects.requireNonNull($.tableId, "expected parameter 'tableId' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("IamBindingArgs", "datasetId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("IamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("IamBindingArgs", "role");
+            }
+            if ($.tableId == null) {
+                throw new MissingRequiredPropertyException("IamBindingArgs", "tableId");
+            }
             return $;
         }
     }

@@ -250,16 +250,19 @@ public final class TriggerBuildOptions {
 
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder dynamicSubstitutions(@Nullable Boolean dynamicSubstitutions) {
+
             this.dynamicSubstitutions = dynamicSubstitutions;
             return this;
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<String> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -268,26 +271,31 @@ public final class TriggerBuildOptions {
         }
         @CustomType.Setter
         public Builder logStreamingOption(@Nullable String logStreamingOption) {
+
             this.logStreamingOption = logStreamingOption;
             return this;
         }
         @CustomType.Setter
         public Builder logging(@Nullable String logging) {
+
             this.logging = logging;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder requestedVerifyOption(@Nullable String requestedVerifyOption) {
+
             this.requestedVerifyOption = requestedVerifyOption;
             return this;
         }
         @CustomType.Setter
         public Builder secretEnvs(@Nullable List<String> secretEnvs) {
+
             this.secretEnvs = secretEnvs;
             return this;
         }
@@ -296,6 +304,7 @@ public final class TriggerBuildOptions {
         }
         @CustomType.Setter
         public Builder sourceProvenanceHashes(@Nullable List<String> sourceProvenanceHashes) {
+
             this.sourceProvenanceHashes = sourceProvenanceHashes;
             return this;
         }
@@ -304,11 +313,13 @@ public final class TriggerBuildOptions {
         }
         @CustomType.Setter
         public Builder substitutionOption(@Nullable String substitutionOption) {
+
             this.substitutionOption = substitutionOption;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable List<TriggerBuildOptionsVolume> volumes) {
+
             this.volumes = volumes;
             return this;
         }
@@ -317,6 +328,7 @@ public final class TriggerBuildOptions {
         }
         @CustomType.Setter
         public Builder workerPool(@Nullable String workerPool) {
+
             this.workerPool = workerPool;
             return this;
         }

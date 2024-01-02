@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetClusterIpAllocationPolicyAdditionalPodRangesConfig {
 
         @CustomType.Setter
         public Builder podRangeNames(List<String> podRangeNames) {
-            this.podRangeNames = Objects.requireNonNull(podRangeNames);
+            if (podRangeNames == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicyAdditionalPodRangesConfig", "podRangeNames");
+            }
+            this.podRangeNames = podRangeNames;
             return this;
         }
         public Builder podRangeNames(String... podRangeNames) {

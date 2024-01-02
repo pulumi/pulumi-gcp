@@ -93,21 +93,25 @@ public final class ResourcePolicyGroupPlacementPolicy {
 
         @CustomType.Setter
         public Builder availabilityDomainCount(@Nullable Integer availabilityDomainCount) {
+
             this.availabilityDomainCount = availabilityDomainCount;
             return this;
         }
         @CustomType.Setter
         public Builder collocation(@Nullable String collocation) {
+
             this.collocation = collocation;
             return this;
         }
         @CustomType.Setter
         public Builder maxDistance(@Nullable Integer maxDistance) {
+
             this.maxDistance = maxDistance;
             return this;
         }
         @CustomType.Setter
         public Builder vmCount(@Nullable Integer vmCount) {
+
             this.vmCount = vmCount;
             return this;
         }

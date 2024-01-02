@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetDatasetExternalDatasetReference {
 
         @CustomType.Setter
         public Builder connection(String connection) {
-            this.connection = Objects.requireNonNull(connection);
+            if (connection == null) {
+              throw new MissingRequiredPropertyException("GetDatasetExternalDatasetReference", "connection");
+            }
+            this.connection = connection;
             return this;
         }
         @CustomType.Setter
         public Builder externalSource(String externalSource) {
-            this.externalSource = Objects.requireNonNull(externalSource);
+            if (externalSource == null) {
+              throw new MissingRequiredPropertyException("GetDatasetExternalDatasetReference", "externalSource");
+            }
+            this.externalSource = externalSource;
             return this;
         }
         public GetDatasetExternalDatasetReference build() {

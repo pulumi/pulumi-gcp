@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudidentity.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetGroupMembershipsPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetGroupMembershipsPlainArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GetGroupMembershipsPlainArgs", "group");
+            }
             return $;
         }
     }

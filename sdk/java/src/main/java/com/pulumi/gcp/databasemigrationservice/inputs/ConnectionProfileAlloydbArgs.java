@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -118,7 +119,9 @@ public final class ConnectionProfileAlloydbArgs extends com.pulumi.resources.Res
         }
 
         public ConnectionProfileAlloydbArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileAlloydbArgs", "clusterId");
+            }
             return $;
         }
     }

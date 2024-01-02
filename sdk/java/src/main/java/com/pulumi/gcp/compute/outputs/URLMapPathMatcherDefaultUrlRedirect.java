@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -159,32 +160,40 @@ public final class URLMapPathMatcherDefaultUrlRedirect {
 
         @CustomType.Setter
         public Builder hostRedirect(@Nullable String hostRedirect) {
+
             this.hostRedirect = hostRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder httpsRedirect(@Nullable Boolean httpsRedirect) {
+
             this.httpsRedirect = httpsRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder pathRedirect(@Nullable String pathRedirect) {
+
             this.pathRedirect = pathRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder prefixRedirect(@Nullable String prefixRedirect) {
+
             this.prefixRedirect = prefixRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder redirectResponseCode(@Nullable String redirectResponseCode) {
+
             this.redirectResponseCode = redirectResponseCode;
             return this;
         }
         @CustomType.Setter
         public Builder stripQuery(Boolean stripQuery) {
-            this.stripQuery = Objects.requireNonNull(stripQuery);
+            if (stripQuery == null) {
+              throw new MissingRequiredPropertyException("URLMapPathMatcherDefaultUrlRedirect", "stripQuery");
+            }
+            this.stripQuery = stripQuery;
             return this;
         }
         public URLMapPathMatcherDefaultUrlRedirect build() {

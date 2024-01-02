@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -55,17 +56,26 @@ public final class GetDatabaseInstanceRestoreBackupContext {
 
         @CustomType.Setter
         public Builder backupRunId(Integer backupRunId) {
-            this.backupRunId = Objects.requireNonNull(backupRunId);
+            if (backupRunId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceRestoreBackupContext", "backupRunId");
+            }
+            this.backupRunId = backupRunId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceRestoreBackupContext", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceRestoreBackupContext", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetDatabaseInstanceRestoreBackupContext build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class ApiConfigGrpcServiceFileDescriptorSet {
 
         @CustomType.Setter
         public Builder contents(String contents) {
-            this.contents = Objects.requireNonNull(contents);
+            if (contents == null) {
+              throw new MissingRequiredPropertyException("ApiConfigGrpcServiceFileDescriptorSet", "contents");
+            }
+            this.contents = contents;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("ApiConfigGrpcServiceFileDescriptorSet", "path");
+            }
+            this.path = path;
             return this;
         }
         public ApiConfigGrpcServiceFileDescriptorSet build() {

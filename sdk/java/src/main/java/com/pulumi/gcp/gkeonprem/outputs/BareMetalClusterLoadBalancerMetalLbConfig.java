@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterLoadBalancerMetalLbConfigAddressPool;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig;
 import java.util.List;
@@ -68,7 +69,10 @@ public final class BareMetalClusterLoadBalancerMetalLbConfig {
 
         @CustomType.Setter
         public Builder addressPools(List<BareMetalClusterLoadBalancerMetalLbConfigAddressPool> addressPools) {
-            this.addressPools = Objects.requireNonNull(addressPools);
+            if (addressPools == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerMetalLbConfig", "addressPools");
+            }
+            this.addressPools = addressPools;
             return this;
         }
         public Builder addressPools(BareMetalClusterLoadBalancerMetalLbConfigAddressPool... addressPools) {
@@ -76,6 +80,7 @@ public final class BareMetalClusterLoadBalancerMetalLbConfig {
         }
         @CustomType.Setter
         public Builder loadBalancerNodePoolConfig(@Nullable BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfig loadBalancerNodePoolConfig) {
+
             this.loadBalancerNodePoolConfig = loadBalancerNodePoolConfig;
             return this;
         }

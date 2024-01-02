@@ -72,16 +72,19 @@ public final class RepositoryWorkspaceCompilationOverrides {
 
         @CustomType.Setter
         public Builder defaultDatabase(@Nullable String defaultDatabase) {
+
             this.defaultDatabase = defaultDatabase;
             return this;
         }
         @CustomType.Setter
         public Builder schemaSuffix(@Nullable String schemaSuffix) {
+
             this.schemaSuffix = schemaSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder tablePrefix(@Nullable String tablePrefix) {
+
             this.tablePrefix = tablePrefix;
             return this;
         }

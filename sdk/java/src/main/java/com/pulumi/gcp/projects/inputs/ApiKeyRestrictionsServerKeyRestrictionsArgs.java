@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class ApiKeyRestrictionsServerKeyRestrictionsArgs extends com.pulum
         }
 
         public ApiKeyRestrictionsServerKeyRestrictionsArgs build() {
-            $.allowedIps = Objects.requireNonNull($.allowedIps, "expected parameter 'allowedIps' to be non-null");
+            if ($.allowedIps == null) {
+                throw new MissingRequiredPropertyException("ApiKeyRestrictionsServerKeyRestrictionsArgs", "allowedIps");
+            }
             return $;
         }
     }

@@ -36,6 +36,7 @@ public final class JobReference {
 
         @CustomType.Setter
         public Builder jobId(@Nullable String jobId) {
+
             this.jobId = jobId;
             return this;
         }

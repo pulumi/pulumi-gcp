@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -128,36 +129,55 @@ public final class RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBala
 
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
-            this.ipProtocol = Objects.requireNonNull(ipProtocol);
+            if (ipProtocol == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer", "ipProtocol");
+            }
+            this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerType(String loadBalancerType) {
-            this.loadBalancerType = Objects.requireNonNull(loadBalancerType);
+            if (loadBalancerType == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer", "loadBalancerType");
+            }
+            this.loadBalancerType = loadBalancerType;
             return this;
         }
         @CustomType.Setter
         public Builder networkUrl(String networkUrl) {
-            this.networkUrl = Objects.requireNonNull(networkUrl);
+            if (networkUrl == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer", "networkUrl");
+            }
+            this.networkUrl = networkUrl;
             return this;
         }
         @CustomType.Setter
         public Builder port(String port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }

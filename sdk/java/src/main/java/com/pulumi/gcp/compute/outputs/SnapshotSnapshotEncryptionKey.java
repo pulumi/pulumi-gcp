@@ -96,21 +96,25 @@ public final class SnapshotSnapshotEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
+
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
+
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder rawKey(@Nullable String rawKey) {
+
             this.rawKey = rawKey;
             return this;
         }
         @CustomType.Setter
         public Builder sha256(@Nullable String sha256) {
+
             this.sha256 = sha256;
             return this;
         }

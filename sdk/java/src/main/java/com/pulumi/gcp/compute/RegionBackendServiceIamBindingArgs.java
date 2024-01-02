@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionBackendServiceIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -327,8 +328,12 @@ public final class RegionBackendServiceIamBindingArgs extends com.pulumi.resourc
         }
 
         public RegionBackendServiceIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("RegionBackendServiceIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("RegionBackendServiceIamBindingArgs", "role");
+            }
             return $;
         }
     }

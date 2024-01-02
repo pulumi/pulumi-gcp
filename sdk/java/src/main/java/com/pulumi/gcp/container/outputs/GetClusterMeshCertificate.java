@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterMeshCertificate {
 
         @CustomType.Setter
         public Builder enableCertificates(Boolean enableCertificates) {
-            this.enableCertificates = Objects.requireNonNull(enableCertificates);
+            if (enableCertificates == null) {
+              throw new MissingRequiredPropertyException("GetClusterMeshCertificate", "enableCertificates");
+            }
+            this.enableCertificates = enableCertificates;
             return this;
         }
         public GetClusterMeshCertificate build() {

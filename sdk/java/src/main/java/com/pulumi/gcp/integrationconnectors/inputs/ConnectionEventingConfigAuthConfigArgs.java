@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigAdditionalVariableArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigUserPasswordArgs;
 import java.lang.String;
@@ -213,8 +214,12 @@ public final class ConnectionEventingConfigAuthConfigArgs extends com.pulumi.res
         }
 
         public ConnectionEventingConfigAuthConfigArgs build() {
-            $.authType = Objects.requireNonNull($.authType, "expected parameter 'authType' to be non-null");
-            $.userPassword = Objects.requireNonNull($.userPassword, "expected parameter 'userPassword' to be non-null");
+            if ($.authType == null) {
+                throw new MissingRequiredPropertyException("ConnectionEventingConfigAuthConfigArgs", "authType");
+            }
+            if ($.userPassword == null) {
+                throw new MissingRequiredPropertyException("ConnectionEventingConfigAuthConfigArgs", "userPassword");
+            }
             return $;
         }
     }

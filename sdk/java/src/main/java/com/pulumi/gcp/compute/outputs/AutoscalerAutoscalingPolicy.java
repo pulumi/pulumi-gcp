@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.AutoscalerAutoscalingPolicyCpuUtilization;
 import com.pulumi.gcp.compute.outputs.AutoscalerAutoscalingPolicyLoadBalancingUtilization;
 import com.pulumi.gcp.compute.outputs.AutoscalerAutoscalingPolicyMetric;
@@ -226,26 +227,33 @@ public final class AutoscalerAutoscalingPolicy {
 
         @CustomType.Setter
         public Builder cooldownPeriod(@Nullable Integer cooldownPeriod) {
+
             this.cooldownPeriod = cooldownPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder cpuUtilization(@Nullable AutoscalerAutoscalingPolicyCpuUtilization cpuUtilization) {
+
             this.cpuUtilization = cpuUtilization;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancingUtilization(@Nullable AutoscalerAutoscalingPolicyLoadBalancingUtilization loadBalancingUtilization) {
+
             this.loadBalancingUtilization = loadBalancingUtilization;
             return this;
         }
         @CustomType.Setter
         public Builder maxReplicas(Integer maxReplicas) {
-            this.maxReplicas = Objects.requireNonNull(maxReplicas);
+            if (maxReplicas == null) {
+              throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicy", "maxReplicas");
+            }
+            this.maxReplicas = maxReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder metrics(@Nullable List<AutoscalerAutoscalingPolicyMetric> metrics) {
+
             this.metrics = metrics;
             return this;
         }
@@ -254,26 +262,33 @@ public final class AutoscalerAutoscalingPolicy {
         }
         @CustomType.Setter
         public Builder minReplicas(Integer minReplicas) {
-            this.minReplicas = Objects.requireNonNull(minReplicas);
+            if (minReplicas == null) {
+              throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicy", "minReplicas");
+            }
+            this.minReplicas = minReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder scaleDownControl(@Nullable AutoscalerAutoscalingPolicyScaleDownControl scaleDownControl) {
+
             this.scaleDownControl = scaleDownControl;
             return this;
         }
         @CustomType.Setter
         public Builder scaleInControl(@Nullable AutoscalerAutoscalingPolicyScaleInControl scaleInControl) {
+
             this.scaleInControl = scaleInControl;
             return this;
         }
         @CustomType.Setter
         public Builder scalingSchedules(@Nullable List<AutoscalerAutoscalingPolicyScalingSchedule> scalingSchedules) {
+
             this.scalingSchedules = scalingSchedules;
             return this;
         }

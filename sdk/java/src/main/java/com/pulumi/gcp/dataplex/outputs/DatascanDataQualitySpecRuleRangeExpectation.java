@@ -91,21 +91,25 @@ public final class DatascanDataQualitySpecRuleRangeExpectation {
 
         @CustomType.Setter
         public Builder maxValue(@Nullable String maxValue) {
+
             this.maxValue = maxValue;
             return this;
         }
         @CustomType.Setter
         public Builder minValue(@Nullable String minValue) {
+
             this.minValue = minValue;
             return this;
         }
         @CustomType.Setter
         public Builder strictMaxEnabled(@Nullable Boolean strictMaxEnabled) {
+
             this.strictMaxEnabled = strictMaxEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder strictMinEnabled(@Nullable Boolean strictMinEnabled) {
+
             this.strictMinEnabled = strictMinEnabled;
             return this;
         }

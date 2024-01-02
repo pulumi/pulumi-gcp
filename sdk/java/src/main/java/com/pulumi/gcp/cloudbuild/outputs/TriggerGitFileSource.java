@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -144,36 +145,47 @@ public final class TriggerGitFileSource {
 
         @CustomType.Setter
         public Builder bitbucketServerConfig(@Nullable String bitbucketServerConfig) {
+
             this.bitbucketServerConfig = bitbucketServerConfig;
             return this;
         }
         @CustomType.Setter
         public Builder githubEnterpriseConfig(@Nullable String githubEnterpriseConfig) {
+
             this.githubEnterpriseConfig = githubEnterpriseConfig;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("TriggerGitFileSource", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder repoType(String repoType) {
-            this.repoType = Objects.requireNonNull(repoType);
+            if (repoType == null) {
+              throw new MissingRequiredPropertyException("TriggerGitFileSource", "repoType");
+            }
+            this.repoType = repoType;
             return this;
         }
         @CustomType.Setter
         public Builder repository(@Nullable String repository) {
+
             this.repository = repository;
             return this;
         }
         @CustomType.Setter
         public Builder revision(@Nullable String revision) {
+
             this.revision = revision;
             return this;
         }
         @CustomType.Setter
         public Builder uri(@Nullable String uri) {
+
             this.uri = uri;
             return this;
         }

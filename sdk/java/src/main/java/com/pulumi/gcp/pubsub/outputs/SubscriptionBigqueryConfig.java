@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,21 +92,27 @@ public final class SubscriptionBigqueryConfig {
 
         @CustomType.Setter
         public Builder dropUnknownFields(@Nullable Boolean dropUnknownFields) {
+
             this.dropUnknownFields = dropUnknownFields;
             return this;
         }
         @CustomType.Setter
         public Builder table(String table) {
-            this.table = Objects.requireNonNull(table);
+            if (table == null) {
+              throw new MissingRequiredPropertyException("SubscriptionBigqueryConfig", "table");
+            }
+            this.table = table;
             return this;
         }
         @CustomType.Setter
         public Builder useTopicSchema(@Nullable Boolean useTopicSchema) {
+
             this.useTopicSchema = useTopicSchema;
             return this;
         }
         @CustomType.Setter
         public Builder writeMetadata(@Nullable Boolean writeMetadata) {
+
             this.writeMetadata = writeMetadata;
             return this;
         }

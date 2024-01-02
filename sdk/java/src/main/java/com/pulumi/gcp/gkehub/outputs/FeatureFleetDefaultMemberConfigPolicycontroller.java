@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -61,11 +62,15 @@ public final class FeatureFleetDefaultMemberConfigPolicycontroller {
 
         @CustomType.Setter
         public Builder policyControllerHubConfig(FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig policyControllerHubConfig) {
-            this.policyControllerHubConfig = Objects.requireNonNull(policyControllerHubConfig);
+            if (policyControllerHubConfig == null) {
+              throw new MissingRequiredPropertyException("FeatureFleetDefaultMemberConfigPolicycontroller", "policyControllerHubConfig");
+            }
+            this.policyControllerHubConfig = policyControllerHubConfig;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

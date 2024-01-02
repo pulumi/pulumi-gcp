@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class MembershipEndpointGkeClusterArgs extends com.pulumi.resources
         }
 
         public MembershipEndpointGkeClusterArgs build() {
-            $.resourceLink = Objects.requireNonNull($.resourceLink, "expected parameter 'resourceLink' to be non-null");
+            if ($.resourceLink == null) {
+                throw new MissingRequiredPropertyException("MembershipEndpointGkeClusterArgs", "resourceLink");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule
 
         @CustomType.Setter
         public Builder dayOfWeeks(List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek> dayOfWeeks) {
-            this.dayOfWeeks = Objects.requireNonNull(dayOfWeeks);
+            if (dayOfWeeks == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule", "dayOfWeeks");
+            }
+            this.dayOfWeeks = dayOfWeeks;
             return this;
         }
         public Builder dayOfWeeks(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek... dayOfWeeks) {

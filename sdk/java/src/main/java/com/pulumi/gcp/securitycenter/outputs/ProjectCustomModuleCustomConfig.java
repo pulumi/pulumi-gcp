@@ -4,6 +4,7 @@
 package com.pulumi.gcp.securitycenter.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securitycenter.outputs.ProjectCustomModuleCustomConfigCustomOutput;
 import com.pulumi.gcp.securitycenter.outputs.ProjectCustomModuleCustomConfigPredicate;
 import com.pulumi.gcp.securitycenter.outputs.ProjectCustomModuleCustomConfigResourceSelector;
@@ -137,32 +138,46 @@ public final class ProjectCustomModuleCustomConfig {
 
         @CustomType.Setter
         public Builder customOutput(@Nullable ProjectCustomModuleCustomConfigCustomOutput customOutput) {
+
             this.customOutput = customOutput;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder predicate(ProjectCustomModuleCustomConfigPredicate predicate) {
-            this.predicate = Objects.requireNonNull(predicate);
+            if (predicate == null) {
+              throw new MissingRequiredPropertyException("ProjectCustomModuleCustomConfig", "predicate");
+            }
+            this.predicate = predicate;
             return this;
         }
         @CustomType.Setter
         public Builder recommendation(String recommendation) {
-            this.recommendation = Objects.requireNonNull(recommendation);
+            if (recommendation == null) {
+              throw new MissingRequiredPropertyException("ProjectCustomModuleCustomConfig", "recommendation");
+            }
+            this.recommendation = recommendation;
             return this;
         }
         @CustomType.Setter
         public Builder resourceSelector(ProjectCustomModuleCustomConfigResourceSelector resourceSelector) {
-            this.resourceSelector = Objects.requireNonNull(resourceSelector);
+            if (resourceSelector == null) {
+              throw new MissingRequiredPropertyException("ProjectCustomModuleCustomConfig", "resourceSelector");
+            }
+            this.resourceSelector = resourceSelector;
             return this;
         }
         @CustomType.Setter
         public Builder severity(String severity) {
-            this.severity = Objects.requireNonNull(severity);
+            if (severity == null) {
+              throw new MissingRequiredPropertyException("ProjectCustomModuleCustomConfig", "severity");
+            }
+            this.severity = severity;
             return this;
         }
         public ProjectCustomModuleCustomConfig build() {

@@ -64,6 +64,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
 
         @CustomType.Setter
         public Builder machineTypes(@Nullable List<String> machineTypes) {
+
             this.machineTypes = machineTypes;
             return this;
         }
@@ -72,6 +73,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
         @CustomType.Setter
         public Builder rank(@Nullable Integer rank) {
+
             this.rank = rank;
             return this;
         }

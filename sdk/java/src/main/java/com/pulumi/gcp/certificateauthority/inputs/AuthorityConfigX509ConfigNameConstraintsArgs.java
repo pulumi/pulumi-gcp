@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -574,7 +575,9 @@ public final class AuthorityConfigX509ConfigNameConstraintsArgs extends com.pulu
         }
 
         public AuthorityConfigX509ConfigNameConstraintsArgs build() {
-            $.critical = Objects.requireNonNull($.critical, "expected parameter 'critical' to be non-null");
+            if ($.critical == null) {
+                throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigNameConstraintsArgs", "critical");
+            }
             return $;
         }
     }

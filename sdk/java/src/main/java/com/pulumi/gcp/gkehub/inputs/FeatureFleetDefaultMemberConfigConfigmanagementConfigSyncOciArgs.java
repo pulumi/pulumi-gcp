@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,7 +262,9 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciA
         }
 
         public FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs build() {
-            $.secretType = Objects.requireNonNull($.secretType, "expected parameter 'secretType' to be non-null");
+            if ($.secretType == null) {
+                throw new MissingRequiredPropertyException("FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs", "secretType");
+            }
             return $;
         }
     }

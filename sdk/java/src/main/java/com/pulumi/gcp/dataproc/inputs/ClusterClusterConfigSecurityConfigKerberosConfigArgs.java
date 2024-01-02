@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -668,8 +669,12 @@ public final class ClusterClusterConfigSecurityConfigKerberosConfigArgs extends 
         }
 
         public ClusterClusterConfigSecurityConfigKerberosConfigArgs build() {
-            $.kmsKeyUri = Objects.requireNonNull($.kmsKeyUri, "expected parameter 'kmsKeyUri' to be non-null");
-            $.rootPrincipalPasswordUri = Objects.requireNonNull($.rootPrincipalPasswordUri, "expected parameter 'rootPrincipalPasswordUri' to be non-null");
+            if ($.kmsKeyUri == null) {
+                throw new MissingRequiredPropertyException("ClusterClusterConfigSecurityConfigKerberosConfigArgs", "kmsKeyUri");
+            }
+            if ($.rootPrincipalPasswordUri == null) {
+                throw new MissingRequiredPropertyException("ClusterClusterConfigSecurityConfigKerberosConfigArgs", "rootPrincipalPasswordUri");
+            }
             return $;
         }
     }

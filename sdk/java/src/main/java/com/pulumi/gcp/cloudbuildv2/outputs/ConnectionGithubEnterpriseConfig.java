@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuildv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGithubEnterpriseConfigServiceDirectoryConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -144,41 +145,51 @@ public final class ConnectionGithubEnterpriseConfig {
 
         @CustomType.Setter
         public Builder appId(@Nullable Integer appId) {
+
             this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder appInstallationId(@Nullable Integer appInstallationId) {
+
             this.appInstallationId = appInstallationId;
             return this;
         }
         @CustomType.Setter
         public Builder appSlug(@Nullable String appSlug) {
+
             this.appSlug = appSlug;
             return this;
         }
         @CustomType.Setter
         public Builder hostUri(String hostUri) {
-            this.hostUri = Objects.requireNonNull(hostUri);
+            if (hostUri == null) {
+              throw new MissingRequiredPropertyException("ConnectionGithubEnterpriseConfig", "hostUri");
+            }
+            this.hostUri = hostUri;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeySecretVersion(@Nullable String privateKeySecretVersion) {
+
             this.privateKeySecretVersion = privateKeySecretVersion;
             return this;
         }
         @CustomType.Setter
         public Builder serviceDirectoryConfig(@Nullable ConnectionGithubEnterpriseConfigServiceDirectoryConfig serviceDirectoryConfig) {
+
             this.serviceDirectoryConfig = serviceDirectoryConfig;
             return this;
         }
         @CustomType.Setter
         public Builder sslCa(@Nullable String sslCa) {
+
             this.sslCa = sslCa;
             return this;
         }
         @CustomType.Setter
         public Builder webhookSecretSecretVersion(@Nullable String webhookSecretSecretVersion) {
+
             this.webhookSecretSecretVersion = webhookSecretSecretVersion;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRouterBgpAdvertisedIpRange;
 import java.lang.Integer;
 import java.lang.String;
@@ -61,12 +62,18 @@ public final class GetRouterBgp {
 
         @CustomType.Setter
         public Builder advertiseMode(String advertiseMode) {
-            this.advertiseMode = Objects.requireNonNull(advertiseMode);
+            if (advertiseMode == null) {
+              throw new MissingRequiredPropertyException("GetRouterBgp", "advertiseMode");
+            }
+            this.advertiseMode = advertiseMode;
             return this;
         }
         @CustomType.Setter
         public Builder advertisedGroups(List<String> advertisedGroups) {
-            this.advertisedGroups = Objects.requireNonNull(advertisedGroups);
+            if (advertisedGroups == null) {
+              throw new MissingRequiredPropertyException("GetRouterBgp", "advertisedGroups");
+            }
+            this.advertisedGroups = advertisedGroups;
             return this;
         }
         public Builder advertisedGroups(String... advertisedGroups) {
@@ -74,7 +81,10 @@ public final class GetRouterBgp {
         }
         @CustomType.Setter
         public Builder advertisedIpRanges(List<GetRouterBgpAdvertisedIpRange> advertisedIpRanges) {
-            this.advertisedIpRanges = Objects.requireNonNull(advertisedIpRanges);
+            if (advertisedIpRanges == null) {
+              throw new MissingRequiredPropertyException("GetRouterBgp", "advertisedIpRanges");
+            }
+            this.advertisedIpRanges = advertisedIpRanges;
             return this;
         }
         public Builder advertisedIpRanges(GetRouterBgpAdvertisedIpRange... advertisedIpRanges) {
@@ -82,12 +92,18 @@ public final class GetRouterBgp {
         }
         @CustomType.Setter
         public Builder asn(Integer asn) {
-            this.asn = Objects.requireNonNull(asn);
+            if (asn == null) {
+              throw new MissingRequiredPropertyException("GetRouterBgp", "asn");
+            }
+            this.asn = asn;
             return this;
         }
         @CustomType.Setter
         public Builder keepaliveInterval(Integer keepaliveInterval) {
-            this.keepaliveInterval = Objects.requireNonNull(keepaliveInterval);
+            if (keepaliveInterval == null) {
+              throw new MissingRequiredPropertyException("GetRouterBgp", "keepaliveInterval");
+            }
+            this.keepaliveInterval = keepaliveInterval;
             return this;
         }
         public GetRouterBgp build() {

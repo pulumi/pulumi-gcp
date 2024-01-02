@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetAuthorityAccessUrl {
 
         @CustomType.Setter
         public Builder caCertificateAccessUrl(String caCertificateAccessUrl) {
-            this.caCertificateAccessUrl = Objects.requireNonNull(caCertificateAccessUrl);
+            if (caCertificateAccessUrl == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityAccessUrl", "caCertificateAccessUrl");
+            }
+            this.caCertificateAccessUrl = caCertificateAccessUrl;
             return this;
         }
         @CustomType.Setter
         public Builder crlAccessUrls(List<String> crlAccessUrls) {
-            this.crlAccessUrls = Objects.requireNonNull(crlAccessUrls);
+            if (crlAccessUrls == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityAccessUrl", "crlAccessUrls");
+            }
+            this.crlAccessUrls = crlAccessUrls;
             return this;
         }
         public Builder crlAccessUrls(String... crlAccessUrls) {

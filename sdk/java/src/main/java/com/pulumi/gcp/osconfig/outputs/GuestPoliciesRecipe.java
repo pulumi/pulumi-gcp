@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.GuestPoliciesRecipeArtifact;
 import com.pulumi.gcp.osconfig.outputs.GuestPoliciesRecipeInstallStep;
 import com.pulumi.gcp.osconfig.outputs.GuestPoliciesRecipeUpdateStep;
@@ -146,6 +147,7 @@ public final class GuestPoliciesRecipe {
 
         @CustomType.Setter
         public Builder artifacts(@Nullable List<GuestPoliciesRecipeArtifact> artifacts) {
+
             this.artifacts = artifacts;
             return this;
         }
@@ -154,11 +156,13 @@ public final class GuestPoliciesRecipe {
         }
         @CustomType.Setter
         public Builder desiredState(@Nullable String desiredState) {
+
             this.desiredState = desiredState;
             return this;
         }
         @CustomType.Setter
         public Builder installSteps(@Nullable List<GuestPoliciesRecipeInstallStep> installSteps) {
+
             this.installSteps = installSteps;
             return this;
         }
@@ -167,11 +171,15 @@ public final class GuestPoliciesRecipe {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesRecipe", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder updateSteps(@Nullable List<GuestPoliciesRecipeUpdateStep> updateSteps) {
+
             this.updateSteps = updateSteps;
             return this;
         }
@@ -180,6 +188,7 @@ public final class GuestPoliciesRecipe {
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

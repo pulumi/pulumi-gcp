@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -88,9 +89,15 @@ public final class EnvironmentConfigMaintenanceWindowArgs extends com.pulumi.res
         }
 
         public EnvironmentConfigMaintenanceWindowArgs build() {
-            $.endTime = Objects.requireNonNull($.endTime, "expected parameter 'endTime' to be non-null");
-            $.recurrence = Objects.requireNonNull($.recurrence, "expected parameter 'recurrence' to be non-null");
-            $.startTime = Objects.requireNonNull($.startTime, "expected parameter 'startTime' to be non-null");
+            if ($.endTime == null) {
+                throw new MissingRequiredPropertyException("EnvironmentConfigMaintenanceWindowArgs", "endTime");
+            }
+            if ($.recurrence == null) {
+                throw new MissingRequiredPropertyException("EnvironmentConfigMaintenanceWindowArgs", "recurrence");
+            }
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("EnvironmentConfigMaintenanceWindowArgs", "startTime");
+            }
             return $;
         }
     }

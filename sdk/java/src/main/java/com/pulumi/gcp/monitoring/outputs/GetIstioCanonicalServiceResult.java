@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.GetIstioCanonicalServiceTelemetry;
 import java.lang.String;
 import java.util.List;
@@ -127,47 +128,72 @@ public final class GetIstioCanonicalServiceResult {
 
         @CustomType.Setter
         public Builder canonicalService(String canonicalService) {
-            this.canonicalService = Objects.requireNonNull(canonicalService);
+            if (canonicalService == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "canonicalService");
+            }
+            this.canonicalService = canonicalService;
             return this;
         }
         @CustomType.Setter
         public Builder canonicalServiceNamespace(String canonicalServiceNamespace) {
-            this.canonicalServiceNamespace = Objects.requireNonNull(canonicalServiceNamespace);
+            if (canonicalServiceNamespace == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "canonicalServiceNamespace");
+            }
+            this.canonicalServiceNamespace = canonicalServiceNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder meshUid(String meshUid) {
-            this.meshUid = Objects.requireNonNull(meshUid);
+            if (meshUid == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "meshUid");
+            }
+            this.meshUid = meshUid;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceId(String serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         @CustomType.Setter
         public Builder telemetries(List<GetIstioCanonicalServiceTelemetry> telemetries) {
-            this.telemetries = Objects.requireNonNull(telemetries);
+            if (telemetries == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "telemetries");
+            }
+            this.telemetries = telemetries;
             return this;
         }
         public Builder telemetries(GetIstioCanonicalServiceTelemetry... telemetries) {
@@ -175,7 +201,10 @@ public final class GetIstioCanonicalServiceResult {
         }
         @CustomType.Setter
         public Builder userLabels(Map<String,String> userLabels) {
-            this.userLabels = Objects.requireNonNull(userLabels);
+            if (userLabels == null) {
+              throw new MissingRequiredPropertyException("GetIstioCanonicalServiceResult", "userLabels");
+            }
+            this.userLabels = userLabels;
             return this;
         }
         public GetIstioCanonicalServiceResult build() {

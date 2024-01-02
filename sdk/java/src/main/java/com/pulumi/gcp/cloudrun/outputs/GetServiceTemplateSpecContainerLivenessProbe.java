@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerLivenessProbeGrpc;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerLivenessProbeHttpGet;
 import java.lang.Integer;
@@ -67,12 +68,18 @@ public final class GetServiceTemplateSpecContainerLivenessProbe {
 
         @CustomType.Setter
         public Builder failureThreshold(Integer failureThreshold) {
-            this.failureThreshold = Objects.requireNonNull(failureThreshold);
+            if (failureThreshold == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerLivenessProbe", "failureThreshold");
+            }
+            this.failureThreshold = failureThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder grpcs(List<GetServiceTemplateSpecContainerLivenessProbeGrpc> grpcs) {
-            this.grpcs = Objects.requireNonNull(grpcs);
+            if (grpcs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerLivenessProbe", "grpcs");
+            }
+            this.grpcs = grpcs;
             return this;
         }
         public Builder grpcs(GetServiceTemplateSpecContainerLivenessProbeGrpc... grpcs) {
@@ -80,7 +87,10 @@ public final class GetServiceTemplateSpecContainerLivenessProbe {
         }
         @CustomType.Setter
         public Builder httpGets(List<GetServiceTemplateSpecContainerLivenessProbeHttpGet> httpGets) {
-            this.httpGets = Objects.requireNonNull(httpGets);
+            if (httpGets == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerLivenessProbe", "httpGets");
+            }
+            this.httpGets = httpGets;
             return this;
         }
         public Builder httpGets(GetServiceTemplateSpecContainerLivenessProbeHttpGet... httpGets) {
@@ -88,17 +98,26 @@ public final class GetServiceTemplateSpecContainerLivenessProbe {
         }
         @CustomType.Setter
         public Builder initialDelaySeconds(Integer initialDelaySeconds) {
-            this.initialDelaySeconds = Objects.requireNonNull(initialDelaySeconds);
+            if (initialDelaySeconds == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerLivenessProbe", "initialDelaySeconds");
+            }
+            this.initialDelaySeconds = initialDelaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder periodSeconds(Integer periodSeconds) {
-            this.periodSeconds = Objects.requireNonNull(periodSeconds);
+            if (periodSeconds == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerLivenessProbe", "periodSeconds");
+            }
+            this.periodSeconds = periodSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(Integer timeoutSeconds) {
-            this.timeoutSeconds = Objects.requireNonNull(timeoutSeconds);
+            if (timeoutSeconds == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerLivenessProbe", "timeoutSeconds");
+            }
+            this.timeoutSeconds = timeoutSeconds;
             return this;
         }
         public GetServiceTemplateSpecContainerLivenessProbe build() {

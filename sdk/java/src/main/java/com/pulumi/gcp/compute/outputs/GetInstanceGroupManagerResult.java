@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerAutoHealingPolicy;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerInstanceLifecyclePolicy;
@@ -201,7 +202,10 @@ public final class GetInstanceGroupManagerResult {
 
         @CustomType.Setter
         public Builder allInstancesConfigs(List<GetInstanceGroupManagerAllInstancesConfig> allInstancesConfigs) {
-            this.allInstancesConfigs = Objects.requireNonNull(allInstancesConfigs);
+            if (allInstancesConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "allInstancesConfigs");
+            }
+            this.allInstancesConfigs = allInstancesConfigs;
             return this;
         }
         public Builder allInstancesConfigs(GetInstanceGroupManagerAllInstancesConfig... allInstancesConfigs) {
@@ -209,7 +213,10 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder autoHealingPolicies(List<GetInstanceGroupManagerAutoHealingPolicy> autoHealingPolicies) {
-            this.autoHealingPolicies = Objects.requireNonNull(autoHealingPolicies);
+            if (autoHealingPolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "autoHealingPolicies");
+            }
+            this.autoHealingPolicies = autoHealingPolicies;
             return this;
         }
         public Builder autoHealingPolicies(GetInstanceGroupManagerAutoHealingPolicy... autoHealingPolicies) {
@@ -217,32 +224,50 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder baseInstanceName(String baseInstanceName) {
-            this.baseInstanceName = Objects.requireNonNull(baseInstanceName);
+            if (baseInstanceName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "baseInstanceName");
+            }
+            this.baseInstanceName = baseInstanceName;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceGroup(String instanceGroup) {
-            this.instanceGroup = Objects.requireNonNull(instanceGroup);
+            if (instanceGroup == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "instanceGroup");
+            }
+            this.instanceGroup = instanceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder instanceLifecyclePolicies(List<GetInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies) {
-            this.instanceLifecyclePolicies = Objects.requireNonNull(instanceLifecyclePolicies);
+            if (instanceLifecyclePolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "instanceLifecyclePolicies");
+            }
+            this.instanceLifecyclePolicies = instanceLifecyclePolicies;
             return this;
         }
         public Builder instanceLifecyclePolicies(GetInstanceGroupManagerInstanceLifecyclePolicy... instanceLifecyclePolicies) {
@@ -250,17 +275,24 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder listManagedInstancesResults(String listManagedInstancesResults) {
-            this.listManagedInstancesResults = Objects.requireNonNull(listManagedInstancesResults);
+            if (listManagedInstancesResults == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "listManagedInstancesResults");
+            }
+            this.listManagedInstancesResults = listManagedInstancesResults;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namedPorts(List<GetInstanceGroupManagerNamedPort> namedPorts) {
-            this.namedPorts = Objects.requireNonNull(namedPorts);
+            if (namedPorts == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "namedPorts");
+            }
+            this.namedPorts = namedPorts;
             return this;
         }
         public Builder namedPorts(GetInstanceGroupManagerNamedPort... namedPorts) {
@@ -268,22 +300,30 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder operation(String operation) {
-            this.operation = Objects.requireNonNull(operation);
+            if (operation == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "operation");
+            }
+            this.operation = operation;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(@Nullable String selfLink) {
+
             this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder statefulDisks(List<GetInstanceGroupManagerStatefulDisk> statefulDisks) {
-            this.statefulDisks = Objects.requireNonNull(statefulDisks);
+            if (statefulDisks == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "statefulDisks");
+            }
+            this.statefulDisks = statefulDisks;
             return this;
         }
         public Builder statefulDisks(GetInstanceGroupManagerStatefulDisk... statefulDisks) {
@@ -291,7 +331,10 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder statefulExternalIps(List<GetInstanceGroupManagerStatefulExternalIp> statefulExternalIps) {
-            this.statefulExternalIps = Objects.requireNonNull(statefulExternalIps);
+            if (statefulExternalIps == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "statefulExternalIps");
+            }
+            this.statefulExternalIps = statefulExternalIps;
             return this;
         }
         public Builder statefulExternalIps(GetInstanceGroupManagerStatefulExternalIp... statefulExternalIps) {
@@ -299,7 +342,10 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder statefulInternalIps(List<GetInstanceGroupManagerStatefulInternalIp> statefulInternalIps) {
-            this.statefulInternalIps = Objects.requireNonNull(statefulInternalIps);
+            if (statefulInternalIps == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "statefulInternalIps");
+            }
+            this.statefulInternalIps = statefulInternalIps;
             return this;
         }
         public Builder statefulInternalIps(GetInstanceGroupManagerStatefulInternalIp... statefulInternalIps) {
@@ -307,7 +353,10 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder statuses(List<GetInstanceGroupManagerStatus> statuses) {
-            this.statuses = Objects.requireNonNull(statuses);
+            if (statuses == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "statuses");
+            }
+            this.statuses = statuses;
             return this;
         }
         public Builder statuses(GetInstanceGroupManagerStatus... statuses) {
@@ -315,7 +364,10 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder targetPools(List<String> targetPools) {
-            this.targetPools = Objects.requireNonNull(targetPools);
+            if (targetPools == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "targetPools");
+            }
+            this.targetPools = targetPools;
             return this;
         }
         public Builder targetPools(String... targetPools) {
@@ -323,12 +375,18 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder targetSize(Integer targetSize) {
-            this.targetSize = Objects.requireNonNull(targetSize);
+            if (targetSize == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "targetSize");
+            }
+            this.targetSize = targetSize;
             return this;
         }
         @CustomType.Setter
         public Builder updatePolicies(List<GetInstanceGroupManagerUpdatePolicy> updatePolicies) {
-            this.updatePolicies = Objects.requireNonNull(updatePolicies);
+            if (updatePolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "updatePolicies");
+            }
+            this.updatePolicies = updatePolicies;
             return this;
         }
         public Builder updatePolicies(GetInstanceGroupManagerUpdatePolicy... updatePolicies) {
@@ -336,7 +394,10 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder versions(List<GetInstanceGroupManagerVersion> versions) {
-            this.versions = Objects.requireNonNull(versions);
+            if (versions == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "versions");
+            }
+            this.versions = versions;
             return this;
         }
         public Builder versions(GetInstanceGroupManagerVersion... versions) {
@@ -344,16 +405,23 @@ public final class GetInstanceGroupManagerResult {
         }
         @CustomType.Setter
         public Builder waitForInstances(Boolean waitForInstances) {
-            this.waitForInstances = Objects.requireNonNull(waitForInstances);
+            if (waitForInstances == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "waitForInstances");
+            }
+            this.waitForInstances = waitForInstances;
             return this;
         }
         @CustomType.Setter
         public Builder waitForInstancesStatus(String waitForInstancesStatus) {
-            this.waitForInstancesStatus = Objects.requireNonNull(waitForInstancesStatus);
+            if (waitForInstancesStatus == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "waitForInstancesStatus");
+            }
+            this.waitForInstancesStatus = waitForInstancesStatus;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

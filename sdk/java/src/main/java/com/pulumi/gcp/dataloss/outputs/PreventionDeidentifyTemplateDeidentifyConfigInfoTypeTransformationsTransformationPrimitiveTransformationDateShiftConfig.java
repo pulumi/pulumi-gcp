@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey;
 import java.lang.Integer;
@@ -96,22 +97,30 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         @CustomType.Setter
         public Builder context(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext context) {
+
             this.context = context;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoKey(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey cryptoKey) {
+
             this.cryptoKey = cryptoKey;
             return this;
         }
         @CustomType.Setter
         public Builder lowerBoundDays(Integer lowerBoundDays) {
-            this.lowerBoundDays = Objects.requireNonNull(lowerBoundDays);
+            if (lowerBoundDays == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig", "lowerBoundDays");
+            }
+            this.lowerBoundDays = lowerBoundDays;
             return this;
         }
         @CustomType.Setter
         public Builder upperBoundDays(Integer upperBoundDays) {
-            this.upperBoundDays = Objects.requireNonNull(upperBoundDays);
+            if (upperBoundDays == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig", "upperBoundDays");
+            }
+            this.upperBoundDays = upperBoundDays;
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig build() {

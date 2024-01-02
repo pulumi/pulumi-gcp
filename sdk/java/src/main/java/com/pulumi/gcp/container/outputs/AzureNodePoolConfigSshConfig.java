@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class AzureNodePoolConfigSshConfig {
 
         @CustomType.Setter
         public Builder authorizedKey(String authorizedKey) {
-            this.authorizedKey = Objects.requireNonNull(authorizedKey);
+            if (authorizedKey == null) {
+              throw new MissingRequiredPropertyException("AzureNodePoolConfigSshConfig", "authorizedKey");
+            }
+            this.authorizedKey = authorizedKey;
             return this;
         }
         public AzureNodePoolConfigSshConfig build() {

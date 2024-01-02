@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,17 +71,26 @@ public final class PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObje
 
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder generationNumber(String generationNumber) {
-            this.generationNumber = Objects.requireNonNull(generationNumber);
+            if (generationNumber == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject", "generationNumber");
+            }
+            this.generationNumber = generationNumber;
             return this;
         }
         @CustomType.Setter
         public Builder object(String object) {
-            this.object = Objects.requireNonNull(object);
+            if (object == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject", "object");
+            }
+            this.object = object;
             return this;
         }
         public PatchDeploymentPatchConfigPreStepWindowsExecStepConfigGcsObject build() {

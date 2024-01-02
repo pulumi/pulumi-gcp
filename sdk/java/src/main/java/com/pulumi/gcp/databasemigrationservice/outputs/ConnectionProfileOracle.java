@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileOracleForwardSshConnectivity;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileOraclePrivateConnectivity;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileOracleSsl;
@@ -190,52 +191,72 @@ public final class ConnectionProfileOracle {
 
         @CustomType.Setter
         public Builder databaseService(String databaseService) {
-            this.databaseService = Objects.requireNonNull(databaseService);
+            if (databaseService == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracle", "databaseService");
+            }
+            this.databaseService = databaseService;
             return this;
         }
         @CustomType.Setter
         public Builder forwardSshConnectivity(@Nullable ConnectionProfileOracleForwardSshConnectivity forwardSshConnectivity) {
+
             this.forwardSshConnectivity = forwardSshConnectivity;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracle", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracle", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder passwordSet(@Nullable Boolean passwordSet) {
+
             this.passwordSet = passwordSet;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracle", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder privateConnectivity(@Nullable ConnectionProfileOraclePrivateConnectivity privateConnectivity) {
+
             this.privateConnectivity = privateConnectivity;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable ConnectionProfileOracleSsl ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder staticServiceIpConnectivity(@Nullable ConnectionProfileOracleStaticServiceIpConnectivity staticServiceIpConnectivity) {
+
             this.staticServiceIpConnectivity = staticServiceIpConnectivity;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracle", "username");
+            }
+            this.username = username;
             return this;
         }
         public ConnectionProfileOracle build() {

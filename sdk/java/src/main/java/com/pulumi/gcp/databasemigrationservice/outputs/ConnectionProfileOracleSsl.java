@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -100,21 +101,27 @@ public final class ConnectionProfileOracleSsl {
 
         @CustomType.Setter
         public Builder caCertificate(String caCertificate) {
-            this.caCertificate = Objects.requireNonNull(caCertificate);
+            if (caCertificate == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracleSsl", "caCertificate");
+            }
+            this.caCertificate = caCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientCertificate(@Nullable String clientCertificate) {
+
             this.clientCertificate = clientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
+
             this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

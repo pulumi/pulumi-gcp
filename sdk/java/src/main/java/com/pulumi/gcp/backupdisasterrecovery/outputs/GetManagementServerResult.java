@@ -4,6 +4,7 @@
 package com.pulumi.gcp.backupdisasterrecovery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetManagementServerManagementUri;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetManagementServerNetwork;
 import java.lang.String;
@@ -87,17 +88,26 @@ public final class GetManagementServerResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder managementUris(List<GetManagementServerManagementUri> managementUris) {
-            this.managementUris = Objects.requireNonNull(managementUris);
+            if (managementUris == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerResult", "managementUris");
+            }
+            this.managementUris = managementUris;
             return this;
         }
         public Builder managementUris(GetManagementServerManagementUri... managementUris) {
@@ -105,12 +115,18 @@ public final class GetManagementServerResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networks(List<GetManagementServerNetwork> networks) {
-            this.networks = Objects.requireNonNull(networks);
+            if (networks == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerResult", "networks");
+            }
+            this.networks = networks;
             return this;
         }
         public Builder networks(GetManagementServerNetwork... networks) {
@@ -118,17 +134,26 @@ public final class GetManagementServerResult {
         }
         @CustomType.Setter
         public Builder oauth2ClientId(String oauth2ClientId) {
-            this.oauth2ClientId = Objects.requireNonNull(oauth2ClientId);
+            if (oauth2ClientId == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerResult", "oauth2ClientId");
+            }
+            this.oauth2ClientId = oauth2ClientId;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetManagementServerResult build() {

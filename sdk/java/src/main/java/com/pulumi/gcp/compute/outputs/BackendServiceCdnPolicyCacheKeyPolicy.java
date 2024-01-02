@@ -158,11 +158,13 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
 
         @CustomType.Setter
         public Builder includeHost(@Nullable Boolean includeHost) {
+
             this.includeHost = includeHost;
             return this;
         }
         @CustomType.Setter
         public Builder includeHttpHeaders(@Nullable List<String> includeHttpHeaders) {
+
             this.includeHttpHeaders = includeHttpHeaders;
             return this;
         }
@@ -171,6 +173,7 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
         }
         @CustomType.Setter
         public Builder includeNamedCookies(@Nullable List<String> includeNamedCookies) {
+
             this.includeNamedCookies = includeNamedCookies;
             return this;
         }
@@ -179,16 +182,19 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
         }
         @CustomType.Setter
         public Builder includeProtocol(@Nullable Boolean includeProtocol) {
+
             this.includeProtocol = includeProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder includeQueryString(@Nullable Boolean includeQueryString) {
+
             this.includeQueryString = includeQueryString;
             return this;
         }
         @CustomType.Setter
         public Builder queryStringBlacklists(@Nullable List<String> queryStringBlacklists) {
+
             this.queryStringBlacklists = queryStringBlacklists;
             return this;
         }
@@ -197,6 +203,7 @@ public final class BackendServiceCdnPolicyCacheKeyPolicy {
         }
         @CustomType.Setter
         public Builder queryStringWhitelists(@Nullable List<String> queryStringWhitelists) {
+
             this.queryStringWhitelists = queryStringWhitelists;
             return this;
         }

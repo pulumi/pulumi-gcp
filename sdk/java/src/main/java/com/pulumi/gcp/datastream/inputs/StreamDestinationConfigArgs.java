@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigGcsDestinationConfigArgs;
 import java.lang.String;
@@ -160,7 +161,9 @@ public final class StreamDestinationConfigArgs extends com.pulumi.resources.Reso
         }
 
         public StreamDestinationConfigArgs build() {
-            $.destinationConnectionProfile = Objects.requireNonNull($.destinationConnectionProfile, "expected parameter 'destinationConnectionProfile' to be non-null");
+            if ($.destinationConnectionProfile == null) {
+                throw new MissingRequiredPropertyException("StreamDestinationConfigArgs", "destinationConnectionProfile");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -135,8 +136,12 @@ public final class SubnetworkSecondaryIpRangeArgs extends com.pulumi.resources.R
         }
 
         public SubnetworkSecondaryIpRangeArgs build() {
-            $.ipCidrRange = Objects.requireNonNull($.ipCidrRange, "expected parameter 'ipCidrRange' to be non-null");
-            $.rangeName = Objects.requireNonNull($.rangeName, "expected parameter 'rangeName' to be non-null");
+            if ($.ipCidrRange == null) {
+                throw new MissingRequiredPropertyException("SubnetworkSecondaryIpRangeArgs", "ipCidrRange");
+            }
+            if ($.rangeName == null) {
+                throw new MissingRequiredPropertyException("SubnetworkSecondaryIpRangeArgs", "rangeName");
+            }
             return $;
         }
     }

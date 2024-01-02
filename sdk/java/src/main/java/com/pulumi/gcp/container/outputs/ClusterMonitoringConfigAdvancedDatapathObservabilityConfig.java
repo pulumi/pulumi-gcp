@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -59,11 +60,15 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfig {
 
         @CustomType.Setter
         public Builder enableMetrics(Boolean enableMetrics) {
-            this.enableMetrics = Objects.requireNonNull(enableMetrics);
+            if (enableMetrics == null) {
+              throw new MissingRequiredPropertyException("ClusterMonitoringConfigAdvancedDatapathObservabilityConfig", "enableMetrics");
+            }
+            this.enableMetrics = enableMetrics;
             return this;
         }
         @CustomType.Setter
         public Builder relayMode(@Nullable String relayMode) {
+
             this.relayMode = relayMode;
             return this;
         }

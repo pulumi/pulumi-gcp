@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxAgentAdvancedSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentGitIntegrationSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxAgentSpeechToTextSettingsArgs;
@@ -662,10 +663,18 @@ public final class CxAgentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CxAgentArgs build() {
-            $.defaultLanguageCode = Objects.requireNonNull($.defaultLanguageCode, "expected parameter 'defaultLanguageCode' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.timeZone = Objects.requireNonNull($.timeZone, "expected parameter 'timeZone' to be non-null");
+            if ($.defaultLanguageCode == null) {
+                throw new MissingRequiredPropertyException("CxAgentArgs", "defaultLanguageCode");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("CxAgentArgs", "displayName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("CxAgentArgs", "location");
+            }
+            if ($.timeZone == null) {
+                throw new MissingRequiredPropertyException("CxAgentArgs", "timeZone");
+            }
             return $;
         }
     }

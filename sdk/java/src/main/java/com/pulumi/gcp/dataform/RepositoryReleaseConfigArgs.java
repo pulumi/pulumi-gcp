@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataform.inputs.RepositoryReleaseConfigCodeCompilationConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -352,7 +353,9 @@ public final class RepositoryReleaseConfigArgs extends com.pulumi.resources.Reso
         }
 
         public RepositoryReleaseConfigArgs build() {
-            $.gitCommitish = Objects.requireNonNull($.gitCommitish, "expected parameter 'gitCommitish' to be non-null");
+            if ($.gitCommitish == null) {
+                throw new MissingRequiredPropertyException("RepositoryReleaseConfigArgs", "gitCommitish");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.inputs.MembershipRbacRoleBindingRoleArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -282,11 +283,21 @@ public final class MembershipRbacRoleBindingArgs extends com.pulumi.resources.Re
         }
 
         public MembershipRbacRoleBindingArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.membershipId = Objects.requireNonNull($.membershipId, "expected parameter 'membershipId' to be non-null");
-            $.membershipRbacRoleBindingId = Objects.requireNonNull($.membershipRbacRoleBindingId, "expected parameter 'membershipRbacRoleBindingId' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("MembershipRbacRoleBindingArgs", "location");
+            }
+            if ($.membershipId == null) {
+                throw new MissingRequiredPropertyException("MembershipRbacRoleBindingArgs", "membershipId");
+            }
+            if ($.membershipRbacRoleBindingId == null) {
+                throw new MissingRequiredPropertyException("MembershipRbacRoleBindingArgs", "membershipRbacRoleBindingId");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("MembershipRbacRoleBindingArgs", "role");
+            }
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("MembershipRbacRoleBindingArgs", "user");
+            }
             return $;
         }
     }

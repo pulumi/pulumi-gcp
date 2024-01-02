@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateMetadata;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpec;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetServiceTemplate {
 
         @CustomType.Setter
         public Builder metadatas(List<GetServiceTemplateMetadata> metadatas) {
-            this.metadatas = Objects.requireNonNull(metadatas);
+            if (metadatas == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "metadatas");
+            }
+            this.metadatas = metadatas;
             return this;
         }
         public Builder metadatas(GetServiceTemplateMetadata... metadatas) {
@@ -50,7 +54,10 @@ public final class GetServiceTemplate {
         }
         @CustomType.Setter
         public Builder specs(List<GetServiceTemplateSpec> specs) {
-            this.specs = Objects.requireNonNull(specs);
+            if (specs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "specs");
+            }
+            this.specs = specs;
             return this;
         }
         public Builder specs(GetServiceTemplateSpec... specs) {

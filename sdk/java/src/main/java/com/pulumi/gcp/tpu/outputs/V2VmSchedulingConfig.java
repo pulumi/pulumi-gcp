@@ -58,11 +58,13 @@ public final class V2VmSchedulingConfig {
 
         @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
+
             this.preemptible = preemptible;
             return this;
         }
         @CustomType.Setter
         public Builder reserved(@Nullable Boolean reserved) {
+
             this.reserved = reserved;
             return this;
         }

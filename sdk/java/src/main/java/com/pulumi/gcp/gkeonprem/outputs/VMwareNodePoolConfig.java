@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareNodePoolConfigTaint;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareNodePoolConfigVsphereConfig;
 import java.lang.Boolean;
@@ -196,46 +197,57 @@ public final class VMwareNodePoolConfig {
 
         @CustomType.Setter
         public Builder bootDiskSizeGb(@Nullable Integer bootDiskSizeGb) {
+
             this.bootDiskSizeGb = bootDiskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder cpus(@Nullable Integer cpus) {
+
             this.cpus = cpus;
             return this;
         }
         @CustomType.Setter
         public Builder enableLoadBalancer(@Nullable Boolean enableLoadBalancer) {
+
             this.enableLoadBalancer = enableLoadBalancer;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder imageType(String imageType) {
-            this.imageType = Objects.requireNonNull(imageType);
+            if (imageType == null) {
+              throw new MissingRequiredPropertyException("VMwareNodePoolConfig", "imageType");
+            }
+            this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder memoryMb(@Nullable Integer memoryMb) {
+
             this.memoryMb = memoryMb;
             return this;
         }
         @CustomType.Setter
         public Builder replicas(@Nullable Integer replicas) {
+
             this.replicas = replicas;
             return this;
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<VMwareNodePoolConfigTaint> taints) {
+
             this.taints = taints;
             return this;
         }
@@ -244,6 +256,7 @@ public final class VMwareNodePoolConfig {
         }
         @CustomType.Setter
         public Builder vsphereConfigs(@Nullable List<VMwareNodePoolConfigVsphereConfig> vsphereConfigs) {
+
             this.vsphereConfigs = vsphereConfigs;
             return this;
         }

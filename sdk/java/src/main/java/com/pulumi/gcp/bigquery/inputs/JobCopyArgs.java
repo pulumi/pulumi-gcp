@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.JobCopyDestinationEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.JobCopyDestinationTableArgs;
 import com.pulumi.gcp.bigquery.inputs.JobCopySourceTableArgs;
@@ -299,7 +300,9 @@ public final class JobCopyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobCopyArgs build() {
-            $.sourceTables = Objects.requireNonNull($.sourceTables, "expected parameter 'sourceTables' to be non-null");
+            if ($.sourceTables == null) {
+                throw new MissingRequiredPropertyException("JobCopyArgs", "sourceTables");
+            }
             return $;
         }
     }

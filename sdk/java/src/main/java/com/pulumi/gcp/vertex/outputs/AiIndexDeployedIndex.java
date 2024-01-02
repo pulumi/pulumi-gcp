@@ -62,11 +62,13 @@ public final class AiIndexDeployedIndex {
 
         @CustomType.Setter
         public Builder deployedIndexId(@Nullable String deployedIndexId) {
+
             this.deployedIndexId = deployedIndexId;
             return this;
         }
         @CustomType.Setter
         public Builder indexEndpoint(@Nullable String indexEndpoint) {
+
             this.indexEndpoint = indexEndpoint;
             return this;
         }

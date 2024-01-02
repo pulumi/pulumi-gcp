@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeEmptyDir;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolumeSecret;
 import java.lang.String;
@@ -57,7 +58,10 @@ public final class GetServiceTemplateSpecVolume {
 
         @CustomType.Setter
         public Builder emptyDirs(List<GetServiceTemplateSpecVolumeEmptyDir> emptyDirs) {
-            this.emptyDirs = Objects.requireNonNull(emptyDirs);
+            if (emptyDirs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecVolume", "emptyDirs");
+            }
+            this.emptyDirs = emptyDirs;
             return this;
         }
         public Builder emptyDirs(GetServiceTemplateSpecVolumeEmptyDir... emptyDirs) {
@@ -65,12 +69,18 @@ public final class GetServiceTemplateSpecVolume {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecVolume", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secrets(List<GetServiceTemplateSpecVolumeSecret> secrets) {
-            this.secrets = Objects.requireNonNull(secrets);
+            if (secrets == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecVolume", "secrets");
+            }
+            this.secrets = secrets;
             return this;
         }
         public Builder secrets(GetServiceTemplateSpecVolumeSecret... secrets) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleRouteAction;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleUrlRedirect;
 import java.lang.String;
@@ -113,7 +114,10 @@ public final class URLMapPathMatcherPathRule {
 
         @CustomType.Setter
         public Builder paths(List<String> paths) {
-            this.paths = Objects.requireNonNull(paths);
+            if (paths == null) {
+              throw new MissingRequiredPropertyException("URLMapPathMatcherPathRule", "paths");
+            }
+            this.paths = paths;
             return this;
         }
         public Builder paths(String... paths) {
@@ -121,16 +125,19 @@ public final class URLMapPathMatcherPathRule {
         }
         @CustomType.Setter
         public Builder routeAction(@Nullable URLMapPathMatcherPathRuleRouteAction routeAction) {
+
             this.routeAction = routeAction;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder urlRedirect(@Nullable URLMapPathMatcherPathRuleUrlRedirect urlRedirect) {
+
             this.urlRedirect = urlRedirect;
             return this;
         }

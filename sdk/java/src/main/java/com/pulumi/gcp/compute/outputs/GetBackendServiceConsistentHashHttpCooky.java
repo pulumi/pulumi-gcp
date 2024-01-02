@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceConsistentHashHttpCookyTtl;
 import java.lang.String;
 import java.util.List;
@@ -60,17 +61,26 @@ public final class GetBackendServiceConsistentHashHttpCooky {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceConsistentHashHttpCooky", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceConsistentHashHttpCooky", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder ttls(List<GetBackendServiceConsistentHashHttpCookyTtl> ttls) {
-            this.ttls = Objects.requireNonNull(ttls);
+            if (ttls == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceConsistentHashHttpCooky", "ttls");
+            }
+            this.ttls = ttls;
             return this;
         }
         public Builder ttls(GetBackendServiceConsistentHashHttpCookyTtl... ttls) {

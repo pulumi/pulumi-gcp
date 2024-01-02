@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -92,7 +93,9 @@ public final class GetStaticIpsPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetStaticIpsPlainArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("GetStaticIpsPlainArgs", "location");
+            }
             return $;
         }
     }

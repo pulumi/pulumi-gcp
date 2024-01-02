@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.TableRangePartitioningRange;
 import java.lang.String;
 import java.util.Objects;
@@ -61,12 +62,18 @@ public final class TableRangePartitioning {
 
         @CustomType.Setter
         public Builder field(String field) {
-            this.field = Objects.requireNonNull(field);
+            if (field == null) {
+              throw new MissingRequiredPropertyException("TableRangePartitioning", "field");
+            }
+            this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder range(TableRangePartitioningRange range) {
-            this.range = Objects.requireNonNull(range);
+            if (range == null) {
+              throw new MissingRequiredPropertyException("TableRangePartitioning", "range");
+            }
+            this.range = range;
             return this;
         }
         public TableRangePartitioning build() {

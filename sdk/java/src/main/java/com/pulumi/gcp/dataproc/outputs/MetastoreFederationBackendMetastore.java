@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,17 +77,26 @@ public final class MetastoreFederationBackendMetastore {
 
         @CustomType.Setter
         public Builder metastoreType(String metastoreType) {
-            this.metastoreType = Objects.requireNonNull(metastoreType);
+            if (metastoreType == null) {
+              throw new MissingRequiredPropertyException("MetastoreFederationBackendMetastore", "metastoreType");
+            }
+            this.metastoreType = metastoreType;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("MetastoreFederationBackendMetastore", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder rank(String rank) {
-            this.rank = Objects.requireNonNull(rank);
+            if (rank == null) {
+              throw new MissingRequiredPropertyException("MetastoreFederationBackendMetastore", "rank");
+            }
+            this.rank = rank;
             return this;
         }
         public MetastoreFederationBackendMetastore build() {

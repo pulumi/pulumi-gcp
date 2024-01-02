@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
 
         @CustomType.Setter
         public Builder allowedConsumerProjects(List<String> allowedConsumerProjects) {
-            this.allowedConsumerProjects = Objects.requireNonNull(allowedConsumerProjects);
+            if (allowedConsumerProjects == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfig", "allowedConsumerProjects");
+            }
+            this.allowedConsumerProjects = allowedConsumerProjects;
             return this;
         }
         public Builder allowedConsumerProjects(String... allowedConsumerProjects) {
@@ -50,7 +54,10 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
         }
         @CustomType.Setter
         public Builder pscEnabled(Boolean pscEnabled) {
-            this.pscEnabled = Objects.requireNonNull(pscEnabled);
+            if (pscEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfig", "pscEnabled");
+            }
+            this.pscEnabled = pscEnabled;
             return this;
         }
         public GetDatabaseInstanceSettingIpConfigurationPscConfig build() {

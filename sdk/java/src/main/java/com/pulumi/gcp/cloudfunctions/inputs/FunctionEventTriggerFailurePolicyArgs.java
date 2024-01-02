@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctions.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class FunctionEventTriggerFailurePolicyArgs extends com.pulumi.reso
         }
 
         public FunctionEventTriggerFailurePolicyArgs build() {
-            $.retry = Objects.requireNonNull($.retry, "expected parameter 'retry' to be non-null");
+            if ($.retry == null) {
+                throw new MissingRequiredPropertyException("FunctionEventTriggerFailurePolicyArgs", "retry");
+            }
             return $;
         }
     }

@@ -46,6 +46,7 @@ public final class DatascanDataProfileSpecPostScanActions {
 
         @CustomType.Setter
         public Builder bigqueryExport(@Nullable DatascanDataProfileSpecPostScanActionsBigqueryExport bigqueryExport) {
+
             this.bigqueryExport = bigqueryExport;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -203,7 +204,9 @@ public final class FhirStoreNotificationConfigArgs extends com.pulumi.resources.
         }
 
         public FhirStoreNotificationConfigArgs build() {
-            $.pubsubTopic = Objects.requireNonNull($.pubsubTopic, "expected parameter 'pubsubTopic' to be non-null");
+            if ($.pubsubTopic == null) {
+                throw new MissingRequiredPropertyException("FhirStoreNotificationConfigArgs", "pubsubTopic");
+            }
             return $;
         }
     }

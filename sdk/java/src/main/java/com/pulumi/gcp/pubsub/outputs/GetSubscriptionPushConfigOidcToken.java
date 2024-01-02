@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetSubscriptionPushConfigOidcToken {
 
         @CustomType.Setter
         public Builder audience(String audience) {
-            this.audience = Objects.requireNonNull(audience);
+            if (audience == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionPushConfigOidcToken", "audience");
+            }
+            this.audience = audience;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
-            this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
+            if (serviceAccountEmail == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionPushConfigOidcToken", "serviceAccountEmail");
+            }
+            this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         public GetSubscriptionPushConfigOidcToken build() {

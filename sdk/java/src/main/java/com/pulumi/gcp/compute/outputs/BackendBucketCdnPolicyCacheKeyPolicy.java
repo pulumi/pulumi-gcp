@@ -64,6 +64,7 @@ public final class BackendBucketCdnPolicyCacheKeyPolicy {
 
         @CustomType.Setter
         public Builder includeHttpHeaders(@Nullable List<String> includeHttpHeaders) {
+
             this.includeHttpHeaders = includeHttpHeaders;
             return this;
         }
@@ -72,6 +73,7 @@ public final class BackendBucketCdnPolicyCacheKeyPolicy {
         }
         @CustomType.Setter
         public Builder queryStringWhitelists(@Nullable List<String> queryStringWhitelists) {
+
             this.queryStringWhitelists = queryStringWhitelists;
             return this;
         }

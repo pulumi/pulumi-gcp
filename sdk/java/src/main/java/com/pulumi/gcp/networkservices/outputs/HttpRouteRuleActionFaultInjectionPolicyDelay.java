@@ -59,11 +59,13 @@ public final class HttpRouteRuleActionFaultInjectionPolicyDelay {
 
         @CustomType.Setter
         public Builder fixedDelay(@Nullable String fixedDelay) {
+
             this.fixedDelay = fixedDelay;
             return this;
         }
         @CustomType.Setter
         public Builder percentage(@Nullable Integer percentage) {
+
             this.percentage = percentage;
             return this;
         }

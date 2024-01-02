@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionAuthConfigAdditionalVariable;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionAuthConfigOauth2AuthCodeFlow;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionAuthConfigOauth2ClientCredentials;
@@ -163,6 +164,7 @@ public final class ConnectionAuthConfig {
 
         @CustomType.Setter
         public Builder additionalVariables(@Nullable List<ConnectionAuthConfigAdditionalVariable> additionalVariables) {
+
             this.additionalVariables = additionalVariables;
             return this;
         }
@@ -171,36 +173,45 @@ public final class ConnectionAuthConfig {
         }
         @CustomType.Setter
         public Builder authKey(@Nullable String authKey) {
+
             this.authKey = authKey;
             return this;
         }
         @CustomType.Setter
         public Builder authType(String authType) {
-            this.authType = Objects.requireNonNull(authType);
+            if (authType == null) {
+              throw new MissingRequiredPropertyException("ConnectionAuthConfig", "authType");
+            }
+            this.authType = authType;
             return this;
         }
         @CustomType.Setter
         public Builder oauth2AuthCodeFlow(@Nullable ConnectionAuthConfigOauth2AuthCodeFlow oauth2AuthCodeFlow) {
+
             this.oauth2AuthCodeFlow = oauth2AuthCodeFlow;
             return this;
         }
         @CustomType.Setter
         public Builder oauth2ClientCredentials(@Nullable ConnectionAuthConfigOauth2ClientCredentials oauth2ClientCredentials) {
+
             this.oauth2ClientCredentials = oauth2ClientCredentials;
             return this;
         }
         @CustomType.Setter
         public Builder oauth2JwtBearer(@Nullable ConnectionAuthConfigOauth2JwtBearer oauth2JwtBearer) {
+
             this.oauth2JwtBearer = oauth2JwtBearer;
             return this;
         }
         @CustomType.Setter
         public Builder sshPublicKey(@Nullable ConnectionAuthConfigSshPublicKey sshPublicKey) {
+
             this.sshPublicKey = sshPublicKey;
             return this;
         }
         @CustomType.Setter
         public Builder userPassword(@Nullable ConnectionAuthConfigUserPassword userPassword) {
+
             this.userPassword = userPassword;
             return this;
         }

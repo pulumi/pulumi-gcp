@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -166,8 +167,12 @@ public final class BucketIAMBindingConditionArgs extends com.pulumi.resources.Re
         }
 
         public BucketIAMBindingConditionArgs build() {
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("BucketIAMBindingConditionArgs", "expression");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("BucketIAMBindingConditionArgs", "title");
+            }
             return $;
         }
     }

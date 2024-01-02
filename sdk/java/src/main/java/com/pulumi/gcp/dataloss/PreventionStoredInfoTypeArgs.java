@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeDictionaryArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeRegexArgs;
@@ -345,7 +346,9 @@ public final class PreventionStoredInfoTypeArgs extends com.pulumi.resources.Res
         }
 
         public PreventionStoredInfoTypeArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("PreventionStoredInfoTypeArgs", "parent");
+            }
             return $;
         }
     }

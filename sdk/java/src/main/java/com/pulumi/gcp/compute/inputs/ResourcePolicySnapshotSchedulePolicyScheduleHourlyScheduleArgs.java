@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -124,8 +125,12 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArg
         }
 
         public ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs build() {
-            $.hoursInCycle = Objects.requireNonNull($.hoursInCycle, "expected parameter 'hoursInCycle' to be non-null");
-            $.startTime = Objects.requireNonNull($.startTime, "expected parameter 'startTime' to be non-null");
+            if ($.hoursInCycle == null) {
+                throw new MissingRequiredPropertyException("ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs", "hoursInCycle");
+            }
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("ResourcePolicySnapshotSchedulePolicyScheduleHourlyScheduleArgs", "startTime");
+            }
             return $;
         }
     }

@@ -71,11 +71,13 @@ public final class BudgetAmount {
 
         @CustomType.Setter
         public Builder lastPeriodAmount(@Nullable Boolean lastPeriodAmount) {
+
             this.lastPeriodAmount = lastPeriodAmount;
             return this;
         }
         @CustomType.Setter
         public Builder specifiedAmount(@Nullable BudgetAmountSpecifiedAmount specifiedAmount) {
+
             this.specifiedAmount = specifiedAmount;
             return this;
         }

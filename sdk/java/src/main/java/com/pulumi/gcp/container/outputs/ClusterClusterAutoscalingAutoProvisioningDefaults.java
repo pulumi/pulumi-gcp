@@ -183,36 +183,43 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
 
         @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
+
             this.bootDiskKmsKey = bootDiskKmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(@Nullable Integer diskSize) {
+
             this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
+
             this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder management(@Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsManagement management) {
+
             this.management = management;
             return this;
         }
         @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
+
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }
         @CustomType.Setter
         public Builder oauthScopes(@Nullable List<String> oauthScopes) {
+
             this.oauthScopes = oauthScopes;
             return this;
         }
@@ -221,16 +228,19 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInstanceConfig shieldedInstanceConfig) {
+
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeSettings(@Nullable ClusterClusterAutoscalingAutoProvisioningDefaultsUpgradeSettings upgradeSettings) {
+
             this.upgradeSettings = upgradeSettings;
             return this;
         }

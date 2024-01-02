@@ -4,6 +4,7 @@
 package com.pulumi.gcp.billing.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.billing.outputs.BudgetBudgetFilterCustomPeriodEndDate;
 import com.pulumi.gcp.billing.outputs.BudgetBudgetFilterCustomPeriodStartDate;
 import java.util.Objects;
@@ -65,12 +66,16 @@ public final class BudgetBudgetFilterCustomPeriod {
 
         @CustomType.Setter
         public Builder endDate(@Nullable BudgetBudgetFilterCustomPeriodEndDate endDate) {
+
             this.endDate = endDate;
             return this;
         }
         @CustomType.Setter
         public Builder startDate(BudgetBudgetFilterCustomPeriodStartDate startDate) {
-            this.startDate = Objects.requireNonNull(startDate);
+            if (startDate == null) {
+              throw new MissingRequiredPropertyException("BudgetBudgetFilterCustomPeriod", "startDate");
+            }
+            this.startDate = startDate;
             return this;
         }
         public BudgetBudgetFilterCustomPeriod build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.GetUptimeCheckIPsUptimeCheckIp;
 import java.lang.String;
 import java.util.List;
@@ -58,12 +59,18 @@ public final class GetUptimeCheckIPsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetUptimeCheckIPsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder uptimeCheckIps(List<GetUptimeCheckIPsUptimeCheckIp> uptimeCheckIps) {
-            this.uptimeCheckIps = Objects.requireNonNull(uptimeCheckIps);
+            if (uptimeCheckIps == null) {
+              throw new MissingRequiredPropertyException("GetUptimeCheckIPsResult", "uptimeCheckIps");
+            }
+            this.uptimeCheckIps = uptimeCheckIps;
             return this;
         }
         public Builder uptimeCheckIps(GetUptimeCheckIPsUptimeCheckIp... uptimeCheckIps) {

@@ -79,6 +79,7 @@ public final class ServiceTemplateSpecContainerStartupProbeHttpGet {
 
         @CustomType.Setter
         public Builder httpHeaders(@Nullable List<ServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader> httpHeaders) {
+
             this.httpHeaders = httpHeaders;
             return this;
         }
@@ -87,11 +88,13 @@ public final class ServiceTemplateSpecContainerStartupProbeHttpGet {
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }

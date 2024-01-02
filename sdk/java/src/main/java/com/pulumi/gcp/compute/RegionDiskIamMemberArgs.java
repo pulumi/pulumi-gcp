@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionDiskIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -262,8 +263,12 @@ public final class RegionDiskIamMemberArgs extends com.pulumi.resources.Resource
         }
 
         public RegionDiskIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("RegionDiskIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("RegionDiskIamMemberArgs", "role");
+            }
             return $;
         }
     }

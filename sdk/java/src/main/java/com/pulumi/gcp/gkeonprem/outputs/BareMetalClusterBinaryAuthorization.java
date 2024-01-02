@@ -48,6 +48,7 @@ public final class BareMetalClusterBinaryAuthorization {
 
         @CustomType.Setter
         public Builder evaluationMode(@Nullable String evaluationMode) {
+
             this.evaluationMode = evaluationMode;
             return this;
         }

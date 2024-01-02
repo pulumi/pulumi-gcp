@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class TagTemplateFieldTypeEnumTypeAllowedValueArgs extends com.pulu
         }
 
         public TagTemplateFieldTypeEnumTypeAllowedValueArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("TagTemplateFieldTypeEnumTypeAllowedValueArgs", "displayName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkconnectivity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -59,12 +60,16 @@ public final class ServiceConnectionPolicyPscConfig {
 
         @CustomType.Setter
         public Builder limit(@Nullable String limit) {
+
             this.limit = limit;
             return this;
         }
         @CustomType.Setter
         public Builder subnetworks(List<String> subnetworks) {
-            this.subnetworks = Objects.requireNonNull(subnetworks);
+            if (subnetworks == null) {
+              throw new MissingRequiredPropertyException("ServiceConnectionPolicyPscConfig", "subnetworks");
+            }
+            this.subnetworks = subnetworks;
             return this;
         }
         public Builder subnetworks(String... subnetworks) {

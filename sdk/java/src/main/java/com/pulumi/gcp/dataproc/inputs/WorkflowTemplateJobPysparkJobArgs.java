@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobPysparkJobLoggingConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -388,7 +389,9 @@ public final class WorkflowTemplateJobPysparkJobArgs extends com.pulumi.resource
         }
 
         public WorkflowTemplateJobPysparkJobArgs build() {
-            $.mainPythonFileUri = Objects.requireNonNull($.mainPythonFileUri, "expected parameter 'mainPythonFileUri' to be non-null");
+            if ($.mainPythonFileUri == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplateJobPysparkJobArgs", "mainPythonFileUri");
+            }
             return $;
         }
     }

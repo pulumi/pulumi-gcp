@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetInstanceGroupManagerStatusVersionTarget {
 
         @CustomType.Setter
         public Builder isReached(Boolean isReached) {
-            this.isReached = Objects.requireNonNull(isReached);
+            if (isReached == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatusVersionTarget", "isReached");
+            }
+            this.isReached = isReached;
             return this;
         }
         public GetInstanceGroupManagerStatusVersionTarget build() {

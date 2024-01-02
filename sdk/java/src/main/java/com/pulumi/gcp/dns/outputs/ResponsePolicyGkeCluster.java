@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class ResponsePolicyGkeCluster {
 
         @CustomType.Setter
         public Builder gkeClusterName(String gkeClusterName) {
-            this.gkeClusterName = Objects.requireNonNull(gkeClusterName);
+            if (gkeClusterName == null) {
+              throw new MissingRequiredPropertyException("ResponsePolicyGkeCluster", "gkeClusterName");
+            }
+            this.gkeClusterName = gkeClusterName;
             return this;
         }
         public ResponsePolicyGkeCluster build() {

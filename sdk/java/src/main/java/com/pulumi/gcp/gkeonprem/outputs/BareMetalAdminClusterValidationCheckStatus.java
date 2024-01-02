@@ -48,6 +48,7 @@ public final class BareMetalAdminClusterValidationCheckStatus {
 
         @CustomType.Setter
         public Builder results(@Nullable List<BareMetalAdminClusterValidationCheckStatusResult> results) {
+
             this.results = results;
             return this;
         }

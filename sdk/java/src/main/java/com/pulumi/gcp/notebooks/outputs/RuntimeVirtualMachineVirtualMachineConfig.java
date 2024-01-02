@@ -4,6 +4,7 @@
 package com.pulumi.gcp.notebooks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.notebooks.outputs.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig;
 import com.pulumi.gcp.notebooks.outputs.RuntimeVirtualMachineVirtualMachineConfigContainerImage;
 import com.pulumi.gcp.notebooks.outputs.RuntimeVirtualMachineVirtualMachineConfigDataDisk;
@@ -352,11 +353,13 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
 
         @CustomType.Setter
         public Builder acceleratorConfig(@Nullable RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfig acceleratorConfig) {
+
             this.acceleratorConfig = acceleratorConfig;
             return this;
         }
         @CustomType.Setter
         public Builder containerImages(@Nullable List<RuntimeVirtualMachineVirtualMachineConfigContainerImage> containerImages) {
+
             this.containerImages = containerImages;
             return this;
         }
@@ -365,66 +368,83 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         }
         @CustomType.Setter
         public Builder dataDisk(RuntimeVirtualMachineVirtualMachineConfigDataDisk dataDisk) {
-            this.dataDisk = Objects.requireNonNull(dataDisk);
+            if (dataDisk == null) {
+              throw new MissingRequiredPropertyException("RuntimeVirtualMachineVirtualMachineConfig", "dataDisk");
+            }
+            this.dataDisk = dataDisk;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionConfig(@Nullable RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig encryptionConfig) {
+
             this.encryptionConfig = encryptionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder guestAttributes(@Nullable Map<String,String> guestAttributes) {
+
             this.guestAttributes = guestAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder internalIpOnly(@Nullable Boolean internalIpOnly) {
+
             this.internalIpOnly = internalIpOnly;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("RuntimeVirtualMachineVirtualMachineConfig", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder nicType(@Nullable String nicType) {
+
             this.nicType = nicType;
             return this;
         }
         @CustomType.Setter
         public Builder reservedIpRange(@Nullable String reservedIpRange) {
+
             this.reservedIpRange = reservedIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable RuntimeVirtualMachineVirtualMachineConfigShieldedInstanceConfig shieldedInstanceConfig) {
+
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder subnet(@Nullable String subnet) {
+
             this.subnet = subnet;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -433,6 +453,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfig {
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

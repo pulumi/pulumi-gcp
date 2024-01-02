@@ -60,11 +60,13 @@ public final class ProjectDefaultConfigSignInPhoneNumber {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder testPhoneNumbers(@Nullable Map<String,String> testPhoneNumbers) {
+
             this.testPhoneNumbers = testPhoneNumbers;
             return this;
         }

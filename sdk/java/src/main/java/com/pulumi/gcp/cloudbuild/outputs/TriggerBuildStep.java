@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBuildStepVolume;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -338,6 +339,7 @@ public final class TriggerBuildStep {
 
         @CustomType.Setter
         public Builder allowExitCodes(@Nullable List<Integer> allowExitCodes) {
+
             this.allowExitCodes = allowExitCodes;
             return this;
         }
@@ -346,11 +348,13 @@ public final class TriggerBuildStep {
         }
         @CustomType.Setter
         public Builder allowFailure(@Nullable Boolean allowFailure) {
+
             this.allowFailure = allowFailure;
             return this;
         }
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -359,16 +363,19 @@ public final class TriggerBuildStep {
         }
         @CustomType.Setter
         public Builder dir(@Nullable String dir) {
+
             this.dir = dir;
             return this;
         }
         @CustomType.Setter
         public Builder entrypoint(@Nullable String entrypoint) {
+
             this.entrypoint = entrypoint;
             return this;
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<String> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -377,21 +384,27 @@ public final class TriggerBuildStep {
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("TriggerBuildStep", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder script(@Nullable String script) {
+
             this.script = script;
             return this;
         }
         @CustomType.Setter
         public Builder secretEnvs(@Nullable List<String> secretEnvs) {
+
             this.secretEnvs = secretEnvs;
             return this;
         }
@@ -400,16 +413,19 @@ public final class TriggerBuildStep {
         }
         @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
+
             this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder timing(@Nullable String timing) {
+
             this.timing = timing;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable List<TriggerBuildStepVolume> volumes) {
+
             this.volumes = volumes;
             return this;
         }
@@ -418,6 +434,7 @@ public final class TriggerBuildStep {
         }
         @CustomType.Setter
         public Builder waitFors(@Nullable List<String> waitFors) {
+
             this.waitFors = waitFors;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.identityplatform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.identityplatform.outputs.ConfigBlockingFunctionsForwardInboundCredentials;
 import com.pulumi.gcp.identityplatform.outputs.ConfigBlockingFunctionsTrigger;
 import java.util.List;
@@ -64,12 +65,16 @@ public final class ConfigBlockingFunctions {
 
         @CustomType.Setter
         public Builder forwardInboundCredentials(@Nullable ConfigBlockingFunctionsForwardInboundCredentials forwardInboundCredentials) {
+
             this.forwardInboundCredentials = forwardInboundCredentials;
             return this;
         }
         @CustomType.Setter
         public Builder triggers(List<ConfigBlockingFunctionsTrigger> triggers) {
-            this.triggers = Objects.requireNonNull(triggers);
+            if (triggers == null) {
+              throw new MissingRequiredPropertyException("ConfigBlockingFunctions", "triggers");
+            }
+            this.triggers = triggers;
             return this;
         }
         public Builder triggers(ConfigBlockingFunctionsTrigger... triggers) {

@@ -46,6 +46,7 @@ public final class CxAgentGitIntegrationSettings {
 
         @CustomType.Setter
         public Builder githubSettings(@Nullable CxAgentGitIntegrationSettingsGithubSettings githubSettings) {
+
             this.githubSettings = githubSettings;
             return this;
         }

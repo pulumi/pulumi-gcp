@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -126,7 +127,9 @@ public final class ProjectMetadataArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ProjectMetadataArgs build() {
-            $.metadata = Objects.requireNonNull($.metadata, "expected parameter 'metadata' to be non-null");
+            if ($.metadata == null) {
+                throw new MissingRequiredPropertyException("ProjectMetadataArgs", "metadata");
+            }
             return $;
         }
     }

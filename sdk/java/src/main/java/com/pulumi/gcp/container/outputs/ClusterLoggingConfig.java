@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class ClusterLoggingConfig {
 
         @CustomType.Setter
         public Builder enableComponents(List<String> enableComponents) {
-            this.enableComponents = Objects.requireNonNull(enableComponents);
+            if (enableComponents == null) {
+              throw new MissingRequiredPropertyException("ClusterLoggingConfig", "enableComponents");
+            }
+            this.enableComponents = enableComponents;
             return this;
         }
         public Builder enableComponents(String... enableComponents) {

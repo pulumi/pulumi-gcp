@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetResourcePolicySnapshotSchedulePolicyRetentionPolicy {
 
         @CustomType.Setter
         public Builder maxRetentionDays(Integer maxRetentionDays) {
-            this.maxRetentionDays = Objects.requireNonNull(maxRetentionDays);
+            if (maxRetentionDays == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicyRetentionPolicy", "maxRetentionDays");
+            }
+            this.maxRetentionDays = maxRetentionDays;
             return this;
         }
         @CustomType.Setter
         public Builder onSourceDiskDelete(String onSourceDiskDelete) {
-            this.onSourceDiskDelete = Objects.requireNonNull(onSourceDiskDelete);
+            if (onSourceDiskDelete == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicyRetentionPolicy", "onSourceDiskDelete");
+            }
+            this.onSourceDiskDelete = onSourceDiskDelete;
             return this;
         }
         public GetResourcePolicySnapshotSchedulePolicyRetentionPolicy build() {

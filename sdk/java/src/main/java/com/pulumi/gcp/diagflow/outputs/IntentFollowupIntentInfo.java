@@ -62,11 +62,13 @@ public final class IntentFollowupIntentInfo {
 
         @CustomType.Setter
         public Builder followupIntentName(@Nullable String followupIntentName) {
+
             this.followupIntentName = followupIntentName;
             return this;
         }
         @CustomType.Setter
         public Builder parentFollowupIntentName(@Nullable String parentFollowupIntentName) {
+
             this.parentFollowupIntentName = parentFollowupIntentName;
             return this;
         }

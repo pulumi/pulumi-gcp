@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -201,26 +202,33 @@ public final class AutoscalerAutoscalingPolicyMetric {
 
         @CustomType.Setter
         public Builder filter(@Nullable String filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicyMetric", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder singleInstanceAssignment(@Nullable Double singleInstanceAssignment) {
+
             this.singleInstanceAssignment = singleInstanceAssignment;
             return this;
         }
         @CustomType.Setter
         public Builder target(@Nullable Double target) {
+
             this.target = target;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

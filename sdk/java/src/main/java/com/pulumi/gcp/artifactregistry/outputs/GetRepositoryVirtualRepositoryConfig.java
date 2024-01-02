@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryVirtualRepositoryConfigUpstreamPolicy;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetRepositoryVirtualRepositoryConfig {
 
         @CustomType.Setter
         public Builder upstreamPolicies(List<GetRepositoryVirtualRepositoryConfigUpstreamPolicy> upstreamPolicies) {
-            this.upstreamPolicies = Objects.requireNonNull(upstreamPolicies);
+            if (upstreamPolicies == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryVirtualRepositoryConfig", "upstreamPolicies");
+            }
+            this.upstreamPolicies = upstreamPolicies;
             return this;
         }
         public Builder upstreamPolicies(GetRepositoryVirtualRepositoryConfigUpstreamPolicy... upstreamPolicies) {

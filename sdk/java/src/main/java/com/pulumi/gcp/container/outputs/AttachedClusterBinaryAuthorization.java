@@ -46,6 +46,7 @@ public final class AttachedClusterBinaryAuthorization {
 
         @CustomType.Setter
         public Builder evaluationMode(@Nullable String evaluationMode) {
+
             this.evaluationMode = evaluationMode;
             return this;
         }

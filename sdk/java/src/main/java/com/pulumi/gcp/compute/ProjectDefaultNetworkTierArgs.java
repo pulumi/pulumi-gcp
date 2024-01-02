@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -129,7 +130,9 @@ public final class ProjectDefaultNetworkTierArgs extends com.pulumi.resources.Re
         }
 
         public ProjectDefaultNetworkTierArgs build() {
-            $.networkTier = Objects.requireNonNull($.networkTier, "expected parameter 'networkTier' to be non-null");
+            if ($.networkTier == null) {
+                throw new MissingRequiredPropertyException("ProjectDefaultNetworkTierArgs", "networkTier");
+            }
             return $;
         }
     }

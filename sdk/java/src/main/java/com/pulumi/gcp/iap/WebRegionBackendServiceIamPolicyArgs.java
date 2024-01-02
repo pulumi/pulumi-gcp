@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -223,8 +224,12 @@ public final class WebRegionBackendServiceIamPolicyArgs extends com.pulumi.resou
         }
 
         public WebRegionBackendServiceIamPolicyArgs build() {
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
-            $.webRegionBackendService = Objects.requireNonNull($.webRegionBackendService, "expected parameter 'webRegionBackendService' to be non-null");
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("WebRegionBackendServiceIamPolicyArgs", "policyData");
+            }
+            if ($.webRegionBackendService == null) {
+                throw new MissingRequiredPropertyException("WebRegionBackendServiceIamPolicyArgs", "webRegionBackendService");
+            }
             return $;
         }
     }

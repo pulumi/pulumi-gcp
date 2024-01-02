@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplatePlacementManagedClusterConfig;
 import java.lang.String;
 import java.util.Map;
@@ -73,16 +74,23 @@ public final class WorkflowTemplatePlacementManagedCluster {
 
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("WorkflowTemplatePlacementManagedCluster", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder config(WorkflowTemplatePlacementManagedClusterConfig config) {
-            this.config = Objects.requireNonNull(config);
+            if (config == null) {
+              throw new MissingRequiredPropertyException("WorkflowTemplatePlacementManagedCluster", "config");
+            }
+            this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }

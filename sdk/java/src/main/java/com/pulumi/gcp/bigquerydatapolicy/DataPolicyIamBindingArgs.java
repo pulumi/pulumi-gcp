@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquerydatapolicy;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquerydatapolicy.inputs.DataPolicyIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -271,9 +272,15 @@ public final class DataPolicyIamBindingArgs extends com.pulumi.resources.Resourc
         }
 
         public DataPolicyIamBindingArgs build() {
-            $.dataPolicyId = Objects.requireNonNull($.dataPolicyId, "expected parameter 'dataPolicyId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.dataPolicyId == null) {
+                throw new MissingRequiredPropertyException("DataPolicyIamBindingArgs", "dataPolicyId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("DataPolicyIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("DataPolicyIamBindingArgs", "role");
+            }
             return $;
         }
     }

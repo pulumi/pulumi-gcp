@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class IngressPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IngressPolicyArgs build() {
-            $.ingressPolicyName = Objects.requireNonNull($.ingressPolicyName, "expected parameter 'ingressPolicyName' to be non-null");
-            $.resource = Objects.requireNonNull($.resource, "expected parameter 'resource' to be non-null");
+            if ($.ingressPolicyName == null) {
+                throw new MissingRequiredPropertyException("IngressPolicyArgs", "ingressPolicyName");
+            }
+            if ($.resource == null) {
+                throw new MissingRequiredPropertyException("IngressPolicyArgs", "resource");
+            }
             return $;
         }
     }

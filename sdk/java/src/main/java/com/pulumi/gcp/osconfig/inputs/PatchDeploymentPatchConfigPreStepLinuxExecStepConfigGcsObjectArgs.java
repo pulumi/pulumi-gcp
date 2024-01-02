@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject
         }
 
         public PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.generationNumber = Objects.requireNonNull($.generationNumber, "expected parameter 'generationNumber' to be non-null");
-            $.object = Objects.requireNonNull($.object, "expected parameter 'object' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs", "bucket");
+            }
+            if ($.generationNumber == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs", "generationNumber");
+            }
+            if ($.object == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObjectArgs", "object");
+            }
             return $;
         }
     }

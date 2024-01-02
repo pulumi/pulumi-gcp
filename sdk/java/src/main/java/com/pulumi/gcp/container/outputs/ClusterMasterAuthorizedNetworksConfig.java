@@ -64,6 +64,7 @@ public final class ClusterMasterAuthorizedNetworksConfig {
 
         @CustomType.Setter
         public Builder cidrBlocks(@Nullable List<ClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
+
             this.cidrBlocks = cidrBlocks;
             return this;
         }
@@ -72,6 +73,7 @@ public final class ClusterMasterAuthorizedNetworksConfig {
         }
         @CustomType.Setter
         public Builder gcpPublicCidrsAccessEnabled(@Nullable Boolean gcpPublicCidrsAccessEnabled) {
+
             this.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
             return this;
         }

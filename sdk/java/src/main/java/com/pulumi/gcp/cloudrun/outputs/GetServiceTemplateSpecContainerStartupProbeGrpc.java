@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetServiceTemplateSpecContainerStartupProbeGrpc {
 
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerStartupProbeGrpc", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerStartupProbeGrpc", "service");
+            }
+            this.service = service;
             return this;
         }
         public GetServiceTemplateSpecContainerStartupProbeGrpc build() {

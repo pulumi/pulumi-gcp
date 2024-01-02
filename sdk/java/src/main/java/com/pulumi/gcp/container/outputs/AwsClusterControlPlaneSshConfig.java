@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class AwsClusterControlPlaneSshConfig {
 
         @CustomType.Setter
         public Builder ec2KeyPair(String ec2KeyPair) {
-            this.ec2KeyPair = Objects.requireNonNull(ec2KeyPair);
+            if (ec2KeyPair == null) {
+              throw new MissingRequiredPropertyException("AwsClusterControlPlaneSshConfig", "ec2KeyPair");
+            }
+            this.ec2KeyPair = ec2KeyPair;
             return this;
         }
         public AwsClusterControlPlaneSshConfig build() {

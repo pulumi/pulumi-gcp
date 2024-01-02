@@ -94,21 +94,25 @@ public final class ResourcePolicySnapshotSchedulePolicySnapshotProperties {
 
         @CustomType.Setter
         public Builder chainName(@Nullable String chainName) {
+
             this.chainName = chainName;
             return this;
         }
         @CustomType.Setter
         public Builder guestFlush(@Nullable Boolean guestFlush) {
+
             this.guestFlush = guestFlush;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder storageLocations(@Nullable String storageLocations) {
+
             this.storageLocations = storageLocations;
             return this;
         }

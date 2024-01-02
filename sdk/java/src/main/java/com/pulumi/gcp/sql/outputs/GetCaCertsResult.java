@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetCaCertsCert;
 import java.lang.String;
 import java.util.List;
@@ -84,12 +85,18 @@ public final class GetCaCertsResult {
 
         @CustomType.Setter
         public Builder activeVersion(String activeVersion) {
-            this.activeVersion = Objects.requireNonNull(activeVersion);
+            if (activeVersion == null) {
+              throw new MissingRequiredPropertyException("GetCaCertsResult", "activeVersion");
+            }
+            this.activeVersion = activeVersion;
             return this;
         }
         @CustomType.Setter
         public Builder certs(List<GetCaCertsCert> certs) {
-            this.certs = Objects.requireNonNull(certs);
+            if (certs == null) {
+              throw new MissingRequiredPropertyException("GetCaCertsResult", "certs");
+            }
+            this.certs = certs;
             return this;
         }
         public Builder certs(GetCaCertsCert... certs) {
@@ -97,17 +104,26 @@ public final class GetCaCertsResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCaCertsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instance(String instance) {
-            this.instance = Objects.requireNonNull(instance);
+            if (instance == null) {
+              throw new MissingRequiredPropertyException("GetCaCertsResult", "instance");
+            }
+            this.instance = instance;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetCaCertsResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetCaCertsResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.TableTableConstraintsForeignKeyColumnReferencesArgs;
 import com.pulumi.gcp.bigquery.inputs.TableTableConstraintsForeignKeyReferencedTableArgs;
 import java.lang.String;
@@ -164,8 +165,12 @@ public final class TableTableConstraintsForeignKeyArgs extends com.pulumi.resour
         }
 
         public TableTableConstraintsForeignKeyArgs build() {
-            $.columnReferences = Objects.requireNonNull($.columnReferences, "expected parameter 'columnReferences' to be non-null");
-            $.referencedTable = Objects.requireNonNull($.referencedTable, "expected parameter 'referencedTable' to be non-null");
+            if ($.columnReferences == null) {
+                throw new MissingRequiredPropertyException("TableTableConstraintsForeignKeyArgs", "columnReferences");
+            }
+            if ($.referencedTable == null) {
+                throw new MissingRequiredPropertyException("TableTableConstraintsForeignKeyArgs", "referencedTable");
+            }
             return $;
         }
     }

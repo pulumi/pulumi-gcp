@@ -74,16 +74,19 @@ public final class WorkerPoolWorkerConfig {
 
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder noExternalIp(@Nullable Boolean noExternalIp) {
+
             this.noExternalIp = noExternalIp;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,12 +65,16 @@ public final class ManagedZoneForwardingConfigTargetNameServer {
 
         @CustomType.Setter
         public Builder forwardingPath(@Nullable String forwardingPath) {
+
             this.forwardingPath = forwardingPath;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4Address(String ipv4Address) {
-            this.ipv4Address = Objects.requireNonNull(ipv4Address);
+            if (ipv4Address == null) {
+              throw new MissingRequiredPropertyException("ManagedZoneForwardingConfigTargetNameServer", "ipv4Address");
+            }
+            this.ipv4Address = ipv4Address;
             return this;
         }
         public ManagedZoneForwardingConfigTargetNameServer build() {

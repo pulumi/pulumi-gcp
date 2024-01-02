@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformArgs;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigImageTransformati
         }
 
         public PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs build() {
-            $.transforms = Objects.requireNonNull($.transforms, "expected parameter 'transforms' to be non-null");
+            if ($.transforms == null) {
+                throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsArgs", "transforms");
+            }
             return $;
         }
     }

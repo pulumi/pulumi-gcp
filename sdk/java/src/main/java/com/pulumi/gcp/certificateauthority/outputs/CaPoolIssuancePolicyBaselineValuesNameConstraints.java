@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -205,11 +206,15 @@ public final class CaPoolIssuancePolicyBaselineValuesNameConstraints {
 
         @CustomType.Setter
         public Builder critical(Boolean critical) {
-            this.critical = Objects.requireNonNull(critical);
+            if (critical == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValuesNameConstraints", "critical");
+            }
+            this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder excludedDnsNames(@Nullable List<String> excludedDnsNames) {
+
             this.excludedDnsNames = excludedDnsNames;
             return this;
         }
@@ -218,6 +223,7 @@ public final class CaPoolIssuancePolicyBaselineValuesNameConstraints {
         }
         @CustomType.Setter
         public Builder excludedEmailAddresses(@Nullable List<String> excludedEmailAddresses) {
+
             this.excludedEmailAddresses = excludedEmailAddresses;
             return this;
         }
@@ -226,6 +232,7 @@ public final class CaPoolIssuancePolicyBaselineValuesNameConstraints {
         }
         @CustomType.Setter
         public Builder excludedIpRanges(@Nullable List<String> excludedIpRanges) {
+
             this.excludedIpRanges = excludedIpRanges;
             return this;
         }
@@ -234,6 +241,7 @@ public final class CaPoolIssuancePolicyBaselineValuesNameConstraints {
         }
         @CustomType.Setter
         public Builder excludedUris(@Nullable List<String> excludedUris) {
+
             this.excludedUris = excludedUris;
             return this;
         }
@@ -242,6 +250,7 @@ public final class CaPoolIssuancePolicyBaselineValuesNameConstraints {
         }
         @CustomType.Setter
         public Builder permittedDnsNames(@Nullable List<String> permittedDnsNames) {
+
             this.permittedDnsNames = permittedDnsNames;
             return this;
         }
@@ -250,6 +259,7 @@ public final class CaPoolIssuancePolicyBaselineValuesNameConstraints {
         }
         @CustomType.Setter
         public Builder permittedEmailAddresses(@Nullable List<String> permittedEmailAddresses) {
+
             this.permittedEmailAddresses = permittedEmailAddresses;
             return this;
         }
@@ -258,6 +268,7 @@ public final class CaPoolIssuancePolicyBaselineValuesNameConstraints {
         }
         @CustomType.Setter
         public Builder permittedIpRanges(@Nullable List<String> permittedIpRanges) {
+
             this.permittedIpRanges = permittedIpRanges;
             return this;
         }
@@ -266,6 +277,7 @@ public final class CaPoolIssuancePolicyBaselineValuesNameConstraints {
         }
         @CustomType.Setter
         public Builder permittedUris(@Nullable List<String> permittedUris) {
+
             this.permittedUris = permittedUris;
             return this;
         }

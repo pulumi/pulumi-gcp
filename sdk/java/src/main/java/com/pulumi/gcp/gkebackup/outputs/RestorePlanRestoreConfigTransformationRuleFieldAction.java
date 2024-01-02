@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkebackup.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -98,21 +99,27 @@ public final class RestorePlanRestoreConfigTransformationRuleFieldAction {
 
         @CustomType.Setter
         public Builder fromPath(@Nullable String fromPath) {
+
             this.fromPath = fromPath;
             return this;
         }
         @CustomType.Setter
         public Builder op(String op) {
-            this.op = Objects.requireNonNull(op);
+            if (op == null) {
+              throw new MissingRequiredPropertyException("RestorePlanRestoreConfigTransformationRuleFieldAction", "op");
+            }
+            this.op = op;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

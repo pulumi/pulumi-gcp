@@ -5,6 +5,7 @@ package com.pulumi.gcp.artifactregistry.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -115,8 +116,12 @@ public final class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository
         }
 
         public RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs build() {
-            $.repositoryBase = Objects.requireNonNull($.repositoryBase, "expected parameter 'repositoryBase' to be non-null");
-            $.repositoryPath = Objects.requireNonNull($.repositoryPath, "expected parameter 'repositoryPath' to be non-null");
+            if ($.repositoryBase == null) {
+                throw new MissingRequiredPropertyException("RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs", "repositoryBase");
+            }
+            if ($.repositoryPath == null) {
+                throw new MissingRequiredPropertyException("RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs", "repositoryPath");
+            }
             return $;
         }
     }

@@ -78,16 +78,19 @@ public final class VMwareClusterLoadBalancerF5Config {
 
         @CustomType.Setter
         public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder partition(@Nullable String partition) {
+
             this.partition = partition;
             return this;
         }
         @CustomType.Setter
         public Builder snatPool(@Nullable String snatPool) {
+
             this.snatPool = snatPool;
             return this;
         }

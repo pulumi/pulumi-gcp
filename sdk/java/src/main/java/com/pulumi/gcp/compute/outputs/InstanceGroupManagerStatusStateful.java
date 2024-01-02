@@ -60,11 +60,13 @@ public final class InstanceGroupManagerStatusStateful {
 
         @CustomType.Setter
         public Builder hasStatefulConfig(@Nullable Boolean hasStatefulConfig) {
+
             this.hasStatefulConfig = hasStatefulConfig;
             return this;
         }
         @CustomType.Setter
         public Builder perInstanceConfigs(@Nullable List<InstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs) {
+
             this.perInstanceConfigs = perInstanceConfigs;
             return this;
         }

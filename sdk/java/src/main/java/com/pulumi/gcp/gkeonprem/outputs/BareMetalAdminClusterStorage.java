@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterStorageLvpNodeMountsConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterStorageLvpShareConfig;
 import java.util.Objects;
@@ -69,12 +70,18 @@ public final class BareMetalAdminClusterStorage {
 
         @CustomType.Setter
         public Builder lvpNodeMountsConfig(BareMetalAdminClusterStorageLvpNodeMountsConfig lvpNodeMountsConfig) {
-            this.lvpNodeMountsConfig = Objects.requireNonNull(lvpNodeMountsConfig);
+            if (lvpNodeMountsConfig == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterStorage", "lvpNodeMountsConfig");
+            }
+            this.lvpNodeMountsConfig = lvpNodeMountsConfig;
             return this;
         }
         @CustomType.Setter
         public Builder lvpShareConfig(BareMetalAdminClusterStorageLvpShareConfig lvpShareConfig) {
-            this.lvpShareConfig = Objects.requireNonNull(lvpShareConfig);
+            if (lvpShareConfig == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterStorage", "lvpShareConfig");
+            }
+            this.lvpShareConfig = lvpShareConfig;
             return this;
         }
         public BareMetalAdminClusterStorage build() {

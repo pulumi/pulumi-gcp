@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.inputs.DenyPolicyRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -204,8 +205,12 @@ public final class DenyPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DenyPolicyArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("DenyPolicyArgs", "parent");
+            }
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("DenyPolicyArgs", "rules");
+            }
             return $;
         }
     }

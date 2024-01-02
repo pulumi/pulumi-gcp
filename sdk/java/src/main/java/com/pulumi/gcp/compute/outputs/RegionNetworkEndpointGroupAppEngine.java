@@ -92,16 +92,19 @@ public final class RegionNetworkEndpointGroupAppEngine {
 
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder urlMask(@Nullable String urlMask) {
+
             this.urlMask = urlMask;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

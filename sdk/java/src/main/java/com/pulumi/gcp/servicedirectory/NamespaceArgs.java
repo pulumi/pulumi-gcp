@@ -5,6 +5,7 @@ package com.pulumi.gcp.servicedirectory;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -232,8 +233,12 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NamespaceArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.namespaceId = Objects.requireNonNull($.namespaceId, "expected parameter 'namespaceId' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "location");
+            }
+            if ($.namespaceId == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "namespaceId");
+            }
             return $;
         }
     }

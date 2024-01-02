@@ -94,16 +94,19 @@ public final class RegionBackendServiceConsistentHash {
 
         @CustomType.Setter
         public Builder httpCookie(@Nullable RegionBackendServiceConsistentHashHttpCookie httpCookie) {
+
             this.httpCookie = httpCookie;
             return this;
         }
         @CustomType.Setter
         public Builder httpHeaderName(@Nullable String httpHeaderName) {
+
             this.httpHeaderName = httpHeaderName;
             return this;
         }
         @CustomType.Setter
         public Builder minimumRingSize(@Nullable Integer minimumRingSize) {
+
             this.minimumRingSize = minimumRingSize;
             return this;
         }

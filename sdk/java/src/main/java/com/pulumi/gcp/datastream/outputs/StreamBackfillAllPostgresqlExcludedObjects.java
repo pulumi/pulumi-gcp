@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class StreamBackfillAllPostgresqlExcludedObjects {
 
         @CustomType.Setter
         public Builder postgresqlSchemas(List<StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema> postgresqlSchemas) {
-            this.postgresqlSchemas = Objects.requireNonNull(postgresqlSchemas);
+            if (postgresqlSchemas == null) {
+              throw new MissingRequiredPropertyException("StreamBackfillAllPostgresqlExcludedObjects", "postgresqlSchemas");
+            }
+            this.postgresqlSchemas = postgresqlSchemas;
             return this;
         }
         public Builder postgresqlSchemas(StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchema... postgresqlSchemas) {

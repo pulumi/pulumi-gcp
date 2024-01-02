@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.inputs.IamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -282,9 +283,15 @@ public final class IamMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("IamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("IamMemberArgs", "role");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("IamMemberArgs", "service");
+            }
             return $;
         }
     }

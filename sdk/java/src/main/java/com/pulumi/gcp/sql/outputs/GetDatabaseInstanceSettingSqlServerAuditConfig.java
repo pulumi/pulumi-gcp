@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetDatabaseInstanceSettingSqlServerAuditConfig {
 
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingSqlServerAuditConfig", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder retentionInterval(String retentionInterval) {
-            this.retentionInterval = Objects.requireNonNull(retentionInterval);
+            if (retentionInterval == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingSqlServerAuditConfig", "retentionInterval");
+            }
+            this.retentionInterval = retentionInterval;
             return this;
         }
         @CustomType.Setter
         public Builder uploadInterval(String uploadInterval) {
-            this.uploadInterval = Objects.requireNonNull(uploadInterval);
+            if (uploadInterval == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingSqlServerAuditConfig", "uploadInterval");
+            }
+            this.uploadInterval = uploadInterval;
             return this;
         }
         public GetDatabaseInstanceSettingSqlServerAuditConfig build() {

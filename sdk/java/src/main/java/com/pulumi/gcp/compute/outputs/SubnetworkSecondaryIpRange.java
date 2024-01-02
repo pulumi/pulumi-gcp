@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -68,12 +69,18 @@ public final class SubnetworkSecondaryIpRange {
 
         @CustomType.Setter
         public Builder ipCidrRange(String ipCidrRange) {
-            this.ipCidrRange = Objects.requireNonNull(ipCidrRange);
+            if (ipCidrRange == null) {
+              throw new MissingRequiredPropertyException("SubnetworkSecondaryIpRange", "ipCidrRange");
+            }
+            this.ipCidrRange = ipCidrRange;
             return this;
         }
         @CustomType.Setter
         public Builder rangeName(String rangeName) {
-            this.rangeName = Objects.requireNonNull(rangeName);
+            if (rangeName == null) {
+              throw new MissingRequiredPropertyException("SubnetworkSecondaryIpRange", "rangeName");
+            }
+            this.rangeName = rangeName;
             return this;
         }
         public SubnetworkSecondaryIpRange build() {

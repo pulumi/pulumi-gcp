@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -91,7 +92,9 @@ public final class InstanceFromMachineImageScratchDiskArgs extends com.pulumi.re
         }
 
         public InstanceFromMachineImageScratchDiskArgs build() {
-            $.interface_ = Objects.requireNonNull($.interface_, "expected parameter 'interface' to be non-null");
+            if ($.interface_ == null) {
+                throw new MissingRequiredPropertyException("InstanceFromMachineImageScratchDiskArgs", "interface_");
+            }
             return $;
         }
     }

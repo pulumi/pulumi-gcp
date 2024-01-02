@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -80,11 +81,15 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
 
         @CustomType.Setter
         public Builder bucketName(String bucketName) {
-            this.bucketName = Objects.requireNonNull(bucketName);
+            if (bucketName == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet", "bucketName");
+            }
+            this.bucketName = bucketName;
             return this;
         }
         @CustomType.Setter
         public Builder excludeRegexes(@Nullable List<String> excludeRegexes) {
+
             this.excludeRegexes = excludeRegexes;
             return this;
         }
@@ -93,6 +98,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
         }
         @CustomType.Setter
         public Builder includeRegexes(@Nullable List<String> includeRegexes) {
+
             this.includeRegexes = includeRegexes;
             return this;
         }

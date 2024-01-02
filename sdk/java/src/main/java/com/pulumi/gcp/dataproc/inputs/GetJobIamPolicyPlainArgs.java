@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -91,7 +92,9 @@ public final class GetJobIamPolicyPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetJobIamPolicyPlainArgs build() {
-            $.jobId = Objects.requireNonNull($.jobId, "expected parameter 'jobId' to be non-null");
+            if ($.jobId == null) {
+                throw new MissingRequiredPropertyException("GetJobIamPolicyPlainArgs", "jobId");
+            }
             return $;
         }
     }

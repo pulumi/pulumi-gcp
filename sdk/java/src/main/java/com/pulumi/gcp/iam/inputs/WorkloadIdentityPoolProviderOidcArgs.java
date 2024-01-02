@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -409,7 +410,9 @@ public final class WorkloadIdentityPoolProviderOidcArgs extends com.pulumi.resou
         }
 
         public WorkloadIdentityPoolProviderOidcArgs build() {
-            $.issuerUri = Objects.requireNonNull($.issuerUri, "expected parameter 'issuerUri' to be non-null");
+            if ($.issuerUri == null) {
+                throw new MissingRequiredPropertyException("WorkloadIdentityPoolProviderOidcArgs", "issuerUri");
+            }
             return $;
         }
     }

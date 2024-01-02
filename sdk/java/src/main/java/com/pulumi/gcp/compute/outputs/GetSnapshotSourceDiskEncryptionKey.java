@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetSnapshotSourceDiskEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKeyServiceAccount(String kmsKeyServiceAccount) {
-            this.kmsKeyServiceAccount = Objects.requireNonNull(kmsKeyServiceAccount);
+            if (kmsKeyServiceAccount == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotSourceDiskEncryptionKey", "kmsKeyServiceAccount");
+            }
+            this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder rawKey(String rawKey) {
-            this.rawKey = Objects.requireNonNull(rawKey);
+            if (rawKey == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotSourceDiskEncryptionKey", "rawKey");
+            }
+            this.rawKey = rawKey;
             return this;
         }
         public GetSnapshotSourceDiskEncryptionKey build() {

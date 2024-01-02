@@ -5,6 +5,7 @@ package com.pulumi.gcp.endpoints;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.endpoints.inputs.ConsumersIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -153,10 +154,18 @@ public final class ConsumersIamMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         public ConsumersIamMemberArgs build() {
-            $.consumerProject = Objects.requireNonNull($.consumerProject, "expected parameter 'consumerProject' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.consumerProject == null) {
+                throw new MissingRequiredPropertyException("ConsumersIamMemberArgs", "consumerProject");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("ConsumersIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ConsumersIamMemberArgs", "role");
+            }
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("ConsumersIamMemberArgs", "serviceName");
+            }
             return $;
         }
     }

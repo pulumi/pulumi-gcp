@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -73,6 +74,7 @@ public final class GuestPoliciesRecipeUpdateStepMsiInstallation {
 
         @CustomType.Setter
         public Builder allowedExitCodes(@Nullable List<Integer> allowedExitCodes) {
+
             this.allowedExitCodes = allowedExitCodes;
             return this;
         }
@@ -81,11 +83,15 @@ public final class GuestPoliciesRecipeUpdateStepMsiInstallation {
         }
         @CustomType.Setter
         public Builder artifactId(String artifactId) {
-            this.artifactId = Objects.requireNonNull(artifactId);
+            if (artifactId == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesRecipeUpdateStepMsiInstallation", "artifactId");
+            }
+            this.artifactId = artifactId;
             return this;
         }
         @CustomType.Setter
         public Builder flags(@Nullable List<String> flags) {
+
             this.flags = flags;
             return this;
         }

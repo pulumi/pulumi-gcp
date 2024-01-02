@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -69,27 +70,40 @@ public final class GetProjectServiceResult {
 
         @CustomType.Setter
         public Builder disableDependentServices(Boolean disableDependentServices) {
-            this.disableDependentServices = Objects.requireNonNull(disableDependentServices);
+            if (disableDependentServices == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceResult", "disableDependentServices");
+            }
+            this.disableDependentServices = disableDependentServices;
             return this;
         }
         @CustomType.Setter
         public Builder disableOnDestroy(Boolean disableOnDestroy) {
-            this.disableOnDestroy = Objects.requireNonNull(disableOnDestroy);
+            if (disableOnDestroy == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceResult", "disableOnDestroy");
+            }
+            this.disableOnDestroy = disableOnDestroy;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceResult", "service");
+            }
+            this.service = service;
             return this;
         }
         public GetProjectServiceResult build() {

@@ -121,26 +121,31 @@ public final class NodePoolAutoscaling {
 
         @CustomType.Setter
         public Builder locationPolicy(@Nullable String locationPolicy) {
+
             this.locationPolicy = locationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder maxNodeCount(@Nullable Integer maxNodeCount) {
+
             this.maxNodeCount = maxNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder minNodeCount(@Nullable Integer minNodeCount) {
+
             this.minNodeCount = minNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder totalMaxNodeCount(@Nullable Integer totalMaxNodeCount) {
+
             this.totalMaxNodeCount = totalMaxNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder totalMinNodeCount(@Nullable Integer totalMinNodeCount) {
+
             this.totalMinNodeCount = totalMinNodeCount;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,21 +92,29 @@ public final class ApplicationIap {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder oauth2ClientId(String oauth2ClientId) {
-            this.oauth2ClientId = Objects.requireNonNull(oauth2ClientId);
+            if (oauth2ClientId == null) {
+              throw new MissingRequiredPropertyException("ApplicationIap", "oauth2ClientId");
+            }
+            this.oauth2ClientId = oauth2ClientId;
             return this;
         }
         @CustomType.Setter
         public Builder oauth2ClientSecret(String oauth2ClientSecret) {
-            this.oauth2ClientSecret = Objects.requireNonNull(oauth2ClientSecret);
+            if (oauth2ClientSecret == null) {
+              throw new MissingRequiredPropertyException("ApplicationIap", "oauth2ClientSecret");
+            }
+            this.oauth2ClientSecret = oauth2ClientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder oauth2ClientSecretSha256(@Nullable String oauth2ClientSecretSha256) {
+
             this.oauth2ClientSecretSha256 = oauth2ClientSecretSha256;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileMysqlArgs;
@@ -459,7 +460,9 @@ public final class ConnectionProfileArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ConnectionProfileArgs build() {
-            $.connectionProfileId = Objects.requireNonNull($.connectionProfileId, "expected parameter 'connectionProfileId' to be non-null");
+            if ($.connectionProfileId == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileArgs", "connectionProfileId");
+            }
             return $;
         }
     }

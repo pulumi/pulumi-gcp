@@ -46,6 +46,7 @@ public final class ProjectCustomModuleCustomConfigCustomOutput {
 
         @CustomType.Setter
         public Builder properties(@Nullable List<ProjectCustomModuleCustomConfigCustomOutputProperty> properties) {
+
             this.properties = properties;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetBackendServiceCdnPolicyNegativeCachingPolicy {
 
         @CustomType.Setter
         public Builder code(Integer code) {
-            this.code = Objects.requireNonNull(code);
+            if (code == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicyNegativeCachingPolicy", "code");
+            }
+            this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(Integer ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicyNegativeCachingPolicy", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         public GetBackendServiceCdnPolicyNegativeCachingPolicy build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkebackup.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class BackupPlanBackupConfigEncryptionKey {
 
         @CustomType.Setter
         public Builder gcpKmsEncryptionKey(String gcpKmsEncryptionKey) {
-            this.gcpKmsEncryptionKey = Objects.requireNonNull(gcpKmsEncryptionKey);
+            if (gcpKmsEncryptionKey == null) {
+              throw new MissingRequiredPropertyException("BackupPlanBackupConfigEncryptionKey", "gcpKmsEncryptionKey");
+            }
+            this.gcpKmsEncryptionKey = gcpKmsEncryptionKey;
             return this;
         }
         public BackupPlanBackupConfigEncryptionKey build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -95,7 +96,9 @@ public final class GetSubscriptionIamPolicyPlainArgs extends com.pulumi.resource
         }
 
         public GetSubscriptionIamPolicyPlainArgs build() {
-            $.subscription = Objects.requireNonNull($.subscription, "expected parameter 'subscription' to be non-null");
+            if ($.subscription == null) {
+                throw new MissingRequiredPropertyException("GetSubscriptionIamPolicyPlainArgs", "subscription");
+            }
             return $;
         }
     }

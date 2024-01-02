@@ -46,6 +46,7 @@ public final class WorkforcePoolAccessRestrictionsAllowedService {
 
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }

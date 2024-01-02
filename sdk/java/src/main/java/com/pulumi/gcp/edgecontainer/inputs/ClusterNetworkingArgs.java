@@ -5,6 +5,7 @@ package com.pulumi.gcp.edgecontainer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -319,8 +320,12 @@ public final class ClusterNetworkingArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ClusterNetworkingArgs build() {
-            $.clusterIpv4CidrBlocks = Objects.requireNonNull($.clusterIpv4CidrBlocks, "expected parameter 'clusterIpv4CidrBlocks' to be non-null");
-            $.servicesIpv4CidrBlocks = Objects.requireNonNull($.servicesIpv4CidrBlocks, "expected parameter 'servicesIpv4CidrBlocks' to be non-null");
+            if ($.clusterIpv4CidrBlocks == null) {
+                throw new MissingRequiredPropertyException("ClusterNetworkingArgs", "clusterIpv4CidrBlocks");
+            }
+            if ($.servicesIpv4CidrBlocks == null) {
+                throw new MissingRequiredPropertyException("ClusterNetworkingArgs", "servicesIpv4CidrBlocks");
+            }
             return $;
         }
     }

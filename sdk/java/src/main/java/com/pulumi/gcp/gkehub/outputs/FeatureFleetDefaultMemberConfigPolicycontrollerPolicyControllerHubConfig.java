@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent;
@@ -184,16 +185,19 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
 
         @CustomType.Setter
         public Builder auditIntervalSeconds(@Nullable Integer auditIntervalSeconds) {
+
             this.auditIntervalSeconds = auditIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder constraintViolationLimit(@Nullable Integer constraintViolationLimit) {
+
             this.constraintViolationLimit = constraintViolationLimit;
             return this;
         }
         @CustomType.Setter
         public Builder deploymentConfigs(@Nullable List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig> deploymentConfigs) {
+
             this.deploymentConfigs = deploymentConfigs;
             return this;
         }
@@ -202,6 +206,7 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
         }
         @CustomType.Setter
         public Builder exemptableNamespaces(@Nullable List<String> exemptableNamespaces) {
+
             this.exemptableNamespaces = exemptableNamespaces;
             return this;
         }
@@ -210,31 +215,39 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
         }
         @CustomType.Setter
         public Builder installSpec(String installSpec) {
-            this.installSpec = Objects.requireNonNull(installSpec);
+            if (installSpec == null) {
+              throw new MissingRequiredPropertyException("FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig", "installSpec");
+            }
+            this.installSpec = installSpec;
             return this;
         }
         @CustomType.Setter
         public Builder logDeniesEnabled(@Nullable Boolean logDeniesEnabled) {
+
             this.logDeniesEnabled = logDeniesEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(@Nullable FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring monitoring) {
+
             this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder mutationEnabled(@Nullable Boolean mutationEnabled) {
+
             this.mutationEnabled = mutationEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder policyContent(@Nullable FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent policyContent) {
+
             this.policyContent = policyContent;
             return this;
         }
         @CustomType.Setter
         public Builder referentialRulesEnabled(@Nullable Boolean referentialRulesEnabled) {
+
             this.referentialRulesEnabled = referentialRulesEnabled;
             return this;
         }

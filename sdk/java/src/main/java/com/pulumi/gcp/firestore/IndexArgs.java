@@ -5,6 +5,7 @@ package com.pulumi.gcp.firestore;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.firestore.inputs.IndexFieldArgs;
 import java.lang.String;
 import java.util.List;
@@ -323,8 +324,12 @@ public final class IndexArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IndexArgs build() {
-            $.collection = Objects.requireNonNull($.collection, "expected parameter 'collection' to be non-null");
-            $.fields = Objects.requireNonNull($.fields, "expected parameter 'fields' to be non-null");
+            if ($.collection == null) {
+                throw new MissingRequiredPropertyException("IndexArgs", "collection");
+            }
+            if ($.fields == null) {
+                throw new MissingRequiredPropertyException("IndexArgs", "fields");
+            }
             return $;
         }
     }

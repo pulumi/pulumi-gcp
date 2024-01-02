@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,42 +77,66 @@ public final class GetAuthorityConfigSubjectConfigSubject {
 
         @CustomType.Setter
         public Builder commonName(String commonName) {
-            this.commonName = Objects.requireNonNull(commonName);
+            if (commonName == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubject", "commonName");
+            }
+            this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
         public Builder countryCode(String countryCode) {
-            this.countryCode = Objects.requireNonNull(countryCode);
+            if (countryCode == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubject", "countryCode");
+            }
+            this.countryCode = countryCode;
             return this;
         }
         @CustomType.Setter
         public Builder locality(String locality) {
-            this.locality = Objects.requireNonNull(locality);
+            if (locality == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubject", "locality");
+            }
+            this.locality = locality;
             return this;
         }
         @CustomType.Setter
         public Builder organization(String organization) {
-            this.organization = Objects.requireNonNull(organization);
+            if (organization == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubject", "organization");
+            }
+            this.organization = organization;
             return this;
         }
         @CustomType.Setter
         public Builder organizationalUnit(String organizationalUnit) {
-            this.organizationalUnit = Objects.requireNonNull(organizationalUnit);
+            if (organizationalUnit == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubject", "organizationalUnit");
+            }
+            this.organizationalUnit = organizationalUnit;
             return this;
         }
         @CustomType.Setter
         public Builder postalCode(String postalCode) {
-            this.postalCode = Objects.requireNonNull(postalCode);
+            if (postalCode == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubject", "postalCode");
+            }
+            this.postalCode = postalCode;
             return this;
         }
         @CustomType.Setter
         public Builder province(String province) {
-            this.province = Objects.requireNonNull(province);
+            if (province == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubject", "province");
+            }
+            this.province = province;
             return this;
         }
         @CustomType.Setter
         public Builder streetAddress(String streetAddress) {
-            this.streetAddress = Objects.requireNonNull(streetAddress);
+            if (streetAddress == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubject", "streetAddress");
+            }
+            this.streetAddress = streetAddress;
             return this;
         }
         public GetAuthorityConfigSubjectConfigSubject build() {

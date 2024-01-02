@@ -83,11 +83,13 @@ public final class SloRequestBasedSli {
 
         @CustomType.Setter
         public Builder distributionCut(@Nullable SloRequestBasedSliDistributionCut distributionCut) {
+
             this.distributionCut = distributionCut;
             return this;
         }
         @CustomType.Setter
         public Builder goodTotalRatio(@Nullable SloRequestBasedSliGoodTotalRatio goodTotalRatio) {
+
             this.goodTotalRatio = goodTotalRatio;
             return this;
         }

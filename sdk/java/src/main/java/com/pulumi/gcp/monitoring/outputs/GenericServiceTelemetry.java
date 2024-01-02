@@ -48,6 +48,7 @@ public final class GenericServiceTelemetry {
 
         @CustomType.Setter
         public Builder resourceName(@Nullable String resourceName) {
+
             this.resourceName = resourceName;
             return this;
         }

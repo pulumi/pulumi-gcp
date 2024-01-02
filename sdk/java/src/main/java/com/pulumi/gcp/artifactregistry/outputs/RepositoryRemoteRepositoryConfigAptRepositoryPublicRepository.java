@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -58,12 +59,18 @@ public final class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository
 
         @CustomType.Setter
         public Builder repositoryBase(String repositoryBase) {
-            this.repositoryBase = Objects.requireNonNull(repositoryBase);
+            if (repositoryBase == null) {
+              throw new MissingRequiredPropertyException("RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository", "repositoryBase");
+            }
+            this.repositoryBase = repositoryBase;
             return this;
         }
         @CustomType.Setter
         public Builder repositoryPath(String repositoryPath) {
-            this.repositoryPath = Objects.requireNonNull(repositoryPath);
+            if (repositoryPath == null) {
+              throw new MissingRequiredPropertyException("RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository", "repositoryPath");
+            }
+            this.repositoryPath = repositoryPath;
             return this;
         }
         public RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository build() {

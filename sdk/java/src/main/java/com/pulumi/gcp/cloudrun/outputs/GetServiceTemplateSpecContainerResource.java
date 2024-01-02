@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetServiceTemplateSpecContainerResource {
 
         @CustomType.Setter
         public Builder limits(Map<String,String> limits) {
-            this.limits = Objects.requireNonNull(limits);
+            if (limits == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerResource", "limits");
+            }
+            this.limits = limits;
             return this;
         }
         @CustomType.Setter
         public Builder requests(Map<String,String> requests) {
-            this.requests = Objects.requireNonNull(requests);
+            if (requests == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerResource", "requests");
+            }
+            this.requests = requests;
             return this;
         }
         public GetServiceTemplateSpecContainerResource build() {

@@ -58,11 +58,13 @@ public final class RegionInstanceGroupManagerStatefulInternalIp {
 
         @CustomType.Setter
         public Builder deleteRule(@Nullable String deleteRule) {
+
             this.deleteRule = deleteRule;
             return this;
         }
         @CustomType.Setter
         public Builder interfaceName(@Nullable String interfaceName) {
+
             this.interfaceName = interfaceName;
             return this;
         }

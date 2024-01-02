@@ -46,6 +46,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder condition(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionCondition condition) {
+
             this.condition = condition;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.BucketAutoclassArgs;
 import com.pulumi.gcp.storage.inputs.BucketCorArgs;
 import com.pulumi.gcp.storage.inputs.BucketCustomPlacementConfigArgs;
@@ -868,7 +869,9 @@ public final class BucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BucketArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("BucketArgs", "location");
+            }
             return $;
         }
     }

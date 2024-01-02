@@ -5,6 +5,7 @@ package com.pulumi.gcp.binaryauthorization;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.binaryauthorization.inputs.AttestorIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -245,9 +246,15 @@ public final class AttestorIamMemberArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AttestorIamMemberArgs build() {
-            $.attestor = Objects.requireNonNull($.attestor, "expected parameter 'attestor' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.attestor == null) {
+                throw new MissingRequiredPropertyException("AttestorIamMemberArgs", "attestor");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("AttestorIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AttestorIamMemberArgs", "role");
+            }
             return $;
         }
     }

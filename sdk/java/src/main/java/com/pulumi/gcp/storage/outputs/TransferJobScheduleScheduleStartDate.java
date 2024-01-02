@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -74,17 +75,26 @@ public final class TransferJobScheduleScheduleStartDate {
 
         @CustomType.Setter
         public Builder day(Integer day) {
-            this.day = Objects.requireNonNull(day);
+            if (day == null) {
+              throw new MissingRequiredPropertyException("TransferJobScheduleScheduleStartDate", "day");
+            }
+            this.day = day;
             return this;
         }
         @CustomType.Setter
         public Builder month(Integer month) {
-            this.month = Objects.requireNonNull(month);
+            if (month == null) {
+              throw new MissingRequiredPropertyException("TransferJobScheduleScheduleStartDate", "month");
+            }
+            this.month = month;
             return this;
         }
         @CustomType.Setter
         public Builder year(Integer year) {
-            this.year = Objects.requireNonNull(year);
+            if (year == null) {
+              throw new MissingRequiredPropertyException("TransferJobScheduleScheduleStartDate", "year");
+            }
+            this.year = year;
             return this;
         }
         public TransferJobScheduleScheduleStartDate build() {

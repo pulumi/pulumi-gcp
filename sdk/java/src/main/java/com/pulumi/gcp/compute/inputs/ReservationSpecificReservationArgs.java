@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesArgs;
 import java.lang.Integer;
 import java.util.Objects;
@@ -159,8 +160,12 @@ public final class ReservationSpecificReservationArgs extends com.pulumi.resourc
         }
 
         public ReservationSpecificReservationArgs build() {
-            $.count = Objects.requireNonNull($.count, "expected parameter 'count' to be non-null");
-            $.instanceProperties = Objects.requireNonNull($.instanceProperties, "expected parameter 'instanceProperties' to be non-null");
+            if ($.count == null) {
+                throw new MissingRequiredPropertyException("ReservationSpecificReservationArgs", "count");
+            }
+            if ($.instanceProperties == null) {
+                throw new MissingRequiredPropertyException("ReservationSpecificReservationArgs", "instanceProperties");
+            }
             return $;
         }
     }

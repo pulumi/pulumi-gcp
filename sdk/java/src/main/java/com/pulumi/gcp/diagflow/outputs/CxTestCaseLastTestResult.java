@@ -112,6 +112,7 @@ public final class CxTestCaseLastTestResult {
 
         @CustomType.Setter
         public Builder conversationTurns(@Nullable List<CxTestCaseLastTestResultConversationTurn> conversationTurns) {
+
             this.conversationTurns = conversationTurns;
             return this;
         }
@@ -120,21 +121,25 @@ public final class CxTestCaseLastTestResult {
         }
         @CustomType.Setter
         public Builder environment(@Nullable String environment) {
+
             this.environment = environment;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder testResult(@Nullable String testResult) {
+
             this.testResult = testResult;
             return this;
         }
         @CustomType.Setter
         public Builder testTime(@Nullable String testTime) {
+
             this.testTime = testTime;
             return this;
         }

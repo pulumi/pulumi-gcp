@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn;
 import java.lang.String;
 import java.util.List;
@@ -61,6 +62,7 @@ public final class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabas
 
         @CustomType.Setter
         public Builder mysqlColumns(@Nullable List<StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTableMysqlColumn> mysqlColumns) {
+
             this.mysqlColumns = mysqlColumns;
             return this;
         }
@@ -69,7 +71,10 @@ public final class StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabas
         }
         @CustomType.Setter
         public Builder table(String table) {
-            this.table = Objects.requireNonNull(table);
+            if (table == null) {
+              throw new MissingRequiredPropertyException("StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable", "table");
+            }
+            this.table = table;
             return this;
         }
         public StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable build() {

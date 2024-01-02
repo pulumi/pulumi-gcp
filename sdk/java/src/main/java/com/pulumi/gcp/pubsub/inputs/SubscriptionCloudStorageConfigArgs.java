@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionCloudStorageConfigAvroConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -320,7 +321,9 @@ public final class SubscriptionCloudStorageConfigArgs extends com.pulumi.resourc
         }
 
         public SubscriptionCloudStorageConfigArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("SubscriptionCloudStorageConfigArgs", "bucket");
+            }
             return $;
         }
     }

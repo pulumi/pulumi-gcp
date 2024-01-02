@@ -46,6 +46,7 @@ public final class FeatureSpecFleetobservability {
 
         @CustomType.Setter
         public Builder loggingConfig(@Nullable FeatureSpecFleetobservabilityLoggingConfig loggingConfig) {
+
             this.loggingConfig = loggingConfig;
             return this;
         }

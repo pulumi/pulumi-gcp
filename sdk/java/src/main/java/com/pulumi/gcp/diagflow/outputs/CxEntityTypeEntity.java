@@ -69,6 +69,7 @@ public final class CxEntityTypeEntity {
 
         @CustomType.Setter
         public Builder synonyms(@Nullable List<String> synonyms) {
+
             this.synonyms = synonyms;
             return this;
         }
@@ -77,6 +78,7 @@ public final class CxEntityTypeEntity {
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

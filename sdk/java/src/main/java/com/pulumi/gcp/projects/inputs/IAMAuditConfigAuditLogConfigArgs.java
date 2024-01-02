@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -124,7 +125,9 @@ public final class IAMAuditConfigAuditLogConfigArgs extends com.pulumi.resources
         }
 
         public IAMAuditConfigAuditLogConfigArgs build() {
-            $.logType = Objects.requireNonNull($.logType, "expected parameter 'logType' to be non-null");
+            if ($.logType == null) {
+                throw new MissingRequiredPropertyException("IAMAuditConfigAuditLogConfigArgs", "logType");
+            }
             return $;
         }
     }

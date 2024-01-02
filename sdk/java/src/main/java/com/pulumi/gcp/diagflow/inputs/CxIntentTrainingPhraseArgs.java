@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhrasePartArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -202,7 +203,9 @@ public final class CxIntentTrainingPhraseArgs extends com.pulumi.resources.Resou
         }
 
         public CxIntentTrainingPhraseArgs build() {
-            $.parts = Objects.requireNonNull($.parts, "expected parameter 'parts' to be non-null");
+            if ($.parts == null) {
+                throw new MissingRequiredPropertyException("CxIntentTrainingPhraseArgs", "parts");
+            }
             return $;
         }
     }

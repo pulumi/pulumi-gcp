@@ -115,26 +115,31 @@ public final class VMwareClusterControlPlaneNode {
 
         @CustomType.Setter
         public Builder autoResizeConfig(@Nullable VMwareClusterControlPlaneNodeAutoResizeConfig autoResizeConfig) {
+
             this.autoResizeConfig = autoResizeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder cpus(@Nullable Integer cpus) {
+
             this.cpus = cpus;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable Integer memory) {
+
             this.memory = memory;
             return this;
         }
         @CustomType.Setter
         public Builder replicas(@Nullable Integer replicas) {
+
             this.replicas = replicas;
             return this;
         }
         @CustomType.Setter
         public Builder vsphereConfigs(@Nullable List<VMwareClusterControlPlaneNodeVsphereConfig> vsphereConfigs) {
+
             this.vsphereConfigs = vsphereConfigs;
             return this;
         }

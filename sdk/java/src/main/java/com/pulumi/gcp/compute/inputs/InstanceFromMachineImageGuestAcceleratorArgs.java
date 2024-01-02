@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -72,8 +73,12 @@ public final class InstanceFromMachineImageGuestAcceleratorArgs extends com.pulu
         }
 
         public InstanceFromMachineImageGuestAcceleratorArgs build() {
-            $.count = Objects.requireNonNull($.count, "expected parameter 'count' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.count == null) {
+                throw new MissingRequiredPropertyException("InstanceFromMachineImageGuestAcceleratorArgs", "count");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("InstanceFromMachineImageGuestAcceleratorArgs", "type");
+            }
             return $;
         }
     }

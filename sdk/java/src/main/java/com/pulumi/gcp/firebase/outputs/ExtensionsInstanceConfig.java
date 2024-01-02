@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firebase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -182,6 +183,7 @@ public final class ExtensionsInstanceConfig {
 
         @CustomType.Setter
         public Builder allowedEventTypes(@Nullable List<String> allowedEventTypes) {
+
             this.allowedEventTypes = allowedEventTypes;
             return this;
         }
@@ -190,41 +192,53 @@ public final class ExtensionsInstanceConfig {
         }
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder eventarcChannel(@Nullable String eventarcChannel) {
+
             this.eventarcChannel = eventarcChannel;
             return this;
         }
         @CustomType.Setter
         public Builder extensionRef(String extensionRef) {
-            this.extensionRef = Objects.requireNonNull(extensionRef);
+            if (extensionRef == null) {
+              throw new MissingRequiredPropertyException("ExtensionsInstanceConfig", "extensionRef");
+            }
+            this.extensionRef = extensionRef;
             return this;
         }
         @CustomType.Setter
         public Builder extensionVersion(@Nullable String extensionVersion) {
+
             this.extensionVersion = extensionVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder params(Map<String,String> params) {
-            this.params = Objects.requireNonNull(params);
+            if (params == null) {
+              throw new MissingRequiredPropertyException("ExtensionsInstanceConfig", "params");
+            }
+            this.params = params;
             return this;
         }
         @CustomType.Setter
         public Builder populatedPostinstallContent(@Nullable String populatedPostinstallContent) {
+
             this.populatedPostinstallContent = populatedPostinstallContent;
             return this;
         }
         @CustomType.Setter
         public Builder systemParams(@Nullable Map<String,String> systemParams) {
+
             this.systemParams = systemParams;
             return this;
         }

@@ -89,21 +89,25 @@ public final class TransferJobTransferSpecTransferOptions {
 
         @CustomType.Setter
         public Builder deleteObjectsFromSourceAfterTransfer(@Nullable Boolean deleteObjectsFromSourceAfterTransfer) {
+
             this.deleteObjectsFromSourceAfterTransfer = deleteObjectsFromSourceAfterTransfer;
             return this;
         }
         @CustomType.Setter
         public Builder deleteObjectsUniqueInSink(@Nullable Boolean deleteObjectsUniqueInSink) {
+
             this.deleteObjectsUniqueInSink = deleteObjectsUniqueInSink;
             return this;
         }
         @CustomType.Setter
         public Builder overwriteObjectsAlreadyExistingInSink(@Nullable Boolean overwriteObjectsAlreadyExistingInSink) {
+
             this.overwriteObjectsAlreadyExistingInSink = overwriteObjectsAlreadyExistingInSink;
             return this;
         }
         @CustomType.Setter
         public Builder overwriteWhen(@Nullable String overwriteWhen) {
+
             this.overwriteWhen = overwriteWhen;
             return this;
         }

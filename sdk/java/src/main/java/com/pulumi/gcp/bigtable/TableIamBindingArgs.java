@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigtable.inputs.TableIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -291,10 +292,18 @@ public final class TableIamBindingArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public TableIamBindingArgs build() {
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.table = Objects.requireNonNull($.table, "expected parameter 'table' to be non-null");
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("TableIamBindingArgs", "instance");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("TableIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("TableIamBindingArgs", "role");
+            }
+            if ($.table == null) {
+                throw new MissingRequiredPropertyException("TableIamBindingArgs", "table");
+            }
             return $;
         }
     }

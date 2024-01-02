@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.GenericServiceBasicServiceArgs;
 import java.lang.String;
 import java.util.Map;
@@ -274,7 +275,9 @@ public final class GenericServiceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public GenericServiceArgs build() {
-            $.serviceId = Objects.requireNonNull($.serviceId, "expected parameter 'serviceId' to be non-null");
+            if ($.serviceId == null) {
+                throw new MissingRequiredPropertyException("GenericServiceArgs", "serviceId");
+            }
             return $;
         }
     }

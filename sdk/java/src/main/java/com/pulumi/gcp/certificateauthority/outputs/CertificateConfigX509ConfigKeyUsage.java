@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigKeyUsageBaseKeyUsage;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigKeyUsageExtendedKeyUsage;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage;
@@ -80,16 +81,23 @@ public final class CertificateConfigX509ConfigKeyUsage {
 
         @CustomType.Setter
         public Builder baseKeyUsage(CertificateConfigX509ConfigKeyUsageBaseKeyUsage baseKeyUsage) {
-            this.baseKeyUsage = Objects.requireNonNull(baseKeyUsage);
+            if (baseKeyUsage == null) {
+              throw new MissingRequiredPropertyException("CertificateConfigX509ConfigKeyUsage", "baseKeyUsage");
+            }
+            this.baseKeyUsage = baseKeyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder extendedKeyUsage(CertificateConfigX509ConfigKeyUsageExtendedKeyUsage extendedKeyUsage) {
-            this.extendedKeyUsage = Objects.requireNonNull(extendedKeyUsage);
+            if (extendedKeyUsage == null) {
+              throw new MissingRequiredPropertyException("CertificateConfigX509ConfigKeyUsage", "extendedKeyUsage");
+            }
+            this.extendedKeyUsage = extendedKeyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder unknownExtendedKeyUsages(@Nullable List<CertificateConfigX509ConfigKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
+
             this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
             return this;
         }

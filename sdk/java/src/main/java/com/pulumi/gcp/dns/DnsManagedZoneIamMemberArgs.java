@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -245,9 +246,15 @@ public final class DnsManagedZoneIamMemberArgs extends com.pulumi.resources.Reso
         }
 
         public DnsManagedZoneIamMemberArgs build() {
-            $.managedZone = Objects.requireNonNull($.managedZone, "expected parameter 'managedZone' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.managedZone == null) {
+                throw new MissingRequiredPropertyException("DnsManagedZoneIamMemberArgs", "managedZone");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("DnsManagedZoneIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("DnsManagedZoneIamMemberArgs", "role");
+            }
             return $;
         }
     }

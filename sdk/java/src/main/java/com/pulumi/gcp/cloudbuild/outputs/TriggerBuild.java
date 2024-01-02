@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBuildArtifacts;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBuildAvailableSecrets;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBuildOptions;
@@ -242,16 +243,19 @@ public final class TriggerBuild {
 
         @CustomType.Setter
         public Builder artifacts(@Nullable TriggerBuildArtifacts artifacts) {
+
             this.artifacts = artifacts;
             return this;
         }
         @CustomType.Setter
         public Builder availableSecrets(@Nullable TriggerBuildAvailableSecrets availableSecrets) {
+
             this.availableSecrets = availableSecrets;
             return this;
         }
         @CustomType.Setter
         public Builder images(@Nullable List<String> images) {
+
             this.images = images;
             return this;
         }
@@ -260,21 +264,25 @@ public final class TriggerBuild {
         }
         @CustomType.Setter
         public Builder logsBucket(@Nullable String logsBucket) {
+
             this.logsBucket = logsBucket;
             return this;
         }
         @CustomType.Setter
         public Builder options(@Nullable TriggerBuildOptions options) {
+
             this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder queueTtl(@Nullable String queueTtl) {
+
             this.queueTtl = queueTtl;
             return this;
         }
         @CustomType.Setter
         public Builder secrets(@Nullable List<TriggerBuildSecret> secrets) {
+
             this.secrets = secrets;
             return this;
         }
@@ -283,12 +291,16 @@ public final class TriggerBuild {
         }
         @CustomType.Setter
         public Builder source(@Nullable TriggerBuildSource source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder steps(List<TriggerBuildStep> steps) {
-            this.steps = Objects.requireNonNull(steps);
+            if (steps == null) {
+              throw new MissingRequiredPropertyException("TriggerBuild", "steps");
+            }
+            this.steps = steps;
             return this;
         }
         public Builder steps(TriggerBuildStep... steps) {
@@ -296,11 +308,13 @@ public final class TriggerBuild {
         }
         @CustomType.Setter
         public Builder substitutions(@Nullable Map<String,String> substitutions) {
+
             this.substitutions = substitutions;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -309,6 +323,7 @@ public final class TriggerBuild {
         }
         @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
+
             this.timeout = timeout;
             return this;
         }

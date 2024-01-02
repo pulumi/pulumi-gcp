@@ -92,16 +92,19 @@ public final class ClusterVirtualClusterConfig {
 
         @CustomType.Setter
         public Builder auxiliaryServicesConfig(@Nullable ClusterVirtualClusterConfigAuxiliaryServicesConfig auxiliaryServicesConfig) {
+
             this.auxiliaryServicesConfig = auxiliaryServicesConfig;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesClusterConfig(@Nullable ClusterVirtualClusterConfigKubernetesClusterConfig kubernetesClusterConfig) {
+
             this.kubernetesClusterConfig = kubernetesClusterConfig;
             return this;
         }
         @CustomType.Setter
         public Builder stagingBucket(@Nullable String stagingBucket) {
+
             this.stagingBucket = stagingBucket;
             return this;
         }

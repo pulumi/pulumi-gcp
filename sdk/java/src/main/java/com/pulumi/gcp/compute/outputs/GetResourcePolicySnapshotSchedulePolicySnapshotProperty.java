@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -55,22 +56,34 @@ public final class GetResourcePolicySnapshotSchedulePolicySnapshotProperty {
 
         @CustomType.Setter
         public Builder chainName(String chainName) {
-            this.chainName = Objects.requireNonNull(chainName);
+            if (chainName == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicySnapshotProperty", "chainName");
+            }
+            this.chainName = chainName;
             return this;
         }
         @CustomType.Setter
         public Builder guestFlush(Boolean guestFlush) {
-            this.guestFlush = Objects.requireNonNull(guestFlush);
+            if (guestFlush == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicySnapshotProperty", "guestFlush");
+            }
+            this.guestFlush = guestFlush;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicySnapshotProperty", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder storageLocations(List<String> storageLocations) {
-            this.storageLocations = Objects.requireNonNull(storageLocations);
+            if (storageLocations == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicySnapshotProperty", "storageLocations");
+            }
+            this.storageLocations = storageLocations;
             return this;
         }
         public Builder storageLocations(String... storageLocations) {

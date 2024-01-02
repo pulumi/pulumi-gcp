@@ -4,6 +4,7 @@
 package com.pulumi.gcp.apigateway.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -81,7 +82,9 @@ public final class GetApiIamPolicyPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetApiIamPolicyPlainArgs build() {
-            $.api = Objects.requireNonNull($.api, "expected parameter 'api' to be non-null");
+            if ($.api == null) {
+                throw new MissingRequiredPropertyException("GetApiIamPolicyPlainArgs", "api");
+            }
             return $;
         }
     }

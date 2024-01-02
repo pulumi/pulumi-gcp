@@ -5,6 +5,7 @@ package com.pulumi.gcp.backupdisasterrecovery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.ManagementServerNetworkArgs;
 import java.lang.String;
 import java.util.List;
@@ -253,8 +254,12 @@ public final class ManagementServerArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ManagementServerArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.networks = Objects.requireNonNull($.networks, "expected parameter 'networks' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ManagementServerArgs", "location");
+            }
+            if ($.networks == null) {
+                throw new MissingRequiredPropertyException("ManagementServerArgs", "networks");
+            }
             return $;
         }
     }

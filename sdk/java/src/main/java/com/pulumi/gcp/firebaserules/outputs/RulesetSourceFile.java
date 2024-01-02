@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firebaserules.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,17 +77,24 @@ public final class RulesetSourceFile {
 
         @CustomType.Setter
         public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+            if (content == null) {
+              throw new MissingRequiredPropertyException("RulesetSourceFile", "content");
+            }
+            this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(@Nullable String fingerprint) {
+
             this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("RulesetSourceFile", "name");
+            }
+            this.name = name;
             return this;
         }
         public RulesetSourceFile build() {

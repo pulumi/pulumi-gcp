@@ -44,6 +44,7 @@ public final class ClusterNodePoolAutoConfig {
 
         @CustomType.Setter
         public Builder networkTags(@Nullable ClusterNodePoolAutoConfigNetworkTags networkTags) {
+
             this.networkTags = networkTags;
             return this;
         }

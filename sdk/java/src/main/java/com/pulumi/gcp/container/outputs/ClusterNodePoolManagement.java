@@ -62,11 +62,13 @@ public final class ClusterNodePoolManagement {
 
         @CustomType.Setter
         public Builder autoRepair(@Nullable Boolean autoRepair) {
+
             this.autoRepair = autoRepair;
             return this;
         }
         @CustomType.Setter
         public Builder autoUpgrade(@Nullable Boolean autoUpgrade) {
+
             this.autoUpgrade = autoUpgrade;
             return this;
         }

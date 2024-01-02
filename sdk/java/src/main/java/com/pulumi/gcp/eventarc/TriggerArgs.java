@@ -5,6 +5,7 @@ package com.pulumi.gcp.eventarc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.eventarc.inputs.TriggerDestinationArgs;
 import com.pulumi.gcp.eventarc.inputs.TriggerMatchingCriteriaArgs;
 import com.pulumi.gcp.eventarc.inputs.TriggerTransportArgs;
@@ -436,9 +437,15 @@ public final class TriggerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TriggerArgs build() {
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.matchingCriterias = Objects.requireNonNull($.matchingCriterias, "expected parameter 'matchingCriterias' to be non-null");
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("TriggerArgs", "destination");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("TriggerArgs", "location");
+            }
+            if ($.matchingCriterias == null) {
+                throw new MissingRequiredPropertyException("TriggerArgs", "matchingCriterias");
+            }
             return $;
         }
     }

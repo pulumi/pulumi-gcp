@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -245,8 +246,12 @@ public final class AiFeatureStoreEntityTypeFeatureArgs extends com.pulumi.resour
         }
 
         public AiFeatureStoreEntityTypeFeatureArgs build() {
-            $.entitytype = Objects.requireNonNull($.entitytype, "expected parameter 'entitytype' to be non-null");
-            $.valueType = Objects.requireNonNull($.valueType, "expected parameter 'valueType' to be non-null");
+            if ($.entitytype == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreEntityTypeFeatureArgs", "entitytype");
+            }
+            if ($.valueType == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreEntityTypeFeatureArgs", "valueType");
+            }
             return $;
         }
     }

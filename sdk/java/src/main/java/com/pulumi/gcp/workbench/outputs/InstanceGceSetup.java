@@ -215,6 +215,7 @@ public final class InstanceGceSetup {
 
         @CustomType.Setter
         public Builder acceleratorConfigs(@Nullable List<InstanceGceSetupAcceleratorConfig> acceleratorConfigs) {
+
             this.acceleratorConfigs = acceleratorConfigs;
             return this;
         }
@@ -223,36 +224,43 @@ public final class InstanceGceSetup {
         }
         @CustomType.Setter
         public Builder bootDisk(@Nullable InstanceGceSetupBootDisk bootDisk) {
+
             this.bootDisk = bootDisk;
             return this;
         }
         @CustomType.Setter
         public Builder dataDisks(@Nullable InstanceGceSetupDataDisks dataDisks) {
+
             this.dataDisks = dataDisks;
             return this;
         }
         @CustomType.Setter
         public Builder disablePublicIp(@Nullable Boolean disablePublicIp) {
+
             this.disablePublicIp = disablePublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder enableIpForwarding(@Nullable Boolean enableIpForwarding) {
+
             this.enableIpForwarding = enableIpForwarding;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaces(@Nullable List<InstanceGceSetupNetworkInterface> networkInterfaces) {
+
             this.networkInterfaces = networkInterfaces;
             return this;
         }
@@ -261,6 +269,7 @@ public final class InstanceGceSetup {
         }
         @CustomType.Setter
         public Builder serviceAccounts(@Nullable List<InstanceGceSetupServiceAccount> serviceAccounts) {
+
             this.serviceAccounts = serviceAccounts;
             return this;
         }
@@ -269,6 +278,7 @@ public final class InstanceGceSetup {
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -277,6 +287,7 @@ public final class InstanceGceSetup {
         }
         @CustomType.Setter
         public Builder vmImage(@Nullable InstanceGceSetupVmImage vmImage) {
+
             this.vmImage = vmImage;
             return this;
         }

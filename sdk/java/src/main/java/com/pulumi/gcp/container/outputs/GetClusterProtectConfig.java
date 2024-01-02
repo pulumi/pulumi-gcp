@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterProtectConfigWorkloadConfig;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetClusterProtectConfig {
 
         @CustomType.Setter
         public Builder workloadConfigs(List<GetClusterProtectConfigWorkloadConfig> workloadConfigs) {
-            this.workloadConfigs = Objects.requireNonNull(workloadConfigs);
+            if (workloadConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterProtectConfig", "workloadConfigs");
+            }
+            this.workloadConfigs = workloadConfigs;
             return this;
         }
         public Builder workloadConfigs(GetClusterProtectConfigWorkloadConfig... workloadConfigs) {
@@ -50,7 +54,10 @@ public final class GetClusterProtectConfig {
         }
         @CustomType.Setter
         public Builder workloadVulnerabilityMode(String workloadVulnerabilityMode) {
-            this.workloadVulnerabilityMode = Objects.requireNonNull(workloadVulnerabilityMode);
+            if (workloadVulnerabilityMode == null) {
+              throw new MissingRequiredPropertyException("GetClusterProtectConfig", "workloadVulnerabilityMode");
+            }
+            this.workloadVulnerabilityMode = workloadVulnerabilityMode;
             return this;
         }
         public GetClusterProtectConfig build() {

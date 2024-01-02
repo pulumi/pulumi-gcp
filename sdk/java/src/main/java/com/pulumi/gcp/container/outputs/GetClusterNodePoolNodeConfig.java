@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigAdvancedMachineFeature;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigConfidentialNode;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNodeConfigEffectiveTaint;
@@ -273,7 +274,10 @@ public final class GetClusterNodePoolNodeConfig {
 
         @CustomType.Setter
         public Builder advancedMachineFeatures(List<GetClusterNodePoolNodeConfigAdvancedMachineFeature> advancedMachineFeatures) {
-            this.advancedMachineFeatures = Objects.requireNonNull(advancedMachineFeatures);
+            if (advancedMachineFeatures == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "advancedMachineFeatures");
+            }
+            this.advancedMachineFeatures = advancedMachineFeatures;
             return this;
         }
         public Builder advancedMachineFeatures(GetClusterNodePoolNodeConfigAdvancedMachineFeature... advancedMachineFeatures) {
@@ -281,12 +285,18 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder bootDiskKmsKey(String bootDiskKmsKey) {
-            this.bootDiskKmsKey = Objects.requireNonNull(bootDiskKmsKey);
+            if (bootDiskKmsKey == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "bootDiskKmsKey");
+            }
+            this.bootDiskKmsKey = bootDiskKmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder confidentialNodes(List<GetClusterNodePoolNodeConfigConfidentialNode> confidentialNodes) {
-            this.confidentialNodes = Objects.requireNonNull(confidentialNodes);
+            if (confidentialNodes == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "confidentialNodes");
+            }
+            this.confidentialNodes = confidentialNodes;
             return this;
         }
         public Builder confidentialNodes(GetClusterNodePoolNodeConfigConfidentialNode... confidentialNodes) {
@@ -294,17 +304,26 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
-            this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
+            if (diskSizeGb == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "diskSizeGb");
+            }
+            this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveTaints(List<GetClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints) {
-            this.effectiveTaints = Objects.requireNonNull(effectiveTaints);
+            if (effectiveTaints == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "effectiveTaints");
+            }
+            this.effectiveTaints = effectiveTaints;
             return this;
         }
         public Builder effectiveTaints(GetClusterNodePoolNodeConfigEffectiveTaint... effectiveTaints) {
@@ -312,12 +331,18 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder enableConfidentialStorage(Boolean enableConfidentialStorage) {
-            this.enableConfidentialStorage = Objects.requireNonNull(enableConfidentialStorage);
+            if (enableConfidentialStorage == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "enableConfidentialStorage");
+            }
+            this.enableConfidentialStorage = enableConfidentialStorage;
             return this;
         }
         @CustomType.Setter
         public Builder ephemeralStorageConfigs(List<GetClusterNodePoolNodeConfigEphemeralStorageConfig> ephemeralStorageConfigs) {
-            this.ephemeralStorageConfigs = Objects.requireNonNull(ephemeralStorageConfigs);
+            if (ephemeralStorageConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "ephemeralStorageConfigs");
+            }
+            this.ephemeralStorageConfigs = ephemeralStorageConfigs;
             return this;
         }
         public Builder ephemeralStorageConfigs(GetClusterNodePoolNodeConfigEphemeralStorageConfig... ephemeralStorageConfigs) {
@@ -325,7 +350,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder ephemeralStorageLocalSsdConfigs(List<GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig> ephemeralStorageLocalSsdConfigs) {
-            this.ephemeralStorageLocalSsdConfigs = Objects.requireNonNull(ephemeralStorageLocalSsdConfigs);
+            if (ephemeralStorageLocalSsdConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "ephemeralStorageLocalSsdConfigs");
+            }
+            this.ephemeralStorageLocalSsdConfigs = ephemeralStorageLocalSsdConfigs;
             return this;
         }
         public Builder ephemeralStorageLocalSsdConfigs(GetClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig... ephemeralStorageLocalSsdConfigs) {
@@ -333,7 +361,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder fastSockets(List<GetClusterNodePoolNodeConfigFastSocket> fastSockets) {
-            this.fastSockets = Objects.requireNonNull(fastSockets);
+            if (fastSockets == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "fastSockets");
+            }
+            this.fastSockets = fastSockets;
             return this;
         }
         public Builder fastSockets(GetClusterNodePoolNodeConfigFastSocket... fastSockets) {
@@ -341,7 +372,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder gcfsConfigs(List<GetClusterNodePoolNodeConfigGcfsConfig> gcfsConfigs) {
-            this.gcfsConfigs = Objects.requireNonNull(gcfsConfigs);
+            if (gcfsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "gcfsConfigs");
+            }
+            this.gcfsConfigs = gcfsConfigs;
             return this;
         }
         public Builder gcfsConfigs(GetClusterNodePoolNodeConfigGcfsConfig... gcfsConfigs) {
@@ -349,7 +383,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder guestAccelerators(List<GetClusterNodePoolNodeConfigGuestAccelerator> guestAccelerators) {
-            this.guestAccelerators = Objects.requireNonNull(guestAccelerators);
+            if (guestAccelerators == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "guestAccelerators");
+            }
+            this.guestAccelerators = guestAccelerators;
             return this;
         }
         public Builder guestAccelerators(GetClusterNodePoolNodeConfigGuestAccelerator... guestAccelerators) {
@@ -357,7 +394,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder gvnics(List<GetClusterNodePoolNodeConfigGvnic> gvnics) {
-            this.gvnics = Objects.requireNonNull(gvnics);
+            if (gvnics == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "gvnics");
+            }
+            this.gvnics = gvnics;
             return this;
         }
         public Builder gvnics(GetClusterNodePoolNodeConfigGvnic... gvnics) {
@@ -365,7 +405,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder hostMaintenancePolicies(List<GetClusterNodePoolNodeConfigHostMaintenancePolicy> hostMaintenancePolicies) {
-            this.hostMaintenancePolicies = Objects.requireNonNull(hostMaintenancePolicies);
+            if (hostMaintenancePolicies == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "hostMaintenancePolicies");
+            }
+            this.hostMaintenancePolicies = hostMaintenancePolicies;
             return this;
         }
         public Builder hostMaintenancePolicies(GetClusterNodePoolNodeConfigHostMaintenancePolicy... hostMaintenancePolicies) {
@@ -373,12 +416,18 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder imageType(String imageType) {
-            this.imageType = Objects.requireNonNull(imageType);
+            if (imageType == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "imageType");
+            }
+            this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder kubeletConfigs(List<GetClusterNodePoolNodeConfigKubeletConfig> kubeletConfigs) {
-            this.kubeletConfigs = Objects.requireNonNull(kubeletConfigs);
+            if (kubeletConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "kubeletConfigs");
+            }
+            this.kubeletConfigs = kubeletConfigs;
             return this;
         }
         public Builder kubeletConfigs(GetClusterNodePoolNodeConfigKubeletConfig... kubeletConfigs) {
@@ -386,12 +435,18 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder linuxNodeConfigs(List<GetClusterNodePoolNodeConfigLinuxNodeConfig> linuxNodeConfigs) {
-            this.linuxNodeConfigs = Objects.requireNonNull(linuxNodeConfigs);
+            if (linuxNodeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "linuxNodeConfigs");
+            }
+            this.linuxNodeConfigs = linuxNodeConfigs;
             return this;
         }
         public Builder linuxNodeConfigs(GetClusterNodePoolNodeConfigLinuxNodeConfig... linuxNodeConfigs) {
@@ -399,7 +454,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder localNvmeSsdBlockConfigs(List<GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfigs) {
-            this.localNvmeSsdBlockConfigs = Objects.requireNonNull(localNvmeSsdBlockConfigs);
+            if (localNvmeSsdBlockConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "localNvmeSsdBlockConfigs");
+            }
+            this.localNvmeSsdBlockConfigs = localNvmeSsdBlockConfigs;
             return this;
         }
         public Builder localNvmeSsdBlockConfigs(GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig... localNvmeSsdBlockConfigs) {
@@ -407,37 +465,58 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder localSsdCount(Integer localSsdCount) {
-            this.localSsdCount = Objects.requireNonNull(localSsdCount);
+            if (localSsdCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "localSsdCount");
+            }
+            this.localSsdCount = localSsdCount;
             return this;
         }
         @CustomType.Setter
         public Builder loggingVariant(String loggingVariant) {
-            this.loggingVariant = Objects.requireNonNull(loggingVariant);
+            if (loggingVariant == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "loggingVariant");
+            }
+            this.loggingVariant = loggingVariant;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
-            this.minCpuPlatform = Objects.requireNonNull(minCpuPlatform);
+            if (minCpuPlatform == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "minCpuPlatform");
+            }
+            this.minCpuPlatform = minCpuPlatform;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroup(String nodeGroup) {
-            this.nodeGroup = Objects.requireNonNull(nodeGroup);
+            if (nodeGroup == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "nodeGroup");
+            }
+            this.nodeGroup = nodeGroup;
             return this;
         }
         @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
-            this.oauthScopes = Objects.requireNonNull(oauthScopes);
+            if (oauthScopes == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "oauthScopes");
+            }
+            this.oauthScopes = oauthScopes;
             return this;
         }
         public Builder oauthScopes(String... oauthScopes) {
@@ -445,12 +524,18 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder preemptible(Boolean preemptible) {
-            this.preemptible = Objects.requireNonNull(preemptible);
+            if (preemptible == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "preemptible");
+            }
+            this.preemptible = preemptible;
             return this;
         }
         @CustomType.Setter
         public Builder reservationAffinities(List<GetClusterNodePoolNodeConfigReservationAffinity> reservationAffinities) {
-            this.reservationAffinities = Objects.requireNonNull(reservationAffinities);
+            if (reservationAffinities == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "reservationAffinities");
+            }
+            this.reservationAffinities = reservationAffinities;
             return this;
         }
         public Builder reservationAffinities(GetClusterNodePoolNodeConfigReservationAffinity... reservationAffinities) {
@@ -458,12 +543,18 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder resourceLabels(Map<String,String> resourceLabels) {
-            this.resourceLabels = Objects.requireNonNull(resourceLabels);
+            if (resourceLabels == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "resourceLabels");
+            }
+            this.resourceLabels = resourceLabels;
             return this;
         }
         @CustomType.Setter
         public Builder sandboxConfigs(List<GetClusterNodePoolNodeConfigSandboxConfig> sandboxConfigs) {
-            this.sandboxConfigs = Objects.requireNonNull(sandboxConfigs);
+            if (sandboxConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "sandboxConfigs");
+            }
+            this.sandboxConfigs = sandboxConfigs;
             return this;
         }
         public Builder sandboxConfigs(GetClusterNodePoolNodeConfigSandboxConfig... sandboxConfigs) {
@@ -471,12 +562,18 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
-            this.serviceAccount = Objects.requireNonNull(serviceAccount);
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder shieldedInstanceConfigs(List<GetClusterNodePoolNodeConfigShieldedInstanceConfig> shieldedInstanceConfigs) {
-            this.shieldedInstanceConfigs = Objects.requireNonNull(shieldedInstanceConfigs);
+            if (shieldedInstanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "shieldedInstanceConfigs");
+            }
+            this.shieldedInstanceConfigs = shieldedInstanceConfigs;
             return this;
         }
         public Builder shieldedInstanceConfigs(GetClusterNodePoolNodeConfigShieldedInstanceConfig... shieldedInstanceConfigs) {
@@ -484,7 +581,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder soleTenantConfigs(List<GetClusterNodePoolNodeConfigSoleTenantConfig> soleTenantConfigs) {
-            this.soleTenantConfigs = Objects.requireNonNull(soleTenantConfigs);
+            if (soleTenantConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "soleTenantConfigs");
+            }
+            this.soleTenantConfigs = soleTenantConfigs;
             return this;
         }
         public Builder soleTenantConfigs(GetClusterNodePoolNodeConfigSoleTenantConfig... soleTenantConfigs) {
@@ -492,12 +592,18 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder spot(Boolean spot) {
-            this.spot = Objects.requireNonNull(spot);
+            if (spot == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "spot");
+            }
+            this.spot = spot;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -505,7 +611,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder taints(List<GetClusterNodePoolNodeConfigTaint> taints) {
-            this.taints = Objects.requireNonNull(taints);
+            if (taints == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "taints");
+            }
+            this.taints = taints;
             return this;
         }
         public Builder taints(GetClusterNodePoolNodeConfigTaint... taints) {
@@ -513,7 +622,10 @@ public final class GetClusterNodePoolNodeConfig {
         }
         @CustomType.Setter
         public Builder workloadMetadataConfigs(List<GetClusterNodePoolNodeConfigWorkloadMetadataConfig> workloadMetadataConfigs) {
-            this.workloadMetadataConfigs = Objects.requireNonNull(workloadMetadataConfigs);
+            if (workloadMetadataConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNodeConfig", "workloadMetadataConfigs");
+            }
+            this.workloadMetadataConfigs = workloadMetadataConfigs;
             return this;
         }
         public Builder workloadMetadataConfigs(GetClusterNodePoolNodeConfigWorkloadMetadataConfig... workloadMetadataConfigs) {

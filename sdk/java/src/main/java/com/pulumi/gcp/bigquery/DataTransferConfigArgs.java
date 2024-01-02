@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigEmailPreferencesArgs;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigScheduleOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.DataTransferConfigSensitiveParamsArgs;
@@ -683,9 +684,15 @@ public final class DataTransferConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public DataTransferConfigArgs build() {
-            $.dataSourceId = Objects.requireNonNull($.dataSourceId, "expected parameter 'dataSourceId' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.params = Objects.requireNonNull($.params, "expected parameter 'params' to be non-null");
+            if ($.dataSourceId == null) {
+                throw new MissingRequiredPropertyException("DataTransferConfigArgs", "dataSourceId");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("DataTransferConfigArgs", "displayName");
+            }
+            if ($.params == null) {
+                throw new MissingRequiredPropertyException("DataTransferConfigArgs", "params");
+            }
             return $;
         }
     }

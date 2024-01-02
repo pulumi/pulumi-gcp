@@ -5,6 +5,7 @@ package com.pulumi.gcp.edgecontainer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -133,7 +134,9 @@ public final class ClusterFleetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterFleetArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ClusterFleetArgs", "project");
+            }
             return $;
         }
     }

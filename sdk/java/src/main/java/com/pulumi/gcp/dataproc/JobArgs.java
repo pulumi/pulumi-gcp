@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.JobHadoopConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.JobHiveConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.JobPigConfigArgs;
@@ -593,7 +594,9 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobArgs build() {
-            $.placement = Objects.requireNonNull($.placement, "expected parameter 'placement' to be non-null");
+            if ($.placement == null) {
+                throw new MissingRequiredPropertyException("JobArgs", "placement");
+            }
             return $;
         }
     }

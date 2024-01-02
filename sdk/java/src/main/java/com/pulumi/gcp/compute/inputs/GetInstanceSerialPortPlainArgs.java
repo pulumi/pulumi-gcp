@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -159,8 +160,12 @@ public final class GetInstanceSerialPortPlainArgs extends com.pulumi.resources.I
         }
 
         public GetInstanceSerialPortPlainArgs build() {
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("GetInstanceSerialPortPlainArgs", "instance");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("GetInstanceSerialPortPlainArgs", "port");
+            }
             return $;
         }
     }

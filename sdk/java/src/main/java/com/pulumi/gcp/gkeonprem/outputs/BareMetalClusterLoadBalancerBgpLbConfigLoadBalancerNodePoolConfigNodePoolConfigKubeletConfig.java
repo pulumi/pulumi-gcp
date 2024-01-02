@@ -99,16 +99,19 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolCo
 
         @CustomType.Setter
         public Builder registryBurst(@Nullable Integer registryBurst) {
+
             this.registryBurst = registryBurst;
             return this;
         }
         @CustomType.Setter
         public Builder registryPullQps(@Nullable Integer registryPullQps) {
+
             this.registryPullQps = registryPullQps;
             return this;
         }
         @CustomType.Setter
         public Builder serializeImagePullsDisabled(@Nullable Boolean serializeImagePullsDisabled) {
+
             this.serializeImagePullsDisabled = serializeImagePullsDisabled;
             return this;
         }

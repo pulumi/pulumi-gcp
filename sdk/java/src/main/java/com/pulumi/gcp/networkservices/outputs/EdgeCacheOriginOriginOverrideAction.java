@@ -67,11 +67,13 @@ public final class EdgeCacheOriginOriginOverrideAction {
 
         @CustomType.Setter
         public Builder headerAction(@Nullable EdgeCacheOriginOriginOverrideActionHeaderAction headerAction) {
+
             this.headerAction = headerAction;
             return this;
         }
         @CustomType.Setter
         public Builder urlRewrite(@Nullable EdgeCacheOriginOriginOverrideActionUrlRewrite urlRewrite) {
+
             this.urlRewrite = urlRewrite;
             return this;
         }

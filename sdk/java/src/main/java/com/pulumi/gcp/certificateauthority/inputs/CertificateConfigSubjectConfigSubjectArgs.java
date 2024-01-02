@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -335,8 +336,12 @@ public final class CertificateConfigSubjectConfigSubjectArgs extends com.pulumi.
         }
 
         public CertificateConfigSubjectConfigSubjectArgs build() {
-            $.commonName = Objects.requireNonNull($.commonName, "expected parameter 'commonName' to be non-null");
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
+            if ($.commonName == null) {
+                throw new MissingRequiredPropertyException("CertificateConfigSubjectConfigSubjectArgs", "commonName");
+            }
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("CertificateConfigSubjectConfigSubjectArgs", "organization");
+            }
             return $;
         }
     }

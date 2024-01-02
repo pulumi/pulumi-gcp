@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class MembershipEndpointGkeCluster {
 
         @CustomType.Setter
         public Builder resourceLink(String resourceLink) {
-            this.resourceLink = Objects.requireNonNull(resourceLink);
+            if (resourceLink == null) {
+              throw new MissingRequiredPropertyException("MembershipEndpointGkeCluster", "resourceLink");
+            }
+            this.resourceLink = resourceLink;
             return this;
         }
         public MembershipEndpointGkeCluster build() {

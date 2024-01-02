@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class BareMetalClusterOsEnvironmentConfig {
 
         @CustomType.Setter
         public Builder packageRepoExcluded(Boolean packageRepoExcluded) {
-            this.packageRepoExcluded = Objects.requireNonNull(packageRepoExcluded);
+            if (packageRepoExcluded == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterOsEnvironmentConfig", "packageRepoExcluded");
+            }
+            this.packageRepoExcluded = packageRepoExcluded;
             return this;
         }
         public BareMetalClusterOsEnvironmentConfig build() {

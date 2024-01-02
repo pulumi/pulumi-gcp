@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudscheduler.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,12 +63,16 @@ public final class JobHttpTargetOauthToken {
 
         @CustomType.Setter
         public Builder scope(@Nullable String scope) {
+
             this.scope = scope;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
-            this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
+            if (serviceAccountEmail == null) {
+              throw new MissingRequiredPropertyException("JobHttpTargetOauthToken", "serviceAccountEmail");
+            }
+            this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         public JobHttpTargetOauthToken build() {

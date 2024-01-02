@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -88,17 +89,22 @@ public final class ImageRawDisk {
 
         @CustomType.Setter
         public Builder containerType(@Nullable String containerType) {
+
             this.containerType = containerType;
             return this;
         }
         @CustomType.Setter
         public Builder sha1(@Nullable String sha1) {
+
             this.sha1 = sha1;
             return this;
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("ImageRawDisk", "source");
+            }
+            this.source = source;
             return this;
         }
         public ImageRawDisk build() {

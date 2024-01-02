@@ -63,11 +63,13 @@ public final class AiIndexIndexStat {
 
         @CustomType.Setter
         public Builder shardsCount(@Nullable Integer shardsCount) {
+
             this.shardsCount = shardsCount;
             return this;
         }
         @CustomType.Setter
         public Builder vectorsCount(@Nullable String vectorsCount) {
+
             this.vectorsCount = vectorsCount;
             return this;
         }

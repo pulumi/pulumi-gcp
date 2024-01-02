@@ -57,21 +57,25 @@ public final class EnvironmentConfigWorkloadsConfig {
 
         @CustomType.Setter
         public Builder scheduler(@Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler) {
+
             this.scheduler = scheduler;
             return this;
         }
         @CustomType.Setter
         public Builder triggerer(@Nullable EnvironmentConfigWorkloadsConfigTriggerer triggerer) {
+
             this.triggerer = triggerer;
             return this;
         }
         @CustomType.Setter
         public Builder webServer(@Nullable EnvironmentConfigWorkloadsConfigWebServer webServer) {
+
             this.webServer = webServer;
             return this;
         }
         @CustomType.Setter
         public Builder worker(@Nullable EnvironmentConfigWorkloadsConfigWorker worker) {
+
             this.worker = worker;
             return this;
         }

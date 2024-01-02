@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -70,26 +71,33 @@ public final class RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
 
         @CustomType.Setter
         public Builder externalIpv6(@Nullable String externalIpv6) {
+
             this.externalIpv6 = externalIpv6;
             return this;
         }
         @CustomType.Setter
         public Builder externalIpv6PrefixLength(@Nullable String externalIpv6PrefixLength) {
+
             this.externalIpv6PrefixLength = externalIpv6PrefixLength;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkTier(String networkTier) {
-            this.networkTier = Objects.requireNonNull(networkTier);
+            if (networkTier == null) {
+              throw new MissingRequiredPropertyException("RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig", "networkTier");
+            }
+            this.networkTier = networkTier;
             return this;
         }
         @CustomType.Setter
         public Builder publicPtrDomainName(@Nullable String publicPtrDomainName) {
+
             this.publicPtrDomainName = publicPtrDomainName;
             return this;
         }

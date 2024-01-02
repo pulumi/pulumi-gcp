@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -414,8 +415,12 @@ public final class RegionInstanceGroupManagerUpdatePolicyArgs extends com.pulumi
         }
 
         public RegionInstanceGroupManagerUpdatePolicyArgs build() {
-            $.minimalAction = Objects.requireNonNull($.minimalAction, "expected parameter 'minimalAction' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.minimalAction == null) {
+                throw new MissingRequiredPropertyException("RegionInstanceGroupManagerUpdatePolicyArgs", "minimalAction");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("RegionInstanceGroupManagerUpdatePolicyArgs", "type");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigControlPlaneV2ConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigDhcpIpConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigHostConfigArgs;
@@ -358,8 +359,12 @@ public final class VMwareClusterNetworkConfigArgs extends com.pulumi.resources.R
         }
 
         public VMwareClusterNetworkConfigArgs build() {
-            $.podAddressCidrBlocks = Objects.requireNonNull($.podAddressCidrBlocks, "expected parameter 'podAddressCidrBlocks' to be non-null");
-            $.serviceAddressCidrBlocks = Objects.requireNonNull($.serviceAddressCidrBlocks, "expected parameter 'serviceAddressCidrBlocks' to be non-null");
+            if ($.podAddressCidrBlocks == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigArgs", "podAddressCidrBlocks");
+            }
+            if ($.serviceAddressCidrBlocks == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigArgs", "serviceAddressCidrBlocks");
+            }
             return $;
         }
     }

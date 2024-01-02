@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigX509ConfigAdditionalExtensionObjectIdArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -158,9 +159,15 @@ public final class AuthorityConfigX509ConfigAdditionalExtensionArgs extends com.
         }
 
         public AuthorityConfigX509ConfigAdditionalExtensionArgs build() {
-            $.critical = Objects.requireNonNull($.critical, "expected parameter 'critical' to be non-null");
-            $.objectId = Objects.requireNonNull($.objectId, "expected parameter 'objectId' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.critical == null) {
+                throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigAdditionalExtensionArgs", "critical");
+            }
+            if ($.objectId == null) {
+                throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigAdditionalExtensionArgs", "objectId");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigAdditionalExtensionArgs", "value");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.outputs.GetTestablePermissionsPermission;
 import java.lang.String;
 import java.util.List;
@@ -86,22 +87,32 @@ public final class GetTestablePermissionsResult {
 
         @CustomType.Setter
         public Builder customSupportLevel(@Nullable String customSupportLevel) {
+
             this.customSupportLevel = customSupportLevel;
             return this;
         }
         @CustomType.Setter
         public Builder fullResourceName(String fullResourceName) {
-            this.fullResourceName = Objects.requireNonNull(fullResourceName);
+            if (fullResourceName == null) {
+              throw new MissingRequiredPropertyException("GetTestablePermissionsResult", "fullResourceName");
+            }
+            this.fullResourceName = fullResourceName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTestablePermissionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(List<GetTestablePermissionsPermission> permissions) {
-            this.permissions = Objects.requireNonNull(permissions);
+            if (permissions == null) {
+              throw new MissingRequiredPropertyException("GetTestablePermissionsResult", "permissions");
+            }
+            this.permissions = permissions;
             return this;
         }
         public Builder permissions(GetTestablePermissionsPermission... permissions) {
@@ -109,6 +120,7 @@ public final class GetTestablePermissionsResult {
         }
         @CustomType.Setter
         public Builder stages(@Nullable List<String> stages) {
+
             this.stages = stages;
             return this;
         }

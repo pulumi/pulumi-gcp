@@ -5,6 +5,7 @@ package com.pulumi.gcp.sourcerepo;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sourcerepo.inputs.RepositoryIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class RepositoryIamMemberArgs extends com.pulumi.resources.Resource
         }
 
         public RepositoryIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.repository = Objects.requireNonNull($.repository, "expected parameter 'repository' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("RepositoryIamMemberArgs", "member");
+            }
+            if ($.repository == null) {
+                throw new MissingRequiredPropertyException("RepositoryIamMemberArgs", "repository");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("RepositoryIamMemberArgs", "role");
+            }
             return $;
         }
     }

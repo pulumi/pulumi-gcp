@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicyBypassCacheOnRequestHeader;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicyCacheKeyPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicyNegativeCachingPolicy;
@@ -94,7 +95,10 @@ public final class GetBackendServiceCdnPolicy {
 
         @CustomType.Setter
         public Builder bypassCacheOnRequestHeaders(List<GetBackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders) {
-            this.bypassCacheOnRequestHeaders = Objects.requireNonNull(bypassCacheOnRequestHeaders);
+            if (bypassCacheOnRequestHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "bypassCacheOnRequestHeaders");
+            }
+            this.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
             return this;
         }
         public Builder bypassCacheOnRequestHeaders(GetBackendServiceCdnPolicyBypassCacheOnRequestHeader... bypassCacheOnRequestHeaders) {
@@ -102,7 +106,10 @@ public final class GetBackendServiceCdnPolicy {
         }
         @CustomType.Setter
         public Builder cacheKeyPolicies(List<GetBackendServiceCdnPolicyCacheKeyPolicy> cacheKeyPolicies) {
-            this.cacheKeyPolicies = Objects.requireNonNull(cacheKeyPolicies);
+            if (cacheKeyPolicies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "cacheKeyPolicies");
+            }
+            this.cacheKeyPolicies = cacheKeyPolicies;
             return this;
         }
         public Builder cacheKeyPolicies(GetBackendServiceCdnPolicyCacheKeyPolicy... cacheKeyPolicies) {
@@ -110,32 +117,50 @@ public final class GetBackendServiceCdnPolicy {
         }
         @CustomType.Setter
         public Builder cacheMode(String cacheMode) {
-            this.cacheMode = Objects.requireNonNull(cacheMode);
+            if (cacheMode == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "cacheMode");
+            }
+            this.cacheMode = cacheMode;
             return this;
         }
         @CustomType.Setter
         public Builder clientTtl(Integer clientTtl) {
-            this.clientTtl = Objects.requireNonNull(clientTtl);
+            if (clientTtl == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "clientTtl");
+            }
+            this.clientTtl = clientTtl;
             return this;
         }
         @CustomType.Setter
         public Builder defaultTtl(Integer defaultTtl) {
-            this.defaultTtl = Objects.requireNonNull(defaultTtl);
+            if (defaultTtl == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "defaultTtl");
+            }
+            this.defaultTtl = defaultTtl;
             return this;
         }
         @CustomType.Setter
         public Builder maxTtl(Integer maxTtl) {
-            this.maxTtl = Objects.requireNonNull(maxTtl);
+            if (maxTtl == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "maxTtl");
+            }
+            this.maxTtl = maxTtl;
             return this;
         }
         @CustomType.Setter
         public Builder negativeCaching(Boolean negativeCaching) {
-            this.negativeCaching = Objects.requireNonNull(negativeCaching);
+            if (negativeCaching == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "negativeCaching");
+            }
+            this.negativeCaching = negativeCaching;
             return this;
         }
         @CustomType.Setter
         public Builder negativeCachingPolicies(List<GetBackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies) {
-            this.negativeCachingPolicies = Objects.requireNonNull(negativeCachingPolicies);
+            if (negativeCachingPolicies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "negativeCachingPolicies");
+            }
+            this.negativeCachingPolicies = negativeCachingPolicies;
             return this;
         }
         public Builder negativeCachingPolicies(GetBackendServiceCdnPolicyNegativeCachingPolicy... negativeCachingPolicies) {
@@ -143,12 +168,18 @@ public final class GetBackendServiceCdnPolicy {
         }
         @CustomType.Setter
         public Builder serveWhileStale(Integer serveWhileStale) {
-            this.serveWhileStale = Objects.requireNonNull(serveWhileStale);
+            if (serveWhileStale == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "serveWhileStale");
+            }
+            this.serveWhileStale = serveWhileStale;
             return this;
         }
         @CustomType.Setter
         public Builder signedUrlCacheMaxAgeSec(Integer signedUrlCacheMaxAgeSec) {
-            this.signedUrlCacheMaxAgeSec = Objects.requireNonNull(signedUrlCacheMaxAgeSec);
+            if (signedUrlCacheMaxAgeSec == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCdnPolicy", "signedUrlCacheMaxAgeSec");
+            }
+            this.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
             return this;
         }
         public GetBackendServiceCdnPolicy build() {

@@ -104,26 +104,31 @@ public final class FeatureMembershipConfigmanagement {
 
         @CustomType.Setter
         public Builder binauthz(@Nullable FeatureMembershipConfigmanagementBinauthz binauthz) {
+
             this.binauthz = binauthz;
             return this;
         }
         @CustomType.Setter
         public Builder configSync(@Nullable FeatureMembershipConfigmanagementConfigSync configSync) {
+
             this.configSync = configSync;
             return this;
         }
         @CustomType.Setter
         public Builder hierarchyController(@Nullable FeatureMembershipConfigmanagementHierarchyController hierarchyController) {
+
             this.hierarchyController = hierarchyController;
             return this;
         }
         @CustomType.Setter
         public Builder policyController(@Nullable FeatureMembershipConfigmanagementPolicyController policyController) {
+
             this.policyController = policyController;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

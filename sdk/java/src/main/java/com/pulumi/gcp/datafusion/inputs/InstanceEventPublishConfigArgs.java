@@ -5,6 +5,7 @@ package com.pulumi.gcp.datafusion.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -112,8 +113,12 @@ public final class InstanceEventPublishConfigArgs extends com.pulumi.resources.R
         }
 
         public InstanceEventPublishConfigArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.topic = Objects.requireNonNull($.topic, "expected parameter 'topic' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("InstanceEventPublishConfigArgs", "enabled");
+            }
+            if ($.topic == null) {
+                throw new MissingRequiredPropertyException("InstanceEventPublishConfigArgs", "topic");
+            }
             return $;
         }
     }

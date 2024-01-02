@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxEntityTypeEntityArgs;
 import com.pulumi.gcp.diagflow.inputs.CxEntityTypeExcludedPhraseArgs;
 import java.lang.Boolean;
@@ -459,9 +460,15 @@ public final class CxEntityTypeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CxEntityTypeArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.entities = Objects.requireNonNull($.entities, "expected parameter 'entities' to be non-null");
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("CxEntityTypeArgs", "displayName");
+            }
+            if ($.entities == null) {
+                throw new MissingRequiredPropertyException("CxEntityTypeArgs", "entities");
+            }
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("CxEntityTypeArgs", "kind");
+            }
             return $;
         }
     }

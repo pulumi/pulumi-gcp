@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.organizations.outputs.GetIAMPolicyAuditConfigAuditLogConfig;
 import java.lang.String;
 import java.util.List;
@@ -58,7 +59,10 @@ public final class GetIAMPolicyAuditConfig {
 
         @CustomType.Setter
         public Builder auditLogConfigs(List<GetIAMPolicyAuditConfigAuditLogConfig> auditLogConfigs) {
-            this.auditLogConfigs = Objects.requireNonNull(auditLogConfigs);
+            if (auditLogConfigs == null) {
+              throw new MissingRequiredPropertyException("GetIAMPolicyAuditConfig", "auditLogConfigs");
+            }
+            this.auditLogConfigs = auditLogConfigs;
             return this;
         }
         public Builder auditLogConfigs(GetIAMPolicyAuditConfigAuditLogConfig... auditLogConfigs) {
@@ -66,7 +70,10 @@ public final class GetIAMPolicyAuditConfig {
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("GetIAMPolicyAuditConfig", "service");
+            }
+            this.service = service;
             return this;
         }
         public GetIAMPolicyAuditConfig build() {

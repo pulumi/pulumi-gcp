@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementManagedClusterConfigArgs;
 import java.lang.String;
 import java.util.Map;
@@ -152,8 +153,12 @@ public final class WorkflowTemplatePlacementManagedClusterArgs extends com.pulum
         }
 
         public WorkflowTemplatePlacementManagedClusterArgs build() {
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplatePlacementManagedClusterArgs", "clusterName");
+            }
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplatePlacementManagedClusterArgs", "config");
+            }
             return $;
         }
     }

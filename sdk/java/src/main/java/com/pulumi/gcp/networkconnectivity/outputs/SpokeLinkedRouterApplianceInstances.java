@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkconnectivity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkconnectivity.outputs.SpokeLinkedRouterApplianceInstancesInstance;
 import java.lang.Boolean;
 import java.util.List;
@@ -58,7 +59,10 @@ public final class SpokeLinkedRouterApplianceInstances {
 
         @CustomType.Setter
         public Builder instances(List<SpokeLinkedRouterApplianceInstancesInstance> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("SpokeLinkedRouterApplianceInstances", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(SpokeLinkedRouterApplianceInstancesInstance... instances) {
@@ -66,7 +70,10 @@ public final class SpokeLinkedRouterApplianceInstances {
         }
         @CustomType.Setter
         public Builder siteToSiteDataTransfer(Boolean siteToSiteDataTransfer) {
-            this.siteToSiteDataTransfer = Objects.requireNonNull(siteToSiteDataTransfer);
+            if (siteToSiteDataTransfer == null) {
+              throw new MissingRequiredPropertyException("SpokeLinkedRouterApplianceInstances", "siteToSiteDataTransfer");
+            }
+            this.siteToSiteDataTransfer = siteToSiteDataTransfer;
             return this;
         }
         public SpokeLinkedRouterApplianceInstances build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudidentity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsMembership;
 import java.lang.String;
 import java.util.List;
@@ -64,17 +65,26 @@ public final class GetGroupMembershipsResult {
 
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsResult", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder memberships(List<GetGroupMembershipsMembership> memberships) {
-            this.memberships = Objects.requireNonNull(memberships);
+            if (memberships == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsResult", "memberships");
+            }
+            this.memberships = memberships;
             return this;
         }
         public Builder memberships(GetGroupMembershipsMembership... memberships) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodeConfigSoleTenantConfigNodeAffinity;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetClusterNodeConfigSoleTenantConfig {
 
         @CustomType.Setter
         public Builder nodeAffinities(List<GetClusterNodeConfigSoleTenantConfigNodeAffinity> nodeAffinities) {
-            this.nodeAffinities = Objects.requireNonNull(nodeAffinities);
+            if (nodeAffinities == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigSoleTenantConfig", "nodeAffinities");
+            }
+            this.nodeAffinities = nodeAffinities;
             return this;
         }
         public Builder nodeAffinities(GetClusterNodeConfigSoleTenantConfigNodeAffinity... nodeAffinities) {

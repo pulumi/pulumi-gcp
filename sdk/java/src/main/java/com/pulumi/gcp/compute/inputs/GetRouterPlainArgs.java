@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -152,8 +153,12 @@ public final class GetRouterPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRouterPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetRouterPlainArgs", "name");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("GetRouterPlainArgs", "network");
+            }
             return $;
         }
     }

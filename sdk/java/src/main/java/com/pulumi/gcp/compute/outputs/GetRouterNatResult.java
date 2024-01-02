@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRouterNatLogConfig;
 import com.pulumi.gcp.compute.outputs.GetRouterNatRule;
 import com.pulumi.gcp.compute.outputs.GetRouterNatSubnetwork;
@@ -176,7 +177,10 @@ public final class GetRouterNatResult {
 
         @CustomType.Setter
         public Builder drainNatIps(List<String> drainNatIps) {
-            this.drainNatIps = Objects.requireNonNull(drainNatIps);
+            if (drainNatIps == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "drainNatIps");
+            }
+            this.drainNatIps = drainNatIps;
             return this;
         }
         public Builder drainNatIps(String... drainNatIps) {
@@ -184,27 +188,42 @@ public final class GetRouterNatResult {
         }
         @CustomType.Setter
         public Builder enableDynamicPortAllocation(Boolean enableDynamicPortAllocation) {
-            this.enableDynamicPortAllocation = Objects.requireNonNull(enableDynamicPortAllocation);
+            if (enableDynamicPortAllocation == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "enableDynamicPortAllocation");
+            }
+            this.enableDynamicPortAllocation = enableDynamicPortAllocation;
             return this;
         }
         @CustomType.Setter
         public Builder enableEndpointIndependentMapping(Boolean enableEndpointIndependentMapping) {
-            this.enableEndpointIndependentMapping = Objects.requireNonNull(enableEndpointIndependentMapping);
+            if (enableEndpointIndependentMapping == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "enableEndpointIndependentMapping");
+            }
+            this.enableEndpointIndependentMapping = enableEndpointIndependentMapping;
             return this;
         }
         @CustomType.Setter
         public Builder icmpIdleTimeoutSec(Integer icmpIdleTimeoutSec) {
-            this.icmpIdleTimeoutSec = Objects.requireNonNull(icmpIdleTimeoutSec);
+            if (icmpIdleTimeoutSec == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "icmpIdleTimeoutSec");
+            }
+            this.icmpIdleTimeoutSec = icmpIdleTimeoutSec;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder logConfigs(List<GetRouterNatLogConfig> logConfigs) {
-            this.logConfigs = Objects.requireNonNull(logConfigs);
+            if (logConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "logConfigs");
+            }
+            this.logConfigs = logConfigs;
             return this;
         }
         public Builder logConfigs(GetRouterNatLogConfig... logConfigs) {
@@ -212,27 +231,42 @@ public final class GetRouterNatResult {
         }
         @CustomType.Setter
         public Builder maxPortsPerVm(Integer maxPortsPerVm) {
-            this.maxPortsPerVm = Objects.requireNonNull(maxPortsPerVm);
+            if (maxPortsPerVm == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "maxPortsPerVm");
+            }
+            this.maxPortsPerVm = maxPortsPerVm;
             return this;
         }
         @CustomType.Setter
         public Builder minPortsPerVm(Integer minPortsPerVm) {
-            this.minPortsPerVm = Objects.requireNonNull(minPortsPerVm);
+            if (minPortsPerVm == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "minPortsPerVm");
+            }
+            this.minPortsPerVm = minPortsPerVm;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder natIpAllocateOption(String natIpAllocateOption) {
-            this.natIpAllocateOption = Objects.requireNonNull(natIpAllocateOption);
+            if (natIpAllocateOption == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "natIpAllocateOption");
+            }
+            this.natIpAllocateOption = natIpAllocateOption;
             return this;
         }
         @CustomType.Setter
         public Builder natIps(List<String> natIps) {
-            this.natIps = Objects.requireNonNull(natIps);
+            if (natIps == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "natIps");
+            }
+            this.natIps = natIps;
             return this;
         }
         public Builder natIps(String... natIps) {
@@ -240,22 +274,30 @@ public final class GetRouterNatResult {
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder router(String router) {
-            this.router = Objects.requireNonNull(router);
+            if (router == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "router");
+            }
+            this.router = router;
             return this;
         }
         @CustomType.Setter
         public Builder rules(List<GetRouterNatRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(GetRouterNatRule... rules) {
@@ -263,12 +305,18 @@ public final class GetRouterNatResult {
         }
         @CustomType.Setter
         public Builder sourceSubnetworkIpRangesToNat(String sourceSubnetworkIpRangesToNat) {
-            this.sourceSubnetworkIpRangesToNat = Objects.requireNonNull(sourceSubnetworkIpRangesToNat);
+            if (sourceSubnetworkIpRangesToNat == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "sourceSubnetworkIpRangesToNat");
+            }
+            this.sourceSubnetworkIpRangesToNat = sourceSubnetworkIpRangesToNat;
             return this;
         }
         @CustomType.Setter
         public Builder subnetworks(List<GetRouterNatSubnetwork> subnetworks) {
-            this.subnetworks = Objects.requireNonNull(subnetworks);
+            if (subnetworks == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "subnetworks");
+            }
+            this.subnetworks = subnetworks;
             return this;
         }
         public Builder subnetworks(GetRouterNatSubnetwork... subnetworks) {
@@ -276,27 +324,42 @@ public final class GetRouterNatResult {
         }
         @CustomType.Setter
         public Builder tcpEstablishedIdleTimeoutSec(Integer tcpEstablishedIdleTimeoutSec) {
-            this.tcpEstablishedIdleTimeoutSec = Objects.requireNonNull(tcpEstablishedIdleTimeoutSec);
+            if (tcpEstablishedIdleTimeoutSec == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "tcpEstablishedIdleTimeoutSec");
+            }
+            this.tcpEstablishedIdleTimeoutSec = tcpEstablishedIdleTimeoutSec;
             return this;
         }
         @CustomType.Setter
         public Builder tcpTimeWaitTimeoutSec(Integer tcpTimeWaitTimeoutSec) {
-            this.tcpTimeWaitTimeoutSec = Objects.requireNonNull(tcpTimeWaitTimeoutSec);
+            if (tcpTimeWaitTimeoutSec == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "tcpTimeWaitTimeoutSec");
+            }
+            this.tcpTimeWaitTimeoutSec = tcpTimeWaitTimeoutSec;
             return this;
         }
         @CustomType.Setter
         public Builder tcpTransitoryIdleTimeoutSec(Integer tcpTransitoryIdleTimeoutSec) {
-            this.tcpTransitoryIdleTimeoutSec = Objects.requireNonNull(tcpTransitoryIdleTimeoutSec);
+            if (tcpTransitoryIdleTimeoutSec == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "tcpTransitoryIdleTimeoutSec");
+            }
+            this.tcpTransitoryIdleTimeoutSec = tcpTransitoryIdleTimeoutSec;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder udpIdleTimeoutSec(Integer udpIdleTimeoutSec) {
-            this.udpIdleTimeoutSec = Objects.requireNonNull(udpIdleTimeoutSec);
+            if (udpIdleTimeoutSec == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatResult", "udpIdleTimeoutSec");
+            }
+            this.udpIdleTimeoutSec = udpIdleTimeoutSec;
             return this;
         }
         public GetRouterNatResult build() {

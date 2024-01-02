@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -209,10 +210,18 @@ public final class KeyRingImportJobArgs extends com.pulumi.resources.ResourceArg
         }
 
         public KeyRingImportJobArgs build() {
-            $.importJobId = Objects.requireNonNull($.importJobId, "expected parameter 'importJobId' to be non-null");
-            $.importMethod = Objects.requireNonNull($.importMethod, "expected parameter 'importMethod' to be non-null");
-            $.keyRing = Objects.requireNonNull($.keyRing, "expected parameter 'keyRing' to be non-null");
-            $.protectionLevel = Objects.requireNonNull($.protectionLevel, "expected parameter 'protectionLevel' to be non-null");
+            if ($.importJobId == null) {
+                throw new MissingRequiredPropertyException("KeyRingImportJobArgs", "importJobId");
+            }
+            if ($.importMethod == null) {
+                throw new MissingRequiredPropertyException("KeyRingImportJobArgs", "importMethod");
+            }
+            if ($.keyRing == null) {
+                throw new MissingRequiredPropertyException("KeyRingImportJobArgs", "keyRing");
+            }
+            if ($.protectionLevel == null) {
+                throw new MissingRequiredPropertyException("KeyRingImportJobArgs", "protectionLevel");
+            }
             return $;
         }
     }

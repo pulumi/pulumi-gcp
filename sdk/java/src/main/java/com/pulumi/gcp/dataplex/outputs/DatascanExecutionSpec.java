@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.outputs.DatascanExecutionSpecTrigger;
 import java.lang.String;
 import java.util.Objects;
@@ -61,12 +62,16 @@ public final class DatascanExecutionSpec {
 
         @CustomType.Setter
         public Builder field(@Nullable String field) {
+
             this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder trigger(DatascanExecutionSpecTrigger trigger) {
-            this.trigger = Objects.requireNonNull(trigger);
+            if (trigger == null) {
+              throw new MissingRequiredPropertyException("DatascanExecutionSpec", "trigger");
+            }
+            this.trigger = trigger;
             return this;
         }
         public DatascanExecutionSpec build() {

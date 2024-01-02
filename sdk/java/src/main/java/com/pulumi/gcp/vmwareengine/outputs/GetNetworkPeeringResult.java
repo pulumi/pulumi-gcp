@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -141,87 +142,136 @@ public final class GetNetworkPeeringResult {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder exportCustomRoutes(Boolean exportCustomRoutes) {
-            this.exportCustomRoutes = Objects.requireNonNull(exportCustomRoutes);
+            if (exportCustomRoutes == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "exportCustomRoutes");
+            }
+            this.exportCustomRoutes = exportCustomRoutes;
             return this;
         }
         @CustomType.Setter
         public Builder exportCustomRoutesWithPublicIp(Boolean exportCustomRoutesWithPublicIp) {
-            this.exportCustomRoutesWithPublicIp = Objects.requireNonNull(exportCustomRoutesWithPublicIp);
+            if (exportCustomRoutesWithPublicIp == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "exportCustomRoutesWithPublicIp");
+            }
+            this.exportCustomRoutesWithPublicIp = exportCustomRoutesWithPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder importCustomRoutes(Boolean importCustomRoutes) {
-            this.importCustomRoutes = Objects.requireNonNull(importCustomRoutes);
+            if (importCustomRoutes == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "importCustomRoutes");
+            }
+            this.importCustomRoutes = importCustomRoutes;
             return this;
         }
         @CustomType.Setter
         public Builder importCustomRoutesWithPublicIp(Boolean importCustomRoutesWithPublicIp) {
-            this.importCustomRoutesWithPublicIp = Objects.requireNonNull(importCustomRoutesWithPublicIp);
+            if (importCustomRoutesWithPublicIp == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "importCustomRoutesWithPublicIp");
+            }
+            this.importCustomRoutesWithPublicIp = importCustomRoutesWithPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder peerNetwork(String peerNetwork) {
-            this.peerNetwork = Objects.requireNonNull(peerNetwork);
+            if (peerNetwork == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "peerNetwork");
+            }
+            this.peerNetwork = peerNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder peerNetworkType(String peerNetworkType) {
-            this.peerNetworkType = Objects.requireNonNull(peerNetworkType);
+            if (peerNetworkType == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "peerNetworkType");
+            }
+            this.peerNetworkType = peerNetworkType;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stateDetails(String stateDetails) {
-            this.stateDetails = Objects.requireNonNull(stateDetails);
+            if (stateDetails == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "stateDetails");
+            }
+            this.stateDetails = stateDetails;
             return this;
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder vmwareEngineNetwork(String vmwareEngineNetwork) {
-            this.vmwareEngineNetwork = Objects.requireNonNull(vmwareEngineNetwork);
+            if (vmwareEngineNetwork == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "vmwareEngineNetwork");
+            }
+            this.vmwareEngineNetwork = vmwareEngineNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder vmwareEngineNetworkCanonical(String vmwareEngineNetworkCanonical) {
-            this.vmwareEngineNetworkCanonical = Objects.requireNonNull(vmwareEngineNetworkCanonical);
+            if (vmwareEngineNetworkCanonical == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "vmwareEngineNetworkCanonical");
+            }
+            this.vmwareEngineNetworkCanonical = vmwareEngineNetworkCanonical;
             return this;
         }
         public GetNetworkPeeringResult build() {

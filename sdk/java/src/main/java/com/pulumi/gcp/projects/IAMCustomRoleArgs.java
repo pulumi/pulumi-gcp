@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -284,9 +285,15 @@ public final class IAMCustomRoleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IAMCustomRoleArgs build() {
-            $.permissions = Objects.requireNonNull($.permissions, "expected parameter 'permissions' to be non-null");
-            $.roleId = Objects.requireNonNull($.roleId, "expected parameter 'roleId' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.permissions == null) {
+                throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "permissions");
+            }
+            if ($.roleId == null) {
+                throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "roleId");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("IAMCustomRoleArgs", "title");
+            }
             return $;
         }
     }

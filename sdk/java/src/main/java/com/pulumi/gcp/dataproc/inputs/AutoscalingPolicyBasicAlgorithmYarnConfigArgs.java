@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -309,9 +310,15 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfigArgs extends com.pul
         }
 
         public AutoscalingPolicyBasicAlgorithmYarnConfigArgs build() {
-            $.gracefulDecommissionTimeout = Objects.requireNonNull($.gracefulDecommissionTimeout, "expected parameter 'gracefulDecommissionTimeout' to be non-null");
-            $.scaleDownFactor = Objects.requireNonNull($.scaleDownFactor, "expected parameter 'scaleDownFactor' to be non-null");
-            $.scaleUpFactor = Objects.requireNonNull($.scaleUpFactor, "expected parameter 'scaleUpFactor' to be non-null");
+            if ($.gracefulDecommissionTimeout == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyBasicAlgorithmYarnConfigArgs", "gracefulDecommissionTimeout");
+            }
+            if ($.scaleDownFactor == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyBasicAlgorithmYarnConfigArgs", "scaleDownFactor");
+            }
+            if ($.scaleUpFactor == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyBasicAlgorithmYarnConfigArgs", "scaleUpFactor");
+            }
             return $;
         }
     }

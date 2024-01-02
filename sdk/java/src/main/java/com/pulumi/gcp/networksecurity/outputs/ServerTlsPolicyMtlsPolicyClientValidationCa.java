@@ -65,11 +65,13 @@ public final class ServerTlsPolicyMtlsPolicyClientValidationCa {
 
         @CustomType.Setter
         public Builder certificateProviderInstance(@Nullable ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance certificateProviderInstance) {
+
             this.certificateProviderInstance = certificateProviderInstance;
             return this;
         }
         @CustomType.Setter
         public Builder grpcEndpoint(@Nullable ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint grpcEndpoint) {
+
             this.grpcEndpoint = grpcEndpoint;
             return this;
         }

@@ -59,11 +59,13 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder ruleVisibility(@Nullable String ruleVisibility) {
+
             this.ruleVisibility = ruleVisibility;
             return this;
         }

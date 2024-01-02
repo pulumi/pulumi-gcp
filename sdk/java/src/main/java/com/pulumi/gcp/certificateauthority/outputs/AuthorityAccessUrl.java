@@ -67,11 +67,13 @@ public final class AuthorityAccessUrl {
 
         @CustomType.Setter
         public Builder caCertificateAccessUrl(@Nullable String caCertificateAccessUrl) {
+
             this.caCertificateAccessUrl = caCertificateAccessUrl;
             return this;
         }
         @CustomType.Setter
         public Builder crlAccessUrls(@Nullable List<String> crlAccessUrls) {
+
             this.crlAccessUrls = crlAccessUrls;
             return this;
         }

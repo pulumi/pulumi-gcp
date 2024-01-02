@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -53,7 +54,10 @@ public final class GetRouterNatRuleAction {
 
         @CustomType.Setter
         public Builder sourceNatActiveIps(List<String> sourceNatActiveIps) {
-            this.sourceNatActiveIps = Objects.requireNonNull(sourceNatActiveIps);
+            if (sourceNatActiveIps == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatRuleAction", "sourceNatActiveIps");
+            }
+            this.sourceNatActiveIps = sourceNatActiveIps;
             return this;
         }
         public Builder sourceNatActiveIps(String... sourceNatActiveIps) {
@@ -61,7 +65,10 @@ public final class GetRouterNatRuleAction {
         }
         @CustomType.Setter
         public Builder sourceNatActiveRanges(List<String> sourceNatActiveRanges) {
-            this.sourceNatActiveRanges = Objects.requireNonNull(sourceNatActiveRanges);
+            if (sourceNatActiveRanges == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatRuleAction", "sourceNatActiveRanges");
+            }
+            this.sourceNatActiveRanges = sourceNatActiveRanges;
             return this;
         }
         public Builder sourceNatActiveRanges(String... sourceNatActiveRanges) {
@@ -69,7 +76,10 @@ public final class GetRouterNatRuleAction {
         }
         @CustomType.Setter
         public Builder sourceNatDrainIps(List<String> sourceNatDrainIps) {
-            this.sourceNatDrainIps = Objects.requireNonNull(sourceNatDrainIps);
+            if (sourceNatDrainIps == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatRuleAction", "sourceNatDrainIps");
+            }
+            this.sourceNatDrainIps = sourceNatDrainIps;
             return this;
         }
         public Builder sourceNatDrainIps(String... sourceNatDrainIps) {
@@ -77,7 +87,10 @@ public final class GetRouterNatRuleAction {
         }
         @CustomType.Setter
         public Builder sourceNatDrainRanges(List<String> sourceNatDrainRanges) {
-            this.sourceNatDrainRanges = Objects.requireNonNull(sourceNatDrainRanges);
+            if (sourceNatDrainRanges == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatRuleAction", "sourceNatDrainRanges");
+            }
+            this.sourceNatDrainRanges = sourceNatDrainRanges;
             return this;
         }
         public Builder sourceNatDrainRanges(String... sourceNatDrainRanges) {

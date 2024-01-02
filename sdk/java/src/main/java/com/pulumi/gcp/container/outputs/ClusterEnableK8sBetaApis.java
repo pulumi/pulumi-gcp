@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class ClusterEnableK8sBetaApis {
 
         @CustomType.Setter
         public Builder enabledApis(List<String> enabledApis) {
-            this.enabledApis = Objects.requireNonNull(enabledApis);
+            if (enabledApis == null) {
+              throw new MissingRequiredPropertyException("ClusterEnableK8sBetaApis", "enabledApis");
+            }
+            this.enabledApis = enabledApis;
             return this;
         }
         public Builder enabledApis(String... enabledApis) {

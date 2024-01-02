@@ -4,6 +4,7 @@
 package com.pulumi.gcp.serviceaccount.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -167,8 +168,12 @@ public final class GetAccountAccessTokenPlainArgs extends com.pulumi.resources.I
         }
 
         public GetAccountAccessTokenPlainArgs build() {
-            $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
-            $.targetServiceAccount = Objects.requireNonNull($.targetServiceAccount, "expected parameter 'targetServiceAccount' to be non-null");
+            if ($.scopes == null) {
+                throw new MissingRequiredPropertyException("GetAccountAccessTokenPlainArgs", "scopes");
+            }
+            if ($.targetServiceAccount == null) {
+                throw new MissingRequiredPropertyException("GetAccountAccessTokenPlainArgs", "targetServiceAccount");
+            }
             return $;
         }
     }

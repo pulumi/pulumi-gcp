@@ -75,16 +75,19 @@ public final class CertificateTemplatePredefinedValuesKeyUsage {
 
         @CustomType.Setter
         public Builder baseKeyUsage(@Nullable CertificateTemplatePredefinedValuesKeyUsageBaseKeyUsage baseKeyUsage) {
+
             this.baseKeyUsage = baseKeyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder extendedKeyUsage(@Nullable CertificateTemplatePredefinedValuesKeyUsageExtendedKeyUsage extendedKeyUsage) {
+
             this.extendedKeyUsage = extendedKeyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder unknownExtendedKeyUsages(@Nullable List<CertificateTemplatePredefinedValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
+
             this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
             return this;
         }

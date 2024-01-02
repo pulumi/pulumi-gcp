@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.JobExtractSourceModel;
 import com.pulumi.gcp.bigquery.outputs.JobExtractSourceTable;
 import java.lang.Boolean;
@@ -158,17 +159,22 @@ public final class JobExtract {
 
         @CustomType.Setter
         public Builder compression(@Nullable String compression) {
+
             this.compression = compression;
             return this;
         }
         @CustomType.Setter
         public Builder destinationFormat(@Nullable String destinationFormat) {
+
             this.destinationFormat = destinationFormat;
             return this;
         }
         @CustomType.Setter
         public Builder destinationUris(List<String> destinationUris) {
-            this.destinationUris = Objects.requireNonNull(destinationUris);
+            if (destinationUris == null) {
+              throw new MissingRequiredPropertyException("JobExtract", "destinationUris");
+            }
+            this.destinationUris = destinationUris;
             return this;
         }
         public Builder destinationUris(String... destinationUris) {
@@ -176,26 +182,31 @@ public final class JobExtract {
         }
         @CustomType.Setter
         public Builder fieldDelimiter(@Nullable String fieldDelimiter) {
+
             this.fieldDelimiter = fieldDelimiter;
             return this;
         }
         @CustomType.Setter
         public Builder printHeader(@Nullable Boolean printHeader) {
+
             this.printHeader = printHeader;
             return this;
         }
         @CustomType.Setter
         public Builder sourceModel(@Nullable JobExtractSourceModel sourceModel) {
+
             this.sourceModel = sourceModel;
             return this;
         }
         @CustomType.Setter
         public Builder sourceTable(@Nullable JobExtractSourceTable sourceTable) {
+
             this.sourceTable = sourceTable;
             return this;
         }
         @CustomType.Setter
         public Builder useAvroLogicalTypes(@Nullable Boolean useAvroLogicalTypes) {
+
             this.useAvroLogicalTypes = useAvroLogicalTypes;
             return this;
         }

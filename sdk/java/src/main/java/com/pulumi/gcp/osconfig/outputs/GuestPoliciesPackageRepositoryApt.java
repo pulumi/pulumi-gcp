@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -107,12 +108,16 @@ public final class GuestPoliciesPackageRepositoryApt {
 
         @CustomType.Setter
         public Builder archiveType(@Nullable String archiveType) {
+
             this.archiveType = archiveType;
             return this;
         }
         @CustomType.Setter
         public Builder components(List<String> components) {
-            this.components = Objects.requireNonNull(components);
+            if (components == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryApt", "components");
+            }
+            this.components = components;
             return this;
         }
         public Builder components(String... components) {
@@ -120,17 +125,24 @@ public final class GuestPoliciesPackageRepositoryApt {
         }
         @CustomType.Setter
         public Builder distribution(String distribution) {
-            this.distribution = Objects.requireNonNull(distribution);
+            if (distribution == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryApt", "distribution");
+            }
+            this.distribution = distribution;
             return this;
         }
         @CustomType.Setter
         public Builder gpgKey(@Nullable String gpgKey) {
+
             this.gpgKey = gpgKey;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryApt", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public GuestPoliciesPackageRepositoryApt build() {

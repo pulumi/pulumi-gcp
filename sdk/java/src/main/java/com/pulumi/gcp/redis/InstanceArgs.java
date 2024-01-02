@@ -5,6 +5,7 @@ package com.pulumi.gcp.redis;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.redis.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.redis.inputs.InstancePersistenceConfigArgs;
 import java.lang.Boolean;
@@ -1050,7 +1051,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.memorySizeGb = Objects.requireNonNull($.memorySizeGb, "expected parameter 'memorySizeGb' to be non-null");
+            if ($.memorySizeGb == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "memorySizeGb");
+            }
             return $;
         }
     }

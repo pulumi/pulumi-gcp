@@ -5,6 +5,7 @@ package com.pulumi.gcp.assuredworkloads;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.assuredworkloads.inputs.WorkloadKmsSettingsArgs;
 import com.pulumi.gcp.assuredworkloads.inputs.WorkloadPartnerPermissionsArgs;
 import com.pulumi.gcp.assuredworkloads.inputs.WorkloadResourceSettingArgs;
@@ -556,10 +557,18 @@ public final class WorkloadArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkloadArgs build() {
-            $.complianceRegime = Objects.requireNonNull($.complianceRegime, "expected parameter 'complianceRegime' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
+            if ($.complianceRegime == null) {
+                throw new MissingRequiredPropertyException("WorkloadArgs", "complianceRegime");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("WorkloadArgs", "displayName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("WorkloadArgs", "location");
+            }
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("WorkloadArgs", "organization");
+            }
             return $;
         }
     }

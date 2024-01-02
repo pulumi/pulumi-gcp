@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -97,7 +98,9 @@ public final class GetScopeIamPolicyArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetScopeIamPolicyArgs build() {
-            $.scopeId = Objects.requireNonNull($.scopeId, "expected parameter 'scopeId' to be non-null");
+            if ($.scopeId == null) {
+                throw new MissingRequiredPropertyException("GetScopeIamPolicyArgs", "scopeId");
+            }
             return $;
         }
     }

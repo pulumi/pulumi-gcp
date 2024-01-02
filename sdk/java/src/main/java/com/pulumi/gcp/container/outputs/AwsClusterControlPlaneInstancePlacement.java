@@ -44,6 +44,7 @@ public final class AwsClusterControlPlaneInstancePlacement {
 
         @CustomType.Setter
         public Builder tenancy(@Nullable String tenancy) {
+
             this.tenancy = tenancy;
             return this;
         }

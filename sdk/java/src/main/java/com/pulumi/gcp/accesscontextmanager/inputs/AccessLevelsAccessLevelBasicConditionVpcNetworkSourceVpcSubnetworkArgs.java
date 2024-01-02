@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -124,7 +125,9 @@ public final class AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubne
         }
 
         public AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("AccessLevelsAccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs", "network");
+            }
             return $;
         }
     }

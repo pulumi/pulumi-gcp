@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolUpgradeSettingBlueGreenSetting;
 import java.lang.Integer;
 import java.lang.String;
@@ -55,7 +56,10 @@ public final class GetClusterNodePoolUpgradeSetting {
 
         @CustomType.Setter
         public Builder blueGreenSettings(List<GetClusterNodePoolUpgradeSettingBlueGreenSetting> blueGreenSettings) {
-            this.blueGreenSettings = Objects.requireNonNull(blueGreenSettings);
+            if (blueGreenSettings == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolUpgradeSetting", "blueGreenSettings");
+            }
+            this.blueGreenSettings = blueGreenSettings;
             return this;
         }
         public Builder blueGreenSettings(GetClusterNodePoolUpgradeSettingBlueGreenSetting... blueGreenSettings) {
@@ -63,17 +67,26 @@ public final class GetClusterNodePoolUpgradeSetting {
         }
         @CustomType.Setter
         public Builder maxSurge(Integer maxSurge) {
-            this.maxSurge = Objects.requireNonNull(maxSurge);
+            if (maxSurge == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolUpgradeSetting", "maxSurge");
+            }
+            this.maxSurge = maxSurge;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailable(Integer maxUnavailable) {
-            this.maxUnavailable = Objects.requireNonNull(maxUnavailable);
+            if (maxUnavailable == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolUpgradeSetting", "maxUnavailable");
+            }
+            this.maxUnavailable = maxUnavailable;
             return this;
         }
         @CustomType.Setter
         public Builder strategy(String strategy) {
-            this.strategy = Objects.requireNonNull(strategy);
+            if (strategy == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolUpgradeSetting", "strategy");
+            }
+            this.strategy = strategy;
             return this;
         }
         public GetClusterNodePoolUpgradeSetting build() {

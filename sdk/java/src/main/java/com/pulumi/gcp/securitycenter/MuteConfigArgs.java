@@ -5,6 +5,7 @@ package com.pulumi.gcp.securitycenter;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -219,9 +220,15 @@ public final class MuteConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MuteConfigArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
-            $.muteConfigId = Objects.requireNonNull($.muteConfigId, "expected parameter 'muteConfigId' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("MuteConfigArgs", "filter");
+            }
+            if ($.muteConfigId == null) {
+                throw new MissingRequiredPropertyException("MuteConfigArgs", "muteConfigId");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("MuteConfigArgs", "parent");
+            }
             return $;
         }
     }

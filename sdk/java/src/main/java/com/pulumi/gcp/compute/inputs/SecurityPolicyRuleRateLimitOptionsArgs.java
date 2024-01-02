@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsBanThresholdArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptionsArgs;
@@ -422,9 +423,15 @@ public final class SecurityPolicyRuleRateLimitOptionsArgs extends com.pulumi.res
         }
 
         public SecurityPolicyRuleRateLimitOptionsArgs build() {
-            $.conformAction = Objects.requireNonNull($.conformAction, "expected parameter 'conformAction' to be non-null");
-            $.exceedAction = Objects.requireNonNull($.exceedAction, "expected parameter 'exceedAction' to be non-null");
-            $.rateLimitThreshold = Objects.requireNonNull($.rateLimitThreshold, "expected parameter 'rateLimitThreshold' to be non-null");
+            if ($.conformAction == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsArgs", "conformAction");
+            }
+            if ($.exceedAction == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsArgs", "exceedAction");
+            }
+            if ($.rateLimitThreshold == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsArgs", "rateLimitThreshold");
+            }
             return $;
         }
     }

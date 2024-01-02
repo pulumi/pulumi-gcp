@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.JobCopyDestinationEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.JobCopyDestinationTable;
 import com.pulumi.gcp.bigquery.outputs.JobCopySourceTable;
@@ -134,22 +135,28 @@ public final class JobCopy {
 
         @CustomType.Setter
         public Builder createDisposition(@Nullable String createDisposition) {
+
             this.createDisposition = createDisposition;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEncryptionConfiguration(@Nullable JobCopyDestinationEncryptionConfiguration destinationEncryptionConfiguration) {
+
             this.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder destinationTable(@Nullable JobCopyDestinationTable destinationTable) {
+
             this.destinationTable = destinationTable;
             return this;
         }
         @CustomType.Setter
         public Builder sourceTables(List<JobCopySourceTable> sourceTables) {
-            this.sourceTables = Objects.requireNonNull(sourceTables);
+            if (sourceTables == null) {
+              throw new MissingRequiredPropertyException("JobCopy", "sourceTables");
+            }
+            this.sourceTables = sourceTables;
             return this;
         }
         public Builder sourceTables(JobCopySourceTable... sourceTables) {
@@ -157,6 +164,7 @@ public final class JobCopy {
         }
         @CustomType.Setter
         public Builder writeDisposition(@Nullable String writeDisposition) {
+
             this.writeDisposition = writeDisposition;
             return this;
         }

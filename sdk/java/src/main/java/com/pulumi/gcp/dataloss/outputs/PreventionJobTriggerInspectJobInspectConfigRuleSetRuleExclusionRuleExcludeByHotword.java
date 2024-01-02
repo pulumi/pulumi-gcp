@@ -71,11 +71,13 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
 
         @CustomType.Setter
         public Builder hotwordRegex(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex hotwordRegex) {
+
             this.hotwordRegex = hotwordRegex;
             return this;
         }
         @CustomType.Setter
         public Builder proximity(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity proximity) {
+
             this.proximity = proximity;
             return this;
         }

@@ -43,11 +43,13 @@ public final class Batching {
 
         @CustomType.Setter
         public Builder enableBatching(@Nullable Boolean enableBatching) {
+
             this.enableBatching = enableBatching;
             return this;
         }
         @CustomType.Setter
         public Builder sendAfter(@Nullable String sendAfter) {
+
             this.sendAfter = sendAfter;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigee.inputs.OrganizationPropertiesArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -524,7 +525,9 @@ public final class OrganizationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OrganizationArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("OrganizationArgs", "projectId");
+            }
             return $;
         }
     }

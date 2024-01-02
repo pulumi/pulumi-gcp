@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudasset.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudasset.outputs.ProjectFeedFeedOutputConfigPubsubDestination;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ProjectFeedFeedOutputConfig {
 
         @CustomType.Setter
         public Builder pubsubDestination(ProjectFeedFeedOutputConfigPubsubDestination pubsubDestination) {
-            this.pubsubDestination = Objects.requireNonNull(pubsubDestination);
+            if (pubsubDestination == null) {
+              throw new MissingRequiredPropertyException("ProjectFeedFeedOutputConfig", "pubsubDestination");
+            }
+            this.pubsubDestination = pubsubDestination;
             return this;
         }
         public ProjectFeedFeedOutputConfig build() {

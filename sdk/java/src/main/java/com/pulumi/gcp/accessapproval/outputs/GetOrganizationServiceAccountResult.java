@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accessapproval.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,22 +79,34 @@ public final class GetOrganizationServiceAccountResult {
 
         @CustomType.Setter
         public Builder accountEmail(String accountEmail) {
-            this.accountEmail = Objects.requireNonNull(accountEmail);
+            if (accountEmail == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationServiceAccountResult", "accountEmail");
+            }
+            this.accountEmail = accountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationServiceAccountResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationServiceAccountResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder organizationId(String organizationId) {
-            this.organizationId = Objects.requireNonNull(organizationId);
+            if (organizationId == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationServiceAccountResult", "organizationId");
+            }
+            this.organizationId = organizationId;
             return this;
         }
         public GetOrganizationServiceAccountResult build() {

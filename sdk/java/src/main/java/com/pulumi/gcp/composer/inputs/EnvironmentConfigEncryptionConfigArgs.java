@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class EnvironmentConfigEncryptionConfigArgs extends com.pulumi.reso
         }
 
         public EnvironmentConfigEncryptionConfigArgs build() {
-            $.kmsKeyName = Objects.requireNonNull($.kmsKeyName, "expected parameter 'kmsKeyName' to be non-null");
+            if ($.kmsKeyName == null) {
+                throw new MissingRequiredPropertyException("EnvironmentConfigEncryptionConfigArgs", "kmsKeyName");
+            }
             return $;
         }
     }

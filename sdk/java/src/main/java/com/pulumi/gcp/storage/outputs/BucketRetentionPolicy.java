@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -59,12 +60,16 @@ public final class BucketRetentionPolicy {
 
         @CustomType.Setter
         public Builder isLocked(@Nullable Boolean isLocked) {
+
             this.isLocked = isLocked;
             return this;
         }
         @CustomType.Setter
         public Builder retentionPeriod(Integer retentionPeriod) {
-            this.retentionPeriod = Objects.requireNonNull(retentionPeriod);
+            if (retentionPeriod == null) {
+              throw new MissingRequiredPropertyException("BucketRetentionPolicy", "retentionPeriod");
+            }
+            this.retentionPeriod = retentionPeriod;
             return this;
         }
         public BucketRetentionPolicy build() {

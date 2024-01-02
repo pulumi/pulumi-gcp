@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.AutoscalingPolicyBasicAlgorithmYarnConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -65,12 +66,16 @@ public final class AutoscalingPolicyBasicAlgorithm {
 
         @CustomType.Setter
         public Builder cooldownPeriod(@Nullable String cooldownPeriod) {
+
             this.cooldownPeriod = cooldownPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder yarnConfig(AutoscalingPolicyBasicAlgorithmYarnConfig yarnConfig) {
-            this.yarnConfig = Objects.requireNonNull(yarnConfig);
+            if (yarnConfig == null) {
+              throw new MissingRequiredPropertyException("AutoscalingPolicyBasicAlgorithm", "yarnConfig");
+            }
+            this.yarnConfig = yarnConfig;
             return this;
         }
         public AutoscalingPolicyBasicAlgorithm build() {

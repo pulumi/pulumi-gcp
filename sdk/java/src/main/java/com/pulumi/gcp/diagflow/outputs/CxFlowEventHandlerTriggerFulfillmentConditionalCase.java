@@ -46,6 +46,7 @@ public final class CxFlowEventHandlerTriggerFulfillmentConditionalCase {
 
         @CustomType.Setter
         public Builder cases(@Nullable String cases) {
+
             this.cases = cases;
             return this;
         }

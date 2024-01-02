@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -302,8 +303,12 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GatewayArgs build() {
-            $.apiConfig = Objects.requireNonNull($.apiConfig, "expected parameter 'apiConfig' to be non-null");
-            $.gatewayId = Objects.requireNonNull($.gatewayId, "expected parameter 'gatewayId' to be non-null");
+            if ($.apiConfig == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "apiConfig");
+            }
+            if ($.gatewayId == null) {
+                throw new MissingRequiredPropertyException("GatewayArgs", "gatewayId");
+            }
             return $;
         }
     }

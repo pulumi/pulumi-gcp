@@ -107,16 +107,19 @@ public final class RegionBackendServiceFailoverPolicy {
 
         @CustomType.Setter
         public Builder disableConnectionDrainOnFailover(@Nullable Boolean disableConnectionDrainOnFailover) {
+
             this.disableConnectionDrainOnFailover = disableConnectionDrainOnFailover;
             return this;
         }
         @CustomType.Setter
         public Builder dropTrafficIfUnhealthy(@Nullable Boolean dropTrafficIfUnhealthy) {
+
             this.dropTrafficIfUnhealthy = dropTrafficIfUnhealthy;
             return this;
         }
         @CustomType.Setter
         public Builder failoverRatio(@Nullable Double failoverRatio) {
+
             this.failoverRatio = failoverRatio;
             return this;
         }

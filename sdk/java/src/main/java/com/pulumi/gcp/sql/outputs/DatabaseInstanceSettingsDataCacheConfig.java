@@ -44,6 +44,7 @@ public final class DatabaseInstanceSettingsDataCacheConfig {
 
         @CustomType.Setter
         public Builder dataCacheEnabled(@Nullable Boolean dataCacheEnabled) {
+
             this.dataCacheEnabled = dataCacheEnabled;
             return this;
         }

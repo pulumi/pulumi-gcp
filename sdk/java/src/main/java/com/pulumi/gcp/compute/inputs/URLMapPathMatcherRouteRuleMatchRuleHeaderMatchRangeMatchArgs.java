@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs 
         }
 
         public URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs build() {
-            $.rangeEnd = Objects.requireNonNull($.rangeEnd, "expected parameter 'rangeEnd' to be non-null");
-            $.rangeStart = Objects.requireNonNull($.rangeStart, "expected parameter 'rangeStart' to be non-null");
+            if ($.rangeEnd == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs", "rangeEnd");
+            }
+            if ($.rangeStart == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs", "rangeStart");
+            }
             return $;
         }
     }

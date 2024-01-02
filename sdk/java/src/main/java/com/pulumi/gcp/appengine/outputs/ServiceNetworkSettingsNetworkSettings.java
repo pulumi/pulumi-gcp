@@ -52,6 +52,7 @@ public final class ServiceNetworkSettingsNetworkSettings {
 
         @CustomType.Setter
         public Builder ingressTrafficAllowed(@Nullable String ingressTrafficAllowed) {
+
             this.ingressTrafficAllowed = ingressTrafficAllowed;
             return this;
         }

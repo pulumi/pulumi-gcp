@@ -5,6 +5,7 @@ package com.pulumi.gcp.biglake;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -166,7 +167,9 @@ public final class CatalogArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CatalogArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("CatalogArgs", "location");
+            }
             return $;
         }
     }

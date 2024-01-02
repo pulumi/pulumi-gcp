@@ -131,6 +131,7 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicy {
 
         @CustomType.Setter
         public Builder allowedDeviceManagementLevels(@Nullable List<String> allowedDeviceManagementLevels) {
+
             this.allowedDeviceManagementLevels = allowedDeviceManagementLevels;
             return this;
         }
@@ -139,6 +140,7 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicy {
         }
         @CustomType.Setter
         public Builder allowedEncryptionStatuses(@Nullable List<String> allowedEncryptionStatuses) {
+
             this.allowedEncryptionStatuses = allowedEncryptionStatuses;
             return this;
         }
@@ -147,6 +149,7 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicy {
         }
         @CustomType.Setter
         public Builder osConstraints(@Nullable List<AccessLevelsAccessLevelBasicConditionDevicePolicyOsConstraint> osConstraints) {
+
             this.osConstraints = osConstraints;
             return this;
         }
@@ -155,16 +158,19 @@ public final class AccessLevelsAccessLevelBasicConditionDevicePolicy {
         }
         @CustomType.Setter
         public Builder requireAdminApproval(@Nullable Boolean requireAdminApproval) {
+
             this.requireAdminApproval = requireAdminApproval;
             return this;
         }
         @CustomType.Setter
         public Builder requireCorpOwned(@Nullable Boolean requireCorpOwned) {
+
             this.requireCorpOwned = requireCorpOwned;
             return this;
         }
         @CustomType.Setter
         public Builder requireScreenLock(@Nullable Boolean requireScreenLock) {
+
             this.requireScreenLock = requireScreenLock;
             return this;
         }

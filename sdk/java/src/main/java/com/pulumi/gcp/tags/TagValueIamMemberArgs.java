@@ -5,6 +5,7 @@ package com.pulumi.gcp.tags;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.tags.inputs.TagValueIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -204,9 +205,15 @@ public final class TagValueIamMemberArgs extends com.pulumi.resources.ResourceAr
         }
 
         public TagValueIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.tagValue = Objects.requireNonNull($.tagValue, "expected parameter 'tagValue' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("TagValueIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("TagValueIamMemberArgs", "role");
+            }
+            if ($.tagValue == null) {
+                throw new MissingRequiredPropertyException("TagValueIamMemberArgs", "tagValue");
+            }
             return $;
         }
     }

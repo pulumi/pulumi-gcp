@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.outputs.WorkforcePoolProviderOidcClientSecret;
 import com.pulumi.gcp.iam.outputs.WorkforcePoolProviderOidcWebSsoConfig;
 import java.lang.String;
@@ -160,26 +161,35 @@ public final class WorkforcePoolProviderOidc {
 
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("WorkforcePoolProviderOidc", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(@Nullable WorkforcePoolProviderOidcClientSecret clientSecret) {
+
             this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder issuerUri(String issuerUri) {
-            this.issuerUri = Objects.requireNonNull(issuerUri);
+            if (issuerUri == null) {
+              throw new MissingRequiredPropertyException("WorkforcePoolProviderOidc", "issuerUri");
+            }
+            this.issuerUri = issuerUri;
             return this;
         }
         @CustomType.Setter
         public Builder jwksJson(@Nullable String jwksJson) {
+
             this.jwksJson = jwksJson;
             return this;
         }
         @CustomType.Setter
         public Builder webSsoConfig(@Nullable WorkforcePoolProviderOidcWebSsoConfig webSsoConfig) {
+
             this.webSsoConfig = webSsoConfig;
             return this;
         }

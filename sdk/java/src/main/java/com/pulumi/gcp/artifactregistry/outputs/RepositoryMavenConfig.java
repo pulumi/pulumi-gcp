@@ -65,11 +65,13 @@ public final class RepositoryMavenConfig {
 
         @CustomType.Setter
         public Builder allowSnapshotOverwrites(@Nullable Boolean allowSnapshotOverwrites) {
+
             this.allowSnapshotOverwrites = allowSnapshotOverwrites;
             return this;
         }
         @CustomType.Setter
         public Builder versionPolicy(@Nullable String versionPolicy) {
+
             this.versionPolicy = versionPolicy;
             return this;
         }

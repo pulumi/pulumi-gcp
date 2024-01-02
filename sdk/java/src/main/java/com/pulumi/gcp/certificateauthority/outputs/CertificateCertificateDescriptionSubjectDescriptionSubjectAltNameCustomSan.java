@@ -81,11 +81,13 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
         @CustomType.Setter
         public Builder critical(@Nullable Boolean critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder obectIds(@Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomSanObectId> obectIds) {
+
             this.obectIds = obectIds;
             return this;
         }
@@ -94,6 +96,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

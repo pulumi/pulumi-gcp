@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -159,47 +160,60 @@ public final class InstanceGroupManagerUpdatePolicy {
 
         @CustomType.Setter
         public Builder maxSurgeFixed(@Nullable Integer maxSurgeFixed) {
+
             this.maxSurgeFixed = maxSurgeFixed;
             return this;
         }
         @CustomType.Setter
         public Builder maxSurgePercent(@Nullable Integer maxSurgePercent) {
+
             this.maxSurgePercent = maxSurgePercent;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailableFixed(@Nullable Integer maxUnavailableFixed) {
+
             this.maxUnavailableFixed = maxUnavailableFixed;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailablePercent(@Nullable Integer maxUnavailablePercent) {
+
             this.maxUnavailablePercent = maxUnavailablePercent;
             return this;
         }
         @CustomType.Setter
         public Builder minReadySec(@Nullable Integer minReadySec) {
+
             this.minReadySec = minReadySec;
             return this;
         }
         @CustomType.Setter
         public Builder minimalAction(String minimalAction) {
-            this.minimalAction = Objects.requireNonNull(minimalAction);
+            if (minimalAction == null) {
+              throw new MissingRequiredPropertyException("InstanceGroupManagerUpdatePolicy", "minimalAction");
+            }
+            this.minimalAction = minimalAction;
             return this;
         }
         @CustomType.Setter
         public Builder mostDisruptiveAllowedAction(@Nullable String mostDisruptiveAllowedAction) {
+
             this.mostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
             return this;
         }
         @CustomType.Setter
         public Builder replacementMethod(@Nullable String replacementMethod) {
+
             this.replacementMethod = replacementMethod;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("InstanceGroupManagerUpdatePolicy", "type");
+            }
+            this.type = type;
             return this;
         }
         public InstanceGroupManagerUpdatePolicy build() {

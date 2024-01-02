@@ -108,26 +108,31 @@ public final class BareMetalClusterValidationCheckStatusResult {
 
         @CustomType.Setter
         public Builder category(@Nullable String category) {
+
             this.category = category;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder details(@Nullable String details) {
+
             this.details = details;
             return this;
         }
         @CustomType.Setter
         public Builder options(@Nullable String options) {
+
             this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder reason(@Nullable String reason) {
+
             this.reason = reason;
             return this;
         }

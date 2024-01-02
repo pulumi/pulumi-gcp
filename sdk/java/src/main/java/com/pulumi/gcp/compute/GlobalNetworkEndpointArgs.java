@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -241,8 +242,12 @@ public final class GlobalNetworkEndpointArgs extends com.pulumi.resources.Resour
         }
 
         public GlobalNetworkEndpointArgs build() {
-            $.globalNetworkEndpointGroup = Objects.requireNonNull($.globalNetworkEndpointGroup, "expected parameter 'globalNetworkEndpointGroup' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.globalNetworkEndpointGroup == null) {
+                throw new MissingRequiredPropertyException("GlobalNetworkEndpointArgs", "globalNetworkEndpointGroup");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("GlobalNetworkEndpointArgs", "port");
+            }
             return $;
         }
     }

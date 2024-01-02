@@ -76,16 +76,19 @@ public final class InstanceGceSetupVmImage {
 
         @CustomType.Setter
         public Builder family(@Nullable String family) {
+
             this.family = family;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }

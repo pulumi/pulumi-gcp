@@ -62,11 +62,13 @@ public final class ClusterNetworkConfig {
 
         @CustomType.Setter
         public Builder allocatedIpRange(@Nullable String allocatedIpRange) {
+
             this.allocatedIpRange = allocatedIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }

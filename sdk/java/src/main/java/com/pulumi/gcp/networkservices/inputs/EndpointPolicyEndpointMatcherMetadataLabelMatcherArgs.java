@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabelArgs;
 import java.lang.String;
 import java.util.List;
@@ -134,7 +135,9 @@ public final class EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs extends
         }
 
         public EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs build() {
-            $.metadataLabelMatchCriteria = Objects.requireNonNull($.metadataLabelMatchCriteria, "expected parameter 'metadataLabelMatchCriteria' to be non-null");
+            if ($.metadataLabelMatchCriteria == null) {
+                throw new MissingRequiredPropertyException("EndpointPolicyEndpointMatcherMetadataLabelMatcherArgs", "metadataLabelMatchCriteria");
+            }
             return $;
         }
     }

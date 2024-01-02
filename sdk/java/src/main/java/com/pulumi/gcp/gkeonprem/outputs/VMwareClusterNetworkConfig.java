@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterNetworkConfigControlPlaneV2Config;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterNetworkConfigDhcpIpConfig;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterNetworkConfigHostConfig;
@@ -149,22 +150,28 @@ public final class VMwareClusterNetworkConfig {
 
         @CustomType.Setter
         public Builder controlPlaneV2Config(@Nullable VMwareClusterNetworkConfigControlPlaneV2Config controlPlaneV2Config) {
+
             this.controlPlaneV2Config = controlPlaneV2Config;
             return this;
         }
         @CustomType.Setter
         public Builder dhcpIpConfig(@Nullable VMwareClusterNetworkConfigDhcpIpConfig dhcpIpConfig) {
+
             this.dhcpIpConfig = dhcpIpConfig;
             return this;
         }
         @CustomType.Setter
         public Builder hostConfig(@Nullable VMwareClusterNetworkConfigHostConfig hostConfig) {
+
             this.hostConfig = hostConfig;
             return this;
         }
         @CustomType.Setter
         public Builder podAddressCidrBlocks(List<String> podAddressCidrBlocks) {
-            this.podAddressCidrBlocks = Objects.requireNonNull(podAddressCidrBlocks);
+            if (podAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterNetworkConfig", "podAddressCidrBlocks");
+            }
+            this.podAddressCidrBlocks = podAddressCidrBlocks;
             return this;
         }
         public Builder podAddressCidrBlocks(String... podAddressCidrBlocks) {
@@ -172,7 +179,10 @@ public final class VMwareClusterNetworkConfig {
         }
         @CustomType.Setter
         public Builder serviceAddressCidrBlocks(List<String> serviceAddressCidrBlocks) {
-            this.serviceAddressCidrBlocks = Objects.requireNonNull(serviceAddressCidrBlocks);
+            if (serviceAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterNetworkConfig", "serviceAddressCidrBlocks");
+            }
+            this.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
             return this;
         }
         public Builder serviceAddressCidrBlocks(String... serviceAddressCidrBlocks) {
@@ -180,11 +190,13 @@ public final class VMwareClusterNetworkConfig {
         }
         @CustomType.Setter
         public Builder staticIpConfig(@Nullable VMwareClusterNetworkConfigStaticIpConfig staticIpConfig) {
+
             this.staticIpConfig = staticIpConfig;
             return this;
         }
         @CustomType.Setter
         public Builder vcenterNetwork(@Nullable String vcenterNetwork) {
+
             this.vcenterNetwork = vcenterNetwork;
             return this;
         }

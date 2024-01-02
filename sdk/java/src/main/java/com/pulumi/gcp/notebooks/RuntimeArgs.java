@@ -5,6 +5,7 @@ package com.pulumi.gcp.notebooks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.notebooks.inputs.RuntimeAccessConfigArgs;
 import com.pulumi.gcp.notebooks.inputs.RuntimeSoftwareConfigArgs;
 import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineArgs;
@@ -358,7 +359,9 @@ public final class RuntimeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RuntimeArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("RuntimeArgs", "location");
+            }
             return $;
         }
     }

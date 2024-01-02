@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.outputs.GetClusterNodeTypeConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -81,22 +82,34 @@ public final class GetClusterResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder management(Boolean management) {
-            this.management = Objects.requireNonNull(management);
+            if (management == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "management");
+            }
+            this.management = management;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nodeTypeConfigs(List<GetClusterNodeTypeConfig> nodeTypeConfigs) {
-            this.nodeTypeConfigs = Objects.requireNonNull(nodeTypeConfigs);
+            if (nodeTypeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "nodeTypeConfigs");
+            }
+            this.nodeTypeConfigs = nodeTypeConfigs;
             return this;
         }
         public Builder nodeTypeConfigs(GetClusterNodeTypeConfig... nodeTypeConfigs) {
@@ -104,17 +117,26 @@ public final class GetClusterResult {
         }
         @CustomType.Setter
         public Builder parent(String parent) {
-            this.parent = Objects.requireNonNull(parent);
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "parent");
+            }
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         public GetClusterResult build() {

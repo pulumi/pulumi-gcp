@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquerydatapolicy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class DataPolicyDataMaskingPolicyArgs extends com.pulumi.resources.
         }
 
         public DataPolicyDataMaskingPolicyArgs build() {
-            $.predefinedExpression = Objects.requireNonNull($.predefinedExpression, "expected parameter 'predefinedExpression' to be non-null");
+            if ($.predefinedExpression == null) {
+                throw new MissingRequiredPropertyException("DataPolicyDataMaskingPolicyArgs", "predefinedExpression");
+            }
             return $;
         }
     }

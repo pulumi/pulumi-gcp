@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerRepositoryEventConfigPullRequest;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerRepositoryEventConfigPush;
 import java.lang.String;
@@ -49,7 +50,10 @@ public final class GetTriggerRepositoryEventConfig {
 
         @CustomType.Setter
         public Builder pullRequests(List<GetTriggerRepositoryEventConfigPullRequest> pullRequests) {
-            this.pullRequests = Objects.requireNonNull(pullRequests);
+            if (pullRequests == null) {
+              throw new MissingRequiredPropertyException("GetTriggerRepositoryEventConfig", "pullRequests");
+            }
+            this.pullRequests = pullRequests;
             return this;
         }
         public Builder pullRequests(GetTriggerRepositoryEventConfigPullRequest... pullRequests) {
@@ -57,7 +61,10 @@ public final class GetTriggerRepositoryEventConfig {
         }
         @CustomType.Setter
         public Builder pushes(List<GetTriggerRepositoryEventConfigPush> pushes) {
-            this.pushes = Objects.requireNonNull(pushes);
+            if (pushes == null) {
+              throw new MissingRequiredPropertyException("GetTriggerRepositoryEventConfig", "pushes");
+            }
+            this.pushes = pushes;
             return this;
         }
         public Builder pushes(GetTriggerRepositoryEventConfigPush... pushes) {
@@ -65,7 +72,10 @@ public final class GetTriggerRepositoryEventConfig {
         }
         @CustomType.Setter
         public Builder repository(String repository) {
-            this.repository = Objects.requireNonNull(repository);
+            if (repository == null) {
+              throw new MissingRequiredPropertyException("GetTriggerRepositoryEventConfig", "repository");
+            }
+            this.repository = repository;
             return this;
         }
         public GetTriggerRepositoryEventConfig build() {

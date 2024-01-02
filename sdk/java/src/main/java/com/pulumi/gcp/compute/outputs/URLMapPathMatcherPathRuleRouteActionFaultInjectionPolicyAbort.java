@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -61,12 +62,18 @@ public final class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort
 
         @CustomType.Setter
         public Builder httpStatus(Integer httpStatus) {
-            this.httpStatus = Objects.requireNonNull(httpStatus);
+            if (httpStatus == null) {
+              throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort", "httpStatus");
+            }
+            this.httpStatus = httpStatus;
             return this;
         }
         @CustomType.Setter
         public Builder percentage(Double percentage) {
-            this.percentage = Objects.requireNonNull(percentage);
+            if (percentage == null) {
+              throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort", "percentage");
+            }
+            this.percentage = percentage;
             return this;
         }
         public URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort build() {

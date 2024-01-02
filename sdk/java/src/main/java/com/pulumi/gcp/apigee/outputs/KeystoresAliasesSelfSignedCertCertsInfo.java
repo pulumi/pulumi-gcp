@@ -48,6 +48,7 @@ public final class KeystoresAliasesSelfSignedCertCertsInfo {
 
         @CustomType.Setter
         public Builder certInfos(@Nullable List<KeystoresAliasesSelfSignedCertCertsInfoCertInfo> certInfos) {
+
             this.certInfos = certInfos;
             return this;
         }

@@ -59,11 +59,13 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         @CustomType.Setter
         public Builder floatValue(@Nullable Double floatValue) {
+
             this.floatValue = floatValue;
             return this;
         }
         @CustomType.Setter
         public Builder integerValue(@Nullable String integerValue) {
+
             this.integerValue = integerValue;
             return this;
         }

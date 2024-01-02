@@ -4,6 +4,7 @@
 package com.pulumi.gcp.apigee.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigee.outputs.TargetServerSSlInfoCommonName;
 import java.lang.Boolean;
 import java.lang.String;
@@ -161,6 +162,7 @@ public final class TargetServerSSlInfo {
 
         @CustomType.Setter
         public Builder ciphers(@Nullable List<String> ciphers) {
+
             this.ciphers = ciphers;
             return this;
         }
@@ -169,36 +171,45 @@ public final class TargetServerSSlInfo {
         }
         @CustomType.Setter
         public Builder clientAuthEnabled(@Nullable Boolean clientAuthEnabled) {
+
             this.clientAuthEnabled = clientAuthEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder commonName(@Nullable TargetServerSSlInfoCommonName commonName) {
+
             this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("TargetServerSSlInfo", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreValidationErrors(@Nullable Boolean ignoreValidationErrors) {
+
             this.ignoreValidationErrors = ignoreValidationErrors;
             return this;
         }
         @CustomType.Setter
         public Builder keyAlias(@Nullable String keyAlias) {
+
             this.keyAlias = keyAlias;
             return this;
         }
         @CustomType.Setter
         public Builder keyStore(@Nullable String keyStore) {
+
             this.keyStore = keyStore;
             return this;
         }
         @CustomType.Setter
         public Builder protocols(@Nullable List<String> protocols) {
+
             this.protocols = protocols;
             return this;
         }
@@ -207,6 +218,7 @@ public final class TargetServerSSlInfo {
         }
         @CustomType.Setter
         public Builder trustStore(@Nullable String trustStore) {
+
             this.trustStore = trustStore;
             return this;
         }

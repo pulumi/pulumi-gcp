@@ -59,11 +59,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategy {
 
         @CustomType.Setter
         public Builder canary(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanary canary) {
+
             this.canary = canary;
             return this;
         }
         @CustomType.Setter
         public Builder standard(@Nullable DeliveryPipelineSerialPipelineStageStrategyStandard standard) {
+
             this.standard = standard;
             return this;
         }

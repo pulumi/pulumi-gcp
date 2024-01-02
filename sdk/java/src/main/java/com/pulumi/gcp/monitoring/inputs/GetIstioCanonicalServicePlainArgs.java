@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -170,9 +171,15 @@ public final class GetIstioCanonicalServicePlainArgs extends com.pulumi.resource
         }
 
         public GetIstioCanonicalServicePlainArgs build() {
-            $.canonicalService = Objects.requireNonNull($.canonicalService, "expected parameter 'canonicalService' to be non-null");
-            $.canonicalServiceNamespace = Objects.requireNonNull($.canonicalServiceNamespace, "expected parameter 'canonicalServiceNamespace' to be non-null");
-            $.meshUid = Objects.requireNonNull($.meshUid, "expected parameter 'meshUid' to be non-null");
+            if ($.canonicalService == null) {
+                throw new MissingRequiredPropertyException("GetIstioCanonicalServicePlainArgs", "canonicalService");
+            }
+            if ($.canonicalServiceNamespace == null) {
+                throw new MissingRequiredPropertyException("GetIstioCanonicalServicePlainArgs", "canonicalServiceNamespace");
+            }
+            if ($.meshUid == null) {
+                throw new MissingRequiredPropertyException("GetIstioCanonicalServicePlainArgs", "meshUid");
+            }
             return $;
         }
     }

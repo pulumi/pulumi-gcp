@@ -72,16 +72,19 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigImageTransformati
 
         @CustomType.Setter
         public Builder blue(@Nullable Double blue) {
+
             this.blue = blue;
             return this;
         }
         @CustomType.Setter
         public Builder green(@Nullable Double green) {
+
             this.green = green;
             return this;
         }
         @CustomType.Setter
         public Builder red(@Nullable Double red) {
+
             this.red = red;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelBasicConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -154,7 +155,9 @@ public final class AccessLevelBasicArgs extends com.pulumi.resources.ResourceArg
         }
 
         public AccessLevelBasicArgs build() {
-            $.conditions = Objects.requireNonNull($.conditions, "expected parameter 'conditions' to be non-null");
+            if ($.conditions == null) {
+                throw new MissingRequiredPropertyException("AccessLevelBasicArgs", "conditions");
+            }
             return $;
         }
     }

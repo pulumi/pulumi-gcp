@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs extend
         }
 
         public TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs build() {
-            $.accessKeyId = Objects.requireNonNull($.accessKeyId, "expected parameter 'accessKeyId' to be non-null");
-            $.secretAccessKey = Objects.requireNonNull($.secretAccessKey, "expected parameter 'secretAccessKey' to be non-null");
+            if ($.accessKeyId == null) {
+                throw new MissingRequiredPropertyException("TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs", "accessKeyId");
+            }
+            if ($.secretAccessKey == null) {
+                throw new MissingRequiredPropertyException("TransferJobTransferSpecAwsS3DataSourceAwsAccessKeyArgs", "secretAccessKey");
+            }
             return $;
         }
     }

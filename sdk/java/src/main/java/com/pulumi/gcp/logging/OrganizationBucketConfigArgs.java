@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.OrganizationBucketConfigCmekSettingsArgs;
 import com.pulumi.gcp.logging.inputs.OrganizationBucketConfigIndexConfigArgs;
 import java.lang.Integer;
@@ -320,9 +321,15 @@ public final class OrganizationBucketConfigArgs extends com.pulumi.resources.Res
         }
 
         public OrganizationBucketConfigArgs build() {
-            $.bucketId = Objects.requireNonNull($.bucketId, "expected parameter 'bucketId' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
+            if ($.bucketId == null) {
+                throw new MissingRequiredPropertyException("OrganizationBucketConfigArgs", "bucketId");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("OrganizationBucketConfigArgs", "location");
+            }
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("OrganizationBucketConfigArgs", "organization");
+            }
             return $;
         }
     }

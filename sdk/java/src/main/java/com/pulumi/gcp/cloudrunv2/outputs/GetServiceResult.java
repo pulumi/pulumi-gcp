@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceBinaryAuthorization;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceCondition;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplate;
@@ -257,12 +258,18 @@ public final class GetServiceResult {
 
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder binaryAuthorizations(List<GetServiceBinaryAuthorization> binaryAuthorizations) {
-            this.binaryAuthorizations = Objects.requireNonNull(binaryAuthorizations);
+            if (binaryAuthorizations == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "binaryAuthorizations");
+            }
+            this.binaryAuthorizations = binaryAuthorizations;
             return this;
         }
         public Builder binaryAuthorizations(GetServiceBinaryAuthorization... binaryAuthorizations) {
@@ -270,17 +277,26 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder client(String client) {
-            this.client = Objects.requireNonNull(client);
+            if (client == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "client");
+            }
+            this.client = client;
             return this;
         }
         @CustomType.Setter
         public Builder clientVersion(String clientVersion) {
-            this.clientVersion = Objects.requireNonNull(clientVersion);
+            if (clientVersion == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "clientVersion");
+            }
+            this.clientVersion = clientVersion;
             return this;
         }
         @CustomType.Setter
         public Builder conditions(List<GetServiceCondition> conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         public Builder conditions(GetServiceCondition... conditions) {
@@ -288,17 +304,26 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder creator(String creator) {
-            this.creator = Objects.requireNonNull(creator);
+            if (creator == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "creator");
+            }
+            this.creator = creator;
             return this;
         }
         @CustomType.Setter
         public Builder customAudiences(List<String> customAudiences) {
-            this.customAudiences = Objects.requireNonNull(customAudiences);
+            if (customAudiences == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "customAudiences");
+            }
+            this.customAudiences = customAudiences;
             return this;
         }
         public Builder customAudiences(String... customAudiences) {
@@ -306,107 +331,166 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder deleteTime(String deleteTime) {
-            this.deleteTime = Objects.requireNonNull(deleteTime);
+            if (deleteTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "deleteTime");
+            }
+            this.deleteTime = deleteTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
-            this.effectiveAnnotations = Objects.requireNonNull(effectiveAnnotations);
+            if (effectiveAnnotations == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "effectiveAnnotations");
+            }
+            this.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder generation(String generation) {
-            this.generation = Objects.requireNonNull(generation);
+            if (generation == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "generation");
+            }
+            this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ingress(String ingress) {
-            this.ingress = Objects.requireNonNull(ingress);
+            if (ingress == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "ingress");
+            }
+            this.ingress = ingress;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifier(String lastModifier) {
-            this.lastModifier = Objects.requireNonNull(lastModifier);
+            if (lastModifier == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "lastModifier");
+            }
+            this.lastModifier = lastModifier;
             return this;
         }
         @CustomType.Setter
         public Builder latestCreatedRevision(String latestCreatedRevision) {
-            this.latestCreatedRevision = Objects.requireNonNull(latestCreatedRevision);
+            if (latestCreatedRevision == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "latestCreatedRevision");
+            }
+            this.latestCreatedRevision = latestCreatedRevision;
             return this;
         }
         @CustomType.Setter
         public Builder latestReadyRevision(String latestReadyRevision) {
-            this.latestReadyRevision = Objects.requireNonNull(latestReadyRevision);
+            if (latestReadyRevision == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "latestReadyRevision");
+            }
+            this.latestReadyRevision = latestReadyRevision;
             return this;
         }
         @CustomType.Setter
         public Builder launchStage(String launchStage) {
-            this.launchStage = Objects.requireNonNull(launchStage);
+            if (launchStage == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "launchStage");
+            }
+            this.launchStage = launchStage;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder observedGeneration(String observedGeneration) {
-            this.observedGeneration = Objects.requireNonNull(observedGeneration);
+            if (observedGeneration == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "observedGeneration");
+            }
+            this.observedGeneration = observedGeneration;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder reconciling(Boolean reconciling) {
-            this.reconciling = Objects.requireNonNull(reconciling);
+            if (reconciling == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "reconciling");
+            }
+            this.reconciling = reconciling;
             return this;
         }
         @CustomType.Setter
         public Builder templates(List<GetServiceTemplate> templates) {
-            this.templates = Objects.requireNonNull(templates);
+            if (templates == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "templates");
+            }
+            this.templates = templates;
             return this;
         }
         public Builder templates(GetServiceTemplate... templates) {
@@ -414,7 +498,10 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder terminalConditions(List<GetServiceTerminalCondition> terminalConditions) {
-            this.terminalConditions = Objects.requireNonNull(terminalConditions);
+            if (terminalConditions == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "terminalConditions");
+            }
+            this.terminalConditions = terminalConditions;
             return this;
         }
         public Builder terminalConditions(GetServiceTerminalCondition... terminalConditions) {
@@ -422,7 +509,10 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder trafficStatuses(List<GetServiceTrafficStatus> trafficStatuses) {
-            this.trafficStatuses = Objects.requireNonNull(trafficStatuses);
+            if (trafficStatuses == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "trafficStatuses");
+            }
+            this.trafficStatuses = trafficStatuses;
             return this;
         }
         public Builder trafficStatuses(GetServiceTrafficStatus... trafficStatuses) {
@@ -430,7 +520,10 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder traffics(List<GetServiceTraffic> traffics) {
-            this.traffics = Objects.requireNonNull(traffics);
+            if (traffics == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "traffics");
+            }
+            this.traffics = traffics;
             return this;
         }
         public Builder traffics(GetServiceTraffic... traffics) {
@@ -438,17 +531,26 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public GetServiceResult build() {

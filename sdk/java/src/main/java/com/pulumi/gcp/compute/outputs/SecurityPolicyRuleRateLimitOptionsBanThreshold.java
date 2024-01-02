@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class SecurityPolicyRuleRateLimitOptionsBanThreshold {
 
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsBanThreshold", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder intervalSec(Integer intervalSec) {
-            this.intervalSec = Objects.requireNonNull(intervalSec);
+            if (intervalSec == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsBanThreshold", "intervalSec");
+            }
+            this.intervalSec = intervalSec;
             return this;
         }
         public SecurityPolicyRuleRateLimitOptionsBanThreshold build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,7 +101,9 @@ public final class SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs exten
         }
 
         public SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs build() {
-            $.contentTypes = Objects.requireNonNull($.contentTypes, "expected parameter 'contentTypes' to be non-null");
+            if ($.contentTypes == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs", "contentTypes");
+            }
             return $;
         }
     }

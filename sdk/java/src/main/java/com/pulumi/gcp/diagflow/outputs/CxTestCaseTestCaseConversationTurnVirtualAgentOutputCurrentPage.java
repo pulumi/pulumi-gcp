@@ -62,11 +62,13 @@ public final class CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPa
 
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
