@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -286,7 +287,9 @@ public final class ConsentStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConsentStoreArgs build() {
-            $.dataset = Objects.requireNonNull($.dataset, "expected parameter 'dataset' to be non-null");
+            if ($.dataset == null) {
+                throw new MissingRequiredPropertyException("ConsentStoreArgs", "dataset");
+            }
             return $;
         }
     }

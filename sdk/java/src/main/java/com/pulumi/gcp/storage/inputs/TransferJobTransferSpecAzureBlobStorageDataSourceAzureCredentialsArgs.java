@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredent
         }
 
         public TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs build() {
-            $.sasToken = Objects.requireNonNull($.sasToken, "expected parameter 'sasToken' to be non-null");
+            if ($.sasToken == null) {
+                throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs", "sasToken");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterSecurityConfigAuthorizationAdminUserArgs;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class BareMetalAdminClusterSecurityConfigAuthorizationArgs extends 
         }
 
         public BareMetalAdminClusterSecurityConfigAuthorizationArgs build() {
-            $.adminUsers = Objects.requireNonNull($.adminUsers, "expected parameter 'adminUsers' to be non-null");
+            if ($.adminUsers == null) {
+                throw new MissingRequiredPropertyException("BareMetalAdminClusterSecurityConfigAuthorizationArgs", "adminUsers");
+            }
             return $;
         }
     }

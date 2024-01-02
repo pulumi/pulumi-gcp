@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iap.inputs.WebTypeAppEngingIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -274,9 +275,15 @@ public final class WebTypeAppEngingIamBindingArgs extends com.pulumi.resources.R
         }
 
         public WebTypeAppEngingIamBindingArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("WebTypeAppEngingIamBindingArgs", "appId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("WebTypeAppEngingIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("WebTypeAppEngingIamBindingArgs", "role");
+            }
             return $;
         }
     }

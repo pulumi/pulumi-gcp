@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class SharedVPCHostProjectArgs extends com.pulumi.resources.Resourc
         }
 
         public SharedVPCHostProjectArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("SharedVPCHostProjectArgs", "project");
+            }
             return $;
         }
     }

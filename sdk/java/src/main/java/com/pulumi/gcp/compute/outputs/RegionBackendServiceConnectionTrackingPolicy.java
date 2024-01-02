@@ -134,21 +134,25 @@ public final class RegionBackendServiceConnectionTrackingPolicy {
 
         @CustomType.Setter
         public Builder connectionPersistenceOnUnhealthyBackends(@Nullable String connectionPersistenceOnUnhealthyBackends) {
+
             this.connectionPersistenceOnUnhealthyBackends = connectionPersistenceOnUnhealthyBackends;
             return this;
         }
         @CustomType.Setter
         public Builder enableStrongAffinity(@Nullable Boolean enableStrongAffinity) {
+
             this.enableStrongAffinity = enableStrongAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder idleTimeoutSec(@Nullable Integer idleTimeoutSec) {
+
             this.idleTimeoutSec = idleTimeoutSec;
             return this;
         }
         @CustomType.Setter
         public Builder trackingMode(@Nullable String trackingMode) {
+
             this.trackingMode = trackingMode;
             return this;
         }

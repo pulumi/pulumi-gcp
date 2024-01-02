@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsP
 
         @CustomType.Setter
         public Builder score(String score) {
-            this.score = Objects.requireNonNull(score);
+            if (score == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore", "score");
+            }
+            this.score = score;
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeSensitivityScore build() {

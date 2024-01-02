@@ -59,11 +59,13 @@ public final class TargetGke {
 
         @CustomType.Setter
         public Builder cluster(@Nullable String cluster) {
+
             this.cluster = cluster;
             return this;
         }
         @CustomType.Setter
         public Builder internalIp(@Nullable Boolean internalIp) {
+
             this.internalIp = internalIp;
             return this;
         }

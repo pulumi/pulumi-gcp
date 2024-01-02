@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -90,27 +91,40 @@ public final class GetRecordSetResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRecordSetResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder managedZone(String managedZone) {
-            this.managedZone = Objects.requireNonNull(managedZone);
+            if (managedZone == null) {
+              throw new MissingRequiredPropertyException("GetRecordSetResult", "managedZone");
+            }
+            this.managedZone = managedZone;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRecordSetResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder rrdatas(List<String> rrdatas) {
-            this.rrdatas = Objects.requireNonNull(rrdatas);
+            if (rrdatas == null) {
+              throw new MissingRequiredPropertyException("GetRecordSetResult", "rrdatas");
+            }
+            this.rrdatas = rrdatas;
             return this;
         }
         public Builder rrdatas(String... rrdatas) {
@@ -118,12 +132,18 @@ public final class GetRecordSetResult {
         }
         @CustomType.Setter
         public Builder ttl(Integer ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("GetRecordSetResult", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRecordSetResult", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetRecordSetResult build() {

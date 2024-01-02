@@ -50,6 +50,7 @@ public final class CxAgentTextToSpeechSettings {
 
         @CustomType.Setter
         public Builder synthesizeSpeechConfigs(@Nullable String synthesizeSpeechConfigs) {
+
             this.synthesizeSpeechConfigs = synthesizeSpeechConfigs;
             return this;
         }

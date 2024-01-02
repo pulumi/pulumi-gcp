@@ -178,6 +178,7 @@ public final class CertificateCertificateDescription {
 
         @CustomType.Setter
         public Builder aiaIssuingCertificateUrls(@Nullable List<String> aiaIssuingCertificateUrls) {
+
             this.aiaIssuingCertificateUrls = aiaIssuingCertificateUrls;
             return this;
         }
@@ -186,6 +187,7 @@ public final class CertificateCertificateDescription {
         }
         @CustomType.Setter
         public Builder authorityKeyIds(@Nullable List<CertificateCertificateDescriptionAuthorityKeyId> authorityKeyIds) {
+
             this.authorityKeyIds = authorityKeyIds;
             return this;
         }
@@ -194,6 +196,7 @@ public final class CertificateCertificateDescription {
         }
         @CustomType.Setter
         public Builder certFingerprints(@Nullable List<CertificateCertificateDescriptionCertFingerprint> certFingerprints) {
+
             this.certFingerprints = certFingerprints;
             return this;
         }
@@ -202,6 +205,7 @@ public final class CertificateCertificateDescription {
         }
         @CustomType.Setter
         public Builder crlDistributionPoints(@Nullable List<String> crlDistributionPoints) {
+
             this.crlDistributionPoints = crlDistributionPoints;
             return this;
         }
@@ -210,6 +214,7 @@ public final class CertificateCertificateDescription {
         }
         @CustomType.Setter
         public Builder publicKeys(@Nullable List<CertificateCertificateDescriptionPublicKey> publicKeys) {
+
             this.publicKeys = publicKeys;
             return this;
         }
@@ -218,6 +223,7 @@ public final class CertificateCertificateDescription {
         }
         @CustomType.Setter
         public Builder subjectDescriptions(@Nullable List<CertificateCertificateDescriptionSubjectDescription> subjectDescriptions) {
+
             this.subjectDescriptions = subjectDescriptions;
             return this;
         }
@@ -226,6 +232,7 @@ public final class CertificateCertificateDescription {
         }
         @CustomType.Setter
         public Builder subjectKeyIds(@Nullable List<CertificateCertificateDescriptionSubjectKeyId> subjectKeyIds) {
+
             this.subjectKeyIds = subjectKeyIds;
             return this;
         }
@@ -234,6 +241,7 @@ public final class CertificateCertificateDescription {
         }
         @CustomType.Setter
         public Builder x509Descriptions(@Nullable List<CertificateCertificateDescriptionX509Description> x509Descriptions) {
+
             this.x509Descriptions = x509Descriptions;
             return this;
         }

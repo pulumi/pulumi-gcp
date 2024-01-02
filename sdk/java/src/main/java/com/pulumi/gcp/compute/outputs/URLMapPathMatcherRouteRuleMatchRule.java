@@ -215,11 +215,13 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
 
         @CustomType.Setter
         public Builder fullPathMatch(@Nullable String fullPathMatch) {
+
             this.fullPathMatch = fullPathMatch;
             return this;
         }
         @CustomType.Setter
         public Builder headerMatches(@Nullable List<URLMapPathMatcherRouteRuleMatchRuleHeaderMatch> headerMatches) {
+
             this.headerMatches = headerMatches;
             return this;
         }
@@ -228,11 +230,13 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
         }
         @CustomType.Setter
         public Builder ignoreCase(@Nullable Boolean ignoreCase) {
+
             this.ignoreCase = ignoreCase;
             return this;
         }
         @CustomType.Setter
         public Builder metadataFilters(@Nullable List<URLMapPathMatcherRouteRuleMatchRuleMetadataFilter> metadataFilters) {
+
             this.metadataFilters = metadataFilters;
             return this;
         }
@@ -241,16 +245,19 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
         }
         @CustomType.Setter
         public Builder pathTemplateMatch(@Nullable String pathTemplateMatch) {
+
             this.pathTemplateMatch = pathTemplateMatch;
             return this;
         }
         @CustomType.Setter
         public Builder prefixMatch(@Nullable String prefixMatch) {
+
             this.prefixMatch = prefixMatch;
             return this;
         }
         @CustomType.Setter
         public Builder queryParameterMatches(@Nullable List<URLMapPathMatcherRouteRuleMatchRuleQueryParameterMatch> queryParameterMatches) {
+
             this.queryParameterMatches = queryParameterMatches;
             return this;
         }
@@ -259,6 +266,7 @@ public final class URLMapPathMatcherRouteRuleMatchRule {
         }
         @CustomType.Setter
         public Builder regexMatch(@Nullable String regexMatch) {
+
             this.regexMatch = regexMatch;
             return this;
         }

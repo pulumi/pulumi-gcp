@@ -78,16 +78,19 @@ public final class ServiceTemplateVpcAccess {
 
         @CustomType.Setter
         public Builder connector(@Nullable String connector) {
+
             this.connector = connector;
             return this;
         }
         @CustomType.Setter
         public Builder egress(@Nullable String egress) {
+
             this.egress = egress;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaces(@Nullable List<ServiceTemplateVpcAccessNetworkInterface> networkInterfaces) {
+
             this.networkInterfaces = networkInterfaces;
             return this;
         }

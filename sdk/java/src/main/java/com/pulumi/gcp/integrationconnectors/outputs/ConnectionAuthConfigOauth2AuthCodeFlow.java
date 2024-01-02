@@ -105,26 +105,31 @@ public final class ConnectionAuthConfigOauth2AuthCodeFlow {
 
         @CustomType.Setter
         public Builder authUri(@Nullable String authUri) {
+
             this.authUri = authUri;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(@Nullable ConnectionAuthConfigOauth2AuthCodeFlowClientSecret clientSecret) {
+
             this.clientSecret = clientSecret;
             return this;
         }
         @CustomType.Setter
         public Builder enablePkce(@Nullable Boolean enablePkce) {
+
             this.enablePkce = enablePkce;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(@Nullable List<String> scopes) {
+
             this.scopes = scopes;
             return this;
         }

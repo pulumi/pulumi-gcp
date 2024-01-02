@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterLoadBalancerBgpLbConfigAddressPool;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig;
@@ -114,7 +115,10 @@ public final class BareMetalClusterLoadBalancerBgpLbConfig {
 
         @CustomType.Setter
         public Builder addressPools(List<BareMetalClusterLoadBalancerBgpLbConfigAddressPool> addressPools) {
-            this.addressPools = Objects.requireNonNull(addressPools);
+            if (addressPools == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfig", "addressPools");
+            }
+            this.addressPools = addressPools;
             return this;
         }
         public Builder addressPools(BareMetalClusterLoadBalancerBgpLbConfigAddressPool... addressPools) {
@@ -122,12 +126,18 @@ public final class BareMetalClusterLoadBalancerBgpLbConfig {
         }
         @CustomType.Setter
         public Builder asn(Integer asn) {
-            this.asn = Objects.requireNonNull(asn);
+            if (asn == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfig", "asn");
+            }
+            this.asn = asn;
             return this;
         }
         @CustomType.Setter
         public Builder bgpPeerConfigs(List<BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig> bgpPeerConfigs) {
-            this.bgpPeerConfigs = Objects.requireNonNull(bgpPeerConfigs);
+            if (bgpPeerConfigs == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfig", "bgpPeerConfigs");
+            }
+            this.bgpPeerConfigs = bgpPeerConfigs;
             return this;
         }
         public Builder bgpPeerConfigs(BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfig... bgpPeerConfigs) {
@@ -135,6 +145,7 @@ public final class BareMetalClusterLoadBalancerBgpLbConfig {
         }
         @CustomType.Setter
         public Builder loadBalancerNodePoolConfig(@Nullable BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfig loadBalancerNodePoolConfig) {
+
             this.loadBalancerNodePoolConfig = loadBalancerNodePoolConfig;
             return this;
         }

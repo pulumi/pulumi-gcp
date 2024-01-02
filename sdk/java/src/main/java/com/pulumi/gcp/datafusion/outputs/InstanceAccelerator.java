@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datafusion.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -60,12 +61,18 @@ public final class InstanceAccelerator {
 
         @CustomType.Setter
         public Builder acceleratorType(String acceleratorType) {
-            this.acceleratorType = Objects.requireNonNull(acceleratorType);
+            if (acceleratorType == null) {
+              throw new MissingRequiredPropertyException("InstanceAccelerator", "acceleratorType");
+            }
+            this.acceleratorType = acceleratorType;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("InstanceAccelerator", "state");
+            }
+            this.state = state;
             return this;
         }
         public InstanceAccelerator build() {

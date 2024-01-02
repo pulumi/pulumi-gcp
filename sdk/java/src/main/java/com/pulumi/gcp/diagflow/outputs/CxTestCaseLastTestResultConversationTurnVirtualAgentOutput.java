@@ -130,11 +130,13 @@ public final class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
 
         @CustomType.Setter
         public Builder currentPage(@Nullable CxTestCaseLastTestResultConversationTurnVirtualAgentOutputCurrentPage currentPage) {
+
             this.currentPage = currentPage;
             return this;
         }
         @CustomType.Setter
         public Builder differences(@Nullable List<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDifference> differences) {
+
             this.differences = differences;
             return this;
         }
@@ -143,16 +145,19 @@ public final class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
         }
         @CustomType.Setter
         public Builder sessionParameters(@Nullable String sessionParameters) {
+
             this.sessionParameters = sessionParameters;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable CxTestCaseLastTestResultConversationTurnVirtualAgentOutputStatus status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder textResponses(@Nullable List<CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTextResponse> textResponses) {
+
             this.textResponses = textResponses;
             return this;
         }
@@ -161,6 +166,7 @@ public final class CxTestCaseLastTestResultConversationTurnVirtualAgentOutput {
         }
         @CustomType.Setter
         public Builder triggeredIntent(@Nullable CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTriggeredIntent triggeredIntent) {
+
             this.triggeredIntent = triggeredIntent;
             return this;
         }

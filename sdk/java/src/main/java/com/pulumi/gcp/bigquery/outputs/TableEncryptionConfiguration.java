@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,11 +67,15 @@ public final class TableEncryptionConfiguration {
 
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("TableEncryptionConfiguration", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyVersion(@Nullable String kmsKeyVersion) {
+
             this.kmsKeyVersion = kmsKeyVersion;
             return this;
         }

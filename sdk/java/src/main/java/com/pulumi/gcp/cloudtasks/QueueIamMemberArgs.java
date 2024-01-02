@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudtasks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudtasks.inputs.QueueIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -282,8 +283,12 @@ public final class QueueIamMemberArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public QueueIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("QueueIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("QueueIamMemberArgs", "role");
+            }
             return $;
         }
     }

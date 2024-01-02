@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class NetworkFirewallPolicyRuleTargetSecureTagArgs extends com.pulu
         }
 
         public NetworkFirewallPolicyRuleTargetSecureTagArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("NetworkFirewallPolicyRuleTargetSecureTagArgs", "name");
+            }
             return $;
         }
     }

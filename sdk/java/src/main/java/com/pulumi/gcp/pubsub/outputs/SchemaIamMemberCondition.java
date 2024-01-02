@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -48,17 +49,24 @@ public final class SchemaIamMemberCondition {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expression(String expression) {
-            this.expression = Objects.requireNonNull(expression);
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("SchemaIamMemberCondition", "expression");
+            }
+            this.expression = expression;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("SchemaIamMemberCondition", "title");
+            }
+            this.title = title;
             return this;
         }
         public SchemaIamMemberCondition build() {

@@ -77,16 +77,19 @@ public final class InsightsReportConfigCsvOptions {
 
         @CustomType.Setter
         public Builder delimiter(@Nullable String delimiter) {
+
             this.delimiter = delimiter;
             return this;
         }
         @CustomType.Setter
         public Builder headerRequired(@Nullable Boolean headerRequired) {
+
             this.headerRequired = headerRequired;
             return this;
         }
         @CustomType.Setter
         public Builder recordSeparator(@Nullable String recordSeparator) {
+
             this.recordSeparator = recordSeparator;
             return this;
         }

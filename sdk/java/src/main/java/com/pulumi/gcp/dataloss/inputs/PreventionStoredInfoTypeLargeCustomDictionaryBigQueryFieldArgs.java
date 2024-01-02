@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldFieldArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTableArgs;
 import java.util.Objects;
@@ -120,8 +121,12 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArg
         }
 
         public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs build() {
-            $.field = Objects.requireNonNull($.field, "expected parameter 'field' to be non-null");
-            $.table = Objects.requireNonNull($.table, "expected parameter 'table' to be non-null");
+            if ($.field == null) {
+                throw new MissingRequiredPropertyException("PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs", "field");
+            }
+            if ($.table == null) {
+                throw new MissingRequiredPropertyException("PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs", "table");
+            }
             return $;
         }
     }

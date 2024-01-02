@@ -46,6 +46,7 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
 
         @CustomType.Setter
         public Builder configSync(@Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSync configSync) {
+
             this.configSync = configSync;
             return this;
         }

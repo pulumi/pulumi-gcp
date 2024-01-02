@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -71,8 +72,12 @@ public final class JobSchedulingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobSchedulingArgs build() {
-            $.maxFailuresPerHour = Objects.requireNonNull($.maxFailuresPerHour, "expected parameter 'maxFailuresPerHour' to be non-null");
-            $.maxFailuresTotal = Objects.requireNonNull($.maxFailuresTotal, "expected parameter 'maxFailuresTotal' to be non-null");
+            if ($.maxFailuresPerHour == null) {
+                throw new MissingRequiredPropertyException("JobSchedulingArgs", "maxFailuresPerHour");
+            }
+            if ($.maxFailuresTotal == null) {
+                throw new MissingRequiredPropertyException("JobSchedulingArgs", "maxFailuresTotal");
+            }
             return $;
         }
     }

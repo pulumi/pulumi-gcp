@@ -124,31 +124,37 @@ public final class StandardAppVersionAutomaticScaling {
 
         @CustomType.Setter
         public Builder maxConcurrentRequests(@Nullable Integer maxConcurrentRequests) {
+
             this.maxConcurrentRequests = maxConcurrentRequests;
             return this;
         }
         @CustomType.Setter
         public Builder maxIdleInstances(@Nullable Integer maxIdleInstances) {
+
             this.maxIdleInstances = maxIdleInstances;
             return this;
         }
         @CustomType.Setter
         public Builder maxPendingLatency(@Nullable String maxPendingLatency) {
+
             this.maxPendingLatency = maxPendingLatency;
             return this;
         }
         @CustomType.Setter
         public Builder minIdleInstances(@Nullable Integer minIdleInstances) {
+
             this.minIdleInstances = minIdleInstances;
             return this;
         }
         @CustomType.Setter
         public Builder minPendingLatency(@Nullable String minPendingLatency) {
+
             this.minPendingLatency = minPendingLatency;
             return this;
         }
         @CustomType.Setter
         public Builder standardSchedulerSettings(@Nullable StandardAppVersionAutomaticScalingStandardSchedulerSettings standardSchedulerSettings) {
+
             this.standardSchedulerSettings = standardSchedulerSettings;
             return this;
         }

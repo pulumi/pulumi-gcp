@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccess;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetDefaultEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetExternalDatasetReference;
@@ -183,7 +184,10 @@ public final class GetDatasetResult {
 
         @CustomType.Setter
         public Builder accesses(List<GetDatasetAccess> accesses) {
-            this.accesses = Objects.requireNonNull(accesses);
+            if (accesses == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "accesses");
+            }
+            this.accesses = accesses;
             return this;
         }
         public Builder accesses(GetDatasetAccess... accesses) {
@@ -191,22 +195,34 @@ public final class GetDatasetResult {
         }
         @CustomType.Setter
         public Builder creationTime(Integer creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder datasetId(String datasetId) {
-            this.datasetId = Objects.requireNonNull(datasetId);
+            if (datasetId == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "datasetId");
+            }
+            this.datasetId = datasetId;
             return this;
         }
         @CustomType.Setter
         public Builder defaultCollation(String defaultCollation) {
-            this.defaultCollation = Objects.requireNonNull(defaultCollation);
+            if (defaultCollation == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "defaultCollation");
+            }
+            this.defaultCollation = defaultCollation;
             return this;
         }
         @CustomType.Setter
         public Builder defaultEncryptionConfigurations(List<GetDatasetDefaultEncryptionConfiguration> defaultEncryptionConfigurations) {
-            this.defaultEncryptionConfigurations = Objects.requireNonNull(defaultEncryptionConfigurations);
+            if (defaultEncryptionConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "defaultEncryptionConfigurations");
+            }
+            this.defaultEncryptionConfigurations = defaultEncryptionConfigurations;
             return this;
         }
         public Builder defaultEncryptionConfigurations(GetDatasetDefaultEncryptionConfiguration... defaultEncryptionConfigurations) {
@@ -214,37 +230,58 @@ public final class GetDatasetResult {
         }
         @CustomType.Setter
         public Builder defaultPartitionExpirationMs(Integer defaultPartitionExpirationMs) {
-            this.defaultPartitionExpirationMs = Objects.requireNonNull(defaultPartitionExpirationMs);
+            if (defaultPartitionExpirationMs == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "defaultPartitionExpirationMs");
+            }
+            this.defaultPartitionExpirationMs = defaultPartitionExpirationMs;
             return this;
         }
         @CustomType.Setter
         public Builder defaultTableExpirationMs(Integer defaultTableExpirationMs) {
-            this.defaultTableExpirationMs = Objects.requireNonNull(defaultTableExpirationMs);
+            if (defaultTableExpirationMs == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "defaultTableExpirationMs");
+            }
+            this.defaultTableExpirationMs = defaultTableExpirationMs;
             return this;
         }
         @CustomType.Setter
         public Builder deleteContentsOnDestroy(Boolean deleteContentsOnDestroy) {
-            this.deleteContentsOnDestroy = Objects.requireNonNull(deleteContentsOnDestroy);
+            if (deleteContentsOnDestroy == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "deleteContentsOnDestroy");
+            }
+            this.deleteContentsOnDestroy = deleteContentsOnDestroy;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder externalDatasetReferences(List<GetDatasetExternalDatasetReference> externalDatasetReferences) {
-            this.externalDatasetReferences = Objects.requireNonNull(externalDatasetReferences);
+            if (externalDatasetReferences == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "externalDatasetReferences");
+            }
+            this.externalDatasetReferences = externalDatasetReferences;
             return this;
         }
         public Builder externalDatasetReferences(GetDatasetExternalDatasetReference... externalDatasetReferences) {
@@ -252,57 +289,88 @@ public final class GetDatasetResult {
         }
         @CustomType.Setter
         public Builder friendlyName(String friendlyName) {
-            this.friendlyName = Objects.requireNonNull(friendlyName);
+            if (friendlyName == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "friendlyName");
+            }
+            this.friendlyName = friendlyName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isCaseInsensitive(Boolean isCaseInsensitive) {
-            this.isCaseInsensitive = Objects.requireNonNull(isCaseInsensitive);
+            if (isCaseInsensitive == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "isCaseInsensitive");
+            }
+            this.isCaseInsensitive = isCaseInsensitive;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifiedTime(Integer lastModifiedTime) {
-            this.lastModifiedTime = Objects.requireNonNull(lastModifiedTime);
+            if (lastModifiedTime == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "lastModifiedTime");
+            }
+            this.lastModifiedTime = lastModifiedTime;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder maxTimeTravelHours(String maxTimeTravelHours) {
-            this.maxTimeTravelHours = Objects.requireNonNull(maxTimeTravelHours);
+            if (maxTimeTravelHours == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "maxTimeTravelHours");
+            }
+            this.maxTimeTravelHours = maxTimeTravelHours;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder storageBillingModel(String storageBillingModel) {
-            this.storageBillingModel = Objects.requireNonNull(storageBillingModel);
+            if (storageBillingModel == null) {
+              throw new MissingRequiredPropertyException("GetDatasetResult", "storageBillingModel");
+            }
+            this.storageBillingModel = storageBillingModel;
             return this;
         }
         public GetDatasetResult build() {

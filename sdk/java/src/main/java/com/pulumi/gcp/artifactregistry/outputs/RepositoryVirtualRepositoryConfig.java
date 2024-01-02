@@ -48,6 +48,7 @@ public final class RepositoryVirtualRepositoryConfig {
 
         @CustomType.Setter
         public Builder upstreamPolicies(@Nullable List<RepositoryVirtualRepositoryConfigUpstreamPolicy> upstreamPolicies) {
+
             this.upstreamPolicies = upstreamPolicies;
             return this;
         }

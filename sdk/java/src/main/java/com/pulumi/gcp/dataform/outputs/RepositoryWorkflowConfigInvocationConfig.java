@@ -119,11 +119,13 @@ public final class RepositoryWorkflowConfigInvocationConfig {
 
         @CustomType.Setter
         public Builder fullyRefreshIncrementalTablesEnabled(@Nullable Boolean fullyRefreshIncrementalTablesEnabled) {
+
             this.fullyRefreshIncrementalTablesEnabled = fullyRefreshIncrementalTablesEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder includedTags(@Nullable List<String> includedTags) {
+
             this.includedTags = includedTags;
             return this;
         }
@@ -132,6 +134,7 @@ public final class RepositoryWorkflowConfigInvocationConfig {
         }
         @CustomType.Setter
         public Builder includedTargets(@Nullable List<RepositoryWorkflowConfigInvocationConfigIncludedTarget> includedTargets) {
+
             this.includedTargets = includedTargets;
             return this;
         }
@@ -140,16 +143,19 @@ public final class RepositoryWorkflowConfigInvocationConfig {
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder transitiveDependenciesIncluded(@Nullable Boolean transitiveDependenciesIncluded) {
+
             this.transitiveDependenciesIncluded = transitiveDependenciesIncluded;
             return this;
         }
         @CustomType.Setter
         public Builder transitiveDependentsIncluded(@Nullable Boolean transitiveDependentsIncluded) {
+
             this.transitiveDependentsIncluded = transitiveDependentsIncluded;
             return this;
         }

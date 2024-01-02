@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab {
 
         @CustomType.Setter
         public Builder cloudSecret(String cloudSecret) {
-            this.cloudSecret = Objects.requireNonNull(cloudSecret);
+            if (cloudSecret == null) {
+              throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab", "cloudSecret");
+            }
+            this.cloudSecret = cloudSecret;
             return this;
         }
         public MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab build() {

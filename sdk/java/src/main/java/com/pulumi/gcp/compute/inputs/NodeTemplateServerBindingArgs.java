@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -118,7 +119,9 @@ public final class NodeTemplateServerBindingArgs extends com.pulumi.resources.Re
         }
 
         public NodeTemplateServerBindingArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("NodeTemplateServerBindingArgs", "type");
+            }
             return $;
         }
     }

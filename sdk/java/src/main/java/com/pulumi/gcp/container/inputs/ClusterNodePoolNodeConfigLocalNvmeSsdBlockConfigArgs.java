@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs extends 
         }
 
         public ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs build() {
-            $.localSsdCount = Objects.requireNonNull($.localSsdCount, "expected parameter 'localSsdCount' to be non-null");
+            if ($.localSsdCount == null) {
+                throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs", "localSsdCount");
+            }
             return $;
         }
     }

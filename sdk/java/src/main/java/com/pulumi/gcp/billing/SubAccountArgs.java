@@ -5,6 +5,7 @@ package com.pulumi.gcp.billing;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -162,8 +163,12 @@ public final class SubAccountArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SubAccountArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.masterBillingAccount = Objects.requireNonNull($.masterBillingAccount, "expected parameter 'masterBillingAccount' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("SubAccountArgs", "displayName");
+            }
+            if ($.masterBillingAccount == null) {
+                throw new MissingRequiredPropertyException("SubAccountArgs", "masterBillingAccount");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigtable.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class GCPolicyMaxVersion {
 
         @CustomType.Setter
         public Builder number(Integer number) {
-            this.number = Objects.requireNonNull(number);
+            if (number == null) {
+              throw new MissingRequiredPropertyException("GCPolicyMaxVersion", "number");
+            }
+            this.number = number;
             return this;
         }
         public GCPolicyMaxVersion build() {

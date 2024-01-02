@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.PatchDeploymentRecurringScheduleMonthly;
 import com.pulumi.gcp.osconfig.outputs.PatchDeploymentRecurringScheduleTimeOfDay;
 import com.pulumi.gcp.osconfig.outputs.PatchDeploymentRecurringScheduleTimeZone;
@@ -168,41 +169,53 @@ public final class PatchDeploymentRecurringSchedule {
 
         @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
+
             this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder lastExecuteTime(@Nullable String lastExecuteTime) {
+
             this.lastExecuteTime = lastExecuteTime;
             return this;
         }
         @CustomType.Setter
         public Builder monthly(@Nullable PatchDeploymentRecurringScheduleMonthly monthly) {
+
             this.monthly = monthly;
             return this;
         }
         @CustomType.Setter
         public Builder nextExecuteTime(@Nullable String nextExecuteTime) {
+
             this.nextExecuteTime = nextExecuteTime;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder timeOfDay(PatchDeploymentRecurringScheduleTimeOfDay timeOfDay) {
-            this.timeOfDay = Objects.requireNonNull(timeOfDay);
+            if (timeOfDay == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentRecurringSchedule", "timeOfDay");
+            }
+            this.timeOfDay = timeOfDay;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(PatchDeploymentRecurringScheduleTimeZone timeZone) {
-            this.timeZone = Objects.requireNonNull(timeZone);
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentRecurringSchedule", "timeZone");
+            }
+            this.timeZone = timeZone;
             return this;
         }
         @CustomType.Setter
         public Builder weekly(@Nullable PatchDeploymentRecurringScheduleWeekly weekly) {
+
             this.weekly = weekly;
             return this;
         }

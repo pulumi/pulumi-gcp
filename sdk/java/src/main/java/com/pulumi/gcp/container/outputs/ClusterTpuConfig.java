@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -57,16 +58,21 @@ public final class ClusterTpuConfig {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("ClusterTpuConfig", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4CidrBlock(@Nullable String ipv4CidrBlock) {
+
             this.ipv4CidrBlock = ipv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder useServiceNetworking(@Nullable Boolean useServiceNetworking) {
+
             this.useServiceNetworking = useServiceNetworking;
             return this;
         }

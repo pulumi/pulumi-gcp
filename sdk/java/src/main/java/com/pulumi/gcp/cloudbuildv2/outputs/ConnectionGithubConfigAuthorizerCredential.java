@@ -58,11 +58,13 @@ public final class ConnectionGithubConfigAuthorizerCredential {
 
         @CustomType.Setter
         public Builder oauthTokenSecretVersion(@Nullable String oauthTokenSecretVersion) {
+
             this.oauthTokenSecretVersion = oauthTokenSecretVersion;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

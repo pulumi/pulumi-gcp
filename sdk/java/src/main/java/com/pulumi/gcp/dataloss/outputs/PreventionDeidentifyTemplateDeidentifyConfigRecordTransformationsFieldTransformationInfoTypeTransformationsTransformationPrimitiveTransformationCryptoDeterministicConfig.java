@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType;
@@ -104,17 +105,24 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder context(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigContext context) {
+
             this.context = context;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoKey(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey cryptoKey) {
-            this.cryptoKey = Objects.requireNonNull(cryptoKey);
+            if (cryptoKey == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig", "cryptoKey");
+            }
+            this.cryptoKey = cryptoKey;
             return this;
         }
         @CustomType.Setter
         public Builder surrogateInfoType(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType surrogateInfoType) {
-            this.surrogateInfoType = Objects.requireNonNull(surrogateInfoType);
+            if (surrogateInfoType == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig", "surrogateInfoType");
+            }
+            this.surrogateInfoType = surrogateInfoType;
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoDeterministicConfig build() {

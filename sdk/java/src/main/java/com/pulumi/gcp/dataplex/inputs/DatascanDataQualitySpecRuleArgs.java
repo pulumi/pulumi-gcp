@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleNonNullExpectationArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRangeExpectationArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecRuleRegexExpectationArgs;
@@ -611,7 +612,9 @@ public final class DatascanDataQualitySpecRuleArgs extends com.pulumi.resources.
         }
 
         public DatascanDataQualitySpecRuleArgs build() {
-            $.dimension = Objects.requireNonNull($.dimension, "expected parameter 'dimension' to be non-null");
+            if ($.dimension == null) {
+                throw new MissingRequiredPropertyException("DatascanDataQualitySpecRuleArgs", "dimension");
+            }
             return $;
         }
     }

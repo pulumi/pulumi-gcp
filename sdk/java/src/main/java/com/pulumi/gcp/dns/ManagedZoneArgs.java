@@ -6,6 +6,7 @@ package com.pulumi.gcp.dns;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.core.internal.Codegen;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.ManagedZoneCloudLoggingConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZoneDnssecConfigArgs;
 import com.pulumi.gcp.dns.inputs.ManagedZoneForwardingConfigArgs;
@@ -655,7 +656,9 @@ public final class ManagedZoneArgs extends com.pulumi.resources.ResourceArgs {
 
         public ManagedZoneArgs build() {
             $.description = Codegen.stringProp("description").output().arg($.description).def("Managed by Pulumi").getNullable();
-            $.dnsName = Objects.requireNonNull($.dnsName, "expected parameter 'dnsName' to be non-null");
+            if ($.dnsName == null) {
+                throw new MissingRequiredPropertyException("ManagedZoneArgs", "dnsName");
+            }
             return $;
         }
     }

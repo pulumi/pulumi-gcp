@@ -231,6 +231,7 @@ public final class UptimeCheckConfigHttpCheck {
 
         @CustomType.Setter
         public Builder acceptedResponseStatusCodes(@Nullable List<UptimeCheckConfigHttpCheckAcceptedResponseStatusCode> acceptedResponseStatusCodes) {
+
             this.acceptedResponseStatusCodes = acceptedResponseStatusCodes;
             return this;
         }
@@ -239,61 +240,73 @@ public final class UptimeCheckConfigHttpCheck {
         }
         @CustomType.Setter
         public Builder authInfo(@Nullable UptimeCheckConfigHttpCheckAuthInfo authInfo) {
+
             this.authInfo = authInfo;
             return this;
         }
         @CustomType.Setter
         public Builder body(@Nullable String body) {
+
             this.body = body;
             return this;
         }
         @CustomType.Setter
         public Builder contentType(@Nullable String contentType) {
+
             this.contentType = contentType;
             return this;
         }
         @CustomType.Setter
         public Builder customContentType(@Nullable String customContentType) {
+
             this.customContentType = customContentType;
             return this;
         }
         @CustomType.Setter
         public Builder headers(@Nullable Map<String,String> headers) {
+
             this.headers = headers;
             return this;
         }
         @CustomType.Setter
         public Builder maskHeaders(@Nullable Boolean maskHeaders) {
+
             this.maskHeaders = maskHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder pingConfig(@Nullable UptimeCheckConfigHttpCheckPingConfig pingConfig) {
+
             this.pingConfig = pingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder requestMethod(@Nullable String requestMethod) {
+
             this.requestMethod = requestMethod;
             return this;
         }
         @CustomType.Setter
         public Builder useSsl(@Nullable Boolean useSsl) {
+
             this.useSsl = useSsl;
             return this;
         }
         @CustomType.Setter
         public Builder validateSsl(@Nullable Boolean validateSsl) {
+
             this.validateSsl = validateSsl;
             return this;
         }

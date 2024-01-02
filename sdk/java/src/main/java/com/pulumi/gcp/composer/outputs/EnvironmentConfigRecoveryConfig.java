@@ -36,6 +36,7 @@ public final class EnvironmentConfigRecoveryConfig {
 
         @CustomType.Setter
         public Builder scheduledSnapshotsConfig(@Nullable EnvironmentConfigRecoveryConfigScheduledSnapshotsConfig scheduledSnapshotsConfig) {
+
             this.scheduledSnapshotsConfig = scheduledSnapshotsConfig;
             return this;
         }

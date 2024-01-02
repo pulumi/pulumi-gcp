@@ -63,11 +63,13 @@ public final class SecurityPolicyAdaptiveProtectionConfig {
 
         @CustomType.Setter
         public Builder autoDeployConfig(@Nullable SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig autoDeployConfig) {
+
             this.autoDeployConfig = autoDeployConfig;
             return this;
         }
         @CustomType.Setter
         public Builder layer7DdosDefenseConfig(@Nullable SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig layer7DdosDefenseConfig) {
+
             this.layer7DdosDefenseConfig = layer7DdosDefenseConfig;
             return this;
         }

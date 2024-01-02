@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -53,7 +54,10 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
 
         @CustomType.Setter
         public Builder dnsNames(List<String> dnsNames) {
-            this.dnsNames = Objects.requireNonNull(dnsNames);
+            if (dnsNames == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubjectAltName", "dnsNames");
+            }
+            this.dnsNames = dnsNames;
             return this;
         }
         public Builder dnsNames(String... dnsNames) {
@@ -61,7 +65,10 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
         }
         @CustomType.Setter
         public Builder emailAddresses(List<String> emailAddresses) {
-            this.emailAddresses = Objects.requireNonNull(emailAddresses);
+            if (emailAddresses == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubjectAltName", "emailAddresses");
+            }
+            this.emailAddresses = emailAddresses;
             return this;
         }
         public Builder emailAddresses(String... emailAddresses) {
@@ -69,7 +76,10 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
         }
         @CustomType.Setter
         public Builder ipAddresses(List<String> ipAddresses) {
-            this.ipAddresses = Objects.requireNonNull(ipAddresses);
+            if (ipAddresses == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubjectAltName", "ipAddresses");
+            }
+            this.ipAddresses = ipAddresses;
             return this;
         }
         public Builder ipAddresses(String... ipAddresses) {
@@ -77,7 +87,10 @@ public final class GetAuthorityConfigSubjectConfigSubjectAltName {
         }
         @CustomType.Setter
         public Builder uris(List<String> uris) {
-            this.uris = Objects.requireNonNull(uris);
+            if (uris == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfigSubjectAltName", "uris");
+            }
+            this.uris = uris;
             return this;
         }
         public Builder uris(String... uris) {

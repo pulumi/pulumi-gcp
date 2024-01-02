@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudidentity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -82,11 +83,15 @@ public final class GroupGroupKey {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GroupGroupKey", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }

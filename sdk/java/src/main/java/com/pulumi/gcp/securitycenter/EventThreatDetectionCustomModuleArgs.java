@@ -5,6 +5,7 @@ package com.pulumi.gcp.securitycenter;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -240,10 +241,18 @@ public final class EventThreatDetectionCustomModuleArgs extends com.pulumi.resou
         }
 
         public EventThreatDetectionCustomModuleArgs build() {
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
-            $.enablementState = Objects.requireNonNull($.enablementState, "expected parameter 'enablementState' to be non-null");
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("EventThreatDetectionCustomModuleArgs", "config");
+            }
+            if ($.enablementState == null) {
+                throw new MissingRequiredPropertyException("EventThreatDetectionCustomModuleArgs", "enablementState");
+            }
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("EventThreatDetectionCustomModuleArgs", "organization");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("EventThreatDetectionCustomModuleArgs", "type");
+            }
             return $;
         }
     }

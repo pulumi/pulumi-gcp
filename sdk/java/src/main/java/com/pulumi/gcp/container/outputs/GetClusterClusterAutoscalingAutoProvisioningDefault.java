@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultManagement;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting;
@@ -93,27 +94,42 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
 
         @CustomType.Setter
         public Builder bootDiskKmsKey(String bootDiskKmsKey) {
-            this.bootDiskKmsKey = Objects.requireNonNull(bootDiskKmsKey);
+            if (bootDiskKmsKey == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "bootDiskKmsKey");
+            }
+            this.bootDiskKmsKey = bootDiskKmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder diskSize(Integer diskSize) {
-            this.diskSize = Objects.requireNonNull(diskSize);
+            if (diskSize == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "diskSize");
+            }
+            this.diskSize = diskSize;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder imageType(String imageType) {
-            this.imageType = Objects.requireNonNull(imageType);
+            if (imageType == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "imageType");
+            }
+            this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder managements(List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagement> managements) {
-            this.managements = Objects.requireNonNull(managements);
+            if (managements == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "managements");
+            }
+            this.managements = managements;
             return this;
         }
         public Builder managements(GetClusterClusterAutoscalingAutoProvisioningDefaultManagement... managements) {
@@ -121,12 +137,18 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
         }
         @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
-            this.minCpuPlatform = Objects.requireNonNull(minCpuPlatform);
+            if (minCpuPlatform == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "minCpuPlatform");
+            }
+            this.minCpuPlatform = minCpuPlatform;
             return this;
         }
         @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
-            this.oauthScopes = Objects.requireNonNull(oauthScopes);
+            if (oauthScopes == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "oauthScopes");
+            }
+            this.oauthScopes = oauthScopes;
             return this;
         }
         public Builder oauthScopes(String... oauthScopes) {
@@ -134,12 +156,18 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
         }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
-            this.serviceAccount = Objects.requireNonNull(serviceAccount);
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder shieldedInstanceConfigs(List<GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig> shieldedInstanceConfigs) {
-            this.shieldedInstanceConfigs = Objects.requireNonNull(shieldedInstanceConfigs);
+            if (shieldedInstanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "shieldedInstanceConfigs");
+            }
+            this.shieldedInstanceConfigs = shieldedInstanceConfigs;
             return this;
         }
         public Builder shieldedInstanceConfigs(GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig... shieldedInstanceConfigs) {
@@ -147,7 +175,10 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefault {
         }
         @CustomType.Setter
         public Builder upgradeSettings(List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting> upgradeSettings) {
-            this.upgradeSettings = Objects.requireNonNull(upgradeSettings);
+            if (upgradeSettings == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefault", "upgradeSettings");
+            }
+            this.upgradeSettings = upgradeSettings;
             return this;
         }
         public Builder upgradeSettings(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSetting... upgradeSettings) {

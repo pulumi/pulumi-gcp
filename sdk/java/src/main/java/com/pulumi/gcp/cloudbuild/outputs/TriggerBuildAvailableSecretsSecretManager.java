@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -60,12 +61,18 @@ public final class TriggerBuildAvailableSecretsSecretManager {
 
         @CustomType.Setter
         public Builder env(String env) {
-            this.env = Objects.requireNonNull(env);
+            if (env == null) {
+              throw new MissingRequiredPropertyException("TriggerBuildAvailableSecretsSecretManager", "env");
+            }
+            this.env = env;
             return this;
         }
         @CustomType.Setter
         public Builder versionName(String versionName) {
-            this.versionName = Objects.requireNonNull(versionName);
+            if (versionName == null) {
+              throw new MissingRequiredPropertyException("TriggerBuildAvailableSecretsSecretManager", "versionName");
+            }
+            this.versionName = versionName;
             return this;
         }
         public TriggerBuildAvailableSecretsSecretManager build() {

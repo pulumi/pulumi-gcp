@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcClientSecretArgs;
 import com.pulumi.gcp.iam.inputs.WorkforcePoolProviderOidcWebSsoConfigArgs;
 import java.lang.String;
@@ -342,8 +343,12 @@ public final class WorkforcePoolProviderOidcArgs extends com.pulumi.resources.Re
         }
 
         public WorkforcePoolProviderOidcArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.issuerUri = Objects.requireNonNull($.issuerUri, "expected parameter 'issuerUri' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("WorkforcePoolProviderOidcArgs", "clientId");
+            }
+            if ($.issuerUri == null) {
+                throw new MissingRequiredPropertyException("WorkforcePoolProviderOidcArgs", "issuerUri");
+            }
             return $;
         }
     }

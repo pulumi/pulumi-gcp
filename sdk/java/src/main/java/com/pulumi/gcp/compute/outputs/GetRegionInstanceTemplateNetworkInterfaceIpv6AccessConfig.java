@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,27 +79,42 @@ public final class GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig {
 
         @CustomType.Setter
         public Builder externalIpv6(String externalIpv6) {
-            this.externalIpv6 = Objects.requireNonNull(externalIpv6);
+            if (externalIpv6 == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig", "externalIpv6");
+            }
+            this.externalIpv6 = externalIpv6;
             return this;
         }
         @CustomType.Setter
         public Builder externalIpv6PrefixLength(String externalIpv6PrefixLength) {
-            this.externalIpv6PrefixLength = Objects.requireNonNull(externalIpv6PrefixLength);
+            if (externalIpv6PrefixLength == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig", "externalIpv6PrefixLength");
+            }
+            this.externalIpv6PrefixLength = externalIpv6PrefixLength;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder networkTier(String networkTier) {
-            this.networkTier = Objects.requireNonNull(networkTier);
+            if (networkTier == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig", "networkTier");
+            }
+            this.networkTier = networkTier;
             return this;
         }
         @CustomType.Setter
         public Builder publicPtrDomainName(String publicPtrDomainName) {
-            this.publicPtrDomainName = Objects.requireNonNull(publicPtrDomainName);
+            if (publicPtrDomainName == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig", "publicPtrDomainName");
+            }
+            this.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
         public GetRegionInstanceTemplateNetworkInterfaceIpv6AccessConfig build() {

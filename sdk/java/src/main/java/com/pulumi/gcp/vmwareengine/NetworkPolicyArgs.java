@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.inputs.NetworkPolicyExternalIpArgs;
 import com.pulumi.gcp.vmwareengine.inputs.NetworkPolicyInternetAccessArgs;
 import java.lang.String;
@@ -385,9 +386,15 @@ public final class NetworkPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NetworkPolicyArgs build() {
-            $.edgeServicesCidr = Objects.requireNonNull($.edgeServicesCidr, "expected parameter 'edgeServicesCidr' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.vmwareEngineNetwork = Objects.requireNonNull($.vmwareEngineNetwork, "expected parameter 'vmwareEngineNetwork' to be non-null");
+            if ($.edgeServicesCidr == null) {
+                throw new MissingRequiredPropertyException("NetworkPolicyArgs", "edgeServicesCidr");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("NetworkPolicyArgs", "location");
+            }
+            if ($.vmwareEngineNetwork == null) {
+                throw new MissingRequiredPropertyException("NetworkPolicyArgs", "vmwareEngineNetwork");
+            }
             return $;
         }
     }

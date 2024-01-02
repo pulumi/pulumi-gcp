@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuthClientCertificateConfig;
 import java.lang.String;
 import java.util.List;
@@ -54,12 +55,18 @@ public final class GetClusterMasterAuth {
 
         @CustomType.Setter
         public Builder clientCertificate(String clientCertificate) {
-            this.clientCertificate = Objects.requireNonNull(clientCertificate);
+            if (clientCertificate == null) {
+              throw new MissingRequiredPropertyException("GetClusterMasterAuth", "clientCertificate");
+            }
+            this.clientCertificate = clientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientCertificateConfigs(List<GetClusterMasterAuthClientCertificateConfig> clientCertificateConfigs) {
-            this.clientCertificateConfigs = Objects.requireNonNull(clientCertificateConfigs);
+            if (clientCertificateConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterMasterAuth", "clientCertificateConfigs");
+            }
+            this.clientCertificateConfigs = clientCertificateConfigs;
             return this;
         }
         public Builder clientCertificateConfigs(GetClusterMasterAuthClientCertificateConfig... clientCertificateConfigs) {
@@ -67,12 +74,18 @@ public final class GetClusterMasterAuth {
         }
         @CustomType.Setter
         public Builder clientKey(String clientKey) {
-            this.clientKey = Objects.requireNonNull(clientKey);
+            if (clientKey == null) {
+              throw new MissingRequiredPropertyException("GetClusterMasterAuth", "clientKey");
+            }
+            this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder clusterCaCertificate(String clusterCaCertificate) {
-            this.clusterCaCertificate = Objects.requireNonNull(clusterCaCertificate);
+            if (clusterCaCertificate == null) {
+              throw new MissingRequiredPropertyException("GetClusterMasterAuth", "clusterCaCertificate");
+            }
+            this.clusterCaCertificate = clusterCaCertificate;
             return this;
         }
         public GetClusterMasterAuth build() {

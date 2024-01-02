@@ -96,6 +96,7 @@ public final class URLMapHeaderAction {
 
         @CustomType.Setter
         public Builder requestHeadersToAdds(@Nullable List<URLMapHeaderActionRequestHeadersToAdd> requestHeadersToAdds) {
+
             this.requestHeadersToAdds = requestHeadersToAdds;
             return this;
         }
@@ -104,6 +105,7 @@ public final class URLMapHeaderAction {
         }
         @CustomType.Setter
         public Builder requestHeadersToRemoves(@Nullable List<String> requestHeadersToRemoves) {
+
             this.requestHeadersToRemoves = requestHeadersToRemoves;
             return this;
         }
@@ -112,6 +114,7 @@ public final class URLMapHeaderAction {
         }
         @CustomType.Setter
         public Builder responseHeadersToAdds(@Nullable List<URLMapHeaderActionResponseHeadersToAdd> responseHeadersToAdds) {
+
             this.responseHeadersToAdds = responseHeadersToAdds;
             return this;
         }
@@ -120,6 +123,7 @@ public final class URLMapHeaderAction {
         }
         @CustomType.Setter
         public Builder responseHeadersToRemoves(@Nullable List<String> responseHeadersToRemoves) {
+
             this.responseHeadersToRemoves = responseHeadersToRemoves;
             return this;
         }

@@ -59,11 +59,13 @@ public final class AssetDiscoverySpecJsonOptions {
 
         @CustomType.Setter
         public Builder disableTypeInference(@Nullable Boolean disableTypeInference) {
+
             this.disableTypeInference = disableTypeInference;
             return this;
         }
         @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
+
             this.encoding = encoding;
             return this;
         }

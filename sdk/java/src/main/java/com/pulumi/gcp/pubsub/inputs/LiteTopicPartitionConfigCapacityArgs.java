@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class LiteTopicPartitionConfigCapacityArgs extends com.pulumi.resou
         }
 
         public LiteTopicPartitionConfigCapacityArgs build() {
-            $.publishMibPerSec = Objects.requireNonNull($.publishMibPerSec, "expected parameter 'publishMibPerSec' to be non-null");
-            $.subscribeMibPerSec = Objects.requireNonNull($.subscribeMibPerSec, "expected parameter 'subscribeMibPerSec' to be non-null");
+            if ($.publishMibPerSec == null) {
+                throw new MissingRequiredPropertyException("LiteTopicPartitionConfigCapacityArgs", "publishMibPerSec");
+            }
+            if ($.subscribeMibPerSec == null) {
+                throw new MissingRequiredPropertyException("LiteTopicPartitionConfigCapacityArgs", "subscribeMibPerSec");
+            }
             return $;
         }
     }

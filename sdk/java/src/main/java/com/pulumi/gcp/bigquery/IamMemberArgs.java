@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.IamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -266,10 +267,18 @@ public final class IamMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IamMemberArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.tableId = Objects.requireNonNull($.tableId, "expected parameter 'tableId' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("IamMemberArgs", "datasetId");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("IamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("IamMemberArgs", "role");
+            }
+            if ($.tableId == null) {
+                throw new MissingRequiredPropertyException("IamMemberArgs", "tableId");
+            }
             return $;
         }
     }

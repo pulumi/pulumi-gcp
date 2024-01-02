@@ -4,6 +4,7 @@
 package com.pulumi.gcp.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,32 +91,50 @@ public final class GetApiConfigIamPolicyResult {
 
         @CustomType.Setter
         public Builder api(String api) {
-            this.api = Objects.requireNonNull(api);
+            if (api == null) {
+              throw new MissingRequiredPropertyException("GetApiConfigIamPolicyResult", "api");
+            }
+            this.api = api;
             return this;
         }
         @CustomType.Setter
         public Builder apiConfig(String apiConfig) {
-            this.apiConfig = Objects.requireNonNull(apiConfig);
+            if (apiConfig == null) {
+              throw new MissingRequiredPropertyException("GetApiConfigIamPolicyResult", "apiConfig");
+            }
+            this.apiConfig = apiConfig;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetApiConfigIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetApiConfigIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetApiConfigIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetApiConfigIamPolicyResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetApiConfigIamPolicyResult build() {

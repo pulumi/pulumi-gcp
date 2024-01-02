@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.TaskIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -307,10 +308,18 @@ public final class TaskIamMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TaskIamMemberArgs build() {
-            $.lake = Objects.requireNonNull($.lake, "expected parameter 'lake' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.taskId = Objects.requireNonNull($.taskId, "expected parameter 'taskId' to be non-null");
+            if ($.lake == null) {
+                throw new MissingRequiredPropertyException("TaskIamMemberArgs", "lake");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("TaskIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("TaskIamMemberArgs", "role");
+            }
+            if ($.taskId == null) {
+                throw new MissingRequiredPropertyException("TaskIamMemberArgs", "taskId");
+            }
             return $;
         }
     }

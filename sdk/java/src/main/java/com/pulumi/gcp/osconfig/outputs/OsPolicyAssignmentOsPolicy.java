@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroup;
 import java.lang.Boolean;
 import java.lang.String;
@@ -137,27 +138,38 @@ public final class OsPolicyAssignmentOsPolicy {
 
         @CustomType.Setter
         public Builder allowNoResourceGroupMatch(@Nullable Boolean allowNoResourceGroupMatch) {
+
             this.allowNoResourceGroupMatch = allowNoResourceGroupMatch;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicy", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder resourceGroups(List<OsPolicyAssignmentOsPolicyResourceGroup> resourceGroups) {
-            this.resourceGroups = Objects.requireNonNull(resourceGroups);
+            if (resourceGroups == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicy", "resourceGroups");
+            }
+            this.resourceGroups = resourceGroups;
             return this;
         }
         public Builder resourceGroups(OsPolicyAssignmentOsPolicyResourceGroup... resourceGroups) {

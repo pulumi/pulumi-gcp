@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetRegionInstanceTemplateConfidentialInstanceConfig {
 
         @CustomType.Setter
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
-            this.enableConfidentialCompute = Objects.requireNonNull(enableConfidentialCompute);
+            if (enableConfidentialCompute == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateConfidentialInstanceConfig", "enableConfidentialCompute");
+            }
+            this.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }
         public GetRegionInstanceTemplateConfidentialInstanceConfig build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -133,36 +134,45 @@ public final class FlexibleAppVersionLivenessCheck {
 
         @CustomType.Setter
         public Builder checkInterval(@Nullable String checkInterval) {
+
             this.checkInterval = checkInterval;
             return this;
         }
         @CustomType.Setter
         public Builder failureThreshold(@Nullable Double failureThreshold) {
+
             this.failureThreshold = failureThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder host(@Nullable String host) {
+
             this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder initialDelay(@Nullable String initialDelay) {
+
             this.initialDelay = initialDelay;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("FlexibleAppVersionLivenessCheck", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder successThreshold(@Nullable Double successThreshold) {
+
             this.successThreshold = successThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
+
             this.timeout = timeout;
             return this;
         }

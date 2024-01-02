@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -114,26 +115,33 @@ public final class ServiceTraffic {
 
         @CustomType.Setter
         public Builder latestRevision(@Nullable Boolean latestRevision) {
+
             this.latestRevision = latestRevision;
             return this;
         }
         @CustomType.Setter
         public Builder percent(Integer percent) {
-            this.percent = Objects.requireNonNull(percent);
+            if (percent == null) {
+              throw new MissingRequiredPropertyException("ServiceTraffic", "percent");
+            }
+            this.percent = percent;
             return this;
         }
         @CustomType.Setter
         public Builder revisionName(@Nullable String revisionName) {
+
             this.revisionName = revisionName;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
+
             this.url = url;
             return this;
         }

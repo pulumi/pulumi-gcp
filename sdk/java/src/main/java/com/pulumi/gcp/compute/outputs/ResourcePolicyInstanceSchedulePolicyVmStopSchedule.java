@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ResourcePolicyInstanceSchedulePolicyVmStopSchedule {
 
         @CustomType.Setter
         public Builder schedule(String schedule) {
-            this.schedule = Objects.requireNonNull(schedule);
+            if (schedule == null) {
+              throw new MissingRequiredPropertyException("ResourcePolicyInstanceSchedulePolicyVmStopSchedule", "schedule");
+            }
+            this.schedule = schedule;
             return this;
         }
         public ResourcePolicyInstanceSchedulePolicyVmStopSchedule build() {

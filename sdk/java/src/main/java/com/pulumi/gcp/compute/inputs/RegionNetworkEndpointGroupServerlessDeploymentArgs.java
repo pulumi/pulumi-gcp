@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -215,7 +216,9 @@ public final class RegionNetworkEndpointGroupServerlessDeploymentArgs extends co
         }
 
         public RegionNetworkEndpointGroupServerlessDeploymentArgs build() {
-            $.platform = Objects.requireNonNull($.platform, "expected parameter 'platform' to be non-null");
+            if ($.platform == null) {
+                throw new MissingRequiredPropertyException("RegionNetworkEndpointGroupServerlessDeploymentArgs", "platform");
+            }
             return $;
         }
     }

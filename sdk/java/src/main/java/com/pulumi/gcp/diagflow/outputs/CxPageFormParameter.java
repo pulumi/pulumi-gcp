@@ -157,41 +157,49 @@ public final class CxPageFormParameter {
 
         @CustomType.Setter
         public Builder advancedSettings(@Nullable CxPageFormParameterAdvancedSettings advancedSettings) {
+
             this.advancedSettings = advancedSettings;
             return this;
         }
         @CustomType.Setter
         public Builder defaultValue(@Nullable String defaultValue) {
+
             this.defaultValue = defaultValue;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder entityType(@Nullable String entityType) {
+
             this.entityType = entityType;
             return this;
         }
         @CustomType.Setter
         public Builder fillBehavior(@Nullable CxPageFormParameterFillBehavior fillBehavior) {
+
             this.fillBehavior = fillBehavior;
             return this;
         }
         @CustomType.Setter
         public Builder isList(@Nullable Boolean isList) {
+
             this.isList = isList;
             return this;
         }
         @CustomType.Setter
         public Builder redact(@Nullable Boolean redact) {
+
             this.redact = redact;
             return this;
         }
         @CustomType.Setter
         public Builder required(@Nullable Boolean required) {
+
             this.required = required;
             return this;
         }

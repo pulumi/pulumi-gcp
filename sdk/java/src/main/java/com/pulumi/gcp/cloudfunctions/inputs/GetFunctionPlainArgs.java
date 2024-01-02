@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctions.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -131,7 +132,9 @@ public final class GetFunctionPlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetFunctionPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetFunctionPlainArgs", "name");
+            }
             return $;
         }
     }

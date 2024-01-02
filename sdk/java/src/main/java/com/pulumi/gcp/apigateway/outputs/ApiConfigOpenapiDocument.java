@@ -4,6 +4,7 @@
 package com.pulumi.gcp.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigateway.outputs.ApiConfigOpenapiDocumentDocument;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ApiConfigOpenapiDocument {
 
         @CustomType.Setter
         public Builder document(ApiConfigOpenapiDocumentDocument document) {
-            this.document = Objects.requireNonNull(document);
+            if (document == null) {
+              throw new MissingRequiredPropertyException("ApiConfigOpenapiDocument", "document");
+            }
+            this.document = document;
             return this;
         }
         public ApiConfigOpenapiDocument build() {

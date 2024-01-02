@@ -5,6 +5,7 @@ package com.pulumi.gcp.containeranalysis.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class GetNoteIamPolicyArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetNoteIamPolicyArgs build() {
-            $.note = Objects.requireNonNull($.note, "expected parameter 'note' to be non-null");
+            if ($.note == null) {
+                throw new MissingRequiredPropertyException("GetNoteIamPolicyArgs", "note");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderAw;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderOidc;
 import com.pulumi.gcp.iam.outputs.GetWorkloadIdentityPoolProviderSaml;
@@ -128,17 +129,26 @@ public final class GetWorkloadIdentityPoolProviderResult {
 
         @CustomType.Setter
         public Builder attributeCondition(String attributeCondition) {
-            this.attributeCondition = Objects.requireNonNull(attributeCondition);
+            if (attributeCondition == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "attributeCondition");
+            }
+            this.attributeCondition = attributeCondition;
             return this;
         }
         @CustomType.Setter
         public Builder attributeMapping(Map<String,String> attributeMapping) {
-            this.attributeMapping = Objects.requireNonNull(attributeMapping);
+            if (attributeMapping == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "attributeMapping");
+            }
+            this.attributeMapping = attributeMapping;
             return this;
         }
         @CustomType.Setter
         public Builder aws(List<GetWorkloadIdentityPoolProviderAw> aws) {
-            this.aws = Objects.requireNonNull(aws);
+            if (aws == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "aws");
+            }
+            this.aws = aws;
             return this;
         }
         public Builder aws(GetWorkloadIdentityPoolProviderAw... aws) {
@@ -146,32 +156,50 @@ public final class GetWorkloadIdentityPoolProviderResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder oidcs(List<GetWorkloadIdentityPoolProviderOidc> oidcs) {
-            this.oidcs = Objects.requireNonNull(oidcs);
+            if (oidcs == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "oidcs");
+            }
+            this.oidcs = oidcs;
             return this;
         }
         public Builder oidcs(GetWorkloadIdentityPoolProviderOidc... oidcs) {
@@ -179,12 +207,16 @@ public final class GetWorkloadIdentityPoolProviderResult {
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder samls(List<GetWorkloadIdentityPoolProviderSaml> samls) {
-            this.samls = Objects.requireNonNull(samls);
+            if (samls == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "samls");
+            }
+            this.samls = samls;
             return this;
         }
         public Builder samls(GetWorkloadIdentityPoolProviderSaml... samls) {
@@ -192,17 +224,26 @@ public final class GetWorkloadIdentityPoolProviderResult {
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder workloadIdentityPoolId(String workloadIdentityPoolId) {
-            this.workloadIdentityPoolId = Objects.requireNonNull(workloadIdentityPoolId);
+            if (workloadIdentityPoolId == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "workloadIdentityPoolId");
+            }
+            this.workloadIdentityPoolId = workloadIdentityPoolId;
             return this;
         }
         @CustomType.Setter
         public Builder workloadIdentityPoolProviderId(String workloadIdentityPoolProviderId) {
-            this.workloadIdentityPoolProviderId = Objects.requireNonNull(workloadIdentityPoolProviderId);
+            if (workloadIdentityPoolProviderId == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderResult", "workloadIdentityPoolProviderId");
+            }
+            this.workloadIdentityPoolProviderId = workloadIdentityPoolProviderId;
             return this;
         }
         public GetWorkloadIdentityPoolProviderResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyDailyMaintenanceWindow;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyMaintenanceExclusion;
 import com.pulumi.gcp.container.outputs.GetClusterMaintenancePolicyRecurringWindow;
@@ -49,7 +50,10 @@ public final class GetClusterMaintenancePolicy {
 
         @CustomType.Setter
         public Builder dailyMaintenanceWindows(List<GetClusterMaintenancePolicyDailyMaintenanceWindow> dailyMaintenanceWindows) {
-            this.dailyMaintenanceWindows = Objects.requireNonNull(dailyMaintenanceWindows);
+            if (dailyMaintenanceWindows == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicy", "dailyMaintenanceWindows");
+            }
+            this.dailyMaintenanceWindows = dailyMaintenanceWindows;
             return this;
         }
         public Builder dailyMaintenanceWindows(GetClusterMaintenancePolicyDailyMaintenanceWindow... dailyMaintenanceWindows) {
@@ -57,7 +61,10 @@ public final class GetClusterMaintenancePolicy {
         }
         @CustomType.Setter
         public Builder maintenanceExclusions(List<GetClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions) {
-            this.maintenanceExclusions = Objects.requireNonNull(maintenanceExclusions);
+            if (maintenanceExclusions == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicy", "maintenanceExclusions");
+            }
+            this.maintenanceExclusions = maintenanceExclusions;
             return this;
         }
         public Builder maintenanceExclusions(GetClusterMaintenancePolicyMaintenanceExclusion... maintenanceExclusions) {
@@ -65,7 +72,10 @@ public final class GetClusterMaintenancePolicy {
         }
         @CustomType.Setter
         public Builder recurringWindows(List<GetClusterMaintenancePolicyRecurringWindow> recurringWindows) {
-            this.recurringWindows = Objects.requireNonNull(recurringWindows);
+            if (recurringWindows == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicy", "recurringWindows");
+            }
+            this.recurringWindows = recurringWindows;
             return this;
         }
         public Builder recurringWindows(GetClusterMaintenancePolicyRecurringWindow... recurringWindows) {

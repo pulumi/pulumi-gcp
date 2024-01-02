@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,17 +74,24 @@ public final class GrpcRouteRuleMatchMethod {
 
         @CustomType.Setter
         public Builder caseSensitive(@Nullable Boolean caseSensitive) {
+
             this.caseSensitive = caseSensitive;
             return this;
         }
         @CustomType.Setter
         public Builder grpcMethod(String grpcMethod) {
-            this.grpcMethod = Objects.requireNonNull(grpcMethod);
+            if (grpcMethod == null) {
+              throw new MissingRequiredPropertyException("GrpcRouteRuleMatchMethod", "grpcMethod");
+            }
+            this.grpcMethod = grpcMethod;
             return this;
         }
         @CustomType.Setter
         public Builder grpcService(String grpcService) {
-            this.grpcService = Objects.requireNonNull(grpcService);
+            if (grpcService == null) {
+              throw new MissingRequiredPropertyException("GrpcRouteRuleMatchMethod", "grpcService");
+            }
+            this.grpcService = grpcService;
             return this;
         }
         public GrpcRouteRuleMatchMethod build() {

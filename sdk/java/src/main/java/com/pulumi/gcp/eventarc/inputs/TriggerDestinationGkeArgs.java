@@ -5,6 +5,7 @@ package com.pulumi.gcp.eventarc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,10 +225,18 @@ public final class TriggerDestinationGkeArgs extends com.pulumi.resources.Resour
         }
 
         public TriggerDestinationGkeArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("TriggerDestinationGkeArgs", "cluster");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("TriggerDestinationGkeArgs", "location");
+            }
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("TriggerDestinationGkeArgs", "namespace");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("TriggerDestinationGkeArgs", "service");
+            }
             return $;
         }
     }

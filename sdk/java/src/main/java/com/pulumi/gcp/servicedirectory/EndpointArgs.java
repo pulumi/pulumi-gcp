@@ -5,6 +5,7 @@ package com.pulumi.gcp.servicedirectory;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -291,8 +292,12 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EndpointArgs build() {
-            $.endpointId = Objects.requireNonNull($.endpointId, "expected parameter 'endpointId' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.endpointId == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "endpointId");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "service");
+            }
             return $;
         }
     }

@@ -96,21 +96,25 @@ public final class StreamSourceConfigMysqlSourceConfig {
 
         @CustomType.Setter
         public Builder excludeObjects(@Nullable StreamSourceConfigMysqlSourceConfigExcludeObjects excludeObjects) {
+
             this.excludeObjects = excludeObjects;
             return this;
         }
         @CustomType.Setter
         public Builder includeObjects(@Nullable StreamSourceConfigMysqlSourceConfigIncludeObjects includeObjects) {
+
             this.includeObjects = includeObjects;
             return this;
         }
         @CustomType.Setter
         public Builder maxConcurrentBackfillTasks(@Nullable Integer maxConcurrentBackfillTasks) {
+
             this.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             return this;
         }
         @CustomType.Setter
         public Builder maxConcurrentCdcTasks(@Nullable Integer maxConcurrentCdcTasks) {
+
             this.maxConcurrentCdcTasks = maxConcurrentCdcTasks;
             return this;
         }

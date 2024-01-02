@@ -65,11 +65,13 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder conditions(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppressionConditionExpressionsConditions conditions) {
+
             this.conditions = conditions;
             return this;
         }
         @CustomType.Setter
         public Builder logicalOperator(@Nullable String logicalOperator) {
+
             this.logicalOperator = logicalOperator;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.outputs.TlsRouteRuleAction;
 import com.pulumi.gcp.networkservices.outputs.TlsRouteRuleMatch;
 import java.util.List;
@@ -62,12 +63,18 @@ public final class TlsRouteRule {
 
         @CustomType.Setter
         public Builder action(TlsRouteRuleAction action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("TlsRouteRule", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder matches(List<TlsRouteRuleMatch> matches) {
-            this.matches = Objects.requireNonNull(matches);
+            if (matches == null) {
+              throw new MissingRequiredPropertyException("TlsRouteRule", "matches");
+            }
+            this.matches = matches;
             return this;
         }
         public Builder matches(TlsRouteRuleMatch... matches) {

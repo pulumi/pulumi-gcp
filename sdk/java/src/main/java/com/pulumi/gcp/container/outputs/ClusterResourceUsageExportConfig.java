@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.ClusterResourceUsageExportConfigBigqueryDestination;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -131,16 +132,21 @@ public final class ClusterResourceUsageExportConfig {
 
         @CustomType.Setter
         public Builder bigqueryDestination(ClusterResourceUsageExportConfigBigqueryDestination bigqueryDestination) {
-            this.bigqueryDestination = Objects.requireNonNull(bigqueryDestination);
+            if (bigqueryDestination == null) {
+              throw new MissingRequiredPropertyException("ClusterResourceUsageExportConfig", "bigqueryDestination");
+            }
+            this.bigqueryDestination = bigqueryDestination;
             return this;
         }
         @CustomType.Setter
         public Builder enableNetworkEgressMetering(@Nullable Boolean enableNetworkEgressMetering) {
+
             this.enableNetworkEgressMetering = enableNetworkEgressMetering;
             return this;
         }
         @CustomType.Setter
         public Builder enableResourceConsumptionMetering(@Nullable Boolean enableResourceConsumptionMetering) {
+
             this.enableResourceConsumptionMetering = enableResourceConsumptionMetering;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplateIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -286,9 +287,15 @@ public final class CertificateTemplateIamMemberArgs extends com.pulumi.resources
         }
 
         public CertificateTemplateIamMemberArgs build() {
-            $.certificateTemplate = Objects.requireNonNull($.certificateTemplate, "expected parameter 'certificateTemplate' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.certificateTemplate == null) {
+                throw new MissingRequiredPropertyException("CertificateTemplateIamMemberArgs", "certificateTemplate");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("CertificateTemplateIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("CertificateTemplateIamMemberArgs", "role");
+            }
             return $;
         }
     }

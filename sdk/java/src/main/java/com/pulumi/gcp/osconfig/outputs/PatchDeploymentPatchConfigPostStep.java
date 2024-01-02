@@ -63,11 +63,13 @@ public final class PatchDeploymentPatchConfigPostStep {
 
         @CustomType.Setter
         public Builder linuxExecStepConfig(@Nullable PatchDeploymentPatchConfigPostStepLinuxExecStepConfig linuxExecStepConfig) {
+
             this.linuxExecStepConfig = linuxExecStepConfig;
             return this;
         }
         @CustomType.Setter
         public Builder windowsExecStepConfig(@Nullable PatchDeploymentPatchConfigPostStepWindowsExecStepConfig windowsExecStepConfig) {
+
             this.windowsExecStepConfig = windowsExecStepConfig;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.ProjectBucketConfigCmekSettingsArgs;
 import com.pulumi.gcp.logging.inputs.ProjectBucketConfigIndexConfigArgs;
 import java.lang.Boolean;
@@ -387,9 +388,15 @@ public final class ProjectBucketConfigArgs extends com.pulumi.resources.Resource
         }
 
         public ProjectBucketConfigArgs build() {
-            $.bucketId = Objects.requireNonNull($.bucketId, "expected parameter 'bucketId' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.bucketId == null) {
+                throw new MissingRequiredPropertyException("ProjectBucketConfigArgs", "bucketId");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ProjectBucketConfigArgs", "location");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("ProjectBucketConfigArgs", "project");
+            }
             return $;
         }
     }

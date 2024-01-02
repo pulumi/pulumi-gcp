@@ -46,6 +46,7 @@ public final class TriggerApprovalConfig {
 
         @CustomType.Setter
         public Builder approvalRequired(@Nullable Boolean approvalRequired) {
+
             this.approvalRequired = approvalRequired;
             return this;
         }

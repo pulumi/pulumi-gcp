@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataform.inputs.RepositoryGitRemoteSettingsSshAuthenticationConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -233,8 +234,12 @@ public final class RepositoryGitRemoteSettingsArgs extends com.pulumi.resources.
         }
 
         public RepositoryGitRemoteSettingsArgs build() {
-            $.defaultBranch = Objects.requireNonNull($.defaultBranch, "expected parameter 'defaultBranch' to be non-null");
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.defaultBranch == null) {
+                throw new MissingRequiredPropertyException("RepositoryGitRemoteSettingsArgs", "defaultBranch");
+            }
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("RepositoryGitRemoteSettingsArgs", "url");
+            }
             return $;
         }
     }

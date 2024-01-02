@@ -101,6 +101,7 @@ public final class VpnConnectionDetail {
 
         @CustomType.Setter
         public Builder cloudRouters(@Nullable List<VpnConnectionDetailCloudRouter> cloudRouters) {
+
             this.cloudRouters = cloudRouters;
             return this;
         }
@@ -109,6 +110,7 @@ public final class VpnConnectionDetail {
         }
         @CustomType.Setter
         public Builder cloudVpns(@Nullable List<VpnConnectionDetailCloudVpn> cloudVpns) {
+
             this.cloudVpns = cloudVpns;
             return this;
         }
@@ -117,11 +119,13 @@ public final class VpnConnectionDetail {
         }
         @CustomType.Setter
         public Builder error(@Nullable String error) {
+
             this.error = error;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.inputs.IamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -287,9 +288,15 @@ public final class IamBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("IamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("IamBindingArgs", "role");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("IamBindingArgs", "service");
+            }
             return $;
         }
     }

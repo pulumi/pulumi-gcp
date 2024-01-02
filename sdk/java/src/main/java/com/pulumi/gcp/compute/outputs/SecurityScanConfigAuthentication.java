@@ -63,11 +63,13 @@ public final class SecurityScanConfigAuthentication {
 
         @CustomType.Setter
         public Builder customAccount(@Nullable SecurityScanConfigAuthenticationCustomAccount customAccount) {
+
             this.customAccount = customAccount;
             return this;
         }
         @CustomType.Setter
         public Builder googleAccount(@Nullable SecurityScanConfigAuthenticationGoogleAccount googleAccount) {
+
             this.googleAccount = googleAccount;
             return this;
         }

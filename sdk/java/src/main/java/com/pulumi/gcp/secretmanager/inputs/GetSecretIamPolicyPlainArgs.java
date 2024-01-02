@@ -4,6 +4,7 @@
 package com.pulumi.gcp.secretmanager.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -81,7 +82,9 @@ public final class GetSecretIamPolicyPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetSecretIamPolicyPlainArgs build() {
-            $.secretId = Objects.requireNonNull($.secretId, "expected parameter 'secretId' to be non-null");
+            if ($.secretId == null) {
+                throw new MissingRequiredPropertyException("GetSecretIamPolicyPlainArgs", "secretId");
+            }
             return $;
         }
     }

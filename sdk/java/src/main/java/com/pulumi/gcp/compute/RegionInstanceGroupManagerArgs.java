@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAllInstancesConfigArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAutoHealingPoliciesArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerInstanceLifecyclePolicyArgs;
@@ -1046,8 +1047,12 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         }
 
         public RegionInstanceGroupManagerArgs build() {
-            $.baseInstanceName = Objects.requireNonNull($.baseInstanceName, "expected parameter 'baseInstanceName' to be non-null");
-            $.versions = Objects.requireNonNull($.versions, "expected parameter 'versions' to be non-null");
+            if ($.baseInstanceName == null) {
+                throw new MissingRequiredPropertyException("RegionInstanceGroupManagerArgs", "baseInstanceName");
+            }
+            if ($.versions == null) {
+                throw new MissingRequiredPropertyException("RegionInstanceGroupManagerArgs", "versions");
+            }
             return $;
         }
     }

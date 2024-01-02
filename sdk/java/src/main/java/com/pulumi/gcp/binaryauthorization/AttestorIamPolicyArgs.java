@@ -5,6 +5,7 @@ package com.pulumi.gcp.binaryauthorization;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -206,8 +207,12 @@ public final class AttestorIamPolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AttestorIamPolicyArgs build() {
-            $.attestor = Objects.requireNonNull($.attestor, "expected parameter 'attestor' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.attestor == null) {
+                throw new MissingRequiredPropertyException("AttestorIamPolicyArgs", "attestor");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("AttestorIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

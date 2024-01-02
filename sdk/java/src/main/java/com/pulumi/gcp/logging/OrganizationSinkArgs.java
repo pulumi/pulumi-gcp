@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.OrganizationSinkBigqueryOptionsArgs;
 import com.pulumi.gcp.logging.inputs.OrganizationSinkExclusionArgs;
 import java.lang.Boolean;
@@ -430,8 +431,12 @@ public final class OrganizationSinkArgs extends com.pulumi.resources.ResourceArg
         }
 
         public OrganizationSinkArgs build() {
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("OrganizationSinkArgs", "destination");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("OrganizationSinkArgs", "orgId");
+            }
             return $;
         }
     }

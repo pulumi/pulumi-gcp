@@ -73,11 +73,13 @@ public final class HttpRouteRuleActionRequestHeaderModifier {
 
         @CustomType.Setter
         public Builder add(@Nullable Map<String,String> add) {
+
             this.add = add;
             return this;
         }
         @CustomType.Setter
         public Builder removes(@Nullable List<String> removes) {
+
             this.removes = removes;
             return this;
         }
@@ -86,6 +88,7 @@ public final class HttpRouteRuleActionRequestHeaderModifier {
         }
         @CustomType.Setter
         public Builder set(@Nullable Map<String,String> set) {
+
             this.set = set;
             return this;
         }

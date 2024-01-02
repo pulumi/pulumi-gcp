@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAllInstancesConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerAutoHealingPoliciesArgs;
 import com.pulumi.gcp.compute.inputs.InstanceGroupManagerInstanceLifecyclePolicyArgs;
@@ -959,8 +960,12 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         public InstanceGroupManagerArgs build() {
-            $.baseInstanceName = Objects.requireNonNull($.baseInstanceName, "expected parameter 'baseInstanceName' to be non-null");
-            $.versions = Objects.requireNonNull($.versions, "expected parameter 'versions' to be non-null");
+            if ($.baseInstanceName == null) {
+                throw new MissingRequiredPropertyException("InstanceGroupManagerArgs", "baseInstanceName");
+            }
+            if ($.versions == null) {
+                throw new MissingRequiredPropertyException("InstanceGroupManagerArgs", "versions");
+            }
             return $;
         }
     }

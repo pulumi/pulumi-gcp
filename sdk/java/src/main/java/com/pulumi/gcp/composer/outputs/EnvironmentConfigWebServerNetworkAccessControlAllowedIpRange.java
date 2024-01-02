@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,12 +43,16 @@ public final class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange 
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange", "value");
+            }
+            this.value = value;
             return this;
         }
         public EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange build() {

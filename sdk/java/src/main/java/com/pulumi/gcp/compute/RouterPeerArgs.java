@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RouterPeerAdvertisedIpRangeArgs;
 import com.pulumi.gcp.compute.inputs.RouterPeerBfdArgs;
 import java.lang.Boolean;
@@ -880,9 +881,15 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouterPeerArgs build() {
-            $.interface_ = Objects.requireNonNull($.interface_, "expected parameter 'interface' to be non-null");
-            $.peerAsn = Objects.requireNonNull($.peerAsn, "expected parameter 'peerAsn' to be non-null");
-            $.router = Objects.requireNonNull($.router, "expected parameter 'router' to be non-null");
+            if ($.interface_ == null) {
+                throw new MissingRequiredPropertyException("RouterPeerArgs", "interface_");
+            }
+            if ($.peerAsn == null) {
+                throw new MissingRequiredPropertyException("RouterPeerArgs", "peerAsn");
+            }
+            if ($.router == null) {
+                throw new MissingRequiredPropertyException("RouterPeerArgs", "router");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.outputs.ClusterAutomatedBackupPolicyWeeklyScheduleStartTime;
 import java.lang.String;
 import java.util.List;
@@ -63,6 +64,7 @@ public final class ClusterAutomatedBackupPolicyWeeklySchedule {
 
         @CustomType.Setter
         public Builder daysOfWeeks(@Nullable List<String> daysOfWeeks) {
+
             this.daysOfWeeks = daysOfWeeks;
             return this;
         }
@@ -71,7 +73,10 @@ public final class ClusterAutomatedBackupPolicyWeeklySchedule {
         }
         @CustomType.Setter
         public Builder startTimes(List<ClusterAutomatedBackupPolicyWeeklyScheduleStartTime> startTimes) {
-            this.startTimes = Objects.requireNonNull(startTimes);
+            if (startTimes == null) {
+              throw new MissingRequiredPropertyException("ClusterAutomatedBackupPolicyWeeklySchedule", "startTimes");
+            }
+            this.startTimes = startTimes;
             return this;
         }
         public Builder startTimes(ClusterAutomatedBackupPolicyWeeklyScheduleStartTime... startTimes) {

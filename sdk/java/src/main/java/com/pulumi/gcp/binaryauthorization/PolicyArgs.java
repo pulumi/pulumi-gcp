@@ -5,6 +5,7 @@ package com.pulumi.gcp.binaryauthorization;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.binaryauthorization.inputs.PolicyAdmissionWhitelistPatternArgs;
 import com.pulumi.gcp.binaryauthorization.inputs.PolicyClusterAdmissionRuleArgs;
 import com.pulumi.gcp.binaryauthorization.inputs.PolicyDefaultAdmissionRuleArgs;
@@ -369,7 +370,9 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PolicyArgs build() {
-            $.defaultAdmissionRule = Objects.requireNonNull($.defaultAdmissionRule, "expected parameter 'defaultAdmissionRule' to be non-null");
+            if ($.defaultAdmissionRule == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "defaultAdmissionRule");
+            }
             return $;
         }
     }

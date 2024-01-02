@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryCleanupPolicyCondition;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryCleanupPolicyMostRecentVersion;
 import java.lang.String;
@@ -55,12 +56,18 @@ public final class GetRepositoryCleanupPolicy {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicy", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder conditions(List<GetRepositoryCleanupPolicyCondition> conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicy", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         public Builder conditions(GetRepositoryCleanupPolicyCondition... conditions) {
@@ -68,12 +75,18 @@ public final class GetRepositoryCleanupPolicy {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicy", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder mostRecentVersions(List<GetRepositoryCleanupPolicyMostRecentVersion> mostRecentVersions) {
-            this.mostRecentVersions = Objects.requireNonNull(mostRecentVersions);
+            if (mostRecentVersions == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicy", "mostRecentVersions");
+            }
+            this.mostRecentVersions = mostRecentVersions;
             return this;
         }
         public Builder mostRecentVersions(GetRepositoryCleanupPolicyMostRecentVersion... mostRecentVersions) {

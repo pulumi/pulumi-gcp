@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionIAMBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -238,9 +239,15 @@ public final class SubscriptionIAMBindingArgs extends com.pulumi.resources.Resou
         }
 
         public SubscriptionIAMBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.subscription = Objects.requireNonNull($.subscription, "expected parameter 'subscription' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("SubscriptionIAMBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("SubscriptionIAMBindingArgs", "role");
+            }
+            if ($.subscription == null) {
+                throw new MissingRequiredPropertyException("SubscriptionIAMBindingArgs", "subscription");
+            }
             return $;
         }
     }

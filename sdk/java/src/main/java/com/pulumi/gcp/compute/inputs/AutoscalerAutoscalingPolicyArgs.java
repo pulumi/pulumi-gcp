@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyCpuUtilizationArgs;
 import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyLoadBalancingUtilizationArgs;
 import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyMetricArgs;
@@ -535,8 +536,12 @@ public final class AutoscalerAutoscalingPolicyArgs extends com.pulumi.resources.
         }
 
         public AutoscalerAutoscalingPolicyArgs build() {
-            $.maxReplicas = Objects.requireNonNull($.maxReplicas, "expected parameter 'maxReplicas' to be non-null");
-            $.minReplicas = Objects.requireNonNull($.minReplicas, "expected parameter 'minReplicas' to be non-null");
+            if ($.maxReplicas == null) {
+                throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicyArgs", "maxReplicas");
+            }
+            if ($.minReplicas == null) {
+                throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicyArgs", "minReplicas");
+            }
             return $;
         }
     }

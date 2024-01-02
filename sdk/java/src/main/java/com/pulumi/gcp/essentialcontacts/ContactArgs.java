@@ -5,6 +5,7 @@ package com.pulumi.gcp.essentialcontacts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -204,10 +205,18 @@ public final class ContactArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ContactArgs build() {
-            $.email = Objects.requireNonNull($.email, "expected parameter 'email' to be non-null");
-            $.languageTag = Objects.requireNonNull($.languageTag, "expected parameter 'languageTag' to be non-null");
-            $.notificationCategorySubscriptions = Objects.requireNonNull($.notificationCategorySubscriptions, "expected parameter 'notificationCategorySubscriptions' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.email == null) {
+                throw new MissingRequiredPropertyException("ContactArgs", "email");
+            }
+            if ($.languageTag == null) {
+                throw new MissingRequiredPropertyException("ContactArgs", "languageTag");
+            }
+            if ($.notificationCategorySubscriptions == null) {
+                throw new MissingRequiredPropertyException("ContactArgs", "notificationCategorySubscriptions");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("ContactArgs", "parent");
+            }
             return $;
         }
     }

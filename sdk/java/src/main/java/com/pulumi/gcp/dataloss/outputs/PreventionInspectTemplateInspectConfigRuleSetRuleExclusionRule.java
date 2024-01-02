@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes;
@@ -116,26 +117,33 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
 
         @CustomType.Setter
         public Builder dictionary(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionary dictionary) {
+
             this.dictionary = dictionary;
             return this;
         }
         @CustomType.Setter
         public Builder excludeByHotword(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword excludeByHotword) {
+
             this.excludeByHotword = excludeByHotword;
             return this;
         }
         @CustomType.Setter
         public Builder excludeInfoTypes(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes excludeInfoTypes) {
+
             this.excludeInfoTypes = excludeInfoTypes;
             return this;
         }
         @CustomType.Setter
         public Builder matchingType(String matchingType) {
-            this.matchingType = Objects.requireNonNull(matchingType);
+            if (matchingType == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRule", "matchingType");
+            }
+            this.matchingType = matchingType;
             return this;
         }
         @CustomType.Setter
         public Builder regex(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleRegex regex) {
+
             this.regex = regex;
             return this;
         }

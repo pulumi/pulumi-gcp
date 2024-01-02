@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.composer.outputs.GetImageVersionsImageVersion;
 import java.lang.String;
 import java.util.List;
@@ -70,12 +71,18 @@ public final class GetImageVersionsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetImageVersionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder imageVersions(List<GetImageVersionsImageVersion> imageVersions) {
-            this.imageVersions = Objects.requireNonNull(imageVersions);
+            if (imageVersions == null) {
+              throw new MissingRequiredPropertyException("GetImageVersionsResult", "imageVersions");
+            }
+            this.imageVersions = imageVersions;
             return this;
         }
         public Builder imageVersions(GetImageVersionsImageVersion... imageVersions) {
@@ -83,12 +90,18 @@ public final class GetImageVersionsResult {
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetImageVersionsResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetImageVersionsResult", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetImageVersionsResult build() {

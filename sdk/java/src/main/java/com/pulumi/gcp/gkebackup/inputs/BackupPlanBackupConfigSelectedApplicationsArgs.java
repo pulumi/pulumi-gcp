@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkebackup.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigSelectedApplicationsNamespacedNameArgs;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class BackupPlanBackupConfigSelectedApplicationsArgs extends com.pu
         }
 
         public BackupPlanBackupConfigSelectedApplicationsArgs build() {
-            $.namespacedNames = Objects.requireNonNull($.namespacedNames, "expected parameter 'namespacedNames' to be non-null");
+            if ($.namespacedNames == null) {
+                throw new MissingRequiredPropertyException("BackupPlanBackupConfigSelectedApplicationsArgs", "namespacedNames");
+            }
             return $;
         }
     }

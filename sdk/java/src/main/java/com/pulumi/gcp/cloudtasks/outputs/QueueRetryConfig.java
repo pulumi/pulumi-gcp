@@ -137,26 +137,31 @@ public final class QueueRetryConfig {
 
         @CustomType.Setter
         public Builder maxAttempts(@Nullable Integer maxAttempts) {
+
             this.maxAttempts = maxAttempts;
             return this;
         }
         @CustomType.Setter
         public Builder maxBackoff(@Nullable String maxBackoff) {
+
             this.maxBackoff = maxBackoff;
             return this;
         }
         @CustomType.Setter
         public Builder maxDoublings(@Nullable Integer maxDoublings) {
+
             this.maxDoublings = maxDoublings;
             return this;
         }
         @CustomType.Setter
         public Builder maxRetryDuration(@Nullable String maxRetryDuration) {
+
             this.maxRetryDuration = maxRetryDuration;
             return this;
         }
         @CustomType.Setter
         public Builder minBackoff(@Nullable String minBackoff) {
+
             this.minBackoff = minBackoff;
             return this;
         }

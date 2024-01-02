@@ -120,31 +120,37 @@ public final class ServiceTemplateContainerLivenessProbe {
 
         @CustomType.Setter
         public Builder failureThreshold(@Nullable Integer failureThreshold) {
+
             this.failureThreshold = failureThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder grpc(@Nullable ServiceTemplateContainerLivenessProbeGrpc grpc) {
+
             this.grpc = grpc;
             return this;
         }
         @CustomType.Setter
         public Builder httpGet(@Nullable ServiceTemplateContainerLivenessProbeHttpGet httpGet) {
+
             this.httpGet = httpGet;
             return this;
         }
         @CustomType.Setter
         public Builder initialDelaySeconds(@Nullable Integer initialDelaySeconds) {
+
             this.initialDelaySeconds = initialDelaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder periodSeconds(@Nullable Integer periodSeconds) {
+
             this.periodSeconds = periodSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
+
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }

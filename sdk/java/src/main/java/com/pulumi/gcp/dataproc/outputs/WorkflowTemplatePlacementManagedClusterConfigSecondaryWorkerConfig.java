@@ -176,6 +176,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
 
         @CustomType.Setter
         public Builder accelerators(@Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigAccelerator> accelerators) {
+
             this.accelerators = accelerators;
             return this;
         }
@@ -184,16 +185,19 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
         @CustomType.Setter
         public Builder diskConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigDiskConfig diskConfig) {
+
             this.diskConfig = diskConfig;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder instanceNames(@Nullable List<String> instanceNames) {
+
             this.instanceNames = instanceNames;
             return this;
         }
@@ -202,16 +206,19 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
         @CustomType.Setter
         public Builder isPreemptible(@Nullable Boolean isPreemptible) {
+
             this.isPreemptible = isPreemptible;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder managedGroupConfigs(@Nullable List<WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfigManagedGroupConfig> managedGroupConfigs) {
+
             this.managedGroupConfigs = managedGroupConfigs;
             return this;
         }
@@ -220,16 +227,19 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
         }
         @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
+
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }
         @CustomType.Setter
         public Builder numInstances(@Nullable Integer numInstances) {
+
             this.numInstances = numInstances;
             return this;
         }
         @CustomType.Setter
         public Builder preemptibility(@Nullable String preemptibility) {
+
             this.preemptibility = preemptibility;
             return this;
         }

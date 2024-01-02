@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetEnvironmentConfigWorkloadsConfigWorker {
 
         @CustomType.Setter
         public Builder cpu(Double cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigWorker", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder maxCount(Integer maxCount) {
-            this.maxCount = Objects.requireNonNull(maxCount);
+            if (maxCount == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigWorker", "maxCount");
+            }
+            this.maxCount = maxCount;
             return this;
         }
         @CustomType.Setter
         public Builder memoryGb(Double memoryGb) {
-            this.memoryGb = Objects.requireNonNull(memoryGb);
+            if (memoryGb == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigWorker", "memoryGb");
+            }
+            this.memoryGb = memoryGb;
             return this;
         }
         @CustomType.Setter
         public Builder minCount(Integer minCount) {
-            this.minCount = Objects.requireNonNull(minCount);
+            if (minCount == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigWorker", "minCount");
+            }
+            this.minCount = minCount;
             return this;
         }
         @CustomType.Setter
         public Builder storageGb(Double storageGb) {
-            this.storageGb = Objects.requireNonNull(storageGb);
+            if (storageGb == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigWorker", "storageGb");
+            }
+            this.storageGb = storageGb;
             return this;
         }
         public GetEnvironmentConfigWorkloadsConfigWorker build() {

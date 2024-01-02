@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetRepositoryMavenConfig {
 
         @CustomType.Setter
         public Builder allowSnapshotOverwrites(Boolean allowSnapshotOverwrites) {
-            this.allowSnapshotOverwrites = Objects.requireNonNull(allowSnapshotOverwrites);
+            if (allowSnapshotOverwrites == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryMavenConfig", "allowSnapshotOverwrites");
+            }
+            this.allowSnapshotOverwrites = allowSnapshotOverwrites;
             return this;
         }
         @CustomType.Setter
         public Builder versionPolicy(String versionPolicy) {
-            this.versionPolicy = Objects.requireNonNull(versionPolicy);
+            if (versionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryMavenConfig", "versionPolicy");
+            }
+            this.versionPolicy = versionPolicy;
             return this;
         }
         public GetRepositoryMavenConfig build() {

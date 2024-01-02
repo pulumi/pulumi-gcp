@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class AppProfileStandardIsolationArgs extends com.pulumi.resources.
         }
 
         public AppProfileStandardIsolationArgs build() {
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("AppProfileStandardIsolationArgs", "priority");
+            }
             return $;
         }
     }

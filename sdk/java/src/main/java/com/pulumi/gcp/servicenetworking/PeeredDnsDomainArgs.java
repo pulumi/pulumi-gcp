@@ -5,6 +5,7 @@ package com.pulumi.gcp.servicenetworking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -224,8 +225,12 @@ public final class PeeredDnsDomainArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public PeeredDnsDomainArgs build() {
-            $.dnsSuffix = Objects.requireNonNull($.dnsSuffix, "expected parameter 'dnsSuffix' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.dnsSuffix == null) {
+                throw new MissingRequiredPropertyException("PeeredDnsDomainArgs", "dnsSuffix");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("PeeredDnsDomainArgs", "network");
+            }
             return $;
         }
     }

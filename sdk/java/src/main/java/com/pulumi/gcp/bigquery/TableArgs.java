@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.TableEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableMaterializedViewArgs;
@@ -929,8 +930,12 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TableArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
-            $.tableId = Objects.requireNonNull($.tableId, "expected parameter 'tableId' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "datasetId");
+            }
+            if ($.tableId == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "tableId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificatemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificatemanager.inputs.TrustConfigTrustStoreArgs;
 import java.lang.String;
 import java.util.List;
@@ -304,7 +305,9 @@ public final class TrustConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TrustConfigArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("TrustConfigArgs", "location");
+            }
             return $;
         }
     }

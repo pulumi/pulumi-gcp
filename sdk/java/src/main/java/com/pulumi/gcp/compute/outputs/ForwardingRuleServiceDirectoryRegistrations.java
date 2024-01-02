@@ -58,11 +58,13 @@ public final class ForwardingRuleServiceDirectoryRegistrations {
 
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }

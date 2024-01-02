@@ -193,56 +193,67 @@ public final class TransferJobTransferSpec {
 
         @CustomType.Setter
         public Builder awsS3DataSource(@Nullable TransferJobTransferSpecAwsS3DataSource awsS3DataSource) {
+
             this.awsS3DataSource = awsS3DataSource;
             return this;
         }
         @CustomType.Setter
         public Builder azureBlobStorageDataSource(@Nullable TransferJobTransferSpecAzureBlobStorageDataSource azureBlobStorageDataSource) {
+
             this.azureBlobStorageDataSource = azureBlobStorageDataSource;
             return this;
         }
         @CustomType.Setter
         public Builder gcsDataSink(@Nullable TransferJobTransferSpecGcsDataSink gcsDataSink) {
+
             this.gcsDataSink = gcsDataSink;
             return this;
         }
         @CustomType.Setter
         public Builder gcsDataSource(@Nullable TransferJobTransferSpecGcsDataSource gcsDataSource) {
+
             this.gcsDataSource = gcsDataSource;
             return this;
         }
         @CustomType.Setter
         public Builder httpDataSource(@Nullable TransferJobTransferSpecHttpDataSource httpDataSource) {
+
             this.httpDataSource = httpDataSource;
             return this;
         }
         @CustomType.Setter
         public Builder objectConditions(@Nullable TransferJobTransferSpecObjectConditions objectConditions) {
+
             this.objectConditions = objectConditions;
             return this;
         }
         @CustomType.Setter
         public Builder posixDataSink(@Nullable TransferJobTransferSpecPosixDataSink posixDataSink) {
+
             this.posixDataSink = posixDataSink;
             return this;
         }
         @CustomType.Setter
         public Builder posixDataSource(@Nullable TransferJobTransferSpecPosixDataSource posixDataSource) {
+
             this.posixDataSource = posixDataSource;
             return this;
         }
         @CustomType.Setter
         public Builder sinkAgentPoolName(@Nullable String sinkAgentPoolName) {
+
             this.sinkAgentPoolName = sinkAgentPoolName;
             return this;
         }
         @CustomType.Setter
         public Builder sourceAgentPoolName(@Nullable String sourceAgentPoolName) {
+
             this.sourceAgentPoolName = sourceAgentPoolName;
             return this;
         }
         @CustomType.Setter
         public Builder transferOptions(@Nullable TransferJobTransferSpecTransferOptions transferOptions) {
+
             this.transferOptions = transferOptions;
             return this;
         }

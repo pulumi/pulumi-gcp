@@ -109,16 +109,19 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder requiredFindingLabelKeys(@Nullable List<String> requiredFindingLabelKeys) {
+
             this.requiredFindingLabelKeys = requiredFindingLabelKeys;
             return this;
         }
@@ -127,6 +130,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptions {
         }
         @CustomType.Setter
         public Builder tableOptions(@Nullable PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptions tableOptions) {
+
             this.tableOptions = tableOptions;
             return this;
         }

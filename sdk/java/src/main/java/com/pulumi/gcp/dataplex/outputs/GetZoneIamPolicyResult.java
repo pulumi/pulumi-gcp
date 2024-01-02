@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -96,37 +97,58 @@ public final class GetZoneIamPolicyResult {
 
         @CustomType.Setter
         public Builder dataplexZone(String dataplexZone) {
-            this.dataplexZone = Objects.requireNonNull(dataplexZone);
+            if (dataplexZone == null) {
+              throw new MissingRequiredPropertyException("GetZoneIamPolicyResult", "dataplexZone");
+            }
+            this.dataplexZone = dataplexZone;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetZoneIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZoneIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lake(String lake) {
-            this.lake = Objects.requireNonNull(lake);
+            if (lake == null) {
+              throw new MissingRequiredPropertyException("GetZoneIamPolicyResult", "lake");
+            }
+            this.lake = lake;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetZoneIamPolicyResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetZoneIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetZoneIamPolicyResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetZoneIamPolicyResult build() {

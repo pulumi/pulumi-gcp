@@ -5,6 +5,7 @@ package com.pulumi.gcp.datafusion;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datafusion.inputs.InstanceAcceleratorArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceCryptoKeyConfigArgs;
 import com.pulumi.gcp.datafusion.inputs.InstanceEventPublishConfigArgs;
@@ -862,7 +863,9 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "type");
+            }
             return $;
         }
     }

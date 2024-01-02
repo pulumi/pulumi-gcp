@@ -79,16 +79,19 @@ public final class RuntimeVirtualMachine {
 
         @CustomType.Setter
         public Builder instanceId(@Nullable String instanceId) {
+
             this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder instanceName(@Nullable String instanceName) {
+
             this.instanceName = instanceName;
             return this;
         }
         @CustomType.Setter
         public Builder virtualMachineConfig(@Nullable RuntimeVirtualMachineVirtualMachineConfig virtualMachineConfig) {
+
             this.virtualMachineConfig = virtualMachineConfig;
             return this;
         }

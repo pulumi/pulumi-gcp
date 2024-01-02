@@ -61,11 +61,13 @@ public final class NetworkPolicyExternalIp {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -65,17 +66,26 @@ public final class GetRepositoryCleanupPolicyCondition {
 
         @CustomType.Setter
         public Builder newerThan(String newerThan) {
-            this.newerThan = Objects.requireNonNull(newerThan);
+            if (newerThan == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicyCondition", "newerThan");
+            }
+            this.newerThan = newerThan;
             return this;
         }
         @CustomType.Setter
         public Builder olderThan(String olderThan) {
-            this.olderThan = Objects.requireNonNull(olderThan);
+            if (olderThan == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicyCondition", "olderThan");
+            }
+            this.olderThan = olderThan;
             return this;
         }
         @CustomType.Setter
         public Builder packageNamePrefixes(List<String> packageNamePrefixes) {
-            this.packageNamePrefixes = Objects.requireNonNull(packageNamePrefixes);
+            if (packageNamePrefixes == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicyCondition", "packageNamePrefixes");
+            }
+            this.packageNamePrefixes = packageNamePrefixes;
             return this;
         }
         public Builder packageNamePrefixes(String... packageNamePrefixes) {
@@ -83,7 +93,10 @@ public final class GetRepositoryCleanupPolicyCondition {
         }
         @CustomType.Setter
         public Builder tagPrefixes(List<String> tagPrefixes) {
-            this.tagPrefixes = Objects.requireNonNull(tagPrefixes);
+            if (tagPrefixes == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicyCondition", "tagPrefixes");
+            }
+            this.tagPrefixes = tagPrefixes;
             return this;
         }
         public Builder tagPrefixes(String... tagPrefixes) {
@@ -91,12 +104,18 @@ public final class GetRepositoryCleanupPolicyCondition {
         }
         @CustomType.Setter
         public Builder tagState(String tagState) {
-            this.tagState = Objects.requireNonNull(tagState);
+            if (tagState == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicyCondition", "tagState");
+            }
+            this.tagState = tagState;
             return this;
         }
         @CustomType.Setter
         public Builder versionNamePrefixes(List<String> versionNamePrefixes) {
-            this.versionNamePrefixes = Objects.requireNonNull(versionNamePrefixes);
+            if (versionNamePrefixes == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicyCondition", "versionNamePrefixes");
+            }
+            this.versionNamePrefixes = versionNamePrefixes;
             return this;
         }
         public Builder versionNamePrefixes(String... versionNamePrefixes) {

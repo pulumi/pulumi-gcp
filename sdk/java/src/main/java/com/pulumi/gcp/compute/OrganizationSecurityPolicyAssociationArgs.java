@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,8 +159,12 @@ public final class OrganizationSecurityPolicyAssociationArgs extends com.pulumi.
         }
 
         public OrganizationSecurityPolicyAssociationArgs build() {
-            $.attachmentId = Objects.requireNonNull($.attachmentId, "expected parameter 'attachmentId' to be non-null");
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
+            if ($.attachmentId == null) {
+                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyAssociationArgs", "attachmentId");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyAssociationArgs", "policyId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessAuthorizedDatasetDataset;
 import java.lang.String;
 import java.util.List;
@@ -62,12 +63,18 @@ public final class DatasetAccessAuthorizedDataset {
 
         @CustomType.Setter
         public Builder dataset(DatasetAccessAuthorizedDatasetDataset dataset) {
-            this.dataset = Objects.requireNonNull(dataset);
+            if (dataset == null) {
+              throw new MissingRequiredPropertyException("DatasetAccessAuthorizedDataset", "dataset");
+            }
+            this.dataset = dataset;
             return this;
         }
         @CustomType.Setter
         public Builder targetTypes(List<String> targetTypes) {
-            this.targetTypes = Objects.requireNonNull(targetTypes);
+            if (targetTypes == null) {
+              throw new MissingRequiredPropertyException("DatasetAccessAuthorizedDataset", "targetTypes");
+            }
+            this.targetTypes = targetTypes;
             return this;
         }
         public Builder targetTypes(String... targetTypes) {

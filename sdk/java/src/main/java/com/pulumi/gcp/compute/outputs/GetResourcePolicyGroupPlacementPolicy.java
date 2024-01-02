@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -53,22 +54,34 @@ public final class GetResourcePolicyGroupPlacementPolicy {
 
         @CustomType.Setter
         public Builder availabilityDomainCount(Integer availabilityDomainCount) {
-            this.availabilityDomainCount = Objects.requireNonNull(availabilityDomainCount);
+            if (availabilityDomainCount == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyGroupPlacementPolicy", "availabilityDomainCount");
+            }
+            this.availabilityDomainCount = availabilityDomainCount;
             return this;
         }
         @CustomType.Setter
         public Builder collocation(String collocation) {
-            this.collocation = Objects.requireNonNull(collocation);
+            if (collocation == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyGroupPlacementPolicy", "collocation");
+            }
+            this.collocation = collocation;
             return this;
         }
         @CustomType.Setter
         public Builder maxDistance(Integer maxDistance) {
-            this.maxDistance = Objects.requireNonNull(maxDistance);
+            if (maxDistance == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyGroupPlacementPolicy", "maxDistance");
+            }
+            this.maxDistance = maxDistance;
             return this;
         }
         @CustomType.Setter
         public Builder vmCount(Integer vmCount) {
-            this.vmCount = Objects.requireNonNull(vmCount);
+            if (vmCount == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyGroupPlacementPolicy", "vmCount");
+            }
+            this.vmCount = vmCount;
             return this;
         }
         public GetResourcePolicyGroupPlacementPolicy build() {

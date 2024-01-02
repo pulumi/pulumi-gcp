@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigtable.inputs.InstanceIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -249,9 +250,15 @@ public final class InstanceIamMemberArgs extends com.pulumi.resources.ResourceAr
         }
 
         public InstanceIamMemberArgs build() {
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("InstanceIamMemberArgs", "instance");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("InstanceIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("InstanceIamMemberArgs", "role");
+            }
             return $;
         }
     }

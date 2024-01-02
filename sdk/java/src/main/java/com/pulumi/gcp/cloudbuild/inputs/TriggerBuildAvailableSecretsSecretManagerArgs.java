@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class TriggerBuildAvailableSecretsSecretManagerArgs extends com.pul
         }
 
         public TriggerBuildAvailableSecretsSecretManagerArgs build() {
-            $.env = Objects.requireNonNull($.env, "expected parameter 'env' to be non-null");
-            $.versionName = Objects.requireNonNull($.versionName, "expected parameter 'versionName' to be non-null");
+            if ($.env == null) {
+                throw new MissingRequiredPropertyException("TriggerBuildAvailableSecretsSecretManagerArgs", "env");
+            }
+            if ($.versionName == null) {
+                throw new MissingRequiredPropertyException("TriggerBuildAvailableSecretsSecretManagerArgs", "versionName");
+            }
             return $;
         }
     }

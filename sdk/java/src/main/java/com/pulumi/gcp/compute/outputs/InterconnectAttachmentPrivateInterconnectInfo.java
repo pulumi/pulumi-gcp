@@ -48,6 +48,7 @@ public final class InterconnectAttachmentPrivateInterconnectInfo {
 
         @CustomType.Setter
         public Builder tag8021q(@Nullable Integer tag8021q) {
+
             this.tag8021q = tag8021q;
             return this;
         }

@@ -83,16 +83,19 @@ public final class EntryBigqueryDateShardedSpec {
 
         @CustomType.Setter
         public Builder dataset(@Nullable String dataset) {
+
             this.dataset = dataset;
             return this;
         }
         @CustomType.Setter
         public Builder shardCount(@Nullable Integer shardCount) {
+
             this.shardCount = shardCount;
             return this;
         }
         @CustomType.Setter
         public Builder tablePrefix(@Nullable String tablePrefix) {
+
             this.tablePrefix = tablePrefix;
             return this;
         }

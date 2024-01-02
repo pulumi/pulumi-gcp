@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.InstanceSettingsMetadataArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -167,7 +168,9 @@ public final class InstanceSettingsArgs extends com.pulumi.resources.ResourceArg
         }
 
         public InstanceSettingsArgs build() {
-            $.zone = Objects.requireNonNull($.zone, "expected parameter 'zone' to be non-null");
+            if ($.zone == null) {
+                throw new MissingRequiredPropertyException("InstanceSettingsArgs", "zone");
+            }
             return $;
         }
     }

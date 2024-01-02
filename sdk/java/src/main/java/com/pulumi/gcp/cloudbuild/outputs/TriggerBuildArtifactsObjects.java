@@ -86,11 +86,13 @@ public final class TriggerBuildArtifactsObjects {
 
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder paths(@Nullable List<String> paths) {
+
             this.paths = paths;
             return this;
         }
@@ -99,6 +101,7 @@ public final class TriggerBuildArtifactsObjects {
         }
         @CustomType.Setter
         public Builder timings(@Nullable List<TriggerBuildArtifactsObjectsTiming> timings) {
+
             this.timings = timings;
             return this;
         }

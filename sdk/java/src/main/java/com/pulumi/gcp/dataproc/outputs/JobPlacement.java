@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -42,11 +43,15 @@ public final class JobPlacement {
 
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("JobPlacement", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder clusterUuid(@Nullable String clusterUuid) {
+
             this.clusterUuid = clusterUuid;
             return this;
         }

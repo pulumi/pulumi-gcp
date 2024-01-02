@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -237,8 +238,12 @@ public final class BillingAccountExclusionArgs extends com.pulumi.resources.Reso
         }
 
         public BillingAccountExclusionArgs build() {
-            $.billingAccount = Objects.requireNonNull($.billingAccount, "expected parameter 'billingAccount' to be non-null");
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
+            if ($.billingAccount == null) {
+                throw new MissingRequiredPropertyException("BillingAccountExclusionArgs", "billingAccount");
+            }
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("BillingAccountExclusionArgs", "filter");
+            }
             return $;
         }
     }

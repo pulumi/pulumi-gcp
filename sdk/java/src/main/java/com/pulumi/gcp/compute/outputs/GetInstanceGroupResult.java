@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupNamedPort;
 import java.lang.Integer;
 import java.lang.String;
@@ -149,17 +150,26 @@ public final class GetInstanceGroupResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instances(List<String> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(String... instances) {
@@ -167,12 +177,16 @@ public final class GetInstanceGroupResult {
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namedPorts(List<GetInstanceGroupNamedPort> namedPorts) {
-            this.namedPorts = Objects.requireNonNull(namedPorts);
+            if (namedPorts == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "namedPorts");
+            }
+            this.namedPorts = namedPorts;
             return this;
         }
         public Builder namedPorts(GetInstanceGroupNamedPort... namedPorts) {
@@ -180,27 +194,42 @@ public final class GetInstanceGroupResult {
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupResult", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetInstanceGroupResult build() {

@@ -44,6 +44,7 @@ public final class VMwareClusterUpgradePolicy {
 
         @CustomType.Setter
         public Builder controlPlaneOnly(@Nullable Boolean controlPlaneOnly) {
+
             this.controlPlaneOnly = controlPlaneOnly;
             return this;
         }

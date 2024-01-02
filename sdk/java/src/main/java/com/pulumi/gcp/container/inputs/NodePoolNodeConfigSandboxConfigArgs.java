@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class NodePoolNodeConfigSandboxConfigArgs extends com.pulumi.resour
         }
 
         public NodePoolNodeConfigSandboxConfigArgs build() {
-            $.sandboxType = Objects.requireNonNull($.sandboxType, "expected parameter 'sandboxType' to be non-null");
+            if ($.sandboxType == null) {
+                throw new MissingRequiredPropertyException("NodePoolNodeConfigSandboxConfigArgs", "sandboxType");
+            }
             return $;
         }
     }

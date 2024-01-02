@@ -69,11 +69,13 @@ public final class TableExternalDataConfigurationGoogleSheetsOptions {
 
         @CustomType.Setter
         public Builder range(@Nullable String range) {
+
             this.range = range;
             return this;
         }
         @CustomType.Setter
         public Builder skipLeadingRows(@Nullable Integer skipLeadingRows) {
+
             this.skipLeadingRows = skipLeadingRows;
             return this;
         }

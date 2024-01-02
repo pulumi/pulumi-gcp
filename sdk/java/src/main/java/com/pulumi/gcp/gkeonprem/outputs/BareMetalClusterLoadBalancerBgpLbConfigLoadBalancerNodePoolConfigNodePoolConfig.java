@@ -129,16 +129,19 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolCo
 
         @CustomType.Setter
         public Builder kubeletConfig(@Nullable BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigKubeletConfig kubeletConfig) {
+
             this.kubeletConfig = kubeletConfig;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder nodeConfigs(@Nullable List<BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig> nodeConfigs) {
+
             this.nodeConfigs = nodeConfigs;
             return this;
         }
@@ -147,11 +150,13 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolCo
         }
         @CustomType.Setter
         public Builder operatingSystem(@Nullable String operatingSystem) {
+
             this.operatingSystem = operatingSystem;
             return this;
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint> taints) {
+
             this.taints = taints;
             return this;
         }

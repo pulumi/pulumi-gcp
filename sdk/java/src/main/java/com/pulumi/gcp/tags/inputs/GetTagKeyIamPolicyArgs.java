@@ -5,6 +5,7 @@ package com.pulumi.gcp.tags.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetTagKeyIamPolicyArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetTagKeyIamPolicyArgs build() {
-            $.tagKey = Objects.requireNonNull($.tagKey, "expected parameter 'tagKey' to be non-null");
+            if ($.tagKey == null) {
+                throw new MissingRequiredPropertyException("GetTagKeyIamPolicyArgs", "tagKey");
+            }
             return $;
         }
     }

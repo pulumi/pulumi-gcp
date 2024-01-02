@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class ApiKeyRestrictionsBrowserKeyRestrictionsArgs extends com.pulu
         }
 
         public ApiKeyRestrictionsBrowserKeyRestrictionsArgs build() {
-            $.allowedReferrers = Objects.requireNonNull($.allowedReferrers, "expected parameter 'allowedReferrers' to be non-null");
+            if ($.allowedReferrers == null) {
+                throw new MissingRequiredPropertyException("ApiKeyRestrictionsBrowserKeyRestrictionsArgs", "allowedReferrers");
+            }
             return $;
         }
     }

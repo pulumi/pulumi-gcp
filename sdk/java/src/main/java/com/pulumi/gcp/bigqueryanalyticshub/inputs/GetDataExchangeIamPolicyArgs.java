@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigqueryanalyticshub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,7 +159,9 @@ public final class GetDataExchangeIamPolicyArgs extends com.pulumi.resources.Inv
         }
 
         public GetDataExchangeIamPolicyArgs build() {
-            $.dataExchangeId = Objects.requireNonNull($.dataExchangeId, "expected parameter 'dataExchangeId' to be non-null");
+            if ($.dataExchangeId == null) {
+                throw new MissingRequiredPropertyException("GetDataExchangeIamPolicyArgs", "dataExchangeId");
+            }
             return $;
         }
     }

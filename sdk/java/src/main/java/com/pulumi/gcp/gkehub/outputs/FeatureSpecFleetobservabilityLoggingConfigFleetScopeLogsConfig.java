@@ -46,6 +46,7 @@ public final class FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfi
 
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }

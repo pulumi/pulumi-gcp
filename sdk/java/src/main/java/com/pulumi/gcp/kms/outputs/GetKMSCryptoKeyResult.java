@@ -4,6 +4,7 @@
 package com.pulumi.gcp.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyVersionTemplate;
 import java.lang.Boolean;
 import java.lang.String;
@@ -132,62 +133,98 @@ public final class GetKMSCryptoKeyResult {
 
         @CustomType.Setter
         public Builder destroyScheduledDuration(String destroyScheduledDuration) {
-            this.destroyScheduledDuration = Objects.requireNonNull(destroyScheduledDuration);
+            if (destroyScheduledDuration == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "destroyScheduledDuration");
+            }
+            this.destroyScheduledDuration = destroyScheduledDuration;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder importOnly(Boolean importOnly) {
-            this.importOnly = Objects.requireNonNull(importOnly);
+            if (importOnly == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "importOnly");
+            }
+            this.importOnly = importOnly;
             return this;
         }
         @CustomType.Setter
         public Builder keyRing(String keyRing) {
-            this.keyRing = Objects.requireNonNull(keyRing);
+            if (keyRing == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "keyRing");
+            }
+            this.keyRing = keyRing;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder purpose(String purpose) {
-            this.purpose = Objects.requireNonNull(purpose);
+            if (purpose == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "purpose");
+            }
+            this.purpose = purpose;
             return this;
         }
         @CustomType.Setter
         public Builder rotationPeriod(String rotationPeriod) {
-            this.rotationPeriod = Objects.requireNonNull(rotationPeriod);
+            if (rotationPeriod == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "rotationPeriod");
+            }
+            this.rotationPeriod = rotationPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder skipInitialVersionCreation(Boolean skipInitialVersionCreation) {
-            this.skipInitialVersionCreation = Objects.requireNonNull(skipInitialVersionCreation);
+            if (skipInitialVersionCreation == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "skipInitialVersionCreation");
+            }
+            this.skipInitialVersionCreation = skipInitialVersionCreation;
             return this;
         }
         @CustomType.Setter
         public Builder versionTemplates(List<GetKMSCryptoKeyVersionTemplate> versionTemplates) {
-            this.versionTemplates = Objects.requireNonNull(versionTemplates);
+            if (versionTemplates == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "versionTemplates");
+            }
+            this.versionTemplates = versionTemplates;
             return this;
         }
         public Builder versionTemplates(GetKMSCryptoKeyVersionTemplate... versionTemplates) {

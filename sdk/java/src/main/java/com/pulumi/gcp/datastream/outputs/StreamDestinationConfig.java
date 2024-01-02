@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfig;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigGcsDestinationConfig;
 import java.lang.String;
@@ -78,16 +79,21 @@ public final class StreamDestinationConfig {
 
         @CustomType.Setter
         public Builder bigqueryDestinationConfig(@Nullable StreamDestinationConfigBigqueryDestinationConfig bigqueryDestinationConfig) {
+
             this.bigqueryDestinationConfig = bigqueryDestinationConfig;
             return this;
         }
         @CustomType.Setter
         public Builder destinationConnectionProfile(String destinationConnectionProfile) {
-            this.destinationConnectionProfile = Objects.requireNonNull(destinationConnectionProfile);
+            if (destinationConnectionProfile == null) {
+              throw new MissingRequiredPropertyException("StreamDestinationConfig", "destinationConnectionProfile");
+            }
+            this.destinationConnectionProfile = destinationConnectionProfile;
             return this;
         }
         @CustomType.Setter
         public Builder gcsDestinationConfig(@Nullable StreamDestinationConfigGcsDestinationConfig gcsDestinationConfig) {
+
             this.gcsDestinationConfig = gcsDestinationConfig;
             return this;
         }

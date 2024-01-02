@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplate;
 import java.lang.Integer;
 import java.lang.String;
@@ -62,27 +63,42 @@ public final class GetJobTemplate {
 
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplate", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplate", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder parallelism(Integer parallelism) {
-            this.parallelism = Objects.requireNonNull(parallelism);
+            if (parallelism == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplate", "parallelism");
+            }
+            this.parallelism = parallelism;
             return this;
         }
         @CustomType.Setter
         public Builder taskCount(Integer taskCount) {
-            this.taskCount = Objects.requireNonNull(taskCount);
+            if (taskCount == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplate", "taskCount");
+            }
+            this.taskCount = taskCount;
             return this;
         }
         @CustomType.Setter
         public Builder templates(List<GetJobTemplateTemplate> templates) {
-            this.templates = Objects.requireNonNull(templates);
+            if (templates == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplate", "templates");
+            }
+            this.templates = templates;
             return this;
         }
         public Builder templates(GetJobTemplateTemplate... templates) {

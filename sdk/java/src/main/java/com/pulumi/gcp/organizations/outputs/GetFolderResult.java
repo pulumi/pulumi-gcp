@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -147,52 +148,80 @@ public final class GetFolderResult {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder folder(String folder) {
-            this.folder = Objects.requireNonNull(folder);
+            if (folder == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "folder");
+            }
+            this.folder = folder;
             return this;
         }
         @CustomType.Setter
         public Builder folderId(String folderId) {
-            this.folderId = Objects.requireNonNull(folderId);
+            if (folderId == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "folderId");
+            }
+            this.folderId = folderId;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lifecycleState(String lifecycleState) {
-            this.lifecycleState = Objects.requireNonNull(lifecycleState);
+            if (lifecycleState == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "lifecycleState");
+            }
+            this.lifecycleState = lifecycleState;
             return this;
         }
         @CustomType.Setter
         public Builder lookupOrganization(@Nullable Boolean lookupOrganization) {
+
             this.lookupOrganization = lookupOrganization;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder organization(String organization) {
-            this.organization = Objects.requireNonNull(organization);
+            if (organization == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "organization");
+            }
+            this.organization = organization;
             return this;
         }
         @CustomType.Setter
         public Builder parent(String parent) {
-            this.parent = Objects.requireNonNull(parent);
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetFolderResult", "parent");
+            }
+            this.parent = parent;
             return this;
         }
         public GetFolderResult build() {

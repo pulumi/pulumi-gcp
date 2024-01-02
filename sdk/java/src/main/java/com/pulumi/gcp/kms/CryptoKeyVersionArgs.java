@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -129,7 +130,9 @@ public final class CryptoKeyVersionArgs extends com.pulumi.resources.ResourceArg
         }
 
         public CryptoKeyVersionArgs build() {
-            $.cryptoKey = Objects.requireNonNull($.cryptoKey, "expected parameter 'cryptoKey' to be non-null");
+            if ($.cryptoKey == null) {
+                throw new MissingRequiredPropertyException("CryptoKeyVersionArgs", "cryptoKey");
+            }
             return $;
         }
     }

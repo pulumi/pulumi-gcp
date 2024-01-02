@@ -4,6 +4,7 @@
 package com.pulumi.gcp.notebooks.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -122,7 +123,9 @@ public final class GetInstanceIamPolicyPlainArgs extends com.pulumi.resources.In
         }
 
         public GetInstanceIamPolicyPlainArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("GetInstanceIamPolicyPlainArgs", "instanceName");
+            }
             return $;
         }
     }

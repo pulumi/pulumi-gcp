@@ -5,6 +5,7 @@ package com.pulumi.gcp.runtimeconfig;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.runtimeconfig.inputs.ConfigIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -250,9 +251,15 @@ public final class ConfigIamBindingArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ConfigIamBindingArgs build() {
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("ConfigIamBindingArgs", "config");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("ConfigIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ConfigIamBindingArgs", "role");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.appengine.inputs.EngineSplitTrafficSplitArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -197,8 +198,12 @@ public final class EngineSplitTrafficArgs extends com.pulumi.resources.ResourceA
         }
 
         public EngineSplitTrafficArgs build() {
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
-            $.split = Objects.requireNonNull($.split, "expected parameter 'split' to be non-null");
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("EngineSplitTrafficArgs", "service");
+            }
+            if ($.split == null) {
+                throw new MissingRequiredPropertyException("EngineSplitTrafficArgs", "split");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyAdditionalPodRangesConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIpAllocationPolicyPodCidrOverprovisionConfig;
 import java.lang.String;
@@ -73,7 +74,10 @@ public final class GetClusterIpAllocationPolicy {
 
         @CustomType.Setter
         public Builder additionalPodRangesConfigs(List<GetClusterIpAllocationPolicyAdditionalPodRangesConfig> additionalPodRangesConfigs) {
-            this.additionalPodRangesConfigs = Objects.requireNonNull(additionalPodRangesConfigs);
+            if (additionalPodRangesConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "additionalPodRangesConfigs");
+            }
+            this.additionalPodRangesConfigs = additionalPodRangesConfigs;
             return this;
         }
         public Builder additionalPodRangesConfigs(GetClusterIpAllocationPolicyAdditionalPodRangesConfig... additionalPodRangesConfigs) {
@@ -81,17 +85,26 @@ public final class GetClusterIpAllocationPolicy {
         }
         @CustomType.Setter
         public Builder clusterIpv4CidrBlock(String clusterIpv4CidrBlock) {
-            this.clusterIpv4CidrBlock = Objects.requireNonNull(clusterIpv4CidrBlock);
+            if (clusterIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "clusterIpv4CidrBlock");
+            }
+            this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder clusterSecondaryRangeName(String clusterSecondaryRangeName) {
-            this.clusterSecondaryRangeName = Objects.requireNonNull(clusterSecondaryRangeName);
+            if (clusterSecondaryRangeName == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "clusterSecondaryRangeName");
+            }
+            this.clusterSecondaryRangeName = clusterSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder podCidrOverprovisionConfigs(List<GetClusterIpAllocationPolicyPodCidrOverprovisionConfig> podCidrOverprovisionConfigs) {
-            this.podCidrOverprovisionConfigs = Objects.requireNonNull(podCidrOverprovisionConfigs);
+            if (podCidrOverprovisionConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "podCidrOverprovisionConfigs");
+            }
+            this.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
             return this;
         }
         public Builder podCidrOverprovisionConfigs(GetClusterIpAllocationPolicyPodCidrOverprovisionConfig... podCidrOverprovisionConfigs) {
@@ -99,17 +112,26 @@ public final class GetClusterIpAllocationPolicy {
         }
         @CustomType.Setter
         public Builder servicesIpv4CidrBlock(String servicesIpv4CidrBlock) {
-            this.servicesIpv4CidrBlock = Objects.requireNonNull(servicesIpv4CidrBlock);
+            if (servicesIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "servicesIpv4CidrBlock");
+            }
+            this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder servicesSecondaryRangeName(String servicesSecondaryRangeName) {
-            this.servicesSecondaryRangeName = Objects.requireNonNull(servicesSecondaryRangeName);
+            if (servicesSecondaryRangeName == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "servicesSecondaryRangeName");
+            }
+            this.servicesSecondaryRangeName = servicesSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder stackType(String stackType) {
-            this.stackType = Objects.requireNonNull(stackType);
+            if (stackType == null) {
+              throw new MissingRequiredPropertyException("GetClusterIpAllocationPolicy", "stackType");
+            }
+            this.stackType = stackType;
             return this;
         }
         public GetClusterIpAllocationPolicy build() {

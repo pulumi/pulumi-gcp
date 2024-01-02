@@ -43,11 +43,13 @@ public final class DeliveryPipelineConditionTargetsTypeCondition {
 
         @CustomType.Setter
         public Builder errorDetails(@Nullable String errorDetails) {
+
             this.errorDetails = errorDetails;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable Boolean status) {
+
             this.status = status;
             return this;
         }

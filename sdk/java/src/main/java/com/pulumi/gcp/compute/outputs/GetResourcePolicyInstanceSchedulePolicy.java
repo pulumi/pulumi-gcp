@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyInstanceSchedulePolicyVmStartSchedule;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyInstanceSchedulePolicyVmStopSchedule;
 import java.lang.String;
@@ -61,22 +62,34 @@ public final class GetResourcePolicyInstanceSchedulePolicy {
 
         @CustomType.Setter
         public Builder expirationTime(String expirationTime) {
-            this.expirationTime = Objects.requireNonNull(expirationTime);
+            if (expirationTime == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyInstanceSchedulePolicy", "expirationTime");
+            }
+            this.expirationTime = expirationTime;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyInstanceSchedulePolicy", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(String timeZone) {
-            this.timeZone = Objects.requireNonNull(timeZone);
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyInstanceSchedulePolicy", "timeZone");
+            }
+            this.timeZone = timeZone;
             return this;
         }
         @CustomType.Setter
         public Builder vmStartSchedules(List<GetResourcePolicyInstanceSchedulePolicyVmStartSchedule> vmStartSchedules) {
-            this.vmStartSchedules = Objects.requireNonNull(vmStartSchedules);
+            if (vmStartSchedules == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyInstanceSchedulePolicy", "vmStartSchedules");
+            }
+            this.vmStartSchedules = vmStartSchedules;
             return this;
         }
         public Builder vmStartSchedules(GetResourcePolicyInstanceSchedulePolicyVmStartSchedule... vmStartSchedules) {
@@ -84,7 +97,10 @@ public final class GetResourcePolicyInstanceSchedulePolicy {
         }
         @CustomType.Setter
         public Builder vmStopSchedules(List<GetResourcePolicyInstanceSchedulePolicyVmStopSchedule> vmStopSchedules) {
-            this.vmStopSchedules = Objects.requireNonNull(vmStopSchedules);
+            if (vmStopSchedules == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyInstanceSchedulePolicy", "vmStopSchedules");
+            }
+            this.vmStopSchedules = vmStopSchedules;
             return this;
         }
         public Builder vmStopSchedules(GetResourcePolicyInstanceSchedulePolicyVmStopSchedule... vmStopSchedules) {

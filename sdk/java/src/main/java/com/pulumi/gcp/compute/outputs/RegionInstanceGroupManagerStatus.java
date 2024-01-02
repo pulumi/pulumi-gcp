@@ -96,6 +96,7 @@ public final class RegionInstanceGroupManagerStatus {
 
         @CustomType.Setter
         public Builder allInstancesConfigs(@Nullable List<RegionInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs) {
+
             this.allInstancesConfigs = allInstancesConfigs;
             return this;
         }
@@ -104,11 +105,13 @@ public final class RegionInstanceGroupManagerStatus {
         }
         @CustomType.Setter
         public Builder isStable(@Nullable Boolean isStable) {
+
             this.isStable = isStable;
             return this;
         }
         @CustomType.Setter
         public Builder statefuls(@Nullable List<RegionInstanceGroupManagerStatusStateful> statefuls) {
+
             this.statefuls = statefuls;
             return this;
         }
@@ -117,6 +120,7 @@ public final class RegionInstanceGroupManagerStatus {
         }
         @CustomType.Setter
         public Builder versionTargets(@Nullable List<RegionInstanceGroupManagerStatusVersionTarget> versionTargets) {
+
             this.versionTargets = versionTargets;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -241,8 +242,12 @@ public final class InstanceGroupNamedPortArgs extends com.pulumi.resources.Resou
         }
 
         public InstanceGroupNamedPortArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("InstanceGroupNamedPortArgs", "group");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("InstanceGroupNamedPortArgs", "port");
+            }
             return $;
         }
     }

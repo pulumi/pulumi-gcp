@@ -60,11 +60,13 @@ public final class JobQueryUserDefinedFunctionResource {
 
         @CustomType.Setter
         public Builder inlineCode(@Nullable String inlineCode) {
+
             this.inlineCode = inlineCode;
             return this;
         }
         @CustomType.Setter
         public Builder resourceUri(@Nullable String resourceUri) {
+
             this.resourceUri = resourceUri;
             return this;
         }

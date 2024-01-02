@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -307,7 +308,9 @@ public final class FlexibleAppVersionLivenessCheckArgs extends com.pulumi.resour
         }
 
         public FlexibleAppVersionLivenessCheckArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("FlexibleAppVersionLivenessCheckArgs", "path");
+            }
             return $;
         }
     }

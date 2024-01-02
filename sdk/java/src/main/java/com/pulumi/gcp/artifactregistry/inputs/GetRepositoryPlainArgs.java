@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -128,8 +129,12 @@ public final class GetRepositoryPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetRepositoryPlainArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.repositoryId = Objects.requireNonNull($.repositoryId, "expected parameter 'repositoryId' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("GetRepositoryPlainArgs", "location");
+            }
+            if ($.repositoryId == null) {
+                throw new MissingRequiredPropertyException("GetRepositoryPlainArgs", "repositoryId");
+            }
             return $;
         }
     }

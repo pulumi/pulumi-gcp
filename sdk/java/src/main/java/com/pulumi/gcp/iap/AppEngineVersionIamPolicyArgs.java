@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -280,10 +281,18 @@ public final class AppEngineVersionIamPolicyArgs extends com.pulumi.resources.Re
         }
 
         public AppEngineVersionIamPolicyArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
-            $.versionId = Objects.requireNonNull($.versionId, "expected parameter 'versionId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("AppEngineVersionIamPolicyArgs", "appId");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("AppEngineVersionIamPolicyArgs", "policyData");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("AppEngineVersionIamPolicyArgs", "service");
+            }
+            if ($.versionId == null) {
+                throw new MissingRequiredPropertyException("AppEngineVersionIamPolicyArgs", "versionId");
+            }
             return $;
         }
     }

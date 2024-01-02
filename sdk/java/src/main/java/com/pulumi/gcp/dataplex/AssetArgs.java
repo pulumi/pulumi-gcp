@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.AssetDiscoverySpecArgs;
 import com.pulumi.gcp.dataplex.inputs.AssetResourceSpecArgs;
 import java.lang.String;
@@ -424,11 +425,21 @@ public final class AssetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AssetArgs build() {
-            $.dataplexZone = Objects.requireNonNull($.dataplexZone, "expected parameter 'dataplexZone' to be non-null");
-            $.discoverySpec = Objects.requireNonNull($.discoverySpec, "expected parameter 'discoverySpec' to be non-null");
-            $.lake = Objects.requireNonNull($.lake, "expected parameter 'lake' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.resourceSpec = Objects.requireNonNull($.resourceSpec, "expected parameter 'resourceSpec' to be non-null");
+            if ($.dataplexZone == null) {
+                throw new MissingRequiredPropertyException("AssetArgs", "dataplexZone");
+            }
+            if ($.discoverySpec == null) {
+                throw new MissingRequiredPropertyException("AssetArgs", "discoverySpec");
+            }
+            if ($.lake == null) {
+                throw new MissingRequiredPropertyException("AssetArgs", "lake");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("AssetArgs", "location");
+            }
+            if ($.resourceSpec == null) {
+                throw new MissingRequiredPropertyException("AssetArgs", "resourceSpec");
+            }
             return $;
         }
     }

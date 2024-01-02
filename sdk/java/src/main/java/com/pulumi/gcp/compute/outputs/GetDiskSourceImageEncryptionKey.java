@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetDiskSourceImageEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
-            this.kmsKeySelfLink = Objects.requireNonNull(kmsKeySelfLink);
+            if (kmsKeySelfLink == null) {
+              throw new MissingRequiredPropertyException("GetDiskSourceImageEncryptionKey", "kmsKeySelfLink");
+            }
+            this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyServiceAccount(String kmsKeyServiceAccount) {
-            this.kmsKeyServiceAccount = Objects.requireNonNull(kmsKeyServiceAccount);
+            if (kmsKeyServiceAccount == null) {
+              throw new MissingRequiredPropertyException("GetDiskSourceImageEncryptionKey", "kmsKeyServiceAccount");
+            }
+            this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder rawKey(String rawKey) {
-            this.rawKey = Objects.requireNonNull(rawKey);
+            if (rawKey == null) {
+              throw new MissingRequiredPropertyException("GetDiskSourceImageEncryptionKey", "rawKey");
+            }
+            this.rawKey = rawKey;
             return this;
         }
         @CustomType.Setter
         public Builder sha256(String sha256) {
-            this.sha256 = Objects.requireNonNull(sha256);
+            if (sha256 == null) {
+              throw new MissingRequiredPropertyException("GetDiskSourceImageEncryptionKey", "sha256");
+            }
+            this.sha256 = sha256;
             return this;
         }
         public GetDiskSourceImageEncryptionKey build() {

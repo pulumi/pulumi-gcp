@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
         }
 
         public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs build() {
-            $.datasetTemplate = Objects.requireNonNull($.datasetTemplate, "expected parameter 'datasetTemplate' to be non-null");
+            if ($.datasetTemplate == null) {
+                throw new MissingRequiredPropertyException("StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs", "datasetTemplate");
+            }
             return $;
         }
     }

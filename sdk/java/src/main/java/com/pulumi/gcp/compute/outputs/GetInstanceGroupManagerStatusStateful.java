@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatusStatefulPerInstanceConfig;
 import java.lang.Boolean;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class GetInstanceGroupManagerStatusStateful {
 
         @CustomType.Setter
         public Builder hasStatefulConfig(Boolean hasStatefulConfig) {
-            this.hasStatefulConfig = Objects.requireNonNull(hasStatefulConfig);
+            if (hasStatefulConfig == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatusStateful", "hasStatefulConfig");
+            }
+            this.hasStatefulConfig = hasStatefulConfig;
             return this;
         }
         @CustomType.Setter
         public Builder perInstanceConfigs(List<GetInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs) {
-            this.perInstanceConfigs = Objects.requireNonNull(perInstanceConfigs);
+            if (perInstanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatusStateful", "perInstanceConfigs");
+            }
+            this.perInstanceConfigs = perInstanceConfigs;
             return this;
         }
         public Builder perInstanceConfigs(GetInstanceGroupManagerStatusStatefulPerInstanceConfig... perInstanceConfigs) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.tags.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,22 +79,34 @@ public final class GetTagKeyIamPolicyResult {
 
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetTagKeyIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTagKeyIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetTagKeyIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         @CustomType.Setter
         public Builder tagKey(String tagKey) {
-            this.tagKey = Objects.requireNonNull(tagKey);
+            if (tagKey == null) {
+              throw new MissingRequiredPropertyException("GetTagKeyIamPolicyResult", "tagKey");
+            }
+            this.tagKey = tagKey;
             return this;
         }
         public GetTagKeyIamPolicyResult build() {

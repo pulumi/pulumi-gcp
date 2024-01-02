@@ -73,16 +73,19 @@ public final class ServiceTemplateSpecContainerPort {
 
         @CustomType.Setter
         public Builder containerPort(@Nullable Integer containerPort) {
+
             this.containerPort = containerPort;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(@Nullable String protocol) {
+
             this.protocol = protocol;
             return this;
         }

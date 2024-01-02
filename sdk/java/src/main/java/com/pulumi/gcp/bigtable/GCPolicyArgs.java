@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigtable.inputs.GCPolicyMaxAgeArgs;
 import com.pulumi.gcp.bigtable.inputs.GCPolicyMaxVersionArgs;
 import java.lang.String;
@@ -405,9 +406,15 @@ public final class GCPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GCPolicyArgs build() {
-            $.columnFamily = Objects.requireNonNull($.columnFamily, "expected parameter 'columnFamily' to be non-null");
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.table = Objects.requireNonNull($.table, "expected parameter 'table' to be non-null");
+            if ($.columnFamily == null) {
+                throw new MissingRequiredPropertyException("GCPolicyArgs", "columnFamily");
+            }
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("GCPolicyArgs", "instanceName");
+            }
+            if ($.table == null) {
+                throw new MissingRequiredPropertyException("GCPolicyArgs", "table");
+            }
             return $;
         }
     }

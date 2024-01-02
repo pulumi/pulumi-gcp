@@ -71,11 +71,13 @@ public final class GCPolicyMaxAge {
 
         @CustomType.Setter
         public Builder days(@Nullable Integer days) {
+
             this.days = days;
             return this;
         }
         @CustomType.Setter
         public Builder duration(@Nullable String duration) {
+
             this.duration = duration;
             return this;
         }

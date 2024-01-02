@@ -67,11 +67,13 @@ public final class HostingCustomDomainCertVerification {
 
         @CustomType.Setter
         public Builder dns(@Nullable HostingCustomDomainCertVerificationDns dns) {
+
             this.dns = dns;
             return this;
         }
         @CustomType.Setter
         public Builder http(@Nullable HostingCustomDomainCertVerificationHttp http) {
+
             this.http = http;
             return this;
         }

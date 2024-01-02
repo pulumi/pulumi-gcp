@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeMonitoringConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -300,7 +301,9 @@ public final class AiFeatureStoreEntityTypeArgs extends com.pulumi.resources.Res
         }
 
         public AiFeatureStoreEntityTypeArgs build() {
-            $.featurestore = Objects.requireNonNull($.featurestore, "expected parameter 'featurestore' to be non-null");
+            if ($.featurestore == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreEntityTypeArgs", "featurestore");
+            }
             return $;
         }
     }

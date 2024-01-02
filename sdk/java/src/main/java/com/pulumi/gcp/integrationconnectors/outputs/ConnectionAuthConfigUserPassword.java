@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionAuthConfigUserPasswordPassword;
 import java.lang.String;
 import java.util.Objects;
@@ -61,12 +62,16 @@ public final class ConnectionAuthConfigUserPassword {
 
         @CustomType.Setter
         public Builder password(@Nullable ConnectionAuthConfigUserPasswordPassword password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("ConnectionAuthConfigUserPassword", "username");
+            }
+            this.username = username;
             return this;
         }
         public ConnectionAuthConfigUserPassword build() {

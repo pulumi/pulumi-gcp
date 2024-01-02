@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -60,12 +61,18 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDay
 
         @CustomType.Setter
         public Builder day(String day) {
-            this.day = Objects.requireNonNull(day);
+            if (day == null) {
+              throw new MissingRequiredPropertyException("ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek", "day");
+            }
+            this.day = day;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeek build() {

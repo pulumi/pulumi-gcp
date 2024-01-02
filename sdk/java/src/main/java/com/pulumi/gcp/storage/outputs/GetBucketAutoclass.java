@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetBucketAutoclass {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetBucketAutoclass", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder terminalStorageClass(String terminalStorageClass) {
-            this.terminalStorageClass = Objects.requireNonNull(terminalStorageClass);
+            if (terminalStorageClass == null) {
+              throw new MissingRequiredPropertyException("GetBucketAutoclass", "terminalStorageClass");
+            }
+            this.terminalStorageClass = terminalStorageClass;
             return this;
         }
         public GetBucketAutoclass build() {

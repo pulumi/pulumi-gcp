@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn;
 import java.lang.String;
 import java.util.List;
@@ -61,6 +62,7 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
 
         @CustomType.Setter
         public Builder postgresqlColumns(@Nullable List<StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumn> postgresqlColumns) {
+
             this.postgresqlColumns = postgresqlColumns;
             return this;
         }
@@ -69,7 +71,10 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
         }
         @CustomType.Setter
         public Builder table(String table) {
-            this.table = Objects.requireNonNull(table);
+            if (table == null) {
+              throw new MissingRequiredPropertyException("StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable", "table");
+            }
+            this.table = table;
             return this;
         }
         public StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgresqlSchemaPostgresqlTable build() {

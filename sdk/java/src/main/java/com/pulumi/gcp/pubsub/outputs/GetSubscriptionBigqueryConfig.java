@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -53,22 +54,34 @@ public final class GetSubscriptionBigqueryConfig {
 
         @CustomType.Setter
         public Builder dropUnknownFields(Boolean dropUnknownFields) {
-            this.dropUnknownFields = Objects.requireNonNull(dropUnknownFields);
+            if (dropUnknownFields == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionBigqueryConfig", "dropUnknownFields");
+            }
+            this.dropUnknownFields = dropUnknownFields;
             return this;
         }
         @CustomType.Setter
         public Builder table(String table) {
-            this.table = Objects.requireNonNull(table);
+            if (table == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionBigqueryConfig", "table");
+            }
+            this.table = table;
             return this;
         }
         @CustomType.Setter
         public Builder useTopicSchema(Boolean useTopicSchema) {
-            this.useTopicSchema = Objects.requireNonNull(useTopicSchema);
+            if (useTopicSchema == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionBigqueryConfig", "useTopicSchema");
+            }
+            this.useTopicSchema = useTopicSchema;
             return this;
         }
         @CustomType.Setter
         public Builder writeMetadata(Boolean writeMetadata) {
-            this.writeMetadata = Objects.requireNonNull(writeMetadata);
+            if (writeMetadata == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionBigqueryConfig", "writeMetadata");
+            }
+            this.writeMetadata = writeMetadata;
             return this;
         }
         public GetSubscriptionBigqueryConfig build() {

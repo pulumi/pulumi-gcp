@@ -58,11 +58,13 @@ public final class TriggerTransportPubsub {
 
         @CustomType.Setter
         public Builder subscription(@Nullable String subscription) {
+
             this.subscription = subscription;
             return this;
         }
         @CustomType.Setter
         public Builder topic(@Nullable String topic) {
+
             this.topic = topic;
             return this;
         }

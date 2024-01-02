@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class BucketObjectRetentionArgs extends com.pulumi.resources.Resour
         }
 
         public BucketObjectRetentionArgs build() {
-            $.mode = Objects.requireNonNull($.mode, "expected parameter 'mode' to be non-null");
-            $.retainUntilTime = Objects.requireNonNull($.retainUntilTime, "expected parameter 'retainUntilTime' to be non-null");
+            if ($.mode == null) {
+                throw new MissingRequiredPropertyException("BucketObjectRetentionArgs", "mode");
+            }
+            if ($.retainUntilTime == null) {
+                throw new MissingRequiredPropertyException("BucketObjectRetentionArgs", "retainUntilTime");
+            }
             return $;
         }
     }

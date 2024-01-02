@@ -44,6 +44,7 @@ public final class LiteTopicReservationConfig {
 
         @CustomType.Setter
         public Builder throughputReservation(@Nullable String throughputReservation) {
+
             this.throughputReservation = throughputReservation;
             return this;
         }

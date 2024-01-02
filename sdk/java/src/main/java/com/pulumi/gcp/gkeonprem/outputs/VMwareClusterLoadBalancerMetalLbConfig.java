@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterLoadBalancerMetalLbConfigAddressPool;
 import java.util.List;
 import java.util.Objects;
@@ -49,7 +50,10 @@ public final class VMwareClusterLoadBalancerMetalLbConfig {
 
         @CustomType.Setter
         public Builder addressPools(List<VMwareClusterLoadBalancerMetalLbConfigAddressPool> addressPools) {
-            this.addressPools = Objects.requireNonNull(addressPools);
+            if (addressPools == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterLoadBalancerMetalLbConfig", "addressPools");
+            }
+            this.addressPools = addressPools;
             return this;
         }
         public Builder addressPools(VMwareClusterLoadBalancerMetalLbConfigAddressPool... addressPools) {

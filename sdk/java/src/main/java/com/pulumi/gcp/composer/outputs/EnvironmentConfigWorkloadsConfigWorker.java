@@ -61,26 +61,31 @@ public final class EnvironmentConfigWorkloadsConfigWorker {
 
         @CustomType.Setter
         public Builder cpu(@Nullable Double cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder maxCount(@Nullable Integer maxCount) {
+
             this.maxCount = maxCount;
             return this;
         }
         @CustomType.Setter
         public Builder memoryGb(@Nullable Double memoryGb) {
+
             this.memoryGb = memoryGb;
             return this;
         }
         @CustomType.Setter
         public Builder minCount(@Nullable Integer minCount) {
+
             this.minCount = minCount;
             return this;
         }
         @CustomType.Setter
         public Builder storageGb(@Nullable Double storageGb) {
+
             this.storageGb = storageGb;
             return this;
         }

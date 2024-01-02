@@ -97,21 +97,25 @@ public final class VMwareClusterLoadBalancer {
 
         @CustomType.Setter
         public Builder f5Config(@Nullable VMwareClusterLoadBalancerF5Config f5Config) {
+
             this.f5Config = f5Config;
             return this;
         }
         @CustomType.Setter
         public Builder manualLbConfig(@Nullable VMwareClusterLoadBalancerManualLbConfig manualLbConfig) {
+
             this.manualLbConfig = manualLbConfig;
             return this;
         }
         @CustomType.Setter
         public Builder metalLbConfig(@Nullable VMwareClusterLoadBalancerMetalLbConfig metalLbConfig) {
+
             this.metalLbConfig = metalLbConfig;
             return this;
         }
         @CustomType.Setter
         public Builder vipConfig(@Nullable VMwareClusterLoadBalancerVipConfig vipConfig) {
+
             this.vipConfig = vipConfig;
             return this;
         }

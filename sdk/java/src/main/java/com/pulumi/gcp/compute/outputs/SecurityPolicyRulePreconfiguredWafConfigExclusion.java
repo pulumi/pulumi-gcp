@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam;
@@ -122,6 +123,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
 
         @CustomType.Setter
         public Builder requestCookies(@Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestCooky> requestCookies) {
+
             this.requestCookies = requestCookies;
             return this;
         }
@@ -130,6 +132,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
         }
         @CustomType.Setter
         public Builder requestHeaders(@Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestHeader> requestHeaders) {
+
             this.requestHeaders = requestHeaders;
             return this;
         }
@@ -138,6 +141,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
         }
         @CustomType.Setter
         public Builder requestQueryParams(@Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestQueryParam> requestQueryParams) {
+
             this.requestQueryParams = requestQueryParams;
             return this;
         }
@@ -146,6 +150,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
         }
         @CustomType.Setter
         public Builder requestUris(@Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusionRequestUri> requestUris) {
+
             this.requestUris = requestUris;
             return this;
         }
@@ -154,6 +159,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
         }
         @CustomType.Setter
         public Builder targetRuleIds(@Nullable List<String> targetRuleIds) {
+
             this.targetRuleIds = targetRuleIds;
             return this;
         }
@@ -162,7 +168,10 @@ public final class SecurityPolicyRulePreconfiguredWafConfigExclusion {
         }
         @CustomType.Setter
         public Builder targetRuleSet(String targetRuleSet) {
-            this.targetRuleSet = Objects.requireNonNull(targetRuleSet);
+            if (targetRuleSet == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRulePreconfiguredWafConfigExclusion", "targetRuleSet");
+            }
+            this.targetRuleSet = targetRuleSet;
             return this;
         }
         public SecurityPolicyRulePreconfiguredWafConfigExclusion build() {

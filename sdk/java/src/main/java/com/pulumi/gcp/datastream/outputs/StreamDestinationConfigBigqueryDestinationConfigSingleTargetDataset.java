@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSingleTargetD
 
         @CustomType.Setter
         public Builder datasetId(String datasetId) {
-            this.datasetId = Objects.requireNonNull(datasetId);
+            if (datasetId == null) {
+              throw new MissingRequiredPropertyException("StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset", "datasetId");
+            }
+            this.datasetId = datasetId;
             return this;
         }
         public StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset build() {

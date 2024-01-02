@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.NodeGroupAutoscalingPolicyArgs;
 import com.pulumi.gcp.compute.inputs.NodeGroupMaintenanceWindowArgs;
 import com.pulumi.gcp.compute.inputs.NodeGroupShareSettingsArgs;
@@ -498,7 +499,9 @@ public final class NodeGroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NodeGroupArgs build() {
-            $.nodeTemplate = Objects.requireNonNull($.nodeTemplate, "expected parameter 'nodeTemplate' to be non-null");
+            if ($.nodeTemplate == null) {
+                throw new MissingRequiredPropertyException("NodeGroupArgs", "nodeTemplate");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class ApiKeyRestrictionsServerKeyRestrictions {
 
         @CustomType.Setter
         public Builder allowedIps(List<String> allowedIps) {
-            this.allowedIps = Objects.requireNonNull(allowedIps);
+            if (allowedIps == null) {
+              throw new MissingRequiredPropertyException("ApiKeyRestrictionsServerKeyRestrictions", "allowedIps");
+            }
+            this.allowedIps = allowedIps;
             return this;
         }
         public Builder allowedIps(String... allowedIps) {

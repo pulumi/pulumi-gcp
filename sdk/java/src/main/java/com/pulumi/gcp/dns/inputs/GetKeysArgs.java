@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class GetKeysArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetKeysArgs build() {
-            $.managedZone = Objects.requireNonNull($.managedZone, "expected parameter 'managedZone' to be non-null");
+            if ($.managedZone == null) {
+                throw new MissingRequiredPropertyException("GetKeysArgs", "managedZone");
+            }
             return $;
         }
     }

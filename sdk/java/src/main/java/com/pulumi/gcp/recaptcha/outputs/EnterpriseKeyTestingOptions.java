@@ -59,11 +59,13 @@ public final class EnterpriseKeyTestingOptions {
 
         @CustomType.Setter
         public Builder testingChallenge(@Nullable String testingChallenge) {
+
             this.testingChallenge = testingChallenge;
             return this;
         }
         @CustomType.Setter
         public Builder testingScore(@Nullable Double testingScore) {
+
             this.testingScore = testingScore;
             return this;
         }

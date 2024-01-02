@@ -70,11 +70,13 @@ public final class ServiceTemplateSpecContainerResources {
 
         @CustomType.Setter
         public Builder limits(@Nullable Map<String,String> limits) {
+
             this.limits = limits;
             return this;
         }
         @CustomType.Setter
         public Builder requests(@Nullable Map<String,String> requests) {
+
             this.requests = requests;
             return this;
         }

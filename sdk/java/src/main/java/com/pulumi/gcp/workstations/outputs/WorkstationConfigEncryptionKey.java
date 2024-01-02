@@ -4,6 +4,7 @@
 package com.pulumi.gcp.workstations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class WorkstationConfigEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKey(String kmsKey) {
-            this.kmsKey = Objects.requireNonNull(kmsKey);
+            if (kmsKey == null) {
+              throw new MissingRequiredPropertyException("WorkstationConfigEncryptionKey", "kmsKey");
+            }
+            this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyServiceAccount(String kmsKeyServiceAccount) {
-            this.kmsKeyServiceAccount = Objects.requireNonNull(kmsKeyServiceAccount);
+            if (kmsKeyServiceAccount == null) {
+              throw new MissingRequiredPropertyException("WorkstationConfigEncryptionKey", "kmsKeyServiceAccount");
+            }
+            this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
         public WorkstationConfigEncryptionKey build() {

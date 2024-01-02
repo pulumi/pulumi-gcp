@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterStorageLvpNodeMountsConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterStorageLvpShareConfigArgs;
 import java.util.Objects;
@@ -136,8 +137,12 @@ public final class BareMetalAdminClusterStorageArgs extends com.pulumi.resources
         }
 
         public BareMetalAdminClusterStorageArgs build() {
-            $.lvpNodeMountsConfig = Objects.requireNonNull($.lvpNodeMountsConfig, "expected parameter 'lvpNodeMountsConfig' to be non-null");
-            $.lvpShareConfig = Objects.requireNonNull($.lvpShareConfig, "expected parameter 'lvpShareConfig' to be non-null");
+            if ($.lvpNodeMountsConfig == null) {
+                throw new MissingRequiredPropertyException("BareMetalAdminClusterStorageArgs", "lvpNodeMountsConfig");
+            }
+            if ($.lvpShareConfig == null) {
+                throw new MissingRequiredPropertyException("BareMetalAdminClusterStorageArgs", "lvpShareConfig");
+            }
             return $;
         }
     }

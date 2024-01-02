@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicy;
 import com.pulumi.gcp.compute.outputs.ResourcePolicySnapshotSchedulePolicySchedule;
 import com.pulumi.gcp.compute.outputs.ResourcePolicySnapshotSchedulePolicySnapshotProperties;
@@ -80,16 +81,21 @@ public final class ResourcePolicySnapshotSchedulePolicy {
 
         @CustomType.Setter
         public Builder retentionPolicy(@Nullable ResourcePolicySnapshotSchedulePolicyRetentionPolicy retentionPolicy) {
+
             this.retentionPolicy = retentionPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(ResourcePolicySnapshotSchedulePolicySchedule schedule) {
-            this.schedule = Objects.requireNonNull(schedule);
+            if (schedule == null) {
+              throw new MissingRequiredPropertyException("ResourcePolicySnapshotSchedulePolicy", "schedule");
+            }
+            this.schedule = schedule;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotProperties(@Nullable ResourcePolicySnapshotSchedulePolicySnapshotProperties snapshotProperties) {
+
             this.snapshotProperties = snapshotProperties;
             return this;
         }

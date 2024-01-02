@@ -5,6 +5,7 @@ package com.pulumi.gcp.filestore.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.filestore.inputs.InstanceFileSharesNfsExportOptionArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -221,8 +222,12 @@ public final class InstanceFileSharesArgs extends com.pulumi.resources.ResourceA
         }
 
         public InstanceFileSharesArgs build() {
-            $.capacityGb = Objects.requireNonNull($.capacityGb, "expected parameter 'capacityGb' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.capacityGb == null) {
+                throw new MissingRequiredPropertyException("InstanceFileSharesArgs", "capacityGb");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("InstanceFileSharesArgs", "name");
+            }
             return $;
         }
     }

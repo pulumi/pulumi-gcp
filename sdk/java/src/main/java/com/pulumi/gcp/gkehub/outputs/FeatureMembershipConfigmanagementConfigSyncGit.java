@@ -142,41 +142,49 @@ public final class FeatureMembershipConfigmanagementConfigSyncGit {
 
         @CustomType.Setter
         public Builder gcpServiceAccountEmail(@Nullable String gcpServiceAccountEmail) {
+
             this.gcpServiceAccountEmail = gcpServiceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder httpsProxy(@Nullable String httpsProxy) {
+
             this.httpsProxy = httpsProxy;
             return this;
         }
         @CustomType.Setter
         public Builder policyDir(@Nullable String policyDir) {
+
             this.policyDir = policyDir;
             return this;
         }
         @CustomType.Setter
         public Builder secretType(@Nullable String secretType) {
+
             this.secretType = secretType;
             return this;
         }
         @CustomType.Setter
         public Builder syncBranch(@Nullable String syncBranch) {
+
             this.syncBranch = syncBranch;
             return this;
         }
         @CustomType.Setter
         public Builder syncRepo(@Nullable String syncRepo) {
+
             this.syncRepo = syncRepo;
             return this;
         }
         @CustomType.Setter
         public Builder syncRev(@Nullable String syncRev) {
+
             this.syncRev = syncRev;
             return this;
         }
         @CustomType.Setter
         public Builder syncWaitSecs(@Nullable String syncWaitSecs) {
+
             this.syncWaitSecs = syncWaitSecs;
             return this;
         }

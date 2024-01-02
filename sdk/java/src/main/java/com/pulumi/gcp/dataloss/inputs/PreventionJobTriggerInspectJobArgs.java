@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigArgs;
@@ -214,7 +215,9 @@ public final class PreventionJobTriggerInspectJobArgs extends com.pulumi.resourc
         }
 
         public PreventionJobTriggerInspectJobArgs build() {
-            $.storageConfig = Objects.requireNonNull($.storageConfig, "expected parameter 'storageConfig' to be non-null");
+            if ($.storageConfig == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobArgs", "storageConfig");
+            }
             return $;
         }
     }

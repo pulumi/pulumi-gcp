@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.inputs.TopicIAMMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -245,9 +246,15 @@ public final class TopicIAMMemberArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public TopicIAMMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.topic = Objects.requireNonNull($.topic, "expected parameter 'topic' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("TopicIAMMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("TopicIAMMemberArgs", "role");
+            }
+            if ($.topic == null) {
+                throw new MissingRequiredPropertyException("TopicIAMMemberArgs", "topic");
+            }
             return $;
         }
     }

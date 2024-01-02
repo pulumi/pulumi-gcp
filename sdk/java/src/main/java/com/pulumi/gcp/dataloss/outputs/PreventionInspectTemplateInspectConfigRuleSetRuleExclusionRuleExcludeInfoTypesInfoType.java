@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore;
 import java.lang.String;
 import java.util.Objects;
@@ -77,16 +78,21 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder sensitivityScore(@Nullable PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoTypeSensitivityScore sensitivityScore) {
+
             this.sensitivityScore = sensitivityScore;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

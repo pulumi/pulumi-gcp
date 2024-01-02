@@ -91,16 +91,19 @@ public final class QueueRateLimits {
 
         @CustomType.Setter
         public Builder maxBurstSize(@Nullable Integer maxBurstSize) {
+
             this.maxBurstSize = maxBurstSize;
             return this;
         }
         @CustomType.Setter
         public Builder maxConcurrentDispatches(@Nullable Integer maxConcurrentDispatches) {
+
             this.maxConcurrentDispatches = maxConcurrentDispatches;
             return this;
         }
         @CustomType.Setter
         public Builder maxDispatchesPerSecond(@Nullable Double maxDispatchesPerSecond) {
+
             this.maxDispatchesPerSecond = maxDispatchesPerSecond;
             return this;
         }

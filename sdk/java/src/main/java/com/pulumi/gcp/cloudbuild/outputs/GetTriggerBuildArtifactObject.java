@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildArtifactObjectTiming;
 import java.lang.String;
 import java.util.List;
@@ -60,12 +61,18 @@ public final class GetTriggerBuildArtifactObject {
 
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifactObject", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder paths(List<String> paths) {
-            this.paths = Objects.requireNonNull(paths);
+            if (paths == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifactObject", "paths");
+            }
+            this.paths = paths;
             return this;
         }
         public Builder paths(String... paths) {
@@ -73,7 +80,10 @@ public final class GetTriggerBuildArtifactObject {
         }
         @CustomType.Setter
         public Builder timings(List<GetTriggerBuildArtifactObjectTiming> timings) {
-            this.timings = Objects.requireNonNull(timings);
+            if (timings == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifactObject", "timings");
+            }
+            this.timings = timings;
             return this;
         }
         public Builder timings(GetTriggerBuildArtifactObjectTiming... timings) {

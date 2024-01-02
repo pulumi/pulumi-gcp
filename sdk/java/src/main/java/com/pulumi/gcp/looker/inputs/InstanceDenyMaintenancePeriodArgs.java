@@ -5,6 +5,7 @@ package com.pulumi.gcp.looker.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodEndDateArgs;
 import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodStartDateArgs;
 import com.pulumi.gcp.looker.inputs.InstanceDenyMaintenancePeriodTimeArgs;
@@ -162,9 +163,15 @@ public final class InstanceDenyMaintenancePeriodArgs extends com.pulumi.resource
         }
 
         public InstanceDenyMaintenancePeriodArgs build() {
-            $.endDate = Objects.requireNonNull($.endDate, "expected parameter 'endDate' to be non-null");
-            $.startDate = Objects.requireNonNull($.startDate, "expected parameter 'startDate' to be non-null");
-            $.time = Objects.requireNonNull($.time, "expected parameter 'time' to be non-null");
+            if ($.endDate == null) {
+                throw new MissingRequiredPropertyException("InstanceDenyMaintenancePeriodArgs", "endDate");
+            }
+            if ($.startDate == null) {
+                throw new MissingRequiredPropertyException("InstanceDenyMaintenancePeriodArgs", "startDate");
+            }
+            if ($.time == null) {
+                throw new MissingRequiredPropertyException("InstanceDenyMaintenancePeriodArgs", "time");
+            }
             return $;
         }
     }

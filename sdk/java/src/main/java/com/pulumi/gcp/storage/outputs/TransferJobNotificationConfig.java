@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -72,6 +73,7 @@ public final class TransferJobNotificationConfig {
 
         @CustomType.Setter
         public Builder eventTypes(@Nullable List<String> eventTypes) {
+
             this.eventTypes = eventTypes;
             return this;
         }
@@ -80,12 +82,18 @@ public final class TransferJobNotificationConfig {
         }
         @CustomType.Setter
         public Builder payloadFormat(String payloadFormat) {
-            this.payloadFormat = Objects.requireNonNull(payloadFormat);
+            if (payloadFormat == null) {
+              throw new MissingRequiredPropertyException("TransferJobNotificationConfig", "payloadFormat");
+            }
+            this.payloadFormat = payloadFormat;
             return this;
         }
         @CustomType.Setter
         public Builder pubsubTopic(String pubsubTopic) {
-            this.pubsubTopic = Objects.requireNonNull(pubsubTopic);
+            if (pubsubTopic == null) {
+              throw new MissingRequiredPropertyException("TransferJobNotificationConfig", "pubsubTopic");
+            }
+            this.pubsubTopic = pubsubTopic;
             return this;
         }
         public TransferJobNotificationConfig build() {

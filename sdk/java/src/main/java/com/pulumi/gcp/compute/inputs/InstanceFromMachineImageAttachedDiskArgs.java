@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -141,7 +142,9 @@ public final class InstanceFromMachineImageAttachedDiskArgs extends com.pulumi.r
         }
 
         public InstanceFromMachineImageAttachedDiskArgs build() {
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("InstanceFromMachineImageAttachedDiskArgs", "source");
+            }
             return $;
         }
     }

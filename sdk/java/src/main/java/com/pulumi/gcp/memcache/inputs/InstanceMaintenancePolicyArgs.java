@@ -5,6 +5,7 @@ package com.pulumi.gcp.memcache.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyWeeklyMaintenanceWindowArgs;
 import java.lang.String;
 import java.util.List;
@@ -246,7 +247,9 @@ public final class InstanceMaintenancePolicyArgs extends com.pulumi.resources.Re
         }
 
         public InstanceMaintenancePolicyArgs build() {
-            $.weeklyMaintenanceWindows = Objects.requireNonNull($.weeklyMaintenanceWindows, "expected parameter 'weeklyMaintenanceWindows' to be non-null");
+            if ($.weeklyMaintenanceWindows == null) {
+                throw new MissingRequiredPropertyException("InstanceMaintenancePolicyArgs", "weeklyMaintenanceWindows");
+            }
             return $;
         }
     }

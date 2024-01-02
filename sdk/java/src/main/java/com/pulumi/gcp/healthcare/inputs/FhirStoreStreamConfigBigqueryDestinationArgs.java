@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -116,8 +117,12 @@ public final class FhirStoreStreamConfigBigqueryDestinationArgs extends com.pulu
         }
 
         public FhirStoreStreamConfigBigqueryDestinationArgs build() {
-            $.datasetUri = Objects.requireNonNull($.datasetUri, "expected parameter 'datasetUri' to be non-null");
-            $.schemaConfig = Objects.requireNonNull($.schemaConfig, "expected parameter 'schemaConfig' to be non-null");
+            if ($.datasetUri == null) {
+                throw new MissingRequiredPropertyException("FhirStoreStreamConfigBigqueryDestinationArgs", "datasetUri");
+            }
+            if ($.schemaConfig == null) {
+                throw new MissingRequiredPropertyException("FhirStoreStreamConfigBigqueryDestinationArgs", "schemaConfig");
+            }
             return $;
         }
     }

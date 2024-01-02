@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs extends com
         }
 
         public RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs build() {
-            $.internalLoadBalancers = Objects.requireNonNull($.internalLoadBalancers, "expected parameter 'internalLoadBalancers' to be non-null");
+            if ($.internalLoadBalancers == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs", "internalLoadBalancers");
+            }
             return $;
         }
     }

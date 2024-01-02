@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sourcerepo.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sourcerepo.outputs.GetRepositoryPubsubConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -77,22 +78,32 @@ public final class GetRepositoryResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pubsubConfigs(List<GetRepositoryPubsubConfig> pubsubConfigs) {
-            this.pubsubConfigs = Objects.requireNonNull(pubsubConfigs);
+            if (pubsubConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "pubsubConfigs");
+            }
+            this.pubsubConfigs = pubsubConfigs;
             return this;
         }
         public Builder pubsubConfigs(GetRepositoryPubsubConfig... pubsubConfigs) {
@@ -100,12 +111,18 @@ public final class GetRepositoryResult {
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetRepositoryResult build() {

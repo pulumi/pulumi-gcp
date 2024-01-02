@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -101,7 +102,9 @@ public final class GetProjectServicePlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetProjectServicePlainArgs build() {
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("GetProjectServicePlainArgs", "service");
+            }
             return $;
         }
     }

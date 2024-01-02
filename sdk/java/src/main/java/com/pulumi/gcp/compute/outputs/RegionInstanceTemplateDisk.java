@@ -374,91 +374,109 @@ public final class RegionInstanceTemplateDisk {
 
         @CustomType.Setter
         public Builder autoDelete(@Nullable Boolean autoDelete) {
+
             this.autoDelete = autoDelete;
             return this;
         }
         @CustomType.Setter
         public Builder boot(@Nullable Boolean boot) {
+
             this.boot = boot;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
+
             this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKey(@Nullable RegionInstanceTemplateDiskDiskEncryptionKey diskEncryptionKey) {
+
             this.diskEncryptionKey = diskEncryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder diskName(@Nullable String diskName) {
+
             this.diskName = diskName;
             return this;
         }
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(@Nullable String interface_) {
+
             this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedIops(@Nullable Integer provisionedIops) {
+
             this.provisionedIops = provisionedIops;
             return this;
         }
         @CustomType.Setter
         public Builder resourcePolicies(@Nullable String resourcePolicies) {
+
             this.resourcePolicies = resourcePolicies;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder sourceImage(@Nullable String sourceImage) {
+
             this.sourceImage = sourceImage;
             return this;
         }
         @CustomType.Setter
         public Builder sourceImageEncryptionKey(@Nullable RegionInstanceTemplateDiskSourceImageEncryptionKey sourceImageEncryptionKey) {
+
             this.sourceImageEncryptionKey = sourceImageEncryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder sourceSnapshot(@Nullable String sourceSnapshot) {
+
             this.sourceSnapshot = sourceSnapshot;
             return this;
         }
         @CustomType.Setter
         public Builder sourceSnapshotEncryptionKey(@Nullable RegionInstanceTemplateDiskSourceSnapshotEncryptionKey sourceSnapshotEncryptionKey) {
+
             this.sourceSnapshotEncryptionKey = sourceSnapshotEncryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

@@ -124,26 +124,31 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializePa
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskName(@Nullable String diskName) {
+
             this.diskName = diskName;
             return this;
         }
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }

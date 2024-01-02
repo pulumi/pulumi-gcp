@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder wordList(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfigWordList wordList) {
-            this.wordList = Objects.requireNonNull(wordList);
+            if (wordList == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig", "wordList");
+            }
+            this.wordList = wordList;
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceDictionaryConfig build() {

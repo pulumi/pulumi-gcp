@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.inputs.ClusterNodeTypeConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -188,7 +189,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "parent");
+            }
             return $;
         }
     }

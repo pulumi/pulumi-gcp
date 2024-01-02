@@ -89,6 +89,7 @@ public final class JobStatus {
 
         @CustomType.Setter
         public Builder errorResults(@Nullable List<JobStatusErrorResult> errorResults) {
+
             this.errorResults = errorResults;
             return this;
         }
@@ -97,6 +98,7 @@ public final class JobStatus {
         }
         @CustomType.Setter
         public Builder errors(@Nullable List<JobStatusError> errors) {
+
             this.errors = errors;
             return this;
         }
@@ -105,6 +107,7 @@ public final class JobStatus {
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

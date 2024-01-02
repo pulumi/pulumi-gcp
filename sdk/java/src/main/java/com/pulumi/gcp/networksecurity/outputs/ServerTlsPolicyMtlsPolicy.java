@@ -86,6 +86,7 @@ public final class ServerTlsPolicyMtlsPolicy {
 
         @CustomType.Setter
         public Builder clientValidationCas(@Nullable List<ServerTlsPolicyMtlsPolicyClientValidationCa> clientValidationCas) {
+
             this.clientValidationCas = clientValidationCas;
             return this;
         }
@@ -94,11 +95,13 @@ public final class ServerTlsPolicyMtlsPolicy {
         }
         @CustomType.Setter
         public Builder clientValidationMode(@Nullable String clientValidationMode) {
+
             this.clientValidationMode = clientValidationMode;
             return this;
         }
         @CustomType.Setter
         public Builder clientValidationTrustConfig(@Nullable String clientValidationTrustConfig) {
+
             this.clientValidationTrustConfig = clientValidationTrustConfig;
             return this;
         }

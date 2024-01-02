@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchemaArgs;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs ex
         }
 
         public StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs build() {
-            $.postgresqlSchemas = Objects.requireNonNull($.postgresqlSchemas, "expected parameter 'postgresqlSchemas' to be non-null");
+            if ($.postgresqlSchemas == null) {
+                throw new MissingRequiredPropertyException("StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs", "postgresqlSchemas");
+            }
             return $;
         }
     }

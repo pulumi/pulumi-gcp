@@ -46,6 +46,7 @@ public final class ClusterStateInfo {
 
         @CustomType.Setter
         public Builder updateInfo(@Nullable ClusterStateInfoUpdateInfo updateInfo) {
+
             this.updateInfo = updateInfo;
             return this;
         }

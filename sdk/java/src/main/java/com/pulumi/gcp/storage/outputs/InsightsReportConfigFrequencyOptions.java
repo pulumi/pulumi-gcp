@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigFrequencyOptionsEndDate;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigFrequencyOptionsStartDate;
 import java.lang.String;
@@ -78,17 +79,26 @@ public final class InsightsReportConfigFrequencyOptions {
 
         @CustomType.Setter
         public Builder endDate(InsightsReportConfigFrequencyOptionsEndDate endDate) {
-            this.endDate = Objects.requireNonNull(endDate);
+            if (endDate == null) {
+              throw new MissingRequiredPropertyException("InsightsReportConfigFrequencyOptions", "endDate");
+            }
+            this.endDate = endDate;
             return this;
         }
         @CustomType.Setter
         public Builder frequency(String frequency) {
-            this.frequency = Objects.requireNonNull(frequency);
+            if (frequency == null) {
+              throw new MissingRequiredPropertyException("InsightsReportConfigFrequencyOptions", "frequency");
+            }
+            this.frequency = frequency;
             return this;
         }
         @CustomType.Setter
         public Builder startDate(InsightsReportConfigFrequencyOptionsStartDate startDate) {
-            this.startDate = Objects.requireNonNull(startDate);
+            if (startDate == null) {
+              throw new MissingRequiredPropertyException("InsightsReportConfigFrequencyOptions", "startDate");
+            }
+            this.startDate = startDate;
             return this;
         }
         public InsightsReportConfigFrequencyOptions build() {

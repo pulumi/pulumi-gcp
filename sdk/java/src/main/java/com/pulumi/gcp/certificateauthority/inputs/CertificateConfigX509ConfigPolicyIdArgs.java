@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class CertificateConfigX509ConfigPolicyIdArgs extends com.pulumi.re
         }
 
         public CertificateConfigX509ConfigPolicyIdArgs build() {
-            $.objectIdPaths = Objects.requireNonNull($.objectIdPaths, "expected parameter 'objectIdPaths' to be non-null");
+            if ($.objectIdPaths == null) {
+                throw new MissingRequiredPropertyException("CertificateConfigX509ConfigPolicyIdArgs", "objectIdPaths");
+            }
             return $;
         }
     }

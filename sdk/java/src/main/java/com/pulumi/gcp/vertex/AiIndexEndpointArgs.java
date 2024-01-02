@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiIndexEndpointPrivateServiceConnectConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -374,7 +375,9 @@ public final class AiIndexEndpointArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AiIndexEndpointArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AiIndexEndpointArgs", "displayName");
+            }
             return $;
         }
     }

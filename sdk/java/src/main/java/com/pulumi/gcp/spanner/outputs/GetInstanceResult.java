@@ -4,6 +4,7 @@
 package com.pulumi.gcp.spanner.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.spanner.outputs.GetInstanceAutoscalingConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -121,7 +122,10 @@ public final class GetInstanceResult {
 
         @CustomType.Setter
         public Builder autoscalingConfigs(List<GetInstanceAutoscalingConfig> autoscalingConfigs) {
-            this.autoscalingConfigs = Objects.requireNonNull(autoscalingConfigs);
+            if (autoscalingConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "autoscalingConfigs");
+            }
+            this.autoscalingConfigs = autoscalingConfigs;
             return this;
         }
         public Builder autoscalingConfigs(GetInstanceAutoscalingConfig... autoscalingConfigs) {
@@ -129,62 +133,92 @@ public final class GetInstanceResult {
         }
         @CustomType.Setter
         public Builder config(@Nullable String config) {
+
             this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder forceDestroy(Boolean forceDestroy) {
-            this.forceDestroy = Objects.requireNonNull(forceDestroy);
+            if (forceDestroy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "forceDestroy");
+            }
+            this.forceDestroy = forceDestroy;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder numNodes(Integer numNodes) {
-            this.numNodes = Objects.requireNonNull(numNodes);
+            if (numNodes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "numNodes");
+            }
+            this.numNodes = numNodes;
             return this;
         }
         @CustomType.Setter
         public Builder processingUnits(Integer processingUnits) {
-            this.processingUnits = Objects.requireNonNull(processingUnits);
+            if (processingUnits == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "processingUnits");
+            }
+            this.processingUnits = processingUnits;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "state");
+            }
+            this.state = state;
             return this;
         }
         public GetInstanceResult build() {

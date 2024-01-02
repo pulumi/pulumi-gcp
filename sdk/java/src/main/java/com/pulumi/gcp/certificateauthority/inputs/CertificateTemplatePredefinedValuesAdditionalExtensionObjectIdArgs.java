@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -95,7 +96,9 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionObjectI
         }
 
         public CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs build() {
-            $.objectIdPaths = Objects.requireNonNull($.objectIdPaths, "expected parameter 'objectIdPaths' to be non-null");
+            if ($.objectIdPaths == null) {
+                throw new MissingRequiredPropertyException("CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs", "objectIdPaths");
+            }
             return $;
         }
     }

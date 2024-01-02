@@ -44,6 +44,7 @@ public final class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputTex
 
         @CustomType.Setter
         public Builder texts(@Nullable List<String> texts) {
+
             this.texts = texts;
             return this;
         }

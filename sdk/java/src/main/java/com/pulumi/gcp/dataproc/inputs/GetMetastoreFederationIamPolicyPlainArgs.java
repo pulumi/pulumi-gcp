@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -111,7 +112,9 @@ public final class GetMetastoreFederationIamPolicyPlainArgs extends com.pulumi.r
         }
 
         public GetMetastoreFederationIamPolicyPlainArgs build() {
-            $.federationId = Objects.requireNonNull($.federationId, "expected parameter 'federationId' to be non-null");
+            if ($.federationId == null) {
+                throw new MissingRequiredPropertyException("GetMetastoreFederationIamPolicyPlainArgs", "federationId");
+            }
             return $;
         }
     }

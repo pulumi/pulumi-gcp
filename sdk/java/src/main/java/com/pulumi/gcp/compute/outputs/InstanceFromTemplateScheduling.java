@@ -96,36 +96,43 @@ public final class InstanceFromTemplateScheduling {
 
         @CustomType.Setter
         public Builder automaticRestart(@Nullable Boolean automaticRestart) {
+
             this.automaticRestart = automaticRestart;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTerminationAction(@Nullable String instanceTerminationAction) {
+
             this.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
         @CustomType.Setter
         public Builder localSsdRecoveryTimeout(@Nullable InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout) {
+
             this.localSsdRecoveryTimeout = localSsdRecoveryTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceInterval(@Nullable String maintenanceInterval) {
+
             this.maintenanceInterval = maintenanceInterval;
             return this;
         }
         @CustomType.Setter
         public Builder maxRunDuration(@Nullable InstanceFromTemplateSchedulingMaxRunDuration maxRunDuration) {
+
             this.maxRunDuration = maxRunDuration;
             return this;
         }
         @CustomType.Setter
         public Builder minNodeCpus(@Nullable Integer minNodeCpus) {
+
             this.minNodeCpus = minNodeCpus;
             return this;
         }
         @CustomType.Setter
         public Builder nodeAffinities(@Nullable List<InstanceFromTemplateSchedulingNodeAffinity> nodeAffinities) {
+
             this.nodeAffinities = nodeAffinities;
             return this;
         }
@@ -134,16 +141,19 @@ public final class InstanceFromTemplateScheduling {
         }
         @CustomType.Setter
         public Builder onHostMaintenance(@Nullable String onHostMaintenance) {
+
             this.onHostMaintenance = onHostMaintenance;
             return this;
         }
         @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
+
             this.preemptible = preemptible;
             return this;
         }
         @CustomType.Setter
         public Builder provisioningModel(@Nullable String provisioningModel) {
+
             this.provisioningModel = provisioningModel;
             return this;
         }

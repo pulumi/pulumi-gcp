@@ -50,6 +50,7 @@ public final class EdgeCacheOriginOriginOverrideActionUrlRewrite {
 
         @CustomType.Setter
         public Builder hostRewrite(@Nullable String hostRewrite) {
+
             this.hostRewrite = hostRewrite;
             return this;
         }

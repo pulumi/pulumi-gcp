@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -77,16 +78,21 @@ public final class TriggerGithubPullRequest {
 
         @CustomType.Setter
         public Builder branch(String branch) {
-            this.branch = Objects.requireNonNull(branch);
+            if (branch == null) {
+              throw new MissingRequiredPropertyException("TriggerGithubPullRequest", "branch");
+            }
+            this.branch = branch;
             return this;
         }
         @CustomType.Setter
         public Builder commentControl(@Nullable String commentControl) {
+
             this.commentControl = commentControl;
             return this;
         }
         @CustomType.Setter
         public Builder invertRegex(@Nullable Boolean invertRegex) {
+
             this.invertRegex = invertRegex;
             return this;
         }

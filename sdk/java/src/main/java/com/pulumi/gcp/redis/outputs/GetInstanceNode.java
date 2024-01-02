@@ -4,6 +4,7 @@
 package com.pulumi.gcp.redis.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetInstanceNode {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNode", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNode", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetInstanceNode build() {

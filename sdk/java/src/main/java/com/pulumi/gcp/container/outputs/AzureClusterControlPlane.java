@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.AzureClusterControlPlaneDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.AzureClusterControlPlaneMainVolume;
 import com.pulumi.gcp.container.outputs.AzureClusterControlPlaneProxyConfig;
@@ -178,21 +179,25 @@ public final class AzureClusterControlPlane {
 
         @CustomType.Setter
         public Builder databaseEncryption(@Nullable AzureClusterControlPlaneDatabaseEncryption databaseEncryption) {
+
             this.databaseEncryption = databaseEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder mainVolume(@Nullable AzureClusterControlPlaneMainVolume mainVolume) {
+
             this.mainVolume = mainVolume;
             return this;
         }
         @CustomType.Setter
         public Builder proxyConfig(@Nullable AzureClusterControlPlaneProxyConfig proxyConfig) {
+
             this.proxyConfig = proxyConfig;
             return this;
         }
         @CustomType.Setter
         public Builder replicaPlacements(@Nullable List<AzureClusterControlPlaneReplicaPlacement> replicaPlacements) {
+
             this.replicaPlacements = replicaPlacements;
             return this;
         }
@@ -201,31 +206,43 @@ public final class AzureClusterControlPlane {
         }
         @CustomType.Setter
         public Builder rootVolume(@Nullable AzureClusterControlPlaneRootVolume rootVolume) {
+
             this.rootVolume = rootVolume;
             return this;
         }
         @CustomType.Setter
         public Builder sshConfig(AzureClusterControlPlaneSshConfig sshConfig) {
-            this.sshConfig = Objects.requireNonNull(sshConfig);
+            if (sshConfig == null) {
+              throw new MissingRequiredPropertyException("AzureClusterControlPlane", "sshConfig");
+            }
+            this.sshConfig = sshConfig;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(String subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("AzureClusterControlPlane", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("AzureClusterControlPlane", "version");
+            }
+            this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder vmSize(@Nullable String vmSize) {
+
             this.vmSize = vmSize;
             return this;
         }

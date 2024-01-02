@@ -46,6 +46,7 @@ public final class AttachedClusterProxyConfig {
 
         @CustomType.Setter
         public Builder kubernetesSecret(@Nullable AttachedClusterProxyConfigKubernetesSecret kubernetesSecret) {
+
             this.kubernetesSecret = kubernetesSecret;
             return this;
         }

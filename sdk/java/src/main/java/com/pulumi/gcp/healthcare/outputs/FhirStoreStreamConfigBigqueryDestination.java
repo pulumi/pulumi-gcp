@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.outputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,18 @@ public final class FhirStoreStreamConfigBigqueryDestination {
 
         @CustomType.Setter
         public Builder datasetUri(String datasetUri) {
-            this.datasetUri = Objects.requireNonNull(datasetUri);
+            if (datasetUri == null) {
+              throw new MissingRequiredPropertyException("FhirStoreStreamConfigBigqueryDestination", "datasetUri");
+            }
+            this.datasetUri = datasetUri;
             return this;
         }
         @CustomType.Setter
         public Builder schemaConfig(FhirStoreStreamConfigBigqueryDestinationSchemaConfig schemaConfig) {
-            this.schemaConfig = Objects.requireNonNull(schemaConfig);
+            if (schemaConfig == null) {
+              throw new MissingRequiredPropertyException("FhirStoreStreamConfigBigqueryDestination", "schemaConfig");
+            }
+            this.schemaConfig = schemaConfig;
             return this;
         }
         public FhirStoreStreamConfigBigqueryDestination build() {

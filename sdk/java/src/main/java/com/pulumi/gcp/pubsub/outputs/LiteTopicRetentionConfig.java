@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -68,11 +69,15 @@ public final class LiteTopicRetentionConfig {
 
         @CustomType.Setter
         public Builder perPartitionBytes(String perPartitionBytes) {
-            this.perPartitionBytes = Objects.requireNonNull(perPartitionBytes);
+            if (perPartitionBytes == null) {
+              throw new MissingRequiredPropertyException("LiteTopicRetentionConfig", "perPartitionBytes");
+            }
+            this.perPartitionBytes = perPartitionBytes;
             return this;
         }
         @CustomType.Setter
         public Builder period(@Nullable String period) {
+
             this.period = period;
             return this;
         }

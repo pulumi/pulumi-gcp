@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateAdvancedMachineFeature;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateConfidentialInstanceConfig;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateDisk;
@@ -478,7 +479,10 @@ public final class GetRegionInstanceTemplateResult {
 
         @CustomType.Setter
         public Builder advancedMachineFeatures(List<GetRegionInstanceTemplateAdvancedMachineFeature> advancedMachineFeatures) {
-            this.advancedMachineFeatures = Objects.requireNonNull(advancedMachineFeatures);
+            if (advancedMachineFeatures == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "advancedMachineFeatures");
+            }
+            this.advancedMachineFeatures = advancedMachineFeatures;
             return this;
         }
         public Builder advancedMachineFeatures(GetRegionInstanceTemplateAdvancedMachineFeature... advancedMachineFeatures) {
@@ -486,12 +490,18 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder canIpForward(Boolean canIpForward) {
-            this.canIpForward = Objects.requireNonNull(canIpForward);
+            if (canIpForward == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "canIpForward");
+            }
+            this.canIpForward = canIpForward;
             return this;
         }
         @CustomType.Setter
         public Builder confidentialInstanceConfigs(List<GetRegionInstanceTemplateConfidentialInstanceConfig> confidentialInstanceConfigs) {
-            this.confidentialInstanceConfigs = Objects.requireNonNull(confidentialInstanceConfigs);
+            if (confidentialInstanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "confidentialInstanceConfigs");
+            }
+            this.confidentialInstanceConfigs = confidentialInstanceConfigs;
             return this;
         }
         public Builder confidentialInstanceConfigs(GetRegionInstanceTemplateConfidentialInstanceConfig... confidentialInstanceConfigs) {
@@ -499,12 +509,18 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disks(List<GetRegionInstanceTemplateDisk> disks) {
-            this.disks = Objects.requireNonNull(disks);
+            if (disks == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "disks");
+            }
+            this.disks = disks;
             return this;
         }
         public Builder disks(GetRegionInstanceTemplateDisk... disks) {
@@ -512,22 +528,32 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder enableDisplay(Boolean enableDisplay) {
-            this.enableDisplay = Objects.requireNonNull(enableDisplay);
+            if (enableDisplay == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "enableDisplay");
+            }
+            this.enableDisplay = enableDisplay;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable String filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder guestAccelerators(List<GetRegionInstanceTemplateGuestAccelerator> guestAccelerators) {
-            this.guestAccelerators = Objects.requireNonNull(guestAccelerators);
+            if (guestAccelerators == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "guestAccelerators");
+            }
+            this.guestAccelerators = guestAccelerators;
             return this;
         }
         public Builder guestAccelerators(GetRegionInstanceTemplateGuestAccelerator... guestAccelerators) {
@@ -535,62 +561,94 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceDescription(String instanceDescription) {
-            this.instanceDescription = Objects.requireNonNull(instanceDescription);
+            if (instanceDescription == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "instanceDescription");
+            }
+            this.instanceDescription = instanceDescription;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,Object> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder metadataFingerprint(String metadataFingerprint) {
-            this.metadataFingerprint = Objects.requireNonNull(metadataFingerprint);
+            if (metadataFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "metadataFingerprint");
+            }
+            this.metadataFingerprint = metadataFingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder metadataStartupScript(String metadataStartupScript) {
-            this.metadataStartupScript = Objects.requireNonNull(metadataStartupScript);
+            if (metadataStartupScript == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "metadataStartupScript");
+            }
+            this.metadataStartupScript = metadataStartupScript;
             return this;
         }
         @CustomType.Setter
         public Builder minCpuPlatform(String minCpuPlatform) {
-            this.minCpuPlatform = Objects.requireNonNull(minCpuPlatform);
+            if (minCpuPlatform == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "minCpuPlatform");
+            }
+            this.minCpuPlatform = minCpuPlatform;
             return this;
         }
         @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
+
             this.mostRecent = mostRecent;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namePrefix(String namePrefix) {
-            this.namePrefix = Objects.requireNonNull(namePrefix);
+            if (namePrefix == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "namePrefix");
+            }
+            this.namePrefix = namePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaces(List<GetRegionInstanceTemplateNetworkInterface> networkInterfaces) {
-            this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
+            if (networkInterfaces == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "networkInterfaces");
+            }
+            this.networkInterfaces = networkInterfaces;
             return this;
         }
         public Builder networkInterfaces(GetRegionInstanceTemplateNetworkInterface... networkInterfaces) {
@@ -598,7 +656,10 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder networkPerformanceConfigs(List<GetRegionInstanceTemplateNetworkPerformanceConfig> networkPerformanceConfigs) {
-            this.networkPerformanceConfigs = Objects.requireNonNull(networkPerformanceConfigs);
+            if (networkPerformanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "networkPerformanceConfigs");
+            }
+            this.networkPerformanceConfigs = networkPerformanceConfigs;
             return this;
         }
         public Builder networkPerformanceConfigs(GetRegionInstanceTemplateNetworkPerformanceConfig... networkPerformanceConfigs) {
@@ -606,22 +667,30 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder reservationAffinities(List<GetRegionInstanceTemplateReservationAffinity> reservationAffinities) {
-            this.reservationAffinities = Objects.requireNonNull(reservationAffinities);
+            if (reservationAffinities == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "reservationAffinities");
+            }
+            this.reservationAffinities = reservationAffinities;
             return this;
         }
         public Builder reservationAffinities(GetRegionInstanceTemplateReservationAffinity... reservationAffinities) {
@@ -629,7 +698,10 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
-            this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
+            if (resourcePolicies == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "resourcePolicies");
+            }
+            this.resourcePolicies = resourcePolicies;
             return this;
         }
         public Builder resourcePolicies(String... resourcePolicies) {
@@ -637,7 +709,10 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder schedulings(List<GetRegionInstanceTemplateScheduling> schedulings) {
-            this.schedulings = Objects.requireNonNull(schedulings);
+            if (schedulings == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "schedulings");
+            }
+            this.schedulings = schedulings;
             return this;
         }
         public Builder schedulings(GetRegionInstanceTemplateScheduling... schedulings) {
@@ -645,12 +720,18 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccounts(List<GetRegionInstanceTemplateServiceAccount> serviceAccounts) {
-            this.serviceAccounts = Objects.requireNonNull(serviceAccounts);
+            if (serviceAccounts == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "serviceAccounts");
+            }
+            this.serviceAccounts = serviceAccounts;
             return this;
         }
         public Builder serviceAccounts(GetRegionInstanceTemplateServiceAccount... serviceAccounts) {
@@ -658,7 +739,10 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder shieldedInstanceConfigs(List<GetRegionInstanceTemplateShieldedInstanceConfig> shieldedInstanceConfigs) {
-            this.shieldedInstanceConfigs = Objects.requireNonNull(shieldedInstanceConfigs);
+            if (shieldedInstanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "shieldedInstanceConfigs");
+            }
+            this.shieldedInstanceConfigs = shieldedInstanceConfigs;
             return this;
         }
         public Builder shieldedInstanceConfigs(GetRegionInstanceTemplateShieldedInstanceConfig... shieldedInstanceConfigs) {
@@ -666,7 +750,10 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -674,7 +761,10 @@ public final class GetRegionInstanceTemplateResult {
         }
         @CustomType.Setter
         public Builder tagsFingerprint(String tagsFingerprint) {
-            this.tagsFingerprint = Objects.requireNonNull(tagsFingerprint);
+            if (tagsFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "tagsFingerprint");
+            }
+            this.tagsFingerprint = tagsFingerprint;
             return this;
         }
         public GetRegionInstanceTemplateResult build() {

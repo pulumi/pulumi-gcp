@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -327,7 +328,9 @@ public final class TargetHttpProxyArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public TargetHttpProxyArgs build() {
-            $.urlMap = Objects.requireNonNull($.urlMap, "expected parameter 'urlMap' to be non-null");
+            if ($.urlMap == null) {
+                throw new MissingRequiredPropertyException("TargetHttpProxyArgs", "urlMap");
+            }
             return $;
         }
     }

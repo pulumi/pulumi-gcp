@@ -60,11 +60,13 @@ public final class CertificateMapGclbTargetIpConfig {
 
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable List<Integer> ports) {
+
             this.ports = ports;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -107,52 +108,70 @@ public final class GetObjectSignedUrlResult {
 
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("GetObjectSignedUrlResult", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder contentMd5(@Nullable String contentMd5) {
+
             this.contentMd5 = contentMd5;
             return this;
         }
         @CustomType.Setter
         public Builder contentType(@Nullable String contentType) {
+
             this.contentType = contentType;
             return this;
         }
         @CustomType.Setter
         public Builder credentials(@Nullable String credentials) {
+
             this.credentials = credentials;
             return this;
         }
         @CustomType.Setter
         public Builder duration(@Nullable String duration) {
+
             this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder extensionHeaders(@Nullable Map<String,String> extensionHeaders) {
+
             this.extensionHeaders = extensionHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder httpMethod(@Nullable String httpMethod) {
+
             this.httpMethod = httpMethod;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetObjectSignedUrlResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetObjectSignedUrlResult", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder signedUrl(String signedUrl) {
-            this.signedUrl = Objects.requireNonNull(signedUrl);
+            if (signedUrl == null) {
+              throw new MissingRequiredPropertyException("GetObjectSignedUrlResult", "signedUrl");
+            }
+            this.signedUrl = signedUrl;
             return this;
         }
         public GetObjectSignedUrlResult build() {

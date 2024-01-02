@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildArtifact;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildAvailableSecret;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildOption;
@@ -108,7 +109,10 @@ public final class GetTriggerBuild {
 
         @CustomType.Setter
         public Builder artifacts(List<GetTriggerBuildArtifact> artifacts) {
-            this.artifacts = Objects.requireNonNull(artifacts);
+            if (artifacts == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "artifacts");
+            }
+            this.artifacts = artifacts;
             return this;
         }
         public Builder artifacts(GetTriggerBuildArtifact... artifacts) {
@@ -116,7 +120,10 @@ public final class GetTriggerBuild {
         }
         @CustomType.Setter
         public Builder availableSecrets(List<GetTriggerBuildAvailableSecret> availableSecrets) {
-            this.availableSecrets = Objects.requireNonNull(availableSecrets);
+            if (availableSecrets == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "availableSecrets");
+            }
+            this.availableSecrets = availableSecrets;
             return this;
         }
         public Builder availableSecrets(GetTriggerBuildAvailableSecret... availableSecrets) {
@@ -124,7 +131,10 @@ public final class GetTriggerBuild {
         }
         @CustomType.Setter
         public Builder images(List<String> images) {
-            this.images = Objects.requireNonNull(images);
+            if (images == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "images");
+            }
+            this.images = images;
             return this;
         }
         public Builder images(String... images) {
@@ -132,12 +142,18 @@ public final class GetTriggerBuild {
         }
         @CustomType.Setter
         public Builder logsBucket(String logsBucket) {
-            this.logsBucket = Objects.requireNonNull(logsBucket);
+            if (logsBucket == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "logsBucket");
+            }
+            this.logsBucket = logsBucket;
             return this;
         }
         @CustomType.Setter
         public Builder options(List<GetTriggerBuildOption> options) {
-            this.options = Objects.requireNonNull(options);
+            if (options == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "options");
+            }
+            this.options = options;
             return this;
         }
         public Builder options(GetTriggerBuildOption... options) {
@@ -145,12 +161,18 @@ public final class GetTriggerBuild {
         }
         @CustomType.Setter
         public Builder queueTtl(String queueTtl) {
-            this.queueTtl = Objects.requireNonNull(queueTtl);
+            if (queueTtl == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "queueTtl");
+            }
+            this.queueTtl = queueTtl;
             return this;
         }
         @CustomType.Setter
         public Builder secrets(List<GetTriggerBuildSecret> secrets) {
-            this.secrets = Objects.requireNonNull(secrets);
+            if (secrets == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "secrets");
+            }
+            this.secrets = secrets;
             return this;
         }
         public Builder secrets(GetTriggerBuildSecret... secrets) {
@@ -158,7 +180,10 @@ public final class GetTriggerBuild {
         }
         @CustomType.Setter
         public Builder sources(List<GetTriggerBuildSource> sources) {
-            this.sources = Objects.requireNonNull(sources);
+            if (sources == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "sources");
+            }
+            this.sources = sources;
             return this;
         }
         public Builder sources(GetTriggerBuildSource... sources) {
@@ -166,7 +191,10 @@ public final class GetTriggerBuild {
         }
         @CustomType.Setter
         public Builder steps(List<GetTriggerBuildStep> steps) {
-            this.steps = Objects.requireNonNull(steps);
+            if (steps == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "steps");
+            }
+            this.steps = steps;
             return this;
         }
         public Builder steps(GetTriggerBuildStep... steps) {
@@ -174,12 +202,18 @@ public final class GetTriggerBuild {
         }
         @CustomType.Setter
         public Builder substitutions(Map<String,String> substitutions) {
-            this.substitutions = Objects.requireNonNull(substitutions);
+            if (substitutions == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "substitutions");
+            }
+            this.substitutions = substitutions;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -187,7 +221,10 @@ public final class GetTriggerBuild {
         }
         @CustomType.Setter
         public Builder timeout(String timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuild", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         public GetTriggerBuild build() {

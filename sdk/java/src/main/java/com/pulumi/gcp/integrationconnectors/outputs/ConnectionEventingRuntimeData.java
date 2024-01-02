@@ -64,11 +64,13 @@ public final class ConnectionEventingRuntimeData {
 
         @CustomType.Setter
         public Builder eventsListenerEndpoint(@Nullable String eventsListenerEndpoint) {
+
             this.eventsListenerEndpoint = eventsListenerEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder statuses(@Nullable List<ConnectionEventingRuntimeDataStatus> statuses) {
+
             this.statuses = statuses;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetRepositoryRemoteRepositoryConfigAptRepository {
 
         @CustomType.Setter
         public Builder publicRepositories(List<GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository> publicRepositories) {
-            this.publicRepositories = Objects.requireNonNull(publicRepositories);
+            if (publicRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfigAptRepository", "publicRepositories");
+            }
+            this.publicRepositories = publicRepositories;
             return this;
         }
         public Builder publicRepositories(GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository... publicRepositories) {

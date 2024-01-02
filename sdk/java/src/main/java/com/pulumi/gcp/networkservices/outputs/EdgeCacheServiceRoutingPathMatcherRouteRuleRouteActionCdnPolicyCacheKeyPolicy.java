@@ -166,16 +166,19 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
 
         @CustomType.Setter
         public Builder excludeHost(@Nullable Boolean excludeHost) {
+
             this.excludeHost = excludeHost;
             return this;
         }
         @CustomType.Setter
         public Builder excludeQueryString(@Nullable Boolean excludeQueryString) {
+
             this.excludeQueryString = excludeQueryString;
             return this;
         }
         @CustomType.Setter
         public Builder excludedQueryParameters(@Nullable List<String> excludedQueryParameters) {
+
             this.excludedQueryParameters = excludedQueryParameters;
             return this;
         }
@@ -184,11 +187,13 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         }
         @CustomType.Setter
         public Builder includeProtocol(@Nullable Boolean includeProtocol) {
+
             this.includeProtocol = includeProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder includedCookieNames(@Nullable List<String> includedCookieNames) {
+
             this.includedCookieNames = includedCookieNames;
             return this;
         }
@@ -197,6 +202,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         }
         @CustomType.Setter
         public Builder includedHeaderNames(@Nullable List<String> includedHeaderNames) {
+
             this.includedHeaderNames = includedHeaderNames;
             return this;
         }
@@ -205,6 +211,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         }
         @CustomType.Setter
         public Builder includedQueryParameters(@Nullable List<String> includedQueryParameters) {
+
             this.includedQueryParameters = includedQueryParameters;
             return this;
         }

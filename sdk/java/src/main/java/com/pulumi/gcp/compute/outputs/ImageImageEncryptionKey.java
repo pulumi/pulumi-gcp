@@ -64,11 +64,13 @@ public final class ImageImageEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
+
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
+
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }

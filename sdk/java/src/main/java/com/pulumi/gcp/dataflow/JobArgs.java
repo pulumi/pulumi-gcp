@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -810,8 +811,12 @@ public final class JobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobArgs build() {
-            $.tempGcsLocation = Objects.requireNonNull($.tempGcsLocation, "expected parameter 'tempGcsLocation' to be non-null");
-            $.templateGcsPath = Objects.requireNonNull($.templateGcsPath, "expected parameter 'templateGcsPath' to be non-null");
+            if ($.tempGcsLocation == null) {
+                throw new MissingRequiredPropertyException("JobArgs", "tempGcsLocation");
+            }
+            if ($.templateGcsPath == null) {
+                throw new MissingRequiredPropertyException("JobArgs", "templateGcsPath");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupAppEngine;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupCloudFunction;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupCloudRun;
@@ -167,7 +168,10 @@ public final class GetRegionNetworkEndpointGroupResult {
 
         @CustomType.Setter
         public Builder appEngines(List<GetRegionNetworkEndpointGroupAppEngine> appEngines) {
-            this.appEngines = Objects.requireNonNull(appEngines);
+            if (appEngines == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "appEngines");
+            }
+            this.appEngines = appEngines;
             return this;
         }
         public Builder appEngines(GetRegionNetworkEndpointGroupAppEngine... appEngines) {
@@ -175,7 +179,10 @@ public final class GetRegionNetworkEndpointGroupResult {
         }
         @CustomType.Setter
         public Builder cloudFunctions(List<GetRegionNetworkEndpointGroupCloudFunction> cloudFunctions) {
-            this.cloudFunctions = Objects.requireNonNull(cloudFunctions);
+            if (cloudFunctions == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "cloudFunctions");
+            }
+            this.cloudFunctions = cloudFunctions;
             return this;
         }
         public Builder cloudFunctions(GetRegionNetworkEndpointGroupCloudFunction... cloudFunctions) {
@@ -183,7 +190,10 @@ public final class GetRegionNetworkEndpointGroupResult {
         }
         @CustomType.Setter
         public Builder cloudRuns(List<GetRegionNetworkEndpointGroupCloudRun> cloudRuns) {
-            this.cloudRuns = Objects.requireNonNull(cloudRuns);
+            if (cloudRuns == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "cloudRuns");
+            }
+            this.cloudRuns = cloudRuns;
             return this;
         }
         public Builder cloudRuns(GetRegionNetworkEndpointGroupCloudRun... cloudRuns) {
@@ -191,52 +201,74 @@ public final class GetRegionNetworkEndpointGroupResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder networkEndpointType(String networkEndpointType) {
-            this.networkEndpointType = Objects.requireNonNull(networkEndpointType);
+            if (networkEndpointType == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "networkEndpointType");
+            }
+            this.networkEndpointType = networkEndpointType;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pscTargetService(String pscTargetService) {
-            this.pscTargetService = Objects.requireNonNull(pscTargetService);
+            if (pscTargetService == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "pscTargetService");
+            }
+            this.pscTargetService = pscTargetService;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(@Nullable String selfLink) {
+
             this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder serverlessDeployments(List<GetRegionNetworkEndpointGroupServerlessDeployment> serverlessDeployments) {
-            this.serverlessDeployments = Objects.requireNonNull(serverlessDeployments);
+            if (serverlessDeployments == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "serverlessDeployments");
+            }
+            this.serverlessDeployments = serverlessDeployments;
             return this;
         }
         public Builder serverlessDeployments(GetRegionNetworkEndpointGroupServerlessDeployment... serverlessDeployments) {
@@ -244,7 +276,10 @@ public final class GetRegionNetworkEndpointGroupResult {
         }
         @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
-            this.subnetwork = Objects.requireNonNull(subnetwork);
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
             return this;
         }
         public GetRegionNetworkEndpointGroupResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -61,11 +62,15 @@ public final class ClusterAddonsConfigCloudrunConfig {
 
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("ClusterAddonsConfigCloudrunConfig", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancerType(@Nullable String loadBalancerType) {
+
             this.loadBalancerType = loadBalancerType;
             return this;
         }

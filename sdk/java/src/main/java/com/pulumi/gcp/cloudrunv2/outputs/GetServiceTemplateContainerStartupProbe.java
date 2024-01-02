@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerStartupProbeGrpc;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerStartupProbeHttpGet;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerStartupProbeTcpSocket;
@@ -74,12 +75,18 @@ public final class GetServiceTemplateContainerStartupProbe {
 
         @CustomType.Setter
         public Builder failureThreshold(Integer failureThreshold) {
-            this.failureThreshold = Objects.requireNonNull(failureThreshold);
+            if (failureThreshold == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerStartupProbe", "failureThreshold");
+            }
+            this.failureThreshold = failureThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder grpcs(List<GetServiceTemplateContainerStartupProbeGrpc> grpcs) {
-            this.grpcs = Objects.requireNonNull(grpcs);
+            if (grpcs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerStartupProbe", "grpcs");
+            }
+            this.grpcs = grpcs;
             return this;
         }
         public Builder grpcs(GetServiceTemplateContainerStartupProbeGrpc... grpcs) {
@@ -87,7 +94,10 @@ public final class GetServiceTemplateContainerStartupProbe {
         }
         @CustomType.Setter
         public Builder httpGets(List<GetServiceTemplateContainerStartupProbeHttpGet> httpGets) {
-            this.httpGets = Objects.requireNonNull(httpGets);
+            if (httpGets == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerStartupProbe", "httpGets");
+            }
+            this.httpGets = httpGets;
             return this;
         }
         public Builder httpGets(GetServiceTemplateContainerStartupProbeHttpGet... httpGets) {
@@ -95,17 +105,26 @@ public final class GetServiceTemplateContainerStartupProbe {
         }
         @CustomType.Setter
         public Builder initialDelaySeconds(Integer initialDelaySeconds) {
-            this.initialDelaySeconds = Objects.requireNonNull(initialDelaySeconds);
+            if (initialDelaySeconds == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerStartupProbe", "initialDelaySeconds");
+            }
+            this.initialDelaySeconds = initialDelaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder periodSeconds(Integer periodSeconds) {
-            this.periodSeconds = Objects.requireNonNull(periodSeconds);
+            if (periodSeconds == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerStartupProbe", "periodSeconds");
+            }
+            this.periodSeconds = periodSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder tcpSockets(List<GetServiceTemplateContainerStartupProbeTcpSocket> tcpSockets) {
-            this.tcpSockets = Objects.requireNonNull(tcpSockets);
+            if (tcpSockets == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerStartupProbe", "tcpSockets");
+            }
+            this.tcpSockets = tcpSockets;
             return this;
         }
         public Builder tcpSockets(GetServiceTemplateContainerStartupProbeTcpSocket... tcpSockets) {
@@ -113,7 +132,10 @@ public final class GetServiceTemplateContainerStartupProbe {
         }
         @CustomType.Setter
         public Builder timeoutSeconds(Integer timeoutSeconds) {
-            this.timeoutSeconds = Objects.requireNonNull(timeoutSeconds);
+            if (timeoutSeconds == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerStartupProbe", "timeoutSeconds");
+            }
+            this.timeoutSeconds = timeoutSeconds;
             return this;
         }
         public GetServiceTemplateContainerStartupProbe build() {

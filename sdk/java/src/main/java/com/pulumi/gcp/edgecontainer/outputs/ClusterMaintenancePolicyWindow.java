@@ -4,6 +4,7 @@
 package com.pulumi.gcp.edgecontainer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.edgecontainer.outputs.ClusterMaintenancePolicyWindowRecurringWindow;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ClusterMaintenancePolicyWindow {
 
         @CustomType.Setter
         public Builder recurringWindow(ClusterMaintenancePolicyWindowRecurringWindow recurringWindow) {
-            this.recurringWindow = Objects.requireNonNull(recurringWindow);
+            if (recurringWindow == null) {
+              throw new MissingRequiredPropertyException("ClusterMaintenancePolicyWindow", "recurringWindow");
+            }
+            this.recurringWindow = recurringWindow;
             return this;
         }
         public ClusterMaintenancePolicyWindow build() {

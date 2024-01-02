@@ -46,6 +46,7 @@ public final class VMwareClusterNetworkConfigControlPlaneV2Config {
 
         @CustomType.Setter
         public Builder controlPlaneIpBlock(@Nullable VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpBlock controlPlaneIpBlock) {
+
             this.controlPlaneIpBlock = controlPlaneIpBlock;
             return this;
         }

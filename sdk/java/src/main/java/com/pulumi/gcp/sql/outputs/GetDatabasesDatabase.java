@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,37 +91,58 @@ public final class GetDatabasesDatabase {
 
         @CustomType.Setter
         public Builder charset(String charset) {
-            this.charset = Objects.requireNonNull(charset);
+            if (charset == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "charset");
+            }
+            this.charset = charset;
             return this;
         }
         @CustomType.Setter
         public Builder collation(String collation) {
-            this.collation = Objects.requireNonNull(collation);
+            if (collation == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "collation");
+            }
+            this.collation = collation;
             return this;
         }
         @CustomType.Setter
         public Builder deletionPolicy(String deletionPolicy) {
-            this.deletionPolicy = Objects.requireNonNull(deletionPolicy);
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder instance(String instance) {
-            this.instance = Objects.requireNonNull(instance);
+            if (instance == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "instance");
+            }
+            this.instance = instance;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetDatabasesDatabase", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         public GetDatabasesDatabase build() {

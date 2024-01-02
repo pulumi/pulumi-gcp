@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,27 +83,42 @@ public final class GetSubscriptionIamPolicyResult {
 
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionIamPolicyResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder subscription(String subscription) {
-            this.subscription = Objects.requireNonNull(subscription);
+            if (subscription == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionIamPolicyResult", "subscription");
+            }
+            this.subscription = subscription;
             return this;
         }
         public GetSubscriptionIamPolicyResult build() {

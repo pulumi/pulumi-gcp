@@ -46,6 +46,7 @@ public final class AttachedClusterLoggingConfig {
 
         @CustomType.Setter
         public Builder componentConfig(@Nullable AttachedClusterLoggingConfigComponentConfig componentConfig) {
+
             this.componentConfig = componentConfig;
             return this;
         }

@@ -63,11 +63,13 @@ public final class TriggerBuildSource {
 
         @CustomType.Setter
         public Builder repoSource(@Nullable TriggerBuildSourceRepoSource repoSource) {
+
             this.repoSource = repoSource;
             return this;
         }
         @CustomType.Setter
         public Builder storageSource(@Nullable TriggerBuildSourceStorageSource storageSource) {
+
             this.storageSource = storageSource;
             return this;
         }

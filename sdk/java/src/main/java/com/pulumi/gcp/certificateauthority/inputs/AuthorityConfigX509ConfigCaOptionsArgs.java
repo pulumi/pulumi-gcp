@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -208,7 +209,9 @@ public final class AuthorityConfigX509ConfigCaOptionsArgs extends com.pulumi.res
         }
 
         public AuthorityConfigX509ConfigCaOptionsArgs build() {
-            $.isCa = Objects.requireNonNull($.isCa, "expected parameter 'isCa' to be non-null");
+            if ($.isCa == null) {
+                throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigCaOptionsArgs", "isCa");
+            }
             return $;
         }
     }

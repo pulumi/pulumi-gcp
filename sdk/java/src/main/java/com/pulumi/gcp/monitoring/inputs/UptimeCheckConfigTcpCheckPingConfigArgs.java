@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class UptimeCheckConfigTcpCheckPingConfigArgs extends com.pulumi.re
         }
 
         public UptimeCheckConfigTcpCheckPingConfigArgs build() {
-            $.pingsCount = Objects.requireNonNull($.pingsCount, "expected parameter 'pingsCount' to be non-null");
+            if ($.pingsCount == null) {
+                throw new MissingRequiredPropertyException("UptimeCheckConfigTcpCheckPingConfigArgs", "pingsCount");
+            }
             return $;
         }
     }

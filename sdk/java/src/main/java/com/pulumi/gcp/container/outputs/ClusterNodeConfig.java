@@ -911,31 +911,37 @@ public final class ClusterNodeConfig {
 
         @CustomType.Setter
         public Builder advancedMachineFeatures(@Nullable ClusterNodeConfigAdvancedMachineFeatures advancedMachineFeatures) {
+
             this.advancedMachineFeatures = advancedMachineFeatures;
             return this;
         }
         @CustomType.Setter
         public Builder bootDiskKmsKey(@Nullable String bootDiskKmsKey) {
+
             this.bootDiskKmsKey = bootDiskKmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder confidentialNodes(@Nullable ClusterNodeConfigConfidentialNodes confidentialNodes) {
+
             this.confidentialNodes = confidentialNodes;
             return this;
         }
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveTaints(@Nullable List<ClusterNodeConfigEffectiveTaint> effectiveTaints) {
+
             this.effectiveTaints = effectiveTaints;
             return this;
         }
@@ -944,31 +950,37 @@ public final class ClusterNodeConfig {
         }
         @CustomType.Setter
         public Builder enableConfidentialStorage(@Nullable Boolean enableConfidentialStorage) {
+
             this.enableConfidentialStorage = enableConfidentialStorage;
             return this;
         }
         @CustomType.Setter
         public Builder ephemeralStorageConfig(@Nullable ClusterNodeConfigEphemeralStorageConfig ephemeralStorageConfig) {
+
             this.ephemeralStorageConfig = ephemeralStorageConfig;
             return this;
         }
         @CustomType.Setter
         public Builder ephemeralStorageLocalSsdConfig(@Nullable ClusterNodeConfigEphemeralStorageLocalSsdConfig ephemeralStorageLocalSsdConfig) {
+
             this.ephemeralStorageLocalSsdConfig = ephemeralStorageLocalSsdConfig;
             return this;
         }
         @CustomType.Setter
         public Builder fastSocket(@Nullable ClusterNodeConfigFastSocket fastSocket) {
+
             this.fastSocket = fastSocket;
             return this;
         }
         @CustomType.Setter
         public Builder gcfsConfig(@Nullable ClusterNodeConfigGcfsConfig gcfsConfig) {
+
             this.gcfsConfig = gcfsConfig;
             return this;
         }
         @CustomType.Setter
         public Builder guestAccelerators(@Nullable List<ClusterNodeConfigGuestAccelerator> guestAccelerators) {
+
             this.guestAccelerators = guestAccelerators;
             return this;
         }
@@ -977,71 +989,85 @@ public final class ClusterNodeConfig {
         }
         @CustomType.Setter
         public Builder gvnic(@Nullable ClusterNodeConfigGvnic gvnic) {
+
             this.gvnic = gvnic;
             return this;
         }
         @CustomType.Setter
         public Builder hostMaintenancePolicy(@Nullable ClusterNodeConfigHostMaintenancePolicy hostMaintenancePolicy) {
+
             this.hostMaintenancePolicy = hostMaintenancePolicy;
             return this;
         }
         @CustomType.Setter
         public Builder imageType(@Nullable String imageType) {
+
             this.imageType = imageType;
             return this;
         }
         @CustomType.Setter
         public Builder kubeletConfig(@Nullable ClusterNodeConfigKubeletConfig kubeletConfig) {
+
             this.kubeletConfig = kubeletConfig;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder linuxNodeConfig(@Nullable ClusterNodeConfigLinuxNodeConfig linuxNodeConfig) {
+
             this.linuxNodeConfig = linuxNodeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder localNvmeSsdBlockConfig(@Nullable ClusterNodeConfigLocalNvmeSsdBlockConfig localNvmeSsdBlockConfig) {
+
             this.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             return this;
         }
         @CustomType.Setter
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
+
             this.localSsdCount = localSsdCount;
             return this;
         }
         @CustomType.Setter
         public Builder loggingVariant(@Nullable String loggingVariant) {
+
             this.loggingVariant = loggingVariant;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
+
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroup(@Nullable String nodeGroup) {
+
             this.nodeGroup = nodeGroup;
             return this;
         }
         @CustomType.Setter
         public Builder oauthScopes(@Nullable List<String> oauthScopes) {
+
             this.oauthScopes = oauthScopes;
             return this;
         }
@@ -1050,46 +1076,55 @@ public final class ClusterNodeConfig {
         }
         @CustomType.Setter
         public Builder preemptible(@Nullable Boolean preemptible) {
+
             this.preemptible = preemptible;
             return this;
         }
         @CustomType.Setter
         public Builder reservationAffinity(@Nullable ClusterNodeConfigReservationAffinity reservationAffinity) {
+
             this.reservationAffinity = reservationAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder resourceLabels(@Nullable Map<String,String> resourceLabels) {
+
             this.resourceLabels = resourceLabels;
             return this;
         }
         @CustomType.Setter
         public Builder sandboxConfig(@Nullable ClusterNodeConfigSandboxConfig sandboxConfig) {
+
             this.sandboxConfig = sandboxConfig;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable ClusterNodeConfigShieldedInstanceConfig shieldedInstanceConfig) {
+
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder soleTenantConfig(@Nullable ClusterNodeConfigSoleTenantConfig soleTenantConfig) {
+
             this.soleTenantConfig = soleTenantConfig;
             return this;
         }
         @CustomType.Setter
         public Builder spot(@Nullable Boolean spot) {
+
             this.spot = spot;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -1098,6 +1133,7 @@ public final class ClusterNodeConfig {
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<ClusterNodeConfigTaint> taints) {
+
             this.taints = taints;
             return this;
         }
@@ -1106,6 +1142,7 @@ public final class ClusterNodeConfig {
         }
         @CustomType.Setter
         public Builder workloadMetadataConfig(@Nullable ClusterNodeConfigWorkloadMetadataConfig workloadMetadataConfig) {
+
             this.workloadMetadataConfig = workloadMetadataConfig;
             return this;
         }

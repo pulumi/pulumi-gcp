@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.InstanceAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.compute.inputs.InstanceAttachedDiskArgs;
 import com.pulumi.gcp.compute.inputs.InstanceBootDiskArgs;
@@ -1452,9 +1453,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.bootDisk = Objects.requireNonNull($.bootDisk, "expected parameter 'bootDisk' to be non-null");
-            $.machineType = Objects.requireNonNull($.machineType, "expected parameter 'machineType' to be non-null");
-            $.networkInterfaces = Objects.requireNonNull($.networkInterfaces, "expected parameter 'networkInterfaces' to be non-null");
+            if ($.bootDisk == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "bootDisk");
+            }
+            if ($.machineType == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "machineType");
+            }
+            if ($.networkInterfaces == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "networkInterfaces");
+            }
             return $;
         }
     }

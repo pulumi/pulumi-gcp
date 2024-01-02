@@ -65,11 +65,13 @@ public final class ClusterMaintenancePolicyWindowRecurringWindow {
 
         @CustomType.Setter
         public Builder recurrence(@Nullable String recurrence) {
+
             this.recurrence = recurrence;
             return this;
         }
         @CustomType.Setter
         public Builder window(@Nullable ClusterMaintenancePolicyWindowRecurringWindowWindow window) {
+
             this.window = window;
             return this;
         }

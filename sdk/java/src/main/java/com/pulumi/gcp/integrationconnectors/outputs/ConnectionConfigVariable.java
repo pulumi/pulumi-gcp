@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionConfigVariableEncryptionKeyValue;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionConfigVariableSecretValue;
 import java.lang.Boolean;
@@ -122,31 +123,39 @@ public final class ConnectionConfigVariable {
 
         @CustomType.Setter
         public Builder booleanValue(@Nullable Boolean booleanValue) {
+
             this.booleanValue = booleanValue;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionKeyValue(@Nullable ConnectionConfigVariableEncryptionKeyValue encryptionKeyValue) {
+
             this.encryptionKeyValue = encryptionKeyValue;
             return this;
         }
         @CustomType.Setter
         public Builder integerValue(@Nullable Integer integerValue) {
+
             this.integerValue = integerValue;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("ConnectionConfigVariable", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder secretValue(@Nullable ConnectionConfigVariableSecretValue secretValue) {
+
             this.secretValue = secretValue;
             return this;
         }
         @CustomType.Setter
         public Builder stringValue(@Nullable String stringValue) {
+
             this.stringValue = stringValue;
             return this;
         }

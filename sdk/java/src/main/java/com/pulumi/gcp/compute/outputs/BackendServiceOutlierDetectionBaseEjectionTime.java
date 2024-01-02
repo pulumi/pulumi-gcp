@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,12 +65,16 @@ public final class BackendServiceOutlierDetectionBaseEjectionTime {
 
         @CustomType.Setter
         public Builder nanos(@Nullable Integer nanos) {
+
             this.nanos = nanos;
             return this;
         }
         @CustomType.Setter
         public Builder seconds(Integer seconds) {
-            this.seconds = Objects.requireNonNull(seconds);
+            if (seconds == null) {
+              throw new MissingRequiredPropertyException("BackendServiceOutlierDetectionBaseEjectionTime", "seconds");
+            }
+            this.seconds = seconds;
             return this;
         }
         public BackendServiceOutlierDetectionBaseEjectionTime build() {

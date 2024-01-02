@@ -76,16 +76,19 @@ public final class InstanceGceSetupNetworkInterface {
 
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder nicType(@Nullable String nicType) {
+
             this.nicType = nicType;
             return this;
         }
         @CustomType.Setter
         public Builder subnet(@Nullable String subnet) {
+
             this.subnet = subnet;
             return this;
         }

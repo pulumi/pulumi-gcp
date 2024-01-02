@@ -66,11 +66,13 @@ public final class CertificateManagedProvisioningIssue {
 
         @CustomType.Setter
         public Builder details(@Nullable String details) {
+
             this.details = details;
             return this;
         }
         @CustomType.Setter
         public Builder reason(@Nullable String reason) {
+
             this.reason = reason;
             return this;
         }

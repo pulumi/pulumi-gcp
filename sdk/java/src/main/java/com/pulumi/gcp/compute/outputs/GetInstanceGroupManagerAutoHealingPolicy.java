@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetInstanceGroupManagerAutoHealingPolicy {
 
         @CustomType.Setter
         public Builder healthCheck(String healthCheck) {
-            this.healthCheck = Objects.requireNonNull(healthCheck);
+            if (healthCheck == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerAutoHealingPolicy", "healthCheck");
+            }
+            this.healthCheck = healthCheck;
             return this;
         }
         @CustomType.Setter
         public Builder initialDelaySec(Integer initialDelaySec) {
-            this.initialDelaySec = Objects.requireNonNull(initialDelaySec);
+            if (initialDelaySec == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerAutoHealingPolicy", "initialDelaySec");
+            }
+            this.initialDelaySec = initialDelaySec;
             return this;
         }
         public GetInstanceGroupManagerAutoHealingPolicy build() {

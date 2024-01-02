@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetEnvironmentConfigEncryptionConfig {
 
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigEncryptionConfig", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         public GetEnvironmentConfigEncryptionConfig build() {

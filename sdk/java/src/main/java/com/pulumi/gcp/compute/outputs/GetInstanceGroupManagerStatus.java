@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatusAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatusStateful;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerStatusVersionTarget;
@@ -56,7 +57,10 @@ public final class GetInstanceGroupManagerStatus {
 
         @CustomType.Setter
         public Builder allInstancesConfigs(List<GetInstanceGroupManagerStatusAllInstancesConfig> allInstancesConfigs) {
-            this.allInstancesConfigs = Objects.requireNonNull(allInstancesConfigs);
+            if (allInstancesConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatus", "allInstancesConfigs");
+            }
+            this.allInstancesConfigs = allInstancesConfigs;
             return this;
         }
         public Builder allInstancesConfigs(GetInstanceGroupManagerStatusAllInstancesConfig... allInstancesConfigs) {
@@ -64,12 +68,18 @@ public final class GetInstanceGroupManagerStatus {
         }
         @CustomType.Setter
         public Builder isStable(Boolean isStable) {
-            this.isStable = Objects.requireNonNull(isStable);
+            if (isStable == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatus", "isStable");
+            }
+            this.isStable = isStable;
             return this;
         }
         @CustomType.Setter
         public Builder statefuls(List<GetInstanceGroupManagerStatusStateful> statefuls) {
-            this.statefuls = Objects.requireNonNull(statefuls);
+            if (statefuls == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatus", "statefuls");
+            }
+            this.statefuls = statefuls;
             return this;
         }
         public Builder statefuls(GetInstanceGroupManagerStatusStateful... statefuls) {
@@ -77,7 +87,10 @@ public final class GetInstanceGroupManagerStatus {
         }
         @CustomType.Setter
         public Builder versionTargets(List<GetInstanceGroupManagerStatusVersionTarget> versionTargets) {
-            this.versionTargets = Objects.requireNonNull(versionTargets);
+            if (versionTargets == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatus", "versionTargets");
+            }
+            this.versionTargets = versionTargets;
             return this;
         }
         public Builder versionTargets(GetInstanceGroupManagerStatusVersionTarget... versionTargets) {

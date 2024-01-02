@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.GetNotificationChannelSensitiveLabel;
 import java.lang.Boolean;
 import java.lang.String;
@@ -164,47 +165,68 @@ public final class GetNotificationChannelResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder forceDelete(Boolean forceDelete) {
-            this.forceDelete = Objects.requireNonNull(forceDelete);
+            if (forceDelete == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelResult", "forceDelete");
+            }
+            this.forceDelete = forceDelete;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder sensitiveLabels(List<GetNotificationChannelSensitiveLabel> sensitiveLabels) {
-            this.sensitiveLabels = Objects.requireNonNull(sensitiveLabels);
+            if (sensitiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelResult", "sensitiveLabels");
+            }
+            this.sensitiveLabels = sensitiveLabels;
             return this;
         }
         public Builder sensitiveLabels(GetNotificationChannelSensitiveLabel... sensitiveLabels) {
@@ -212,17 +234,22 @@ public final class GetNotificationChannelResult {
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder userLabels(@Nullable Map<String,String> userLabels) {
+
             this.userLabels = userLabels;
             return this;
         }
         @CustomType.Setter
         public Builder verificationStatus(String verificationStatus) {
-            this.verificationStatus = Objects.requireNonNull(verificationStatus);
+            if (verificationStatus == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelResult", "verificationStatus");
+            }
+            this.verificationStatus = verificationStatus;
             return this;
         }
         public GetNotificationChannelResult build() {

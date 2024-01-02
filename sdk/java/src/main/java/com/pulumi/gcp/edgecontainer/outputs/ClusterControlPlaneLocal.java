@@ -97,21 +97,25 @@ public final class ClusterControlPlaneLocal {
 
         @CustomType.Setter
         public Builder machineFilter(@Nullable String machineFilter) {
+
             this.machineFilter = machineFilter;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
+
             this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodeLocation(@Nullable String nodeLocation) {
+
             this.nodeLocation = nodeLocation;
             return this;
         }
         @CustomType.Setter
         public Builder sharedDeploymentPolicy(@Nullable String sharedDeploymentPolicy) {
+
             this.sharedDeploymentPolicy = sharedDeploymentPolicy;
             return this;
         }

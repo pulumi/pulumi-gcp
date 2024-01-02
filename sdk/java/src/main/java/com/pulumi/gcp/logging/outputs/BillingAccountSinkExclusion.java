@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -89,22 +90,30 @@ public final class BillingAccountSinkExclusion {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder filter(String filter) {
-            this.filter = Objects.requireNonNull(filter);
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("BillingAccountSinkExclusion", "filter");
+            }
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("BillingAccountSinkExclusion", "name");
+            }
+            this.name = name;
             return this;
         }
         public BillingAccountSinkExclusion build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.kms.inputs.KeyRingIAMBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -233,9 +234,15 @@ public final class KeyRingIAMBindingArgs extends com.pulumi.resources.ResourceAr
         }
 
         public KeyRingIAMBindingArgs build() {
-            $.keyRingId = Objects.requireNonNull($.keyRingId, "expected parameter 'keyRingId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.keyRingId == null) {
+                throw new MissingRequiredPropertyException("KeyRingIAMBindingArgs", "keyRingId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("KeyRingIAMBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("KeyRingIAMBindingArgs", "role");
+            }
             return $;
         }
     }

@@ -71,11 +71,13 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleL
 
         @CustomType.Setter
         public Builder fixedLikelihood(@Nullable String fixedLikelihood) {
+
             this.fixedLikelihood = fixedLikelihood;
             return this;
         }
         @CustomType.Setter
         public Builder relativeLikelihood(@Nullable Integer relativeLikelihood) {
+
             this.relativeLikelihood = relativeLikelihood;
             return this;
         }

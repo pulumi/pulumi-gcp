@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelCustomExprArgs;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class AccessLevelCustomArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AccessLevelCustomArgs build() {
-            $.expr = Objects.requireNonNull($.expr, "expected parameter 'expr' to be non-null");
+            if ($.expr == null) {
+                throw new MissingRequiredPropertyException("AccessLevelCustomArgs", "expr");
+            }
             return $;
         }
     }

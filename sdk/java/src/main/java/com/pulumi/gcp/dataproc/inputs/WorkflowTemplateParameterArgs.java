@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateParameterValidationArgs;
 import java.lang.String;
 import java.util.List;
@@ -199,8 +200,12 @@ public final class WorkflowTemplateParameterArgs extends com.pulumi.resources.Re
         }
 
         public WorkflowTemplateParameterArgs build() {
-            $.fields = Objects.requireNonNull($.fields, "expected parameter 'fields' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.fields == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplateParameterArgs", "fields");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplateParameterArgs", "name");
+            }
             return $;
         }
     }

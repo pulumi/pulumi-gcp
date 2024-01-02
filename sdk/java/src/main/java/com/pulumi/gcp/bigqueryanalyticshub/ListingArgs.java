@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigqueryanalyticshub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingDataProviderArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingPublisherArgs;
@@ -587,11 +588,21 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ListingArgs build() {
-            $.bigqueryDataset = Objects.requireNonNull($.bigqueryDataset, "expected parameter 'bigqueryDataset' to be non-null");
-            $.dataExchangeId = Objects.requireNonNull($.dataExchangeId, "expected parameter 'dataExchangeId' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.listingId = Objects.requireNonNull($.listingId, "expected parameter 'listingId' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.bigqueryDataset == null) {
+                throw new MissingRequiredPropertyException("ListingArgs", "bigqueryDataset");
+            }
+            if ($.dataExchangeId == null) {
+                throw new MissingRequiredPropertyException("ListingArgs", "dataExchangeId");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ListingArgs", "displayName");
+            }
+            if ($.listingId == null) {
+                throw new MissingRequiredPropertyException("ListingArgs", "listingId");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ListingArgs", "location");
+            }
             return $;
         }
     }

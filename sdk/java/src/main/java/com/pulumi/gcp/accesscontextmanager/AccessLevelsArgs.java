@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelsAccessLevelArgs;
 import java.lang.String;
 import java.util.List;
@@ -142,7 +143,9 @@ public final class AccessLevelsArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccessLevelsArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("AccessLevelsArgs", "parent");
+            }
             return $;
         }
     }

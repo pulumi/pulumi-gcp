@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -169,7 +170,9 @@ public final class AccessApprovalSettingsEnrolledServiceArgs extends com.pulumi.
         }
 
         public AccessApprovalSettingsEnrolledServiceArgs build() {
-            $.cloudProduct = Objects.requireNonNull($.cloudProduct, "expected parameter 'cloudProduct' to be non-null");
+            if ($.cloudProduct == null) {
+                throw new MissingRequiredPropertyException("AccessApprovalSettingsEnrolledServiceArgs", "cloudProduct");
+            }
             return $;
         }
     }

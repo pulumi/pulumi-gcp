@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -53,22 +54,34 @@ public final class GetHealthCheckGrpcHealthCheck {
 
         @CustomType.Setter
         public Builder grpcServiceName(String grpcServiceName) {
-            this.grpcServiceName = Objects.requireNonNull(grpcServiceName);
+            if (grpcServiceName == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckGrpcHealthCheck", "grpcServiceName");
+            }
+            this.grpcServiceName = grpcServiceName;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckGrpcHealthCheck", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder portName(String portName) {
-            this.portName = Objects.requireNonNull(portName);
+            if (portName == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckGrpcHealthCheck", "portName");
+            }
+            this.portName = portName;
             return this;
         }
         @CustomType.Setter
         public Builder portSpecification(String portSpecification) {
-            this.portSpecification = Objects.requireNonNull(portSpecification);
+            if (portSpecification == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckGrpcHealthCheck", "portSpecification");
+            }
+            this.portSpecification = portSpecification;
             return this;
         }
         public GetHealthCheckGrpcHealthCheck build() {

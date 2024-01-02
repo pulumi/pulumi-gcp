@@ -61,11 +61,13 @@ public final class ConnectionEventingConfigAuthConfigUserPassword {
 
         @CustomType.Setter
         public Builder password(@Nullable ConnectionEventingConfigAuthConfigUserPasswordPassword password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

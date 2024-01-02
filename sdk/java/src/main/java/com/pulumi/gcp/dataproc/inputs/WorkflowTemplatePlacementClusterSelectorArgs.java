@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class WorkflowTemplatePlacementClusterSelectorArgs extends com.pulu
         }
 
         public WorkflowTemplatePlacementClusterSelectorArgs build() {
-            $.clusterLabels = Objects.requireNonNull($.clusterLabels, "expected parameter 'clusterLabels' to be non-null");
+            if ($.clusterLabels == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplatePlacementClusterSelectorArgs", "clusterLabels");
+            }
             return $;
         }
     }

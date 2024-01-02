@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class PreventionJobTriggerInspectJobActionDeidentifyTransformationD
 
         @CustomType.Setter
         public Builder table(PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTable table) {
-            this.table = Objects.requireNonNull(table);
+            if (table == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig", "table");
+            }
+            this.table = table;
             return this;
         }
         public PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfig build() {

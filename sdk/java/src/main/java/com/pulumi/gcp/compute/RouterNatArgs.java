@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RouterNatLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.RouterNatRuleArgs;
 import com.pulumi.gcp.compute.inputs.RouterNatSubnetworkArgs;
@@ -1007,8 +1008,12 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouterNatArgs build() {
-            $.router = Objects.requireNonNull($.router, "expected parameter 'router' to be non-null");
-            $.sourceSubnetworkIpRangesToNat = Objects.requireNonNull($.sourceSubnetworkIpRangesToNat, "expected parameter 'sourceSubnetworkIpRangesToNat' to be non-null");
+            if ($.router == null) {
+                throw new MissingRequiredPropertyException("RouterNatArgs", "router");
+            }
+            if ($.sourceSubnetworkIpRangesToNat == null) {
+                throw new MissingRequiredPropertyException("RouterNatArgs", "sourceSubnetworkIpRangesToNat");
+            }
             return $;
         }
     }

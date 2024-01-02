@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class NodeGroupMaintenanceWindow {
 
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("NodeGroupMaintenanceWindow", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         public NodeGroupMaintenanceWindow build() {

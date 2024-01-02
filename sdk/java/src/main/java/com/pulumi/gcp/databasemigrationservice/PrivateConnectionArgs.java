@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.PrivateConnectionVpcPeeringConfigArgs;
 import java.lang.String;
 import java.util.Map;
@@ -283,9 +284,15 @@ public final class PrivateConnectionArgs extends com.pulumi.resources.ResourceAr
         }
 
         public PrivateConnectionArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.privateConnectionId = Objects.requireNonNull($.privateConnectionId, "expected parameter 'privateConnectionId' to be non-null");
-            $.vpcPeeringConfig = Objects.requireNonNull($.vpcPeeringConfig, "expected parameter 'vpcPeeringConfig' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("PrivateConnectionArgs", "location");
+            }
+            if ($.privateConnectionId == null) {
+                throw new MissingRequiredPropertyException("PrivateConnectionArgs", "privateConnectionId");
+            }
+            if ($.vpcPeeringConfig == null) {
+                throw new MissingRequiredPropertyException("PrivateConnectionArgs", "vpcPeeringConfig");
+            }
             return $;
         }
     }

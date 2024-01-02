@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -318,7 +319,9 @@ public final class ConnectionAzureArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ConnectionAzureArgs build() {
-            $.customerTenantId = Objects.requireNonNull($.customerTenantId, "expected parameter 'customerTenantId' to be non-null");
+            if ($.customerTenantId == null) {
+                throw new MissingRequiredPropertyException("ConnectionAzureArgs", "customerTenantId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -58,12 +59,18 @@ public final class TableTableConstraintsForeignKeyColumnReferences {
 
         @CustomType.Setter
         public Builder referencedColumn(String referencedColumn) {
-            this.referencedColumn = Objects.requireNonNull(referencedColumn);
+            if (referencedColumn == null) {
+              throw new MissingRequiredPropertyException("TableTableConstraintsForeignKeyColumnReferences", "referencedColumn");
+            }
+            this.referencedColumn = referencedColumn;
             return this;
         }
         @CustomType.Setter
         public Builder referencingColumn(String referencingColumn) {
-            this.referencingColumn = Objects.requireNonNull(referencingColumn);
+            if (referencingColumn == null) {
+              throw new MissingRequiredPropertyException("TableTableConstraintsForeignKeyColumnReferences", "referencingColumn");
+            }
+            this.referencingColumn = referencingColumn;
             return this;
         }
         public TableTableConstraintsForeignKeyColumnReferences build() {

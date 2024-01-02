@@ -75,16 +75,19 @@ public final class RepositoryVirtualRepositoryConfigUpstreamPolicy {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable Integer priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder repository(@Nullable String repository) {
+
             this.repository = repository;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.tpu.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -58,12 +59,18 @@ public final class V2VmAcceleratorConfig {
 
         @CustomType.Setter
         public Builder topology(String topology) {
-            this.topology = Objects.requireNonNull(topology);
+            if (topology == null) {
+              throw new MissingRequiredPropertyException("V2VmAcceleratorConfig", "topology");
+            }
+            this.topology = topology;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("V2VmAcceleratorConfig", "type");
+            }
+            this.type = type;
             return this;
         }
         public V2VmAcceleratorConfig build() {

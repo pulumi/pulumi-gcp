@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firebase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -164,52 +165,80 @@ public final class GetWebAppConfigResult {
 
         @CustomType.Setter
         public Builder apiKey(String apiKey) {
-            this.apiKey = Objects.requireNonNull(apiKey);
+            if (apiKey == null) {
+              throw new MissingRequiredPropertyException("GetWebAppConfigResult", "apiKey");
+            }
+            this.apiKey = apiKey;
             return this;
         }
         @CustomType.Setter
         public Builder authDomain(String authDomain) {
-            this.authDomain = Objects.requireNonNull(authDomain);
+            if (authDomain == null) {
+              throw new MissingRequiredPropertyException("GetWebAppConfigResult", "authDomain");
+            }
+            this.authDomain = authDomain;
             return this;
         }
         @CustomType.Setter
         public Builder databaseUrl(String databaseUrl) {
-            this.databaseUrl = Objects.requireNonNull(databaseUrl);
+            if (databaseUrl == null) {
+              throw new MissingRequiredPropertyException("GetWebAppConfigResult", "databaseUrl");
+            }
+            this.databaseUrl = databaseUrl;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWebAppConfigResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder locationId(String locationId) {
-            this.locationId = Objects.requireNonNull(locationId);
+            if (locationId == null) {
+              throw new MissingRequiredPropertyException("GetWebAppConfigResult", "locationId");
+            }
+            this.locationId = locationId;
             return this;
         }
         @CustomType.Setter
         public Builder measurementId(String measurementId) {
-            this.measurementId = Objects.requireNonNull(measurementId);
+            if (measurementId == null) {
+              throw new MissingRequiredPropertyException("GetWebAppConfigResult", "measurementId");
+            }
+            this.measurementId = measurementId;
             return this;
         }
         @CustomType.Setter
         public Builder messagingSenderId(String messagingSenderId) {
-            this.messagingSenderId = Objects.requireNonNull(messagingSenderId);
+            if (messagingSenderId == null) {
+              throw new MissingRequiredPropertyException("GetWebAppConfigResult", "messagingSenderId");
+            }
+            this.messagingSenderId = messagingSenderId;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder storageBucket(String storageBucket) {
-            this.storageBucket = Objects.requireNonNull(storageBucket);
+            if (storageBucket == null) {
+              throw new MissingRequiredPropertyException("GetWebAppConfigResult", "storageBucket");
+            }
+            this.storageBucket = storageBucket;
             return this;
         }
         @CustomType.Setter
         public Builder webAppId(String webAppId) {
-            this.webAppId = Objects.requireNonNull(webAppId);
+            if (webAppId == null) {
+              throw new MissingRequiredPropertyException("GetWebAppConfigResult", "webAppId");
+            }
+            this.webAppId = webAppId;
             return this;
         }
         public GetWebAppConfigResult build() {

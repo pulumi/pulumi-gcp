@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArg
         }
 
         public ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs build() {
-            $.enableMetrics = Objects.requireNonNull($.enableMetrics, "expected parameter 'enableMetrics' to be non-null");
+            if ($.enableMetrics == null) {
+                throw new MissingRequiredPropertyException("ClusterMonitoringConfigAdvancedDatapathObservabilityConfigArgs", "enableMetrics");
+            }
             return $;
         }
     }

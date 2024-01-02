@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigCsvOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigFrequencyOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsArgs;
@@ -284,8 +285,12 @@ public final class InsightsReportConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public InsightsReportConfigArgs build() {
-            $.csvOptions = Objects.requireNonNull($.csvOptions, "expected parameter 'csvOptions' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.csvOptions == null) {
+                throw new MissingRequiredPropertyException("InsightsReportConfigArgs", "csvOptions");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("InsightsReportConfigArgs", "location");
+            }
             return $;
         }
     }

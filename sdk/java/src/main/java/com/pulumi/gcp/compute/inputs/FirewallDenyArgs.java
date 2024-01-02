@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,7 +162,9 @@ public final class FirewallDenyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FirewallDenyArgs build() {
-            $.protocol = Objects.requireNonNull($.protocol, "expected parameter 'protocol' to be non-null");
+            if ($.protocol == null) {
+                throw new MissingRequiredPropertyException("FirewallDenyArgs", "protocol");
+            }
             return $;
         }
     }

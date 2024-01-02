@@ -100,36 +100,43 @@ public final class EnvironmentConfigNodeConfig {
 
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder enableIpMasqAgent(@Nullable Boolean enableIpMasqAgent) {
+
             this.enableIpMasqAgent = enableIpMasqAgent;
             return this;
         }
         @CustomType.Setter
         public Builder ipAllocationPolicy(@Nullable EnvironmentConfigNodeConfigIpAllocationPolicy ipAllocationPolicy) {
+
             this.ipAllocationPolicy = ipAllocationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder maxPodsPerNode(@Nullable Integer maxPodsPerNode) {
+
             this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder oauthScopes(@Nullable List<String> oauthScopes) {
+
             this.oauthScopes = oauthScopes;
             return this;
         }
@@ -138,16 +145,19 @@ public final class EnvironmentConfigNodeConfig {
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
+
             this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -156,6 +166,7 @@ public final class EnvironmentConfigNodeConfig {
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ClusterAddonsConfigGkeBackupAgentConfigArgs extends com.pulum
         }
 
         public ClusterAddonsConfigGkeBackupAgentConfigArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("ClusterAddonsConfigGkeBackupAgentConfigArgs", "enabled");
+            }
             return $;
         }
     }

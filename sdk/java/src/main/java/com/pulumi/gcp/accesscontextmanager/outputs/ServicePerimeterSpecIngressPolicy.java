@@ -67,11 +67,13 @@ public final class ServicePerimeterSpecIngressPolicy {
 
         @CustomType.Setter
         public Builder ingressFrom(@Nullable ServicePerimeterSpecIngressPolicyIngressFrom ingressFrom) {
+
             this.ingressFrom = ingressFrom;
             return this;
         }
         @CustomType.Setter
         public Builder ingressTo(@Nullable ServicePerimeterSpecIngressPolicyIngressTo ingressTo) {
+
             this.ingressTo = ingressTo;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionAuthConfigOauth2ClientCredentialsClientSecret;
 import java.lang.String;
 import java.util.Objects;
@@ -61,11 +62,15 @@ public final class ConnectionAuthConfigOauth2ClientCredentials {
 
         @CustomType.Setter
         public Builder clientId(String clientId) {
-            this.clientId = Objects.requireNonNull(clientId);
+            if (clientId == null) {
+              throw new MissingRequiredPropertyException("ConnectionAuthConfigOauth2ClientCredentials", "clientId");
+            }
+            this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder clientSecret(@Nullable ConnectionAuthConfigOauth2ClientCredentialsClientSecret clientSecret) {
+
             this.clientSecret = clientSecret;
             return this;
         }

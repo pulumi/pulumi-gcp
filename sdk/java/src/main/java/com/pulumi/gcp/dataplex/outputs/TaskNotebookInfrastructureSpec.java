@@ -80,16 +80,19 @@ public final class TaskNotebookInfrastructureSpec {
 
         @CustomType.Setter
         public Builder batch(@Nullable TaskNotebookInfrastructureSpecBatch batch) {
+
             this.batch = batch;
             return this;
         }
         @CustomType.Setter
         public Builder containerImage(@Nullable TaskNotebookInfrastructureSpecContainerImage containerImage) {
+
             this.containerImage = containerImage;
             return this;
         }
         @CustomType.Setter
         public Builder vpcNetwork(@Nullable TaskNotebookInfrastructureSpecVpcNetwork vpcNetwork) {
+
             this.vpcNetwork = vpcNetwork;
             return this;
         }

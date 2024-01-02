@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -100,7 +101,9 @@ public final class ClusterClusterConfigEndpointConfigArgs extends com.pulumi.res
         }
 
         public ClusterClusterConfigEndpointConfigArgs build() {
-            $.enableHttpPortAccess = Objects.requireNonNull($.enableHttpPortAccess, "expected parameter 'enableHttpPortAccess' to be non-null");
+            if ($.enableHttpPortAccess == null) {
+                throw new MissingRequiredPropertyException("ClusterClusterConfigEndpointConfigArgs", "enableHttpPortAccess");
+            }
             return $;
         }
     }

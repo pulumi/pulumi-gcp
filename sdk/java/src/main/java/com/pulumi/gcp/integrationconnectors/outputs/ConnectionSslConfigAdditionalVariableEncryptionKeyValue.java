@@ -64,11 +64,13 @@ public final class ConnectionSslConfigAdditionalVariableEncryptionKeyValue {
 
         @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
+
             this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

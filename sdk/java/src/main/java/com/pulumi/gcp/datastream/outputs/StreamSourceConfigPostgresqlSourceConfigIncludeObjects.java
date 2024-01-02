@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class StreamSourceConfigPostgresqlSourceConfigIncludeObjects {
 
         @CustomType.Setter
         public Builder postgresqlSchemas(List<StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema> postgresqlSchemas) {
-            this.postgresqlSchemas = Objects.requireNonNull(postgresqlSchemas);
+            if (postgresqlSchemas == null) {
+              throw new MissingRequiredPropertyException("StreamSourceConfigPostgresqlSourceConfigIncludeObjects", "postgresqlSchemas");
+            }
+            this.postgresqlSchemas = postgresqlSchemas;
             return this;
         }
         public Builder postgresqlSchemas(StreamSourceConfigPostgresqlSourceConfigIncludeObjectsPostgresqlSchema... postgresqlSchemas) {

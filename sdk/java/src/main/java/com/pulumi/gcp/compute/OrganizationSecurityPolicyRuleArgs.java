@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -481,10 +482,18 @@ public final class OrganizationSecurityPolicyRuleArgs extends com.pulumi.resourc
         }
 
         public OrganizationSecurityPolicyRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.match = Objects.requireNonNull($.match, "expected parameter 'match' to be non-null");
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleArgs", "action");
+            }
+            if ($.match == null) {
+                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleArgs", "match");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleArgs", "policyId");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleArgs", "priority");
+            }
             return $;
         }
     }

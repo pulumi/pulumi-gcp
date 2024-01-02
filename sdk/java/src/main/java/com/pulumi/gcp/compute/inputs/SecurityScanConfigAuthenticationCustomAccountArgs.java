@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -156,9 +157,15 @@ public final class SecurityScanConfigAuthenticationCustomAccountArgs extends com
         }
 
         public SecurityScanConfigAuthenticationCustomAccountArgs build() {
-            $.loginUrl = Objects.requireNonNull($.loginUrl, "expected parameter 'loginUrl' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.loginUrl == null) {
+                throw new MissingRequiredPropertyException("SecurityScanConfigAuthenticationCustomAccountArgs", "loginUrl");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("SecurityScanConfigAuthenticationCustomAccountArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("SecurityScanConfigAuthenticationCustomAccountArgs", "username");
+            }
             return $;
         }
     }

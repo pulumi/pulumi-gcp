@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigSecurityConfigKerberosConfig;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ClusterClusterConfigSecurityConfig {
 
         @CustomType.Setter
         public Builder kerberosConfig(ClusterClusterConfigSecurityConfigKerberosConfig kerberosConfig) {
-            this.kerberosConfig = Objects.requireNonNull(kerberosConfig);
+            if (kerberosConfig == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigSecurityConfig", "kerberosConfig");
+            }
+            this.kerberosConfig = kerberosConfig;
             return this;
         }
         public ClusterClusterConfigSecurityConfig build() {

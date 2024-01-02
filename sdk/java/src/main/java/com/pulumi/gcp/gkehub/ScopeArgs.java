@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -175,7 +176,9 @@ public final class ScopeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ScopeArgs build() {
-            $.scopeId = Objects.requireNonNull($.scopeId, "expected parameter 'scopeId' to be non-null");
+            if ($.scopeId == null) {
+                throw new MissingRequiredPropertyException("ScopeArgs", "scopeId");
+            }
             return $;
         }
     }

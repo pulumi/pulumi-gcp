@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigtable.inputs.TableColumnFamilyArgs;
 import java.lang.String;
 import java.util.List;
@@ -342,7 +343,9 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TableArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("TableArgs", "instanceName");
+            }
             return $;
         }
     }

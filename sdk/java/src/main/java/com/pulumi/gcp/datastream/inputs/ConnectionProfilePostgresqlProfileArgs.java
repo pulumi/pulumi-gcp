@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -229,10 +230,18 @@ public final class ConnectionProfilePostgresqlProfileArgs extends com.pulumi.res
         }
 
         public ConnectionProfilePostgresqlProfileArgs build() {
-            $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.database == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlProfileArgs", "database");
+            }
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlProfileArgs", "hostname");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlProfileArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlProfileArgs", "username");
+            }
             return $;
         }
     }

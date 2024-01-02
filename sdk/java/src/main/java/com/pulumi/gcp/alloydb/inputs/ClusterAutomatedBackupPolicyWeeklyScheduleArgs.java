@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.inputs.ClusterAutomatedBackupPolicyWeeklyScheduleStartTimeArgs;
 import java.lang.String;
 import java.util.List;
@@ -145,7 +146,9 @@ public final class ClusterAutomatedBackupPolicyWeeklyScheduleArgs extends com.pu
         }
 
         public ClusterAutomatedBackupPolicyWeeklyScheduleArgs build() {
-            $.startTimes = Objects.requireNonNull($.startTimes, "expected parameter 'startTimes' to be non-null");
+            if ($.startTimes == null) {
+                throw new MissingRequiredPropertyException("ClusterAutomatedBackupPolicyWeeklyScheduleArgs", "startTimes");
+            }
             return $;
         }
     }

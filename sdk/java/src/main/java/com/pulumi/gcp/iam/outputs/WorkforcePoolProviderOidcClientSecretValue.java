@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,11 +63,15 @@ public final class WorkforcePoolProviderOidcClientSecretValue {
 
         @CustomType.Setter
         public Builder plainText(String plainText) {
-            this.plainText = Objects.requireNonNull(plainText);
+            if (plainText == null) {
+              throw new MissingRequiredPropertyException("WorkforcePoolProviderOidcClientSecretValue", "plainText");
+            }
+            this.plainText = plainText;
             return this;
         }
         @CustomType.Setter
         public Builder thumbprint(@Nullable String thumbprint) {
+
             this.thumbprint = thumbprint;
             return this;
         }

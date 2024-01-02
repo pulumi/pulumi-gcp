@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.ResourcePolicyInstanceSchedulePolicyVmStartSchedule;
 import com.pulumi.gcp.compute.outputs.ResourcePolicyInstanceSchedulePolicyVmStopSchedule;
 import java.lang.String;
@@ -108,26 +109,33 @@ public final class ResourcePolicyInstanceSchedulePolicy {
 
         @CustomType.Setter
         public Builder expirationTime(@Nullable String expirationTime) {
+
             this.expirationTime = expirationTime;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(String timeZone) {
-            this.timeZone = Objects.requireNonNull(timeZone);
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("ResourcePolicyInstanceSchedulePolicy", "timeZone");
+            }
+            this.timeZone = timeZone;
             return this;
         }
         @CustomType.Setter
         public Builder vmStartSchedule(@Nullable ResourcePolicyInstanceSchedulePolicyVmStartSchedule vmStartSchedule) {
+
             this.vmStartSchedule = vmStartSchedule;
             return this;
         }
         @CustomType.Setter
         public Builder vmStopSchedule(@Nullable ResourcePolicyInstanceSchedulePolicyVmStopSchedule vmStopSchedule) {
+
             this.vmStopSchedule = vmStopSchedule;
             return this;
         }

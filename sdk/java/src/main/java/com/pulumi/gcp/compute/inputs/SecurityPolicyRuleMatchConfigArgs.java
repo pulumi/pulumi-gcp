@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,7 +96,9 @@ public final class SecurityPolicyRuleMatchConfigArgs extends com.pulumi.resource
         }
 
         public SecurityPolicyRuleMatchConfigArgs build() {
-            $.srcIpRanges = Objects.requireNonNull($.srcIpRanges, "expected parameter 'srcIpRanges' to be non-null");
+            if ($.srcIpRanges == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleMatchConfigArgs", "srcIpRanges");
+            }
             return $;
         }
     }

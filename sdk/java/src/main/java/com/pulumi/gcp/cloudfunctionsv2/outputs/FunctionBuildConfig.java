@@ -146,36 +146,43 @@ public final class FunctionBuildConfig {
 
         @CustomType.Setter
         public Builder build(@Nullable String build) {
+
             this.build = build;
             return this;
         }
         @CustomType.Setter
         public Builder dockerRepository(@Nullable String dockerRepository) {
+
             this.dockerRepository = dockerRepository;
             return this;
         }
         @CustomType.Setter
         public Builder entryPoint(@Nullable String entryPoint) {
+
             this.entryPoint = entryPoint;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVariables(@Nullable Map<String,String> environmentVariables) {
+
             this.environmentVariables = environmentVariables;
             return this;
         }
         @CustomType.Setter
         public Builder runtime(@Nullable String runtime) {
+
             this.runtime = runtime;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable FunctionBuildConfigSource source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder workerPool(@Nullable String workerPool) {
+
             this.workerPool = workerPool;
             return this;
         }

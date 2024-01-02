@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.AutoscalingPolicyIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -302,9 +303,15 @@ public final class AutoscalingPolicyIamMemberArgs extends com.pulumi.resources.R
         }
 
         public AutoscalingPolicyIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyIamMemberArgs", "member");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyIamMemberArgs", "policyId");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyIamMemberArgs", "role");
+            }
             return $;
         }
     }

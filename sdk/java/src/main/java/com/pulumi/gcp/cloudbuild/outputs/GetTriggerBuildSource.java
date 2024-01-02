@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildSourceRepoSource;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildSourceStorageSource;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetTriggerBuildSource {
 
         @CustomType.Setter
         public Builder repoSources(List<GetTriggerBuildSourceRepoSource> repoSources) {
-            this.repoSources = Objects.requireNonNull(repoSources);
+            if (repoSources == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildSource", "repoSources");
+            }
+            this.repoSources = repoSources;
             return this;
         }
         public Builder repoSources(GetTriggerBuildSourceRepoSource... repoSources) {
@@ -50,7 +54,10 @@ public final class GetTriggerBuildSource {
         }
         @CustomType.Setter
         public Builder storageSources(List<GetTriggerBuildSourceStorageSource> storageSources) {
-            this.storageSources = Objects.requireNonNull(storageSources);
+            if (storageSources == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildSource", "storageSources");
+            }
+            this.storageSources = storageSources;
             return this;
         }
         public Builder storageSources(GetTriggerBuildSourceStorageSource... storageSources) {

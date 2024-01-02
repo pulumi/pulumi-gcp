@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -68,12 +69,16 @@ public final class TopicSchemaSettings {
 
         @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
+
             this.encoding = encoding;
             return this;
         }
         @CustomType.Setter
         public Builder schema(String schema) {
-            this.schema = Objects.requireNonNull(schema);
+            if (schema == null) {
+              throw new MissingRequiredPropertyException("TopicSchemaSettings", "schema");
+            }
+            this.schema = schema;
             return this;
         }
         public TopicSchemaSettings build() {

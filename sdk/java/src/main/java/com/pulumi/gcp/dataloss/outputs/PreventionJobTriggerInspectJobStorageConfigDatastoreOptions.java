@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId;
 import java.util.Objects;
@@ -63,12 +64,18 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptions {
 
         @CustomType.Setter
         public Builder kind(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKind kind) {
-            this.kind = Objects.requireNonNull(kind);
+            if (kind == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigDatastoreOptions", "kind");
+            }
+            this.kind = kind;
             return this;
         }
         @CustomType.Setter
         public Builder partitionId(PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId partitionId) {
-            this.partitionId = Objects.requireNonNull(partitionId);
+            if (partitionId == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigDatastoreOptions", "partitionId");
+            }
+            this.partitionId = partitionId;
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigDatastoreOptions build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -133,7 +134,9 @@ public final class LiteTopicRetentionConfigArgs extends com.pulumi.resources.Res
         }
 
         public LiteTopicRetentionConfigArgs build() {
-            $.perPartitionBytes = Objects.requireNonNull($.perPartitionBytes, "expected parameter 'perPartitionBytes' to be non-null");
+            if ($.perPartitionBytes == null) {
+                throw new MissingRequiredPropertyException("LiteTopicRetentionConfigArgs", "perPartitionBytes");
+            }
             return $;
         }
     }

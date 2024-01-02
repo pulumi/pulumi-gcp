@@ -60,11 +60,13 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         @CustomType.Setter
         public Builder charactersToSkip(@Nullable String charactersToSkip) {
+
             this.charactersToSkip = charactersToSkip;
             return this;
         }
         @CustomType.Setter
         public Builder commonCharactersToIgnore(@Nullable String commonCharactersToIgnore) {
+
             this.commonCharactersToIgnore = commonCharactersToIgnore;
             return this;
         }

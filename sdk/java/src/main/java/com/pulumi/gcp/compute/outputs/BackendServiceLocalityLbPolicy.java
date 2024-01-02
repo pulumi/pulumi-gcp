@@ -65,11 +65,13 @@ public final class BackendServiceLocalityLbPolicy {
 
         @CustomType.Setter
         public Builder customPolicy(@Nullable BackendServiceLocalityLbPolicyCustomPolicy customPolicy) {
+
             this.customPolicy = customPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder policy(@Nullable BackendServiceLocalityLbPolicyPolicy policy) {
+
             this.policy = policy;
             return this;
         }

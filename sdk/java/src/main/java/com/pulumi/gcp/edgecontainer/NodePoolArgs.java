@@ -5,6 +5,7 @@ package com.pulumi.gcp.edgecontainer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.edgecontainer.inputs.NodePoolLocalDiskEncryptionArgs;
 import com.pulumi.gcp.edgecontainer.inputs.NodePoolNodeConfigArgs;
 import java.lang.Integer;
@@ -449,10 +450,18 @@ public final class NodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NodePoolArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.nodeCount = Objects.requireNonNull($.nodeCount, "expected parameter 'nodeCount' to be non-null");
-            $.nodeLocation = Objects.requireNonNull($.nodeLocation, "expected parameter 'nodeLocation' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "cluster");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "location");
+            }
+            if ($.nodeCount == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "nodeCount");
+            }
+            if ($.nodeLocation == null) {
+                throw new MissingRequiredPropertyException("NodePoolArgs", "nodeLocation");
+            }
             return $;
         }
     }

@@ -90,21 +90,25 @@ public final class SecurityPolicyAdvancedOptionsConfig {
 
         @CustomType.Setter
         public Builder jsonCustomConfig(@Nullable SecurityPolicyAdvancedOptionsConfigJsonCustomConfig jsonCustomConfig) {
+
             this.jsonCustomConfig = jsonCustomConfig;
             return this;
         }
         @CustomType.Setter
         public Builder jsonParsing(@Nullable String jsonParsing) {
+
             this.jsonParsing = jsonParsing;
             return this;
         }
         @CustomType.Setter
         public Builder logLevel(@Nullable String logLevel) {
+
             this.logLevel = logLevel;
             return this;
         }
         @CustomType.Setter
         public Builder userIpRequestHeaders(@Nullable List<String> userIpRequestHeaders) {
+
             this.userIpRequestHeaders = userIpRequestHeaders;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -1018,7 +1019,9 @@ public final class FlexTemplateJobArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public FlexTemplateJobArgs build() {
-            $.containerSpecGcsPath = Objects.requireNonNull($.containerSpecGcsPath, "expected parameter 'containerSpecGcsPath' to be non-null");
+            if ($.containerSpecGcsPath == null) {
+                throw new MissingRequiredPropertyException("FlexTemplateJobArgs", "containerSpecGcsPath");
+            }
             return $;
         }
     }

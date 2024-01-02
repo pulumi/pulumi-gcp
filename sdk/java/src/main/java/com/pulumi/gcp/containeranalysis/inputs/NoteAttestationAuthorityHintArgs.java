@@ -5,6 +5,7 @@ package com.pulumi.gcp.containeranalysis.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class NoteAttestationAuthorityHintArgs extends com.pulumi.resources
         }
 
         public NoteAttestationAuthorityHintArgs build() {
-            $.humanReadableName = Objects.requireNonNull($.humanReadableName, "expected parameter 'humanReadableName' to be non-null");
+            if ($.humanReadableName == null) {
+                throw new MissingRequiredPropertyException("NoteAttestationAuthorityHintArgs", "humanReadableName");
+            }
             return $;
         }
     }

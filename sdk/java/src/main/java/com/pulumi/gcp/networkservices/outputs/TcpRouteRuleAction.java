@@ -62,6 +62,7 @@ public final class TcpRouteRuleAction {
 
         @CustomType.Setter
         public Builder destinations(@Nullable List<TcpRouteRuleActionDestination> destinations) {
+
             this.destinations = destinations;
             return this;
         }
@@ -70,6 +71,7 @@ public final class TcpRouteRuleAction {
         }
         @CustomType.Setter
         public Builder originalDestination(@Nullable Boolean originalDestination) {
+
             this.originalDestination = originalDestination;
             return this;
         }

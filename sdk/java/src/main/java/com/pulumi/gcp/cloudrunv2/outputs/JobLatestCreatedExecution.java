@@ -80,16 +80,19 @@ public final class JobLatestCreatedExecution {
 
         @CustomType.Setter
         public Builder completionTime(@Nullable String completionTime) {
+
             this.completionTime = completionTime;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

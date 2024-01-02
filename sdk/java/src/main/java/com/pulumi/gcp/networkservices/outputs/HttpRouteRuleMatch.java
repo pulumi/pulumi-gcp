@@ -122,11 +122,13 @@ public final class HttpRouteRuleMatch {
 
         @CustomType.Setter
         public Builder fullPathMatch(@Nullable String fullPathMatch) {
+
             this.fullPathMatch = fullPathMatch;
             return this;
         }
         @CustomType.Setter
         public Builder headers(@Nullable List<HttpRouteRuleMatchHeader> headers) {
+
             this.headers = headers;
             return this;
         }
@@ -135,16 +137,19 @@ public final class HttpRouteRuleMatch {
         }
         @CustomType.Setter
         public Builder ignoreCase(@Nullable Boolean ignoreCase) {
+
             this.ignoreCase = ignoreCase;
             return this;
         }
         @CustomType.Setter
         public Builder prefixMatch(@Nullable String prefixMatch) {
+
             this.prefixMatch = prefixMatch;
             return this;
         }
         @CustomType.Setter
         public Builder queryParameters(@Nullable List<HttpRouteRuleMatchQueryParameter> queryParameters) {
+
             this.queryParameters = queryParameters;
             return this;
         }
@@ -153,6 +158,7 @@ public final class HttpRouteRuleMatch {
         }
         @CustomType.Setter
         public Builder regexMatch(@Nullable String regexMatch) {
+
             this.regexMatch = regexMatch;
             return this;
         }

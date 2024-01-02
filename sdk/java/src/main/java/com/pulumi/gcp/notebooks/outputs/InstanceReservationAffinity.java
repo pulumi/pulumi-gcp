@@ -4,6 +4,7 @@
 package com.pulumi.gcp.notebooks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,16 +76,21 @@ public final class InstanceReservationAffinity {
 
         @CustomType.Setter
         public Builder consumeReservationType(String consumeReservationType) {
-            this.consumeReservationType = Objects.requireNonNull(consumeReservationType);
+            if (consumeReservationType == null) {
+              throw new MissingRequiredPropertyException("InstanceReservationAffinity", "consumeReservationType");
+            }
+            this.consumeReservationType = consumeReservationType;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
+
             this.values = values;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.organizations;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.organizations.inputs.IamAuditConfigAuditLogConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -160,9 +161,15 @@ public final class IamAuditConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public IamAuditConfigArgs build() {
-            $.auditLogConfigs = Objects.requireNonNull($.auditLogConfigs, "expected parameter 'auditLogConfigs' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.auditLogConfigs == null) {
+                throw new MissingRequiredPropertyException("IamAuditConfigArgs", "auditLogConfigs");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("IamAuditConfigArgs", "orgId");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("IamAuditConfigArgs", "service");
+            }
             return $;
         }
     }

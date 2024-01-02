@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.ClusterNotificationConfigPubsubFilter;
 import java.lang.Boolean;
 import java.lang.String;
@@ -118,16 +119,21 @@ public final class ClusterNotificationConfigPubsub {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("ClusterNotificationConfigPubsub", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable ClusterNotificationConfigPubsubFilter filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder topic(@Nullable String topic) {
+
             this.topic = topic;
             return this;
         }

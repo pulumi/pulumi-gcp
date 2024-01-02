@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -96,21 +97,27 @@ public final class AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityConditi
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expression(String expression) {
-            this.expression = Objects.requireNonNull(expression);
+            if (expression == null) {
+              throw new MissingRequiredPropertyException("AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition", "expression");
+            }
+            this.expression = expression;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder title(@Nullable String title) {
+
             this.title = title;
             return this;
         }

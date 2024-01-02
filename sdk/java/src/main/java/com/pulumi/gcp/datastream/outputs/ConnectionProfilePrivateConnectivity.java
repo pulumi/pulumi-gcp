@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ConnectionProfilePrivateConnectivity {
 
         @CustomType.Setter
         public Builder privateConnection(String privateConnection) {
-            this.privateConnection = Objects.requireNonNull(privateConnection);
+            if (privateConnection == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfilePrivateConnectivity", "privateConnection");
+            }
+            this.privateConnection = privateConnection;
             return this;
         }
         public ConnectionProfilePrivateConnectivity build() {

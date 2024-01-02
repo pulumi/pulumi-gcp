@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId;
 import java.lang.Boolean;
 import java.lang.String;
@@ -76,17 +77,26 @@ public final class CaPoolIssuancePolicyBaselineValuesAdditionalExtension {
 
         @CustomType.Setter
         public Builder critical(Boolean critical) {
-            this.critical = Objects.requireNonNull(critical);
+            if (critical == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValuesAdditionalExtension", "critical");
+            }
+            this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(CaPoolIssuancePolicyBaselineValuesAdditionalExtensionObjectId objectId) {
-            this.objectId = Objects.requireNonNull(objectId);
+            if (objectId == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValuesAdditionalExtension", "objectId");
+            }
+            this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValuesAdditionalExtension", "value");
+            }
+            this.value = value;
             return this;
         }
         public CaPoolIssuancePolicyBaselineValuesAdditionalExtension build() {

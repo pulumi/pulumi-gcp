@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -249,7 +250,9 @@ public final class ServiceBindingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ServiceBindingArgs build() {
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("ServiceBindingArgs", "service");
+            }
             return $;
         }
     }

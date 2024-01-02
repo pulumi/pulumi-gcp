@@ -44,6 +44,7 @@ public final class SecurityPolicyRulePreconfiguredWafConfig {
 
         @CustomType.Setter
         public Builder exclusions(@Nullable List<SecurityPolicyRulePreconfiguredWafConfigExclusion> exclusions) {
+
             this.exclusions = exclusions;
             return this;
         }

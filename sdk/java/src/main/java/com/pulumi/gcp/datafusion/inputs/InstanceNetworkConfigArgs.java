@@ -5,6 +5,7 @@ package com.pulumi.gcp.datafusion.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -123,8 +124,12 @@ public final class InstanceNetworkConfigArgs extends com.pulumi.resources.Resour
         }
 
         public InstanceNetworkConfigArgs build() {
-            $.ipAllocation = Objects.requireNonNull($.ipAllocation, "expected parameter 'ipAllocation' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.ipAllocation == null) {
+                throw new MissingRequiredPropertyException("InstanceNetworkConfigArgs", "ipAllocation");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("InstanceNetworkConfigArgs", "network");
+            }
             return $;
         }
     }

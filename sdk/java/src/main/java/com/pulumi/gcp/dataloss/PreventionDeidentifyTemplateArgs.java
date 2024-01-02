@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -253,8 +254,12 @@ public final class PreventionDeidentifyTemplateArgs extends com.pulumi.resources
         }
 
         public PreventionDeidentifyTemplateArgs build() {
-            $.deidentifyConfig = Objects.requireNonNull($.deidentifyConfig, "expected parameter 'deidentifyConfig' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.deidentifyConfig == null) {
+                throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateArgs", "deidentifyConfig");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateArgs", "parent");
+            }
             return $;
         }
     }

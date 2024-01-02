@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ConnectionProfilePrivateConnectivityArgs extends com.pulumi.r
         }
 
         public ConnectionProfilePrivateConnectivityArgs build() {
-            $.privateConnection = Objects.requireNonNull($.privateConnection, "expected parameter 'privateConnection' to be non-null");
+            if ($.privateConnection == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfilePrivateConnectivityArgs", "privateConnection");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -103,27 +104,40 @@ public final class ConnectionProfilePostgresqlProfile {
 
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlProfile", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlProfile", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlProfile", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfilePostgresqlProfile", "username");
+            }
+            this.username = username;
             return this;
         }
         public ConnectionProfilePostgresqlProfile build() {

@@ -78,16 +78,19 @@ public final class NotificationChannelSensitiveLabels {
 
         @CustomType.Setter
         public Builder authToken(@Nullable String authToken) {
+
             this.authToken = authToken;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder serviceKey(@Nullable String serviceKey) {
+
             this.serviceKey = serviceKey;
             return this;
         }

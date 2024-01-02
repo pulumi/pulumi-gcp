@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterPrivateClusterConfigMasterGlobalAccessConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -79,17 +80,26 @@ public final class GetClusterPrivateClusterConfig {
 
         @CustomType.Setter
         public Builder enablePrivateEndpoint(Boolean enablePrivateEndpoint) {
-            this.enablePrivateEndpoint = Objects.requireNonNull(enablePrivateEndpoint);
+            if (enablePrivateEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetClusterPrivateClusterConfig", "enablePrivateEndpoint");
+            }
+            this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateNodes(Boolean enablePrivateNodes) {
-            this.enablePrivateNodes = Objects.requireNonNull(enablePrivateNodes);
+            if (enablePrivateNodes == null) {
+              throw new MissingRequiredPropertyException("GetClusterPrivateClusterConfig", "enablePrivateNodes");
+            }
+            this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
         @CustomType.Setter
         public Builder masterGlobalAccessConfigs(List<GetClusterPrivateClusterConfigMasterGlobalAccessConfig> masterGlobalAccessConfigs) {
-            this.masterGlobalAccessConfigs = Objects.requireNonNull(masterGlobalAccessConfigs);
+            if (masterGlobalAccessConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterPrivateClusterConfig", "masterGlobalAccessConfigs");
+            }
+            this.masterGlobalAccessConfigs = masterGlobalAccessConfigs;
             return this;
         }
         public Builder masterGlobalAccessConfigs(GetClusterPrivateClusterConfigMasterGlobalAccessConfig... masterGlobalAccessConfigs) {
@@ -97,27 +107,42 @@ public final class GetClusterPrivateClusterConfig {
         }
         @CustomType.Setter
         public Builder masterIpv4CidrBlock(String masterIpv4CidrBlock) {
-            this.masterIpv4CidrBlock = Objects.requireNonNull(masterIpv4CidrBlock);
+            if (masterIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetClusterPrivateClusterConfig", "masterIpv4CidrBlock");
+            }
+            this.masterIpv4CidrBlock = masterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder peeringName(String peeringName) {
-            this.peeringName = Objects.requireNonNull(peeringName);
+            if (peeringName == null) {
+              throw new MissingRequiredPropertyException("GetClusterPrivateClusterConfig", "peeringName");
+            }
+            this.peeringName = peeringName;
             return this;
         }
         @CustomType.Setter
         public Builder privateEndpoint(String privateEndpoint) {
-            this.privateEndpoint = Objects.requireNonNull(privateEndpoint);
+            if (privateEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetClusterPrivateClusterConfig", "privateEndpoint");
+            }
+            this.privateEndpoint = privateEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder privateEndpointSubnetwork(String privateEndpointSubnetwork) {
-            this.privateEndpointSubnetwork = Objects.requireNonNull(privateEndpointSubnetwork);
+            if (privateEndpointSubnetwork == null) {
+              throw new MissingRequiredPropertyException("GetClusterPrivateClusterConfig", "privateEndpointSubnetwork");
+            }
+            this.privateEndpointSubnetwork = privateEndpointSubnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder publicEndpoint(String publicEndpoint) {
-            this.publicEndpoint = Objects.requireNonNull(publicEndpoint);
+            if (publicEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetClusterPrivateClusterConfig", "publicEndpoint");
+            }
+            this.publicEndpoint = publicEndpoint;
             return this;
         }
         public GetClusterPrivateClusterConfig build() {

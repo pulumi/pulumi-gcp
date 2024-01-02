@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -131,7 +132,9 @@ public final class GetSubnetworkIamPolicyPlainArgs extends com.pulumi.resources.
         }
 
         public GetSubnetworkIamPolicyPlainArgs build() {
-            $.subnetwork = Objects.requireNonNull($.subnetwork, "expected parameter 'subnetwork' to be non-null");
+            if ($.subnetwork == null) {
+                throw new MissingRequiredPropertyException("GetSubnetworkIamPolicyPlainArgs", "subnetwork");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.securesourcemanager.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -196,8 +197,12 @@ public final class InstancePrivateConfigArgs extends com.pulumi.resources.Resour
         }
 
         public InstancePrivateConfigArgs build() {
-            $.caPool = Objects.requireNonNull($.caPool, "expected parameter 'caPool' to be non-null");
-            $.isPrivate = Objects.requireNonNull($.isPrivate, "expected parameter 'isPrivate' to be non-null");
+            if ($.caPool == null) {
+                throw new MissingRequiredPropertyException("InstancePrivateConfigArgs", "caPool");
+            }
+            if ($.isPrivate == null) {
+                throw new MissingRequiredPropertyException("InstancePrivateConfigArgs", "isPrivate");
+            }
             return $;
         }
     }

@@ -44,6 +44,7 @@ public final class AwsClusterBinaryAuthorization {
 
         @CustomType.Setter
         public Builder evaluationMode(@Nullable String evaluationMode) {
+
             this.evaluationMode = evaluationMode;
             return this;
         }

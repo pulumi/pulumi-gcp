@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.outputs.TcpRouteRuleAction;
 import com.pulumi.gcp.networkservices.outputs.TcpRouteRuleMatch;
 import java.util.List;
@@ -65,11 +66,15 @@ public final class TcpRouteRule {
 
         @CustomType.Setter
         public Builder action(TcpRouteRuleAction action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("TcpRouteRule", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder matches(@Nullable List<TcpRouteRuleMatch> matches) {
+
             this.matches = matches;
             return this;
         }

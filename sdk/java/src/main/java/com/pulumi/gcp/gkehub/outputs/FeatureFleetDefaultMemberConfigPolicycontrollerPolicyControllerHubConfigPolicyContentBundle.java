@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,11 +59,15 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
 
         @CustomType.Setter
         public Builder bundle(String bundle) {
-            this.bundle = Objects.requireNonNull(bundle);
+            if (bundle == null) {
+              throw new MissingRequiredPropertyException("FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle", "bundle");
+            }
+            this.bundle = bundle;
             return this;
         }
         @CustomType.Setter
         public Builder exemptedNamespaces(@Nullable List<String> exemptedNamespaces) {
+
             this.exemptedNamespaces = exemptedNamespaces;
             return this;
         }

@@ -58,11 +58,13 @@ public final class CryptoKeyVersionAttestationExternalProtectionLevelOptions {
 
         @CustomType.Setter
         public Builder ekmConnectionKeyPath(@Nullable String ekmConnectionKeyPath) {
+
             this.ekmConnectionKeyPath = ekmConnectionKeyPath;
             return this;
         }
         @CustomType.Setter
         public Builder externalKeyUri(@Nullable String externalKeyUri) {
+
             this.externalKeyUri = externalKeyUri;
             return this;
         }

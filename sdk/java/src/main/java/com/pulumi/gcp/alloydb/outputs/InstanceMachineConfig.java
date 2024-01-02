@@ -44,6 +44,7 @@ public final class InstanceMachineConfig {
 
         @CustomType.Setter
         public Builder cpuCount(@Nullable Integer cpuCount) {
+
             this.cpuCount = cpuCount;
             return this;
         }

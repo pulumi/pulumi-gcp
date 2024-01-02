@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.ConnectionIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -315,9 +316,15 @@ public final class ConnectionIamBindingArgs extends com.pulumi.resources.Resourc
         }
 
         public ConnectionIamBindingArgs build() {
-            $.connectionId = Objects.requireNonNull($.connectionId, "expected parameter 'connectionId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.connectionId == null) {
+                throw new MissingRequiredPropertyException("ConnectionIamBindingArgs", "connectionId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("ConnectionIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ConnectionIamBindingArgs", "role");
+            }
             return $;
         }
     }

@@ -63,11 +63,13 @@ public final class RegionAutoscalerAutoscalingPolicyScaleDownControl {
 
         @CustomType.Setter
         public Builder maxScaledDownReplicas(@Nullable RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas maxScaledDownReplicas) {
+
             this.maxScaledDownReplicas = maxScaledDownReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder timeWindowSec(@Nullable Integer timeWindowSec) {
+
             this.timeWindowSec = timeWindowSec;
             return this;
         }

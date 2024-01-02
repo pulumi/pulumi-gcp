@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout;
 import java.lang.Integer;
 import java.lang.String;
@@ -103,16 +104,21 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy {
 
         @CustomType.Setter
         public Builder numRetries(Integer numRetries) {
-            this.numRetries = Objects.requireNonNull(numRetries);
+            if (numRetries == null) {
+              throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicy", "numRetries");
+            }
+            this.numRetries = numRetries;
             return this;
         }
         @CustomType.Setter
         public Builder perTryTimeout(@Nullable RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeout perTryTimeout) {
+
             this.perTryTimeout = perTryTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder retryConditions(@Nullable List<String> retryConditions) {
+
             this.retryConditions = retryConditions;
             return this;
         }

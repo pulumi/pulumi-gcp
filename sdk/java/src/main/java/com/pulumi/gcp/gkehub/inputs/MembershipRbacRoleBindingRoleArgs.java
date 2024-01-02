@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class MembershipRbacRoleBindingRoleArgs extends com.pulumi.resource
         }
 
         public MembershipRbacRoleBindingRoleArgs build() {
-            $.predefinedRole = Objects.requireNonNull($.predefinedRole, "expected parameter 'predefinedRole' to be non-null");
+            if ($.predefinedRole == null) {
+                throw new MissingRequiredPropertyException("MembershipRbacRoleBindingRoleArgs", "predefinedRole");
+            }
             return $;
         }
     }

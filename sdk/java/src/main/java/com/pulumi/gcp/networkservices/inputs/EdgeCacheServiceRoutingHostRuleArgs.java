@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -211,8 +212,12 @@ public final class EdgeCacheServiceRoutingHostRuleArgs extends com.pulumi.resour
         }
 
         public EdgeCacheServiceRoutingHostRuleArgs build() {
-            $.hosts = Objects.requireNonNull($.hosts, "expected parameter 'hosts' to be non-null");
-            $.pathMatcher = Objects.requireNonNull($.pathMatcher, "expected parameter 'pathMatcher' to be non-null");
+            if ($.hosts == null) {
+                throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingHostRuleArgs", "hosts");
+            }
+            if ($.pathMatcher == null) {
+                throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingHostRuleArgs", "pathMatcher");
+            }
             return $;
         }
     }

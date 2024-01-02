@@ -5,6 +5,7 @@ package com.pulumi.gcp.containeranalysis;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.containeranalysis.inputs.NoteIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -245,9 +246,15 @@ public final class NoteIamMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NoteIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.note = Objects.requireNonNull($.note, "expected parameter 'note' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("NoteIamMemberArgs", "member");
+            }
+            if ($.note == null) {
+                throw new MissingRequiredPropertyException("NoteIamMemberArgs", "note");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("NoteIamMemberArgs", "role");
+            }
             return $;
         }
     }

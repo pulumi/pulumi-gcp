@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleDictionaryArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesArgs;
@@ -252,7 +253,9 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
         }
 
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs build() {
-            $.matchingType = Objects.requireNonNull($.matchingType, "expected parameter 'matchingType' to be non-null");
+            if ($.matchingType == null) {
+                throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleArgs", "matchingType");
+            }
             return $;
         }
     }

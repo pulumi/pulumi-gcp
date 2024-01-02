@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetInstanceGroupManagerVersionTargetSize {
 
         @CustomType.Setter
         public Builder fixed(Integer fixed) {
-            this.fixed = Objects.requireNonNull(fixed);
+            if (fixed == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerVersionTargetSize", "fixed");
+            }
+            this.fixed = fixed;
             return this;
         }
         @CustomType.Setter
         public Builder percent(Integer percent) {
-            this.percent = Objects.requireNonNull(percent);
+            if (percent == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerVersionTargetSize", "percent");
+            }
+            this.percent = percent;
             return this;
         }
         public GetInstanceGroupManagerVersionTargetSize build() {

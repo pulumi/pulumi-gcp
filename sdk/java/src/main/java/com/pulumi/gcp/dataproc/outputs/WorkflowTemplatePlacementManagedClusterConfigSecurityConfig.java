@@ -44,6 +44,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfig {
 
         @CustomType.Setter
         public Builder kerberosConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKerberosConfig kerberosConfig) {
+
             this.kerberosConfig = kerberosConfig;
             return this;
         }

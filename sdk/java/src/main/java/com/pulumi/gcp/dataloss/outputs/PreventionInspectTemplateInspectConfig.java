@@ -170,6 +170,7 @@ public final class PreventionInspectTemplateInspectConfig {
 
         @CustomType.Setter
         public Builder contentOptions(@Nullable List<String> contentOptions) {
+
             this.contentOptions = contentOptions;
             return this;
         }
@@ -178,6 +179,7 @@ public final class PreventionInspectTemplateInspectConfig {
         }
         @CustomType.Setter
         public Builder customInfoTypes(@Nullable List<PreventionInspectTemplateInspectConfigCustomInfoType> customInfoTypes) {
+
             this.customInfoTypes = customInfoTypes;
             return this;
         }
@@ -186,16 +188,19 @@ public final class PreventionInspectTemplateInspectConfig {
         }
         @CustomType.Setter
         public Builder excludeInfoTypes(@Nullable Boolean excludeInfoTypes) {
+
             this.excludeInfoTypes = excludeInfoTypes;
             return this;
         }
         @CustomType.Setter
         public Builder includeQuote(@Nullable Boolean includeQuote) {
+
             this.includeQuote = includeQuote;
             return this;
         }
         @CustomType.Setter
         public Builder infoTypes(@Nullable List<PreventionInspectTemplateInspectConfigInfoType> infoTypes) {
+
             this.infoTypes = infoTypes;
             return this;
         }
@@ -204,16 +209,19 @@ public final class PreventionInspectTemplateInspectConfig {
         }
         @CustomType.Setter
         public Builder limits(@Nullable PreventionInspectTemplateInspectConfigLimits limits) {
+
             this.limits = limits;
             return this;
         }
         @CustomType.Setter
         public Builder minLikelihood(@Nullable String minLikelihood) {
+
             this.minLikelihood = minLikelihood;
             return this;
         }
         @CustomType.Setter
         public Builder ruleSets(@Nullable List<PreventionInspectTemplateInspectConfigRuleSet> ruleSets) {
+
             this.ruleSets = ruleSets;
             return this;
         }

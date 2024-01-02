@@ -5,6 +5,7 @@ package com.pulumi.gcp.billing;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.billing.inputs.BudgetAllUpdatesRuleArgs;
 import com.pulumi.gcp.billing.inputs.BudgetAmountArgs;
 import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterArgs;
@@ -315,8 +316,12 @@ public final class BudgetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BudgetArgs build() {
-            $.amount = Objects.requireNonNull($.amount, "expected parameter 'amount' to be non-null");
-            $.billingAccount = Objects.requireNonNull($.billingAccount, "expected parameter 'billingAccount' to be non-null");
+            if ($.amount == null) {
+                throw new MissingRequiredPropertyException("BudgetArgs", "amount");
+            }
+            if ($.billingAccount == null) {
+                throw new MissingRequiredPropertyException("BudgetArgs", "billingAccount");
+            }
             return $;
         }
     }

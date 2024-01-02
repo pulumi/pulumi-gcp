@@ -5,6 +5,7 @@ package com.pulumi.gcp.secretmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -257,8 +258,12 @@ public final class SecretVersionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SecretVersionArgs build() {
-            $.secret = Objects.requireNonNull($.secret, "expected parameter 'secret' to be non-null");
-            $.secretData = Objects.requireNonNull($.secretData, "expected parameter 'secretData' to be non-null");
+            if ($.secret == null) {
+                throw new MissingRequiredPropertyException("SecretVersionArgs", "secret");
+            }
+            if ($.secretData == null) {
+                throw new MissingRequiredPropertyException("SecretVersionArgs", "secretData");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ConnectionProfileOraclePrivateConnectivity {
 
         @CustomType.Setter
         public Builder privateConnection(String privateConnection) {
-            this.privateConnection = Objects.requireNonNull(privateConnection);
+            if (privateConnection == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOraclePrivateConnectivity", "privateConnection");
+            }
+            this.privateConnection = privateConnection;
             return this;
         }
         public ConnectionProfileOraclePrivateConnectivity build() {

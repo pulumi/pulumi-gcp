@@ -46,6 +46,7 @@ public final class OrganizationProperties {
 
         @CustomType.Setter
         public Builder properties(@Nullable List<OrganizationPropertiesProperty> properties) {
+
             this.properties = properties;
             return this;
         }

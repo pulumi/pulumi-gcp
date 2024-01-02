@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -420,7 +421,9 @@ public final class NetworkEndpointGroupArgs extends com.pulumi.resources.Resourc
         }
 
         public NetworkEndpointGroupArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("NetworkEndpointGroupArgs", "network");
+            }
             return $;
         }
     }

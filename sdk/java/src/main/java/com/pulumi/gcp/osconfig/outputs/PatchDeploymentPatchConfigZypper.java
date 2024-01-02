@@ -118,6 +118,7 @@ public final class PatchDeploymentPatchConfigZypper {
 
         @CustomType.Setter
         public Builder categories(@Nullable List<String> categories) {
+
             this.categories = categories;
             return this;
         }
@@ -126,6 +127,7 @@ public final class PatchDeploymentPatchConfigZypper {
         }
         @CustomType.Setter
         public Builder excludes(@Nullable List<String> excludes) {
+
             this.excludes = excludes;
             return this;
         }
@@ -134,6 +136,7 @@ public final class PatchDeploymentPatchConfigZypper {
         }
         @CustomType.Setter
         public Builder exclusivePatches(@Nullable List<String> exclusivePatches) {
+
             this.exclusivePatches = exclusivePatches;
             return this;
         }
@@ -142,6 +145,7 @@ public final class PatchDeploymentPatchConfigZypper {
         }
         @CustomType.Setter
         public Builder severities(@Nullable List<String> severities) {
+
             this.severities = severities;
             return this;
         }
@@ -150,11 +154,13 @@ public final class PatchDeploymentPatchConfigZypper {
         }
         @CustomType.Setter
         public Builder withOptional(@Nullable Boolean withOptional) {
+
             this.withOptional = withOptional;
             return this;
         }
         @CustomType.Setter
         public Builder withUpdate(@Nullable Boolean withUpdate) {
+
             this.withUpdate = withUpdate;
             return this;
         }

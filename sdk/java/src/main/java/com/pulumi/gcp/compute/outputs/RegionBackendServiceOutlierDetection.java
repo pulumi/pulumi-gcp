@@ -242,56 +242,67 @@ public final class RegionBackendServiceOutlierDetection {
 
         @CustomType.Setter
         public Builder baseEjectionTime(@Nullable RegionBackendServiceOutlierDetectionBaseEjectionTime baseEjectionTime) {
+
             this.baseEjectionTime = baseEjectionTime;
             return this;
         }
         @CustomType.Setter
         public Builder consecutiveErrors(@Nullable Integer consecutiveErrors) {
+
             this.consecutiveErrors = consecutiveErrors;
             return this;
         }
         @CustomType.Setter
         public Builder consecutiveGatewayFailure(@Nullable Integer consecutiveGatewayFailure) {
+
             this.consecutiveGatewayFailure = consecutiveGatewayFailure;
             return this;
         }
         @CustomType.Setter
         public Builder enforcingConsecutiveErrors(@Nullable Integer enforcingConsecutiveErrors) {
+
             this.enforcingConsecutiveErrors = enforcingConsecutiveErrors;
             return this;
         }
         @CustomType.Setter
         public Builder enforcingConsecutiveGatewayFailure(@Nullable Integer enforcingConsecutiveGatewayFailure) {
+
             this.enforcingConsecutiveGatewayFailure = enforcingConsecutiveGatewayFailure;
             return this;
         }
         @CustomType.Setter
         public Builder enforcingSuccessRate(@Nullable Integer enforcingSuccessRate) {
+
             this.enforcingSuccessRate = enforcingSuccessRate;
             return this;
         }
         @CustomType.Setter
         public Builder interval(@Nullable RegionBackendServiceOutlierDetectionInterval interval) {
+
             this.interval = interval;
             return this;
         }
         @CustomType.Setter
         public Builder maxEjectionPercent(@Nullable Integer maxEjectionPercent) {
+
             this.maxEjectionPercent = maxEjectionPercent;
             return this;
         }
         @CustomType.Setter
         public Builder successRateMinimumHosts(@Nullable Integer successRateMinimumHosts) {
+
             this.successRateMinimumHosts = successRateMinimumHosts;
             return this;
         }
         @CustomType.Setter
         public Builder successRateRequestVolume(@Nullable Integer successRateRequestVolume) {
+
             this.successRateRequestVolume = successRateRequestVolume;
             return this;
         }
         @CustomType.Setter
         public Builder successRateStdevFactor(@Nullable Integer successRateStdevFactor) {
+
             this.successRateStdevFactor = successRateStdevFactor;
             return this;
         }

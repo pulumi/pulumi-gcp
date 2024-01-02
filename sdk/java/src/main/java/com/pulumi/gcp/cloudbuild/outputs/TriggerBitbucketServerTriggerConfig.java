@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBitbucketServerTriggerConfigPullRequest;
 import com.pulumi.gcp.cloudbuild.outputs.TriggerBitbucketServerTriggerConfigPush;
 import java.lang.String;
@@ -108,27 +109,38 @@ public final class TriggerBitbucketServerTriggerConfig {
 
         @CustomType.Setter
         public Builder bitbucketServerConfigResource(String bitbucketServerConfigResource) {
-            this.bitbucketServerConfigResource = Objects.requireNonNull(bitbucketServerConfigResource);
+            if (bitbucketServerConfigResource == null) {
+              throw new MissingRequiredPropertyException("TriggerBitbucketServerTriggerConfig", "bitbucketServerConfigResource");
+            }
+            this.bitbucketServerConfigResource = bitbucketServerConfigResource;
             return this;
         }
         @CustomType.Setter
         public Builder projectKey(String projectKey) {
-            this.projectKey = Objects.requireNonNull(projectKey);
+            if (projectKey == null) {
+              throw new MissingRequiredPropertyException("TriggerBitbucketServerTriggerConfig", "projectKey");
+            }
+            this.projectKey = projectKey;
             return this;
         }
         @CustomType.Setter
         public Builder pullRequest(@Nullable TriggerBitbucketServerTriggerConfigPullRequest pullRequest) {
+
             this.pullRequest = pullRequest;
             return this;
         }
         @CustomType.Setter
         public Builder push(@Nullable TriggerBitbucketServerTriggerConfigPush push) {
+
             this.push = push;
             return this;
         }
         @CustomType.Setter
         public Builder repoSlug(String repoSlug) {
-            this.repoSlug = Objects.requireNonNull(repoSlug);
+            if (repoSlug == null) {
+              throw new MissingRequiredPropertyException("TriggerBitbucketServerTriggerConfig", "repoSlug");
+            }
+            this.repoSlug = repoSlug;
             return this;
         }
         public TriggerBitbucketServerTriggerConfig build() {

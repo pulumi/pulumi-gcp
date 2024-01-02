@@ -46,6 +46,7 @@ public final class BackupScheduleWeeklyRecurrence {
 
         @CustomType.Setter
         public Builder day(@Nullable String day) {
+
             this.day = day;
             return this;
         }

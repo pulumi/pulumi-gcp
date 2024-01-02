@@ -46,6 +46,7 @@ public final class AttachedClusterLoggingConfigComponentConfig {
 
         @CustomType.Setter
         public Builder enableComponents(@Nullable List<String> enableComponents) {
+
             this.enableComponents = enableComponents;
             return this;
         }

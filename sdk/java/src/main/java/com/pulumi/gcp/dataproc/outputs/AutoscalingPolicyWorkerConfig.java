@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -94,16 +95,21 @@ public final class AutoscalingPolicyWorkerConfig {
 
         @CustomType.Setter
         public Builder maxInstances(Integer maxInstances) {
-            this.maxInstances = Objects.requireNonNull(maxInstances);
+            if (maxInstances == null) {
+              throw new MissingRequiredPropertyException("AutoscalingPolicyWorkerConfig", "maxInstances");
+            }
+            this.maxInstances = maxInstances;
             return this;
         }
         @CustomType.Setter
         public Builder minInstances(@Nullable Integer minInstances) {
+
             this.minInstances = minInstances;
             return this;
         }
         @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
+
             this.weight = weight;
             return this;
         }

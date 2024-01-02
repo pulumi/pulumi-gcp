@@ -78,16 +78,19 @@ public final class JobAppEngineHttpTargetAppEngineRouting {
 
         @CustomType.Setter
         public Builder instance(@Nullable String instance) {
+
             this.instance = instance;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

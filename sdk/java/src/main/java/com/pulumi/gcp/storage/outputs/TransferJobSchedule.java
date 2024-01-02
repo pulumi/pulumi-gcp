@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.TransferJobScheduleScheduleEndDate;
 import com.pulumi.gcp.storage.outputs.TransferJobScheduleScheduleStartDate;
 import com.pulumi.gcp.storage.outputs.TransferJobScheduleStartTimeOfDay;
@@ -89,21 +90,27 @@ public final class TransferJobSchedule {
 
         @CustomType.Setter
         public Builder repeatInterval(@Nullable String repeatInterval) {
+
             this.repeatInterval = repeatInterval;
             return this;
         }
         @CustomType.Setter
         public Builder scheduleEndDate(@Nullable TransferJobScheduleScheduleEndDate scheduleEndDate) {
+
             this.scheduleEndDate = scheduleEndDate;
             return this;
         }
         @CustomType.Setter
         public Builder scheduleStartDate(TransferJobScheduleScheduleStartDate scheduleStartDate) {
-            this.scheduleStartDate = Objects.requireNonNull(scheduleStartDate);
+            if (scheduleStartDate == null) {
+              throw new MissingRequiredPropertyException("TransferJobSchedule", "scheduleStartDate");
+            }
+            this.scheduleStartDate = scheduleStartDate;
             return this;
         }
         @CustomType.Setter
         public Builder startTimeOfDay(@Nullable TransferJobScheduleStartTimeOfDay startTimeOfDay) {
+
             this.startTimeOfDay = startTimeOfDay;
             return this;
         }

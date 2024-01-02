@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -86,17 +87,26 @@ public final class GetTiersTier {
 
         @CustomType.Setter
         public Builder diskQuota(Integer diskQuota) {
-            this.diskQuota = Objects.requireNonNull(diskQuota);
+            if (diskQuota == null) {
+              throw new MissingRequiredPropertyException("GetTiersTier", "diskQuota");
+            }
+            this.diskQuota = diskQuota;
             return this;
         }
         @CustomType.Setter
         public Builder ram(Integer ram) {
-            this.ram = Objects.requireNonNull(ram);
+            if (ram == null) {
+              throw new MissingRequiredPropertyException("GetTiersTier", "ram");
+            }
+            this.ram = ram;
             return this;
         }
         @CustomType.Setter
         public Builder regions(List<String> regions) {
-            this.regions = Objects.requireNonNull(regions);
+            if (regions == null) {
+              throw new MissingRequiredPropertyException("GetTiersTier", "regions");
+            }
+            this.regions = regions;
             return this;
         }
         public Builder regions(String... regions) {
@@ -104,7 +114,10 @@ public final class GetTiersTier {
         }
         @CustomType.Setter
         public Builder tier(String tier) {
-            this.tier = Objects.requireNonNull(tier);
+            if (tier == null) {
+              throw new MissingRequiredPropertyException("GetTiersTier", "tier");
+            }
+            this.tier = tier;
             return this;
         }
         public GetTiersTier build() {

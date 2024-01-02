@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -48,17 +49,26 @@ public final class GetServiceTemplateContainerResource {
 
         @CustomType.Setter
         public Builder cpuIdle(Boolean cpuIdle) {
-            this.cpuIdle = Objects.requireNonNull(cpuIdle);
+            if (cpuIdle == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerResource", "cpuIdle");
+            }
+            this.cpuIdle = cpuIdle;
             return this;
         }
         @CustomType.Setter
         public Builder limits(Map<String,String> limits) {
-            this.limits = Objects.requireNonNull(limits);
+            if (limits == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerResource", "limits");
+            }
+            this.limits = limits;
             return this;
         }
         @CustomType.Setter
         public Builder startupCpuBoost(Boolean startupCpuBoost) {
-            this.startupCpuBoost = Objects.requireNonNull(startupCpuBoost);
+            if (startupCpuBoost == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerResource", "startupCpuBoost");
+            }
+            this.startupCpuBoost = startupCpuBoost;
             return this;
         }
         public GetServiceTemplateContainerResource build() {

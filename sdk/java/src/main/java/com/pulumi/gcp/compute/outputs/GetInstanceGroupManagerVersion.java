@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceGroupManagerVersionTargetSize;
 import java.lang.String;
 import java.util.List;
@@ -56,17 +57,26 @@ public final class GetInstanceGroupManagerVersion {
 
         @CustomType.Setter
         public Builder instanceTemplate(String instanceTemplate) {
-            this.instanceTemplate = Objects.requireNonNull(instanceTemplate);
+            if (instanceTemplate == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerVersion", "instanceTemplate");
+            }
+            this.instanceTemplate = instanceTemplate;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerVersion", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder targetSizes(List<GetInstanceGroupManagerVersionTargetSize> targetSizes) {
-            this.targetSizes = Objects.requireNonNull(targetSizes);
+            if (targetSizes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerVersion", "targetSizes");
+            }
+            this.targetSizes = targetSizes;
             return this;
         }
         public Builder targetSizes(GetInstanceGroupManagerVersionTargetSize... targetSizes) {

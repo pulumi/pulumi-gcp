@@ -4,6 +4,7 @@
 package com.pulumi.gcp.identityplatform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.identityplatform.outputs.InboundSamlConfigIdpConfigIdpCertificate;
 import java.lang.Boolean;
 import java.lang.String;
@@ -91,7 +92,10 @@ public final class InboundSamlConfigIdpConfig {
 
         @CustomType.Setter
         public Builder idpCertificates(List<InboundSamlConfigIdpConfigIdpCertificate> idpCertificates) {
-            this.idpCertificates = Objects.requireNonNull(idpCertificates);
+            if (idpCertificates == null) {
+              throw new MissingRequiredPropertyException("InboundSamlConfigIdpConfig", "idpCertificates");
+            }
+            this.idpCertificates = idpCertificates;
             return this;
         }
         public Builder idpCertificates(InboundSamlConfigIdpConfigIdpCertificate... idpCertificates) {
@@ -99,17 +103,24 @@ public final class InboundSamlConfigIdpConfig {
         }
         @CustomType.Setter
         public Builder idpEntityId(String idpEntityId) {
-            this.idpEntityId = Objects.requireNonNull(idpEntityId);
+            if (idpEntityId == null) {
+              throw new MissingRequiredPropertyException("InboundSamlConfigIdpConfig", "idpEntityId");
+            }
+            this.idpEntityId = idpEntityId;
             return this;
         }
         @CustomType.Setter
         public Builder signRequest(@Nullable Boolean signRequest) {
+
             this.signRequest = signRequest;
             return this;
         }
         @CustomType.Setter
         public Builder ssoUrl(String ssoUrl) {
-            this.ssoUrl = Objects.requireNonNull(ssoUrl);
+            if (ssoUrl == null) {
+              throw new MissingRequiredPropertyException("InboundSamlConfigIdpConfig", "ssoUrl");
+            }
+            this.ssoUrl = ssoUrl;
             return this;
         }
         public InboundSamlConfigIdpConfig build() {

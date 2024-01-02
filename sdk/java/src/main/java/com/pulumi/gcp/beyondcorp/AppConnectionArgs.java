@@ -5,6 +5,7 @@ package com.pulumi.gcp.beyondcorp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.beyondcorp.inputs.AppConnectionApplicationEndpointArgs;
 import com.pulumi.gcp.beyondcorp.inputs.AppConnectionGatewayArgs;
 import java.lang.String;
@@ -418,7 +419,9 @@ public final class AppConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppConnectionArgs build() {
-            $.applicationEndpoint = Objects.requireNonNull($.applicationEndpoint, "expected parameter 'applicationEndpoint' to be non-null");
+            if ($.applicationEndpoint == null) {
+                throw new MissingRequiredPropertyException("AppConnectionArgs", "applicationEndpoint");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AzureNodePoolAutoscalingArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolConfigArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolManagementArgs;
@@ -500,13 +501,27 @@ public final class AzureNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AzureNodePoolArgs build() {
-            $.autoscaling = Objects.requireNonNull($.autoscaling, "expected parameter 'autoscaling' to be non-null");
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.maxPodsConstraint = Objects.requireNonNull($.maxPodsConstraint, "expected parameter 'maxPodsConstraint' to be non-null");
-            $.subnetId = Objects.requireNonNull($.subnetId, "expected parameter 'subnetId' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.autoscaling == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolArgs", "autoscaling");
+            }
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolArgs", "cluster");
+            }
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolArgs", "config");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolArgs", "location");
+            }
+            if ($.maxPodsConstraint == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolArgs", "maxPodsConstraint");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolArgs", "subnetId");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolArgs", "version");
+            }
             return $;
         }
     }

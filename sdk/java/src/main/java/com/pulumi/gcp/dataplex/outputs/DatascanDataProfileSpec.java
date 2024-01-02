@@ -118,26 +118,31 @@ public final class DatascanDataProfileSpec {
 
         @CustomType.Setter
         public Builder excludeFields(@Nullable DatascanDataProfileSpecExcludeFields excludeFields) {
+
             this.excludeFields = excludeFields;
             return this;
         }
         @CustomType.Setter
         public Builder includeFields(@Nullable DatascanDataProfileSpecIncludeFields includeFields) {
+
             this.includeFields = includeFields;
             return this;
         }
         @CustomType.Setter
         public Builder postScanActions(@Nullable DatascanDataProfileSpecPostScanActions postScanActions) {
+
             this.postScanActions = postScanActions;
             return this;
         }
         @CustomType.Setter
         public Builder rowFilter(@Nullable String rowFilter) {
+
             this.rowFilter = rowFilter;
             return this;
         }
         @CustomType.Setter
         public Builder samplingPercent(@Nullable Double samplingPercent) {
+
             this.samplingPercent = samplingPercent;
             return this;
         }

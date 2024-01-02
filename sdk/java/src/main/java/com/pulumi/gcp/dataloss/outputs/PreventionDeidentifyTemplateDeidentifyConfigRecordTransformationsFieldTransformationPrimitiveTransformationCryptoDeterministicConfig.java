@@ -104,16 +104,19 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder context(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigContext context) {
+
             this.context = context;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoKey(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigCryptoKey cryptoKey) {
+
             this.cryptoKey = cryptoKey;
             return this;
         }
         @CustomType.Setter
         public Builder surrogateInfoType(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfigSurrogateInfoType surrogateInfoType) {
+
             this.surrogateInfoType = surrogateInfoType;
             return this;
         }

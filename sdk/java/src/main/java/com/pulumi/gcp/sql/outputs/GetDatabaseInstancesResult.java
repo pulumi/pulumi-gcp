@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstance;
 import java.lang.String;
 import java.util.List;
@@ -88,17 +89,24 @@ public final class GetDatabaseInstancesResult {
 
         @CustomType.Setter
         public Builder databaseVersion(@Nullable String databaseVersion) {
+
             this.databaseVersion = databaseVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instances(List<GetDatabaseInstancesInstance> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesResult", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(GetDatabaseInstancesInstance... instances) {
@@ -106,26 +114,31 @@ public final class GetDatabaseInstancesResult {
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder tier(@Nullable String tier) {
+
             this.tier = tier;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

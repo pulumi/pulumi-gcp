@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -243,7 +244,9 @@ public final class ServiceIamPolicyArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ServiceIamPolicyArgs build() {
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("ServiceIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

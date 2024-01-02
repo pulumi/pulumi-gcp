@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -307,7 +308,9 @@ public final class TableExternalDataConfigurationCsvOptionsArgs extends com.pulu
         }
 
         public TableExternalDataConfigurationCsvOptionsArgs build() {
-            $.quote = Objects.requireNonNull($.quote, "expected parameter 'quote' to be non-null");
+            if ($.quote == null) {
+                throw new MissingRequiredPropertyException("TableExternalDataConfigurationCsvOptionsArgs", "quote");
+            }
             return $;
         }
     }

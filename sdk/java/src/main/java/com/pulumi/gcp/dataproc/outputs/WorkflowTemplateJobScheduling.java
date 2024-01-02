@@ -58,11 +58,13 @@ public final class WorkflowTemplateJobScheduling {
 
         @CustomType.Setter
         public Builder maxFailuresPerHour(@Nullable Integer maxFailuresPerHour) {
+
             this.maxFailuresPerHour = maxFailuresPerHour;
             return this;
         }
         @CustomType.Setter
         public Builder maxFailuresTotal(@Nullable Integer maxFailuresTotal) {
+
             this.maxFailuresTotal = maxFailuresTotal;
             return this;
         }

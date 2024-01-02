@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs extends c
         }
 
         public CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs build() {
-            $.signatureAlgorithm = Objects.requireNonNull($.signatureAlgorithm, "expected parameter 'signatureAlgorithm' to be non-null");
+            if ($.signatureAlgorithm == null) {
+                throw new MissingRequiredPropertyException("CaPoolIssuancePolicyAllowedKeyTypeEllipticCurveArgs", "signatureAlgorithm");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -80,17 +81,22 @@ public final class NodePoolPlacementPolicy {
 
         @CustomType.Setter
         public Builder policyName(@Nullable String policyName) {
+
             this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder tpuTopology(@Nullable String tpuTopology) {
+
             this.tpuTopology = tpuTopology;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("NodePoolPlacementPolicy", "type");
+            }
+            this.type = type;
             return this;
         }
         public NodePoolPlacementPolicy build() {

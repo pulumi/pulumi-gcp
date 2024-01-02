@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkSecondaryIpRange;
 import java.lang.Boolean;
 import java.lang.String;
@@ -179,57 +180,88 @@ public final class GetSubnetworkResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayAddress(String gatewayAddress) {
-            this.gatewayAddress = Objects.requireNonNull(gatewayAddress);
+            if (gatewayAddress == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "gatewayAddress");
+            }
+            this.gatewayAddress = gatewayAddress;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internalIpv6Prefix(String internalIpv6Prefix) {
-            this.internalIpv6Prefix = Objects.requireNonNull(internalIpv6Prefix);
+            if (internalIpv6Prefix == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "internalIpv6Prefix");
+            }
+            this.internalIpv6Prefix = internalIpv6Prefix;
             return this;
         }
         @CustomType.Setter
         public Builder ipCidrRange(String ipCidrRange) {
-            this.ipCidrRange = Objects.requireNonNull(ipCidrRange);
+            if (ipCidrRange == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "ipCidrRange");
+            }
+            this.ipCidrRange = ipCidrRange;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpGoogleAccess(Boolean privateIpGoogleAccess) {
-            this.privateIpGoogleAccess = Objects.requireNonNull(privateIpGoogleAccess);
+            if (privateIpGoogleAccess == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "privateIpGoogleAccess");
+            }
+            this.privateIpGoogleAccess = privateIpGoogleAccess;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryIpRanges(List<GetSubnetworkSecondaryIpRange> secondaryIpRanges) {
-            this.secondaryIpRanges = Objects.requireNonNull(secondaryIpRanges);
+            if (secondaryIpRanges == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "secondaryIpRanges");
+            }
+            this.secondaryIpRanges = secondaryIpRanges;
             return this;
         }
         public Builder secondaryIpRanges(GetSubnetworkSecondaryIpRange... secondaryIpRanges) {
@@ -237,7 +269,10 @@ public final class GetSubnetworkResult {
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         public GetSubnetworkResult build() {

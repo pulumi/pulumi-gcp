@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs;
@@ -452,7 +453,9 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
         }
 
         public FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs build() {
-            $.installSpec = Objects.requireNonNull($.installSpec, "expected parameter 'installSpec' to be non-null");
+            if ($.installSpec == null) {
+                throw new MissingRequiredPropertyException("FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs", "installSpec");
+            }
             return $;
         }
     }

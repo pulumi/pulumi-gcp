@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterMasterAuthorizedNetworksConfigCidrBlock;
 import java.lang.Boolean;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
 
         @CustomType.Setter
         public Builder cidrBlocks(List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks) {
-            this.cidrBlocks = Objects.requireNonNull(cidrBlocks);
+            if (cidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetClusterMasterAuthorizedNetworksConfig", "cidrBlocks");
+            }
+            this.cidrBlocks = cidrBlocks;
             return this;
         }
         public Builder cidrBlocks(GetClusterMasterAuthorizedNetworksConfigCidrBlock... cidrBlocks) {
@@ -50,7 +54,10 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
         }
         @CustomType.Setter
         public Builder gcpPublicCidrsAccessEnabled(Boolean gcpPublicCidrsAccessEnabled) {
-            this.gcpPublicCidrsAccessEnabled = Objects.requireNonNull(gcpPublicCidrsAccessEnabled);
+            if (gcpPublicCidrsAccessEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterMasterAuthorizedNetworksConfig", "gcpPublicCidrsAccessEnabled");
+            }
+            this.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
             return this;
         }
         public GetClusterMasterAuthorizedNetworksConfig build() {

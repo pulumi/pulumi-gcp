@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,11 +124,15 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
 
         @CustomType.Setter
         public Builder actions(String actions) {
-            this.actions = Objects.requireNonNull(actions);
+            if (actions == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures", "actions");
+            }
+            this.actions = actions;
             return this;
         }
         @CustomType.Setter
         public Builder copiedParameters(@Nullable List<String> copiedParameters) {
+
             this.copiedParameters = copiedParameters;
             return this;
         }
@@ -136,16 +141,19 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         }
         @CustomType.Setter
         public Builder keyset(@Nullable String keyset) {
+
             this.keyset = keyset;
             return this;
         }
         @CustomType.Setter
         public Builder tokenQueryParameter(@Nullable String tokenQueryParameter) {
+
             this.tokenQueryParameter = tokenQueryParameter;
             return this;
         }
         @CustomType.Setter
         public Builder tokenTtl(@Nullable String tokenTtl) {
+
             this.tokenTtl = tokenTtl;
             return this;
         }

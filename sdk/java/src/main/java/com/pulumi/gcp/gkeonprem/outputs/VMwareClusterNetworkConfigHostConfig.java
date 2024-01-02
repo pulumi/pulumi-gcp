@@ -76,6 +76,7 @@ public final class VMwareClusterNetworkConfigHostConfig {
 
         @CustomType.Setter
         public Builder dnsSearchDomains(@Nullable List<String> dnsSearchDomains) {
+
             this.dnsSearchDomains = dnsSearchDomains;
             return this;
         }
@@ -84,6 +85,7 @@ public final class VMwareClusterNetworkConfigHostConfig {
         }
         @CustomType.Setter
         public Builder dnsServers(@Nullable List<String> dnsServers) {
+
             this.dnsServers = dnsServers;
             return this;
         }
@@ -92,6 +94,7 @@ public final class VMwareClusterNetworkConfigHostConfig {
         }
         @CustomType.Setter
         public Builder ntpServers(@Nullable List<String> ntpServers) {
+
             this.ntpServers = ntpServers;
             return this;
         }

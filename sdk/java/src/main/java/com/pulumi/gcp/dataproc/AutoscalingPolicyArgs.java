@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.AutoscalingPolicyBasicAlgorithmArgs;
 import com.pulumi.gcp.dataproc.inputs.AutoscalingPolicySecondaryWorkerConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.AutoscalingPolicyWorkerConfigArgs;
@@ -300,7 +301,9 @@ public final class AutoscalingPolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AutoscalingPolicyArgs build() {
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyArgs", "policyId");
+            }
             return $;
         }
     }

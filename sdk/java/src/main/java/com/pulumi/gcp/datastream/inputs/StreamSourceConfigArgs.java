@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigArgs;
@@ -202,7 +203,9 @@ public final class StreamSourceConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public StreamSourceConfigArgs build() {
-            $.sourceConnectionProfile = Objects.requireNonNull($.sourceConnectionProfile, "expected parameter 'sourceConnectionProfile' to be non-null");
+            if ($.sourceConnectionProfile == null) {
+                throw new MissingRequiredPropertyException("StreamSourceConfigArgs", "sourceConnectionProfile");
+            }
             return $;
         }
     }

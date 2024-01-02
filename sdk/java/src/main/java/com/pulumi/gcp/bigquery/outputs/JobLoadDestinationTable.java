@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,17 +75,22 @@ public final class JobLoadDestinationTable {
 
         @CustomType.Setter
         public Builder datasetId(@Nullable String datasetId) {
+
             this.datasetId = datasetId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder tableId(String tableId) {
-            this.tableId = Objects.requireNonNull(tableId);
+            if (tableId == null) {
+              throw new MissingRequiredPropertyException("JobLoadDestinationTable", "tableId");
+            }
+            this.tableId = tableId;
             return this;
         }
         public JobLoadDestinationTable build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceFromMachineImageGuestAcceleratorArgs;
@@ -1194,7 +1195,9 @@ public final class InstanceFromMachineImageArgs extends com.pulumi.resources.Res
         }
 
         public InstanceFromMachineImageArgs build() {
-            $.sourceMachineImage = Objects.requireNonNull($.sourceMachineImage, "expected parameter 'sourceMachineImage' to be non-null");
+            if ($.sourceMachineImage == null) {
+                throw new MissingRequiredPropertyException("InstanceFromMachineImageArgs", "sourceMachineImage");
+            }
             return $;
         }
     }

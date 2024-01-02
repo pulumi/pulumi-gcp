@@ -5,6 +5,7 @@ package com.pulumi.gcp.firestore;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.firestore.inputs.FieldIndexConfigArgs;
 import com.pulumi.gcp.firestore.inputs.FieldTtlConfigArgs;
 import java.lang.String;
@@ -295,8 +296,12 @@ public final class FieldArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FieldArgs build() {
-            $.collection = Objects.requireNonNull($.collection, "expected parameter 'collection' to be non-null");
-            $.field = Objects.requireNonNull($.field, "expected parameter 'field' to be non-null");
+            if ($.collection == null) {
+                throw new MissingRequiredPropertyException("FieldArgs", "collection");
+            }
+            if ($.field == null) {
+                throw new MissingRequiredPropertyException("FieldArgs", "field");
+            }
             return $;
         }
     }

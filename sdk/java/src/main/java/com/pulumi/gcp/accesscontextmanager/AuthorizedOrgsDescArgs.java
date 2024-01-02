@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -378,7 +379,9 @@ public final class AuthorizedOrgsDescArgs extends com.pulumi.resources.ResourceA
         }
 
         public AuthorizedOrgsDescArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("AuthorizedOrgsDescArgs", "parent");
+            }
             return $;
         }
     }

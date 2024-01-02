@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetRegionDiskSourceSnapshotEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskSourceSnapshotEncryptionKey", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder rawKey(String rawKey) {
-            this.rawKey = Objects.requireNonNull(rawKey);
+            if (rawKey == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskSourceSnapshotEncryptionKey", "rawKey");
+            }
+            this.rawKey = rawKey;
             return this;
         }
         @CustomType.Setter
         public Builder sha256(String sha256) {
-            this.sha256 = Objects.requireNonNull(sha256);
+            if (sha256 == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskSourceSnapshotEncryptionKey", "sha256");
+            }
+            this.sha256 = sha256;
             return this;
         }
         public GetRegionDiskSourceSnapshotEncryptionKey build() {

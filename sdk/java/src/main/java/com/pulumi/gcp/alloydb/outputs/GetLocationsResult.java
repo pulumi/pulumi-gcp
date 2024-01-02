@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.outputs.GetLocationsLocation;
 import java.lang.String;
 import java.util.List;
@@ -66,12 +67,18 @@ public final class GetLocationsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLocationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder locations(List<GetLocationsLocation> locations) {
-            this.locations = Objects.requireNonNull(locations);
+            if (locations == null) {
+              throw new MissingRequiredPropertyException("GetLocationsResult", "locations");
+            }
+            this.locations = locations;
             return this;
         }
         public Builder locations(GetLocationsLocation... locations) {
@@ -79,6 +86,7 @@ public final class GetLocationsResult {
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }

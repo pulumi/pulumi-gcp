@@ -62,11 +62,13 @@ public final class GuestPoliciesRecipeArtifactRemote {
 
         @CustomType.Setter
         public Builder checkSum(@Nullable String checkSum) {
+
             this.checkSum = checkSum;
             return this;
         }
         @CustomType.Setter
         public Builder uri(@Nullable String uri) {
+
             this.uri = uri;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -159,8 +160,12 @@ public final class ConnectionProfileAlloydbSettingsInitialUserArgs extends com.p
         }
 
         public ConnectionProfileAlloydbSettingsInitialUserArgs build() {
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.user = Objects.requireNonNull($.user, "expected parameter 'user' to be non-null");
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsInitialUserArgs", "password");
+            }
+            if ($.user == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsInitialUserArgs", "user");
+            }
             return $;
         }
     }

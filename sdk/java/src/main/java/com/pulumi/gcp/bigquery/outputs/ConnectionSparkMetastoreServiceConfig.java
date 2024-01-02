@@ -44,6 +44,7 @@ public final class ConnectionSparkMetastoreServiceConfig {
 
         @CustomType.Setter
         public Builder metastoreService(@Nullable String metastoreService) {
+
             this.metastoreService = metastoreService;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datacatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,32 +91,50 @@ public final class GetEntryGroupIamPolicyResult {
 
         @CustomType.Setter
         public Builder entryGroup(String entryGroup) {
-            this.entryGroup = Objects.requireNonNull(entryGroup);
+            if (entryGroup == null) {
+              throw new MissingRequiredPropertyException("GetEntryGroupIamPolicyResult", "entryGroup");
+            }
+            this.entryGroup = entryGroup;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetEntryGroupIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEntryGroupIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetEntryGroupIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetEntryGroupIamPolicyResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetEntryGroupIamPolicyResult", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetEntryGroupIamPolicyResult build() {

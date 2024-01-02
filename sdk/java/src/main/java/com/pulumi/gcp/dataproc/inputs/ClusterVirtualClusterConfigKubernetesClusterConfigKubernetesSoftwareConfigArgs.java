@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -126,7 +127,9 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesS
         }
 
         public ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs build() {
-            $.componentVersion = Objects.requireNonNull($.componentVersion, "expected parameter 'componentVersion' to be non-null");
+            if ($.componentVersion == null) {
+                throw new MissingRequiredPropertyException("ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs", "componentVersion");
+            }
             return $;
         }
     }

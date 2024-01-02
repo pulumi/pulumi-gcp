@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigAuthConfigAdditionalVariable;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigAuthConfigUserPassword;
 import java.lang.String;
@@ -95,6 +96,7 @@ public final class ConnectionEventingConfigAuthConfig {
 
         @CustomType.Setter
         public Builder additionalVariables(@Nullable List<ConnectionEventingConfigAuthConfigAdditionalVariable> additionalVariables) {
+
             this.additionalVariables = additionalVariables;
             return this;
         }
@@ -103,17 +105,24 @@ public final class ConnectionEventingConfigAuthConfig {
         }
         @CustomType.Setter
         public Builder authKey(@Nullable String authKey) {
+
             this.authKey = authKey;
             return this;
         }
         @CustomType.Setter
         public Builder authType(String authType) {
-            this.authType = Objects.requireNonNull(authType);
+            if (authType == null) {
+              throw new MissingRequiredPropertyException("ConnectionEventingConfigAuthConfig", "authType");
+            }
+            this.authType = authType;
             return this;
         }
         @CustomType.Setter
         public Builder userPassword(ConnectionEventingConfigAuthConfigUserPassword userPassword) {
-            this.userPassword = Objects.requireNonNull(userPassword);
+            if (userPassword == null) {
+              throw new MissingRequiredPropertyException("ConnectionEventingConfigAuthConfig", "userPassword");
+            }
+            this.userPassword = userPassword;
             return this;
         }
         public ConnectionEventingConfigAuthConfig build() {

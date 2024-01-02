@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -59,11 +60,15 @@ public final class WorkflowTemplatePlacementClusterSelector {
 
         @CustomType.Setter
         public Builder clusterLabels(Map<String,String> clusterLabels) {
-            this.clusterLabels = Objects.requireNonNull(clusterLabels);
+            if (clusterLabels == null) {
+              throw new MissingRequiredPropertyException("WorkflowTemplatePlacementClusterSelector", "clusterLabels");
+            }
+            this.clusterLabels = clusterLabels;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

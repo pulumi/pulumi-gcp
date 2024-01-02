@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,22 +79,34 @@ public final class GetInstanceNetworkInterfaceAccessConfig {
 
         @CustomType.Setter
         public Builder natIp(String natIp) {
-            this.natIp = Objects.requireNonNull(natIp);
+            if (natIp == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkInterfaceAccessConfig", "natIp");
+            }
+            this.natIp = natIp;
             return this;
         }
         @CustomType.Setter
         public Builder networkTier(String networkTier) {
-            this.networkTier = Objects.requireNonNull(networkTier);
+            if (networkTier == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkInterfaceAccessConfig", "networkTier");
+            }
+            this.networkTier = networkTier;
             return this;
         }
         @CustomType.Setter
         public Builder publicPtrDomainName(String publicPtrDomainName) {
-            this.publicPtrDomainName = Objects.requireNonNull(publicPtrDomainName);
+            if (publicPtrDomainName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkInterfaceAccessConfig", "publicPtrDomainName");
+            }
+            this.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
         @CustomType.Setter
         public Builder securityPolicy(String securityPolicy) {
-            this.securityPolicy = Objects.requireNonNull(securityPolicy);
+            if (securityPolicy == null) {
+              throw new MissingRequiredPropertyException("GetInstanceNetworkInterfaceAccessConfig", "securityPolicy");
+            }
+            this.securityPolicy = securityPolicy;
             return this;
         }
         public GetInstanceNetworkInterfaceAccessConfig build() {

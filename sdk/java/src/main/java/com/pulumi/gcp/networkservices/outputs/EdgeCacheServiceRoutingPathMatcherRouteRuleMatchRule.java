@@ -136,11 +136,13 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
 
         @CustomType.Setter
         public Builder fullPathMatch(@Nullable String fullPathMatch) {
+
             this.fullPathMatch = fullPathMatch;
             return this;
         }
         @CustomType.Setter
         public Builder headerMatches(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch> headerMatches) {
+
             this.headerMatches = headerMatches;
             return this;
         }
@@ -149,21 +151,25 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule {
         }
         @CustomType.Setter
         public Builder ignoreCase(@Nullable Boolean ignoreCase) {
+
             this.ignoreCase = ignoreCase;
             return this;
         }
         @CustomType.Setter
         public Builder pathTemplateMatch(@Nullable String pathTemplateMatch) {
+
             this.pathTemplateMatch = pathTemplateMatch;
             return this;
         }
         @CustomType.Setter
         public Builder prefixMatch(@Nullable String prefixMatch) {
+
             this.prefixMatch = prefixMatch;
             return this;
         }
         @CustomType.Setter
         public Builder queryParameterMatches(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleQueryParameterMatch> queryParameterMatches) {
+
             this.queryParameterMatches = queryParameterMatches;
             return this;
         }

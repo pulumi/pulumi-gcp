@@ -4,6 +4,7 @@
 package com.pulumi.gcp.deploymentmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.deploymentmanager.outputs.DeploymentTargetConfig;
 import com.pulumi.gcp.deploymentmanager.outputs.DeploymentTargetImport;
 import java.util.List;
@@ -67,11 +68,15 @@ public final class DeploymentTarget {
 
         @CustomType.Setter
         public Builder config(DeploymentTargetConfig config) {
-            this.config = Objects.requireNonNull(config);
+            if (config == null) {
+              throw new MissingRequiredPropertyException("DeploymentTarget", "config");
+            }
+            this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder imports(@Nullable List<DeploymentTargetImport> imports) {
+
             this.imports = imports;
             return this;
         }

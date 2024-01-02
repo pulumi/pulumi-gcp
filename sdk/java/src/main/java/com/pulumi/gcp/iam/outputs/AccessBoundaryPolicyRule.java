@@ -61,11 +61,13 @@ public final class AccessBoundaryPolicyRule {
 
         @CustomType.Setter
         public Builder accessBoundaryRule(@Nullable AccessBoundaryPolicyRuleAccessBoundaryRule accessBoundaryRule) {
+
             this.accessBoundaryRule = accessBoundaryRule;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }

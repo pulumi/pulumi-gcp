@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -311,8 +312,12 @@ public final class OauthIdpConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public OauthIdpConfigArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.issuer = Objects.requireNonNull($.issuer, "expected parameter 'issuer' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("OauthIdpConfigArgs", "clientId");
+            }
+            if ($.issuer == null) {
+                throw new MissingRequiredPropertyException("OauthIdpConfigArgs", "issuer");
+            }
             return $;
         }
     }

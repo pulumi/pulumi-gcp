@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource;
 import java.lang.String;
 import java.util.List;
@@ -65,6 +66,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
 
         @CustomType.Setter
         public Builder properties(@Nullable List<String> properties) {
+
             this.properties = properties;
             return this;
         }
@@ -73,7 +75,10 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi {
         }
         @CustomType.Setter
         public Builder source(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSource source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi", "source");
+            }
+            this.source = source;
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi build() {

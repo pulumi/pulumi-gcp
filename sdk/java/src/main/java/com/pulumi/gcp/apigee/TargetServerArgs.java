@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigee.inputs.TargetServerSSlInfoArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -358,9 +359,15 @@ public final class TargetServerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TargetServerArgs build() {
-            $.envId = Objects.requireNonNull($.envId, "expected parameter 'envId' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.envId == null) {
+                throw new MissingRequiredPropertyException("TargetServerArgs", "envId");
+            }
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("TargetServerArgs", "host");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("TargetServerArgs", "port");
+            }
             return $;
         }
     }

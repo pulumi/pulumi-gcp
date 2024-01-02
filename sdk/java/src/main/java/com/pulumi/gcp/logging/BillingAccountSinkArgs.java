@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.BillingAccountSinkBigqueryOptionsArgs;
 import com.pulumi.gcp.logging.inputs.BillingAccountSinkExclusionArgs;
 import java.lang.Boolean;
@@ -389,8 +390,12 @@ public final class BillingAccountSinkArgs extends com.pulumi.resources.ResourceA
         }
 
         public BillingAccountSinkArgs build() {
-            $.billingAccount = Objects.requireNonNull($.billingAccount, "expected parameter 'billingAccount' to be non-null");
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
+            if ($.billingAccount == null) {
+                throw new MissingRequiredPropertyException("BillingAccountSinkArgs", "billingAccount");
+            }
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("BillingAccountSinkArgs", "destination");
+            }
             return $;
         }
     }

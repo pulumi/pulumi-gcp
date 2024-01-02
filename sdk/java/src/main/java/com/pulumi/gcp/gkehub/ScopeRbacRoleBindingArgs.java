@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.inputs.ScopeRbacRoleBindingRoleArgs;
 import java.lang.String;
 import java.util.Map;
@@ -340,9 +341,15 @@ public final class ScopeRbacRoleBindingArgs extends com.pulumi.resources.Resourc
         }
 
         public ScopeRbacRoleBindingArgs build() {
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.scopeId = Objects.requireNonNull($.scopeId, "expected parameter 'scopeId' to be non-null");
-            $.scopeRbacRoleBindingId = Objects.requireNonNull($.scopeRbacRoleBindingId, "expected parameter 'scopeRbacRoleBindingId' to be non-null");
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ScopeRbacRoleBindingArgs", "role");
+            }
+            if ($.scopeId == null) {
+                throw new MissingRequiredPropertyException("ScopeRbacRoleBindingArgs", "scopeId");
+            }
+            if ($.scopeRbacRoleBindingId == null) {
+                throw new MissingRequiredPropertyException("ScopeRbacRoleBindingArgs", "scopeRbacRoleBindingId");
+            }
             return $;
         }
     }

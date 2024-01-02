@@ -64,11 +64,13 @@ public final class SnapshotSourceDiskEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
+
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder rawKey(@Nullable String rawKey) {
+
             this.rawKey = rawKey;
             return this;
         }

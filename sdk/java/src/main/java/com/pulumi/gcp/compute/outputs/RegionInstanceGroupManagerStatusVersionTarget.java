@@ -36,6 +36,7 @@ public final class RegionInstanceGroupManagerStatusVersionTarget {
 
         @CustomType.Setter
         public Builder isReached(@Nullable Boolean isReached) {
+
             this.isReached = isReached;
             return this;
         }

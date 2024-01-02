@@ -46,6 +46,7 @@ public final class RegionHealthCheckLogConfig {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }

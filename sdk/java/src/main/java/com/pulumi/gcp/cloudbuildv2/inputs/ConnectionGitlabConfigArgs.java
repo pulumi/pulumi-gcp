@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuildv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGitlabConfigAuthorizerCredentialArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGitlabConfigReadAuthorizerCredentialArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.ConnectionGitlabConfigServiceDirectoryConfigArgs;
@@ -301,9 +302,15 @@ public final class ConnectionGitlabConfigArgs extends com.pulumi.resources.Resou
         }
 
         public ConnectionGitlabConfigArgs build() {
-            $.authorizerCredential = Objects.requireNonNull($.authorizerCredential, "expected parameter 'authorizerCredential' to be non-null");
-            $.readAuthorizerCredential = Objects.requireNonNull($.readAuthorizerCredential, "expected parameter 'readAuthorizerCredential' to be non-null");
-            $.webhookSecretSecretVersion = Objects.requireNonNull($.webhookSecretSecretVersion, "expected parameter 'webhookSecretSecretVersion' to be non-null");
+            if ($.authorizerCredential == null) {
+                throw new MissingRequiredPropertyException("ConnectionGitlabConfigArgs", "authorizerCredential");
+            }
+            if ($.readAuthorizerCredential == null) {
+                throw new MissingRequiredPropertyException("ConnectionGitlabConfigArgs", "readAuthorizerCredential");
+            }
+            if ($.webhookSecretSecretVersion == null) {
+                throw new MissingRequiredPropertyException("ConnectionGitlabConfigArgs", "webhookSecretSecretVersion");
+            }
             return $;
         }
     }

@@ -73,11 +73,13 @@ public final class ExternalVpnGatewayInterface {
 
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }

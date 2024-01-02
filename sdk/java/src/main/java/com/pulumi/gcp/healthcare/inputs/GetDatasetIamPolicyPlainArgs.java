@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -72,7 +73,9 @@ public final class GetDatasetIamPolicyPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetDatasetIamPolicyPlainArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("GetDatasetIamPolicyPlainArgs", "datasetId");
+            }
             return $;
         }
     }

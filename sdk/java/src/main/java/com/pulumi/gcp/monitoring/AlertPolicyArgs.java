@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyAlertStrategyArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyDocumentationArgs;
@@ -561,9 +562,15 @@ public final class AlertPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AlertPolicyArgs build() {
-            $.combiner = Objects.requireNonNull($.combiner, "expected parameter 'combiner' to be non-null");
-            $.conditions = Objects.requireNonNull($.conditions, "expected parameter 'conditions' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.combiner == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyArgs", "combiner");
+            }
+            if ($.conditions == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyArgs", "conditions");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyArgs", "displayName");
+            }
             return $;
         }
     }

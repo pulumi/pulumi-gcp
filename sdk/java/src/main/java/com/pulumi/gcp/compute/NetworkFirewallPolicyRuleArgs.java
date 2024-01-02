@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyRuleMatchArgs;
 import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyRuleTargetSecureTagArgs;
 import java.lang.Boolean;
@@ -508,11 +509,21 @@ public final class NetworkFirewallPolicyRuleArgs extends com.pulumi.resources.Re
         }
 
         public NetworkFirewallPolicyRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.direction = Objects.requireNonNull($.direction, "expected parameter 'direction' to be non-null");
-            $.firewallPolicy = Objects.requireNonNull($.firewallPolicy, "expected parameter 'firewallPolicy' to be non-null");
-            $.match = Objects.requireNonNull($.match, "expected parameter 'match' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("NetworkFirewallPolicyRuleArgs", "action");
+            }
+            if ($.direction == null) {
+                throw new MissingRequiredPropertyException("NetworkFirewallPolicyRuleArgs", "direction");
+            }
+            if ($.firewallPolicy == null) {
+                throw new MissingRequiredPropertyException("NetworkFirewallPolicyRuleArgs", "firewallPolicy");
+            }
+            if ($.match == null) {
+                throw new MissingRequiredPropertyException("NetworkFirewallPolicyRuleArgs", "match");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("NetworkFirewallPolicyRuleArgs", "priority");
+            }
             return $;
         }
     }

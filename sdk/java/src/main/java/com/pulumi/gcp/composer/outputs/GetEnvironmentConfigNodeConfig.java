@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicy;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -98,17 +99,26 @@ public final class GetEnvironmentConfigNodeConfig {
 
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
-            this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
+            if (diskSizeGb == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "diskSizeGb");
+            }
+            this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder enableIpMasqAgent(Boolean enableIpMasqAgent) {
-            this.enableIpMasqAgent = Objects.requireNonNull(enableIpMasqAgent);
+            if (enableIpMasqAgent == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "enableIpMasqAgent");
+            }
+            this.enableIpMasqAgent = enableIpMasqAgent;
             return this;
         }
         @CustomType.Setter
         public Builder ipAllocationPolicies(List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies) {
-            this.ipAllocationPolicies = Objects.requireNonNull(ipAllocationPolicies);
+            if (ipAllocationPolicies == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "ipAllocationPolicies");
+            }
+            this.ipAllocationPolicies = ipAllocationPolicies;
             return this;
         }
         public Builder ipAllocationPolicies(GetEnvironmentConfigNodeConfigIpAllocationPolicy... ipAllocationPolicies) {
@@ -116,22 +126,34 @@ public final class GetEnvironmentConfigNodeConfig {
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder maxPodsPerNode(Integer maxPodsPerNode) {
-            this.maxPodsPerNode = Objects.requireNonNull(maxPodsPerNode);
+            if (maxPodsPerNode == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "maxPodsPerNode");
+            }
+            this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder oauthScopes(List<String> oauthScopes) {
-            this.oauthScopes = Objects.requireNonNull(oauthScopes);
+            if (oauthScopes == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "oauthScopes");
+            }
+            this.oauthScopes = oauthScopes;
             return this;
         }
         public Builder oauthScopes(String... oauthScopes) {
@@ -139,17 +161,26 @@ public final class GetEnvironmentConfigNodeConfig {
         }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
-            this.serviceAccount = Objects.requireNonNull(serviceAccount);
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
-            this.subnetwork = Objects.requireNonNull(subnetwork);
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -157,7 +188,10 @@ public final class GetEnvironmentConfigNodeConfig {
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetEnvironmentConfigNodeConfig build() {

@@ -208,6 +208,7 @@ public final class BackendServiceCdnPolicy {
 
         @CustomType.Setter
         public Builder bypassCacheOnRequestHeaders(@Nullable List<BackendServiceCdnPolicyBypassCacheOnRequestHeader> bypassCacheOnRequestHeaders) {
+
             this.bypassCacheOnRequestHeaders = bypassCacheOnRequestHeaders;
             return this;
         }
@@ -216,36 +217,43 @@ public final class BackendServiceCdnPolicy {
         }
         @CustomType.Setter
         public Builder cacheKeyPolicy(@Nullable BackendServiceCdnPolicyCacheKeyPolicy cacheKeyPolicy) {
+
             this.cacheKeyPolicy = cacheKeyPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder cacheMode(@Nullable String cacheMode) {
+
             this.cacheMode = cacheMode;
             return this;
         }
         @CustomType.Setter
         public Builder clientTtl(@Nullable Integer clientTtl) {
+
             this.clientTtl = clientTtl;
             return this;
         }
         @CustomType.Setter
         public Builder defaultTtl(@Nullable Integer defaultTtl) {
+
             this.defaultTtl = defaultTtl;
             return this;
         }
         @CustomType.Setter
         public Builder maxTtl(@Nullable Integer maxTtl) {
+
             this.maxTtl = maxTtl;
             return this;
         }
         @CustomType.Setter
         public Builder negativeCaching(@Nullable Boolean negativeCaching) {
+
             this.negativeCaching = negativeCaching;
             return this;
         }
         @CustomType.Setter
         public Builder negativeCachingPolicies(@Nullable List<BackendServiceCdnPolicyNegativeCachingPolicy> negativeCachingPolicies) {
+
             this.negativeCachingPolicies = negativeCachingPolicies;
             return this;
         }
@@ -254,11 +262,13 @@ public final class BackendServiceCdnPolicy {
         }
         @CustomType.Setter
         public Builder serveWhileStale(@Nullable Integer serveWhileStale) {
+
             this.serveWhileStale = serveWhileStale;
             return this;
         }
         @CustomType.Setter
         public Builder signedUrlCacheMaxAgeSec(@Nullable Integer signedUrlCacheMaxAgeSec) {
+
             this.signedUrlCacheMaxAgeSec = signedUrlCacheMaxAgeSec;
             return this;
         }

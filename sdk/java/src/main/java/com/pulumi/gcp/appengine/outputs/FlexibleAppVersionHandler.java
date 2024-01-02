@@ -148,36 +148,43 @@ public final class FlexibleAppVersionHandler {
 
         @CustomType.Setter
         public Builder authFailAction(@Nullable String authFailAction) {
+
             this.authFailAction = authFailAction;
             return this;
         }
         @CustomType.Setter
         public Builder login(@Nullable String login) {
+
             this.login = login;
             return this;
         }
         @CustomType.Setter
         public Builder redirectHttpResponseCode(@Nullable String redirectHttpResponseCode) {
+
             this.redirectHttpResponseCode = redirectHttpResponseCode;
             return this;
         }
         @CustomType.Setter
         public Builder script(@Nullable FlexibleAppVersionHandlerScript script) {
+
             this.script = script;
             return this;
         }
         @CustomType.Setter
         public Builder securityLevel(@Nullable String securityLevel) {
+
             this.securityLevel = securityLevel;
             return this;
         }
         @CustomType.Setter
         public Builder staticFiles(@Nullable FlexibleAppVersionHandlerStaticFiles staticFiles) {
+
             this.staticFiles = staticFiles;
             return this;
         }
         @CustomType.Setter
         public Builder urlRegex(@Nullable String urlRegex) {
+
             this.urlRegex = urlRegex;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyRetentionPolicyArgs;
 import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleArgs;
 import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicySnapshotPropertiesArgs;
@@ -164,7 +165,9 @@ public final class ResourcePolicySnapshotSchedulePolicyArgs extends com.pulumi.r
         }
 
         public ResourcePolicySnapshotSchedulePolicyArgs build() {
-            $.schedule = Objects.requireNonNull($.schedule, "expected parameter 'schedule' to be non-null");
+            if ($.schedule == null) {
+                throw new MissingRequiredPropertyException("ResourcePolicySnapshotSchedulePolicyArgs", "schedule");
+            }
             return $;
         }
     }

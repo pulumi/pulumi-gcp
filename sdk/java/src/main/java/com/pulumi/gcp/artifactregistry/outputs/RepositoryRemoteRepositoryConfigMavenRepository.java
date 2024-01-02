@@ -48,6 +48,7 @@ public final class RepositoryRemoteRepositoryConfigMavenRepository {
 
         @CustomType.Setter
         public Builder publicRepository(@Nullable String publicRepository) {
+
             this.publicRepository = publicRepository;
             return this;
         }

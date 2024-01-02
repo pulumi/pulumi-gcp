@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupInventoryFilterArgs;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceArgs;
 import java.util.List;
@@ -185,7 +186,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupArgs extends com.pulum
         }
 
         public OsPolicyAssignmentOsPolicyResourceGroupArgs build() {
-            $.resources = Objects.requireNonNull($.resources, "expected parameter 'resources' to be non-null");
+            if ($.resources == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupArgs", "resources");
+            }
             return $;
         }
     }

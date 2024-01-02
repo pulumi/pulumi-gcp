@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,7 +109,9 @@ public final class GetLakeIamPolicyPlainArgs extends com.pulumi.resources.Invoke
         }
 
         public GetLakeIamPolicyPlainArgs build() {
-            $.lake = Objects.requireNonNull($.lake, "expected parameter 'lake' to be non-null");
+            if ($.lake == null) {
+                throw new MissingRequiredPropertyException("GetLakeIamPolicyPlainArgs", "lake");
+            }
             return $;
         }
     }

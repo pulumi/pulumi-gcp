@@ -96,21 +96,25 @@ public final class CryptoKeyVersionAttestation {
 
         @CustomType.Setter
         public Builder certChains(@Nullable CryptoKeyVersionAttestationCertChains certChains) {
+
             this.certChains = certChains;
             return this;
         }
         @CustomType.Setter
         public Builder content(@Nullable String content) {
+
             this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder externalProtectionLevelOptions(@Nullable CryptoKeyVersionAttestationExternalProtectionLevelOptions externalProtectionLevelOptions) {
+
             this.externalProtectionLevelOptions = externalProtectionLevelOptions;
             return this;
         }
         @CustomType.Setter
         public Builder format(@Nullable String format) {
+
             this.format = format;
             return this;
         }

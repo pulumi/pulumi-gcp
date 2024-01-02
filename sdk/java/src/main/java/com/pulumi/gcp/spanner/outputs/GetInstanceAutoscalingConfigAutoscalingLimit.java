@@ -4,6 +4,7 @@
 package com.pulumi.gcp.spanner.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetInstanceAutoscalingConfigAutoscalingLimit {
 
         @CustomType.Setter
         public Builder maxNodes(Integer maxNodes) {
-            this.maxNodes = Objects.requireNonNull(maxNodes);
+            if (maxNodes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAutoscalingLimit", "maxNodes");
+            }
+            this.maxNodes = maxNodes;
             return this;
         }
         @CustomType.Setter
         public Builder maxProcessingUnits(Integer maxProcessingUnits) {
-            this.maxProcessingUnits = Objects.requireNonNull(maxProcessingUnits);
+            if (maxProcessingUnits == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAutoscalingLimit", "maxProcessingUnits");
+            }
+            this.maxProcessingUnits = maxProcessingUnits;
             return this;
         }
         @CustomType.Setter
         public Builder minNodes(Integer minNodes) {
-            this.minNodes = Objects.requireNonNull(minNodes);
+            if (minNodes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAutoscalingLimit", "minNodes");
+            }
+            this.minNodes = minNodes;
             return this;
         }
         @CustomType.Setter
         public Builder minProcessingUnits(Integer minProcessingUnits) {
-            this.minProcessingUnits = Objects.requireNonNull(minProcessingUnits);
+            if (minProcessingUnits == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfigAutoscalingLimit", "minProcessingUnits");
+            }
+            this.minProcessingUnits = minProcessingUnits;
             return this;
         }
         public GetInstanceAutoscalingConfigAutoscalingLimit build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionThresholdAggregation;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionThresholdDenominatorAggregation;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionThresholdForecastOptions;
@@ -364,6 +365,7 @@ public final class AlertPolicyConditionConditionThreshold {
 
         @CustomType.Setter
         public Builder aggregations(@Nullable List<AlertPolicyConditionConditionThresholdAggregation> aggregations) {
+
             this.aggregations = aggregations;
             return this;
         }
@@ -372,11 +374,15 @@ public final class AlertPolicyConditionConditionThreshold {
         }
         @CustomType.Setter
         public Builder comparison(String comparison) {
-            this.comparison = Objects.requireNonNull(comparison);
+            if (comparison == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyConditionConditionThreshold", "comparison");
+            }
+            this.comparison = comparison;
             return this;
         }
         @CustomType.Setter
         public Builder denominatorAggregations(@Nullable List<AlertPolicyConditionConditionThresholdDenominatorAggregation> denominatorAggregations) {
+
             this.denominatorAggregations = denominatorAggregations;
             return this;
         }
@@ -385,36 +391,45 @@ public final class AlertPolicyConditionConditionThreshold {
         }
         @CustomType.Setter
         public Builder denominatorFilter(@Nullable String denominatorFilter) {
+
             this.denominatorFilter = denominatorFilter;
             return this;
         }
         @CustomType.Setter
         public Builder duration(String duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyConditionConditionThreshold", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder evaluationMissingData(@Nullable String evaluationMissingData) {
+
             this.evaluationMissingData = evaluationMissingData;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable String filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder forecastOptions(@Nullable AlertPolicyConditionConditionThresholdForecastOptions forecastOptions) {
+
             this.forecastOptions = forecastOptions;
             return this;
         }
         @CustomType.Setter
         public Builder thresholdValue(@Nullable Double thresholdValue) {
+
             this.thresholdValue = thresholdValue;
             return this;
         }
         @CustomType.Setter
         public Builder trigger(@Nullable AlertPolicyConditionConditionThresholdTrigger trigger) {
+
             this.trigger = trigger;
             return this;
         }

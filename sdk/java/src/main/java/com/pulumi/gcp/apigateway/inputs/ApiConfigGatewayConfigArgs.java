@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigateway.inputs.ApiConfigGatewayConfigBackendConfigArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class ApiConfigGatewayConfigArgs extends com.pulumi.resources.Resou
         }
 
         public ApiConfigGatewayConfigArgs build() {
-            $.backendConfig = Objects.requireNonNull($.backendConfig, "expected parameter 'backendConfig' to be non-null");
+            if ($.backendConfig == null) {
+                throw new MissingRequiredPropertyException("ApiConfigGatewayConfigArgs", "backendConfig");
+            }
             return $;
         }
     }

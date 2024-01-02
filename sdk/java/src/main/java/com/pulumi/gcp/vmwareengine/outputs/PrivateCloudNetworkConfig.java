@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -123,26 +124,33 @@ public final class PrivateCloudNetworkConfig {
 
         @CustomType.Setter
         public Builder dnsServerIp(@Nullable String dnsServerIp) {
+
             this.dnsServerIp = dnsServerIp;
             return this;
         }
         @CustomType.Setter
         public Builder managementCidr(String managementCidr) {
-            this.managementCidr = Objects.requireNonNull(managementCidr);
+            if (managementCidr == null) {
+              throw new MissingRequiredPropertyException("PrivateCloudNetworkConfig", "managementCidr");
+            }
+            this.managementCidr = managementCidr;
             return this;
         }
         @CustomType.Setter
         public Builder managementIpAddressLayoutVersion(@Nullable Integer managementIpAddressLayoutVersion) {
+
             this.managementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
             return this;
         }
         @CustomType.Setter
         public Builder vmwareEngineNetwork(@Nullable String vmwareEngineNetwork) {
+
             this.vmwareEngineNetwork = vmwareEngineNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder vmwareEngineNetworkCanonical(@Nullable String vmwareEngineNetworkCanonical) {
+
             this.vmwareEngineNetworkCanonical = vmwareEngineNetworkCanonical;
             return this;
         }

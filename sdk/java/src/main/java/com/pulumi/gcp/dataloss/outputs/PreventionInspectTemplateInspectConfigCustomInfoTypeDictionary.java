@@ -63,11 +63,13 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoTypeDictionar
 
         @CustomType.Setter
         public Builder cloudStoragePath(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryCloudStoragePath cloudStoragePath) {
+
             this.cloudStoragePath = cloudStoragePath;
             return this;
         }
         @CustomType.Setter
         public Builder wordList(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionaryWordList wordList) {
+
             this.wordList = wordList;
             return this;
         }

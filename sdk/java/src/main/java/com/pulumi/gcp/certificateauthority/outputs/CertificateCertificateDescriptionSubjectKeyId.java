@@ -46,6 +46,7 @@ public final class CertificateCertificateDescriptionSubjectKeyId {
 
         @CustomType.Setter
         public Builder keyId(@Nullable String keyId) {
+
             this.keyId = keyId;
             return this;
         }

@@ -284,21 +284,25 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
 
         @CustomType.Setter
         public Builder autoDelete(@Nullable Boolean autoDelete) {
+
             this.autoDelete = autoDelete;
             return this;
         }
         @CustomType.Setter
         public Builder boot(@Nullable Boolean boot) {
+
             this.boot = boot;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
+
             this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder guestOsFeatures(@Nullable List<String> guestOsFeatures) {
+
             this.guestOsFeatures = guestOsFeatures;
             return this;
         }
@@ -307,26 +311,31 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         }
         @CustomType.Setter
         public Builder index(@Nullable Integer index) {
+
             this.index = index;
             return this;
         }
         @CustomType.Setter
         public Builder initializeParams(@Nullable RuntimeVirtualMachineVirtualMachineConfigDataDiskInitializeParams initializeParams) {
+
             this.initializeParams = initializeParams;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(@Nullable String interface_) {
+
             this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder kind(@Nullable String kind) {
+
             this.kind = kind;
             return this;
         }
         @CustomType.Setter
         public Builder licenses(@Nullable List<String> licenses) {
+
             this.licenses = licenses;
             return this;
         }
@@ -335,16 +344,19 @@ public final class RuntimeVirtualMachineVirtualMachineConfigDataDisk {
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

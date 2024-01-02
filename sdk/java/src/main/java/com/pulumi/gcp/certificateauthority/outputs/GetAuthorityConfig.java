@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigSubjectConfig;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigX509Config;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetAuthorityConfig {
 
         @CustomType.Setter
         public Builder subjectConfigs(List<GetAuthorityConfigSubjectConfig> subjectConfigs) {
-            this.subjectConfigs = Objects.requireNonNull(subjectConfigs);
+            if (subjectConfigs == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfig", "subjectConfigs");
+            }
+            this.subjectConfigs = subjectConfigs;
             return this;
         }
         public Builder subjectConfigs(GetAuthorityConfigSubjectConfig... subjectConfigs) {
@@ -50,7 +54,10 @@ public final class GetAuthorityConfig {
         }
         @CustomType.Setter
         public Builder x509Configs(List<GetAuthorityConfigX509Config> x509Configs) {
-            this.x509Configs = Objects.requireNonNull(x509Configs);
+            if (x509Configs == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfig", "x509Configs");
+            }
+            this.x509Configs = x509Configs;
             return this;
         }
         public Builder x509Configs(GetAuthorityConfigX509Config... x509Configs) {

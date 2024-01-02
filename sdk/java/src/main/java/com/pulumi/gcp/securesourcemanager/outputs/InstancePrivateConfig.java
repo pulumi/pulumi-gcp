@@ -4,6 +4,7 @@
 package com.pulumi.gcp.securesourcemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,21 +92,29 @@ public final class InstancePrivateConfig {
 
         @CustomType.Setter
         public Builder caPool(String caPool) {
-            this.caPool = Objects.requireNonNull(caPool);
+            if (caPool == null) {
+              throw new MissingRequiredPropertyException("InstancePrivateConfig", "caPool");
+            }
+            this.caPool = caPool;
             return this;
         }
         @CustomType.Setter
         public Builder httpServiceAttachment(@Nullable String httpServiceAttachment) {
+
             this.httpServiceAttachment = httpServiceAttachment;
             return this;
         }
         @CustomType.Setter
         public Builder isPrivate(Boolean isPrivate) {
-            this.isPrivate = Objects.requireNonNull(isPrivate);
+            if (isPrivate == null) {
+              throw new MissingRequiredPropertyException("InstancePrivateConfig", "isPrivate");
+            }
+            this.isPrivate = isPrivate;
             return this;
         }
         @CustomType.Setter
         public Builder sshServiceAttachment(@Nullable String sshServiceAttachment) {
+
             this.sshServiceAttachment = sshServiceAttachment;
             return this;
         }

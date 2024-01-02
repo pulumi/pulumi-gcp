@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudasset;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudasset.inputs.ProjectFeedConditionArgs;
 import com.pulumi.gcp.cloudasset.inputs.ProjectFeedFeedOutputConfigArgs;
 import java.lang.String;
@@ -437,8 +438,12 @@ public final class ProjectFeedArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectFeedArgs build() {
-            $.feedId = Objects.requireNonNull($.feedId, "expected parameter 'feedId' to be non-null");
-            $.feedOutputConfig = Objects.requireNonNull($.feedOutputConfig, "expected parameter 'feedOutputConfig' to be non-null");
+            if ($.feedId == null) {
+                throw new MissingRequiredPropertyException("ProjectFeedArgs", "feedId");
+            }
+            if ($.feedOutputConfig == null) {
+                throw new MissingRequiredPropertyException("ProjectFeedArgs", "feedOutputConfig");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration;
 import java.lang.Integer;
@@ -110,21 +111,27 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
 
         @CustomType.Setter
         public Builder component(String component) {
-            this.component = Objects.requireNonNull(component);
+            if (component == null) {
+              throw new MissingRequiredPropertyException("FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig", "component");
+            }
+            this.component = component;
             return this;
         }
         @CustomType.Setter
         public Builder containerResources(@Nullable FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResources containerResources) {
+
             this.containerResources = containerResources;
             return this;
         }
         @CustomType.Setter
         public Builder podAffinity(@Nullable String podAffinity) {
+
             this.podAffinity = podAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder podTolerations(@Nullable List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration> podTolerations) {
+
             this.podTolerations = podTolerations;
             return this;
         }
@@ -133,6 +140,7 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
         }
         @CustomType.Setter
         public Builder replicaCount(@Nullable Integer replicaCount) {
+
             this.replicaCount = replicaCount;
             return this;
         }

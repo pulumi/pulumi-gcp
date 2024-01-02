@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobSparkRJobLoggingConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -294,7 +295,9 @@ public final class WorkflowTemplateJobSparkRJobArgs extends com.pulumi.resources
         }
 
         public WorkflowTemplateJobSparkRJobArgs build() {
-            $.mainRFileUri = Objects.requireNonNull($.mainRFileUri, "expected parameter 'mainRFileUri' to be non-null");
+            if ($.mainRFileUri == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplateJobSparkRJobArgs", "mainRFileUri");
+            }
             return $;
         }
     }

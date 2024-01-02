@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityConfigArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthorityKeySpecArgs;
 import com.pulumi.gcp.certificateauthority.inputs.AuthoritySubordinateConfigArgs;
@@ -748,11 +749,21 @@ public final class AuthorityArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AuthorityArgs build() {
-            $.certificateAuthorityId = Objects.requireNonNull($.certificateAuthorityId, "expected parameter 'certificateAuthorityId' to be non-null");
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
-            $.keySpec = Objects.requireNonNull($.keySpec, "expected parameter 'keySpec' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.pool = Objects.requireNonNull($.pool, "expected parameter 'pool' to be non-null");
+            if ($.certificateAuthorityId == null) {
+                throw new MissingRequiredPropertyException("AuthorityArgs", "certificateAuthorityId");
+            }
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("AuthorityArgs", "config");
+            }
+            if ($.keySpec == null) {
+                throw new MissingRequiredPropertyException("AuthorityArgs", "keySpec");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("AuthorityArgs", "location");
+            }
+            if ($.pool == null) {
+                throw new MissingRequiredPropertyException("AuthorityArgs", "pool");
+            }
             return $;
         }
     }

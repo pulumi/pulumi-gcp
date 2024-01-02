@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllArgs;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
 import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
@@ -479,11 +480,21 @@ public final class StreamArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public StreamArgs build() {
-            $.destinationConfig = Objects.requireNonNull($.destinationConfig, "expected parameter 'destinationConfig' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.sourceConfig = Objects.requireNonNull($.sourceConfig, "expected parameter 'sourceConfig' to be non-null");
-            $.streamId = Objects.requireNonNull($.streamId, "expected parameter 'streamId' to be non-null");
+            if ($.destinationConfig == null) {
+                throw new MissingRequiredPropertyException("StreamArgs", "destinationConfig");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("StreamArgs", "displayName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("StreamArgs", "location");
+            }
+            if ($.sourceConfig == null) {
+                throw new MissingRequiredPropertyException("StreamArgs", "sourceConfig");
+            }
+            if ($.streamId == null) {
+                throw new MissingRequiredPropertyException("StreamArgs", "streamId");
+            }
             return $;
         }
     }

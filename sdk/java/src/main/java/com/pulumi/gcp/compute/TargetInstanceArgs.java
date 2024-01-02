@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -403,7 +404,9 @@ public final class TargetInstanceArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public TargetInstanceArgs build() {
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("TargetInstanceArgs", "instance");
+            }
             return $;
         }
     }

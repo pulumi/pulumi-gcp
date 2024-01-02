@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,17 +55,26 @@ public final class GetDatabaseInstancesInstanceSettingLocationPreference {
 
         @CustomType.Setter
         public Builder followGaeApplication(String followGaeApplication) {
-            this.followGaeApplication = Objects.requireNonNull(followGaeApplication);
+            if (followGaeApplication == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingLocationPreference", "followGaeApplication");
+            }
+            this.followGaeApplication = followGaeApplication;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryZone(String secondaryZone) {
-            this.secondaryZone = Objects.requireNonNull(secondaryZone);
+            if (secondaryZone == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingLocationPreference", "secondaryZone");
+            }
+            this.secondaryZone = secondaryZone;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingLocationPreference", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetDatabaseInstancesInstanceSettingLocationPreference build() {

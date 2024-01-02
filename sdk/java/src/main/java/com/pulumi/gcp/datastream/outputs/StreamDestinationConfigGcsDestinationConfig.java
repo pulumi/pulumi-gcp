@@ -107,26 +107,31 @@ public final class StreamDestinationConfigGcsDestinationConfig {
 
         @CustomType.Setter
         public Builder avroFileFormat(@Nullable StreamDestinationConfigGcsDestinationConfigAvroFileFormat avroFileFormat) {
+
             this.avroFileFormat = avroFileFormat;
             return this;
         }
         @CustomType.Setter
         public Builder fileRotationInterval(@Nullable String fileRotationInterval) {
+
             this.fileRotationInterval = fileRotationInterval;
             return this;
         }
         @CustomType.Setter
         public Builder fileRotationMb(@Nullable Integer fileRotationMb) {
+
             this.fileRotationMb = fileRotationMb;
             return this;
         }
         @CustomType.Setter
         public Builder jsonFileFormat(@Nullable StreamDestinationConfigGcsDestinationConfigJsonFileFormat jsonFileFormat) {
+
             this.jsonFileFormat = jsonFileFormat;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -128,9 +129,15 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionArgs extends com.
         }
 
         public ClusterMaintenancePolicyMaintenanceExclusionArgs build() {
-            $.endTime = Objects.requireNonNull($.endTime, "expected parameter 'endTime' to be non-null");
-            $.exclusionName = Objects.requireNonNull($.exclusionName, "expected parameter 'exclusionName' to be non-null");
-            $.startTime = Objects.requireNonNull($.startTime, "expected parameter 'startTime' to be non-null");
+            if ($.endTime == null) {
+                throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusionArgs", "endTime");
+            }
+            if ($.exclusionName == null) {
+                throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusionArgs", "exclusionName");
+            }
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusionArgs", "startTime");
+            }
             return $;
         }
     }

@@ -195,46 +195,55 @@ public final class DatasetAccess {
 
         @CustomType.Setter
         public Builder dataset(@Nullable DatasetAccessDataset dataset) {
+
             this.dataset = dataset;
             return this;
         }
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder groupByEmail(@Nullable String groupByEmail) {
+
             this.groupByEmail = groupByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder iamMember(@Nullable String iamMember) {
+
             this.iamMember = iamMember;
             return this;
         }
         @CustomType.Setter
         public Builder role(@Nullable String role) {
+
             this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder routine(@Nullable DatasetAccessRoutine routine) {
+
             this.routine = routine;
             return this;
         }
         @CustomType.Setter
         public Builder specialGroup(@Nullable String specialGroup) {
+
             this.specialGroup = specialGroup;
             return this;
         }
         @CustomType.Setter
         public Builder userByEmail(@Nullable String userByEmail) {
+
             this.userByEmail = userByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder view(@Nullable DatasetAccessView view) {
+
             this.view = view;
             return this;
         }

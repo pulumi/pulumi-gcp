@@ -4,6 +4,7 @@
 package com.pulumi.gcp.binaryauthorization.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class PolicyAdmissionWhitelistPattern {
 
         @CustomType.Setter
         public Builder namePattern(String namePattern) {
-            this.namePattern = Objects.requireNonNull(namePattern);
+            if (namePattern == null) {
+              throw new MissingRequiredPropertyException("PolicyAdmissionWhitelistPattern", "namePattern");
+            }
+            this.namePattern = namePattern;
             return this;
         }
         public PolicyAdmissionWhitelistPattern build() {

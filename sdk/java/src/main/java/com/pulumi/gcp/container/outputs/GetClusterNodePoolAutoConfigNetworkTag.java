@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetClusterNodePoolAutoConfigNetworkTag {
 
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolAutoConfigNetworkTag", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {

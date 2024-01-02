@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetEnvironmentConfigWorkloadsConfigTriggerer {
 
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigTriggerer", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder cpu(Double cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigTriggerer", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder memoryGb(Double memoryGb) {
-            this.memoryGb = Objects.requireNonNull(memoryGb);
+            if (memoryGb == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigTriggerer", "memoryGb");
+            }
+            this.memoryGb = memoryGb;
             return this;
         }
         public GetEnvironmentConfigWorkloadsConfigTriggerer build() {

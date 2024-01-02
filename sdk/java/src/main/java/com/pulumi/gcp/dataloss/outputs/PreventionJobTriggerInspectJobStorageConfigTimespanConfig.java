@@ -96,21 +96,25 @@ public final class PreventionJobTriggerInspectJobStorageConfigTimespanConfig {
 
         @CustomType.Setter
         public Builder enableAutoPopulationOfTimespanConfig(@Nullable Boolean enableAutoPopulationOfTimespanConfig) {
+
             this.enableAutoPopulationOfTimespanConfig = enableAutoPopulationOfTimespanConfig;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
+
             this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder timestampField(@Nullable PreventionJobTriggerInspectJobStorageConfigTimespanConfigTimestampField timestampField) {
+
             this.timestampField = timestampField;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.edgecontainer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.edgecontainer.inputs.ClusterAuthorizationAdminUsersArgs;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class ClusterAuthorizationArgs extends com.pulumi.resources.Resourc
         }
 
         public ClusterAuthorizationArgs build() {
-            $.adminUsers = Objects.requireNonNull($.adminUsers, "expected parameter 'adminUsers' to be non-null");
+            if ($.adminUsers == null) {
+                throw new MissingRequiredPropertyException("ClusterAuthorizationArgs", "adminUsers");
+            }
             return $;
         }
     }

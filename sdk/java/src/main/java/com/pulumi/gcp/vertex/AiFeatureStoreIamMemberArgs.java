@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiFeatureStoreIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -290,9 +291,15 @@ public final class AiFeatureStoreIamMemberArgs extends com.pulumi.resources.Reso
         }
 
         public AiFeatureStoreIamMemberArgs build() {
-            $.featurestore = Objects.requireNonNull($.featurestore, "expected parameter 'featurestore' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.featurestore == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreIamMemberArgs", "featurestore");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreIamMemberArgs", "role");
+            }
             return $;
         }
     }

@@ -44,6 +44,7 @@ public final class InstanceGroupManagerStatusStatefulPerInstanceConfig {
 
         @CustomType.Setter
         public Builder allEffective(@Nullable Boolean allEffective) {
+
             this.allEffective = allEffective;
             return this;
         }

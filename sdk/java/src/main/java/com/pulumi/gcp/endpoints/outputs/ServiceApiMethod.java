@@ -86,21 +86,25 @@ public final class ServiceApiMethod {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder requestType(@Nullable String requestType) {
+
             this.requestType = requestType;
             return this;
         }
         @CustomType.Setter
         public Builder responseType(@Nullable String responseType) {
+
             this.responseType = responseType;
             return this;
         }
         @CustomType.Setter
         public Builder syntax(@Nullable String syntax) {
+
             this.syntax = syntax;
             return this;
         }

@@ -127,31 +127,37 @@ public final class CxPageTransitionRoute {
 
         @CustomType.Setter
         public Builder condition(@Nullable String condition) {
+
             this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder intent(@Nullable String intent) {
+
             this.intent = intent;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder targetFlow(@Nullable String targetFlow) {
+
             this.targetFlow = targetFlow;
             return this;
         }
         @CustomType.Setter
         public Builder targetPage(@Nullable String targetPage) {
+
             this.targetPage = targetPage;
             return this;
         }
         @CustomType.Setter
         public Builder triggerFulfillment(@Nullable CxPageTransitionRouteTriggerFulfillment triggerFulfillment) {
+
             this.triggerFulfillment = triggerFulfillment;
             return this;
         }

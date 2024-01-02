@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityAccessUrl;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfig;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityKeySpec;
@@ -209,7 +210,10 @@ public final class GetAuthorityResult {
 
         @CustomType.Setter
         public Builder accessUrls(List<GetAuthorityAccessUrl> accessUrls) {
-            this.accessUrls = Objects.requireNonNull(accessUrls);
+            if (accessUrls == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "accessUrls");
+            }
+            this.accessUrls = accessUrls;
             return this;
         }
         public Builder accessUrls(GetAuthorityAccessUrl... accessUrls) {
@@ -217,12 +221,16 @@ public final class GetAuthorityResult {
         }
         @CustomType.Setter
         public Builder certificateAuthorityId(@Nullable String certificateAuthorityId) {
+
             this.certificateAuthorityId = certificateAuthorityId;
             return this;
         }
         @CustomType.Setter
         public Builder configs(List<GetAuthorityConfig> configs) {
-            this.configs = Objects.requireNonNull(configs);
+            if (configs == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "configs");
+            }
+            this.configs = configs;
             return this;
         }
         public Builder configs(GetAuthorityConfig... configs) {
@@ -230,42 +238,66 @@ public final class GetAuthorityResult {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
-            this.deletionProtection = Objects.requireNonNull(deletionProtection);
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
         public Builder desiredState(String desiredState) {
-            this.desiredState = Objects.requireNonNull(desiredState);
+            if (desiredState == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "desiredState");
+            }
+            this.desiredState = desiredState;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder gcsBucket(String gcsBucket) {
-            this.gcsBucket = Objects.requireNonNull(gcsBucket);
+            if (gcsBucket == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "gcsBucket");
+            }
+            this.gcsBucket = gcsBucket;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreActiveCertificatesOnDeletion(Boolean ignoreActiveCertificatesOnDeletion) {
-            this.ignoreActiveCertificatesOnDeletion = Objects.requireNonNull(ignoreActiveCertificatesOnDeletion);
+            if (ignoreActiveCertificatesOnDeletion == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "ignoreActiveCertificatesOnDeletion");
+            }
+            this.ignoreActiveCertificatesOnDeletion = ignoreActiveCertificatesOnDeletion;
             return this;
         }
         @CustomType.Setter
         public Builder keySpecs(List<GetAuthorityKeySpec> keySpecs) {
-            this.keySpecs = Objects.requireNonNull(keySpecs);
+            if (keySpecs == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "keySpecs");
+            }
+            this.keySpecs = keySpecs;
             return this;
         }
         public Builder keySpecs(GetAuthorityKeySpec... keySpecs) {
@@ -273,32 +305,48 @@ public final class GetAuthorityResult {
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder lifetime(String lifetime) {
-            this.lifetime = Objects.requireNonNull(lifetime);
+            if (lifetime == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "lifetime");
+            }
+            this.lifetime = lifetime;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder pemCaCertificate(String pemCaCertificate) {
-            this.pemCaCertificate = Objects.requireNonNull(pemCaCertificate);
+            if (pemCaCertificate == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "pemCaCertificate");
+            }
+            this.pemCaCertificate = pemCaCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder pemCaCertificates(List<String> pemCaCertificates) {
-            this.pemCaCertificates = Objects.requireNonNull(pemCaCertificates);
+            if (pemCaCertificates == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "pemCaCertificates");
+            }
+            this.pemCaCertificates = pemCaCertificates;
             return this;
         }
         public Builder pemCaCertificates(String... pemCaCertificates) {
@@ -306,37 +354,54 @@ public final class GetAuthorityResult {
         }
         @CustomType.Setter
         public Builder pemCsr(String pemCsr) {
-            this.pemCsr = Objects.requireNonNull(pemCsr);
+            if (pemCsr == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "pemCsr");
+            }
+            this.pemCsr = pemCsr;
             return this;
         }
         @CustomType.Setter
         public Builder pool(@Nullable String pool) {
+
             this.pool = pool;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder skipGracePeriod(Boolean skipGracePeriod) {
-            this.skipGracePeriod = Objects.requireNonNull(skipGracePeriod);
+            if (skipGracePeriod == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "skipGracePeriod");
+            }
+            this.skipGracePeriod = skipGracePeriod;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder subordinateConfigs(List<GetAuthoritySubordinateConfig> subordinateConfigs) {
-            this.subordinateConfigs = Objects.requireNonNull(subordinateConfigs);
+            if (subordinateConfigs == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "subordinateConfigs");
+            }
+            this.subordinateConfigs = subordinateConfigs;
             return this;
         }
         public Builder subordinateConfigs(GetAuthoritySubordinateConfig... subordinateConfigs) {
@@ -344,12 +409,18 @@ public final class GetAuthorityResult {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetAuthorityResult build() {

@@ -85,11 +85,13 @@ public final class EntryBigqueryTableSpec {
 
         @CustomType.Setter
         public Builder tableSourceType(@Nullable String tableSourceType) {
+
             this.tableSourceType = tableSourceType;
             return this;
         }
         @CustomType.Setter
         public Builder tableSpecs(@Nullable List<EntryBigqueryTableSpecTableSpec> tableSpecs) {
+
             this.tableSpecs = tableSpecs;
             return this;
         }
@@ -98,6 +100,7 @@ public final class EntryBigqueryTableSpec {
         }
         @CustomType.Setter
         public Builder viewSpecs(@Nullable List<EntryBigqueryTableSpecViewSpec> viewSpecs) {
+
             this.viewSpecs = viewSpecs;
             return this;
         }

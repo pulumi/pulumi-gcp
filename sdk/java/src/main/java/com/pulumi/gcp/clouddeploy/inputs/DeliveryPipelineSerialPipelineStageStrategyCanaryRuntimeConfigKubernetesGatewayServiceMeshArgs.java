@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         }
 
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs build() {
-            $.deployment = Objects.requireNonNull($.deployment, "expected parameter 'deployment' to be non-null");
-            $.httpRoute = Objects.requireNonNull($.httpRoute, "expected parameter 'httpRoute' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.deployment == null) {
+                throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs", "deployment");
+            }
+            if ($.httpRoute == null) {
+                throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs", "httpRoute");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs", "service");
+            }
             return $;
         }
     }

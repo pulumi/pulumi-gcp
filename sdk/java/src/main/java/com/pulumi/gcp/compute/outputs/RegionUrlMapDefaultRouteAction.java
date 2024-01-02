@@ -173,36 +173,43 @@ public final class RegionUrlMapDefaultRouteAction {
 
         @CustomType.Setter
         public Builder corsPolicy(@Nullable RegionUrlMapDefaultRouteActionCorsPolicy corsPolicy) {
+
             this.corsPolicy = corsPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder faultInjectionPolicy(@Nullable RegionUrlMapDefaultRouteActionFaultInjectionPolicy faultInjectionPolicy) {
+
             this.faultInjectionPolicy = faultInjectionPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder requestMirrorPolicy(@Nullable RegionUrlMapDefaultRouteActionRequestMirrorPolicy requestMirrorPolicy) {
+
             this.requestMirrorPolicy = requestMirrorPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder retryPolicy(@Nullable RegionUrlMapDefaultRouteActionRetryPolicy retryPolicy) {
+
             this.retryPolicy = retryPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable RegionUrlMapDefaultRouteActionTimeout timeout) {
+
             this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder urlRewrite(@Nullable RegionUrlMapDefaultRouteActionUrlRewrite urlRewrite) {
+
             this.urlRewrite = urlRewrite;
             return this;
         }
         @CustomType.Setter
         public Builder weightedBackendServices(@Nullable List<RegionUrlMapDefaultRouteActionWeightedBackendService> weightedBackendServices) {
+
             this.weightedBackendServices = weightedBackendServices;
             return this;
         }

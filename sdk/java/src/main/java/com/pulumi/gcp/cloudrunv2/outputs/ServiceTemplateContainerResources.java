@@ -74,16 +74,19 @@ public final class ServiceTemplateContainerResources {
 
         @CustomType.Setter
         public Builder cpuIdle(@Nullable Boolean cpuIdle) {
+
             this.cpuIdle = cpuIdle;
             return this;
         }
         @CustomType.Setter
         public Builder limits(@Nullable Map<String,String> limits) {
+
             this.limits = limits;
             return this;
         }
         @CustomType.Setter
         public Builder startupCpuBoost(@Nullable Boolean startupCpuBoost) {
+
             this.startupCpuBoost = startupCpuBoost;
             return this;
         }

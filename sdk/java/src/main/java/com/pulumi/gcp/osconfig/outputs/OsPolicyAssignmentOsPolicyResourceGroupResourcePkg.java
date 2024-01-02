@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget;
@@ -167,41 +168,51 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkg {
 
         @CustomType.Setter
         public Builder apt(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgApt apt) {
+
             this.apt = apt;
             return this;
         }
         @CustomType.Setter
         public Builder deb(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgDeb deb) {
+
             this.deb = deb;
             return this;
         }
         @CustomType.Setter
         public Builder desiredState(String desiredState) {
-            this.desiredState = Objects.requireNonNull(desiredState);
+            if (desiredState == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourcePkg", "desiredState");
+            }
+            this.desiredState = desiredState;
             return this;
         }
         @CustomType.Setter
         public Builder googet(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgGooget googet) {
+
             this.googet = googet;
             return this;
         }
         @CustomType.Setter
         public Builder msi(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsi msi) {
+
             this.msi = msi;
             return this;
         }
         @CustomType.Setter
         public Builder rpm(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm rpm) {
+
             this.rpm = rpm;
             return this;
         }
         @CustomType.Setter
         public Builder yum(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgYum yum) {
+
             this.yum = yum;
             return this;
         }
         @CustomType.Setter
         public Builder zypper(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgZypper zypper) {
+
             this.zypper = zypper;
             return this;
         }

@@ -191,36 +191,43 @@ public final class RegionUrlMapPathMatcherPathRuleRouteAction {
 
         @CustomType.Setter
         public Builder corsPolicy(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionCorsPolicy corsPolicy) {
+
             this.corsPolicy = corsPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder faultInjectionPolicy(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionFaultInjectionPolicy faultInjectionPolicy) {
+
             this.faultInjectionPolicy = faultInjectionPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder requestMirrorPolicy(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionRequestMirrorPolicy requestMirrorPolicy) {
+
             this.requestMirrorPolicy = requestMirrorPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder retryPolicy(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionRetryPolicy retryPolicy) {
+
             this.retryPolicy = retryPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionTimeout timeout) {
+
             this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder urlRewrite(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionUrlRewrite urlRewrite) {
+
             this.urlRewrite = urlRewrite;
             return this;
         }
         @CustomType.Setter
         public Builder weightedBackendServices(@Nullable List<RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService> weightedBackendServices) {
+
             this.weightedBackendServices = weightedBackendServices;
             return this;
         }

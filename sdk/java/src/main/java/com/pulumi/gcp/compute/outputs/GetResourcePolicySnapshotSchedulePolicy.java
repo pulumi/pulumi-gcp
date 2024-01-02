@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicySnapshotSchedulePolicyRetentionPolicy;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicySnapshotSchedulePolicySchedule;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicySnapshotSchedulePolicySnapshotProperty;
@@ -49,7 +50,10 @@ public final class GetResourcePolicySnapshotSchedulePolicy {
 
         @CustomType.Setter
         public Builder retentionPolicies(List<GetResourcePolicySnapshotSchedulePolicyRetentionPolicy> retentionPolicies) {
-            this.retentionPolicies = Objects.requireNonNull(retentionPolicies);
+            if (retentionPolicies == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicy", "retentionPolicies");
+            }
+            this.retentionPolicies = retentionPolicies;
             return this;
         }
         public Builder retentionPolicies(GetResourcePolicySnapshotSchedulePolicyRetentionPolicy... retentionPolicies) {
@@ -57,7 +61,10 @@ public final class GetResourcePolicySnapshotSchedulePolicy {
         }
         @CustomType.Setter
         public Builder schedules(List<GetResourcePolicySnapshotSchedulePolicySchedule> schedules) {
-            this.schedules = Objects.requireNonNull(schedules);
+            if (schedules == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicy", "schedules");
+            }
+            this.schedules = schedules;
             return this;
         }
         public Builder schedules(GetResourcePolicySnapshotSchedulePolicySchedule... schedules) {
@@ -65,7 +72,10 @@ public final class GetResourcePolicySnapshotSchedulePolicy {
         }
         @CustomType.Setter
         public Builder snapshotProperties(List<GetResourcePolicySnapshotSchedulePolicySnapshotProperty> snapshotProperties) {
-            this.snapshotProperties = Objects.requireNonNull(snapshotProperties);
+            if (snapshotProperties == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicy", "snapshotProperties");
+            }
+            this.snapshotProperties = snapshotProperties;
             return this;
         }
         public Builder snapshotProperties(GetResourcePolicySnapshotSchedulePolicySnapshotProperty... snapshotProperties) {

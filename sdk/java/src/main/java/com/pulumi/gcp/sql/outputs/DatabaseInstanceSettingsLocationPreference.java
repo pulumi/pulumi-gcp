@@ -84,16 +84,19 @@ public final class DatabaseInstanceSettingsLocationPreference {
 
         @CustomType.Setter
         public Builder followGaeApplication(@Nullable String followGaeApplication) {
+
             this.followGaeApplication = followGaeApplication;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryZone(@Nullable String secondaryZone) {
+
             this.secondaryZone = secondaryZone;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

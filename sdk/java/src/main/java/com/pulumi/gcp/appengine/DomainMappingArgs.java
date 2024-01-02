@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.appengine.inputs.DomainMappingSslSettingsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -216,7 +217,9 @@ public final class DomainMappingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainMappingArgs build() {
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("DomainMappingArgs", "domainName");
+            }
             return $;
         }
     }

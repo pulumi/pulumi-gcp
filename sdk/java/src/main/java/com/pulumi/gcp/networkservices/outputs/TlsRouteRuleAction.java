@@ -46,6 +46,7 @@ public final class TlsRouteRuleAction {
 
         @CustomType.Setter
         public Builder destinations(@Nullable List<TlsRouteRuleActionDestination> destinations) {
+
             this.destinations = destinations;
             return this;
         }

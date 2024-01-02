@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -270,9 +271,15 @@ public final class MetastoreServiceIamMemberArgs extends com.pulumi.resources.Re
         }
 
         public MetastoreServiceIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.serviceId = Objects.requireNonNull($.serviceId, "expected parameter 'serviceId' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceIamMemberArgs", "role");
+            }
+            if ($.serviceId == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceIamMemberArgs", "serviceId");
+            }
             return $;
         }
     }

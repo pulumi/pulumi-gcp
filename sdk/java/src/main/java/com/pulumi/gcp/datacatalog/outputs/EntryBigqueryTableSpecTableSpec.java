@@ -52,6 +52,7 @@ public final class EntryBigqueryTableSpecTableSpec {
 
         @CustomType.Setter
         public Builder groupedEntry(@Nullable String groupedEntry) {
+
             this.groupedEntry = groupedEntry;
             return this;
         }

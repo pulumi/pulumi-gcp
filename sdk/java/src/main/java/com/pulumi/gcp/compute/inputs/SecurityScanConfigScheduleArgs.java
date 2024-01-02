@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -122,7 +123,9 @@ public final class SecurityScanConfigScheduleArgs extends com.pulumi.resources.R
         }
 
         public SecurityScanConfigScheduleArgs build() {
-            $.intervalDurationDays = Objects.requireNonNull($.intervalDurationDays, "expected parameter 'intervalDurationDays' to be non-null");
+            if ($.intervalDurationDays == null) {
+                throw new MissingRequiredPropertyException("SecurityScanConfigScheduleArgs", "intervalDurationDays");
+            }
             return $;
         }
     }

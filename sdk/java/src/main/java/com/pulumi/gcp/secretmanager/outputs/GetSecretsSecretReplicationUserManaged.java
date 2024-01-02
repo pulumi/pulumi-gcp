@@ -4,6 +4,7 @@
 package com.pulumi.gcp.secretmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretsSecretReplicationUserManagedReplica;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class GetSecretsSecretReplicationUserManaged {
 
         @CustomType.Setter
         public Builder replicas(List<GetSecretsSecretReplicationUserManagedReplica> replicas) {
-            this.replicas = Objects.requireNonNull(replicas);
+            if (replicas == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecretReplicationUserManaged", "replicas");
+            }
+            this.replicas = replicas;
             return this;
         }
         public Builder replicas(GetSecretsSecretReplicationUserManagedReplica... replicas) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.beyondcorp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.beyondcorp.outputs.GetAppConnectorPrincipalInfo;
 import java.lang.String;
 import java.util.List;
@@ -101,32 +102,50 @@ public final class GetAppConnectorResult {
 
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder principalInfos(List<GetAppConnectorPrincipalInfo> principalInfos) {
-            this.principalInfos = Objects.requireNonNull(principalInfos);
+            if (principalInfos == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorResult", "principalInfos");
+            }
+            this.principalInfos = principalInfos;
             return this;
         }
         public Builder principalInfos(GetAppConnectorPrincipalInfo... principalInfos) {
@@ -134,22 +153,30 @@ public final class GetAppConnectorResult {
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorResult", "state");
+            }
+            this.state = state;
             return this;
         }
         public GetAppConnectorResult build() {

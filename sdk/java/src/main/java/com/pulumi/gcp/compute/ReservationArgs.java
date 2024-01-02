@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ReservationShareSettingsArgs;
 import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationArgs;
 import java.lang.Boolean;
@@ -345,8 +346,12 @@ public final class ReservationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ReservationArgs build() {
-            $.specificReservation = Objects.requireNonNull($.specificReservation, "expected parameter 'specificReservation' to be non-null");
-            $.zone = Objects.requireNonNull($.zone, "expected parameter 'zone' to be non-null");
+            if ($.specificReservation == null) {
+                throw new MissingRequiredPropertyException("ReservationArgs", "specificReservation");
+            }
+            if ($.zone == null) {
+                throw new MissingRequiredPropertyException("ReservationArgs", "zone");
+            }
             return $;
         }
     }

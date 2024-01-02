@@ -100,16 +100,19 @@ public final class FlexibleAppVersionDeployment {
 
         @CustomType.Setter
         public Builder cloudBuildOptions(@Nullable FlexibleAppVersionDeploymentCloudBuildOptions cloudBuildOptions) {
+
             this.cloudBuildOptions = cloudBuildOptions;
             return this;
         }
         @CustomType.Setter
         public Builder container(@Nullable FlexibleAppVersionDeploymentContainer container) {
+
             this.container = container;
             return this;
         }
         @CustomType.Setter
         public Builder files(@Nullable List<FlexibleAppVersionDeploymentFile> files) {
+
             this.files = files;
             return this;
         }
@@ -118,6 +121,7 @@ public final class FlexibleAppVersionDeployment {
         }
         @CustomType.Setter
         public Builder zip(@Nullable FlexibleAppVersionDeploymentZip zip) {
+
             this.zip = zip;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -105,57 +106,88 @@ public final class GetCertificateResult {
 
         @CustomType.Setter
         public Builder certificate(String certificate) {
-            this.certificate = Objects.requireNonNull(certificate);
+            if (certificate == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "certificate");
+            }
+            this.certificate = certificate;
             return this;
         }
         @CustomType.Setter
         public Builder certificateId(Integer certificateId) {
-            this.certificateId = Objects.requireNonNull(certificateId);
+            if (certificateId == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "certificateId");
+            }
+            this.certificateId = certificateId;
             return this;
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
-            this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namePrefix(String namePrefix) {
-            this.namePrefix = Objects.requireNonNull(namePrefix);
+            if (namePrefix == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "namePrefix");
+            }
+            this.namePrefix = namePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder privateKey(String privateKey) {
-            this.privateKey = Objects.requireNonNull(privateKey);
+            if (privateKey == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "privateKey");
+            }
+            this.privateKey = privateKey;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetCertificateResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         public GetCertificateResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.DnsManagedZoneIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -250,9 +251,15 @@ public final class DnsManagedZoneIamBindingArgs extends com.pulumi.resources.Res
         }
 
         public DnsManagedZoneIamBindingArgs build() {
-            $.managedZone = Objects.requireNonNull($.managedZone, "expected parameter 'managedZone' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.managedZone == null) {
+                throw new MissingRequiredPropertyException("DnsManagedZoneIamBindingArgs", "managedZone");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("DnsManagedZoneIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("DnsManagedZoneIamBindingArgs", "role");
+            }
             return $;
         }
     }

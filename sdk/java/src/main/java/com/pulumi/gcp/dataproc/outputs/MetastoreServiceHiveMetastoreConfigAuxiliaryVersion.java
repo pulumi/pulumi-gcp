@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -74,17 +75,24 @@ public final class MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
 
         @CustomType.Setter
         public Builder configOverrides(@Nullable Map<String,String> configOverrides) {
+
             this.configOverrides = configOverrides;
             return this;
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigAuxiliaryVersion", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigAuxiliaryVersion", "version");
+            }
+            this.version = version;
             return this;
         }
         public MetastoreServiceHiveMetastoreConfigAuxiliaryVersion build() {

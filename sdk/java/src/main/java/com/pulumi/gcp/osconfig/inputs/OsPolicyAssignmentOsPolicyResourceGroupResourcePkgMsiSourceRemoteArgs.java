@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRe
         }
 
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs build() {
-            $.uri = Objects.requireNonNull($.uri, "expected parameter 'uri' to be non-null");
+            if ($.uri == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourcePkgMsiSourceRemoteArgs", "uri");
+            }
             return $;
         }
     }

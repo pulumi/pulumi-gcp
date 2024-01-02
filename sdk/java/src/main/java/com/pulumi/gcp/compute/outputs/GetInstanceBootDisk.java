@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceBootDiskInitializeParam;
 import java.lang.Boolean;
 import java.lang.String;
@@ -123,27 +124,42 @@ public final class GetInstanceBootDisk {
 
         @CustomType.Setter
         public Builder autoDelete(Boolean autoDelete) {
-            this.autoDelete = Objects.requireNonNull(autoDelete);
+            if (autoDelete == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "autoDelete");
+            }
+            this.autoDelete = autoDelete;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(String deviceName) {
-            this.deviceName = Objects.requireNonNull(deviceName);
+            if (deviceName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "deviceName");
+            }
+            this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeyRaw(String diskEncryptionKeyRaw) {
-            this.diskEncryptionKeyRaw = Objects.requireNonNull(diskEncryptionKeyRaw);
+            if (diskEncryptionKeyRaw == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "diskEncryptionKeyRaw");
+            }
+            this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeySha256(String diskEncryptionKeySha256) {
-            this.diskEncryptionKeySha256 = Objects.requireNonNull(diskEncryptionKeySha256);
+            if (diskEncryptionKeySha256 == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "diskEncryptionKeySha256");
+            }
+            this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             return this;
         }
         @CustomType.Setter
         public Builder initializeParams(List<GetInstanceBootDiskInitializeParam> initializeParams) {
-            this.initializeParams = Objects.requireNonNull(initializeParams);
+            if (initializeParams == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "initializeParams");
+            }
+            this.initializeParams = initializeParams;
             return this;
         }
         public Builder initializeParams(GetInstanceBootDiskInitializeParam... initializeParams) {
@@ -151,17 +167,26 @@ public final class GetInstanceBootDisk {
         }
         @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
-            this.kmsKeySelfLink = Objects.requireNonNull(kmsKeySelfLink);
+            if (kmsKeySelfLink == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "kmsKeySelfLink");
+            }
+            this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDisk", "source");
+            }
+            this.source = source;
             return this;
         }
         public GetInstanceBootDisk build() {

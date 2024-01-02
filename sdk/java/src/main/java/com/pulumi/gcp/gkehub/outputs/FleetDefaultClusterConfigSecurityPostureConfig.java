@@ -62,11 +62,13 @@ public final class FleetDefaultClusterConfigSecurityPostureConfig {
 
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder vulnerabilityMode(@Nullable String vulnerabilityMode) {
+
             this.vulnerabilityMode = vulnerabilityMode;
             return this;
         }

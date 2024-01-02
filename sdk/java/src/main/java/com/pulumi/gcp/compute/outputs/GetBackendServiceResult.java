@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceBackend;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCdnPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCircuitBreaker;
@@ -338,12 +339,18 @@ public final class GetBackendServiceResult {
 
         @CustomType.Setter
         public Builder affinityCookieTtlSec(Integer affinityCookieTtlSec) {
-            this.affinityCookieTtlSec = Objects.requireNonNull(affinityCookieTtlSec);
+            if (affinityCookieTtlSec == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "affinityCookieTtlSec");
+            }
+            this.affinityCookieTtlSec = affinityCookieTtlSec;
             return this;
         }
         @CustomType.Setter
         public Builder backends(List<GetBackendServiceBackend> backends) {
-            this.backends = Objects.requireNonNull(backends);
+            if (backends == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "backends");
+            }
+            this.backends = backends;
             return this;
         }
         public Builder backends(GetBackendServiceBackend... backends) {
@@ -351,7 +358,10 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder cdnPolicies(List<GetBackendServiceCdnPolicy> cdnPolicies) {
-            this.cdnPolicies = Objects.requireNonNull(cdnPolicies);
+            if (cdnPolicies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "cdnPolicies");
+            }
+            this.cdnPolicies = cdnPolicies;
             return this;
         }
         public Builder cdnPolicies(GetBackendServiceCdnPolicy... cdnPolicies) {
@@ -359,7 +369,10 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder circuitBreakers(List<GetBackendServiceCircuitBreaker> circuitBreakers) {
-            this.circuitBreakers = Objects.requireNonNull(circuitBreakers);
+            if (circuitBreakers == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "circuitBreakers");
+            }
+            this.circuitBreakers = circuitBreakers;
             return this;
         }
         public Builder circuitBreakers(GetBackendServiceCircuitBreaker... circuitBreakers) {
@@ -367,17 +380,26 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder compressionMode(String compressionMode) {
-            this.compressionMode = Objects.requireNonNull(compressionMode);
+            if (compressionMode == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "compressionMode");
+            }
+            this.compressionMode = compressionMode;
             return this;
         }
         @CustomType.Setter
         public Builder connectionDrainingTimeoutSec(Integer connectionDrainingTimeoutSec) {
-            this.connectionDrainingTimeoutSec = Objects.requireNonNull(connectionDrainingTimeoutSec);
+            if (connectionDrainingTimeoutSec == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "connectionDrainingTimeoutSec");
+            }
+            this.connectionDrainingTimeoutSec = connectionDrainingTimeoutSec;
             return this;
         }
         @CustomType.Setter
         public Builder consistentHash(List<GetBackendServiceConsistentHash> consistentHash) {
-            this.consistentHash = Objects.requireNonNull(consistentHash);
+            if (consistentHash == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "consistentHash");
+            }
+            this.consistentHash = consistentHash;
             return this;
         }
         public Builder consistentHash(GetBackendServiceConsistentHash... consistentHash) {
@@ -385,12 +407,18 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
-            this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder customRequestHeaders(List<String> customRequestHeaders) {
-            this.customRequestHeaders = Objects.requireNonNull(customRequestHeaders);
+            if (customRequestHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "customRequestHeaders");
+            }
+            this.customRequestHeaders = customRequestHeaders;
             return this;
         }
         public Builder customRequestHeaders(String... customRequestHeaders) {
@@ -398,7 +426,10 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder customResponseHeaders(List<String> customResponseHeaders) {
-            this.customResponseHeaders = Objects.requireNonNull(customResponseHeaders);
+            if (customResponseHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "customResponseHeaders");
+            }
+            this.customResponseHeaders = customResponseHeaders;
             return this;
         }
         public Builder customResponseHeaders(String... customResponseHeaders) {
@@ -406,32 +437,50 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder edgeSecurityPolicy(String edgeSecurityPolicy) {
-            this.edgeSecurityPolicy = Objects.requireNonNull(edgeSecurityPolicy);
+            if (edgeSecurityPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "edgeSecurityPolicy");
+            }
+            this.edgeSecurityPolicy = edgeSecurityPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder enableCdn(Boolean enableCdn) {
-            this.enableCdn = Objects.requireNonNull(enableCdn);
+            if (enableCdn == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "enableCdn");
+            }
+            this.enableCdn = enableCdn;
             return this;
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder generatedId(Integer generatedId) {
-            this.generatedId = Objects.requireNonNull(generatedId);
+            if (generatedId == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "generatedId");
+            }
+            this.generatedId = generatedId;
             return this;
         }
         @CustomType.Setter
         public Builder healthChecks(List<String> healthChecks) {
-            this.healthChecks = Objects.requireNonNull(healthChecks);
+            if (healthChecks == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "healthChecks");
+            }
+            this.healthChecks = healthChecks;
             return this;
         }
         public Builder healthChecks(String... healthChecks) {
@@ -439,7 +488,10 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder iaps(List<GetBackendServiceIap> iaps) {
-            this.iaps = Objects.requireNonNull(iaps);
+            if (iaps == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "iaps");
+            }
+            this.iaps = iaps;
             return this;
         }
         public Builder iaps(GetBackendServiceIap... iaps) {
@@ -447,17 +499,26 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancingScheme(String loadBalancingScheme) {
-            this.loadBalancingScheme = Objects.requireNonNull(loadBalancingScheme);
+            if (loadBalancingScheme == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "loadBalancingScheme");
+            }
+            this.loadBalancingScheme = loadBalancingScheme;
             return this;
         }
         @CustomType.Setter
         public Builder localityLbPolicies(List<GetBackendServiceLocalityLbPolicy> localityLbPolicies) {
-            this.localityLbPolicies = Objects.requireNonNull(localityLbPolicies);
+            if (localityLbPolicies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "localityLbPolicies");
+            }
+            this.localityLbPolicies = localityLbPolicies;
             return this;
         }
         public Builder localityLbPolicies(GetBackendServiceLocalityLbPolicy... localityLbPolicies) {
@@ -465,12 +526,18 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder localityLbPolicy(String localityLbPolicy) {
-            this.localityLbPolicy = Objects.requireNonNull(localityLbPolicy);
+            if (localityLbPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "localityLbPolicy");
+            }
+            this.localityLbPolicy = localityLbPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder logConfigs(List<GetBackendServiceLogConfig> logConfigs) {
-            this.logConfigs = Objects.requireNonNull(logConfigs);
+            if (logConfigs == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "logConfigs");
+            }
+            this.logConfigs = logConfigs;
             return this;
         }
         public Builder logConfigs(GetBackendServiceLogConfig... logConfigs) {
@@ -478,12 +545,18 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder outlierDetections(List<GetBackendServiceOutlierDetection> outlierDetections) {
-            this.outlierDetections = Objects.requireNonNull(outlierDetections);
+            if (outlierDetections == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "outlierDetections");
+            }
+            this.outlierDetections = outlierDetections;
             return this;
         }
         public Builder outlierDetections(GetBackendServiceOutlierDetection... outlierDetections) {
@@ -491,27 +564,40 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder portName(String portName) {
-            this.portName = Objects.requireNonNull(portName);
+            if (portName == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "portName");
+            }
+            this.portName = portName;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         @CustomType.Setter
         public Builder securityPolicy(String securityPolicy) {
-            this.securityPolicy = Objects.requireNonNull(securityPolicy);
+            if (securityPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "securityPolicy");
+            }
+            this.securityPolicy = securityPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder securitySettings(List<GetBackendServiceSecuritySetting> securitySettings) {
-            this.securitySettings = Objects.requireNonNull(securitySettings);
+            if (securitySettings == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "securitySettings");
+            }
+            this.securitySettings = securitySettings;
             return this;
         }
         public Builder securitySettings(GetBackendServiceSecuritySetting... securitySettings) {
@@ -519,17 +605,26 @@ public final class GetBackendServiceResult {
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder sessionAffinity(String sessionAffinity) {
-            this.sessionAffinity = Objects.requireNonNull(sessionAffinity);
+            if (sessionAffinity == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "sessionAffinity");
+            }
+            this.sessionAffinity = sessionAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSec(Integer timeoutSec) {
-            this.timeoutSec = Objects.requireNonNull(timeoutSec);
+            if (timeoutSec == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceResult", "timeoutSec");
+            }
+            this.timeoutSec = timeoutSec;
             return this;
         }
         public GetBackendServiceResult build() {

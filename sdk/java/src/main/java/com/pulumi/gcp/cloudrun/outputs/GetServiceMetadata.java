@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -90,52 +91,82 @@ public final class GetServiceMetadata {
 
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
-            this.effectiveAnnotations = Objects.requireNonNull(effectiveAnnotations);
+            if (effectiveAnnotations == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "effectiveAnnotations");
+            }
+            this.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder generation(Integer generation) {
-            this.generation = Objects.requireNonNull(generation);
+            if (generation == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "generation");
+            }
+            this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
-            this.resourceVersion = Objects.requireNonNull(resourceVersion);
+            if (resourceVersion == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "resourceVersion");
+            }
+            this.resourceVersion = resourceVersion;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetServiceMetadata", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         public GetServiceMetadata build() {

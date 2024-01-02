@@ -80,41 +80,49 @@ public final class InstanceFromTemplateBootDisk {
 
         @CustomType.Setter
         public Builder autoDelete(@Nullable Boolean autoDelete) {
+
             this.autoDelete = autoDelete;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
+
             this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeyRaw(@Nullable String diskEncryptionKeyRaw) {
+
             this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeySha256(@Nullable String diskEncryptionKeySha256) {
+
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             return this;
         }
         @CustomType.Setter
         public Builder initializeParams(@Nullable InstanceFromTemplateBootDiskInitializeParams initializeParams) {
+
             this.initializeParams = initializeParams;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
+
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder source(@Nullable String source) {
+
             this.source = source;
             return this;
         }

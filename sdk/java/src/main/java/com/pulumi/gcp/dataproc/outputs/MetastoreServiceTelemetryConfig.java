@@ -48,6 +48,7 @@ public final class MetastoreServiceTelemetryConfig {
 
         @CustomType.Setter
         public Builder logFormat(@Nullable String logFormat) {
+
             this.logFormat = logFormat;
             return this;
         }

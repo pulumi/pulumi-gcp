@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.ZoneIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -284,10 +285,18 @@ public final class ZoneIamBindingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ZoneIamBindingArgs build() {
-            $.dataplexZone = Objects.requireNonNull($.dataplexZone, "expected parameter 'dataplexZone' to be non-null");
-            $.lake = Objects.requireNonNull($.lake, "expected parameter 'lake' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.dataplexZone == null) {
+                throw new MissingRequiredPropertyException("ZoneIamBindingArgs", "dataplexZone");
+            }
+            if ($.lake == null) {
+                throw new MissingRequiredPropertyException("ZoneIamBindingArgs", "lake");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("ZoneIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ZoneIamBindingArgs", "role");
+            }
             return $;
         }
     }

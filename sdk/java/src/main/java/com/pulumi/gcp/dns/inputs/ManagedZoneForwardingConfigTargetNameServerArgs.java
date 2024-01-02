@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -125,7 +126,9 @@ public final class ManagedZoneForwardingConfigTargetNameServerArgs extends com.p
         }
 
         public ManagedZoneForwardingConfigTargetNameServerArgs build() {
-            $.ipv4Address = Objects.requireNonNull($.ipv4Address, "expected parameter 'ipv4Address' to be non-null");
+            if ($.ipv4Address == null) {
+                throw new MissingRequiredPropertyException("ManagedZoneForwardingConfigTargetNameServerArgs", "ipv4Address");
+            }
             return $;
         }
     }

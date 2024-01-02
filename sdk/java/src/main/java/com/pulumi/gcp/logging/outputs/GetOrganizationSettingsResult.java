@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -145,42 +146,66 @@ public final class GetOrganizationSettingsResult {
 
         @CustomType.Setter
         public Builder disableDefaultSink(Boolean disableDefaultSink) {
-            this.disableDefaultSink = Objects.requireNonNull(disableDefaultSink);
+            if (disableDefaultSink == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationSettingsResult", "disableDefaultSink");
+            }
+            this.disableDefaultSink = disableDefaultSink;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationSettingsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationSettingsResult", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder kmsServiceAccountId(String kmsServiceAccountId) {
-            this.kmsServiceAccountId = Objects.requireNonNull(kmsServiceAccountId);
+            if (kmsServiceAccountId == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationSettingsResult", "kmsServiceAccountId");
+            }
+            this.kmsServiceAccountId = kmsServiceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder loggingServiceAccountId(String loggingServiceAccountId) {
-            this.loggingServiceAccountId = Objects.requireNonNull(loggingServiceAccountId);
+            if (loggingServiceAccountId == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationSettingsResult", "loggingServiceAccountId");
+            }
+            this.loggingServiceAccountId = loggingServiceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationSettingsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder organization(String organization) {
-            this.organization = Objects.requireNonNull(organization);
+            if (organization == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationSettingsResult", "organization");
+            }
+            this.organization = organization;
             return this;
         }
         @CustomType.Setter
         public Builder storageLocation(String storageLocation) {
-            this.storageLocation = Objects.requireNonNull(storageLocation);
+            if (storageLocation == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationSettingsResult", "storageLocation");
+            }
+            this.storageLocation = storageLocation;
             return this;
         }
         public GetOrganizationSettingsResult build() {

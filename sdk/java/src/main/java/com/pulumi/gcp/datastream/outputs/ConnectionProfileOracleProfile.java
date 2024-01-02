@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -118,32 +119,46 @@ public final class ConnectionProfileOracleProfile {
 
         @CustomType.Setter
         public Builder connectionAttributes(@Nullable Map<String,String> connectionAttributes) {
+
             this.connectionAttributes = connectionAttributes;
             return this;
         }
         @CustomType.Setter
         public Builder databaseService(String databaseService) {
-            this.databaseService = Objects.requireNonNull(databaseService);
+            if (databaseService == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracleProfile", "databaseService");
+            }
+            this.databaseService = databaseService;
             return this;
         }
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracleProfile", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracleProfile", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileOracleProfile", "username");
+            }
+            this.username = username;
             return this;
         }
         public ConnectionProfileOracleProfile build() {

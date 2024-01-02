@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType;
@@ -150,31 +151,39 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder commonAlphabet(@Nullable String commonAlphabet) {
+
             this.commonAlphabet = commonAlphabet;
             return this;
         }
         @CustomType.Setter
         public Builder context(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigContext context) {
+
             this.context = context;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoKey(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKey cryptoKey) {
-            this.cryptoKey = Objects.requireNonNull(cryptoKey);
+            if (cryptoKey == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig", "cryptoKey");
+            }
+            this.cryptoKey = cryptoKey;
             return this;
         }
         @CustomType.Setter
         public Builder customAlphabet(@Nullable String customAlphabet) {
+
             this.customAlphabet = customAlphabet;
             return this;
         }
         @CustomType.Setter
         public Builder radix(@Nullable Integer radix) {
+
             this.radix = radix;
             return this;
         }
         @CustomType.Setter
         public Builder surrogateInfoType(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigSurrogateInfoType surrogateInfoType) {
+
             this.surrogateInfoType = surrogateInfoType;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -199,8 +200,12 @@ public final class SharedflowArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SharedflowArgs build() {
-            $.configBundle = Objects.requireNonNull($.configBundle, "expected parameter 'configBundle' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            if ($.configBundle == null) {
+                throw new MissingRequiredPropertyException("SharedflowArgs", "configBundle");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("SharedflowArgs", "orgId");
+            }
             return $;
         }
     }

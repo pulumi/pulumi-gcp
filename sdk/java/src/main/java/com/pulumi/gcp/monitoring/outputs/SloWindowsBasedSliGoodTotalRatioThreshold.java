@@ -80,16 +80,19 @@ public final class SloWindowsBasedSliGoodTotalRatioThreshold {
 
         @CustomType.Setter
         public Builder basicSliPerformance(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformance basicSliPerformance) {
+
             this.basicSliPerformance = basicSliPerformance;
             return this;
         }
         @CustomType.Setter
         public Builder performance(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformance performance) {
+
             this.performance = performance;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
+
             this.threshold = threshold;
             return this;
         }

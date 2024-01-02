@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectCustomerEncryption;
 import com.pulumi.gcp.storage.outputs.GetBucketObjectRetention;
 import java.lang.Boolean;
@@ -283,47 +284,72 @@ public final class GetBucketObjectResult {
 
         @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
+
             this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder cacheControl(String cacheControl) {
-            this.cacheControl = Objects.requireNonNull(cacheControl);
+            if (cacheControl == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "cacheControl");
+            }
+            this.cacheControl = cacheControl;
             return this;
         }
         @CustomType.Setter
         public Builder content(String content) {
-            this.content = Objects.requireNonNull(content);
+            if (content == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "content");
+            }
+            this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder contentDisposition(String contentDisposition) {
-            this.contentDisposition = Objects.requireNonNull(contentDisposition);
+            if (contentDisposition == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "contentDisposition");
+            }
+            this.contentDisposition = contentDisposition;
             return this;
         }
         @CustomType.Setter
         public Builder contentEncoding(String contentEncoding) {
-            this.contentEncoding = Objects.requireNonNull(contentEncoding);
+            if (contentEncoding == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "contentEncoding");
+            }
+            this.contentEncoding = contentEncoding;
             return this;
         }
         @CustomType.Setter
         public Builder contentLanguage(String contentLanguage) {
-            this.contentLanguage = Objects.requireNonNull(contentLanguage);
+            if (contentLanguage == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "contentLanguage");
+            }
+            this.contentLanguage = contentLanguage;
             return this;
         }
         @CustomType.Setter
         public Builder contentType(String contentType) {
-            this.contentType = Objects.requireNonNull(contentType);
+            if (contentType == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "contentType");
+            }
+            this.contentType = contentType;
             return this;
         }
         @CustomType.Setter
         public Builder crc32c(String crc32c) {
-            this.crc32c = Objects.requireNonNull(crc32c);
+            if (crc32c == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "crc32c");
+            }
+            this.crc32c = crc32c;
             return this;
         }
         @CustomType.Setter
         public Builder customerEncryptions(List<GetBucketObjectCustomerEncryption> customerEncryptions) {
-            this.customerEncryptions = Objects.requireNonNull(customerEncryptions);
+            if (customerEncryptions == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "customerEncryptions");
+            }
+            this.customerEncryptions = customerEncryptions;
             return this;
         }
         public Builder customerEncryptions(GetBucketObjectCustomerEncryption... customerEncryptions) {
@@ -331,52 +357,80 @@ public final class GetBucketObjectResult {
         }
         @CustomType.Setter
         public Builder detectMd5hash(String detectMd5hash) {
-            this.detectMd5hash = Objects.requireNonNull(detectMd5hash);
+            if (detectMd5hash == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "detectMd5hash");
+            }
+            this.detectMd5hash = detectMd5hash;
             return this;
         }
         @CustomType.Setter
         public Builder eventBasedHold(Boolean eventBasedHold) {
-            this.eventBasedHold = Objects.requireNonNull(eventBasedHold);
+            if (eventBasedHold == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "eventBasedHold");
+            }
+            this.eventBasedHold = eventBasedHold;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder md5hash(String md5hash) {
-            this.md5hash = Objects.requireNonNull(md5hash);
+            if (md5hash == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "md5hash");
+            }
+            this.md5hash = md5hash;
             return this;
         }
         @CustomType.Setter
         public Builder mediaLink(String mediaLink) {
-            this.mediaLink = Objects.requireNonNull(mediaLink);
+            if (mediaLink == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "mediaLink");
+            }
+            this.mediaLink = mediaLink;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder outputName(String outputName) {
-            this.outputName = Objects.requireNonNull(outputName);
+            if (outputName == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "outputName");
+            }
+            this.outputName = outputName;
             return this;
         }
         @CustomType.Setter
         public Builder retentions(List<GetBucketObjectRetention> retentions) {
-            this.retentions = Objects.requireNonNull(retentions);
+            if (retentions == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "retentions");
+            }
+            this.retentions = retentions;
             return this;
         }
         public Builder retentions(GetBucketObjectRetention... retentions) {
@@ -384,22 +438,34 @@ public final class GetBucketObjectResult {
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "source");
+            }
+            this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder storageClass(String storageClass) {
-            this.storageClass = Objects.requireNonNull(storageClass);
+            if (storageClass == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "storageClass");
+            }
+            this.storageClass = storageClass;
             return this;
         }
         @CustomType.Setter
         public Builder temporaryHold(Boolean temporaryHold) {
-            this.temporaryHold = Objects.requireNonNull(temporaryHold);
+            if (temporaryHold == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectResult", "temporaryHold");
+            }
+            this.temporaryHold = temporaryHold;
             return this;
         }
         public GetBucketObjectResult build() {

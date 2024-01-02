@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.DicomStoreStreamConfigBigqueryDestinationArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class DicomStoreStreamConfigArgs extends com.pulumi.resources.Resou
         }
 
         public DicomStoreStreamConfigArgs build() {
-            $.bigqueryDestination = Objects.requireNonNull($.bigqueryDestination, "expected parameter 'bigqueryDestination' to be non-null");
+            if ($.bigqueryDestination == null) {
+                throw new MissingRequiredPropertyException("DicomStoreStreamConfigArgs", "bigqueryDestination");
+            }
             return $;
         }
     }

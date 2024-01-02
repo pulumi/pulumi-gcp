@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigtable.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigtable.outputs.InstanceClusterAutoscalingConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -148,36 +149,45 @@ public final class InstanceCluster {
 
         @CustomType.Setter
         public Builder autoscalingConfig(@Nullable InstanceClusterAutoscalingConfig autoscalingConfig) {
+
             this.autoscalingConfig = autoscalingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("InstanceCluster", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
+
             this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder numNodes(@Nullable Integer numNodes) {
+
             this.numNodes = numNodes;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder storageType(@Nullable String storageType) {
+
             this.storageType = storageType;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

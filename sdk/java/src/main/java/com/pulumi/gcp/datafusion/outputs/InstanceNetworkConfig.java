@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datafusion.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -62,12 +63,18 @@ public final class InstanceNetworkConfig {
 
         @CustomType.Setter
         public Builder ipAllocation(String ipAllocation) {
-            this.ipAllocation = Objects.requireNonNull(ipAllocation);
+            if (ipAllocation == null) {
+              throw new MissingRequiredPropertyException("InstanceNetworkConfig", "ipAllocation");
+            }
+            this.ipAllocation = ipAllocation;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("InstanceNetworkConfig", "network");
+            }
+            this.network = network;
             return this;
         }
         public InstanceNetworkConfig build() {

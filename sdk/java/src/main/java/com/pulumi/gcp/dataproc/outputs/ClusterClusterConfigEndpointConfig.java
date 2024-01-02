@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Object;
 import java.lang.String;
@@ -54,11 +55,15 @@ public final class ClusterClusterConfigEndpointConfig {
 
         @CustomType.Setter
         public Builder enableHttpPortAccess(Boolean enableHttpPortAccess) {
-            this.enableHttpPortAccess = Objects.requireNonNull(enableHttpPortAccess);
+            if (enableHttpPortAccess == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigEndpointConfig", "enableHttpPortAccess");
+            }
+            this.enableHttpPortAccess = enableHttpPortAccess;
             return this;
         }
         @CustomType.Setter
         public Builder httpPorts(@Nullable Map<String,Object> httpPorts) {
+
             this.httpPorts = httpPorts;
             return this;
         }

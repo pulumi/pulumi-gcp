@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudasset.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudasset.outputs.FolderFeedFeedOutputConfigPubsubDestination;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class FolderFeedFeedOutputConfig {
 
         @CustomType.Setter
         public Builder pubsubDestination(FolderFeedFeedOutputConfigPubsubDestination pubsubDestination) {
-            this.pubsubDestination = Objects.requireNonNull(pubsubDestination);
+            if (pubsubDestination == null) {
+              throw new MissingRequiredPropertyException("FolderFeedFeedOutputConfig", "pubsubDestination");
+            }
+            this.pubsubDestination = pubsubDestination;
             return this;
         }
         public FolderFeedFeedOutputConfig build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeSecretItem;
 import java.lang.Integer;
 import java.lang.String;
@@ -49,12 +50,18 @@ public final class GetJobTemplateTemplateVolumeSecret {
 
         @CustomType.Setter
         public Builder defaultMode(Integer defaultMode) {
-            this.defaultMode = Objects.requireNonNull(defaultMode);
+            if (defaultMode == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolumeSecret", "defaultMode");
+            }
+            this.defaultMode = defaultMode;
             return this;
         }
         @CustomType.Setter
         public Builder items(List<GetJobTemplateTemplateVolumeSecretItem> items) {
-            this.items = Objects.requireNonNull(items);
+            if (items == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolumeSecret", "items");
+            }
+            this.items = items;
             return this;
         }
         public Builder items(GetJobTemplateTemplateVolumeSecretItem... items) {
@@ -62,7 +69,10 @@ public final class GetJobTemplateTemplateVolumeSecret {
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolumeSecret", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         public GetJobTemplateTemplateVolumeSecret build() {

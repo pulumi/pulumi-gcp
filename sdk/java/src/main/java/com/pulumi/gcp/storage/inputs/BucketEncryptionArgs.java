@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -126,7 +127,9 @@ public final class BucketEncryptionArgs extends com.pulumi.resources.ResourceArg
         }
 
         public BucketEncryptionArgs build() {
-            $.defaultKmsKeyName = Objects.requireNonNull($.defaultKmsKeyName, "expected parameter 'defaultKmsKeyName' to be non-null");
+            if ($.defaultKmsKeyName == null) {
+                throw new MissingRequiredPropertyException("BucketEncryptionArgs", "defaultKmsKeyName");
+            }
             return $;
         }
     }

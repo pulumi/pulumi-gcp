@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -195,9 +196,15 @@ public final class InstanceClusterAutoscalingConfigArgs extends com.pulumi.resou
         }
 
         public InstanceClusterAutoscalingConfigArgs build() {
-            $.cpuTarget = Objects.requireNonNull($.cpuTarget, "expected parameter 'cpuTarget' to be non-null");
-            $.maxNodes = Objects.requireNonNull($.maxNodes, "expected parameter 'maxNodes' to be non-null");
-            $.minNodes = Objects.requireNonNull($.minNodes, "expected parameter 'minNodes' to be non-null");
+            if ($.cpuTarget == null) {
+                throw new MissingRequiredPropertyException("InstanceClusterAutoscalingConfigArgs", "cpuTarget");
+            }
+            if ($.maxNodes == null) {
+                throw new MissingRequiredPropertyException("InstanceClusterAutoscalingConfigArgs", "maxNodes");
+            }
+            if ($.minNodes == null) {
+                throw new MissingRequiredPropertyException("InstanceClusterAutoscalingConfigArgs", "minNodes");
+            }
             return $;
         }
     }

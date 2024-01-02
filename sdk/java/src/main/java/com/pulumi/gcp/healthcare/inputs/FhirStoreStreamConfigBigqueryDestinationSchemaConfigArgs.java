@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -192,7 +193,9 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs exte
         }
 
         public FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs build() {
-            $.recursiveStructureDepth = Objects.requireNonNull($.recursiveStructureDepth, "expected parameter 'recursiveStructureDepth' to be non-null");
+            if ($.recursiveStructureDepth == null) {
+                throw new MissingRequiredPropertyException("FhirStoreStreamConfigBigqueryDestinationSchemaConfigArgs", "recursiveStructureDepth");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainerPort;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainerResource;
@@ -95,7 +96,10 @@ public final class GetJobTemplateTemplateContainer {
 
         @CustomType.Setter
         public Builder args(List<String> args) {
-            this.args = Objects.requireNonNull(args);
+            if (args == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "args");
+            }
+            this.args = args;
             return this;
         }
         public Builder args(String... args) {
@@ -103,7 +107,10 @@ public final class GetJobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder commands(List<String> commands) {
-            this.commands = Objects.requireNonNull(commands);
+            if (commands == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "commands");
+            }
+            this.commands = commands;
             return this;
         }
         public Builder commands(String... commands) {
@@ -111,7 +118,10 @@ public final class GetJobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder envs(List<GetJobTemplateTemplateContainerEnv> envs) {
-            this.envs = Objects.requireNonNull(envs);
+            if (envs == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "envs");
+            }
+            this.envs = envs;
             return this;
         }
         public Builder envs(GetJobTemplateTemplateContainerEnv... envs) {
@@ -119,17 +129,26 @@ public final class GetJobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(List<GetJobTemplateTemplateContainerPort> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(GetJobTemplateTemplateContainerPort... ports) {
@@ -137,7 +156,10 @@ public final class GetJobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder resources(List<GetJobTemplateTemplateContainerResource> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(GetJobTemplateTemplateContainerResource... resources) {
@@ -145,7 +167,10 @@ public final class GetJobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder volumeMounts(List<GetJobTemplateTemplateContainerVolumeMount> volumeMounts) {
-            this.volumeMounts = Objects.requireNonNull(volumeMounts);
+            if (volumeMounts == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "volumeMounts");
+            }
+            this.volumeMounts = volumeMounts;
             return this;
         }
         public Builder volumeMounts(GetJobTemplateTemplateContainerVolumeMount... volumeMounts) {
@@ -153,7 +178,10 @@ public final class GetJobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder workingDir(String workingDir) {
-            this.workingDir = Objects.requireNonNull(workingDir);
+            if (workingDir == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainer", "workingDir");
+            }
+            this.workingDir = workingDir;
             return this;
         }
         public GetJobTemplateTemplateContainer build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.organizations;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -409,7 +410,9 @@ public final class ProjectArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectArgs build() {
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("ProjectArgs", "projectId");
+            }
             return $;
         }
     }

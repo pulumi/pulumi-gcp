@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class EnvironmentConfigWebServerConfig {
 
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("EnvironmentConfigWebServerConfig", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         public EnvironmentConfigWebServerConfig build() {

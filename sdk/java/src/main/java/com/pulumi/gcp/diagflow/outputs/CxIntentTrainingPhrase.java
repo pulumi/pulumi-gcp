@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.outputs.CxIntentTrainingPhrasePart;
 import java.lang.Integer;
 import java.lang.String;
@@ -91,12 +92,16 @@ public final class CxIntentTrainingPhrase {
 
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder parts(List<CxIntentTrainingPhrasePart> parts) {
-            this.parts = Objects.requireNonNull(parts);
+            if (parts == null) {
+              throw new MissingRequiredPropertyException("CxIntentTrainingPhrase", "parts");
+            }
+            this.parts = parts;
             return this;
         }
         public Builder parts(CxIntentTrainingPhrasePart... parts) {
@@ -104,6 +109,7 @@ public final class CxIntentTrainingPhrase {
         }
         @CustomType.Setter
         public Builder repeatCount(@Nullable Integer repeatCount) {
+
             this.repeatCount = repeatCount;
             return this;
         }

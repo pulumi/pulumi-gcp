@@ -80,16 +80,19 @@ public final class TaskSparkInfrastructureSpec {
 
         @CustomType.Setter
         public Builder batch(@Nullable TaskSparkInfrastructureSpecBatch batch) {
+
             this.batch = batch;
             return this;
         }
         @CustomType.Setter
         public Builder containerImage(@Nullable TaskSparkInfrastructureSpecContainerImage containerImage) {
+
             this.containerImage = containerImage;
             return this;
         }
         @CustomType.Setter
         public Builder vpcNetwork(@Nullable TaskSparkInfrastructureSpecVpcNetwork vpcNetwork) {
+
             this.vpcNetwork = vpcNetwork;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.edgenetwork;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -448,10 +449,18 @@ public final class SubnetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SubnetArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.subnetId = Objects.requireNonNull($.subnetId, "expected parameter 'subnetId' to be non-null");
-            $.zone = Objects.requireNonNull($.zone, "expected parameter 'zone' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("SubnetArgs", "location");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("SubnetArgs", "network");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("SubnetArgs", "subnetId");
+            }
+            if ($.zone == null) {
+                throw new MissingRequiredPropertyException("SubnetArgs", "zone");
+            }
             return $;
         }
     }

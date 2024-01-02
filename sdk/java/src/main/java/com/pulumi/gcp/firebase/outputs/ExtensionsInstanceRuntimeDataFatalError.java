@@ -48,6 +48,7 @@ public final class ExtensionsInstanceRuntimeDataFatalError {
 
         @CustomType.Setter
         public Builder errorMessage(@Nullable String errorMessage) {
+
             this.errorMessage = errorMessage;
             return this;
         }

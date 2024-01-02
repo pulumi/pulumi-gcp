@@ -88,11 +88,13 @@ public final class BucketCor {
 
         @CustomType.Setter
         public Builder maxAgeSeconds(@Nullable Integer maxAgeSeconds) {
+
             this.maxAgeSeconds = maxAgeSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder methods(@Nullable List<String> methods) {
+
             this.methods = methods;
             return this;
         }
@@ -101,6 +103,7 @@ public final class BucketCor {
         }
         @CustomType.Setter
         public Builder origins(@Nullable List<String> origins) {
+
             this.origins = origins;
             return this;
         }
@@ -109,6 +112,7 @@ public final class BucketCor {
         }
         @CustomType.Setter
         public Builder responseHeaders(@Nullable List<String> responseHeaders) {
+
             this.responseHeaders = responseHeaders;
             return this;
         }

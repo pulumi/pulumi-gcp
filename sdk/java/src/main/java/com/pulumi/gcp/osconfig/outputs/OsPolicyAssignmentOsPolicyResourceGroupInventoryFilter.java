@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,11 +65,15 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter {
 
         @CustomType.Setter
         public Builder osShortName(String osShortName) {
-            this.osShortName = Objects.requireNonNull(osShortName);
+            if (osShortName == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupInventoryFilter", "osShortName");
+            }
+            this.osShortName = osShortName;
             return this;
         }
         @CustomType.Setter
         public Builder osVersion(@Nullable String osVersion) {
+
             this.osVersion = osVersion;
             return this;
         }

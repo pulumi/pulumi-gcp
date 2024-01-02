@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildArtifactMavenArtifact;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildArtifactNpmPackage;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildArtifactObject;
@@ -63,7 +64,10 @@ public final class GetTriggerBuildArtifact {
 
         @CustomType.Setter
         public Builder images(List<String> images) {
-            this.images = Objects.requireNonNull(images);
+            if (images == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifact", "images");
+            }
+            this.images = images;
             return this;
         }
         public Builder images(String... images) {
@@ -71,7 +75,10 @@ public final class GetTriggerBuildArtifact {
         }
         @CustomType.Setter
         public Builder mavenArtifacts(List<GetTriggerBuildArtifactMavenArtifact> mavenArtifacts) {
-            this.mavenArtifacts = Objects.requireNonNull(mavenArtifacts);
+            if (mavenArtifacts == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifact", "mavenArtifacts");
+            }
+            this.mavenArtifacts = mavenArtifacts;
             return this;
         }
         public Builder mavenArtifacts(GetTriggerBuildArtifactMavenArtifact... mavenArtifacts) {
@@ -79,7 +86,10 @@ public final class GetTriggerBuildArtifact {
         }
         @CustomType.Setter
         public Builder npmPackages(List<GetTriggerBuildArtifactNpmPackage> npmPackages) {
-            this.npmPackages = Objects.requireNonNull(npmPackages);
+            if (npmPackages == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifact", "npmPackages");
+            }
+            this.npmPackages = npmPackages;
             return this;
         }
         public Builder npmPackages(GetTriggerBuildArtifactNpmPackage... npmPackages) {
@@ -87,7 +97,10 @@ public final class GetTriggerBuildArtifact {
         }
         @CustomType.Setter
         public Builder objects(List<GetTriggerBuildArtifactObject> objects) {
-            this.objects = Objects.requireNonNull(objects);
+            if (objects == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifact", "objects");
+            }
+            this.objects = objects;
             return this;
         }
         public Builder objects(GetTriggerBuildArtifactObject... objects) {
@@ -95,7 +108,10 @@ public final class GetTriggerBuildArtifact {
         }
         @CustomType.Setter
         public Builder pythonPackages(List<GetTriggerBuildArtifactPythonPackage> pythonPackages) {
-            this.pythonPackages = Objects.requireNonNull(pythonPackages);
+            if (pythonPackages == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifact", "pythonPackages");
+            }
+            this.pythonPackages = pythonPackages;
             return this;
         }
         public Builder pythonPackages(GetTriggerBuildArtifactPythonPackage... pythonPackages) {

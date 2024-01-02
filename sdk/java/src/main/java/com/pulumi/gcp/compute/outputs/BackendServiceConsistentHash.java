@@ -94,16 +94,19 @@ public final class BackendServiceConsistentHash {
 
         @CustomType.Setter
         public Builder httpCookie(@Nullable BackendServiceConsistentHashHttpCookie httpCookie) {
+
             this.httpCookie = httpCookie;
             return this;
         }
         @CustomType.Setter
         public Builder httpHeaderName(@Nullable String httpHeaderName) {
+
             this.httpHeaderName = httpHeaderName;
             return this;
         }
         @CustomType.Setter
         public Builder minimumRingSize(@Nullable Integer minimumRingSize) {
+
             this.minimumRingSize = minimumRingSize;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.folder.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetIamPolicyPlainArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetIamPolicyPlainArgs build() {
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("GetIamPolicyPlainArgs", "folder");
+            }
             return $;
         }
     }

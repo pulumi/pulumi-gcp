@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterSpecArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterStatusArgs;
 import java.lang.Boolean;
@@ -482,8 +483,12 @@ public final class ServicePerimeterArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ServicePerimeterArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("ServicePerimeterArgs", "parent");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("ServicePerimeterArgs", "title");
+            }
             return $;
         }
     }

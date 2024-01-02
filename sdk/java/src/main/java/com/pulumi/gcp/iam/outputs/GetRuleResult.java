@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -91,12 +92,18 @@ public final class GetRuleResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRuleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder includedPermissions(List<String> includedPermissions) {
-            this.includedPermissions = Objects.requireNonNull(includedPermissions);
+            if (includedPermissions == null) {
+              throw new MissingRequiredPropertyException("GetRuleResult", "includedPermissions");
+            }
+            this.includedPermissions = includedPermissions;
             return this;
         }
         public Builder includedPermissions(String... includedPermissions) {
@@ -104,17 +111,26 @@ public final class GetRuleResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRuleResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder stage(String stage) {
-            this.stage = Objects.requireNonNull(stage);
+            if (stage == null) {
+              throw new MissingRequiredPropertyException("GetRuleResult", "stage");
+            }
+            this.stage = stage;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("GetRuleResult", "title");
+            }
+            this.title = title;
             return this;
         }
         public GetRuleResult build() {

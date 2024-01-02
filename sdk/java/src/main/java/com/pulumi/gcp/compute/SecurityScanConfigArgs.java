@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SecurityScanConfigAuthenticationArgs;
 import com.pulumi.gcp.compute.inputs.SecurityScanConfigScheduleArgs;
 import java.lang.Integer;
@@ -499,8 +500,12 @@ public final class SecurityScanConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public SecurityScanConfigArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.startingUrls = Objects.requireNonNull($.startingUrls, "expected parameter 'startingUrls' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("SecurityScanConfigArgs", "displayName");
+            }
+            if ($.startingUrls == null) {
+                throw new MissingRequiredPropertyException("SecurityScanConfigArgs", "startingUrls");
+            }
             return $;
         }
     }

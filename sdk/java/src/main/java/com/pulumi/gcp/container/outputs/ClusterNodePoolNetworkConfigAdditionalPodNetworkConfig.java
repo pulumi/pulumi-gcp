@@ -59,16 +59,19 @@ public final class ClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
 
         @CustomType.Setter
         public Builder maxPodsPerNode(@Nullable Integer maxPodsPerNode) {
+
             this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryPodRange(@Nullable String secondaryPodRange) {
+
             this.secondaryPodRange = secondaryPodRange;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
+
             this.subnetwork = subnetwork;
             return this;
         }

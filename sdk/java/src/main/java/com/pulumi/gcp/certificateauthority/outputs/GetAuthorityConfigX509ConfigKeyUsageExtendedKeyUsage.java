@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -64,32 +65,50 @@ public final class GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage {
 
         @CustomType.Setter
         public Builder clientAuth(Boolean clientAuth) {
-            this.clientAuth = Objects.requireNonNull(clientAuth);
+            if (clientAuth == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage", "clientAuth");
+            }
+            this.clientAuth = clientAuth;
             return this;
         }
         @CustomType.Setter
         public Builder codeSigning(Boolean codeSigning) {
-            this.codeSigning = Objects.requireNonNull(codeSigning);
+            if (codeSigning == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage", "codeSigning");
+            }
+            this.codeSigning = codeSigning;
             return this;
         }
         @CustomType.Setter
         public Builder emailProtection(Boolean emailProtection) {
-            this.emailProtection = Objects.requireNonNull(emailProtection);
+            if (emailProtection == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage", "emailProtection");
+            }
+            this.emailProtection = emailProtection;
             return this;
         }
         @CustomType.Setter
         public Builder ocspSigning(Boolean ocspSigning) {
-            this.ocspSigning = Objects.requireNonNull(ocspSigning);
+            if (ocspSigning == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage", "ocspSigning");
+            }
+            this.ocspSigning = ocspSigning;
             return this;
         }
         @CustomType.Setter
         public Builder serverAuth(Boolean serverAuth) {
-            this.serverAuth = Objects.requireNonNull(serverAuth);
+            if (serverAuth == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage", "serverAuth");
+            }
+            this.serverAuth = serverAuth;
             return this;
         }
         @CustomType.Setter
         public Builder timeStamping(Boolean timeStamping) {
-            this.timeStamping = Objects.requireNonNull(timeStamping);
+            if (timeStamping == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage", "timeStamping");
+            }
+            this.timeStamping = timeStamping;
             return this;
         }
         public GetAuthorityConfigX509ConfigKeyUsageExtendedKeyUsage build() {

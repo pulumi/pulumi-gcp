@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleMatchArgs;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRulePreconfiguredWafConfigArgs;
@@ -391,9 +392,15 @@ public final class SecurityPolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         public SecurityPolicyRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.match = Objects.requireNonNull($.match, "expected parameter 'match' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleArgs", "action");
+            }
+            if ($.match == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleArgs", "match");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleArgs", "priority");
+            }
             return $;
         }
     }

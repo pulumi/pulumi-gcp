@@ -133,36 +133,43 @@ public final class FunctionBuildConfigSourceRepoSource {
 
         @CustomType.Setter
         public Builder branchName(@Nullable String branchName) {
+
             this.branchName = branchName;
             return this;
         }
         @CustomType.Setter
         public Builder commitSha(@Nullable String commitSha) {
+
             this.commitSha = commitSha;
             return this;
         }
         @CustomType.Setter
         public Builder dir(@Nullable String dir) {
+
             this.dir = dir;
             return this;
         }
         @CustomType.Setter
         public Builder invertRegex(@Nullable Boolean invertRegex) {
+
             this.invertRegex = invertRegex;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder repoName(@Nullable String repoName) {
+
             this.repoName = repoName;
             return this;
         }
         @CustomType.Setter
         public Builder tagName(@Nullable String tagName) {
+
             this.tagName = tagName;
             return this;
         }

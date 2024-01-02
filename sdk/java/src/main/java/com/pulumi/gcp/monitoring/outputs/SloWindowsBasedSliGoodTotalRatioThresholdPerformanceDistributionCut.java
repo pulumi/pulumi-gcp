@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange;
 import java.lang.String;
 import java.util.Objects;
@@ -73,12 +74,18 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistribut
 
         @CustomType.Setter
         public Builder distributionFilter(String distributionFilter) {
-            this.distributionFilter = Objects.requireNonNull(distributionFilter);
+            if (distributionFilter == null) {
+              throw new MissingRequiredPropertyException("SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut", "distributionFilter");
+            }
+            this.distributionFilter = distributionFilter;
             return this;
         }
         @CustomType.Setter
         public Builder range(SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCutRange range) {
-            this.range = Objects.requireNonNull(range);
+            if (range == null) {
+              throw new MissingRequiredPropertyException("SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut", "range");
+            }
+            this.range = range;
             return this;
         }
         public SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut build() {

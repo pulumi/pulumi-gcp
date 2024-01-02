@@ -4,6 +4,7 @@
 package com.pulumi.gcp.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigateway.outputs.ApiConfigGatewayConfigBackendConfig;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ApiConfigGatewayConfig {
 
         @CustomType.Setter
         public Builder backendConfig(ApiConfigGatewayConfigBackendConfig backendConfig) {
-            this.backendConfig = Objects.requireNonNull(backendConfig);
+            if (backendConfig == null) {
+              throw new MissingRequiredPropertyException("ApiConfigGatewayConfig", "backendConfig");
+            }
+            this.backendConfig = backendConfig;
             return this;
         }
         public ApiConfigGatewayConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -186,8 +187,12 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs exte
         }
 
         public BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs build() {
-            $.asn = Objects.requireNonNull($.asn, "expected parameter 'asn' to be non-null");
-            $.ipAddress = Objects.requireNonNull($.ipAddress, "expected parameter 'ipAddress' to be non-null");
+            if ($.asn == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs", "asn");
+            }
+            if ($.ipAddress == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs", "ipAddress");
+            }
             return $;
         }
     }

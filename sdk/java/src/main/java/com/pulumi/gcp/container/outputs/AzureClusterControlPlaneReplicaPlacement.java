@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class AzureClusterControlPlaneReplicaPlacement {
 
         @CustomType.Setter
         public Builder azureAvailabilityZone(String azureAvailabilityZone) {
-            this.azureAvailabilityZone = Objects.requireNonNull(azureAvailabilityZone);
+            if (azureAvailabilityZone == null) {
+              throw new MissingRequiredPropertyException("AzureClusterControlPlaneReplicaPlacement", "azureAvailabilityZone");
+            }
+            this.azureAvailabilityZone = azureAvailabilityZone;
             return this;
         }
         @CustomType.Setter
         public Builder subnetId(String subnetId) {
-            this.subnetId = Objects.requireNonNull(subnetId);
+            if (subnetId == null) {
+              throw new MissingRequiredPropertyException("AzureClusterControlPlaneReplicaPlacement", "subnetId");
+            }
+            this.subnetId = subnetId;
             return this;
         }
         public AzureClusterControlPlaneReplicaPlacement build() {

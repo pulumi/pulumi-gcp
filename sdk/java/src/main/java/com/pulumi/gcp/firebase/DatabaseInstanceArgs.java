@@ -5,6 +5,7 @@ package com.pulumi.gcp.firebase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -264,8 +265,12 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DatabaseInstanceArgs build() {
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("DatabaseInstanceArgs", "instanceId");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("DatabaseInstanceArgs", "region");
+            }
             return $;
         }
     }

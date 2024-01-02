@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,32 @@ public final class URLMapTest {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("URLMapTest", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("URLMapTest", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("URLMapTest", "service");
+            }
+            this.service = service;
             return this;
         }
         public URLMapTest build() {

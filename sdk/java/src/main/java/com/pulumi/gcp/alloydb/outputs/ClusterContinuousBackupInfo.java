@@ -98,16 +98,19 @@ public final class ClusterContinuousBackupInfo {
 
         @CustomType.Setter
         public Builder earliestRestorableTime(@Nullable String earliestRestorableTime) {
+
             this.earliestRestorableTime = earliestRestorableTime;
             return this;
         }
         @CustomType.Setter
         public Builder enabledTime(@Nullable String enabledTime) {
+
             this.enabledTime = enabledTime;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionInfos(@Nullable List<ClusterContinuousBackupInfoEncryptionInfo> encryptionInfos) {
+
             this.encryptionInfos = encryptionInfos;
             return this;
         }
@@ -116,6 +119,7 @@ public final class ClusterContinuousBackupInfo {
         }
         @CustomType.Setter
         public Builder schedules(@Nullable List<String> schedules) {
+
             this.schedules = schedules;
             return this;
         }

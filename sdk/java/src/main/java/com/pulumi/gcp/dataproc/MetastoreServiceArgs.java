@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceEncryptionConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMaintenanceWindowArgs;
@@ -732,7 +733,9 @@ public final class MetastoreServiceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public MetastoreServiceArgs build() {
-            $.serviceId = Objects.requireNonNull($.serviceId, "expected parameter 'serviceId' to be non-null");
+            if ($.serviceId == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceArgs", "serviceId");
+            }
             return $;
         }
     }

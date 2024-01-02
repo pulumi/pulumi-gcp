@@ -126,21 +126,25 @@ public final class InstanceFileSharesNfsExportOption {
 
         @CustomType.Setter
         public Builder accessMode(@Nullable String accessMode) {
+
             this.accessMode = accessMode;
             return this;
         }
         @CustomType.Setter
         public Builder anonGid(@Nullable Integer anonGid) {
+
             this.anonGid = anonGid;
             return this;
         }
         @CustomType.Setter
         public Builder anonUid(@Nullable Integer anonUid) {
+
             this.anonUid = anonUid;
             return this;
         }
         @CustomType.Setter
         public Builder ipRanges(@Nullable List<String> ipRanges) {
+
             this.ipRanges = ipRanges;
             return this;
         }
@@ -149,6 +153,7 @@ public final class InstanceFileSharesNfsExportOption {
         }
         @CustomType.Setter
         public Builder squashMode(@Nullable String squashMode) {
+
             this.squashMode = squashMode;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datacatalog.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,7 +109,9 @@ public final class GetEntryGroupIamPolicyPlainArgs extends com.pulumi.resources.
         }
 
         public GetEntryGroupIamPolicyPlainArgs build() {
-            $.entryGroup = Objects.requireNonNull($.entryGroup, "expected parameter 'entryGroup' to be non-null");
+            if ($.entryGroup == null) {
+                throw new MissingRequiredPropertyException("GetEntryGroupIamPolicyPlainArgs", "entryGroup");
+            }
             return $;
         }
     }

@@ -61,6 +61,7 @@ public final class TriggerBuildArtifactsPythonPackage {
 
         @CustomType.Setter
         public Builder paths(@Nullable List<String> paths) {
+
             this.paths = paths;
             return this;
         }
@@ -69,6 +70,7 @@ public final class TriggerBuildArtifactsPythonPackage {
         }
         @CustomType.Setter
         public Builder repository(@Nullable String repository) {
+
             this.repository = repository;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class FeatureSpecMulticlusteringress {
 
         @CustomType.Setter
         public Builder configMembership(String configMembership) {
-            this.configMembership = Objects.requireNonNull(configMembership);
+            if (configMembership == null) {
+              throw new MissingRequiredPropertyException("FeatureSpecMulticlusteringress", "configMembership");
+            }
+            this.configMembership = configMembership;
             return this;
         }
         public FeatureSpecMulticlusteringress build() {

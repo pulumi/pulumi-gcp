@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.String;
@@ -604,9 +605,15 @@ public final class AgentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AgentArgs build() {
-            $.defaultLanguageCode = Objects.requireNonNull($.defaultLanguageCode, "expected parameter 'defaultLanguageCode' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.timeZone = Objects.requireNonNull($.timeZone, "expected parameter 'timeZone' to be non-null");
+            if ($.defaultLanguageCode == null) {
+                throw new MissingRequiredPropertyException("AgentArgs", "defaultLanguageCode");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AgentArgs", "displayName");
+            }
+            if ($.timeZone == null) {
+                throw new MissingRequiredPropertyException("AgentArgs", "timeZone");
+            }
             return $;
         }
     }

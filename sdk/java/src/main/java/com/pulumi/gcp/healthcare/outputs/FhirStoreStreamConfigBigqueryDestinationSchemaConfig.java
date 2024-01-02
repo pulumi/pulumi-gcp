@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.outputs.FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -94,16 +95,21 @@ public final class FhirStoreStreamConfigBigqueryDestinationSchemaConfig {
 
         @CustomType.Setter
         public Builder lastUpdatedPartitionConfig(@Nullable FhirStoreStreamConfigBigqueryDestinationSchemaConfigLastUpdatedPartitionConfig lastUpdatedPartitionConfig) {
+
             this.lastUpdatedPartitionConfig = lastUpdatedPartitionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder recursiveStructureDepth(Integer recursiveStructureDepth) {
-            this.recursiveStructureDepth = Objects.requireNonNull(recursiveStructureDepth);
+            if (recursiveStructureDepth == null) {
+              throw new MissingRequiredPropertyException("FhirStoreStreamConfigBigqueryDestinationSchemaConfig", "recursiveStructureDepth");
+            }
+            this.recursiveStructureDepth = recursiveStructureDepth;
             return this;
         }
         @CustomType.Setter
         public Builder schemaType(@Nullable String schemaType) {
+
             this.schemaType = schemaType;
             return this;
         }

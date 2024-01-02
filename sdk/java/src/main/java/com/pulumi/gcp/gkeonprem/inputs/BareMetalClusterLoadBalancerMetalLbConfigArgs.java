@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigAddressPoolArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigArgs;
 import java.util.List;
@@ -144,7 +145,9 @@ public final class BareMetalClusterLoadBalancerMetalLbConfigArgs extends com.pul
         }
 
         public BareMetalClusterLoadBalancerMetalLbConfigArgs build() {
-            $.addressPools = Objects.requireNonNull($.addressPools, "expected parameter 'addressPools' to be non-null");
+            if ($.addressPools == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerMetalLbConfigArgs", "addressPools");
+            }
             return $;
         }
     }

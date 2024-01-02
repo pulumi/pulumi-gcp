@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class TransferJobTransferSpecHttpDataSource {
 
         @CustomType.Setter
         public Builder listUrl(String listUrl) {
-            this.listUrl = Objects.requireNonNull(listUrl);
+            if (listUrl == null) {
+              throw new MissingRequiredPropertyException("TransferJobTransferSpecHttpDataSource", "listUrl");
+            }
+            this.listUrl = listUrl;
             return this;
         }
         public TransferJobTransferSpecHttpDataSource build() {

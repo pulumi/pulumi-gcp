@@ -4,6 +4,7 @@
 package com.pulumi.gcp.recaptcha.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -102,16 +103,19 @@ public final class EnterpriseKeyWebSettings {
 
         @CustomType.Setter
         public Builder allowAllDomains(@Nullable Boolean allowAllDomains) {
+
             this.allowAllDomains = allowAllDomains;
             return this;
         }
         @CustomType.Setter
         public Builder allowAmpTraffic(@Nullable Boolean allowAmpTraffic) {
+
             this.allowAmpTraffic = allowAmpTraffic;
             return this;
         }
         @CustomType.Setter
         public Builder allowedDomains(@Nullable List<String> allowedDomains) {
+
             this.allowedDomains = allowedDomains;
             return this;
         }
@@ -120,12 +124,16 @@ public final class EnterpriseKeyWebSettings {
         }
         @CustomType.Setter
         public Builder challengeSecurityPreference(@Nullable String challengeSecurityPreference) {
+
             this.challengeSecurityPreference = challengeSecurityPreference;
             return this;
         }
         @CustomType.Setter
         public Builder integrationType(String integrationType) {
-            this.integrationType = Objects.requireNonNull(integrationType);
+            if (integrationType == null) {
+              throw new MissingRequiredPropertyException("EnterpriseKeyWebSettings", "integrationType");
+            }
+            this.integrationType = integrationType;
             return this;
         }
         public EnterpriseKeyWebSettings build() {

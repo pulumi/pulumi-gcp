@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -134,7 +135,9 @@ public final class GetTagTemplateIamPolicyArgs extends com.pulumi.resources.Invo
         }
 
         public GetTagTemplateIamPolicyArgs build() {
-            $.tagTemplate = Objects.requireNonNull($.tagTemplate, "expected parameter 'tagTemplate' to be non-null");
+            if ($.tagTemplate == null) {
+                throw new MissingRequiredPropertyException("GetTagTemplateIamPolicyArgs", "tagTemplate");
+            }
             return $;
         }
     }

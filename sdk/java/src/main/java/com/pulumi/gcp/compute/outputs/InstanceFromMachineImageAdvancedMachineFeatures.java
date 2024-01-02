@@ -49,16 +49,19 @@ public final class InstanceFromMachineImageAdvancedMachineFeatures {
 
         @CustomType.Setter
         public Builder enableNestedVirtualization(@Nullable Boolean enableNestedVirtualization) {
+
             this.enableNestedVirtualization = enableNestedVirtualization;
             return this;
         }
         @CustomType.Setter
         public Builder threadsPerCore(@Nullable Integer threadsPerCore) {
+
             this.threadsPerCore = threadsPerCore;
             return this;
         }
         @CustomType.Setter
         public Builder visibleCoreCount(@Nullable Integer visibleCoreCount) {
+
             this.visibleCoreCount = visibleCoreCount;
             return this;
         }

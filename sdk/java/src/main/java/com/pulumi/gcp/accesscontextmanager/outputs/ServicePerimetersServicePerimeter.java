@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimetersServicePerimeterSpec;
 import com.pulumi.gcp.accesscontextmanager.outputs.ServicePerimetersServicePerimeterStatus;
 import java.lang.Boolean;
@@ -229,46 +230,59 @@ public final class ServicePerimetersServicePerimeter {
 
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ServicePerimetersServicePerimeter", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder perimeterType(@Nullable String perimeterType) {
+
             this.perimeterType = perimeterType;
             return this;
         }
         @CustomType.Setter
         public Builder spec(@Nullable ServicePerimetersServicePerimeterSpec spec) {
+
             this.spec = spec;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable ServicePerimetersServicePerimeterStatus status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("ServicePerimetersServicePerimeter", "title");
+            }
+            this.title = title;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder useExplicitDryRunSpec(@Nullable Boolean useExplicitDryRunSpec) {
+
             this.useExplicitDryRunSpec = useExplicitDryRunSpec;
             return this;
         }

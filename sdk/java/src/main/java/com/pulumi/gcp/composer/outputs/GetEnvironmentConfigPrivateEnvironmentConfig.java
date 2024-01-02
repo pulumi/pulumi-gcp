@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -77,42 +78,66 @@ public final class GetEnvironmentConfigPrivateEnvironmentConfig {
 
         @CustomType.Setter
         public Builder cloudComposerConnectionSubnetwork(String cloudComposerConnectionSubnetwork) {
-            this.cloudComposerConnectionSubnetwork = Objects.requireNonNull(cloudComposerConnectionSubnetwork);
+            if (cloudComposerConnectionSubnetwork == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigPrivateEnvironmentConfig", "cloudComposerConnectionSubnetwork");
+            }
+            this.cloudComposerConnectionSubnetwork = cloudComposerConnectionSubnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder cloudComposerNetworkIpv4CidrBlock(String cloudComposerNetworkIpv4CidrBlock) {
-            this.cloudComposerNetworkIpv4CidrBlock = Objects.requireNonNull(cloudComposerNetworkIpv4CidrBlock);
+            if (cloudComposerNetworkIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigPrivateEnvironmentConfig", "cloudComposerNetworkIpv4CidrBlock");
+            }
+            this.cloudComposerNetworkIpv4CidrBlock = cloudComposerNetworkIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder cloudSqlIpv4CidrBlock(String cloudSqlIpv4CidrBlock) {
-            this.cloudSqlIpv4CidrBlock = Objects.requireNonNull(cloudSqlIpv4CidrBlock);
+            if (cloudSqlIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigPrivateEnvironmentConfig", "cloudSqlIpv4CidrBlock");
+            }
+            this.cloudSqlIpv4CidrBlock = cloudSqlIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder connectionType(String connectionType) {
-            this.connectionType = Objects.requireNonNull(connectionType);
+            if (connectionType == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigPrivateEnvironmentConfig", "connectionType");
+            }
+            this.connectionType = connectionType;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateEndpoint(Boolean enablePrivateEndpoint) {
-            this.enablePrivateEndpoint = Objects.requireNonNull(enablePrivateEndpoint);
+            if (enablePrivateEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigPrivateEnvironmentConfig", "enablePrivateEndpoint");
+            }
+            this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivatelyUsedPublicIps(Boolean enablePrivatelyUsedPublicIps) {
-            this.enablePrivatelyUsedPublicIps = Objects.requireNonNull(enablePrivatelyUsedPublicIps);
+            if (enablePrivatelyUsedPublicIps == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigPrivateEnvironmentConfig", "enablePrivatelyUsedPublicIps");
+            }
+            this.enablePrivatelyUsedPublicIps = enablePrivatelyUsedPublicIps;
             return this;
         }
         @CustomType.Setter
         public Builder masterIpv4CidrBlock(String masterIpv4CidrBlock) {
-            this.masterIpv4CidrBlock = Objects.requireNonNull(masterIpv4CidrBlock);
+            if (masterIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigPrivateEnvironmentConfig", "masterIpv4CidrBlock");
+            }
+            this.masterIpv4CidrBlock = masterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder webServerIpv4CidrBlock(String webServerIpv4CidrBlock) {
-            this.webServerIpv4CidrBlock = Objects.requireNonNull(webServerIpv4CidrBlock);
+            if (webServerIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigPrivateEnvironmentConfig", "webServerIpv4CidrBlock");
+            }
+            this.webServerIpv4CidrBlock = webServerIpv4CidrBlock;
             return this;
         }
         public GetEnvironmentConfigPrivateEnvironmentConfig build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class StandardAppVersionManualScaling {
 
         @CustomType.Setter
         public Builder instances(Integer instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("StandardAppVersionManualScaling", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public StandardAppVersionManualScaling build() {

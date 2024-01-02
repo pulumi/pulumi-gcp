@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -300,10 +301,18 @@ public final class RegionAutoscalerAutoscalingPolicyScalingScheduleArgs extends 
         }
 
         public RegionAutoscalerAutoscalingPolicyScalingScheduleArgs build() {
-            $.durationSec = Objects.requireNonNull($.durationSec, "expected parameter 'durationSec' to be non-null");
-            $.minRequiredReplicas = Objects.requireNonNull($.minRequiredReplicas, "expected parameter 'minRequiredReplicas' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.schedule = Objects.requireNonNull($.schedule, "expected parameter 'schedule' to be non-null");
+            if ($.durationSec == null) {
+                throw new MissingRequiredPropertyException("RegionAutoscalerAutoscalingPolicyScalingScheduleArgs", "durationSec");
+            }
+            if ($.minRequiredReplicas == null) {
+                throw new MissingRequiredPropertyException("RegionAutoscalerAutoscalingPolicyScalingScheduleArgs", "minRequiredReplicas");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("RegionAutoscalerAutoscalingPolicyScalingScheduleArgs", "name");
+            }
+            if ($.schedule == null) {
+                throw new MissingRequiredPropertyException("RegionAutoscalerAutoscalingPolicyScalingScheduleArgs", "schedule");
+            }
             return $;
         }
     }

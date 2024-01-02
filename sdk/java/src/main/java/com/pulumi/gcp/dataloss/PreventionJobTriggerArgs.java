@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerTriggerArgs;
 import java.lang.String;
@@ -340,8 +341,12 @@ public final class PreventionJobTriggerArgs extends com.pulumi.resources.Resourc
         }
 
         public PreventionJobTriggerArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
-            $.triggers = Objects.requireNonNull($.triggers, "expected parameter 'triggers' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerArgs", "parent");
+            }
+            if ($.triggers == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerArgs", "triggers");
+            }
             return $;
         }
     }

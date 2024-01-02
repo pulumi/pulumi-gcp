@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iap.inputs.WebTypeAppEngingIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -269,9 +270,15 @@ public final class WebTypeAppEngingIamMemberArgs extends com.pulumi.resources.Re
         }
 
         public WebTypeAppEngingIamMemberArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("WebTypeAppEngingIamMemberArgs", "appId");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("WebTypeAppEngingIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("WebTypeAppEngingIamMemberArgs", "role");
+            }
             return $;
         }
     }

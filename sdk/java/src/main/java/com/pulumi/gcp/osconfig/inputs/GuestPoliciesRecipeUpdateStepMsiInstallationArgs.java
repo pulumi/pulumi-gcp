@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -172,7 +173,9 @@ public final class GuestPoliciesRecipeUpdateStepMsiInstallationArgs extends com.
         }
 
         public GuestPoliciesRecipeUpdateStepMsiInstallationArgs build() {
-            $.artifactId = Objects.requireNonNull($.artifactId, "expected parameter 'artifactId' to be non-null");
+            if ($.artifactId == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesRecipeUpdateStepMsiInstallationArgs", "artifactId");
+            }
             return $;
         }
     }

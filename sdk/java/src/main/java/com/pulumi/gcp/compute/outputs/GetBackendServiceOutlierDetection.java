@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceOutlierDetectionBaseEjectionTime;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceOutlierDetectionInterval;
 import java.lang.Integer;
@@ -97,7 +98,10 @@ public final class GetBackendServiceOutlierDetection {
 
         @CustomType.Setter
         public Builder baseEjectionTimes(List<GetBackendServiceOutlierDetectionBaseEjectionTime> baseEjectionTimes) {
-            this.baseEjectionTimes = Objects.requireNonNull(baseEjectionTimes);
+            if (baseEjectionTimes == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "baseEjectionTimes");
+            }
+            this.baseEjectionTimes = baseEjectionTimes;
             return this;
         }
         public Builder baseEjectionTimes(GetBackendServiceOutlierDetectionBaseEjectionTime... baseEjectionTimes) {
@@ -105,32 +109,50 @@ public final class GetBackendServiceOutlierDetection {
         }
         @CustomType.Setter
         public Builder consecutiveErrors(Integer consecutiveErrors) {
-            this.consecutiveErrors = Objects.requireNonNull(consecutiveErrors);
+            if (consecutiveErrors == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "consecutiveErrors");
+            }
+            this.consecutiveErrors = consecutiveErrors;
             return this;
         }
         @CustomType.Setter
         public Builder consecutiveGatewayFailure(Integer consecutiveGatewayFailure) {
-            this.consecutiveGatewayFailure = Objects.requireNonNull(consecutiveGatewayFailure);
+            if (consecutiveGatewayFailure == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "consecutiveGatewayFailure");
+            }
+            this.consecutiveGatewayFailure = consecutiveGatewayFailure;
             return this;
         }
         @CustomType.Setter
         public Builder enforcingConsecutiveErrors(Integer enforcingConsecutiveErrors) {
-            this.enforcingConsecutiveErrors = Objects.requireNonNull(enforcingConsecutiveErrors);
+            if (enforcingConsecutiveErrors == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "enforcingConsecutiveErrors");
+            }
+            this.enforcingConsecutiveErrors = enforcingConsecutiveErrors;
             return this;
         }
         @CustomType.Setter
         public Builder enforcingConsecutiveGatewayFailure(Integer enforcingConsecutiveGatewayFailure) {
-            this.enforcingConsecutiveGatewayFailure = Objects.requireNonNull(enforcingConsecutiveGatewayFailure);
+            if (enforcingConsecutiveGatewayFailure == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "enforcingConsecutiveGatewayFailure");
+            }
+            this.enforcingConsecutiveGatewayFailure = enforcingConsecutiveGatewayFailure;
             return this;
         }
         @CustomType.Setter
         public Builder enforcingSuccessRate(Integer enforcingSuccessRate) {
-            this.enforcingSuccessRate = Objects.requireNonNull(enforcingSuccessRate);
+            if (enforcingSuccessRate == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "enforcingSuccessRate");
+            }
+            this.enforcingSuccessRate = enforcingSuccessRate;
             return this;
         }
         @CustomType.Setter
         public Builder intervals(List<GetBackendServiceOutlierDetectionInterval> intervals) {
-            this.intervals = Objects.requireNonNull(intervals);
+            if (intervals == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "intervals");
+            }
+            this.intervals = intervals;
             return this;
         }
         public Builder intervals(GetBackendServiceOutlierDetectionInterval... intervals) {
@@ -138,22 +160,34 @@ public final class GetBackendServiceOutlierDetection {
         }
         @CustomType.Setter
         public Builder maxEjectionPercent(Integer maxEjectionPercent) {
-            this.maxEjectionPercent = Objects.requireNonNull(maxEjectionPercent);
+            if (maxEjectionPercent == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "maxEjectionPercent");
+            }
+            this.maxEjectionPercent = maxEjectionPercent;
             return this;
         }
         @CustomType.Setter
         public Builder successRateMinimumHosts(Integer successRateMinimumHosts) {
-            this.successRateMinimumHosts = Objects.requireNonNull(successRateMinimumHosts);
+            if (successRateMinimumHosts == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "successRateMinimumHosts");
+            }
+            this.successRateMinimumHosts = successRateMinimumHosts;
             return this;
         }
         @CustomType.Setter
         public Builder successRateRequestVolume(Integer successRateRequestVolume) {
-            this.successRateRequestVolume = Objects.requireNonNull(successRateRequestVolume);
+            if (successRateRequestVolume == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "successRateRequestVolume");
+            }
+            this.successRateRequestVolume = successRateRequestVolume;
             return this;
         }
         @CustomType.Setter
         public Builder successRateStdevFactor(Integer successRateStdevFactor) {
-            this.successRateStdevFactor = Objects.requireNonNull(successRateStdevFactor);
+            if (successRateStdevFactor == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceOutlierDetection", "successRateStdevFactor");
+            }
+            this.successRateStdevFactor = successRateStdevFactor;
             return this;
         }
         public GetBackendServiceOutlierDetection build() {

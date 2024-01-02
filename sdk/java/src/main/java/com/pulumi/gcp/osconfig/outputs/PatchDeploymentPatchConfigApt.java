@@ -79,6 +79,7 @@ public final class PatchDeploymentPatchConfigApt {
 
         @CustomType.Setter
         public Builder excludes(@Nullable List<String> excludes) {
+
             this.excludes = excludes;
             return this;
         }
@@ -87,6 +88,7 @@ public final class PatchDeploymentPatchConfigApt {
         }
         @CustomType.Setter
         public Builder exclusivePackages(@Nullable List<String> exclusivePackages) {
+
             this.exclusivePackages = exclusivePackages;
             return this;
         }
@@ -95,6 +97,7 @@ public final class PatchDeploymentPatchConfigApt {
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

@@ -130,36 +130,43 @@ public final class HttpRouteRuleActionRedirect {
 
         @CustomType.Setter
         public Builder hostRedirect(@Nullable String hostRedirect) {
+
             this.hostRedirect = hostRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder httpsRedirect(@Nullable Boolean httpsRedirect) {
+
             this.httpsRedirect = httpsRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder pathRedirect(@Nullable String pathRedirect) {
+
             this.pathRedirect = pathRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder portRedirect(@Nullable Integer portRedirect) {
+
             this.portRedirect = portRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder prefixRewrite(@Nullable String prefixRewrite) {
+
             this.prefixRewrite = prefixRewrite;
             return this;
         }
         @CustomType.Setter
         public Builder responseCode(@Nullable String responseCode) {
+
             this.responseCode = responseCode;
             return this;
         }
         @CustomType.Setter
         public Builder stripQuery(@Nullable Boolean stripQuery) {
+
             this.stripQuery = stripQuery;
             return this;
         }

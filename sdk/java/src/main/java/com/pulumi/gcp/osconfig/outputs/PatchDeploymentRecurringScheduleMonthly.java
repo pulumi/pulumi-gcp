@@ -65,11 +65,13 @@ public final class PatchDeploymentRecurringScheduleMonthly {
 
         @CustomType.Setter
         public Builder monthDay(@Nullable Integer monthDay) {
+
             this.monthDay = monthDay;
             return this;
         }
         @CustomType.Setter
         public Builder weekDayOfMonth(@Nullable PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth weekDayOfMonth) {
+
             this.weekDayOfMonth = weekDayOfMonth;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.tpu.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class NodeSchedulingConfig {
 
         @CustomType.Setter
         public Builder preemptible(Boolean preemptible) {
-            this.preemptible = Objects.requireNonNull(preemptible);
+            if (preemptible == null) {
+              throw new MissingRequiredPropertyException("NodeSchedulingConfig", "preemptible");
+            }
+            this.preemptible = preemptible;
             return this;
         }
         public NodeSchedulingConfig build() {

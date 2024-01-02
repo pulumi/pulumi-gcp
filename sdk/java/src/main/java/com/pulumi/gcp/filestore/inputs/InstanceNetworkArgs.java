@@ -5,6 +5,7 @@ package com.pulumi.gcp.filestore.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -292,8 +293,12 @@ public final class InstanceNetworkArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public InstanceNetworkArgs build() {
-            $.modes = Objects.requireNonNull($.modes, "expected parameter 'modes' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.modes == null) {
+                throw new MissingRequiredPropertyException("InstanceNetworkArgs", "modes");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("InstanceNetworkArgs", "network");
+            }
             return $;
         }
     }

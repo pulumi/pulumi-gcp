@@ -4,6 +4,7 @@
 package com.pulumi.gcp.redis.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.redis.outputs.GetInstanceMaintenancePolicyWeeklyMaintenanceWindow;
 import java.lang.String;
 import java.util.List;
@@ -54,22 +55,34 @@ public final class GetInstanceMaintenancePolicy {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMaintenancePolicy", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMaintenancePolicy", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMaintenancePolicy", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder weeklyMaintenanceWindows(List<GetInstanceMaintenancePolicyWeeklyMaintenanceWindow> weeklyMaintenanceWindows) {
-            this.weeklyMaintenanceWindows = Objects.requireNonNull(weeklyMaintenanceWindows);
+            if (weeklyMaintenanceWindows == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMaintenancePolicy", "weeklyMaintenanceWindows");
+            }
+            this.weeklyMaintenanceWindows = weeklyMaintenanceWindows;
             return this;
         }
         public Builder weeklyMaintenanceWindows(GetInstanceMaintenancePolicyWeeklyMaintenanceWindow... weeklyMaintenanceWindows) {

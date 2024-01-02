@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ClusterRestoreBackupSource {
 
         @CustomType.Setter
         public Builder backupName(String backupName) {
-            this.backupName = Objects.requireNonNull(backupName);
+            if (backupName == null) {
+              throw new MissingRequiredPropertyException("ClusterRestoreBackupSource", "backupName");
+            }
+            this.backupName = backupName;
             return this;
         }
         public ClusterRestoreBackupSource build() {

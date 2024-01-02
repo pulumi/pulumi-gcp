@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.DicomStoreNotificationConfigArgs;
 import com.pulumi.gcp.healthcare.inputs.DicomStoreStreamConfigArgs;
 import java.lang.String;
@@ -308,7 +309,9 @@ public final class DicomStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DicomStoreArgs build() {
-            $.dataset = Objects.requireNonNull($.dataset, "expected parameter 'dataset' to be non-null");
+            if ($.dataset == null) {
+                throw new MissingRequiredPropertyException("DicomStoreArgs", "dataset");
+            }
             return $;
         }
     }

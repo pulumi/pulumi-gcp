@@ -76,16 +76,19 @@ public final class JobQueryScriptOptions {
 
         @CustomType.Setter
         public Builder keyResultStatement(@Nullable String keyResultStatement) {
+
             this.keyResultStatement = keyResultStatement;
             return this;
         }
         @CustomType.Setter
         public Builder statementByteBudget(@Nullable String statementByteBudget) {
+
             this.statementByteBudget = statementByteBudget;
             return this;
         }
         @CustomType.Setter
         public Builder statementTimeoutMs(@Nullable String statementTimeoutMs) {
+
             this.statementTimeoutMs = statementTimeoutMs;
             return this;
         }

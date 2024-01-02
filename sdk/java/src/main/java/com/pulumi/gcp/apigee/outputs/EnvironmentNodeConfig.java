@@ -84,16 +84,19 @@ public final class EnvironmentNodeConfig {
 
         @CustomType.Setter
         public Builder currentAggregateNodeCount(@Nullable String currentAggregateNodeCount) {
+
             this.currentAggregateNodeCount = currentAggregateNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder maxNodeCount(@Nullable String maxNodeCount) {
+
             this.maxNodeCount = maxNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder minNodeCount(@Nullable String minNodeCount) {
+
             this.minNodeCount = minNodeCount;
             return this;
         }

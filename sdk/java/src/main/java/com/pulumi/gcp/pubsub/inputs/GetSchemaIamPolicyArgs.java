@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class GetSchemaIamPolicyArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetSchemaIamPolicyArgs build() {
-            $.schema = Objects.requireNonNull($.schema, "expected parameter 'schema' to be non-null");
+            if ($.schema == null) {
+                throw new MissingRequiredPropertyException("GetSchemaIamPolicyArgs", "schema");
+            }
             return $;
         }
     }

@@ -144,86 +144,103 @@ public final class EnvironmentConfig {
 
         @CustomType.Setter
         public Builder airflowUri(@Nullable String airflowUri) {
+
             this.airflowUri = airflowUri;
             return this;
         }
         @CustomType.Setter
         public Builder dagGcsPrefix(@Nullable String dagGcsPrefix) {
+
             this.dagGcsPrefix = dagGcsPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder databaseConfig(@Nullable EnvironmentConfigDatabaseConfig databaseConfig) {
+
             this.databaseConfig = databaseConfig;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionConfig(@Nullable EnvironmentConfigEncryptionConfig encryptionConfig) {
+
             this.encryptionConfig = encryptionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder environmentSize(@Nullable String environmentSize) {
+
             this.environmentSize = environmentSize;
             return this;
         }
         @CustomType.Setter
         public Builder gkeCluster(@Nullable String gkeCluster) {
+
             this.gkeCluster = gkeCluster;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindow(@Nullable EnvironmentConfigMaintenanceWindow maintenanceWindow) {
+
             this.maintenanceWindow = maintenanceWindow;
             return this;
         }
         @CustomType.Setter
         public Builder masterAuthorizedNetworksConfig(@Nullable EnvironmentConfigMasterAuthorizedNetworksConfig masterAuthorizedNetworksConfig) {
+
             this.masterAuthorizedNetworksConfig = masterAuthorizedNetworksConfig;
             return this;
         }
         @CustomType.Setter
         public Builder nodeConfig(@Nullable EnvironmentConfigNodeConfig nodeConfig) {
+
             this.nodeConfig = nodeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
+
             this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder privateEnvironmentConfig(@Nullable EnvironmentConfigPrivateEnvironmentConfig privateEnvironmentConfig) {
+
             this.privateEnvironmentConfig = privateEnvironmentConfig;
             return this;
         }
         @CustomType.Setter
         public Builder recoveryConfig(@Nullable EnvironmentConfigRecoveryConfig recoveryConfig) {
+
             this.recoveryConfig = recoveryConfig;
             return this;
         }
         @CustomType.Setter
         public Builder resilienceMode(@Nullable String resilienceMode) {
+
             this.resilienceMode = resilienceMode;
             return this;
         }
         @CustomType.Setter
         public Builder softwareConfig(@Nullable EnvironmentConfigSoftwareConfig softwareConfig) {
+
             this.softwareConfig = softwareConfig;
             return this;
         }
         @CustomType.Setter
         public Builder webServerConfig(@Nullable EnvironmentConfigWebServerConfig webServerConfig) {
+
             this.webServerConfig = webServerConfig;
             return this;
         }
         @CustomType.Setter
         public Builder webServerNetworkAccessControl(@Nullable EnvironmentConfigWebServerNetworkAccessControl webServerNetworkAccessControl) {
+
             this.webServerNetworkAccessControl = webServerNetworkAccessControl;
             return this;
         }
         @CustomType.Setter
         public Builder workloadsConfig(@Nullable EnvironmentConfigWorkloadsConfig workloadsConfig) {
+
             this.workloadsConfig = workloadsConfig;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
 
         @CustomType.Setter
         public Builder infoTypes(List<PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType> infoTypes) {
-            this.infoTypes = Objects.requireNonNull(infoTypes);
+            if (infoTypes == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypes", "infoTypes");
+            }
+            this.infoTypes = infoTypes;
             return this;
         }
         public Builder infoTypes(PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleExcludeInfoTypesInfoType... infoTypes) {

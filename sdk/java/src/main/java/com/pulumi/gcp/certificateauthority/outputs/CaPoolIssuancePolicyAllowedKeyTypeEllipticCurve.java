@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve {
 
         @CustomType.Setter
         public Builder signatureAlgorithm(String signatureAlgorithm) {
-            this.signatureAlgorithm = Objects.requireNonNull(signatureAlgorithm);
+            if (signatureAlgorithm == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve", "signatureAlgorithm");
+            }
+            this.signatureAlgorithm = signatureAlgorithm;
             return this;
         }
         public CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve build() {

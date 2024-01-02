@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabelArgs;
 import java.lang.String;
 import java.util.List;
@@ -162,8 +163,12 @@ public final class URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs extends
         }
 
         public URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs build() {
-            $.filterLabels = Objects.requireNonNull($.filterLabels, "expected parameter 'filterLabels' to be non-null");
-            $.filterMatchCriteria = Objects.requireNonNull($.filterMatchCriteria, "expected parameter 'filterMatchCriteria' to be non-null");
+            if ($.filterLabels == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs", "filterLabels");
+            }
+            if ($.filterMatchCriteria == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherRouteRuleMatchRuleMetadataFilterArgs", "filterMatchCriteria");
+            }
             return $;
         }
     }

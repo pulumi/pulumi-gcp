@@ -46,6 +46,7 @@ public final class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePool
 
         @CustomType.Setter
         public Builder nodePoolConfig(@Nullable BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfig nodePoolConfig) {
+
             this.nodePoolConfig = nodePoolConfig;
             return this;
         }

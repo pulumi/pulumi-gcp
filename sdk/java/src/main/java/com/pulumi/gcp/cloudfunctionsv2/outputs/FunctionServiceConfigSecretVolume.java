@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.FunctionServiceConfigSecretVolumeVersion;
 import java.lang.String;
 import java.util.List;
@@ -89,21 +90,31 @@ public final class FunctionServiceConfigSecretVolume {
 
         @CustomType.Setter
         public Builder mountPath(String mountPath) {
-            this.mountPath = Objects.requireNonNull(mountPath);
+            if (mountPath == null) {
+              throw new MissingRequiredPropertyException("FunctionServiceConfigSecretVolume", "mountPath");
+            }
+            this.mountPath = mountPath;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("FunctionServiceConfigSecretVolume", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("FunctionServiceConfigSecretVolume", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         @CustomType.Setter
         public Builder versions(@Nullable List<FunctionServiceConfigSecretVolumeVersion> versions) {
+
             this.versions = versions;
             return this;
         }

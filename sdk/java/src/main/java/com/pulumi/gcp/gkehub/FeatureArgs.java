@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
 import java.lang.String;
@@ -292,7 +293,9 @@ public final class FeatureArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FeatureArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("FeatureArgs", "location");
+            }
             return $;
         }
     }

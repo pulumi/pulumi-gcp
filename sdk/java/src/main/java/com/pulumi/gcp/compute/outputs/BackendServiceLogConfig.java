@@ -65,11 +65,13 @@ public final class BackendServiceLogConfig {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder sampleRate(@Nullable Double sampleRate) {
+
             this.sampleRate = sampleRate;
             return this;
         }

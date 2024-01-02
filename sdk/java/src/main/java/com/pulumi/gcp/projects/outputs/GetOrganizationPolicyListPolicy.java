@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.projects.outputs.GetOrganizationPolicyListPolicyAllow;
 import com.pulumi.gcp.projects.outputs.GetOrganizationPolicyListPolicyDeny;
 import java.lang.Boolean;
@@ -56,7 +57,10 @@ public final class GetOrganizationPolicyListPolicy {
 
         @CustomType.Setter
         public Builder allows(List<GetOrganizationPolicyListPolicyAllow> allows) {
-            this.allows = Objects.requireNonNull(allows);
+            if (allows == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyListPolicy", "allows");
+            }
+            this.allows = allows;
             return this;
         }
         public Builder allows(GetOrganizationPolicyListPolicyAllow... allows) {
@@ -64,7 +68,10 @@ public final class GetOrganizationPolicyListPolicy {
         }
         @CustomType.Setter
         public Builder denies(List<GetOrganizationPolicyListPolicyDeny> denies) {
-            this.denies = Objects.requireNonNull(denies);
+            if (denies == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyListPolicy", "denies");
+            }
+            this.denies = denies;
             return this;
         }
         public Builder denies(GetOrganizationPolicyListPolicyDeny... denies) {
@@ -72,12 +79,18 @@ public final class GetOrganizationPolicyListPolicy {
         }
         @CustomType.Setter
         public Builder inheritFromParent(Boolean inheritFromParent) {
-            this.inheritFromParent = Objects.requireNonNull(inheritFromParent);
+            if (inheritFromParent == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyListPolicy", "inheritFromParent");
+            }
+            this.inheritFromParent = inheritFromParent;
             return this;
         }
         @CustomType.Setter
         public Builder suggestedValue(String suggestedValue) {
-            this.suggestedValue = Objects.requireNonNull(suggestedValue);
+            if (suggestedValue == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyListPolicy", "suggestedValue");
+            }
+            this.suggestedValue = suggestedValue;
             return this;
         }
         public GetOrganizationPolicyListPolicy build() {

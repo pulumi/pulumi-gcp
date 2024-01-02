@@ -168,46 +168,55 @@ public final class ServiceConnectionPolicyPscConnection {
 
         @CustomType.Setter
         public Builder consumerAddress(@Nullable String consumerAddress) {
+
             this.consumerAddress = consumerAddress;
             return this;
         }
         @CustomType.Setter
         public Builder consumerForwardingRule(@Nullable String consumerForwardingRule) {
+
             this.consumerForwardingRule = consumerForwardingRule;
             return this;
         }
         @CustomType.Setter
         public Builder consumerTargetProject(@Nullable String consumerTargetProject) {
+
             this.consumerTargetProject = consumerTargetProject;
             return this;
         }
         @CustomType.Setter
         public Builder error(@Nullable ServiceConnectionPolicyPscConnectionError error) {
+
             this.error = error;
             return this;
         }
         @CustomType.Setter
         public Builder errorInfo(@Nullable ServiceConnectionPolicyPscConnectionErrorInfo errorInfo) {
+
             this.errorInfo = errorInfo;
             return this;
         }
         @CustomType.Setter
         public Builder errorType(@Nullable String errorType) {
+
             this.errorType = errorType;
             return this;
         }
         @CustomType.Setter
         public Builder gceOperation(@Nullable String gceOperation) {
+
             this.gceOperation = gceOperation;
             return this;
         }
         @CustomType.Setter
         public Builder pscConnectionId(@Nullable String pscConnectionId) {
+
             this.pscConnectionId = pscConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

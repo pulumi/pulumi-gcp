@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -130,32 +131,48 @@ public final class GetProjectCmekSettingsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectCmekSettingsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
+
             this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyVersionName(String kmsKeyVersionName) {
-            this.kmsKeyVersionName = Objects.requireNonNull(kmsKeyVersionName);
+            if (kmsKeyVersionName == null) {
+              throw new MissingRequiredPropertyException("GetProjectCmekSettingsResult", "kmsKeyVersionName");
+            }
+            this.kmsKeyVersionName = kmsKeyVersionName;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectCmekSettingsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectCmekSettingsResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountId(String serviceAccountId) {
-            this.serviceAccountId = Objects.requireNonNull(serviceAccountId);
+            if (serviceAccountId == null) {
+              throw new MissingRequiredPropertyException("GetProjectCmekSettingsResult", "serviceAccountId");
+            }
+            this.serviceAccountId = serviceAccountId;
             return this;
         }
         public GetProjectCmekSettingsResult build() {

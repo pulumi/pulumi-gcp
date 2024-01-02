@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -123,8 +124,12 @@ public final class SpokeLinkedInterconnectAttachmentsArgs extends com.pulumi.res
         }
 
         public SpokeLinkedInterconnectAttachmentsArgs build() {
-            $.siteToSiteDataTransfer = Objects.requireNonNull($.siteToSiteDataTransfer, "expected parameter 'siteToSiteDataTransfer' to be non-null");
-            $.uris = Objects.requireNonNull($.uris, "expected parameter 'uris' to be non-null");
+            if ($.siteToSiteDataTransfer == null) {
+                throw new MissingRequiredPropertyException("SpokeLinkedInterconnectAttachmentsArgs", "siteToSiteDataTransfer");
+            }
+            if ($.uris == null) {
+                throw new MissingRequiredPropertyException("SpokeLinkedInterconnectAttachmentsArgs", "uris");
+            }
             return $;
         }
     }

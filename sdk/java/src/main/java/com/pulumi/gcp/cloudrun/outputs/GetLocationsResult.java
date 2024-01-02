@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -63,12 +64,18 @@ public final class GetLocationsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetLocationsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder locations(List<String> locations) {
-            this.locations = Objects.requireNonNull(locations);
+            if (locations == null) {
+              throw new MissingRequiredPropertyException("GetLocationsResult", "locations");
+            }
+            this.locations = locations;
             return this;
         }
         public Builder locations(String... locations) {
@@ -76,7 +83,10 @@ public final class GetLocationsResult {
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetLocationsResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetLocationsResult build() {

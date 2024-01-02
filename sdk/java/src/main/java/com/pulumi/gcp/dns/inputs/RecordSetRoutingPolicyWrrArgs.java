@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs;
 import java.lang.Double;
 import java.lang.String;
@@ -167,7 +168,9 @@ public final class RecordSetRoutingPolicyWrrArgs extends com.pulumi.resources.Re
         }
 
         public RecordSetRoutingPolicyWrrArgs build() {
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyWrrArgs", "weight");
+            }
             return $;
         }
     }

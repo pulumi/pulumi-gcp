@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -116,8 +117,12 @@ public final class RegionInstanceGroupManagerAutoHealingPoliciesArgs extends com
         }
 
         public RegionInstanceGroupManagerAutoHealingPoliciesArgs build() {
-            $.healthCheck = Objects.requireNonNull($.healthCheck, "expected parameter 'healthCheck' to be non-null");
-            $.initialDelaySec = Objects.requireNonNull($.initialDelaySec, "expected parameter 'initialDelaySec' to be non-null");
+            if ($.healthCheck == null) {
+                throw new MissingRequiredPropertyException("RegionInstanceGroupManagerAutoHealingPoliciesArgs", "healthCheck");
+            }
+            if ($.initialDelaySec == null) {
+                throw new MissingRequiredPropertyException("RegionInstanceGroupManagerAutoHealingPoliciesArgs", "initialDelaySec");
+            }
             return $;
         }
     }

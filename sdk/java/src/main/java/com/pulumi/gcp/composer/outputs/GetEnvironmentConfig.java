@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigDatabaseConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigEncryptionConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigMaintenanceWindow;
@@ -143,17 +144,26 @@ public final class GetEnvironmentConfig {
 
         @CustomType.Setter
         public Builder airflowUri(String airflowUri) {
-            this.airflowUri = Objects.requireNonNull(airflowUri);
+            if (airflowUri == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "airflowUri");
+            }
+            this.airflowUri = airflowUri;
             return this;
         }
         @CustomType.Setter
         public Builder dagGcsPrefix(String dagGcsPrefix) {
-            this.dagGcsPrefix = Objects.requireNonNull(dagGcsPrefix);
+            if (dagGcsPrefix == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "dagGcsPrefix");
+            }
+            this.dagGcsPrefix = dagGcsPrefix;
             return this;
         }
         @CustomType.Setter
         public Builder databaseConfigs(List<GetEnvironmentConfigDatabaseConfig> databaseConfigs) {
-            this.databaseConfigs = Objects.requireNonNull(databaseConfigs);
+            if (databaseConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "databaseConfigs");
+            }
+            this.databaseConfigs = databaseConfigs;
             return this;
         }
         public Builder databaseConfigs(GetEnvironmentConfigDatabaseConfig... databaseConfigs) {
@@ -161,7 +171,10 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder encryptionConfigs(List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs) {
-            this.encryptionConfigs = Objects.requireNonNull(encryptionConfigs);
+            if (encryptionConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "encryptionConfigs");
+            }
+            this.encryptionConfigs = encryptionConfigs;
             return this;
         }
         public Builder encryptionConfigs(GetEnvironmentConfigEncryptionConfig... encryptionConfigs) {
@@ -169,17 +182,26 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder environmentSize(String environmentSize) {
-            this.environmentSize = Objects.requireNonNull(environmentSize);
+            if (environmentSize == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "environmentSize");
+            }
+            this.environmentSize = environmentSize;
             return this;
         }
         @CustomType.Setter
         public Builder gkeCluster(String gkeCluster) {
-            this.gkeCluster = Objects.requireNonNull(gkeCluster);
+            if (gkeCluster == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "gkeCluster");
+            }
+            this.gkeCluster = gkeCluster;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceWindows(List<GetEnvironmentConfigMaintenanceWindow> maintenanceWindows) {
-            this.maintenanceWindows = Objects.requireNonNull(maintenanceWindows);
+            if (maintenanceWindows == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "maintenanceWindows");
+            }
+            this.maintenanceWindows = maintenanceWindows;
             return this;
         }
         public Builder maintenanceWindows(GetEnvironmentConfigMaintenanceWindow... maintenanceWindows) {
@@ -187,7 +209,10 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder masterAuthorizedNetworksConfigs(List<GetEnvironmentConfigMasterAuthorizedNetworksConfig> masterAuthorizedNetworksConfigs) {
-            this.masterAuthorizedNetworksConfigs = Objects.requireNonNull(masterAuthorizedNetworksConfigs);
+            if (masterAuthorizedNetworksConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "masterAuthorizedNetworksConfigs");
+            }
+            this.masterAuthorizedNetworksConfigs = masterAuthorizedNetworksConfigs;
             return this;
         }
         public Builder masterAuthorizedNetworksConfigs(GetEnvironmentConfigMasterAuthorizedNetworksConfig... masterAuthorizedNetworksConfigs) {
@@ -195,7 +220,10 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder nodeConfigs(List<GetEnvironmentConfigNodeConfig> nodeConfigs) {
-            this.nodeConfigs = Objects.requireNonNull(nodeConfigs);
+            if (nodeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "nodeConfigs");
+            }
+            this.nodeConfigs = nodeConfigs;
             return this;
         }
         public Builder nodeConfigs(GetEnvironmentConfigNodeConfig... nodeConfigs) {
@@ -203,12 +231,18 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
-            this.nodeCount = Objects.requireNonNull(nodeCount);
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder privateEnvironmentConfigs(List<GetEnvironmentConfigPrivateEnvironmentConfig> privateEnvironmentConfigs) {
-            this.privateEnvironmentConfigs = Objects.requireNonNull(privateEnvironmentConfigs);
+            if (privateEnvironmentConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "privateEnvironmentConfigs");
+            }
+            this.privateEnvironmentConfigs = privateEnvironmentConfigs;
             return this;
         }
         public Builder privateEnvironmentConfigs(GetEnvironmentConfigPrivateEnvironmentConfig... privateEnvironmentConfigs) {
@@ -216,7 +250,10 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder recoveryConfigs(List<GetEnvironmentConfigRecoveryConfig> recoveryConfigs) {
-            this.recoveryConfigs = Objects.requireNonNull(recoveryConfigs);
+            if (recoveryConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "recoveryConfigs");
+            }
+            this.recoveryConfigs = recoveryConfigs;
             return this;
         }
         public Builder recoveryConfigs(GetEnvironmentConfigRecoveryConfig... recoveryConfigs) {
@@ -224,12 +261,18 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder resilienceMode(String resilienceMode) {
-            this.resilienceMode = Objects.requireNonNull(resilienceMode);
+            if (resilienceMode == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "resilienceMode");
+            }
+            this.resilienceMode = resilienceMode;
             return this;
         }
         @CustomType.Setter
         public Builder softwareConfigs(List<GetEnvironmentConfigSoftwareConfig> softwareConfigs) {
-            this.softwareConfigs = Objects.requireNonNull(softwareConfigs);
+            if (softwareConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "softwareConfigs");
+            }
+            this.softwareConfigs = softwareConfigs;
             return this;
         }
         public Builder softwareConfigs(GetEnvironmentConfigSoftwareConfig... softwareConfigs) {
@@ -237,7 +280,10 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder webServerConfigs(List<GetEnvironmentConfigWebServerConfig> webServerConfigs) {
-            this.webServerConfigs = Objects.requireNonNull(webServerConfigs);
+            if (webServerConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "webServerConfigs");
+            }
+            this.webServerConfigs = webServerConfigs;
             return this;
         }
         public Builder webServerConfigs(GetEnvironmentConfigWebServerConfig... webServerConfigs) {
@@ -245,7 +291,10 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder webServerNetworkAccessControls(List<GetEnvironmentConfigWebServerNetworkAccessControl> webServerNetworkAccessControls) {
-            this.webServerNetworkAccessControls = Objects.requireNonNull(webServerNetworkAccessControls);
+            if (webServerNetworkAccessControls == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "webServerNetworkAccessControls");
+            }
+            this.webServerNetworkAccessControls = webServerNetworkAccessControls;
             return this;
         }
         public Builder webServerNetworkAccessControls(GetEnvironmentConfigWebServerNetworkAccessControl... webServerNetworkAccessControls) {
@@ -253,7 +302,10 @@ public final class GetEnvironmentConfig {
         }
         @CustomType.Setter
         public Builder workloadsConfigs(List<GetEnvironmentConfigWorkloadsConfig> workloadsConfigs) {
-            this.workloadsConfigs = Objects.requireNonNull(workloadsConfigs);
+            if (workloadsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "workloadsConfigs");
+            }
+            this.workloadsConfigs = workloadsConfigs;
             return this;
         }
         public Builder workloadsConfigs(GetEnvironmentConfigWorkloadsConfig... workloadsConfigs) {

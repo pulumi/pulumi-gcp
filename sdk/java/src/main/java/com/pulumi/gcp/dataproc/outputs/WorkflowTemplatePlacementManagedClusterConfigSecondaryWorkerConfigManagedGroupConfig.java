@@ -42,11 +42,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
 
         @CustomType.Setter
         public Builder instanceGroupManagerName(@Nullable String instanceGroupManagerName) {
+
             this.instanceGroupManagerName = instanceGroupManagerName;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTemplateName(@Nullable String instanceTemplateName) {
+
             this.instanceTemplateName = instanceTemplateName;
             return this;
         }

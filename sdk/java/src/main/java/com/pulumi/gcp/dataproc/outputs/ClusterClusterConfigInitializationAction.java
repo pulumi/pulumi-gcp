@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -69,11 +70,15 @@ public final class ClusterClusterConfigInitializationAction {
 
         @CustomType.Setter
         public Builder script(String script) {
-            this.script = Objects.requireNonNull(script);
+            if (script == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigInitializationAction", "script");
+            }
+            this.script = script;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSec(@Nullable Integer timeoutSec) {
+
             this.timeoutSec = timeoutSec;
             return this;
         }

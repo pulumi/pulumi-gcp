@@ -52,6 +52,7 @@ public final class RuntimeVirtualMachineVirtualMachineConfigEncryptionConfig {
 
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
+
             this.kmsKey = kmsKey;
             return this;
         }

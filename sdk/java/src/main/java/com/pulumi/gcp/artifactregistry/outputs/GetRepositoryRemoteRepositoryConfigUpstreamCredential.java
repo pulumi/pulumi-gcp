@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetRepositoryRemoteRepositoryConfigUpstreamCredential {
 
         @CustomType.Setter
         public Builder usernamePasswordCredentials(List<GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential> usernamePasswordCredentials) {
-            this.usernamePasswordCredentials = Objects.requireNonNull(usernamePasswordCredentials);
+            if (usernamePasswordCredentials == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfigUpstreamCredential", "usernamePasswordCredentials");
+            }
+            this.usernamePasswordCredentials = usernamePasswordCredentials;
             return this;
         }
         public Builder usernamePasswordCredentials(GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential... usernamePasswordCredentials) {

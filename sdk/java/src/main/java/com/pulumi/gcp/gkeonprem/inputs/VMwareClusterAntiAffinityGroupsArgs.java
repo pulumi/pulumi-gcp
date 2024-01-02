@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class VMwareClusterAntiAffinityGroupsArgs extends com.pulumi.resour
         }
 
         public VMwareClusterAntiAffinityGroupsArgs build() {
-            $.aagConfigDisabled = Objects.requireNonNull($.aagConfigDisabled, "expected parameter 'aagConfigDisabled' to be non-null");
+            if ($.aagConfigDisabled == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterAntiAffinityGroupsArgs", "aagConfigDisabled");
+            }
             return $;
         }
     }

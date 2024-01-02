@@ -88,21 +88,25 @@ public final class AssetDiscoverySpecCsvOptions {
 
         @CustomType.Setter
         public Builder delimiter(@Nullable String delimiter) {
+
             this.delimiter = delimiter;
             return this;
         }
         @CustomType.Setter
         public Builder disableTypeInference(@Nullable Boolean disableTypeInference) {
+
             this.disableTypeInference = disableTypeInference;
             return this;
         }
         @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
+
             this.encoding = encoding;
             return this;
         }
         @CustomType.Setter
         public Builder headerRows(@Nullable Integer headerRows) {
+
             this.headerRows = headerRows;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,12 +44,16 @@ public final class InstanceFromTemplateServiceAccount {
 
         @CustomType.Setter
         public Builder email(@Nullable String email) {
+
             this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(List<String> scopes) {
-            this.scopes = Objects.requireNonNull(scopes);
+            if (scopes == null) {
+              throw new MissingRequiredPropertyException("InstanceFromTemplateServiceAccount", "scopes");
+            }
+            this.scopes = scopes;
             return this;
         }
         public Builder scopes(String... scopes) {

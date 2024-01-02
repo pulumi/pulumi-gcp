@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class SecurityPolicyRecaptchaOptionsConfig {
 
         @CustomType.Setter
         public Builder redirectSiteKey(String redirectSiteKey) {
-            this.redirectSiteKey = Objects.requireNonNull(redirectSiteKey);
+            if (redirectSiteKey == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRecaptchaOptionsConfig", "redirectSiteKey");
+            }
+            this.redirectSiteKey = redirectSiteKey;
             return this;
         }
         public SecurityPolicyRecaptchaOptionsConfig build() {

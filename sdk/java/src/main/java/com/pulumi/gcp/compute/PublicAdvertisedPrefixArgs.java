@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -256,8 +257,12 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
         }
 
         public PublicAdvertisedPrefixArgs build() {
-            $.dnsVerificationIp = Objects.requireNonNull($.dnsVerificationIp, "expected parameter 'dnsVerificationIp' to be non-null");
-            $.ipCidrRange = Objects.requireNonNull($.ipCidrRange, "expected parameter 'ipCidrRange' to be non-null");
+            if ($.dnsVerificationIp == null) {
+                throw new MissingRequiredPropertyException("PublicAdvertisedPrefixArgs", "dnsVerificationIp");
+            }
+            if ($.ipCidrRange == null) {
+                throw new MissingRequiredPropertyException("PublicAdvertisedPrefixArgs", "ipCidrRange");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -167,7 +168,9 @@ public final class OrganizationSecurityPolicyRuleMatchArgs extends com.pulumi.re
         }
 
         public OrganizationSecurityPolicyRuleMatchArgs build() {
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleMatchArgs", "config");
+            }
             return $;
         }
     }

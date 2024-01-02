@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudidentity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsMembershipMemberKey;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsMembershipPreferredMemberKey;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsMembershipRole;
@@ -128,17 +129,26 @@ public final class GetGroupMembershipsMembership {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder memberKeys(List<GetGroupMembershipsMembershipMemberKey> memberKeys) {
-            this.memberKeys = Objects.requireNonNull(memberKeys);
+            if (memberKeys == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "memberKeys");
+            }
+            this.memberKeys = memberKeys;
             return this;
         }
         public Builder memberKeys(GetGroupMembershipsMembershipMemberKey... memberKeys) {
@@ -146,12 +156,18 @@ public final class GetGroupMembershipsMembership {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder preferredMemberKeys(List<GetGroupMembershipsMembershipPreferredMemberKey> preferredMemberKeys) {
-            this.preferredMemberKeys = Objects.requireNonNull(preferredMemberKeys);
+            if (preferredMemberKeys == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "preferredMemberKeys");
+            }
+            this.preferredMemberKeys = preferredMemberKeys;
             return this;
         }
         public Builder preferredMemberKeys(GetGroupMembershipsMembershipPreferredMemberKey... preferredMemberKeys) {
@@ -159,7 +175,10 @@ public final class GetGroupMembershipsMembership {
         }
         @CustomType.Setter
         public Builder roles(List<GetGroupMembershipsMembershipRole> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(GetGroupMembershipsMembershipRole... roles) {
@@ -167,12 +186,18 @@ public final class GetGroupMembershipsMembership {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembership", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetGroupMembershipsMembership build() {

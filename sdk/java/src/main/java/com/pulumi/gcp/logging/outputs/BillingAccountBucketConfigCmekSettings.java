@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,21 +63,27 @@ public final class BillingAccountBucketConfigCmekSettings {
 
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("BillingAccountBucketConfigCmekSettings", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyVersionName(@Nullable String kmsKeyVersionName) {
+
             this.kmsKeyVersionName = kmsKeyVersionName;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountId(@Nullable String serviceAccountId) {
+
             this.serviceAccountId = serviceAccountId;
             return this;
         }

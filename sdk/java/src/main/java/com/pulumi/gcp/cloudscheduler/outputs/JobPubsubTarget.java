@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudscheduler.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -85,17 +86,22 @@ public final class JobPubsubTarget {
 
         @CustomType.Setter
         public Builder attributes(@Nullable Map<String,String> attributes) {
+
             this.attributes = attributes;
             return this;
         }
         @CustomType.Setter
         public Builder data(@Nullable String data) {
+
             this.data = data;
             return this;
         }
         @CustomType.Setter
         public Builder topicName(String topicName) {
-            this.topicName = Objects.requireNonNull(topicName);
+            if (topicName == null) {
+              throw new MissingRequiredPropertyException("JobPubsubTarget", "topicName");
+            }
+            this.topicName = topicName;
             return this;
         }
         public JobPubsubTarget build() {

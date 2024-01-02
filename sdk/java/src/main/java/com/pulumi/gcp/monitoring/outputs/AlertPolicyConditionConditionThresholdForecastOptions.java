@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,7 +53,10 @@ public final class AlertPolicyConditionConditionThresholdForecastOptions {
 
         @CustomType.Setter
         public Builder forecastHorizon(String forecastHorizon) {
-            this.forecastHorizon = Objects.requireNonNull(forecastHorizon);
+            if (forecastHorizon == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyConditionConditionThresholdForecastOptions", "forecastHorizon");
+            }
+            this.forecastHorizon = forecastHorizon;
             return this;
         }
         public AlertPolicyConditionConditionThresholdForecastOptions build() {

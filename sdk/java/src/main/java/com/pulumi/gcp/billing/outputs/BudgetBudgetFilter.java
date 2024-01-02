@@ -223,11 +223,13 @@ public final class BudgetBudgetFilter {
 
         @CustomType.Setter
         public Builder calendarPeriod(@Nullable String calendarPeriod) {
+
             this.calendarPeriod = calendarPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder creditTypes(@Nullable List<String> creditTypes) {
+
             this.creditTypes = creditTypes;
             return this;
         }
@@ -236,21 +238,25 @@ public final class BudgetBudgetFilter {
         }
         @CustomType.Setter
         public Builder creditTypesTreatment(@Nullable String creditTypesTreatment) {
+
             this.creditTypesTreatment = creditTypesTreatment;
             return this;
         }
         @CustomType.Setter
         public Builder customPeriod(@Nullable BudgetBudgetFilterCustomPeriod customPeriod) {
+
             this.customPeriod = customPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder projects(@Nullable List<String> projects) {
+
             this.projects = projects;
             return this;
         }
@@ -259,6 +265,7 @@ public final class BudgetBudgetFilter {
         }
         @CustomType.Setter
         public Builder resourceAncestors(@Nullable List<String> resourceAncestors) {
+
             this.resourceAncestors = resourceAncestors;
             return this;
         }
@@ -267,6 +274,7 @@ public final class BudgetBudgetFilter {
         }
         @CustomType.Setter
         public Builder services(@Nullable List<String> services) {
+
             this.services = services;
             return this;
         }
@@ -275,6 +283,7 @@ public final class BudgetBudgetFilter {
         }
         @CustomType.Setter
         public Builder subaccounts(@Nullable List<String> subaccounts) {
+
             this.subaccounts = subaccounts;
             return this;
         }

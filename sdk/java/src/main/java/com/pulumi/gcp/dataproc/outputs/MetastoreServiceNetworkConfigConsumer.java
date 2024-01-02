@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,12 +67,16 @@ public final class MetastoreServiceNetworkConfigConsumer {
 
         @CustomType.Setter
         public Builder endpointUri(@Nullable String endpointUri) {
+
             this.endpointUri = endpointUri;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
-            this.subnetwork = Objects.requireNonNull(subnetwork);
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("MetastoreServiceNetworkConfigConsumer", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
             return this;
         }
         public MetastoreServiceNetworkConfigConsumer build() {

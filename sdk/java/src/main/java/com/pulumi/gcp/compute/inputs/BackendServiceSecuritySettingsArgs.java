@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -140,8 +141,12 @@ public final class BackendServiceSecuritySettingsArgs extends com.pulumi.resourc
         }
 
         public BackendServiceSecuritySettingsArgs build() {
-            $.clientTlsPolicy = Objects.requireNonNull($.clientTlsPolicy, "expected parameter 'clientTlsPolicy' to be non-null");
-            $.subjectAltNames = Objects.requireNonNull($.subjectAltNames, "expected parameter 'subjectAltNames' to be non-null");
+            if ($.clientTlsPolicy == null) {
+                throw new MissingRequiredPropertyException("BackendServiceSecuritySettingsArgs", "clientTlsPolicy");
+            }
+            if ($.subjectAltNames == null) {
+                throw new MissingRequiredPropertyException("BackendServiceSecuritySettingsArgs", "subjectAltNames");
+            }
             return $;
         }
     }

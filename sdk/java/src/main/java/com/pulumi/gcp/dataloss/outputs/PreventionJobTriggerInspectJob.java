@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobAction;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfig;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfig;
@@ -96,6 +97,7 @@ public final class PreventionJobTriggerInspectJob {
 
         @CustomType.Setter
         public Builder actions(@Nullable List<PreventionJobTriggerInspectJobAction> actions) {
+
             this.actions = actions;
             return this;
         }
@@ -104,17 +106,22 @@ public final class PreventionJobTriggerInspectJob {
         }
         @CustomType.Setter
         public Builder inspectConfig(@Nullable PreventionJobTriggerInspectJobInspectConfig inspectConfig) {
+
             this.inspectConfig = inspectConfig;
             return this;
         }
         @CustomType.Setter
         public Builder inspectTemplateName(@Nullable String inspectTemplateName) {
+
             this.inspectTemplateName = inspectTemplateName;
             return this;
         }
         @CustomType.Setter
         public Builder storageConfig(PreventionJobTriggerInspectJobStorageConfig storageConfig) {
-            this.storageConfig = Objects.requireNonNull(storageConfig);
+            if (storageConfig == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJob", "storageConfig");
+            }
+            this.storageConfig = storageConfig;
             return this;
         }
         public PreventionJobTriggerInspectJob build() {

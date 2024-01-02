@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -77,12 +78,18 @@ public final class GetZonesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder names(List<String> names) {
-            this.names = Objects.requireNonNull(names);
+            if (names == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "names");
+            }
+            this.names = names;
             return this;
         }
         public Builder names(String... names) {
@@ -90,16 +97,21 @@ public final class GetZonesResult {
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetZonesResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }

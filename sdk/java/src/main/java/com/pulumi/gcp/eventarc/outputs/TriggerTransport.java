@@ -44,6 +44,7 @@ public final class TriggerTransport {
 
         @CustomType.Setter
         public Builder pubsub(@Nullable TriggerTransportPubsub pubsub) {
+
             this.pubsub = pubsub;
             return this;
         }

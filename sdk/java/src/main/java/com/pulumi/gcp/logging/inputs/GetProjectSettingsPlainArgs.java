@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetProjectSettingsPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetProjectSettingsPlainArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectSettingsPlainArgs", "project");
+            }
             return $;
         }
     }
