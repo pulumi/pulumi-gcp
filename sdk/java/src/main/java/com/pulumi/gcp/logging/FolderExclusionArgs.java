@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -241,8 +242,12 @@ public final class FolderExclusionArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public FolderExclusionArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("FolderExclusionArgs", "filter");
+            }
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("FolderExclusionArgs", "folder");
+            }
             return $;
         }
     }

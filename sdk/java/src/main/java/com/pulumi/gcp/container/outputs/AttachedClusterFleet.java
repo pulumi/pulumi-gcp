@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,12 +67,16 @@ public final class AttachedClusterFleet {
 
         @CustomType.Setter
         public Builder membership(@Nullable String membership) {
+
             this.membership = membership;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("AttachedClusterFleet", "project");
+            }
+            this.project = project;
             return this;
         }
         public AttachedClusterFleet build() {

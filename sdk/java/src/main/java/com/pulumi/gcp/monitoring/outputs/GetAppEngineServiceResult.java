@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.GetAppEngineServiceTelemetry;
 import java.lang.String;
 import java.util.List;
@@ -115,37 +116,56 @@ public final class GetAppEngineServiceResult {
 
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAppEngineServiceResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppEngineServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder moduleId(String moduleId) {
-            this.moduleId = Objects.requireNonNull(moduleId);
+            if (moduleId == null) {
+              throw new MissingRequiredPropertyException("GetAppEngineServiceResult", "moduleId");
+            }
+            this.moduleId = moduleId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppEngineServiceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceId(String serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetAppEngineServiceResult", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         @CustomType.Setter
         public Builder telemetries(List<GetAppEngineServiceTelemetry> telemetries) {
-            this.telemetries = Objects.requireNonNull(telemetries);
+            if (telemetries == null) {
+              throw new MissingRequiredPropertyException("GetAppEngineServiceResult", "telemetries");
+            }
+            this.telemetries = telemetries;
             return this;
         }
         public Builder telemetries(GetAppEngineServiceTelemetry... telemetries) {
@@ -153,7 +173,10 @@ public final class GetAppEngineServiceResult {
         }
         @CustomType.Setter
         public Builder userLabels(Map<String,String> userLabels) {
-            this.userLabels = Objects.requireNonNull(userLabels);
+            if (userLabels == null) {
+              throw new MissingRequiredPropertyException("GetAppEngineServiceResult", "userLabels");
+            }
+            this.userLabels = userLabels;
             return this;
         }
         public GetAppEngineServiceResult build() {

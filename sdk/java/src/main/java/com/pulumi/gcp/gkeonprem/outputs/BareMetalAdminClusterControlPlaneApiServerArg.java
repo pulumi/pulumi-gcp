@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class BareMetalAdminClusterControlPlaneApiServerArg {
 
         @CustomType.Setter
         public Builder argument(String argument) {
-            this.argument = Objects.requireNonNull(argument);
+            if (argument == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterControlPlaneApiServerArg", "argument");
+            }
+            this.argument = argument;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterControlPlaneApiServerArg", "value");
+            }
+            this.value = value;
             return this;
         }
         public BareMetalAdminClusterControlPlaneApiServerArg build() {

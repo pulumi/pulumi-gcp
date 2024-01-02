@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class PacketMirroringMirroredResourcesInstanceArgs extends com.pulu
         }
 
         public PacketMirroringMirroredResourcesInstanceArgs build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("PacketMirroringMirroredResourcesInstanceArgs", "url");
+            }
             return $;
         }
     }

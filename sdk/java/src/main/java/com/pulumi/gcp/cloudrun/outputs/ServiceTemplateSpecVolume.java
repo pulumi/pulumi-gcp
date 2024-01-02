@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeEmptyDir;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecVolumeSecret;
 import java.lang.String;
@@ -72,16 +73,21 @@ public final class ServiceTemplateSpecVolume {
 
         @CustomType.Setter
         public Builder emptyDir(@Nullable ServiceTemplateSpecVolumeEmptyDir emptyDir) {
+
             this.emptyDir = emptyDir;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ServiceTemplateSpecVolume", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secret(@Nullable ServiceTemplateSpecVolumeSecret secret) {
+
             this.secret = secret;
             return this;
         }

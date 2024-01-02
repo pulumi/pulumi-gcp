@@ -61,11 +61,13 @@ public final class MetastoreServiceScalingConfig {
 
         @CustomType.Setter
         public Builder instanceSize(@Nullable String instanceSize) {
+
             this.instanceSize = instanceSize;
             return this;
         }
         @CustomType.Setter
         public Builder scalingFactor(@Nullable Double scalingFactor) {
+
             this.scalingFactor = scalingFactor;
             return this;
         }

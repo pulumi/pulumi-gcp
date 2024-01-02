@@ -44,6 +44,7 @@ public final class ConfigSmsRegionConfigAllowByDefault {
 
         @CustomType.Setter
         public Builder disallowedRegions(@Nullable List<String> disallowedRegions) {
+
             this.disallowedRegions = disallowedRegions;
             return this;
         }

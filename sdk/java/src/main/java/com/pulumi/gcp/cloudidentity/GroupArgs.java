@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudidentity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.inputs.GroupGroupKeyArgs;
 import java.lang.String;
 import java.util.Map;
@@ -319,9 +320,15 @@ public final class GroupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GroupArgs build() {
-            $.groupKey = Objects.requireNonNull($.groupKey, "expected parameter 'groupKey' to be non-null");
-            $.labels = Objects.requireNonNull($.labels, "expected parameter 'labels' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.groupKey == null) {
+                throw new MissingRequiredPropertyException("GroupArgs", "groupKey");
+            }
+            if ($.labels == null) {
+                throw new MissingRequiredPropertyException("GroupArgs", "labels");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GroupArgs", "parent");
+            }
             return $;
         }
     }

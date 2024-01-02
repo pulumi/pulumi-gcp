@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class DatascanDataQualitySpecRuleRegexExpectationArgs extends com.p
         }
 
         public DatascanDataQualitySpecRuleRegexExpectationArgs build() {
-            $.regex = Objects.requireNonNull($.regex, "expected parameter 'regex' to be non-null");
+            if ($.regex == null) {
+                throw new MissingRequiredPropertyException("DatascanDataQualitySpecRuleRegexExpectationArgs", "regex");
+            }
             return $;
         }
     }

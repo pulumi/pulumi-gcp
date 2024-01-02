@@ -72,16 +72,19 @@ public final class WorkloadResourceSetting {
 
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder resourceId(@Nullable String resourceId) {
+
             this.resourceId = resourceId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
+
             this.resourceType = resourceType;
             return this;
         }

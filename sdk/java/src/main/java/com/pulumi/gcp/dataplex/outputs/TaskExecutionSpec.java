@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -107,27 +108,34 @@ public final class TaskExecutionSpec {
 
         @CustomType.Setter
         public Builder args(@Nullable Map<String,String> args) {
+
             this.args = args;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
+
             this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder maxJobExecutionLifetime(@Nullable String maxJobExecutionLifetime) {
+
             this.maxJobExecutionLifetime = maxJobExecutionLifetime;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
-            this.serviceAccount = Objects.requireNonNull(serviceAccount);
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("TaskExecutionSpec", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
             return this;
         }
         public TaskExecutionSpec build() {

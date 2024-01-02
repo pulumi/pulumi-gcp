@@ -90,21 +90,25 @@ public final class HostingCustomDomainCertVerificationHttp {
 
         @CustomType.Setter
         public Builder desired(@Nullable String desired) {
+
             this.desired = desired;
             return this;
         }
         @CustomType.Setter
         public Builder discovered(@Nullable String discovered) {
+
             this.discovered = discovered;
             return this;
         }
         @CustomType.Setter
         public Builder lastCheckTime(@Nullable String lastCheckTime) {
+
             this.lastCheckTime = lastCheckTime;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }

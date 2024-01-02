@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetRouterNatSubnetwork {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatSubnetwork", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryIpRangeNames(List<String> secondaryIpRangeNames) {
-            this.secondaryIpRangeNames = Objects.requireNonNull(secondaryIpRangeNames);
+            if (secondaryIpRangeNames == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatSubnetwork", "secondaryIpRangeNames");
+            }
+            this.secondaryIpRangeNames = secondaryIpRangeNames;
             return this;
         }
         public Builder secondaryIpRangeNames(String... secondaryIpRangeNames) {
@@ -70,7 +77,10 @@ public final class GetRouterNatSubnetwork {
         }
         @CustomType.Setter
         public Builder sourceIpRangesToNats(List<String> sourceIpRangesToNats) {
-            this.sourceIpRangesToNats = Objects.requireNonNull(sourceIpRangesToNats);
+            if (sourceIpRangesToNats == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatSubnetwork", "sourceIpRangesToNats");
+            }
+            this.sourceIpRangesToNats = sourceIpRangesToNats;
             return this;
         }
         public Builder sourceIpRangesToNats(String... sourceIpRangesToNats) {

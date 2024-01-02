@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.organizations.inputs.GetIAMPolicyBindingCondition;
 import java.lang.String;
 import java.util.List;
@@ -165,8 +166,12 @@ public final class GetIAMPolicyBinding extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetIAMPolicyBinding build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("GetIAMPolicyBinding", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("GetIAMPolicyBinding", "role");
+            }
             return $;
         }
     }

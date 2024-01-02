@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -137,7 +138,9 @@ public final class GetAppEngineServiceArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetAppEngineServiceArgs build() {
-            $.moduleId = Objects.requireNonNull($.moduleId, "expected parameter 'moduleId' to be non-null");
+            if ($.moduleId == null) {
+                throw new MissingRequiredPropertyException("GetAppEngineServiceArgs", "moduleId");
+            }
             return $;
         }
     }

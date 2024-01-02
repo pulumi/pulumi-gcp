@@ -83,6 +83,7 @@ public final class V2VmNetworkEndpoint {
 
         @CustomType.Setter
         public Builder accessConfigs(@Nullable List<V2VmNetworkEndpointAccessConfig> accessConfigs) {
+
             this.accessConfigs = accessConfigs;
             return this;
         }
@@ -91,11 +92,13 @@ public final class V2VmNetworkEndpoint {
         }
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }

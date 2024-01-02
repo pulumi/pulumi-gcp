@@ -59,11 +59,13 @@ public final class FlexibleAppVersionAutomaticScalingRequestUtilization {
 
         @CustomType.Setter
         public Builder targetConcurrentRequests(@Nullable Double targetConcurrentRequests) {
+
             this.targetConcurrentRequests = targetConcurrentRequests;
             return this;
         }
         @CustomType.Setter
         public Builder targetRequestCountPerSecond(@Nullable String targetRequestCountPerSecond) {
+
             this.targetRequestCountPerSecond = targetRequestCountPerSecond;
             return this;
         }

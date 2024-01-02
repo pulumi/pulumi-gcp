@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -178,8 +179,12 @@ public final class BrandArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BrandArgs build() {
-            $.applicationTitle = Objects.requireNonNull($.applicationTitle, "expected parameter 'applicationTitle' to be non-null");
-            $.supportEmail = Objects.requireNonNull($.supportEmail, "expected parameter 'supportEmail' to be non-null");
+            if ($.applicationTitle == null) {
+                throw new MissingRequiredPropertyException("BrandArgs", "applicationTitle");
+            }
+            if ($.supportEmail == null) {
+                throw new MissingRequiredPropertyException("BrandArgs", "supportEmail");
+            }
             return $;
         }
     }

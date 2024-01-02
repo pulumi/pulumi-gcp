@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherRouteRuleMatchRuleHeaderMatchRangeMatchArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -429,7 +430,9 @@ public final class URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs extends co
         }
 
         public URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs build() {
-            $.headerName = Objects.requireNonNull($.headerName, "expected parameter 'headerName' to be non-null");
+            if ($.headerName == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherRouteRuleMatchRuleHeaderMatchArgs", "headerName");
+            }
             return $;
         }
     }

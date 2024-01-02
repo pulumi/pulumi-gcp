@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceConsistentHashHttpCooky;
 import java.lang.Integer;
 import java.lang.String;
@@ -49,7 +50,10 @@ public final class GetBackendServiceConsistentHash {
 
         @CustomType.Setter
         public Builder httpCookies(List<GetBackendServiceConsistentHashHttpCooky> httpCookies) {
-            this.httpCookies = Objects.requireNonNull(httpCookies);
+            if (httpCookies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceConsistentHash", "httpCookies");
+            }
+            this.httpCookies = httpCookies;
             return this;
         }
         public Builder httpCookies(GetBackendServiceConsistentHashHttpCooky... httpCookies) {
@@ -57,12 +61,18 @@ public final class GetBackendServiceConsistentHash {
         }
         @CustomType.Setter
         public Builder httpHeaderName(String httpHeaderName) {
-            this.httpHeaderName = Objects.requireNonNull(httpHeaderName);
+            if (httpHeaderName == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceConsistentHash", "httpHeaderName");
+            }
+            this.httpHeaderName = httpHeaderName;
             return this;
         }
         @CustomType.Setter
         public Builder minimumRingSize(Integer minimumRingSize) {
-            this.minimumRingSize = Objects.requireNonNull(minimumRingSize);
+            if (minimumRingSize == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceConsistentHash", "minimumRingSize");
+            }
+            this.minimumRingSize = minimumRingSize;
             return this;
         }
         public GetBackendServiceConsistentHash build() {

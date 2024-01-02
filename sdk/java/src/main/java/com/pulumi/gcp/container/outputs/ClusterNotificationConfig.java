@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.ClusterNotificationConfigPubsub;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ClusterNotificationConfig {
 
         @CustomType.Setter
         public Builder pubsub(ClusterNotificationConfigPubsub pubsub) {
-            this.pubsub = Objects.requireNonNull(pubsub);
+            if (pubsub == null) {
+              throw new MissingRequiredPropertyException("ClusterNotificationConfig", "pubsub");
+            }
+            this.pubsub = pubsub;
             return this;
         }
         public ClusterNotificationConfig build() {

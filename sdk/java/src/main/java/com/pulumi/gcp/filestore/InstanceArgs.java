@@ -5,6 +5,7 @@ package com.pulumi.gcp.filestore;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
 import java.lang.String;
@@ -489,9 +490,15 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.fileShares = Objects.requireNonNull($.fileShares, "expected parameter 'fileShares' to be non-null");
-            $.networks = Objects.requireNonNull($.networks, "expected parameter 'networks' to be non-null");
-            $.tier = Objects.requireNonNull($.tier, "expected parameter 'tier' to be non-null");
+            if ($.fileShares == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "fileShares");
+            }
+            if ($.networks == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "networks");
+            }
+            if ($.tier == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "tier");
+            }
             return $;
         }
     }

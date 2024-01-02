@@ -4,6 +4,7 @@
 package com.pulumi.gcp.binaryauthorization.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.binaryauthorization.outputs.AttestorAttestationAuthorityNotePublicKey;
 import java.lang.String;
 import java.util.List;
@@ -118,16 +119,21 @@ public final class AttestorAttestationAuthorityNote {
 
         @CustomType.Setter
         public Builder delegationServiceAccountEmail(@Nullable String delegationServiceAccountEmail) {
+
             this.delegationServiceAccountEmail = delegationServiceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder noteReference(String noteReference) {
-            this.noteReference = Objects.requireNonNull(noteReference);
+            if (noteReference == null) {
+              throw new MissingRequiredPropertyException("AttestorAttestationAuthorityNote", "noteReference");
+            }
+            this.noteReference = noteReference;
             return this;
         }
         @CustomType.Setter
         public Builder publicKeys(@Nullable List<AttestorAttestationAuthorityNotePublicKey> publicKeys) {
+
             this.publicKeys = publicKeys;
             return this;
         }

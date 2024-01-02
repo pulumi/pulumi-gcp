@@ -5,6 +5,7 @@ package com.pulumi.gcp.redis;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -391,8 +392,12 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.pscConfigs = Objects.requireNonNull($.pscConfigs, "expected parameter 'pscConfigs' to be non-null");
-            $.shardCount = Objects.requireNonNull($.shardCount, "expected parameter 'shardCount' to be non-null");
+            if ($.pscConfigs == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "pscConfigs");
+            }
+            if ($.shardCount == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "shardCount");
+            }
             return $;
         }
     }

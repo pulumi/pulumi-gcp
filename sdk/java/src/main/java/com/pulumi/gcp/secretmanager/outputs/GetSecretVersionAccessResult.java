@@ -4,6 +4,7 @@
 package com.pulumi.gcp.secretmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,32 +91,50 @@ public final class GetSecretVersionAccessResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionAccessResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionAccessResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionAccessResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionAccessResult", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         @CustomType.Setter
         public Builder secretData(String secretData) {
-            this.secretData = Objects.requireNonNull(secretData);
+            if (secretData == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionAccessResult", "secretData");
+            }
+            this.secretData = secretData;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionAccessResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetSecretVersionAccessResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIpArgs;
 import java.lang.String;
 import java.util.List;
@@ -165,9 +166,15 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs extends c
         }
 
         public VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs build() {
-            $.gateway = Objects.requireNonNull($.gateway, "expected parameter 'gateway' to be non-null");
-            $.ips = Objects.requireNonNull($.ips, "expected parameter 'ips' to be non-null");
-            $.netmask = Objects.requireNonNull($.netmask, "expected parameter 'netmask' to be non-null");
+            if ($.gateway == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs", "gateway");
+            }
+            if ($.ips == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs", "ips");
+            }
+            if ($.netmask == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs", "netmask");
+            }
             return $;
         }
     }

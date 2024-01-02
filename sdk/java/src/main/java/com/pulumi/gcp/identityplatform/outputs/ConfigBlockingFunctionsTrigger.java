@@ -4,6 +4,7 @@
 package com.pulumi.gcp.identityplatform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,16 +75,23 @@ public final class ConfigBlockingFunctionsTrigger {
 
         @CustomType.Setter
         public Builder eventType(String eventType) {
-            this.eventType = Objects.requireNonNull(eventType);
+            if (eventType == null) {
+              throw new MissingRequiredPropertyException("ConfigBlockingFunctionsTrigger", "eventType");
+            }
+            this.eventType = eventType;
             return this;
         }
         @CustomType.Setter
         public Builder functionUri(String functionUri) {
-            this.functionUri = Objects.requireNonNull(functionUri);
+            if (functionUri == null) {
+              throw new MissingRequiredPropertyException("ConfigBlockingFunctionsTrigger", "functionUri");
+            }
+            this.functionUri = functionUri;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }

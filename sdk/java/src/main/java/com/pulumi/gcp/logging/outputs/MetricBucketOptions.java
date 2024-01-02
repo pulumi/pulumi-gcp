@@ -84,16 +84,19 @@ public final class MetricBucketOptions {
 
         @CustomType.Setter
         public Builder explicitBuckets(@Nullable MetricBucketOptionsExplicitBuckets explicitBuckets) {
+
             this.explicitBuckets = explicitBuckets;
             return this;
         }
         @CustomType.Setter
         public Builder exponentialBuckets(@Nullable MetricBucketOptionsExponentialBuckets exponentialBuckets) {
+
             this.exponentialBuckets = exponentialBuckets;
             return this;
         }
         @CustomType.Setter
         public Builder linearBuckets(@Nullable MetricBucketOptionsLinearBuckets linearBuckets) {
+
             this.linearBuckets = linearBuckets;
             return this;
         }

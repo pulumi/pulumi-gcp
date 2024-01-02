@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoTypeArgs;
 import java.lang.Integer;
 import java.util.Objects;
@@ -124,8 +125,12 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
         }
 
         public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs build() {
-            $.infoType = Objects.requireNonNull($.infoType, "expected parameter 'infoType' to be non-null");
-            $.maxFindings = Objects.requireNonNull($.maxFindings, "expected parameter 'maxFindings' to be non-null");
+            if ($.infoType == null) {
+                throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs", "infoType");
+            }
+            if ($.maxFindings == null) {
+                throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeArgs", "maxFindings");
+            }
             return $;
         }
     }

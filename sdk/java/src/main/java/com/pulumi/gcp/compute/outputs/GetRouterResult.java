@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRouterBgp;
 import java.lang.Boolean;
 import java.lang.String;
@@ -101,7 +102,10 @@ public final class GetRouterResult {
 
         @CustomType.Setter
         public Builder bgps(List<GetRouterBgp> bgps) {
-            this.bgps = Objects.requireNonNull(bgps);
+            if (bgps == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "bgps");
+            }
+            this.bgps = bgps;
             return this;
         }
         public Builder bgps(GetRouterBgp... bgps) {
@@ -109,47 +113,70 @@ public final class GetRouterResult {
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
-            this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder encryptedInterconnectRouter(Boolean encryptedInterconnectRouter) {
-            this.encryptedInterconnectRouter = Objects.requireNonNull(encryptedInterconnectRouter);
+            if (encryptedInterconnectRouter == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "encryptedInterconnectRouter");
+            }
+            this.encryptedInterconnectRouter = encryptedInterconnectRouter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetRouterResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         public GetRouterResult build() {

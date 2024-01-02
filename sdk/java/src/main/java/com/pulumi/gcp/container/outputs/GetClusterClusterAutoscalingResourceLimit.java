@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetClusterClusterAutoscalingResourceLimit {
 
         @CustomType.Setter
         public Builder maximum(Integer maximum) {
-            this.maximum = Objects.requireNonNull(maximum);
+            if (maximum == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingResourceLimit", "maximum");
+            }
+            this.maximum = maximum;
             return this;
         }
         @CustomType.Setter
         public Builder minimum(Integer minimum) {
-            this.minimum = Objects.requireNonNull(minimum);
+            if (minimum == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingResourceLimit", "minimum");
+            }
+            this.minimum = minimum;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(String resourceType) {
-            this.resourceType = Objects.requireNonNull(resourceType);
+            if (resourceType == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingResourceLimit", "resourceType");
+            }
+            this.resourceType = resourceType;
             return this;
         }
         public GetClusterClusterAutoscalingResourceLimit build() {

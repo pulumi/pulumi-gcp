@@ -130,31 +130,37 @@ public final class InstanceBootDiskInitializeParams {
 
         @CustomType.Setter
         public Builder enableConfidentialCompute(@Nullable Boolean enableConfidentialCompute) {
+
             this.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,Object> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+
             this.resourceManagerTags = resourceManagerTags;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable Integer size) {
+
             this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

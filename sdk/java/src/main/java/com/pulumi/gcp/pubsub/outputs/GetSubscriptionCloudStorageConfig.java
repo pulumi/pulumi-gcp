@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionCloudStorageConfigAvroConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -73,7 +74,10 @@ public final class GetSubscriptionCloudStorageConfig {
 
         @CustomType.Setter
         public Builder avroConfigs(List<GetSubscriptionCloudStorageConfigAvroConfig> avroConfigs) {
-            this.avroConfigs = Objects.requireNonNull(avroConfigs);
+            if (avroConfigs == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "avroConfigs");
+            }
+            this.avroConfigs = avroConfigs;
             return this;
         }
         public Builder avroConfigs(GetSubscriptionCloudStorageConfigAvroConfig... avroConfigs) {
@@ -81,32 +85,50 @@ public final class GetSubscriptionCloudStorageConfig {
         }
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder filenamePrefix(String filenamePrefix) {
-            this.filenamePrefix = Objects.requireNonNull(filenamePrefix);
+            if (filenamePrefix == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "filenamePrefix");
+            }
+            this.filenamePrefix = filenamePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder filenameSuffix(String filenameSuffix) {
-            this.filenameSuffix = Objects.requireNonNull(filenameSuffix);
+            if (filenameSuffix == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "filenameSuffix");
+            }
+            this.filenameSuffix = filenameSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder maxBytes(Integer maxBytes) {
-            this.maxBytes = Objects.requireNonNull(maxBytes);
+            if (maxBytes == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "maxBytes");
+            }
+            this.maxBytes = maxBytes;
             return this;
         }
         @CustomType.Setter
         public Builder maxDuration(String maxDuration) {
-            this.maxDuration = Objects.requireNonNull(maxDuration);
+            if (maxDuration == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "maxDuration");
+            }
+            this.maxDuration = maxDuration;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfig", "state");
+            }
+            this.state = state;
             return this;
         }
         public GetSubscriptionCloudStorageConfig build() {

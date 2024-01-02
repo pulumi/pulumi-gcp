@@ -99,6 +99,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
 
         @CustomType.Setter
         public Builder requestHeaderToAdds(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToAdd> requestHeaderToAdds) {
+
             this.requestHeaderToAdds = requestHeaderToAdds;
             return this;
         }
@@ -107,6 +108,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
         }
         @CustomType.Setter
         public Builder requestHeaderToRemoves(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionRequestHeaderToRemove> requestHeaderToRemoves) {
+
             this.requestHeaderToRemoves = requestHeaderToRemoves;
             return this;
         }
@@ -115,6 +117,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
         }
         @CustomType.Setter
         public Builder responseHeaderToAdds(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToAdd> responseHeaderToAdds) {
+
             this.responseHeaderToAdds = responseHeaderToAdds;
             return this;
         }
@@ -123,6 +126,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction {
         }
         @CustomType.Setter
         public Builder responseHeaderToRemoves(@Nullable List<EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderActionResponseHeaderToRemove> responseHeaderToRemoves) {
+
             this.responseHeaderToRemoves = responseHeaderToRemoves;
             return this;
         }

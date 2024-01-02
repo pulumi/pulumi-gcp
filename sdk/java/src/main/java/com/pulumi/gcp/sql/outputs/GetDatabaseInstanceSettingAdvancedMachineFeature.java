@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetDatabaseInstanceSettingAdvancedMachineFeature {
 
         @CustomType.Setter
         public Builder threadsPerCore(Integer threadsPerCore) {
-            this.threadsPerCore = Objects.requireNonNull(threadsPerCore);
+            if (threadsPerCore == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingAdvancedMachineFeature", "threadsPerCore");
+            }
+            this.threadsPerCore = threadsPerCore;
             return this;
         }
         public GetDatabaseInstanceSettingAdvancedMachineFeature build() {

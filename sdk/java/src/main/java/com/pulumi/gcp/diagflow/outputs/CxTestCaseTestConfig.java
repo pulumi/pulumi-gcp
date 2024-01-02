@@ -81,16 +81,19 @@ public final class CxTestCaseTestConfig {
 
         @CustomType.Setter
         public Builder flow(@Nullable String flow) {
+
             this.flow = flow;
             return this;
         }
         @CustomType.Setter
         public Builder page(@Nullable String page) {
+
             this.page = page;
             return this;
         }
         @CustomType.Setter
         public Builder trackingParameters(@Nullable List<String> trackingParameters) {
+
             this.trackingParameters = trackingParameters;
             return this;
         }

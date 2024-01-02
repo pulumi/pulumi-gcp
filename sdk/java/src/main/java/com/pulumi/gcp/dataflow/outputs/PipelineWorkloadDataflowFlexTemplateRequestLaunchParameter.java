@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataflow.outputs.PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment;
 import java.lang.Boolean;
 import java.lang.String;
@@ -141,36 +142,45 @@ public final class PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter {
 
         @CustomType.Setter
         public Builder containerSpecGcsPath(@Nullable String containerSpecGcsPath) {
+
             this.containerSpecGcsPath = containerSpecGcsPath;
             return this;
         }
         @CustomType.Setter
         public Builder environment(@Nullable PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterEnvironment environment) {
+
             this.environment = environment;
             return this;
         }
         @CustomType.Setter
         public Builder jobName(String jobName) {
-            this.jobName = Objects.requireNonNull(jobName);
+            if (jobName == null) {
+              throw new MissingRequiredPropertyException("PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter", "jobName");
+            }
+            this.jobName = jobName;
             return this;
         }
         @CustomType.Setter
         public Builder launchOptions(@Nullable Map<String,String> launchOptions) {
+
             this.launchOptions = launchOptions;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable Map<String,String> parameters) {
+
             this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder transformNameMappings(@Nullable Map<String,String> transformNameMappings) {
+
             this.transformNameMappings = transformNameMappings;
             return this;
         }
         @CustomType.Setter
         public Builder update(@Nullable Boolean update) {
+
             this.update = update;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -139,67 +140,106 @@ public final class GetGlobalAddressResult {
 
         @CustomType.Setter
         public Builder address(String address) {
-            this.address = Objects.requireNonNull(address);
+            if (address == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "address");
+            }
+            this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder addressType(String addressType) {
-            this.addressType = Objects.requireNonNull(addressType);
+            if (addressType == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "addressType");
+            }
+            this.addressType = addressType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder networkTier(String networkTier) {
-            this.networkTier = Objects.requireNonNull(networkTier);
+            if (networkTier == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "networkTier");
+            }
+            this.networkTier = networkTier;
             return this;
         }
         @CustomType.Setter
         public Builder prefixLength(Integer prefixLength) {
-            this.prefixLength = Objects.requireNonNull(prefixLength);
+            if (prefixLength == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "prefixLength");
+            }
+            this.prefixLength = prefixLength;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder purpose(String purpose) {
-            this.purpose = Objects.requireNonNull(purpose);
+            if (purpose == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "purpose");
+            }
+            this.purpose = purpose;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
-            this.subnetwork = Objects.requireNonNull(subnetwork);
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder users(String users) {
-            this.users = Objects.requireNonNull(users);
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetGlobalAddressResult", "users");
+            }
+            this.users = users;
             return this;
         }
         public GetGlobalAddressResult build() {

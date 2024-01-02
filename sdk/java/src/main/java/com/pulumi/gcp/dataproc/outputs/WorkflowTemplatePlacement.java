@@ -59,11 +59,13 @@ public final class WorkflowTemplatePlacement {
 
         @CustomType.Setter
         public Builder clusterSelector(@Nullable WorkflowTemplatePlacementClusterSelector clusterSelector) {
+
             this.clusterSelector = clusterSelector;
             return this;
         }
         @CustomType.Setter
         public Builder managedCluster(@Nullable WorkflowTemplatePlacementManagedCluster managedCluster) {
+
             this.managedCluster = managedCluster;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetActiveFolderPlainArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetActiveFolderPlainArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("GetActiveFolderPlainArgs", "displayName");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GetActiveFolderPlainArgs", "parent");
+            }
             return $;
         }
     }

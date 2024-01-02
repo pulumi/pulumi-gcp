@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigSshPublicKeySshClientCertArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigSshPublicKeySshClientCertPassArgs;
 import java.lang.String;
@@ -197,7 +198,9 @@ public final class ConnectionAuthConfigSshPublicKeyArgs extends com.pulumi.resou
         }
 
         public ConnectionAuthConfigSshPublicKeyArgs build() {
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("ConnectionAuthConfigSshPublicKeyArgs", "username");
+            }
             return $;
         }
     }

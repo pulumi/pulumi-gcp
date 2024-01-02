@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -177,9 +178,15 @@ public final class AzureClusterNetworkingArgs extends com.pulumi.resources.Resou
         }
 
         public AzureClusterNetworkingArgs build() {
-            $.podAddressCidrBlocks = Objects.requireNonNull($.podAddressCidrBlocks, "expected parameter 'podAddressCidrBlocks' to be non-null");
-            $.serviceAddressCidrBlocks = Objects.requireNonNull($.serviceAddressCidrBlocks, "expected parameter 'serviceAddressCidrBlocks' to be non-null");
-            $.virtualNetworkId = Objects.requireNonNull($.virtualNetworkId, "expected parameter 'virtualNetworkId' to be non-null");
+            if ($.podAddressCidrBlocks == null) {
+                throw new MissingRequiredPropertyException("AzureClusterNetworkingArgs", "podAddressCidrBlocks");
+            }
+            if ($.serviceAddressCidrBlocks == null) {
+                throw new MissingRequiredPropertyException("AzureClusterNetworkingArgs", "serviceAddressCidrBlocks");
+            }
+            if ($.virtualNetworkId == null) {
+                throw new MissingRequiredPropertyException("AzureClusterNetworkingArgs", "virtualNetworkId");
+            }
             return $;
         }
     }

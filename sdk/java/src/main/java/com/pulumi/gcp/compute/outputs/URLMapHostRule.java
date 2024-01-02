@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -81,12 +82,16 @@ public final class URLMapHostRule {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder hosts(List<String> hosts) {
-            this.hosts = Objects.requireNonNull(hosts);
+            if (hosts == null) {
+              throw new MissingRequiredPropertyException("URLMapHostRule", "hosts");
+            }
+            this.hosts = hosts;
             return this;
         }
         public Builder hosts(String... hosts) {
@@ -94,7 +99,10 @@ public final class URLMapHostRule {
         }
         @CustomType.Setter
         public Builder pathMatcher(String pathMatcher) {
-            this.pathMatcher = Objects.requireNonNull(pathMatcher);
+            if (pathMatcher == null) {
+              throw new MissingRequiredPropertyException("URLMapHostRule", "pathMatcher");
+            }
+            this.pathMatcher = pathMatcher;
             return this;
         }
         public URLMapHostRule build() {

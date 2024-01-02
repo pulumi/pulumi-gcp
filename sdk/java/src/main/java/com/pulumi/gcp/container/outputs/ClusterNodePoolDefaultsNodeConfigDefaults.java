@@ -59,11 +59,13 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
 
         @CustomType.Setter
         public Builder gcfsConfig(@Nullable ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig gcfsConfig) {
+
             this.gcfsConfig = gcfsConfig;
             return this;
         }
         @CustomType.Setter
         public Builder loggingVariant(@Nullable String loggingVariant) {
+
             this.loggingVariant = loggingVariant;
             return this;
         }

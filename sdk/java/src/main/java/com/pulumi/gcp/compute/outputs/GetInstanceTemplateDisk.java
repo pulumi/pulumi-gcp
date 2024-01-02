@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateDiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateDiskSourceSnapshotEncryptionKey;
@@ -311,22 +312,34 @@ public final class GetInstanceTemplateDisk {
 
         @CustomType.Setter
         public Builder autoDelete(Boolean autoDelete) {
-            this.autoDelete = Objects.requireNonNull(autoDelete);
+            if (autoDelete == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "autoDelete");
+            }
+            this.autoDelete = autoDelete;
             return this;
         }
         @CustomType.Setter
         public Builder boot(Boolean boot) {
-            this.boot = Objects.requireNonNull(boot);
+            if (boot == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "boot");
+            }
+            this.boot = boot;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(String deviceName) {
-            this.deviceName = Objects.requireNonNull(deviceName);
+            if (deviceName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "deviceName");
+            }
+            this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeys(List<GetInstanceTemplateDiskDiskEncryptionKey> diskEncryptionKeys) {
-            this.diskEncryptionKeys = Objects.requireNonNull(diskEncryptionKeys);
+            if (diskEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "diskEncryptionKeys");
+            }
+            this.diskEncryptionKeys = diskEncryptionKeys;
             return this;
         }
         public Builder diskEncryptionKeys(GetInstanceTemplateDiskDiskEncryptionKey... diskEncryptionKeys) {
@@ -334,42 +347,66 @@ public final class GetInstanceTemplateDisk {
         }
         @CustomType.Setter
         public Builder diskName(String diskName) {
-            this.diskName = Objects.requireNonNull(diskName);
+            if (diskName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "diskName");
+            }
+            this.diskName = diskName;
             return this;
         }
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
-            this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
+            if (diskSizeGb == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "diskSizeGb");
+            }
+            this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
-            this.interface_ = Objects.requireNonNull(interface_);
+            if (interface_ == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "interface_");
+            }
+            this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedIops(Integer provisionedIops) {
-            this.provisionedIops = Objects.requireNonNull(provisionedIops);
+            if (provisionedIops == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "provisionedIops");
+            }
+            this.provisionedIops = provisionedIops;
             return this;
         }
         @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
-            this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
+            if (resourcePolicies == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "resourcePolicies");
+            }
+            this.resourcePolicies = resourcePolicies;
             return this;
         }
         public Builder resourcePolicies(String... resourcePolicies) {
@@ -377,17 +414,26 @@ public final class GetInstanceTemplateDisk {
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "source");
+            }
+            this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder sourceImage(String sourceImage) {
-            this.sourceImage = Objects.requireNonNull(sourceImage);
+            if (sourceImage == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "sourceImage");
+            }
+            this.sourceImage = sourceImage;
             return this;
         }
         @CustomType.Setter
         public Builder sourceImageEncryptionKeys(List<GetInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys) {
-            this.sourceImageEncryptionKeys = Objects.requireNonNull(sourceImageEncryptionKeys);
+            if (sourceImageEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "sourceImageEncryptionKeys");
+            }
+            this.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
             return this;
         }
         public Builder sourceImageEncryptionKeys(GetInstanceTemplateDiskSourceImageEncryptionKey... sourceImageEncryptionKeys) {
@@ -395,12 +441,18 @@ public final class GetInstanceTemplateDisk {
         }
         @CustomType.Setter
         public Builder sourceSnapshot(String sourceSnapshot) {
-            this.sourceSnapshot = Objects.requireNonNull(sourceSnapshot);
+            if (sourceSnapshot == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "sourceSnapshot");
+            }
+            this.sourceSnapshot = sourceSnapshot;
             return this;
         }
         @CustomType.Setter
         public Builder sourceSnapshotEncryptionKeys(List<GetInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys) {
-            this.sourceSnapshotEncryptionKeys = Objects.requireNonNull(sourceSnapshotEncryptionKeys);
+            if (sourceSnapshotEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "sourceSnapshotEncryptionKeys");
+            }
+            this.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             return this;
         }
         public Builder sourceSnapshotEncryptionKeys(GetInstanceTemplateDiskSourceSnapshotEncryptionKey... sourceSnapshotEncryptionKeys) {
@@ -408,7 +460,10 @@ public final class GetInstanceTemplateDisk {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetInstanceTemplateDisk build() {

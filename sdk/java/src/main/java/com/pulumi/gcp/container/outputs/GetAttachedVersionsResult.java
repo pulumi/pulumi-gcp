@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,22 +70,34 @@ public final class GetAttachedVersionsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAttachedVersionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetAttachedVersionsResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetAttachedVersionsResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder validVersions(List<String> validVersions) {
-            this.validVersions = Objects.requireNonNull(validVersions);
+            if (validVersions == null) {
+              throw new MissingRequiredPropertyException("GetAttachedVersionsResult", "validVersions");
+            }
+            this.validVersions = validVersions;
             return this;
         }
         public Builder validVersions(String... validVersions) {

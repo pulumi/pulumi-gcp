@@ -4,6 +4,7 @@
 package com.pulumi.gcp.serviceaccount.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -84,6 +85,7 @@ public final class GetAccountIdTokenResult {
 
         @CustomType.Setter
         public Builder delegates(@Nullable List<String> delegates) {
+
             this.delegates = delegates;
             return this;
         }
@@ -92,26 +94,37 @@ public final class GetAccountIdTokenResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountIdTokenResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder idToken(String idToken) {
-            this.idToken = Objects.requireNonNull(idToken);
+            if (idToken == null) {
+              throw new MissingRequiredPropertyException("GetAccountIdTokenResult", "idToken");
+            }
+            this.idToken = idToken;
             return this;
         }
         @CustomType.Setter
         public Builder includeEmail(@Nullable Boolean includeEmail) {
+
             this.includeEmail = includeEmail;
             return this;
         }
         @CustomType.Setter
         public Builder targetAudience(String targetAudience) {
-            this.targetAudience = Objects.requireNonNull(targetAudience);
+            if (targetAudience == null) {
+              throw new MissingRequiredPropertyException("GetAccountIdTokenResult", "targetAudience");
+            }
+            this.targetAudience = targetAudience;
             return this;
         }
         @CustomType.Setter
         public Builder targetServiceAccount(@Nullable String targetServiceAccount) {
+
             this.targetServiceAccount = targetServiceAccount;
             return this;
         }

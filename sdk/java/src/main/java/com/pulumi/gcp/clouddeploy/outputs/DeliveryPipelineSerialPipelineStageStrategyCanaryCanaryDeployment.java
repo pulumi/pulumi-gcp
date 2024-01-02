@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy;
 import java.lang.Boolean;
@@ -90,7 +91,10 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
 
         @CustomType.Setter
         public Builder percentages(List<Integer> percentages) {
-            this.percentages = Objects.requireNonNull(percentages);
+            if (percentages == null) {
+              throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment", "percentages");
+            }
+            this.percentages = percentages;
             return this;
         }
         public Builder percentages(Integer... percentages) {
@@ -98,16 +102,19 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploy
         }
         @CustomType.Setter
         public Builder postdeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPostdeploy postdeploy) {
+
             this.postdeploy = postdeploy;
             return this;
         }
         @CustomType.Setter
         public Builder predeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeploymentPredeploy predeploy) {
+
             this.predeploy = predeploy;
             return this;
         }
         @CustomType.Setter
         public Builder verify(@Nullable Boolean verify) {
+
             this.verify = verify;
             return this;
         }

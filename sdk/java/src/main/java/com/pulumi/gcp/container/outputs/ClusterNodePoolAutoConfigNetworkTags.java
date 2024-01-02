@@ -88,6 +88,7 @@ public final class ClusterNodePoolAutoConfigNetworkTags {
 
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }

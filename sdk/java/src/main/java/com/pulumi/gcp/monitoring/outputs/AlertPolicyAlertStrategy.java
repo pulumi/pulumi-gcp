@@ -83,11 +83,13 @@ public final class AlertPolicyAlertStrategy {
 
         @CustomType.Setter
         public Builder autoClose(@Nullable String autoClose) {
+
             this.autoClose = autoClose;
             return this;
         }
         @CustomType.Setter
         public Builder notificationChannelStrategies(@Nullable List<AlertPolicyAlertStrategyNotificationChannelStrategy> notificationChannelStrategies) {
+
             this.notificationChannelStrategies = notificationChannelStrategies;
             return this;
         }
@@ -96,6 +98,7 @@ public final class AlertPolicyAlertStrategy {
         }
         @CustomType.Setter
         public Builder notificationRateLimit(@Nullable AlertPolicyAlertStrategyNotificationRateLimit notificationRateLimit) {
+
             this.notificationRateLimit = notificationRateLimit;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationConfigArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigArgs;
 import java.lang.String;
@@ -239,7 +240,9 @@ public final class PreventionJobTriggerInspectJobActionDeidentifyArgs extends co
         }
 
         public PreventionJobTriggerInspectJobActionDeidentifyArgs build() {
-            $.cloudStorageOutput = Objects.requireNonNull($.cloudStorageOutput, "expected parameter 'cloudStorageOutput' to be non-null");
+            if ($.cloudStorageOutput == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobActionDeidentifyArgs", "cloudStorageOutput");
+            }
             return $;
         }
     }

@@ -102,11 +102,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
 
         @CustomType.Setter
         public Builder imageVersion(@Nullable String imageVersion) {
+
             this.imageVersion = imageVersion;
             return this;
         }
         @CustomType.Setter
         public Builder optionalComponents(@Nullable List<String> optionalComponents) {
+
             this.optionalComponents = optionalComponents;
             return this;
         }
@@ -115,6 +117,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig {
         }
         @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
+
             this.properties = properties;
             return this;
         }

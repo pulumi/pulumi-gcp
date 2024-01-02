@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -321,61 +322,75 @@ public final class RegionBackendServiceBackend {
 
         @CustomType.Setter
         public Builder balancingMode(@Nullable String balancingMode) {
+
             this.balancingMode = balancingMode;
             return this;
         }
         @CustomType.Setter
         public Builder capacityScaler(@Nullable Double capacityScaler) {
+
             this.capacityScaler = capacityScaler;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder failover(@Nullable Boolean failover) {
+
             this.failover = failover;
             return this;
         }
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("RegionBackendServiceBackend", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
+
             this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnectionsPerEndpoint(@Nullable Integer maxConnectionsPerEndpoint) {
+
             this.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnectionsPerInstance(@Nullable Integer maxConnectionsPerInstance) {
+
             this.maxConnectionsPerInstance = maxConnectionsPerInstance;
             return this;
         }
         @CustomType.Setter
         public Builder maxRate(@Nullable Integer maxRate) {
+
             this.maxRate = maxRate;
             return this;
         }
         @CustomType.Setter
         public Builder maxRatePerEndpoint(@Nullable Double maxRatePerEndpoint) {
+
             this.maxRatePerEndpoint = maxRatePerEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder maxRatePerInstance(@Nullable Double maxRatePerInstance) {
+
             this.maxRatePerInstance = maxRatePerInstance;
             return this;
         }
         @CustomType.Setter
         public Builder maxUtilization(@Nullable Double maxUtilization) {
+
             this.maxUtilization = maxUtilization;
             return this;
         }

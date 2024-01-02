@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class GetClusterIstioServiceTelemetry {
 
         @CustomType.Setter
         public Builder resourceName(String resourceName) {
-            this.resourceName = Objects.requireNonNull(resourceName);
+            if (resourceName == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceTelemetry", "resourceName");
+            }
+            this.resourceName = resourceName;
             return this;
         }
         public GetClusterIstioServiceTelemetry build() {

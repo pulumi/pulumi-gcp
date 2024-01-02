@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPa
 
         @CustomType.Setter
         public Builder namespaceId(@Nullable String namespaceId) {
+
             this.namespaceId = namespaceId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionId build() {

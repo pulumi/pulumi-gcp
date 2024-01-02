@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleDayOfWeekArgs;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArg
         }
 
         public ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs build() {
-            $.dayOfWeeks = Objects.requireNonNull($.dayOfWeeks, "expected parameter 'dayOfWeeks' to be non-null");
+            if ($.dayOfWeeks == null) {
+                throw new MissingRequiredPropertyException("ResourcePolicySnapshotSchedulePolicyScheduleWeeklyScheduleArgs", "dayOfWeeks");
+            }
             return $;
         }
     }

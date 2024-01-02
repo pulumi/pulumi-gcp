@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjectsArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjectsArgs;
 import java.lang.Integer;
@@ -247,8 +248,12 @@ public final class StreamSourceConfigPostgresqlSourceConfigArgs extends com.pulu
         }
 
         public StreamSourceConfigPostgresqlSourceConfigArgs build() {
-            $.publication = Objects.requireNonNull($.publication, "expected parameter 'publication' to be non-null");
-            $.replicationSlot = Objects.requireNonNull($.replicationSlot, "expected parameter 'replicationSlot' to be non-null");
+            if ($.publication == null) {
+                throw new MissingRequiredPropertyException("StreamSourceConfigPostgresqlSourceConfigArgs", "publication");
+            }
+            if ($.replicationSlot == null) {
+                throw new MissingRequiredPropertyException("StreamSourceConfigPostgresqlSourceConfigArgs", "replicationSlot");
+            }
             return $;
         }
     }

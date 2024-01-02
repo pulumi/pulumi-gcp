@@ -4,6 +4,7 @@
 package com.pulumi.gcp.tpu.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class V2VmShieldedInstanceConfig {
 
         @CustomType.Setter
         public Builder enableSecureBoot(Boolean enableSecureBoot) {
-            this.enableSecureBoot = Objects.requireNonNull(enableSecureBoot);
+            if (enableSecureBoot == null) {
+              throw new MissingRequiredPropertyException("V2VmShieldedInstanceConfig", "enableSecureBoot");
+            }
+            this.enableSecureBoot = enableSecureBoot;
             return this;
         }
         public V2VmShieldedInstanceConfig build() {

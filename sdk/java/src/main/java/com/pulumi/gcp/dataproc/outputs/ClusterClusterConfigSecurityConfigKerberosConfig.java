@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -278,76 +279,95 @@ public final class ClusterClusterConfigSecurityConfigKerberosConfig {
 
         @CustomType.Setter
         public Builder crossRealmTrustAdminServer(@Nullable String crossRealmTrustAdminServer) {
+
             this.crossRealmTrustAdminServer = crossRealmTrustAdminServer;
             return this;
         }
         @CustomType.Setter
         public Builder crossRealmTrustKdc(@Nullable String crossRealmTrustKdc) {
+
             this.crossRealmTrustKdc = crossRealmTrustKdc;
             return this;
         }
         @CustomType.Setter
         public Builder crossRealmTrustRealm(@Nullable String crossRealmTrustRealm) {
+
             this.crossRealmTrustRealm = crossRealmTrustRealm;
             return this;
         }
         @CustomType.Setter
         public Builder crossRealmTrustSharedPasswordUri(@Nullable String crossRealmTrustSharedPasswordUri) {
+
             this.crossRealmTrustSharedPasswordUri = crossRealmTrustSharedPasswordUri;
             return this;
         }
         @CustomType.Setter
         public Builder enableKerberos(@Nullable Boolean enableKerberos) {
+
             this.enableKerberos = enableKerberos;
             return this;
         }
         @CustomType.Setter
         public Builder kdcDbKeyUri(@Nullable String kdcDbKeyUri) {
+
             this.kdcDbKeyUri = kdcDbKeyUri;
             return this;
         }
         @CustomType.Setter
         public Builder keyPasswordUri(@Nullable String keyPasswordUri) {
+
             this.keyPasswordUri = keyPasswordUri;
             return this;
         }
         @CustomType.Setter
         public Builder keystorePasswordUri(@Nullable String keystorePasswordUri) {
+
             this.keystorePasswordUri = keystorePasswordUri;
             return this;
         }
         @CustomType.Setter
         public Builder keystoreUri(@Nullable String keystoreUri) {
+
             this.keystoreUri = keystoreUri;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyUri(String kmsKeyUri) {
-            this.kmsKeyUri = Objects.requireNonNull(kmsKeyUri);
+            if (kmsKeyUri == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigSecurityConfigKerberosConfig", "kmsKeyUri");
+            }
+            this.kmsKeyUri = kmsKeyUri;
             return this;
         }
         @CustomType.Setter
         public Builder realm(@Nullable String realm) {
+
             this.realm = realm;
             return this;
         }
         @CustomType.Setter
         public Builder rootPrincipalPasswordUri(String rootPrincipalPasswordUri) {
-            this.rootPrincipalPasswordUri = Objects.requireNonNull(rootPrincipalPasswordUri);
+            if (rootPrincipalPasswordUri == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigSecurityConfigKerberosConfig", "rootPrincipalPasswordUri");
+            }
+            this.rootPrincipalPasswordUri = rootPrincipalPasswordUri;
             return this;
         }
         @CustomType.Setter
         public Builder tgtLifetimeHours(@Nullable Integer tgtLifetimeHours) {
+
             this.tgtLifetimeHours = tgtLifetimeHours;
             return this;
         }
         @CustomType.Setter
         public Builder truststorePasswordUri(@Nullable String truststorePasswordUri) {
+
             this.truststorePasswordUri = truststorePasswordUri;
             return this;
         }
         @CustomType.Setter
         public Builder truststoreUri(@Nullable String truststoreUri) {
+
             this.truststoreUri = truststoreUri;
             return this;
         }

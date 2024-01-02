@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetPrivateCloudNetworkConfig {
 
         @CustomType.Setter
         public Builder dnsServerIp(String dnsServerIp) {
-            this.dnsServerIp = Objects.requireNonNull(dnsServerIp);
+            if (dnsServerIp == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudNetworkConfig", "dnsServerIp");
+            }
+            this.dnsServerIp = dnsServerIp;
             return this;
         }
         @CustomType.Setter
         public Builder managementCidr(String managementCidr) {
-            this.managementCidr = Objects.requireNonNull(managementCidr);
+            if (managementCidr == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudNetworkConfig", "managementCidr");
+            }
+            this.managementCidr = managementCidr;
             return this;
         }
         @CustomType.Setter
         public Builder managementIpAddressLayoutVersion(Integer managementIpAddressLayoutVersion) {
-            this.managementIpAddressLayoutVersion = Objects.requireNonNull(managementIpAddressLayoutVersion);
+            if (managementIpAddressLayoutVersion == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudNetworkConfig", "managementIpAddressLayoutVersion");
+            }
+            this.managementIpAddressLayoutVersion = managementIpAddressLayoutVersion;
             return this;
         }
         @CustomType.Setter
         public Builder vmwareEngineNetwork(String vmwareEngineNetwork) {
-            this.vmwareEngineNetwork = Objects.requireNonNull(vmwareEngineNetwork);
+            if (vmwareEngineNetwork == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudNetworkConfig", "vmwareEngineNetwork");
+            }
+            this.vmwareEngineNetwork = vmwareEngineNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder vmwareEngineNetworkCanonical(String vmwareEngineNetworkCanonical) {
-            this.vmwareEngineNetworkCanonical = Objects.requireNonNull(vmwareEngineNetworkCanonical);
+            if (vmwareEngineNetworkCanonical == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudNetworkConfig", "vmwareEngineNetworkCanonical");
+            }
+            this.vmwareEngineNetworkCanonical = vmwareEngineNetworkCanonical;
             return this;
         }
         public GetPrivateCloudNetworkConfig build() {

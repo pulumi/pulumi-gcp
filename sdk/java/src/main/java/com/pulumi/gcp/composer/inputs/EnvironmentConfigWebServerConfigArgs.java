@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class EnvironmentConfigWebServerConfigArgs extends com.pulumi.resou
         }
 
         public EnvironmentConfigWebServerConfigArgs build() {
-            $.machineType = Objects.requireNonNull($.machineType, "expected parameter 'machineType' to be non-null");
+            if ($.machineType == null) {
+                throw new MissingRequiredPropertyException("EnvironmentConfigWebServerConfigArgs", "machineType");
+            }
             return $;
         }
     }

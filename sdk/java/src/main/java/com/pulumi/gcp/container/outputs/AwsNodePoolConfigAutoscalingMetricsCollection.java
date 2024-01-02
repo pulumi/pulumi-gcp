@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,11 +59,15 @@ public final class AwsNodePoolConfigAutoscalingMetricsCollection {
 
         @CustomType.Setter
         public Builder granularity(String granularity) {
-            this.granularity = Objects.requireNonNull(granularity);
+            if (granularity == null) {
+              throw new MissingRequiredPropertyException("AwsNodePoolConfigAutoscalingMetricsCollection", "granularity");
+            }
+            this.granularity = granularity;
             return this;
         }
         @CustomType.Setter
         public Builder metrics(@Nullable List<String> metrics) {
+
             this.metrics = metrics;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetLocationsLocation {
 
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetLocationsLocation", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetLocationsLocation", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder locationId(String locationId) {
-            this.locationId = Objects.requireNonNull(locationId);
+            if (locationId == null) {
+              throw new MissingRequiredPropertyException("GetLocationsLocation", "locationId");
+            }
+            this.locationId = locationId;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(Map<String,String> metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("GetLocationsLocation", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetLocationsLocation", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetLocationsLocation build() {

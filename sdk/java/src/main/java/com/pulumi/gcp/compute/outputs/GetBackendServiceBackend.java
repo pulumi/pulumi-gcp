@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -104,57 +105,90 @@ public final class GetBackendServiceBackend {
 
         @CustomType.Setter
         public Builder balancingMode(String balancingMode) {
-            this.balancingMode = Objects.requireNonNull(balancingMode);
+            if (balancingMode == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "balancingMode");
+            }
+            this.balancingMode = balancingMode;
             return this;
         }
         @CustomType.Setter
         public Builder capacityScaler(Double capacityScaler) {
-            this.capacityScaler = Objects.requireNonNull(capacityScaler);
+            if (capacityScaler == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "capacityScaler");
+            }
+            this.capacityScaler = capacityScaler;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder group(String group) {
-            this.group = Objects.requireNonNull(group);
+            if (group == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "group");
+            }
+            this.group = group;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
-            this.maxConnections = Objects.requireNonNull(maxConnections);
+            if (maxConnections == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxConnections");
+            }
+            this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnectionsPerEndpoint(Integer maxConnectionsPerEndpoint) {
-            this.maxConnectionsPerEndpoint = Objects.requireNonNull(maxConnectionsPerEndpoint);
+            if (maxConnectionsPerEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxConnectionsPerEndpoint");
+            }
+            this.maxConnectionsPerEndpoint = maxConnectionsPerEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnectionsPerInstance(Integer maxConnectionsPerInstance) {
-            this.maxConnectionsPerInstance = Objects.requireNonNull(maxConnectionsPerInstance);
+            if (maxConnectionsPerInstance == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxConnectionsPerInstance");
+            }
+            this.maxConnectionsPerInstance = maxConnectionsPerInstance;
             return this;
         }
         @CustomType.Setter
         public Builder maxRate(Integer maxRate) {
-            this.maxRate = Objects.requireNonNull(maxRate);
+            if (maxRate == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxRate");
+            }
+            this.maxRate = maxRate;
             return this;
         }
         @CustomType.Setter
         public Builder maxRatePerEndpoint(Double maxRatePerEndpoint) {
-            this.maxRatePerEndpoint = Objects.requireNonNull(maxRatePerEndpoint);
+            if (maxRatePerEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxRatePerEndpoint");
+            }
+            this.maxRatePerEndpoint = maxRatePerEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder maxRatePerInstance(Double maxRatePerInstance) {
-            this.maxRatePerInstance = Objects.requireNonNull(maxRatePerInstance);
+            if (maxRatePerInstance == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxRatePerInstance");
+            }
+            this.maxRatePerInstance = maxRatePerInstance;
             return this;
         }
         @CustomType.Setter
         public Builder maxUtilization(Double maxUtilization) {
-            this.maxUtilization = Objects.requireNonNull(maxUtilization);
+            if (maxUtilization == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceBackend", "maxUtilization");
+            }
+            this.maxUtilization = maxUtilization;
             return this;
         }
         public GetBackendServiceBackend build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClusterMaintenancePolicyDailyMaintenanceWindow {
 
         @CustomType.Setter
         public Builder duration(String duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicyDailyMaintenanceWindow", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicyDailyMaintenanceWindow", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         public GetClusterMaintenancePolicyDailyMaintenanceWindow build() {

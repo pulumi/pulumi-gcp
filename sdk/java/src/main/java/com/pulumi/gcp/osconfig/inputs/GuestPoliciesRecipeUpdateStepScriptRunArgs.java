@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -170,7 +171,9 @@ public final class GuestPoliciesRecipeUpdateStepScriptRunArgs extends com.pulumi
         }
 
         public GuestPoliciesRecipeUpdateStepScriptRunArgs build() {
-            $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesRecipeUpdateStepScriptRunArgs", "script");
+            }
             return $;
         }
     }

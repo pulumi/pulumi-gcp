@@ -101,6 +101,7 @@ public final class AiEndpointDeployedModelDedicatedResource {
 
         @CustomType.Setter
         public Builder autoscalingMetricSpecs(@Nullable List<AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec> autoscalingMetricSpecs) {
+
             this.autoscalingMetricSpecs = autoscalingMetricSpecs;
             return this;
         }
@@ -109,6 +110,7 @@ public final class AiEndpointDeployedModelDedicatedResource {
         }
         @CustomType.Setter
         public Builder machineSpecs(@Nullable List<AiEndpointDeployedModelDedicatedResourceMachineSpec> machineSpecs) {
+
             this.machineSpecs = machineSpecs;
             return this;
         }
@@ -117,11 +119,13 @@ public final class AiEndpointDeployedModelDedicatedResource {
         }
         @CustomType.Setter
         public Builder maxReplicaCount(@Nullable Integer maxReplicaCount) {
+
             this.maxReplicaCount = maxReplicaCount;
             return this;
         }
         @CustomType.Setter
         public Builder minReplicaCount(@Nullable Integer minReplicaCount) {
+
             this.minReplicaCount = minReplicaCount;
             return this;
         }

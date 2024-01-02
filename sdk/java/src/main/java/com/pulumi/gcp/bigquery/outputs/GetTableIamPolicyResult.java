@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,32 +91,50 @@ public final class GetTableIamPolicyResult {
 
         @CustomType.Setter
         public Builder datasetId(String datasetId) {
-            this.datasetId = Objects.requireNonNull(datasetId);
+            if (datasetId == null) {
+              throw new MissingRequiredPropertyException("GetTableIamPolicyResult", "datasetId");
+            }
+            this.datasetId = datasetId;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetTableIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTableIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetTableIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetTableIamPolicyResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder tableId(String tableId) {
-            this.tableId = Objects.requireNonNull(tableId);
+            if (tableId == null) {
+              throw new MissingRequiredPropertyException("GetTableIamPolicyResult", "tableId");
+            }
+            this.tableId = tableId;
             return this;
         }
         public GetTableIamPolicyResult build() {

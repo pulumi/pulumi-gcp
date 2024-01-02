@@ -5,6 +5,7 @@ package com.pulumi.gcp.spanner.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -154,8 +155,12 @@ public final class GetDatabaseIamPolicyArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetDatabaseIamPolicyArgs build() {
-            $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
+            if ($.database == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseIamPolicyArgs", "database");
+            }
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("GetDatabaseIamPolicyArgs", "instance");
+            }
             return $;
         }
     }

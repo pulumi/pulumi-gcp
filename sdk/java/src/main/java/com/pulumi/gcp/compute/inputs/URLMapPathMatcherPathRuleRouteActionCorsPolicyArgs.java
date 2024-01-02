@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -411,7 +412,9 @@ public final class URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs extends co
         }
 
         public URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs build() {
-            $.disabled = Objects.requireNonNull($.disabled, "expected parameter 'disabled' to be non-null");
+            if ($.disabled == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionCorsPolicyArgs", "disabled");
+            }
             return $;
         }
     }

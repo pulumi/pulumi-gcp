@@ -86,21 +86,25 @@ public final class FlexibleAppVersionAutomaticScalingNetworkUtilization {
 
         @CustomType.Setter
         public Builder targetReceivedBytesPerSecond(@Nullable Integer targetReceivedBytesPerSecond) {
+
             this.targetReceivedBytesPerSecond = targetReceivedBytesPerSecond;
             return this;
         }
         @CustomType.Setter
         public Builder targetReceivedPacketsPerSecond(@Nullable Integer targetReceivedPacketsPerSecond) {
+
             this.targetReceivedPacketsPerSecond = targetReceivedPacketsPerSecond;
             return this;
         }
         @CustomType.Setter
         public Builder targetSentBytesPerSecond(@Nullable Integer targetSentBytesPerSecond) {
+
             this.targetSentBytesPerSecond = targetSentBytesPerSecond;
             return this;
         }
         @CustomType.Setter
         public Builder targetSentPacketsPerSecond(@Nullable Integer targetSentPacketsPerSecond) {
+
             this.targetSentPacketsPerSecond = targetSentPacketsPerSecond;
             return this;
         }

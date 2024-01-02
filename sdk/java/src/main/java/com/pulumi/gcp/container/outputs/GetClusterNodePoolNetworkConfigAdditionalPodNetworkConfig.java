@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig {
 
         @CustomType.Setter
         public Builder maxPodsPerNode(Integer maxPodsPerNode) {
-            this.maxPodsPerNode = Objects.requireNonNull(maxPodsPerNode);
+            if (maxPodsPerNode == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig", "maxPodsPerNode");
+            }
+            this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryPodRange(String secondaryPodRange) {
-            this.secondaryPodRange = Objects.requireNonNull(secondaryPodRange);
+            if (secondaryPodRange == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig", "secondaryPodRange");
+            }
+            this.secondaryPodRange = secondaryPodRange;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
-            this.subnetwork = Objects.requireNonNull(subnetwork);
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
             return this;
         }
         public GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig build() {

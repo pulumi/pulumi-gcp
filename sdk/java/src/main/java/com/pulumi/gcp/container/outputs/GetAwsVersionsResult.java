@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,22 +86,30 @@ public final class GetAwsVersionsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAwsVersionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder supportedRegions(List<String> supportedRegions) {
-            this.supportedRegions = Objects.requireNonNull(supportedRegions);
+            if (supportedRegions == null) {
+              throw new MissingRequiredPropertyException("GetAwsVersionsResult", "supportedRegions");
+            }
+            this.supportedRegions = supportedRegions;
             return this;
         }
         public Builder supportedRegions(String... supportedRegions) {
@@ -108,7 +117,10 @@ public final class GetAwsVersionsResult {
         }
         @CustomType.Setter
         public Builder validVersions(List<String> validVersions) {
-            this.validVersions = Objects.requireNonNull(validVersions);
+            if (validVersions == null) {
+              throw new MissingRequiredPropertyException("GetAwsVersionsResult", "validVersions");
+            }
+            this.validVersions = validVersions;
             return this;
         }
         public Builder validVersions(String... validVersions) {

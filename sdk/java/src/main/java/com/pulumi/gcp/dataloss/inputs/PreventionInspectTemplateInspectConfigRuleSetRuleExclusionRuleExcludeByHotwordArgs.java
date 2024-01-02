@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegexArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximityArgs;
 import java.util.Objects;
@@ -136,8 +137,12 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
         }
 
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs build() {
-            $.hotwordRegex = Objects.requireNonNull($.hotwordRegex, "expected parameter 'hotwordRegex' to be non-null");
-            $.proximity = Objects.requireNonNull($.proximity, "expected parameter 'proximity' to be non-null");
+            if ($.hotwordRegex == null) {
+                throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs", "hotwordRegex");
+            }
+            if ($.proximity == null) {
+                throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordArgs", "proximity");
+            }
             return $;
         }
     }

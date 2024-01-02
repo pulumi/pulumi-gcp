@@ -139,31 +139,37 @@ public final class ConnectionProfileMysqlProfileSslConfig {
 
         @CustomType.Setter
         public Builder caCertificate(@Nullable String caCertificate) {
+
             this.caCertificate = caCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder caCertificateSet(@Nullable Boolean caCertificateSet) {
+
             this.caCertificateSet = caCertificateSet;
             return this;
         }
         @CustomType.Setter
         public Builder clientCertificate(@Nullable String clientCertificate) {
+
             this.clientCertificate = clientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientCertificateSet(@Nullable Boolean clientCertificateSet) {
+
             this.clientCertificateSet = clientCertificateSet;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
+
             this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder clientKeySet(@Nullable Boolean clientKeySet) {
+
             this.clientKeySet = clientKeySet;
             return this;
         }

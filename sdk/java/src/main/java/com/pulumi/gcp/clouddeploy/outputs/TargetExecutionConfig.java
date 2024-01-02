@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -101,22 +102,28 @@ public final class TargetExecutionConfig {
 
         @CustomType.Setter
         public Builder artifactStorage(@Nullable String artifactStorage) {
+
             this.artifactStorage = artifactStorage;
             return this;
         }
         @CustomType.Setter
         public Builder executionTimeout(@Nullable String executionTimeout) {
+
             this.executionTimeout = executionTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder usages(List<String> usages) {
-            this.usages = Objects.requireNonNull(usages);
+            if (usages == null) {
+              throw new MissingRequiredPropertyException("TargetExecutionConfig", "usages");
+            }
+            this.usages = usages;
             return this;
         }
         public Builder usages(String... usages) {
@@ -124,6 +131,7 @@ public final class TargetExecutionConfig {
         }
         @CustomType.Setter
         public Builder workerPool(@Nullable String workerPool) {
+
             this.workerPool = workerPool;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetSubscriptionDeadLetterPolicy {
 
         @CustomType.Setter
         public Builder deadLetterTopic(String deadLetterTopic) {
-            this.deadLetterTopic = Objects.requireNonNull(deadLetterTopic);
+            if (deadLetterTopic == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionDeadLetterPolicy", "deadLetterTopic");
+            }
+            this.deadLetterTopic = deadLetterTopic;
             return this;
         }
         @CustomType.Setter
         public Builder maxDeliveryAttempts(Integer maxDeliveryAttempts) {
-            this.maxDeliveryAttempts = Objects.requireNonNull(maxDeliveryAttempts);
+            if (maxDeliveryAttempts == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionDeadLetterPolicy", "maxDeliveryAttempts");
+            }
+            this.maxDeliveryAttempts = maxDeliveryAttempts;
             return this;
         }
         public GetSubscriptionDeadLetterPolicy build() {

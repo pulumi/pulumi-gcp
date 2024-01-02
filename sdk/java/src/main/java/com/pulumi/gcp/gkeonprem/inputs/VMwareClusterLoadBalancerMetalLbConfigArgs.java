@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterLoadBalancerMetalLbConfigAddressPoolArgs;
 import java.util.List;
 import java.util.Objects;
@@ -100,7 +101,9 @@ public final class VMwareClusterLoadBalancerMetalLbConfigArgs extends com.pulumi
         }
 
         public VMwareClusterLoadBalancerMetalLbConfigArgs build() {
-            $.addressPools = Objects.requireNonNull($.addressPools, "expected parameter 'addressPools' to be non-null");
+            if ($.addressPools == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterLoadBalancerMetalLbConfigArgs", "addressPools");
+            }
             return $;
         }
     }

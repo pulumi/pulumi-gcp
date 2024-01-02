@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -251,8 +252,12 @@ public final class AiFeatureStoreIamPolicyArgs extends com.pulumi.resources.Reso
         }
 
         public AiFeatureStoreIamPolicyArgs build() {
-            $.featurestore = Objects.requireNonNull($.featurestore, "expected parameter 'featurestore' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.featurestore == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreIamPolicyArgs", "featurestore");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

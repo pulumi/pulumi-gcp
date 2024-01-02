@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networksecurity.outputs.AuthorizationPolicyRuleDestinationHttpHeaderMatch;
 import java.lang.Integer;
 import java.lang.String;
@@ -93,7 +94,10 @@ public final class AuthorizationPolicyRuleDestination {
 
         @CustomType.Setter
         public Builder hosts(List<String> hosts) {
-            this.hosts = Objects.requireNonNull(hosts);
+            if (hosts == null) {
+              throw new MissingRequiredPropertyException("AuthorizationPolicyRuleDestination", "hosts");
+            }
+            this.hosts = hosts;
             return this;
         }
         public Builder hosts(String... hosts) {
@@ -101,12 +105,16 @@ public final class AuthorizationPolicyRuleDestination {
         }
         @CustomType.Setter
         public Builder httpHeaderMatch(@Nullable AuthorizationPolicyRuleDestinationHttpHeaderMatch httpHeaderMatch) {
+
             this.httpHeaderMatch = httpHeaderMatch;
             return this;
         }
         @CustomType.Setter
         public Builder methods(List<String> methods) {
-            this.methods = Objects.requireNonNull(methods);
+            if (methods == null) {
+              throw new MissingRequiredPropertyException("AuthorizationPolicyRuleDestination", "methods");
+            }
+            this.methods = methods;
             return this;
         }
         public Builder methods(String... methods) {
@@ -114,7 +122,10 @@ public final class AuthorizationPolicyRuleDestination {
         }
         @CustomType.Setter
         public Builder ports(List<Integer> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("AuthorizationPolicyRuleDestination", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(Integer... ports) {

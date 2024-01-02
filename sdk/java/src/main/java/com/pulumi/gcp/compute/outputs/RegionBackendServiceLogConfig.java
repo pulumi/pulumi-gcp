@@ -65,11 +65,13 @@ public final class RegionBackendServiceLogConfig {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder sampleRate(@Nullable Double sampleRate) {
+
             this.sampleRate = sampleRate;
             return this;
         }

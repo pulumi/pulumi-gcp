@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -100,7 +101,9 @@ public final class BareMetalClusterMaintenanceConfigArgs extends com.pulumi.reso
         }
 
         public BareMetalClusterMaintenanceConfigArgs build() {
-            $.maintenanceAddressCidrBlocks = Objects.requireNonNull($.maintenanceAddressCidrBlocks, "expected parameter 'maintenanceAddressCidrBlocks' to be non-null");
+            if ($.maintenanceAddressCidrBlocks == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterMaintenanceConfigArgs", "maintenanceAddressCidrBlocks");
+            }
             return $;
         }
     }

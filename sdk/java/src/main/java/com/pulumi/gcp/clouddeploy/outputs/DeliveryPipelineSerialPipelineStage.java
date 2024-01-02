@@ -89,6 +89,7 @@ public final class DeliveryPipelineSerialPipelineStage {
 
         @CustomType.Setter
         public Builder deployParameters(@Nullable List<DeliveryPipelineSerialPipelineStageDeployParameter> deployParameters) {
+
             this.deployParameters = deployParameters;
             return this;
         }
@@ -97,6 +98,7 @@ public final class DeliveryPipelineSerialPipelineStage {
         }
         @CustomType.Setter
         public Builder profiles(@Nullable List<String> profiles) {
+
             this.profiles = profiles;
             return this;
         }
@@ -105,11 +107,13 @@ public final class DeliveryPipelineSerialPipelineStage {
         }
         @CustomType.Setter
         public Builder strategy(@Nullable DeliveryPipelineSerialPipelineStageStrategy strategy) {
+
             this.strategy = strategy;
             return this;
         }
         @CustomType.Setter
         public Builder targetId(@Nullable String targetId) {
+
             this.targetId = targetId;
             return this;
         }

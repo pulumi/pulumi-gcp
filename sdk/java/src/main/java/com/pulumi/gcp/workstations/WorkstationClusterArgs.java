@@ -5,6 +5,7 @@ package com.pulumi.gcp.workstations;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.workstations.inputs.WorkstationClusterDomainConfigArgs;
 import com.pulumi.gcp.workstations.inputs.WorkstationClusterPrivateClusterConfigArgs;
 import java.lang.String;
@@ -456,9 +457,15 @@ public final class WorkstationClusterArgs extends com.pulumi.resources.ResourceA
         }
 
         public WorkstationClusterArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.subnetwork = Objects.requireNonNull($.subnetwork, "expected parameter 'subnetwork' to be non-null");
-            $.workstationClusterId = Objects.requireNonNull($.workstationClusterId, "expected parameter 'workstationClusterId' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("WorkstationClusterArgs", "network");
+            }
+            if ($.subnetwork == null) {
+                throw new MissingRequiredPropertyException("WorkstationClusterArgs", "subnetwork");
+            }
+            if ($.workstationClusterId == null) {
+                throw new MissingRequiredPropertyException("WorkstationClusterArgs", "workstationClusterId");
+            }
             return $;
         }
     }

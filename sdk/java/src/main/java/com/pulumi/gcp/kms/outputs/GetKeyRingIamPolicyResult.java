@@ -4,6 +4,7 @@
 package com.pulumi.gcp.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,22 +77,34 @@ public final class GetKeyRingIamPolicyResult {
 
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetKeyRingIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKeyRingIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keyRingId(String keyRingId) {
-            this.keyRingId = Objects.requireNonNull(keyRingId);
+            if (keyRingId == null) {
+              throw new MissingRequiredPropertyException("GetKeyRingIamPolicyResult", "keyRingId");
+            }
+            this.keyRingId = keyRingId;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetKeyRingIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         public GetKeyRingIamPolicyResult build() {

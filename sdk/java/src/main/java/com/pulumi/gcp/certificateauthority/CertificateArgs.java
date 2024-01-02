@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigArgs;
 import java.lang.String;
 import java.util.Map;
@@ -479,8 +480,12 @@ public final class CertificateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CertificateArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.pool = Objects.requireNonNull($.pool, "expected parameter 'pool' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("CertificateArgs", "location");
+            }
+            if ($.pool == null) {
+                throw new MissingRequiredPropertyException("CertificateArgs", "pool");
+            }
             return $;
         }
     }

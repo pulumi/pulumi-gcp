@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -156,9 +157,15 @@ public final class GcpUserAccessBindingArgs extends com.pulumi.resources.Resourc
         }
 
         public GcpUserAccessBindingArgs build() {
-            $.accessLevels = Objects.requireNonNull($.accessLevels, "expected parameter 'accessLevels' to be non-null");
-            $.groupKey = Objects.requireNonNull($.groupKey, "expected parameter 'groupKey' to be non-null");
-            $.organizationId = Objects.requireNonNull($.organizationId, "expected parameter 'organizationId' to be non-null");
+            if ($.accessLevels == null) {
+                throw new MissingRequiredPropertyException("GcpUserAccessBindingArgs", "accessLevels");
+            }
+            if ($.groupKey == null) {
+                throw new MissingRequiredPropertyException("GcpUserAccessBindingArgs", "groupKey");
+            }
+            if ($.organizationId == null) {
+                throw new MissingRequiredPropertyException("GcpUserAccessBindingArgs", "organizationId");
+            }
             return $;
         }
     }

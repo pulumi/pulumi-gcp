@@ -80,16 +80,19 @@ public final class NodePoolLocalDiskEncryption {
 
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
+
             this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyActiveVersion(@Nullable String kmsKeyActiveVersion) {
+
             this.kmsKeyActiveVersion = kmsKeyActiveVersion;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyState(@Nullable String kmsKeyState) {
+
             this.kmsKeyState = kmsKeyState;
             return this;
         }

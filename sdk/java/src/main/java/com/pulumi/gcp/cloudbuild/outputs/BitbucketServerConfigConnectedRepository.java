@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class BitbucketServerConfigConnectedRepository {
 
         @CustomType.Setter
         public Builder projectKey(String projectKey) {
-            this.projectKey = Objects.requireNonNull(projectKey);
+            if (projectKey == null) {
+              throw new MissingRequiredPropertyException("BitbucketServerConfigConnectedRepository", "projectKey");
+            }
+            this.projectKey = projectKey;
             return this;
         }
         @CustomType.Setter
         public Builder repoSlug(String repoSlug) {
-            this.repoSlug = Objects.requireNonNull(repoSlug);
+            if (repoSlug == null) {
+              throw new MissingRequiredPropertyException("BitbucketServerConfigConnectedRepository", "repoSlug");
+            }
+            this.repoSlug = repoSlug;
             return this;
         }
         public BitbucketServerConfigConnectedRepository build() {

@@ -58,11 +58,13 @@ public final class CxPageEntryFulfillmentSetParameterAction {
 
         @CustomType.Setter
         public Builder parameter(@Nullable String parameter) {
+
             this.parameter = parameter;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

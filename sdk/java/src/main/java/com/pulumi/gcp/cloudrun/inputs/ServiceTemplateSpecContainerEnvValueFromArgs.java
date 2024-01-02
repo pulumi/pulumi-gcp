@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvValueFromSecretKeyRefArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class ServiceTemplateSpecContainerEnvValueFromArgs extends com.pulu
         }
 
         public ServiceTemplateSpecContainerEnvValueFromArgs build() {
-            $.secretKeyRef = Objects.requireNonNull($.secretKeyRef, "expected parameter 'secretKeyRef' to be non-null");
+            if ($.secretKeyRef == null) {
+                throw new MissingRequiredPropertyException("ServiceTemplateSpecContainerEnvValueFromArgs", "secretKeyRef");
+            }
             return $;
         }
     }

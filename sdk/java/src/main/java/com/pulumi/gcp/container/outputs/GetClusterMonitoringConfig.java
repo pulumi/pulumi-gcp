@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig;
 import com.pulumi.gcp.container.outputs.GetClusterMonitoringConfigManagedPrometheus;
 import java.lang.String;
@@ -49,7 +50,10 @@ public final class GetClusterMonitoringConfig {
 
         @CustomType.Setter
         public Builder advancedDatapathObservabilityConfigs(List<GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs) {
-            this.advancedDatapathObservabilityConfigs = Objects.requireNonNull(advancedDatapathObservabilityConfigs);
+            if (advancedDatapathObservabilityConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterMonitoringConfig", "advancedDatapathObservabilityConfigs");
+            }
+            this.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
             return this;
         }
         public Builder advancedDatapathObservabilityConfigs(GetClusterMonitoringConfigAdvancedDatapathObservabilityConfig... advancedDatapathObservabilityConfigs) {
@@ -57,7 +61,10 @@ public final class GetClusterMonitoringConfig {
         }
         @CustomType.Setter
         public Builder enableComponents(List<String> enableComponents) {
-            this.enableComponents = Objects.requireNonNull(enableComponents);
+            if (enableComponents == null) {
+              throw new MissingRequiredPropertyException("GetClusterMonitoringConfig", "enableComponents");
+            }
+            this.enableComponents = enableComponents;
             return this;
         }
         public Builder enableComponents(String... enableComponents) {
@@ -65,7 +72,10 @@ public final class GetClusterMonitoringConfig {
         }
         @CustomType.Setter
         public Builder managedPrometheuses(List<GetClusterMonitoringConfigManagedPrometheus> managedPrometheuses) {
-            this.managedPrometheuses = Objects.requireNonNull(managedPrometheuses);
+            if (managedPrometheuses == null) {
+              throw new MissingRequiredPropertyException("GetClusterMonitoringConfig", "managedPrometheuses");
+            }
+            this.managedPrometheuses = managedPrometheuses;
             return this;
         }
         public Builder managedPrometheuses(GetClusterMonitoringConfigManagedPrometheus... managedPrometheuses) {

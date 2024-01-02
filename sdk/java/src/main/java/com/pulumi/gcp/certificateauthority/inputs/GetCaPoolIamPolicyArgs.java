@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -162,7 +163,9 @@ public final class GetCaPoolIamPolicyArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetCaPoolIamPolicyArgs build() {
-            $.caPool = Objects.requireNonNull($.caPool, "expected parameter 'caPool' to be non-null");
+            if ($.caPool == null) {
+                throw new MissingRequiredPropertyException("GetCaPoolIamPolicyArgs", "caPool");
+            }
             return $;
         }
     }

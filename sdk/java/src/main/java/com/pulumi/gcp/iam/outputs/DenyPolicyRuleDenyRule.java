@@ -112,11 +112,13 @@ public final class DenyPolicyRuleDenyRule {
 
         @CustomType.Setter
         public Builder denialCondition(@Nullable DenyPolicyRuleDenyRuleDenialCondition denialCondition) {
+
             this.denialCondition = denialCondition;
             return this;
         }
         @CustomType.Setter
         public Builder deniedPermissions(@Nullable List<String> deniedPermissions) {
+
             this.deniedPermissions = deniedPermissions;
             return this;
         }
@@ -125,6 +127,7 @@ public final class DenyPolicyRuleDenyRule {
         }
         @CustomType.Setter
         public Builder deniedPrincipals(@Nullable List<String> deniedPrincipals) {
+
             this.deniedPrincipals = deniedPrincipals;
             return this;
         }
@@ -133,6 +136,7 @@ public final class DenyPolicyRuleDenyRule {
         }
         @CustomType.Setter
         public Builder exceptionPermissions(@Nullable List<String> exceptionPermissions) {
+
             this.exceptionPermissions = exceptionPermissions;
             return this;
         }
@@ -141,6 +145,7 @@ public final class DenyPolicyRuleDenyRule {
         }
         @CustomType.Setter
         public Builder exceptionPrincipals(@Nullable List<String> exceptionPrincipals) {
+
             this.exceptionPrincipals = exceptionPrincipals;
             return this;
         }

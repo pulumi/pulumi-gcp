@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.FirewallPolicyRuleMatchLayer4Config;
 import java.lang.String;
 import java.util.List;
@@ -189,6 +190,7 @@ public final class FirewallPolicyRuleMatch {
 
         @CustomType.Setter
         public Builder destAddressGroups(@Nullable List<String> destAddressGroups) {
+
             this.destAddressGroups = destAddressGroups;
             return this;
         }
@@ -197,6 +199,7 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder destFqdns(@Nullable List<String> destFqdns) {
+
             this.destFqdns = destFqdns;
             return this;
         }
@@ -205,6 +208,7 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder destIpRanges(@Nullable List<String> destIpRanges) {
+
             this.destIpRanges = destIpRanges;
             return this;
         }
@@ -213,6 +217,7 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder destRegionCodes(@Nullable List<String> destRegionCodes) {
+
             this.destRegionCodes = destRegionCodes;
             return this;
         }
@@ -221,6 +226,7 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder destThreatIntelligences(@Nullable List<String> destThreatIntelligences) {
+
             this.destThreatIntelligences = destThreatIntelligences;
             return this;
         }
@@ -229,7 +235,10 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder layer4Configs(List<FirewallPolicyRuleMatchLayer4Config> layer4Configs) {
-            this.layer4Configs = Objects.requireNonNull(layer4Configs);
+            if (layer4Configs == null) {
+              throw new MissingRequiredPropertyException("FirewallPolicyRuleMatch", "layer4Configs");
+            }
+            this.layer4Configs = layer4Configs;
             return this;
         }
         public Builder layer4Configs(FirewallPolicyRuleMatchLayer4Config... layer4Configs) {
@@ -237,6 +246,7 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder srcAddressGroups(@Nullable List<String> srcAddressGroups) {
+
             this.srcAddressGroups = srcAddressGroups;
             return this;
         }
@@ -245,6 +255,7 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder srcFqdns(@Nullable List<String> srcFqdns) {
+
             this.srcFqdns = srcFqdns;
             return this;
         }
@@ -253,6 +264,7 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder srcIpRanges(@Nullable List<String> srcIpRanges) {
+
             this.srcIpRanges = srcIpRanges;
             return this;
         }
@@ -261,6 +273,7 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder srcRegionCodes(@Nullable List<String> srcRegionCodes) {
+
             this.srcRegionCodes = srcRegionCodes;
             return this;
         }
@@ -269,6 +282,7 @@ public final class FirewallPolicyRuleMatch {
         }
         @CustomType.Setter
         public Builder srcThreatIntelligences(@Nullable List<String> srcThreatIntelligences) {
+
             this.srcThreatIntelligences = srcThreatIntelligences;
             return this;
         }

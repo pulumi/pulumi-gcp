@@ -5,6 +5,7 @@ package com.pulumi.gcp.workstations.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class WorkstationConfigEncryptionKeyArgs extends com.pulumi.resourc
         }
 
         public WorkstationConfigEncryptionKeyArgs build() {
-            $.kmsKey = Objects.requireNonNull($.kmsKey, "expected parameter 'kmsKey' to be non-null");
-            $.kmsKeyServiceAccount = Objects.requireNonNull($.kmsKeyServiceAccount, "expected parameter 'kmsKeyServiceAccount' to be non-null");
+            if ($.kmsKey == null) {
+                throw new MissingRequiredPropertyException("WorkstationConfigEncryptionKeyArgs", "kmsKey");
+            }
+            if ($.kmsKeyServiceAccount == null) {
+                throw new MissingRequiredPropertyException("WorkstationConfigEncryptionKeyArgs", "kmsKeyServiceAccount");
+            }
             return $;
         }
     }

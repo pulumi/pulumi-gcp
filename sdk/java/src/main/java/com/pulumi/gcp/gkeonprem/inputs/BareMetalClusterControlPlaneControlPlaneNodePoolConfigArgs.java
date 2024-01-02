@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfigArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs ex
         }
 
         public BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs build() {
-            $.nodePoolConfig = Objects.requireNonNull($.nodePoolConfig, "expected parameter 'nodePoolConfig' to be non-null");
+            if ($.nodePoolConfig == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterControlPlaneControlPlaneNodePoolConfigArgs", "nodePoolConfig");
+            }
             return $;
         }
     }

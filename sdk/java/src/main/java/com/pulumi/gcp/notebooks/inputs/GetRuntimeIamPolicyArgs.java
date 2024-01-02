@@ -5,6 +5,7 @@ package com.pulumi.gcp.notebooks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -154,7 +155,9 @@ public final class GetRuntimeIamPolicyArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetRuntimeIamPolicyArgs build() {
-            $.runtimeName = Objects.requireNonNull($.runtimeName, "expected parameter 'runtimeName' to be non-null");
+            if ($.runtimeName == null) {
+                throw new MissingRequiredPropertyException("GetRuntimeIamPolicyArgs", "runtimeName");
+            }
             return $;
         }
     }

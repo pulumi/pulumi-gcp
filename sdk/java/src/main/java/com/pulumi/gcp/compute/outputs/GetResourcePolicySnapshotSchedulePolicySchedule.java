@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule;
@@ -49,7 +50,10 @@ public final class GetResourcePolicySnapshotSchedulePolicySchedule {
 
         @CustomType.Setter
         public Builder dailySchedules(List<GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule> dailySchedules) {
-            this.dailySchedules = Objects.requireNonNull(dailySchedules);
+            if (dailySchedules == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicySchedule", "dailySchedules");
+            }
+            this.dailySchedules = dailySchedules;
             return this;
         }
         public Builder dailySchedules(GetResourcePolicySnapshotSchedulePolicyScheduleDailySchedule... dailySchedules) {
@@ -57,7 +61,10 @@ public final class GetResourcePolicySnapshotSchedulePolicySchedule {
         }
         @CustomType.Setter
         public Builder hourlySchedules(List<GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule> hourlySchedules) {
-            this.hourlySchedules = Objects.requireNonNull(hourlySchedules);
+            if (hourlySchedules == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicySchedule", "hourlySchedules");
+            }
+            this.hourlySchedules = hourlySchedules;
             return this;
         }
         public Builder hourlySchedules(GetResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule... hourlySchedules) {
@@ -65,7 +72,10 @@ public final class GetResourcePolicySnapshotSchedulePolicySchedule {
         }
         @CustomType.Setter
         public Builder weeklySchedules(List<GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule> weeklySchedules) {
-            this.weeklySchedules = Objects.requireNonNull(weeklySchedules);
+            if (weeklySchedules == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicySnapshotSchedulePolicySchedule", "weeklySchedules");
+            }
+            this.weeklySchedules = weeklySchedules;
             return this;
         }
         public Builder weeklySchedules(GetResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule... weeklySchedules) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,17 +73,24 @@ public final class StandardAppVersionDeploymentFile {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("StandardAppVersionDeploymentFile", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder sha1Sum(@Nullable String sha1Sum) {
+
             this.sha1Sum = sha1Sum;
             return this;
         }
         @CustomType.Setter
         public Builder sourceUrl(String sourceUrl) {
-            this.sourceUrl = Objects.requireNonNull(sourceUrl);
+            if (sourceUrl == null) {
+              throw new MissingRequiredPropertyException("StandardAppVersionDeploymentFile", "sourceUrl");
+            }
+            this.sourceUrl = sourceUrl;
             return this;
         }
         public StandardAppVersionDeploymentFile build() {

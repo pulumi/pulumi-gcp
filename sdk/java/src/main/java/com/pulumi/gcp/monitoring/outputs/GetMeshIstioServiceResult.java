@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.GetMeshIstioServiceTelemetry;
 import java.lang.String;
 import java.util.List;
@@ -127,47 +128,72 @@ public final class GetMeshIstioServiceResult {
 
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder meshUid(String meshUid) {
-            this.meshUid = Objects.requireNonNull(meshUid);
+            if (meshUid == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "meshUid");
+            }
+            this.meshUid = meshUid;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceId(String serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder serviceNamespace(String serviceNamespace) {
-            this.serviceNamespace = Objects.requireNonNull(serviceNamespace);
+            if (serviceNamespace == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "serviceNamespace");
+            }
+            this.serviceNamespace = serviceNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder telemetries(List<GetMeshIstioServiceTelemetry> telemetries) {
-            this.telemetries = Objects.requireNonNull(telemetries);
+            if (telemetries == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "telemetries");
+            }
+            this.telemetries = telemetries;
             return this;
         }
         public Builder telemetries(GetMeshIstioServiceTelemetry... telemetries) {
@@ -175,7 +201,10 @@ public final class GetMeshIstioServiceResult {
         }
         @CustomType.Setter
         public Builder userLabels(Map<String,String> userLabels) {
-            this.userLabels = Objects.requireNonNull(userLabels);
+            if (userLabels == null) {
+              throw new MissingRequiredPropertyException("GetMeshIstioServiceResult", "userLabels");
+            }
+            this.userLabels = userLabels;
             return this;
         }
         public GetMeshIstioServiceResult build() {

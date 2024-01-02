@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -83,47 +84,74 @@ public final class GetInstanceGroupManagerUpdatePolicy {
 
         @CustomType.Setter
         public Builder maxSurgeFixed(Integer maxSurgeFixed) {
-            this.maxSurgeFixed = Objects.requireNonNull(maxSurgeFixed);
+            if (maxSurgeFixed == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "maxSurgeFixed");
+            }
+            this.maxSurgeFixed = maxSurgeFixed;
             return this;
         }
         @CustomType.Setter
         public Builder maxSurgePercent(Integer maxSurgePercent) {
-            this.maxSurgePercent = Objects.requireNonNull(maxSurgePercent);
+            if (maxSurgePercent == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "maxSurgePercent");
+            }
+            this.maxSurgePercent = maxSurgePercent;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailableFixed(Integer maxUnavailableFixed) {
-            this.maxUnavailableFixed = Objects.requireNonNull(maxUnavailableFixed);
+            if (maxUnavailableFixed == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "maxUnavailableFixed");
+            }
+            this.maxUnavailableFixed = maxUnavailableFixed;
             return this;
         }
         @CustomType.Setter
         public Builder maxUnavailablePercent(Integer maxUnavailablePercent) {
-            this.maxUnavailablePercent = Objects.requireNonNull(maxUnavailablePercent);
+            if (maxUnavailablePercent == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "maxUnavailablePercent");
+            }
+            this.maxUnavailablePercent = maxUnavailablePercent;
             return this;
         }
         @CustomType.Setter
         public Builder minReadySec(Integer minReadySec) {
-            this.minReadySec = Objects.requireNonNull(minReadySec);
+            if (minReadySec == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "minReadySec");
+            }
+            this.minReadySec = minReadySec;
             return this;
         }
         @CustomType.Setter
         public Builder minimalAction(String minimalAction) {
-            this.minimalAction = Objects.requireNonNull(minimalAction);
+            if (minimalAction == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "minimalAction");
+            }
+            this.minimalAction = minimalAction;
             return this;
         }
         @CustomType.Setter
         public Builder mostDisruptiveAllowedAction(String mostDisruptiveAllowedAction) {
-            this.mostDisruptiveAllowedAction = Objects.requireNonNull(mostDisruptiveAllowedAction);
+            if (mostDisruptiveAllowedAction == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "mostDisruptiveAllowedAction");
+            }
+            this.mostDisruptiveAllowedAction = mostDisruptiveAllowedAction;
             return this;
         }
         @CustomType.Setter
         public Builder replacementMethod(String replacementMethod) {
-            this.replacementMethod = Objects.requireNonNull(replacementMethod);
+            if (replacementMethod == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "replacementMethod");
+            }
+            this.replacementMethod = replacementMethod;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerUpdatePolicy", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetInstanceGroupManagerUpdatePolicy build() {

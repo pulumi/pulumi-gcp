@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.ClusterMasterAuthClientCertificateConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -111,21 +112,27 @@ public final class ClusterMasterAuth {
 
         @CustomType.Setter
         public Builder clientCertificate(@Nullable String clientCertificate) {
+
             this.clientCertificate = clientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientCertificateConfig(ClusterMasterAuthClientCertificateConfig clientCertificateConfig) {
-            this.clientCertificateConfig = Objects.requireNonNull(clientCertificateConfig);
+            if (clientCertificateConfig == null) {
+              throw new MissingRequiredPropertyException("ClusterMasterAuth", "clientCertificateConfig");
+            }
+            this.clientCertificateConfig = clientCertificateConfig;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
+
             this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder clusterCaCertificate(@Nullable String clusterCaCertificate) {
+
             this.clusterCaCertificate = clusterCaCertificate;
             return this;
         }

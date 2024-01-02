@@ -58,11 +58,13 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
 
         @CustomType.Setter
         public Builder windowAfter(@Nullable Integer windowAfter) {
+
             this.windowAfter = windowAfter;
             return this;
         }
         @CustomType.Setter
         public Builder windowBefore(@Nullable Integer windowBefore) {
+
             this.windowBefore = windowBefore;
             return this;
         }

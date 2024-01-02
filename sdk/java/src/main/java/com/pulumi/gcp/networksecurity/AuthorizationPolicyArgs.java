@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -349,7 +350,9 @@ public final class AuthorizationPolicyArgs extends com.pulumi.resources.Resource
         }
 
         public AuthorizationPolicyArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("AuthorizationPolicyArgs", "action");
+            }
             return $;
         }
     }

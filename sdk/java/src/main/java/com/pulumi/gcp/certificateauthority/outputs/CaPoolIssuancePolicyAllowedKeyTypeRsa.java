@@ -62,11 +62,13 @@ public final class CaPoolIssuancePolicyAllowedKeyTypeRsa {
 
         @CustomType.Setter
         public Builder maxModulusSize(@Nullable String maxModulusSize) {
+
             this.maxModulusSize = maxModulusSize;
             return this;
         }
         @CustomType.Setter
         public Builder minModulusSize(@Nullable String minModulusSize) {
+
             this.minModulusSize = minModulusSize;
             return this;
         }

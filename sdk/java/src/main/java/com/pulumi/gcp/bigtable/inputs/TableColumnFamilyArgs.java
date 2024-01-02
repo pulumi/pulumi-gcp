@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class TableColumnFamilyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public TableColumnFamilyArgs build() {
-            $.family = Objects.requireNonNull($.family, "expected parameter 'family' to be non-null");
+            if ($.family == null) {
+                throw new MissingRequiredPropertyException("TableColumnFamilyArgs", "family");
+            }
             return $;
         }
     }

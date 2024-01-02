@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datacatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.outputs.TagTemplateFieldType;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -139,37 +140,48 @@ public final class TagTemplateField {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder fieldId(String fieldId) {
-            this.fieldId = Objects.requireNonNull(fieldId);
+            if (fieldId == null) {
+              throw new MissingRequiredPropertyException("TagTemplateField", "fieldId");
+            }
+            this.fieldId = fieldId;
             return this;
         }
         @CustomType.Setter
         public Builder isRequired(@Nullable Boolean isRequired) {
+
             this.isRequired = isRequired;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable Integer order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder type(TagTemplateFieldType type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("TagTemplateField", "type");
+            }
+            this.type = type;
             return this;
         }
         public TagTemplateField build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.securitycenter.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +48,10 @@ public final class ProjectCustomModuleCustomConfigResourceSelector {
 
         @CustomType.Setter
         public Builder resourceTypes(List<String> resourceTypes) {
-            this.resourceTypes = Objects.requireNonNull(resourceTypes);
+            if (resourceTypes == null) {
+              throw new MissingRequiredPropertyException("ProjectCustomModuleCustomConfigResourceSelector", "resourceTypes");
+            }
+            this.resourceTypes = resourceTypes;
             return this;
         }
         public Builder resourceTypes(String... resourceTypes) {

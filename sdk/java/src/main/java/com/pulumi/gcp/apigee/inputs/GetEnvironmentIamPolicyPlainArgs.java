@@ -4,6 +4,7 @@
 package com.pulumi.gcp.apigee.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,8 +77,12 @@ public final class GetEnvironmentIamPolicyPlainArgs extends com.pulumi.resources
         }
 
         public GetEnvironmentIamPolicyPlainArgs build() {
-            $.envId = Objects.requireNonNull($.envId, "expected parameter 'envId' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            if ($.envId == null) {
+                throw new MissingRequiredPropertyException("GetEnvironmentIamPolicyPlainArgs", "envId");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("GetEnvironmentIamPolicyPlainArgs", "orgId");
+            }
             return $;
         }
     }

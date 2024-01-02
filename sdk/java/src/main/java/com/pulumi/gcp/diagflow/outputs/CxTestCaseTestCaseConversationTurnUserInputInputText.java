@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class CxTestCaseTestCaseConversationTurnUserInputInputText {
 
         @CustomType.Setter
         public Builder text(String text) {
-            this.text = Objects.requireNonNull(text);
+            if (text == null) {
+              throw new MissingRequiredPropertyException("CxTestCaseTestCaseConversationTurnUserInputInputText", "text");
+            }
+            this.text = text;
             return this;
         }
         public CxTestCaseTestCaseConversationTurnUserInputInputText build() {

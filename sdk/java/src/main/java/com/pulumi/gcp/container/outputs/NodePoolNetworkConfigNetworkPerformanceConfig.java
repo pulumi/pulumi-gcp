@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class NodePoolNetworkConfigNetworkPerformanceConfig {
 
         @CustomType.Setter
         public Builder totalEgressBandwidthTier(String totalEgressBandwidthTier) {
-            this.totalEgressBandwidthTier = Objects.requireNonNull(totalEgressBandwidthTier);
+            if (totalEgressBandwidthTier == null) {
+              throw new MissingRequiredPropertyException("NodePoolNetworkConfigNetworkPerformanceConfig", "totalEgressBandwidthTier");
+            }
+            this.totalEgressBandwidthTier = totalEgressBandwidthTier;
             return this;
         }
         public NodePoolNetworkConfigNetworkPerformanceConfig build() {

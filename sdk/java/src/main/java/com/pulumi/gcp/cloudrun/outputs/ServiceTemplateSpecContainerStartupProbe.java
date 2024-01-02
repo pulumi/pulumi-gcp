@@ -149,36 +149,43 @@ public final class ServiceTemplateSpecContainerStartupProbe {
 
         @CustomType.Setter
         public Builder failureThreshold(@Nullable Integer failureThreshold) {
+
             this.failureThreshold = failureThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder grpc(@Nullable ServiceTemplateSpecContainerStartupProbeGrpc grpc) {
+
             this.grpc = grpc;
             return this;
         }
         @CustomType.Setter
         public Builder httpGet(@Nullable ServiceTemplateSpecContainerStartupProbeHttpGet httpGet) {
+
             this.httpGet = httpGet;
             return this;
         }
         @CustomType.Setter
         public Builder initialDelaySeconds(@Nullable Integer initialDelaySeconds) {
+
             this.initialDelaySeconds = initialDelaySeconds;
             return this;
         }
         @CustomType.Setter
         public Builder periodSeconds(@Nullable Integer periodSeconds) {
+
             this.periodSeconds = periodSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder tcpSocket(@Nullable ServiceTemplateSpecContainerStartupProbeTcpSocket tcpSocket) {
+
             this.tcpSocket = tcpSocket;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
+
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }

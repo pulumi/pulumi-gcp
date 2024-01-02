@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataform.outputs.RepositoryGitRemoteSettingsSshAuthenticationConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -105,27 +106,36 @@ public final class RepositoryGitRemoteSettings {
 
         @CustomType.Setter
         public Builder authenticationTokenSecretVersion(@Nullable String authenticationTokenSecretVersion) {
+
             this.authenticationTokenSecretVersion = authenticationTokenSecretVersion;
             return this;
         }
         @CustomType.Setter
         public Builder defaultBranch(String defaultBranch) {
-            this.defaultBranch = Objects.requireNonNull(defaultBranch);
+            if (defaultBranch == null) {
+              throw new MissingRequiredPropertyException("RepositoryGitRemoteSettings", "defaultBranch");
+            }
+            this.defaultBranch = defaultBranch;
             return this;
         }
         @CustomType.Setter
         public Builder sshAuthenticationConfig(@Nullable RepositoryGitRemoteSettingsSshAuthenticationConfig sshAuthenticationConfig) {
+
             this.sshAuthenticationConfig = sshAuthenticationConfig;
             return this;
         }
         @CustomType.Setter
         public Builder tokenStatus(@Nullable String tokenStatus) {
+
             this.tokenStatus = tokenStatus;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("RepositoryGitRemoteSettings", "url");
+            }
+            this.url = url;
             return this;
         }
         public RepositoryGitRemoteSettings build() {

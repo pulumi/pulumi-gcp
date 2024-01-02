@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetSubscriptionCloudStorageConfigAvroConfig {
 
         @CustomType.Setter
         public Builder writeMetadata(Boolean writeMetadata) {
-            this.writeMetadata = Objects.requireNonNull(writeMetadata);
+            if (writeMetadata == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionCloudStorageConfigAvroConfig", "writeMetadata");
+            }
+            this.writeMetadata = writeMetadata;
             return this;
         }
         public GetSubscriptionCloudStorageConfigAvroConfig build() {

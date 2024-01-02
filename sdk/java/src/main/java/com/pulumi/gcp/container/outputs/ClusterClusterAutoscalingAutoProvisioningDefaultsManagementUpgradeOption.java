@@ -50,11 +50,13 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsManagementUp
 
         @CustomType.Setter
         public Builder autoUpgradeStartTime(@Nullable String autoUpgradeStartTime) {
+
             this.autoUpgradeStartTime = autoUpgradeStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }

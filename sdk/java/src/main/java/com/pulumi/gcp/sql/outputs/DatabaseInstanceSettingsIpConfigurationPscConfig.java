@@ -60,6 +60,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
 
         @CustomType.Setter
         public Builder allowedConsumerProjects(@Nullable List<String> allowedConsumerProjects) {
+
             this.allowedConsumerProjects = allowedConsumerProjects;
             return this;
         }
@@ -68,6 +69,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
         }
         @CustomType.Setter
         public Builder pscEnabled(@Nullable Boolean pscEnabled) {
+
             this.pscEnabled = pscEnabled;
             return this;
         }

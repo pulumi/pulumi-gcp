@@ -94,6 +94,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         @CustomType.Setter
         public Builder charactersToIgnores(@Nullable List<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCharacterMaskConfigCharactersToIgnore> charactersToIgnores) {
+
             this.charactersToIgnores = charactersToIgnores;
             return this;
         }
@@ -102,16 +103,19 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
         @CustomType.Setter
         public Builder maskingCharacter(@Nullable String maskingCharacter) {
+
             this.maskingCharacter = maskingCharacter;
             return this;
         }
         @CustomType.Setter
         public Builder numberToMask(@Nullable Integer numberToMask) {
+
             this.numberToMask = numberToMask;
             return this;
         }
         @CustomType.Setter
         public Builder reverseOrder(@Nullable Boolean reverseOrder) {
+
             this.reverseOrder = reverseOrder;
             return this;
         }

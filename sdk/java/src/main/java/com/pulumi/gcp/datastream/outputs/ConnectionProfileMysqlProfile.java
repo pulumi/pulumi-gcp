@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.ConnectionProfileMysqlProfileSslConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -106,27 +107,38 @@ public final class ConnectionProfileMysqlProfile {
 
         @CustomType.Setter
         public Builder hostname(String hostname) {
-            this.hostname = Objects.requireNonNull(hostname);
+            if (hostname == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileMysqlProfile", "hostname");
+            }
+            this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileMysqlProfile", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder sslConfig(@Nullable ConnectionProfileMysqlProfileSslConfig sslConfig) {
+
             this.sslConfig = sslConfig;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileMysqlProfile", "username");
+            }
+            this.username = username;
             return this;
         }
         public ConnectionProfileMysqlProfile build() {

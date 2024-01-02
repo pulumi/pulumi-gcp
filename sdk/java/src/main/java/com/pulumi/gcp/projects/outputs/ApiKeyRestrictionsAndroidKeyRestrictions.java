@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.projects.outputs.ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictions {
 
         @CustomType.Setter
         public Builder allowedApplications(List<ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication> allowedApplications) {
-            this.allowedApplications = Objects.requireNonNull(allowedApplications);
+            if (allowedApplications == null) {
+              throw new MissingRequiredPropertyException("ApiKeyRestrictionsAndroidKeyRestrictions", "allowedApplications");
+            }
+            this.allowedApplications = allowedApplications;
             return this;
         }
         public Builder allowedApplications(ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication... allowedApplications) {

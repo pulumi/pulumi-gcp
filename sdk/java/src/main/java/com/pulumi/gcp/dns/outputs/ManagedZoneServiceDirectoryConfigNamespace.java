@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -50,7 +51,10 @@ public final class ManagedZoneServiceDirectoryConfigNamespace {
 
         @CustomType.Setter
         public Builder namespaceUrl(String namespaceUrl) {
-            this.namespaceUrl = Objects.requireNonNull(namespaceUrl);
+            if (namespaceUrl == null) {
+              throw new MissingRequiredPropertyException("ManagedZoneServiceDirectoryConfigNamespace", "namespaceUrl");
+            }
+            this.namespaceUrl = namespaceUrl;
             return this;
         }
         public ManagedZoneServiceDirectoryConfigNamespace build() {

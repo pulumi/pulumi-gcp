@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate;
 import java.util.Objects;
@@ -73,12 +74,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExec {
 
         @CustomType.Setter
         public Builder enforce(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforce enforce) {
+
             this.enforce = enforce;
             return this;
         }
         @CustomType.Setter
         public Builder validate(OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate validate) {
-            this.validate = Objects.requireNonNull(validate);
+            if (validate == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceExec", "validate");
+            }
+            this.validate = validate;
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExec build() {

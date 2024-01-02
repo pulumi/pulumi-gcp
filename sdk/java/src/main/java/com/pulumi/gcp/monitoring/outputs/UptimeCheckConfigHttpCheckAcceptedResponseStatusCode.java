@@ -61,11 +61,13 @@ public final class UptimeCheckConfigHttpCheckAcceptedResponseStatusCode {
 
         @CustomType.Setter
         public Builder statusClass(@Nullable String statusClass) {
+
             this.statusClass = statusClass;
             return this;
         }
         @CustomType.Setter
         public Builder statusValue(@Nullable Integer statusValue) {
+
             this.statusValue = statusValue;
             return this;
         }

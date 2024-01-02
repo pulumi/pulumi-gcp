@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class AzureClusterControlPlaneProxyConfigArgs extends com.pulumi.re
         }
 
         public AzureClusterControlPlaneProxyConfigArgs build() {
-            $.resourceGroupId = Objects.requireNonNull($.resourceGroupId, "expected parameter 'resourceGroupId' to be non-null");
-            $.secretId = Objects.requireNonNull($.secretId, "expected parameter 'secretId' to be non-null");
+            if ($.resourceGroupId == null) {
+                throw new MissingRequiredPropertyException("AzureClusterControlPlaneProxyConfigArgs", "resourceGroupId");
+            }
+            if ($.secretId == null) {
+                throw new MissingRequiredPropertyException("AzureClusterControlPlaneProxyConfigArgs", "secretId");
+            }
             return $;
         }
     }

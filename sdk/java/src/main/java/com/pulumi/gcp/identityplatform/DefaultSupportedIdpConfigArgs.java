@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -277,9 +278,15 @@ public final class DefaultSupportedIdpConfigArgs extends com.pulumi.resources.Re
         }
 
         public DefaultSupportedIdpConfigArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
-            $.clientSecret = Objects.requireNonNull($.clientSecret, "expected parameter 'clientSecret' to be non-null");
-            $.idpId = Objects.requireNonNull($.idpId, "expected parameter 'idpId' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("DefaultSupportedIdpConfigArgs", "clientId");
+            }
+            if ($.clientSecret == null) {
+                throw new MissingRequiredPropertyException("DefaultSupportedIdpConfigArgs", "clientSecret");
+            }
+            if ($.idpId == null) {
+                throw new MissingRequiredPropertyException("DefaultSupportedIdpConfigArgs", "idpId");
+            }
             return $;
         }
     }

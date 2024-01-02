@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.RouterNatRuleAction;
 import java.lang.Integer;
 import java.lang.String;
@@ -104,22 +105,30 @@ public final class RouterNatRule {
 
         @CustomType.Setter
         public Builder action(@Nullable RouterNatRuleAction action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder match(String match) {
-            this.match = Objects.requireNonNull(match);
+            if (match == null) {
+              throw new MissingRequiredPropertyException("RouterNatRule", "match");
+            }
+            this.match = match;
             return this;
         }
         @CustomType.Setter
         public Builder ruleNumber(Integer ruleNumber) {
-            this.ruleNumber = Objects.requireNonNull(ruleNumber);
+            if (ruleNumber == null) {
+              throw new MissingRequiredPropertyException("RouterNatRule", "ruleNumber");
+            }
+            this.ruleNumber = ruleNumber;
             return this;
         }
         public RouterNatRule build() {

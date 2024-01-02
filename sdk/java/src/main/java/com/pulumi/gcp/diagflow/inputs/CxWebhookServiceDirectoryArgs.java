@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxWebhookServiceDirectoryGenericWebServiceArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -116,8 +117,12 @@ public final class CxWebhookServiceDirectoryArgs extends com.pulumi.resources.Re
         }
 
         public CxWebhookServiceDirectoryArgs build() {
-            $.genericWebService = Objects.requireNonNull($.genericWebService, "expected parameter 'genericWebService' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.genericWebService == null) {
+                throw new MissingRequiredPropertyException("CxWebhookServiceDirectoryArgs", "genericWebService");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("CxWebhookServiceDirectoryArgs", "service");
+            }
             return $;
         }
     }

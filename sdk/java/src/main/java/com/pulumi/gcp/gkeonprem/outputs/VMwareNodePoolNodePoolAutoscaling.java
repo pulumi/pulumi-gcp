@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class VMwareNodePoolNodePoolAutoscaling {
 
         @CustomType.Setter
         public Builder maxReplicas(Integer maxReplicas) {
-            this.maxReplicas = Objects.requireNonNull(maxReplicas);
+            if (maxReplicas == null) {
+              throw new MissingRequiredPropertyException("VMwareNodePoolNodePoolAutoscaling", "maxReplicas");
+            }
+            this.maxReplicas = maxReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder minReplicas(Integer minReplicas) {
-            this.minReplicas = Objects.requireNonNull(minReplicas);
+            if (minReplicas == null) {
+              throw new MissingRequiredPropertyException("VMwareNodePoolNodePoolAutoscaling", "minReplicas");
+            }
+            this.minReplicas = minReplicas;
             return this;
         }
         public VMwareNodePoolNodePoolAutoscaling build() {

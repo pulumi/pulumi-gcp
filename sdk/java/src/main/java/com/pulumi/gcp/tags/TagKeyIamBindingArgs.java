@@ -5,6 +5,7 @@ package com.pulumi.gcp.tags;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.tags.inputs.TagKeyIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -209,9 +210,15 @@ public final class TagKeyIamBindingArgs extends com.pulumi.resources.ResourceArg
         }
 
         public TagKeyIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.tagKey = Objects.requireNonNull($.tagKey, "expected parameter 'tagKey' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("TagKeyIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("TagKeyIamBindingArgs", "role");
+            }
+            if ($.tagKey == null) {
+                throw new MissingRequiredPropertyException("TagKeyIamBindingArgs", "tagKey");
+            }
             return $;
         }
     }

@@ -60,11 +60,13 @@ public final class UptimeCheckConfigResourceGroup {
 
         @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
+
             this.resourceType = resourceType;
             return this;
         }

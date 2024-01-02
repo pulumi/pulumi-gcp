@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctions.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionSecretVolumeVersion;
 import java.lang.String;
 import java.util.List;
@@ -54,22 +55,34 @@ public final class GetFunctionSecretVolume {
 
         @CustomType.Setter
         public Builder mountPath(String mountPath) {
-            this.mountPath = Objects.requireNonNull(mountPath);
+            if (mountPath == null) {
+              throw new MissingRequiredPropertyException("GetFunctionSecretVolume", "mountPath");
+            }
+            this.mountPath = mountPath;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetFunctionSecretVolume", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetFunctionSecretVolume", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         @CustomType.Setter
         public Builder versions(List<GetFunctionSecretVolumeVersion> versions) {
-            this.versions = Objects.requireNonNull(versions);
+            if (versions == null) {
+              throw new MissingRequiredPropertyException("GetFunctionSecretVolume", "versions");
+            }
+            this.versions = versions;
             return this;
         }
         public Builder versions(GetFunctionSecretVolumeVersion... versions) {

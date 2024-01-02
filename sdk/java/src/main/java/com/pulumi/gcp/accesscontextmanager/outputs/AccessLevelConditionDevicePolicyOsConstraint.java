@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,12 +65,16 @@ public final class AccessLevelConditionDevicePolicyOsConstraint {
 
         @CustomType.Setter
         public Builder minimumVersion(@Nullable String minimumVersion) {
+
             this.minimumVersion = minimumVersion;
             return this;
         }
         @CustomType.Setter
         public Builder osType(String osType) {
-            this.osType = Objects.requireNonNull(osType);
+            if (osType == null) {
+              throw new MissingRequiredPropertyException("AccessLevelConditionDevicePolicyOsConstraint", "osType");
+            }
+            this.osType = osType;
             return this;
         }
         public AccessLevelConditionDevicePolicyOsConstraint build() {

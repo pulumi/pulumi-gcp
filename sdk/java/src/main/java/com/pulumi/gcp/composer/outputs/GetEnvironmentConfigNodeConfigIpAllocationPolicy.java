@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetEnvironmentConfigNodeConfigIpAllocationPolicy {
 
         @CustomType.Setter
         public Builder clusterIpv4CidrBlock(String clusterIpv4CidrBlock) {
-            this.clusterIpv4CidrBlock = Objects.requireNonNull(clusterIpv4CidrBlock);
+            if (clusterIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfigIpAllocationPolicy", "clusterIpv4CidrBlock");
+            }
+            this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder clusterSecondaryRangeName(String clusterSecondaryRangeName) {
-            this.clusterSecondaryRangeName = Objects.requireNonNull(clusterSecondaryRangeName);
+            if (clusterSecondaryRangeName == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfigIpAllocationPolicy", "clusterSecondaryRangeName");
+            }
+            this.clusterSecondaryRangeName = clusterSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder servicesIpv4CidrBlock(String servicesIpv4CidrBlock) {
-            this.servicesIpv4CidrBlock = Objects.requireNonNull(servicesIpv4CidrBlock);
+            if (servicesIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfigIpAllocationPolicy", "servicesIpv4CidrBlock");
+            }
+            this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder servicesSecondaryRangeName(String servicesSecondaryRangeName) {
-            this.servicesSecondaryRangeName = Objects.requireNonNull(servicesSecondaryRangeName);
+            if (servicesSecondaryRangeName == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfigIpAllocationPolicy", "servicesSecondaryRangeName");
+            }
+            this.servicesSecondaryRangeName = servicesSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder useIpAliases(Boolean useIpAliases) {
-            this.useIpAliases = Objects.requireNonNull(useIpAliases);
+            if (useIpAliases == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfigIpAllocationPolicy", "useIpAliases");
+            }
+            this.useIpAliases = useIpAliases;
             return this;
         }
         public GetEnvironmentConfigNodeConfigIpAllocationPolicy build() {

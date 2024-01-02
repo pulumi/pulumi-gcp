@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.SloBasicSliArgs;
 import com.pulumi.gcp.monitoring.inputs.SloRequestBasedSliArgs;
 import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliArgs;
@@ -580,8 +581,12 @@ public final class SloArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SloArgs build() {
-            $.goal = Objects.requireNonNull($.goal, "expected parameter 'goal' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.goal == null) {
+                throw new MissingRequiredPropertyException("SloArgs", "goal");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("SloArgs", "service");
+            }
             return $;
         }
     }

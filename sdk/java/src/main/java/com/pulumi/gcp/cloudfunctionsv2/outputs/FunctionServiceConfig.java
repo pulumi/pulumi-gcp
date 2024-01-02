@@ -300,51 +300,61 @@ public final class FunctionServiceConfig {
 
         @CustomType.Setter
         public Builder allTrafficOnLatestRevision(@Nullable Boolean allTrafficOnLatestRevision) {
+
             this.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
             return this;
         }
         @CustomType.Setter
         public Builder availableCpu(@Nullable String availableCpu) {
+
             this.availableCpu = availableCpu;
             return this;
         }
         @CustomType.Setter
         public Builder availableMemory(@Nullable String availableMemory) {
+
             this.availableMemory = availableMemory;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVariables(@Nullable Map<String,String> environmentVariables) {
+
             this.environmentVariables = environmentVariables;
             return this;
         }
         @CustomType.Setter
         public Builder gcfUri(@Nullable String gcfUri) {
+
             this.gcfUri = gcfUri;
             return this;
         }
         @CustomType.Setter
         public Builder ingressSettings(@Nullable String ingressSettings) {
+
             this.ingressSettings = ingressSettings;
             return this;
         }
         @CustomType.Setter
         public Builder maxInstanceCount(@Nullable Integer maxInstanceCount) {
+
             this.maxInstanceCount = maxInstanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder maxInstanceRequestConcurrency(@Nullable Integer maxInstanceRequestConcurrency) {
+
             this.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder minInstanceCount(@Nullable Integer minInstanceCount) {
+
             this.minInstanceCount = minInstanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder secretEnvironmentVariables(@Nullable List<FunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables) {
+
             this.secretEnvironmentVariables = secretEnvironmentVariables;
             return this;
         }
@@ -353,6 +363,7 @@ public final class FunctionServiceConfig {
         }
         @CustomType.Setter
         public Builder secretVolumes(@Nullable List<FunctionServiceConfigSecretVolume> secretVolumes) {
+
             this.secretVolumes = secretVolumes;
             return this;
         }
@@ -361,31 +372,37 @@ public final class FunctionServiceConfig {
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountEmail(@Nullable String serviceAccountEmail) {
+
             this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
+
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder uri(@Nullable String uri) {
+
             this.uri = uri;
             return this;
         }
         @CustomType.Setter
         public Builder vpcConnector(@Nullable String vpcConnector) {
+
             this.vpcConnector = vpcConnector;
             return this;
         }
         @CustomType.Setter
         public Builder vpcConnectorEgressSettings(@Nullable String vpcConnectorEgressSettings) {
+
             this.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
             return this;
         }

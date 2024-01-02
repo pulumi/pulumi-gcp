@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions;
 import com.pulumi.gcp.storage.outputs.InsightsReportConfigObjectMetadataReportOptionsStorageFilters;
 import java.lang.String;
@@ -79,7 +80,10 @@ public final class InsightsReportConfigObjectMetadataReportOptions {
 
         @CustomType.Setter
         public Builder metadataFields(List<String> metadataFields) {
-            this.metadataFields = Objects.requireNonNull(metadataFields);
+            if (metadataFields == null) {
+              throw new MissingRequiredPropertyException("InsightsReportConfigObjectMetadataReportOptions", "metadataFields");
+            }
+            this.metadataFields = metadataFields;
             return this;
         }
         public Builder metadataFields(String... metadataFields) {
@@ -87,11 +91,15 @@ public final class InsightsReportConfigObjectMetadataReportOptions {
         }
         @CustomType.Setter
         public Builder storageDestinationOptions(InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions storageDestinationOptions) {
-            this.storageDestinationOptions = Objects.requireNonNull(storageDestinationOptions);
+            if (storageDestinationOptions == null) {
+              throw new MissingRequiredPropertyException("InsightsReportConfigObjectMetadataReportOptions", "storageDestinationOptions");
+            }
+            this.storageDestinationOptions = storageDestinationOptions;
             return this;
         }
         @CustomType.Setter
         public Builder storageFilters(@Nullable InsightsReportConfigObjectMetadataReportOptionsStorageFilters storageFilters) {
+
             this.storageFilters = storageFilters;
             return this;
         }

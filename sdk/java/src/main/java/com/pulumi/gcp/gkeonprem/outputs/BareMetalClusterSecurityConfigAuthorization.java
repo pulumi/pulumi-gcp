@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalClusterSecurityConfigAuthorizationAdminUser;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class BareMetalClusterSecurityConfigAuthorization {
 
         @CustomType.Setter
         public Builder adminUsers(List<BareMetalClusterSecurityConfigAuthorizationAdminUser> adminUsers) {
-            this.adminUsers = Objects.requireNonNull(adminUsers);
+            if (adminUsers == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterSecurityConfigAuthorization", "adminUsers");
+            }
+            this.adminUsers = adminUsers;
             return this;
         }
         public Builder adminUsers(BareMetalClusterSecurityConfigAuthorizationAdminUser... adminUsers) {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAdditionalVariableArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigAuthConfigArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionEventingConfigRegistrationDestinationConfigArgs;
@@ -214,7 +215,9 @@ public final class ConnectionEventingConfigArgs extends com.pulumi.resources.Res
         }
 
         public ConnectionEventingConfigArgs build() {
-            $.registrationDestinationConfig = Objects.requireNonNull($.registrationDestinationConfig, "expected parameter 'registrationDestinationConfig' to be non-null");
+            if ($.registrationDestinationConfig == null) {
+                throw new MissingRequiredPropertyException("ConnectionEventingConfigArgs", "registrationDestinationConfig");
+            }
             return $;
         }
     }

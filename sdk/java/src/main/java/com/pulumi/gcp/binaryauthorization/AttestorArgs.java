@@ -5,6 +5,7 @@ package com.pulumi.gcp.binaryauthorization;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.binaryauthorization.inputs.AttestorAttestationAuthorityNoteArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -200,7 +201,9 @@ public final class AttestorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AttestorArgs build() {
-            $.attestationAuthorityNote = Objects.requireNonNull($.attestationAuthorityNote, "expected parameter 'attestationAuthorityNote' to be non-null");
+            if ($.attestationAuthorityNote == null) {
+                throw new MissingRequiredPropertyException("AttestorArgs", "attestationAuthorityNote");
+            }
             return $;
         }
     }

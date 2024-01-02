@@ -48,16 +48,19 @@ public final class ConnectionInstallationState {
 
         @CustomType.Setter
         public Builder actionUri(@Nullable String actionUri) {
+
             this.actionUri = actionUri;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder stage(@Nullable String stage) {
+
             this.stage = stage;
             return this;
         }

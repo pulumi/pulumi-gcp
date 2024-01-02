@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileSslConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -234,9 +235,15 @@ public final class ConnectionProfileMysqlProfileArgs extends com.pulumi.resource
         }
 
         public ConnectionProfileMysqlProfileArgs build() {
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileMysqlProfileArgs", "hostname");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileMysqlProfileArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileMysqlProfileArgs", "username");
+            }
             return $;
         }
     }

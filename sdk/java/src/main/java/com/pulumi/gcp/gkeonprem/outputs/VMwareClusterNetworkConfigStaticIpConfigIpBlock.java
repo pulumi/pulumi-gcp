@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockIp;
 import java.lang.String;
 import java.util.List;
@@ -74,12 +75,18 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlock {
 
         @CustomType.Setter
         public Builder gateway(String gateway) {
-            this.gateway = Objects.requireNonNull(gateway);
+            if (gateway == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigStaticIpConfigIpBlock", "gateway");
+            }
+            this.gateway = gateway;
             return this;
         }
         @CustomType.Setter
         public Builder ips(List<VMwareClusterNetworkConfigStaticIpConfigIpBlockIp> ips) {
-            this.ips = Objects.requireNonNull(ips);
+            if (ips == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigStaticIpConfigIpBlock", "ips");
+            }
+            this.ips = ips;
             return this;
         }
         public Builder ips(VMwareClusterNetworkConfigStaticIpConfigIpBlockIp... ips) {
@@ -87,7 +94,10 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlock {
         }
         @CustomType.Setter
         public Builder netmask(String netmask) {
-            this.netmask = Objects.requireNonNull(netmask);
+            if (netmask == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigStaticIpConfigIpBlock", "netmask");
+            }
+            this.netmask = netmask;
             return this;
         }
         public VMwareClusterNetworkConfigStaticIpConfigIpBlock build() {

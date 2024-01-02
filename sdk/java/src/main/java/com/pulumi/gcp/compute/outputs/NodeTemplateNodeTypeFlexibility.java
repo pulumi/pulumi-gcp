@@ -74,16 +74,19 @@ public final class NodeTemplateNodeTypeFlexibility {
 
         @CustomType.Setter
         public Builder cpus(@Nullable String cpus) {
+
             this.cpus = cpus;
             return this;
         }
         @CustomType.Setter
         public Builder localSsd(@Nullable String localSsd) {
+
             this.localSsd = localSsd;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable String memory) {
+
             this.memory = memory;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.ProjectSinkBigqueryOptionsArgs;
 import com.pulumi.gcp.logging.inputs.ProjectSinkExclusionArgs;
 import java.lang.Boolean;
@@ -491,7 +492,9 @@ public final class ProjectSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectSinkArgs build() {
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("ProjectSinkArgs", "destination");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetClusterDnsConfig {
 
         @CustomType.Setter
         public Builder clusterDns(String clusterDns) {
-            this.clusterDns = Objects.requireNonNull(clusterDns);
+            if (clusterDns == null) {
+              throw new MissingRequiredPropertyException("GetClusterDnsConfig", "clusterDns");
+            }
+            this.clusterDns = clusterDns;
             return this;
         }
         @CustomType.Setter
         public Builder clusterDnsDomain(String clusterDnsDomain) {
-            this.clusterDnsDomain = Objects.requireNonNull(clusterDnsDomain);
+            if (clusterDnsDomain == null) {
+              throw new MissingRequiredPropertyException("GetClusterDnsConfig", "clusterDnsDomain");
+            }
+            this.clusterDnsDomain = clusterDnsDomain;
             return this;
         }
         @CustomType.Setter
         public Builder clusterDnsScope(String clusterDnsScope) {
-            this.clusterDnsScope = Objects.requireNonNull(clusterDnsScope);
+            if (clusterDnsScope == null) {
+              throw new MissingRequiredPropertyException("GetClusterDnsConfig", "clusterDnsScope");
+            }
+            this.clusterDnsScope = clusterDnsScope;
             return this;
         }
         public GetClusterDnsConfig build() {

@@ -76,11 +76,13 @@ public final class AccessBoundaryPolicyRuleAccessBoundaryRule {
 
         @CustomType.Setter
         public Builder availabilityCondition(@Nullable AccessBoundaryPolicyRuleAccessBoundaryRuleAvailabilityCondition availabilityCondition) {
+
             this.availabilityCondition = availabilityCondition;
             return this;
         }
         @CustomType.Setter
         public Builder availablePermissions(@Nullable List<String> availablePermissions) {
+
             this.availablePermissions = availablePermissions;
             return this;
         }
@@ -89,6 +91,7 @@ public final class AccessBoundaryPolicyRuleAccessBoundaryRule {
         }
         @CustomType.Setter
         public Builder availableResource(@Nullable String availableResource) {
+
             this.availableResource = availableResource;
             return this;
         }

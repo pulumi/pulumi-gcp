@@ -4,6 +4,7 @@
 package com.pulumi.gcp.containeranalysis.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.containeranalysis.outputs.NoteAttestationAuthorityHint;
 import java.util.Objects;
 
@@ -58,7 +59,10 @@ public final class NoteAttestationAuthority {
 
         @CustomType.Setter
         public Builder hint(NoteAttestationAuthorityHint hint) {
-            this.hint = Objects.requireNonNull(hint);
+            if (hint == null) {
+              throw new MissingRequiredPropertyException("NoteAttestationAuthority", "hint");
+            }
+            this.hint = hint;
             return this;
         }
         public NoteAttestationAuthority build() {

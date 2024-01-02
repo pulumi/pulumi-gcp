@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs;
 import com.pulumi.gcp.container.inputs.NodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs;
 import java.lang.Integer;
@@ -155,8 +156,12 @@ public final class NodePoolNodeConfigGuestAcceleratorArgs extends com.pulumi.res
         }
 
         public NodePoolNodeConfigGuestAcceleratorArgs build() {
-            $.count = Objects.requireNonNull($.count, "expected parameter 'count' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.count == null) {
+                throw new MissingRequiredPropertyException("NodePoolNodeConfigGuestAcceleratorArgs", "count");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("NodePoolNodeConfigGuestAcceleratorArgs", "type");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigSubjectConfigSubject;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthorityConfigSubjectConfigSubjectAltName;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetAuthorityConfigSubjectConfig {
 
         @CustomType.Setter
         public Builder subjectAltNames(List<GetAuthorityConfigSubjectConfigSubjectAltName> subjectAltNames) {
-            this.subjectAltNames = Objects.requireNonNull(subjectAltNames);
+            if (subjectAltNames == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfig", "subjectAltNames");
+            }
+            this.subjectAltNames = subjectAltNames;
             return this;
         }
         public Builder subjectAltNames(GetAuthorityConfigSubjectConfigSubjectAltName... subjectAltNames) {
@@ -50,7 +54,10 @@ public final class GetAuthorityConfigSubjectConfig {
         }
         @CustomType.Setter
         public Builder subjects(List<GetAuthorityConfigSubjectConfigSubject> subjects) {
-            this.subjects = Objects.requireNonNull(subjects);
+            if (subjects == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigSubjectConfig", "subjects");
+            }
+            this.subjects = subjects;
             return this;
         }
         public Builder subjects(GetAuthorityConfigSubjectConfigSubject... subjects) {

@@ -58,11 +58,13 @@ public final class CxTestCaseLastTestResultConversationTurnUserInputInputDtmf {
 
         @CustomType.Setter
         public Builder digits(@Nullable String digits) {
+
             this.digits = digits;
             return this;
         }
         @CustomType.Setter
         public Builder finishDigit(@Nullable String finishDigit) {
+
             this.finishDigit = finishDigit;
             return this;
         }

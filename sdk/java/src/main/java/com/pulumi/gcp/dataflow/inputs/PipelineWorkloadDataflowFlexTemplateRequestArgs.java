@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataflow.inputs.PipelineWorkloadDataflowFlexTemplateRequestLaunchParameterArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -197,9 +198,15 @@ public final class PipelineWorkloadDataflowFlexTemplateRequestArgs extends com.p
         }
 
         public PipelineWorkloadDataflowFlexTemplateRequestArgs build() {
-            $.launchParameter = Objects.requireNonNull($.launchParameter, "expected parameter 'launchParameter' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.launchParameter == null) {
+                throw new MissingRequiredPropertyException("PipelineWorkloadDataflowFlexTemplateRequestArgs", "launchParameter");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("PipelineWorkloadDataflowFlexTemplateRequestArgs", "location");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("PipelineWorkloadDataflowFlexTemplateRequestArgs", "projectId");
+            }
             return $;
         }
     }

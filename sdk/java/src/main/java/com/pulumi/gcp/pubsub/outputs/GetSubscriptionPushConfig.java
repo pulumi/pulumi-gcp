@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionPushConfigNoWrapper;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionPushConfigOidcToken;
 import java.lang.String;
@@ -56,12 +57,18 @@ public final class GetSubscriptionPushConfig {
 
         @CustomType.Setter
         public Builder attributes(Map<String,String> attributes) {
-            this.attributes = Objects.requireNonNull(attributes);
+            if (attributes == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionPushConfig", "attributes");
+            }
+            this.attributes = attributes;
             return this;
         }
         @CustomType.Setter
         public Builder noWrappers(List<GetSubscriptionPushConfigNoWrapper> noWrappers) {
-            this.noWrappers = Objects.requireNonNull(noWrappers);
+            if (noWrappers == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionPushConfig", "noWrappers");
+            }
+            this.noWrappers = noWrappers;
             return this;
         }
         public Builder noWrappers(GetSubscriptionPushConfigNoWrapper... noWrappers) {
@@ -69,7 +76,10 @@ public final class GetSubscriptionPushConfig {
         }
         @CustomType.Setter
         public Builder oidcTokens(List<GetSubscriptionPushConfigOidcToken> oidcTokens) {
-            this.oidcTokens = Objects.requireNonNull(oidcTokens);
+            if (oidcTokens == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionPushConfig", "oidcTokens");
+            }
+            this.oidcTokens = oidcTokens;
             return this;
         }
         public Builder oidcTokens(GetSubscriptionPushConfigOidcToken... oidcTokens) {
@@ -77,7 +87,10 @@ public final class GetSubscriptionPushConfig {
         }
         @CustomType.Setter
         public Builder pushEndpoint(String pushEndpoint) {
-            this.pushEndpoint = Objects.requireNonNull(pushEndpoint);
+            if (pushEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionPushConfig", "pushEndpoint");
+            }
+            this.pushEndpoint = pushEndpoint;
             return this;
         }
         public GetSubscriptionPushConfig build() {

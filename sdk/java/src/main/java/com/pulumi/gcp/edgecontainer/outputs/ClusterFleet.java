@@ -4,6 +4,7 @@
 package com.pulumi.gcp.edgecontainer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -68,12 +69,16 @@ public final class ClusterFleet {
 
         @CustomType.Setter
         public Builder membership(@Nullable String membership) {
+
             this.membership = membership;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("ClusterFleet", "project");
+            }
+            this.project = project;
             return this;
         }
         public ClusterFleet build() {

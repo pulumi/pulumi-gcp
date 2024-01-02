@@ -5,6 +5,7 @@ package com.pulumi.gcp.resourcemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -250,10 +251,18 @@ public final class LienArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LienArgs build() {
-            $.origin = Objects.requireNonNull($.origin, "expected parameter 'origin' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
-            $.reason = Objects.requireNonNull($.reason, "expected parameter 'reason' to be non-null");
-            $.restrictions = Objects.requireNonNull($.restrictions, "expected parameter 'restrictions' to be non-null");
+            if ($.origin == null) {
+                throw new MissingRequiredPropertyException("LienArgs", "origin");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("LienArgs", "parent");
+            }
+            if ($.reason == null) {
+                throw new MissingRequiredPropertyException("LienArgs", "reason");
+            }
+            if ($.restrictions == null) {
+                throw new MissingRequiredPropertyException("LienArgs", "restrictions");
+            }
             return $;
         }
     }

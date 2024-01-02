@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firebase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -107,17 +108,26 @@ public final class GetWebAppResult {
 
         @CustomType.Setter
         public Builder apiKeyId(String apiKeyId) {
-            this.apiKeyId = Objects.requireNonNull(apiKeyId);
+            if (apiKeyId == null) {
+              throw new MissingRequiredPropertyException("GetWebAppResult", "apiKeyId");
+            }
+            this.apiKeyId = apiKeyId;
             return this;
         }
         @CustomType.Setter
         public Builder appId(String appId) {
-            this.appId = Objects.requireNonNull(appId);
+            if (appId == null) {
+              throw new MissingRequiredPropertyException("GetWebAppResult", "appId");
+            }
+            this.appId = appId;
             return this;
         }
         @CustomType.Setter
         public Builder appUrls(List<String> appUrls) {
-            this.appUrls = Objects.requireNonNull(appUrls);
+            if (appUrls == null) {
+              throw new MissingRequiredPropertyException("GetWebAppResult", "appUrls");
+            }
+            this.appUrls = appUrls;
             return this;
         }
         public Builder appUrls(String... appUrls) {
@@ -125,26 +135,39 @@ public final class GetWebAppResult {
         }
         @CustomType.Setter
         public Builder deletionPolicy(String deletionPolicy) {
-            this.deletionPolicy = Objects.requireNonNull(deletionPolicy);
+            if (deletionPolicy == null) {
+              throw new MissingRequiredPropertyException("GetWebAppResult", "deletionPolicy");
+            }
+            this.deletionPolicy = deletionPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetWebAppResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWebAppResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetWebAppResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }

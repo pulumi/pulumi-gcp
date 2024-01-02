@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.ClusterIAMMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -290,9 +291,15 @@ public final class ClusterIAMMemberArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ClusterIAMMemberArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("ClusterIAMMemberArgs", "cluster");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("ClusterIAMMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ClusterIAMMemberArgs", "role");
+            }
             return $;
         }
     }

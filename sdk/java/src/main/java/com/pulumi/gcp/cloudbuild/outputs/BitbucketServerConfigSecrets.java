@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,17 +77,26 @@ public final class BitbucketServerConfigSecrets {
 
         @CustomType.Setter
         public Builder adminAccessTokenVersionName(String adminAccessTokenVersionName) {
-            this.adminAccessTokenVersionName = Objects.requireNonNull(adminAccessTokenVersionName);
+            if (adminAccessTokenVersionName == null) {
+              throw new MissingRequiredPropertyException("BitbucketServerConfigSecrets", "adminAccessTokenVersionName");
+            }
+            this.adminAccessTokenVersionName = adminAccessTokenVersionName;
             return this;
         }
         @CustomType.Setter
         public Builder readAccessTokenVersionName(String readAccessTokenVersionName) {
-            this.readAccessTokenVersionName = Objects.requireNonNull(readAccessTokenVersionName);
+            if (readAccessTokenVersionName == null) {
+              throw new MissingRequiredPropertyException("BitbucketServerConfigSecrets", "readAccessTokenVersionName");
+            }
+            this.readAccessTokenVersionName = readAccessTokenVersionName;
             return this;
         }
         @CustomType.Setter
         public Builder webhookSecretVersionName(String webhookSecretVersionName) {
-            this.webhookSecretVersionName = Objects.requireNonNull(webhookSecretVersionName);
+            if (webhookSecretVersionName == null) {
+              throw new MissingRequiredPropertyException("BitbucketServerConfigSecrets", "webhookSecretVersionName");
+            }
+            this.webhookSecretVersionName = webhookSecretVersionName;
             return this;
         }
         public BitbucketServerConfigSecrets build() {

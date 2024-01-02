@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigHttpCheckArgs;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigMonitoredResourceArgs;
@@ -597,8 +598,12 @@ public final class UptimeCheckConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         public UptimeCheckConfigArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.timeout = Objects.requireNonNull($.timeout, "expected parameter 'timeout' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("UptimeCheckConfigArgs", "displayName");
+            }
+            if ($.timeout == null) {
+                throw new MissingRequiredPropertyException("UptimeCheckConfigArgs", "timeout");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.edgecontainer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,7 +124,10 @@ public final class ClusterNetworking {
 
         @CustomType.Setter
         public Builder clusterIpv4CidrBlocks(List<String> clusterIpv4CidrBlocks) {
-            this.clusterIpv4CidrBlocks = Objects.requireNonNull(clusterIpv4CidrBlocks);
+            if (clusterIpv4CidrBlocks == null) {
+              throw new MissingRequiredPropertyException("ClusterNetworking", "clusterIpv4CidrBlocks");
+            }
+            this.clusterIpv4CidrBlocks = clusterIpv4CidrBlocks;
             return this;
         }
         public Builder clusterIpv4CidrBlocks(String... clusterIpv4CidrBlocks) {
@@ -131,6 +135,7 @@ public final class ClusterNetworking {
         }
         @CustomType.Setter
         public Builder clusterIpv6CidrBlocks(@Nullable List<String> clusterIpv6CidrBlocks) {
+
             this.clusterIpv6CidrBlocks = clusterIpv6CidrBlocks;
             return this;
         }
@@ -139,12 +144,16 @@ public final class ClusterNetworking {
         }
         @CustomType.Setter
         public Builder networkType(@Nullable String networkType) {
+
             this.networkType = networkType;
             return this;
         }
         @CustomType.Setter
         public Builder servicesIpv4CidrBlocks(List<String> servicesIpv4CidrBlocks) {
-            this.servicesIpv4CidrBlocks = Objects.requireNonNull(servicesIpv4CidrBlocks);
+            if (servicesIpv4CidrBlocks == null) {
+              throw new MissingRequiredPropertyException("ClusterNetworking", "servicesIpv4CidrBlocks");
+            }
+            this.servicesIpv4CidrBlocks = servicesIpv4CidrBlocks;
             return this;
         }
         public Builder servicesIpv4CidrBlocks(String... servicesIpv4CidrBlocks) {
@@ -152,6 +161,7 @@ public final class ClusterNetworking {
         }
         @CustomType.Setter
         public Builder servicesIpv6CidrBlocks(@Nullable List<String> servicesIpv6CidrBlocks) {
+
             this.servicesIpv6CidrBlocks = servicesIpv6CidrBlocks;
             return this;
         }

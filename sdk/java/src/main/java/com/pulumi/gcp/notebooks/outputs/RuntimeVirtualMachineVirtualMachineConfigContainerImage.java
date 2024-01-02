@@ -4,6 +4,7 @@
 package com.pulumi.gcp.notebooks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,11 +61,15 @@ public final class RuntimeVirtualMachineVirtualMachineConfigContainerImage {
 
         @CustomType.Setter
         public Builder repository(String repository) {
-            this.repository = Objects.requireNonNull(repository);
+            if (repository == null) {
+              throw new MissingRequiredPropertyException("RuntimeVirtualMachineVirtualMachineConfigContainerImage", "repository");
+            }
+            this.repository = repository;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }

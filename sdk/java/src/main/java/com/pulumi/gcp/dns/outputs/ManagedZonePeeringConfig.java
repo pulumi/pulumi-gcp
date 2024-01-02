@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.ManagedZonePeeringConfigTargetNetwork;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ManagedZonePeeringConfig {
 
         @CustomType.Setter
         public Builder targetNetwork(ManagedZonePeeringConfigTargetNetwork targetNetwork) {
-            this.targetNetwork = Objects.requireNonNull(targetNetwork);
+            if (targetNetwork == null) {
+              throw new MissingRequiredPropertyException("ManagedZonePeeringConfig", "targetNetwork");
+            }
+            this.targetNetwork = targetNetwork;
             return this;
         }
         public ManagedZonePeeringConfig build() {

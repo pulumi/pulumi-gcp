@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs;
 import java.lang.Integer;
@@ -227,8 +228,12 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorArgs extends com.pul
         }
 
         public ClusterNodePoolNodeConfigGuestAcceleratorArgs build() {
-            $.count = Objects.requireNonNull($.count, "expected parameter 'count' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.count == null) {
+                throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigGuestAcceleratorArgs", "count");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigGuestAcceleratorArgs", "type");
+            }
             return $;
         }
     }

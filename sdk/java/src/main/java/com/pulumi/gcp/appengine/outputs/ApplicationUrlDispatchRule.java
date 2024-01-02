@@ -48,16 +48,19 @@ public final class ApplicationUrlDispatchRule {
 
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }

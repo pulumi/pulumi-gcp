@@ -36,6 +36,7 @@ public final class InstanceGroupManagerStatusVersionTarget {
 
         @CustomType.Setter
         public Builder isReached(@Nullable Boolean isReached) {
+
             this.isReached = isReached;
             return this;
         }

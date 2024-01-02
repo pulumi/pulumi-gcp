@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetRegionNetworkEndpointGroupServerlessDeployment {
 
         @CustomType.Setter
         public Builder platform(String platform) {
-            this.platform = Objects.requireNonNull(platform);
+            if (platform == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupServerlessDeployment", "platform");
+            }
+            this.platform = platform;
             return this;
         }
         @CustomType.Setter
         public Builder resource(String resource) {
-            this.resource = Objects.requireNonNull(resource);
+            if (resource == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupServerlessDeployment", "resource");
+            }
+            this.resource = resource;
             return this;
         }
         @CustomType.Setter
         public Builder urlMask(String urlMask) {
-            this.urlMask = Objects.requireNonNull(urlMask);
+            if (urlMask == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupServerlessDeployment", "urlMask");
+            }
+            this.urlMask = urlMask;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupServerlessDeployment", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetRegionNetworkEndpointGroupServerlessDeployment build() {

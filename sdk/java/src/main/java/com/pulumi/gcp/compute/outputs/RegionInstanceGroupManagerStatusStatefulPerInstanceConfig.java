@@ -44,6 +44,7 @@ public final class RegionInstanceGroupManagerStatusStatefulPerInstanceConfig {
 
         @CustomType.Setter
         public Builder allEffective(@Nullable Boolean allEffective) {
+
             this.allEffective = allEffective;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.redis.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetInstancePersistenceConfig {
 
         @CustomType.Setter
         public Builder persistenceMode(String persistenceMode) {
-            this.persistenceMode = Objects.requireNonNull(persistenceMode);
+            if (persistenceMode == null) {
+              throw new MissingRequiredPropertyException("GetInstancePersistenceConfig", "persistenceMode");
+            }
+            this.persistenceMode = persistenceMode;
             return this;
         }
         @CustomType.Setter
         public Builder rdbNextSnapshotTime(String rdbNextSnapshotTime) {
-            this.rdbNextSnapshotTime = Objects.requireNonNull(rdbNextSnapshotTime);
+            if (rdbNextSnapshotTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancePersistenceConfig", "rdbNextSnapshotTime");
+            }
+            this.rdbNextSnapshotTime = rdbNextSnapshotTime;
             return this;
         }
         @CustomType.Setter
         public Builder rdbSnapshotPeriod(String rdbSnapshotPeriod) {
-            this.rdbSnapshotPeriod = Objects.requireNonNull(rdbSnapshotPeriod);
+            if (rdbSnapshotPeriod == null) {
+              throw new MissingRequiredPropertyException("GetInstancePersistenceConfig", "rdbSnapshotPeriod");
+            }
+            this.rdbSnapshotPeriod = rdbSnapshotPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder rdbSnapshotStartTime(String rdbSnapshotStartTime) {
-            this.rdbSnapshotStartTime = Objects.requireNonNull(rdbSnapshotStartTime);
+            if (rdbSnapshotStartTime == null) {
+              throw new MissingRequiredPropertyException("GetInstancePersistenceConfig", "rdbSnapshotStartTime");
+            }
+            this.rdbSnapshotStartTime = rdbSnapshotStartTime;
             return this;
         }
         public GetInstancePersistenceConfig build() {

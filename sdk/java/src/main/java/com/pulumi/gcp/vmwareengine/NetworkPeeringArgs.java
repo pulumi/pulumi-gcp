@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -438,9 +439,15 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public NetworkPeeringArgs build() {
-            $.peerNetwork = Objects.requireNonNull($.peerNetwork, "expected parameter 'peerNetwork' to be non-null");
-            $.peerNetworkType = Objects.requireNonNull($.peerNetworkType, "expected parameter 'peerNetworkType' to be non-null");
-            $.vmwareEngineNetwork = Objects.requireNonNull($.vmwareEngineNetwork, "expected parameter 'vmwareEngineNetwork' to be non-null");
+            if ($.peerNetwork == null) {
+                throw new MissingRequiredPropertyException("NetworkPeeringArgs", "peerNetwork");
+            }
+            if ($.peerNetworkType == null) {
+                throw new MissingRequiredPropertyException("NetworkPeeringArgs", "peerNetworkType");
+            }
+            if ($.vmwareEngineNetwork == null) {
+                throw new MissingRequiredPropertyException("NetworkPeeringArgs", "vmwareEngineNetwork");
+            }
             return $;
         }
     }

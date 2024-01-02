@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -227,9 +228,15 @@ public final class ApiConfigIamPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         public ApiConfigIamPolicyArgs build() {
-            $.api = Objects.requireNonNull($.api, "expected parameter 'api' to be non-null");
-            $.apiConfig = Objects.requireNonNull($.apiConfig, "expected parameter 'apiConfig' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.api == null) {
+                throw new MissingRequiredPropertyException("ApiConfigIamPolicyArgs", "api");
+            }
+            if ($.apiConfig == null) {
+                throw new MissingRequiredPropertyException("ApiConfigIamPolicyArgs", "apiConfig");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("ApiConfigIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

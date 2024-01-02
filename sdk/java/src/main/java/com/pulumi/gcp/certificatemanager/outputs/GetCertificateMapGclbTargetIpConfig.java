@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificatemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class GetCertificateMapGclbTargetIpConfig {
 
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetCertificateMapGclbTargetIpConfig", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder ports(List<Integer> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetCertificateMapGclbTargetIpConfig", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(Integer... ports) {

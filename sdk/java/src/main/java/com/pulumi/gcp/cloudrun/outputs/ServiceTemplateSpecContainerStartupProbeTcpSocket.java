@@ -46,6 +46,7 @@ public final class ServiceTemplateSpecContainerStartupProbeTcpSocket {
 
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }

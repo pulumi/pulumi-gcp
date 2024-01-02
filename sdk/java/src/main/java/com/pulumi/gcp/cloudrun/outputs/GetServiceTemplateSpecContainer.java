@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnv;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnvFrom;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerLivenessProbe;
@@ -116,7 +117,10 @@ public final class GetServiceTemplateSpecContainer {
 
         @CustomType.Setter
         public Builder args(List<String> args) {
-            this.args = Objects.requireNonNull(args);
+            if (args == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "args");
+            }
+            this.args = args;
             return this;
         }
         public Builder args(String... args) {
@@ -124,7 +128,10 @@ public final class GetServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder commands(List<String> commands) {
-            this.commands = Objects.requireNonNull(commands);
+            if (commands == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "commands");
+            }
+            this.commands = commands;
             return this;
         }
         public Builder commands(String... commands) {
@@ -132,7 +139,10 @@ public final class GetServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder envFroms(List<GetServiceTemplateSpecContainerEnvFrom> envFroms) {
-            this.envFroms = Objects.requireNonNull(envFroms);
+            if (envFroms == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "envFroms");
+            }
+            this.envFroms = envFroms;
             return this;
         }
         public Builder envFroms(GetServiceTemplateSpecContainerEnvFrom... envFroms) {
@@ -140,7 +150,10 @@ public final class GetServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder envs(List<GetServiceTemplateSpecContainerEnv> envs) {
-            this.envs = Objects.requireNonNull(envs);
+            if (envs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "envs");
+            }
+            this.envs = envs;
             return this;
         }
         public Builder envs(GetServiceTemplateSpecContainerEnv... envs) {
@@ -148,12 +161,18 @@ public final class GetServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbes(List<GetServiceTemplateSpecContainerLivenessProbe> livenessProbes) {
-            this.livenessProbes = Objects.requireNonNull(livenessProbes);
+            if (livenessProbes == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "livenessProbes");
+            }
+            this.livenessProbes = livenessProbes;
             return this;
         }
         public Builder livenessProbes(GetServiceTemplateSpecContainerLivenessProbe... livenessProbes) {
@@ -161,12 +180,18 @@ public final class GetServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(List<GetServiceTemplateSpecContainerPort> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(GetServiceTemplateSpecContainerPort... ports) {
@@ -174,7 +199,10 @@ public final class GetServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder resources(List<GetServiceTemplateSpecContainerResource> resources) {
-            this.resources = Objects.requireNonNull(resources);
+            if (resources == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "resources");
+            }
+            this.resources = resources;
             return this;
         }
         public Builder resources(GetServiceTemplateSpecContainerResource... resources) {
@@ -182,7 +210,10 @@ public final class GetServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder startupProbes(List<GetServiceTemplateSpecContainerStartupProbe> startupProbes) {
-            this.startupProbes = Objects.requireNonNull(startupProbes);
+            if (startupProbes == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "startupProbes");
+            }
+            this.startupProbes = startupProbes;
             return this;
         }
         public Builder startupProbes(GetServiceTemplateSpecContainerStartupProbe... startupProbes) {
@@ -190,7 +221,10 @@ public final class GetServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder volumeMounts(List<GetServiceTemplateSpecContainerVolumeMount> volumeMounts) {
-            this.volumeMounts = Objects.requireNonNull(volumeMounts);
+            if (volumeMounts == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "volumeMounts");
+            }
+            this.volumeMounts = volumeMounts;
             return this;
         }
         public Builder volumeMounts(GetServiceTemplateSpecContainerVolumeMount... volumeMounts) {
@@ -198,7 +232,10 @@ public final class GetServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder workingDir(String workingDir) {
-            this.workingDir = Objects.requireNonNull(workingDir);
+            if (workingDir == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainer", "workingDir");
+            }
+            this.workingDir = workingDir;
             return this;
         }
         public GetServiceTemplateSpecContainer build() {

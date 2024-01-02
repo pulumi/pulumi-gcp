@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class TransferJobScheduleStartTimeOfDayArgs extends com.pulumi.reso
         }
 
         public TransferJobScheduleStartTimeOfDayArgs build() {
-            $.hours = Objects.requireNonNull($.hours, "expected parameter 'hours' to be non-null");
-            $.minutes = Objects.requireNonNull($.minutes, "expected parameter 'minutes' to be non-null");
-            $.nanos = Objects.requireNonNull($.nanos, "expected parameter 'nanos' to be non-null");
-            $.seconds = Objects.requireNonNull($.seconds, "expected parameter 'seconds' to be non-null");
+            if ($.hours == null) {
+                throw new MissingRequiredPropertyException("TransferJobScheduleStartTimeOfDayArgs", "hours");
+            }
+            if ($.minutes == null) {
+                throw new MissingRequiredPropertyException("TransferJobScheduleStartTimeOfDayArgs", "minutes");
+            }
+            if ($.nanos == null) {
+                throw new MissingRequiredPropertyException("TransferJobScheduleStartTimeOfDayArgs", "nanos");
+            }
+            if ($.seconds == null) {
+                throw new MissingRequiredPropertyException("TransferJobScheduleStartTimeOfDayArgs", "seconds");
+            }
             return $;
         }
     }

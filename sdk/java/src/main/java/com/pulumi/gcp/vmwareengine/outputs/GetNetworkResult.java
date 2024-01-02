@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkVpcNetwork;
 import java.lang.String;
 import java.util.List;
@@ -94,47 +95,72 @@ public final class GetNetworkResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         @CustomType.Setter
         public Builder vpcNetworks(List<GetNetworkVpcNetwork> vpcNetworks) {
-            this.vpcNetworks = Objects.requireNonNull(vpcNetworks);
+            if (vpcNetworks == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "vpcNetworks");
+            }
+            this.vpcNetworks = vpcNetworks;
             return this;
         }
         public Builder vpcNetworks(GetNetworkVpcNetwork... vpcNetworks) {

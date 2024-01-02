@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -86,42 +87,66 @@ public final class GetServiceTemplateMetadata {
 
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateMetadata", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder generation(Integer generation) {
-            this.generation = Objects.requireNonNull(generation);
+            if (generation == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateMetadata", "generation");
+            }
+            this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateMetadata", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateMetadata", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateMetadata", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder resourceVersion(String resourceVersion) {
-            this.resourceVersion = Objects.requireNonNull(resourceVersion);
+            if (resourceVersion == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateMetadata", "resourceVersion");
+            }
+            this.resourceVersion = resourceVersion;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateMetadata", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateMetadata", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         public GetServiceTemplateMetadata build() {

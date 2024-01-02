@@ -98,16 +98,19 @@ public final class DatascanDataQualitySpec {
 
         @CustomType.Setter
         public Builder postScanActions(@Nullable DatascanDataQualitySpecPostScanActions postScanActions) {
+
             this.postScanActions = postScanActions;
             return this;
         }
         @CustomType.Setter
         public Builder rowFilter(@Nullable String rowFilter) {
+
             this.rowFilter = rowFilter;
             return this;
         }
         @CustomType.Setter
         public Builder rules(@Nullable List<DatascanDataQualitySpecRule> rules) {
+
             this.rules = rules;
             return this;
         }
@@ -116,6 +119,7 @@ public final class DatascanDataQualitySpec {
         }
         @CustomType.Setter
         public Builder samplingPercent(@Nullable Double samplingPercent) {
+
             this.samplingPercent = samplingPercent;
             return this;
         }

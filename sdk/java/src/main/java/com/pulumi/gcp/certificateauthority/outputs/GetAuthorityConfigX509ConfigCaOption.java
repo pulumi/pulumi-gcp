@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -53,22 +54,34 @@ public final class GetAuthorityConfigX509ConfigCaOption {
 
         @CustomType.Setter
         public Builder isCa(Boolean isCa) {
-            this.isCa = Objects.requireNonNull(isCa);
+            if (isCa == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigCaOption", "isCa");
+            }
+            this.isCa = isCa;
             return this;
         }
         @CustomType.Setter
         public Builder maxIssuerPathLength(Integer maxIssuerPathLength) {
-            this.maxIssuerPathLength = Objects.requireNonNull(maxIssuerPathLength);
+            if (maxIssuerPathLength == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigCaOption", "maxIssuerPathLength");
+            }
+            this.maxIssuerPathLength = maxIssuerPathLength;
             return this;
         }
         @CustomType.Setter
         public Builder nonCa(Boolean nonCa) {
-            this.nonCa = Objects.requireNonNull(nonCa);
+            if (nonCa == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigCaOption", "nonCa");
+            }
+            this.nonCa = nonCa;
             return this;
         }
         @CustomType.Setter
         public Builder zeroMaxIssuerPathLength(Boolean zeroMaxIssuerPathLength) {
-            this.zeroMaxIssuerPathLength = Objects.requireNonNull(zeroMaxIssuerPathLength);
+            if (zeroMaxIssuerPathLength == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigCaOption", "zeroMaxIssuerPathLength");
+            }
+            this.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
             return this;
         }
         public GetAuthorityConfigX509ConfigCaOption build() {

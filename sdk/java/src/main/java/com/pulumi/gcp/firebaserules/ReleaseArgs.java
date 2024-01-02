@@ -5,6 +5,7 @@ package com.pulumi.gcp.firebaserules;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,7 +159,9 @@ public final class ReleaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ReleaseArgs build() {
-            $.rulesetName = Objects.requireNonNull($.rulesetName, "expected parameter 'rulesetName' to be non-null");
+            if ($.rulesetName == null) {
+                throw new MissingRequiredPropertyException("ReleaseArgs", "rulesetName");
+            }
             return $;
         }
     }

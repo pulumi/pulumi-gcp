@@ -62,11 +62,13 @@ public final class BackupExpiryQuantity {
 
         @CustomType.Setter
         public Builder retentionCount(@Nullable Integer retentionCount) {
+
             this.retentionCount = retentionCount;
             return this;
         }
         @CustomType.Setter
         public Builder totalRetentionCount(@Nullable Integer totalRetentionCount) {
+
             this.totalRetentionCount = totalRetentionCount;
             return this;
         }

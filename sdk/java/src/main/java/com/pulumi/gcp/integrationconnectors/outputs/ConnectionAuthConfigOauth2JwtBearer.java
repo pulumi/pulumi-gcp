@@ -67,11 +67,13 @@ public final class ConnectionAuthConfigOauth2JwtBearer {
 
         @CustomType.Setter
         public Builder clientKey(@Nullable ConnectionAuthConfigOauth2JwtBearerClientKey clientKey) {
+
             this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder jwtClaims(@Nullable ConnectionAuthConfigOauth2JwtBearerJwtClaims jwtClaims) {
+
             this.jwtClaims = jwtClaims;
             return this;
         }

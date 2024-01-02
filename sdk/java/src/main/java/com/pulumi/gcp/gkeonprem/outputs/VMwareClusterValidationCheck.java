@@ -82,16 +82,19 @@ public final class VMwareClusterValidationCheck {
 
         @CustomType.Setter
         public Builder options(@Nullable String options) {
+
             this.options = options;
             return this;
         }
         @CustomType.Setter
         public Builder scenario(@Nullable String scenario) {
+
             this.scenario = scenario;
             return this;
         }
         @CustomType.Setter
         public Builder statuses(@Nullable List<VMwareClusterValidationCheckStatus> statuses) {
+
             this.statuses = statuses;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -65,11 +66,15 @@ public final class EngineSplitTrafficSplit {
 
         @CustomType.Setter
         public Builder allocations(Map<String,String> allocations) {
-            this.allocations = Objects.requireNonNull(allocations);
+            if (allocations == null) {
+              throw new MissingRequiredPropertyException("EngineSplitTrafficSplit", "allocations");
+            }
+            this.allocations = allocations;
             return this;
         }
         @CustomType.Setter
         public Builder shardBy(@Nullable String shardBy) {
+
             this.shardBy = shardBy;
             return this;
         }

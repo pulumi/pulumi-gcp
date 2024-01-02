@@ -87,16 +87,19 @@ public final class CxFlowNluSettings {
 
         @CustomType.Setter
         public Builder classificationThreshold(@Nullable Double classificationThreshold) {
+
             this.classificationThreshold = classificationThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder modelTrainingMode(@Nullable String modelTrainingMode) {
+
             this.modelTrainingMode = modelTrainingMode;
             return this;
         }
         @CustomType.Setter
         public Builder modelType(@Nullable String modelType) {
+
             this.modelType = modelType;
             return this;
         }

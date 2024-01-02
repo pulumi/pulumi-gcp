@@ -4,6 +4,7 @@
 package com.pulumi.gcp.notebooks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,18 @@ public final class InstanceAcceleratorConfig {
 
         @CustomType.Setter
         public Builder coreCount(Integer coreCount) {
-            this.coreCount = Objects.requireNonNull(coreCount);
+            if (coreCount == null) {
+              throw new MissingRequiredPropertyException("InstanceAcceleratorConfig", "coreCount");
+            }
+            this.coreCount = coreCount;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("InstanceAcceleratorConfig", "type");
+            }
+            this.type = type;
             return this;
         }
         public InstanceAcceleratorConfig build() {

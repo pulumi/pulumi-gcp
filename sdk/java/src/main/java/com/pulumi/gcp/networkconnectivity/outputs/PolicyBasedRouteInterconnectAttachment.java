@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkconnectivity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class PolicyBasedRouteInterconnectAttachment {
 
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("PolicyBasedRouteInterconnectAttachment", "region");
+            }
+            this.region = region;
             return this;
         }
         public PolicyBasedRouteInterconnectAttachment build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.recaptcha.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class EnterpriseKeyWafSettings {
 
         @CustomType.Setter
         public Builder wafFeature(String wafFeature) {
-            this.wafFeature = Objects.requireNonNull(wafFeature);
+            if (wafFeature == null) {
+              throw new MissingRequiredPropertyException("EnterpriseKeyWafSettings", "wafFeature");
+            }
+            this.wafFeature = wafFeature;
             return this;
         }
         @CustomType.Setter
         public Builder wafService(String wafService) {
-            this.wafService = Objects.requireNonNull(wafService);
+            if (wafService == null) {
+              throw new MissingRequiredPropertyException("EnterpriseKeyWafSettings", "wafService");
+            }
+            this.wafService = wafService;
             return this;
         }
         public EnterpriseKeyWafSettings build() {

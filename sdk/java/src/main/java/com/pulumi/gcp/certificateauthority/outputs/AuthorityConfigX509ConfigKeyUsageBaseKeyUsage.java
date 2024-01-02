@@ -156,46 +156,55 @@ public final class AuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
 
         @CustomType.Setter
         public Builder certSign(@Nullable Boolean certSign) {
+
             this.certSign = certSign;
             return this;
         }
         @CustomType.Setter
         public Builder contentCommitment(@Nullable Boolean contentCommitment) {
+
             this.contentCommitment = contentCommitment;
             return this;
         }
         @CustomType.Setter
         public Builder crlSign(@Nullable Boolean crlSign) {
+
             this.crlSign = crlSign;
             return this;
         }
         @CustomType.Setter
         public Builder dataEncipherment(@Nullable Boolean dataEncipherment) {
+
             this.dataEncipherment = dataEncipherment;
             return this;
         }
         @CustomType.Setter
         public Builder decipherOnly(@Nullable Boolean decipherOnly) {
+
             this.decipherOnly = decipherOnly;
             return this;
         }
         @CustomType.Setter
         public Builder digitalSignature(@Nullable Boolean digitalSignature) {
+
             this.digitalSignature = digitalSignature;
             return this;
         }
         @CustomType.Setter
         public Builder encipherOnly(@Nullable Boolean encipherOnly) {
+
             this.encipherOnly = encipherOnly;
             return this;
         }
         @CustomType.Setter
         public Builder keyAgreement(@Nullable Boolean keyAgreement) {
+
             this.keyAgreement = keyAgreement;
             return this;
         }
         @CustomType.Setter
         public Builder keyEncipherment(@Nullable Boolean keyEncipherment) {
+
             this.keyEncipherment = keyEncipherment;
             return this;
         }

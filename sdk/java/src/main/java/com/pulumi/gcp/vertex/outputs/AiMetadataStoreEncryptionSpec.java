@@ -46,6 +46,7 @@ public final class AiMetadataStoreEncryptionSpec {
 
         @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
+
             this.kmsKeyName = kmsKeyName;
             return this;
         }

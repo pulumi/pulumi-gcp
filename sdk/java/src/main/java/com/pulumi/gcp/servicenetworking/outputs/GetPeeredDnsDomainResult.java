@@ -4,6 +4,7 @@
 package com.pulumi.gcp.servicenetworking.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,37 +79,58 @@ public final class GetPeeredDnsDomainResult {
 
         @CustomType.Setter
         public Builder dnsSuffix(String dnsSuffix) {
-            this.dnsSuffix = Objects.requireNonNull(dnsSuffix);
+            if (dnsSuffix == null) {
+              throw new MissingRequiredPropertyException("GetPeeredDnsDomainResult", "dnsSuffix");
+            }
+            this.dnsSuffix = dnsSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetPeeredDnsDomainResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetPeeredDnsDomainResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetPeeredDnsDomainResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder parent(String parent) {
-            this.parent = Objects.requireNonNull(parent);
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetPeeredDnsDomainResult", "parent");
+            }
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetPeeredDnsDomainResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("GetPeeredDnsDomainResult", "service");
+            }
+            this.service = service;
             return this;
         }
         public GetPeeredDnsDomainResult build() {

@@ -44,6 +44,7 @@ public final class ConnectionSparkSparkHistoryServerConfig {
 
         @CustomType.Setter
         public Builder dataprocCluster(@Nullable String dataprocCluster) {
+
             this.dataprocCluster = dataprocCluster;
             return this;
         }

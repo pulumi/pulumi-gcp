@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyDiskConsistencyGroupPolicy;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyGroupPlacementPolicy;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyInstanceSchedulePolicy;
@@ -119,12 +120,18 @@ public final class GetResourcePolicyResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskConsistencyGroupPolicies(List<GetResourcePolicyDiskConsistencyGroupPolicy> diskConsistencyGroupPolicies) {
-            this.diskConsistencyGroupPolicies = Objects.requireNonNull(diskConsistencyGroupPolicies);
+            if (diskConsistencyGroupPolicies == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "diskConsistencyGroupPolicies");
+            }
+            this.diskConsistencyGroupPolicies = diskConsistencyGroupPolicies;
             return this;
         }
         public Builder diskConsistencyGroupPolicies(GetResourcePolicyDiskConsistencyGroupPolicy... diskConsistencyGroupPolicies) {
@@ -132,7 +139,10 @@ public final class GetResourcePolicyResult {
         }
         @CustomType.Setter
         public Builder groupPlacementPolicies(List<GetResourcePolicyGroupPlacementPolicy> groupPlacementPolicies) {
-            this.groupPlacementPolicies = Objects.requireNonNull(groupPlacementPolicies);
+            if (groupPlacementPolicies == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "groupPlacementPolicies");
+            }
+            this.groupPlacementPolicies = groupPlacementPolicies;
             return this;
         }
         public Builder groupPlacementPolicies(GetResourcePolicyGroupPlacementPolicy... groupPlacementPolicies) {
@@ -140,12 +150,18 @@ public final class GetResourcePolicyResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instanceSchedulePolicies(List<GetResourcePolicyInstanceSchedulePolicy> instanceSchedulePolicies) {
-            this.instanceSchedulePolicies = Objects.requireNonNull(instanceSchedulePolicies);
+            if (instanceSchedulePolicies == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "instanceSchedulePolicies");
+            }
+            this.instanceSchedulePolicies = instanceSchedulePolicies;
             return this;
         }
         public Builder instanceSchedulePolicies(GetResourcePolicyInstanceSchedulePolicy... instanceSchedulePolicies) {
@@ -153,27 +169,38 @@ public final class GetResourcePolicyResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotSchedulePolicies(List<GetResourcePolicySnapshotSchedulePolicy> snapshotSchedulePolicies) {
-            this.snapshotSchedulePolicies = Objects.requireNonNull(snapshotSchedulePolicies);
+            if (snapshotSchedulePolicies == null) {
+              throw new MissingRequiredPropertyException("GetResourcePolicyResult", "snapshotSchedulePolicies");
+            }
+            this.snapshotSchedulePolicies = snapshotSchedulePolicies;
             return this;
         }
         public Builder snapshotSchedulePolicies(GetResourcePolicySnapshotSchedulePolicy... snapshotSchedulePolicies) {

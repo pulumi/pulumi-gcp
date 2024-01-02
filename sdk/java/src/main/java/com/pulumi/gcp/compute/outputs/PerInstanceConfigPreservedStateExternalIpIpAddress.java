@@ -44,6 +44,7 @@ public final class PerInstanceConfigPreservedStateExternalIpIpAddress {
 
         @CustomType.Setter
         public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class PatchDeploymentOneTimeScheduleArgs extends com.pulumi.resourc
         }
 
         public PatchDeploymentOneTimeScheduleArgs build() {
-            $.executeTime = Objects.requireNonNull($.executeTime, "expected parameter 'executeTime' to be non-null");
+            if ($.executeTime == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentOneTimeScheduleArgs", "executeTime");
+            }
             return $;
         }
     }

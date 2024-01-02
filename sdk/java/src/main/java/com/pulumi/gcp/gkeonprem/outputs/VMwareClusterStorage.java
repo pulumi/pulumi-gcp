@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class VMwareClusterStorage {
 
         @CustomType.Setter
         public Builder vsphereCsiDisabled(Boolean vsphereCsiDisabled) {
-            this.vsphereCsiDisabled = Objects.requireNonNull(vsphereCsiDisabled);
+            if (vsphereCsiDisabled == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterStorage", "vsphereCsiDisabled");
+            }
+            this.vsphereCsiDisabled = vsphereCsiDisabled;
             return this;
         }
         public VMwareClusterStorage build() {

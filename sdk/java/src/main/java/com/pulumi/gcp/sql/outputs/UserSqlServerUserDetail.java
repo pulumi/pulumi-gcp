@@ -44,11 +44,13 @@ public final class UserSqlServerUserDetail {
 
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder serverRoles(@Nullable List<String> serverRoles) {
+
             this.serverRoles = serverRoles;
             return this;
         }

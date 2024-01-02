@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -163,8 +164,12 @@ public final class PolicyTagIamPolicyArgs extends com.pulumi.resources.ResourceA
         }
 
         public PolicyTagIamPolicyArgs build() {
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
-            $.policyTag = Objects.requireNonNull($.policyTag, "expected parameter 'policyTag' to be non-null");
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("PolicyTagIamPolicyArgs", "policyData");
+            }
+            if ($.policyTag == null) {
+                throw new MissingRequiredPropertyException("PolicyTagIamPolicyArgs", "policyTag");
+            }
             return $;
         }
     }

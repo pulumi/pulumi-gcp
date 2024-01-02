@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.ZoneDiscoverySpecArgs;
 import com.pulumi.gcp.dataplex.inputs.ZoneResourceSpecArgs;
 import java.lang.String;
@@ -424,11 +425,21 @@ public final class ZoneArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZoneArgs build() {
-            $.discoverySpec = Objects.requireNonNull($.discoverySpec, "expected parameter 'discoverySpec' to be non-null");
-            $.lake = Objects.requireNonNull($.lake, "expected parameter 'lake' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.resourceSpec = Objects.requireNonNull($.resourceSpec, "expected parameter 'resourceSpec' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.discoverySpec == null) {
+                throw new MissingRequiredPropertyException("ZoneArgs", "discoverySpec");
+            }
+            if ($.lake == null) {
+                throw new MissingRequiredPropertyException("ZoneArgs", "lake");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ZoneArgs", "location");
+            }
+            if ($.resourceSpec == null) {
+                throw new MissingRequiredPropertyException("ZoneArgs", "resourceSpec");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ZoneArgs", "type");
+            }
             return $;
         }
     }

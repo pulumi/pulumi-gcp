@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class SecurityPolicyRuleRateLimitOptionsBanThresholdArgs extends co
         }
 
         public SecurityPolicyRuleRateLimitOptionsBanThresholdArgs build() {
-            $.count = Objects.requireNonNull($.count, "expected parameter 'count' to be non-null");
-            $.intervalSec = Objects.requireNonNull($.intervalSec, "expected parameter 'intervalSec' to be non-null");
+            if ($.count == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsBanThresholdArgs", "count");
+            }
+            if ($.intervalSec == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptionsBanThresholdArgs", "intervalSec");
+            }
             return $;
         }
     }

@@ -68,11 +68,13 @@ public final class ServicePerimetersServicePerimeterSpecIngressPolicyIngressFrom
 
         @CustomType.Setter
         public Builder accessLevel(@Nullable String accessLevel) {
+
             this.accessLevel = accessLevel;
             return this;
         }
         @CustomType.Setter
         public Builder resource(@Nullable String resource) {
+
             this.resource = resource;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         }
 
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs build() {
-            $.phaseConfigs = Objects.requireNonNull($.phaseConfigs, "expected parameter 'phaseConfigs' to be non-null");
+            if ($.phaseConfigs == null) {
+                throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentArgs", "phaseConfigs");
+            }
             return $;
         }
     }

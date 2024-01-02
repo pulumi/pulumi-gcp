@@ -60,11 +60,13 @@ public final class InstanceGceSetupAcceleratorConfig {
 
         @CustomType.Setter
         public Builder coreCount(@Nullable String coreCount) {
+
             this.coreCount = coreCount;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

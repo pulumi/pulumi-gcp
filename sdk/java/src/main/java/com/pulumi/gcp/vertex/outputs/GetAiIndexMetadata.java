@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexMetadataConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -49,7 +50,10 @@ public final class GetAiIndexMetadata {
 
         @CustomType.Setter
         public Builder configs(List<GetAiIndexMetadataConfig> configs) {
-            this.configs = Objects.requireNonNull(configs);
+            if (configs == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadata", "configs");
+            }
+            this.configs = configs;
             return this;
         }
         public Builder configs(GetAiIndexMetadataConfig... configs) {
@@ -57,12 +61,18 @@ public final class GetAiIndexMetadata {
         }
         @CustomType.Setter
         public Builder contentsDeltaUri(String contentsDeltaUri) {
-            this.contentsDeltaUri = Objects.requireNonNull(contentsDeltaUri);
+            if (contentsDeltaUri == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadata", "contentsDeltaUri");
+            }
+            this.contentsDeltaUri = contentsDeltaUri;
             return this;
         }
         @CustomType.Setter
         public Builder isCompleteOverwrite(Boolean isCompleteOverwrite) {
-            this.isCompleteOverwrite = Objects.requireNonNull(isCompleteOverwrite);
+            if (isCompleteOverwrite == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadata", "isCompleteOverwrite");
+            }
+            this.isCompleteOverwrite = isCompleteOverwrite;
             return this;
         }
         public GetAiIndexMetadata build() {

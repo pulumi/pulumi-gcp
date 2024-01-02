@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -60,12 +61,18 @@ public final class BareMetalClusterStorageLvpNodeMountsConfig {
 
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterStorageLvpNodeMountsConfig", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder storageClass(String storageClass) {
-            this.storageClass = Objects.requireNonNull(storageClass);
+            if (storageClass == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterStorageLvpNodeMountsConfig", "storageClass");
+            }
+            this.storageClass = storageClass;
             return this;
         }
         public BareMetalClusterStorageLvpNodeMountsConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -229,10 +230,18 @@ public final class ObjectAccessControlArgs extends com.pulumi.resources.Resource
         }
 
         public ObjectAccessControlArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.entity = Objects.requireNonNull($.entity, "expected parameter 'entity' to be non-null");
-            $.object = Objects.requireNonNull($.object, "expected parameter 'object' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("ObjectAccessControlArgs", "bucket");
+            }
+            if ($.entity == null) {
+                throw new MissingRequiredPropertyException("ObjectAccessControlArgs", "entity");
+            }
+            if ($.object == null) {
+                throw new MissingRequiredPropertyException("ObjectAccessControlArgs", "object");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ObjectAccessControlArgs", "role");
+            }
             return $;
         }
     }

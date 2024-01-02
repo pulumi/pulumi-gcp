@@ -63,11 +63,13 @@ public final class FeatureSpec {
 
         @CustomType.Setter
         public Builder fleetobservability(@Nullable FeatureSpecFleetobservability fleetobservability) {
+
             this.fleetobservability = fleetobservability;
             return this;
         }
         @CustomType.Setter
         public Builder multiclusteringress(@Nullable FeatureSpecMulticlusteringress multiclusteringress) {
+
             this.multiclusteringress = multiclusteringress;
             return this;
         }

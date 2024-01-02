@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionDestinationConfigDestination;
 import java.lang.String;
 import java.util.List;
@@ -61,6 +62,7 @@ public final class ConnectionDestinationConfig {
 
         @CustomType.Setter
         public Builder destinations(@Nullable List<ConnectionDestinationConfigDestination> destinations) {
+
             this.destinations = destinations;
             return this;
         }
@@ -69,7 +71,10 @@ public final class ConnectionDestinationConfig {
         }
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("ConnectionDestinationConfig", "key");
+            }
+            this.key = key;
             return this;
         }
         public ConnectionDestinationConfig build() {

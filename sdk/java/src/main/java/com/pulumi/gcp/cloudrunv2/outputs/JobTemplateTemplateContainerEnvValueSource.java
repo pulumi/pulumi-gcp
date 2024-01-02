@@ -46,6 +46,7 @@ public final class JobTemplateTemplateContainerEnvValueSource {
 
         @CustomType.Setter
         public Builder secretKeyRef(@Nullable JobTemplateTemplateContainerEnvValueSourceSecretKeyRef secretKeyRef) {
+
             this.secretKeyRef = secretKeyRef;
             return this;
         }

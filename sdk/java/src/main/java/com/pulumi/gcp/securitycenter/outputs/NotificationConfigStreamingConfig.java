@@ -4,6 +4,7 @@
 package com.pulumi.gcp.securitycenter.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,7 +83,10 @@ public final class NotificationConfigStreamingConfig {
 
         @CustomType.Setter
         public Builder filter(String filter) {
-            this.filter = Objects.requireNonNull(filter);
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("NotificationConfigStreamingConfig", "filter");
+            }
+            this.filter = filter;
             return this;
         }
         public NotificationConfigStreamingConfig build() {

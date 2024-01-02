@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigAlgorithmConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -319,7 +320,9 @@ public final class AiIndexMetadataConfigArgs extends com.pulumi.resources.Resour
         }
 
         public AiIndexMetadataConfigArgs build() {
-            $.dimensions = Objects.requireNonNull($.dimensions, "expected parameter 'dimensions' to be non-null");
+            if ($.dimensions == null) {
+                throw new MissingRequiredPropertyException("AiIndexMetadataConfigArgs", "dimensions");
+            }
             return $;
         }
     }

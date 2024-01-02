@@ -66,6 +66,7 @@ public final class WorkforcePoolAccessRestrictions {
 
         @CustomType.Setter
         public Builder allowedServices(@Nullable List<WorkforcePoolAccessRestrictionsAllowedService> allowedServices) {
+
             this.allowedServices = allowedServices;
             return this;
         }
@@ -74,6 +75,7 @@ public final class WorkforcePoolAccessRestrictions {
         }
         @CustomType.Setter
         public Builder disableProgrammaticSignin(@Nullable Boolean disableProgrammaticSignin) {
+
             this.disableProgrammaticSignin = disableProgrammaticSignin;
             return this;
         }

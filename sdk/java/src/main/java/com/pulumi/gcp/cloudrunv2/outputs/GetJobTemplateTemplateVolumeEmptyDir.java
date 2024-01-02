@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetJobTemplateTemplateVolumeEmptyDir {
 
         @CustomType.Setter
         public Builder medium(String medium) {
-            this.medium = Objects.requireNonNull(medium);
+            if (medium == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolumeEmptyDir", "medium");
+            }
+            this.medium = medium;
             return this;
         }
         @CustomType.Setter
         public Builder sizeLimit(String sizeLimit) {
-            this.sizeLimit = Objects.requireNonNull(sizeLimit);
+            if (sizeLimit == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolumeEmptyDir", "sizeLimit");
+            }
+            this.sizeLimit = sizeLimit;
             return this;
         }
         public GetJobTemplateTemplateVolumeEmptyDir build() {

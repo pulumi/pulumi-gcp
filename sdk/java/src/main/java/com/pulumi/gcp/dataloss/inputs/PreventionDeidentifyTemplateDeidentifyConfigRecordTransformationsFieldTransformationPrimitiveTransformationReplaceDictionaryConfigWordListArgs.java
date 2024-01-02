@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
 
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs build() {
-            $.words = Objects.requireNonNull($.words, "expected parameter 'words' to be non-null");
+            if ($.words == null) {
+                throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfigWordListArgs", "words");
+            }
             return $;
         }
     }

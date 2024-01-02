@@ -88,16 +88,19 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
 
         @CustomType.Setter
         public Builder hotwordRegex(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleHotwordRegex hotwordRegex) {
+
             this.hotwordRegex = hotwordRegex;
             return this;
         }
         @CustomType.Setter
         public Builder likelihoodAdjustment(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustment likelihoodAdjustment) {
+
             this.likelihoodAdjustment = likelihoodAdjustment;
             return this;
         }
         @CustomType.Setter
         public Builder proximity(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRuleProximity proximity) {
+
             this.proximity = proximity;
             return this;
         }

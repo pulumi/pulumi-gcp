@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -95,7 +96,9 @@ public final class NodePoolNodeConfigReservationAffinityArgs extends com.pulumi.
         }
 
         public NodePoolNodeConfigReservationAffinityArgs build() {
-            $.consumeReservationType = Objects.requireNonNull($.consumeReservationType, "expected parameter 'consumeReservationType' to be non-null");
+            if ($.consumeReservationType == null) {
+                throw new MissingRequiredPropertyException("NodePoolNodeConfigReservationAffinityArgs", "consumeReservationType");
+            }
             return $;
         }
     }

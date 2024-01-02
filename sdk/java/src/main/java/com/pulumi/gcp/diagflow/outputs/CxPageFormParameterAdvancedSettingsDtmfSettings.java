@@ -74,16 +74,19 @@ public final class CxPageFormParameterAdvancedSettingsDtmfSettings {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder finishDigit(@Nullable String finishDigit) {
+
             this.finishDigit = finishDigit;
             return this;
         }
         @CustomType.Setter
         public Builder maxDigits(@Nullable Integer maxDigits) {
+
             this.maxDigits = maxDigits;
             return this;
         }

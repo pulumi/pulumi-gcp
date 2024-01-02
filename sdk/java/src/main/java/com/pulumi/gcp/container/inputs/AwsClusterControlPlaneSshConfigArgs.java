@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class AwsClusterControlPlaneSshConfigArgs extends com.pulumi.resour
         }
 
         public AwsClusterControlPlaneSshConfigArgs build() {
-            $.ec2KeyPair = Objects.requireNonNull($.ec2KeyPair, "expected parameter 'ec2KeyPair' to be non-null");
+            if ($.ec2KeyPair == null) {
+                throw new MissingRequiredPropertyException("AwsClusterControlPlaneSshConfigArgs", "ec2KeyPair");
+            }
             return $;
         }
     }

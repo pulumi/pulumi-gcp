@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateJobHadoopJob;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateJobHiveJob;
 import com.pulumi.gcp.dataproc.outputs.WorkflowTemplateJobPigJob;
@@ -209,26 +210,31 @@ public final class WorkflowTemplateJob {
 
         @CustomType.Setter
         public Builder hadoopJob(@Nullable WorkflowTemplateJobHadoopJob hadoopJob) {
+
             this.hadoopJob = hadoopJob;
             return this;
         }
         @CustomType.Setter
         public Builder hiveJob(@Nullable WorkflowTemplateJobHiveJob hiveJob) {
+
             this.hiveJob = hiveJob;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder pigJob(@Nullable WorkflowTemplateJobPigJob pigJob) {
+
             this.pigJob = pigJob;
             return this;
         }
         @CustomType.Setter
         public Builder prerequisiteStepIds(@Nullable List<String> prerequisiteStepIds) {
+
             this.prerequisiteStepIds = prerequisiteStepIds;
             return this;
         }
@@ -237,37 +243,46 @@ public final class WorkflowTemplateJob {
         }
         @CustomType.Setter
         public Builder prestoJob(@Nullable WorkflowTemplateJobPrestoJob prestoJob) {
+
             this.prestoJob = prestoJob;
             return this;
         }
         @CustomType.Setter
         public Builder pysparkJob(@Nullable WorkflowTemplateJobPysparkJob pysparkJob) {
+
             this.pysparkJob = pysparkJob;
             return this;
         }
         @CustomType.Setter
         public Builder scheduling(@Nullable WorkflowTemplateJobScheduling scheduling) {
+
             this.scheduling = scheduling;
             return this;
         }
         @CustomType.Setter
         public Builder sparkJob(@Nullable WorkflowTemplateJobSparkJob sparkJob) {
+
             this.sparkJob = sparkJob;
             return this;
         }
         @CustomType.Setter
         public Builder sparkRJob(@Nullable WorkflowTemplateJobSparkRJob sparkRJob) {
+
             this.sparkRJob = sparkRJob;
             return this;
         }
         @CustomType.Setter
         public Builder sparkSqlJob(@Nullable WorkflowTemplateJobSparkSqlJob sparkSqlJob) {
+
             this.sparkSqlJob = sparkSqlJob;
             return this;
         }
         @CustomType.Setter
         public Builder stepId(String stepId) {
-            this.stepId = Objects.requireNonNull(stepId);
+            if (stepId == null) {
+              throw new MissingRequiredPropertyException("WorkflowTemplateJob", "stepId");
+            }
+            this.stepId = stepId;
             return this;
         }
         public WorkflowTemplateJob build() {

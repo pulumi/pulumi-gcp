@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class GuestPoliciesAssignmentGroupLabel {
 
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesAssignmentGroupLabel", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         public GuestPoliciesAssignmentGroupLabel build() {

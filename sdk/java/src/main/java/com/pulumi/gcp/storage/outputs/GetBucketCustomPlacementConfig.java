@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetBucketCustomPlacementConfig {
 
         @CustomType.Setter
         public Builder dataLocations(List<String> dataLocations) {
-            this.dataLocations = Objects.requireNonNull(dataLocations);
+            if (dataLocations == null) {
+              throw new MissingRequiredPropertyException("GetBucketCustomPlacementConfig", "dataLocations");
+            }
+            this.dataLocations = dataLocations;
             return this;
         }
         public Builder dataLocations(String... dataLocations) {

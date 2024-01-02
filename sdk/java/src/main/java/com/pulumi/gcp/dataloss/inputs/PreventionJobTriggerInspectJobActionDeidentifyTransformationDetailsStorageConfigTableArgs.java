@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,8 +159,12 @@ public final class PreventionJobTriggerInspectJobActionDeidentifyTransformationD
         }
 
         public PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs", "datasetId");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobActionDeidentifyTransformationDetailsStorageConfigTableArgs", "projectId");
+            }
             return $;
         }
     }

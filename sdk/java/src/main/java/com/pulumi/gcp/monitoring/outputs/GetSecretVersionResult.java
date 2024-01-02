@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -133,47 +134,74 @@ public final class GetSecretVersionResult {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder destroyTime(String destroyTime) {
-            this.destroyTime = Objects.requireNonNull(destroyTime);
+            if (destroyTime == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionResult", "destroyTime");
+            }
+            this.destroyTime = destroyTime;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionResult", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionResult", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         @CustomType.Setter
         public Builder secretData(String secretData) {
-            this.secretData = Objects.requireNonNull(secretData);
+            if (secretData == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionResult", "secretData");
+            }
+            this.secretData = secretData;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetSecretVersionResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetSecretVersionResult build() {

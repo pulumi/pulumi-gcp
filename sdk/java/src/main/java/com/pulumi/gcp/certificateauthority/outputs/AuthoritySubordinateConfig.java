@@ -69,11 +69,13 @@ public final class AuthoritySubordinateConfig {
 
         @CustomType.Setter
         public Builder certificateAuthority(@Nullable String certificateAuthority) {
+
             this.certificateAuthority = certificateAuthority;
             return this;
         }
         @CustomType.Setter
         public Builder pemIssuerChain(@Nullable AuthoritySubordinateConfigPemIssuerChain pemIssuerChain) {
+
             this.pemIssuerChain = pemIssuerChain;
             return this;
         }

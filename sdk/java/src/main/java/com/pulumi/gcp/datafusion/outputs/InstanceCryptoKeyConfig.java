@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datafusion.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class InstanceCryptoKeyConfig {
 
         @CustomType.Setter
         public Builder keyReference(String keyReference) {
-            this.keyReference = Objects.requireNonNull(keyReference);
+            if (keyReference == null) {
+              throw new MissingRequiredPropertyException("InstanceCryptoKeyConfig", "keyReference");
+            }
+            this.keyReference = keyReference;
             return this;
         }
         public InstanceCryptoKeyConfig build() {

@@ -80,16 +80,19 @@ public final class ConnectionSpark {
 
         @CustomType.Setter
         public Builder metastoreServiceConfig(@Nullable ConnectionSparkMetastoreServiceConfig metastoreServiceConfig) {
+
             this.metastoreServiceConfig = metastoreServiceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountId(@Nullable String serviceAccountId) {
+
             this.serviceAccountId = serviceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder sparkHistoryServerConfig(@Nullable ConnectionSparkSparkHistoryServerConfig sparkHistoryServerConfig) {
+
             this.sparkHistoryServerConfig = sparkHistoryServerConfig;
             return this;
         }

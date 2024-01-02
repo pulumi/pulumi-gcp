@@ -72,16 +72,19 @@ public final class BiReservationPreferredTable {
 
         @CustomType.Setter
         public Builder datasetId(@Nullable String datasetId) {
+
             this.datasetId = datasetId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder tableId(@Nullable String tableId) {
+
             this.tableId = tableId;
             return this;
         }

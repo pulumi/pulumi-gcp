@@ -63,11 +63,13 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusi
 
         @CustomType.Setter
         public Builder cloudStoragePath(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryCloudStoragePath cloudStoragePath) {
+
             this.cloudStoragePath = cloudStoragePath;
             return this;
         }
         @CustomType.Setter
         public Builder wordList(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRuleDictionaryWordList wordList) {
+
             this.wordList = wordList;
             return this;
         }

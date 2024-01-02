@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -306,12 +307,24 @@ public final class KeystoresAliasesPkcs12Args extends com.pulumi.resources.Resou
         }
 
         public KeystoresAliasesPkcs12Args build() {
-            $.alias = Objects.requireNonNull($.alias, "expected parameter 'alias' to be non-null");
-            $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
-            $.file = Objects.requireNonNull($.file, "expected parameter 'file' to be non-null");
-            $.filehash = Objects.requireNonNull($.filehash, "expected parameter 'filehash' to be non-null");
-            $.keystore = Objects.requireNonNull($.keystore, "expected parameter 'keystore' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            if ($.alias == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesPkcs12Args", "alias");
+            }
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesPkcs12Args", "environment");
+            }
+            if ($.file == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesPkcs12Args", "file");
+            }
+            if ($.filehash == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesPkcs12Args", "filehash");
+            }
+            if ($.keystore == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesPkcs12Args", "keystore");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesPkcs12Args", "orgId");
+            }
             return $;
         }
     }

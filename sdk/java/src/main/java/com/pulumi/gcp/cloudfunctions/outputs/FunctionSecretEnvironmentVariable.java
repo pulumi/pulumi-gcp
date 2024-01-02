@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctions.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,32 @@ public final class FunctionSecretEnvironmentVariable {
 
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("FunctionSecretEnvironmentVariable", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder secret(String secret) {
-            this.secret = Objects.requireNonNull(secret);
+            if (secret == null) {
+              throw new MissingRequiredPropertyException("FunctionSecretEnvironmentVariable", "secret");
+            }
+            this.secret = secret;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("FunctionSecretEnvironmentVariable", "version");
+            }
+            this.version = version;
             return this;
         }
         public FunctionSecretEnvironmentVariable build() {

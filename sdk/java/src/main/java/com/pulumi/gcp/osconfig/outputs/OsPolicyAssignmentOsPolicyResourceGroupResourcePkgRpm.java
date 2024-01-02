@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -65,12 +66,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm {
 
         @CustomType.Setter
         public Builder pullDeps(@Nullable Boolean pullDeps) {
+
             this.pullDeps = pullDeps;
             return this;
         }
         @CustomType.Setter
         public Builder source(OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm", "source");
+            }
+            this.source = source;
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpm build() {

@@ -120,21 +120,25 @@ public final class InstancePersistenceConfig {
 
         @CustomType.Setter
         public Builder persistenceMode(@Nullable String persistenceMode) {
+
             this.persistenceMode = persistenceMode;
             return this;
         }
         @CustomType.Setter
         public Builder rdbNextSnapshotTime(@Nullable String rdbNextSnapshotTime) {
+
             this.rdbNextSnapshotTime = rdbNextSnapshotTime;
             return this;
         }
         @CustomType.Setter
         public Builder rdbSnapshotPeriod(@Nullable String rdbSnapshotPeriod) {
+
             this.rdbSnapshotPeriod = rdbSnapshotPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder rdbSnapshotStartTime(@Nullable String rdbSnapshotStartTime) {
+
             this.rdbSnapshotStartTime = rdbSnapshotStartTime;
             return this;
         }

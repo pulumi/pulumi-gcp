@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaArgs;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsArgs extend
         }
 
         public StreamSourceConfigOracleSourceConfigExcludeObjectsArgs build() {
-            $.oracleSchemas = Objects.requireNonNull($.oracleSchemas, "expected parameter 'oracleSchemas' to be non-null");
+            if ($.oracleSchemas == null) {
+                throw new MissingRequiredPropertyException("StreamSourceConfigOracleSourceConfigExcludeObjectsArgs", "oracleSchemas");
+            }
             return $;
         }
     }

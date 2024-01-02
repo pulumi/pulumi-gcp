@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.inputs.SchemaIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -250,9 +251,15 @@ public final class SchemaIamBindingArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SchemaIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.schema = Objects.requireNonNull($.schema, "expected parameter 'schema' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("SchemaIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("SchemaIamBindingArgs", "role");
+            }
+            if ($.schema == null) {
+                throw new MissingRequiredPropertyException("SchemaIamBindingArgs", "schema");
+            }
             return $;
         }
     }

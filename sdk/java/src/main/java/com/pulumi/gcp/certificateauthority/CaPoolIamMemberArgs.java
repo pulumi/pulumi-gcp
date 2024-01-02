@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -314,9 +315,15 @@ public final class CaPoolIamMemberArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public CaPoolIamMemberArgs build() {
-            $.caPool = Objects.requireNonNull($.caPool, "expected parameter 'caPool' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.caPool == null) {
+                throw new MissingRequiredPropertyException("CaPoolIamMemberArgs", "caPool");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("CaPoolIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("CaPoolIamMemberArgs", "role");
+            }
             return $;
         }
     }

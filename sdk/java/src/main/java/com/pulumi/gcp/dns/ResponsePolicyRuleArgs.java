@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.ResponsePolicyRuleLocalDataArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -286,9 +287,15 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         public ResponsePolicyRuleArgs build() {
-            $.dnsName = Objects.requireNonNull($.dnsName, "expected parameter 'dnsName' to be non-null");
-            $.responsePolicy = Objects.requireNonNull($.responsePolicy, "expected parameter 'responsePolicy' to be non-null");
-            $.ruleName = Objects.requireNonNull($.ruleName, "expected parameter 'ruleName' to be non-null");
+            if ($.dnsName == null) {
+                throw new MissingRequiredPropertyException("ResponsePolicyRuleArgs", "dnsName");
+            }
+            if ($.responsePolicy == null) {
+                throw new MissingRequiredPropertyException("ResponsePolicyRuleArgs", "responsePolicy");
+            }
+            if ($.ruleName == null) {
+                throw new MissingRequiredPropertyException("ResponsePolicyRuleArgs", "ruleName");
+            }
             return $;
         }
     }

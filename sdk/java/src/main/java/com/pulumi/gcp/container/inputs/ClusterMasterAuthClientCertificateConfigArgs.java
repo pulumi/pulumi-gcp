@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class ClusterMasterAuthClientCertificateConfigArgs extends com.pulu
         }
 
         public ClusterMasterAuthClientCertificateConfigArgs build() {
-            $.issueClientCertificate = Objects.requireNonNull($.issueClientCertificate, "expected parameter 'issueClientCertificate' to be non-null");
+            if ($.issueClientCertificate == null) {
+                throw new MissingRequiredPropertyException("ClusterMasterAuthClientCertificateConfigArgs", "issueClientCertificate");
+            }
             return $;
         }
     }

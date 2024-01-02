@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTarg
 
         @CustomType.Setter
         public Builder internalLoadBalancers(List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers) {
-            this.internalLoadBalancers = Objects.requireNonNull(internalLoadBalancers);
+            if (internalLoadBalancers == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets", "internalLoadBalancers");
+            }
+            this.internalLoadBalancers = internalLoadBalancers;
             return this;
         }
         public Builder internalLoadBalancers(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer... internalLoadBalancers) {

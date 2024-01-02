@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay;
 import java.lang.Double;
 import java.util.Objects;
@@ -61,12 +62,18 @@ public final class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay
 
         @CustomType.Setter
         public Builder fixedDelay(URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay) {
-            this.fixedDelay = Objects.requireNonNull(fixedDelay);
+            if (fixedDelay == null) {
+              throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay", "fixedDelay");
+            }
+            this.fixedDelay = fixedDelay;
             return this;
         }
         @CustomType.Setter
         public Builder percentage(Double percentage) {
-            this.percentage = Objects.requireNonNull(percentage);
+            if (percentage == null) {
+              throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay", "percentage");
+            }
+            this.percentage = percentage;
             return this;
         }
         public URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyDelay build() {

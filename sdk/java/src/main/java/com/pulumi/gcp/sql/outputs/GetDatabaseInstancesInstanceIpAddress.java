@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetDatabaseInstancesInstanceIpAddress {
 
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceIpAddress", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder timeToRetire(String timeToRetire) {
-            this.timeToRetire = Objects.requireNonNull(timeToRetire);
+            if (timeToRetire == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceIpAddress", "timeToRetire");
+            }
+            this.timeToRetire = timeToRetire;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceIpAddress", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetDatabaseInstancesInstanceIpAddress build() {

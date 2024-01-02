@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerEnvFromArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateSpecContainerLivenessProbeArgs;
@@ -705,7 +706,9 @@ public final class ServiceTemplateSpecContainerArgs extends com.pulumi.resources
         }
 
         public ServiceTemplateSpecContainerArgs build() {
-            $.image = Objects.requireNonNull($.image, "expected parameter 'image' to be non-null");
+            if ($.image == null) {
+                throw new MissingRequiredPropertyException("ServiceTemplateSpecContainerArgs", "image");
+            }
             return $;
         }
     }

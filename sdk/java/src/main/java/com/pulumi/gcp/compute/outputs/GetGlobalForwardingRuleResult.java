@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleMetadataFilter;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleServiceDirectoryRegistration;
 import java.lang.Boolean;
@@ -193,62 +194,98 @@ public final class GetGlobalForwardingRuleResult {
 
         @CustomType.Setter
         public Builder allowPscGlobalAccess(Boolean allowPscGlobalAccess) {
-            this.allowPscGlobalAccess = Objects.requireNonNull(allowPscGlobalAccess);
+            if (allowPscGlobalAccess == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "allowPscGlobalAccess");
+            }
+            this.allowPscGlobalAccess = allowPscGlobalAccess;
             return this;
         }
         @CustomType.Setter
         public Builder baseForwardingRule(String baseForwardingRule) {
-            this.baseForwardingRule = Objects.requireNonNull(baseForwardingRule);
+            if (baseForwardingRule == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "baseForwardingRule");
+            }
+            this.baseForwardingRule = baseForwardingRule;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(String ipAddress) {
-            this.ipAddress = Objects.requireNonNull(ipAddress);
+            if (ipAddress == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "ipAddress");
+            }
+            this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
-            this.ipProtocol = Objects.requireNonNull(ipProtocol);
+            if (ipProtocol == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "ipProtocol");
+            }
+            this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder ipVersion(String ipVersion) {
-            this.ipVersion = Objects.requireNonNull(ipVersion);
+            if (ipVersion == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "ipVersion");
+            }
+            this.ipVersion = ipVersion;
             return this;
         }
         @CustomType.Setter
         public Builder labelFingerprint(String labelFingerprint) {
-            this.labelFingerprint = Objects.requireNonNull(labelFingerprint);
+            if (labelFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "labelFingerprint");
+            }
+            this.labelFingerprint = labelFingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder loadBalancingScheme(String loadBalancingScheme) {
-            this.loadBalancingScheme = Objects.requireNonNull(loadBalancingScheme);
+            if (loadBalancingScheme == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "loadBalancingScheme");
+            }
+            this.loadBalancingScheme = loadBalancingScheme;
             return this;
         }
         @CustomType.Setter
         public Builder metadataFilters(List<GetGlobalForwardingRuleMetadataFilter> metadataFilters) {
-            this.metadataFilters = Objects.requireNonNull(metadataFilters);
+            if (metadataFilters == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "metadataFilters");
+            }
+            this.metadataFilters = metadataFilters;
             return this;
         }
         public Builder metadataFilters(GetGlobalForwardingRuleMetadataFilter... metadataFilters) {
@@ -256,52 +293,80 @@ public final class GetGlobalForwardingRuleResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder noAutomateDnsZone(Boolean noAutomateDnsZone) {
-            this.noAutomateDnsZone = Objects.requireNonNull(noAutomateDnsZone);
+            if (noAutomateDnsZone == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "noAutomateDnsZone");
+            }
+            this.noAutomateDnsZone = noAutomateDnsZone;
             return this;
         }
         @CustomType.Setter
         public Builder portRange(String portRange) {
-            this.portRange = Objects.requireNonNull(portRange);
+            if (portRange == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "portRange");
+            }
+            this.portRange = portRange;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pscConnectionId(String pscConnectionId) {
-            this.pscConnectionId = Objects.requireNonNull(pscConnectionId);
+            if (pscConnectionId == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "pscConnectionId");
+            }
+            this.pscConnectionId = pscConnectionId;
             return this;
         }
         @CustomType.Setter
         public Builder pscConnectionStatus(String pscConnectionStatus) {
-            this.pscConnectionStatus = Objects.requireNonNull(pscConnectionStatus);
+            if (pscConnectionStatus == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "pscConnectionStatus");
+            }
+            this.pscConnectionStatus = pscConnectionStatus;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder serviceDirectoryRegistrations(List<GetGlobalForwardingRuleServiceDirectoryRegistration> serviceDirectoryRegistrations) {
-            this.serviceDirectoryRegistrations = Objects.requireNonNull(serviceDirectoryRegistrations);
+            if (serviceDirectoryRegistrations == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "serviceDirectoryRegistrations");
+            }
+            this.serviceDirectoryRegistrations = serviceDirectoryRegistrations;
             return this;
         }
         public Builder serviceDirectoryRegistrations(GetGlobalForwardingRuleServiceDirectoryRegistration... serviceDirectoryRegistrations) {
@@ -309,7 +374,10 @@ public final class GetGlobalForwardingRuleResult {
         }
         @CustomType.Setter
         public Builder sourceIpRanges(List<String> sourceIpRanges) {
-            this.sourceIpRanges = Objects.requireNonNull(sourceIpRanges);
+            if (sourceIpRanges == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "sourceIpRanges");
+            }
+            this.sourceIpRanges = sourceIpRanges;
             return this;
         }
         public Builder sourceIpRanges(String... sourceIpRanges) {
@@ -317,12 +385,18 @@ public final class GetGlobalForwardingRuleResult {
         }
         @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
-            this.subnetwork = Objects.requireNonNull(subnetwork);
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder target(String target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "target");
+            }
+            this.target = target;
             return this;
         }
         public GetGlobalForwardingRuleResult build() {

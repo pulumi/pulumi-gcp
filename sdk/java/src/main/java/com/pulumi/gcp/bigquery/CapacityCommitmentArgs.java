@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -364,8 +365,12 @@ public final class CapacityCommitmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public CapacityCommitmentArgs build() {
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
-            $.slotCount = Objects.requireNonNull($.slotCount, "expected parameter 'slotCount' to be non-null");
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("CapacityCommitmentArgs", "plan");
+            }
+            if ($.slotCount == null) {
+                throw new MissingRequiredPropertyException("CapacityCommitmentArgs", "slotCount");
+            }
             return $;
         }
     }

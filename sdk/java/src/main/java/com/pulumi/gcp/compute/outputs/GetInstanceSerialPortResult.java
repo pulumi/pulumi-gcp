@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -81,32 +82,50 @@ public final class GetInstanceSerialPortResult {
 
         @CustomType.Setter
         public Builder contents(String contents) {
-            this.contents = Objects.requireNonNull(contents);
+            if (contents == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSerialPortResult", "contents");
+            }
+            this.contents = contents;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSerialPortResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instance(String instance) {
-            this.instance = Objects.requireNonNull(instance);
+            if (instance == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSerialPortResult", "instance");
+            }
+            this.instance = instance;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSerialPortResult", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSerialPortResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetInstanceSerialPortResult", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetInstanceSerialPortResult build() {

@@ -64,11 +64,13 @@ public final class KeyRingImportJobAttestation {
 
         @CustomType.Setter
         public Builder content(@Nullable String content) {
+
             this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder format(@Nullable String format) {
+
             this.format = format;
             return this;
         }

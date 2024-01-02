@@ -84,6 +84,7 @@ public final class CertificateMapGclbTarget {
 
         @CustomType.Setter
         public Builder ipConfigs(@Nullable List<CertificateMapGclbTargetIpConfig> ipConfigs) {
+
             this.ipConfigs = ipConfigs;
             return this;
         }
@@ -92,11 +93,13 @@ public final class CertificateMapGclbTarget {
         }
         @CustomType.Setter
         public Builder targetHttpsProxy(@Nullable String targetHttpsProxy) {
+
             this.targetHttpsProxy = targetHttpsProxy;
             return this;
         }
         @CustomType.Setter
         public Builder targetSslProxy(@Nullable String targetSslProxy) {
+
             this.targetSslProxy = targetSslProxy;
             return this;
         }

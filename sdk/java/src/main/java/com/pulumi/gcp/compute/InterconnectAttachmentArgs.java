@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -877,7 +878,9 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         }
 
         public InterconnectAttachmentArgs build() {
-            $.router = Objects.requireNonNull($.router, "expected parameter 'router' to be non-null");
+            if ($.router == null) {
+                throw new MissingRequiredPropertyException("InterconnectAttachmentArgs", "router");
+            }
             return $;
         }
     }

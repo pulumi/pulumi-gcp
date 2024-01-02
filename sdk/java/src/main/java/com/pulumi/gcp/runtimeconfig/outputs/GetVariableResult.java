@@ -4,6 +4,7 @@
 package com.pulumi.gcp.runtimeconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -80,37 +81,56 @@ public final class GetVariableResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetVariableResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetVariableResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parent(String parent) {
-            this.parent = Objects.requireNonNull(parent);
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetVariableResult", "parent");
+            }
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder text(String text) {
-            this.text = Objects.requireNonNull(text);
+            if (text == null) {
+              throw new MissingRequiredPropertyException("GetVariableResult", "text");
+            }
+            this.text = text;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetVariableResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("GetVariableResult", "value");
+            }
+            this.value = value;
             return this;
         }
         public GetVariableResult build() {

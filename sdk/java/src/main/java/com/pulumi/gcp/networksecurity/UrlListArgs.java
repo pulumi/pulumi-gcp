@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -251,8 +252,12 @@ public final class UrlListArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UrlListArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.values = Objects.requireNonNull($.values, "expected parameter 'values' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("UrlListArgs", "location");
+            }
+            if ($.values == null) {
+                throw new MissingRequiredPropertyException("UrlListArgs", "values");
+            }
             return $;
         }
     }

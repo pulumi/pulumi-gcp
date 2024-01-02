@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firebase.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -135,22 +136,30 @@ public final class HostingVersionConfigRedirect {
 
         @CustomType.Setter
         public Builder glob(@Nullable String glob) {
+
             this.glob = glob;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("HostingVersionConfigRedirect", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder regex(@Nullable String regex) {
+
             this.regex = regex;
             return this;
         }
         @CustomType.Setter
         public Builder statusCode(Integer statusCode) {
-            this.statusCode = Objects.requireNonNull(statusCode);
+            if (statusCode == null) {
+              throw new MissingRequiredPropertyException("HostingVersionConfigRedirect", "statusCode");
+            }
+            this.statusCode = statusCode;
             return this;
         }
         public HostingVersionConfigRedirect build() {

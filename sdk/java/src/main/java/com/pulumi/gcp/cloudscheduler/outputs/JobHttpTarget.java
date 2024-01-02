@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudscheduler.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudscheduler.outputs.JobHttpTargetOauthToken;
 import com.pulumi.gcp.cloudscheduler.outputs.JobHttpTargetOidcToken;
 import java.lang.String;
@@ -133,32 +134,40 @@ public final class JobHttpTarget {
 
         @CustomType.Setter
         public Builder body(@Nullable String body) {
+
             this.body = body;
             return this;
         }
         @CustomType.Setter
         public Builder headers(@Nullable Map<String,String> headers) {
+
             this.headers = headers;
             return this;
         }
         @CustomType.Setter
         public Builder httpMethod(@Nullable String httpMethod) {
+
             this.httpMethod = httpMethod;
             return this;
         }
         @CustomType.Setter
         public Builder oauthToken(@Nullable JobHttpTargetOauthToken oauthToken) {
+
             this.oauthToken = oauthToken;
             return this;
         }
         @CustomType.Setter
         public Builder oidcToken(@Nullable JobHttpTargetOidcToken oidcToken) {
+
             this.oidcToken = oidcToken;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("JobHttpTarget", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public JobHttpTarget build() {

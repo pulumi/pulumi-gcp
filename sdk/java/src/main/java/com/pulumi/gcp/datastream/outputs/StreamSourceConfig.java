@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigOracleSourceConfig;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfig;
@@ -95,22 +96,28 @@ public final class StreamSourceConfig {
 
         @CustomType.Setter
         public Builder mysqlSourceConfig(@Nullable StreamSourceConfigMysqlSourceConfig mysqlSourceConfig) {
+
             this.mysqlSourceConfig = mysqlSourceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder oracleSourceConfig(@Nullable StreamSourceConfigOracleSourceConfig oracleSourceConfig) {
+
             this.oracleSourceConfig = oracleSourceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder postgresqlSourceConfig(@Nullable StreamSourceConfigPostgresqlSourceConfig postgresqlSourceConfig) {
+
             this.postgresqlSourceConfig = postgresqlSourceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder sourceConnectionProfile(String sourceConnectionProfile) {
-            this.sourceConnectionProfile = Objects.requireNonNull(sourceConnectionProfile);
+            if (sourceConnectionProfile == null) {
+              throw new MissingRequiredPropertyException("StreamSourceConfig", "sourceConnectionProfile");
+            }
+            this.sourceConnectionProfile = sourceConnectionProfile;
             return this;
         }
         public StreamSourceConfig build() {

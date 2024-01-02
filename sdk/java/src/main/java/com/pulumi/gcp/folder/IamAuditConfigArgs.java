@@ -5,6 +5,7 @@ package com.pulumi.gcp.folder;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.folder.inputs.IamAuditConfigAuditLogConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -160,9 +161,15 @@ public final class IamAuditConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public IamAuditConfigArgs build() {
-            $.auditLogConfigs = Objects.requireNonNull($.auditLogConfigs, "expected parameter 'auditLogConfigs' to be non-null");
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.auditLogConfigs == null) {
+                throw new MissingRequiredPropertyException("IamAuditConfigArgs", "auditLogConfigs");
+            }
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("IamAuditConfigArgs", "folder");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("IamAuditConfigArgs", "service");
+            }
             return $;
         }
     }

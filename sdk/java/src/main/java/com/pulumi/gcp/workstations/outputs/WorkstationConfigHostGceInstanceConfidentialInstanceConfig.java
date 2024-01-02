@@ -44,6 +44,7 @@ public final class WorkstationConfigHostGceInstanceConfidentialInstanceConfig {
 
         @CustomType.Setter
         public Builder enableConfidentialCompute(@Nullable Boolean enableConfidentialCompute) {
+
             this.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }

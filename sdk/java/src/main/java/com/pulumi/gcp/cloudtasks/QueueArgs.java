@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudtasks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudtasks.inputs.QueueAppEngineRoutingOverrideArgs;
 import com.pulumi.gcp.cloudtasks.inputs.QueueRateLimitsArgs;
 import com.pulumi.gcp.cloudtasks.inputs.QueueRetryConfigArgs;
@@ -358,7 +359,9 @@ public final class QueueArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public QueueArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("QueueArgs", "location");
+            }
             return $;
         }
     }

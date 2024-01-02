@@ -91,21 +91,25 @@ public final class FlexibleAppVersionResources {
 
         @CustomType.Setter
         public Builder cpu(@Nullable Integer cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder diskGb(@Nullable Integer diskGb) {
+
             this.diskGb = diskGb;
             return this;
         }
         @CustomType.Setter
         public Builder memoryGb(@Nullable Double memoryGb) {
+
             this.memoryGb = memoryGb;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable List<FlexibleAppVersionResourcesVolume> volumes) {
+
             this.volumes = volumes;
             return this;
         }

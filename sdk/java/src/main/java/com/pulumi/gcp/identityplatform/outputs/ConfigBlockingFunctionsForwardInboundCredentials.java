@@ -72,16 +72,19 @@ public final class ConfigBlockingFunctionsForwardInboundCredentials {
 
         @CustomType.Setter
         public Builder accessToken(@Nullable Boolean accessToken) {
+
             this.accessToken = accessToken;
             return this;
         }
         @CustomType.Setter
         public Builder idToken(@Nullable Boolean idToken) {
+
             this.idToken = idToken;
             return this;
         }
         @CustomType.Setter
         public Builder refreshToken(@Nullable Boolean refreshToken) {
+
             this.refreshToken = refreshToken;
             return this;
         }

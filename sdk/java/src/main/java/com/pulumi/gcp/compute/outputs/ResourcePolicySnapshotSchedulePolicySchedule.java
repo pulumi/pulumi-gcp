@@ -80,16 +80,19 @@ public final class ResourcePolicySnapshotSchedulePolicySchedule {
 
         @CustomType.Setter
         public Builder dailySchedule(@Nullable ResourcePolicySnapshotSchedulePolicyScheduleDailySchedule dailySchedule) {
+
             this.dailySchedule = dailySchedule;
             return this;
         }
         @CustomType.Setter
         public Builder hourlySchedule(@Nullable ResourcePolicySnapshotSchedulePolicyScheduleHourlySchedule hourlySchedule) {
+
             this.hourlySchedule = hourlySchedule;
             return this;
         }
         @CustomType.Setter
         public Builder weeklySchedule(@Nullable ResourcePolicySnapshotSchedulePolicyScheduleWeeklySchedule weeklySchedule) {
+
             this.weeklySchedule = weeklySchedule;
             return this;
         }

@@ -80,16 +80,19 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction {
 
         @CustomType.Setter
         public Builder cdnPolicy(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicy cdnPolicy) {
+
             this.cdnPolicy = cdnPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder corsPolicy(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCorsPolicy corsPolicy) {
+
             this.corsPolicy = corsPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder urlRewrite(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewrite urlRewrite) {
+
             this.urlRewrite = urlRewrite;
             return this;
         }

@@ -96,6 +96,7 @@ public final class PerInstanceConfigPreservedState {
 
         @CustomType.Setter
         public Builder disks(@Nullable List<PerInstanceConfigPreservedStateDisk> disks) {
+
             this.disks = disks;
             return this;
         }
@@ -104,6 +105,7 @@ public final class PerInstanceConfigPreservedState {
         }
         @CustomType.Setter
         public Builder externalIps(@Nullable List<PerInstanceConfigPreservedStateExternalIp> externalIps) {
+
             this.externalIps = externalIps;
             return this;
         }
@@ -112,6 +114,7 @@ public final class PerInstanceConfigPreservedState {
         }
         @CustomType.Setter
         public Builder internalIps(@Nullable List<PerInstanceConfigPreservedStateInternalIp> internalIps) {
+
             this.internalIps = internalIps;
             return this;
         }
@@ -120,6 +123,7 @@ public final class PerInstanceConfigPreservedState {
         }
         @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
+
             this.metadata = metadata;
             return this;
         }

@@ -46,6 +46,7 @@ public final class HealthCheckLogConfig {
 
         @CustomType.Setter
         public Builder enable(@Nullable Boolean enable) {
+
             this.enable = enable;
             return this;
         }

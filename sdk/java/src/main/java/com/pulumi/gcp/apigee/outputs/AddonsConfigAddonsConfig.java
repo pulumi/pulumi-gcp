@@ -114,26 +114,31 @@ public final class AddonsConfigAddonsConfig {
 
         @CustomType.Setter
         public Builder advancedApiOpsConfig(@Nullable AddonsConfigAddonsConfigAdvancedApiOpsConfig advancedApiOpsConfig) {
+
             this.advancedApiOpsConfig = advancedApiOpsConfig;
             return this;
         }
         @CustomType.Setter
         public Builder apiSecurityConfig(@Nullable AddonsConfigAddonsConfigApiSecurityConfig apiSecurityConfig) {
+
             this.apiSecurityConfig = apiSecurityConfig;
             return this;
         }
         @CustomType.Setter
         public Builder connectorsPlatformConfig(@Nullable AddonsConfigAddonsConfigConnectorsPlatformConfig connectorsPlatformConfig) {
+
             this.connectorsPlatformConfig = connectorsPlatformConfig;
             return this;
         }
         @CustomType.Setter
         public Builder integrationConfig(@Nullable AddonsConfigAddonsConfigIntegrationConfig integrationConfig) {
+
             this.integrationConfig = integrationConfig;
             return this;
         }
         @CustomType.Setter
         public Builder monetizationConfig(@Nullable AddonsConfigAddonsConfigMonetizationConfig monetizationConfig) {
+
             this.monetizationConfig = monetizationConfig;
             return this;
         }

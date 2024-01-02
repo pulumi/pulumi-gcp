@@ -105,26 +105,31 @@ public final class WorkstationConfigPersistentDirectoryGcePd {
 
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder fsType(@Nullable String fsType) {
+
             this.fsType = fsType;
             return this;
         }
         @CustomType.Setter
         public Builder reclaimPolicy(@Nullable String reclaimPolicy) {
+
             this.reclaimPolicy = reclaimPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder sizeGb(@Nullable Integer sizeGb) {
+
             this.sizeGb = sizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder sourceSnapshot(@Nullable String sourceSnapshot) {
+
             this.sourceSnapshot = sourceSnapshot;
             return this;
         }

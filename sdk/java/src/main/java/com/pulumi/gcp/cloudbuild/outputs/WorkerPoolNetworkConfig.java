@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,11 +59,15 @@ public final class WorkerPoolNetworkConfig {
 
         @CustomType.Setter
         public Builder peeredNetwork(String peeredNetwork) {
-            this.peeredNetwork = Objects.requireNonNull(peeredNetwork);
+            if (peeredNetwork == null) {
+              throw new MissingRequiredPropertyException("WorkerPoolNetworkConfig", "peeredNetwork");
+            }
+            this.peeredNetwork = peeredNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder peeredNetworkIpRange(@Nullable String peeredNetworkIpRange) {
+
             this.peeredNetworkIpRange = peeredNetworkIpRange;
             return this;
         }

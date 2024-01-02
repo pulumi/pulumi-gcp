@@ -5,6 +5,7 @@ package com.pulumi.gcp.edgecontainer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.edgecontainer.inputs.VpnConnectionVpcProjectArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -440,8 +441,12 @@ public final class VpnConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VpnConnectionArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("VpnConnectionArgs", "cluster");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("VpnConnectionArgs", "location");
+            }
             return $;
         }
     }

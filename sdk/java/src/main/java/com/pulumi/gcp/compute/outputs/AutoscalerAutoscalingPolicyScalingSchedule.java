@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -130,36 +131,51 @@ public final class AutoscalerAutoscalingPolicyScalingSchedule {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder durationSec(Integer durationSec) {
-            this.durationSec = Objects.requireNonNull(durationSec);
+            if (durationSec == null) {
+              throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicyScalingSchedule", "durationSec");
+            }
+            this.durationSec = durationSec;
             return this;
         }
         @CustomType.Setter
         public Builder minRequiredReplicas(Integer minRequiredReplicas) {
-            this.minRequiredReplicas = Objects.requireNonNull(minRequiredReplicas);
+            if (minRequiredReplicas == null) {
+              throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicyScalingSchedule", "minRequiredReplicas");
+            }
+            this.minRequiredReplicas = minRequiredReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicyScalingSchedule", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(String schedule) {
-            this.schedule = Objects.requireNonNull(schedule);
+            if (schedule == null) {
+              throw new MissingRequiredPropertyException("AutoscalerAutoscalingPolicyScalingSchedule", "schedule");
+            }
+            this.schedule = schedule;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
+
             this.timeZone = timeZone;
             return this;
         }

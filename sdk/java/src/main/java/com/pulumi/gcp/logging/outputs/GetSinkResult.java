@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.outputs.GetSinkBigqueryOption;
 import com.pulumi.gcp.logging.outputs.GetSinkExclusion;
 import java.lang.Boolean;
@@ -150,7 +151,10 @@ public final class GetSinkResult {
 
         @CustomType.Setter
         public Builder bigqueryOptions(List<GetSinkBigqueryOption> bigqueryOptions) {
-            this.bigqueryOptions = Objects.requireNonNull(bigqueryOptions);
+            if (bigqueryOptions == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "bigqueryOptions");
+            }
+            this.bigqueryOptions = bigqueryOptions;
             return this;
         }
         public Builder bigqueryOptions(GetSinkBigqueryOption... bigqueryOptions) {
@@ -158,22 +162,34 @@ public final class GetSinkResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder destination(String destination) {
-            this.destination = Objects.requireNonNull(destination);
+            if (destination == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "destination");
+            }
+            this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder exclusions(List<GetSinkExclusion> exclusions) {
-            this.exclusions = Objects.requireNonNull(exclusions);
+            if (exclusions == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "exclusions");
+            }
+            this.exclusions = exclusions;
             return this;
         }
         public Builder exclusions(GetSinkExclusion... exclusions) {
@@ -181,22 +197,34 @@ public final class GetSinkResult {
         }
         @CustomType.Setter
         public Builder filter(String filter) {
-            this.filter = Objects.requireNonNull(filter);
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "filter");
+            }
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder writerIdentity(String writerIdentity) {
-            this.writerIdentity = Objects.requireNonNull(writerIdentity);
+            if (writerIdentity == null) {
+              throw new MissingRequiredPropertyException("GetSinkResult", "writerIdentity");
+            }
+            this.writerIdentity = writerIdentity;
             return this;
         }
         public GetSinkResult build() {

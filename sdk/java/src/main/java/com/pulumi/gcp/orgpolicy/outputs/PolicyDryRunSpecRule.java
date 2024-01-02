@@ -102,26 +102,31 @@ public final class PolicyDryRunSpecRule {
 
         @CustomType.Setter
         public Builder allowAll(@Nullable String allowAll) {
+
             this.allowAll = allowAll;
             return this;
         }
         @CustomType.Setter
         public Builder condition(@Nullable PolicyDryRunSpecRuleCondition condition) {
+
             this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder denyAll(@Nullable String denyAll) {
+
             this.denyAll = denyAll;
             return this;
         }
         @CustomType.Setter
         public Builder enforce(@Nullable String enforce) {
+
             this.enforce = enforce;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable PolicyDryRunSpecRuleValues values) {
+
             this.values = values;
             return this;
         }

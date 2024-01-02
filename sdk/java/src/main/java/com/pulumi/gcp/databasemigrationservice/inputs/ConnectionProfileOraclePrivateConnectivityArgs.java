@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ConnectionProfileOraclePrivateConnectivityArgs extends com.pu
         }
 
         public ConnectionProfileOraclePrivateConnectivityArgs build() {
-            $.privateConnection = Objects.requireNonNull($.privateConnection, "expected parameter 'privateConnection' to be non-null");
+            if ($.privateConnection == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOraclePrivateConnectivityArgs", "privateConnection");
+            }
             return $;
         }
     }

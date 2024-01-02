@@ -149,41 +149,49 @@ public final class RepositoryReleaseConfigCodeCompilationConfig {
 
         @CustomType.Setter
         public Builder assertionSchema(@Nullable String assertionSchema) {
+
             this.assertionSchema = assertionSchema;
             return this;
         }
         @CustomType.Setter
         public Builder databaseSuffix(@Nullable String databaseSuffix) {
+
             this.databaseSuffix = databaseSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder defaultDatabase(@Nullable String defaultDatabase) {
+
             this.defaultDatabase = defaultDatabase;
             return this;
         }
         @CustomType.Setter
         public Builder defaultLocation(@Nullable String defaultLocation) {
+
             this.defaultLocation = defaultLocation;
             return this;
         }
         @CustomType.Setter
         public Builder defaultSchema(@Nullable String defaultSchema) {
+
             this.defaultSchema = defaultSchema;
             return this;
         }
         @CustomType.Setter
         public Builder schemaSuffix(@Nullable String schemaSuffix) {
+
             this.schemaSuffix = schemaSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder tablePrefix(@Nullable String tablePrefix) {
+
             this.tablePrefix = tablePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder vars(@Nullable Map<String,String> vars) {
+
             this.vars = vars;
             return this;
         }

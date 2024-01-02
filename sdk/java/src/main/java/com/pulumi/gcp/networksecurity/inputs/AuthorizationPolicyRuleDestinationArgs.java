@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networksecurity.inputs.AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -228,9 +229,15 @@ public final class AuthorizationPolicyRuleDestinationArgs extends com.pulumi.res
         }
 
         public AuthorizationPolicyRuleDestinationArgs build() {
-            $.hosts = Objects.requireNonNull($.hosts, "expected parameter 'hosts' to be non-null");
-            $.methods = Objects.requireNonNull($.methods, "expected parameter 'methods' to be non-null");
-            $.ports = Objects.requireNonNull($.ports, "expected parameter 'ports' to be non-null");
+            if ($.hosts == null) {
+                throw new MissingRequiredPropertyException("AuthorizationPolicyRuleDestinationArgs", "hosts");
+            }
+            if ($.methods == null) {
+                throw new MissingRequiredPropertyException("AuthorizationPolicyRuleDestinationArgs", "methods");
+            }
+            if ($.ports == null) {
+                throw new MissingRequiredPropertyException("AuthorizationPolicyRuleDestinationArgs", "ports");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -60,12 +61,18 @@ public final class BucketObjectRetention {
 
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("BucketObjectRetention", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder retainUntilTime(String retainUntilTime) {
-            this.retainUntilTime = Objects.requireNonNull(retainUntilTime);
+            if (retainUntilTime == null) {
+              throw new MissingRequiredPropertyException("BucketObjectRetention", "retainUntilTime");
+            }
+            this.retainUntilTime = retainUntilTime;
             return this;
         }
         public BucketObjectRetention build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.inputs.TagTemplateFieldArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -283,8 +284,12 @@ public final class TagTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TagTemplateArgs build() {
-            $.fields = Objects.requireNonNull($.fields, "expected parameter 'fields' to be non-null");
-            $.tagTemplateId = Objects.requireNonNull($.tagTemplateId, "expected parameter 'tagTemplateId' to be non-null");
+            if ($.fields == null) {
+                throw new MissingRequiredPropertyException("TagTemplateArgs", "fields");
+            }
+            if ($.tagTemplateId == null) {
+                throw new MissingRequiredPropertyException("TagTemplateArgs", "tagTemplateId");
+            }
             return $;
         }
     }

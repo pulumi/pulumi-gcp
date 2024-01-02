@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.LinkedDatasetBigqueryDatasetArgs;
 import java.lang.String;
 import java.util.List;
@@ -296,8 +297,12 @@ public final class LinkedDatasetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public LinkedDatasetArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.linkId = Objects.requireNonNull($.linkId, "expected parameter 'linkId' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("LinkedDatasetArgs", "bucket");
+            }
+            if ($.linkId == null) {
+                throw new MissingRequiredPropertyException("LinkedDatasetArgs", "linkId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs;
 import java.lang.String;
@@ -171,8 +172,12 @@ public final class InsightsReportConfigObjectMetadataReportOptionsArgs extends c
         }
 
         public InsightsReportConfigObjectMetadataReportOptionsArgs build() {
-            $.metadataFields = Objects.requireNonNull($.metadataFields, "expected parameter 'metadataFields' to be non-null");
-            $.storageDestinationOptions = Objects.requireNonNull($.storageDestinationOptions, "expected parameter 'storageDestinationOptions' to be non-null");
+            if ($.metadataFields == null) {
+                throw new MissingRequiredPropertyException("InsightsReportConfigObjectMetadataReportOptionsArgs", "metadataFields");
+            }
+            if ($.storageDestinationOptions == null) {
+                throw new MissingRequiredPropertyException("InsightsReportConfigObjectMetadataReportOptionsArgs", "storageDestinationOptions");
+            }
             return $;
         }
     }

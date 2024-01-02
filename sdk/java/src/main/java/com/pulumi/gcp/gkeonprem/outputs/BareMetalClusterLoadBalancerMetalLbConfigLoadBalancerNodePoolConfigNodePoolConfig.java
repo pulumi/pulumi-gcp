@@ -112,11 +112,13 @@ public final class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePool
 
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder nodeConfigs(@Nullable List<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigNodeConfig> nodeConfigs) {
+
             this.nodeConfigs = nodeConfigs;
             return this;
         }
@@ -125,11 +127,13 @@ public final class BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePool
         }
         @CustomType.Setter
         public Builder operatingSystem(@Nullable String operatingSystem) {
+
             this.operatingSystem = operatingSystem;
             return this;
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<BareMetalClusterLoadBalancerMetalLbConfigLoadBalancerNodePoolConfigNodePoolConfigTaint> taints) {
+
             this.taints = taints;
             return this;
         }

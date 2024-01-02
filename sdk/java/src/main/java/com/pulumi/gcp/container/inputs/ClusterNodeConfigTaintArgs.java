@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class ClusterNodeConfigTaintArgs extends com.pulumi.resources.Resou
         }
 
         public ClusterNodeConfigTaintArgs build() {
-            $.effect = Objects.requireNonNull($.effect, "expected parameter 'effect' to be non-null");
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.effect == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeConfigTaintArgs", "effect");
+            }
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeConfigTaintArgs", "key");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeConfigTaintArgs", "value");
+            }
             return $;
         }
     }

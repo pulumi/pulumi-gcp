@@ -72,16 +72,19 @@ public final class InstanceUserMetadata {
 
         @CustomType.Setter
         public Builder additionalDeveloperUserCount(@Nullable Integer additionalDeveloperUserCount) {
+
             this.additionalDeveloperUserCount = additionalDeveloperUserCount;
             return this;
         }
         @CustomType.Setter
         public Builder additionalStandardUserCount(@Nullable Integer additionalStandardUserCount) {
+
             this.additionalStandardUserCount = additionalStandardUserCount;
             return this;
         }
         @CustomType.Setter
         public Builder additionalViewerUserCount(@Nullable Integer additionalViewerUserCount) {
+
             this.additionalViewerUserCount = additionalViewerUserCount;
             return this;
         }

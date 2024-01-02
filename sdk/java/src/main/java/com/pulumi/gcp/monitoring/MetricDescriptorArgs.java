@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.MetricDescriptorLabelArgs;
 import com.pulumi.gcp.monitoring.inputs.MetricDescriptorMetadataArgs;
 import java.lang.String;
@@ -519,11 +520,21 @@ public final class MetricDescriptorArgs extends com.pulumi.resources.ResourceArg
         }
 
         public MetricDescriptorArgs build() {
-            $.description = Objects.requireNonNull($.description, "expected parameter 'description' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.metricKind = Objects.requireNonNull($.metricKind, "expected parameter 'metricKind' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
-            $.valueType = Objects.requireNonNull($.valueType, "expected parameter 'valueType' to be non-null");
+            if ($.description == null) {
+                throw new MissingRequiredPropertyException("MetricDescriptorArgs", "description");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("MetricDescriptorArgs", "displayName");
+            }
+            if ($.metricKind == null) {
+                throw new MissingRequiredPropertyException("MetricDescriptorArgs", "metricKind");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("MetricDescriptorArgs", "type");
+            }
+            if ($.valueType == null) {
+                throw new MissingRequiredPropertyException("MetricDescriptorArgs", "valueType");
+            }
             return $;
         }
     }

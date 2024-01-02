@@ -4,6 +4,7 @@
 package com.pulumi.gcp.runtimeconfig.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -128,8 +129,12 @@ public final class GetVariablePlainArgs extends com.pulumi.resources.InvokeArgs 
         }
 
         public GetVariablePlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetVariablePlainArgs", "name");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GetVariablePlainArgs", "parent");
+            }
             return $;
         }
     }

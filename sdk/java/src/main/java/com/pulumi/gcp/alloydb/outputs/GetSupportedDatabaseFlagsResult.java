@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlag;
 import java.lang.String;
 import java.util.List;
@@ -72,22 +73,32 @@ public final class GetSupportedDatabaseFlagsResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder supportedDatabaseFlags(List<GetSupportedDatabaseFlagsSupportedDatabaseFlag> supportedDatabaseFlags) {
-            this.supportedDatabaseFlags = Objects.requireNonNull(supportedDatabaseFlags);
+            if (supportedDatabaseFlags == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsResult", "supportedDatabaseFlags");
+            }
+            this.supportedDatabaseFlags = supportedDatabaseFlags;
             return this;
         }
         public Builder supportedDatabaseFlags(GetSupportedDatabaseFlagsSupportedDatabaseFlag... supportedDatabaseFlags) {

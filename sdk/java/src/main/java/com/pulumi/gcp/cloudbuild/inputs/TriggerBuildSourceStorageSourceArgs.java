@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,8 +159,12 @@ public final class TriggerBuildSourceStorageSourceArgs extends com.pulumi.resour
         }
 
         public TriggerBuildSourceStorageSourceArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.object = Objects.requireNonNull($.object, "expected parameter 'object' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("TriggerBuildSourceStorageSourceArgs", "bucket");
+            }
+            if ($.object == null) {
+                throw new MissingRequiredPropertyException("TriggerBuildSourceStorageSourceArgs", "object");
+            }
             return $;
         }
     }

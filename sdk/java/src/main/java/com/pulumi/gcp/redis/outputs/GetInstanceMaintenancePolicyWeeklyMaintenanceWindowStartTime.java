@@ -4,6 +4,7 @@
 package com.pulumi.gcp.redis.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime 
 
         @CustomType.Setter
         public Builder hours(Integer hours) {
-            this.hours = Objects.requireNonNull(hours);
+            if (hours == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime", "hours");
+            }
+            this.hours = hours;
             return this;
         }
         @CustomType.Setter
         public Builder minutes(Integer minutes) {
-            this.minutes = Objects.requireNonNull(minutes);
+            if (minutes == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime", "minutes");
+            }
+            this.minutes = minutes;
             return this;
         }
         @CustomType.Setter
         public Builder nanos(Integer nanos) {
-            this.nanos = Objects.requireNonNull(nanos);
+            if (nanos == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime", "nanos");
+            }
+            this.nanos = nanos;
             return this;
         }
         @CustomType.Setter
         public Builder seconds(Integer seconds) {
-            this.seconds = Objects.requireNonNull(seconds);
+            if (seconds == null) {
+              throw new MissingRequiredPropertyException("GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime", "seconds");
+            }
+            this.seconds = seconds;
             return this;
         }
         public GetInstanceMaintenancePolicyWeeklyMaintenanceWindowStartTime build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class AzureNodePoolMaxPodsConstraint {
 
         @CustomType.Setter
         public Builder maxPodsPerNode(Integer maxPodsPerNode) {
-            this.maxPodsPerNode = Objects.requireNonNull(maxPodsPerNode);
+            if (maxPodsPerNode == null) {
+              throw new MissingRequiredPropertyException("AzureNodePoolMaxPodsConstraint", "maxPodsPerNode");
+            }
+            this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
         public AzureNodePoolMaxPodsConstraint build() {

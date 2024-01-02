@@ -258,31 +258,37 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
 
         @CustomType.Setter
         public Builder autoscalingConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfig autoscalingConfig) {
+
             this.autoscalingConfig = autoscalingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigEncryptionConfig encryptionConfig) {
+
             this.encryptionConfig = encryptionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder endpointConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigEndpointConfig endpointConfig) {
+
             this.endpointConfig = endpointConfig;
             return this;
         }
         @CustomType.Setter
         public Builder gceClusterConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig gceClusterConfig) {
+
             this.gceClusterConfig = gceClusterConfig;
             return this;
         }
         @CustomType.Setter
         public Builder gkeClusterConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig gkeClusterConfig) {
+
             this.gkeClusterConfig = gkeClusterConfig;
             return this;
         }
         @CustomType.Setter
         public Builder initializationActions(@Nullable List<WorkflowTemplatePlacementManagedClusterConfigInitializationAction> initializationActions) {
+
             this.initializationActions = initializationActions;
             return this;
         }
@@ -291,46 +297,55 @@ public final class WorkflowTemplatePlacementManagedClusterConfig {
         }
         @CustomType.Setter
         public Builder lifecycleConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig lifecycleConfig) {
+
             this.lifecycleConfig = lifecycleConfig;
             return this;
         }
         @CustomType.Setter
         public Builder masterConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigMasterConfig masterConfig) {
+
             this.masterConfig = masterConfig;
             return this;
         }
         @CustomType.Setter
         public Builder metastoreConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig metastoreConfig) {
+
             this.metastoreConfig = metastoreConfig;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryWorkerConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerConfig secondaryWorkerConfig) {
+
             this.secondaryWorkerConfig = secondaryWorkerConfig;
             return this;
         }
         @CustomType.Setter
         public Builder securityConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSecurityConfig securityConfig) {
+
             this.securityConfig = securityConfig;
             return this;
         }
         @CustomType.Setter
         public Builder softwareConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigSoftwareConfig softwareConfig) {
+
             this.softwareConfig = softwareConfig;
             return this;
         }
         @CustomType.Setter
         public Builder stagingBucket(@Nullable String stagingBucket) {
+
             this.stagingBucket = stagingBucket;
             return this;
         }
         @CustomType.Setter
         public Builder tempBucket(@Nullable String tempBucket) {
+
             this.tempBucket = tempBucket;
             return this;
         }
         @CustomType.Setter
         public Builder workerConfig(@Nullable WorkflowTemplatePlacementManagedClusterConfigWorkerConfig workerConfig) {
+
             this.workerConfig = workerConfig;
             return this;
         }

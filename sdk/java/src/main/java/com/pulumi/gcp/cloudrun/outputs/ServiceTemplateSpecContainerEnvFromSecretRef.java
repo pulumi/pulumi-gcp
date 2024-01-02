@@ -61,11 +61,13 @@ public final class ServiceTemplateSpecContainerEnvFromSecretRef {
 
         @CustomType.Setter
         public Builder localObjectReference(@Nullable ServiceTemplateSpecContainerEnvFromSecretRefLocalObjectReference localObjectReference) {
+
             this.localObjectReference = localObjectReference;
             return this;
         }
         @CustomType.Setter
         public Builder optional(@Nullable Boolean optional) {
+
             this.optional = optional;
             return this;
         }

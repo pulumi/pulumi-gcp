@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetDatabaseInstanceSettingMaintenanceWindow {
 
         @CustomType.Setter
         public Builder day(Integer day) {
-            this.day = Objects.requireNonNull(day);
+            if (day == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingMaintenanceWindow", "day");
+            }
+            this.day = day;
             return this;
         }
         @CustomType.Setter
         public Builder hour(Integer hour) {
-            this.hour = Objects.requireNonNull(hour);
+            if (hour == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingMaintenanceWindow", "hour");
+            }
+            this.hour = hour;
             return this;
         }
         @CustomType.Setter
         public Builder updateTrack(String updateTrack) {
-            this.updateTrack = Objects.requireNonNull(updateTrack);
+            if (updateTrack == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingMaintenanceWindow", "updateTrack");
+            }
+            this.updateTrack = updateTrack;
             return this;
         }
         public GetDatabaseInstanceSettingMaintenanceWindow build() {

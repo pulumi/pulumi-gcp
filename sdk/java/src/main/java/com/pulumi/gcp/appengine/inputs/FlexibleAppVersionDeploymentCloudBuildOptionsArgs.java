@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class FlexibleAppVersionDeploymentCloudBuildOptionsArgs extends com
         }
 
         public FlexibleAppVersionDeploymentCloudBuildOptionsArgs build() {
-            $.appYamlPath = Objects.requireNonNull($.appYamlPath, "expected parameter 'appYamlPath' to be non-null");
+            if ($.appYamlPath == null) {
+                throw new MissingRequiredPropertyException("FlexibleAppVersionDeploymentCloudBuildOptionsArgs", "appYamlPath");
+            }
             return $;
         }
     }

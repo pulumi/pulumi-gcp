@@ -4,6 +4,7 @@
 package com.pulumi.gcp.secretmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class SecretTopic {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("SecretTopic", "name");
+            }
+            this.name = name;
             return this;
         }
         public SecretTopic build() {

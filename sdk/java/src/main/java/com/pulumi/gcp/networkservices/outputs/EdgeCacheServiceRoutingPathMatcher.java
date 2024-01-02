@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRule;
 import java.lang.String;
 import java.util.List;
@@ -76,17 +77,24 @@ public final class EdgeCacheServiceRoutingPathMatcher {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingPathMatcher", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder routeRules(List<EdgeCacheServiceRoutingPathMatcherRouteRule> routeRules) {
-            this.routeRules = Objects.requireNonNull(routeRules);
+            if (routeRules == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingPathMatcher", "routeRules");
+            }
+            this.routeRules = routeRules;
             return this;
         }
         public Builder routeRules(EdgeCacheServiceRoutingPathMatcherRouteRule... routeRules) {

@@ -48,6 +48,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         @CustomType.Setter
         public Builder buckets(@Nullable List<PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationBucketingConfigBucket> buckets) {
+
             this.buckets = buckets;
             return this;
         }

@@ -75,16 +75,19 @@ public final class ServiceTemplateSpecContainerEnv {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder valueFrom(@Nullable ServiceTemplateSpecContainerEnvValueFrom valueFrom) {
+
             this.valueFrom = valueFrom;
             return this;
         }

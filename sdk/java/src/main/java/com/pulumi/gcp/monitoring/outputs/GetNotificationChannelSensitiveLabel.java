@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetNotificationChannelSensitiveLabel {
 
         @CustomType.Setter
         public Builder authToken(String authToken) {
-            this.authToken = Objects.requireNonNull(authToken);
+            if (authToken == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelSensitiveLabel", "authToken");
+            }
+            this.authToken = authToken;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelSensitiveLabel", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder serviceKey(String serviceKey) {
-            this.serviceKey = Objects.requireNonNull(serviceKey);
+            if (serviceKey == null) {
+              throw new MissingRequiredPropertyException("GetNotificationChannelSensitiveLabel", "serviceKey");
+            }
+            this.serviceKey = serviceKey;
             return this;
         }
         public GetNotificationChannelSensitiveLabel build() {

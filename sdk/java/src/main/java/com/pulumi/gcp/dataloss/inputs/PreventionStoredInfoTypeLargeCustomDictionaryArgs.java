@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPathArgs;
@@ -168,7 +169,9 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryArgs extends com
         }
 
         public PreventionStoredInfoTypeLargeCustomDictionaryArgs build() {
-            $.outputPath = Objects.requireNonNull($.outputPath, "expected parameter 'outputPath' to be non-null");
+            if ($.outputPath == null) {
+                throw new MissingRequiredPropertyException("PreventionStoredInfoTypeLargeCustomDictionaryArgs", "outputPath");
+            }
             return $;
         }
     }

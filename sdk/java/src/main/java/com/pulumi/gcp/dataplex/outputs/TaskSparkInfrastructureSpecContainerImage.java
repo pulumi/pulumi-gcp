@@ -88,11 +88,13 @@ public final class TaskSparkInfrastructureSpecContainerImage {
 
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder javaJars(@Nullable List<String> javaJars) {
+
             this.javaJars = javaJars;
             return this;
         }
@@ -101,11 +103,13 @@ public final class TaskSparkInfrastructureSpecContainerImage {
         }
         @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
+
             this.properties = properties;
             return this;
         }
         @CustomType.Setter
         public Builder pythonPackages(@Nullable List<String> pythonPackages) {
+
             this.pythonPackages = pythonPackages;
             return this;
         }

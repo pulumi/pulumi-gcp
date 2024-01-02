@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateReservationAffinitySpecificReservation;
 import java.lang.String;
 import java.util.List;
@@ -50,7 +51,10 @@ public final class GetRegionInstanceTemplateReservationAffinity {
 
         @CustomType.Setter
         public Builder specificReservations(List<GetRegionInstanceTemplateReservationAffinitySpecificReservation> specificReservations) {
-            this.specificReservations = Objects.requireNonNull(specificReservations);
+            if (specificReservations == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateReservationAffinity", "specificReservations");
+            }
+            this.specificReservations = specificReservations;
             return this;
         }
         public Builder specificReservations(GetRegionInstanceTemplateReservationAffinitySpecificReservation... specificReservations) {
@@ -58,7 +62,10 @@ public final class GetRegionInstanceTemplateReservationAffinity {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateReservationAffinity", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetRegionInstanceTemplateReservationAffinity build() {

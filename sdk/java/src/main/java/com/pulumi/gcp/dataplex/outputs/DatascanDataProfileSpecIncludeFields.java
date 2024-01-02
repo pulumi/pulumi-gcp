@@ -48,6 +48,7 @@ public final class DatascanDataProfileSpecIncludeFields {
 
         @CustomType.Setter
         public Builder fieldNames(@Nullable List<String> fieldNames) {
+
             this.fieldNames = fieldNames;
             return this;
         }

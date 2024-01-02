@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigSubjectAltNameArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigSubjectArgs;
 import java.util.Objects;
@@ -122,7 +123,9 @@ public final class CertificateConfigSubjectConfigArgs extends com.pulumi.resourc
         }
 
         public CertificateConfigSubjectConfigArgs build() {
-            $.subject = Objects.requireNonNull($.subject, "expected parameter 'subject' to be non-null");
+            if ($.subject == null) {
+                throw new MissingRequiredPropertyException("CertificateConfigSubjectConfigArgs", "subject");
+            }
             return $;
         }
     }

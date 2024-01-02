@@ -4,6 +4,7 @@
 package com.pulumi.gcp.billing.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,22 +77,34 @@ public final class GetAccountIamPolicyResult {
 
         @CustomType.Setter
         public Builder billingAccountId(String billingAccountId) {
-            this.billingAccountId = Objects.requireNonNull(billingAccountId);
+            if (billingAccountId == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamPolicyResult", "billingAccountId");
+            }
+            this.billingAccountId = billingAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetAccountIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         public GetAccountIamPolicyResult build() {

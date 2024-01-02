@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFile
         }
 
         public PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs build() {
-            $.url = Objects.requireNonNull($.url, "expected parameter 'url' to be non-null");
+            if ($.url == null) {
+                throw new MissingRequiredPropertyException("PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSetArgs", "url");
+            }
             return $;
         }
     }

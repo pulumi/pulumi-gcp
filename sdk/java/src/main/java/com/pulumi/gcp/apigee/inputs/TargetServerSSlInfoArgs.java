@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigee.inputs.TargetServerSSlInfoCommonNameArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -399,7 +400,9 @@ public final class TargetServerSSlInfoArgs extends com.pulumi.resources.Resource
         }
 
         public TargetServerSSlInfoArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("TargetServerSSlInfoArgs", "enabled");
+            }
             return $;
         }
     }

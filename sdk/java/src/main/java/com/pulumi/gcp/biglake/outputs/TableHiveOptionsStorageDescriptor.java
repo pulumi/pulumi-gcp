@@ -72,16 +72,19 @@ public final class TableHiveOptionsStorageDescriptor {
 
         @CustomType.Setter
         public Builder inputFormat(@Nullable String inputFormat) {
+
             this.inputFormat = inputFormat;
             return this;
         }
         @CustomType.Setter
         public Builder locationUri(@Nullable String locationUri) {
+
             this.locationUri = locationUri;
             return this;
         }
         @CustomType.Setter
         public Builder outputFormat(@Nullable String outputFormat) {
+
             this.outputFormat = outputFormat;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -183,6 +184,7 @@ public final class WorkloadIdentityPoolProviderOidc {
 
         @CustomType.Setter
         public Builder allowedAudiences(@Nullable List<String> allowedAudiences) {
+
             this.allowedAudiences = allowedAudiences;
             return this;
         }
@@ -191,11 +193,15 @@ public final class WorkloadIdentityPoolProviderOidc {
         }
         @CustomType.Setter
         public Builder issuerUri(String issuerUri) {
-            this.issuerUri = Objects.requireNonNull(issuerUri);
+            if (issuerUri == null) {
+              throw new MissingRequiredPropertyException("WorkloadIdentityPoolProviderOidc", "issuerUri");
+            }
+            this.issuerUri = issuerUri;
             return this;
         }
         @CustomType.Setter
         public Builder jwksJson(@Nullable String jwksJson) {
+
             this.jwksJson = jwksJson;
             return this;
         }

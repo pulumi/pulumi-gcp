@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -131,7 +132,9 @@ public final class GetVPNGatewayPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetVPNGatewayPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetVPNGatewayPlainArgs", "name");
+            }
             return $;
         }
     }

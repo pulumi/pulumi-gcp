@@ -63,11 +63,13 @@ public final class FeatureSpecFleetobservabilityLoggingConfig {
 
         @CustomType.Setter
         public Builder defaultConfig(@Nullable FeatureSpecFleetobservabilityLoggingConfigDefaultConfig defaultConfig) {
+
             this.defaultConfig = defaultConfig;
             return this;
         }
         @CustomType.Setter
         public Builder fleetScopeLogsConfig(@Nullable FeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig fleetScopeLogsConfig) {
+
             this.fleetScopeLogsConfig = fleetScopeLogsConfig;
             return this;
         }

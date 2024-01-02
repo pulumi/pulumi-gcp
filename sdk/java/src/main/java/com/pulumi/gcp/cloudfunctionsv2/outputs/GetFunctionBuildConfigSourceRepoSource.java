@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -71,37 +72,58 @@ public final class GetFunctionBuildConfigSourceRepoSource {
 
         @CustomType.Setter
         public Builder branchName(String branchName) {
-            this.branchName = Objects.requireNonNull(branchName);
+            if (branchName == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceRepoSource", "branchName");
+            }
+            this.branchName = branchName;
             return this;
         }
         @CustomType.Setter
         public Builder commitSha(String commitSha) {
-            this.commitSha = Objects.requireNonNull(commitSha);
+            if (commitSha == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceRepoSource", "commitSha");
+            }
+            this.commitSha = commitSha;
             return this;
         }
         @CustomType.Setter
         public Builder dir(String dir) {
-            this.dir = Objects.requireNonNull(dir);
+            if (dir == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceRepoSource", "dir");
+            }
+            this.dir = dir;
             return this;
         }
         @CustomType.Setter
         public Builder invertRegex(Boolean invertRegex) {
-            this.invertRegex = Objects.requireNonNull(invertRegex);
+            if (invertRegex == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceRepoSource", "invertRegex");
+            }
+            this.invertRegex = invertRegex;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceRepoSource", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder repoName(String repoName) {
-            this.repoName = Objects.requireNonNull(repoName);
+            if (repoName == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceRepoSource", "repoName");
+            }
+            this.repoName = repoName;
             return this;
         }
         @CustomType.Setter
         public Builder tagName(String tagName) {
-            this.tagName = Objects.requireNonNull(tagName);
+            if (tagName == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceRepoSource", "tagName");
+            }
+            this.tagName = tagName;
             return this;
         }
         public GetFunctionBuildConfigSourceRepoSource build() {

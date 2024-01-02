@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.ConnectionCloudSqlCredential;
 import java.lang.String;
 import java.util.Objects;
@@ -107,27 +108,40 @@ public final class ConnectionCloudSql {
 
         @CustomType.Setter
         public Builder credential(ConnectionCloudSqlCredential credential) {
-            this.credential = Objects.requireNonNull(credential);
+            if (credential == null) {
+              throw new MissingRequiredPropertyException("ConnectionCloudSql", "credential");
+            }
+            this.credential = credential;
             return this;
         }
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("ConnectionCloudSql", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder instanceId(String instanceId) {
-            this.instanceId = Objects.requireNonNull(instanceId);
+            if (instanceId == null) {
+              throw new MissingRequiredPropertyException("ConnectionCloudSql", "instanceId");
+            }
+            this.instanceId = instanceId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountId(@Nullable String serviceAccountId) {
+
             this.serviceAccountId = serviceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ConnectionCloudSql", "type");
+            }
+            this.type = type;
             return this;
         }
         public ConnectionCloudSql build() {

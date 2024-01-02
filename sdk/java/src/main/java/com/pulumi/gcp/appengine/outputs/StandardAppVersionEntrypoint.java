@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class StandardAppVersionEntrypoint {
 
         @CustomType.Setter
         public Builder shell(String shell) {
-            this.shell = Objects.requireNonNull(shell);
+            if (shell == null) {
+              throw new MissingRequiredPropertyException("StandardAppVersionEntrypoint", "shell");
+            }
+            this.shell = shell;
             return this;
         }
         public StandardAppVersionEntrypoint build() {

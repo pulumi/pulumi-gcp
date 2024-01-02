@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceGroupInstanceNamedPort;
 import java.lang.String;
 import java.util.List;
@@ -72,12 +73,18 @@ public final class GetRegionInstanceGroupInstance {
 
         @CustomType.Setter
         public Builder instance(String instance) {
-            this.instance = Objects.requireNonNull(instance);
+            if (instance == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupInstance", "instance");
+            }
+            this.instance = instance;
             return this;
         }
         @CustomType.Setter
         public Builder namedPorts(List<GetRegionInstanceGroupInstanceNamedPort> namedPorts) {
-            this.namedPorts = Objects.requireNonNull(namedPorts);
+            if (namedPorts == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupInstance", "namedPorts");
+            }
+            this.namedPorts = namedPorts;
             return this;
         }
         public Builder namedPorts(GetRegionInstanceGroupInstanceNamedPort... namedPorts) {
@@ -85,7 +92,10 @@ public final class GetRegionInstanceGroupInstance {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupInstance", "status");
+            }
+            this.status = status;
             return this;
         }
         public GetRegionInstanceGroupInstance build() {

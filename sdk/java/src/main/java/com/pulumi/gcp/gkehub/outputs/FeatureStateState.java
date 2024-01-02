@@ -78,16 +78,19 @@ public final class FeatureStateState {
 
         @CustomType.Setter
         public Builder code(@Nullable String code) {
+
             this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }

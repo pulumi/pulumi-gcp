@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -79,17 +80,24 @@ public final class ClusterNodeTypeConfig {
 
         @CustomType.Setter
         public Builder customCoreCount(@Nullable Integer customCoreCount) {
+
             this.customCoreCount = customCoreCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
-            this.nodeCount = Objects.requireNonNull(nodeCount);
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeTypeConfig", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodeTypeId(String nodeTypeId) {
-            this.nodeTypeId = Objects.requireNonNull(nodeTypeId);
+            if (nodeTypeId == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeTypeConfig", "nodeTypeId");
+            }
+            this.nodeTypeId = nodeTypeId;
             return this;
         }
         public ClusterNodeTypeConfig build() {

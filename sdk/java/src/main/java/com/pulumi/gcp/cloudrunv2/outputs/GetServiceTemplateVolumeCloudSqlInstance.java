@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetServiceTemplateVolumeCloudSqlInstance {
 
         @CustomType.Setter
         public Builder instances(List<String> instances) {
-            this.instances = Objects.requireNonNull(instances);
+            if (instances == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateVolumeCloudSqlInstance", "instances");
+            }
+            this.instances = instances;
             return this;
         }
         public Builder instances(String... instances) {

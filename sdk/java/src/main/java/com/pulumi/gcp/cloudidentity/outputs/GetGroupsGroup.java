@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudidentity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupsGroupAdditionalGroupKey;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupsGroupGroupKey;
 import java.lang.String;
@@ -144,7 +145,10 @@ public final class GetGroupsGroup {
 
         @CustomType.Setter
         public Builder additionalGroupKeys(List<GetGroupsGroupAdditionalGroupKey> additionalGroupKeys) {
-            this.additionalGroupKeys = Objects.requireNonNull(additionalGroupKeys);
+            if (additionalGroupKeys == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "additionalGroupKeys");
+            }
+            this.additionalGroupKeys = additionalGroupKeys;
             return this;
         }
         public Builder additionalGroupKeys(GetGroupsGroupAdditionalGroupKey... additionalGroupKeys) {
@@ -152,22 +156,34 @@ public final class GetGroupsGroup {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder groupKeys(List<GetGroupsGroupGroupKey> groupKeys) {
-            this.groupKeys = Objects.requireNonNull(groupKeys);
+            if (groupKeys == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "groupKeys");
+            }
+            this.groupKeys = groupKeys;
             return this;
         }
         public Builder groupKeys(GetGroupsGroupGroupKey... groupKeys) {
@@ -175,27 +191,42 @@ public final class GetGroupsGroup {
         }
         @CustomType.Setter
         public Builder initialGroupConfig(String initialGroupConfig) {
-            this.initialGroupConfig = Objects.requireNonNull(initialGroupConfig);
+            if (initialGroupConfig == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "initialGroupConfig");
+            }
+            this.initialGroupConfig = initialGroupConfig;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parent(String parent) {
-            this.parent = Objects.requireNonNull(parent);
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "parent");
+            }
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetGroupsGroup", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetGroupsGroup build() {

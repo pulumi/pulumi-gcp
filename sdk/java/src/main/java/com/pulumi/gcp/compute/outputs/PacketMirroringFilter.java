@@ -79,6 +79,7 @@ public final class PacketMirroringFilter {
 
         @CustomType.Setter
         public Builder cidrRanges(@Nullable List<String> cidrRanges) {
+
             this.cidrRanges = cidrRanges;
             return this;
         }
@@ -87,11 +88,13 @@ public final class PacketMirroringFilter {
         }
         @CustomType.Setter
         public Builder direction(@Nullable String direction) {
+
             this.direction = direction;
             return this;
         }
         @CustomType.Setter
         public Builder ipProtocols(@Nullable List<String> ipProtocols) {
+
             this.ipProtocols = ipProtocols;
             return this;
         }

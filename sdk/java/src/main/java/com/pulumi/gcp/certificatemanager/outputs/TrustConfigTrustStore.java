@@ -65,6 +65,7 @@ public final class TrustConfigTrustStore {
 
         @CustomType.Setter
         public Builder intermediateCas(@Nullable List<TrustConfigTrustStoreIntermediateCa> intermediateCas) {
+
             this.intermediateCas = intermediateCas;
             return this;
         }
@@ -73,6 +74,7 @@ public final class TrustConfigTrustStore {
         }
         @CustomType.Setter
         public Builder trustAnchors(@Nullable List<TrustConfigTrustStoreTrustAnchor> trustAnchors) {
+
             this.trustAnchors = trustAnchors;
             return this;
         }

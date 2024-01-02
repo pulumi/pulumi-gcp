@@ -63,11 +63,13 @@ public final class BareMetalClusterNodeConfig {
 
         @CustomType.Setter
         public Builder containerRuntime(@Nullable String containerRuntime) {
+
             this.containerRuntime = containerRuntime;
             return this;
         }
         @CustomType.Setter
         public Builder maxPodsPerNode(@Nullable Integer maxPodsPerNode) {
+
             this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }

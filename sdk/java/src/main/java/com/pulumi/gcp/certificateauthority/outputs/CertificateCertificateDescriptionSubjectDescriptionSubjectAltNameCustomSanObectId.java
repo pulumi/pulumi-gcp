@@ -44,6 +44,7 @@ public final class CertificateCertificateDescriptionSubjectDescriptionSubjectAlt
 
         @CustomType.Setter
         public Builder objectIdPaths(@Nullable List<Integer> objectIdPaths) {
+
             this.objectIdPaths = objectIdPaths;
             return this;
         }

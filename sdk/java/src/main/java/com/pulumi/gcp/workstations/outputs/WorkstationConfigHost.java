@@ -46,6 +46,7 @@ public final class WorkstationConfigHost {
 
         @CustomType.Setter
         public Builder gceInstance(@Nullable WorkstationConfigHostGceInstance gceInstance) {
+
             this.gceInstance = gceInstance;
             return this;
         }

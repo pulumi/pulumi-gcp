@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -120,8 +121,12 @@ public final class URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbort
         }
 
         public URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs build() {
-            $.httpStatus = Objects.requireNonNull($.httpStatus, "expected parameter 'httpStatus' to be non-null");
-            $.percentage = Objects.requireNonNull($.percentage, "expected parameter 'percentage' to be non-null");
+            if ($.httpStatus == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs", "httpStatus");
+            }
+            if ($.percentage == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionFaultInjectionPolicyAbortArgs", "percentage");
+            }
             return $;
         }
     }

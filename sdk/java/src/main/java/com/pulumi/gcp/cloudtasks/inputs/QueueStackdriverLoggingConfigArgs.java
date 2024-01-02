@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudtasks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class QueueStackdriverLoggingConfigArgs extends com.pulumi.resource
         }
 
         public QueueStackdriverLoggingConfigArgs build() {
-            $.samplingRatio = Objects.requireNonNull($.samplingRatio, "expected parameter 'samplingRatio' to be non-null");
+            if ($.samplingRatio == null) {
+                throw new MissingRequiredPropertyException("QueueStackdriverLoggingConfigArgs", "samplingRatio");
+            }
             return $;
         }
     }

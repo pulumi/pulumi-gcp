@@ -4,6 +4,7 @@
 package com.pulumi.gcp.folder.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class GetOrganizationPolicyListPolicyDeny {
 
         @CustomType.Setter
         public Builder all(Boolean all) {
-            this.all = Objects.requireNonNull(all);
+            if (all == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyListPolicyDeny", "all");
+            }
+            this.all = all;
             return this;
         }
         @CustomType.Setter
         public Builder values(List<String> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyListPolicyDeny", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(String... values) {

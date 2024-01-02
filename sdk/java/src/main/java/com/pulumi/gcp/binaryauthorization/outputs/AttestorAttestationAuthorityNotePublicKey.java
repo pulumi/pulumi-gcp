@@ -123,21 +123,25 @@ public final class AttestorAttestationAuthorityNotePublicKey {
 
         @CustomType.Setter
         public Builder asciiArmoredPgpPublicKey(@Nullable String asciiArmoredPgpPublicKey) {
+
             this.asciiArmoredPgpPublicKey = asciiArmoredPgpPublicKey;
             return this;
         }
         @CustomType.Setter
         public Builder comment(@Nullable String comment) {
+
             this.comment = comment;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pkixPublicKey(@Nullable AttestorAttestationAuthorityNotePublicKeyPkixPublicKey pkixPublicKey) {
+
             this.pkixPublicKey = pkixPublicKey;
             return this;
         }

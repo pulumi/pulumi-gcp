@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigOauth2ClientCredentialsClientSecretArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -118,7 +119,9 @@ public final class ConnectionAuthConfigOauth2ClientCredentialsArgs extends com.p
         }
 
         public ConnectionAuthConfigOauth2ClientCredentialsArgs build() {
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("ConnectionAuthConfigOauth2ClientCredentialsArgs", "clientId");
+            }
             return $;
         }
     }

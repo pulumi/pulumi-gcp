@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -59,11 +60,15 @@ public final class AiIndexEndpointPrivateServiceConnectConfig {
 
         @CustomType.Setter
         public Builder enablePrivateServiceConnect(Boolean enablePrivateServiceConnect) {
-            this.enablePrivateServiceConnect = Objects.requireNonNull(enablePrivateServiceConnect);
+            if (enablePrivateServiceConnect == null) {
+              throw new MissingRequiredPropertyException("AiIndexEndpointPrivateServiceConnectConfig", "enablePrivateServiceConnect");
+            }
+            this.enablePrivateServiceConnect = enablePrivateServiceConnect;
             return this;
         }
         @CustomType.Setter
         public Builder projectAllowlists(@Nullable List<String> projectAllowlists) {
+
             this.projectAllowlists = projectAllowlists;
             return this;
         }

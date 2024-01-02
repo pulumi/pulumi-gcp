@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,27 +91,42 @@ public final class GetClientConfigResult {
 
         @CustomType.Setter
         public Builder accessToken(String accessToken) {
-            this.accessToken = Objects.requireNonNull(accessToken);
+            if (accessToken == null) {
+              throw new MissingRequiredPropertyException("GetClientConfigResult", "accessToken");
+            }
+            this.accessToken = accessToken;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClientConfigResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetClientConfigResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetClientConfigResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetClientConfigResult", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetClientConfigResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudscheduler.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -121,7 +122,9 @@ public final class JobHttpTargetOauthTokenArgs extends com.pulumi.resources.Reso
         }
 
         public JobHttpTargetOauthTokenArgs build() {
-            $.serviceAccountEmail = Objects.requireNonNull($.serviceAccountEmail, "expected parameter 'serviceAccountEmail' to be non-null");
+            if ($.serviceAccountEmail == null) {
+                throw new MissingRequiredPropertyException("JobHttpTargetOauthTokenArgs", "serviceAccountEmail");
+            }
             return $;
         }
     }

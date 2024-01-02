@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificatemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificatemanager.inputs.CertificateIssuanceConfigCertificateAuthorityConfigArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -423,10 +424,18 @@ public final class CertificateIssuanceConfigArgs extends com.pulumi.resources.Re
         }
 
         public CertificateIssuanceConfigArgs build() {
-            $.certificateAuthorityConfig = Objects.requireNonNull($.certificateAuthorityConfig, "expected parameter 'certificateAuthorityConfig' to be non-null");
-            $.keyAlgorithm = Objects.requireNonNull($.keyAlgorithm, "expected parameter 'keyAlgorithm' to be non-null");
-            $.lifetime = Objects.requireNonNull($.lifetime, "expected parameter 'lifetime' to be non-null");
-            $.rotationWindowPercentage = Objects.requireNonNull($.rotationWindowPercentage, "expected parameter 'rotationWindowPercentage' to be non-null");
+            if ($.certificateAuthorityConfig == null) {
+                throw new MissingRequiredPropertyException("CertificateIssuanceConfigArgs", "certificateAuthorityConfig");
+            }
+            if ($.keyAlgorithm == null) {
+                throw new MissingRequiredPropertyException("CertificateIssuanceConfigArgs", "keyAlgorithm");
+            }
+            if ($.lifetime == null) {
+                throw new MissingRequiredPropertyException("CertificateIssuanceConfigArgs", "lifetime");
+            }
+            if ($.rotationWindowPercentage == null) {
+                throw new MissingRequiredPropertyException("CertificateIssuanceConfigArgs", "rotationWindowPercentage");
+            }
             return $;
         }
     }

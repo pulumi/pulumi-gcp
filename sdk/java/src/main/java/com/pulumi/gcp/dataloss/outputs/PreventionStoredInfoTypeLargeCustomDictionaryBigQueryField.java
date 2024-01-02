@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField;
 import com.pulumi.gcp.dataloss.outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable;
 import java.util.Objects;
@@ -61,12 +62,18 @@ public final class PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField {
 
         @CustomType.Setter
         public Builder field(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldField field) {
-            this.field = Objects.requireNonNull(field);
+            if (field == null) {
+              throw new MissingRequiredPropertyException("PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField", "field");
+            }
+            this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder table(PreventionStoredInfoTypeLargeCustomDictionaryBigQueryFieldTable table) {
-            this.table = Objects.requireNonNull(table);
+            if (table == null) {
+              throw new MissingRequiredPropertyException("PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField", "table");
+            }
+            this.table = table;
             return this;
         }
         public PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField build() {

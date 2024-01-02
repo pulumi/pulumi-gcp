@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class BitbucketServerConfigConnectedRepositoryArgs extends com.pulu
         }
 
         public BitbucketServerConfigConnectedRepositoryArgs build() {
-            $.projectKey = Objects.requireNonNull($.projectKey, "expected parameter 'projectKey' to be non-null");
-            $.repoSlug = Objects.requireNonNull($.repoSlug, "expected parameter 'repoSlug' to be non-null");
+            if ($.projectKey == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigConnectedRepositoryArgs", "projectKey");
+            }
+            if ($.repoSlug == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigConnectedRepositoryArgs", "repoSlug");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -217,9 +218,15 @@ public final class AwsClusterNetworkingArgs extends com.pulumi.resources.Resourc
         }
 
         public AwsClusterNetworkingArgs build() {
-            $.podAddressCidrBlocks = Objects.requireNonNull($.podAddressCidrBlocks, "expected parameter 'podAddressCidrBlocks' to be non-null");
-            $.serviceAddressCidrBlocks = Objects.requireNonNull($.serviceAddressCidrBlocks, "expected parameter 'serviceAddressCidrBlocks' to be non-null");
-            $.vpcId = Objects.requireNonNull($.vpcId, "expected parameter 'vpcId' to be non-null");
+            if ($.podAddressCidrBlocks == null) {
+                throw new MissingRequiredPropertyException("AwsClusterNetworkingArgs", "podAddressCidrBlocks");
+            }
+            if ($.serviceAddressCidrBlocks == null) {
+                throw new MissingRequiredPropertyException("AwsClusterNetworkingArgs", "serviceAddressCidrBlocks");
+            }
+            if ($.vpcId == null) {
+                throw new MissingRequiredPropertyException("AwsClusterNetworkingArgs", "vpcId");
+            }
             return $;
         }
     }

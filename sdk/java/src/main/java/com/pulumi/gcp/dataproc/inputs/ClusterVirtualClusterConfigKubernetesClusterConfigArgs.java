@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs;
 import java.lang.String;
@@ -164,8 +165,12 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigArgs extend
         }
 
         public ClusterVirtualClusterConfigKubernetesClusterConfigArgs build() {
-            $.gkeClusterConfig = Objects.requireNonNull($.gkeClusterConfig, "expected parameter 'gkeClusterConfig' to be non-null");
-            $.kubernetesSoftwareConfig = Objects.requireNonNull($.kubernetesSoftwareConfig, "expected parameter 'kubernetesSoftwareConfig' to be non-null");
+            if ($.gkeClusterConfig == null) {
+                throw new MissingRequiredPropertyException("ClusterVirtualClusterConfigKubernetesClusterConfigArgs", "gkeClusterConfig");
+            }
+            if ($.kubernetesSoftwareConfig == null) {
+                throw new MissingRequiredPropertyException("ClusterVirtualClusterConfigKubernetesClusterConfigArgs", "kubernetesSoftwareConfig");
+            }
             return $;
         }
     }

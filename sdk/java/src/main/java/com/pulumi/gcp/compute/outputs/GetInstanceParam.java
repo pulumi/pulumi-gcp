@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
@@ -36,7 +37,10 @@ public final class GetInstanceParam {
 
         @CustomType.Setter
         public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
-            this.resourceManagerTags = Objects.requireNonNull(resourceManagerTags);
+            if (resourceManagerTags == null) {
+              throw new MissingRequiredPropertyException("GetInstanceParam", "resourceManagerTags");
+            }
+            this.resourceManagerTags = resourceManagerTags;
             return this;
         }
         public GetInstanceParam build() {

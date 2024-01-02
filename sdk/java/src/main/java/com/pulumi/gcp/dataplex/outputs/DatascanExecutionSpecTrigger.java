@@ -61,11 +61,13 @@ public final class DatascanExecutionSpecTrigger {
 
         @CustomType.Setter
         public Builder onDemand(@Nullable DatascanExecutionSpecTriggerOnDemand onDemand) {
+
             this.onDemand = onDemand;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(@Nullable DatascanExecutionSpecTriggerSchedule schedule) {
+
             this.schedule = schedule;
             return this;
         }

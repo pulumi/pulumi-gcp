@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,16 @@ public final class StandardAppVersionDeploymentZip {
 
         @CustomType.Setter
         public Builder filesCount(@Nullable Integer filesCount) {
+
             this.filesCount = filesCount;
             return this;
         }
         @CustomType.Setter
         public Builder sourceUrl(String sourceUrl) {
-            this.sourceUrl = Objects.requireNonNull(sourceUrl);
+            if (sourceUrl == null) {
+              throw new MissingRequiredPropertyException("StandardAppVersionDeploymentZip", "sourceUrl");
+            }
+            this.sourceUrl = sourceUrl;
             return this;
         }
         public StandardAppVersionDeploymentZip build() {

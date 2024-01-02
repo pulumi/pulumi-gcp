@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileCloudsqlSettingsIpConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -289,86 +290,105 @@ public final class ConnectionProfileCloudsqlSettings {
 
         @CustomType.Setter
         public Builder activationPolicy(@Nullable String activationPolicy) {
+
             this.activationPolicy = activationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder autoStorageIncrease(@Nullable Boolean autoStorageIncrease) {
+
             this.autoStorageIncrease = autoStorageIncrease;
             return this;
         }
         @CustomType.Setter
         public Builder cmekKeyName(@Nullable String cmekKeyName) {
+
             this.cmekKeyName = cmekKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder collation(@Nullable String collation) {
+
             this.collation = collation;
             return this;
         }
         @CustomType.Setter
         public Builder dataDiskSizeGb(@Nullable String dataDiskSizeGb) {
+
             this.dataDiskSizeGb = dataDiskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder dataDiskType(@Nullable String dataDiskType) {
+
             this.dataDiskType = dataDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder databaseFlags(@Nullable Map<String,String> databaseFlags) {
+
             this.databaseFlags = databaseFlags;
             return this;
         }
         @CustomType.Setter
         public Builder databaseVersion(@Nullable String databaseVersion) {
+
             this.databaseVersion = databaseVersion;
             return this;
         }
         @CustomType.Setter
         public Builder edition(@Nullable String edition) {
+
             this.edition = edition;
             return this;
         }
         @CustomType.Setter
         public Builder ipConfig(@Nullable ConnectionProfileCloudsqlSettingsIpConfig ipConfig) {
+
             this.ipConfig = ipConfig;
             return this;
         }
         @CustomType.Setter
         public Builder rootPassword(@Nullable String rootPassword) {
+
             this.rootPassword = rootPassword;
             return this;
         }
         @CustomType.Setter
         public Builder rootPasswordSet(@Nullable Boolean rootPasswordSet) {
+
             this.rootPasswordSet = rootPasswordSet;
             return this;
         }
         @CustomType.Setter
         public Builder sourceId(String sourceId) {
-            this.sourceId = Objects.requireNonNull(sourceId);
+            if (sourceId == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileCloudsqlSettings", "sourceId");
+            }
+            this.sourceId = sourceId;
             return this;
         }
         @CustomType.Setter
         public Builder storageAutoResizeLimit(@Nullable String storageAutoResizeLimit) {
+
             this.storageAutoResizeLimit = storageAutoResizeLimit;
             return this;
         }
         @CustomType.Setter
         public Builder tier(@Nullable String tier) {
+
             this.tier = tier;
             return this;
         }
         @CustomType.Setter
         public Builder userLabels(@Nullable Map<String,String> userLabels) {
+
             this.userLabels = userLabels;
             return this;
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

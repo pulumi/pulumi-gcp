@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.PacketMirroringCollectorIlbArgs;
 import com.pulumi.gcp.compute.inputs.PacketMirroringFilterArgs;
 import com.pulumi.gcp.compute.inputs.PacketMirroringMirroredResourcesArgs;
@@ -429,9 +430,15 @@ public final class PacketMirroringArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public PacketMirroringArgs build() {
-            $.collectorIlb = Objects.requireNonNull($.collectorIlb, "expected parameter 'collectorIlb' to be non-null");
-            $.mirroredResources = Objects.requireNonNull($.mirroredResources, "expected parameter 'mirroredResources' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.collectorIlb == null) {
+                throw new MissingRequiredPropertyException("PacketMirroringArgs", "collectorIlb");
+            }
+            if ($.mirroredResources == null) {
+                throw new MissingRequiredPropertyException("PacketMirroringArgs", "mirroredResources");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("PacketMirroringArgs", "network");
+            }
             return $;
         }
     }

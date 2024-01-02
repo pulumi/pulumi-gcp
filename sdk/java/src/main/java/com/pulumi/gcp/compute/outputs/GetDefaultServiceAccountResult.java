@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -118,37 +119,58 @@ public final class GetDefaultServiceAccountResult {
 
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetDefaultServiceAccountResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetDefaultServiceAccountResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDefaultServiceAccountResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder member(String member) {
-            this.member = Objects.requireNonNull(member);
+            if (member == null) {
+              throw new MissingRequiredPropertyException("GetDefaultServiceAccountResult", "member");
+            }
+            this.member = member;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDefaultServiceAccountResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetDefaultServiceAccountResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder uniqueId(String uniqueId) {
-            this.uniqueId = Objects.requireNonNull(uniqueId);
+            if (uniqueId == null) {
+              throw new MissingRequiredPropertyException("GetDefaultServiceAccountResult", "uniqueId");
+            }
+            this.uniqueId = uniqueId;
             return this;
         }
         public GetDefaultServiceAccountResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -129,7 +130,9 @@ public final class MetastoreServiceNetworkConfigConsumerArgs extends com.pulumi.
         }
 
         public MetastoreServiceNetworkConfigConsumerArgs build() {
-            $.subnetwork = Objects.requireNonNull($.subnetwork, "expected parameter 'subnetwork' to be non-null");
+            if ($.subnetwork == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceNetworkConfigConsumerArgs", "subnetwork");
+            }
             return $;
         }
     }

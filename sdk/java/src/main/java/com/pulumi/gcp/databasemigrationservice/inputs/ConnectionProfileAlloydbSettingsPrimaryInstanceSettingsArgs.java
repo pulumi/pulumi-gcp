@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfigArgs;
 import java.lang.String;
 import java.util.Map;
@@ -234,8 +235,12 @@ public final class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs e
         }
 
         public ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.machineConfig = Objects.requireNonNull($.machineConfig, "expected parameter 'machineConfig' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs", "id");
+            }
+            if ($.machineConfig == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs", "machineConfig");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -259,7 +260,9 @@ public final class JobTemplateArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobTemplateArgs build() {
-            $.template = Objects.requireNonNull($.template, "expected parameter 'template' to be non-null");
+            if ($.template == null) {
+                throw new MissingRequiredPropertyException("JobTemplateArgs", "template");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryCleanupPolicy;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryDockerConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryMavenConfig;
@@ -166,7 +167,10 @@ public final class GetRepositoryResult {
 
         @CustomType.Setter
         public Builder cleanupPolicies(List<GetRepositoryCleanupPolicy> cleanupPolicies) {
-            this.cleanupPolicies = Objects.requireNonNull(cleanupPolicies);
+            if (cleanupPolicies == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "cleanupPolicies");
+            }
+            this.cleanupPolicies = cleanupPolicies;
             return this;
         }
         public Builder cleanupPolicies(GetRepositoryCleanupPolicy... cleanupPolicies) {
@@ -174,22 +178,34 @@ public final class GetRepositoryResult {
         }
         @CustomType.Setter
         public Builder cleanupPolicyDryRun(Boolean cleanupPolicyDryRun) {
-            this.cleanupPolicyDryRun = Objects.requireNonNull(cleanupPolicyDryRun);
+            if (cleanupPolicyDryRun == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "cleanupPolicyDryRun");
+            }
+            this.cleanupPolicyDryRun = cleanupPolicyDryRun;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dockerConfigs(List<GetRepositoryDockerConfig> dockerConfigs) {
-            this.dockerConfigs = Objects.requireNonNull(dockerConfigs);
+            if (dockerConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "dockerConfigs");
+            }
+            this.dockerConfigs = dockerConfigs;
             return this;
         }
         public Builder dockerConfigs(GetRepositoryDockerConfig... dockerConfigs) {
@@ -197,37 +213,58 @@ public final class GetRepositoryResult {
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder format(String format) {
-            this.format = Objects.requireNonNull(format);
+            if (format == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "format");
+            }
+            this.format = format;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder mavenConfigs(List<GetRepositoryMavenConfig> mavenConfigs) {
-            this.mavenConfigs = Objects.requireNonNull(mavenConfigs);
+            if (mavenConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "mavenConfigs");
+            }
+            this.mavenConfigs = mavenConfigs;
             return this;
         }
         public Builder mavenConfigs(GetRepositoryMavenConfig... mavenConfigs) {
@@ -235,27 +272,40 @@ public final class GetRepositoryResult {
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder remoteRepositoryConfigs(List<GetRepositoryRemoteRepositoryConfig> remoteRepositoryConfigs) {
-            this.remoteRepositoryConfigs = Objects.requireNonNull(remoteRepositoryConfigs);
+            if (remoteRepositoryConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "remoteRepositoryConfigs");
+            }
+            this.remoteRepositoryConfigs = remoteRepositoryConfigs;
             return this;
         }
         public Builder remoteRepositoryConfigs(GetRepositoryRemoteRepositoryConfig... remoteRepositoryConfigs) {
@@ -263,17 +313,26 @@ public final class GetRepositoryResult {
         }
         @CustomType.Setter
         public Builder repositoryId(String repositoryId) {
-            this.repositoryId = Objects.requireNonNull(repositoryId);
+            if (repositoryId == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "repositoryId");
+            }
+            this.repositoryId = repositoryId;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder virtualRepositoryConfigs(List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs) {
-            this.virtualRepositoryConfigs = Objects.requireNonNull(virtualRepositoryConfigs);
+            if (virtualRepositoryConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "virtualRepositoryConfigs");
+            }
+            this.virtualRepositoryConfigs = virtualRepositoryConfigs;
             return this;
         }
         public Builder virtualRepositoryConfigs(GetRepositoryVirtualRepositoryConfig... virtualRepositoryConfigs) {

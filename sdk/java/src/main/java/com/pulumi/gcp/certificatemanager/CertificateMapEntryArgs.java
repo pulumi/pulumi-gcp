@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificatemanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -405,8 +406,12 @@ public final class CertificateMapEntryArgs extends com.pulumi.resources.Resource
         }
 
         public CertificateMapEntryArgs build() {
-            $.certificates = Objects.requireNonNull($.certificates, "expected parameter 'certificates' to be non-null");
-            $.map = Objects.requireNonNull($.map, "expected parameter 'map' to be non-null");
+            if ($.certificates == null) {
+                throw new MissingRequiredPropertyException("CertificateMapEntryArgs", "certificates");
+            }
+            if ($.map == null) {
+                throw new MissingRequiredPropertyException("CertificateMapEntryArgs", "map");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.TcpRouteRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -368,7 +369,9 @@ public final class TcpRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TcpRouteArgs build() {
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("TcpRouteArgs", "rules");
+            }
             return $;
         }
     }

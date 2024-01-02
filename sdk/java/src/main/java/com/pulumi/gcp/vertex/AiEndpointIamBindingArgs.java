@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiEndpointIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -147,9 +148,15 @@ public final class AiEndpointIamBindingArgs extends com.pulumi.resources.Resourc
         }
 
         public AiEndpointIamBindingArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("AiEndpointIamBindingArgs", "endpoint");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("AiEndpointIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AiEndpointIamBindingArgs", "role");
+            }
             return $;
         }
     }

@@ -60,11 +60,13 @@ public final class AiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
 
         @CustomType.Setter
         public Builder leafNodeEmbeddingCount(@Nullable Integer leafNodeEmbeddingCount) {
+
             this.leafNodeEmbeddingCount = leafNodeEmbeddingCount;
             return this;
         }
         @CustomType.Setter
         public Builder leafNodesToSearchPercent(@Nullable Integer leafNodesToSearchPercent) {
+
             this.leafNodesToSearchPercent = leafNodesToSearchPercent;
             return this;
         }

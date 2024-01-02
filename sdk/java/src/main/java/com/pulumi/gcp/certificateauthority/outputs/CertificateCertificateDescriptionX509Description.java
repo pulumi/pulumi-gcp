@@ -131,6 +131,7 @@ public final class CertificateCertificateDescriptionX509Description {
 
         @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtension> additionalExtensions) {
+
             this.additionalExtensions = additionalExtensions;
             return this;
         }
@@ -139,6 +140,7 @@ public final class CertificateCertificateDescriptionX509Description {
         }
         @CustomType.Setter
         public Builder aiaOcspServers(@Nullable List<String> aiaOcspServers) {
+
             this.aiaOcspServers = aiaOcspServers;
             return this;
         }
@@ -147,6 +149,7 @@ public final class CertificateCertificateDescriptionX509Description {
         }
         @CustomType.Setter
         public Builder caOptions(@Nullable List<CertificateCertificateDescriptionX509DescriptionCaOption> caOptions) {
+
             this.caOptions = caOptions;
             return this;
         }
@@ -155,6 +158,7 @@ public final class CertificateCertificateDescriptionX509Description {
         }
         @CustomType.Setter
         public Builder keyUsages(@Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsage> keyUsages) {
+
             this.keyUsages = keyUsages;
             return this;
         }
@@ -163,6 +167,7 @@ public final class CertificateCertificateDescriptionX509Description {
         }
         @CustomType.Setter
         public Builder nameConstraints(@Nullable List<CertificateCertificateDescriptionX509DescriptionNameConstraint> nameConstraints) {
+
             this.nameConstraints = nameConstraints;
             return this;
         }
@@ -171,6 +176,7 @@ public final class CertificateCertificateDescriptionX509Description {
         }
         @CustomType.Setter
         public Builder policyIds(@Nullable List<CertificateCertificateDescriptionX509DescriptionPolicyId> policyIds) {
+
             this.policyIds = policyIds;
             return this;
         }

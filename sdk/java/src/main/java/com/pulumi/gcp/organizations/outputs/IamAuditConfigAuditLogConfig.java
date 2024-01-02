@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -68,6 +69,7 @@ public final class IamAuditConfigAuditLogConfig {
 
         @CustomType.Setter
         public Builder exemptedMembers(@Nullable List<String> exemptedMembers) {
+
             this.exemptedMembers = exemptedMembers;
             return this;
         }
@@ -76,7 +78,10 @@ public final class IamAuditConfigAuditLogConfig {
         }
         @CustomType.Setter
         public Builder logType(String logType) {
-            this.logType = Objects.requireNonNull(logType);
+            if (logType == null) {
+              throw new MissingRequiredPropertyException("IamAuditConfigAuditLogConfig", "logType");
+            }
+            this.logType = logType;
             return this;
         }
         public IamAuditConfigAuditLogConfig build() {

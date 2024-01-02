@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetServiceStatusCondition {
 
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatusCondition", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder reason(String reason) {
-            this.reason = Objects.requireNonNull(reason);
+            if (reason == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatusCondition", "reason");
+            }
+            this.reason = reason;
             return this;
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatusCondition", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatusCondition", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetServiceStatusCondition build() {

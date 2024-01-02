@@ -5,6 +5,7 @@ package com.pulumi.gcp.notebooks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class InstanceContainerImageArgs extends com.pulumi.resources.Resou
         }
 
         public InstanceContainerImageArgs build() {
-            $.repository = Objects.requireNonNull($.repository, "expected parameter 'repository' to be non-null");
+            if ($.repository == null) {
+                throw new MissingRequiredPropertyException("InstanceContainerImageArgs", "repository");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -129,7 +130,9 @@ public final class PreventionStoredInfoTypeRegexArgs extends com.pulumi.resource
         }
 
         public PreventionStoredInfoTypeRegexArgs build() {
-            $.pattern = Objects.requireNonNull($.pattern, "expected parameter 'pattern' to be non-null");
+            if ($.pattern == null) {
+                throw new MissingRequiredPropertyException("PreventionStoredInfoTypeRegexArgs", "pattern");
+            }
             return $;
         }
     }

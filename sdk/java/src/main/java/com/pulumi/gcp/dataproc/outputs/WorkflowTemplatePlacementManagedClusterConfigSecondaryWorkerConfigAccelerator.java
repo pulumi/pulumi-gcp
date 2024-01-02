@@ -59,11 +59,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecondaryWorkerC
 
         @CustomType.Setter
         public Builder acceleratorCount(@Nullable Integer acceleratorCount) {
+
             this.acceleratorCount = acceleratorCount;
             return this;
         }
         @CustomType.Setter
         public Builder acceleratorType(@Nullable String acceleratorType) {
+
             this.acceleratorType = acceleratorType;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.beyondcorp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.beyondcorp.outputs.GetAppGatewayAllocatedConnection;
 import java.lang.String;
 import java.util.List;
@@ -119,7 +120,10 @@ public final class GetAppGatewayResult {
 
         @CustomType.Setter
         public Builder allocatedConnections(List<GetAppGatewayAllocatedConnection> allocatedConnections) {
-            this.allocatedConnections = Objects.requireNonNull(allocatedConnections);
+            if (allocatedConnections == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "allocatedConnections");
+            }
+            this.allocatedConnections = allocatedConnections;
             return this;
         }
         public Builder allocatedConnections(GetAppGatewayAllocatedConnection... allocatedConnections) {
@@ -127,62 +131,94 @@ public final class GetAppGatewayResult {
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder hostType(String hostType) {
-            this.hostType = Objects.requireNonNull(hostType);
+            if (hostType == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "hostType");
+            }
+            this.hostType = hostType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayResult", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public GetAppGatewayResult build() {

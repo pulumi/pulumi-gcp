@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.NodeGroupShareSettingsProjectMap;
 import java.lang.String;
 import java.util.List;
@@ -63,6 +64,7 @@ public final class NodeGroupShareSettings {
 
         @CustomType.Setter
         public Builder projectMaps(@Nullable List<NodeGroupShareSettingsProjectMap> projectMaps) {
+
             this.projectMaps = projectMaps;
             return this;
         }
@@ -71,7 +73,10 @@ public final class NodeGroupShareSettings {
         }
         @CustomType.Setter
         public Builder shareType(String shareType) {
-            this.shareType = Objects.requireNonNull(shareType);
+            if (shareType == null) {
+              throw new MissingRequiredPropertyException("NodeGroupShareSettings", "shareType");
+            }
+            this.shareType = shareType;
             return this;
         }
         public NodeGroupShareSettings build() {

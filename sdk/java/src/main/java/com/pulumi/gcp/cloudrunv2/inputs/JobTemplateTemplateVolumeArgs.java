@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeCloudSqlInstanceArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeEmptyDirArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateVolumeSecretArgs;
@@ -178,7 +179,9 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         }
 
         public JobTemplateTemplateVolumeArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("JobTemplateTemplateVolumeArgs", "name");
+            }
             return $;
         }
     }

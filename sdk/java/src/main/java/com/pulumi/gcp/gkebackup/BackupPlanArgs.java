@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkebackup;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupConfigArgs;
 import com.pulumi.gcp.gkebackup.inputs.BackupPlanBackupScheduleArgs;
 import com.pulumi.gcp.gkebackup.inputs.BackupPlanRetentionPolicyArgs;
@@ -470,8 +471,12 @@ public final class BackupPlanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BackupPlanArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "cluster");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("BackupPlanArgs", "location");
+            }
             return $;
         }
     }

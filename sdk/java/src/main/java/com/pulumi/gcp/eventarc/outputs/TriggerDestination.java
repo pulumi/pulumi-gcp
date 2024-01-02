@@ -88,21 +88,25 @@ public final class TriggerDestination {
 
         @CustomType.Setter
         public Builder cloudFunction(@Nullable String cloudFunction) {
+
             this.cloudFunction = cloudFunction;
             return this;
         }
         @CustomType.Setter
         public Builder cloudRunService(@Nullable TriggerDestinationCloudRunService cloudRunService) {
+
             this.cloudRunService = cloudRunService;
             return this;
         }
         @CustomType.Setter
         public Builder gke(@Nullable TriggerDestinationGke gke) {
+
             this.gke = gke;
             return this;
         }
         @CustomType.Setter
         public Builder workflow(@Nullable String workflow) {
+
             this.workflow = workflow;
             return this;
         }

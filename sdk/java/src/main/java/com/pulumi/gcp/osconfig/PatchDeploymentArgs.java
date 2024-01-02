@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.inputs.PatchDeploymentInstanceFilterArgs;
 import com.pulumi.gcp.osconfig.inputs.PatchDeploymentOneTimeScheduleArgs;
 import com.pulumi.gcp.osconfig.inputs.PatchDeploymentPatchConfigArgs;
@@ -425,8 +426,12 @@ public final class PatchDeploymentArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public PatchDeploymentArgs build() {
-            $.instanceFilter = Objects.requireNonNull($.instanceFilter, "expected parameter 'instanceFilter' to be non-null");
-            $.patchDeploymentId = Objects.requireNonNull($.patchDeploymentId, "expected parameter 'patchDeploymentId' to be non-null");
+            if ($.instanceFilter == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentArgs", "instanceFilter");
+            }
+            if ($.patchDeploymentId == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentArgs", "patchDeploymentId");
+            }
             return $;
         }
     }

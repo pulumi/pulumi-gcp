@@ -5,6 +5,7 @@ package com.pulumi.gcp.servicenetworking;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -177,9 +178,15 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.reservedPeeringRanges = Objects.requireNonNull($.reservedPeeringRanges, "expected parameter 'reservedPeeringRanges' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "network");
+            }
+            if ($.reservedPeeringRanges == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "reservedPeeringRanges");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "service");
+            }
             return $;
         }
     }

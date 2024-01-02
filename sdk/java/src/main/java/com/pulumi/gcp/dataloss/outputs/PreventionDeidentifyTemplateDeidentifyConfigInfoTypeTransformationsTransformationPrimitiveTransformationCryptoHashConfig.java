@@ -46,6 +46,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         @CustomType.Setter
         public Builder cryptoKey(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationCryptoHashConfigCryptoKey cryptoKey) {
+
             this.cryptoKey = cryptoKey;
             return this;
         }

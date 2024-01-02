@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -129,7 +130,9 @@ public final class BackendServiceConsistentHashHttpCookieTtlArgs extends com.pul
         }
 
         public BackendServiceConsistentHashHttpCookieTtlArgs build() {
-            $.seconds = Objects.requireNonNull($.seconds, "expected parameter 'seconds' to be non-null");
+            if ($.seconds == null) {
+                throw new MissingRequiredPropertyException("BackendServiceConsistentHashHttpCookieTtlArgs", "seconds");
+            }
             return $;
         }
     }

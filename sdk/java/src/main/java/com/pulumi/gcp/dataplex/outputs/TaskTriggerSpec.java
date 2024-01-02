@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -104,27 +105,34 @@ public final class TaskTriggerSpec {
 
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder maxRetries(@Nullable Integer maxRetries) {
+
             this.maxRetries = maxRetries;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(@Nullable String schedule) {
+
             this.schedule = schedule;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("TaskTriggerSpec", "type");
+            }
+            this.type = type;
             return this;
         }
         public TaskTriggerSpec build() {

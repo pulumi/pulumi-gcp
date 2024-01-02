@@ -44,6 +44,7 @@ public final class ClusterContinuousBackupConfigEncryptionConfig {
 
         @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
+
             this.kmsKeyName = kmsKeyName;
             return this;
         }

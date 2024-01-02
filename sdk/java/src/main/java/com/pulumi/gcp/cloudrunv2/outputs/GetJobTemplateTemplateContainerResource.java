@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetJobTemplateTemplateContainerResource {
 
         @CustomType.Setter
         public Builder limits(Map<String,String> limits) {
-            this.limits = Objects.requireNonNull(limits);
+            if (limits == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateContainerResource", "limits");
+            }
+            this.limits = limits;
             return this;
         }
         public GetJobTemplateTemplateContainerResource build() {

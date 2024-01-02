@@ -89,21 +89,25 @@ public final class ServiceTraffic {
 
         @CustomType.Setter
         public Builder percent(@Nullable Integer percent) {
+
             this.percent = percent;
             return this;
         }
         @CustomType.Setter
         public Builder revision(@Nullable String revision) {
+
             this.revision = revision;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

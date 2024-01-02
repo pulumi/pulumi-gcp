@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class VMwareClusterAuthorizationAdminUser {
 
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterAuthorizationAdminUser", "username");
+            }
+            this.username = username;
             return this;
         }
         public VMwareClusterAuthorizationAdminUser build() {

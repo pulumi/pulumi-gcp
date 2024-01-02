@@ -5,6 +5,7 @@ package com.pulumi.gcp.activedirectory;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -311,9 +312,15 @@ public final class PeeringArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PeeringArgs build() {
-            $.authorizedNetwork = Objects.requireNonNull($.authorizedNetwork, "expected parameter 'authorizedNetwork' to be non-null");
-            $.domainResource = Objects.requireNonNull($.domainResource, "expected parameter 'domainResource' to be non-null");
-            $.peeringId = Objects.requireNonNull($.peeringId, "expected parameter 'peeringId' to be non-null");
+            if ($.authorizedNetwork == null) {
+                throw new MissingRequiredPropertyException("PeeringArgs", "authorizedNetwork");
+            }
+            if ($.domainResource == null) {
+                throw new MissingRequiredPropertyException("PeeringArgs", "domainResource");
+            }
+            if ($.peeringId == null) {
+                throw new MissingRequiredPropertyException("PeeringArgs", "peeringId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -62,11 +63,15 @@ public final class NetworkFirewallPolicyRuleMatchLayer4Config {
 
         @CustomType.Setter
         public Builder ipProtocol(String ipProtocol) {
-            this.ipProtocol = Objects.requireNonNull(ipProtocol);
+            if (ipProtocol == null) {
+              throw new MissingRequiredPropertyException("NetworkFirewallPolicyRuleMatchLayer4Config", "ipProtocol");
+            }
+            this.ipProtocol = ipProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable List<String> ports) {
+
             this.ports = ports;
             return this;
         }

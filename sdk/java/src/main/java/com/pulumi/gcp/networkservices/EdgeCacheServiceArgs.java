@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceLogConfigArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheServiceRoutingArgs;
 import java.lang.Boolean;
@@ -551,7 +552,9 @@ public final class EdgeCacheServiceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public EdgeCacheServiceArgs build() {
-            $.routing = Objects.requireNonNull($.routing, "expected parameter 'routing' to be non-null");
+            if ($.routing == null) {
+                throw new MissingRequiredPropertyException("EdgeCacheServiceArgs", "routing");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.binaryauthorization.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -104,21 +105,31 @@ public final class PolicyClusterAdmissionRule {
 
         @CustomType.Setter
         public Builder cluster(String cluster) {
-            this.cluster = Objects.requireNonNull(cluster);
+            if (cluster == null) {
+              throw new MissingRequiredPropertyException("PolicyClusterAdmissionRule", "cluster");
+            }
+            this.cluster = cluster;
             return this;
         }
         @CustomType.Setter
         public Builder enforcementMode(String enforcementMode) {
-            this.enforcementMode = Objects.requireNonNull(enforcementMode);
+            if (enforcementMode == null) {
+              throw new MissingRequiredPropertyException("PolicyClusterAdmissionRule", "enforcementMode");
+            }
+            this.enforcementMode = enforcementMode;
             return this;
         }
         @CustomType.Setter
         public Builder evaluationMode(String evaluationMode) {
-            this.evaluationMode = Objects.requireNonNull(evaluationMode);
+            if (evaluationMode == null) {
+              throw new MissingRequiredPropertyException("PolicyClusterAdmissionRule", "evaluationMode");
+            }
+            this.evaluationMode = evaluationMode;
             return this;
         }
         @CustomType.Setter
         public Builder requireAttestationsBies(@Nullable List<String> requireAttestationsBies) {
+
             this.requireAttestationsBies = requireAttestationsBies;
             return this;
         }

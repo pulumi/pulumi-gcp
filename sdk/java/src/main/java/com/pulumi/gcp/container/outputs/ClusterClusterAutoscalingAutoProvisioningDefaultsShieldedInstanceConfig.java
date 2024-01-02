@@ -66,11 +66,13 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaultsShieldedInst
 
         @CustomType.Setter
         public Builder enableIntegrityMonitoring(@Nullable Boolean enableIntegrityMonitoring) {
+
             this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder enableSecureBoot(@Nullable Boolean enableSecureBoot) {
+
             this.enableSecureBoot = enableSecureBoot;
             return this;
         }

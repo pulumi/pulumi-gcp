@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionAuthConfigSshPublicKeySshClientCert;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionAuthConfigSshPublicKeySshClientCertPass;
 import java.lang.String;
@@ -92,22 +93,28 @@ public final class ConnectionAuthConfigSshPublicKey {
 
         @CustomType.Setter
         public Builder certType(@Nullable String certType) {
+
             this.certType = certType;
             return this;
         }
         @CustomType.Setter
         public Builder sshClientCert(@Nullable ConnectionAuthConfigSshPublicKeySshClientCert sshClientCert) {
+
             this.sshClientCert = sshClientCert;
             return this;
         }
         @CustomType.Setter
         public Builder sshClientCertPass(@Nullable ConnectionAuthConfigSshPublicKeySshClientCertPass sshClientCertPass) {
+
             this.sshClientCertPass = sshClientCertPass;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("ConnectionAuthConfigSshPublicKey", "username");
+            }
+            this.username = username;
             return this;
         }
         public ConnectionAuthConfigSshPublicKey build() {

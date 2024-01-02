@@ -5,6 +5,7 @@ package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class PolicyRestorePolicyArgs extends com.pulumi.resources.Resource
         }
 
         public PolicyRestorePolicyArgs build() {
-            $.default_ = Objects.requireNonNull($.default_, "expected parameter 'default' to be non-null");
+            if ($.default_ == null) {
+                throw new MissingRequiredPropertyException("PolicyRestorePolicyArgs", "default_");
+            }
             return $;
         }
     }

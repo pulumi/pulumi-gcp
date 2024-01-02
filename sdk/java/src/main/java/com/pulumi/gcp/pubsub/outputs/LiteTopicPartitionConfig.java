@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.LiteTopicPartitionConfigCapacity;
 import java.lang.Integer;
 import java.util.Objects;
@@ -61,12 +62,16 @@ public final class LiteTopicPartitionConfig {
 
         @CustomType.Setter
         public Builder capacity(@Nullable LiteTopicPartitionConfigCapacity capacity) {
+
             this.capacity = capacity;
             return this;
         }
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("LiteTopicPartitionConfig", "count");
+            }
+            this.count = count;
             return this;
         }
         public LiteTopicPartitionConfig build() {

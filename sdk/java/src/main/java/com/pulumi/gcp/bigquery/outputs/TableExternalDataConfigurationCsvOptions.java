@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -138,31 +139,39 @@ public final class TableExternalDataConfigurationCsvOptions {
 
         @CustomType.Setter
         public Builder allowJaggedRows(@Nullable Boolean allowJaggedRows) {
+
             this.allowJaggedRows = allowJaggedRows;
             return this;
         }
         @CustomType.Setter
         public Builder allowQuotedNewlines(@Nullable Boolean allowQuotedNewlines) {
+
             this.allowQuotedNewlines = allowQuotedNewlines;
             return this;
         }
         @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
+
             this.encoding = encoding;
             return this;
         }
         @CustomType.Setter
         public Builder fieldDelimiter(@Nullable String fieldDelimiter) {
+
             this.fieldDelimiter = fieldDelimiter;
             return this;
         }
         @CustomType.Setter
         public Builder quote(String quote) {
-            this.quote = Objects.requireNonNull(quote);
+            if (quote == null) {
+              throw new MissingRequiredPropertyException("TableExternalDataConfigurationCsvOptions", "quote");
+            }
+            this.quote = quote;
             return this;
         }
         @CustomType.Setter
         public Builder skipLeadingRows(@Nullable Integer skipLeadingRows) {
+
             this.skipLeadingRows = skipLeadingRows;
             return this;
         }

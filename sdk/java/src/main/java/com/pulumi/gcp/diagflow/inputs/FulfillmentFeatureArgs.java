@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class FulfillmentFeatureArgs extends com.pulumi.resources.ResourceA
         }
 
         public FulfillmentFeatureArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("FulfillmentFeatureArgs", "type");
+            }
             return $;
         }
     }

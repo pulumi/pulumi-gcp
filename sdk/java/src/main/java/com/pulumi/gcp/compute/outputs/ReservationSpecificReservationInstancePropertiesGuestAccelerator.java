@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -65,12 +66,18 @@ public final class ReservationSpecificReservationInstancePropertiesGuestAccelera
 
         @CustomType.Setter
         public Builder acceleratorCount(Integer acceleratorCount) {
-            this.acceleratorCount = Objects.requireNonNull(acceleratorCount);
+            if (acceleratorCount == null) {
+              throw new MissingRequiredPropertyException("ReservationSpecificReservationInstancePropertiesGuestAccelerator", "acceleratorCount");
+            }
+            this.acceleratorCount = acceleratorCount;
             return this;
         }
         @CustomType.Setter
         public Builder acceleratorType(String acceleratorType) {
-            this.acceleratorType = Objects.requireNonNull(acceleratorType);
+            if (acceleratorType == null) {
+              throw new MissingRequiredPropertyException("ReservationSpecificReservationInstancePropertiesGuestAccelerator", "acceleratorType");
+            }
+            this.acceleratorType = acceleratorType;
             return this;
         }
         public ReservationSpecificReservationInstancePropertiesGuestAccelerator build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkconnectivity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,6 +59,7 @@ public final class SpokeLinkedVpcNetwork {
 
         @CustomType.Setter
         public Builder excludeExportRanges(@Nullable List<String> excludeExportRanges) {
+
             this.excludeExportRanges = excludeExportRanges;
             return this;
         }
@@ -66,7 +68,10 @@ public final class SpokeLinkedVpcNetwork {
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("SpokeLinkedVpcNetwork", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public SpokeLinkedVpcNetwork build() {

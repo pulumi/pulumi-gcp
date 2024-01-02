@@ -5,6 +5,7 @@ package com.pulumi.gcp.accessapproval.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetOrganizationServiceAccountArgs extends com.pulumi.resource
         }
 
         public GetOrganizationServiceAccountArgs build() {
-            $.organizationId = Objects.requireNonNull($.organizationId, "expected parameter 'organizationId' to be non-null");
+            if ($.organizationId == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationServiceAccountArgs", "organizationId");
+            }
             return $;
         }
     }

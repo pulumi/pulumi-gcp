@@ -89,21 +89,25 @@ public final class HostingVersionConfigRewrite {
 
         @CustomType.Setter
         public Builder function(@Nullable String function) {
+
             this.function = function;
             return this;
         }
         @CustomType.Setter
         public Builder glob(@Nullable String glob) {
+
             this.glob = glob;
             return this;
         }
         @CustomType.Setter
         public Builder regex(@Nullable String regex) {
+
             this.regex = regex;
             return this;
         }
         @CustomType.Setter
         public Builder run(@Nullable HostingVersionConfigRewriteRun run) {
+
             this.run = run;
             return this;
         }

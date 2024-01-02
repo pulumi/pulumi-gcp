@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigqueryanalyticshub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -96,37 +97,58 @@ public final class GetListingIamPolicyResult {
 
         @CustomType.Setter
         public Builder dataExchangeId(String dataExchangeId) {
-            this.dataExchangeId = Objects.requireNonNull(dataExchangeId);
+            if (dataExchangeId == null) {
+              throw new MissingRequiredPropertyException("GetListingIamPolicyResult", "dataExchangeId");
+            }
+            this.dataExchangeId = dataExchangeId;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetListingIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetListingIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listingId(String listingId) {
-            this.listingId = Objects.requireNonNull(listingId);
+            if (listingId == null) {
+              throw new MissingRequiredPropertyException("GetListingIamPolicyResult", "listingId");
+            }
+            this.listingId = listingId;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetListingIamPolicyResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetListingIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetListingIamPolicyResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetListingIamPolicyResult build() {

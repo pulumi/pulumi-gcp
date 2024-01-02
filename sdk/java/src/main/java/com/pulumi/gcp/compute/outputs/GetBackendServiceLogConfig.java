@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetBackendServiceLogConfig {
 
         @CustomType.Setter
         public Builder enable(Boolean enable) {
-            this.enable = Objects.requireNonNull(enable);
+            if (enable == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceLogConfig", "enable");
+            }
+            this.enable = enable;
             return this;
         }
         @CustomType.Setter
         public Builder sampleRate(Double sampleRate) {
-            this.sampleRate = Objects.requireNonNull(sampleRate);
+            if (sampleRate == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceLogConfig", "sampleRate");
+            }
+            this.sampleRate = sampleRate;
             return this;
         }
         public GetBackendServiceLogConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.inputs.GuestPoliciesAssignmentArgs;
 import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageArgs;
 import com.pulumi.gcp.osconfig.inputs.GuestPoliciesPackageRepositoryArgs;
@@ -447,8 +448,12 @@ public final class GuestPoliciesArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public GuestPoliciesArgs build() {
-            $.assignment = Objects.requireNonNull($.assignment, "expected parameter 'assignment' to be non-null");
-            $.guestPolicyId = Objects.requireNonNull($.guestPolicyId, "expected parameter 'guestPolicyId' to be non-null");
+            if ($.assignment == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesArgs", "assignment");
+            }
+            if ($.guestPolicyId == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesArgs", "guestPolicyId");
+            }
             return $;
         }
     }

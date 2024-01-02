@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigqueryanalyticshub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.DataExchangeIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -291,9 +292,15 @@ public final class DataExchangeIamBindingArgs extends com.pulumi.resources.Resou
         }
 
         public DataExchangeIamBindingArgs build() {
-            $.dataExchangeId = Objects.requireNonNull($.dataExchangeId, "expected parameter 'dataExchangeId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.dataExchangeId == null) {
+                throw new MissingRequiredPropertyException("DataExchangeIamBindingArgs", "dataExchangeId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("DataExchangeIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("DataExchangeIamBindingArgs", "role");
+            }
             return $;
         }
     }

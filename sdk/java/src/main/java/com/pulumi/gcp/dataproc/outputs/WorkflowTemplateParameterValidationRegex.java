@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class WorkflowTemplateParameterValidationRegex {
 
         @CustomType.Setter
         public Builder regexes(List<String> regexes) {
-            this.regexes = Objects.requireNonNull(regexes);
+            if (regexes == null) {
+              throw new MissingRequiredPropertyException("WorkflowTemplateParameterValidationRegex", "regexes");
+            }
+            this.regexes = regexes;
             return this;
         }
         public Builder regexes(String... regexes) {

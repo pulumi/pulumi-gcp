@@ -62,11 +62,13 @@ public final class BackendServiceCdnPolicyNegativeCachingPolicy {
 
         @CustomType.Setter
         public Builder code(@Nullable Integer code) {
+
             this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(@Nullable Integer ttl) {
+
             this.ttl = ttl;
             return this;
         }

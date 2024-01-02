@@ -5,6 +5,7 @@ package com.pulumi.gcp.firebase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -306,8 +307,12 @@ public final class HostingCustomDomainArgs extends com.pulumi.resources.Resource
         }
 
         public HostingCustomDomainArgs build() {
-            $.customDomain = Objects.requireNonNull($.customDomain, "expected parameter 'customDomain' to be non-null");
-            $.siteId = Objects.requireNonNull($.siteId, "expected parameter 'siteId' to be non-null");
+            if ($.customDomain == null) {
+                throw new MissingRequiredPropertyException("HostingCustomDomainArgs", "customDomain");
+            }
+            if ($.siteId == null) {
+                throw new MissingRequiredPropertyException("HostingCustomDomainArgs", "siteId");
+            }
             return $;
         }
     }

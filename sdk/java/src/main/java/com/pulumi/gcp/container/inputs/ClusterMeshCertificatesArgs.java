@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ClusterMeshCertificatesArgs extends com.pulumi.resources.Reso
         }
 
         public ClusterMeshCertificatesArgs build() {
-            $.enableCertificates = Objects.requireNonNull($.enableCertificates, "expected parameter 'enableCertificates' to be non-null");
+            if ($.enableCertificates == null) {
+                throw new MissingRequiredPropertyException("ClusterMeshCertificatesArgs", "enableCertificates");
+            }
             return $;
         }
     }

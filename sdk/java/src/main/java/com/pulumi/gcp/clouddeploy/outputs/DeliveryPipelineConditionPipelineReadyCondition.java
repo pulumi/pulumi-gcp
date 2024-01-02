@@ -51,11 +51,13 @@ public final class DeliveryPipelineConditionPipelineReadyCondition {
 
         @CustomType.Setter
         public Builder status(@Nullable Boolean status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }

@@ -68,16 +68,19 @@ public final class InstanceTemplateNetworkInterfaceAccessConfig {
 
         @CustomType.Setter
         public Builder natIp(@Nullable String natIp) {
+
             this.natIp = natIp;
             return this;
         }
         @CustomType.Setter
         public Builder networkTier(@Nullable String networkTier) {
+
             this.networkTier = networkTier;
             return this;
         }
         @CustomType.Setter
         public Builder publicPtrDomainName(@Nullable String publicPtrDomainName) {
+
             this.publicPtrDomainName = publicPtrDomainName;
             return this;
         }

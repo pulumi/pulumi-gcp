@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherDefaultRouteAction;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherDefaultUrlRedirect;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherHeaderAction;
@@ -196,36 +197,45 @@ public final class URLMapPathMatcher {
 
         @CustomType.Setter
         public Builder defaultRouteAction(@Nullable URLMapPathMatcherDefaultRouteAction defaultRouteAction) {
+
             this.defaultRouteAction = defaultRouteAction;
             return this;
         }
         @CustomType.Setter
         public Builder defaultService(@Nullable String defaultService) {
+
             this.defaultService = defaultService;
             return this;
         }
         @CustomType.Setter
         public Builder defaultUrlRedirect(@Nullable URLMapPathMatcherDefaultUrlRedirect defaultUrlRedirect) {
+
             this.defaultUrlRedirect = defaultUrlRedirect;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder headerAction(@Nullable URLMapPathMatcherHeaderAction headerAction) {
+
             this.headerAction = headerAction;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("URLMapPathMatcher", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder pathRules(@Nullable List<URLMapPathMatcherPathRule> pathRules) {
+
             this.pathRules = pathRules;
             return this;
         }
@@ -234,6 +244,7 @@ public final class URLMapPathMatcher {
         }
         @CustomType.Setter
         public Builder routeRules(@Nullable List<URLMapPathMatcherRouteRule> routeRules) {
+
             this.routeRules = routeRules;
             return this;
         }

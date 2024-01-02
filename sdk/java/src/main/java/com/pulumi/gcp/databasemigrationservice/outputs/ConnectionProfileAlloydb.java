@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileAlloydbSettings;
 import java.lang.String;
 import java.util.Objects;
@@ -61,11 +62,15 @@ public final class ConnectionProfileAlloydb {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileAlloydb", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder settings(@Nullable ConnectionProfileAlloydbSettings settings) {
+
             this.settings = settings;
             return this;
         }

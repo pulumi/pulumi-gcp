@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -190,7 +191,9 @@ public final class ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsA
         }
 
         public ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs build() {
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusionExclusionOptionsArgs", "scope");
+            }
             return $;
         }
     }

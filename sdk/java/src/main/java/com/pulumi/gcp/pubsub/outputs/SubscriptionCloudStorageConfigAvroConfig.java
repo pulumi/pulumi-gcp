@@ -44,6 +44,7 @@ public final class SubscriptionCloudStorageConfigAvroConfig {
 
         @CustomType.Setter
         public Builder writeMetadata(@Nullable Boolean writeMetadata) {
+
             this.writeMetadata = writeMetadata;
             return this;
         }

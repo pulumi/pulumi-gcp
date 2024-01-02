@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -70,11 +71,15 @@ public final class AlertPolicyConditionConditionMatchedLog {
 
         @CustomType.Setter
         public Builder filter(String filter) {
-            this.filter = Objects.requireNonNull(filter);
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyConditionConditionMatchedLog", "filter");
+            }
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder labelExtractors(@Nullable Map<String,String> labelExtractors) {
+
             this.labelExtractors = labelExtractors;
             return this;
         }

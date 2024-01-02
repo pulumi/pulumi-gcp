@@ -63,11 +63,13 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorSt
 
         @CustomType.Setter
         public Builder code(@Nullable Integer code) {
+
             this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }

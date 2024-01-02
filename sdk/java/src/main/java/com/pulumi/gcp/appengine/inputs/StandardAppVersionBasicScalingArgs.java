@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -118,7 +119,9 @@ public final class StandardAppVersionBasicScalingArgs extends com.pulumi.resourc
         }
 
         public StandardAppVersionBasicScalingArgs build() {
-            $.maxInstances = Objects.requireNonNull($.maxInstances, "expected parameter 'maxInstances' to be non-null");
+            if ($.maxInstances == null) {
+                throw new MissingRequiredPropertyException("StandardAppVersionBasicScalingArgs", "maxInstances");
+            }
             return $;
         }
     }

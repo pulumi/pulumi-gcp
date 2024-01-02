@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class UptimeCheckConfigTcpCheckPingConfig {
 
         @CustomType.Setter
         public Builder pingsCount(Integer pingsCount) {
-            this.pingsCount = Objects.requireNonNull(pingsCount);
+            if (pingsCount == null) {
+              throw new MissingRequiredPropertyException("UptimeCheckConfigTcpCheckPingConfig", "pingsCount");
+            }
+            this.pingsCount = pingsCount;
             return this;
         }
         public UptimeCheckConfigTcpCheckPingConfig build() {

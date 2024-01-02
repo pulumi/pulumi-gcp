@@ -136,6 +136,7 @@ public final class NodePoolNetworkConfig {
 
         @CustomType.Setter
         public Builder additionalNodeNetworkConfigs(@Nullable List<NodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs) {
+
             this.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
             return this;
         }
@@ -144,6 +145,7 @@ public final class NodePoolNetworkConfig {
         }
         @CustomType.Setter
         public Builder additionalPodNetworkConfigs(@Nullable List<NodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs) {
+
             this.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
             return this;
         }
@@ -152,31 +154,37 @@ public final class NodePoolNetworkConfig {
         }
         @CustomType.Setter
         public Builder createPodRange(@Nullable Boolean createPodRange) {
+
             this.createPodRange = createPodRange;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
+
             this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
         @CustomType.Setter
         public Builder networkPerformanceConfig(@Nullable NodePoolNetworkConfigNetworkPerformanceConfig networkPerformanceConfig) {
+
             this.networkPerformanceConfig = networkPerformanceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder podCidrOverprovisionConfig(@Nullable NodePoolNetworkConfigPodCidrOverprovisionConfig podCidrOverprovisionConfig) {
+
             this.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder podIpv4CidrBlock(@Nullable String podIpv4CidrBlock) {
+
             this.podIpv4CidrBlock = podIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder podRange(@Nullable String podRange) {
+
             this.podRange = podRange;
             return this;
         }

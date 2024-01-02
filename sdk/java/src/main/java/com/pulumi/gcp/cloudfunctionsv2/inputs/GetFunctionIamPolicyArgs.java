@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctionsv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -154,7 +155,9 @@ public final class GetFunctionIamPolicyArgs extends com.pulumi.resources.InvokeA
         }
 
         public GetFunctionIamPolicyArgs build() {
-            $.cloudFunction = Objects.requireNonNull($.cloudFunction, "expected parameter 'cloudFunction' to be non-null");
+            if ($.cloudFunction == null) {
+                throw new MissingRequiredPropertyException("GetFunctionIamPolicyArgs", "cloudFunction");
+            }
             return $;
         }
     }

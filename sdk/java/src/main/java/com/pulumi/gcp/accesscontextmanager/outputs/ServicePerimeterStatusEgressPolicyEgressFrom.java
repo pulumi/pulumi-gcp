@@ -102,6 +102,7 @@ public final class ServicePerimeterStatusEgressPolicyEgressFrom {
 
         @CustomType.Setter
         public Builder identities(@Nullable List<String> identities) {
+
             this.identities = identities;
             return this;
         }
@@ -110,16 +111,19 @@ public final class ServicePerimeterStatusEgressPolicyEgressFrom {
         }
         @CustomType.Setter
         public Builder identityType(@Nullable String identityType) {
+
             this.identityType = identityType;
             return this;
         }
         @CustomType.Setter
         public Builder sourceRestriction(@Nullable String sourceRestriction) {
+
             this.sourceRestriction = sourceRestriction;
             return this;
         }
         @CustomType.Setter
         public Builder sources(@Nullable List<ServicePerimeterStatusEgressPolicyEgressFromSource> sources) {
+
             this.sources = sources;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,17 +75,26 @@ public final class DatasetAccessRoutine {
 
         @CustomType.Setter
         public Builder datasetId(String datasetId) {
-            this.datasetId = Objects.requireNonNull(datasetId);
+            if (datasetId == null) {
+              throw new MissingRequiredPropertyException("DatasetAccessRoutine", "datasetId");
+            }
+            this.datasetId = datasetId;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("DatasetAccessRoutine", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder routineId(String routineId) {
-            this.routineId = Objects.requireNonNull(routineId);
+            if (routineId == null) {
+              throw new MissingRequiredPropertyException("DatasetAccessRoutine", "routineId");
+            }
+            this.routineId = routineId;
             return this;
         }
         public DatasetAccessRoutine build() {

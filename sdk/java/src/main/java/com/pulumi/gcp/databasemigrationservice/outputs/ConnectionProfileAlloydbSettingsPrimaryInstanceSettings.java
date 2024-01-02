@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig;
 import java.lang.String;
 import java.util.Map;
@@ -106,26 +107,35 @@ public final class ConnectionProfileAlloydbSettingsPrimaryInstanceSettings {
 
         @CustomType.Setter
         public Builder databaseFlags(@Nullable Map<String,String> databaseFlags) {
+
             this.databaseFlags = databaseFlags;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsPrimaryInstanceSettings", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder machineConfig(ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig machineConfig) {
-            this.machineConfig = Objects.requireNonNull(machineConfig);
+            if (machineConfig == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsPrimaryInstanceSettings", "machineConfig");
+            }
+            this.machineConfig = machineConfig;
             return this;
         }
         @CustomType.Setter
         public Builder privateIp(@Nullable String privateIp) {
+
             this.privateIp = privateIp;
             return this;
         }

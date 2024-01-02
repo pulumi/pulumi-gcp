@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class TableExternalDataConfigurationAvroOptions {
 
         @CustomType.Setter
         public Builder useAvroLogicalTypes(Boolean useAvroLogicalTypes) {
-            this.useAvroLogicalTypes = Objects.requireNonNull(useAvroLogicalTypes);
+            if (useAvroLogicalTypes == null) {
+              throw new MissingRequiredPropertyException("TableExternalDataConfigurationAvroOptions", "useAvroLogicalTypes");
+            }
+            this.useAvroLogicalTypes = useAvroLogicalTypes;
             return this;
         }
         public TableExternalDataConfigurationAvroOptions build() {

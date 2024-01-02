@@ -58,11 +58,13 @@ public final class HttpRouteRuleActionFaultInjectionPolicyAbort {
 
         @CustomType.Setter
         public Builder httpStatus(@Nullable Integer httpStatus) {
+
             this.httpStatus = httpStatus;
             return this;
         }
         @CustomType.Setter
         public Builder percentage(@Nullable Integer percentage) {
+
             this.percentage = percentage;
             return this;
         }

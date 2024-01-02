@@ -81,16 +81,19 @@ public final class ServiceTemplateVpcAccessNetworkInterface {
 
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
+
             this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }

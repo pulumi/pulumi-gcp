@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfilePostgresqlSsl;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -155,42 +156,58 @@ public final class ConnectionProfilePostgresql {
 
         @CustomType.Setter
         public Builder cloudSqlId(@Nullable String cloudSqlId) {
+
             this.cloudSqlId = cloudSqlId;
             return this;
         }
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfilePostgresql", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder networkArchitecture(@Nullable String networkArchitecture) {
+
             this.networkArchitecture = networkArchitecture;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfilePostgresql", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder passwordSet(@Nullable Boolean passwordSet) {
+
             this.passwordSet = passwordSet;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfilePostgresql", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder ssl(@Nullable ConnectionProfilePostgresqlSsl ssl) {
+
             this.ssl = ssl;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfilePostgresql", "username");
+            }
+            this.username = username;
             return this;
         }
         public ConnectionProfilePostgresql build() {

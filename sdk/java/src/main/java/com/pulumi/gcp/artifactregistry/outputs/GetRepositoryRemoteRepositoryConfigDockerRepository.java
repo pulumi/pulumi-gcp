@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetRepositoryRemoteRepositoryConfigDockerRepository {
 
         @CustomType.Setter
         public Builder publicRepository(String publicRepository) {
-            this.publicRepository = Objects.requireNonNull(publicRepository);
+            if (publicRepository == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfigDockerRepository", "publicRepository");
+            }
+            this.publicRepository = publicRepository;
             return this;
         }
         public GetRepositoryRemoteRepositoryConfigDockerRepository build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -473,7 +474,9 @@ public final class RouterInterfaceArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public RouterInterfaceArgs build() {
-            $.router = Objects.requireNonNull($.router, "expected parameter 'router' to be non-null");
+            if ($.router == null) {
+                throw new MissingRequiredPropertyException("RouterInterfaceArgs", "router");
+            }
             return $;
         }
     }

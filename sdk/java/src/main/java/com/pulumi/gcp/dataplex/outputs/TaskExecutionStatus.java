@@ -66,6 +66,7 @@ public final class TaskExecutionStatus {
 
         @CustomType.Setter
         public Builder latestJobs(@Nullable List<TaskExecutionStatusLatestJob> latestJobs) {
+
             this.latestJobs = latestJobs;
             return this;
         }
@@ -74,6 +75,7 @@ public final class TaskExecutionStatus {
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }

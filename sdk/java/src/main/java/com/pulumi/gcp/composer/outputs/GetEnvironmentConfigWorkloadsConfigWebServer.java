@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetEnvironmentConfigWorkloadsConfigWebServer {
 
         @CustomType.Setter
         public Builder cpu(Double cpu) {
-            this.cpu = Objects.requireNonNull(cpu);
+            if (cpu == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigWebServer", "cpu");
+            }
+            this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder memoryGb(Double memoryGb) {
-            this.memoryGb = Objects.requireNonNull(memoryGb);
+            if (memoryGb == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigWebServer", "memoryGb");
+            }
+            this.memoryGb = memoryGb;
             return this;
         }
         @CustomType.Setter
         public Builder storageGb(Double storageGb) {
-            this.storageGb = Objects.requireNonNull(storageGb);
+            if (storageGb == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfigWebServer", "storageGb");
+            }
+            this.storageGb = storageGb;
             return this;
         }
         public GetEnvironmentConfigWorkloadsConfigWebServer build() {

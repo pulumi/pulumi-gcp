@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.inputs.EntryGcsFilesetSpecArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -490,8 +491,12 @@ public final class EntryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EntryArgs build() {
-            $.entryGroup = Objects.requireNonNull($.entryGroup, "expected parameter 'entryGroup' to be non-null");
-            $.entryId = Objects.requireNonNull($.entryId, "expected parameter 'entryId' to be non-null");
+            if ($.entryGroup == null) {
+                throw new MissingRequiredPropertyException("EntryArgs", "entryGroup");
+            }
+            if ($.entryId == null) {
+                throw new MissingRequiredPropertyException("EntryArgs", "entryId");
+            }
             return $;
         }
     }

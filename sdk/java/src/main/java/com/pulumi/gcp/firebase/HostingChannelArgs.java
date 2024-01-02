@@ -5,6 +5,7 @@ package com.pulumi.gcp.firebase;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -299,8 +300,12 @@ public final class HostingChannelArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public HostingChannelArgs build() {
-            $.channelId = Objects.requireNonNull($.channelId, "expected parameter 'channelId' to be non-null");
-            $.siteId = Objects.requireNonNull($.siteId, "expected parameter 'siteId' to be non-null");
+            if ($.channelId == null) {
+                throw new MissingRequiredPropertyException("HostingChannelArgs", "channelId");
+            }
+            if ($.siteId == null) {
+                throw new MissingRequiredPropertyException("HostingChannelArgs", "siteId");
+            }
             return $;
         }
     }

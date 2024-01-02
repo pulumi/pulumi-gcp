@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SubnetworkLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
 import java.lang.Boolean;
@@ -825,8 +826,12 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SubnetworkArgs build() {
-            $.ipCidrRange = Objects.requireNonNull($.ipCidrRange, "expected parameter 'ipCidrRange' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.ipCidrRange == null) {
+                throw new MissingRequiredPropertyException("SubnetworkArgs", "ipCidrRange");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("SubnetworkArgs", "network");
+            }
             return $;
         }
     }

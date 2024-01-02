@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetFunctionBuildConfigSourceStorageSource {
 
         @CustomType.Setter
         public Builder bucket(String bucket) {
-            this.bucket = Objects.requireNonNull(bucket);
+            if (bucket == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceStorageSource", "bucket");
+            }
+            this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder generation(Integer generation) {
-            this.generation = Objects.requireNonNull(generation);
+            if (generation == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceStorageSource", "generation");
+            }
+            this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder object(String object) {
-            this.object = Objects.requireNonNull(object);
+            if (object == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfigSourceStorageSource", "object");
+            }
+            this.object = object;
             return this;
         }
         public GetFunctionBuildConfigSourceStorageSource build() {

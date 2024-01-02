@@ -4,6 +4,7 @@
 package com.pulumi.gcp.apigateway.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ApiConfigGatewayConfigBackendConfig {
 
         @CustomType.Setter
         public Builder googleServiceAccount(String googleServiceAccount) {
-            this.googleServiceAccount = Objects.requireNonNull(googleServiceAccount);
+            if (googleServiceAccount == null) {
+              throw new MissingRequiredPropertyException("ApiConfigGatewayConfigBackendConfig", "googleServiceAccount");
+            }
+            this.googleServiceAccount = googleServiceAccount;
             return this;
         }
         public ApiConfigGatewayConfigBackendConfig build() {

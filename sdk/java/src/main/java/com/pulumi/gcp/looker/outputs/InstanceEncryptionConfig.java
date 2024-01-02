@@ -76,16 +76,19 @@ public final class InstanceEncryptionConfig {
 
         @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
+
             this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyNameVersion(@Nullable String kmsKeyNameVersion) {
+
             this.kmsKeyNameVersion = kmsKeyNameVersion;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyState(@Nullable String kmsKeyState) {
+
             this.kmsKeyState = kmsKeyState;
             return this;
         }

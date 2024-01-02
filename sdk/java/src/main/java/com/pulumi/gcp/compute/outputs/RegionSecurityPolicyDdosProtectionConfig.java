@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -50,7 +51,10 @@ public final class RegionSecurityPolicyDdosProtectionConfig {
 
         @CustomType.Setter
         public Builder ddosProtection(String ddosProtection) {
-            this.ddosProtection = Objects.requireNonNull(ddosProtection);
+            if (ddosProtection == null) {
+              throw new MissingRequiredPropertyException("RegionSecurityPolicyDdosProtectionConfig", "ddosProtection");
+            }
+            this.ddosProtection = ddosProtection;
             return this;
         }
         public RegionSecurityPolicyDdosProtectionConfig build() {

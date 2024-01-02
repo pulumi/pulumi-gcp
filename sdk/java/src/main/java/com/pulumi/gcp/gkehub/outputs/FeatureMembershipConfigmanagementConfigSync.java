@@ -99,26 +99,31 @@ public final class FeatureMembershipConfigmanagementConfigSync {
 
         @CustomType.Setter
         public Builder git(@Nullable FeatureMembershipConfigmanagementConfigSyncGit git) {
+
             this.git = git;
             return this;
         }
         @CustomType.Setter
         public Builder metricsGcpServiceAccountEmail(@Nullable String metricsGcpServiceAccountEmail) {
+
             this.metricsGcpServiceAccountEmail = metricsGcpServiceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder oci(@Nullable FeatureMembershipConfigmanagementConfigSyncOci oci) {
+
             this.oci = oci;
             return this;
         }
         @CustomType.Setter
         public Builder preventDrift(@Nullable Boolean preventDrift) {
+
             this.preventDrift = preventDrift;
             return this;
         }
         @CustomType.Setter
         public Builder sourceFormat(@Nullable String sourceFormat) {
+
             this.sourceFormat = sourceFormat;
             return this;
         }

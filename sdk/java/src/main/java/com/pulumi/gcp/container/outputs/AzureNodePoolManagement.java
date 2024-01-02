@@ -44,6 +44,7 @@ public final class AzureNodePoolManagement {
 
         @CustomType.Setter
         public Builder autoRepair(@Nullable Boolean autoRepair) {
+
             this.autoRepair = autoRepair;
             return this;
         }

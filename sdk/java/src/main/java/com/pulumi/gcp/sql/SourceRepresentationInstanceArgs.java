@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -512,8 +513,12 @@ public final class SourceRepresentationInstanceArgs extends com.pulumi.resources
         }
 
         public SourceRepresentationInstanceArgs build() {
-            $.databaseVersion = Objects.requireNonNull($.databaseVersion, "expected parameter 'databaseVersion' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
+            if ($.databaseVersion == null) {
+                throw new MissingRequiredPropertyException("SourceRepresentationInstanceArgs", "databaseVersion");
+            }
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("SourceRepresentationInstanceArgs", "host");
+            }
             return $;
         }
     }

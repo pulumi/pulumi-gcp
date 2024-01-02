@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterAuthenticatorGroupsConfig {
 
         @CustomType.Setter
         public Builder securityGroup(String securityGroup) {
-            this.securityGroup = Objects.requireNonNull(securityGroup);
+            if (securityGroup == null) {
+              throw new MissingRequiredPropertyException("GetClusterAuthenticatorGroupsConfig", "securityGroup");
+            }
+            this.securityGroup = securityGroup;
             return this;
         }
         public GetClusterAuthenticatorGroupsConfig build() {

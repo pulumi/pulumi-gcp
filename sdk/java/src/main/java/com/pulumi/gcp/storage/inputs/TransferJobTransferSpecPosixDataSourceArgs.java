@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class TransferJobTransferSpecPosixDataSourceArgs extends com.pulumi
         }
 
         public TransferJobTransferSpecPosixDataSourceArgs build() {
-            $.rootDirectory = Objects.requireNonNull($.rootDirectory, "expected parameter 'rootDirectory' to be non-null");
+            if ($.rootDirectory == null) {
+                throw new MissingRequiredPropertyException("TransferJobTransferSpecPosixDataSourceArgs", "rootDirectory");
+            }
             return $;
         }
     }

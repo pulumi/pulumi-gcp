@@ -5,6 +5,7 @@ package com.pulumi.gcp.eventarc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,8 +159,12 @@ public final class TriggerMatchingCriteriaArgs extends com.pulumi.resources.Reso
         }
 
         public TriggerMatchingCriteriaArgs build() {
-            $.attribute = Objects.requireNonNull($.attribute, "expected parameter 'attribute' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.attribute == null) {
+                throw new MissingRequiredPropertyException("TriggerMatchingCriteriaArgs", "attribute");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("TriggerMatchingCriteriaArgs", "value");
+            }
             return $;
         }
     }

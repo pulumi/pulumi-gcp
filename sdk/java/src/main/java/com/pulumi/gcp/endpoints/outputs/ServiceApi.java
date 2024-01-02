@@ -88,6 +88,7 @@ public final class ServiceApi {
 
         @CustomType.Setter
         public Builder methods(@Nullable List<ServiceApiMethod> methods) {
+
             this.methods = methods;
             return this;
         }
@@ -96,16 +97,19 @@ public final class ServiceApi {
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder syntax(@Nullable String syntax) {
+
             this.syntax = syntax;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

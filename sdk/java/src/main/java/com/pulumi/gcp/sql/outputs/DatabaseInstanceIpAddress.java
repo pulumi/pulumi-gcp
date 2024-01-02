@@ -48,16 +48,19 @@ public final class DatabaseInstanceIpAddress {
 
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder timeToRetire(@Nullable String timeToRetire) {
+
             this.timeToRetire = timeToRetire;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

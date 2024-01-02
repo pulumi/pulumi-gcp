@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -117,22 +118,28 @@ public final class RouterPeerBfd {
 
         @CustomType.Setter
         public Builder minReceiveInterval(@Nullable Integer minReceiveInterval) {
+
             this.minReceiveInterval = minReceiveInterval;
             return this;
         }
         @CustomType.Setter
         public Builder minTransmitInterval(@Nullable Integer minTransmitInterval) {
+
             this.minTransmitInterval = minTransmitInterval;
             return this;
         }
         @CustomType.Setter
         public Builder multiplier(@Nullable Integer multiplier) {
+
             this.multiplier = multiplier;
             return this;
         }
         @CustomType.Setter
         public Builder sessionInitializationMode(String sessionInitializationMode) {
-            this.sessionInitializationMode = Objects.requireNonNull(sessionInitializationMode);
+            if (sessionInitializationMode == null) {
+              throw new MissingRequiredPropertyException("RouterPeerBfd", "sessionInitializationMode");
+            }
+            this.sessionInitializationMode = sessionInitializationMode;
             return this;
         }
         public RouterPeerBfd build() {

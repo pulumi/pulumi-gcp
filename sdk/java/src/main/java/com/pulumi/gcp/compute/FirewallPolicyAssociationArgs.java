@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,8 +159,12 @@ public final class FirewallPolicyAssociationArgs extends com.pulumi.resources.Re
         }
 
         public FirewallPolicyAssociationArgs build() {
-            $.attachmentTarget = Objects.requireNonNull($.attachmentTarget, "expected parameter 'attachmentTarget' to be non-null");
-            $.firewallPolicy = Objects.requireNonNull($.firewallPolicy, "expected parameter 'firewallPolicy' to be non-null");
+            if ($.attachmentTarget == null) {
+                throw new MissingRequiredPropertyException("FirewallPolicyAssociationArgs", "attachmentTarget");
+            }
+            if ($.firewallPolicy == null) {
+                throw new MissingRequiredPropertyException("FirewallPolicyAssociationArgs", "firewallPolicy");
+            }
             return $;
         }
     }

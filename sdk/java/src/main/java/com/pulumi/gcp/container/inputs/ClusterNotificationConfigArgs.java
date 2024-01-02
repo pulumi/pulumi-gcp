@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.ClusterNotificationConfigPubsubArgs;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ClusterNotificationConfigArgs extends com.pulumi.resources.Re
         }
 
         public ClusterNotificationConfigArgs build() {
-            $.pubsub = Objects.requireNonNull($.pubsub, "expected parameter 'pubsub' to be non-null");
+            if ($.pubsub == null) {
+                throw new MissingRequiredPropertyException("ClusterNotificationConfigArgs", "pubsub");
+            }
             return $;
         }
     }

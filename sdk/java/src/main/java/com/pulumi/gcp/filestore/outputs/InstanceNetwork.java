@@ -4,6 +4,7 @@
 package com.pulumi.gcp.filestore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -123,11 +124,13 @@ public final class InstanceNetwork {
 
         @CustomType.Setter
         public Builder connectMode(@Nullable String connectMode) {
+
             this.connectMode = connectMode;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddresses(@Nullable List<String> ipAddresses) {
+
             this.ipAddresses = ipAddresses;
             return this;
         }
@@ -136,7 +139,10 @@ public final class InstanceNetwork {
         }
         @CustomType.Setter
         public Builder modes(List<String> modes) {
-            this.modes = Objects.requireNonNull(modes);
+            if (modes == null) {
+              throw new MissingRequiredPropertyException("InstanceNetwork", "modes");
+            }
+            this.modes = modes;
             return this;
         }
         public Builder modes(String... modes) {
@@ -144,11 +150,15 @@ public final class InstanceNetwork {
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("InstanceNetwork", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder reservedIpRange(@Nullable String reservedIpRange) {
+
             this.reservedIpRange = reservedIpRange;
             return this;
         }

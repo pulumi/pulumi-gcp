@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentStorageConfig;
 import java.lang.String;
@@ -104,7 +105,10 @@ public final class GetEnvironmentResult {
 
         @CustomType.Setter
         public Builder configs(List<GetEnvironmentConfig> configs) {
-            this.configs = Objects.requireNonNull(configs);
+            if (configs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "configs");
+            }
+            this.configs = configs;
             return this;
         }
         public Builder configs(GetEnvironmentConfig... configs) {
@@ -112,42 +116,62 @@ public final class GetEnvironmentResult {
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder storageConfigs(List<GetEnvironmentStorageConfig> storageConfigs) {
-            this.storageConfigs = Objects.requireNonNull(storageConfigs);
+            if (storageConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentResult", "storageConfigs");
+            }
+            this.storageConfigs = storageConfigs;
             return this;
         }
         public Builder storageConfigs(GetEnvironmentStorageConfig... storageConfigs) {

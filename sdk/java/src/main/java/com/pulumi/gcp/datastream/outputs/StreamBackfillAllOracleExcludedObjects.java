@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamBackfillAllOracleExcludedObjectsOracleSchema;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class StreamBackfillAllOracleExcludedObjects {
 
         @CustomType.Setter
         public Builder oracleSchemas(List<StreamBackfillAllOracleExcludedObjectsOracleSchema> oracleSchemas) {
-            this.oracleSchemas = Objects.requireNonNull(oracleSchemas);
+            if (oracleSchemas == null) {
+              throw new MissingRequiredPropertyException("StreamBackfillAllOracleExcludedObjects", "oracleSchemas");
+            }
+            this.oracleSchemas = oracleSchemas;
             return this;
         }
         public Builder oracleSchemas(StreamBackfillAllOracleExcludedObjectsOracleSchema... oracleSchemas) {

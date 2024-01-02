@@ -46,6 +46,7 @@ public final class HttpRouteRuleActionRequestMirrorPolicy {
 
         @CustomType.Setter
         public Builder destination(@Nullable HttpRouteRuleActionRequestMirrorPolicyDestination destination) {
+
             this.destination = destination;
             return this;
         }

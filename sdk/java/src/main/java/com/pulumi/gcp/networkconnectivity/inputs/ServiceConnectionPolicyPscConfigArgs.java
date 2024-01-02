@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -124,7 +125,9 @@ public final class ServiceConnectionPolicyPscConfigArgs extends com.pulumi.resou
         }
 
         public ServiceConnectionPolicyPscConfigArgs build() {
-            $.subnetworks = Objects.requireNonNull($.subnetworks, "expected parameter 'subnetworks' to be non-null");
+            if ($.subnetworks == null) {
+                throw new MissingRequiredPropertyException("ServiceConnectionPolicyPscConfigArgs", "subnetworks");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.essentialcontacts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -297,10 +298,18 @@ public final class DocumentAiWarehouseLocationArgs extends com.pulumi.resources.
         }
 
         public DocumentAiWarehouseLocationArgs build() {
-            $.accessControlMode = Objects.requireNonNull($.accessControlMode, "expected parameter 'accessControlMode' to be non-null");
-            $.databaseType = Objects.requireNonNull($.databaseType, "expected parameter 'databaseType' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.projectNumber = Objects.requireNonNull($.projectNumber, "expected parameter 'projectNumber' to be non-null");
+            if ($.accessControlMode == null) {
+                throw new MissingRequiredPropertyException("DocumentAiWarehouseLocationArgs", "accessControlMode");
+            }
+            if ($.databaseType == null) {
+                throw new MissingRequiredPropertyException("DocumentAiWarehouseLocationArgs", "databaseType");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("DocumentAiWarehouseLocationArgs", "location");
+            }
+            if ($.projectNumber == null) {
+                throw new MissingRequiredPropertyException("DocumentAiWarehouseLocationArgs", "projectNumber");
+            }
             return $;
         }
     }

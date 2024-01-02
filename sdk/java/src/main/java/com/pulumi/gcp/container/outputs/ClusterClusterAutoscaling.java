@@ -108,21 +108,25 @@ public final class ClusterClusterAutoscaling {
 
         @CustomType.Setter
         public Builder autoProvisioningDefaults(@Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults) {
+
             this.autoProvisioningDefaults = autoProvisioningDefaults;
             return this;
         }
         @CustomType.Setter
         public Builder autoscalingProfile(@Nullable String autoscalingProfile) {
+
             this.autoscalingProfile = autoscalingProfile;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder resourceLimits(@Nullable List<ClusterClusterAutoscalingResourceLimit> resourceLimits) {
+
             this.resourceLimits = resourceLimits;
             return this;
         }

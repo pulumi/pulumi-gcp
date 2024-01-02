@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataProfileSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.DatascanDataQualitySpecArgs;
@@ -450,10 +451,18 @@ public final class DatascanArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DatascanArgs build() {
-            $.data = Objects.requireNonNull($.data, "expected parameter 'data' to be non-null");
-            $.dataScanId = Objects.requireNonNull($.dataScanId, "expected parameter 'dataScanId' to be non-null");
-            $.executionSpec = Objects.requireNonNull($.executionSpec, "expected parameter 'executionSpec' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.data == null) {
+                throw new MissingRequiredPropertyException("DatascanArgs", "data");
+            }
+            if ($.dataScanId == null) {
+                throw new MissingRequiredPropertyException("DatascanArgs", "dataScanId");
+            }
+            if ($.executionSpec == null) {
+                throw new MissingRequiredPropertyException("DatascanArgs", "executionSpec");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("DatascanArgs", "location");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -89,17 +90,22 @@ public final class DomainMappingSpec {
 
         @CustomType.Setter
         public Builder certificateMode(@Nullable String certificateMode) {
+
             this.certificateMode = certificateMode;
             return this;
         }
         @CustomType.Setter
         public Builder forceOverride(@Nullable Boolean forceOverride) {
+
             this.forceOverride = forceOverride;
             return this;
         }
         @CustomType.Setter
         public Builder routeName(String routeName) {
-            this.routeName = Objects.requireNonNull(routeName);
+            if (routeName == null) {
+              throw new MissingRequiredPropertyException("DomainMappingSpec", "routeName");
+            }
+            this.routeName = routeName;
             return this;
         }
         public DomainMappingSpec build() {

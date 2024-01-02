@@ -94,21 +94,25 @@ public final class AiEndpointDeployedModelPrivateEndpoint {
 
         @CustomType.Setter
         public Builder explainHttpUri(@Nullable String explainHttpUri) {
+
             this.explainHttpUri = explainHttpUri;
             return this;
         }
         @CustomType.Setter
         public Builder healthHttpUri(@Nullable String healthHttpUri) {
+
             this.healthHttpUri = healthHttpUri;
             return this;
         }
         @CustomType.Setter
         public Builder predictHttpUri(@Nullable String predictHttpUri) {
+
             this.predictHttpUri = predictHttpUri;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAttachment(@Nullable String serviceAttachment) {
+
             this.serviceAttachment = serviceAttachment;
             return this;
         }

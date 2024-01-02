@@ -57,16 +57,19 @@ public final class LakeAssetStatus {
 
         @CustomType.Setter
         public Builder activeAssets(@Nullable Integer activeAssets) {
+
             this.activeAssets = activeAssets;
             return this;
         }
         @CustomType.Setter
         public Builder securityPolicyApplyingAssets(@Nullable Integer securityPolicyApplyingAssets) {
+
             this.securityPolicyApplyingAssets = securityPolicyApplyingAssets;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }

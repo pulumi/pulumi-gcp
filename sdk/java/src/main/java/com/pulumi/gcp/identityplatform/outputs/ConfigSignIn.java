@@ -115,21 +115,25 @@ public final class ConfigSignIn {
 
         @CustomType.Setter
         public Builder allowDuplicateEmails(@Nullable Boolean allowDuplicateEmails) {
+
             this.allowDuplicateEmails = allowDuplicateEmails;
             return this;
         }
         @CustomType.Setter
         public Builder anonymous(@Nullable ConfigSignInAnonymous anonymous) {
+
             this.anonymous = anonymous;
             return this;
         }
         @CustomType.Setter
         public Builder email(@Nullable ConfigSignInEmail email) {
+
             this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder hashConfigs(@Nullable List<ConfigSignInHashConfig> hashConfigs) {
+
             this.hashConfigs = hashConfigs;
             return this;
         }
@@ -138,6 +142,7 @@ public final class ConfigSignIn {
         }
         @CustomType.Setter
         public Builder phoneNumber(@Nullable ConfigSignInPhoneNumber phoneNumber) {
+
             this.phoneNumber = phoneNumber;
             return this;
         }

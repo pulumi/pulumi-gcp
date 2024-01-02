@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContextArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKeyArgs;
 import java.lang.Integer;
@@ -205,8 +206,12 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
         }
 
         public PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs build() {
-            $.lowerBoundDays = Objects.requireNonNull($.lowerBoundDays, "expected parameter 'lowerBoundDays' to be non-null");
-            $.upperBoundDays = Objects.requireNonNull($.upperBoundDays, "expected parameter 'upperBoundDays' to be non-null");
+            if ($.lowerBoundDays == null) {
+                throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs", "lowerBoundDays");
+            }
+            if ($.upperBoundDays == null) {
+                throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigArgs", "upperBoundDays");
+            }
             return $;
         }
     }

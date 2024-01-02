@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctions.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctions.outputs.FunctionEventTriggerFailurePolicy;
 import java.lang.String;
 import java.util.Objects;
@@ -79,17 +80,24 @@ public final class FunctionEventTrigger {
 
         @CustomType.Setter
         public Builder eventType(String eventType) {
-            this.eventType = Objects.requireNonNull(eventType);
+            if (eventType == null) {
+              throw new MissingRequiredPropertyException("FunctionEventTrigger", "eventType");
+            }
+            this.eventType = eventType;
             return this;
         }
         @CustomType.Setter
         public Builder failurePolicy(@Nullable FunctionEventTriggerFailurePolicy failurePolicy) {
+
             this.failurePolicy = failurePolicy;
             return this;
         }
         @CustomType.Setter
         public Builder resource(String resource) {
-            this.resource = Objects.requireNonNull(resource);
+            if (resource == null) {
+              throw new MissingRequiredPropertyException("FunctionEventTrigger", "resource");
+            }
+            this.resource = resource;
             return this;
         }
         public FunctionEventTrigger build() {

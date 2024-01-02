@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey;
 import java.lang.Integer;
@@ -96,22 +97,30 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder context(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigContext context) {
+
             this.context = context;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoKey(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfigCryptoKey cryptoKey) {
+
             this.cryptoKey = cryptoKey;
             return this;
         }
         @CustomType.Setter
         public Builder lowerBoundDays(Integer lowerBoundDays) {
-            this.lowerBoundDays = Objects.requireNonNull(lowerBoundDays);
+            if (lowerBoundDays == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig", "lowerBoundDays");
+            }
+            this.lowerBoundDays = lowerBoundDays;
             return this;
         }
         @CustomType.Setter
         public Builder upperBoundDays(Integer upperBoundDays) {
-            this.upperBoundDays = Objects.requireNonNull(upperBoundDays);
+            if (upperBoundDays == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig", "upperBoundDays");
+            }
+            this.upperBoundDays = upperBoundDays;
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationDateShiftConfig build() {

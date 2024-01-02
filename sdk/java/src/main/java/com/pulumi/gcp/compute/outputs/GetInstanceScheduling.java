@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.GetInstanceSchedulingNodeAffinity;
@@ -140,17 +141,26 @@ public final class GetInstanceScheduling {
 
         @CustomType.Setter
         public Builder automaticRestart(Boolean automaticRestart) {
-            this.automaticRestart = Objects.requireNonNull(automaticRestart);
+            if (automaticRestart == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "automaticRestart");
+            }
+            this.automaticRestart = automaticRestart;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTerminationAction(String instanceTerminationAction) {
-            this.instanceTerminationAction = Objects.requireNonNull(instanceTerminationAction);
+            if (instanceTerminationAction == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "instanceTerminationAction");
+            }
+            this.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
         @CustomType.Setter
         public Builder localSsdRecoveryTimeouts(List<GetInstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts) {
-            this.localSsdRecoveryTimeouts = Objects.requireNonNull(localSsdRecoveryTimeouts);
+            if (localSsdRecoveryTimeouts == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "localSsdRecoveryTimeouts");
+            }
+            this.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
             return this;
         }
         public Builder localSsdRecoveryTimeouts(GetInstanceSchedulingLocalSsdRecoveryTimeout... localSsdRecoveryTimeouts) {
@@ -158,12 +168,18 @@ public final class GetInstanceScheduling {
         }
         @CustomType.Setter
         public Builder maintenanceInterval(String maintenanceInterval) {
-            this.maintenanceInterval = Objects.requireNonNull(maintenanceInterval);
+            if (maintenanceInterval == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "maintenanceInterval");
+            }
+            this.maintenanceInterval = maintenanceInterval;
             return this;
         }
         @CustomType.Setter
         public Builder maxRunDurations(List<GetInstanceSchedulingMaxRunDuration> maxRunDurations) {
-            this.maxRunDurations = Objects.requireNonNull(maxRunDurations);
+            if (maxRunDurations == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "maxRunDurations");
+            }
+            this.maxRunDurations = maxRunDurations;
             return this;
         }
         public Builder maxRunDurations(GetInstanceSchedulingMaxRunDuration... maxRunDurations) {
@@ -171,12 +187,18 @@ public final class GetInstanceScheduling {
         }
         @CustomType.Setter
         public Builder minNodeCpus(Integer minNodeCpus) {
-            this.minNodeCpus = Objects.requireNonNull(minNodeCpus);
+            if (minNodeCpus == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "minNodeCpus");
+            }
+            this.minNodeCpus = minNodeCpus;
             return this;
         }
         @CustomType.Setter
         public Builder nodeAffinities(List<GetInstanceSchedulingNodeAffinity> nodeAffinities) {
-            this.nodeAffinities = Objects.requireNonNull(nodeAffinities);
+            if (nodeAffinities == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "nodeAffinities");
+            }
+            this.nodeAffinities = nodeAffinities;
             return this;
         }
         public Builder nodeAffinities(GetInstanceSchedulingNodeAffinity... nodeAffinities) {
@@ -184,17 +206,26 @@ public final class GetInstanceScheduling {
         }
         @CustomType.Setter
         public Builder onHostMaintenance(String onHostMaintenance) {
-            this.onHostMaintenance = Objects.requireNonNull(onHostMaintenance);
+            if (onHostMaintenance == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "onHostMaintenance");
+            }
+            this.onHostMaintenance = onHostMaintenance;
             return this;
         }
         @CustomType.Setter
         public Builder preemptible(Boolean preemptible) {
-            this.preemptible = Objects.requireNonNull(preemptible);
+            if (preemptible == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "preemptible");
+            }
+            this.preemptible = preemptible;
             return this;
         }
         @CustomType.Setter
         public Builder provisioningModel(String provisioningModel) {
-            this.provisioningModel = Objects.requireNonNull(provisioningModel);
+            if (provisioningModel == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "provisioningModel");
+            }
+            this.provisioningModel = provisioningModel;
             return this;
         }
         public GetInstanceScheduling build() {

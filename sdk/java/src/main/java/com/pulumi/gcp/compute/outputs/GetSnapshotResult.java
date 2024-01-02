@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetSnapshotSnapshotEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetSnapshotSourceDiskEncryptionKey;
 import java.lang.Boolean;
@@ -176,52 +177,80 @@ public final class GetSnapshotResult {
 
         @CustomType.Setter
         public Builder chainName(String chainName) {
-            this.chainName = Objects.requireNonNull(chainName);
+            if (chainName == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "chainName");
+            }
+            this.chainName = chainName;
             return this;
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
-            this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
-            this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
+            if (diskSizeGb == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "diskSizeGb");
+            }
+            this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder filter(@Nullable String filter) {
+
             this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labelFingerprint(String labelFingerprint) {
-            this.labelFingerprint = Objects.requireNonNull(labelFingerprint);
+            if (labelFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "labelFingerprint");
+            }
+            this.labelFingerprint = labelFingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder licenses(List<String> licenses) {
-            this.licenses = Objects.requireNonNull(licenses);
+            if (licenses == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "licenses");
+            }
+            this.licenses = licenses;
             return this;
         }
         public Builder licenses(String... licenses) {
@@ -229,32 +258,44 @@ public final class GetSnapshotResult {
         }
         @CustomType.Setter
         public Builder mostRecent(@Nullable Boolean mostRecent) {
+
             this.mostRecent = mostRecent;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotEncryptionKeys(List<GetSnapshotSnapshotEncryptionKey> snapshotEncryptionKeys) {
-            this.snapshotEncryptionKeys = Objects.requireNonNull(snapshotEncryptionKeys);
+            if (snapshotEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "snapshotEncryptionKeys");
+            }
+            this.snapshotEncryptionKeys = snapshotEncryptionKeys;
             return this;
         }
         public Builder snapshotEncryptionKeys(GetSnapshotSnapshotEncryptionKey... snapshotEncryptionKeys) {
@@ -262,17 +303,26 @@ public final class GetSnapshotResult {
         }
         @CustomType.Setter
         public Builder snapshotId(Integer snapshotId) {
-            this.snapshotId = Objects.requireNonNull(snapshotId);
+            if (snapshotId == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "snapshotId");
+            }
+            this.snapshotId = snapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDisk(String sourceDisk) {
-            this.sourceDisk = Objects.requireNonNull(sourceDisk);
+            if (sourceDisk == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "sourceDisk");
+            }
+            this.sourceDisk = sourceDisk;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDiskEncryptionKeys(List<GetSnapshotSourceDiskEncryptionKey> sourceDiskEncryptionKeys) {
-            this.sourceDiskEncryptionKeys = Objects.requireNonNull(sourceDiskEncryptionKeys);
+            if (sourceDiskEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "sourceDiskEncryptionKeys");
+            }
+            this.sourceDiskEncryptionKeys = sourceDiskEncryptionKeys;
             return this;
         }
         public Builder sourceDiskEncryptionKeys(GetSnapshotSourceDiskEncryptionKey... sourceDiskEncryptionKeys) {
@@ -280,12 +330,18 @@ public final class GetSnapshotResult {
         }
         @CustomType.Setter
         public Builder storageBytes(Integer storageBytes) {
-            this.storageBytes = Objects.requireNonNull(storageBytes);
+            if (storageBytes == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "storageBytes");
+            }
+            this.storageBytes = storageBytes;
             return this;
         }
         @CustomType.Setter
         public Builder storageLocations(List<String> storageLocations) {
-            this.storageLocations = Objects.requireNonNull(storageLocations);
+            if (storageLocations == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "storageLocations");
+            }
+            this.storageLocations = storageLocations;
             return this;
         }
         public Builder storageLocations(String... storageLocations) {
@@ -293,7 +349,10 @@ public final class GetSnapshotResult {
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetSnapshotResult", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetSnapshotResult build() {

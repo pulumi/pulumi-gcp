@@ -5,6 +5,7 @@ package com.pulumi.gcp.notebooks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigAcceleratorConfigArgs;
 import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigContainerImageArgs;
 import com.pulumi.gcp.notebooks.inputs.RuntimeVirtualMachineVirtualMachineConfigDataDiskArgs;
@@ -842,8 +843,12 @@ public final class RuntimeVirtualMachineVirtualMachineConfigArgs extends com.pul
         }
 
         public RuntimeVirtualMachineVirtualMachineConfigArgs build() {
-            $.dataDisk = Objects.requireNonNull($.dataDisk, "expected parameter 'dataDisk' to be non-null");
-            $.machineType = Objects.requireNonNull($.machineType, "expected parameter 'machineType' to be non-null");
+            if ($.dataDisk == null) {
+                throw new MissingRequiredPropertyException("RuntimeVirtualMachineVirtualMachineConfigArgs", "dataDisk");
+            }
+            if ($.machineType == null) {
+                throw new MissingRequiredPropertyException("RuntimeVirtualMachineVirtualMachineConfigArgs", "machineType");
+            }
             return $;
         }
     }

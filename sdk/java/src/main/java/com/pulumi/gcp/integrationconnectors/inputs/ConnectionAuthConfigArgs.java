@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigAdditionalVariableArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigOauth2AuthCodeFlowArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigOauth2ClientCredentialsArgs;
@@ -381,7 +382,9 @@ public final class ConnectionAuthConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public ConnectionAuthConfigArgs build() {
-            $.authType = Objects.requireNonNull($.authType, "expected parameter 'authType' to be non-null");
+            if ($.authType == null) {
+                throw new MissingRequiredPropertyException("ConnectionAuthConfigArgs", "authType");
+            }
             return $;
         }
     }

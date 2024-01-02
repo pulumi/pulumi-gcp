@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -125,7 +126,9 @@ public final class EnvKeystoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EnvKeystoreArgs build() {
-            $.envId = Objects.requireNonNull($.envId, "expected parameter 'envId' to be non-null");
+            if ($.envId == null) {
+                throw new MissingRequiredPropertyException("EnvKeystoreArgs", "envId");
+            }
             return $;
         }
     }

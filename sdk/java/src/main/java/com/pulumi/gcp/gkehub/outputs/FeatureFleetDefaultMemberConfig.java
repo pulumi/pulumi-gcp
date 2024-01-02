@@ -80,16 +80,19 @@ public final class FeatureFleetDefaultMemberConfig {
 
         @CustomType.Setter
         public Builder configmanagement(@Nullable FeatureFleetDefaultMemberConfigConfigmanagement configmanagement) {
+
             this.configmanagement = configmanagement;
             return this;
         }
         @CustomType.Setter
         public Builder mesh(@Nullable FeatureFleetDefaultMemberConfigMesh mesh) {
+
             this.mesh = mesh;
             return this;
         }
         @CustomType.Setter
         public Builder policycontroller(@Nullable FeatureFleetDefaultMemberConfigPolicycontroller policycontroller) {
+
             this.policycontroller = policycontroller;
             return this;
         }

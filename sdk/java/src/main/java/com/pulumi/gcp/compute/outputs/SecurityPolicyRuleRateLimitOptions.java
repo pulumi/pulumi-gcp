@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptionsBanThreshold;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions;
@@ -178,26 +179,33 @@ public final class SecurityPolicyRuleRateLimitOptions {
 
         @CustomType.Setter
         public Builder banDurationSec(@Nullable Integer banDurationSec) {
+
             this.banDurationSec = banDurationSec;
             return this;
         }
         @CustomType.Setter
         public Builder banThreshold(@Nullable SecurityPolicyRuleRateLimitOptionsBanThreshold banThreshold) {
+
             this.banThreshold = banThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder conformAction(String conformAction) {
-            this.conformAction = Objects.requireNonNull(conformAction);
+            if (conformAction == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptions", "conformAction");
+            }
+            this.conformAction = conformAction;
             return this;
         }
         @CustomType.Setter
         public Builder enforceOnKey(@Nullable String enforceOnKey) {
+
             this.enforceOnKey = enforceOnKey;
             return this;
         }
         @CustomType.Setter
         public Builder enforceOnKeyConfigs(@Nullable List<SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig> enforceOnKeyConfigs) {
+
             this.enforceOnKeyConfigs = enforceOnKeyConfigs;
             return this;
         }
@@ -206,22 +214,30 @@ public final class SecurityPolicyRuleRateLimitOptions {
         }
         @CustomType.Setter
         public Builder enforceOnKeyName(@Nullable String enforceOnKeyName) {
+
             this.enforceOnKeyName = enforceOnKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder exceedAction(String exceedAction) {
-            this.exceedAction = Objects.requireNonNull(exceedAction);
+            if (exceedAction == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptions", "exceedAction");
+            }
+            this.exceedAction = exceedAction;
             return this;
         }
         @CustomType.Setter
         public Builder exceedRedirectOptions(@Nullable SecurityPolicyRuleRateLimitOptionsExceedRedirectOptions exceedRedirectOptions) {
+
             this.exceedRedirectOptions = exceedRedirectOptions;
             return this;
         }
         @CustomType.Setter
         public Builder rateLimitThreshold(SecurityPolicyRuleRateLimitOptionsRateLimitThreshold rateLimitThreshold) {
-            this.rateLimitThreshold = Objects.requireNonNull(rateLimitThreshold);
+            if (rateLimitThreshold == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRuleRateLimitOptions", "rateLimitThreshold");
+            }
+            this.rateLimitThreshold = rateLimitThreshold;
             return this;
         }
         public SecurityPolicyRuleRateLimitOptions build() {

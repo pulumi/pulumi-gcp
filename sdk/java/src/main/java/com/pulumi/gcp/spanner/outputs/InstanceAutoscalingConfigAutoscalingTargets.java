@@ -66,11 +66,13 @@ public final class InstanceAutoscalingConfigAutoscalingTargets {
 
         @CustomType.Setter
         public Builder highPriorityCpuUtilizationPercent(@Nullable Integer highPriorityCpuUtilizationPercent) {
+
             this.highPriorityCpuUtilizationPercent = highPriorityCpuUtilizationPercent;
             return this;
         }
         @CustomType.Setter
         public Builder storageUtilizationPercent(@Nullable Integer storageUtilizationPercent) {
+
             this.storageUtilizationPercent = storageUtilizationPercent;
             return this;
         }

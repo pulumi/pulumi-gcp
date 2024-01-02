@@ -46,6 +46,7 @@ public final class EntryBigqueryTableSpecViewSpec {
 
         @CustomType.Setter
         public Builder viewQuery(@Nullable String viewQuery) {
+
             this.viewQuery = viewQuery;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -84,22 +85,34 @@ public final class GetDatabaseInstanceLatestRecoveryTimeResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceLatestRecoveryTimeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder instance(String instance) {
-            this.instance = Objects.requireNonNull(instance);
+            if (instance == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceLatestRecoveryTimeResult", "instance");
+            }
+            this.instance = instance;
             return this;
         }
         @CustomType.Setter
         public Builder latestRecoveryTime(String latestRecoveryTime) {
-            this.latestRecoveryTime = Objects.requireNonNull(latestRecoveryTime);
+            if (latestRecoveryTime == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceLatestRecoveryTimeResult", "latestRecoveryTime");
+            }
+            this.latestRecoveryTime = latestRecoveryTime;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceLatestRecoveryTimeResult", "project");
+            }
+            this.project = project;
             return this;
         }
         public GetDatabaseInstanceLatestRecoveryTimeResult build() {

@@ -44,6 +44,7 @@ public final class VpnConnectionVpcProject {
 
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }

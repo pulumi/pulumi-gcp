@@ -69,11 +69,13 @@ public final class ClusterBinaryAuthorization {
 
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder evaluationMode(@Nullable String evaluationMode) {
+
             this.evaluationMode = evaluationMode;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -364,8 +365,12 @@ public final class GetObjectSignedUrlArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetObjectSignedUrlArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("GetObjectSignedUrlArgs", "bucket");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("GetObjectSignedUrlArgs", "path");
+            }
             return $;
         }
     }

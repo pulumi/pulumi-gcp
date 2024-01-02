@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionCommitmentLicenseResourceArgs;
 import com.pulumi.gcp.compute.inputs.RegionCommitmentResourceArgs;
 import java.lang.Boolean;
@@ -517,7 +518,9 @@ public final class RegionCommitmentArgs extends com.pulumi.resources.ResourceArg
         }
 
         public RegionCommitmentArgs build() {
-            $.plan = Objects.requireNonNull($.plan, "expected parameter 'plan' to be non-null");
+            if ($.plan == null) {
+                throw new MissingRequiredPropertyException("RegionCommitmentArgs", "plan");
+            }
             return $;
         }
     }

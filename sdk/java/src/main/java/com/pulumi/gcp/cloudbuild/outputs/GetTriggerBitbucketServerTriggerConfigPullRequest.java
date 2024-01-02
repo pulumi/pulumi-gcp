@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetTriggerBitbucketServerTriggerConfigPullRequest {
 
         @CustomType.Setter
         public Builder branch(String branch) {
-            this.branch = Objects.requireNonNull(branch);
+            if (branch == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBitbucketServerTriggerConfigPullRequest", "branch");
+            }
+            this.branch = branch;
             return this;
         }
         @CustomType.Setter
         public Builder commentControl(String commentControl) {
-            this.commentControl = Objects.requireNonNull(commentControl);
+            if (commentControl == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBitbucketServerTriggerConfigPullRequest", "commentControl");
+            }
+            this.commentControl = commentControl;
             return this;
         }
         @CustomType.Setter
         public Builder invertRegex(Boolean invertRegex) {
-            this.invertRegex = Objects.requireNonNull(invertRegex);
+            if (invertRegex == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBitbucketServerTriggerConfigPullRequest", "invertRegex");
+            }
+            this.invertRegex = invertRegex;
             return this;
         }
         public GetTriggerBitbucketServerTriggerConfigPullRequest build() {

@@ -82,11 +82,13 @@ public final class InboundSamlConfigSpConfig {
 
         @CustomType.Setter
         public Builder callbackUri(@Nullable String callbackUri) {
+
             this.callbackUri = callbackUri;
             return this;
         }
         @CustomType.Setter
         public Builder spCertificates(@Nullable List<InboundSamlConfigSpConfigSpCertificate> spCertificates) {
+
             this.spCertificates = spCertificates;
             return this;
         }
@@ -95,6 +97,7 @@ public final class InboundSamlConfigSpConfig {
         }
         @CustomType.Setter
         public Builder spEntityId(@Nullable String spEntityId) {
+
             this.spEntityId = spEntityId;
             return this;
         }

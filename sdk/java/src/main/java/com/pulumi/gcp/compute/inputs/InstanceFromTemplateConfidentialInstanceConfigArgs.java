@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class InstanceFromTemplateConfidentialInstanceConfigArgs extends co
         }
 
         public InstanceFromTemplateConfidentialInstanceConfigArgs build() {
-            $.enableConfidentialCompute = Objects.requireNonNull($.enableConfidentialCompute, "expected parameter 'enableConfidentialCompute' to be non-null");
+            if ($.enableConfidentialCompute == null) {
+                throw new MissingRequiredPropertyException("InstanceFromTemplateConfidentialInstanceConfigArgs", "enableConfidentialCompute");
+            }
             return $;
         }
     }

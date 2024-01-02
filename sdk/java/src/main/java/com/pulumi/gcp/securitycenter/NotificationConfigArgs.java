@@ -5,6 +5,7 @@ package com.pulumi.gcp.securitycenter;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securitycenter.inputs.NotificationConfigStreamingConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -237,10 +238,18 @@ public final class NotificationConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public NotificationConfigArgs build() {
-            $.configId = Objects.requireNonNull($.configId, "expected parameter 'configId' to be non-null");
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
-            $.pubsubTopic = Objects.requireNonNull($.pubsubTopic, "expected parameter 'pubsubTopic' to be non-null");
-            $.streamingConfig = Objects.requireNonNull($.streamingConfig, "expected parameter 'streamingConfig' to be non-null");
+            if ($.configId == null) {
+                throw new MissingRequiredPropertyException("NotificationConfigArgs", "configId");
+            }
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("NotificationConfigArgs", "organization");
+            }
+            if ($.pubsubTopic == null) {
+                throw new MissingRequiredPropertyException("NotificationConfigArgs", "pubsubTopic");
+            }
+            if ($.streamingConfig == null) {
+                throw new MissingRequiredPropertyException("NotificationConfigArgs", "streamingConfig");
+            }
             return $;
         }
     }

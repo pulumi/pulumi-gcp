@@ -5,6 +5,7 @@ package com.pulumi.gcp.container;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterAzureServicesAuthenticationArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneArgs;
@@ -576,13 +577,27 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AzureClusterArgs build() {
-            $.authorization = Objects.requireNonNull($.authorization, "expected parameter 'authorization' to be non-null");
-            $.azureRegion = Objects.requireNonNull($.azureRegion, "expected parameter 'azureRegion' to be non-null");
-            $.controlPlane = Objects.requireNonNull($.controlPlane, "expected parameter 'controlPlane' to be non-null");
-            $.fleet = Objects.requireNonNull($.fleet, "expected parameter 'fleet' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.networking = Objects.requireNonNull($.networking, "expected parameter 'networking' to be non-null");
-            $.resourceGroupId = Objects.requireNonNull($.resourceGroupId, "expected parameter 'resourceGroupId' to be non-null");
+            if ($.authorization == null) {
+                throw new MissingRequiredPropertyException("AzureClusterArgs", "authorization");
+            }
+            if ($.azureRegion == null) {
+                throw new MissingRequiredPropertyException("AzureClusterArgs", "azureRegion");
+            }
+            if ($.controlPlane == null) {
+                throw new MissingRequiredPropertyException("AzureClusterArgs", "controlPlane");
+            }
+            if ($.fleet == null) {
+                throw new MissingRequiredPropertyException("AzureClusterArgs", "fleet");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("AzureClusterArgs", "location");
+            }
+            if ($.networking == null) {
+                throw new MissingRequiredPropertyException("AzureClusterArgs", "networking");
+            }
+            if ($.resourceGroupId == null) {
+                throw new MissingRequiredPropertyException("AzureClusterArgs", "resourceGroupId");
+            }
             return $;
         }
     }

@@ -154,6 +154,7 @@ public final class PreventionJobTriggerInspectJobInspectConfig {
 
         @CustomType.Setter
         public Builder customInfoTypes(@Nullable List<PreventionJobTriggerInspectJobInspectConfigCustomInfoType> customInfoTypes) {
+
             this.customInfoTypes = customInfoTypes;
             return this;
         }
@@ -162,16 +163,19 @@ public final class PreventionJobTriggerInspectJobInspectConfig {
         }
         @CustomType.Setter
         public Builder excludeInfoTypes(@Nullable Boolean excludeInfoTypes) {
+
             this.excludeInfoTypes = excludeInfoTypes;
             return this;
         }
         @CustomType.Setter
         public Builder includeQuote(@Nullable Boolean includeQuote) {
+
             this.includeQuote = includeQuote;
             return this;
         }
         @CustomType.Setter
         public Builder infoTypes(@Nullable List<PreventionJobTriggerInspectJobInspectConfigInfoType> infoTypes) {
+
             this.infoTypes = infoTypes;
             return this;
         }
@@ -180,16 +184,19 @@ public final class PreventionJobTriggerInspectJobInspectConfig {
         }
         @CustomType.Setter
         public Builder limits(@Nullable PreventionJobTriggerInspectJobInspectConfigLimits limits) {
+
             this.limits = limits;
             return this;
         }
         @CustomType.Setter
         public Builder minLikelihood(@Nullable String minLikelihood) {
+
             this.minLikelihood = minLikelihood;
             return this;
         }
         @CustomType.Setter
         public Builder ruleSets(@Nullable List<PreventionJobTriggerInspectJobInspectConfigRuleSet> ruleSets) {
+
             this.ruleSets = ruleSets;
             return this;
         }

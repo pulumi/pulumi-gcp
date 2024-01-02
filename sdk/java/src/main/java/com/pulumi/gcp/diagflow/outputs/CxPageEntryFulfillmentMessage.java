@@ -176,41 +176,49 @@ public final class CxPageEntryFulfillmentMessage {
 
         @CustomType.Setter
         public Builder channel(@Nullable String channel) {
+
             this.channel = channel;
             return this;
         }
         @CustomType.Setter
         public Builder conversationSuccess(@Nullable CxPageEntryFulfillmentMessageConversationSuccess conversationSuccess) {
+
             this.conversationSuccess = conversationSuccess;
             return this;
         }
         @CustomType.Setter
         public Builder liveAgentHandoff(@Nullable CxPageEntryFulfillmentMessageLiveAgentHandoff liveAgentHandoff) {
+
             this.liveAgentHandoff = liveAgentHandoff;
             return this;
         }
         @CustomType.Setter
         public Builder outputAudioText(@Nullable CxPageEntryFulfillmentMessageOutputAudioText outputAudioText) {
+
             this.outputAudioText = outputAudioText;
             return this;
         }
         @CustomType.Setter
         public Builder payload(@Nullable String payload) {
+
             this.payload = payload;
             return this;
         }
         @CustomType.Setter
         public Builder playAudio(@Nullable CxPageEntryFulfillmentMessagePlayAudio playAudio) {
+
             this.playAudio = playAudio;
             return this;
         }
         @CustomType.Setter
         public Builder telephonyTransferCall(@Nullable CxPageEntryFulfillmentMessageTelephonyTransferCall telephonyTransferCall) {
+
             this.telephonyTransferCall = telephonyTransferCall;
             return this;
         }
         @CustomType.Setter
         public Builder text(@Nullable CxPageEntryFulfillmentMessageText text) {
+
             this.text = text;
             return this;
         }

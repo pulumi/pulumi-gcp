@@ -44,6 +44,7 @@ public final class AwsClusterLoggingConfig {
 
         @CustomType.Setter
         public Builder componentConfig(@Nullable AwsClusterLoggingConfigComponentConfig componentConfig) {
+
             this.componentConfig = componentConfig;
             return this;
         }

@@ -46,6 +46,7 @@ public final class CertificateIssuanceConfigCertificateAuthorityConfig {
 
         @CustomType.Setter
         public Builder certificateAuthorityServiceConfig(@Nullable CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig certificateAuthorityServiceConfig) {
+
             this.certificateAuthorityServiceConfig = certificateAuthorityServiceConfig;
             return this;
         }

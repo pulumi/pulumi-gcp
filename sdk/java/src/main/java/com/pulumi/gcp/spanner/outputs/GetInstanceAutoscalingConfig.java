@@ -4,6 +4,7 @@
 package com.pulumi.gcp.spanner.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.spanner.outputs.GetInstanceAutoscalingConfigAutoscalingLimit;
 import com.pulumi.gcp.spanner.outputs.GetInstanceAutoscalingConfigAutoscalingTarget;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetInstanceAutoscalingConfig {
 
         @CustomType.Setter
         public Builder autoscalingLimits(List<GetInstanceAutoscalingConfigAutoscalingLimit> autoscalingLimits) {
-            this.autoscalingLimits = Objects.requireNonNull(autoscalingLimits);
+            if (autoscalingLimits == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfig", "autoscalingLimits");
+            }
+            this.autoscalingLimits = autoscalingLimits;
             return this;
         }
         public Builder autoscalingLimits(GetInstanceAutoscalingConfigAutoscalingLimit... autoscalingLimits) {
@@ -50,7 +54,10 @@ public final class GetInstanceAutoscalingConfig {
         }
         @CustomType.Setter
         public Builder autoscalingTargets(List<GetInstanceAutoscalingConfigAutoscalingTarget> autoscalingTargets) {
-            this.autoscalingTargets = Objects.requireNonNull(autoscalingTargets);
+            if (autoscalingTargets == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAutoscalingConfig", "autoscalingTargets");
+            }
+            this.autoscalingTargets = autoscalingTargets;
             return this;
         }
         public Builder autoscalingTargets(GetInstanceAutoscalingConfigAutoscalingTarget... autoscalingTargets) {

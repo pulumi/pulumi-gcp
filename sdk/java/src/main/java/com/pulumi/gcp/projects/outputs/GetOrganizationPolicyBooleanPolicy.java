@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetOrganizationPolicyBooleanPolicy {
 
         @CustomType.Setter
         public Builder enforced(Boolean enforced) {
-            this.enforced = Objects.requireNonNull(enforced);
+            if (enforced == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyBooleanPolicy", "enforced");
+            }
+            this.enforced = enforced;
             return this;
         }
         public GetOrganizationPolicyBooleanPolicy build() {

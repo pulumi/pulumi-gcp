@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,18 @@ public final class ServiceAttachmentConsumerAcceptList {
 
         @CustomType.Setter
         public Builder connectionLimit(Integer connectionLimit) {
-            this.connectionLimit = Objects.requireNonNull(connectionLimit);
+            if (connectionLimit == null) {
+              throw new MissingRequiredPropertyException("ServiceAttachmentConsumerAcceptList", "connectionLimit");
+            }
+            this.connectionLimit = connectionLimit;
             return this;
         }
         @CustomType.Setter
         public Builder projectIdOrNum(String projectIdOrNum) {
-            this.projectIdOrNum = Objects.requireNonNull(projectIdOrNum);
+            if (projectIdOrNum == null) {
+              throw new MissingRequiredPropertyException("ServiceAttachmentConsumerAcceptList", "projectIdOrNum");
+            }
+            this.projectIdOrNum = projectIdOrNum;
             return this;
         }
         public ServiceAttachmentConsumerAcceptList build() {

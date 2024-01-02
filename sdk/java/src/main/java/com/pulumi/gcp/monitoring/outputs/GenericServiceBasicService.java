@@ -63,11 +63,13 @@ public final class GenericServiceBasicService {
 
         @CustomType.Setter
         public Builder serviceLabels(@Nullable Map<String,String> serviceLabels) {
+
             this.serviceLabels = serviceLabels;
             return this;
         }
         @CustomType.Setter
         public Builder serviceType(@Nullable String serviceType) {
+
             this.serviceType = serviceType;
             return this;
         }

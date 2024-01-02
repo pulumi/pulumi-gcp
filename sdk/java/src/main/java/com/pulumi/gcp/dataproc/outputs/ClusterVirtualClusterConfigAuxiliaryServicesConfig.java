@@ -59,11 +59,13 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfig {
 
         @CustomType.Setter
         public Builder metastoreConfig(@Nullable ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreConfig metastoreConfig) {
+
             this.metastoreConfig = metastoreConfig;
             return this;
         }
         @CustomType.Setter
         public Builder sparkHistoryServerConfig(@Nullable ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistoryServerConfig sparkHistoryServerConfig) {
+
             this.sparkHistoryServerConfig = sparkHistoryServerConfig;
             return this;
         }

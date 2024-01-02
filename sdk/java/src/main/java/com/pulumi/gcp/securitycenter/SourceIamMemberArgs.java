@@ -5,6 +5,7 @@ package com.pulumi.gcp.securitycenter;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securitycenter.inputs.SourceIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -157,10 +158,18 @@ public final class SourceIamMemberArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public SourceIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("SourceIamMemberArgs", "member");
+            }
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("SourceIamMemberArgs", "organization");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("SourceIamMemberArgs", "role");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("SourceIamMemberArgs", "source");
+            }
             return $;
         }
     }

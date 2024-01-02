@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.inputs.UserPasswordPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -380,7 +381,9 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "instance");
+            }
             return $;
         }
     }

@@ -64,11 +64,13 @@ public final class RestorePlanRestoreConfigTransformationRuleResourceFilterGroup
 
         @CustomType.Setter
         public Builder resourceGroup(@Nullable String resourceGroup) {
+
             this.resourceGroup = resourceGroup;
             return this;
         }
         @CustomType.Setter
         public Builder resourceKind(@Nullable String resourceKind) {
+
             this.resourceKind = resourceKind;
             return this;
         }

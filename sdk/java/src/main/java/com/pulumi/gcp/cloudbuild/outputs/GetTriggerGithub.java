@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerGithubPullRequest;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerGithubPush;
 import java.lang.String;
@@ -61,22 +62,34 @@ public final class GetTriggerGithub {
 
         @CustomType.Setter
         public Builder enterpriseConfigResourceName(String enterpriseConfigResourceName) {
-            this.enterpriseConfigResourceName = Objects.requireNonNull(enterpriseConfigResourceName);
+            if (enterpriseConfigResourceName == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGithub", "enterpriseConfigResourceName");
+            }
+            this.enterpriseConfigResourceName = enterpriseConfigResourceName;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGithub", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder owner(String owner) {
-            this.owner = Objects.requireNonNull(owner);
+            if (owner == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGithub", "owner");
+            }
+            this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder pullRequests(List<GetTriggerGithubPullRequest> pullRequests) {
-            this.pullRequests = Objects.requireNonNull(pullRequests);
+            if (pullRequests == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGithub", "pullRequests");
+            }
+            this.pullRequests = pullRequests;
             return this;
         }
         public Builder pullRequests(GetTriggerGithubPullRequest... pullRequests) {
@@ -84,7 +97,10 @@ public final class GetTriggerGithub {
         }
         @CustomType.Setter
         public Builder pushes(List<GetTriggerGithubPush> pushes) {
-            this.pushes = Objects.requireNonNull(pushes);
+            if (pushes == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGithub", "pushes");
+            }
+            this.pushes = pushes;
             return this;
         }
         public Builder pushes(GetTriggerGithubPush... pushes) {

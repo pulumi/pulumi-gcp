@@ -54,21 +54,25 @@ public final class JobStatus {
 
         @CustomType.Setter
         public Builder details(@Nullable String details) {
+
             this.details = details;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stateStartTime(@Nullable String stateStartTime) {
+
             this.stateStartTime = stateStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder substate(@Nullable String substate) {
+
             this.substate = substate;
             return this;
         }

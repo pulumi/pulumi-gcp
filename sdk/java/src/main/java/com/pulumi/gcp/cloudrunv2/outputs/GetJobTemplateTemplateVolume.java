@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeCloudSqlInstance;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeEmptyDir;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolumeSecret;
@@ -64,7 +65,10 @@ public final class GetJobTemplateTemplateVolume {
 
         @CustomType.Setter
         public Builder cloudSqlInstances(List<GetJobTemplateTemplateVolumeCloudSqlInstance> cloudSqlInstances) {
-            this.cloudSqlInstances = Objects.requireNonNull(cloudSqlInstances);
+            if (cloudSqlInstances == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolume", "cloudSqlInstances");
+            }
+            this.cloudSqlInstances = cloudSqlInstances;
             return this;
         }
         public Builder cloudSqlInstances(GetJobTemplateTemplateVolumeCloudSqlInstance... cloudSqlInstances) {
@@ -72,7 +76,10 @@ public final class GetJobTemplateTemplateVolume {
         }
         @CustomType.Setter
         public Builder emptyDirs(List<GetJobTemplateTemplateVolumeEmptyDir> emptyDirs) {
-            this.emptyDirs = Objects.requireNonNull(emptyDirs);
+            if (emptyDirs == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolume", "emptyDirs");
+            }
+            this.emptyDirs = emptyDirs;
             return this;
         }
         public Builder emptyDirs(GetJobTemplateTemplateVolumeEmptyDir... emptyDirs) {
@@ -80,12 +87,18 @@ public final class GetJobTemplateTemplateVolume {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolume", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secrets(List<GetJobTemplateTemplateVolumeSecret> secrets) {
-            this.secrets = Objects.requireNonNull(secrets);
+            if (secrets == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVolume", "secrets");
+            }
+            this.secrets = secrets;
             return this;
         }
         public Builder secrets(GetJobTemplateTemplateVolumeSecret... secrets) {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigFrequencyOptionsEndDateArgs;
 import com.pulumi.gcp.storage.inputs.InsightsReportConfigFrequencyOptionsStartDateArgs;
 import java.lang.String;
@@ -162,9 +163,15 @@ public final class InsightsReportConfigFrequencyOptionsArgs extends com.pulumi.r
         }
 
         public InsightsReportConfigFrequencyOptionsArgs build() {
-            $.endDate = Objects.requireNonNull($.endDate, "expected parameter 'endDate' to be non-null");
-            $.frequency = Objects.requireNonNull($.frequency, "expected parameter 'frequency' to be non-null");
-            $.startDate = Objects.requireNonNull($.startDate, "expected parameter 'startDate' to be non-null");
+            if ($.endDate == null) {
+                throw new MissingRequiredPropertyException("InsightsReportConfigFrequencyOptionsArgs", "endDate");
+            }
+            if ($.frequency == null) {
+                throw new MissingRequiredPropertyException("InsightsReportConfigFrequencyOptionsArgs", "frequency");
+            }
+            if ($.startDate == null) {
+                throw new MissingRequiredPropertyException("InsightsReportConfigFrequencyOptionsArgs", "startDate");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetInfoTypeArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigRuleSetRuleArgs;
 import java.util.List;
@@ -145,7 +146,9 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetArgs extend
         }
 
         public PreventionJobTriggerInspectJobInspectConfigRuleSetArgs build() {
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobInspectConfigRuleSetArgs", "rules");
+            }
             return $;
         }
     }

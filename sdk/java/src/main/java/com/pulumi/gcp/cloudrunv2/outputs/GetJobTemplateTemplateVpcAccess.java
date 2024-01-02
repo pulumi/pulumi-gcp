@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVpcAccessNetworkInterface;
 import java.lang.String;
 import java.util.List;
@@ -48,17 +49,26 @@ public final class GetJobTemplateTemplateVpcAccess {
 
         @CustomType.Setter
         public Builder connector(String connector) {
-            this.connector = Objects.requireNonNull(connector);
+            if (connector == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVpcAccess", "connector");
+            }
+            this.connector = connector;
             return this;
         }
         @CustomType.Setter
         public Builder egress(String egress) {
-            this.egress = Objects.requireNonNull(egress);
+            if (egress == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVpcAccess", "egress");
+            }
+            this.egress = egress;
             return this;
         }
         @CustomType.Setter
         public Builder networkInterfaces(List<GetJobTemplateTemplateVpcAccessNetworkInterface> networkInterfaces) {
-            this.networkInterfaces = Objects.requireNonNull(networkInterfaces);
+            if (networkInterfaces == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplateVpcAccess", "networkInterfaces");
+            }
+            this.networkInterfaces = networkInterfaces;
             return this;
         }
         public Builder networkInterfaces(GetJobTemplateTemplateVpcAccessNetworkInterface... networkInterfaces) {

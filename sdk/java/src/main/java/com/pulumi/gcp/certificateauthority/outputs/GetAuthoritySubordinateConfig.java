@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.GetAuthoritySubordinateConfigPemIssuerChain;
 import java.lang.String;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class GetAuthoritySubordinateConfig {
 
         @CustomType.Setter
         public Builder certificateAuthority(String certificateAuthority) {
-            this.certificateAuthority = Objects.requireNonNull(certificateAuthority);
+            if (certificateAuthority == null) {
+              throw new MissingRequiredPropertyException("GetAuthoritySubordinateConfig", "certificateAuthority");
+            }
+            this.certificateAuthority = certificateAuthority;
             return this;
         }
         @CustomType.Setter
         public Builder pemIssuerChains(List<GetAuthoritySubordinateConfigPemIssuerChain> pemIssuerChains) {
-            this.pemIssuerChains = Objects.requireNonNull(pemIssuerChains);
+            if (pemIssuerChains == null) {
+              throw new MissingRequiredPropertyException("GetAuthoritySubordinateConfig", "pemIssuerChains");
+            }
+            this.pemIssuerChains = pemIssuerChains;
             return this;
         }
         public Builder pemIssuerChains(GetAuthoritySubordinateConfigPemIssuerChain... pemIssuerChains) {

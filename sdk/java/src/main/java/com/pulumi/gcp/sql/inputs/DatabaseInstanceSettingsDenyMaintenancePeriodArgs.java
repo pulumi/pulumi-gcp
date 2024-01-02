@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -148,9 +149,15 @@ public final class DatabaseInstanceSettingsDenyMaintenancePeriodArgs extends com
         }
 
         public DatabaseInstanceSettingsDenyMaintenancePeriodArgs build() {
-            $.endDate = Objects.requireNonNull($.endDate, "expected parameter 'endDate' to be non-null");
-            $.startDate = Objects.requireNonNull($.startDate, "expected parameter 'startDate' to be non-null");
-            $.time = Objects.requireNonNull($.time, "expected parameter 'time' to be non-null");
+            if ($.endDate == null) {
+                throw new MissingRequiredPropertyException("DatabaseInstanceSettingsDenyMaintenancePeriodArgs", "endDate");
+            }
+            if ($.startDate == null) {
+                throw new MissingRequiredPropertyException("DatabaseInstanceSettingsDenyMaintenancePeriodArgs", "startDate");
+            }
+            if ($.time == null) {
+                throw new MissingRequiredPropertyException("DatabaseInstanceSettingsDenyMaintenancePeriodArgs", "time");
+            }
             return $;
         }
     }

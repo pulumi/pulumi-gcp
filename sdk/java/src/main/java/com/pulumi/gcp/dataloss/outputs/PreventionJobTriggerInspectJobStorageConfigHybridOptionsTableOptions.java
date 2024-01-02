@@ -50,6 +50,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigHybridOptionsTable
 
         @CustomType.Setter
         public Builder identifyingFields(@Nullable List<PreventionJobTriggerInspectJobStorageConfigHybridOptionsTableOptionsIdentifyingField> identifyingFields) {
+
             this.identifyingFields = identifyingFields;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterControlPlaneApiServerArg;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig;
 import java.util.List;
@@ -69,6 +70,7 @@ public final class BareMetalAdminClusterControlPlane {
 
         @CustomType.Setter
         public Builder apiServerArgs(@Nullable List<BareMetalAdminClusterControlPlaneApiServerArg> apiServerArgs) {
+
             this.apiServerArgs = apiServerArgs;
             return this;
         }
@@ -77,7 +79,10 @@ public final class BareMetalAdminClusterControlPlane {
         }
         @CustomType.Setter
         public Builder controlPlaneNodePoolConfig(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig controlPlaneNodePoolConfig) {
-            this.controlPlaneNodePoolConfig = Objects.requireNonNull(controlPlaneNodePoolConfig);
+            if (controlPlaneNodePoolConfig == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterControlPlane", "controlPlaneNodePoolConfig");
+            }
+            this.controlPlaneNodePoolConfig = controlPlaneNodePoolConfig;
             return this;
         }
         public BareMetalAdminClusterControlPlane build() {

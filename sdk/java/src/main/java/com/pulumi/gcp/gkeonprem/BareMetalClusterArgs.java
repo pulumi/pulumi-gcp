@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterClusterOperationsArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterControlPlaneArgs;
@@ -893,13 +894,27 @@ public final class BareMetalClusterArgs extends com.pulumi.resources.ResourceArg
         }
 
         public BareMetalClusterArgs build() {
-            $.adminClusterMembership = Objects.requireNonNull($.adminClusterMembership, "expected parameter 'adminClusterMembership' to be non-null");
-            $.bareMetalVersion = Objects.requireNonNull($.bareMetalVersion, "expected parameter 'bareMetalVersion' to be non-null");
-            $.controlPlane = Objects.requireNonNull($.controlPlane, "expected parameter 'controlPlane' to be non-null");
-            $.loadBalancer = Objects.requireNonNull($.loadBalancer, "expected parameter 'loadBalancer' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.networkConfig = Objects.requireNonNull($.networkConfig, "expected parameter 'networkConfig' to be non-null");
-            $.storage = Objects.requireNonNull($.storage, "expected parameter 'storage' to be non-null");
+            if ($.adminClusterMembership == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterArgs", "adminClusterMembership");
+            }
+            if ($.bareMetalVersion == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterArgs", "bareMetalVersion");
+            }
+            if ($.controlPlane == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterArgs", "controlPlane");
+            }
+            if ($.loadBalancer == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterArgs", "loadBalancer");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterArgs", "location");
+            }
+            if ($.networkConfig == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterArgs", "networkConfig");
+            }
+            if ($.storage == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterArgs", "storage");
+            }
             return $;
         }
     }

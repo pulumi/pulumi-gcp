@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -163,8 +164,12 @@ public final class Hl7StoreIamPolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public Hl7StoreIamPolicyArgs build() {
-            $.hl7V2StoreId = Objects.requireNonNull($.hl7V2StoreId, "expected parameter 'hl7V2StoreId' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.hl7V2StoreId == null) {
+                throw new MissingRequiredPropertyException("Hl7StoreIamPolicyArgs", "hl7V2StoreId");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("Hl7StoreIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

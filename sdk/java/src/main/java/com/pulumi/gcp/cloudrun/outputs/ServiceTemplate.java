@@ -75,11 +75,13 @@ public final class ServiceTemplate {
 
         @CustomType.Setter
         public Builder metadata(@Nullable ServiceTemplateMetadata metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder spec(@Nullable ServiceTemplateSpec spec) {
+
             this.spec = spec;
             return this;
         }

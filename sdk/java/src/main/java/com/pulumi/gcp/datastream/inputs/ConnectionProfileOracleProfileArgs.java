@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -267,10 +268,18 @@ public final class ConnectionProfileOracleProfileArgs extends com.pulumi.resourc
         }
 
         public ConnectionProfileOracleProfileArgs build() {
-            $.databaseService = Objects.requireNonNull($.databaseService, "expected parameter 'databaseService' to be non-null");
-            $.hostname = Objects.requireNonNull($.hostname, "expected parameter 'hostname' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.databaseService == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleProfileArgs", "databaseService");
+            }
+            if ($.hostname == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleProfileArgs", "hostname");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleProfileArgs", "password");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleProfileArgs", "username");
+            }
             return $;
         }
     }

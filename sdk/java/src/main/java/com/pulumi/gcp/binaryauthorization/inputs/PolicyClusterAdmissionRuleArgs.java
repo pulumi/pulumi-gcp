@@ -5,6 +5,7 @@ package com.pulumi.gcp.binaryauthorization.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -241,9 +242,15 @@ public final class PolicyClusterAdmissionRuleArgs extends com.pulumi.resources.R
         }
 
         public PolicyClusterAdmissionRuleArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.enforcementMode = Objects.requireNonNull($.enforcementMode, "expected parameter 'enforcementMode' to be non-null");
-            $.evaluationMode = Objects.requireNonNull($.evaluationMode, "expected parameter 'evaluationMode' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("PolicyClusterAdmissionRuleArgs", "cluster");
+            }
+            if ($.enforcementMode == null) {
+                throw new MissingRequiredPropertyException("PolicyClusterAdmissionRuleArgs", "enforcementMode");
+            }
+            if ($.evaluationMode == null) {
+                throw new MissingRequiredPropertyException("PolicyClusterAdmissionRuleArgs", "evaluationMode");
+            }
             return $;
         }
     }

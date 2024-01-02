@@ -63,11 +63,13 @@ public final class FleetDefaultClusterConfig {
 
         @CustomType.Setter
         public Builder binaryAuthorizationConfig(@Nullable FleetDefaultClusterConfigBinaryAuthorizationConfig binaryAuthorizationConfig) {
+
             this.binaryAuthorizationConfig = binaryAuthorizationConfig;
             return this;
         }
         @CustomType.Setter
         public Builder securityPostureConfig(@Nullable FleetDefaultClusterConfigSecurityPostureConfig securityPostureConfig) {
+
             this.securityPostureConfig = securityPostureConfig;
             return this;
         }

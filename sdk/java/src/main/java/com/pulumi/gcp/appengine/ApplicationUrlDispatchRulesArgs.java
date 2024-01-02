@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.appengine.inputs.ApplicationUrlDispatchRulesDispatchRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -134,7 +135,9 @@ public final class ApplicationUrlDispatchRulesArgs extends com.pulumi.resources.
         }
 
         public ApplicationUrlDispatchRulesArgs build() {
-            $.dispatchRules = Objects.requireNonNull($.dispatchRules, "expected parameter 'dispatchRules' to be non-null");
+            if ($.dispatchRules == null) {
+                throw new MissingRequiredPropertyException("ApplicationUrlDispatchRulesArgs", "dispatchRules");
+            }
             return $;
         }
     }

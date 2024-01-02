@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -78,6 +79,7 @@ public final class GuestPoliciesRecipeUpdateStepScriptRun {
 
         @CustomType.Setter
         public Builder allowedExitCodes(@Nullable List<Integer> allowedExitCodes) {
+
             this.allowedExitCodes = allowedExitCodes;
             return this;
         }
@@ -86,12 +88,16 @@ public final class GuestPoliciesRecipeUpdateStepScriptRun {
         }
         @CustomType.Setter
         public Builder interpreter(@Nullable String interpreter) {
+
             this.interpreter = interpreter;
             return this;
         }
         @CustomType.Setter
         public Builder script(String script) {
-            this.script = Objects.requireNonNull(script);
+            if (script == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesRecipeUpdateStepScriptRun", "script");
+            }
+            this.script = script;
             return this;
         }
         public GuestPoliciesRecipeUpdateStepScriptRun build() {

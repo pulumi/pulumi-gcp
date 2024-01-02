@@ -4,6 +4,7 @@
 package com.pulumi.gcp.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -76,27 +77,40 @@ public final class GetKMSSecretResult {
 
         @CustomType.Setter
         public Builder additionalAuthenticatedData(@Nullable String additionalAuthenticatedData) {
+
             this.additionalAuthenticatedData = additionalAuthenticatedData;
             return this;
         }
         @CustomType.Setter
         public Builder ciphertext(String ciphertext) {
-            this.ciphertext = Objects.requireNonNull(ciphertext);
+            if (ciphertext == null) {
+              throw new MissingRequiredPropertyException("GetKMSSecretResult", "ciphertext");
+            }
+            this.ciphertext = ciphertext;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoKey(String cryptoKey) {
-            this.cryptoKey = Objects.requireNonNull(cryptoKey);
+            if (cryptoKey == null) {
+              throw new MissingRequiredPropertyException("GetKMSSecretResult", "cryptoKey");
+            }
+            this.cryptoKey = cryptoKey;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKMSSecretResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder plaintext(String plaintext) {
-            this.plaintext = Objects.requireNonNull(plaintext);
+            if (plaintext == null) {
+              throw new MissingRequiredPropertyException("GetKMSSecretResult", "plaintext");
+            }
+            this.plaintext = plaintext;
             return this;
         }
         public GetKMSSecretResult build() {

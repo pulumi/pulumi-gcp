@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkebackup.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class BackupPlanBackupConfigSelectedApplicationsNamespacedName {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("BackupPlanBackupConfigSelectedApplicationsNamespacedName", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namespace(String namespace) {
-            this.namespace = Objects.requireNonNull(namespace);
+            if (namespace == null) {
+              throw new MissingRequiredPropertyException("BackupPlanBackupConfigSelectedApplicationsNamespacedName", "namespace");
+            }
+            this.namespace = namespace;
             return this;
         }
         public BackupPlanBackupConfigSelectedApplicationsNamespacedName build() {

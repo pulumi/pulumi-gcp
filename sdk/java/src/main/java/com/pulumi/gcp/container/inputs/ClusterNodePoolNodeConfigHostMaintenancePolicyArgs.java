@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class ClusterNodePoolNodeConfigHostMaintenancePolicyArgs extends co
         }
 
         public ClusterNodePoolNodeConfigHostMaintenancePolicyArgs build() {
-            $.maintenanceInterval = Objects.requireNonNull($.maintenanceInterval, "expected parameter 'maintenanceInterval' to be non-null");
+            if ($.maintenanceInterval == null) {
+                throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigHostMaintenancePolicyArgs", "maintenanceInterval");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.PolicyAlternativeNameServerConfigTargetNameServer;
 import java.util.List;
 import java.util.Objects;
@@ -49,7 +50,10 @@ public final class PolicyAlternativeNameServerConfig {
 
         @CustomType.Setter
         public Builder targetNameServers(List<PolicyAlternativeNameServerConfigTargetNameServer> targetNameServers) {
-            this.targetNameServers = Objects.requireNonNull(targetNameServers);
+            if (targetNameServers == null) {
+              throw new MissingRequiredPropertyException("PolicyAlternativeNameServerConfig", "targetNameServers");
+            }
+            this.targetNameServers = targetNameServers;
             return this;
         }
         public Builder targetNameServers(PolicyAlternativeNameServerConfigTargetNameServer... targetNameServers) {

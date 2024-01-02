@@ -5,6 +5,7 @@ package com.pulumi.gcp.workstations;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -261,10 +262,18 @@ public final class WorkstationIamPolicyArgs extends com.pulumi.resources.Resourc
         }
 
         public WorkstationIamPolicyArgs build() {
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
-            $.workstationClusterId = Objects.requireNonNull($.workstationClusterId, "expected parameter 'workstationClusterId' to be non-null");
-            $.workstationConfigId = Objects.requireNonNull($.workstationConfigId, "expected parameter 'workstationConfigId' to be non-null");
-            $.workstationId = Objects.requireNonNull($.workstationId, "expected parameter 'workstationId' to be non-null");
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("WorkstationIamPolicyArgs", "policyData");
+            }
+            if ($.workstationClusterId == null) {
+                throw new MissingRequiredPropertyException("WorkstationIamPolicyArgs", "workstationClusterId");
+            }
+            if ($.workstationConfigId == null) {
+                throw new MissingRequiredPropertyException("WorkstationIamPolicyArgs", "workstationConfigId");
+            }
+            if ($.workstationId == null) {
+                throw new MissingRequiredPropertyException("WorkstationIamPolicyArgs", "workstationId");
+            }
             return $;
         }
     }

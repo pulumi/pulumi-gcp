@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuildv2.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,7 +109,9 @@ public final class GetConnectionIamPolicyPlainArgs extends com.pulumi.resources.
         }
 
         public GetConnectionIamPolicyPlainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetConnectionIamPolicyPlainArgs", "name");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class BareMetalClusterOsEnvironmentConfigArgs extends com.pulumi.re
         }
 
         public BareMetalClusterOsEnvironmentConfigArgs build() {
-            $.packageRepoExcluded = Objects.requireNonNull($.packageRepoExcluded, "expected parameter 'packageRepoExcluded' to be non-null");
+            if ($.packageRepoExcluded == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterOsEnvironmentConfigArgs", "packageRepoExcluded");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDict
 
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath", "path");
+            }
+            this.path = path;
             return this;
         }
         public PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath build() {

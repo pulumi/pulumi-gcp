@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -253,7 +254,9 @@ public final class RegionSecurityPolicyUserDefinedFieldArgs extends com.pulumi.r
         }
 
         public RegionSecurityPolicyUserDefinedFieldArgs build() {
-            $.base = Objects.requireNonNull($.base, "expected parameter 'base' to be non-null");
+            if ($.base == null) {
+                throw new MissingRequiredPropertyException("RegionSecurityPolicyUserDefinedFieldArgs", "base");
+            }
             return $;
         }
     }

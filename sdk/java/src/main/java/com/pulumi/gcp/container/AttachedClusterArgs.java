@@ -5,6 +5,7 @@ package com.pulumi.gcp.container;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AttachedClusterAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.AttachedClusterFleetArgs;
@@ -706,11 +707,21 @@ public final class AttachedClusterArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AttachedClusterArgs build() {
-            $.distribution = Objects.requireNonNull($.distribution, "expected parameter 'distribution' to be non-null");
-            $.fleet = Objects.requireNonNull($.fleet, "expected parameter 'fleet' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.oidcConfig = Objects.requireNonNull($.oidcConfig, "expected parameter 'oidcConfig' to be non-null");
-            $.platformVersion = Objects.requireNonNull($.platformVersion, "expected parameter 'platformVersion' to be non-null");
+            if ($.distribution == null) {
+                throw new MissingRequiredPropertyException("AttachedClusterArgs", "distribution");
+            }
+            if ($.fleet == null) {
+                throw new MissingRequiredPropertyException("AttachedClusterArgs", "fleet");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("AttachedClusterArgs", "location");
+            }
+            if ($.oidcConfig == null) {
+                throw new MissingRequiredPropertyException("AttachedClusterArgs", "oidcConfig");
+            }
+            if ($.platformVersion == null) {
+                throw new MissingRequiredPropertyException("AttachedClusterArgs", "platformVersion");
+            }
             return $;
         }
     }

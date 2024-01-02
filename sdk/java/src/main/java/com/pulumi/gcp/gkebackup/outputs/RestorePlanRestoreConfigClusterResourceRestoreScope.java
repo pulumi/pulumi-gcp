@@ -107,11 +107,13 @@ public final class RestorePlanRestoreConfigClusterResourceRestoreScope {
 
         @CustomType.Setter
         public Builder allGroupKinds(@Nullable Boolean allGroupKinds) {
+
             this.allGroupKinds = allGroupKinds;
             return this;
         }
         @CustomType.Setter
         public Builder excludedGroupKinds(@Nullable List<RestorePlanRestoreConfigClusterResourceRestoreScopeExcludedGroupKind> excludedGroupKinds) {
+
             this.excludedGroupKinds = excludedGroupKinds;
             return this;
         }
@@ -120,11 +122,13 @@ public final class RestorePlanRestoreConfigClusterResourceRestoreScope {
         }
         @CustomType.Setter
         public Builder noGroupKinds(@Nullable Boolean noGroupKinds) {
+
             this.noGroupKinds = noGroupKinds;
             return this;
         }
         @CustomType.Setter
         public Builder selectedGroupKinds(@Nullable List<RestorePlanRestoreConfigClusterResourceRestoreScopeSelectedGroupKind> selectedGroupKinds) {
+
             this.selectedGroupKinds = selectedGroupKinds;
             return this;
         }

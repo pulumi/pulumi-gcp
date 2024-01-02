@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuildv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,11 +59,15 @@ public final class ConnectionGitlabConfigAuthorizerCredential {
 
         @CustomType.Setter
         public Builder userTokenSecretVersion(String userTokenSecretVersion) {
-            this.userTokenSecretVersion = Objects.requireNonNull(userTokenSecretVersion);
+            if (userTokenSecretVersion == null) {
+              throw new MissingRequiredPropertyException("ConnectionGitlabConfigAuthorizerCredential", "userTokenSecretVersion");
+            }
+            this.userTokenSecretVersion = userTokenSecretVersion;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

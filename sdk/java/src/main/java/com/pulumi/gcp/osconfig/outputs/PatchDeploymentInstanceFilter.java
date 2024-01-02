@@ -111,11 +111,13 @@ public final class PatchDeploymentInstanceFilter {
 
         @CustomType.Setter
         public Builder all(@Nullable Boolean all) {
+
             this.all = all;
             return this;
         }
         @CustomType.Setter
         public Builder groupLabels(@Nullable List<PatchDeploymentInstanceFilterGroupLabel> groupLabels) {
+
             this.groupLabels = groupLabels;
             return this;
         }
@@ -124,6 +126,7 @@ public final class PatchDeploymentInstanceFilter {
         }
         @CustomType.Setter
         public Builder instanceNamePrefixes(@Nullable List<String> instanceNamePrefixes) {
+
             this.instanceNamePrefixes = instanceNamePrefixes;
             return this;
         }
@@ -132,6 +135,7 @@ public final class PatchDeploymentInstanceFilter {
         }
         @CustomType.Setter
         public Builder instances(@Nullable List<String> instances) {
+
             this.instances = instances;
             return this;
         }
@@ -140,6 +144,7 @@ public final class PatchDeploymentInstanceFilter {
         }
         @CustomType.Setter
         public Builder zones(@Nullable List<String> zones) {
+
             this.zones = zones;
             return this;
         }

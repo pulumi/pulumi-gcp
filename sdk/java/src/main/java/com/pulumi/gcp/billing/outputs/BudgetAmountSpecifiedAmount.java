@@ -91,16 +91,19 @@ public final class BudgetAmountSpecifiedAmount {
 
         @CustomType.Setter
         public Builder currencyCode(@Nullable String currencyCode) {
+
             this.currencyCode = currencyCode;
             return this;
         }
         @CustomType.Setter
         public Builder nanos(@Nullable Integer nanos) {
+
             this.nanos = nanos;
             return this;
         }
         @CustomType.Setter
         public Builder units(@Nullable String units) {
+
             this.units = units;
             return this;
         }

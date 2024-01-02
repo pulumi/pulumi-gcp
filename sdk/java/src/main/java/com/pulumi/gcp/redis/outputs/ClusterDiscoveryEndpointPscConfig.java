@@ -52,6 +52,7 @@ public final class ClusterDiscoveryEndpointPscConfig {
 
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class TransferAgentPoolBandwidthLimit {
 
         @CustomType.Setter
         public Builder limitMbps(String limitMbps) {
-            this.limitMbps = Objects.requireNonNull(limitMbps);
+            if (limitMbps == null) {
+              throw new MissingRequiredPropertyException("TransferAgentPoolBandwidthLimit", "limitMbps");
+            }
+            this.limitMbps = limitMbps;
             return this;
         }
         public TransferAgentPoolBandwidthLimit build() {

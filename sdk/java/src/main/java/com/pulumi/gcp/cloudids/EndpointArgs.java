@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudids;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -325,9 +326,15 @@ public final class EndpointArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public EndpointArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.severity = Objects.requireNonNull($.severity, "expected parameter 'severity' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "location");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "network");
+            }
+            if ($.severity == null) {
+                throw new MissingRequiredPropertyException("EndpointArgs", "severity");
+            }
             return $;
         }
     }

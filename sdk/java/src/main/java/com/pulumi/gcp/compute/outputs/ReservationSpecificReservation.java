@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.ReservationSpecificReservationInstanceProperties;
 import java.lang.Integer;
 import java.util.Objects;
@@ -77,17 +78,24 @@ public final class ReservationSpecificReservation {
 
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("ReservationSpecificReservation", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder inUseCount(@Nullable Integer inUseCount) {
+
             this.inUseCount = inUseCount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceProperties(ReservationSpecificReservationInstanceProperties instanceProperties) {
-            this.instanceProperties = Objects.requireNonNull(instanceProperties);
+            if (instanceProperties == null) {
+              throw new MissingRequiredPropertyException("ReservationSpecificReservation", "instanceProperties");
+            }
+            this.instanceProperties = instanceProperties;
             return this;
         }
         public ReservationSpecificReservation build() {

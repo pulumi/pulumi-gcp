@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetAiIndexIndexStat {
 
         @CustomType.Setter
         public Builder shardsCount(Integer shardsCount) {
-            this.shardsCount = Objects.requireNonNull(shardsCount);
+            if (shardsCount == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexIndexStat", "shardsCount");
+            }
+            this.shardsCount = shardsCount;
             return this;
         }
         @CustomType.Setter
         public Builder vectorsCount(String vectorsCount) {
-            this.vectorsCount = Objects.requireNonNull(vectorsCount);
+            if (vectorsCount == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexIndexStat", "vectorsCount");
+            }
+            this.vectorsCount = vectorsCount;
             return this;
         }
         public GetAiIndexIndexStat build() {

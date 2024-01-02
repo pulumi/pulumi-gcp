@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials;
 import java.lang.String;
 import java.util.Objects;
@@ -87,22 +88,32 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSource {
 
         @CustomType.Setter
         public Builder azureCredentials(TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentials azureCredentials) {
-            this.azureCredentials = Objects.requireNonNull(azureCredentials);
+            if (azureCredentials == null) {
+              throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSource", "azureCredentials");
+            }
+            this.azureCredentials = azureCredentials;
             return this;
         }
         @CustomType.Setter
         public Builder container(String container) {
-            this.container = Objects.requireNonNull(container);
+            if (container == null) {
+              throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSource", "container");
+            }
+            this.container = container;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder storageAccount(String storageAccount) {
-            this.storageAccount = Objects.requireNonNull(storageAccount);
+            if (storageAccount == null) {
+              throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSource", "storageAccount");
+            }
+            this.storageAccount = storageAccount;
             return this;
         }
         public TransferJobTransferSpecAzureBlobStorageDataSource build() {

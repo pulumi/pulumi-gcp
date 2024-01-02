@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.ReservationSpecificReservationInstancePropertiesGuestAccelerator;
 import com.pulumi.gcp.compute.outputs.ReservationSpecificReservationInstancePropertiesLocalSsd;
 import java.lang.String;
@@ -101,6 +102,7 @@ public final class ReservationSpecificReservationInstanceProperties {
 
         @CustomType.Setter
         public Builder guestAccelerators(@Nullable List<ReservationSpecificReservationInstancePropertiesGuestAccelerator> guestAccelerators) {
+
             this.guestAccelerators = guestAccelerators;
             return this;
         }
@@ -109,6 +111,7 @@ public final class ReservationSpecificReservationInstanceProperties {
         }
         @CustomType.Setter
         public Builder localSsds(@Nullable List<ReservationSpecificReservationInstancePropertiesLocalSsd> localSsds) {
+
             this.localSsds = localSsds;
             return this;
         }
@@ -117,11 +120,15 @@ public final class ReservationSpecificReservationInstanceProperties {
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("ReservationSpecificReservationInstanceProperties", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
+
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }

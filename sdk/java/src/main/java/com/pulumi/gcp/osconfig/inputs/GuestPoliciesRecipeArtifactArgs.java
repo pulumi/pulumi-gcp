@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.inputs.GuestPoliciesRecipeArtifactGcsArgs;
 import com.pulumi.gcp.osconfig.inputs.GuestPoliciesRecipeArtifactRemoteArgs;
 import java.lang.Boolean;
@@ -210,7 +211,9 @@ public final class GuestPoliciesRecipeArtifactArgs extends com.pulumi.resources.
         }
 
         public GuestPoliciesRecipeArtifactArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesRecipeArtifactArgs", "id");
+            }
             return $;
         }
     }

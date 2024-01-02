@@ -94,21 +94,25 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis {
 
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder monitoringInterval(@Nullable String monitoringInterval) {
+
             this.monitoringInterval = monitoringInterval;
             return this;
         }
         @CustomType.Setter
         public Builder monitoringIntervalDays(@Nullable Integer monitoringIntervalDays) {
+
             this.monitoringIntervalDays = monitoringIntervalDays;
             return this;
         }
         @CustomType.Setter
         public Builder stalenessDays(@Nullable Integer stalenessDays) {
+
             this.stalenessDays = stalenessDays;
             return this;
         }

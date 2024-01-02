@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -92,12 +93,16 @@ public final class AwsClusterNetworking {
 
         @CustomType.Setter
         public Builder perNodePoolSgRulesDisabled(@Nullable Boolean perNodePoolSgRulesDisabled) {
+
             this.perNodePoolSgRulesDisabled = perNodePoolSgRulesDisabled;
             return this;
         }
         @CustomType.Setter
         public Builder podAddressCidrBlocks(List<String> podAddressCidrBlocks) {
-            this.podAddressCidrBlocks = Objects.requireNonNull(podAddressCidrBlocks);
+            if (podAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("AwsClusterNetworking", "podAddressCidrBlocks");
+            }
+            this.podAddressCidrBlocks = podAddressCidrBlocks;
             return this;
         }
         public Builder podAddressCidrBlocks(String... podAddressCidrBlocks) {
@@ -105,7 +110,10 @@ public final class AwsClusterNetworking {
         }
         @CustomType.Setter
         public Builder serviceAddressCidrBlocks(List<String> serviceAddressCidrBlocks) {
-            this.serviceAddressCidrBlocks = Objects.requireNonNull(serviceAddressCidrBlocks);
+            if (serviceAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("AwsClusterNetworking", "serviceAddressCidrBlocks");
+            }
+            this.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
             return this;
         }
         public Builder serviceAddressCidrBlocks(String... serviceAddressCidrBlocks) {
@@ -113,7 +121,10 @@ public final class AwsClusterNetworking {
         }
         @CustomType.Setter
         public Builder vpcId(String vpcId) {
-            this.vpcId = Objects.requireNonNull(vpcId);
+            if (vpcId == null) {
+              throw new MissingRequiredPropertyException("AwsClusterNetworking", "vpcId");
+            }
+            this.vpcId = vpcId;
             return this;
         }
         public AwsClusterNetworking build() {

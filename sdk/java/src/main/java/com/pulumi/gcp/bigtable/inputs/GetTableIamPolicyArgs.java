@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -130,8 +131,12 @@ public final class GetTableIamPolicyArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetTableIamPolicyArgs build() {
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
-            $.table = Objects.requireNonNull($.table, "expected parameter 'table' to be non-null");
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("GetTableIamPolicyArgs", "instance");
+            }
+            if ($.table == null) {
+                throw new MissingRequiredPropertyException("GetTableIamPolicyArgs", "table");
+            }
             return $;
         }
     }

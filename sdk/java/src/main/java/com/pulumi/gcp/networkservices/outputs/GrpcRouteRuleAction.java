@@ -96,6 +96,7 @@ public final class GrpcRouteRuleAction {
 
         @CustomType.Setter
         public Builder destinations(@Nullable List<GrpcRouteRuleActionDestination> destinations) {
+
             this.destinations = destinations;
             return this;
         }
@@ -104,16 +105,19 @@ public final class GrpcRouteRuleAction {
         }
         @CustomType.Setter
         public Builder faultInjectionPolicy(@Nullable GrpcRouteRuleActionFaultInjectionPolicy faultInjectionPolicy) {
+
             this.faultInjectionPolicy = faultInjectionPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder retryPolicy(@Nullable GrpcRouteRuleActionRetryPolicy retryPolicy) {
+
             this.retryPolicy = retryPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
+
             this.timeout = timeout;
             return this;
         }

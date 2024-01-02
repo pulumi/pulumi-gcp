@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleActionArgs;
 import com.pulumi.gcp.networkservices.inputs.TlsRouteRuleMatchArgs;
 import java.util.List;
@@ -132,8 +133,12 @@ public final class TlsRouteRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TlsRouteRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.matches = Objects.requireNonNull($.matches, "expected parameter 'matches' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("TlsRouteRuleArgs", "action");
+            }
+            if ($.matches == null) {
+                throw new MissingRequiredPropertyException("TlsRouteRuleArgs", "matches");
+            }
             return $;
         }
     }

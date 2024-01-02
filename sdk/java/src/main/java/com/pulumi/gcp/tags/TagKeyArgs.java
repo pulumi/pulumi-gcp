@@ -5,6 +5,7 @@ package com.pulumi.gcp.tags;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -249,8 +250,12 @@ public final class TagKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TagKeyArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
-            $.shortName = Objects.requireNonNull($.shortName, "expected parameter 'shortName' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("TagKeyArgs", "parent");
+            }
+            if ($.shortName == null) {
+                throw new MissingRequiredPropertyException("TagKeyArgs", "shortName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.PerInstanceConfigPreservedStateExternalIpIpAddress;
 import java.lang.String;
 import java.util.Objects;
@@ -79,16 +80,21 @@ public final class PerInstanceConfigPreservedStateExternalIp {
 
         @CustomType.Setter
         public Builder autoDelete(@Nullable String autoDelete) {
+
             this.autoDelete = autoDelete;
             return this;
         }
         @CustomType.Setter
         public Builder interfaceName(String interfaceName) {
-            this.interfaceName = Objects.requireNonNull(interfaceName);
+            if (interfaceName == null) {
+              throw new MissingRequiredPropertyException("PerInstanceConfigPreservedStateExternalIp", "interfaceName");
+            }
+            this.interfaceName = interfaceName;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(@Nullable PerInstanceConfigPreservedStateExternalIpIpAddress ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }

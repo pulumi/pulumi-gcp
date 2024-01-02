@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.inputs.EntryGroupIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -262,9 +263,15 @@ public final class EntryGroupIamMemberArgs extends com.pulumi.resources.Resource
         }
 
         public EntryGroupIamMemberArgs build() {
-            $.entryGroup = Objects.requireNonNull($.entryGroup, "expected parameter 'entryGroup' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.entryGroup == null) {
+                throw new MissingRequiredPropertyException("EntryGroupIamMemberArgs", "entryGroup");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("EntryGroupIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("EntryGroupIamMemberArgs", "role");
+            }
             return $;
         }
     }

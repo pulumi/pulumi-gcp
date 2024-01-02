@@ -36,6 +36,7 @@ public final class InstanceAdminSettings {
 
         @CustomType.Setter
         public Builder allowedEmailDomains(@Nullable List<String> allowedEmailDomains) {
+
             this.allowedEmailDomains = allowedEmailDomains;
             return this;
         }

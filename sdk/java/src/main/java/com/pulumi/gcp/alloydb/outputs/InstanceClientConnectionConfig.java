@@ -61,11 +61,13 @@ public final class InstanceClientConnectionConfig {
 
         @CustomType.Setter
         public Builder requireConnectors(@Nullable Boolean requireConnectors) {
+
             this.requireConnectors = requireConnectors;
             return this;
         }
         @CustomType.Setter
         public Builder sslConfig(@Nullable InstanceClientConnectionConfigSslConfig sslConfig) {
+
             this.sslConfig = sslConfig;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationAvroOptions;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationCsvOptions;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfigurationGoogleSheetsOptions;
@@ -379,92 +380,114 @@ public final class TableExternalDataConfiguration {
 
         @CustomType.Setter
         public Builder autodetect(Boolean autodetect) {
-            this.autodetect = Objects.requireNonNull(autodetect);
+            if (autodetect == null) {
+              throw new MissingRequiredPropertyException("TableExternalDataConfiguration", "autodetect");
+            }
+            this.autodetect = autodetect;
             return this;
         }
         @CustomType.Setter
         public Builder avroOptions(@Nullable TableExternalDataConfigurationAvroOptions avroOptions) {
+
             this.avroOptions = avroOptions;
             return this;
         }
         @CustomType.Setter
         public Builder compression(@Nullable String compression) {
+
             this.compression = compression;
             return this;
         }
         @CustomType.Setter
         public Builder connectionId(@Nullable String connectionId) {
+
             this.connectionId = connectionId;
             return this;
         }
         @CustomType.Setter
         public Builder csvOptions(@Nullable TableExternalDataConfigurationCsvOptions csvOptions) {
+
             this.csvOptions = csvOptions;
             return this;
         }
         @CustomType.Setter
         public Builder fileSetSpecType(@Nullable String fileSetSpecType) {
+
             this.fileSetSpecType = fileSetSpecType;
             return this;
         }
         @CustomType.Setter
         public Builder googleSheetsOptions(@Nullable TableExternalDataConfigurationGoogleSheetsOptions googleSheetsOptions) {
+
             this.googleSheetsOptions = googleSheetsOptions;
             return this;
         }
         @CustomType.Setter
         public Builder hivePartitioningOptions(@Nullable TableExternalDataConfigurationHivePartitioningOptions hivePartitioningOptions) {
+
             this.hivePartitioningOptions = hivePartitioningOptions;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreUnknownValues(@Nullable Boolean ignoreUnknownValues) {
+
             this.ignoreUnknownValues = ignoreUnknownValues;
             return this;
         }
         @CustomType.Setter
         public Builder jsonOptions(@Nullable TableExternalDataConfigurationJsonOptions jsonOptions) {
+
             this.jsonOptions = jsonOptions;
             return this;
         }
         @CustomType.Setter
         public Builder maxBadRecords(@Nullable Integer maxBadRecords) {
+
             this.maxBadRecords = maxBadRecords;
             return this;
         }
         @CustomType.Setter
         public Builder metadataCacheMode(@Nullable String metadataCacheMode) {
+
             this.metadataCacheMode = metadataCacheMode;
             return this;
         }
         @CustomType.Setter
         public Builder objectMetadata(@Nullable String objectMetadata) {
+
             this.objectMetadata = objectMetadata;
             return this;
         }
         @CustomType.Setter
         public Builder parquetOptions(@Nullable TableExternalDataConfigurationParquetOptions parquetOptions) {
+
             this.parquetOptions = parquetOptions;
             return this;
         }
         @CustomType.Setter
         public Builder referenceFileSchemaUri(@Nullable String referenceFileSchemaUri) {
+
             this.referenceFileSchemaUri = referenceFileSchemaUri;
             return this;
         }
         @CustomType.Setter
         public Builder schema(@Nullable String schema) {
+
             this.schema = schema;
             return this;
         }
         @CustomType.Setter
         public Builder sourceFormat(@Nullable String sourceFormat) {
+
             this.sourceFormat = sourceFormat;
             return this;
         }
         @CustomType.Setter
         public Builder sourceUris(List<String> sourceUris) {
-            this.sourceUris = Objects.requireNonNull(sourceUris);
+            if (sourceUris == null) {
+              throw new MissingRequiredPropertyException("TableExternalDataConfiguration", "sourceUris");
+            }
+            this.sourceUris = sourceUris;
             return this;
         }
         public Builder sourceUris(String... sourceUris) {

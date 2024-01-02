@@ -75,16 +75,19 @@ public final class CxPageFormParameterFillBehaviorInitialPromptFulfillmentMessag
 
         @CustomType.Setter
         public Builder allowPlaybackInterruption(@Nullable Boolean allowPlaybackInterruption) {
+
             this.allowPlaybackInterruption = allowPlaybackInterruption;
             return this;
         }
         @CustomType.Setter
         public Builder ssml(@Nullable String ssml) {
+
             this.ssml = ssml;
             return this;
         }
         @CustomType.Setter
         public Builder text(@Nullable String text) {
+
             this.text = text;
             return this;
         }

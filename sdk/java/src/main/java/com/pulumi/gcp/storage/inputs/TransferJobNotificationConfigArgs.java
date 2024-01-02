@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -161,8 +162,12 @@ public final class TransferJobNotificationConfigArgs extends com.pulumi.resource
         }
 
         public TransferJobNotificationConfigArgs build() {
-            $.payloadFormat = Objects.requireNonNull($.payloadFormat, "expected parameter 'payloadFormat' to be non-null");
-            $.pubsubTopic = Objects.requireNonNull($.pubsubTopic, "expected parameter 'pubsubTopic' to be non-null");
+            if ($.payloadFormat == null) {
+                throw new MissingRequiredPropertyException("TransferJobNotificationConfigArgs", "payloadFormat");
+            }
+            if ($.pubsubTopic == null) {
+                throw new MissingRequiredPropertyException("TransferJobNotificationConfigArgs", "pubsubTopic");
+            }
             return $;
         }
     }

@@ -62,11 +62,13 @@ public final class ManagementServerManagementUri {
 
         @CustomType.Setter
         public Builder api(@Nullable String api) {
+
             this.api = api;
             return this;
         }
         @CustomType.Setter
         public Builder webUi(@Nullable String webUi) {
+
             this.webUi = webUi;
             return this;
         }

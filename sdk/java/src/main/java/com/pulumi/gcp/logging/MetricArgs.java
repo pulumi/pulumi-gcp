@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.MetricBucketOptionsArgs;
 import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorArgs;
 import java.lang.Boolean;
@@ -513,7 +514,9 @@ public final class MetricArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public MetricArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("MetricArgs", "filter");
+            }
             return $;
         }
     }

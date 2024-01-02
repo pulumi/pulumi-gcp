@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionAbsentAggregationArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionAbsentTriggerArgs;
 import java.lang.String;
@@ -329,7 +330,9 @@ public final class AlertPolicyConditionConditionAbsentArgs extends com.pulumi.re
         }
 
         public AlertPolicyConditionConditionAbsentArgs build() {
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyConditionConditionAbsentArgs", "duration");
+            }
             return $;
         }
     }

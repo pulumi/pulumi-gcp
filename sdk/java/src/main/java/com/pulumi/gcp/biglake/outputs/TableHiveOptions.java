@@ -80,16 +80,19 @@ public final class TableHiveOptions {
 
         @CustomType.Setter
         public Builder parameters(@Nullable Map<String,String> parameters) {
+
             this.parameters = parameters;
             return this;
         }
         @CustomType.Setter
         public Builder storageDescriptor(@Nullable TableHiveOptionsStorageDescriptor storageDescriptor) {
+
             this.storageDescriptor = storageDescriptor;
             return this;
         }
         @CustomType.Setter
         public Builder tableType(@Nullable String tableType) {
+
             this.tableType = tableType;
             return this;
         }

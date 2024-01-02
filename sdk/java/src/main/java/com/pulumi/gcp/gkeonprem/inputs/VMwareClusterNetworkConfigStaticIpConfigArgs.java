@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterNetworkConfigStaticIpConfigIpBlockArgs;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class VMwareClusterNetworkConfigStaticIpConfigArgs extends com.pulu
         }
 
         public VMwareClusterNetworkConfigStaticIpConfigArgs build() {
-            $.ipBlocks = Objects.requireNonNull($.ipBlocks, "expected parameter 'ipBlocks' to be non-null");
+            if ($.ipBlocks == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigStaticIpConfigArgs", "ipBlocks");
+            }
             return $;
         }
     }

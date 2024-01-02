@@ -62,11 +62,13 @@ public final class BucketWebsite {
 
         @CustomType.Setter
         public Builder mainPageSuffix(@Nullable String mainPageSuffix) {
+
             this.mainPageSuffix = mainPageSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder notFoundPage(@Nullable String notFoundPage) {
+
             this.notFoundPage = notFoundPage;
             return this;
         }

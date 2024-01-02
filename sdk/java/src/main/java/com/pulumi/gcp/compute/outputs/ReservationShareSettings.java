@@ -64,6 +64,7 @@ public final class ReservationShareSettings {
 
         @CustomType.Setter
         public Builder projectMaps(@Nullable List<ReservationShareSettingsProjectMap> projectMaps) {
+
             this.projectMaps = projectMaps;
             return this;
         }
@@ -72,6 +73,7 @@ public final class ReservationShareSettings {
         }
         @CustomType.Setter
         public Builder shareType(@Nullable String shareType) {
+
             this.shareType = shareType;
             return this;
         }

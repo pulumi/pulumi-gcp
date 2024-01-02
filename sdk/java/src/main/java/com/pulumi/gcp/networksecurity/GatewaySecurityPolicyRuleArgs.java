@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -472,12 +473,24 @@ public final class GatewaySecurityPolicyRuleArgs extends com.pulumi.resources.Re
         }
 
         public GatewaySecurityPolicyRuleArgs build() {
-            $.basicProfile = Objects.requireNonNull($.basicProfile, "expected parameter 'basicProfile' to be non-null");
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
-            $.gatewaySecurityPolicy = Objects.requireNonNull($.gatewaySecurityPolicy, "expected parameter 'gatewaySecurityPolicy' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.sessionMatcher = Objects.requireNonNull($.sessionMatcher, "expected parameter 'sessionMatcher' to be non-null");
+            if ($.basicProfile == null) {
+                throw new MissingRequiredPropertyException("GatewaySecurityPolicyRuleArgs", "basicProfile");
+            }
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("GatewaySecurityPolicyRuleArgs", "enabled");
+            }
+            if ($.gatewaySecurityPolicy == null) {
+                throw new MissingRequiredPropertyException("GatewaySecurityPolicyRuleArgs", "gatewaySecurityPolicy");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("GatewaySecurityPolicyRuleArgs", "location");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("GatewaySecurityPolicyRuleArgs", "priority");
+            }
+            if ($.sessionMatcher == null) {
+                throw new MissingRequiredPropertyException("GatewaySecurityPolicyRuleArgs", "sessionMatcher");
+            }
             return $;
         }
     }

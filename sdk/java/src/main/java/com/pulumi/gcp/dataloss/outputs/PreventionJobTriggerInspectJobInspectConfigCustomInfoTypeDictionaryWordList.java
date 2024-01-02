@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDict
 
         @CustomType.Setter
         public Builder words(List<String> words) {
-            this.words = Objects.requireNonNull(words);
+            if (words == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList", "words");
+            }
+            this.words = words;
             return this;
         }
         public Builder words(String... words) {

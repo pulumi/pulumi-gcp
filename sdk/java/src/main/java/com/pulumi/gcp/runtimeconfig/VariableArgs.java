@@ -5,6 +5,7 @@ package com.pulumi.gcp.runtimeconfig;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -236,7 +237,9 @@ public final class VariableArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VariableArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("VariableArgs", "parent");
+            }
             return $;
         }
     }

@@ -88,16 +88,19 @@ public final class InstanceMaintenanceSchedule {
 
         @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
+
             this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder scheduleDeadlineTime(@Nullable String scheduleDeadlineTime) {
+
             this.scheduleDeadlineTime = scheduleDeadlineTime;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }

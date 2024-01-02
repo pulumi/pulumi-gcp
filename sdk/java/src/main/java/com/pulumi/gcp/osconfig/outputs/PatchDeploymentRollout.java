@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.PatchDeploymentRolloutDisruptionBudget;
 import java.lang.String;
 import java.util.Objects;
@@ -69,12 +70,18 @@ public final class PatchDeploymentRollout {
 
         @CustomType.Setter
         public Builder disruptionBudget(PatchDeploymentRolloutDisruptionBudget disruptionBudget) {
-            this.disruptionBudget = Objects.requireNonNull(disruptionBudget);
+            if (disruptionBudget == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentRollout", "disruptionBudget");
+            }
+            this.disruptionBudget = disruptionBudget;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentRollout", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         public PatchDeploymentRollout build() {

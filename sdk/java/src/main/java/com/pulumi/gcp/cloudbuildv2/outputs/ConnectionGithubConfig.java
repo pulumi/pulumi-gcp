@@ -59,11 +59,13 @@ public final class ConnectionGithubConfig {
 
         @CustomType.Setter
         public Builder appInstallationId(@Nullable Integer appInstallationId) {
+
             this.appInstallationId = appInstallationId;
             return this;
         }
         @CustomType.Setter
         public Builder authorizerCredential(@Nullable ConnectionGithubConfigAuthorizerCredential authorizerCredential) {
+
             this.authorizerCredential = authorizerCredential;
             return this;
         }

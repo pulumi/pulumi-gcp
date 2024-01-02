@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.organizations.outputs.GetIAMPolicyAuditConfig;
 import com.pulumi.gcp.organizations.outputs.GetIAMPolicyBinding;
 import java.lang.String;
@@ -74,6 +75,7 @@ public final class GetIAMPolicyResult {
 
         @CustomType.Setter
         public Builder auditConfigs(@Nullable List<GetIAMPolicyAuditConfig> auditConfigs) {
+
             this.auditConfigs = auditConfigs;
             return this;
         }
@@ -82,6 +84,7 @@ public final class GetIAMPolicyResult {
         }
         @CustomType.Setter
         public Builder bindings(@Nullable List<GetIAMPolicyBinding> bindings) {
+
             this.bindings = bindings;
             return this;
         }
@@ -90,12 +93,18 @@ public final class GetIAMPolicyResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetIAMPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetIAMPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         public GetIAMPolicyResult build() {

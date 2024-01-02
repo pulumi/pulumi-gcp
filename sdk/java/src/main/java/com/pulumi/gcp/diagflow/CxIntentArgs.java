@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxIntentParameterArgs;
 import com.pulumi.gcp.diagflow.inputs.CxIntentTrainingPhraseArgs;
 import java.lang.Boolean;
@@ -562,7 +563,9 @@ public final class CxIntentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CxIntentArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("CxIntentArgs", "displayName");
+            }
             return $;
         }
     }

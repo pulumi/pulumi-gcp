@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -154,8 +155,12 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtractionArgs extends c
         }
 
         public GuestPoliciesRecipeInstallStepArchiveExtractionArgs build() {
-            $.artifactId = Objects.requireNonNull($.artifactId, "expected parameter 'artifactId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.artifactId == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesRecipeInstallStepArchiveExtractionArgs", "artifactId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesRecipeInstallStepArchiveExtractionArgs", "type");
+            }
             return $;
         }
     }

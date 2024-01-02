@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class StreamDestinationConfigBigqueryDestinationConfigSourceHierarc
 
         @CustomType.Setter
         public Builder datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplate datasetTemplate) {
-            this.datasetTemplate = Objects.requireNonNull(datasetTemplate);
+            if (datasetTemplate == null) {
+              throw new MissingRequiredPropertyException("StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets", "datasetTemplate");
+            }
+            this.datasetTemplate = datasetTemplate;
             return this;
         }
         public StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets build() {

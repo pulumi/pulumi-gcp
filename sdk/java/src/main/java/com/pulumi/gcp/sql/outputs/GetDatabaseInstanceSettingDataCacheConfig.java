@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetDatabaseInstanceSettingDataCacheConfig {
 
         @CustomType.Setter
         public Builder dataCacheEnabled(Boolean dataCacheEnabled) {
-            this.dataCacheEnabled = Objects.requireNonNull(dataCacheEnabled);
+            if (dataCacheEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingDataCacheConfig", "dataCacheEnabled");
+            }
+            this.dataCacheEnabled = dataCacheEnabled;
             return this;
         }
         public GetDatabaseInstanceSettingDataCacheConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceMetadataIntegrationDataCatalogConfigArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class MetastoreServiceMetadataIntegrationArgs extends com.pulumi.re
         }
 
         public MetastoreServiceMetadataIntegrationArgs build() {
-            $.dataCatalogConfig = Objects.requireNonNull($.dataCatalogConfig, "expected parameter 'dataCatalogConfig' to be non-null");
+            if ($.dataCatalogConfig == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceMetadataIntegrationArgs", "dataCatalogConfig");
+            }
             return $;
         }
     }

@@ -63,11 +63,13 @@ public final class EntryGcsFilesetSpecSampleGcsFileSpec {
 
         @CustomType.Setter
         public Builder filePath(@Nullable String filePath) {
+
             this.filePath = filePath;
             return this;
         }
         @CustomType.Setter
         public Builder sizeBytes(@Nullable Integer sizeBytes) {
+
             this.sizeBytes = sizeBytes;
             return this;
         }

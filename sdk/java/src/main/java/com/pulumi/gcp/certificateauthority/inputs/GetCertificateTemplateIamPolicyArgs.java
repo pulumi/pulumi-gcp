@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -134,7 +135,9 @@ public final class GetCertificateTemplateIamPolicyArgs extends com.pulumi.resour
         }
 
         public GetCertificateTemplateIamPolicyArgs build() {
-            $.certificateTemplate = Objects.requireNonNull($.certificateTemplate, "expected parameter 'certificateTemplate' to be non-null");
+            if ($.certificateTemplate == null) {
+                throw new MissingRequiredPropertyException("GetCertificateTemplateIamPolicyArgs", "certificateTemplate");
+            }
             return $;
         }
     }

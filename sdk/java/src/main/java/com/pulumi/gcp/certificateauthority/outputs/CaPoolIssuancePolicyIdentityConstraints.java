@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyIdentityConstraintsCelExpression;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -83,16 +84,23 @@ public final class CaPoolIssuancePolicyIdentityConstraints {
 
         @CustomType.Setter
         public Builder allowSubjectAltNamesPassthrough(Boolean allowSubjectAltNamesPassthrough) {
-            this.allowSubjectAltNamesPassthrough = Objects.requireNonNull(allowSubjectAltNamesPassthrough);
+            if (allowSubjectAltNamesPassthrough == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyIdentityConstraints", "allowSubjectAltNamesPassthrough");
+            }
+            this.allowSubjectAltNamesPassthrough = allowSubjectAltNamesPassthrough;
             return this;
         }
         @CustomType.Setter
         public Builder allowSubjectPassthrough(Boolean allowSubjectPassthrough) {
-            this.allowSubjectPassthrough = Objects.requireNonNull(allowSubjectPassthrough);
+            if (allowSubjectPassthrough == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyIdentityConstraints", "allowSubjectPassthrough");
+            }
+            this.allowSubjectPassthrough = allowSubjectPassthrough;
             return this;
         }
         @CustomType.Setter
         public Builder celExpression(@Nullable CaPoolIssuancePolicyIdentityConstraintsCelExpression celExpression) {
+
             this.celExpression = celExpression;
             return this;
         }

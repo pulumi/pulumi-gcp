@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudtasks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,8 +91,12 @@ public final class QueueIamBindingConditionArgs extends com.pulumi.resources.Res
         }
 
         public QueueIamBindingConditionArgs build() {
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("QueueIamBindingConditionArgs", "expression");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("QueueIamBindingConditionArgs", "title");
+            }
             return $;
         }
     }

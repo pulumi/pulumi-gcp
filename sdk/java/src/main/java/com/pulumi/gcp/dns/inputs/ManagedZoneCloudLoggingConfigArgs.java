@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ManagedZoneCloudLoggingConfigArgs extends com.pulumi.resource
         }
 
         public ManagedZoneCloudLoggingConfigArgs build() {
-            $.enableLogging = Objects.requireNonNull($.enableLogging, "expected parameter 'enableLogging' to be non-null");
+            if ($.enableLogging == null) {
+                throw new MissingRequiredPropertyException("ManagedZoneCloudLoggingConfigArgs", "enableLogging");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetWorkloadIdentityPoolProviderSaml {
 
         @CustomType.Setter
         public Builder idpMetadataXml(String idpMetadataXml) {
-            this.idpMetadataXml = Objects.requireNonNull(idpMetadataXml);
+            if (idpMetadataXml == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderSaml", "idpMetadataXml");
+            }
+            this.idpMetadataXml = idpMetadataXml;
             return this;
         }
         public GetWorkloadIdentityPoolProviderSaml build() {

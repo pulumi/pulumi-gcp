@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -107,7 +108,9 @@ public final class GetProjectCmekSettingsPlainArgs extends com.pulumi.resources.
         }
 
         public GetProjectCmekSettingsPlainArgs build() {
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetProjectCmekSettingsPlainArgs", "project");
+            }
             return $;
         }
     }

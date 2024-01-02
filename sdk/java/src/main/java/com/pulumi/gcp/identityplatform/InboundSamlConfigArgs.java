@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigIdpConfigArgs;
 import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigSpConfigArgs;
 import java.lang.Boolean;
@@ -288,9 +289,15 @@ public final class InboundSamlConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         public InboundSamlConfigArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.idpConfig = Objects.requireNonNull($.idpConfig, "expected parameter 'idpConfig' to be non-null");
-            $.spConfig = Objects.requireNonNull($.spConfig, "expected parameter 'spConfig' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("InboundSamlConfigArgs", "displayName");
+            }
+            if ($.idpConfig == null) {
+                throw new MissingRequiredPropertyException("InboundSamlConfigArgs", "idpConfig");
+            }
+            if ($.spConfig == null) {
+                throw new MissingRequiredPropertyException("InboundSamlConfigArgs", "spConfig");
+            }
             return $;
         }
     }

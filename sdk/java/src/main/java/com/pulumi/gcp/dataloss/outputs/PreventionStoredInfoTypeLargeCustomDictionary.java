@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField;
 import com.pulumi.gcp.dataloss.outputs.PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet;
 import com.pulumi.gcp.dataloss.outputs.PreventionStoredInfoTypeLargeCustomDictionaryOutputPath;
@@ -82,17 +83,22 @@ public final class PreventionStoredInfoTypeLargeCustomDictionary {
 
         @CustomType.Setter
         public Builder bigQueryField(@Nullable PreventionStoredInfoTypeLargeCustomDictionaryBigQueryField bigQueryField) {
+
             this.bigQueryField = bigQueryField;
             return this;
         }
         @CustomType.Setter
         public Builder cloudStorageFileSet(@Nullable PreventionStoredInfoTypeLargeCustomDictionaryCloudStorageFileSet cloudStorageFileSet) {
+
             this.cloudStorageFileSet = cloudStorageFileSet;
             return this;
         }
         @CustomType.Setter
         public Builder outputPath(PreventionStoredInfoTypeLargeCustomDictionaryOutputPath outputPath) {
-            this.outputPath = Objects.requireNonNull(outputPath);
+            if (outputPath == null) {
+              throw new MissingRequiredPropertyException("PreventionStoredInfoTypeLargeCustomDictionary", "outputPath");
+            }
+            this.outputPath = outputPath;
             return this;
         }
         public PreventionStoredInfoTypeLargeCustomDictionary build() {

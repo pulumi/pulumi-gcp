@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -212,8 +213,12 @@ public final class GuestPoliciesRecipeUpdateStepFileCopyArgs extends com.pulumi.
         }
 
         public GuestPoliciesRecipeUpdateStepFileCopyArgs build() {
-            $.artifactId = Objects.requireNonNull($.artifactId, "expected parameter 'artifactId' to be non-null");
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
+            if ($.artifactId == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesRecipeUpdateStepFileCopyArgs", "artifactId");
+            }
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesRecipeUpdateStepFileCopyArgs", "destination");
+            }
             return $;
         }
     }

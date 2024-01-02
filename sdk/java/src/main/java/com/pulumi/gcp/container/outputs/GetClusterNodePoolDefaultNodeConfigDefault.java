@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
 
         @CustomType.Setter
         public Builder gcfsConfigs(List<GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig> gcfsConfigs) {
-            this.gcfsConfigs = Objects.requireNonNull(gcfsConfigs);
+            if (gcfsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolDefaultNodeConfigDefault", "gcfsConfigs");
+            }
+            this.gcfsConfigs = gcfsConfigs;
             return this;
         }
         public Builder gcfsConfigs(GetClusterNodePoolDefaultNodeConfigDefaultGcfsConfig... gcfsConfigs) {
@@ -50,7 +54,10 @@ public final class GetClusterNodePoolDefaultNodeConfigDefault {
         }
         @CustomType.Setter
         public Builder loggingVariant(String loggingVariant) {
-            this.loggingVariant = Objects.requireNonNull(loggingVariant);
+            if (loggingVariant == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolDefaultNodeConfigDefault", "loggingVariant");
+            }
+            this.loggingVariant = loggingVariant;
             return this;
         }
         public GetClusterNodePoolDefaultNodeConfigDefault build() {

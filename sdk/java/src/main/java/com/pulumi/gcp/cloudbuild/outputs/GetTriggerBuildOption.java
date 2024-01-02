@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildOptionVolume;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -104,17 +105,26 @@ public final class GetTriggerBuildOption {
 
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
-            this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
+            if (diskSizeGb == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "diskSizeGb");
+            }
+            this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder dynamicSubstitutions(Boolean dynamicSubstitutions) {
-            this.dynamicSubstitutions = Objects.requireNonNull(dynamicSubstitutions);
+            if (dynamicSubstitutions == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "dynamicSubstitutions");
+            }
+            this.dynamicSubstitutions = dynamicSubstitutions;
             return this;
         }
         @CustomType.Setter
         public Builder envs(List<String> envs) {
-            this.envs = Objects.requireNonNull(envs);
+            if (envs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "envs");
+            }
+            this.envs = envs;
             return this;
         }
         public Builder envs(String... envs) {
@@ -122,27 +132,42 @@ public final class GetTriggerBuildOption {
         }
         @CustomType.Setter
         public Builder logStreamingOption(String logStreamingOption) {
-            this.logStreamingOption = Objects.requireNonNull(logStreamingOption);
+            if (logStreamingOption == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "logStreamingOption");
+            }
+            this.logStreamingOption = logStreamingOption;
             return this;
         }
         @CustomType.Setter
         public Builder logging(String logging) {
-            this.logging = Objects.requireNonNull(logging);
+            if (logging == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "logging");
+            }
+            this.logging = logging;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder requestedVerifyOption(String requestedVerifyOption) {
-            this.requestedVerifyOption = Objects.requireNonNull(requestedVerifyOption);
+            if (requestedVerifyOption == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "requestedVerifyOption");
+            }
+            this.requestedVerifyOption = requestedVerifyOption;
             return this;
         }
         @CustomType.Setter
         public Builder secretEnvs(List<String> secretEnvs) {
-            this.secretEnvs = Objects.requireNonNull(secretEnvs);
+            if (secretEnvs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "secretEnvs");
+            }
+            this.secretEnvs = secretEnvs;
             return this;
         }
         public Builder secretEnvs(String... secretEnvs) {
@@ -150,7 +175,10 @@ public final class GetTriggerBuildOption {
         }
         @CustomType.Setter
         public Builder sourceProvenanceHashes(List<String> sourceProvenanceHashes) {
-            this.sourceProvenanceHashes = Objects.requireNonNull(sourceProvenanceHashes);
+            if (sourceProvenanceHashes == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "sourceProvenanceHashes");
+            }
+            this.sourceProvenanceHashes = sourceProvenanceHashes;
             return this;
         }
         public Builder sourceProvenanceHashes(String... sourceProvenanceHashes) {
@@ -158,12 +186,18 @@ public final class GetTriggerBuildOption {
         }
         @CustomType.Setter
         public Builder substitutionOption(String substitutionOption) {
-            this.substitutionOption = Objects.requireNonNull(substitutionOption);
+            if (substitutionOption == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "substitutionOption");
+            }
+            this.substitutionOption = substitutionOption;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(List<GetTriggerBuildOptionVolume> volumes) {
-            this.volumes = Objects.requireNonNull(volumes);
+            if (volumes == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "volumes");
+            }
+            this.volumes = volumes;
             return this;
         }
         public Builder volumes(GetTriggerBuildOptionVolume... volumes) {
@@ -171,7 +205,10 @@ public final class GetTriggerBuildOption {
         }
         @CustomType.Setter
         public Builder workerPool(String workerPool) {
-            this.workerPool = Objects.requireNonNull(workerPool);
+            if (workerPool == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildOption", "workerPool");
+            }
+            this.workerPool = workerPool;
             return this;
         }
         public GetTriggerBuildOption build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -122,7 +123,9 @@ public final class GetAiEndpointIamPolicyPlainArgs extends com.pulumi.resources.
         }
 
         public GetAiEndpointIamPolicyPlainArgs build() {
-            $.endpoint = Objects.requireNonNull($.endpoint, "expected parameter 'endpoint' to be non-null");
+            if ($.endpoint == null) {
+                throw new MissingRequiredPropertyException("GetAiEndpointIamPolicyPlainArgs", "endpoint");
+            }
             return $;
         }
     }

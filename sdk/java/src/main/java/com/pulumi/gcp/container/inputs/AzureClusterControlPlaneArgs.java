@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneDatabaseEncryptionArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneMainVolumeArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterControlPlaneProxyConfigArgs;
@@ -427,9 +428,15 @@ public final class AzureClusterControlPlaneArgs extends com.pulumi.resources.Res
         }
 
         public AzureClusterControlPlaneArgs build() {
-            $.sshConfig = Objects.requireNonNull($.sshConfig, "expected parameter 'sshConfig' to be non-null");
-            $.subnetId = Objects.requireNonNull($.subnetId, "expected parameter 'subnetId' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.sshConfig == null) {
+                throw new MissingRequiredPropertyException("AzureClusterControlPlaneArgs", "sshConfig");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("AzureClusterControlPlaneArgs", "subnetId");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("AzureClusterControlPlaneArgs", "version");
+            }
             return $;
         }
     }

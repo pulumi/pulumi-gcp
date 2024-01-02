@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -118,7 +119,9 @@ public final class AppProfileSingleClusterRoutingArgs extends com.pulumi.resourc
         }
 
         public AppProfileSingleClusterRoutingArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("AppProfileSingleClusterRoutingArgs", "clusterId");
+            }
             return $;
         }
     }

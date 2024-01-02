@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference;
 import java.lang.Boolean;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetServiceTemplateSpecContainerEnvFromConfigMapRef {
 
         @CustomType.Setter
         public Builder localObjectReferences(List<GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference> localObjectReferences) {
-            this.localObjectReferences = Objects.requireNonNull(localObjectReferences);
+            if (localObjectReferences == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerEnvFromConfigMapRef", "localObjectReferences");
+            }
+            this.localObjectReferences = localObjectReferences;
             return this;
         }
         public Builder localObjectReferences(GetServiceTemplateSpecContainerEnvFromConfigMapRefLocalObjectReference... localObjectReferences) {
@@ -50,7 +54,10 @@ public final class GetServiceTemplateSpecContainerEnvFromConfigMapRef {
         }
         @CustomType.Setter
         public Builder optional(Boolean optional) {
-            this.optional = Objects.requireNonNull(optional);
+            if (optional == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerEnvFromConfigMapRef", "optional");
+            }
+            this.optional = optional;
             return this;
         }
         public GetServiceTemplateSpecContainerEnvFromConfigMapRef build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.kms.inputs.CryptoKeyIAMBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -229,9 +230,15 @@ public final class CryptoKeyIAMBindingArgs extends com.pulumi.resources.Resource
         }
 
         public CryptoKeyIAMBindingArgs build() {
-            $.cryptoKeyId = Objects.requireNonNull($.cryptoKeyId, "expected parameter 'cryptoKeyId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.cryptoKeyId == null) {
+                throw new MissingRequiredPropertyException("CryptoKeyIAMBindingArgs", "cryptoKeyId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("CryptoKeyIAMBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("CryptoKeyIAMBindingArgs", "role");
+            }
             return $;
         }
     }

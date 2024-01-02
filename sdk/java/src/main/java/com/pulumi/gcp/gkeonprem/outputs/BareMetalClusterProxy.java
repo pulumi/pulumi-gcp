@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -66,6 +67,7 @@ public final class BareMetalClusterProxy {
 
         @CustomType.Setter
         public Builder noProxies(@Nullable List<String> noProxies) {
+
             this.noProxies = noProxies;
             return this;
         }
@@ -74,7 +76,10 @@ public final class BareMetalClusterProxy {
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterProxy", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public BareMetalClusterProxy build() {

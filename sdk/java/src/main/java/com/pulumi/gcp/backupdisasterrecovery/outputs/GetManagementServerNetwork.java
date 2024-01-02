@@ -4,6 +4,7 @@
 package com.pulumi.gcp.backupdisasterrecovery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetManagementServerNetwork {
 
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerNetwork", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder peeringMode(String peeringMode) {
-            this.peeringMode = Objects.requireNonNull(peeringMode);
+            if (peeringMode == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerNetwork", "peeringMode");
+            }
+            this.peeringMode = peeringMode;
             return this;
         }
         public GetManagementServerNetwork build() {

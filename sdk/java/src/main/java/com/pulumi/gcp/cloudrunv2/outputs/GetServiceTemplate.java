@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolume;
@@ -114,12 +115,18 @@ public final class GetServiceTemplate {
 
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder containers(List<GetServiceTemplateContainer> containers) {
-            this.containers = Objects.requireNonNull(containers);
+            if (containers == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "containers");
+            }
+            this.containers = containers;
             return this;
         }
         public Builder containers(GetServiceTemplateContainer... containers) {
@@ -127,32 +134,50 @@ public final class GetServiceTemplate {
         }
         @CustomType.Setter
         public Builder encryptionKey(String encryptionKey) {
-            this.encryptionKey = Objects.requireNonNull(encryptionKey);
+            if (encryptionKey == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "encryptionKey");
+            }
+            this.encryptionKey = encryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder executionEnvironment(String executionEnvironment) {
-            this.executionEnvironment = Objects.requireNonNull(executionEnvironment);
+            if (executionEnvironment == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "executionEnvironment");
+            }
+            this.executionEnvironment = executionEnvironment;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder maxInstanceRequestConcurrency(Integer maxInstanceRequestConcurrency) {
-            this.maxInstanceRequestConcurrency = Objects.requireNonNull(maxInstanceRequestConcurrency);
+            if (maxInstanceRequestConcurrency == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "maxInstanceRequestConcurrency");
+            }
+            this.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder revision(String revision) {
-            this.revision = Objects.requireNonNull(revision);
+            if (revision == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "revision");
+            }
+            this.revision = revision;
             return this;
         }
         @CustomType.Setter
         public Builder scalings(List<GetServiceTemplateScaling> scalings) {
-            this.scalings = Objects.requireNonNull(scalings);
+            if (scalings == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "scalings");
+            }
+            this.scalings = scalings;
             return this;
         }
         public Builder scalings(GetServiceTemplateScaling... scalings) {
@@ -160,22 +185,34 @@ public final class GetServiceTemplate {
         }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
-            this.serviceAccount = Objects.requireNonNull(serviceAccount);
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder sessionAffinity(Boolean sessionAffinity) {
-            this.sessionAffinity = Objects.requireNonNull(sessionAffinity);
+            if (sessionAffinity == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "sessionAffinity");
+            }
+            this.sessionAffinity = sessionAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(String timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(List<GetServiceTemplateVolume> volumes) {
-            this.volumes = Objects.requireNonNull(volumes);
+            if (volumes == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "volumes");
+            }
+            this.volumes = volumes;
             return this;
         }
         public Builder volumes(GetServiceTemplateVolume... volumes) {
@@ -183,7 +220,10 @@ public final class GetServiceTemplate {
         }
         @CustomType.Setter
         public Builder vpcAccesses(List<GetServiceTemplateVpcAccess> vpcAccesses) {
-            this.vpcAccesses = Objects.requireNonNull(vpcAccesses);
+            if (vpcAccesses == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplate", "vpcAccesses");
+            }
+            this.vpcAccesses = vpcAccesses;
             return this;
         }
         public Builder vpcAccesses(GetServiceTemplateVpcAccess... vpcAccesses) {

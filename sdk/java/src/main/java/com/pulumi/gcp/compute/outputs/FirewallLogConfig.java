@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class FirewallLogConfig {
 
         @CustomType.Setter
         public Builder metadata(String metadata) {
-            this.metadata = Objects.requireNonNull(metadata);
+            if (metadata == null) {
+              throw new MissingRequiredPropertyException("FirewallLogConfig", "metadata");
+            }
+            this.metadata = metadata;
             return this;
         }
         public FirewallLogConfig build() {

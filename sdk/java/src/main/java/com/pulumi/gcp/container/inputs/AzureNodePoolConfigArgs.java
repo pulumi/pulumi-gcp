@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AzureNodePoolConfigProxyConfigArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolConfigRootVolumeArgs;
 import com.pulumi.gcp.container.inputs.AzureNodePoolConfigSshConfigArgs;
@@ -302,7 +303,9 @@ public final class AzureNodePoolConfigArgs extends com.pulumi.resources.Resource
         }
 
         public AzureNodePoolConfigArgs build() {
-            $.sshConfig = Objects.requireNonNull($.sshConfig, "expected parameter 'sshConfig' to be non-null");
+            if ($.sshConfig == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolConfigArgs", "sshConfig");
+            }
             return $;
         }
     }

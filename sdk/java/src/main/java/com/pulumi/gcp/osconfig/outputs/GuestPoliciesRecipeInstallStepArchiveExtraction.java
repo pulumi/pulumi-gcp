@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,17 +75,24 @@ public final class GuestPoliciesRecipeInstallStepArchiveExtraction {
 
         @CustomType.Setter
         public Builder artifactId(String artifactId) {
-            this.artifactId = Objects.requireNonNull(artifactId);
+            if (artifactId == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesRecipeInstallStepArchiveExtraction", "artifactId");
+            }
+            this.artifactId = artifactId;
             return this;
         }
         @CustomType.Setter
         public Builder destination(@Nullable String destination) {
+
             this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesRecipeInstallStepArchiveExtraction", "type");
+            }
+            this.type = type;
             return this;
         }
         public GuestPoliciesRecipeInstallStepArchiveExtraction build() {

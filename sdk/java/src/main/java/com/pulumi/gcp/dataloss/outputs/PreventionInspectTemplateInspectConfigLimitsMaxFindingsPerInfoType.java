@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType;
 import java.lang.Integer;
 import java.util.Objects;
@@ -63,12 +64,18 @@ public final class PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInf
 
         @CustomType.Setter
         public Builder infoType(PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType) {
-            this.infoType = Objects.requireNonNull(infoType);
+            if (infoType == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType", "infoType");
+            }
+            this.infoType = infoType;
             return this;
         }
         @CustomType.Setter
         public Builder maxFindings(Integer maxFindings) {
-            this.maxFindings = Objects.requireNonNull(maxFindings);
+            if (maxFindings == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType", "maxFindings");
+            }
+            this.maxFindings = maxFindings;
             return this;
         }
         public PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType build() {

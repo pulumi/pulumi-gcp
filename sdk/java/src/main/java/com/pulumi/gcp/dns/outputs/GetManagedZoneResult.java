@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -118,32 +119,50 @@ public final class GetManagedZoneResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetManagedZoneResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dnsName(String dnsName) {
-            this.dnsName = Objects.requireNonNull(dnsName);
+            if (dnsName == null) {
+              throw new MissingRequiredPropertyException("GetManagedZoneResult", "dnsName");
+            }
+            this.dnsName = dnsName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetManagedZoneResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder managedZoneId(Integer managedZoneId) {
-            this.managedZoneId = Objects.requireNonNull(managedZoneId);
+            if (managedZoneId == null) {
+              throw new MissingRequiredPropertyException("GetManagedZoneResult", "managedZoneId");
+            }
+            this.managedZoneId = managedZoneId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetManagedZoneResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nameServers(List<String> nameServers) {
-            this.nameServers = Objects.requireNonNull(nameServers);
+            if (nameServers == null) {
+              throw new MissingRequiredPropertyException("GetManagedZoneResult", "nameServers");
+            }
+            this.nameServers = nameServers;
             return this;
         }
         public Builder nameServers(String... nameServers) {
@@ -151,12 +170,16 @@ public final class GetManagedZoneResult {
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder visibility(String visibility) {
-            this.visibility = Objects.requireNonNull(visibility);
+            if (visibility == null) {
+              throw new MissingRequiredPropertyException("GetManagedZoneResult", "visibility");
+            }
+            this.visibility = visibility;
             return this;
         }
         public GetManagedZoneResult build() {

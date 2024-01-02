@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudscheduler.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudscheduler.inputs.JobAppEngineHttpTargetAppEngineRoutingArgs;
 import java.lang.String;
 import java.util.Map;
@@ -266,7 +267,9 @@ public final class JobAppEngineHttpTargetArgs extends com.pulumi.resources.Resou
         }
 
         public JobAppEngineHttpTargetArgs build() {
-            $.relativeUri = Objects.requireNonNull($.relativeUri, "expected parameter 'relativeUri' to be non-null");
+            if ($.relativeUri == null) {
+                throw new MissingRequiredPropertyException("JobAppEngineHttpTargetArgs", "relativeUri");
+            }
             return $;
         }
     }

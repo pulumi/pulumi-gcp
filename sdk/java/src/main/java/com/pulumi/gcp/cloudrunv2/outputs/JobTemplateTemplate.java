@@ -157,6 +157,7 @@ public final class JobTemplateTemplate {
 
         @CustomType.Setter
         public Builder containers(@Nullable List<JobTemplateTemplateContainer> containers) {
+
             this.containers = containers;
             return this;
         }
@@ -165,31 +166,37 @@ public final class JobTemplateTemplate {
         }
         @CustomType.Setter
         public Builder encryptionKey(@Nullable String encryptionKey) {
+
             this.encryptionKey = encryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder executionEnvironment(@Nullable String executionEnvironment) {
+
             this.executionEnvironment = executionEnvironment;
             return this;
         }
         @CustomType.Setter
         public Builder maxRetries(@Nullable Integer maxRetries) {
+
             this.maxRetries = maxRetries;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
+
             this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable List<JobTemplateTemplateVolume> volumes) {
+
             this.volumes = volumes;
             return this;
         }
@@ -198,6 +205,7 @@ public final class JobTemplateTemplate {
         }
         @CustomType.Setter
         public Builder vpcAccess(@Nullable JobTemplateTemplateVpcAccess vpcAccess) {
+
             this.vpcAccess = vpcAccess;
             return this;
         }

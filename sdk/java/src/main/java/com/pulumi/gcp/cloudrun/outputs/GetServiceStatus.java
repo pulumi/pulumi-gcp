@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceStatusCondition;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceStatusTraffic;
 import java.lang.Integer;
@@ -68,7 +69,10 @@ public final class GetServiceStatus {
 
         @CustomType.Setter
         public Builder conditions(List<GetServiceStatusCondition> conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatus", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         public Builder conditions(GetServiceStatusCondition... conditions) {
@@ -76,22 +80,34 @@ public final class GetServiceStatus {
         }
         @CustomType.Setter
         public Builder latestCreatedRevisionName(String latestCreatedRevisionName) {
-            this.latestCreatedRevisionName = Objects.requireNonNull(latestCreatedRevisionName);
+            if (latestCreatedRevisionName == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatus", "latestCreatedRevisionName");
+            }
+            this.latestCreatedRevisionName = latestCreatedRevisionName;
             return this;
         }
         @CustomType.Setter
         public Builder latestReadyRevisionName(String latestReadyRevisionName) {
-            this.latestReadyRevisionName = Objects.requireNonNull(latestReadyRevisionName);
+            if (latestReadyRevisionName == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatus", "latestReadyRevisionName");
+            }
+            this.latestReadyRevisionName = latestReadyRevisionName;
             return this;
         }
         @CustomType.Setter
         public Builder observedGeneration(Integer observedGeneration) {
-            this.observedGeneration = Objects.requireNonNull(observedGeneration);
+            if (observedGeneration == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatus", "observedGeneration");
+            }
+            this.observedGeneration = observedGeneration;
             return this;
         }
         @CustomType.Setter
         public Builder traffics(List<GetServiceStatusTraffic> traffics) {
-            this.traffics = Objects.requireNonNull(traffics);
+            if (traffics == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatus", "traffics");
+            }
+            this.traffics = traffics;
             return this;
         }
         public Builder traffics(GetServiceStatusTraffic... traffics) {
@@ -99,7 +115,10 @@ public final class GetServiceStatus {
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetServiceStatus", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetServiceStatus build() {

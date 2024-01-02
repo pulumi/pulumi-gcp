@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.BucketIAMMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -228,9 +229,15 @@ public final class BucketIAMMemberArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public BucketIAMMemberArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("BucketIAMMemberArgs", "bucket");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("BucketIAMMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("BucketIAMMemberArgs", "role");
+            }
             return $;
         }
     }

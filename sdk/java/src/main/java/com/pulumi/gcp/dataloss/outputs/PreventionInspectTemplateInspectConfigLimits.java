@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType;
 import java.lang.Integer;
 import java.util.List;
@@ -75,6 +76,7 @@ public final class PreventionInspectTemplateInspectConfigLimits {
 
         @CustomType.Setter
         public Builder maxFindingsPerInfoTypes(@Nullable List<PreventionInspectTemplateInspectConfigLimitsMaxFindingsPerInfoType> maxFindingsPerInfoTypes) {
+
             this.maxFindingsPerInfoTypes = maxFindingsPerInfoTypes;
             return this;
         }
@@ -83,12 +85,18 @@ public final class PreventionInspectTemplateInspectConfigLimits {
         }
         @CustomType.Setter
         public Builder maxFindingsPerItem(Integer maxFindingsPerItem) {
-            this.maxFindingsPerItem = Objects.requireNonNull(maxFindingsPerItem);
+            if (maxFindingsPerItem == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigLimits", "maxFindingsPerItem");
+            }
+            this.maxFindingsPerItem = maxFindingsPerItem;
             return this;
         }
         @CustomType.Setter
         public Builder maxFindingsPerRequest(Integer maxFindingsPerRequest) {
-            this.maxFindingsPerRequest = Objects.requireNonNull(maxFindingsPerRequest);
+            if (maxFindingsPerRequest == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigLimits", "maxFindingsPerRequest");
+            }
+            this.maxFindingsPerRequest = maxFindingsPerRequest;
             return this;
         }
         public PreventionInspectTemplateInspectConfigLimits build() {

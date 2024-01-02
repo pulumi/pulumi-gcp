@@ -46,6 +46,7 @@ public final class ConnectionCloudResource {
 
         @CustomType.Setter
         public Builder serviceAccountId(@Nullable String serviceAccountId) {
+
             this.serviceAccountId = serviceAccountId;
             return this;
         }

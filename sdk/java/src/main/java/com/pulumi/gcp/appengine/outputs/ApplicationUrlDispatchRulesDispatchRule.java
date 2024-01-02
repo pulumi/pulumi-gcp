@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -82,17 +83,24 @@ public final class ApplicationUrlDispatchRulesDispatchRule {
 
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("ApplicationUrlDispatchRulesDispatchRule", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("ApplicationUrlDispatchRulesDispatchRule", "service");
+            }
+            this.service = service;
             return this;
         }
         public ApplicationUrlDispatchRulesDispatchRule build() {

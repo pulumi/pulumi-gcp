@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -123,8 +124,12 @@ public final class EnvGroupAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public EnvGroupAttachmentArgs build() {
-            $.envgroupId = Objects.requireNonNull($.envgroupId, "expected parameter 'envgroupId' to be non-null");
-            $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
+            if ($.envgroupId == null) {
+                throw new MissingRequiredPropertyException("EnvGroupAttachmentArgs", "envgroupId");
+            }
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("EnvGroupAttachmentArgs", "environment");
+            }
             return $;
         }
     }

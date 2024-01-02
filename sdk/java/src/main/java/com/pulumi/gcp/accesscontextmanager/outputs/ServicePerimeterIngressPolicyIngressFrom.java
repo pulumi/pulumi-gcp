@@ -86,6 +86,7 @@ public final class ServicePerimeterIngressPolicyIngressFrom {
 
         @CustomType.Setter
         public Builder identities(@Nullable List<String> identities) {
+
             this.identities = identities;
             return this;
         }
@@ -94,11 +95,13 @@ public final class ServicePerimeterIngressPolicyIngressFrom {
         }
         @CustomType.Setter
         public Builder identityType(@Nullable String identityType) {
+
             this.identityType = identityType;
             return this;
         }
         @CustomType.Setter
         public Builder sources(@Nullable List<ServicePerimeterIngressPolicyIngressFromSource> sources) {
+
             this.sources = sources;
             return this;
         }

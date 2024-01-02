@@ -60,6 +60,7 @@ public final class TlsRouteRuleMatch {
 
         @CustomType.Setter
         public Builder alpns(@Nullable List<String> alpns) {
+
             this.alpns = alpns;
             return this;
         }
@@ -68,6 +69,7 @@ public final class TlsRouteRuleMatch {
         }
         @CustomType.Setter
         public Builder sniHosts(@Nullable List<String> sniHosts) {
+
             this.sniHosts = sniHosts;
             return this;
         }

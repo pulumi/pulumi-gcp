@@ -46,6 +46,7 @@ public final class RepositoryRemoteRepositoryConfigAptRepository {
 
         @CustomType.Setter
         public Builder publicRepository(@Nullable RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository publicRepository) {
+
             this.publicRepository = publicRepository;
             return this;
         }

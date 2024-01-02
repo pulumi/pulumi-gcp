@@ -173,46 +173,55 @@ public final class TaskExecutionStatusLatestJob {
 
         @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
+
             this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder retryCount(@Nullable Integer retryCount) {
+
             this.retryCount = retryCount;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder serviceJob(@Nullable String serviceJob) {
+
             this.serviceJob = serviceJob;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder uid(@Nullable String uid) {
+
             this.uid = uid;
             return this;
         }

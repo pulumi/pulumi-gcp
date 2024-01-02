@@ -80,16 +80,19 @@ public final class PreventionDeidentifyTemplateDeidentifyConfig {
 
         @CustomType.Setter
         public Builder imageTransformations(@Nullable PreventionDeidentifyTemplateDeidentifyConfigImageTransformations imageTransformations) {
+
             this.imageTransformations = imageTransformations;
             return this;
         }
         @CustomType.Setter
         public Builder infoTypeTransformations(@Nullable PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransformations infoTypeTransformations) {
+
             this.infoTypeTransformations = infoTypeTransformations;
             return this;
         }
         @CustomType.Setter
         public Builder recordTransformations(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformations recordTransformations) {
+
             this.recordTransformations = recordTransformations;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -237,10 +238,18 @@ public final class NetworkPeeringRoutesConfigArgs extends com.pulumi.resources.R
         }
 
         public NetworkPeeringRoutesConfigArgs build() {
-            $.exportCustomRoutes = Objects.requireNonNull($.exportCustomRoutes, "expected parameter 'exportCustomRoutes' to be non-null");
-            $.importCustomRoutes = Objects.requireNonNull($.importCustomRoutes, "expected parameter 'importCustomRoutes' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.peering = Objects.requireNonNull($.peering, "expected parameter 'peering' to be non-null");
+            if ($.exportCustomRoutes == null) {
+                throw new MissingRequiredPropertyException("NetworkPeeringRoutesConfigArgs", "exportCustomRoutes");
+            }
+            if ($.importCustomRoutes == null) {
+                throw new MissingRequiredPropertyException("NetworkPeeringRoutesConfigArgs", "importCustomRoutes");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("NetworkPeeringRoutesConfigArgs", "network");
+            }
+            if ($.peering == null) {
+                throw new MissingRequiredPropertyException("NetworkPeeringRoutesConfigArgs", "peering");
+            }
             return $;
         }
     }

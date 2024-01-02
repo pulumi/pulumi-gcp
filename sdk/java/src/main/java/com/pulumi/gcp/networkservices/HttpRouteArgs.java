@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.HttpRouteRuleArgs;
 import java.lang.String;
 import java.util.List;
@@ -410,8 +411,12 @@ public final class HttpRouteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HttpRouteArgs build() {
-            $.hostnames = Objects.requireNonNull($.hostnames, "expected parameter 'hostnames' to be non-null");
-            $.rules = Objects.requireNonNull($.rules, "expected parameter 'rules' to be non-null");
+            if ($.hostnames == null) {
+                throw new MissingRequiredPropertyException("HttpRouteArgs", "hostnames");
+            }
+            if ($.rules == null) {
+                throw new MissingRequiredPropertyException("HttpRouteArgs", "rules");
+            }
             return $;
         }
     }

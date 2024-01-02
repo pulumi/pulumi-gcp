@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetBackendServiceSecuritySetting {
 
         @CustomType.Setter
         public Builder clientTlsPolicy(String clientTlsPolicy) {
-            this.clientTlsPolicy = Objects.requireNonNull(clientTlsPolicy);
+            if (clientTlsPolicy == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceSecuritySetting", "clientTlsPolicy");
+            }
+            this.clientTlsPolicy = clientTlsPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder subjectAltNames(List<String> subjectAltNames) {
-            this.subjectAltNames = Objects.requireNonNull(subjectAltNames);
+            if (subjectAltNames == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceSecuritySetting", "subjectAltNames");
+            }
+            this.subjectAltNames = subjectAltNames;
             return this;
         }
         public Builder subjectAltNames(String... subjectAltNames) {

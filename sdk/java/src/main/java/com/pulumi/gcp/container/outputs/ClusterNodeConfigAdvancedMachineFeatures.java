@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ClusterNodeConfigAdvancedMachineFeatures {
 
         @CustomType.Setter
         public Builder threadsPerCore(Integer threadsPerCore) {
-            this.threadsPerCore = Objects.requireNonNull(threadsPerCore);
+            if (threadsPerCore == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeConfigAdvancedMachineFeatures", "threadsPerCore");
+            }
+            this.threadsPerCore = threadsPerCore;
             return this;
         }
         public ClusterNodeConfigAdvancedMachineFeatures build() {

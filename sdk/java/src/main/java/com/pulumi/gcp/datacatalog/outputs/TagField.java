@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datacatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -157,41 +158,51 @@ public final class TagField {
 
         @CustomType.Setter
         public Builder boolValue(@Nullable Boolean boolValue) {
+
             this.boolValue = boolValue;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder doubleValue(@Nullable Double doubleValue) {
+
             this.doubleValue = doubleValue;
             return this;
         }
         @CustomType.Setter
         public Builder enumValue(@Nullable String enumValue) {
+
             this.enumValue = enumValue;
             return this;
         }
         @CustomType.Setter
         public Builder fieldName(String fieldName) {
-            this.fieldName = Objects.requireNonNull(fieldName);
+            if (fieldName == null) {
+              throw new MissingRequiredPropertyException("TagField", "fieldName");
+            }
+            this.fieldName = fieldName;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable Integer order) {
+
             this.order = order;
             return this;
         }
         @CustomType.Setter
         public Builder stringValue(@Nullable String stringValue) {
+
             this.stringValue = stringValue;
             return this;
         }
         @CustomType.Setter
         public Builder timestampValue(@Nullable String timestampValue) {
+
             this.timestampValue = timestampValue;
             return this;
         }

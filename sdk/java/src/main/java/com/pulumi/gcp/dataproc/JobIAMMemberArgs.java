@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.JobIAMMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -226,9 +227,15 @@ public final class JobIAMMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobIAMMemberArgs build() {
-            $.jobId = Objects.requireNonNull($.jobId, "expected parameter 'jobId' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.jobId == null) {
+                throw new MissingRequiredPropertyException("JobIAMMemberArgs", "jobId");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("JobIAMMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("JobIAMMemberArgs", "role");
+            }
             return $;
         }
     }

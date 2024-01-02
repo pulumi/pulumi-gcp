@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionSslConfigAdditionalVariableSecretValueArgs;
 import java.lang.Boolean;
@@ -273,7 +274,9 @@ public final class ConnectionSslConfigAdditionalVariableArgs extends com.pulumi.
         }
 
         public ConnectionSslConfigAdditionalVariableArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("ConnectionSslConfigAdditionalVariableArgs", "key");
+            }
             return $;
         }
     }

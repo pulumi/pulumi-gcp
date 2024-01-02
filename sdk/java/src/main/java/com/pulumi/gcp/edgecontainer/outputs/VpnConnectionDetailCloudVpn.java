@@ -46,6 +46,7 @@ public final class VpnConnectionDetailCloudVpn {
 
         @CustomType.Setter
         public Builder gateway(@Nullable String gateway) {
+
             this.gateway = gateway;
             return this;
         }

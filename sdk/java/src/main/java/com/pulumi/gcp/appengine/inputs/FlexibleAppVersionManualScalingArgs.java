@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class FlexibleAppVersionManualScalingArgs extends com.pulumi.resour
         }
 
         public FlexibleAppVersionManualScalingArgs build() {
-            $.instances = Objects.requireNonNull($.instances, "expected parameter 'instances' to be non-null");
+            if ($.instances == null) {
+                throw new MissingRequiredPropertyException("FlexibleAppVersionManualScalingArgs", "instances");
+            }
             return $;
         }
     }

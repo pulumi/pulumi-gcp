@@ -125,6 +125,7 @@ public final class CxPageEventHandlerTriggerFulfillment {
 
         @CustomType.Setter
         public Builder conditionalCases(@Nullable List<CxPageEventHandlerTriggerFulfillmentConditionalCase> conditionalCases) {
+
             this.conditionalCases = conditionalCases;
             return this;
         }
@@ -133,6 +134,7 @@ public final class CxPageEventHandlerTriggerFulfillment {
         }
         @CustomType.Setter
         public Builder messages(@Nullable List<CxPageEventHandlerTriggerFulfillmentMessage> messages) {
+
             this.messages = messages;
             return this;
         }
@@ -141,11 +143,13 @@ public final class CxPageEventHandlerTriggerFulfillment {
         }
         @CustomType.Setter
         public Builder returnPartialResponses(@Nullable Boolean returnPartialResponses) {
+
             this.returnPartialResponses = returnPartialResponses;
             return this;
         }
         @CustomType.Setter
         public Builder setParameterActions(@Nullable List<CxPageEventHandlerTriggerFulfillmentSetParameterAction> setParameterActions) {
+
             this.setParameterActions = setParameterActions;
             return this;
         }
@@ -154,11 +158,13 @@ public final class CxPageEventHandlerTriggerFulfillment {
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder webhook(@Nullable String webhook) {
+
             this.webhook = webhook;
             return this;
         }
