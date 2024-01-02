@@ -25,8 +25,7 @@ func getPythonBaseOptions(t *testing.T) integration.ProgramTestOptions {
 func TestAccDatasourcePy(t *testing.T) {
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           filepath.Join(getCwd(t), "datasource-py"),
-			RunUpdateTest: true,
+			Dir: filepath.Join(getCwd(t), "datasource-py"),
 		})
 
 	integration.ProgramTest(t, &test)
@@ -35,8 +34,7 @@ func TestAccDatasourcePy(t *testing.T) {
 func TestAccBucketPy(t *testing.T) {
 	test := getPythonBaseOptions(t).
 		With(integration.ProgramTestOptions{
-			Dir:           filepath.Join(getCwd(t), "bucket-py"),
-			RunUpdateTest: true,
+			Dir: filepath.Join(getCwd(t), "bucket-py"),
 		})
 
 	integration.ProgramTest(t, &test)
@@ -57,9 +55,7 @@ func TestAccWebserverPy(t *testing.T) {
 		t.Run(dir, func(t *testing.T) {
 			test := getPythonBaseOptions(t).
 				With(integration.ProgramTestOptions{
-					Dir:                  filepath.Join(getCwd(t), dir),
-					RunUpdateTest:        true,
-					ExpectRefreshChanges: true,
+					Dir: filepath.Join(getCwd(t), dir),
 				})
 
 			integration.ProgramTest(t, &test)

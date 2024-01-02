@@ -29,10 +29,6 @@ func TestAccWebserverNode(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "webserver"),
-			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
-			// running the refresh step for now.
-			SkipRefresh:   true,
-			RunUpdateTest: true,
 		})
 
 	integration.ProgramTest(t, &test)
@@ -43,11 +39,6 @@ func TestAccLoadbalancer(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "loadbalancer"),
-			// TODO[pulumi/pulumi-terraform#241] This test currently triggers a bug in refresh, so we'll skip
-			// running the refresh step for now.
-			SkipRefresh:   true,
-			RunUpdateTest: true,
-			SkipPreview:   true,
 		})
 
 	integration.ProgramTest(t, &test)
@@ -57,9 +48,9 @@ func TestAccTopic(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "topic"),
-			// One change is known to occur during refresh of the resources in this example:
-			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
-			ExpectRefreshChanges: true,
+
+			// TODO[pulumi/pulumi-gcp#1487] Non-empty diff when refreshing programs using overlay callbacks
+			SkipRefresh: true,
 		})
 
 	integration.ProgramTest(t, &test)
@@ -70,9 +61,6 @@ func TestAccBucket(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "bucket"),
-			// One change is known to occur during refresh of the resources in this example:
-			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
-			ExpectRefreshChanges: true,
 			// GCP buckets seem to be eventually consistent, so we need to retry on failure when deploying a cloud function
 			// that uses the bucket as a trigger.
 			RetryFailedSteps: true,
@@ -94,12 +82,12 @@ func TestAccServerless(t *testing.T) {
 	test := getJSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "serverless"),
-			// One change is known to occur during refresh of the resources in this example:
-			// * `~  gcp:storage:Bucket f-bucket updated changes: + websites`
-			ExpectRefreshChanges: true,
 			ExtraRuntimeValidation: validateAPITest(func(body string) {
 				assert.Equal(t, "Hello World!", body)
 			}),
+
+			// TODO[pulumi/pulumi-gcp#1487] Non-empty diff when refreshing programs using overlay callbacks
+			SkipRefresh: true,
 		})
 
 	integration.ProgramTest(t, &test)

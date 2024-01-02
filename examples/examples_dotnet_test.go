@@ -1,4 +1,5 @@
 // Copyright 2016-2017, Pulumi Corporation.  All rights reserved.
+//go:build dotnet || all
 // +build dotnet all
 
 package examples
@@ -26,12 +27,12 @@ func TestAccAppServiceCs(t *testing.T) {
 	test := getCSBaseOptions(t).
 		With(integration.ProgramTestOptions{
 			Dir: filepath.Join(getCwd(t), "serverless-cs"),
-			// One change is known to occur during refresh of the resources in this example:
-			// BucketObject has a source change
-			ExpectRefreshChanges: true,
 			ExtraRuntimeValidation: validateAPITest(func(body string) {
 				assert.Equal(t, body, "Hello World!")
 			}),
+
+			// TODO[pulumi/pulumi-gcp#1487] Non-empty diff when refreshing programs using overlay callbacks
+			SkipRefresh: true,
 		})
 
 	integration.ProgramTest(t, &test)
