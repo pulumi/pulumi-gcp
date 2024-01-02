@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificatemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificatemanager.outputs.GetCertificateMapGclbTargetIpConfig;
 import java.lang.String;
 import java.util.List;
@@ -48,7 +49,10 @@ public final class GetCertificateMapGclbTarget {
 
         @CustomType.Setter
         public Builder ipConfigs(List<GetCertificateMapGclbTargetIpConfig> ipConfigs) {
-            this.ipConfigs = Objects.requireNonNull(ipConfigs);
+            if (ipConfigs == null) {
+              throw new MissingRequiredPropertyException("GetCertificateMapGclbTarget", "ipConfigs");
+            }
+            this.ipConfigs = ipConfigs;
             return this;
         }
         public Builder ipConfigs(GetCertificateMapGclbTargetIpConfig... ipConfigs) {
@@ -56,12 +60,18 @@ public final class GetCertificateMapGclbTarget {
         }
         @CustomType.Setter
         public Builder targetHttpsProxy(String targetHttpsProxy) {
-            this.targetHttpsProxy = Objects.requireNonNull(targetHttpsProxy);
+            if (targetHttpsProxy == null) {
+              throw new MissingRequiredPropertyException("GetCertificateMapGclbTarget", "targetHttpsProxy");
+            }
+            this.targetHttpsProxy = targetHttpsProxy;
             return this;
         }
         @CustomType.Setter
         public Builder targetSslProxy(String targetSslProxy) {
-            this.targetSslProxy = Objects.requireNonNull(targetSslProxy);
+            if (targetSslProxy == null) {
+              throw new MissingRequiredPropertyException("GetCertificateMapGclbTarget", "targetSslProxy");
+            }
+            this.targetSslProxy = targetSslProxy;
             return this;
         }
         public GetCertificateMapGclbTarget build() {

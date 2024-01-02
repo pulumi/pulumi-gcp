@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -207,8 +208,12 @@ public final class BackendBucketSignedUrlKeyArgs extends com.pulumi.resources.Re
         }
 
         public BackendBucketSignedUrlKeyArgs build() {
-            $.backendBucket = Objects.requireNonNull($.backendBucket, "expected parameter 'backendBucket' to be non-null");
-            $.keyValue = Objects.requireNonNull($.keyValue, "expected parameter 'keyValue' to be non-null");
+            if ($.backendBucket == null) {
+                throw new MissingRequiredPropertyException("BackendBucketSignedUrlKeyArgs", "backendBucket");
+            }
+            if ($.keyValue == null) {
+                throw new MissingRequiredPropertyException("BackendBucketSignedUrlKeyArgs", "keyValue");
+            }
             return $;
         }
     }

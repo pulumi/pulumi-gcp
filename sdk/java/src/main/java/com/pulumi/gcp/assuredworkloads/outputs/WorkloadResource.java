@@ -59,11 +59,13 @@ public final class WorkloadResource {
 
         @CustomType.Setter
         public Builder resourceId(@Nullable Integer resourceId) {
+
             this.resourceId = resourceId;
             return this;
         }
         @CustomType.Setter
         public Builder resourceType(@Nullable String resourceType) {
+
             this.resourceType = resourceType;
             return this;
         }

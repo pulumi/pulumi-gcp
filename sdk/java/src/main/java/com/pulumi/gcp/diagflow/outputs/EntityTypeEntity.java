@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -73,7 +74,10 @@ public final class EntityTypeEntity {
 
         @CustomType.Setter
         public Builder synonyms(List<String> synonyms) {
-            this.synonyms = Objects.requireNonNull(synonyms);
+            if (synonyms == null) {
+              throw new MissingRequiredPropertyException("EntityTypeEntity", "synonyms");
+            }
+            this.synonyms = synonyms;
             return this;
         }
         public Builder synonyms(String... synonyms) {
@@ -81,7 +85,10 @@ public final class EntityTypeEntity {
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("EntityTypeEntity", "value");
+            }
+            this.value = value;
             return this;
         }
         public EntityTypeEntity build() {

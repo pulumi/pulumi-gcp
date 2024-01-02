@@ -5,6 +5,7 @@ package com.pulumi.gcp.memcache;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.memcache.inputs.InstanceMaintenancePolicyArgs;
 import com.pulumi.gcp.memcache.inputs.InstanceMemcacheParametersArgs;
 import com.pulumi.gcp.memcache.inputs.InstanceNodeConfigArgs;
@@ -552,8 +553,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.nodeConfig = Objects.requireNonNull($.nodeConfig, "expected parameter 'nodeConfig' to be non-null");
-            $.nodeCount = Objects.requireNonNull($.nodeCount, "expected parameter 'nodeCount' to be non-null");
+            if ($.nodeConfig == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "nodeConfig");
+            }
+            if ($.nodeCount == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "nodeCount");
+            }
             return $;
         }
     }

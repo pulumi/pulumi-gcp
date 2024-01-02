@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class MetricBucketOptionsExplicitBuckets {
 
         @CustomType.Setter
         public Builder bounds(List<Double> bounds) {
-            this.bounds = Objects.requireNonNull(bounds);
+            if (bounds == null) {
+              throw new MissingRequiredPropertyException("MetricBucketOptionsExplicitBuckets", "bounds");
+            }
+            this.bounds = bounds;
             return this;
         }
         public Builder bounds(Double... bounds) {

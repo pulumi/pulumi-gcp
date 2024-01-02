@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -110,22 +111,28 @@ public final class TableTimePartitioning {
 
         @CustomType.Setter
         public Builder expirationMs(@Nullable Integer expirationMs) {
+
             this.expirationMs = expirationMs;
             return this;
         }
         @CustomType.Setter
         public Builder field(@Nullable String field) {
+
             this.field = field;
             return this;
         }
         @CustomType.Setter
         public Builder requirePartitionFilter(@Nullable Boolean requirePartitionFilter) {
+
             this.requirePartitionFilter = requirePartitionFilter;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("TableTimePartitioning", "type");
+            }
+            this.type = type;
             return this;
         }
         public TableTimePartitioning build() {

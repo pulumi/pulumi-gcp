@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -138,36 +139,45 @@ public final class ConnectionAzure {
 
         @CustomType.Setter
         public Builder application(@Nullable String application) {
+
             this.application = application;
             return this;
         }
         @CustomType.Setter
         public Builder clientId(@Nullable String clientId) {
+
             this.clientId = clientId;
             return this;
         }
         @CustomType.Setter
         public Builder customerTenantId(String customerTenantId) {
-            this.customerTenantId = Objects.requireNonNull(customerTenantId);
+            if (customerTenantId == null) {
+              throw new MissingRequiredPropertyException("ConnectionAzure", "customerTenantId");
+            }
+            this.customerTenantId = customerTenantId;
             return this;
         }
         @CustomType.Setter
         public Builder federatedApplicationClientId(@Nullable String federatedApplicationClientId) {
+
             this.federatedApplicationClientId = federatedApplicationClientId;
             return this;
         }
         @CustomType.Setter
         public Builder identity(@Nullable String identity) {
+
             this.identity = identity;
             return this;
         }
         @CustomType.Setter
         public Builder objectId(@Nullable String objectId) {
+
             this.objectId = objectId;
             return this;
         }
         @CustomType.Setter
         public Builder redirectUri(@Nullable String redirectUri) {
+
             this.redirectUri = redirectUri;
             return this;
         }

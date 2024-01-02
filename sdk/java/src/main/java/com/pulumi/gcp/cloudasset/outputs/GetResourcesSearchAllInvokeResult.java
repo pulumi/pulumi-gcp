@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudasset.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudasset.outputs.GetResourcesSearchAllResult;
 import java.lang.String;
 import java.util.List;
@@ -78,6 +79,7 @@ public final class GetResourcesSearchAllInvokeResult {
 
         @CustomType.Setter
         public Builder assetTypes(@Nullable List<String> assetTypes) {
+
             this.assetTypes = assetTypes;
             return this;
         }
@@ -86,17 +88,24 @@ public final class GetResourcesSearchAllInvokeResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllInvokeResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder query(@Nullable String query) {
+
             this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder results(List<GetResourcesSearchAllResult> results) {
-            this.results = Objects.requireNonNull(results);
+            if (results == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllInvokeResult", "results");
+            }
+            this.results = results;
             return this;
         }
         public Builder results(GetResourcesSearchAllResult... results) {
@@ -104,7 +113,10 @@ public final class GetResourcesSearchAllInvokeResult {
         }
         @CustomType.Setter
         public Builder scope(String scope) {
-            this.scope = Objects.requireNonNull(scope);
+            if (scope == null) {
+              throw new MissingRequiredPropertyException("GetResourcesSearchAllInvokeResult", "scope");
+            }
+            this.scope = scope;
             return this;
         }
         public GetResourcesSearchAllInvokeResult build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.tags;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class TagBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TagBindingArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
-            $.tagValue = Objects.requireNonNull($.tagValue, "expected parameter 'tagValue' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("TagBindingArgs", "parent");
+            }
+            if ($.tagValue == null) {
+                throw new MissingRequiredPropertyException("TagBindingArgs", "tagValue");
+            }
             return $;
         }
     }

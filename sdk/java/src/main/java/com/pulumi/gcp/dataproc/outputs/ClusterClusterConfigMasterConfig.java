@@ -138,6 +138,7 @@ public final class ClusterClusterConfigMasterConfig {
 
         @CustomType.Setter
         public Builder accelerators(@Nullable List<ClusterClusterConfigMasterConfigAccelerator> accelerators) {
+
             this.accelerators = accelerators;
             return this;
         }
@@ -146,16 +147,19 @@ public final class ClusterClusterConfigMasterConfig {
         }
         @CustomType.Setter
         public Builder diskConfig(@Nullable ClusterClusterConfigMasterConfigDiskConfig diskConfig) {
+
             this.diskConfig = diskConfig;
             return this;
         }
         @CustomType.Setter
         public Builder imageUri(@Nullable String imageUri) {
+
             this.imageUri = imageUri;
             return this;
         }
         @CustomType.Setter
         public Builder instanceNames(@Nullable List<String> instanceNames) {
+
             this.instanceNames = instanceNames;
             return this;
         }
@@ -164,16 +168,19 @@ public final class ClusterClusterConfigMasterConfig {
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder minCpuPlatform(@Nullable String minCpuPlatform) {
+
             this.minCpuPlatform = minCpuPlatform;
             return this;
         }
         @CustomType.Setter
         public Builder numInstances(@Nullable Integer numInstances) {
+
             this.numInstances = numInstances;
             return this;
         }

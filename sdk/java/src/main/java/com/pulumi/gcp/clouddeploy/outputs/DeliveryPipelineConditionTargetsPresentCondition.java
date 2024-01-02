@@ -58,6 +58,7 @@ public final class DeliveryPipelineConditionTargetsPresentCondition {
 
         @CustomType.Setter
         public Builder missingTargets(@Nullable List<String> missingTargets) {
+
             this.missingTargets = missingTargets;
             return this;
         }
@@ -66,11 +67,13 @@ public final class DeliveryPipelineConditionTargetsPresentCondition {
         }
         @CustomType.Setter
         public Builder status(@Nullable Boolean status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }

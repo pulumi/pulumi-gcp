@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy;
 import java.lang.String;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSet
 
         @CustomType.Setter
         public Builder nodePoolSoakDuration(String nodePoolSoakDuration) {
-            this.nodePoolSoakDuration = Objects.requireNonNull(nodePoolSoakDuration);
+            if (nodePoolSoakDuration == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting", "nodePoolSoakDuration");
+            }
+            this.nodePoolSoakDuration = nodePoolSoakDuration;
             return this;
         }
         @CustomType.Setter
         public Builder standardRolloutPolicies(List<GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy> standardRolloutPolicies) {
-            this.standardRolloutPolicies = Objects.requireNonNull(standardRolloutPolicies);
+            if (standardRolloutPolicies == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSetting", "standardRolloutPolicies");
+            }
+            this.standardRolloutPolicies = standardRolloutPolicies;
             return this;
         }
         public Builder standardRolloutPolicies(GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy... standardRolloutPolicies) {

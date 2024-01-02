@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefault;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingResourceLimit;
 import java.lang.Boolean;
@@ -56,7 +57,10 @@ public final class GetClusterClusterAutoscaling {
 
         @CustomType.Setter
         public Builder autoProvisioningDefaults(List<GetClusterClusterAutoscalingAutoProvisioningDefault> autoProvisioningDefaults) {
-            this.autoProvisioningDefaults = Objects.requireNonNull(autoProvisioningDefaults);
+            if (autoProvisioningDefaults == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscaling", "autoProvisioningDefaults");
+            }
+            this.autoProvisioningDefaults = autoProvisioningDefaults;
             return this;
         }
         public Builder autoProvisioningDefaults(GetClusterClusterAutoscalingAutoProvisioningDefault... autoProvisioningDefaults) {
@@ -64,17 +68,26 @@ public final class GetClusterClusterAutoscaling {
         }
         @CustomType.Setter
         public Builder autoscalingProfile(String autoscalingProfile) {
-            this.autoscalingProfile = Objects.requireNonNull(autoscalingProfile);
+            if (autoscalingProfile == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscaling", "autoscalingProfile");
+            }
+            this.autoscalingProfile = autoscalingProfile;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscaling", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder resourceLimits(List<GetClusterClusterAutoscalingResourceLimit> resourceLimits) {
-            this.resourceLimits = Objects.requireNonNull(resourceLimits);
+            if (resourceLimits == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscaling", "resourceLimits");
+            }
+            this.resourceLimits = resourceLimits;
             return this;
         }
         public Builder resourceLimits(GetClusterClusterAutoscalingResourceLimit... resourceLimits) {

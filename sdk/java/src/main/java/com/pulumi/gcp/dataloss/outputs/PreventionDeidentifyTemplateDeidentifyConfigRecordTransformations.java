@@ -63,6 +63,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder fieldTransformations(@Nullable List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation> fieldTransformations) {
+
             this.fieldTransformations = fieldTransformations;
             return this;
         }
@@ -71,6 +72,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
         @CustomType.Setter
         public Builder recordSuppressions(@Nullable List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsRecordSuppression> recordSuppressions) {
+
             this.recordSuppressions = recordSuppressions;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetClusterAddonsConfigIstioConfig {
 
         @CustomType.Setter
         public Builder auth(String auth) {
-            this.auth = Objects.requireNonNull(auth);
+            if (auth == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfigIstioConfig", "auth");
+            }
+            this.auth = auth;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfigIstioConfig", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         public GetClusterAddonsConfigIstioConfig build() {

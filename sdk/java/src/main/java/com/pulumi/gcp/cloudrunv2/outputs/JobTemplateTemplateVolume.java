@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeCloudSqlInstance;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeEmptyDir;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateVolumeSecret;
@@ -85,21 +86,27 @@ public final class JobTemplateTemplateVolume {
 
         @CustomType.Setter
         public Builder cloudSqlInstance(@Nullable JobTemplateTemplateVolumeCloudSqlInstance cloudSqlInstance) {
+
             this.cloudSqlInstance = cloudSqlInstance;
             return this;
         }
         @CustomType.Setter
         public Builder emptyDir(@Nullable JobTemplateTemplateVolumeEmptyDir emptyDir) {
+
             this.emptyDir = emptyDir;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("JobTemplateTemplateVolume", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secret(@Nullable JobTemplateTemplateVolumeSecret secret) {
+
             this.secret = secret;
             return this;
         }

@@ -48,6 +48,7 @@ public final class TrustConfigTrustStoreIntermediateCa {
 
         @CustomType.Setter
         public Builder pemCertificate(@Nullable String pemCertificate) {
+
             this.pemCertificate = pemCertificate;
             return this;
         }

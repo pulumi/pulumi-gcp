@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iap.inputs.AppEngineVersionIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -343,11 +344,21 @@ public final class AppEngineVersionIamMemberArgs extends com.pulumi.resources.Re
         }
 
         public AppEngineVersionIamMemberArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
-            $.versionId = Objects.requireNonNull($.versionId, "expected parameter 'versionId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("AppEngineVersionIamMemberArgs", "appId");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("AppEngineVersionIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AppEngineVersionIamMemberArgs", "role");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("AppEngineVersionIamMemberArgs", "service");
+            }
+            if ($.versionId == null) {
+                throw new MissingRequiredPropertyException("AppEngineVersionIamMemberArgs", "versionId");
+            }
             return $;
         }
     }

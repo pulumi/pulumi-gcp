@@ -198,11 +198,13 @@ public final class HttpRouteRuleAction {
 
         @CustomType.Setter
         public Builder corsPolicy(@Nullable HttpRouteRuleActionCorsPolicy corsPolicy) {
+
             this.corsPolicy = corsPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder destinations(@Nullable List<HttpRouteRuleActionDestination> destinations) {
+
             this.destinations = destinations;
             return this;
         }
@@ -211,41 +213,49 @@ public final class HttpRouteRuleAction {
         }
         @CustomType.Setter
         public Builder faultInjectionPolicy(@Nullable HttpRouteRuleActionFaultInjectionPolicy faultInjectionPolicy) {
+
             this.faultInjectionPolicy = faultInjectionPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder redirect(@Nullable HttpRouteRuleActionRedirect redirect) {
+
             this.redirect = redirect;
             return this;
         }
         @CustomType.Setter
         public Builder requestHeaderModifier(@Nullable HttpRouteRuleActionRequestHeaderModifier requestHeaderModifier) {
+
             this.requestHeaderModifier = requestHeaderModifier;
             return this;
         }
         @CustomType.Setter
         public Builder requestMirrorPolicy(@Nullable HttpRouteRuleActionRequestMirrorPolicy requestMirrorPolicy) {
+
             this.requestMirrorPolicy = requestMirrorPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder responseHeaderModifier(@Nullable HttpRouteRuleActionResponseHeaderModifier responseHeaderModifier) {
+
             this.responseHeaderModifier = responseHeaderModifier;
             return this;
         }
         @CustomType.Setter
         public Builder retryPolicy(@Nullable HttpRouteRuleActionRetryPolicy retryPolicy) {
+
             this.retryPolicy = retryPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
+
             this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder urlRewrite(@Nullable HttpRouteRuleActionUrlRewrite urlRewrite) {
+
             this.urlRewrite = urlRewrite;
             return this;
         }

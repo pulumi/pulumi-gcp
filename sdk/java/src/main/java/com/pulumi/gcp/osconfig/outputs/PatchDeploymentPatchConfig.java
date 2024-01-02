@@ -180,46 +180,55 @@ public final class PatchDeploymentPatchConfig {
 
         @CustomType.Setter
         public Builder apt(@Nullable PatchDeploymentPatchConfigApt apt) {
+
             this.apt = apt;
             return this;
         }
         @CustomType.Setter
         public Builder goo(@Nullable PatchDeploymentPatchConfigGoo goo) {
+
             this.goo = goo;
             return this;
         }
         @CustomType.Setter
         public Builder migInstancesAllowed(@Nullable Boolean migInstancesAllowed) {
+
             this.migInstancesAllowed = migInstancesAllowed;
             return this;
         }
         @CustomType.Setter
         public Builder postStep(@Nullable PatchDeploymentPatchConfigPostStep postStep) {
+
             this.postStep = postStep;
             return this;
         }
         @CustomType.Setter
         public Builder preStep(@Nullable PatchDeploymentPatchConfigPreStep preStep) {
+
             this.preStep = preStep;
             return this;
         }
         @CustomType.Setter
         public Builder rebootConfig(@Nullable String rebootConfig) {
+
             this.rebootConfig = rebootConfig;
             return this;
         }
         @CustomType.Setter
         public Builder windowsUpdate(@Nullable PatchDeploymentPatchConfigWindowsUpdate windowsUpdate) {
+
             this.windowsUpdate = windowsUpdate;
             return this;
         }
         @CustomType.Setter
         public Builder yum(@Nullable PatchDeploymentPatchConfigYum yum) {
+
             this.yum = yum;
             return this;
         }
         @CustomType.Setter
         public Builder zypper(@Nullable PatchDeploymentPatchConfigZypper zypper) {
+
             this.zypper = zypper;
             return this;
         }

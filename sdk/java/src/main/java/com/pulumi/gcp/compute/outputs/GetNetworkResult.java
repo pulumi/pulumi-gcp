@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -127,42 +128,64 @@ public final class GetNetworkResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayIpv4(String gatewayIpv4) {
-            this.gatewayIpv4 = Objects.requireNonNull(gatewayIpv4);
+            if (gatewayIpv4 == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "gatewayIpv4");
+            }
+            this.gatewayIpv4 = gatewayIpv4;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder internalIpv6Range(String internalIpv6Range) {
-            this.internalIpv6Range = Objects.requireNonNull(internalIpv6Range);
+            if (internalIpv6Range == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "internalIpv6Range");
+            }
+            this.internalIpv6Range = internalIpv6Range;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder subnetworksSelfLinks(List<String> subnetworksSelfLinks) {
-            this.subnetworksSelfLinks = Objects.requireNonNull(subnetworksSelfLinks);
+            if (subnetworksSelfLinks == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "subnetworksSelfLinks");
+            }
+            this.subnetworksSelfLinks = subnetworksSelfLinks;
             return this;
         }
         public Builder subnetworksSelfLinks(String... subnetworksSelfLinks) {

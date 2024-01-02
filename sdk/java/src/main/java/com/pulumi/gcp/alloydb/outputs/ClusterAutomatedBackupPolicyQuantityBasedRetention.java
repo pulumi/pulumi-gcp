@@ -44,6 +44,7 @@ public final class ClusterAutomatedBackupPolicyQuantityBasedRetention {
 
         @CustomType.Setter
         public Builder count(@Nullable Integer count) {
+
             this.count = count;
             return this;
         }

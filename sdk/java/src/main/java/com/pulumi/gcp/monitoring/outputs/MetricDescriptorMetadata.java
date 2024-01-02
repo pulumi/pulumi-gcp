@@ -58,11 +58,13 @@ public final class MetricDescriptorMetadata {
 
         @CustomType.Setter
         public Builder ingestDelay(@Nullable String ingestDelay) {
+
             this.ingestDelay = ingestDelay;
             return this;
         }
         @CustomType.Setter
         public Builder samplePeriod(@Nullable String samplePeriod) {
+
             this.samplePeriod = samplePeriod;
             return this;
         }

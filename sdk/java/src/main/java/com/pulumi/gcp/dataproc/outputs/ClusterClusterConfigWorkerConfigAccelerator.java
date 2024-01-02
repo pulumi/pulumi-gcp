@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -69,12 +70,18 @@ public final class ClusterClusterConfigWorkerConfigAccelerator {
 
         @CustomType.Setter
         public Builder acceleratorCount(Integer acceleratorCount) {
-            this.acceleratorCount = Objects.requireNonNull(acceleratorCount);
+            if (acceleratorCount == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigWorkerConfigAccelerator", "acceleratorCount");
+            }
+            this.acceleratorCount = acceleratorCount;
             return this;
         }
         @CustomType.Setter
         public Builder acceleratorType(String acceleratorType) {
-            this.acceleratorType = Objects.requireNonNull(acceleratorType);
+            if (acceleratorType == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigWorkerConfigAccelerator", "acceleratorType");
+            }
+            this.acceleratorType = acceleratorType;
             return this;
         }
         public ClusterClusterConfigWorkerConfigAccelerator build() {

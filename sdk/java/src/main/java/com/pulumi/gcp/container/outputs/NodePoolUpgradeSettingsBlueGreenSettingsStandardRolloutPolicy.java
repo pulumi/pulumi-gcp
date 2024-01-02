@@ -74,16 +74,19 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicy
 
         @CustomType.Setter
         public Builder batchNodeCount(@Nullable Integer batchNodeCount) {
+
             this.batchNodeCount = batchNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder batchPercentage(@Nullable Double batchPercentage) {
+
             this.batchPercentage = batchPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder batchSoakDuration(@Nullable String batchSoakDuration) {
+
             this.batchSoakDuration = batchSoakDuration;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iap.inputs.WebBackendServiceIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -274,9 +275,15 @@ public final class WebBackendServiceIamBindingArgs extends com.pulumi.resources.
         }
 
         public WebBackendServiceIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.webBackendService = Objects.requireNonNull($.webBackendService, "expected parameter 'webBackendService' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("WebBackendServiceIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("WebBackendServiceIamBindingArgs", "role");
+            }
+            if ($.webBackendService == null) {
+                throw new MissingRequiredPropertyException("WebBackendServiceIamBindingArgs", "webBackendService");
+            }
             return $;
         }
     }

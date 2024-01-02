@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquerydatapolicy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class DataPolicyDataMaskingPolicy {
 
         @CustomType.Setter
         public Builder predefinedExpression(String predefinedExpression) {
-            this.predefinedExpression = Objects.requireNonNull(predefinedExpression);
+            if (predefinedExpression == null) {
+              throw new MissingRequiredPropertyException("DataPolicyDataMaskingPolicy", "predefinedExpression");
+            }
+            this.predefinedExpression = predefinedExpression;
             return this;
         }
         public DataPolicyDataMaskingPolicy build() {

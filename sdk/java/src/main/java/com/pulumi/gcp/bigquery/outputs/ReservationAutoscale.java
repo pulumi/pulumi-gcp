@@ -60,11 +60,13 @@ public final class ReservationAutoscale {
 
         @CustomType.Setter
         public Builder currentSlots(@Nullable Integer currentSlots) {
+
             this.currentSlots = currentSlots;
             return this;
         }
         @CustomType.Setter
         public Builder maxSlots(@Nullable Integer maxSlots) {
+
             this.maxSlots = maxSlots;
             return this;
         }

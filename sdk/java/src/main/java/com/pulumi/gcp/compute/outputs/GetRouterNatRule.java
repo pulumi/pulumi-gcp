@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRouterNatRuleAction;
 import java.lang.Integer;
 import java.lang.String;
@@ -55,7 +56,10 @@ public final class GetRouterNatRule {
 
         @CustomType.Setter
         public Builder actions(List<GetRouterNatRuleAction> actions) {
-            this.actions = Objects.requireNonNull(actions);
+            if (actions == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatRule", "actions");
+            }
+            this.actions = actions;
             return this;
         }
         public Builder actions(GetRouterNatRuleAction... actions) {
@@ -63,17 +67,26 @@ public final class GetRouterNatRule {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatRule", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder match(String match) {
-            this.match = Objects.requireNonNull(match);
+            if (match == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatRule", "match");
+            }
+            this.match = match;
             return this;
         }
         @CustomType.Setter
         public Builder ruleNumber(Integer ruleNumber) {
-            this.ruleNumber = Objects.requireNonNull(ruleNumber);
+            if (ruleNumber == null) {
+              throw new MissingRequiredPropertyException("GetRouterNatRule", "ruleNumber");
+            }
+            this.ruleNumber = ruleNumber;
             return this;
         }
         public GetRouterNatRule build() {

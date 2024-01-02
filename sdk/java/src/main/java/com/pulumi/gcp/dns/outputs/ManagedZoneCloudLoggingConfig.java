@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ManagedZoneCloudLoggingConfig {
 
         @CustomType.Setter
         public Builder enableLogging(Boolean enableLogging) {
-            this.enableLogging = Objects.requireNonNull(enableLogging);
+            if (enableLogging == null) {
+              throw new MissingRequiredPropertyException("ManagedZoneCloudLoggingConfig", "enableLogging");
+            }
+            this.enableLogging = enableLogging;
             return this;
         }
         public ManagedZoneCloudLoggingConfig build() {

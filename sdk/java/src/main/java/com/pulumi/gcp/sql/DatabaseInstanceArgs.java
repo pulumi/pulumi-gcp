@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceCloneArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceReplicaConfigurationArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceRestoreBackupContextArgs;
@@ -690,7 +691,9 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DatabaseInstanceArgs build() {
-            $.databaseVersion = Objects.requireNonNull($.databaseVersion, "expected parameter 'databaseVersion' to be non-null");
+            if ($.databaseVersion == null) {
+                throw new MissingRequiredPropertyException("DatabaseInstanceArgs", "databaseVersion");
+            }
             return $;
         }
     }

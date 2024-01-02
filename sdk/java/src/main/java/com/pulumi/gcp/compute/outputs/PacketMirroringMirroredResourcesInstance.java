@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class PacketMirroringMirroredResourcesInstance {
 
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("PacketMirroringMirroredResourcesInstance", "url");
+            }
+            this.url = url;
             return this;
         }
         public PacketMirroringMirroredResourcesInstance build() {

@@ -46,6 +46,7 @@ public final class AiMetadataStoreState {
 
         @CustomType.Setter
         public Builder diskUtilizationBytes(@Nullable String diskUtilizationBytes) {
+
             this.diskUtilizationBytes = diskUtilizationBytes;
             return this;
         }

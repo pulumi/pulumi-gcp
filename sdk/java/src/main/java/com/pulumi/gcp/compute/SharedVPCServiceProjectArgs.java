@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,8 +151,12 @@ public final class SharedVPCServiceProjectArgs extends com.pulumi.resources.Reso
         }
 
         public SharedVPCServiceProjectArgs build() {
-            $.hostProject = Objects.requireNonNull($.hostProject, "expected parameter 'hostProject' to be non-null");
-            $.serviceProject = Objects.requireNonNull($.serviceProject, "expected parameter 'serviceProject' to be non-null");
+            if ($.hostProject == null) {
+                throw new MissingRequiredPropertyException("SharedVPCServiceProjectArgs", "hostProject");
+            }
+            if ($.serviceProject == null) {
+                throw new MissingRequiredPropertyException("SharedVPCServiceProjectArgs", "serviceProject");
+            }
             return $;
         }
     }

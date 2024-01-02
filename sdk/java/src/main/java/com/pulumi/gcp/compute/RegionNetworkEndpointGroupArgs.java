@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupAppEngineArgs;
 import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupCloudFunctionArgs;
 import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupCloudRunArgs;
@@ -579,7 +580,9 @@ public final class RegionNetworkEndpointGroupArgs extends com.pulumi.resources.R
         }
 
         public RegionNetworkEndpointGroupArgs build() {
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("RegionNetworkEndpointGroupArgs", "region");
+            }
             return $;
         }
     }

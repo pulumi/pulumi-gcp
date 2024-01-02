@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firebase.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -101,7 +102,9 @@ public final class GetAppleAppConfigPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetAppleAppConfigPlainArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("GetAppleAppConfigPlainArgs", "appId");
+            }
             return $;
         }
     }

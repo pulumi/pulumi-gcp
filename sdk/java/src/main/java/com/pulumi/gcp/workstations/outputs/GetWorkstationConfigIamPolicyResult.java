@@ -4,6 +4,7 @@
 package com.pulumi.gcp.workstations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -96,37 +97,58 @@ public final class GetWorkstationConfigIamPolicyResult {
 
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetWorkstationConfigIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetWorkstationConfigIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetWorkstationConfigIamPolicyResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetWorkstationConfigIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetWorkstationConfigIamPolicyResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder workstationClusterId(String workstationClusterId) {
-            this.workstationClusterId = Objects.requireNonNull(workstationClusterId);
+            if (workstationClusterId == null) {
+              throw new MissingRequiredPropertyException("GetWorkstationConfigIamPolicyResult", "workstationClusterId");
+            }
+            this.workstationClusterId = workstationClusterId;
             return this;
         }
         @CustomType.Setter
         public Builder workstationConfigId(String workstationConfigId) {
-            this.workstationConfigId = Objects.requireNonNull(workstationConfigId);
+            if (workstationConfigId == null) {
+              throw new MissingRequiredPropertyException("GetWorkstationConfigIamPolicyResult", "workstationConfigId");
+            }
+            this.workstationConfigId = workstationConfigId;
             return this;
         }
         public GetWorkstationConfigIamPolicyResult build() {

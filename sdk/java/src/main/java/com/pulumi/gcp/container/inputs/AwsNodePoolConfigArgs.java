@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigAutoscalingMetricsCollectionArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigConfigEncryptionArgs;
 import com.pulumi.gcp.container.inputs.AwsNodePoolConfigInstancePlacementArgs;
@@ -587,8 +588,12 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         public AwsNodePoolConfigArgs build() {
-            $.configEncryption = Objects.requireNonNull($.configEncryption, "expected parameter 'configEncryption' to be non-null");
-            $.iamInstanceProfile = Objects.requireNonNull($.iamInstanceProfile, "expected parameter 'iamInstanceProfile' to be non-null");
+            if ($.configEncryption == null) {
+                throw new MissingRequiredPropertyException("AwsNodePoolConfigArgs", "configEncryption");
+            }
+            if ($.iamInstanceProfile == null) {
+                throw new MissingRequiredPropertyException("AwsNodePoolConfigArgs", "iamInstanceProfile");
+            }
             return $;
         }
     }

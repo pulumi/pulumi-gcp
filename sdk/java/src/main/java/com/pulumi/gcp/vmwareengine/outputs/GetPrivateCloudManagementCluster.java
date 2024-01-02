@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.outputs.GetPrivateCloudManagementClusterNodeTypeConfig;
 import java.lang.String;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class GetPrivateCloudManagementCluster {
 
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudManagementCluster", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         @CustomType.Setter
         public Builder nodeTypeConfigs(List<GetPrivateCloudManagementClusterNodeTypeConfig> nodeTypeConfigs) {
-            this.nodeTypeConfigs = Objects.requireNonNull(nodeTypeConfigs);
+            if (nodeTypeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudManagementCluster", "nodeTypeConfigs");
+            }
+            this.nodeTypeConfigs = nodeTypeConfigs;
             return this;
         }
         public Builder nodeTypeConfigs(GetPrivateCloudManagementClusterNodeTypeConfig... nodeTypeConfigs) {

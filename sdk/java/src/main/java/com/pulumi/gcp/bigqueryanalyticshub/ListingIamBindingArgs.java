@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigqueryanalyticshub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -328,10 +329,18 @@ public final class ListingIamBindingArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ListingIamBindingArgs build() {
-            $.dataExchangeId = Objects.requireNonNull($.dataExchangeId, "expected parameter 'dataExchangeId' to be non-null");
-            $.listingId = Objects.requireNonNull($.listingId, "expected parameter 'listingId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.dataExchangeId == null) {
+                throw new MissingRequiredPropertyException("ListingIamBindingArgs", "dataExchangeId");
+            }
+            if ($.listingId == null) {
+                throw new MissingRequiredPropertyException("ListingIamBindingArgs", "listingId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("ListingIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ListingIamBindingArgs", "role");
+            }
             return $;
         }
     }

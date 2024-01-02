@@ -64,6 +64,7 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
 
         @CustomType.Setter
         public Builder bundles(@Nullable List<FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle> bundles) {
+
             this.bundles = bundles;
             return this;
         }
@@ -72,6 +73,7 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
         }
         @CustomType.Setter
         public Builder templateLibrary(@Nullable FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary templateLibrary) {
+
             this.templateLibrary = templateLibrary;
             return this;
         }

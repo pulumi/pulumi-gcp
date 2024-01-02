@@ -5,6 +5,7 @@ package com.pulumi.gcp.containeranalysis;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.containeranalysis.inputs.NoteAttestationAuthorityArgs;
 import com.pulumi.gcp.containeranalysis.inputs.NoteRelatedUrlArgs;
 import java.lang.String;
@@ -403,7 +404,9 @@ public final class NoteArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NoteArgs build() {
-            $.attestationAuthority = Objects.requireNonNull($.attestationAuthority, "expected parameter 'attestationAuthority' to be non-null");
+            if ($.attestationAuthority == null) {
+                throw new MissingRequiredPropertyException("NoteArgs", "attestationAuthority");
+            }
             return $;
         }
     }

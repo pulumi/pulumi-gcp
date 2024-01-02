@@ -4,6 +4,7 @@
 package com.pulumi.gcp.beyondcorp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetAppGatewayAllocatedConnection {
 
         @CustomType.Setter
         public Builder ingressPort(Integer ingressPort) {
-            this.ingressPort = Objects.requireNonNull(ingressPort);
+            if (ingressPort == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayAllocatedConnection", "ingressPort");
+            }
+            this.ingressPort = ingressPort;
             return this;
         }
         @CustomType.Setter
         public Builder pscUri(String pscUri) {
-            this.pscUri = Objects.requireNonNull(pscUri);
+            if (pscUri == null) {
+              throw new MissingRequiredPropertyException("GetAppGatewayAllocatedConnection", "pscUri");
+            }
+            this.pscUri = pscUri;
             return this;
         }
         public GetAppGatewayAllocatedConnection build() {

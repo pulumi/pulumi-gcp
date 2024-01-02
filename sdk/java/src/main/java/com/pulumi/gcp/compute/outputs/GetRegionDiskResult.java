@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetRegionDiskGuestOsFeature;
@@ -213,7 +214,10 @@ public final class GetRegionDiskResult {
 
         @CustomType.Setter
         public Builder asyncPrimaryDisks(List<GetRegionDiskAsyncPrimaryDisk> asyncPrimaryDisks) {
-            this.asyncPrimaryDisks = Objects.requireNonNull(asyncPrimaryDisks);
+            if (asyncPrimaryDisks == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "asyncPrimaryDisks");
+            }
+            this.asyncPrimaryDisks = asyncPrimaryDisks;
             return this;
         }
         public Builder asyncPrimaryDisks(GetRegionDiskAsyncPrimaryDisk... asyncPrimaryDisks) {
@@ -221,17 +225,26 @@ public final class GetRegionDiskResult {
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
-            this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeys(List<GetRegionDiskDiskEncryptionKey> diskEncryptionKeys) {
-            this.diskEncryptionKeys = Objects.requireNonNull(diskEncryptionKeys);
+            if (diskEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "diskEncryptionKeys");
+            }
+            this.diskEncryptionKeys = diskEncryptionKeys;
             return this;
         }
         public Builder diskEncryptionKeys(GetRegionDiskDiskEncryptionKey... diskEncryptionKeys) {
@@ -239,12 +252,18 @@ public final class GetRegionDiskResult {
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder guestOsFeatures(List<GetRegionDiskGuestOsFeature> guestOsFeatures) {
-            this.guestOsFeatures = Objects.requireNonNull(guestOsFeatures);
+            if (guestOsFeatures == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "guestOsFeatures");
+            }
+            this.guestOsFeatures = guestOsFeatures;
             return this;
         }
         public Builder guestOsFeatures(GetRegionDiskGuestOsFeature... guestOsFeatures) {
@@ -252,37 +271,58 @@ public final class GetRegionDiskResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
-            this.interface_ = Objects.requireNonNull(interface_);
+            if (interface_ == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "interface_");
+            }
+            this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder labelFingerprint(String labelFingerprint) {
-            this.labelFingerprint = Objects.requireNonNull(labelFingerprint);
+            if (labelFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "labelFingerprint");
+            }
+            this.labelFingerprint = labelFingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder lastAttachTimestamp(String lastAttachTimestamp) {
-            this.lastAttachTimestamp = Objects.requireNonNull(lastAttachTimestamp);
+            if (lastAttachTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "lastAttachTimestamp");
+            }
+            this.lastAttachTimestamp = lastAttachTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder lastDetachTimestamp(String lastDetachTimestamp) {
-            this.lastDetachTimestamp = Objects.requireNonNull(lastDetachTimestamp);
+            if (lastDetachTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "lastDetachTimestamp");
+            }
+            this.lastDetachTimestamp = lastDetachTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder licenses(List<String> licenses) {
-            this.licenses = Objects.requireNonNull(licenses);
+            if (licenses == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "licenses");
+            }
+            this.licenses = licenses;
             return this;
         }
         public Builder licenses(String... licenses) {
@@ -290,32 +330,46 @@ public final class GetRegionDiskResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder physicalBlockSizeBytes(Integer physicalBlockSizeBytes) {
-            this.physicalBlockSizeBytes = Objects.requireNonNull(physicalBlockSizeBytes);
+            if (physicalBlockSizeBytes == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "physicalBlockSizeBytes");
+            }
+            this.physicalBlockSizeBytes = physicalBlockSizeBytes;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder replicaZones(List<String> replicaZones) {
-            this.replicaZones = Objects.requireNonNull(replicaZones);
+            if (replicaZones == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "replicaZones");
+            }
+            this.replicaZones = replicaZones;
             return this;
         }
         public Builder replicaZones(String... replicaZones) {
@@ -323,32 +377,50 @@ public final class GetRegionDiskResult {
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder snapshot(String snapshot) {
-            this.snapshot = Objects.requireNonNull(snapshot);
+            if (snapshot == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "snapshot");
+            }
+            this.snapshot = snapshot;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDisk(String sourceDisk) {
-            this.sourceDisk = Objects.requireNonNull(sourceDisk);
+            if (sourceDisk == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "sourceDisk");
+            }
+            this.sourceDisk = sourceDisk;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDiskId(String sourceDiskId) {
-            this.sourceDiskId = Objects.requireNonNull(sourceDiskId);
+            if (sourceDiskId == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "sourceDiskId");
+            }
+            this.sourceDiskId = sourceDiskId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceSnapshotEncryptionKeys(List<GetRegionDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys) {
-            this.sourceSnapshotEncryptionKeys = Objects.requireNonNull(sourceSnapshotEncryptionKeys);
+            if (sourceSnapshotEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "sourceSnapshotEncryptionKeys");
+            }
+            this.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             return this;
         }
         public Builder sourceSnapshotEncryptionKeys(GetRegionDiskSourceSnapshotEncryptionKey... sourceSnapshotEncryptionKeys) {
@@ -356,17 +428,26 @@ public final class GetRegionDiskResult {
         }
         @CustomType.Setter
         public Builder sourceSnapshotId(String sourceSnapshotId) {
-            this.sourceSnapshotId = Objects.requireNonNull(sourceSnapshotId);
+            if (sourceSnapshotId == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "sourceSnapshotId");
+            }
+            this.sourceSnapshotId = sourceSnapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder users(List<String> users) {
-            this.users = Objects.requireNonNull(users);
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskResult", "users");
+            }
+            this.users = users;
             return this;
         }
         public Builder users(String... users) {

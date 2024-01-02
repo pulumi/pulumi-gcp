@@ -79,11 +79,13 @@ public final class CertificateCertificateDescriptionX509DescriptionAdditionalExt
 
         @CustomType.Setter
         public Builder critical(@Nullable Boolean critical) {
+
             this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder objectIds(@Nullable List<CertificateCertificateDescriptionX509DescriptionAdditionalExtensionObjectId> objectIds) {
+
             this.objectIds = objectIds;
             return this;
         }
@@ -92,6 +94,7 @@ public final class CertificateCertificateDescriptionX509DescriptionAdditionalExt
         }
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class ClusterAddonsConfigHorizontalPodAutoscaling {
 
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("ClusterAddonsConfigHorizontalPodAutoscaling", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         public ClusterAddonsConfigHorizontalPodAutoscaling build() {

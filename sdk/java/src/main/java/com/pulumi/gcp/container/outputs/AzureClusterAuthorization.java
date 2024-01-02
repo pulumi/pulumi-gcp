@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.AzureClusterAuthorizationAdminGroup;
 import com.pulumi.gcp.container.outputs.AzureClusterAuthorizationAdminUser;
 import java.util.List;
@@ -59,6 +60,7 @@ public final class AzureClusterAuthorization {
 
         @CustomType.Setter
         public Builder adminGroups(@Nullable List<AzureClusterAuthorizationAdminGroup> adminGroups) {
+
             this.adminGroups = adminGroups;
             return this;
         }
@@ -67,7 +69,10 @@ public final class AzureClusterAuthorization {
         }
         @CustomType.Setter
         public Builder adminUsers(List<AzureClusterAuthorizationAdminUser> adminUsers) {
-            this.adminUsers = Objects.requireNonNull(adminUsers);
+            if (adminUsers == null) {
+              throw new MissingRequiredPropertyException("AzureClusterAuthorization", "adminUsers");
+            }
+            this.adminUsers = adminUsers;
             return this;
         }
         public Builder adminUsers(AzureClusterAuthorizationAdminUser... adminUsers) {

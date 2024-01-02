@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -120,8 +121,12 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs
         }
 
         public ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs build() {
-            $.gpuSharingStrategy = Objects.requireNonNull($.gpuSharingStrategy, "expected parameter 'gpuSharingStrategy' to be non-null");
-            $.maxSharedClientsPerGpu = Objects.requireNonNull($.maxSharedClientsPerGpu, "expected parameter 'maxSharedClientsPerGpu' to be non-null");
+            if ($.gpuSharingStrategy == null) {
+                throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs", "gpuSharingStrategy");
+            }
+            if ($.maxSharedClientsPerGpu == null) {
+                throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfigArgs", "maxSharedClientsPerGpu");
+            }
             return $;
         }
     }

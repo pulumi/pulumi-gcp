@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.appengine.inputs.ServiceNetworkSettingsNetworkSettingsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -159,8 +160,12 @@ public final class ServiceNetworkSettingsArgs extends com.pulumi.resources.Resou
         }
 
         public ServiceNetworkSettingsArgs build() {
-            $.networkSettings = Objects.requireNonNull($.networkSettings, "expected parameter 'networkSettings' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.networkSettings == null) {
+                throw new MissingRequiredPropertyException("ServiceNetworkSettingsArgs", "networkSettings");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("ServiceNetworkSettingsArgs", "service");
+            }
             return $;
         }
     }

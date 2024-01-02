@@ -132,6 +132,7 @@ public final class JobPrestoConfig {
 
         @CustomType.Setter
         public Builder clientTags(@Nullable List<String> clientTags) {
+
             this.clientTags = clientTags;
             return this;
         }
@@ -140,31 +141,37 @@ public final class JobPrestoConfig {
         }
         @CustomType.Setter
         public Builder continueOnFailure(@Nullable Boolean continueOnFailure) {
+
             this.continueOnFailure = continueOnFailure;
             return this;
         }
         @CustomType.Setter
         public Builder loggingConfig(@Nullable JobPrestoConfigLoggingConfig loggingConfig) {
+
             this.loggingConfig = loggingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder outputFormat(@Nullable String outputFormat) {
+
             this.outputFormat = outputFormat;
             return this;
         }
         @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
+
             this.properties = properties;
             return this;
         }
         @CustomType.Setter
         public Builder queryFileUri(@Nullable String queryFileUri) {
+
             this.queryFileUri = queryFileUri;
             return this;
         }
         @CustomType.Setter
         public Builder queryLists(@Nullable List<String> queryLists) {
+
             this.queryLists = queryLists;
             return this;
         }

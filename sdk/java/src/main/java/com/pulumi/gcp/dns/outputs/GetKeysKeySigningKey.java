@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.GetKeysKeySigningKeyDigest;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -172,22 +173,34 @@ public final class GetKeysKeySigningKey {
 
         @CustomType.Setter
         public Builder algorithm(String algorithm) {
-            this.algorithm = Objects.requireNonNull(algorithm);
+            if (algorithm == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "algorithm");
+            }
+            this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder creationTime(String creationTime) {
-            this.creationTime = Objects.requireNonNull(creationTime);
+            if (creationTime == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "creationTime");
+            }
+            this.creationTime = creationTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder digests(List<GetKeysKeySigningKeyDigest> digests) {
-            this.digests = Objects.requireNonNull(digests);
+            if (digests == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "digests");
+            }
+            this.digests = digests;
             return this;
         }
         public Builder digests(GetKeysKeySigningKeyDigest... digests) {
@@ -195,32 +208,50 @@ public final class GetKeysKeySigningKey {
         }
         @CustomType.Setter
         public Builder dsRecord(String dsRecord) {
-            this.dsRecord = Objects.requireNonNull(dsRecord);
+            if (dsRecord == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "dsRecord");
+            }
+            this.dsRecord = dsRecord;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isActive(Boolean isActive) {
-            this.isActive = Objects.requireNonNull(isActive);
+            if (isActive == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "isActive");
+            }
+            this.isActive = isActive;
             return this;
         }
         @CustomType.Setter
         public Builder keyLength(Integer keyLength) {
-            this.keyLength = Objects.requireNonNull(keyLength);
+            if (keyLength == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "keyLength");
+            }
+            this.keyLength = keyLength;
             return this;
         }
         @CustomType.Setter
         public Builder keyTag(Integer keyTag) {
-            this.keyTag = Objects.requireNonNull(keyTag);
+            if (keyTag == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "keyTag");
+            }
+            this.keyTag = keyTag;
             return this;
         }
         @CustomType.Setter
         public Builder publicKey(String publicKey) {
-            this.publicKey = Objects.requireNonNull(publicKey);
+            if (publicKey == null) {
+              throw new MissingRequiredPropertyException("GetKeysKeySigningKey", "publicKey");
+            }
+            this.publicKey = publicKey;
             return this;
         }
         public GetKeysKeySigningKey build() {

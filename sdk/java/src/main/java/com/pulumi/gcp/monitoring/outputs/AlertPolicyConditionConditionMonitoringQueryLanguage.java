@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionMonitoringQueryLanguageTrigger;
 import java.lang.String;
 import java.util.Objects;
@@ -137,21 +138,29 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguage {
 
         @CustomType.Setter
         public Builder duration(String duration) {
-            this.duration = Objects.requireNonNull(duration);
+            if (duration == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyConditionConditionMonitoringQueryLanguage", "duration");
+            }
+            this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder evaluationMissingData(@Nullable String evaluationMissingData) {
+
             this.evaluationMissingData = evaluationMissingData;
             return this;
         }
         @CustomType.Setter
         public Builder query(String query) {
-            this.query = Objects.requireNonNull(query);
+            if (query == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyConditionConditionMonitoringQueryLanguage", "query");
+            }
+            this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder trigger(@Nullable AlertPolicyConditionConditionMonitoringQueryLanguageTrigger trigger) {
+
             this.trigger = trigger;
             return this;
         }

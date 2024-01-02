@@ -76,6 +76,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
 
         @CustomType.Setter
         public Builder classifications(@Nullable List<String> classifications) {
+
             this.classifications = classifications;
             return this;
         }
@@ -84,6 +85,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
         }
         @CustomType.Setter
         public Builder excludes(@Nullable List<String> excludes) {
+
             this.excludes = excludes;
             return this;
         }
@@ -92,6 +94,7 @@ public final class PatchDeploymentPatchConfigWindowsUpdate {
         }
         @CustomType.Setter
         public Builder exclusivePatches(@Nullable List<String> exclusivePatches) {
+
             this.exclusivePatches = exclusivePatches;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionPushConfigNoWrapper;
 import com.pulumi.gcp.pubsub.outputs.SubscriptionPushConfigOidcToken;
 import java.lang.String;
@@ -135,22 +136,28 @@ public final class SubscriptionPushConfig {
 
         @CustomType.Setter
         public Builder attributes(@Nullable Map<String,String> attributes) {
+
             this.attributes = attributes;
             return this;
         }
         @CustomType.Setter
         public Builder noWrapper(@Nullable SubscriptionPushConfigNoWrapper noWrapper) {
+
             this.noWrapper = noWrapper;
             return this;
         }
         @CustomType.Setter
         public Builder oidcToken(@Nullable SubscriptionPushConfigOidcToken oidcToken) {
+
             this.oidcToken = oidcToken;
             return this;
         }
         @CustomType.Setter
         public Builder pushEndpoint(String pushEndpoint) {
-            this.pushEndpoint = Objects.requireNonNull(pushEndpoint);
+            if (pushEndpoint == null) {
+              throw new MissingRequiredPropertyException("SubscriptionPushConfig", "pushEndpoint");
+            }
+            this.pushEndpoint = pushEndpoint;
             return this;
         }
         public SubscriptionPushConfig build() {

@@ -44,6 +44,7 @@ public final class NodePoolNodeConfig {
 
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }

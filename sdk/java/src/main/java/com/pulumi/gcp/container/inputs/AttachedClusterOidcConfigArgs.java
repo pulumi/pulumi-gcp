@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class AttachedClusterOidcConfigArgs extends com.pulumi.resources.Re
         }
 
         public AttachedClusterOidcConfigArgs build() {
-            $.issuerUrl = Objects.requireNonNull($.issuerUrl, "expected parameter 'issuerUrl' to be non-null");
+            if ($.issuerUrl == null) {
+                throw new MissingRequiredPropertyException("AttachedClusterOidcConfigArgs", "issuerUrl");
+            }
             return $;
         }
     }

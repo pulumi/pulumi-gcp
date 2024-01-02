@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -223,8 +224,12 @@ public final class TunnelInstanceIAMPolicyArgs extends com.pulumi.resources.Reso
         }
 
         public TunnelInstanceIAMPolicyArgs build() {
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("TunnelInstanceIAMPolicyArgs", "instance");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("TunnelInstanceIAMPolicyArgs", "policyData");
+            }
             return $;
         }
     }

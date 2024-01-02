@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -143,26 +144,37 @@ public final class AutoscalingPolicyBasicAlgorithmYarnConfig {
 
         @CustomType.Setter
         public Builder gracefulDecommissionTimeout(String gracefulDecommissionTimeout) {
-            this.gracefulDecommissionTimeout = Objects.requireNonNull(gracefulDecommissionTimeout);
+            if (gracefulDecommissionTimeout == null) {
+              throw new MissingRequiredPropertyException("AutoscalingPolicyBasicAlgorithmYarnConfig", "gracefulDecommissionTimeout");
+            }
+            this.gracefulDecommissionTimeout = gracefulDecommissionTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder scaleDownFactor(Double scaleDownFactor) {
-            this.scaleDownFactor = Objects.requireNonNull(scaleDownFactor);
+            if (scaleDownFactor == null) {
+              throw new MissingRequiredPropertyException("AutoscalingPolicyBasicAlgorithmYarnConfig", "scaleDownFactor");
+            }
+            this.scaleDownFactor = scaleDownFactor;
             return this;
         }
         @CustomType.Setter
         public Builder scaleDownMinWorkerFraction(@Nullable Double scaleDownMinWorkerFraction) {
+
             this.scaleDownMinWorkerFraction = scaleDownMinWorkerFraction;
             return this;
         }
         @CustomType.Setter
         public Builder scaleUpFactor(Double scaleUpFactor) {
-            this.scaleUpFactor = Objects.requireNonNull(scaleUpFactor);
+            if (scaleUpFactor == null) {
+              throw new MissingRequiredPropertyException("AutoscalingPolicyBasicAlgorithmYarnConfig", "scaleUpFactor");
+            }
+            this.scaleUpFactor = scaleUpFactor;
             return this;
         }
         @CustomType.Setter
         public Builder scaleUpMinWorkerFraction(@Nullable Double scaleUpMinWorkerFraction) {
+
             this.scaleUpMinWorkerFraction = scaleUpMinWorkerFraction;
             return this;
         }

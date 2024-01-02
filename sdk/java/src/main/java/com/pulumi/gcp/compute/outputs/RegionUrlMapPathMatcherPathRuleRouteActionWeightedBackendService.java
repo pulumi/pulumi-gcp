@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction;
 import java.lang.Integer;
 import java.lang.String;
@@ -86,17 +87,24 @@ public final class RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServ
 
         @CustomType.Setter
         public Builder backendService(String backendService) {
-            this.backendService = Objects.requireNonNull(backendService);
+            if (backendService == null) {
+              throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService", "backendService");
+            }
+            this.backendService = backendService;
             return this;
         }
         @CustomType.Setter
         public Builder headerAction(@Nullable RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderAction headerAction) {
+
             this.headerAction = headerAction;
             return this;
         }
         @CustomType.Setter
         public Builder weight(Integer weight) {
-            this.weight = Objects.requireNonNull(weight);
+            if (weight == null) {
+              throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService", "weight");
+            }
+            this.weight = weight;
             return this;
         }
         public RegionUrlMapPathMatcherPathRuleRouteActionWeightedBackendService build() {

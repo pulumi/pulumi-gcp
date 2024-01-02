@@ -73,16 +73,19 @@ public final class ConfigQuotaSignUpQuotaConfig {
 
         @CustomType.Setter
         public Builder quota(@Nullable Integer quota) {
+
             this.quota = quota;
             return this;
         }
         @CustomType.Setter
         public Builder quotaDuration(@Nullable String quotaDuration) {
+
             this.quotaDuration = quotaDuration;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }

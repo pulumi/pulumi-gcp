@@ -186,11 +186,13 @@ public final class AccessLevelsAccessLevelBasicCondition {
 
         @CustomType.Setter
         public Builder devicePolicy(@Nullable AccessLevelsAccessLevelBasicConditionDevicePolicy devicePolicy) {
+
             this.devicePolicy = devicePolicy;
             return this;
         }
         @CustomType.Setter
         public Builder ipSubnetworks(@Nullable List<String> ipSubnetworks) {
+
             this.ipSubnetworks = ipSubnetworks;
             return this;
         }
@@ -199,6 +201,7 @@ public final class AccessLevelsAccessLevelBasicCondition {
         }
         @CustomType.Setter
         public Builder members(@Nullable List<String> members) {
+
             this.members = members;
             return this;
         }
@@ -207,11 +210,13 @@ public final class AccessLevelsAccessLevelBasicCondition {
         }
         @CustomType.Setter
         public Builder negate(@Nullable Boolean negate) {
+
             this.negate = negate;
             return this;
         }
         @CustomType.Setter
         public Builder regions(@Nullable List<String> regions) {
+
             this.regions = regions;
             return this;
         }
@@ -220,6 +225,7 @@ public final class AccessLevelsAccessLevelBasicCondition {
         }
         @CustomType.Setter
         public Builder requiredAccessLevels(@Nullable List<String> requiredAccessLevels) {
+
             this.requiredAccessLevels = requiredAccessLevels;
             return this;
         }
@@ -228,6 +234,7 @@ public final class AccessLevelsAccessLevelBasicCondition {
         }
         @CustomType.Setter
         public Builder vpcNetworkSources(@Nullable List<AccessLevelsAccessLevelBasicConditionVpcNetworkSource> vpcNetworkSources) {
+
             this.vpcNetworkSources = vpcNetworkSources;
             return this;
         }

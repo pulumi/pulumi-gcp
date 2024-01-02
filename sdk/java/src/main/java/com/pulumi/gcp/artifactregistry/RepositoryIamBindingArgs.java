@@ -5,6 +5,7 @@ package com.pulumi.gcp.artifactregistry;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -291,9 +292,15 @@ public final class RepositoryIamBindingArgs extends com.pulumi.resources.Resourc
         }
 
         public RepositoryIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.repository = Objects.requireNonNull($.repository, "expected parameter 'repository' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("RepositoryIamBindingArgs", "members");
+            }
+            if ($.repository == null) {
+                throw new MissingRequiredPropertyException("RepositoryIamBindingArgs", "repository");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("RepositoryIamBindingArgs", "role");
+            }
             return $;
         }
     }

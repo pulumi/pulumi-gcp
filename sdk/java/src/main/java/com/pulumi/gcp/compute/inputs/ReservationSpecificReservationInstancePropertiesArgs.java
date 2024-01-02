@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesGuestAcceleratorArgs;
 import com.pulumi.gcp.compute.inputs.ReservationSpecificReservationInstancePropertiesLocalSsdArgs;
 import java.lang.String;
@@ -237,7 +238,9 @@ public final class ReservationSpecificReservationInstancePropertiesArgs extends 
         }
 
         public ReservationSpecificReservationInstancePropertiesArgs build() {
-            $.machineType = Objects.requireNonNull($.machineType, "expected parameter 'machineType' to be non-null");
+            if ($.machineType == null) {
+                throw new MissingRequiredPropertyException("ReservationSpecificReservationInstancePropertiesArgs", "machineType");
+            }
             return $;
         }
     }

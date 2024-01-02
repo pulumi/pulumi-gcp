@@ -77,16 +77,19 @@ public final class TriggerRepositoryEventConfigPullRequest {
 
         @CustomType.Setter
         public Builder branch(@Nullable String branch) {
+
             this.branch = branch;
             return this;
         }
         @CustomType.Setter
         public Builder commentControl(@Nullable String commentControl) {
+
             this.commentControl = commentControl;
             return this;
         }
         @CustomType.Setter
         public Builder invertRegex(@Nullable Boolean invertRegex) {
+
             this.invertRegex = invertRegex;
             return this;
         }

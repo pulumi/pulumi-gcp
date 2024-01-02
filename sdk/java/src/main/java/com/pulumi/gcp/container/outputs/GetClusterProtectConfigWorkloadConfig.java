@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterProtectConfigWorkloadConfig {
 
         @CustomType.Setter
         public Builder auditMode(String auditMode) {
-            this.auditMode = Objects.requireNonNull(auditMode);
+            if (auditMode == null) {
+              throw new MissingRequiredPropertyException("GetClusterProtectConfigWorkloadConfig", "auditMode");
+            }
+            this.auditMode = auditMode;
             return this;
         }
         public GetClusterProtectConfigWorkloadConfig build() {

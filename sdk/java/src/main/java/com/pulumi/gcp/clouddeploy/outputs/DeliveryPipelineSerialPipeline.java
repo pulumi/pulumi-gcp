@@ -44,6 +44,7 @@ public final class DeliveryPipelineSerialPipeline {
 
         @CustomType.Setter
         public Builder stages(@Nullable List<DeliveryPipelineSerialPipelineStage> stages) {
+
             this.stages = stages;
             return this;
         }

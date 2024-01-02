@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class CaPoolIssuancePolicyAllowedIssuanceModes {
 
         @CustomType.Setter
         public Builder allowConfigBasedIssuance(Boolean allowConfigBasedIssuance) {
-            this.allowConfigBasedIssuance = Objects.requireNonNull(allowConfigBasedIssuance);
+            if (allowConfigBasedIssuance == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyAllowedIssuanceModes", "allowConfigBasedIssuance");
+            }
+            this.allowConfigBasedIssuance = allowConfigBasedIssuance;
             return this;
         }
         @CustomType.Setter
         public Builder allowCsrBasedIssuance(Boolean allowCsrBasedIssuance) {
-            this.allowCsrBasedIssuance = Objects.requireNonNull(allowCsrBasedIssuance);
+            if (allowCsrBasedIssuance == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyAllowedIssuanceModes", "allowCsrBasedIssuance");
+            }
+            this.allowCsrBasedIssuance = allowCsrBasedIssuance;
             return this;
         }
         public CaPoolIssuancePolicyAllowedIssuanceModes build() {

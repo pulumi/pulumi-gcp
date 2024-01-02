@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class ClusterNodeConfigSandboxConfig {
 
         @CustomType.Setter
         public Builder sandboxType(String sandboxType) {
-            this.sandboxType = Objects.requireNonNull(sandboxType);
+            if (sandboxType == null) {
+              throw new MissingRequiredPropertyException("ClusterNodeConfigSandboxConfig", "sandboxType");
+            }
+            this.sandboxType = sandboxType;
             return this;
         }
         public ClusterNodeConfigSandboxConfig build() {

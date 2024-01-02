@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -281,8 +282,12 @@ public final class TriggerSourceToBuildArgs extends com.pulumi.resources.Resourc
         }
 
         public TriggerSourceToBuildArgs build() {
-            $.ref = Objects.requireNonNull($.ref, "expected parameter 'ref' to be non-null");
-            $.repoType = Objects.requireNonNull($.repoType, "expected parameter 'repoType' to be non-null");
+            if ($.ref == null) {
+                throw new MissingRequiredPropertyException("TriggerSourceToBuildArgs", "ref");
+            }
+            if ($.repoType == null) {
+                throw new MissingRequiredPropertyException("TriggerSourceToBuildArgs", "repoType");
+            }
             return $;
         }
     }

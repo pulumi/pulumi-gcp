@@ -78,6 +78,7 @@ public final class PacketMirroringMirroredResources {
 
         @CustomType.Setter
         public Builder instances(@Nullable List<PacketMirroringMirroredResourcesInstance> instances) {
+
             this.instances = instances;
             return this;
         }
@@ -86,6 +87,7 @@ public final class PacketMirroringMirroredResources {
         }
         @CustomType.Setter
         public Builder subnetworks(@Nullable List<PacketMirroringMirroredResourcesSubnetwork> subnetworks) {
+
             this.subnetworks = subnetworks;
             return this;
         }
@@ -94,6 +96,7 @@ public final class PacketMirroringMirroredResources {
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }

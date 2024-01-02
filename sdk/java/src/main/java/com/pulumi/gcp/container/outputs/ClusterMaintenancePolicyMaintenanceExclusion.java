@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions;
 import java.lang.String;
 import java.util.Objects;
@@ -63,22 +64,32 @@ public final class ClusterMaintenancePolicyMaintenanceExclusion {
 
         @CustomType.Setter
         public Builder endTime(String endTime) {
-            this.endTime = Objects.requireNonNull(endTime);
+            if (endTime == null) {
+              throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusion", "endTime");
+            }
+            this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder exclusionName(String exclusionName) {
-            this.exclusionName = Objects.requireNonNull(exclusionName);
+            if (exclusionName == null) {
+              throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusion", "exclusionName");
+            }
+            this.exclusionName = exclusionName;
             return this;
         }
         @CustomType.Setter
         public Builder exclusionOptions(@Nullable ClusterMaintenancePolicyMaintenanceExclusionExclusionOptions exclusionOptions) {
+
             this.exclusionOptions = exclusionOptions;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("ClusterMaintenancePolicyMaintenanceExclusion", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         public ClusterMaintenancePolicyMaintenanceExclusion build() {

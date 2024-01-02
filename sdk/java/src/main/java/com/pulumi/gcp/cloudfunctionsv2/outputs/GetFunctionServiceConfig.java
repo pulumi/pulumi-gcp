@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.GetFunctionServiceConfigSecretEnvironmentVariable;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.GetFunctionServiceConfigSecretVolume;
 import java.lang.Boolean;
@@ -136,52 +137,82 @@ public final class GetFunctionServiceConfig {
 
         @CustomType.Setter
         public Builder allTrafficOnLatestRevision(Boolean allTrafficOnLatestRevision) {
-            this.allTrafficOnLatestRevision = Objects.requireNonNull(allTrafficOnLatestRevision);
+            if (allTrafficOnLatestRevision == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "allTrafficOnLatestRevision");
+            }
+            this.allTrafficOnLatestRevision = allTrafficOnLatestRevision;
             return this;
         }
         @CustomType.Setter
         public Builder availableCpu(String availableCpu) {
-            this.availableCpu = Objects.requireNonNull(availableCpu);
+            if (availableCpu == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "availableCpu");
+            }
+            this.availableCpu = availableCpu;
             return this;
         }
         @CustomType.Setter
         public Builder availableMemory(String availableMemory) {
-            this.availableMemory = Objects.requireNonNull(availableMemory);
+            if (availableMemory == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "availableMemory");
+            }
+            this.availableMemory = availableMemory;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVariables(Map<String,String> environmentVariables) {
-            this.environmentVariables = Objects.requireNonNull(environmentVariables);
+            if (environmentVariables == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "environmentVariables");
+            }
+            this.environmentVariables = environmentVariables;
             return this;
         }
         @CustomType.Setter
         public Builder gcfUri(String gcfUri) {
-            this.gcfUri = Objects.requireNonNull(gcfUri);
+            if (gcfUri == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "gcfUri");
+            }
+            this.gcfUri = gcfUri;
             return this;
         }
         @CustomType.Setter
         public Builder ingressSettings(String ingressSettings) {
-            this.ingressSettings = Objects.requireNonNull(ingressSettings);
+            if (ingressSettings == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "ingressSettings");
+            }
+            this.ingressSettings = ingressSettings;
             return this;
         }
         @CustomType.Setter
         public Builder maxInstanceCount(Integer maxInstanceCount) {
-            this.maxInstanceCount = Objects.requireNonNull(maxInstanceCount);
+            if (maxInstanceCount == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "maxInstanceCount");
+            }
+            this.maxInstanceCount = maxInstanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder maxInstanceRequestConcurrency(Integer maxInstanceRequestConcurrency) {
-            this.maxInstanceRequestConcurrency = Objects.requireNonNull(maxInstanceRequestConcurrency);
+            if (maxInstanceRequestConcurrency == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "maxInstanceRequestConcurrency");
+            }
+            this.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder minInstanceCount(Integer minInstanceCount) {
-            this.minInstanceCount = Objects.requireNonNull(minInstanceCount);
+            if (minInstanceCount == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "minInstanceCount");
+            }
+            this.minInstanceCount = minInstanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder secretEnvironmentVariables(List<GetFunctionServiceConfigSecretEnvironmentVariable> secretEnvironmentVariables) {
-            this.secretEnvironmentVariables = Objects.requireNonNull(secretEnvironmentVariables);
+            if (secretEnvironmentVariables == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "secretEnvironmentVariables");
+            }
+            this.secretEnvironmentVariables = secretEnvironmentVariables;
             return this;
         }
         public Builder secretEnvironmentVariables(GetFunctionServiceConfigSecretEnvironmentVariable... secretEnvironmentVariables) {
@@ -189,7 +220,10 @@ public final class GetFunctionServiceConfig {
         }
         @CustomType.Setter
         public Builder secretVolumes(List<GetFunctionServiceConfigSecretVolume> secretVolumes) {
-            this.secretVolumes = Objects.requireNonNull(secretVolumes);
+            if (secretVolumes == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "secretVolumes");
+            }
+            this.secretVolumes = secretVolumes;
             return this;
         }
         public Builder secretVolumes(GetFunctionServiceConfigSecretVolume... secretVolumes) {
@@ -197,32 +231,50 @@ public final class GetFunctionServiceConfig {
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "service");
+            }
+            this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
-            this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
+            if (serviceAccountEmail == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "serviceAccountEmail");
+            }
+            this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(Integer timeoutSeconds) {
-            this.timeoutSeconds = Objects.requireNonNull(timeoutSeconds);
+            if (timeoutSeconds == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "timeoutSeconds");
+            }
+            this.timeoutSeconds = timeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         @CustomType.Setter
         public Builder vpcConnector(String vpcConnector) {
-            this.vpcConnector = Objects.requireNonNull(vpcConnector);
+            if (vpcConnector == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "vpcConnector");
+            }
+            this.vpcConnector = vpcConnector;
             return this;
         }
         @CustomType.Setter
         public Builder vpcConnectorEgressSettings(String vpcConnectorEgressSettings) {
-            this.vpcConnectorEgressSettings = Objects.requireNonNull(vpcConnectorEgressSettings);
+            if (vpcConnectorEgressSettings == null) {
+              throw new MissingRequiredPropertyException("GetFunctionServiceConfig", "vpcConnectorEgressSettings");
+            }
+            this.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
             return this;
         }
         public GetFunctionServiceConfig build() {

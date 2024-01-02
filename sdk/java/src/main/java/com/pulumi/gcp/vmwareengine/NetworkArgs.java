@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -240,8 +241,12 @@ public final class NetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NetworkArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("NetworkArgs", "location");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("NetworkArgs", "type");
+            }
             return $;
         }
     }

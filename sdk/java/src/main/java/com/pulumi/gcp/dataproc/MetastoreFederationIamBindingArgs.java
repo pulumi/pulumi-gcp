@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreFederationIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -271,9 +272,15 @@ public final class MetastoreFederationIamBindingArgs extends com.pulumi.resource
         }
 
         public MetastoreFederationIamBindingArgs build() {
-            $.federationId = Objects.requireNonNull($.federationId, "expected parameter 'federationId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.federationId == null) {
+                throw new MissingRequiredPropertyException("MetastoreFederationIamBindingArgs", "federationId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("MetastoreFederationIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("MetastoreFederationIamBindingArgs", "role");
+            }
             return $;
         }
     }

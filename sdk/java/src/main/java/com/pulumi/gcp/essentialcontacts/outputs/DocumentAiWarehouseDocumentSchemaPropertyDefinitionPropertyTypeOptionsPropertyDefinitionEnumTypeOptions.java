@@ -4,6 +4,7 @@
 package com.pulumi.gcp.essentialcontacts.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -64,7 +65,10 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
 
         @CustomType.Setter
         public Builder possibleValues(List<String> possibleValues) {
-            this.possibleValues = Objects.requireNonNull(possibleValues);
+            if (possibleValues == null) {
+              throw new MissingRequiredPropertyException("DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions", "possibleValues");
+            }
+            this.possibleValues = possibleValues;
             return this;
         }
         public Builder possibleValues(String... possibleValues) {
@@ -72,6 +76,7 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
         }
         @CustomType.Setter
         public Builder validationCheckDisabled(@Nullable Boolean validationCheckDisabled) {
+
             this.validationCheckDisabled = validationCheckDisabled;
             return this;
         }

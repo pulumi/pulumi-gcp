@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeo;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyPrimaryBackupPrimary;
 import java.lang.Boolean;
@@ -94,7 +95,10 @@ public final class RecordSetRoutingPolicyPrimaryBackup {
 
         @CustomType.Setter
         public Builder backupGeos(List<RecordSetRoutingPolicyPrimaryBackupBackupGeo> backupGeos) {
-            this.backupGeos = Objects.requireNonNull(backupGeos);
+            if (backupGeos == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackup", "backupGeos");
+            }
+            this.backupGeos = backupGeos;
             return this;
         }
         public Builder backupGeos(RecordSetRoutingPolicyPrimaryBackupBackupGeo... backupGeos) {
@@ -102,16 +106,21 @@ public final class RecordSetRoutingPolicyPrimaryBackup {
         }
         @CustomType.Setter
         public Builder enableGeoFencingForBackups(@Nullable Boolean enableGeoFencingForBackups) {
+
             this.enableGeoFencingForBackups = enableGeoFencingForBackups;
             return this;
         }
         @CustomType.Setter
         public Builder primary(RecordSetRoutingPolicyPrimaryBackupPrimary primary) {
-            this.primary = Objects.requireNonNull(primary);
+            if (primary == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackup", "primary");
+            }
+            this.primary = primary;
             return this;
         }
         @CustomType.Setter
         public Builder trickleRatio(@Nullable Double trickleRatio) {
+
             this.trickleRatio = trickleRatio;
             return this;
         }

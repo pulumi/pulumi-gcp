@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessDatasetDatasetArgs;
 import java.lang.String;
 import java.util.List;
@@ -132,8 +133,12 @@ public final class DatasetAccessDatasetArgs extends com.pulumi.resources.Resourc
         }
 
         public DatasetAccessDatasetArgs build() {
-            $.dataset = Objects.requireNonNull($.dataset, "expected parameter 'dataset' to be non-null");
-            $.targetTypes = Objects.requireNonNull($.targetTypes, "expected parameter 'targetTypes' to be non-null");
+            if ($.dataset == null) {
+                throw new MissingRequiredPropertyException("DatasetAccessDatasetArgs", "dataset");
+            }
+            if ($.targetTypes == null) {
+                throw new MissingRequiredPropertyException("DatasetAccessDatasetArgs", "targetTypes");
+            }
             return $;
         }
     }

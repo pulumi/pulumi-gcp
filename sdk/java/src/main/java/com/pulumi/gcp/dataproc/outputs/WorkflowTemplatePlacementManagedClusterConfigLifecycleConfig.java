@@ -86,21 +86,25 @@ public final class WorkflowTemplatePlacementManagedClusterConfigLifecycleConfig 
 
         @CustomType.Setter
         public Builder autoDeleteTime(@Nullable String autoDeleteTime) {
+
             this.autoDeleteTime = autoDeleteTime;
             return this;
         }
         @CustomType.Setter
         public Builder autoDeleteTtl(@Nullable String autoDeleteTtl) {
+
             this.autoDeleteTtl = autoDeleteTtl;
             return this;
         }
         @CustomType.Setter
         public Builder idleDeleteTtl(@Nullable String idleDeleteTtl) {
+
             this.idleDeleteTtl = idleDeleteTtl;
             return this;
         }
         @CustomType.Setter
         public Builder idleStartTime(@Nullable String idleStartTime) {
+
             this.idleStartTime = idleStartTime;
             return this;
         }

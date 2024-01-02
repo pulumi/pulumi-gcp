@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,32 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
 
         @CustomType.Setter
         public Builder deployment(String deployment) {
-            this.deployment = Objects.requireNonNull(deployment);
+            if (deployment == null) {
+              throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh", "deployment");
+            }
+            this.deployment = deployment;
             return this;
         }
         @CustomType.Setter
         public Builder httpRoute(String httpRoute) {
-            this.httpRoute = Objects.requireNonNull(httpRoute);
+            if (httpRoute == null) {
+              throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh", "httpRoute");
+            }
+            this.httpRoute = httpRoute;
             return this;
         }
         @CustomType.Setter
         public Builder routeUpdateWaitTime(@Nullable String routeUpdateWaitTime) {
+
             this.routeUpdateWaitTime = routeUpdateWaitTime;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh", "service");
+            }
+            this.service = service;
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh build() {

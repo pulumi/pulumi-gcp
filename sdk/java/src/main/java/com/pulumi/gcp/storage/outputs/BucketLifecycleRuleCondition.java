@@ -201,31 +201,37 @@ public final class BucketLifecycleRuleCondition {
 
         @CustomType.Setter
         public Builder age(@Nullable Integer age) {
+
             this.age = age;
             return this;
         }
         @CustomType.Setter
         public Builder createdBefore(@Nullable String createdBefore) {
+
             this.createdBefore = createdBefore;
             return this;
         }
         @CustomType.Setter
         public Builder customTimeBefore(@Nullable String customTimeBefore) {
+
             this.customTimeBefore = customTimeBefore;
             return this;
         }
         @CustomType.Setter
         public Builder daysSinceCustomTime(@Nullable Integer daysSinceCustomTime) {
+
             this.daysSinceCustomTime = daysSinceCustomTime;
             return this;
         }
         @CustomType.Setter
         public Builder daysSinceNoncurrentTime(@Nullable Integer daysSinceNoncurrentTime) {
+
             this.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
             return this;
         }
         @CustomType.Setter
         public Builder matchesPrefixes(@Nullable List<String> matchesPrefixes) {
+
             this.matchesPrefixes = matchesPrefixes;
             return this;
         }
@@ -234,6 +240,7 @@ public final class BucketLifecycleRuleCondition {
         }
         @CustomType.Setter
         public Builder matchesStorageClasses(@Nullable List<String> matchesStorageClasses) {
+
             this.matchesStorageClasses = matchesStorageClasses;
             return this;
         }
@@ -242,6 +249,7 @@ public final class BucketLifecycleRuleCondition {
         }
         @CustomType.Setter
         public Builder matchesSuffixes(@Nullable List<String> matchesSuffixes) {
+
             this.matchesSuffixes = matchesSuffixes;
             return this;
         }
@@ -250,21 +258,25 @@ public final class BucketLifecycleRuleCondition {
         }
         @CustomType.Setter
         public Builder noAge(@Nullable Boolean noAge) {
+
             this.noAge = noAge;
             return this;
         }
         @CustomType.Setter
         public Builder noncurrentTimeBefore(@Nullable String noncurrentTimeBefore) {
+
             this.noncurrentTimeBefore = noncurrentTimeBefore;
             return this;
         }
         @CustomType.Setter
         public Builder numNewerVersions(@Nullable Integer numNewerVersions) {
+
             this.numNewerVersions = numNewerVersions;
             return this;
         }
         @CustomType.Setter
         public Builder withState(@Nullable String withState) {
+
             this.withState = withState;
             return this;
         }

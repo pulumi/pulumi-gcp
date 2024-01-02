@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,22 +87,28 @@ public final class ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork {
 
         @CustomType.Setter
         public Builder expireTime(@Nullable String expireTime) {
+
             this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder label(@Nullable String label) {
+
             this.label = label;
             return this;
         }
         @CustomType.Setter
         public Builder ttl(@Nullable String ttl) {
+
             this.ttl = ttl;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork", "value");
+            }
+            this.value = value;
             return this;
         }
         public ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork build() {

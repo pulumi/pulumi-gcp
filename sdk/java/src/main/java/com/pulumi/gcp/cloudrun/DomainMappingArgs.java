@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.inputs.DomainMappingMetadataArgs;
 import com.pulumi.gcp.cloudrun.inputs.DomainMappingSpecArgs;
 import java.lang.String;
@@ -238,8 +239,12 @@ public final class DomainMappingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainMappingArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.spec = Objects.requireNonNull($.spec, "expected parameter 'spec' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("DomainMappingArgs", "location");
+            }
+            if ($.spec == null) {
+                throw new MissingRequiredPropertyException("DomainMappingArgs", "spec");
+            }
             return $;
         }
     }

@@ -50,6 +50,7 @@ public final class SecretReplicationAuto {
 
         @CustomType.Setter
         public Builder customerManagedEncryption(@Nullable SecretReplicationAutoCustomerManagedEncryption customerManagedEncryption) {
+
             this.customerManagedEncryption = customerManagedEncryption;
             return this;
         }

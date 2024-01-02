@@ -151,26 +151,31 @@ public final class SloWindowsBasedSli {
 
         @CustomType.Setter
         public Builder goodBadMetricFilter(@Nullable String goodBadMetricFilter) {
+
             this.goodBadMetricFilter = goodBadMetricFilter;
             return this;
         }
         @CustomType.Setter
         public Builder goodTotalRatioThreshold(@Nullable SloWindowsBasedSliGoodTotalRatioThreshold goodTotalRatioThreshold) {
+
             this.goodTotalRatioThreshold = goodTotalRatioThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder metricMeanInRange(@Nullable SloWindowsBasedSliMetricMeanInRange metricMeanInRange) {
+
             this.metricMeanInRange = metricMeanInRange;
             return this;
         }
         @CustomType.Setter
         public Builder metricSumInRange(@Nullable SloWindowsBasedSliMetricSumInRange metricSumInRange) {
+
             this.metricSumInRange = metricSumInRange;
             return this;
         }
         @CustomType.Setter
         public Builder windowPeriod(@Nullable String windowPeriod) {
+
             this.windowPeriod = windowPeriod;
             return this;
         }

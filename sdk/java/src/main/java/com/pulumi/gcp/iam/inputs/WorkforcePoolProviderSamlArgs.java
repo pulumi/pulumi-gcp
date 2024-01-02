@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -122,7 +123,9 @@ public final class WorkforcePoolProviderSamlArgs extends com.pulumi.resources.Re
         }
 
         public WorkforcePoolProviderSamlArgs build() {
-            $.idpMetadataXml = Objects.requireNonNull($.idpMetadataXml, "expected parameter 'idpMetadataXml' to be non-null");
+            if ($.idpMetadataXml == null) {
+                throw new MissingRequiredPropertyException("WorkforcePoolProviderSamlArgs", "idpMetadataXml");
+            }
             return $;
         }
     }

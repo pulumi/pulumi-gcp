@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.inputs.ServiceMetadataArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTemplateArgs;
 import com.pulumi.gcp.cloudrun.inputs.ServiceTrafficArgs;
@@ -399,7 +400,9 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServiceArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ServiceArgs", "location");
+            }
             return $;
         }
     }

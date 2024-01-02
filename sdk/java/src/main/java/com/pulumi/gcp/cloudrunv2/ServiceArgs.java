@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceBinaryAuthorizationArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTrafficArgs;
@@ -660,8 +661,12 @@ public final class ServiceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ServiceArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.template = Objects.requireNonNull($.template, "expected parameter 'template' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ServiceArgs", "location");
+            }
+            if ($.template == null) {
+                throw new MissingRequiredPropertyException("ServiceArgs", "template");
+            }
             return $;
         }
     }

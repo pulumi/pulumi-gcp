@@ -98,21 +98,25 @@ public final class HostingCustomDomainRequiredDnsUpdateDiscoveredRecord {
 
         @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
+
             this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder rdata(@Nullable String rdata) {
+
             this.rdata = rdata;
             return this;
         }
         @CustomType.Setter
         public Builder requiredAction(@Nullable String requiredAction) {
+
             this.requiredAction = requiredAction;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

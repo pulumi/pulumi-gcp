@@ -54,21 +54,25 @@ public final class AssetDiscoveryStatusStat {
 
         @CustomType.Setter
         public Builder dataItems(@Nullable Integer dataItems) {
+
             this.dataItems = dataItems;
             return this;
         }
         @CustomType.Setter
         public Builder dataSize(@Nullable Integer dataSize) {
+
             this.dataSize = dataSize;
             return this;
         }
         @CustomType.Setter
         public Builder filesets(@Nullable Integer filesets) {
+
             this.filesets = filesets;
             return this;
         }
         @CustomType.Setter
         public Builder tables(@Nullable Integer tables) {
+
             this.tables = tables;
             return this;
         }

@@ -62,11 +62,13 @@ public final class CertificateRevocationDetail {
 
         @CustomType.Setter
         public Builder revocationState(@Nullable String revocationState) {
+
             this.revocationState = revocationState;
             return this;
         }
         @CustomType.Setter
         public Builder revocationTime(@Nullable String revocationTime) {
+
             this.revocationTime = revocationTime;
             return this;
         }

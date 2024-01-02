@@ -5,6 +5,7 @@ package com.pulumi.gcp.serviceaccount.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -199,8 +200,12 @@ public final class GetAccountJwtArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetAccountJwtArgs build() {
-            $.payload = Objects.requireNonNull($.payload, "expected parameter 'payload' to be non-null");
-            $.targetServiceAccount = Objects.requireNonNull($.targetServiceAccount, "expected parameter 'targetServiceAccount' to be non-null");
+            if ($.payload == null) {
+                throw new MissingRequiredPropertyException("GetAccountJwtArgs", "payload");
+            }
+            if ($.targetServiceAccount == null) {
+                throw new MissingRequiredPropertyException("GetAccountJwtArgs", "targetServiceAccount");
+            }
             return $;
         }
     }

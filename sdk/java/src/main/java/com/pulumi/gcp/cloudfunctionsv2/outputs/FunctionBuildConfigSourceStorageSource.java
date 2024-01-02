@@ -75,16 +75,19 @@ public final class FunctionBuildConfigSourceStorageSource {
 
         @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
+
             this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder generation(@Nullable Integer generation) {
+
             this.generation = generation;
             return this;
         }
         @CustomType.Setter
         public Builder object(@Nullable String object) {
+
             this.object = object;
             return this;
         }

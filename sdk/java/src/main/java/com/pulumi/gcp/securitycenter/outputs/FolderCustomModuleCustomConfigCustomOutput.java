@@ -46,6 +46,7 @@ public final class FolderCustomModuleCustomConfigCustomOutput {
 
         @CustomType.Setter
         public Builder properties(@Nullable List<FolderCustomModuleCustomConfigCustomOutputProperty> properties) {
+
             this.properties = properties;
             return this;
         }

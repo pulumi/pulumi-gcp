@@ -78,16 +78,19 @@ public final class ServiceTemplateSpecContainerEnvFrom {
 
         @CustomType.Setter
         public Builder configMapRef(@Nullable ServiceTemplateSpecContainerEnvFromConfigMapRef configMapRef) {
+
             this.configMapRef = configMapRef;
             return this;
         }
         @CustomType.Setter
         public Builder prefix(@Nullable String prefix) {
+
             this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder secretRef(@Nullable ServiceTemplateSpecContainerEnvFromSecretRef secretRef) {
+
             this.secretRef = secretRef;
             return this;
         }

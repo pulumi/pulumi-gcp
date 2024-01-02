@@ -105,11 +105,13 @@ public final class ApiKeyRestrictions {
 
         @CustomType.Setter
         public Builder androidKeyRestrictions(@Nullable ApiKeyRestrictionsAndroidKeyRestrictions androidKeyRestrictions) {
+
             this.androidKeyRestrictions = androidKeyRestrictions;
             return this;
         }
         @CustomType.Setter
         public Builder apiTargets(@Nullable List<ApiKeyRestrictionsApiTarget> apiTargets) {
+
             this.apiTargets = apiTargets;
             return this;
         }
@@ -118,16 +120,19 @@ public final class ApiKeyRestrictions {
         }
         @CustomType.Setter
         public Builder browserKeyRestrictions(@Nullable ApiKeyRestrictionsBrowserKeyRestrictions browserKeyRestrictions) {
+
             this.browserKeyRestrictions = browserKeyRestrictions;
             return this;
         }
         @CustomType.Setter
         public Builder iosKeyRestrictions(@Nullable ApiKeyRestrictionsIosKeyRestrictions iosKeyRestrictions) {
+
             this.iosKeyRestrictions = iosKeyRestrictions;
             return this;
         }
         @CustomType.Setter
         public Builder serverKeyRestrictions(@Nullable ApiKeyRestrictionsServerKeyRestrictions serverKeyRestrictions) {
+
             this.serverKeyRestrictions = serverKeyRestrictions;
             return this;
         }

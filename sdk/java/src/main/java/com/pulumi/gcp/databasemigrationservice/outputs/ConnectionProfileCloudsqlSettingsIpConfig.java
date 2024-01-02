@@ -93,6 +93,7 @@ public final class ConnectionProfileCloudsqlSettingsIpConfig {
 
         @CustomType.Setter
         public Builder authorizedNetworks(@Nullable List<ConnectionProfileCloudsqlSettingsIpConfigAuthorizedNetwork> authorizedNetworks) {
+
             this.authorizedNetworks = authorizedNetworks;
             return this;
         }
@@ -101,16 +102,19 @@ public final class ConnectionProfileCloudsqlSettingsIpConfig {
         }
         @CustomType.Setter
         public Builder enableIpv4(@Nullable Boolean enableIpv4) {
+
             this.enableIpv4 = enableIpv4;
             return this;
         }
         @CustomType.Setter
         public Builder privateNetwork(@Nullable String privateNetwork) {
+
             this.privateNetwork = privateNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder requireSsl(@Nullable Boolean requireSsl) {
+
             this.requireSsl = requireSsl;
             return this;
         }

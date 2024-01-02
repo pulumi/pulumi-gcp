@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datacatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.outputs.TagTemplateFieldTypeEnumTypeAllowedValue;
 import java.util.List;
 import java.util.Objects;
@@ -53,7 +54,10 @@ public final class TagTemplateFieldTypeEnumType {
 
         @CustomType.Setter
         public Builder allowedValues(List<TagTemplateFieldTypeEnumTypeAllowedValue> allowedValues) {
-            this.allowedValues = Objects.requireNonNull(allowedValues);
+            if (allowedValues == null) {
+              throw new MissingRequiredPropertyException("TagTemplateFieldTypeEnumType", "allowedValues");
+            }
+            this.allowedValues = allowedValues;
             return this;
         }
         public Builder allowedValues(TagTemplateFieldTypeEnumTypeAllowedValue... allowedValues) {

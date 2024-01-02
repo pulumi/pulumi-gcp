@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class ApiKeyRestrictionsBrowserKeyRestrictions {
 
         @CustomType.Setter
         public Builder allowedReferrers(List<String> allowedReferrers) {
-            this.allowedReferrers = Objects.requireNonNull(allowedReferrers);
+            if (allowedReferrers == null) {
+              throw new MissingRequiredPropertyException("ApiKeyRestrictionsBrowserKeyRestrictions", "allowedReferrers");
+            }
+            this.allowedReferrers = allowedReferrers;
             return this;
         }
         public Builder allowedReferrers(String... allowedReferrers) {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -244,7 +245,9 @@ public final class FlexibleAppVersionApiConfigArgs extends com.pulumi.resources.
         }
 
         public FlexibleAppVersionApiConfigArgs build() {
-            $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("FlexibleAppVersionApiConfigArgs", "script");
+            }
             return $;
         }
     }

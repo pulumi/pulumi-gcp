@@ -64,11 +64,13 @@ public final class FleetDefaultClusterConfigBinaryAuthorizationConfig {
 
         @CustomType.Setter
         public Builder evaluationMode(@Nullable String evaluationMode) {
+
             this.evaluationMode = evaluationMode;
             return this;
         }
         @CustomType.Setter
         public Builder policyBindings(@Nullable List<FleetDefaultClusterConfigBinaryAuthorizationConfigPolicyBinding> policyBindings) {
+
             this.policyBindings = policyBindings;
             return this;
         }

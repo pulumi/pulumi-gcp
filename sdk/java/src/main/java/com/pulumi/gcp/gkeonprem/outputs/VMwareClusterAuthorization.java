@@ -48,6 +48,7 @@ public final class VMwareClusterAuthorization {
 
         @CustomType.Setter
         public Builder adminUsers(@Nullable List<VMwareClusterAuthorizationAdminUser> adminUsers) {
+
             this.adminUsers = adminUsers;
             return this;
         }

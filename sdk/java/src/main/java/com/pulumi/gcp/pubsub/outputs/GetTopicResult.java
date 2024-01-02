@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetTopicMessageStoragePolicy;
 import com.pulumi.gcp.pubsub.outputs.GetTopicSchemaSetting;
 import java.lang.String;
@@ -102,32 +103,50 @@ public final class GetTopicResult {
 
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder messageRetentionDuration(String messageRetentionDuration) {
-            this.messageRetentionDuration = Objects.requireNonNull(messageRetentionDuration);
+            if (messageRetentionDuration == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "messageRetentionDuration");
+            }
+            this.messageRetentionDuration = messageRetentionDuration;
             return this;
         }
         @CustomType.Setter
         public Builder messageStoragePolicies(List<GetTopicMessageStoragePolicy> messageStoragePolicies) {
-            this.messageStoragePolicies = Objects.requireNonNull(messageStoragePolicies);
+            if (messageStoragePolicies == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "messageStoragePolicies");
+            }
+            this.messageStoragePolicies = messageStoragePolicies;
             return this;
         }
         public Builder messageStoragePolicies(GetTopicMessageStoragePolicy... messageStoragePolicies) {
@@ -135,22 +154,32 @@ public final class GetTopicResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder schemaSettings(List<GetTopicSchemaSetting> schemaSettings) {
-            this.schemaSettings = Objects.requireNonNull(schemaSettings);
+            if (schemaSettings == null) {
+              throw new MissingRequiredPropertyException("GetTopicResult", "schemaSettings");
+            }
+            this.schemaSettings = schemaSettings;
             return this;
         }
         public Builder schemaSettings(GetTopicSchemaSetting... schemaSettings) {

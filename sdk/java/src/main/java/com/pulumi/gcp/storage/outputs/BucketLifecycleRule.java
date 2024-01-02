@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.outputs.BucketLifecycleRuleAction;
 import com.pulumi.gcp.storage.outputs.BucketLifecycleRuleCondition;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class BucketLifecycleRule {
 
         @CustomType.Setter
         public Builder action(BucketLifecycleRuleAction action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("BucketLifecycleRule", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder condition(BucketLifecycleRuleCondition condition) {
-            this.condition = Objects.requireNonNull(condition);
+            if (condition == null) {
+              throw new MissingRequiredPropertyException("BucketLifecycleRule", "condition");
+            }
+            this.condition = condition;
             return this;
         }
         public BucketLifecycleRule build() {

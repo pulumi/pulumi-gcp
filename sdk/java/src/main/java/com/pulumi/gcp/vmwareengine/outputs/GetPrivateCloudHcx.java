@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -52,22 +53,34 @@ public final class GetPrivateCloudHcx {
 
         @CustomType.Setter
         public Builder fqdn(String fqdn) {
-            this.fqdn = Objects.requireNonNull(fqdn);
+            if (fqdn == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudHcx", "fqdn");
+            }
+            this.fqdn = fqdn;
             return this;
         }
         @CustomType.Setter
         public Builder internalIp(String internalIp) {
-            this.internalIp = Objects.requireNonNull(internalIp);
+            if (internalIp == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudHcx", "internalIp");
+            }
+            this.internalIp = internalIp;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudHcx", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetPrivateCloudHcx", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetPrivateCloudHcx build() {

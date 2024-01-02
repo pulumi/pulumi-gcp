@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceClone;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceIpAddress;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceReplicaConfiguration;
@@ -210,7 +211,10 @@ public final class GetDatabaseInstancesInstance {
 
         @CustomType.Setter
         public Builder availableMaintenanceVersions(List<String> availableMaintenanceVersions) {
-            this.availableMaintenanceVersions = Objects.requireNonNull(availableMaintenanceVersions);
+            if (availableMaintenanceVersions == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "availableMaintenanceVersions");
+            }
+            this.availableMaintenanceVersions = availableMaintenanceVersions;
             return this;
         }
         public Builder availableMaintenanceVersions(String... availableMaintenanceVersions) {
@@ -218,7 +222,10 @@ public final class GetDatabaseInstancesInstance {
         }
         @CustomType.Setter
         public Builder clones(List<GetDatabaseInstancesInstanceClone> clones) {
-            this.clones = Objects.requireNonNull(clones);
+            if (clones == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "clones");
+            }
+            this.clones = clones;
             return this;
         }
         public Builder clones(GetDatabaseInstancesInstanceClone... clones) {
@@ -226,42 +233,66 @@ public final class GetDatabaseInstancesInstance {
         }
         @CustomType.Setter
         public Builder connectionName(String connectionName) {
-            this.connectionName = Objects.requireNonNull(connectionName);
+            if (connectionName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "connectionName");
+            }
+            this.connectionName = connectionName;
             return this;
         }
         @CustomType.Setter
         public Builder databaseVersion(String databaseVersion) {
-            this.databaseVersion = Objects.requireNonNull(databaseVersion);
+            if (databaseVersion == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "databaseVersion");
+            }
+            this.databaseVersion = databaseVersion;
             return this;
         }
         @CustomType.Setter
         public Builder deletionProtection(Boolean deletionProtection) {
-            this.deletionProtection = Objects.requireNonNull(deletionProtection);
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
         public Builder dnsName(String dnsName) {
-            this.dnsName = Objects.requireNonNull(dnsName);
+            if (dnsName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "dnsName");
+            }
+            this.dnsName = dnsName;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionKeyName(String encryptionKeyName) {
-            this.encryptionKeyName = Objects.requireNonNull(encryptionKeyName);
+            if (encryptionKeyName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "encryptionKeyName");
+            }
+            this.encryptionKeyName = encryptionKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder firstIpAddress(String firstIpAddress) {
-            this.firstIpAddress = Objects.requireNonNull(firstIpAddress);
+            if (firstIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "firstIpAddress");
+            }
+            this.firstIpAddress = firstIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(String instanceType) {
-            this.instanceType = Objects.requireNonNull(instanceType);
+            if (instanceType == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "instanceType");
+            }
+            this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddresses(List<GetDatabaseInstancesInstanceIpAddress> ipAddresses) {
-            this.ipAddresses = Objects.requireNonNull(ipAddresses);
+            if (ipAddresses == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "ipAddresses");
+            }
+            this.ipAddresses = ipAddresses;
             return this;
         }
         public Builder ipAddresses(GetDatabaseInstancesInstanceIpAddress... ipAddresses) {
@@ -269,47 +300,74 @@ public final class GetDatabaseInstancesInstance {
         }
         @CustomType.Setter
         public Builder maintenanceVersion(String maintenanceVersion) {
-            this.maintenanceVersion = Objects.requireNonNull(maintenanceVersion);
+            if (maintenanceVersion == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "maintenanceVersion");
+            }
+            this.maintenanceVersion = maintenanceVersion;
             return this;
         }
         @CustomType.Setter
         public Builder masterInstanceName(String masterInstanceName) {
-            this.masterInstanceName = Objects.requireNonNull(masterInstanceName);
+            if (masterInstanceName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "masterInstanceName");
+            }
+            this.masterInstanceName = masterInstanceName;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder privateIpAddress(String privateIpAddress) {
-            this.privateIpAddress = Objects.requireNonNull(privateIpAddress);
+            if (privateIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "privateIpAddress");
+            }
+            this.privateIpAddress = privateIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pscServiceAttachmentLink(String pscServiceAttachmentLink) {
-            this.pscServiceAttachmentLink = Objects.requireNonNull(pscServiceAttachmentLink);
+            if (pscServiceAttachmentLink == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "pscServiceAttachmentLink");
+            }
+            this.pscServiceAttachmentLink = pscServiceAttachmentLink;
             return this;
         }
         @CustomType.Setter
         public Builder publicIpAddress(String publicIpAddress) {
-            this.publicIpAddress = Objects.requireNonNull(publicIpAddress);
+            if (publicIpAddress == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "publicIpAddress");
+            }
+            this.publicIpAddress = publicIpAddress;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder replicaConfigurations(List<GetDatabaseInstancesInstanceReplicaConfiguration> replicaConfigurations) {
-            this.replicaConfigurations = Objects.requireNonNull(replicaConfigurations);
+            if (replicaConfigurations == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "replicaConfigurations");
+            }
+            this.replicaConfigurations = replicaConfigurations;
             return this;
         }
         public Builder replicaConfigurations(GetDatabaseInstancesInstanceReplicaConfiguration... replicaConfigurations) {
@@ -317,7 +375,10 @@ public final class GetDatabaseInstancesInstance {
         }
         @CustomType.Setter
         public Builder restoreBackupContexts(List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts) {
-            this.restoreBackupContexts = Objects.requireNonNull(restoreBackupContexts);
+            if (restoreBackupContexts == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "restoreBackupContexts");
+            }
+            this.restoreBackupContexts = restoreBackupContexts;
             return this;
         }
         public Builder restoreBackupContexts(GetDatabaseInstancesInstanceRestoreBackupContext... restoreBackupContexts) {
@@ -325,17 +386,26 @@ public final class GetDatabaseInstancesInstance {
         }
         @CustomType.Setter
         public Builder rootPassword(String rootPassword) {
-            this.rootPassword = Objects.requireNonNull(rootPassword);
+            if (rootPassword == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "rootPassword");
+            }
+            this.rootPassword = rootPassword;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder serverCaCerts(List<GetDatabaseInstancesInstanceServerCaCert> serverCaCerts) {
-            this.serverCaCerts = Objects.requireNonNull(serverCaCerts);
+            if (serverCaCerts == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "serverCaCerts");
+            }
+            this.serverCaCerts = serverCaCerts;
             return this;
         }
         public Builder serverCaCerts(GetDatabaseInstancesInstanceServerCaCert... serverCaCerts) {
@@ -343,12 +413,18 @@ public final class GetDatabaseInstancesInstance {
         }
         @CustomType.Setter
         public Builder serviceAccountEmailAddress(String serviceAccountEmailAddress) {
-            this.serviceAccountEmailAddress = Objects.requireNonNull(serviceAccountEmailAddress);
+            if (serviceAccountEmailAddress == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "serviceAccountEmailAddress");
+            }
+            this.serviceAccountEmailAddress = serviceAccountEmailAddress;
             return this;
         }
         @CustomType.Setter
         public Builder settings(List<GetDatabaseInstancesInstanceSetting> settings) {
-            this.settings = Objects.requireNonNull(settings);
+            if (settings == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "settings");
+            }
+            this.settings = settings;
             return this;
         }
         public Builder settings(GetDatabaseInstancesInstanceSetting... settings) {

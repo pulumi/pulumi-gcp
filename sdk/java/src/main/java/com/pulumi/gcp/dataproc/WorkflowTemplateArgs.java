@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateParameterArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplatePlacementArgs;
@@ -414,9 +415,15 @@ public final class WorkflowTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         public WorkflowTemplateArgs build() {
-            $.jobs = Objects.requireNonNull($.jobs, "expected parameter 'jobs' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.placement = Objects.requireNonNull($.placement, "expected parameter 'placement' to be non-null");
+            if ($.jobs == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplateArgs", "jobs");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplateArgs", "location");
+            }
+            if ($.placement == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplateArgs", "placement");
+            }
             return $;
         }
     }

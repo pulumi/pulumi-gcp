@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedFieldArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingFieldArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedFieldArgs;
@@ -391,7 +392,9 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArg
         }
 
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs build() {
-            $.tableReference = Objects.requireNonNull($.tableReference, "expected parameter 'tableReference' to be non-null");
+            if ($.tableReference == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsArgs", "tableReference");
+            }
             return $;
         }
     }

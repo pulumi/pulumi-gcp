@@ -148,11 +148,13 @@ public final class DatabaseInstanceSettingsIpConfiguration {
 
         @CustomType.Setter
         public Builder allocatedIpRange(@Nullable String allocatedIpRange) {
+
             this.allocatedIpRange = allocatedIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder authorizedNetworks(@Nullable List<DatabaseInstanceSettingsIpConfigurationAuthorizedNetwork> authorizedNetworks) {
+
             this.authorizedNetworks = authorizedNetworks;
             return this;
         }
@@ -161,21 +163,25 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         }
         @CustomType.Setter
         public Builder enablePrivatePathForGoogleCloudServices(@Nullable Boolean enablePrivatePathForGoogleCloudServices) {
+
             this.enablePrivatePathForGoogleCloudServices = enablePrivatePathForGoogleCloudServices;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4Enabled(@Nullable Boolean ipv4Enabled) {
+
             this.ipv4Enabled = ipv4Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder privateNetwork(@Nullable String privateNetwork) {
+
             this.privateNetwork = privateNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder pscConfigs(@Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs) {
+
             this.pscConfigs = pscConfigs;
             return this;
         }
@@ -184,11 +190,13 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         }
         @CustomType.Setter
         public Builder requireSsl(@Nullable Boolean requireSsl) {
+
             this.requireSsl = requireSsl;
             return this;
         }
         @CustomType.Setter
         public Builder sslMode(@Nullable String sslMode) {
+
             this.sslMode = sslMode;
             return this;
         }

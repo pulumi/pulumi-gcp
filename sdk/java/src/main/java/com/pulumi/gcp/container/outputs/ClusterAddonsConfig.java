@@ -317,61 +317,73 @@ public final class ClusterAddonsConfig {
 
         @CustomType.Setter
         public Builder cloudrunConfig(@Nullable ClusterAddonsConfigCloudrunConfig cloudrunConfig) {
+
             this.cloudrunConfig = cloudrunConfig;
             return this;
         }
         @CustomType.Setter
         public Builder configConnectorConfig(@Nullable ClusterAddonsConfigConfigConnectorConfig configConnectorConfig) {
+
             this.configConnectorConfig = configConnectorConfig;
             return this;
         }
         @CustomType.Setter
         public Builder dnsCacheConfig(@Nullable ClusterAddonsConfigDnsCacheConfig dnsCacheConfig) {
+
             this.dnsCacheConfig = dnsCacheConfig;
             return this;
         }
         @CustomType.Setter
         public Builder gcePersistentDiskCsiDriverConfig(@Nullable ClusterAddonsConfigGcePersistentDiskCsiDriverConfig gcePersistentDiskCsiDriverConfig) {
+
             this.gcePersistentDiskCsiDriverConfig = gcePersistentDiskCsiDriverConfig;
             return this;
         }
         @CustomType.Setter
         public Builder gcpFilestoreCsiDriverConfig(@Nullable ClusterAddonsConfigGcpFilestoreCsiDriverConfig gcpFilestoreCsiDriverConfig) {
+
             this.gcpFilestoreCsiDriverConfig = gcpFilestoreCsiDriverConfig;
             return this;
         }
         @CustomType.Setter
         public Builder gcsFuseCsiDriverConfig(@Nullable ClusterAddonsConfigGcsFuseCsiDriverConfig gcsFuseCsiDriverConfig) {
+
             this.gcsFuseCsiDriverConfig = gcsFuseCsiDriverConfig;
             return this;
         }
         @CustomType.Setter
         public Builder gkeBackupAgentConfig(@Nullable ClusterAddonsConfigGkeBackupAgentConfig gkeBackupAgentConfig) {
+
             this.gkeBackupAgentConfig = gkeBackupAgentConfig;
             return this;
         }
         @CustomType.Setter
         public Builder horizontalPodAutoscaling(@Nullable ClusterAddonsConfigHorizontalPodAutoscaling horizontalPodAutoscaling) {
+
             this.horizontalPodAutoscaling = horizontalPodAutoscaling;
             return this;
         }
         @CustomType.Setter
         public Builder httpLoadBalancing(@Nullable ClusterAddonsConfigHttpLoadBalancing httpLoadBalancing) {
+
             this.httpLoadBalancing = httpLoadBalancing;
             return this;
         }
         @CustomType.Setter
         public Builder istioConfig(@Nullable ClusterAddonsConfigIstioConfig istioConfig) {
+
             this.istioConfig = istioConfig;
             return this;
         }
         @CustomType.Setter
         public Builder kalmConfig(@Nullable ClusterAddonsConfigKalmConfig kalmConfig) {
+
             this.kalmConfig = kalmConfig;
             return this;
         }
         @CustomType.Setter
         public Builder networkPolicyConfig(@Nullable ClusterAddonsConfigNetworkPolicyConfig networkPolicyConfig) {
+
             this.networkPolicyConfig = networkPolicyConfig;
             return this;
         }

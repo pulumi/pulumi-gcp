@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader;
 import java.lang.Integer;
 import java.lang.String;
@@ -49,7 +50,10 @@ public final class GetServiceTemplateSpecContainerStartupProbeHttpGet {
 
         @CustomType.Setter
         public Builder httpHeaders(List<GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader> httpHeaders) {
-            this.httpHeaders = Objects.requireNonNull(httpHeaders);
+            if (httpHeaders == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerStartupProbeHttpGet", "httpHeaders");
+            }
+            this.httpHeaders = httpHeaders;
             return this;
         }
         public Builder httpHeaders(GetServiceTemplateSpecContainerStartupProbeHttpGetHttpHeader... httpHeaders) {
@@ -57,12 +61,18 @@ public final class GetServiceTemplateSpecContainerStartupProbeHttpGet {
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerStartupProbeHttpGet", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerStartupProbeHttpGet", "port");
+            }
+            this.port = port;
             return this;
         }
         public GetServiceTemplateSpecContainerStartupProbeHttpGet build() {

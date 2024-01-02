@@ -5,6 +5,7 @@ package com.pulumi.gcp.billing;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.billing.inputs.AccountIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -200,9 +201,15 @@ public final class AccountIamMemberArgs extends com.pulumi.resources.ResourceArg
         }
 
         public AccountIamMemberArgs build() {
-            $.billingAccountId = Objects.requireNonNull($.billingAccountId, "expected parameter 'billingAccountId' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.billingAccountId == null) {
+                throw new MissingRequiredPropertyException("AccountIamMemberArgs", "billingAccountId");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("AccountIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AccountIamMemberArgs", "role");
+            }
             return $;
         }
     }

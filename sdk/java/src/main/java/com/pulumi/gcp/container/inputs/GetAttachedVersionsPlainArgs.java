@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -93,8 +94,12 @@ public final class GetAttachedVersionsPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetAttachedVersionsPlainArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("GetAttachedVersionsPlainArgs", "location");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetAttachedVersionsPlainArgs", "project");
+            }
             return $;
         }
     }

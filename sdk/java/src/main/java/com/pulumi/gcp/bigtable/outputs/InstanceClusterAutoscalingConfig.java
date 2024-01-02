@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigtable.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,21 +91,31 @@ public final class InstanceClusterAutoscalingConfig {
 
         @CustomType.Setter
         public Builder cpuTarget(Integer cpuTarget) {
-            this.cpuTarget = Objects.requireNonNull(cpuTarget);
+            if (cpuTarget == null) {
+              throw new MissingRequiredPropertyException("InstanceClusterAutoscalingConfig", "cpuTarget");
+            }
+            this.cpuTarget = cpuTarget;
             return this;
         }
         @CustomType.Setter
         public Builder maxNodes(Integer maxNodes) {
-            this.maxNodes = Objects.requireNonNull(maxNodes);
+            if (maxNodes == null) {
+              throw new MissingRequiredPropertyException("InstanceClusterAutoscalingConfig", "maxNodes");
+            }
+            this.maxNodes = maxNodes;
             return this;
         }
         @CustomType.Setter
         public Builder minNodes(Integer minNodes) {
-            this.minNodes = Objects.requireNonNull(minNodes);
+            if (minNodes == null) {
+              throw new MissingRequiredPropertyException("InstanceClusterAutoscalingConfig", "minNodes");
+            }
+            this.minNodes = minNodes;
             return this;
         }
         @CustomType.Setter
         public Builder storageTarget(@Nullable Integer storageTarget) {
+
             this.storageTarget = storageTarget;
             return this;
         }

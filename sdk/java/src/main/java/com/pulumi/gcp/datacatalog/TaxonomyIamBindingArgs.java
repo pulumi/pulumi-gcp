@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.inputs.TaxonomyIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -267,9 +268,15 @@ public final class TaxonomyIamBindingArgs extends com.pulumi.resources.ResourceA
         }
 
         public TaxonomyIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.taxonomy = Objects.requireNonNull($.taxonomy, "expected parameter 'taxonomy' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("TaxonomyIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("TaxonomyIamBindingArgs", "role");
+            }
+            if ($.taxonomy == null) {
+                throw new MissingRequiredPropertyException("TaxonomyIamBindingArgs", "taxonomy");
+            }
             return $;
         }
     }

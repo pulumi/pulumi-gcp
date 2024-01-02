@@ -44,6 +44,7 @@ public final class BareMetalClusterClusterOperations {
 
         @CustomType.Setter
         public Builder enableApplicationLogs(@Nullable Boolean enableApplicationLogs) {
+
             this.enableApplicationLogs = enableApplicationLogs;
             return this;
         }

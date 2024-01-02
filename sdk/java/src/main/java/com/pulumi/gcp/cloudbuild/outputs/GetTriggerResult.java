@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerApprovalConfig;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBitbucketServerTriggerConfig;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuild;
@@ -207,7 +208,10 @@ public final class GetTriggerResult {
 
         @CustomType.Setter
         public Builder approvalConfigs(List<GetTriggerApprovalConfig> approvalConfigs) {
-            this.approvalConfigs = Objects.requireNonNull(approvalConfigs);
+            if (approvalConfigs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "approvalConfigs");
+            }
+            this.approvalConfigs = approvalConfigs;
             return this;
         }
         public Builder approvalConfigs(GetTriggerApprovalConfig... approvalConfigs) {
@@ -215,7 +219,10 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder bitbucketServerTriggerConfigs(List<GetTriggerBitbucketServerTriggerConfig> bitbucketServerTriggerConfigs) {
-            this.bitbucketServerTriggerConfigs = Objects.requireNonNull(bitbucketServerTriggerConfigs);
+            if (bitbucketServerTriggerConfigs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "bitbucketServerTriggerConfigs");
+            }
+            this.bitbucketServerTriggerConfigs = bitbucketServerTriggerConfigs;
             return this;
         }
         public Builder bitbucketServerTriggerConfigs(GetTriggerBitbucketServerTriggerConfig... bitbucketServerTriggerConfigs) {
@@ -223,7 +230,10 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder builds(List<GetTriggerBuild> builds) {
-            this.builds = Objects.requireNonNull(builds);
+            if (builds == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "builds");
+            }
+            this.builds = builds;
             return this;
         }
         public Builder builds(GetTriggerBuild... builds) {
@@ -231,32 +241,50 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder filename(String filename) {
-            this.filename = Objects.requireNonNull(filename);
+            if (filename == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "filename");
+            }
+            this.filename = filename;
             return this;
         }
         @CustomType.Setter
         public Builder filter(String filter) {
-            this.filter = Objects.requireNonNull(filter);
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "filter");
+            }
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder gitFileSources(List<GetTriggerGitFileSource> gitFileSources) {
-            this.gitFileSources = Objects.requireNonNull(gitFileSources);
+            if (gitFileSources == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "gitFileSources");
+            }
+            this.gitFileSources = gitFileSources;
             return this;
         }
         public Builder gitFileSources(GetTriggerGitFileSource... gitFileSources) {
@@ -264,7 +292,10 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder githubs(List<GetTriggerGithub> githubs) {
-            this.githubs = Objects.requireNonNull(githubs);
+            if (githubs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "githubs");
+            }
+            this.githubs = githubs;
             return this;
         }
         public Builder githubs(GetTriggerGithub... githubs) {
@@ -272,12 +303,18 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ignoredFiles(List<String> ignoredFiles) {
-            this.ignoredFiles = Objects.requireNonNull(ignoredFiles);
+            if (ignoredFiles == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "ignoredFiles");
+            }
+            this.ignoredFiles = ignoredFiles;
             return this;
         }
         public Builder ignoredFiles(String... ignoredFiles) {
@@ -285,12 +322,18 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder includeBuildLogs(String includeBuildLogs) {
-            this.includeBuildLogs = Objects.requireNonNull(includeBuildLogs);
+            if (includeBuildLogs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "includeBuildLogs");
+            }
+            this.includeBuildLogs = includeBuildLogs;
             return this;
         }
         @CustomType.Setter
         public Builder includedFiles(List<String> includedFiles) {
-            this.includedFiles = Objects.requireNonNull(includedFiles);
+            if (includedFiles == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "includedFiles");
+            }
+            this.includedFiles = includedFiles;
             return this;
         }
         public Builder includedFiles(String... includedFiles) {
@@ -298,22 +341,32 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pubsubConfigs(List<GetTriggerPubsubConfig> pubsubConfigs) {
-            this.pubsubConfigs = Objects.requireNonNull(pubsubConfigs);
+            if (pubsubConfigs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "pubsubConfigs");
+            }
+            this.pubsubConfigs = pubsubConfigs;
             return this;
         }
         public Builder pubsubConfigs(GetTriggerPubsubConfig... pubsubConfigs) {
@@ -321,7 +374,10 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder repositoryEventConfigs(List<GetTriggerRepositoryEventConfig> repositoryEventConfigs) {
-            this.repositoryEventConfigs = Objects.requireNonNull(repositoryEventConfigs);
+            if (repositoryEventConfigs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "repositoryEventConfigs");
+            }
+            this.repositoryEventConfigs = repositoryEventConfigs;
             return this;
         }
         public Builder repositoryEventConfigs(GetTriggerRepositoryEventConfig... repositoryEventConfigs) {
@@ -329,12 +385,18 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
-            this.serviceAccount = Objects.requireNonNull(serviceAccount);
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder sourceToBuilds(List<GetTriggerSourceToBuild> sourceToBuilds) {
-            this.sourceToBuilds = Objects.requireNonNull(sourceToBuilds);
+            if (sourceToBuilds == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "sourceToBuilds");
+            }
+            this.sourceToBuilds = sourceToBuilds;
             return this;
         }
         public Builder sourceToBuilds(GetTriggerSourceToBuild... sourceToBuilds) {
@@ -342,12 +404,18 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder substitutions(Map<String,String> substitutions) {
-            this.substitutions = Objects.requireNonNull(substitutions);
+            if (substitutions == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "substitutions");
+            }
+            this.substitutions = substitutions;
             return this;
         }
         @CustomType.Setter
         public Builder tags(List<String> tags) {
-            this.tags = Objects.requireNonNull(tags);
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "tags");
+            }
+            this.tags = tags;
             return this;
         }
         public Builder tags(String... tags) {
@@ -355,12 +423,18 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder triggerId(String triggerId) {
-            this.triggerId = Objects.requireNonNull(triggerId);
+            if (triggerId == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "triggerId");
+            }
+            this.triggerId = triggerId;
             return this;
         }
         @CustomType.Setter
         public Builder triggerTemplates(List<GetTriggerTriggerTemplate> triggerTemplates) {
-            this.triggerTemplates = Objects.requireNonNull(triggerTemplates);
+            if (triggerTemplates == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "triggerTemplates");
+            }
+            this.triggerTemplates = triggerTemplates;
             return this;
         }
         public Builder triggerTemplates(GetTriggerTriggerTemplate... triggerTemplates) {
@@ -368,7 +442,10 @@ public final class GetTriggerResult {
         }
         @CustomType.Setter
         public Builder webhookConfigs(List<GetTriggerWebhookConfig> webhookConfigs) {
-            this.webhookConfigs = Objects.requireNonNull(webhookConfigs);
+            if (webhookConfigs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerResult", "webhookConfigs");
+            }
+            this.webhookConfigs = webhookConfigs;
             return this;
         }
         public Builder webhookConfigs(GetTriggerWebhookConfig... webhookConfigs) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -99,16 +100,21 @@ public final class FhirStoreNotificationConfig {
 
         @CustomType.Setter
         public Builder pubsubTopic(String pubsubTopic) {
-            this.pubsubTopic = Objects.requireNonNull(pubsubTopic);
+            if (pubsubTopic == null) {
+              throw new MissingRequiredPropertyException("FhirStoreNotificationConfig", "pubsubTopic");
+            }
+            this.pubsubTopic = pubsubTopic;
             return this;
         }
         @CustomType.Setter
         public Builder sendFullResource(@Nullable Boolean sendFullResource) {
+
             this.sendFullResource = sendFullResource;
             return this;
         }
         @CustomType.Setter
         public Builder sendPreviousResourceOnDelete(@Nullable Boolean sendPreviousResourceOnDelete) {
+
             this.sendPreviousResourceOnDelete = sendPreviousResourceOnDelete;
             return this;
         }

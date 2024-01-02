@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,7 +156,9 @@ public final class DatabaseInstanceRestoreBackupContextArgs extends com.pulumi.r
         }
 
         public DatabaseInstanceRestoreBackupContextArgs build() {
-            $.backupRunId = Objects.requireNonNull($.backupRunId, "expected parameter 'backupRunId' to be non-null");
+            if ($.backupRunId == null) {
+                throw new MissingRequiredPropertyException("DatabaseInstanceRestoreBackupContextArgs", "backupRunId");
+            }
             return $;
         }
     }

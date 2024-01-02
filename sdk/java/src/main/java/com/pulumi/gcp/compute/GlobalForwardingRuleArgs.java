@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleMetadataFilterArgs;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleServiceDirectoryRegistrationsArgs;
 import java.lang.Boolean;
@@ -1167,7 +1168,9 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
         }
 
         public GlobalForwardingRuleArgs build() {
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("GlobalForwardingRuleArgs", "target");
+            }
             return $;
         }
     }

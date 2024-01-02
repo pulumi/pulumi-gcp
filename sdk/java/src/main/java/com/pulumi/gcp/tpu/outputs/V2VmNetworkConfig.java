@@ -103,21 +103,25 @@ public final class V2VmNetworkConfig {
 
         @CustomType.Setter
         public Builder canIpForward(@Nullable Boolean canIpForward) {
+
             this.canIpForward = canIpForward;
             return this;
         }
         @CustomType.Setter
         public Builder enableExternalIps(@Nullable Boolean enableExternalIps) {
+
             this.enableExternalIps = enableExternalIps;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
+
             this.subnetwork = subnetwork;
             return this;
         }

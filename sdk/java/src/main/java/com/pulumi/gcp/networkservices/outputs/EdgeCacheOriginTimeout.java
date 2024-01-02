@@ -112,21 +112,25 @@ public final class EdgeCacheOriginTimeout {
 
         @CustomType.Setter
         public Builder connectTimeout(@Nullable String connectTimeout) {
+
             this.connectTimeout = connectTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder maxAttemptsTimeout(@Nullable String maxAttemptsTimeout) {
+
             this.maxAttemptsTimeout = maxAttemptsTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder readTimeout(@Nullable String readTimeout) {
+
             this.readTimeout = readTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder responseTimeout(@Nullable String responseTimeout) {
+
             this.responseTimeout = responseTimeout;
             return this;
         }

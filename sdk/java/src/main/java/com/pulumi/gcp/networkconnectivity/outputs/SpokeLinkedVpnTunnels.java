@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkconnectivity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -58,12 +59,18 @@ public final class SpokeLinkedVpnTunnels {
 
         @CustomType.Setter
         public Builder siteToSiteDataTransfer(Boolean siteToSiteDataTransfer) {
-            this.siteToSiteDataTransfer = Objects.requireNonNull(siteToSiteDataTransfer);
+            if (siteToSiteDataTransfer == null) {
+              throw new MissingRequiredPropertyException("SpokeLinkedVpnTunnels", "siteToSiteDataTransfer");
+            }
+            this.siteToSiteDataTransfer = siteToSiteDataTransfer;
             return this;
         }
         @CustomType.Setter
         public Builder uris(List<String> uris) {
-            this.uris = Objects.requireNonNull(uris);
+            if (uris == null) {
+              throw new MissingRequiredPropertyException("SpokeLinkedVpnTunnels", "uris");
+            }
+            this.uris = uris;
             return this;
         }
         public Builder uris(String... uris) {

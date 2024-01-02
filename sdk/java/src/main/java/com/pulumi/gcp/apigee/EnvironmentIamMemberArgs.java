@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigee.inputs.EnvironmentIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -221,10 +222,18 @@ public final class EnvironmentIamMemberArgs extends com.pulumi.resources.Resourc
         }
 
         public EnvironmentIamMemberArgs build() {
-            $.envId = Objects.requireNonNull($.envId, "expected parameter 'envId' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.envId == null) {
+                throw new MissingRequiredPropertyException("EnvironmentIamMemberArgs", "envId");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("EnvironmentIamMemberArgs", "member");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("EnvironmentIamMemberArgs", "orgId");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("EnvironmentIamMemberArgs", "role");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -68,17 +69,26 @@ public final class GetInstanceTemplateNetworkInterfaceAccessConfig {
 
         @CustomType.Setter
         public Builder natIp(String natIp) {
-            this.natIp = Objects.requireNonNull(natIp);
+            if (natIp == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateNetworkInterfaceAccessConfig", "natIp");
+            }
+            this.natIp = natIp;
             return this;
         }
         @CustomType.Setter
         public Builder networkTier(String networkTier) {
-            this.networkTier = Objects.requireNonNull(networkTier);
+            if (networkTier == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateNetworkInterfaceAccessConfig", "networkTier");
+            }
+            this.networkTier = networkTier;
             return this;
         }
         @CustomType.Setter
         public Builder publicPtrDomainName(String publicPtrDomainName) {
-            this.publicPtrDomainName = Objects.requireNonNull(publicPtrDomainName);
+            if (publicPtrDomainName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateNetworkInterfaceAccessConfig", "publicPtrDomainName");
+            }
+            this.publicPtrDomainName = publicPtrDomainName;
             return this;
         }
         public GetInstanceTemplateNetworkInterfaceAccessConfig build() {

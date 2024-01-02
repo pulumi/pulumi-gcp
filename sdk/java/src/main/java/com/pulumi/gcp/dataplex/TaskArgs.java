@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.TaskExecutionSpecArgs;
 import com.pulumi.gcp.dataplex.inputs.TaskNotebookArgs;
 import com.pulumi.gcp.dataplex.inputs.TaskSparkArgs;
@@ -483,8 +484,12 @@ public final class TaskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TaskArgs build() {
-            $.executionSpec = Objects.requireNonNull($.executionSpec, "expected parameter 'executionSpec' to be non-null");
-            $.triggerSpec = Objects.requireNonNull($.triggerSpec, "expected parameter 'triggerSpec' to be non-null");
+            if ($.executionSpec == null) {
+                throw new MissingRequiredPropertyException("TaskArgs", "executionSpec");
+            }
+            if ($.triggerSpec == null) {
+                throw new MissingRequiredPropertyException("TaskArgs", "triggerSpec");
+            }
             return $;
         }
     }

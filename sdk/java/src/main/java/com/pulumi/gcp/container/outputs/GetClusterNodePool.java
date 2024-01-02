@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolManagement;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfig;
@@ -141,7 +142,10 @@ public final class GetClusterNodePool {
 
         @CustomType.Setter
         public Builder autoscalings(List<GetClusterNodePoolAutoscaling> autoscalings) {
-            this.autoscalings = Objects.requireNonNull(autoscalings);
+            if (autoscalings == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "autoscalings");
+            }
+            this.autoscalings = autoscalings;
             return this;
         }
         public Builder autoscalings(GetClusterNodePoolAutoscaling... autoscalings) {
@@ -149,12 +153,18 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder initialNodeCount(Integer initialNodeCount) {
-            this.initialNodeCount = Objects.requireNonNull(initialNodeCount);
+            if (initialNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "initialNodeCount");
+            }
+            this.initialNodeCount = initialNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder instanceGroupUrls(List<String> instanceGroupUrls) {
-            this.instanceGroupUrls = Objects.requireNonNull(instanceGroupUrls);
+            if (instanceGroupUrls == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "instanceGroupUrls");
+            }
+            this.instanceGroupUrls = instanceGroupUrls;
             return this;
         }
         public Builder instanceGroupUrls(String... instanceGroupUrls) {
@@ -162,7 +172,10 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder managedInstanceGroupUrls(List<String> managedInstanceGroupUrls) {
-            this.managedInstanceGroupUrls = Objects.requireNonNull(managedInstanceGroupUrls);
+            if (managedInstanceGroupUrls == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "managedInstanceGroupUrls");
+            }
+            this.managedInstanceGroupUrls = managedInstanceGroupUrls;
             return this;
         }
         public Builder managedInstanceGroupUrls(String... managedInstanceGroupUrls) {
@@ -170,7 +183,10 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder managements(List<GetClusterNodePoolManagement> managements) {
-            this.managements = Objects.requireNonNull(managements);
+            if (managements == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "managements");
+            }
+            this.managements = managements;
             return this;
         }
         public Builder managements(GetClusterNodePoolManagement... managements) {
@@ -178,22 +194,34 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder maxPodsPerNode(Integer maxPodsPerNode) {
-            this.maxPodsPerNode = Objects.requireNonNull(maxPodsPerNode);
+            if (maxPodsPerNode == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "maxPodsPerNode");
+            }
+            this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder namePrefix(String namePrefix) {
-            this.namePrefix = Objects.requireNonNull(namePrefix);
+            if (namePrefix == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "namePrefix");
+            }
+            this.namePrefix = namePrefix;
             return this;
         }
         @CustomType.Setter
         public Builder networkConfigs(List<GetClusterNodePoolNetworkConfig> networkConfigs) {
-            this.networkConfigs = Objects.requireNonNull(networkConfigs);
+            if (networkConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "networkConfigs");
+            }
+            this.networkConfigs = networkConfigs;
             return this;
         }
         public Builder networkConfigs(GetClusterNodePoolNetworkConfig... networkConfigs) {
@@ -201,7 +229,10 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder nodeConfigs(List<GetClusterNodePoolNodeConfig> nodeConfigs) {
-            this.nodeConfigs = Objects.requireNonNull(nodeConfigs);
+            if (nodeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "nodeConfigs");
+            }
+            this.nodeConfigs = nodeConfigs;
             return this;
         }
         public Builder nodeConfigs(GetClusterNodePoolNodeConfig... nodeConfigs) {
@@ -209,12 +240,18 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder nodeCount(Integer nodeCount) {
-            this.nodeCount = Objects.requireNonNull(nodeCount);
+            if (nodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "nodeCount");
+            }
+            this.nodeCount = nodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder nodeLocations(List<String> nodeLocations) {
-            this.nodeLocations = Objects.requireNonNull(nodeLocations);
+            if (nodeLocations == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "nodeLocations");
+            }
+            this.nodeLocations = nodeLocations;
             return this;
         }
         public Builder nodeLocations(String... nodeLocations) {
@@ -222,7 +259,10 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder placementPolicies(List<GetClusterNodePoolPlacementPolicy> placementPolicies) {
-            this.placementPolicies = Objects.requireNonNull(placementPolicies);
+            if (placementPolicies == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "placementPolicies");
+            }
+            this.placementPolicies = placementPolicies;
             return this;
         }
         public Builder placementPolicies(GetClusterNodePoolPlacementPolicy... placementPolicies) {
@@ -230,7 +270,10 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder queuedProvisionings(List<GetClusterNodePoolQueuedProvisioning> queuedProvisionings) {
-            this.queuedProvisionings = Objects.requireNonNull(queuedProvisionings);
+            if (queuedProvisionings == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "queuedProvisionings");
+            }
+            this.queuedProvisionings = queuedProvisionings;
             return this;
         }
         public Builder queuedProvisionings(GetClusterNodePoolQueuedProvisioning... queuedProvisionings) {
@@ -238,7 +281,10 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder upgradeSettings(List<GetClusterNodePoolUpgradeSetting> upgradeSettings) {
-            this.upgradeSettings = Objects.requireNonNull(upgradeSettings);
+            if (upgradeSettings == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "upgradeSettings");
+            }
+            this.upgradeSettings = upgradeSettings;
             return this;
         }
         public Builder upgradeSettings(GetClusterNodePoolUpgradeSetting... upgradeSettings) {
@@ -246,7 +292,10 @@ public final class GetClusterNodePool {
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePool", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetClusterNodePool build() {

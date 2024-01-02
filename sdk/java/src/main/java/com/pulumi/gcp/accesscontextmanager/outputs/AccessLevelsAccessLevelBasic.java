@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelsAccessLevelBasicCondition;
 import java.lang.String;
 import java.util.List;
@@ -74,12 +75,16 @@ public final class AccessLevelsAccessLevelBasic {
 
         @CustomType.Setter
         public Builder combiningFunction(@Nullable String combiningFunction) {
+
             this.combiningFunction = combiningFunction;
             return this;
         }
         @CustomType.Setter
         public Builder conditions(List<AccessLevelsAccessLevelBasicCondition> conditions) {
-            this.conditions = Objects.requireNonNull(conditions);
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("AccessLevelsAccessLevelBasic", "conditions");
+            }
+            this.conditions = conditions;
             return this;
         }
         public Builder conditions(AccessLevelsAccessLevelBasicCondition... conditions) {

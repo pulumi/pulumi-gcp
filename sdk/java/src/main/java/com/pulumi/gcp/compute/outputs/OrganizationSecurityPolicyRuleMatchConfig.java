@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyRuleMatchConfigLayer4Config;
 import java.lang.String;
 import java.util.List;
@@ -83,6 +84,7 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
 
         @CustomType.Setter
         public Builder destIpRanges(@Nullable List<String> destIpRanges) {
+
             this.destIpRanges = destIpRanges;
             return this;
         }
@@ -91,7 +93,10 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
         }
         @CustomType.Setter
         public Builder layer4Configs(List<OrganizationSecurityPolicyRuleMatchConfigLayer4Config> layer4Configs) {
-            this.layer4Configs = Objects.requireNonNull(layer4Configs);
+            if (layer4Configs == null) {
+              throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleMatchConfig", "layer4Configs");
+            }
+            this.layer4Configs = layer4Configs;
             return this;
         }
         public Builder layer4Configs(OrganizationSecurityPolicyRuleMatchConfigLayer4Config... layer4Configs) {
@@ -99,6 +104,7 @@ public final class OrganizationSecurityPolicyRuleMatchConfig {
         }
         @CustomType.Setter
         public Builder srcIpRanges(@Nullable List<String> srcIpRanges) {
+
             this.srcIpRanges = srcIpRanges;
             return this;
         }

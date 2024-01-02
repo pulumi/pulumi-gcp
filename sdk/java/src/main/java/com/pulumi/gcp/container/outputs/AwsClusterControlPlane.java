@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.AwsClusterControlPlaneAwsServicesAuthentication;
 import com.pulumi.gcp.container.outputs.AwsClusterControlPlaneConfigEncryption;
 import com.pulumi.gcp.container.outputs.AwsClusterControlPlaneDatabaseEncryption;
@@ -236,51 +237,69 @@ public final class AwsClusterControlPlane {
 
         @CustomType.Setter
         public Builder awsServicesAuthentication(AwsClusterControlPlaneAwsServicesAuthentication awsServicesAuthentication) {
-            this.awsServicesAuthentication = Objects.requireNonNull(awsServicesAuthentication);
+            if (awsServicesAuthentication == null) {
+              throw new MissingRequiredPropertyException("AwsClusterControlPlane", "awsServicesAuthentication");
+            }
+            this.awsServicesAuthentication = awsServicesAuthentication;
             return this;
         }
         @CustomType.Setter
         public Builder configEncryption(AwsClusterControlPlaneConfigEncryption configEncryption) {
-            this.configEncryption = Objects.requireNonNull(configEncryption);
+            if (configEncryption == null) {
+              throw new MissingRequiredPropertyException("AwsClusterControlPlane", "configEncryption");
+            }
+            this.configEncryption = configEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder databaseEncryption(AwsClusterControlPlaneDatabaseEncryption databaseEncryption) {
-            this.databaseEncryption = Objects.requireNonNull(databaseEncryption);
+            if (databaseEncryption == null) {
+              throw new MissingRequiredPropertyException("AwsClusterControlPlane", "databaseEncryption");
+            }
+            this.databaseEncryption = databaseEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder iamInstanceProfile(String iamInstanceProfile) {
-            this.iamInstanceProfile = Objects.requireNonNull(iamInstanceProfile);
+            if (iamInstanceProfile == null) {
+              throw new MissingRequiredPropertyException("AwsClusterControlPlane", "iamInstanceProfile");
+            }
+            this.iamInstanceProfile = iamInstanceProfile;
             return this;
         }
         @CustomType.Setter
         public Builder instancePlacement(@Nullable AwsClusterControlPlaneInstancePlacement instancePlacement) {
+
             this.instancePlacement = instancePlacement;
             return this;
         }
         @CustomType.Setter
         public Builder instanceType(@Nullable String instanceType) {
+
             this.instanceType = instanceType;
             return this;
         }
         @CustomType.Setter
         public Builder mainVolume(@Nullable AwsClusterControlPlaneMainVolume mainVolume) {
+
             this.mainVolume = mainVolume;
             return this;
         }
         @CustomType.Setter
         public Builder proxyConfig(@Nullable AwsClusterControlPlaneProxyConfig proxyConfig) {
+
             this.proxyConfig = proxyConfig;
             return this;
         }
         @CustomType.Setter
         public Builder rootVolume(@Nullable AwsClusterControlPlaneRootVolume rootVolume) {
+
             this.rootVolume = rootVolume;
             return this;
         }
         @CustomType.Setter
         public Builder securityGroupIds(@Nullable List<String> securityGroupIds) {
+
             this.securityGroupIds = securityGroupIds;
             return this;
         }
@@ -289,12 +308,16 @@ public final class AwsClusterControlPlane {
         }
         @CustomType.Setter
         public Builder sshConfig(@Nullable AwsClusterControlPlaneSshConfig sshConfig) {
+
             this.sshConfig = sshConfig;
             return this;
         }
         @CustomType.Setter
         public Builder subnetIds(List<String> subnetIds) {
-            this.subnetIds = Objects.requireNonNull(subnetIds);
+            if (subnetIds == null) {
+              throw new MissingRequiredPropertyException("AwsClusterControlPlane", "subnetIds");
+            }
+            this.subnetIds = subnetIds;
             return this;
         }
         public Builder subnetIds(String... subnetIds) {
@@ -302,12 +325,16 @@ public final class AwsClusterControlPlane {
         }
         @CustomType.Setter
         public Builder tags(@Nullable Map<String,String> tags) {
+
             this.tags = tags;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("AwsClusterControlPlane", "version");
+            }
+            this.version = version;
             return this;
         }
         public AwsClusterControlPlane build() {

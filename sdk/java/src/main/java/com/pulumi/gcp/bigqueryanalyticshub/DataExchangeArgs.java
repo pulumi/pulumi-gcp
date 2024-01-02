@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigqueryanalyticshub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -347,9 +348,15 @@ public final class DataExchangeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DataExchangeArgs build() {
-            $.dataExchangeId = Objects.requireNonNull($.dataExchangeId, "expected parameter 'dataExchangeId' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.dataExchangeId == null) {
+                throw new MissingRequiredPropertyException("DataExchangeArgs", "dataExchangeId");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("DataExchangeArgs", "displayName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("DataExchangeArgs", "location");
+            }
             return $;
         }
     }

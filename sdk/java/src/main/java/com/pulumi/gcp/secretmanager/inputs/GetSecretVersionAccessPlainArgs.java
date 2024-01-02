@@ -4,6 +4,7 @@
 package com.pulumi.gcp.secretmanager.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -125,7 +126,9 @@ public final class GetSecretVersionAccessPlainArgs extends com.pulumi.resources.
         }
 
         public GetSecretVersionAccessPlainArgs build() {
-            $.secret = Objects.requireNonNull($.secret, "expected parameter 'secret' to be non-null");
+            if ($.secret == null) {
+                throw new MissingRequiredPropertyException("GetSecretVersionAccessPlainArgs", "secret");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy;
 import java.lang.String;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class GetClusterNodePoolUpgradeSettingBlueGreenSetting {
 
         @CustomType.Setter
         public Builder nodePoolSoakDuration(String nodePoolSoakDuration) {
-            this.nodePoolSoakDuration = Objects.requireNonNull(nodePoolSoakDuration);
+            if (nodePoolSoakDuration == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolUpgradeSettingBlueGreenSetting", "nodePoolSoakDuration");
+            }
+            this.nodePoolSoakDuration = nodePoolSoakDuration;
             return this;
         }
         @CustomType.Setter
         public Builder standardRolloutPolicies(List<GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy> standardRolloutPolicies) {
-            this.standardRolloutPolicies = Objects.requireNonNull(standardRolloutPolicies);
+            if (standardRolloutPolicies == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolUpgradeSettingBlueGreenSetting", "standardRolloutPolicies");
+            }
+            this.standardRolloutPolicies = standardRolloutPolicies;
             return this;
         }
         public Builder standardRolloutPolicies(GetClusterNodePoolUpgradeSettingBlueGreenSettingStandardRolloutPolicy... standardRolloutPolicies) {

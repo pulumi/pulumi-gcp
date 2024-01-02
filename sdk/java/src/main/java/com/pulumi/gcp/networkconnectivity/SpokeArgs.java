@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedInterconnectAttachmentsArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
@@ -426,8 +427,12 @@ public final class SpokeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SpokeArgs build() {
-            $.hub = Objects.requireNonNull($.hub, "expected parameter 'hub' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.hub == null) {
+                throw new MissingRequiredPropertyException("SpokeArgs", "hub");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("SpokeArgs", "location");
+            }
             return $;
         }
     }

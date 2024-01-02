@@ -112,26 +112,31 @@ public final class TriggerGithub {
 
         @CustomType.Setter
         public Builder enterpriseConfigResourceName(@Nullable String enterpriseConfigResourceName) {
+
             this.enterpriseConfigResourceName = enterpriseConfigResourceName;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder owner(@Nullable String owner) {
+
             this.owner = owner;
             return this;
         }
         @CustomType.Setter
         public Builder pullRequest(@Nullable TriggerGithubPullRequest pullRequest) {
+
             this.pullRequest = pullRequest;
             return this;
         }
         @CustomType.Setter
         public Builder push(@Nullable TriggerGithubPush push) {
+
             this.push = push;
             return this;
         }

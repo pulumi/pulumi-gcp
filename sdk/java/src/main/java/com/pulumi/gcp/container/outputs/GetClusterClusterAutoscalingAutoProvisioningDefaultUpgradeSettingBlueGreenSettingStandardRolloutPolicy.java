@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.lang.String;
@@ -48,17 +49,26 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSet
 
         @CustomType.Setter
         public Builder batchNodeCount(Integer batchNodeCount) {
-            this.batchNodeCount = Objects.requireNonNull(batchNodeCount);
+            if (batchNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy", "batchNodeCount");
+            }
+            this.batchNodeCount = batchNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder batchPercentage(Double batchPercentage) {
-            this.batchPercentage = Objects.requireNonNull(batchPercentage);
+            if (batchPercentage == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy", "batchPercentage");
+            }
+            this.batchPercentage = batchPercentage;
             return this;
         }
         @CustomType.Setter
         public Builder batchSoakDuration(String batchSoakDuration) {
-            this.batchSoakDuration = Objects.requireNonNull(batchSoakDuration);
+            if (batchSoakDuration == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy", "batchSoakDuration");
+            }
+            this.batchSoakDuration = batchSoakDuration;
             return this;
         }
         public GetClusterClusterAutoscalingAutoProvisioningDefaultUpgradeSettingBlueGreenSettingStandardRolloutPolicy build() {

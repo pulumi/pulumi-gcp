@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -170,7 +171,9 @@ public final class HmacKeyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HmacKeyArgs build() {
-            $.serviceAccountEmail = Objects.requireNonNull($.serviceAccountEmail, "expected parameter 'serviceAccountEmail' to be non-null");
+            if ($.serviceAccountEmail == null) {
+                throw new MissingRequiredPropertyException("HmacKeyArgs", "serviceAccountEmail");
+            }
             return $;
         }
     }

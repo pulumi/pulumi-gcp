@@ -72,16 +72,19 @@ public final class CryptoKeyVersionAttestationCertChains {
 
         @CustomType.Setter
         public Builder caviumCerts(@Nullable String caviumCerts) {
+
             this.caviumCerts = caviumCerts;
             return this;
         }
         @CustomType.Setter
         public Builder googleCardCerts(@Nullable String googleCardCerts) {
+
             this.googleCardCerts = googleCardCerts;
             return this;
         }
         @CustomType.Setter
         public Builder googlePartitionCerts(@Nullable String googlePartitionCerts) {
+
             this.googlePartitionCerts = googlePartitionCerts;
             return this;
         }

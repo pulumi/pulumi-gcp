@@ -131,26 +131,31 @@ public final class CertificateCertificateDescriptionSubjectDescription {
 
         @CustomType.Setter
         public Builder hexSerialNumber(@Nullable String hexSerialNumber) {
+
             this.hexSerialNumber = hexSerialNumber;
             return this;
         }
         @CustomType.Setter
         public Builder lifetime(@Nullable String lifetime) {
+
             this.lifetime = lifetime;
             return this;
         }
         @CustomType.Setter
         public Builder notAfterTime(@Nullable String notAfterTime) {
+
             this.notAfterTime = notAfterTime;
             return this;
         }
         @CustomType.Setter
         public Builder notBeforeTime(@Nullable String notBeforeTime) {
+
             this.notBeforeTime = notBeforeTime;
             return this;
         }
         @CustomType.Setter
         public Builder subjectAltNames(@Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubjectAltName> subjectAltNames) {
+
             this.subjectAltNames = subjectAltNames;
             return this;
         }
@@ -159,6 +164,7 @@ public final class CertificateCertificateDescriptionSubjectDescription {
         }
         @CustomType.Setter
         public Builder subjects(@Nullable List<CertificateCertificateDescriptionSubjectDescriptionSubject> subjects) {
+
             this.subjects = subjects;
             return this;
         }

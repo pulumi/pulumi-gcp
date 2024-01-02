@@ -180,41 +180,49 @@ public final class ClusterPrivateClusterConfig {
 
         @CustomType.Setter
         public Builder enablePrivateEndpoint(@Nullable Boolean enablePrivateEndpoint) {
+
             this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateNodes(@Nullable Boolean enablePrivateNodes) {
+
             this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
         @CustomType.Setter
         public Builder masterGlobalAccessConfig(@Nullable ClusterPrivateClusterConfigMasterGlobalAccessConfig masterGlobalAccessConfig) {
+
             this.masterGlobalAccessConfig = masterGlobalAccessConfig;
             return this;
         }
         @CustomType.Setter
         public Builder masterIpv4CidrBlock(@Nullable String masterIpv4CidrBlock) {
+
             this.masterIpv4CidrBlock = masterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder peeringName(@Nullable String peeringName) {
+
             this.peeringName = peeringName;
             return this;
         }
         @CustomType.Setter
         public Builder privateEndpoint(@Nullable String privateEndpoint) {
+
             this.privateEndpoint = privateEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder privateEndpointSubnetwork(@Nullable String privateEndpointSubnetwork) {
+
             this.privateEndpointSubnetwork = privateEndpointSubnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder publicEndpoint(@Nullable String publicEndpoint) {
+
             this.publicEndpoint = publicEndpoint;
             return this;
         }

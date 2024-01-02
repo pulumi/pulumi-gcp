@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegexArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleLikelihoodAdjustmentArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleProximityArgs;
@@ -178,9 +179,15 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleA
         }
 
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs build() {
-            $.hotwordRegex = Objects.requireNonNull($.hotwordRegex, "expected parameter 'hotwordRegex' to be non-null");
-            $.likelihoodAdjustment = Objects.requireNonNull($.likelihoodAdjustment, "expected parameter 'likelihoodAdjustment' to be non-null");
-            $.proximity = Objects.requireNonNull($.proximity, "expected parameter 'proximity' to be non-null");
+            if ($.hotwordRegex == null) {
+                throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs", "hotwordRegex");
+            }
+            if ($.likelihoodAdjustment == null) {
+                throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs", "likelihoodAdjustment");
+            }
+            if ($.proximity == null) {
+                throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleArgs", "proximity");
+            }
             return $;
         }
     }

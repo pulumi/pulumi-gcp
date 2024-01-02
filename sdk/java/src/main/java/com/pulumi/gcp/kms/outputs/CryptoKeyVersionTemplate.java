@@ -4,6 +4,7 @@
 package com.pulumi.gcp.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,11 +61,15 @@ public final class CryptoKeyVersionTemplate {
 
         @CustomType.Setter
         public Builder algorithm(String algorithm) {
-            this.algorithm = Objects.requireNonNull(algorithm);
+            if (algorithm == null) {
+              throw new MissingRequiredPropertyException("CryptoKeyVersionTemplate", "algorithm");
+            }
+            this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder protectionLevel(@Nullable String protectionLevel) {
+
             this.protectionLevel = protectionLevel;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetClusterNodePoolPlacementPolicy {
 
         @CustomType.Setter
         public Builder policyName(String policyName) {
-            this.policyName = Objects.requireNonNull(policyName);
+            if (policyName == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolPlacementPolicy", "policyName");
+            }
+            this.policyName = policyName;
             return this;
         }
         @CustomType.Setter
         public Builder tpuTopology(String tpuTopology) {
-            this.tpuTopology = Objects.requireNonNull(tpuTopology);
+            if (tpuTopology == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolPlacementPolicy", "tpuTopology");
+            }
+            this.tpuTopology = tpuTopology;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolPlacementPolicy", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetClusterNodePoolPlacementPolicy build() {

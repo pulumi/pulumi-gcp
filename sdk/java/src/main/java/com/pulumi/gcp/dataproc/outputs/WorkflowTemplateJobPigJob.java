@@ -133,11 +133,13 @@ public final class WorkflowTemplateJobPigJob {
 
         @CustomType.Setter
         public Builder continueOnFailure(@Nullable Boolean continueOnFailure) {
+
             this.continueOnFailure = continueOnFailure;
             return this;
         }
         @CustomType.Setter
         public Builder jarFileUris(@Nullable List<String> jarFileUris) {
+
             this.jarFileUris = jarFileUris;
             return this;
         }
@@ -146,26 +148,31 @@ public final class WorkflowTemplateJobPigJob {
         }
         @CustomType.Setter
         public Builder loggingConfig(@Nullable WorkflowTemplateJobPigJobLoggingConfig loggingConfig) {
+
             this.loggingConfig = loggingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
+
             this.properties = properties;
             return this;
         }
         @CustomType.Setter
         public Builder queryFileUri(@Nullable String queryFileUri) {
+
             this.queryFileUri = queryFileUri;
             return this;
         }
         @CustomType.Setter
         public Builder queryList(@Nullable WorkflowTemplateJobPigJobQueryList queryList) {
+
             this.queryList = queryList;
             return this;
         }
         @CustomType.Setter
         public Builder scriptVariables(@Nullable Map<String,String> scriptVariables) {
+
             this.scriptVariables = scriptVariables;
             return this;
         }

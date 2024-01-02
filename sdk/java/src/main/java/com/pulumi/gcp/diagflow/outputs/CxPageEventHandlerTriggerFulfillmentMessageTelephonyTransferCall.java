@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferC
 
         @CustomType.Setter
         public Builder phoneNumber(String phoneNumber) {
-            this.phoneNumber = Objects.requireNonNull(phoneNumber);
+            if (phoneNumber == null) {
+              throw new MissingRequiredPropertyException("CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall", "phoneNumber");
+            }
+            this.phoneNumber = phoneNumber;
             return this;
         }
         public CxPageEventHandlerTriggerFulfillmentMessageTelephonyTransferCall build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class GetTestablePermissionsPlainArgs extends com.pulumi.resources.
         }
 
         public GetTestablePermissionsPlainArgs build() {
-            $.fullResourceName = Objects.requireNonNull($.fullResourceName, "expected parameter 'fullResourceName' to be non-null");
+            if ($.fullResourceName == null) {
+                throw new MissingRequiredPropertyException("GetTestablePermissionsPlainArgs", "fullResourceName");
+            }
             return $;
         }
     }

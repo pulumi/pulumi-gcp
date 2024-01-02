@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -138,7 +139,9 @@ public final class AlertPolicyConditionConditionMatchedLogArgs extends com.pulum
         }
 
         public AlertPolicyConditionConditionMatchedLogArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyConditionConditionMatchedLogArgs", "filter");
+            }
             return $;
         }
     }

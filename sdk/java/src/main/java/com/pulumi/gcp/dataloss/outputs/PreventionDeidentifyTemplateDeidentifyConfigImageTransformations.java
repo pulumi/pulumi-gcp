@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigImageTransformati
 
         @CustomType.Setter
         public Builder transforms(List<PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform> transforms) {
-            this.transforms = Objects.requireNonNull(transforms);
+            if (transforms == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigImageTransformations", "transforms");
+            }
+            this.transforms = transforms;
             return this;
         }
         public Builder transforms(PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransform... transforms) {

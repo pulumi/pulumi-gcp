@@ -5,6 +5,7 @@ package com.pulumi.gcp.folder;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.folder.inputs.IAMBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -217,9 +218,15 @@ public final class IAMBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public IAMBindingArgs build() {
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("IAMBindingArgs", "folder");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("IAMBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("IAMBindingArgs", "role");
+            }
             return $;
         }
     }

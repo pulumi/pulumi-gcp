@@ -60,11 +60,13 @@ public final class DatascanData {
 
         @CustomType.Setter
         public Builder entity(@Nullable String entity) {
+
             this.entity = entity;
             return this;
         }
         @CustomType.Setter
         public Builder resource(@Nullable String resource) {
+
             this.resource = resource;
             return this;
         }

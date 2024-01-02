@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets;
 import java.lang.String;
 import java.util.List;
@@ -68,16 +69,21 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeo {
 
         @CustomType.Setter
         public Builder healthCheckedTargets(@Nullable RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets healthCheckedTargets) {
+
             this.healthCheckedTargets = healthCheckedTargets;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupBackupGeo", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder rrdatas(@Nullable List<String> rrdatas) {
+
             this.rrdatas = rrdatas;
             return this;
         }

@@ -80,16 +80,19 @@ public final class RuntimeAccessConfig {
 
         @CustomType.Setter
         public Builder accessType(@Nullable String accessType) {
+
             this.accessType = accessType;
             return this;
         }
         @CustomType.Setter
         public Builder proxyUri(@Nullable String proxyUri) {
+
             this.proxyUri = proxyUri;
             return this;
         }
         @CustomType.Setter
         public Builder runtimeOwner(@Nullable String runtimeOwner) {
+
             this.runtimeOwner = runtimeOwner;
             return this;
         }

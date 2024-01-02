@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelConditionDevicePolicyArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.AccessLevelConditionVpcNetworkSourceArgs;
 import java.lang.Boolean;
@@ -527,7 +528,9 @@ public final class AccessLevelConditionArgs extends com.pulumi.resources.Resourc
         }
 
         public AccessLevelConditionArgs build() {
-            $.accessLevel = Objects.requireNonNull($.accessLevel, "expected parameter 'accessLevel' to be non-null");
+            if ($.accessLevel == null) {
+                throw new MissingRequiredPropertyException("AccessLevelConditionArgs", "accessLevel");
+            }
             return $;
         }
     }

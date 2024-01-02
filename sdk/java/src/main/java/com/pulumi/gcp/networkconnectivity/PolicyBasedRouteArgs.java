@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkconnectivity.inputs.PolicyBasedRouteFilterArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.PolicyBasedRouteInterconnectAttachmentArgs;
 import com.pulumi.gcp.networkconnectivity.inputs.PolicyBasedRouteVirtualMachineArgs;
@@ -483,8 +484,12 @@ public final class PolicyBasedRouteArgs extends com.pulumi.resources.ResourceArg
         }
 
         public PolicyBasedRouteArgs build() {
-            $.filter = Objects.requireNonNull($.filter, "expected parameter 'filter' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.filter == null) {
+                throw new MissingRequiredPropertyException("PolicyBasedRouteArgs", "filter");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("PolicyBasedRouteArgs", "network");
+            }
             return $;
         }
     }

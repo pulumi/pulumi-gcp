@@ -134,26 +134,31 @@ public final class SubnetworkLogConfig {
 
         @CustomType.Setter
         public Builder aggregationInterval(@Nullable String aggregationInterval) {
+
             this.aggregationInterval = aggregationInterval;
             return this;
         }
         @CustomType.Setter
         public Builder filterExpr(@Nullable String filterExpr) {
+
             this.filterExpr = filterExpr;
             return this;
         }
         @CustomType.Setter
         public Builder flowSampling(@Nullable Double flowSampling) {
+
             this.flowSampling = flowSampling;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(@Nullable String metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder metadataFields(@Nullable List<String> metadataFields) {
+
             this.metadataFields = metadataFields;
             return this;
         }

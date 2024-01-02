@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig {
 
         @CustomType.Setter
         public Builder localSsdCount(Integer localSsdCount) {
-            this.localSsdCount = Objects.requireNonNull(localSsdCount);
+            if (localSsdCount == null) {
+              throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig", "localSsdCount");
+            }
+            this.localSsdCount = localSsdCount;
             return this;
         }
         public ClusterNodePoolNodeConfigEphemeralStorageLocalSsdConfig build() {

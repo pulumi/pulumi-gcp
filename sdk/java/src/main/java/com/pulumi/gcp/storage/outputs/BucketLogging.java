@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,11 +61,15 @@ public final class BucketLogging {
 
         @CustomType.Setter
         public Builder logBucket(String logBucket) {
-            this.logBucket = Objects.requireNonNull(logBucket);
+            if (logBucket == null) {
+              throw new MissingRequiredPropertyException("BucketLogging", "logBucket");
+            }
+            this.logBucket = logBucket;
             return this;
         }
         @CustomType.Setter
         public Builder logObjectPrefix(@Nullable String logObjectPrefix) {
+
             this.logObjectPrefix = logObjectPrefix;
             return this;
         }

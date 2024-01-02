@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnvFromConfigMapRef;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainerEnvFromSecretRef;
 import java.lang.String;
@@ -49,7 +50,10 @@ public final class GetServiceTemplateSpecContainerEnvFrom {
 
         @CustomType.Setter
         public Builder configMapReves(List<GetServiceTemplateSpecContainerEnvFromConfigMapRef> configMapReves) {
-            this.configMapReves = Objects.requireNonNull(configMapReves);
+            if (configMapReves == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerEnvFrom", "configMapReves");
+            }
+            this.configMapReves = configMapReves;
             return this;
         }
         public Builder configMapReves(GetServiceTemplateSpecContainerEnvFromConfigMapRef... configMapReves) {
@@ -57,12 +61,18 @@ public final class GetServiceTemplateSpecContainerEnvFrom {
         }
         @CustomType.Setter
         public Builder prefix(String prefix) {
-            this.prefix = Objects.requireNonNull(prefix);
+            if (prefix == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerEnvFrom", "prefix");
+            }
+            this.prefix = prefix;
             return this;
         }
         @CustomType.Setter
         public Builder secretReves(List<GetServiceTemplateSpecContainerEnvFromSecretRef> secretReves) {
-            this.secretReves = Objects.requireNonNull(secretReves);
+            if (secretReves == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerEnvFrom", "secretReves");
+            }
+            this.secretReves = secretReves;
             return this;
         }
         public Builder secretReves(GetServiceTemplateSpecContainerEnvFromSecretRef... secretReves) {

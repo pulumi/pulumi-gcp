@@ -5,6 +5,7 @@ package com.pulumi.gcp.artifactregistry;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryCleanupPolicyArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryDockerConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryMavenConfigArgs;
@@ -685,8 +686,12 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RepositoryArgs build() {
-            $.format = Objects.requireNonNull($.format, "expected parameter 'format' to be non-null");
-            $.repositoryId = Objects.requireNonNull($.repositoryId, "expected parameter 'repositoryId' to be non-null");
+            if ($.format == null) {
+                throw new MissingRequiredPropertyException("RepositoryArgs", "format");
+            }
+            if ($.repositoryId == null) {
+                throw new MissingRequiredPropertyException("RepositoryArgs", "repositoryId");
+            }
             return $;
         }
     }

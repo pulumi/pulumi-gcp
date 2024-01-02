@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctionsv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -178,8 +179,12 @@ public final class FunctionEventTriggerEventFilterArgs extends com.pulumi.resour
         }
 
         public FunctionEventTriggerEventFilterArgs build() {
-            $.attribute = Objects.requireNonNull($.attribute, "expected parameter 'attribute' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.attribute == null) {
+                throw new MissingRequiredPropertyException("FunctionEventTriggerEventFilterArgs", "attribute");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("FunctionEventTriggerEventFilterArgs", "value");
+            }
             return $;
         }
     }

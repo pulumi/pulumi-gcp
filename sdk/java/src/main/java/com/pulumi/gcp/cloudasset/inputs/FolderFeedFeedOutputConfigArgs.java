@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudasset.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudasset.inputs.FolderFeedFeedOutputConfigPubsubDestinationArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class FolderFeedFeedOutputConfigArgs extends com.pulumi.resources.R
         }
 
         public FolderFeedFeedOutputConfigArgs build() {
-            $.pubsubDestination = Objects.requireNonNull($.pubsubDestination, "expected parameter 'pubsubDestination' to be non-null");
+            if ($.pubsubDestination == null) {
+                throw new MissingRequiredPropertyException("FolderFeedFeedOutputConfigArgs", "pubsubDestination");
+            }
             return $;
         }
     }

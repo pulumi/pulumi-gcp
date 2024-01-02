@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -79,16 +80,21 @@ public final class AccessLevelBasicConditionDevicePolicyOsConstraint {
 
         @CustomType.Setter
         public Builder minimumVersion(@Nullable String minimumVersion) {
+
             this.minimumVersion = minimumVersion;
             return this;
         }
         @CustomType.Setter
         public Builder osType(String osType) {
-            this.osType = Objects.requireNonNull(osType);
+            if (osType == null) {
+              throw new MissingRequiredPropertyException("AccessLevelBasicConditionDevicePolicyOsConstraint", "osType");
+            }
+            this.osType = osType;
             return this;
         }
         @CustomType.Setter
         public Builder requireVerifiedChromeOs(@Nullable Boolean requireVerifiedChromeOs) {
+
             this.requireVerifiedChromeOs = requireVerifiedChromeOs;
             return this;
         }

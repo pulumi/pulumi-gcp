@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetTriggerBuildSecret {
 
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildSecret", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder secretEnv(Map<String,String> secretEnv) {
-            this.secretEnv = Objects.requireNonNull(secretEnv);
+            if (secretEnv == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildSecret", "secretEnv");
+            }
+            this.secretEnv = secretEnv;
             return this;
         }
         public GetTriggerBuildSecret build() {

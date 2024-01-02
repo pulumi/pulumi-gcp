@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -269,7 +270,9 @@ public final class PrivateCloudNetworkConfigArgs extends com.pulumi.resources.Re
         }
 
         public PrivateCloudNetworkConfigArgs build() {
-            $.managementCidr = Objects.requireNonNull($.managementCidr, "expected parameter 'managementCidr' to be non-null");
+            if ($.managementCidr == null) {
+                throw new MissingRequiredPropertyException("PrivateCloudNetworkConfigArgs", "managementCidr");
+            }
             return $;
         }
     }

@@ -73,16 +73,19 @@ public final class WorkflowTemplatePlacementManagedClusterConfigWorkerConfigDisk
 
         @CustomType.Setter
         public Builder bootDiskSizeGb(@Nullable Integer bootDiskSizeGb) {
+
             this.bootDiskSizeGb = bootDiskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder bootDiskType(@Nullable String bootDiskType) {
+
             this.bootDiskType = bootDiskType;
             return this;
         }
         @CustomType.Setter
         public Builder numLocalSsds(@Nullable Integer numLocalSsds) {
+
             this.numLocalSsds = numLocalSsds;
             return this;
         }

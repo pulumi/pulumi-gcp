@@ -86,16 +86,19 @@ public final class AlertPolicyDocumentation {
 
         @CustomType.Setter
         public Builder content(@Nullable String content) {
+
             this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder mimeType(@Nullable String mimeType) {
+
             this.mimeType = mimeType;
             return this;
         }
         @CustomType.Setter
         public Builder subject(@Nullable String subject) {
+
             this.subject = subject;
             return this;
         }

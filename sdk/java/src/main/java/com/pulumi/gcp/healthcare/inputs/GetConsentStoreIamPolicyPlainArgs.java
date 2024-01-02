@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -96,8 +97,12 @@ public final class GetConsentStoreIamPolicyPlainArgs extends com.pulumi.resource
         }
 
         public GetConsentStoreIamPolicyPlainArgs build() {
-            $.consentStoreId = Objects.requireNonNull($.consentStoreId, "expected parameter 'consentStoreId' to be non-null");
-            $.dataset = Objects.requireNonNull($.dataset, "expected parameter 'dataset' to be non-null");
+            if ($.consentStoreId == null) {
+                throw new MissingRequiredPropertyException("GetConsentStoreIamPolicyPlainArgs", "consentStoreId");
+            }
+            if ($.dataset == null) {
+                throw new MissingRequiredPropertyException("GetConsentStoreIamPolicyPlainArgs", "dataset");
+            }
             return $;
         }
     }

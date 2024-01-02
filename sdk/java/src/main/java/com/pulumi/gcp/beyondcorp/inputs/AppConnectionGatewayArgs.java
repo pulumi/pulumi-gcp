@@ -5,6 +5,7 @@ package com.pulumi.gcp.beyondcorp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -204,7 +205,9 @@ public final class AppConnectionGatewayArgs extends com.pulumi.resources.Resourc
         }
 
         public AppConnectionGatewayArgs build() {
-            $.appGateway = Objects.requireNonNull($.appGateway, "expected parameter 'appGateway' to be non-null");
+            if ($.appGateway == null) {
+                throw new MissingRequiredPropertyException("AppConnectionGatewayArgs", "appGateway");
+            }
             return $;
         }
     }

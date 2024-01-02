@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class BareMetalClusterLoadBalancerPortConfigArgs extends com.pulumi
         }
 
         public BareMetalClusterLoadBalancerPortConfigArgs build() {
-            $.controlPlaneLoadBalancerPort = Objects.requireNonNull($.controlPlaneLoadBalancerPort, "expected parameter 'controlPlaneLoadBalancerPort' to be non-null");
+            if ($.controlPlaneLoadBalancerPort == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerPortConfigArgs", "controlPlaneLoadBalancerPort");
+            }
             return $;
         }
     }

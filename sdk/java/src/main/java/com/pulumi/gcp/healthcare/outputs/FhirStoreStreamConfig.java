@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.outputs.FhirStoreStreamConfigBigqueryDestination;
 import java.lang.String;
 import java.util.List;
@@ -73,11 +74,15 @@ public final class FhirStoreStreamConfig {
 
         @CustomType.Setter
         public Builder bigqueryDestination(FhirStoreStreamConfigBigqueryDestination bigqueryDestination) {
-            this.bigqueryDestination = Objects.requireNonNull(bigqueryDestination);
+            if (bigqueryDestination == null) {
+              throw new MissingRequiredPropertyException("FhirStoreStreamConfig", "bigqueryDestination");
+            }
+            this.bigqueryDestination = bigqueryDestination;
             return this;
         }
         @CustomType.Setter
         public Builder resourceTypes(@Nullable List<String> resourceTypes) {
+
             this.resourceTypes = resourceTypes;
             return this;
         }

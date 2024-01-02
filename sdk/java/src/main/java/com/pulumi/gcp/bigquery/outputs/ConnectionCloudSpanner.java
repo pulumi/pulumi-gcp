@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -130,31 +131,39 @@ public final class ConnectionCloudSpanner {
 
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("ConnectionCloudSpanner", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder databaseRole(@Nullable String databaseRole) {
+
             this.databaseRole = databaseRole;
             return this;
         }
         @CustomType.Setter
         public Builder maxParallelism(@Nullable Integer maxParallelism) {
+
             this.maxParallelism = maxParallelism;
             return this;
         }
         @CustomType.Setter
         public Builder useDataBoost(@Nullable Boolean useDataBoost) {
+
             this.useDataBoost = useDataBoost;
             return this;
         }
         @CustomType.Setter
         public Builder useParallelism(@Nullable Boolean useParallelism) {
+
             this.useParallelism = useParallelism;
             return this;
         }
         @CustomType.Setter
         public Builder useServerlessAnalytics(@Nullable Boolean useServerlessAnalytics) {
+
             this.useServerlessAnalytics = useServerlessAnalytics;
             return this;
         }

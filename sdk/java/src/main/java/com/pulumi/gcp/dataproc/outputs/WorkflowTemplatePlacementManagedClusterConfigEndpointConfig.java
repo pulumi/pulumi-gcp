@@ -60,11 +60,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigEndpointConfig {
 
         @CustomType.Setter
         public Builder enableHttpPortAccess(@Nullable Boolean enableHttpPortAccess) {
+
             this.enableHttpPortAccess = enableHttpPortAccess;
             return this;
         }
         @CustomType.Setter
         public Builder httpPorts(@Nullable Map<String,String> httpPorts) {
+
             this.httpPorts = httpPorts;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentRolloutDisruptionBudgetArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -136,8 +137,12 @@ public final class OsPolicyAssignmentRolloutArgs extends com.pulumi.resources.Re
         }
 
         public OsPolicyAssignmentRolloutArgs build() {
-            $.disruptionBudget = Objects.requireNonNull($.disruptionBudget, "expected parameter 'disruptionBudget' to be non-null");
-            $.minWaitDuration = Objects.requireNonNull($.minWaitDuration, "expected parameter 'minWaitDuration' to be non-null");
+            if ($.disruptionBudget == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentRolloutArgs", "disruptionBudget");
+            }
+            if ($.minWaitDuration == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentRolloutArgs", "minWaitDuration");
+            }
             return $;
         }
     }

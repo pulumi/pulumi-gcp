@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceFileArgs;
 import java.lang.String;
 import java.util.List;
@@ -269,7 +270,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArg
         }
 
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs build() {
-            $.interpreter = Objects.requireNonNull($.interpreter, "expected parameter 'interpreter' to be non-null");
+            if ($.interpreter == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs", "interpreter");
+            }
             return $;
         }
     }

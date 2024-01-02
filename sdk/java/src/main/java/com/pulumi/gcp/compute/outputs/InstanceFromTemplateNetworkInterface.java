@@ -141,6 +141,7 @@ public final class InstanceFromTemplateNetworkInterface {
 
         @CustomType.Setter
         public Builder accessConfigs(@Nullable List<InstanceFromTemplateNetworkInterfaceAccessConfig> accessConfigs) {
+
             this.accessConfigs = accessConfigs;
             return this;
         }
@@ -149,6 +150,7 @@ public final class InstanceFromTemplateNetworkInterface {
         }
         @CustomType.Setter
         public Builder aliasIpRanges(@Nullable List<InstanceFromTemplateNetworkInterfaceAliasIpRange> aliasIpRanges) {
+
             this.aliasIpRanges = aliasIpRanges;
             return this;
         }
@@ -157,11 +159,13 @@ public final class InstanceFromTemplateNetworkInterface {
         }
         @CustomType.Setter
         public Builder internalIpv6PrefixLength(@Nullable Integer internalIpv6PrefixLength) {
+
             this.internalIpv6PrefixLength = internalIpv6PrefixLength;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6AccessConfigs(@Nullable List<InstanceFromTemplateNetworkInterfaceIpv6AccessConfig> ipv6AccessConfigs) {
+
             this.ipv6AccessConfigs = ipv6AccessConfigs;
             return this;
         }
@@ -170,61 +174,73 @@ public final class InstanceFromTemplateNetworkInterface {
         }
         @CustomType.Setter
         public Builder ipv6AccessType(@Nullable String ipv6AccessType) {
+
             this.ipv6AccessType = ipv6AccessType;
             return this;
         }
         @CustomType.Setter
         public Builder ipv6Address(@Nullable String ipv6Address) {
+
             this.ipv6Address = ipv6Address;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder networkAttachment(@Nullable String networkAttachment) {
+
             this.networkAttachment = networkAttachment;
             return this;
         }
         @CustomType.Setter
         public Builder networkIp(@Nullable String networkIp) {
+
             this.networkIp = networkIp;
             return this;
         }
         @CustomType.Setter
         public Builder nicType(@Nullable String nicType) {
+
             this.nicType = nicType;
             return this;
         }
         @CustomType.Setter
         public Builder queueCount(@Nullable Integer queueCount) {
+
             this.queueCount = queueCount;
             return this;
         }
         @CustomType.Setter
         public Builder securityPolicy(@Nullable String securityPolicy) {
+
             this.securityPolicy = securityPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder stackType(@Nullable String stackType) {
+
             this.stackType = stackType;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
+
             this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder subnetworkProject(@Nullable String subnetworkProject) {
+
             this.subnetworkProject = subnetworkProject;
             return this;
         }

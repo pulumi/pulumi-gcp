@@ -5,6 +5,7 @@ package com.pulumi.gcp.essentialcontacts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -242,10 +243,18 @@ public final class DocumentAiWarehouseDocumentSchemaArgs extends com.pulumi.reso
         }
 
         public DocumentAiWarehouseDocumentSchemaArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.projectNumber = Objects.requireNonNull($.projectNumber, "expected parameter 'projectNumber' to be non-null");
-            $.propertyDefinitions = Objects.requireNonNull($.propertyDefinitions, "expected parameter 'propertyDefinitions' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("DocumentAiWarehouseDocumentSchemaArgs", "displayName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("DocumentAiWarehouseDocumentSchemaArgs", "location");
+            }
+            if ($.projectNumber == null) {
+                throw new MissingRequiredPropertyException("DocumentAiWarehouseDocumentSchemaArgs", "projectNumber");
+            }
+            if ($.propertyDefinitions == null) {
+                throw new MissingRequiredPropertyException("DocumentAiWarehouseDocumentSchemaArgs", "propertyDefinitions");
+            }
             return $;
         }
     }

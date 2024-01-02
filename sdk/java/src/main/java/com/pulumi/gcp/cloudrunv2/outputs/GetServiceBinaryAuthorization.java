@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetServiceBinaryAuthorization {
 
         @CustomType.Setter
         public Builder breakglassJustification(String breakglassJustification) {
-            this.breakglassJustification = Objects.requireNonNull(breakglassJustification);
+            if (breakglassJustification == null) {
+              throw new MissingRequiredPropertyException("GetServiceBinaryAuthorization", "breakglassJustification");
+            }
+            this.breakglassJustification = breakglassJustification;
             return this;
         }
         @CustomType.Setter
         public Builder useDefault(Boolean useDefault) {
-            this.useDefault = Objects.requireNonNull(useDefault);
+            if (useDefault == null) {
+              throw new MissingRequiredPropertyException("GetServiceBinaryAuthorization", "useDefault");
+            }
+            this.useDefault = useDefault;
             return this;
         }
         public GetServiceBinaryAuthorization build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTablePostgresqlColumnArgs;
 import java.lang.String;
 import java.util.List;
@@ -130,7 +131,9 @@ public final class StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPos
         }
 
         public StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs build() {
-            $.table = Objects.requireNonNull($.table, "expected parameter 'table' to be non-null");
+            if ($.table == null) {
+                throw new MissingRequiredPropertyException("StreamBackfillAllPostgresqlExcludedObjectsPostgresqlSchemaPostgresqlTableArgs", "table");
+            }
             return $;
         }
     }

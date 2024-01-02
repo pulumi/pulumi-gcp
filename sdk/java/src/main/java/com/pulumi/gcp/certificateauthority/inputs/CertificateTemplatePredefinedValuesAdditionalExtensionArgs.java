@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateTemplatePredefinedValuesAdditionalExtensionObjectIdArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -152,8 +153,12 @@ public final class CertificateTemplatePredefinedValuesAdditionalExtensionArgs ex
         }
 
         public CertificateTemplatePredefinedValuesAdditionalExtensionArgs build() {
-            $.objectId = Objects.requireNonNull($.objectId, "expected parameter 'objectId' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.objectId == null) {
+                throw new MissingRequiredPropertyException("CertificateTemplatePredefinedValuesAdditionalExtensionArgs", "objectId");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("CertificateTemplatePredefinedValuesAdditionalExtensionArgs", "value");
+            }
             return $;
         }
     }

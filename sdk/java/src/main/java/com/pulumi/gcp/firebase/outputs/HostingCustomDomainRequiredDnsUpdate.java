@@ -79,11 +79,13 @@ public final class HostingCustomDomainRequiredDnsUpdate {
 
         @CustomType.Setter
         public Builder checkTime(@Nullable String checkTime) {
+
             this.checkTime = checkTime;
             return this;
         }
         @CustomType.Setter
         public Builder desireds(@Nullable List<HostingCustomDomainRequiredDnsUpdateDesired> desireds) {
+
             this.desireds = desireds;
             return this;
         }
@@ -92,6 +94,7 @@ public final class HostingCustomDomainRequiredDnsUpdate {
         }
         @CustomType.Setter
         public Builder discovereds(@Nullable List<HostingCustomDomainRequiredDnsUpdateDiscovered> discovereds) {
+
             this.discovereds = discovereds;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.NodePoolUpgradeSettingsBlueGreenSettingsStandardRolloutPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -118,7 +119,9 @@ public final class NodePoolUpgradeSettingsBlueGreenSettingsArgs extends com.pulu
         }
 
         public NodePoolUpgradeSettingsBlueGreenSettingsArgs build() {
-            $.standardRolloutPolicy = Objects.requireNonNull($.standardRolloutPolicy, "expected parameter 'standardRolloutPolicy' to be non-null");
+            if ($.standardRolloutPolicy == null) {
+                throw new MissingRequiredPropertyException("NodePoolUpgradeSettingsBlueGreenSettingsArgs", "standardRolloutPolicy");
+            }
             return $;
         }
     }

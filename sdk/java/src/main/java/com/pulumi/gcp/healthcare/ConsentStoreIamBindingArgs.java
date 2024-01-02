@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.ConsentStoreIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -254,10 +255,18 @@ public final class ConsentStoreIamBindingArgs extends com.pulumi.resources.Resou
         }
 
         public ConsentStoreIamBindingArgs build() {
-            $.consentStoreId = Objects.requireNonNull($.consentStoreId, "expected parameter 'consentStoreId' to be non-null");
-            $.dataset = Objects.requireNonNull($.dataset, "expected parameter 'dataset' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.consentStoreId == null) {
+                throw new MissingRequiredPropertyException("ConsentStoreIamBindingArgs", "consentStoreId");
+            }
+            if ($.dataset == null) {
+                throw new MissingRequiredPropertyException("ConsentStoreIamBindingArgs", "dataset");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("ConsentStoreIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ConsentStoreIamBindingArgs", "role");
+            }
             return $;
         }
     }

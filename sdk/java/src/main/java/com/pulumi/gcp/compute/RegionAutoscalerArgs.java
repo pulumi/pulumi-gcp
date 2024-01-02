@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionAutoscalerAutoscalingPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -302,8 +303,12 @@ public final class RegionAutoscalerArgs extends com.pulumi.resources.ResourceArg
         }
 
         public RegionAutoscalerArgs build() {
-            $.autoscalingPolicy = Objects.requireNonNull($.autoscalingPolicy, "expected parameter 'autoscalingPolicy' to be non-null");
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
+            if ($.autoscalingPolicy == null) {
+                throw new MissingRequiredPropertyException("RegionAutoscalerArgs", "autoscalingPolicy");
+            }
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("RegionAutoscalerArgs", "target");
+            }
             return $;
         }
     }

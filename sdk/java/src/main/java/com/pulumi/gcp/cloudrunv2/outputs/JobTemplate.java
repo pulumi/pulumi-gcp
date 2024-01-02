@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplate;
 import java.lang.Integer;
 import java.lang.String;
@@ -119,27 +120,34 @@ public final class JobTemplate {
 
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,String> annotations) {
+
             this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder parallelism(@Nullable Integer parallelism) {
+
             this.parallelism = parallelism;
             return this;
         }
         @CustomType.Setter
         public Builder taskCount(@Nullable Integer taskCount) {
+
             this.taskCount = taskCount;
             return this;
         }
         @CustomType.Setter
         public Builder template(JobTemplateTemplate template) {
-            this.template = Objects.requireNonNull(template);
+            if (template == null) {
+              throw new MissingRequiredPropertyException("JobTemplate", "template");
+            }
+            this.template = template;
             return this;
         }
         public JobTemplate build() {

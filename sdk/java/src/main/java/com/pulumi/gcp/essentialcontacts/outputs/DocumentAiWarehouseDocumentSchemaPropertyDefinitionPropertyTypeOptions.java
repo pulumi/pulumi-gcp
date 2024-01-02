@@ -4,6 +4,7 @@
 package com.pulumi.gcp.essentialcontacts.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.essentialcontacts.outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
 
         @CustomType.Setter
         public Builder propertyDefinitions(List<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition> propertyDefinitions) {
-            this.propertyDefinitions = Objects.requireNonNull(propertyDefinitions);
+            if (propertyDefinitions == null) {
+              throw new MissingRequiredPropertyException("DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptions", "propertyDefinitions");
+            }
+            this.propertyDefinitions = propertyDefinitions;
             return this;
         }
         public Builder propertyDefinitions(DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition... propertyDefinitions) {

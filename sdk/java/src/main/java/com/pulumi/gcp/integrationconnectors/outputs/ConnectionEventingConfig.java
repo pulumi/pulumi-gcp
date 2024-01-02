@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigAdditionalVariable;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigAuthConfig;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionEventingConfigRegistrationDestinationConfig;
@@ -96,6 +97,7 @@ public final class ConnectionEventingConfig {
 
         @CustomType.Setter
         public Builder additionalVariables(@Nullable List<ConnectionEventingConfigAdditionalVariable> additionalVariables) {
+
             this.additionalVariables = additionalVariables;
             return this;
         }
@@ -104,17 +106,22 @@ public final class ConnectionEventingConfig {
         }
         @CustomType.Setter
         public Builder authConfig(@Nullable ConnectionEventingConfigAuthConfig authConfig) {
+
             this.authConfig = authConfig;
             return this;
         }
         @CustomType.Setter
         public Builder enrichmentEnabled(@Nullable Boolean enrichmentEnabled) {
+
             this.enrichmentEnabled = enrichmentEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder registrationDestinationConfig(ConnectionEventingConfigRegistrationDestinationConfig registrationDestinationConfig) {
-            this.registrationDestinationConfig = Objects.requireNonNull(registrationDestinationConfig);
+            if (registrationDestinationConfig == null) {
+              throw new MissingRequiredPropertyException("ConnectionEventingConfig", "registrationDestinationConfig");
+            }
+            this.registrationDestinationConfig = registrationDestinationConfig;
             return this;
         }
         public ConnectionEventingConfig build() {

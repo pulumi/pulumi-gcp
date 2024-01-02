@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -158,41 +159,51 @@ public final class TriggerBuildSourceRepoSource {
 
         @CustomType.Setter
         public Builder branchName(@Nullable String branchName) {
+
             this.branchName = branchName;
             return this;
         }
         @CustomType.Setter
         public Builder commitSha(@Nullable String commitSha) {
+
             this.commitSha = commitSha;
             return this;
         }
         @CustomType.Setter
         public Builder dir(@Nullable String dir) {
+
             this.dir = dir;
             return this;
         }
         @CustomType.Setter
         public Builder invertRegex(@Nullable Boolean invertRegex) {
+
             this.invertRegex = invertRegex;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder repoName(String repoName) {
-            this.repoName = Objects.requireNonNull(repoName);
+            if (repoName == null) {
+              throw new MissingRequiredPropertyException("TriggerBuildSourceRepoSource", "repoName");
+            }
+            this.repoName = repoName;
             return this;
         }
         @CustomType.Setter
         public Builder substitutions(@Nullable Map<String,String> substitutions) {
+
             this.substitutions = substitutions;
             return this;
         }
         @CustomType.Setter
         public Builder tagName(@Nullable String tagName) {
+
             this.tagName = tagName;
             return this;
         }

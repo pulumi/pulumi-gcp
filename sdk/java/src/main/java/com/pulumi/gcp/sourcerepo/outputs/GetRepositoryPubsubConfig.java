@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sourcerepo.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetRepositoryPubsubConfig {
 
         @CustomType.Setter
         public Builder messageFormat(String messageFormat) {
-            this.messageFormat = Objects.requireNonNull(messageFormat);
+            if (messageFormat == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryPubsubConfig", "messageFormat");
+            }
+            this.messageFormat = messageFormat;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
-            this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
+            if (serviceAccountEmail == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryPubsubConfig", "serviceAccountEmail");
+            }
+            this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder topic(String topic) {
-            this.topic = Objects.requireNonNull(topic);
+            if (topic == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryPubsubConfig", "topic");
+            }
+            this.topic = topic;
             return this;
         }
         public GetRepositoryPubsubConfig build() {

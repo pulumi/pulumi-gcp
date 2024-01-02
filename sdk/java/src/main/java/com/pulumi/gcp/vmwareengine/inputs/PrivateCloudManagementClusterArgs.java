@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterNodeTypeConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -155,7 +156,9 @@ public final class PrivateCloudManagementClusterArgs extends com.pulumi.resource
         }
 
         public PrivateCloudManagementClusterArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("PrivateCloudManagementClusterArgs", "clusterId");
+            }
             return $;
         }
     }

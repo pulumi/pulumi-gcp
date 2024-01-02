@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig {
 
         @CustomType.Setter
         public Builder leafNodeEmbeddingCount(Integer leafNodeEmbeddingCount) {
-            this.leafNodeEmbeddingCount = Objects.requireNonNull(leafNodeEmbeddingCount);
+            if (leafNodeEmbeddingCount == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig", "leafNodeEmbeddingCount");
+            }
+            this.leafNodeEmbeddingCount = leafNodeEmbeddingCount;
             return this;
         }
         @CustomType.Setter
         public Builder leafNodesToSearchPercent(Integer leafNodesToSearchPercent) {
-            this.leafNodesToSearchPercent = Objects.requireNonNull(leafNodesToSearchPercent);
+            if (leafNodesToSearchPercent == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig", "leafNodesToSearchPercent");
+            }
+            this.leafNodesToSearchPercent = leafNodesToSearchPercent;
             return this;
         }
         public GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig build() {

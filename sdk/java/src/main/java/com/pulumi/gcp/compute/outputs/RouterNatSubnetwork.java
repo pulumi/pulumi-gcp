@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -84,11 +85,15 @@ public final class RouterNatSubnetwork {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("RouterNatSubnetwork", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryIpRangeNames(@Nullable List<String> secondaryIpRangeNames) {
+
             this.secondaryIpRangeNames = secondaryIpRangeNames;
             return this;
         }
@@ -97,7 +102,10 @@ public final class RouterNatSubnetwork {
         }
         @CustomType.Setter
         public Builder sourceIpRangesToNats(List<String> sourceIpRangesToNats) {
-            this.sourceIpRangesToNats = Objects.requireNonNull(sourceIpRangesToNats);
+            if (sourceIpRangesToNats == null) {
+              throw new MissingRequiredPropertyException("RouterNatSubnetwork", "sourceIpRangesToNats");
+            }
+            this.sourceIpRangesToNats = sourceIpRangesToNats;
             return this;
         }
         public Builder sourceIpRangesToNats(String... sourceIpRangesToNats) {

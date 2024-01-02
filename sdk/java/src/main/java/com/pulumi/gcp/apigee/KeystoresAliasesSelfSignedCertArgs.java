@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigee.inputs.KeystoresAliasesSelfSignedCertSubjectAlternativeDnsNamesArgs;
 import com.pulumi.gcp.apigee.inputs.KeystoresAliasesSelfSignedCertSubjectArgs;
 import java.lang.Integer;
@@ -391,12 +392,24 @@ public final class KeystoresAliasesSelfSignedCertArgs extends com.pulumi.resourc
         }
 
         public KeystoresAliasesSelfSignedCertArgs build() {
-            $.alias = Objects.requireNonNull($.alias, "expected parameter 'alias' to be non-null");
-            $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
-            $.keystore = Objects.requireNonNull($.keystore, "expected parameter 'keystore' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.sigAlg = Objects.requireNonNull($.sigAlg, "expected parameter 'sigAlg' to be non-null");
-            $.subject = Objects.requireNonNull($.subject, "expected parameter 'subject' to be non-null");
+            if ($.alias == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesSelfSignedCertArgs", "alias");
+            }
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesSelfSignedCertArgs", "environment");
+            }
+            if ($.keystore == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesSelfSignedCertArgs", "keystore");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesSelfSignedCertArgs", "orgId");
+            }
+            if ($.sigAlg == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesSelfSignedCertArgs", "sigAlg");
+            }
+            if ($.subject == null) {
+                throw new MissingRequiredPropertyException("KeystoresAliasesSelfSignedCertArgs", "subject");
+            }
             return $;
         }
     }

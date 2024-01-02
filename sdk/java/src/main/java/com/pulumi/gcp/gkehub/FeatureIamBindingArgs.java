@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkehub.inputs.FeatureIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -287,8 +288,12 @@ public final class FeatureIamBindingArgs extends com.pulumi.resources.ResourceAr
         }
 
         public FeatureIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("FeatureIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("FeatureIamBindingArgs", "role");
+            }
             return $;
         }
     }

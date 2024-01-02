@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,11 +61,15 @@ public final class ConnectionAwsAccessRole {
 
         @CustomType.Setter
         public Builder iamRoleId(String iamRoleId) {
-            this.iamRoleId = Objects.requireNonNull(iamRoleId);
+            if (iamRoleId == null) {
+              throw new MissingRequiredPropertyException("ConnectionAwsAccessRole", "iamRoleId");
+            }
+            this.iamRoleId = iamRoleId;
             return this;
         }
         @CustomType.Setter
         public Builder identity(@Nullable String identity) {
+
             this.identity = identity;
             return this;
         }

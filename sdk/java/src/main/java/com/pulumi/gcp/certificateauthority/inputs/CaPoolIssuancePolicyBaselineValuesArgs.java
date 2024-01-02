@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtensionArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesCaOptionsArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyBaselineValuesKeyUsageArgs;
@@ -324,8 +325,12 @@ public final class CaPoolIssuancePolicyBaselineValuesArgs extends com.pulumi.res
         }
 
         public CaPoolIssuancePolicyBaselineValuesArgs build() {
-            $.caOptions = Objects.requireNonNull($.caOptions, "expected parameter 'caOptions' to be non-null");
-            $.keyUsage = Objects.requireNonNull($.keyUsage, "expected parameter 'keyUsage' to be non-null");
+            if ($.caOptions == null) {
+                throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValuesArgs", "caOptions");
+            }
+            if ($.keyUsage == null) {
+                throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValuesArgs", "keyUsage");
+            }
             return $;
         }
     }

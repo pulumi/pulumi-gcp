@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleHeaderActionRequestHeadersToAdd;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class SecurityPolicyRuleHeaderAction {
 
         @CustomType.Setter
         public Builder requestHeadersToAdds(List<SecurityPolicyRuleHeaderActionRequestHeadersToAdd> requestHeadersToAdds) {
-            this.requestHeadersToAdds = Objects.requireNonNull(requestHeadersToAdds);
+            if (requestHeadersToAdds == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRuleHeaderAction", "requestHeadersToAdds");
+            }
+            this.requestHeadersToAdds = requestHeadersToAdds;
             return this;
         }
         public Builder requestHeadersToAdds(SecurityPolicyRuleHeaderActionRequestHeadersToAdd... requestHeadersToAdds) {

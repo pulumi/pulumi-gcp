@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuildv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class ConnectionGitlabConfigAuthorizerCredentialArgs extends com.pu
         }
 
         public ConnectionGitlabConfigAuthorizerCredentialArgs build() {
-            $.userTokenSecretVersion = Objects.requireNonNull($.userTokenSecretVersion, "expected parameter 'userTokenSecretVersion' to be non-null");
+            if ($.userTokenSecretVersion == null) {
+                throw new MissingRequiredPropertyException("ConnectionGitlabConfigAuthorizerCredentialArgs", "userTokenSecretVersion");
+            }
             return $;
         }
     }

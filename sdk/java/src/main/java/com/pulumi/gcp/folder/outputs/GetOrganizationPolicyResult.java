@@ -4,6 +4,7 @@
 package com.pulumi.gcp.folder.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.folder.outputs.GetOrganizationPolicyBooleanPolicy;
 import com.pulumi.gcp.folder.outputs.GetOrganizationPolicyListPolicy;
 import com.pulumi.gcp.folder.outputs.GetOrganizationPolicyRestorePolicy;
@@ -95,7 +96,10 @@ public final class GetOrganizationPolicyResult {
 
         @CustomType.Setter
         public Builder booleanPolicies(List<GetOrganizationPolicyBooleanPolicy> booleanPolicies) {
-            this.booleanPolicies = Objects.requireNonNull(booleanPolicies);
+            if (booleanPolicies == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "booleanPolicies");
+            }
+            this.booleanPolicies = booleanPolicies;
             return this;
         }
         public Builder booleanPolicies(GetOrganizationPolicyBooleanPolicy... booleanPolicies) {
@@ -103,27 +107,42 @@ public final class GetOrganizationPolicyResult {
         }
         @CustomType.Setter
         public Builder constraint(String constraint) {
-            this.constraint = Objects.requireNonNull(constraint);
+            if (constraint == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "constraint");
+            }
+            this.constraint = constraint;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder folder(String folder) {
-            this.folder = Objects.requireNonNull(folder);
+            if (folder == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "folder");
+            }
+            this.folder = folder;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder listPolicies(List<GetOrganizationPolicyListPolicy> listPolicies) {
-            this.listPolicies = Objects.requireNonNull(listPolicies);
+            if (listPolicies == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "listPolicies");
+            }
+            this.listPolicies = listPolicies;
             return this;
         }
         public Builder listPolicies(GetOrganizationPolicyListPolicy... listPolicies) {
@@ -131,7 +150,10 @@ public final class GetOrganizationPolicyResult {
         }
         @CustomType.Setter
         public Builder restorePolicies(List<GetOrganizationPolicyRestorePolicy> restorePolicies) {
-            this.restorePolicies = Objects.requireNonNull(restorePolicies);
+            if (restorePolicies == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "restorePolicies");
+            }
+            this.restorePolicies = restorePolicies;
             return this;
         }
         public Builder restorePolicies(GetOrganizationPolicyRestorePolicy... restorePolicies) {
@@ -139,12 +161,18 @@ public final class GetOrganizationPolicyResult {
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder version(Integer version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("GetOrganizationPolicyResult", "version");
+            }
+            this.version = version;
             return this;
         }
         public GetOrganizationPolicyResult build() {

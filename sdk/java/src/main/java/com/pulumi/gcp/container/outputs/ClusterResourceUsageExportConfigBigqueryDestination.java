@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class ClusterResourceUsageExportConfigBigqueryDestination {
 
         @CustomType.Setter
         public Builder datasetId(String datasetId) {
-            this.datasetId = Objects.requireNonNull(datasetId);
+            if (datasetId == null) {
+              throw new MissingRequiredPropertyException("ClusterResourceUsageExportConfigBigqueryDestination", "datasetId");
+            }
+            this.datasetId = datasetId;
             return this;
         }
         public ClusterResourceUsageExportConfigBigqueryDestination build() {

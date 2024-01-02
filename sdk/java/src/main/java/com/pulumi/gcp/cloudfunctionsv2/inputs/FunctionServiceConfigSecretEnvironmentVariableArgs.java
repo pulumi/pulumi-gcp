@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctionsv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -185,10 +186,18 @@ public final class FunctionServiceConfigSecretEnvironmentVariableArgs extends co
         }
 
         public FunctionServiceConfigSecretEnvironmentVariableArgs build() {
-            $.key = Objects.requireNonNull($.key, "expected parameter 'key' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.secret = Objects.requireNonNull($.secret, "expected parameter 'secret' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.key == null) {
+                throw new MissingRequiredPropertyException("FunctionServiceConfigSecretEnvironmentVariableArgs", "key");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("FunctionServiceConfigSecretEnvironmentVariableArgs", "projectId");
+            }
+            if ($.secret == null) {
+                throw new MissingRequiredPropertyException("FunctionServiceConfigSecretEnvironmentVariableArgs", "secret");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("FunctionServiceConfigSecretEnvironmentVariableArgs", "version");
+            }
             return $;
         }
     }

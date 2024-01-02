@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iap.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -95,7 +96,9 @@ public final class GetWebTypeAppEngineIamPolicyPlainArgs extends com.pulumi.reso
         }
 
         public GetWebTypeAppEngineIamPolicyPlainArgs build() {
-            $.appId = Objects.requireNonNull($.appId, "expected parameter 'appId' to be non-null");
+            if ($.appId == null) {
+                throw new MissingRequiredPropertyException("GetWebTypeAppEngineIamPolicyPlainArgs", "appId");
+            }
             return $;
         }
     }

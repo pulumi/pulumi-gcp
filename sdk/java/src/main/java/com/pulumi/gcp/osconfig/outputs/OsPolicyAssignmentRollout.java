@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentRolloutDisruptionBudget;
 import java.lang.String;
 import java.util.Objects;
@@ -69,12 +70,18 @@ public final class OsPolicyAssignmentRollout {
 
         @CustomType.Setter
         public Builder disruptionBudget(OsPolicyAssignmentRolloutDisruptionBudget disruptionBudget) {
-            this.disruptionBudget = Objects.requireNonNull(disruptionBudget);
+            if (disruptionBudget == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentRollout", "disruptionBudget");
+            }
+            this.disruptionBudget = disruptionBudget;
             return this;
         }
         @CustomType.Setter
         public Builder minWaitDuration(String minWaitDuration) {
-            this.minWaitDuration = Objects.requireNonNull(minWaitDuration);
+            if (minWaitDuration == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentRollout", "minWaitDuration");
+            }
+            this.minWaitDuration = minWaitDuration;
             return this;
         }
         public OsPolicyAssignmentRollout build() {

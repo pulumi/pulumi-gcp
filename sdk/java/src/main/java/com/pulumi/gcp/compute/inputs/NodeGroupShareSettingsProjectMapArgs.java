@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class NodeGroupShareSettingsProjectMapArgs extends com.pulumi.resou
         }
 
         public NodeGroupShareSettingsProjectMapArgs build() {
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("NodeGroupShareSettingsProjectMapArgs", "id");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("NodeGroupShareSettingsProjectMapArgs", "projectId");
+            }
             return $;
         }
     }

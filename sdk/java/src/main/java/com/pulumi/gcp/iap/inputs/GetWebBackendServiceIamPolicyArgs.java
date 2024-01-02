@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class GetWebBackendServiceIamPolicyArgs extends com.pulumi.resource
         }
 
         public GetWebBackendServiceIamPolicyArgs build() {
-            $.webBackendService = Objects.requireNonNull($.webBackendService, "expected parameter 'webBackendService' to be non-null");
+            if ($.webBackendService == null) {
+                throw new MissingRequiredPropertyException("GetWebBackendServiceIamPolicyArgs", "webBackendService");
+            }
             return $;
         }
     }

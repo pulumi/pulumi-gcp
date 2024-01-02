@@ -46,6 +46,7 @@ public final class DatascanDataQualitySpecPostScanActionsBigqueryExport {
 
         @CustomType.Setter
         public Builder resultsTable(@Nullable String resultsTable) {
+
             this.resultsTable = resultsTable;
             return this;
         }

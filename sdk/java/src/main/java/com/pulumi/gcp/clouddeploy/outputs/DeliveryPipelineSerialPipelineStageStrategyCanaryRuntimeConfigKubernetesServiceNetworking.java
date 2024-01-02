@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -73,17 +74,24 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
 
         @CustomType.Setter
         public Builder deployment(String deployment) {
-            this.deployment = Objects.requireNonNull(deployment);
+            if (deployment == null) {
+              throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking", "deployment");
+            }
+            this.deployment = deployment;
             return this;
         }
         @CustomType.Setter
         public Builder disablePodOverprovisioning(@Nullable Boolean disablePodOverprovisioning) {
+
             this.disablePodOverprovisioning = disablePodOverprovisioning;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking", "service");
+            }
+            this.service = service;
             return this;
         }
         public DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class NodePoolNetworkConfigNetworkPerformanceConfigArgs extends com
         }
 
         public NodePoolNetworkConfigNetworkPerformanceConfigArgs build() {
-            $.totalEgressBandwidthTier = Objects.requireNonNull($.totalEgressBandwidthTier, "expected parameter 'totalEgressBandwidthTier' to be non-null");
+            if ($.totalEgressBandwidthTier == null) {
+                throw new MissingRequiredPropertyException("NodePoolNetworkConfigNetworkPerformanceConfigArgs", "totalEgressBandwidthTier");
+            }
             return $;
         }
     }

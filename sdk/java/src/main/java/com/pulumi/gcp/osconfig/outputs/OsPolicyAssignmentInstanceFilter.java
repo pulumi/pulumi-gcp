@@ -108,11 +108,13 @@ public final class OsPolicyAssignmentInstanceFilter {
 
         @CustomType.Setter
         public Builder all(@Nullable Boolean all) {
+
             this.all = all;
             return this;
         }
         @CustomType.Setter
         public Builder exclusionLabels(@Nullable List<OsPolicyAssignmentInstanceFilterExclusionLabel> exclusionLabels) {
+
             this.exclusionLabels = exclusionLabels;
             return this;
         }
@@ -121,6 +123,7 @@ public final class OsPolicyAssignmentInstanceFilter {
         }
         @CustomType.Setter
         public Builder inclusionLabels(@Nullable List<OsPolicyAssignmentInstanceFilterInclusionLabel> inclusionLabels) {
+
             this.inclusionLabels = inclusionLabels;
             return this;
         }
@@ -129,6 +132,7 @@ public final class OsPolicyAssignmentInstanceFilter {
         }
         @CustomType.Setter
         public Builder inventories(@Nullable List<OsPolicyAssignmentInstanceFilterInventory> inventories) {
+
             this.inventories = inventories;
             return this;
         }

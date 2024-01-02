@@ -5,6 +5,7 @@ package com.pulumi.gcp.firebase.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -433,8 +434,12 @@ public final class ExtensionsInstanceConfigArgs extends com.pulumi.resources.Res
         }
 
         public ExtensionsInstanceConfigArgs build() {
-            $.extensionRef = Objects.requireNonNull($.extensionRef, "expected parameter 'extensionRef' to be non-null");
-            $.params = Objects.requireNonNull($.params, "expected parameter 'params' to be non-null");
+            if ($.extensionRef == null) {
+                throw new MissingRequiredPropertyException("ExtensionsInstanceConfigArgs", "extensionRef");
+            }
+            if ($.params == null) {
+                throw new MissingRequiredPropertyException("ExtensionsInstanceConfigArgs", "params");
+            }
             return $;
         }
     }

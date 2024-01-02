@@ -84,26 +84,31 @@ public final class AssetDiscoveryStatus {
 
         @CustomType.Setter
         public Builder lastRunDuration(@Nullable String lastRunDuration) {
+
             this.lastRunDuration = lastRunDuration;
             return this;
         }
         @CustomType.Setter
         public Builder lastRunTime(@Nullable String lastRunTime) {
+
             this.lastRunTime = lastRunTime;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stats(@Nullable List<AssetDiscoveryStatusStat> stats) {
+
             this.stats = stats;
             return this;
         }
@@ -112,6 +117,7 @@ public final class AssetDiscoveryStatus {
         }
         @CustomType.Setter
         public Builder updateTime(@Nullable String updateTime) {
+
             this.updateTime = updateTime;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class DatascanExecutionSpecTriggerSchedule {
 
         @CustomType.Setter
         public Builder cron(String cron) {
-            this.cron = Objects.requireNonNull(cron);
+            if (cron == null) {
+              throw new MissingRequiredPropertyException("DatascanExecutionSpecTriggerSchedule", "cron");
+            }
+            this.cron = cron;
             return this;
         }
         public DatascanExecutionSpecTriggerSchedule build() {

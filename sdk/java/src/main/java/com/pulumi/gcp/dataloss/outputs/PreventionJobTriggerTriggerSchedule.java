@@ -54,6 +54,7 @@ public final class PreventionJobTriggerTriggerSchedule {
 
         @CustomType.Setter
         public Builder recurrencePeriodDuration(@Nullable String recurrencePeriodDuration) {
+
             this.recurrencePeriodDuration = recurrencePeriodDuration;
             return this;
         }

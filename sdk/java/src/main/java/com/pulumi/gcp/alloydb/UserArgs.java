@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -251,9 +252,15 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public UserArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.userId = Objects.requireNonNull($.userId, "expected parameter 'userId' to be non-null");
-            $.userType = Objects.requireNonNull($.userType, "expected parameter 'userType' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "cluster");
+            }
+            if ($.userId == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "userId");
+            }
+            if ($.userType == null) {
+                throw new MissingRequiredPropertyException("UserArgs", "userType");
+            }
             return $;
         }
     }

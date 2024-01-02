@@ -4,6 +4,7 @@
 package com.pulumi.gcp.notebooks.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -74,17 +75,22 @@ public final class InstanceVmImage {
 
         @CustomType.Setter
         public Builder imageFamily(@Nullable String imageFamily) {
+
             this.imageFamily = imageFamily;
             return this;
         }
         @CustomType.Setter
         public Builder imageName(@Nullable String imageName) {
+
             this.imageName = imageName;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("InstanceVmImage", "project");
+            }
+            this.project = project;
             return this;
         }
         public InstanceVmImage build() {

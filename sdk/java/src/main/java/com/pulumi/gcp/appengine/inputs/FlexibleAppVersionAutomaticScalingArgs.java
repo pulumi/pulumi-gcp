@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingCpuUtilizationArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingDiskUtilizationArgs;
 import com.pulumi.gcp.appengine.inputs.FlexibleAppVersionAutomaticScalingNetworkUtilizationArgs;
@@ -516,7 +517,9 @@ public final class FlexibleAppVersionAutomaticScalingArgs extends com.pulumi.res
         }
 
         public FlexibleAppVersionAutomaticScalingArgs build() {
-            $.cpuUtilization = Objects.requireNonNull($.cpuUtilization, "expected parameter 'cpuUtilization' to be non-null");
+            if ($.cpuUtilization == null) {
+                throw new MissingRequiredPropertyException("FlexibleAppVersionAutomaticScalingArgs", "cpuUtilization");
+            }
             return $;
         }
     }

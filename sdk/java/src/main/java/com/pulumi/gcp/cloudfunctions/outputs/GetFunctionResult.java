@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctions.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionEventTrigger;
 import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionSecretEnvironmentVariable;
 import com.pulumi.gcp.cloudfunctions.outputs.GetFunctionSecretVolume;
@@ -395,52 +396,82 @@ public final class GetFunctionResult {
 
         @CustomType.Setter
         public Builder availableMemoryMb(Integer availableMemoryMb) {
-            this.availableMemoryMb = Objects.requireNonNull(availableMemoryMb);
+            if (availableMemoryMb == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "availableMemoryMb");
+            }
+            this.availableMemoryMb = availableMemoryMb;
             return this;
         }
         @CustomType.Setter
         public Builder buildEnvironmentVariables(Map<String,Object> buildEnvironmentVariables) {
-            this.buildEnvironmentVariables = Objects.requireNonNull(buildEnvironmentVariables);
+            if (buildEnvironmentVariables == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "buildEnvironmentVariables");
+            }
+            this.buildEnvironmentVariables = buildEnvironmentVariables;
             return this;
         }
         @CustomType.Setter
         public Builder buildWorkerPool(String buildWorkerPool) {
-            this.buildWorkerPool = Objects.requireNonNull(buildWorkerPool);
+            if (buildWorkerPool == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "buildWorkerPool");
+            }
+            this.buildWorkerPool = buildWorkerPool;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dockerRegistry(String dockerRegistry) {
-            this.dockerRegistry = Objects.requireNonNull(dockerRegistry);
+            if (dockerRegistry == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "dockerRegistry");
+            }
+            this.dockerRegistry = dockerRegistry;
             return this;
         }
         @CustomType.Setter
         public Builder dockerRepository(String dockerRepository) {
-            this.dockerRepository = Objects.requireNonNull(dockerRepository);
+            if (dockerRepository == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "dockerRepository");
+            }
+            this.dockerRepository = dockerRepository;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder entryPoint(String entryPoint) {
-            this.entryPoint = Objects.requireNonNull(entryPoint);
+            if (entryPoint == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "entryPoint");
+            }
+            this.entryPoint = entryPoint;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVariables(Map<String,Object> environmentVariables) {
-            this.environmentVariables = Objects.requireNonNull(environmentVariables);
+            if (environmentVariables == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "environmentVariables");
+            }
+            this.environmentVariables = environmentVariables;
             return this;
         }
         @CustomType.Setter
         public Builder eventTriggers(List<GetFunctionEventTrigger> eventTriggers) {
-            this.eventTriggers = Objects.requireNonNull(eventTriggers);
+            if (eventTriggers == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "eventTriggers");
+            }
+            this.eventTriggers = eventTriggers;
             return this;
         }
         public Builder eventTriggers(GetFunctionEventTrigger... eventTriggers) {
@@ -448,72 +479,110 @@ public final class GetFunctionResult {
         }
         @CustomType.Setter
         public Builder httpsTriggerSecurityLevel(String httpsTriggerSecurityLevel) {
-            this.httpsTriggerSecurityLevel = Objects.requireNonNull(httpsTriggerSecurityLevel);
+            if (httpsTriggerSecurityLevel == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "httpsTriggerSecurityLevel");
+            }
+            this.httpsTriggerSecurityLevel = httpsTriggerSecurityLevel;
             return this;
         }
         @CustomType.Setter
         public Builder httpsTriggerUrl(String httpsTriggerUrl) {
-            this.httpsTriggerUrl = Objects.requireNonNull(httpsTriggerUrl);
+            if (httpsTriggerUrl == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "httpsTriggerUrl");
+            }
+            this.httpsTriggerUrl = httpsTriggerUrl;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ingressSettings(String ingressSettings) {
-            this.ingressSettings = Objects.requireNonNull(ingressSettings);
+            if (ingressSettings == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "ingressSettings");
+            }
+            this.ingressSettings = ingressSettings;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder maxInstances(Integer maxInstances) {
-            this.maxInstances = Objects.requireNonNull(maxInstances);
+            if (maxInstances == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "maxInstances");
+            }
+            this.maxInstances = maxInstances;
             return this;
         }
         @CustomType.Setter
         public Builder minInstances(Integer minInstances) {
-            this.minInstances = Objects.requireNonNull(minInstances);
+            if (minInstances == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "minInstances");
+            }
+            this.minInstances = minInstances;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder runtime(String runtime) {
-            this.runtime = Objects.requireNonNull(runtime);
+            if (runtime == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "runtime");
+            }
+            this.runtime = runtime;
             return this;
         }
         @CustomType.Setter
         public Builder secretEnvironmentVariables(List<GetFunctionSecretEnvironmentVariable> secretEnvironmentVariables) {
-            this.secretEnvironmentVariables = Objects.requireNonNull(secretEnvironmentVariables);
+            if (secretEnvironmentVariables == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "secretEnvironmentVariables");
+            }
+            this.secretEnvironmentVariables = secretEnvironmentVariables;
             return this;
         }
         public Builder secretEnvironmentVariables(GetFunctionSecretEnvironmentVariable... secretEnvironmentVariables) {
@@ -521,7 +590,10 @@ public final class GetFunctionResult {
         }
         @CustomType.Setter
         public Builder secretVolumes(List<GetFunctionSecretVolume> secretVolumes) {
-            this.secretVolumes = Objects.requireNonNull(secretVolumes);
+            if (secretVolumes == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "secretVolumes");
+            }
+            this.secretVolumes = secretVolumes;
             return this;
         }
         public Builder secretVolumes(GetFunctionSecretVolume... secretVolumes) {
@@ -529,22 +601,34 @@ public final class GetFunctionResult {
         }
         @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
-            this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
+            if (serviceAccountEmail == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "serviceAccountEmail");
+            }
+            this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder sourceArchiveBucket(String sourceArchiveBucket) {
-            this.sourceArchiveBucket = Objects.requireNonNull(sourceArchiveBucket);
+            if (sourceArchiveBucket == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "sourceArchiveBucket");
+            }
+            this.sourceArchiveBucket = sourceArchiveBucket;
             return this;
         }
         @CustomType.Setter
         public Builder sourceArchiveObject(String sourceArchiveObject) {
-            this.sourceArchiveObject = Objects.requireNonNull(sourceArchiveObject);
+            if (sourceArchiveObject == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "sourceArchiveObject");
+            }
+            this.sourceArchiveObject = sourceArchiveObject;
             return this;
         }
         @CustomType.Setter
         public Builder sourceRepositories(List<GetFunctionSourceRepository> sourceRepositories) {
-            this.sourceRepositories = Objects.requireNonNull(sourceRepositories);
+            if (sourceRepositories == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "sourceRepositories");
+            }
+            this.sourceRepositories = sourceRepositories;
             return this;
         }
         public Builder sourceRepositories(GetFunctionSourceRepository... sourceRepositories) {
@@ -552,27 +636,42 @@ public final class GetFunctionResult {
         }
         @CustomType.Setter
         public Builder status(String status) {
-            this.status = Objects.requireNonNull(status);
+            if (status == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "status");
+            }
+            this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(Integer timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder triggerHttp(Boolean triggerHttp) {
-            this.triggerHttp = Objects.requireNonNull(triggerHttp);
+            if (triggerHttp == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "triggerHttp");
+            }
+            this.triggerHttp = triggerHttp;
             return this;
         }
         @CustomType.Setter
         public Builder vpcConnector(String vpcConnector) {
-            this.vpcConnector = Objects.requireNonNull(vpcConnector);
+            if (vpcConnector == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "vpcConnector");
+            }
+            this.vpcConnector = vpcConnector;
             return this;
         }
         @CustomType.Setter
         public Builder vpcConnectorEgressSettings(String vpcConnectorEgressSettings) {
-            this.vpcConnectorEgressSettings = Objects.requireNonNull(vpcConnectorEgressSettings);
+            if (vpcConnectorEgressSettings == null) {
+              throw new MissingRequiredPropertyException("GetFunctionResult", "vpcConnectorEgressSettings");
+            }
+            this.vpcConnectorEgressSettings = vpcConnectorEgressSettings;
             return this;
         }
         public GetFunctionResult build() {

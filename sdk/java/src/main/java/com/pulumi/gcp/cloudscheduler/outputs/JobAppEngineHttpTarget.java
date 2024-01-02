@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudscheduler.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudscheduler.outputs.JobAppEngineHttpTargetAppEngineRouting;
 import java.lang.String;
 import java.util.Map;
@@ -122,27 +123,34 @@ public final class JobAppEngineHttpTarget {
 
         @CustomType.Setter
         public Builder appEngineRouting(@Nullable JobAppEngineHttpTargetAppEngineRouting appEngineRouting) {
+
             this.appEngineRouting = appEngineRouting;
             return this;
         }
         @CustomType.Setter
         public Builder body(@Nullable String body) {
+
             this.body = body;
             return this;
         }
         @CustomType.Setter
         public Builder headers(@Nullable Map<String,String> headers) {
+
             this.headers = headers;
             return this;
         }
         @CustomType.Setter
         public Builder httpMethod(@Nullable String httpMethod) {
+
             this.httpMethod = httpMethod;
             return this;
         }
         @CustomType.Setter
         public Builder relativeUri(String relativeUri) {
-            this.relativeUri = Objects.requireNonNull(relativeUri);
+            if (relativeUri == null) {
+              throw new MissingRequiredPropertyException("JobAppEngineHttpTarget", "relativeUri");
+            }
+            this.relativeUri = relativeUri;
             return this;
         }
         public JobAppEngineHttpTarget build() {

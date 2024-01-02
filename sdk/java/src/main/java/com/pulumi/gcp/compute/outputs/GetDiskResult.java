@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetDiskAsyncPrimaryDisk;
 import com.pulumi.gcp.compute.outputs.GetDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetDiskGuestOsFeature;
@@ -425,7 +426,10 @@ public final class GetDiskResult {
 
         @CustomType.Setter
         public Builder asyncPrimaryDisks(List<GetDiskAsyncPrimaryDisk> asyncPrimaryDisks) {
-            this.asyncPrimaryDisks = Objects.requireNonNull(asyncPrimaryDisks);
+            if (asyncPrimaryDisks == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "asyncPrimaryDisks");
+            }
+            this.asyncPrimaryDisks = asyncPrimaryDisks;
             return this;
         }
         public Builder asyncPrimaryDisks(GetDiskAsyncPrimaryDisk... asyncPrimaryDisks) {
@@ -433,17 +437,26 @@ public final class GetDiskResult {
         }
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
-            this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeys(List<GetDiskDiskEncryptionKey> diskEncryptionKeys) {
-            this.diskEncryptionKeys = Objects.requireNonNull(diskEncryptionKeys);
+            if (diskEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "diskEncryptionKeys");
+            }
+            this.diskEncryptionKeys = diskEncryptionKeys;
             return this;
         }
         public Builder diskEncryptionKeys(GetDiskDiskEncryptionKey... diskEncryptionKeys) {
@@ -451,17 +464,26 @@ public final class GetDiskResult {
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
-            this.enableConfidentialCompute = Objects.requireNonNull(enableConfidentialCompute);
+            if (enableConfidentialCompute == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "enableConfidentialCompute");
+            }
+            this.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }
         @CustomType.Setter
         public Builder guestOsFeatures(List<GetDiskGuestOsFeature> guestOsFeatures) {
-            this.guestOsFeatures = Objects.requireNonNull(guestOsFeatures);
+            if (guestOsFeatures == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "guestOsFeatures");
+            }
+            this.guestOsFeatures = guestOsFeatures;
             return this;
         }
         public Builder guestOsFeatures(GetDiskGuestOsFeature... guestOsFeatures) {
@@ -469,42 +491,66 @@ public final class GetDiskResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
-            this.interface_ = Objects.requireNonNull(interface_);
+            if (interface_ == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "interface_");
+            }
+            this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder labelFingerprint(String labelFingerprint) {
-            this.labelFingerprint = Objects.requireNonNull(labelFingerprint);
+            if (labelFingerprint == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "labelFingerprint");
+            }
+            this.labelFingerprint = labelFingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder lastAttachTimestamp(String lastAttachTimestamp) {
-            this.lastAttachTimestamp = Objects.requireNonNull(lastAttachTimestamp);
+            if (lastAttachTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "lastAttachTimestamp");
+            }
+            this.lastAttachTimestamp = lastAttachTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder lastDetachTimestamp(String lastDetachTimestamp) {
-            this.lastDetachTimestamp = Objects.requireNonNull(lastDetachTimestamp);
+            if (lastDetachTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "lastDetachTimestamp");
+            }
+            this.lastDetachTimestamp = lastDetachTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder licenses(List<String> licenses) {
-            this.licenses = Objects.requireNonNull(licenses);
+            if (licenses == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "licenses");
+            }
+            this.licenses = licenses;
             return this;
         }
         public Builder licenses(String... licenses) {
@@ -512,42 +558,64 @@ public final class GetDiskResult {
         }
         @CustomType.Setter
         public Builder multiWriter(Boolean multiWriter) {
-            this.multiWriter = Objects.requireNonNull(multiWriter);
+            if (multiWriter == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "multiWriter");
+            }
+            this.multiWriter = multiWriter;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder physicalBlockSizeBytes(Integer physicalBlockSizeBytes) {
-            this.physicalBlockSizeBytes = Objects.requireNonNull(physicalBlockSizeBytes);
+            if (physicalBlockSizeBytes == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "physicalBlockSizeBytes");
+            }
+            this.physicalBlockSizeBytes = physicalBlockSizeBytes;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedIops(Integer provisionedIops) {
-            this.provisionedIops = Objects.requireNonNull(provisionedIops);
+            if (provisionedIops == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "provisionedIops");
+            }
+            this.provisionedIops = provisionedIops;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedThroughput(Integer provisionedThroughput) {
-            this.provisionedThroughput = Objects.requireNonNull(provisionedThroughput);
+            if (provisionedThroughput == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "provisionedThroughput");
+            }
+            this.provisionedThroughput = provisionedThroughput;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
-            this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
+            if (resourcePolicies == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "resourcePolicies");
+            }
+            this.resourcePolicies = resourcePolicies;
             return this;
         }
         public Builder resourcePolicies(String... resourcePolicies) {
@@ -555,32 +623,50 @@ public final class GetDiskResult {
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder snapshot(String snapshot) {
-            this.snapshot = Objects.requireNonNull(snapshot);
+            if (snapshot == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "snapshot");
+            }
+            this.snapshot = snapshot;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDisk(String sourceDisk) {
-            this.sourceDisk = Objects.requireNonNull(sourceDisk);
+            if (sourceDisk == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "sourceDisk");
+            }
+            this.sourceDisk = sourceDisk;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDiskId(String sourceDiskId) {
-            this.sourceDiskId = Objects.requireNonNull(sourceDiskId);
+            if (sourceDiskId == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "sourceDiskId");
+            }
+            this.sourceDiskId = sourceDiskId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceImageEncryptionKeys(List<GetDiskSourceImageEncryptionKey> sourceImageEncryptionKeys) {
-            this.sourceImageEncryptionKeys = Objects.requireNonNull(sourceImageEncryptionKeys);
+            if (sourceImageEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "sourceImageEncryptionKeys");
+            }
+            this.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
             return this;
         }
         public Builder sourceImageEncryptionKeys(GetDiskSourceImageEncryptionKey... sourceImageEncryptionKeys) {
@@ -588,12 +674,18 @@ public final class GetDiskResult {
         }
         @CustomType.Setter
         public Builder sourceImageId(String sourceImageId) {
-            this.sourceImageId = Objects.requireNonNull(sourceImageId);
+            if (sourceImageId == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "sourceImageId");
+            }
+            this.sourceImageId = sourceImageId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceSnapshotEncryptionKeys(List<GetDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys) {
-            this.sourceSnapshotEncryptionKeys = Objects.requireNonNull(sourceSnapshotEncryptionKeys);
+            if (sourceSnapshotEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "sourceSnapshotEncryptionKeys");
+            }
+            this.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             return this;
         }
         public Builder sourceSnapshotEncryptionKeys(GetDiskSourceSnapshotEncryptionKey... sourceSnapshotEncryptionKeys) {
@@ -601,17 +693,26 @@ public final class GetDiskResult {
         }
         @CustomType.Setter
         public Builder sourceSnapshotId(String sourceSnapshotId) {
-            this.sourceSnapshotId = Objects.requireNonNull(sourceSnapshotId);
+            if (sourceSnapshotId == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "sourceSnapshotId");
+            }
+            this.sourceSnapshotId = sourceSnapshotId;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder users(List<String> users) {
-            this.users = Objects.requireNonNull(users);
+            if (users == null) {
+              throw new MissingRequiredPropertyException("GetDiskResult", "users");
+            }
+            this.users = users;
             return this;
         }
         public Builder users(String... users) {
@@ -619,6 +720,7 @@ public final class GetDiskResult {
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

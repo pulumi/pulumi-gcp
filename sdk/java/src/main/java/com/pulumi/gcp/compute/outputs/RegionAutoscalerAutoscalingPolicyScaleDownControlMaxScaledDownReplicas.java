@@ -62,11 +62,13 @@ public final class RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDow
 
         @CustomType.Setter
         public Builder fixed(@Nullable Integer fixed) {
+
             this.fixed = fixed;
             return this;
         }
         @CustomType.Setter
         public Builder percent(@Nullable Integer percent) {
+
             this.percent = percent;
             return this;
         }

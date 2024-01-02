@@ -160,41 +160,49 @@ public final class ClusterAutomatedBackupPolicy {
 
         @CustomType.Setter
         public Builder backupWindow(@Nullable String backupWindow) {
+
             this.backupWindow = backupWindow;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionConfig(@Nullable ClusterAutomatedBackupPolicyEncryptionConfig encryptionConfig) {
+
             this.encryptionConfig = encryptionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder quantityBasedRetention(@Nullable ClusterAutomatedBackupPolicyQuantityBasedRetention quantityBasedRetention) {
+
             this.quantityBasedRetention = quantityBasedRetention;
             return this;
         }
         @CustomType.Setter
         public Builder timeBasedRetention(@Nullable ClusterAutomatedBackupPolicyTimeBasedRetention timeBasedRetention) {
+
             this.timeBasedRetention = timeBasedRetention;
             return this;
         }
         @CustomType.Setter
         public Builder weeklySchedule(@Nullable ClusterAutomatedBackupPolicyWeeklySchedule weeklySchedule) {
+
             this.weeklySchedule = weeklySchedule;
             return this;
         }

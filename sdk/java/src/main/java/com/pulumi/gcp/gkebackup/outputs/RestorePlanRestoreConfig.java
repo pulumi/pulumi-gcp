@@ -243,46 +243,55 @@ public final class RestorePlanRestoreConfig {
 
         @CustomType.Setter
         public Builder allNamespaces(@Nullable Boolean allNamespaces) {
+
             this.allNamespaces = allNamespaces;
             return this;
         }
         @CustomType.Setter
         public Builder clusterResourceConflictPolicy(@Nullable String clusterResourceConflictPolicy) {
+
             this.clusterResourceConflictPolicy = clusterResourceConflictPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder clusterResourceRestoreScope(@Nullable RestorePlanRestoreConfigClusterResourceRestoreScope clusterResourceRestoreScope) {
+
             this.clusterResourceRestoreScope = clusterResourceRestoreScope;
             return this;
         }
         @CustomType.Setter
         public Builder excludedNamespaces(@Nullable RestorePlanRestoreConfigExcludedNamespaces excludedNamespaces) {
+
             this.excludedNamespaces = excludedNamespaces;
             return this;
         }
         @CustomType.Setter
         public Builder namespacedResourceRestoreMode(@Nullable String namespacedResourceRestoreMode) {
+
             this.namespacedResourceRestoreMode = namespacedResourceRestoreMode;
             return this;
         }
         @CustomType.Setter
         public Builder noNamespaces(@Nullable Boolean noNamespaces) {
+
             this.noNamespaces = noNamespaces;
             return this;
         }
         @CustomType.Setter
         public Builder selectedApplications(@Nullable RestorePlanRestoreConfigSelectedApplications selectedApplications) {
+
             this.selectedApplications = selectedApplications;
             return this;
         }
         @CustomType.Setter
         public Builder selectedNamespaces(@Nullable RestorePlanRestoreConfigSelectedNamespaces selectedNamespaces) {
+
             this.selectedNamespaces = selectedNamespaces;
             return this;
         }
         @CustomType.Setter
         public Builder transformationRules(@Nullable List<RestorePlanRestoreConfigTransformationRule> transformationRules) {
+
             this.transformationRules = transformationRules;
             return this;
         }
@@ -291,6 +300,7 @@ public final class RestorePlanRestoreConfig {
         }
         @CustomType.Setter
         public Builder volumeDataRestorePolicy(@Nullable String volumeDataRestorePolicy) {
+
             this.volumeDataRestorePolicy = volumeDataRestorePolicy;
             return this;
         }

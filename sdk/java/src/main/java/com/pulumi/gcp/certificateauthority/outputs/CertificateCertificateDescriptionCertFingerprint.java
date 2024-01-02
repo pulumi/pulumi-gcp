@@ -46,6 +46,7 @@ public final class CertificateCertificateDescriptionCertFingerprint {
 
         @CustomType.Setter
         public Builder sha256Hash(@Nullable String sha256Hash) {
+
             this.sha256Hash = sha256Hash;
             return this;
         }

@@ -46,6 +46,7 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         @CustomType.Setter
         public Builder partToExtract(@Nullable String partToExtract) {
+
             this.partToExtract = partToExtract;
             return this;
         }

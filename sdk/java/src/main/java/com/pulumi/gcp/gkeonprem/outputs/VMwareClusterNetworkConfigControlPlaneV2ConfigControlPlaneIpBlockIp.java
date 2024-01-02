@@ -58,11 +58,13 @@ public final class VMwareClusterNetworkConfigControlPlaneV2ConfigControlPlaneIpB
 
         @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
+
             this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder ip(@Nullable String ip) {
+
             this.ip = ip;
             return this;
         }

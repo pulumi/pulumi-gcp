@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -90,8 +91,12 @@ public final class DatascanIamBindingConditionArgs extends com.pulumi.resources.
         }
 
         public DatascanIamBindingConditionArgs build() {
-            $.expression = Objects.requireNonNull($.expression, "expected parameter 'expression' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.expression == null) {
+                throw new MissingRequiredPropertyException("DatascanIamBindingConditionArgs", "expression");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("DatascanIamBindingConditionArgs", "title");
+            }
             return $;
         }
     }

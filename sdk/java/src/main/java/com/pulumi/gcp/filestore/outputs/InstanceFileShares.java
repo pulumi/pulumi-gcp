@@ -4,6 +4,7 @@
 package com.pulumi.gcp.filestore.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.filestore.outputs.InstanceFileSharesNfsExportOption;
 import java.lang.Integer;
 import java.lang.String;
@@ -99,16 +100,23 @@ public final class InstanceFileShares {
 
         @CustomType.Setter
         public Builder capacityGb(Integer capacityGb) {
-            this.capacityGb = Objects.requireNonNull(capacityGb);
+            if (capacityGb == null) {
+              throw new MissingRequiredPropertyException("InstanceFileShares", "capacityGb");
+            }
+            this.capacityGb = capacityGb;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("InstanceFileShares", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nfsExportOptions(@Nullable List<InstanceFileSharesNfsExportOption> nfsExportOptions) {
+
             this.nfsExportOptions = nfsExportOptions;
             return this;
         }
@@ -117,6 +125,7 @@ public final class InstanceFileShares {
         }
         @CustomType.Setter
         public Builder sourceBackup(@Nullable String sourceBackup) {
+
             this.sourceBackup = sourceBackup;
             return this;
         }

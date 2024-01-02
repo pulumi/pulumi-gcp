@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefaultManagement
 
         @CustomType.Setter
         public Builder autoUpgradeStartTime(String autoUpgradeStartTime) {
-            this.autoUpgradeStartTime = Objects.requireNonNull(autoUpgradeStartTime);
+            if (autoUpgradeStartTime == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption", "autoUpgradeStartTime");
+            }
+            this.autoUpgradeStartTime = autoUpgradeStartTime;
             return this;
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption", "description");
+            }
+            this.description = description;
             return this;
         }
         public GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption build() {

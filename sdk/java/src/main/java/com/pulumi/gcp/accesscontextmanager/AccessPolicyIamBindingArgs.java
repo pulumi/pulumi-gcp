@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.inputs.AccessPolicyIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -209,8 +210,12 @@ public final class AccessPolicyIamBindingArgs extends com.pulumi.resources.Resou
         }
 
         public AccessPolicyIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyIamBindingArgs", "role");
+            }
             return $;
         }
     }

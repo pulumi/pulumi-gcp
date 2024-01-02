@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile;
 import java.lang.String;
 import java.util.List;
@@ -118,6 +119,7 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
 
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -126,21 +128,27 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate {
         }
         @CustomType.Setter
         public Builder file(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFile file) {
+
             this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder interpreter(String interpreter) {
-            this.interpreter = Objects.requireNonNull(interpreter);
+            if (interpreter == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidate", "interpreter");
+            }
+            this.interpreter = interpreter;
             return this;
         }
         @CustomType.Setter
         public Builder outputFilePath(@Nullable String outputFilePath) {
+
             this.outputFilePath = outputFilePath;
             return this;
         }
         @CustomType.Setter
         public Builder script(@Nullable String script) {
+
             this.script = script;
             return this;
         }

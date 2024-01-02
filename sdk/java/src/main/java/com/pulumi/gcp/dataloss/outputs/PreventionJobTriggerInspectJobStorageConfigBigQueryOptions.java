@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField;
@@ -160,6 +161,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
 
         @CustomType.Setter
         public Builder excludedFields(@Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsExcludedField> excludedFields) {
+
             this.excludedFields = excludedFields;
             return this;
         }
@@ -168,6 +170,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         }
         @CustomType.Setter
         public Builder identifyingFields(@Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIdentifyingField> identifyingFields) {
+
             this.identifyingFields = identifyingFields;
             return this;
         }
@@ -176,6 +179,7 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         }
         @CustomType.Setter
         public Builder includedFields(@Nullable List<PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsIncludedField> includedFields) {
+
             this.includedFields = includedFields;
             return this;
         }
@@ -184,22 +188,28 @@ public final class PreventionJobTriggerInspectJobStorageConfigBigQueryOptions {
         }
         @CustomType.Setter
         public Builder rowsLimit(@Nullable Integer rowsLimit) {
+
             this.rowsLimit = rowsLimit;
             return this;
         }
         @CustomType.Setter
         public Builder rowsLimitPercent(@Nullable Integer rowsLimitPercent) {
+
             this.rowsLimitPercent = rowsLimitPercent;
             return this;
         }
         @CustomType.Setter
         public Builder sampleMethod(@Nullable String sampleMethod) {
+
             this.sampleMethod = sampleMethod;
             return this;
         }
         @CustomType.Setter
         public Builder tableReference(PreventionJobTriggerInspectJobStorageConfigBigQueryOptionsTableReference tableReference) {
-            this.tableReference = Objects.requireNonNull(tableReference);
+            if (tableReference == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigBigQueryOptions", "tableReference");
+            }
+            this.tableReference = tableReference;
             return this;
         }
         public PreventionJobTriggerInspectJobStorageConfigBigQueryOptions build() {

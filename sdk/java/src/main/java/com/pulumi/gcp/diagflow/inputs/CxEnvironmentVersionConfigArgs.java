@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class CxEnvironmentVersionConfigArgs extends com.pulumi.resources.R
         }
 
         public CxEnvironmentVersionConfigArgs build() {
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("CxEnvironmentVersionConfigArgs", "version");
+            }
             return $;
         }
     }

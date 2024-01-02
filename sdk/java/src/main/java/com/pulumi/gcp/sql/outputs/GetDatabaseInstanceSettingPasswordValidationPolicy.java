@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -66,32 +67,50 @@ public final class GetDatabaseInstanceSettingPasswordValidationPolicy {
 
         @CustomType.Setter
         public Builder complexity(String complexity) {
-            this.complexity = Objects.requireNonNull(complexity);
+            if (complexity == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingPasswordValidationPolicy", "complexity");
+            }
+            this.complexity = complexity;
             return this;
         }
         @CustomType.Setter
         public Builder disallowUsernameSubstring(Boolean disallowUsernameSubstring) {
-            this.disallowUsernameSubstring = Objects.requireNonNull(disallowUsernameSubstring);
+            if (disallowUsernameSubstring == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingPasswordValidationPolicy", "disallowUsernameSubstring");
+            }
+            this.disallowUsernameSubstring = disallowUsernameSubstring;
             return this;
         }
         @CustomType.Setter
         public Builder enablePasswordPolicy(Boolean enablePasswordPolicy) {
-            this.enablePasswordPolicy = Objects.requireNonNull(enablePasswordPolicy);
+            if (enablePasswordPolicy == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingPasswordValidationPolicy", "enablePasswordPolicy");
+            }
+            this.enablePasswordPolicy = enablePasswordPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder minLength(Integer minLength) {
-            this.minLength = Objects.requireNonNull(minLength);
+            if (minLength == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingPasswordValidationPolicy", "minLength");
+            }
+            this.minLength = minLength;
             return this;
         }
         @CustomType.Setter
         public Builder passwordChangeInterval(String passwordChangeInterval) {
-            this.passwordChangeInterval = Objects.requireNonNull(passwordChangeInterval);
+            if (passwordChangeInterval == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingPasswordValidationPolicy", "passwordChangeInterval");
+            }
+            this.passwordChangeInterval = passwordChangeInterval;
             return this;
         }
         @CustomType.Setter
         public Builder reuseInterval(Integer reuseInterval) {
-            this.reuseInterval = Objects.requireNonNull(reuseInterval);
+            if (reuseInterval == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingPasswordValidationPolicy", "reuseInterval");
+            }
+            this.reuseInterval = reuseInterval;
             return this;
         }
         public GetDatabaseInstanceSettingPasswordValidationPolicy build() {

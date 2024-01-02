@@ -44,6 +44,7 @@ public final class AzureClusterLoggingConfig {
 
         @CustomType.Setter
         public Builder componentConfig(@Nullable AzureClusterLoggingConfigComponentConfig componentConfig) {
+
             this.componentConfig = componentConfig;
             return this;
         }

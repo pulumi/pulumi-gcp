@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -325,8 +326,12 @@ public final class SSLCertificateArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public SSLCertificateArgs build() {
-            $.certificate = Objects.requireNonNull($.certificate, "expected parameter 'certificate' to be non-null");
-            $.privateKey = Objects.requireNonNull($.privateKey, "expected parameter 'privateKey' to be non-null");
+            if ($.certificate == null) {
+                throw new MissingRequiredPropertyException("SSLCertificateArgs", "certificate");
+            }
+            if ($.privateKey == null) {
+                throw new MissingRequiredPropertyException("SSLCertificateArgs", "privateKey");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Double;
 import java.lang.Integer;
@@ -726,7 +727,9 @@ public final class RegionBackendServiceBackendArgs extends com.pulumi.resources.
         }
 
         public RegionBackendServiceBackendArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("RegionBackendServiceBackendArgs", "group");
+            }
             return $;
         }
     }

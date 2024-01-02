@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolumeCloudSqlInstance;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolumeEmptyDir;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolumeSecret;
@@ -64,7 +65,10 @@ public final class GetServiceTemplateVolume {
 
         @CustomType.Setter
         public Builder cloudSqlInstances(List<GetServiceTemplateVolumeCloudSqlInstance> cloudSqlInstances) {
-            this.cloudSqlInstances = Objects.requireNonNull(cloudSqlInstances);
+            if (cloudSqlInstances == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateVolume", "cloudSqlInstances");
+            }
+            this.cloudSqlInstances = cloudSqlInstances;
             return this;
         }
         public Builder cloudSqlInstances(GetServiceTemplateVolumeCloudSqlInstance... cloudSqlInstances) {
@@ -72,7 +76,10 @@ public final class GetServiceTemplateVolume {
         }
         @CustomType.Setter
         public Builder emptyDirs(List<GetServiceTemplateVolumeEmptyDir> emptyDirs) {
-            this.emptyDirs = Objects.requireNonNull(emptyDirs);
+            if (emptyDirs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateVolume", "emptyDirs");
+            }
+            this.emptyDirs = emptyDirs;
             return this;
         }
         public Builder emptyDirs(GetServiceTemplateVolumeEmptyDir... emptyDirs) {
@@ -80,12 +87,18 @@ public final class GetServiceTemplateVolume {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateVolume", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder secrets(List<GetServiceTemplateVolumeSecret> secrets) {
-            this.secrets = Objects.requireNonNull(secrets);
+            if (secrets == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateVolume", "secrets");
+            }
+            this.secrets = secrets;
             return this;
         }
         public Builder secrets(GetServiceTemplateVolumeSecret... secrets) {

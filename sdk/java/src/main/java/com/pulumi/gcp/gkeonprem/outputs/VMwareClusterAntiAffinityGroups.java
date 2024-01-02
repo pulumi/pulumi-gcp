@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class VMwareClusterAntiAffinityGroups {
 
         @CustomType.Setter
         public Builder aagConfigDisabled(Boolean aagConfigDisabled) {
-            this.aagConfigDisabled = Objects.requireNonNull(aagConfigDisabled);
+            if (aagConfigDisabled == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterAntiAffinityGroups", "aagConfigDisabled");
+            }
+            this.aagConfigDisabled = aagConfigDisabled;
             return this;
         }
         public VMwareClusterAntiAffinityGroups build() {

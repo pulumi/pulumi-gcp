@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -145,42 +146,66 @@ public final class GetProjectSettingsResult {
 
         @CustomType.Setter
         public Builder disableDefaultSink(Boolean disableDefaultSink) {
-            this.disableDefaultSink = Objects.requireNonNull(disableDefaultSink);
+            if (disableDefaultSink == null) {
+              throw new MissingRequiredPropertyException("GetProjectSettingsResult", "disableDefaultSink");
+            }
+            this.disableDefaultSink = disableDefaultSink;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectSettingsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetProjectSettingsResult", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder kmsServiceAccountId(String kmsServiceAccountId) {
-            this.kmsServiceAccountId = Objects.requireNonNull(kmsServiceAccountId);
+            if (kmsServiceAccountId == null) {
+              throw new MissingRequiredPropertyException("GetProjectSettingsResult", "kmsServiceAccountId");
+            }
+            this.kmsServiceAccountId = kmsServiceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder loggingServiceAccountId(String loggingServiceAccountId) {
-            this.loggingServiceAccountId = Objects.requireNonNull(loggingServiceAccountId);
+            if (loggingServiceAccountId == null) {
+              throw new MissingRequiredPropertyException("GetProjectSettingsResult", "loggingServiceAccountId");
+            }
+            this.loggingServiceAccountId = loggingServiceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetProjectSettingsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectSettingsResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder storageLocation(String storageLocation) {
-            this.storageLocation = Objects.requireNonNull(storageLocation);
+            if (storageLocation == null) {
+              throw new MissingRequiredPropertyException("GetProjectSettingsResult", "storageLocation");
+            }
+            this.storageLocation = storageLocation;
             return this;
         }
         public GetProjectSettingsResult build() {

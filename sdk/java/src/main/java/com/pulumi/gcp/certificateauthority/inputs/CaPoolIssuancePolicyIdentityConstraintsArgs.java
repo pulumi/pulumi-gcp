@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyIdentityConstraintsCelExpressionArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -171,8 +172,12 @@ public final class CaPoolIssuancePolicyIdentityConstraintsArgs extends com.pulum
         }
 
         public CaPoolIssuancePolicyIdentityConstraintsArgs build() {
-            $.allowSubjectAltNamesPassthrough = Objects.requireNonNull($.allowSubjectAltNamesPassthrough, "expected parameter 'allowSubjectAltNamesPassthrough' to be non-null");
-            $.allowSubjectPassthrough = Objects.requireNonNull($.allowSubjectPassthrough, "expected parameter 'allowSubjectPassthrough' to be non-null");
+            if ($.allowSubjectAltNamesPassthrough == null) {
+                throw new MissingRequiredPropertyException("CaPoolIssuancePolicyIdentityConstraintsArgs", "allowSubjectAltNamesPassthrough");
+            }
+            if ($.allowSubjectPassthrough == null) {
+                throw new MissingRequiredPropertyException("CaPoolIssuancePolicyIdentityConstraintsArgs", "allowSubjectPassthrough");
+            }
             return $;
         }
     }

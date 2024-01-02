@@ -79,11 +79,13 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdPerformance {
 
         @CustomType.Setter
         public Builder distributionCut(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceDistributionCut distributionCut) {
+
             this.distributionCut = distributionCut;
             return this;
         }
         @CustomType.Setter
         public Builder goodTotalRatio(@Nullable SloWindowsBasedSliGoodTotalRatioThresholdPerformanceGoodTotalRatio goodTotalRatio) {
+
             this.goodTotalRatio = goodTotalRatio;
             return this;
         }

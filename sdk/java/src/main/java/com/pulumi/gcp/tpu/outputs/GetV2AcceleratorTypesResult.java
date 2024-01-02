@@ -4,6 +4,7 @@
 package com.pulumi.gcp.tpu.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -69,17 +70,26 @@ public final class GetV2AcceleratorTypesResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetV2AcceleratorTypesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetV2AcceleratorTypesResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder types(List<String> types) {
-            this.types = Objects.requireNonNull(types);
+            if (types == null) {
+              throw new MissingRequiredPropertyException("GetV2AcceleratorTypesResult", "types");
+            }
+            this.types = types;
             return this;
         }
         public Builder types(String... types) {
@@ -87,7 +97,10 @@ public final class GetV2AcceleratorTypesResult {
         }
         @CustomType.Setter
         public Builder zone(String zone) {
-            this.zone = Objects.requireNonNull(zone);
+            if (zone == null) {
+              throw new MissingRequiredPropertyException("GetV2AcceleratorTypesResult", "zone");
+            }
+            this.zone = zone;
             return this;
         }
         public GetV2AcceleratorTypesResult build() {

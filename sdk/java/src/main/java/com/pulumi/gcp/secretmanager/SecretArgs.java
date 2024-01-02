@@ -5,6 +5,7 @@ package com.pulumi.gcp.secretmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
 import com.pulumi.gcp.secretmanager.inputs.SecretRotationArgs;
 import com.pulumi.gcp.secretmanager.inputs.SecretTopicArgs;
@@ -573,8 +574,12 @@ public final class SecretArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SecretArgs build() {
-            $.replication = Objects.requireNonNull($.replication, "expected parameter 'replication' to be non-null");
-            $.secretId = Objects.requireNonNull($.secretId, "expected parameter 'secretId' to be non-null");
+            if ($.replication == null) {
+                throw new MissingRequiredPropertyException("SecretArgs", "replication");
+            }
+            if ($.secretId == null) {
+                throw new MissingRequiredPropertyException("SecretArgs", "secretId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.PerInstanceConfigPreservedStateExternalIpIpAddressArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -163,7 +164,9 @@ public final class PerInstanceConfigPreservedStateExternalIpArgs extends com.pul
         }
 
         public PerInstanceConfigPreservedStateExternalIpArgs build() {
-            $.interfaceName = Objects.requireNonNull($.interfaceName, "expected parameter 'interfaceName' to be non-null");
+            if ($.interfaceName == null) {
+                throw new MissingRequiredPropertyException("PerInstanceConfigPreservedStateExternalIpArgs", "interfaceName");
+            }
             return $;
         }
     }

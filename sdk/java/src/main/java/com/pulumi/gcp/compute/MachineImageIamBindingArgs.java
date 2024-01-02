@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.MachineImageIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -274,9 +275,15 @@ public final class MachineImageIamBindingArgs extends com.pulumi.resources.Resou
         }
 
         public MachineImageIamBindingArgs build() {
-            $.machineImage = Objects.requireNonNull($.machineImage, "expected parameter 'machineImage' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.machineImage == null) {
+                throw new MissingRequiredPropertyException("MachineImageIamBindingArgs", "machineImage");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("MachineImageIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("MachineImageIamBindingArgs", "role");
+            }
             return $;
         }
     }

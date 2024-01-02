@@ -65,11 +65,13 @@ public final class FeatureResourceState {
 
         @CustomType.Setter
         public Builder hasResources(@Nullable Boolean hasResources) {
+
             this.hasResources = hasResources;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

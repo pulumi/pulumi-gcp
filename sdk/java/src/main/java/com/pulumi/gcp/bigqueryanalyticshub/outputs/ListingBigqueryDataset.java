@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigqueryanalyticshub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class ListingBigqueryDataset {
 
         @CustomType.Setter
         public Builder dataset(String dataset) {
-            this.dataset = Objects.requireNonNull(dataset);
+            if (dataset == null) {
+              throw new MissingRequiredPropertyException("ListingBigqueryDataset", "dataset");
+            }
+            this.dataset = dataset;
             return this;
         }
         public ListingBigqueryDataset build() {

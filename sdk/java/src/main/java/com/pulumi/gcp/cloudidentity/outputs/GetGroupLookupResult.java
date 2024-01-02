@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudidentity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupLookupGroupKey;
 import java.lang.String;
 import java.util.Objects;
@@ -63,17 +64,26 @@ public final class GetGroupLookupResult {
 
         @CustomType.Setter
         public Builder groupKey(GetGroupLookupGroupKey groupKey) {
-            this.groupKey = Objects.requireNonNull(groupKey);
+            if (groupKey == null) {
+              throw new MissingRequiredPropertyException("GetGroupLookupResult", "groupKey");
+            }
+            this.groupKey = groupKey;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetGroupLookupResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGroupLookupResult", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetGroupLookupResult build() {

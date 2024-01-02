@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.InstanceFromTemplateReservationAffinitySpecificReservation;
 import java.lang.String;
 import java.util.Objects;
@@ -43,12 +44,16 @@ public final class InstanceFromTemplateReservationAffinity {
 
         @CustomType.Setter
         public Builder specificReservation(@Nullable InstanceFromTemplateReservationAffinitySpecificReservation specificReservation) {
+
             this.specificReservation = specificReservation;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("InstanceFromTemplateReservationAffinity", "type");
+            }
+            this.type = type;
             return this;
         }
         public InstanceFromTemplateReservationAffinity build() {

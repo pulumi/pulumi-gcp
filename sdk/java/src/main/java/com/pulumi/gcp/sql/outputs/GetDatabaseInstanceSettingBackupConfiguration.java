@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -74,7 +75,10 @@ public final class GetDatabaseInstanceSettingBackupConfiguration {
 
         @CustomType.Setter
         public Builder backupRetentionSettings(List<GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting> backupRetentionSettings) {
-            this.backupRetentionSettings = Objects.requireNonNull(backupRetentionSettings);
+            if (backupRetentionSettings == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingBackupConfiguration", "backupRetentionSettings");
+            }
+            this.backupRetentionSettings = backupRetentionSettings;
             return this;
         }
         public Builder backupRetentionSettings(GetDatabaseInstanceSettingBackupConfigurationBackupRetentionSetting... backupRetentionSettings) {
@@ -82,32 +86,50 @@ public final class GetDatabaseInstanceSettingBackupConfiguration {
         }
         @CustomType.Setter
         public Builder binaryLogEnabled(Boolean binaryLogEnabled) {
-            this.binaryLogEnabled = Objects.requireNonNull(binaryLogEnabled);
+            if (binaryLogEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingBackupConfiguration", "binaryLogEnabled");
+            }
+            this.binaryLogEnabled = binaryLogEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingBackupConfiguration", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingBackupConfiguration", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder pointInTimeRecoveryEnabled(Boolean pointInTimeRecoveryEnabled) {
-            this.pointInTimeRecoveryEnabled = Objects.requireNonNull(pointInTimeRecoveryEnabled);
+            if (pointInTimeRecoveryEnabled == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingBackupConfiguration", "pointInTimeRecoveryEnabled");
+            }
+            this.pointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(String startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingBackupConfiguration", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder transactionLogRetentionDays(Integer transactionLogRetentionDays) {
-            this.transactionLogRetentionDays = Objects.requireNonNull(transactionLogRetentionDays);
+            if (transactionLogRetentionDays == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingBackupConfiguration", "transactionLogRetentionDays");
+            }
+            this.transactionLogRetentionDays = transactionLogRetentionDays;
             return this;
         }
         public GetDatabaseInstanceSettingBackupConfiguration build() {

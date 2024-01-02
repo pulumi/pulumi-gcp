@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -59,12 +60,18 @@ public final class GetDatabaseInstancesInstanceClone {
 
         @CustomType.Setter
         public Builder allocatedIpRange(String allocatedIpRange) {
-            this.allocatedIpRange = Objects.requireNonNull(allocatedIpRange);
+            if (allocatedIpRange == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceClone", "allocatedIpRange");
+            }
+            this.allocatedIpRange = allocatedIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder databaseNames(List<String> databaseNames) {
-            this.databaseNames = Objects.requireNonNull(databaseNames);
+            if (databaseNames == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceClone", "databaseNames");
+            }
+            this.databaseNames = databaseNames;
             return this;
         }
         public Builder databaseNames(String... databaseNames) {
@@ -72,17 +79,26 @@ public final class GetDatabaseInstancesInstanceClone {
         }
         @CustomType.Setter
         public Builder pointInTime(String pointInTime) {
-            this.pointInTime = Objects.requireNonNull(pointInTime);
+            if (pointInTime == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceClone", "pointInTime");
+            }
+            this.pointInTime = pointInTime;
             return this;
         }
         @CustomType.Setter
         public Builder preferredZone(String preferredZone) {
-            this.preferredZone = Objects.requireNonNull(preferredZone);
+            if (preferredZone == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceClone", "preferredZone");
+            }
+            this.preferredZone = preferredZone;
             return this;
         }
         @CustomType.Setter
         public Builder sourceInstanceName(String sourceInstanceName) {
-            this.sourceInstanceName = Objects.requireNonNull(sourceInstanceName);
+            if (sourceInstanceName == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceClone", "sourceInstanceName");
+            }
+            this.sourceInstanceName = sourceInstanceName;
             return this;
         }
         public GetDatabaseInstancesInstanceClone build() {

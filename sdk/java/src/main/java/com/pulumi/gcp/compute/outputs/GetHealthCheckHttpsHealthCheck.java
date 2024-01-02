@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -71,37 +72,58 @@ public final class GetHealthCheckHttpsHealthCheck {
 
         @CustomType.Setter
         public Builder host(String host) {
-            this.host = Objects.requireNonNull(host);
+            if (host == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckHttpsHealthCheck", "host");
+            }
+            this.host = host;
             return this;
         }
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckHttpsHealthCheck", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder portName(String portName) {
-            this.portName = Objects.requireNonNull(portName);
+            if (portName == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckHttpsHealthCheck", "portName");
+            }
+            this.portName = portName;
             return this;
         }
         @CustomType.Setter
         public Builder portSpecification(String portSpecification) {
-            this.portSpecification = Objects.requireNonNull(portSpecification);
+            if (portSpecification == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckHttpsHealthCheck", "portSpecification");
+            }
+            this.portSpecification = portSpecification;
             return this;
         }
         @CustomType.Setter
         public Builder proxyHeader(String proxyHeader) {
-            this.proxyHeader = Objects.requireNonNull(proxyHeader);
+            if (proxyHeader == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckHttpsHealthCheck", "proxyHeader");
+            }
+            this.proxyHeader = proxyHeader;
             return this;
         }
         @CustomType.Setter
         public Builder requestPath(String requestPath) {
-            this.requestPath = Objects.requireNonNull(requestPath);
+            if (requestPath == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckHttpsHealthCheck", "requestPath");
+            }
+            this.requestPath = requestPath;
             return this;
         }
         @CustomType.Setter
         public Builder response(String response) {
-            this.response = Objects.requireNonNull(response);
+            if (response == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckHttpsHealthCheck", "response");
+            }
+            this.response = response;
             return this;
         }
         public GetHealthCheckHttpsHealthCheck build() {

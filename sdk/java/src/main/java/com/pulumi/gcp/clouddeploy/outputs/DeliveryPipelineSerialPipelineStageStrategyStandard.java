@@ -74,16 +74,19 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandard {
 
         @CustomType.Setter
         public Builder postdeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPostdeploy postdeploy) {
+
             this.postdeploy = postdeploy;
             return this;
         }
         @CustomType.Setter
         public Builder predeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy predeploy) {
+
             this.predeploy = predeploy;
             return this;
         }
         @CustomType.Setter
         public Builder verify(@Nullable Boolean verify) {
+
             this.verify = verify;
             return this;
         }

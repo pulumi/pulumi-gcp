@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiFeatureStoreEntityTypeIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -241,10 +242,18 @@ public final class AiFeatureStoreEntityTypeIamMemberArgs extends com.pulumi.reso
         }
 
         public AiFeatureStoreEntityTypeIamMemberArgs build() {
-            $.entitytype = Objects.requireNonNull($.entitytype, "expected parameter 'entitytype' to be non-null");
-            $.featurestore = Objects.requireNonNull($.featurestore, "expected parameter 'featurestore' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.entitytype == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreEntityTypeIamMemberArgs", "entitytype");
+            }
+            if ($.featurestore == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreEntityTypeIamMemberArgs", "featurestore");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreEntityTypeIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreEntityTypeIamMemberArgs", "role");
+            }
             return $;
         }
     }

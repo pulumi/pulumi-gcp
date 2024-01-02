@@ -64,11 +64,13 @@ public final class ExtensionsInstanceRuntimeDataProcessingState {
 
         @CustomType.Setter
         public Builder detailMessage(@Nullable String detailMessage) {
+
             this.detailMessage = detailMessage;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentInstanceFilterArgs;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyArgs;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentRolloutArgs;
@@ -387,10 +388,18 @@ public final class OsPolicyAssignmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public OsPolicyAssignmentArgs build() {
-            $.instanceFilter = Objects.requireNonNull($.instanceFilter, "expected parameter 'instanceFilter' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.osPolicies = Objects.requireNonNull($.osPolicies, "expected parameter 'osPolicies' to be non-null");
-            $.rollout = Objects.requireNonNull($.rollout, "expected parameter 'rollout' to be non-null");
+            if ($.instanceFilter == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentArgs", "instanceFilter");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentArgs", "location");
+            }
+            if ($.osPolicies == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentArgs", "osPolicies");
+            }
+            if ($.rollout == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentArgs", "rollout");
+            }
             return $;
         }
     }

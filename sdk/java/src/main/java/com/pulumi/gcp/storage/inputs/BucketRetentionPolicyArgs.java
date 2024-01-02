@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class BucketRetentionPolicyArgs extends com.pulumi.resources.Resour
         }
 
         public BucketRetentionPolicyArgs build() {
-            $.retentionPeriod = Objects.requireNonNull($.retentionPeriod, "expected parameter 'retentionPeriod' to be non-null");
+            if ($.retentionPeriod == null) {
+                throw new MissingRequiredPropertyException("BucketRetentionPolicyArgs", "retentionPeriod");
+            }
             return $;
         }
     }

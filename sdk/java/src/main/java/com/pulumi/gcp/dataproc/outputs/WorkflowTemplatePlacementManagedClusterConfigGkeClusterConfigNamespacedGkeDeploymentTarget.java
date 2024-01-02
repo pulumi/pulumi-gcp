@@ -58,11 +58,13 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
 
         @CustomType.Setter
         public Builder clusterNamespace(@Nullable String clusterNamespace) {
+
             this.clusterNamespace = clusterNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder targetGkeCluster(@Nullable String targetGkeCluster) {
+
             this.targetGkeCluster = targetGkeCluster;
             return this;
         }

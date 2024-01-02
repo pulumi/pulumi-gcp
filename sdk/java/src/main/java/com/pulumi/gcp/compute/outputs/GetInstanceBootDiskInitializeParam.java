@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.Object;
@@ -100,32 +101,50 @@ public final class GetInstanceBootDiskInitializeParam {
 
         @CustomType.Setter
         public Builder enableConfidentialCompute(Boolean enableConfidentialCompute) {
-            this.enableConfidentialCompute = Objects.requireNonNull(enableConfidentialCompute);
+            if (enableConfidentialCompute == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "enableConfidentialCompute");
+            }
+            this.enableConfidentialCompute = enableConfidentialCompute;
             return this;
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,Object> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder resourceManagerTags(Map<String,Object> resourceManagerTags) {
-            this.resourceManagerTags = Objects.requireNonNull(resourceManagerTags);
+            if (resourceManagerTags == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "resourceManagerTags");
+            }
+            this.resourceManagerTags = resourceManagerTags;
             return this;
         }
         @CustomType.Setter
         public Builder size(Integer size) {
-            this.size = Objects.requireNonNull(size);
+            if (size == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "size");
+            }
+            this.size = size;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetInstanceBootDiskInitializeParam build() {

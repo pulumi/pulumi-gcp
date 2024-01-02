@@ -5,6 +5,7 @@ package com.pulumi.gcp.spanner;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.spanner.inputs.InstanceAutoscalingConfigArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -472,8 +473,12 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public InstanceArgs build() {
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "config");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("InstanceArgs", "displayName");
+            }
             return $;
         }
     }

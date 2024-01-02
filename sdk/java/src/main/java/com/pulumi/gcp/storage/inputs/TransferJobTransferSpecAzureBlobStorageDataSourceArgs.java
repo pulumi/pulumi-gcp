@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecAzureBlobStorageDataSourceAzureCredentialsArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -188,9 +189,15 @@ public final class TransferJobTransferSpecAzureBlobStorageDataSourceArgs extends
         }
 
         public TransferJobTransferSpecAzureBlobStorageDataSourceArgs build() {
-            $.azureCredentials = Objects.requireNonNull($.azureCredentials, "expected parameter 'azureCredentials' to be non-null");
-            $.container = Objects.requireNonNull($.container, "expected parameter 'container' to be non-null");
-            $.storageAccount = Objects.requireNonNull($.storageAccount, "expected parameter 'storageAccount' to be non-null");
+            if ($.azureCredentials == null) {
+                throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSourceArgs", "azureCredentials");
+            }
+            if ($.container == null) {
+                throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSourceArgs", "container");
+            }
+            if ($.storageAccount == null) {
+                throw new MissingRequiredPropertyException("TransferJobTransferSpecAzureBlobStorageDataSourceArgs", "storageAccount");
+            }
             return $;
         }
     }

@@ -164,46 +164,55 @@ public final class InstanceUpgradeHistory {
 
         @CustomType.Setter
         public Builder action(@Nullable String action) {
+
             this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder containerImage(@Nullable String containerImage) {
+
             this.containerImage = containerImage;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder framework(@Nullable String framework) {
+
             this.framework = framework;
             return this;
         }
         @CustomType.Setter
         public Builder snapshot(@Nullable String snapshot) {
+
             this.snapshot = snapshot;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder targetVersion(@Nullable String targetVersion) {
+
             this.targetVersion = targetVersion;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }
         @CustomType.Setter
         public Builder vmImage(@Nullable String vmImage) {
+
             this.vmImage = vmImage;
             return this;
         }

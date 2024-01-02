@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigee.inputs.EnvironmentIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -226,10 +227,18 @@ public final class EnvironmentIamBindingArgs extends com.pulumi.resources.Resour
         }
 
         public EnvironmentIamBindingArgs build() {
-            $.envId = Objects.requireNonNull($.envId, "expected parameter 'envId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.envId == null) {
+                throw new MissingRequiredPropertyException("EnvironmentIamBindingArgs", "envId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("EnvironmentIamBindingArgs", "members");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("EnvironmentIamBindingArgs", "orgId");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("EnvironmentIamBindingArgs", "role");
+            }
             return $;
         }
     }

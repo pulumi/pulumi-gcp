@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class FolderSinkBigqueryOptions {
 
         @CustomType.Setter
         public Builder usePartitionedTables(Boolean usePartitionedTables) {
-            this.usePartitionedTables = Objects.requireNonNull(usePartitionedTables);
+            if (usePartitionedTables == null) {
+              throw new MissingRequiredPropertyException("FolderSinkBigqueryOptions", "usePartitionedTables");
+            }
+            this.usePartitionedTables = usePartitionedTables;
             return this;
         }
         public FolderSinkBigqueryOptions build() {

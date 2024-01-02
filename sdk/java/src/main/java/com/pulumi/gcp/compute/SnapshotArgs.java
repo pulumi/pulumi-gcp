@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SnapshotSnapshotEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.SnapshotSourceDiskEncryptionKeyArgs;
 import java.lang.String;
@@ -539,7 +540,9 @@ public final class SnapshotArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public SnapshotArgs build() {
-            $.sourceDisk = Objects.requireNonNull($.sourceDisk, "expected parameter 'sourceDisk' to be non-null");
+            if ($.sourceDisk == null) {
+                throw new MissingRequiredPropertyException("SnapshotArgs", "sourceDisk");
+            }
             return $;
         }
     }

@@ -62,11 +62,13 @@ public final class AiEndpointDeployedModelAutomaticResource {
 
         @CustomType.Setter
         public Builder maxReplicaCount(@Nullable Integer maxReplicaCount) {
+
             this.maxReplicaCount = maxReplicaCount;
             return this;
         }
         @CustomType.Setter
         public Builder minReplicaCount(@Nullable Integer minReplicaCount) {
+
             this.minReplicaCount = minReplicaCount;
             return this;
         }

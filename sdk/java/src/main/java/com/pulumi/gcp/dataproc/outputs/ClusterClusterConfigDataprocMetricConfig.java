@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigDataprocMetricConfigMetric;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class ClusterClusterConfigDataprocMetricConfig {
 
         @CustomType.Setter
         public Builder metrics(List<ClusterClusterConfigDataprocMetricConfigMetric> metrics) {
-            this.metrics = Objects.requireNonNull(metrics);
+            if (metrics == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigDataprocMetricConfig", "metrics");
+            }
+            this.metrics = metrics;
             return this;
         }
         public Builder metrics(ClusterClusterConfigDataprocMetricConfigMetric... metrics) {

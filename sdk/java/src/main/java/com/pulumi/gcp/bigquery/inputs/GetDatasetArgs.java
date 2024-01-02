@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class GetDatasetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetDatasetArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("GetDatasetArgs", "datasetId");
+            }
             return $;
         }
     }

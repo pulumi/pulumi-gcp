@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -83,12 +84,16 @@ public final class RegionAutoscalerAutoscalingPolicyCpuUtilization {
 
         @CustomType.Setter
         public Builder predictiveMethod(@Nullable String predictiveMethod) {
+
             this.predictiveMethod = predictiveMethod;
             return this;
         }
         @CustomType.Setter
         public Builder target(Double target) {
-            this.target = Objects.requireNonNull(target);
+            if (target == null) {
+              throw new MissingRequiredPropertyException("RegionAutoscalerAutoscalingPolicyCpuUtilization", "target");
+            }
+            this.target = target;
             return this;
         }
         public RegionAutoscalerAutoscalingPolicyCpuUtilization build() {

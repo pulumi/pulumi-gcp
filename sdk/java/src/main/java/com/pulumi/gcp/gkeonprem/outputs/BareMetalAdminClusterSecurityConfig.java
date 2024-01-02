@@ -46,6 +46,7 @@ public final class BareMetalAdminClusterSecurityConfig {
 
         @CustomType.Setter
         public Builder authorization(@Nullable BareMetalAdminClusterSecurityConfigAuthorization authorization) {
+
             this.authorization = authorization;
             return this;
         }

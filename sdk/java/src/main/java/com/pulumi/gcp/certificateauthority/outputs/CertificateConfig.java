@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigPublicKey;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigSubjectConfig;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigX509Config;
@@ -82,17 +83,26 @@ public final class CertificateConfig {
 
         @CustomType.Setter
         public Builder publicKey(CertificateConfigPublicKey publicKey) {
-            this.publicKey = Objects.requireNonNull(publicKey);
+            if (publicKey == null) {
+              throw new MissingRequiredPropertyException("CertificateConfig", "publicKey");
+            }
+            this.publicKey = publicKey;
             return this;
         }
         @CustomType.Setter
         public Builder subjectConfig(CertificateConfigSubjectConfig subjectConfig) {
-            this.subjectConfig = Objects.requireNonNull(subjectConfig);
+            if (subjectConfig == null) {
+              throw new MissingRequiredPropertyException("CertificateConfig", "subjectConfig");
+            }
+            this.subjectConfig = subjectConfig;
             return this;
         }
         @CustomType.Setter
         public Builder x509Config(CertificateConfigX509Config x509Config) {
-            this.x509Config = Objects.requireNonNull(x509Config);
+            if (x509Config == null) {
+              throw new MissingRequiredPropertyException("CertificateConfig", "x509Config");
+            }
+            this.x509Config = x509Config;
             return this;
         }
         public CertificateConfig build() {

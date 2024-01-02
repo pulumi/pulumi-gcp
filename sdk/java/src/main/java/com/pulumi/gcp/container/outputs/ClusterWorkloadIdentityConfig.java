@@ -88,6 +88,7 @@ public final class ClusterWorkloadIdentityConfig {
 
         @CustomType.Setter
         public Builder workloadPool(@Nullable String workloadPool) {
+
             this.workloadPool = workloadPool;
             return this;
         }

@@ -119,26 +119,31 @@ public final class JobRetryConfig {
 
         @CustomType.Setter
         public Builder maxBackoffDuration(@Nullable String maxBackoffDuration) {
+
             this.maxBackoffDuration = maxBackoffDuration;
             return this;
         }
         @CustomType.Setter
         public Builder maxDoublings(@Nullable Integer maxDoublings) {
+
             this.maxDoublings = maxDoublings;
             return this;
         }
         @CustomType.Setter
         public Builder maxRetryDuration(@Nullable String maxRetryDuration) {
+
             this.maxRetryDuration = maxRetryDuration;
             return this;
         }
         @CustomType.Setter
         public Builder minBackoffDuration(@Nullable String minBackoffDuration) {
+
             this.minBackoffDuration = minBackoffDuration;
             return this;
         }
         @CustomType.Setter
         public Builder retryCount(@Nullable Integer retryCount) {
+
             this.retryCount = retryCount;
             return this;
         }

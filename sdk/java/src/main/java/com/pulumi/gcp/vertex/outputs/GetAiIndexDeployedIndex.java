@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetAiIndexDeployedIndex {
 
         @CustomType.Setter
         public Builder deployedIndexId(String deployedIndexId) {
-            this.deployedIndexId = Objects.requireNonNull(deployedIndexId);
+            if (deployedIndexId == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexDeployedIndex", "deployedIndexId");
+            }
+            this.deployedIndexId = deployedIndexId;
             return this;
         }
         @CustomType.Setter
         public Builder indexEndpoint(String indexEndpoint) {
-            this.indexEndpoint = Objects.requireNonNull(indexEndpoint);
+            if (indexEndpoint == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexDeployedIndex", "indexEndpoint");
+            }
+            this.indexEndpoint = indexEndpoint;
             return this;
         }
         public GetAiIndexDeployedIndex build() {

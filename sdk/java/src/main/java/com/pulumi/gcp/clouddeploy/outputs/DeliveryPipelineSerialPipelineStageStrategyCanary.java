@@ -74,16 +74,19 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanary {
 
         @CustomType.Setter
         public Builder canaryDeployment(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCanaryDeployment canaryDeployment) {
+
             this.canaryDeployment = canaryDeployment;
             return this;
         }
         @CustomType.Setter
         public Builder customCanaryDeployment(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeployment customCanaryDeployment) {
+
             this.customCanaryDeployment = customCanaryDeployment;
             return this;
         }
         @CustomType.Setter
         public Builder runtimeConfig(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfig runtimeConfig) {
+
             this.runtimeConfig = runtimeConfig;
             return this;
         }

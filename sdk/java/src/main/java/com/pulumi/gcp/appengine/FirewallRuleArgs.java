@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -257,8 +258,12 @@ public final class FirewallRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FirewallRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.sourceRange = Objects.requireNonNull($.sourceRange, "expected parameter 'sourceRange' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("FirewallRuleArgs", "action");
+            }
+            if ($.sourceRange == null) {
+                throw new MissingRequiredPropertyException("FirewallRuleArgs", "sourceRange");
+            }
             return $;
         }
     }

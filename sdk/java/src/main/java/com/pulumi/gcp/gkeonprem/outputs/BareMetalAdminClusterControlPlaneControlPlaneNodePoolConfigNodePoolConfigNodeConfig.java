@@ -79,11 +79,13 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNo
 
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder nodeIp(@Nullable String nodeIp) {
+
             this.nodeIp = nodeIp;
             return this;
         }

@@ -62,6 +62,7 @@ public final class AuthorizationPolicyRuleSource {
 
         @CustomType.Setter
         public Builder ipBlocks(@Nullable List<String> ipBlocks) {
+
             this.ipBlocks = ipBlocks;
             return this;
         }
@@ -70,6 +71,7 @@ public final class AuthorizationPolicyRuleSource {
         }
         @CustomType.Setter
         public Builder principals(@Nullable List<String> principals) {
+
             this.principals = principals;
             return this;
         }

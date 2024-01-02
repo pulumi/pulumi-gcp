@@ -5,6 +5,7 @@ package com.pulumi.gcp.appengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -198,7 +199,9 @@ public final class DomainMappingSslSettingsArgs extends com.pulumi.resources.Res
         }
 
         public DomainMappingSslSettingsArgs build() {
-            $.sslManagementType = Objects.requireNonNull($.sslManagementType, "expected parameter 'sslManagementType' to be non-null");
+            if ($.sslManagementType == null) {
+                throw new MissingRequiredPropertyException("DomainMappingSslSettingsArgs", "sslManagementType");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -163,8 +164,12 @@ public final class ClusterNodeTypeConfigArgs extends com.pulumi.resources.Resour
         }
 
         public ClusterNodeTypeConfigArgs build() {
-            $.nodeCount = Objects.requireNonNull($.nodeCount, "expected parameter 'nodeCount' to be non-null");
-            $.nodeTypeId = Objects.requireNonNull($.nodeTypeId, "expected parameter 'nodeTypeId' to be non-null");
+            if ($.nodeCount == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeTypeConfigArgs", "nodeCount");
+            }
+            if ($.nodeTypeId == null) {
+                throw new MissingRequiredPropertyException("ClusterNodeTypeConfigArgs", "nodeTypeId");
+            }
             return $;
         }
     }

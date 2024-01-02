@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -96,17 +97,22 @@ public final class DomainMappingSslSettings {
 
         @CustomType.Setter
         public Builder certificateId(@Nullable String certificateId) {
+
             this.certificateId = certificateId;
             return this;
         }
         @CustomType.Setter
         public Builder pendingManagedCertificateId(@Nullable String pendingManagedCertificateId) {
+
             this.pendingManagedCertificateId = pendingManagedCertificateId;
             return this;
         }
         @CustomType.Setter
         public Builder sslManagementType(String sslManagementType) {
-            this.sslManagementType = Objects.requireNonNull(sslManagementType);
+            if (sslManagementType == null) {
+              throw new MissingRequiredPropertyException("DomainMappingSslSettings", "sslManagementType");
+            }
+            this.sslManagementType = sslManagementType;
             return this;
         }
         public DomainMappingSslSettings build() {

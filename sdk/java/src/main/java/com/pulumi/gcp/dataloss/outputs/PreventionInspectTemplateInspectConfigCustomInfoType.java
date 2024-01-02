@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigCustomInfoTypeRegex;
@@ -172,41 +173,51 @@ public final class PreventionInspectTemplateInspectConfigCustomInfoType {
 
         @CustomType.Setter
         public Builder dictionary(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeDictionary dictionary) {
+
             this.dictionary = dictionary;
             return this;
         }
         @CustomType.Setter
         public Builder exclusionType(@Nullable String exclusionType) {
+
             this.exclusionType = exclusionType;
             return this;
         }
         @CustomType.Setter
         public Builder infoType(PreventionInspectTemplateInspectConfigCustomInfoTypeInfoType infoType) {
-            this.infoType = Objects.requireNonNull(infoType);
+            if (infoType == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigCustomInfoType", "infoType");
+            }
+            this.infoType = infoType;
             return this;
         }
         @CustomType.Setter
         public Builder likelihood(@Nullable String likelihood) {
+
             this.likelihood = likelihood;
             return this;
         }
         @CustomType.Setter
         public Builder regex(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeRegex regex) {
+
             this.regex = regex;
             return this;
         }
         @CustomType.Setter
         public Builder sensitivityScore(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSensitivityScore sensitivityScore) {
+
             this.sensitivityScore = sensitivityScore;
             return this;
         }
         @CustomType.Setter
         public Builder storedType(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeStoredType storedType) {
+
             this.storedType = storedType;
             return this;
         }
         @CustomType.Setter
         public Builder surrogateType(@Nullable PreventionInspectTemplateInspectConfigCustomInfoTypeSurrogateType surrogateType) {
+
             this.surrogateType = surrogateType;
             return this;
         }

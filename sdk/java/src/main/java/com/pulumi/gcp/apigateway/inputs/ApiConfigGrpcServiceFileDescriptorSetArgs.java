@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ApiConfigGrpcServiceFileDescriptorSetArgs extends com.pulumi.
         }
 
         public ApiConfigGrpcServiceFileDescriptorSetArgs build() {
-            $.contents = Objects.requireNonNull($.contents, "expected parameter 'contents' to be non-null");
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
+            if ($.contents == null) {
+                throw new MissingRequiredPropertyException("ApiConfigGrpcServiceFileDescriptorSetArgs", "contents");
+            }
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("ApiConfigGrpcServiceFileDescriptorSetArgs", "path");
+            }
             return $;
         }
     }

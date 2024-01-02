@@ -48,16 +48,19 @@ public final class AwsClusterWorkloadIdentityConfig {
 
         @CustomType.Setter
         public Builder identityProvider(@Nullable String identityProvider) {
+
             this.identityProvider = identityProvider;
             return this;
         }
         @CustomType.Setter
         public Builder issuerUri(@Nullable String issuerUri) {
+
             this.issuerUri = issuerUri;
             return this;
         }
         @CustomType.Setter
         public Builder workloadPool(@Nullable String workloadPool) {
+
             this.workloadPool = workloadPool;
             return this;
         }

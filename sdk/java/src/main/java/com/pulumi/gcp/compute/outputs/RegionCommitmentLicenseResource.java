@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -72,17 +73,22 @@ public final class RegionCommitmentLicenseResource {
 
         @CustomType.Setter
         public Builder amount(@Nullable String amount) {
+
             this.amount = amount;
             return this;
         }
         @CustomType.Setter
         public Builder coresPerLicense(@Nullable String coresPerLicense) {
+
             this.coresPerLicense = coresPerLicense;
             return this;
         }
         @CustomType.Setter
         public Builder license(String license) {
-            this.license = Objects.requireNonNull(license);
+            if (license == null) {
+              throw new MissingRequiredPropertyException("RegionCommitmentLicenseResource", "license");
+            }
+            this.license = license;
             return this;
         }
         public RegionCommitmentLicenseResource build() {

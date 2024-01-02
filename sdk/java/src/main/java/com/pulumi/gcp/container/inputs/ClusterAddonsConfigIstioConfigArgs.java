@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -118,7 +119,9 @@ public final class ClusterAddonsConfigIstioConfigArgs extends com.pulumi.resourc
         }
 
         public ClusterAddonsConfigIstioConfigArgs build() {
-            $.disabled = Objects.requireNonNull($.disabled, "expected parameter 'disabled' to be non-null");
+            if ($.disabled == null) {
+                throw new MissingRequiredPropertyException("ClusterAddonsConfigIstioConfigArgs", "disabled");
+            }
             return $;
         }
     }

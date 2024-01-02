@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -68,7 +69,10 @@ public final class BucketEncryption {
 
         @CustomType.Setter
         public Builder defaultKmsKeyName(String defaultKmsKeyName) {
-            this.defaultKmsKeyName = Objects.requireNonNull(defaultKmsKeyName);
+            if (defaultKmsKeyName == null) {
+              throw new MissingRequiredPropertyException("BucketEncryption", "defaultKmsKeyName");
+            }
+            this.defaultKmsKeyName = defaultKmsKeyName;
             return this;
         }
         public BucketEncryption build() {

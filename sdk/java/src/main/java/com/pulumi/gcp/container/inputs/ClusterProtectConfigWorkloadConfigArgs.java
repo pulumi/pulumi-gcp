@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ClusterProtectConfigWorkloadConfigArgs extends com.pulumi.res
         }
 
         public ClusterProtectConfigWorkloadConfigArgs build() {
-            $.auditMode = Objects.requireNonNull($.auditMode, "expected parameter 'auditMode' to be non-null");
+            if ($.auditMode == null) {
+                throw new MissingRequiredPropertyException("ClusterProtectConfigWorkloadConfigArgs", "auditMode");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.billing.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -130,7 +131,9 @@ public final class BudgetThresholdRuleArgs extends com.pulumi.resources.Resource
         }
 
         public BudgetThresholdRuleArgs build() {
-            $.thresholdPercent = Objects.requireNonNull($.thresholdPercent, "expected parameter 'thresholdPercent' to be non-null");
+            if ($.thresholdPercent == null) {
+                throw new MissingRequiredPropertyException("BudgetThresholdRuleArgs", "thresholdPercent");
+            }
             return $;
         }
     }

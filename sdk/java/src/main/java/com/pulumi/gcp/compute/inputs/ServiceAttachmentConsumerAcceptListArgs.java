@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -116,8 +117,12 @@ public final class ServiceAttachmentConsumerAcceptListArgs extends com.pulumi.re
         }
 
         public ServiceAttachmentConsumerAcceptListArgs build() {
-            $.connectionLimit = Objects.requireNonNull($.connectionLimit, "expected parameter 'connectionLimit' to be non-null");
-            $.projectIdOrNum = Objects.requireNonNull($.projectIdOrNum, "expected parameter 'projectIdOrNum' to be non-null");
+            if ($.connectionLimit == null) {
+                throw new MissingRequiredPropertyException("ServiceAttachmentConsumerAcceptListArgs", "connectionLimit");
+            }
+            if ($.projectIdOrNum == null) {
+                throw new MissingRequiredPropertyException("ServiceAttachmentConsumerAcceptListArgs", "projectIdOrNum");
+            }
             return $;
         }
     }

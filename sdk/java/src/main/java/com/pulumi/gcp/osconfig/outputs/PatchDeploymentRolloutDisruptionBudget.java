@@ -58,11 +58,13 @@ public final class PatchDeploymentRolloutDisruptionBudget {
 
         @CustomType.Setter
         public Builder fixed(@Nullable Integer fixed) {
+
             this.fixed = fixed;
             return this;
         }
         @CustomType.Setter
         public Builder percentage(@Nullable Integer percentage) {
+
             this.percentage = percentage;
             return this;
         }

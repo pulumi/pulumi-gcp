@@ -79,16 +79,19 @@ public final class DatabaseInstanceSettingsMaintenanceWindow {
 
         @CustomType.Setter
         public Builder day(@Nullable Integer day) {
+
             this.day = day;
             return this;
         }
         @CustomType.Setter
         public Builder hour(@Nullable Integer hour) {
+
             this.hour = hour;
             return this;
         }
         @CustomType.Setter
         public Builder updateTrack(@Nullable String updateTrack) {
+
             this.updateTrack = updateTrack;
             return this;
         }

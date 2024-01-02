@@ -78,16 +78,19 @@ public final class InstanceDenyMaintenancePeriodStartDate {
 
         @CustomType.Setter
         public Builder day(@Nullable Integer day) {
+
             this.day = day;
             return this;
         }
         @CustomType.Setter
         public Builder month(@Nullable Integer month) {
+
             this.month = month;
             return this;
         }
         @CustomType.Setter
         public Builder year(@Nullable Integer year) {
+
             this.year = year;
             return this;
         }

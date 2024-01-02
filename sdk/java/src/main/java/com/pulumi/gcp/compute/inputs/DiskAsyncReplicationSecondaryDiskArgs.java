@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -121,7 +122,9 @@ public final class DiskAsyncReplicationSecondaryDiskArgs extends com.pulumi.reso
         }
 
         public DiskAsyncReplicationSecondaryDiskArgs build() {
-            $.disk = Objects.requireNonNull($.disk, "expected parameter 'disk' to be non-null");
+            if ($.disk == null) {
+                throw new MissingRequiredPropertyException("DiskAsyncReplicationSecondaryDiskArgs", "disk");
+            }
             return $;
         }
     }

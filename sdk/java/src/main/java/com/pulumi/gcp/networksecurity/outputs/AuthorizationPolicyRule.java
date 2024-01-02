@@ -67,6 +67,7 @@ public final class AuthorizationPolicyRule {
 
         @CustomType.Setter
         public Builder destinations(@Nullable List<AuthorizationPolicyRuleDestination> destinations) {
+
             this.destinations = destinations;
             return this;
         }
@@ -75,6 +76,7 @@ public final class AuthorizationPolicyRule {
         }
         @CustomType.Setter
         public Builder sources(@Nullable List<AuthorizationPolicyRuleSource> sources) {
+
             this.sources = sources;
             return this;
         }

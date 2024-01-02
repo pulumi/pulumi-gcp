@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -149,9 +150,15 @@ public final class MetricBucketOptionsExponentialBucketsArgs extends com.pulumi.
         }
 
         public MetricBucketOptionsExponentialBucketsArgs build() {
-            $.growthFactor = Objects.requireNonNull($.growthFactor, "expected parameter 'growthFactor' to be non-null");
-            $.numFiniteBuckets = Objects.requireNonNull($.numFiniteBuckets, "expected parameter 'numFiniteBuckets' to be non-null");
-            $.scale = Objects.requireNonNull($.scale, "expected parameter 'scale' to be non-null");
+            if ($.growthFactor == null) {
+                throw new MissingRequiredPropertyException("MetricBucketOptionsExponentialBucketsArgs", "growthFactor");
+            }
+            if ($.numFiniteBuckets == null) {
+                throw new MissingRequiredPropertyException("MetricBucketOptionsExponentialBucketsArgs", "numFiniteBuckets");
+            }
+            if ($.scale == null) {
+                throw new MissingRequiredPropertyException("MetricBucketOptionsExponentialBucketsArgs", "scale");
+            }
             return $;
         }
     }

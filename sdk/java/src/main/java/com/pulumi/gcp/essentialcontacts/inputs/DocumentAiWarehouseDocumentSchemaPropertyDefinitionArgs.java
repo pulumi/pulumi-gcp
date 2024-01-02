@@ -5,6 +5,7 @@ package com.pulumi.gcp.essentialcontacts.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionDateTimeTypeOptionsArgs;
 import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionEnumTypeOptionsArgs;
 import com.pulumi.gcp.essentialcontacts.inputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionFloatTypeOptionsArgs;
@@ -706,7 +707,9 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs exten
         }
 
         public DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("DocumentAiWarehouseDocumentSchemaPropertyDefinitionArgs", "name");
+            }
             return $;
         }
     }

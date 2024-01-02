@@ -5,6 +5,7 @@ package com.pulumi.gcp.firebase.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -284,8 +285,12 @@ public final class HostingVersionConfigRedirectArgs extends com.pulumi.resources
         }
 
         public HostingVersionConfigRedirectArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.statusCode = Objects.requireNonNull($.statusCode, "expected parameter 'statusCode' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("HostingVersionConfigRedirectArgs", "location");
+            }
+            if ($.statusCode == null) {
+                throw new MissingRequiredPropertyException("HostingVersionConfigRedirectArgs", "statusCode");
+            }
             return $;
         }
     }

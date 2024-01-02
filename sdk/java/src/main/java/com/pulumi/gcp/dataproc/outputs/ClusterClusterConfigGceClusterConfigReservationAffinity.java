@@ -73,16 +73,19 @@ public final class ClusterClusterConfigGceClusterConfigReservationAffinity {
 
         @CustomType.Setter
         public Builder consumeReservationType(@Nullable String consumeReservationType) {
+
             this.consumeReservationType = consumeReservationType;
             return this;
         }
         @CustomType.Setter
         public Builder key(@Nullable String key) {
+
             this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable List<String> values) {
+
             this.values = values;
             return this;
         }

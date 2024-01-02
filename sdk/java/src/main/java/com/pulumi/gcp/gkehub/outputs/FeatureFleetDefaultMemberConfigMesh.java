@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class FeatureFleetDefaultMemberConfigMesh {
 
         @CustomType.Setter
         public Builder management(String management) {
-            this.management = Objects.requireNonNull(management);
+            if (management == null) {
+              throw new MissingRequiredPropertyException("FeatureFleetDefaultMemberConfigMesh", "management");
+            }
+            this.management = management;
             return this;
         }
         public FeatureFleetDefaultMemberConfigMesh build() {

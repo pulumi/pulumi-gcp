@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -302,9 +303,15 @@ public final class NamespaceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NamespaceArgs build() {
-            $.scope = Objects.requireNonNull($.scope, "expected parameter 'scope' to be non-null");
-            $.scopeId = Objects.requireNonNull($.scopeId, "expected parameter 'scopeId' to be non-null");
-            $.scopeNamespaceId = Objects.requireNonNull($.scopeNamespaceId, "expected parameter 'scopeNamespaceId' to be non-null");
+            if ($.scope == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "scope");
+            }
+            if ($.scopeId == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "scopeId");
+            }
+            if ($.scopeNamespaceId == null) {
+                throw new MissingRequiredPropertyException("NamespaceArgs", "scopeNamespaceId");
+            }
             return $;
         }
     }

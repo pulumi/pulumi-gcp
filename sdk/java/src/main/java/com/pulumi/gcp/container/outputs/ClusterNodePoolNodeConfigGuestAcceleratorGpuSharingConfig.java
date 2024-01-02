@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -61,12 +62,18 @@ public final class ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig {
 
         @CustomType.Setter
         public Builder gpuSharingStrategy(String gpuSharingStrategy) {
-            this.gpuSharingStrategy = Objects.requireNonNull(gpuSharingStrategy);
+            if (gpuSharingStrategy == null) {
+              throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig", "gpuSharingStrategy");
+            }
+            this.gpuSharingStrategy = gpuSharingStrategy;
             return this;
         }
         @CustomType.Setter
         public Builder maxSharedClientsPerGpu(Integer maxSharedClientsPerGpu) {
-            this.maxSharedClientsPerGpu = Objects.requireNonNull(maxSharedClientsPerGpu);
+            if (maxSharedClientsPerGpu == null) {
+              throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig", "maxSharedClientsPerGpu");
+            }
+            this.maxSharedClientsPerGpu = maxSharedClientsPerGpu;
             return this;
         }
         public ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig build() {

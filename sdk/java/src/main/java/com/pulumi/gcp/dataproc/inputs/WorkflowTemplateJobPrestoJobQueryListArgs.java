@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class WorkflowTemplateJobPrestoJobQueryListArgs extends com.pulumi.
         }
 
         public WorkflowTemplateJobPrestoJobQueryListArgs build() {
-            $.queries = Objects.requireNonNull($.queries, "expected parameter 'queries' to be non-null");
+            if ($.queries == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplateJobPrestoJobQueryListArgs", "queries");
+            }
             return $;
         }
     }

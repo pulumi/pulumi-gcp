@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -88,6 +89,7 @@ public final class WorkforcePoolProviderOidcWebSsoConfig {
 
         @CustomType.Setter
         public Builder additionalScopes(@Nullable List<String> additionalScopes) {
+
             this.additionalScopes = additionalScopes;
             return this;
         }
@@ -96,12 +98,18 @@ public final class WorkforcePoolProviderOidcWebSsoConfig {
         }
         @CustomType.Setter
         public Builder assertionClaimsBehavior(String assertionClaimsBehavior) {
-            this.assertionClaimsBehavior = Objects.requireNonNull(assertionClaimsBehavior);
+            if (assertionClaimsBehavior == null) {
+              throw new MissingRequiredPropertyException("WorkforcePoolProviderOidcWebSsoConfig", "assertionClaimsBehavior");
+            }
+            this.assertionClaimsBehavior = assertionClaimsBehavior;
             return this;
         }
         @CustomType.Setter
         public Builder responseType(String responseType) {
-            this.responseType = Objects.requireNonNull(responseType);
+            if (responseType == null) {
+              throw new MissingRequiredPropertyException("WorkforcePoolProviderOidcWebSsoConfig", "responseType");
+            }
+            this.responseType = responseType;
             return this;
         }
         public WorkforcePoolProviderOidcWebSsoConfig build() {

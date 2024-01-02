@@ -44,6 +44,7 @@ public final class AwsNodePoolUpdateSettings {
 
         @CustomType.Setter
         public Builder surgeSettings(@Nullable AwsNodePoolUpdateSettingsSurgeSettings surgeSettings) {
+
             this.surgeSettings = surgeSettings;
             return this;
         }

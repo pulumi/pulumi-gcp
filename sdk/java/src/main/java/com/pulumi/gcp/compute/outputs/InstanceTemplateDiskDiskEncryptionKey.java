@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class InstanceTemplateDiskDiskEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
-            this.kmsKeySelfLink = Objects.requireNonNull(kmsKeySelfLink);
+            if (kmsKeySelfLink == null) {
+              throw new MissingRequiredPropertyException("InstanceTemplateDiskDiskEncryptionKey", "kmsKeySelfLink");
+            }
+            this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
         public InstanceTemplateDiskDiskEncryptionKey build() {

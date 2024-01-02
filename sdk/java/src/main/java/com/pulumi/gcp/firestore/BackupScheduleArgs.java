@@ -5,6 +5,7 @@ package com.pulumi.gcp.firestore;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.firestore.inputs.BackupScheduleDailyRecurrenceArgs;
 import com.pulumi.gcp.firestore.inputs.BackupScheduleWeeklyRecurrenceArgs;
 import java.lang.String;
@@ -250,7 +251,9 @@ public final class BackupScheduleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public BackupScheduleArgs build() {
-            $.retention = Objects.requireNonNull($.retention, "expected parameter 'retention' to be non-null");
+            if ($.retention == null) {
+                throw new MissingRequiredPropertyException("BackupScheduleArgs", "retention");
+            }
             return $;
         }
     }

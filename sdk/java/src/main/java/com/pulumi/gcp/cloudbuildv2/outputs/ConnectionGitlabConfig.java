@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuildv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGitlabConfigAuthorizerCredential;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGitlabConfigReadAuthorizerCredential;
 import com.pulumi.gcp.cloudbuildv2.outputs.ConnectionGitlabConfigServiceDirectoryConfig;
@@ -131,37 +132,50 @@ public final class ConnectionGitlabConfig {
 
         @CustomType.Setter
         public Builder authorizerCredential(ConnectionGitlabConfigAuthorizerCredential authorizerCredential) {
-            this.authorizerCredential = Objects.requireNonNull(authorizerCredential);
+            if (authorizerCredential == null) {
+              throw new MissingRequiredPropertyException("ConnectionGitlabConfig", "authorizerCredential");
+            }
+            this.authorizerCredential = authorizerCredential;
             return this;
         }
         @CustomType.Setter
         public Builder hostUri(@Nullable String hostUri) {
+
             this.hostUri = hostUri;
             return this;
         }
         @CustomType.Setter
         public Builder readAuthorizerCredential(ConnectionGitlabConfigReadAuthorizerCredential readAuthorizerCredential) {
-            this.readAuthorizerCredential = Objects.requireNonNull(readAuthorizerCredential);
+            if (readAuthorizerCredential == null) {
+              throw new MissingRequiredPropertyException("ConnectionGitlabConfig", "readAuthorizerCredential");
+            }
+            this.readAuthorizerCredential = readAuthorizerCredential;
             return this;
         }
         @CustomType.Setter
         public Builder serverVersion(@Nullable String serverVersion) {
+
             this.serverVersion = serverVersion;
             return this;
         }
         @CustomType.Setter
         public Builder serviceDirectoryConfig(@Nullable ConnectionGitlabConfigServiceDirectoryConfig serviceDirectoryConfig) {
+
             this.serviceDirectoryConfig = serviceDirectoryConfig;
             return this;
         }
         @CustomType.Setter
         public Builder sslCa(@Nullable String sslCa) {
+
             this.sslCa = sslCa;
             return this;
         }
         @CustomType.Setter
         public Builder webhookSecretSecretVersion(String webhookSecretSecretVersion) {
-            this.webhookSecretSecretVersion = Objects.requireNonNull(webhookSecretSecretVersion);
+            if (webhookSecretSecretVersion == null) {
+              throw new MissingRequiredPropertyException("ConnectionGitlabConfig", "webhookSecretSecretVersion");
+            }
+            this.webhookSecretSecretVersion = webhookSecretSecretVersion;
             return this;
         }
         public ConnectionGitlabConfig build() {

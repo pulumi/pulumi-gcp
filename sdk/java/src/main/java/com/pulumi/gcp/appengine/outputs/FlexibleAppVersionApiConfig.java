@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -110,26 +111,33 @@ public final class FlexibleAppVersionApiConfig {
 
         @CustomType.Setter
         public Builder authFailAction(@Nullable String authFailAction) {
+
             this.authFailAction = authFailAction;
             return this;
         }
         @CustomType.Setter
         public Builder login(@Nullable String login) {
+
             this.login = login;
             return this;
         }
         @CustomType.Setter
         public Builder script(String script) {
-            this.script = Objects.requireNonNull(script);
+            if (script == null) {
+              throw new MissingRequiredPropertyException("FlexibleAppVersionApiConfig", "script");
+            }
+            this.script = script;
             return this;
         }
         @CustomType.Setter
         public Builder securityLevel(@Nullable String securityLevel) {
+
             this.securityLevel = securityLevel;
             return this;
         }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
+
             this.url = url;
             return this;
         }

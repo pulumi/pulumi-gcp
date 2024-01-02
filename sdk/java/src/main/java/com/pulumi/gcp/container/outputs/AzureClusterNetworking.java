@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -75,7 +76,10 @@ public final class AzureClusterNetworking {
 
         @CustomType.Setter
         public Builder podAddressCidrBlocks(List<String> podAddressCidrBlocks) {
-            this.podAddressCidrBlocks = Objects.requireNonNull(podAddressCidrBlocks);
+            if (podAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("AzureClusterNetworking", "podAddressCidrBlocks");
+            }
+            this.podAddressCidrBlocks = podAddressCidrBlocks;
             return this;
         }
         public Builder podAddressCidrBlocks(String... podAddressCidrBlocks) {
@@ -83,7 +87,10 @@ public final class AzureClusterNetworking {
         }
         @CustomType.Setter
         public Builder serviceAddressCidrBlocks(List<String> serviceAddressCidrBlocks) {
-            this.serviceAddressCidrBlocks = Objects.requireNonNull(serviceAddressCidrBlocks);
+            if (serviceAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("AzureClusterNetworking", "serviceAddressCidrBlocks");
+            }
+            this.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
             return this;
         }
         public Builder serviceAddressCidrBlocks(String... serviceAddressCidrBlocks) {
@@ -91,7 +98,10 @@ public final class AzureClusterNetworking {
         }
         @CustomType.Setter
         public Builder virtualNetworkId(String virtualNetworkId) {
-            this.virtualNetworkId = Objects.requireNonNull(virtualNetworkId);
+            if (virtualNetworkId == null) {
+              throw new MissingRequiredPropertyException("AzureClusterNetworking", "virtualNetworkId");
+            }
+            this.virtualNetworkId = virtualNetworkId;
             return this;
         }
         public AzureClusterNetworking build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,11 +61,15 @@ public final class FlexibleAppVersionDeploymentCloudBuildOptions {
 
         @CustomType.Setter
         public Builder appYamlPath(String appYamlPath) {
-            this.appYamlPath = Objects.requireNonNull(appYamlPath);
+            if (appYamlPath == null) {
+              throw new MissingRequiredPropertyException("FlexibleAppVersionDeploymentCloudBuildOptions", "appYamlPath");
+            }
+            this.appYamlPath = appYamlPath;
             return this;
         }
         @CustomType.Setter
         public Builder cloudBuildTimeout(@Nullable String cloudBuildTimeout) {
+
             this.cloudBuildTimeout = cloudBuildTimeout;
             return this;
         }

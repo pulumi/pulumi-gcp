@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,16 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionTimeout {
 
         @CustomType.Setter
         public Builder nanos(@Nullable Integer nanos) {
+
             this.nanos = nanos;
             return this;
         }
         @CustomType.Setter
         public Builder seconds(String seconds) {
-            this.seconds = Objects.requireNonNull(seconds);
+            if (seconds == null) {
+              throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherRouteRuleRouteActionTimeout", "seconds");
+            }
+            this.seconds = seconds;
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleRouteActionTimeout build() {

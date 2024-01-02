@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -203,8 +204,12 @@ public final class ExternalAddressArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public ExternalAddressArgs build() {
-            $.internalIp = Objects.requireNonNull($.internalIp, "expected parameter 'internalIp' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.internalIp == null) {
+                throw new MissingRequiredPropertyException("ExternalAddressArgs", "internalIp");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("ExternalAddressArgs", "parent");
+            }
             return $;
         }
     }

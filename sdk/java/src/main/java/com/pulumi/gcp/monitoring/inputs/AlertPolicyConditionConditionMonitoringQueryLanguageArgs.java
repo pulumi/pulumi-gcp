@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionMonitoringQueryLanguageTriggerArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -288,8 +289,12 @@ public final class AlertPolicyConditionConditionMonitoringQueryLanguageArgs exte
         }
 
         public AlertPolicyConditionConditionMonitoringQueryLanguageArgs build() {
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
-            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyConditionConditionMonitoringQueryLanguageArgs", "duration");
+            }
+            if ($.query == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyConditionConditionMonitoringQueryLanguageArgs", "query");
+            }
             return $;
         }
     }

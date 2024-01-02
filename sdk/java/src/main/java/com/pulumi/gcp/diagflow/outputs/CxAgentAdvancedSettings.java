@@ -75,11 +75,13 @@ public final class CxAgentAdvancedSettings {
 
         @CustomType.Setter
         public Builder audioExportGcsDestination(@Nullable CxAgentAdvancedSettingsAudioExportGcsDestination audioExportGcsDestination) {
+
             this.audioExportGcsDestination = audioExportGcsDestination;
             return this;
         }
         @CustomType.Setter
         public Builder dtmfSettings(@Nullable CxAgentAdvancedSettingsDtmfSettings dtmfSettings) {
+
             this.dtmfSettings = dtmfSettings;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterAddonsConfigNetworkPolicyConfig {
 
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterAddonsConfigNetworkPolicyConfig", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         public GetClusterAddonsConfigNetworkPolicyConfig build() {

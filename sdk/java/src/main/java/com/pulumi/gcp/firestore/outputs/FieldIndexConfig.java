@@ -46,6 +46,7 @@ public final class FieldIndexConfig {
 
         @CustomType.Setter
         public Builder indexes(@Nullable List<FieldIndexConfigIndex> indexes) {
+
             this.indexes = indexes;
             return this;
         }

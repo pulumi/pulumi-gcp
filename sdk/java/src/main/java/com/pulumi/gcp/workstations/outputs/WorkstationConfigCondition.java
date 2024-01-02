@@ -82,16 +82,19 @@ public final class WorkstationConfigCondition {
 
         @CustomType.Setter
         public Builder code(@Nullable Integer code) {
+
             this.code = code;
             return this;
         }
         @CustomType.Setter
         public Builder details(@Nullable List<Map<String,Object>> details) {
+
             this.details = details;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceMetadata;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceStatus;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplate;
@@ -98,22 +99,34 @@ public final class GetServiceResult {
 
         @CustomType.Setter
         public Builder autogenerateRevisionName(Boolean autogenerateRevisionName) {
-            this.autogenerateRevisionName = Objects.requireNonNull(autogenerateRevisionName);
+            if (autogenerateRevisionName == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "autogenerateRevisionName");
+            }
+            this.autogenerateRevisionName = autogenerateRevisionName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder metadatas(List<GetServiceMetadata> metadatas) {
-            this.metadatas = Objects.requireNonNull(metadatas);
+            if (metadatas == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "metadatas");
+            }
+            this.metadatas = metadatas;
             return this;
         }
         public Builder metadatas(GetServiceMetadata... metadatas) {
@@ -121,17 +134,24 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder statuses(List<GetServiceStatus> statuses) {
-            this.statuses = Objects.requireNonNull(statuses);
+            if (statuses == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "statuses");
+            }
+            this.statuses = statuses;
             return this;
         }
         public Builder statuses(GetServiceStatus... statuses) {
@@ -139,7 +159,10 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder templates(List<GetServiceTemplate> templates) {
-            this.templates = Objects.requireNonNull(templates);
+            if (templates == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "templates");
+            }
+            this.templates = templates;
             return this;
         }
         public Builder templates(GetServiceTemplate... templates) {
@@ -147,7 +170,10 @@ public final class GetServiceResult {
         }
         @CustomType.Setter
         public Builder traffics(List<GetServiceTraffic> traffics) {
-            this.traffics = Objects.requireNonNull(traffics);
+            if (traffics == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "traffics");
+            }
+            this.traffics = traffics;
             return this;
         }
         public Builder traffics(GetServiceTraffic... traffics) {

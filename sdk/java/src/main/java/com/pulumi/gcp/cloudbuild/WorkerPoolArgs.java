@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolNetworkConfigArgs;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolWorkerConfigArgs;
 import java.lang.String;
@@ -317,7 +318,9 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WorkerPoolArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("WorkerPoolArgs", "location");
+            }
             return $;
         }
     }

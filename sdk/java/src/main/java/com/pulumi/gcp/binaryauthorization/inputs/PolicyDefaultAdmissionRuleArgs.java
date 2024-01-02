@@ -5,6 +5,7 @@ package com.pulumi.gcp.binaryauthorization.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -212,8 +213,12 @@ public final class PolicyDefaultAdmissionRuleArgs extends com.pulumi.resources.R
         }
 
         public PolicyDefaultAdmissionRuleArgs build() {
-            $.enforcementMode = Objects.requireNonNull($.enforcementMode, "expected parameter 'enforcementMode' to be non-null");
-            $.evaluationMode = Objects.requireNonNull($.evaluationMode, "expected parameter 'evaluationMode' to be non-null");
+            if ($.enforcementMode == null) {
+                throw new MissingRequiredPropertyException("PolicyDefaultAdmissionRuleArgs", "enforcementMode");
+            }
+            if ($.evaluationMode == null) {
+                throw new MissingRequiredPropertyException("PolicyDefaultAdmissionRuleArgs", "evaluationMode");
+            }
             return $;
         }
     }

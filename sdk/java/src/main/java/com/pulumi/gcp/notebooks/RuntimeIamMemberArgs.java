@@ -5,6 +5,7 @@ package com.pulumi.gcp.notebooks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.notebooks.inputs.RuntimeIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -282,9 +283,15 @@ public final class RuntimeIamMemberArgs extends com.pulumi.resources.ResourceArg
         }
 
         public RuntimeIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.runtimeName = Objects.requireNonNull($.runtimeName, "expected parameter 'runtimeName' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("RuntimeIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("RuntimeIamMemberArgs", "role");
+            }
+            if ($.runtimeName == null) {
+                throw new MissingRequiredPropertyException("RuntimeIamMemberArgs", "runtimeName");
+            }
             return $;
         }
     }

@@ -75,6 +75,7 @@ public final class ClusterMonitoringConfig {
 
         @CustomType.Setter
         public Builder advancedDatapathObservabilityConfigs(@Nullable List<ClusterMonitoringConfigAdvancedDatapathObservabilityConfig> advancedDatapathObservabilityConfigs) {
+
             this.advancedDatapathObservabilityConfigs = advancedDatapathObservabilityConfigs;
             return this;
         }
@@ -83,6 +84,7 @@ public final class ClusterMonitoringConfig {
         }
         @CustomType.Setter
         public Builder enableComponents(@Nullable List<String> enableComponents) {
+
             this.enableComponents = enableComponents;
             return this;
         }
@@ -91,6 +93,7 @@ public final class ClusterMonitoringConfig {
         }
         @CustomType.Setter
         public Builder managedPrometheus(@Nullable ClusterMonitoringConfigManagedPrometheus managedPrometheus) {
+
             this.managedPrometheus = managedPrometheus;
             return this;
         }

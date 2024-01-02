@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificatemanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -50,7 +51,10 @@ public final class CertificateIssuanceConfigCertificateAuthorityConfigCertificat
 
         @CustomType.Setter
         public Builder caPool(String caPool) {
-            this.caPool = Objects.requireNonNull(caPool);
+            if (caPool == null) {
+              throw new MissingRequiredPropertyException("CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig", "caPool");
+            }
+            this.caPool = caPool;
             return this;
         }
         public CertificateIssuanceConfigCertificateAuthorityConfigCertificateAuthorityServiceConfig build() {

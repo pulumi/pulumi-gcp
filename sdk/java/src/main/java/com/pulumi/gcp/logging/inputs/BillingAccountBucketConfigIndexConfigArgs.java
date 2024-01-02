@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -115,8 +116,12 @@ public final class BillingAccountBucketConfigIndexConfigArgs extends com.pulumi.
         }
 
         public BillingAccountBucketConfigIndexConfigArgs build() {
-            $.fieldPath = Objects.requireNonNull($.fieldPath, "expected parameter 'fieldPath' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.fieldPath == null) {
+                throw new MissingRequiredPropertyException("BillingAccountBucketConfigIndexConfigArgs", "fieldPath");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("BillingAccountBucketConfigIndexConfigArgs", "type");
+            }
             return $;
         }
     }

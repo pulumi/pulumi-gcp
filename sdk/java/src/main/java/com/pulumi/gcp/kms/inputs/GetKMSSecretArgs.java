@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,8 +159,12 @@ public final class GetKMSSecretArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetKMSSecretArgs build() {
-            $.ciphertext = Objects.requireNonNull($.ciphertext, "expected parameter 'ciphertext' to be non-null");
-            $.cryptoKey = Objects.requireNonNull($.cryptoKey, "expected parameter 'cryptoKey' to be non-null");
+            if ($.ciphertext == null) {
+                throw new MissingRequiredPropertyException("GetKMSSecretArgs", "ciphertext");
+            }
+            if ($.cryptoKey == null) {
+                throw new MissingRequiredPropertyException("GetKMSSecretArgs", "cryptoKey");
+            }
             return $;
         }
     }

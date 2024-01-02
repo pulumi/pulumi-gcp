@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetRegionDiskAsyncPrimaryDisk {
 
         @CustomType.Setter
         public Builder disk(String disk) {
-            this.disk = Objects.requireNonNull(disk);
+            if (disk == null) {
+              throw new MissingRequiredPropertyException("GetRegionDiskAsyncPrimaryDisk", "disk");
+            }
+            this.disk = disk;
             return this;
         }
         public GetRegionDiskAsyncPrimaryDisk build() {

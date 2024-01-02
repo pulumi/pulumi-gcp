@@ -44,6 +44,7 @@ public final class TableExternalDataConfigurationJsonOptions {
 
         @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
+
             this.encoding = encoding;
             return this;
         }

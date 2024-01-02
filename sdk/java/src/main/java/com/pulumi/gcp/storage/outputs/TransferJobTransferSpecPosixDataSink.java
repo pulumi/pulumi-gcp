@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class TransferJobTransferSpecPosixDataSink {
 
         @CustomType.Setter
         public Builder rootDirectory(String rootDirectory) {
-            this.rootDirectory = Objects.requireNonNull(rootDirectory);
+            if (rootDirectory == null) {
+              throw new MissingRequiredPropertyException("TransferJobTransferSpecPosixDataSink", "rootDirectory");
+            }
+            this.rootDirectory = rootDirectory;
             return this;
         }
         public TransferJobTransferSpecPosixDataSink build() {

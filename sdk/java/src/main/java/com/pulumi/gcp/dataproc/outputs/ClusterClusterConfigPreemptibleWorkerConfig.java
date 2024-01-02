@@ -106,16 +106,19 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
 
         @CustomType.Setter
         public Builder diskConfig(@Nullable ClusterClusterConfigPreemptibleWorkerConfigDiskConfig diskConfig) {
+
             this.diskConfig = diskConfig;
             return this;
         }
         @CustomType.Setter
         public Builder instanceFlexibilityPolicy(@Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy instanceFlexibilityPolicy) {
+
             this.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder instanceNames(@Nullable List<String> instanceNames) {
+
             this.instanceNames = instanceNames;
             return this;
         }
@@ -124,11 +127,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfig {
         }
         @CustomType.Setter
         public Builder numInstances(@Nullable Integer numInstances) {
+
             this.numInstances = numInstances;
             return this;
         }
         @CustomType.Setter
         public Builder preemptibility(@Nullable String preemptibility) {
+
             this.preemptibility = preemptibility;
             return this;
         }

@@ -72,16 +72,19 @@ public final class PreventionJobTriggerInspectJobActionDeidentifyTransformationC
 
         @CustomType.Setter
         public Builder deidentifyTemplate(@Nullable String deidentifyTemplate) {
+
             this.deidentifyTemplate = deidentifyTemplate;
             return this;
         }
         @CustomType.Setter
         public Builder imageRedactTemplate(@Nullable String imageRedactTemplate) {
+
             this.imageRedactTemplate = imageRedactTemplate;
             return this;
         }
         @CustomType.Setter
         public Builder structuredDeidentifyTemplate(@Nullable String structuredDeidentifyTemplate) {
+
             this.structuredDeidentifyTemplate = structuredDeidentifyTemplate;
             return this;
         }

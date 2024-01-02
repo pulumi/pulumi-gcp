@@ -4,6 +4,7 @@
 package com.pulumi.gcp.secretmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetSecretRotation {
 
         @CustomType.Setter
         public Builder nextRotationTime(String nextRotationTime) {
-            this.nextRotationTime = Objects.requireNonNull(nextRotationTime);
+            if (nextRotationTime == null) {
+              throw new MissingRequiredPropertyException("GetSecretRotation", "nextRotationTime");
+            }
+            this.nextRotationTime = nextRotationTime;
             return this;
         }
         @CustomType.Setter
         public Builder rotationPeriod(String rotationPeriod) {
-            this.rotationPeriod = Objects.requireNonNull(rotationPeriod);
+            if (rotationPeriod == null) {
+              throw new MissingRequiredPropertyException("GetSecretRotation", "rotationPeriod");
+            }
+            this.rotationPeriod = rotationPeriod;
             return this;
         }
         public GetSecretRotation build() {

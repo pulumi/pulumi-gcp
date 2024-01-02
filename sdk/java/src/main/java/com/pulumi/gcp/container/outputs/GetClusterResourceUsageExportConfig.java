@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterResourceUsageExportConfigBigqueryDestination;
 import java.lang.Boolean;
 import java.util.List;
@@ -48,7 +49,10 @@ public final class GetClusterResourceUsageExportConfig {
 
         @CustomType.Setter
         public Builder bigqueryDestinations(List<GetClusterResourceUsageExportConfigBigqueryDestination> bigqueryDestinations) {
-            this.bigqueryDestinations = Objects.requireNonNull(bigqueryDestinations);
+            if (bigqueryDestinations == null) {
+              throw new MissingRequiredPropertyException("GetClusterResourceUsageExportConfig", "bigqueryDestinations");
+            }
+            this.bigqueryDestinations = bigqueryDestinations;
             return this;
         }
         public Builder bigqueryDestinations(GetClusterResourceUsageExportConfigBigqueryDestination... bigqueryDestinations) {
@@ -56,12 +60,18 @@ public final class GetClusterResourceUsageExportConfig {
         }
         @CustomType.Setter
         public Builder enableNetworkEgressMetering(Boolean enableNetworkEgressMetering) {
-            this.enableNetworkEgressMetering = Objects.requireNonNull(enableNetworkEgressMetering);
+            if (enableNetworkEgressMetering == null) {
+              throw new MissingRequiredPropertyException("GetClusterResourceUsageExportConfig", "enableNetworkEgressMetering");
+            }
+            this.enableNetworkEgressMetering = enableNetworkEgressMetering;
             return this;
         }
         @CustomType.Setter
         public Builder enableResourceConsumptionMetering(Boolean enableResourceConsumptionMetering) {
-            this.enableResourceConsumptionMetering = Objects.requireNonNull(enableResourceConsumptionMetering);
+            if (enableResourceConsumptionMetering == null) {
+              throw new MissingRequiredPropertyException("GetClusterResourceUsageExportConfig", "enableResourceConsumptionMetering");
+            }
+            this.enableResourceConsumptionMetering = enableResourceConsumptionMetering;
             return this;
         }
         public GetClusterResourceUsageExportConfig build() {

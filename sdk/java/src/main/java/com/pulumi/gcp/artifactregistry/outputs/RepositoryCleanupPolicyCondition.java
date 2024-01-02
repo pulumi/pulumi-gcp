@@ -67,16 +67,19 @@ public final class RepositoryCleanupPolicyCondition {
 
         @CustomType.Setter
         public Builder newerThan(@Nullable String newerThan) {
+
             this.newerThan = newerThan;
             return this;
         }
         @CustomType.Setter
         public Builder olderThan(@Nullable String olderThan) {
+
             this.olderThan = olderThan;
             return this;
         }
         @CustomType.Setter
         public Builder packageNamePrefixes(@Nullable List<String> packageNamePrefixes) {
+
             this.packageNamePrefixes = packageNamePrefixes;
             return this;
         }
@@ -85,6 +88,7 @@ public final class RepositoryCleanupPolicyCondition {
         }
         @CustomType.Setter
         public Builder tagPrefixes(@Nullable List<String> tagPrefixes) {
+
             this.tagPrefixes = tagPrefixes;
             return this;
         }
@@ -93,11 +97,13 @@ public final class RepositoryCleanupPolicyCondition {
         }
         @CustomType.Setter
         public Builder tagState(@Nullable String tagState) {
+
             this.tagState = tagState;
             return this;
         }
         @CustomType.Setter
         public Builder versionNamePrefixes(@Nullable List<String> versionNamePrefixes) {
+
             this.versionNamePrefixes = versionNamePrefixes;
             return this;
         }

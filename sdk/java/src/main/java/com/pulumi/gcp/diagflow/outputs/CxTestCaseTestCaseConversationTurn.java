@@ -63,11 +63,13 @@ public final class CxTestCaseTestCaseConversationTurn {
 
         @CustomType.Setter
         public Builder userInput(@Nullable CxTestCaseTestCaseConversationTurnUserInput userInput) {
+
             this.userInput = userInput;
             return this;
         }
         @CustomType.Setter
         public Builder virtualAgentOutput(@Nullable CxTestCaseTestCaseConversationTurnVirtualAgentOutput virtualAgentOutput) {
+
             this.virtualAgentOutput = virtualAgentOutput;
             return this;
         }

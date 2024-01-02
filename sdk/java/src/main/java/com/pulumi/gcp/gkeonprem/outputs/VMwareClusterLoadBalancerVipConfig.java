@@ -62,11 +62,13 @@ public final class VMwareClusterLoadBalancerVipConfig {
 
         @CustomType.Setter
         public Builder controlPlaneVip(@Nullable String controlPlaneVip) {
+
             this.controlPlaneVip = controlPlaneVip;
             return this;
         }
         @CustomType.Setter
         public Builder ingressVip(@Nullable String ingressVip) {
+
             this.ingressVip = ingressVip;
             return this;
         }

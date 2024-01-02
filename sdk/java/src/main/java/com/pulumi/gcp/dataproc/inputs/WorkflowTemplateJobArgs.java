@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobHadoopJobArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobHiveJobArgs;
 import com.pulumi.gcp.dataproc.inputs.WorkflowTemplateJobPigJobArgs;
@@ -504,7 +505,9 @@ public final class WorkflowTemplateJobArgs extends com.pulumi.resources.Resource
         }
 
         public WorkflowTemplateJobArgs build() {
-            $.stepId = Objects.requireNonNull($.stepId, "expected parameter 'stepId' to be non-null");
+            if ($.stepId == null) {
+                throw new MissingRequiredPropertyException("WorkflowTemplateJobArgs", "stepId");
+            }
             return $;
         }
     }

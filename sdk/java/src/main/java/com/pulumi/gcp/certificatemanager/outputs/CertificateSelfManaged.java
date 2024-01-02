@@ -126,21 +126,25 @@ public final class CertificateSelfManaged {
 
         @CustomType.Setter
         public Builder certificatePem(@Nullable String certificatePem) {
+
             this.certificatePem = certificatePem;
             return this;
         }
         @CustomType.Setter
         public Builder pemCertificate(@Nullable String pemCertificate) {
+
             this.pemCertificate = pemCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder pemPrivateKey(@Nullable String pemPrivateKey) {
+
             this.pemPrivateKey = pemPrivateKey;
             return this;
         }
         @CustomType.Setter
         public Builder privateKeyPem(@Nullable String privateKeyPem) {
+
             this.privateKeyPem = privateKeyPem;
             return this;
         }

@@ -50,6 +50,7 @@ public final class DeliveryPipelineCondition {
 
         @CustomType.Setter
         public Builder pipelineReadyConditions(@Nullable List<DeliveryPipelineConditionPipelineReadyCondition> pipelineReadyConditions) {
+
             this.pipelineReadyConditions = pipelineReadyConditions;
             return this;
         }
@@ -58,6 +59,7 @@ public final class DeliveryPipelineCondition {
         }
         @CustomType.Setter
         public Builder targetsPresentConditions(@Nullable List<DeliveryPipelineConditionTargetsPresentCondition> targetsPresentConditions) {
+
             this.targetsPresentConditions = targetsPresentConditions;
             return this;
         }
@@ -66,6 +68,7 @@ public final class DeliveryPipelineCondition {
         }
         @CustomType.Setter
         public Builder targetsTypeConditions(@Nullable List<DeliveryPipelineConditionTargetsTypeCondition> targetsTypeConditions) {
+
             this.targetsTypeConditions = targetsTypeConditions;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ResourcePolicyDiskConsistencyGroupPolicy {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("ResourcePolicyDiskConsistencyGroupPolicy", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         public ResourcePolicyDiskConsistencyGroupPolicy build() {

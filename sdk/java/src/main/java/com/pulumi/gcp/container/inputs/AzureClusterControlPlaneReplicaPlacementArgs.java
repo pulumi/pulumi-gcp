@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class AzureClusterControlPlaneReplicaPlacementArgs extends com.pulu
         }
 
         public AzureClusterControlPlaneReplicaPlacementArgs build() {
-            $.azureAvailabilityZone = Objects.requireNonNull($.azureAvailabilityZone, "expected parameter 'azureAvailabilityZone' to be non-null");
-            $.subnetId = Objects.requireNonNull($.subnetId, "expected parameter 'subnetId' to be non-null");
+            if ($.azureAvailabilityZone == null) {
+                throw new MissingRequiredPropertyException("AzureClusterControlPlaneReplicaPlacementArgs", "azureAvailabilityZone");
+            }
+            if ($.subnetId == null) {
+                throw new MissingRequiredPropertyException("AzureClusterControlPlaneReplicaPlacementArgs", "subnetId");
+            }
             return $;
         }
     }

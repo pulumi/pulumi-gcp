@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -250,7 +251,9 @@ public final class ServiceTrafficArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ServiceTrafficArgs build() {
-            $.percent = Objects.requireNonNull($.percent, "expected parameter 'percent' to be non-null");
+            if ($.percent == null) {
+                throw new MissingRequiredPropertyException("ServiceTrafficArgs", "percent");
+            }
             return $;
         }
     }

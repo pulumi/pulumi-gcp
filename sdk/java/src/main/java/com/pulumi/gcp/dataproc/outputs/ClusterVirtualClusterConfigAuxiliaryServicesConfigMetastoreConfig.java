@@ -52,6 +52,7 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigMetastoreCo
 
         @CustomType.Setter
         public Builder dataprocMetastoreService(@Nullable String dataprocMetastoreService) {
+
             this.dataprocMetastoreService = dataprocMetastoreService;
             return this;
         }

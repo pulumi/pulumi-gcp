@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExec;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFile;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourcePkg;
@@ -124,26 +125,33 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResource {
 
         @CustomType.Setter
         public Builder exec(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceExec exec) {
+
             this.exec = exec;
             return this;
         }
         @CustomType.Setter
         public Builder file(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFile file) {
+
             this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResource", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder pkg(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkg pkg) {
+
             this.pkg = pkg;
             return this;
         }
         @CustomType.Setter
         public Builder repository(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepository repository) {
+
             this.repository = repository;
             return this;
         }

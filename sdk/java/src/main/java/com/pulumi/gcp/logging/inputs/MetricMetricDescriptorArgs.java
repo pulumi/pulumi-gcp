@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.MetricMetricDescriptorLabelArgs;
 import java.lang.String;
 import java.util.List;
@@ -296,8 +297,12 @@ public final class MetricMetricDescriptorArgs extends com.pulumi.resources.Resou
         }
 
         public MetricMetricDescriptorArgs build() {
-            $.metricKind = Objects.requireNonNull($.metricKind, "expected parameter 'metricKind' to be non-null");
-            $.valueType = Objects.requireNonNull($.valueType, "expected parameter 'valueType' to be non-null");
+            if ($.metricKind == null) {
+                throw new MissingRequiredPropertyException("MetricMetricDescriptorArgs", "metricKind");
+            }
+            if ($.valueType == null) {
+                throw new MissingRequiredPropertyException("MetricMetricDescriptorArgs", "valueType");
+            }
             return $;
         }
     }

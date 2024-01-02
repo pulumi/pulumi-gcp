@@ -46,6 +46,7 @@ public final class BareMetalAdminClusterNodeConfig {
 
         @CustomType.Setter
         public Builder maxPodsPerNode(@Nullable Integer maxPodsPerNode) {
+
             this.maxPodsPerNode = maxPodsPerNode;
             return this;
         }

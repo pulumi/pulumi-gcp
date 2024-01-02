@@ -198,6 +198,7 @@ public final class WorkstationConfigHostGceInstance {
 
         @CustomType.Setter
         public Builder accelerators(@Nullable List<WorkstationConfigHostGceInstanceAccelerator> accelerators) {
+
             this.accelerators = accelerators;
             return this;
         }
@@ -206,41 +207,49 @@ public final class WorkstationConfigHostGceInstance {
         }
         @CustomType.Setter
         public Builder bootDiskSizeGb(@Nullable Integer bootDiskSizeGb) {
+
             this.bootDiskSizeGb = bootDiskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder confidentialInstanceConfig(@Nullable WorkstationConfigHostGceInstanceConfidentialInstanceConfig confidentialInstanceConfig) {
+
             this.confidentialInstanceConfig = confidentialInstanceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder disablePublicIpAddresses(@Nullable Boolean disablePublicIpAddresses) {
+
             this.disablePublicIpAddresses = disablePublicIpAddresses;
             return this;
         }
         @CustomType.Setter
         public Builder enableNestedVirtualization(@Nullable Boolean enableNestedVirtualization) {
+
             this.enableNestedVirtualization = enableNestedVirtualization;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder poolSize(@Nullable Integer poolSize) {
+
             this.poolSize = poolSize;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountScopes(@Nullable List<String> serviceAccountScopes) {
+
             this.serviceAccountScopes = serviceAccountScopes;
             return this;
         }
@@ -249,11 +258,13 @@ public final class WorkstationConfigHostGceInstance {
         }
         @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable WorkstationConfigHostGceInstanceShieldedInstanceConfig shieldedInstanceConfig) {
+
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }

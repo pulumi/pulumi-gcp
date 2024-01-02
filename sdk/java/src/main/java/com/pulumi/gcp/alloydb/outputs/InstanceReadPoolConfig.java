@@ -44,6 +44,7 @@ public final class InstanceReadPoolConfig {
 
         @CustomType.Setter
         public Builder nodeCount(@Nullable Integer nodeCount) {
+
             this.nodeCount = nodeCount;
             return this;
         }

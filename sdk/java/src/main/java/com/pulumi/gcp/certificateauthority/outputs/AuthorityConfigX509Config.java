@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509ConfigAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509ConfigCaOptions;
 import com.pulumi.gcp.certificateauthority.outputs.AuthorityConfigX509ConfigKeyUsage;
@@ -132,6 +133,7 @@ public final class AuthorityConfigX509Config {
 
         @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<AuthorityConfigX509ConfigAdditionalExtension> additionalExtensions) {
+
             this.additionalExtensions = additionalExtensions;
             return this;
         }
@@ -140,6 +142,7 @@ public final class AuthorityConfigX509Config {
         }
         @CustomType.Setter
         public Builder aiaOcspServers(@Nullable List<String> aiaOcspServers) {
+
             this.aiaOcspServers = aiaOcspServers;
             return this;
         }
@@ -148,21 +151,29 @@ public final class AuthorityConfigX509Config {
         }
         @CustomType.Setter
         public Builder caOptions(AuthorityConfigX509ConfigCaOptions caOptions) {
-            this.caOptions = Objects.requireNonNull(caOptions);
+            if (caOptions == null) {
+              throw new MissingRequiredPropertyException("AuthorityConfigX509Config", "caOptions");
+            }
+            this.caOptions = caOptions;
             return this;
         }
         @CustomType.Setter
         public Builder keyUsage(AuthorityConfigX509ConfigKeyUsage keyUsage) {
-            this.keyUsage = Objects.requireNonNull(keyUsage);
+            if (keyUsage == null) {
+              throw new MissingRequiredPropertyException("AuthorityConfigX509Config", "keyUsage");
+            }
+            this.keyUsage = keyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder nameConstraints(@Nullable AuthorityConfigX509ConfigNameConstraints nameConstraints) {
+
             this.nameConstraints = nameConstraints;
             return this;
         }
         @CustomType.Setter
         public Builder policyIds(@Nullable List<AuthorityConfigX509ConfigPolicyId> policyIds) {
+
             this.policyIds = policyIds;
             return this;
         }

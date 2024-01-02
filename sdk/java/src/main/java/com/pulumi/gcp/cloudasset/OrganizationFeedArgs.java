@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudasset;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudasset.inputs.OrganizationFeedConditionArgs;
 import com.pulumi.gcp.cloudasset.inputs.OrganizationFeedFeedOutputConfigArgs;
 import java.lang.String;
@@ -429,10 +430,18 @@ public final class OrganizationFeedArgs extends com.pulumi.resources.ResourceArg
         }
 
         public OrganizationFeedArgs build() {
-            $.billingProject = Objects.requireNonNull($.billingProject, "expected parameter 'billingProject' to be non-null");
-            $.feedId = Objects.requireNonNull($.feedId, "expected parameter 'feedId' to be non-null");
-            $.feedOutputConfig = Objects.requireNonNull($.feedOutputConfig, "expected parameter 'feedOutputConfig' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            if ($.billingProject == null) {
+                throw new MissingRequiredPropertyException("OrganizationFeedArgs", "billingProject");
+            }
+            if ($.feedId == null) {
+                throw new MissingRequiredPropertyException("OrganizationFeedArgs", "feedId");
+            }
+            if ($.feedOutputConfig == null) {
+                throw new MissingRequiredPropertyException("OrganizationFeedArgs", "feedOutputConfig");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("OrganizationFeedArgs", "orgId");
+            }
             return $;
         }
     }

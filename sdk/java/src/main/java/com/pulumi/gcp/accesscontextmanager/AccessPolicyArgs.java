@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -166,8 +167,12 @@ public final class AccessPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AccessPolicyArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
-            $.title = Objects.requireNonNull($.title, "expected parameter 'title' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyArgs", "parent");
+            }
+            if ($.title == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyArgs", "title");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetAuthorityKeySpec {
 
         @CustomType.Setter
         public Builder algorithm(String algorithm) {
-            this.algorithm = Objects.requireNonNull(algorithm);
+            if (algorithm == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityKeySpec", "algorithm");
+            }
+            this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder cloudKmsKeyVersion(String cloudKmsKeyVersion) {
-            this.cloudKmsKeyVersion = Objects.requireNonNull(cloudKmsKeyVersion);
+            if (cloudKmsKeyVersion == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityKeySpec", "cloudKmsKeyVersion");
+            }
+            this.cloudKmsKeyVersion = cloudKmsKeyVersion;
             return this;
         }
         public GetAuthorityKeySpec build() {

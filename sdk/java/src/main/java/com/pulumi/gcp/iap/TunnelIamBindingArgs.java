@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iap.inputs.TunnelIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -237,8 +238,12 @@ public final class TunnelIamBindingArgs extends com.pulumi.resources.ResourceArg
         }
 
         public TunnelIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("TunnelIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("TunnelIamBindingArgs", "role");
+            }
             return $;
         }
     }

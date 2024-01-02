@@ -72,16 +72,19 @@ public final class WorkloadPartnerPermissions {
 
         @CustomType.Setter
         public Builder assuredWorkloadsMonitoring(@Nullable Boolean assuredWorkloadsMonitoring) {
+
             this.assuredWorkloadsMonitoring = assuredWorkloadsMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder dataLogsViewer(@Nullable Boolean dataLogsViewer) {
+
             this.dataLogsViewer = dataLogsViewer;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccessApprover(@Nullable Boolean serviceAccessApprover) {
+
             this.serviceAccessApprover = serviceAccessApprover;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -291,7 +292,9 @@ public final class ConnectionCloudSpannerArgs extends com.pulumi.resources.Resou
         }
 
         public ConnectionCloudSpannerArgs build() {
-            $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
+            if ($.database == null) {
+                throw new MissingRequiredPropertyException("ConnectionCloudSpannerArgs", "database");
+            }
             return $;
         }
     }

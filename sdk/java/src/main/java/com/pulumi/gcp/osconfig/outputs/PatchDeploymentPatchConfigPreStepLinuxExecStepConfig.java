@@ -95,6 +95,7 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
 
         @CustomType.Setter
         public Builder allowedSuccessCodes(@Nullable List<Integer> allowedSuccessCodes) {
+
             this.allowedSuccessCodes = allowedSuccessCodes;
             return this;
         }
@@ -103,16 +104,19 @@ public final class PatchDeploymentPatchConfigPreStepLinuxExecStepConfig {
         }
         @CustomType.Setter
         public Builder gcsObject(@Nullable PatchDeploymentPatchConfigPreStepLinuxExecStepConfigGcsObject gcsObject) {
+
             this.gcsObject = gcsObject;
             return this;
         }
         @CustomType.Setter
         public Builder interpreter(@Nullable String interpreter) {
+
             this.interpreter = interpreter;
             return this;
         }
         @CustomType.Setter
         public Builder localPath(@Nullable String localPath) {
+
             this.localPath = localPath;
             return this;
         }

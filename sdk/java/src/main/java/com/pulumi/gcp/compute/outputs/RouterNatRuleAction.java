@@ -80,6 +80,7 @@ public final class RouterNatRuleAction {
 
         @CustomType.Setter
         public Builder sourceNatActiveIps(@Nullable List<String> sourceNatActiveIps) {
+
             this.sourceNatActiveIps = sourceNatActiveIps;
             return this;
         }
@@ -88,6 +89,7 @@ public final class RouterNatRuleAction {
         }
         @CustomType.Setter
         public Builder sourceNatActiveRanges(@Nullable List<String> sourceNatActiveRanges) {
+
             this.sourceNatActiveRanges = sourceNatActiveRanges;
             return this;
         }
@@ -96,6 +98,7 @@ public final class RouterNatRuleAction {
         }
         @CustomType.Setter
         public Builder sourceNatDrainIps(@Nullable List<String> sourceNatDrainIps) {
+
             this.sourceNatDrainIps = sourceNatDrainIps;
             return this;
         }
@@ -104,6 +107,7 @@ public final class RouterNatRuleAction {
         }
         @CustomType.Setter
         public Builder sourceNatDrainRanges(@Nullable List<String> sourceNatDrainRanges) {
+
             this.sourceNatDrainRanges = sourceNatDrainRanges;
             return this;
         }

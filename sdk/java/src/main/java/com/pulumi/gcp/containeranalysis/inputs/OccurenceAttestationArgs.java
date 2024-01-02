@@ -5,6 +5,7 @@ package com.pulumi.gcp.containeranalysis.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.containeranalysis.inputs.OccurenceAttestationSignatureArgs;
 import java.lang.String;
 import java.util.List;
@@ -152,8 +153,12 @@ public final class OccurenceAttestationArgs extends com.pulumi.resources.Resourc
         }
 
         public OccurenceAttestationArgs build() {
-            $.serializedPayload = Objects.requireNonNull($.serializedPayload, "expected parameter 'serializedPayload' to be non-null");
-            $.signatures = Objects.requireNonNull($.signatures, "expected parameter 'signatures' to be non-null");
+            if ($.serializedPayload == null) {
+                throw new MissingRequiredPropertyException("OccurenceAttestationArgs", "serializedPayload");
+            }
+            if ($.signatures == null) {
+                throw new MissingRequiredPropertyException("OccurenceAttestationArgs", "signatures");
+            }
             return $;
         }
     }

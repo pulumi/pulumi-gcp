@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.ServiceAttachmentConsumerAcceptListArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -612,10 +613,18 @@ public final class ServiceAttachmentArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ServiceAttachmentArgs build() {
-            $.connectionPreference = Objects.requireNonNull($.connectionPreference, "expected parameter 'connectionPreference' to be non-null");
-            $.enableProxyProtocol = Objects.requireNonNull($.enableProxyProtocol, "expected parameter 'enableProxyProtocol' to be non-null");
-            $.natSubnets = Objects.requireNonNull($.natSubnets, "expected parameter 'natSubnets' to be non-null");
-            $.targetService = Objects.requireNonNull($.targetService, "expected parameter 'targetService' to be non-null");
+            if ($.connectionPreference == null) {
+                throw new MissingRequiredPropertyException("ServiceAttachmentArgs", "connectionPreference");
+            }
+            if ($.enableProxyProtocol == null) {
+                throw new MissingRequiredPropertyException("ServiceAttachmentArgs", "enableProxyProtocol");
+            }
+            if ($.natSubnets == null) {
+                throw new MissingRequiredPropertyException("ServiceAttachmentArgs", "natSubnets");
+            }
+            if ($.targetService == null) {
+                throw new MissingRequiredPropertyException("ServiceAttachmentArgs", "targetService");
+            }
             return $;
         }
     }

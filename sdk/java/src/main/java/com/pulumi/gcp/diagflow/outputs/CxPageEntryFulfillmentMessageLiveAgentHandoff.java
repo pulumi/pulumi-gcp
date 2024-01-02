@@ -44,6 +44,7 @@ public final class CxPageEntryFulfillmentMessageLiveAgentHandoff {
 
         @CustomType.Setter
         public Builder metadata(@Nullable String metadata) {
+
             this.metadata = metadata;
             return this;
         }

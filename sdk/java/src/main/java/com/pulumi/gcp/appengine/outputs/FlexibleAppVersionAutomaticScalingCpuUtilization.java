@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,16 @@ public final class FlexibleAppVersionAutomaticScalingCpuUtilization {
 
         @CustomType.Setter
         public Builder aggregationWindowLength(@Nullable String aggregationWindowLength) {
+
             this.aggregationWindowLength = aggregationWindowLength;
             return this;
         }
         @CustomType.Setter
         public Builder targetUtilization(Double targetUtilization) {
-            this.targetUtilization = Objects.requireNonNull(targetUtilization);
+            if (targetUtilization == null) {
+              throw new MissingRequiredPropertyException("FlexibleAppVersionAutomaticScalingCpuUtilization", "targetUtilization");
+            }
+            this.targetUtilization = targetUtilization;
             return this;
         }
         public FlexibleAppVersionAutomaticScalingCpuUtilization build() {

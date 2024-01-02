@@ -86,21 +86,25 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigInfoTypeTransform
 
         @CustomType.Setter
         public Builder hours(@Nullable Integer hours) {
+
             this.hours = hours;
             return this;
         }
         @CustomType.Setter
         public Builder minutes(@Nullable Integer minutes) {
+
             this.minutes = minutes;
             return this;
         }
         @CustomType.Setter
         public Builder nanos(@Nullable Integer nanos) {
+
             this.nanos = nanos;
             return this;
         }
         @CustomType.Setter
         public Builder seconds(@Nullable Integer seconds) {
+
             this.seconds = seconds;
             return this;
         }

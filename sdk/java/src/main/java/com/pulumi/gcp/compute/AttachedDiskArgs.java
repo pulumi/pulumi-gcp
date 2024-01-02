@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -345,8 +346,12 @@ public final class AttachedDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AttachedDiskArgs build() {
-            $.disk = Objects.requireNonNull($.disk, "expected parameter 'disk' to be non-null");
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
+            if ($.disk == null) {
+                throw new MissingRequiredPropertyException("AttachedDiskArgs", "disk");
+            }
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("AttachedDiskArgs", "instance");
+            }
             return $;
         }
     }

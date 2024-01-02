@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class MetricBucketOptionsExplicitBucketsArgs extends com.pulumi.res
         }
 
         public MetricBucketOptionsExplicitBucketsArgs build() {
-            $.bounds = Objects.requireNonNull($.bounds, "expected parameter 'bounds' to be non-null");
+            if ($.bounds == null) {
+                throw new MissingRequiredPropertyException("MetricBucketOptionsExplicitBucketsArgs", "bounds");
+            }
             return $;
         }
     }

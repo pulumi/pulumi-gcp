@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -141,7 +142,9 @@ public final class BareMetalAdminClusterProxyArgs extends com.pulumi.resources.R
         }
 
         public BareMetalAdminClusterProxyArgs build() {
-            $.uri = Objects.requireNonNull($.uri, "expected parameter 'uri' to be non-null");
+            if ($.uri == null) {
+                throw new MissingRequiredPropertyException("BareMetalAdminClusterProxyArgs", "uri");
+            }
             return $;
         }
     }

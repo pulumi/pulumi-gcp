@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -152,9 +153,15 @@ public final class EdgeCacheOriginAwsV4AuthenticationArgs extends com.pulumi.res
         }
 
         public EdgeCacheOriginAwsV4AuthenticationArgs build() {
-            $.accessKeyId = Objects.requireNonNull($.accessKeyId, "expected parameter 'accessKeyId' to be non-null");
-            $.originRegion = Objects.requireNonNull($.originRegion, "expected parameter 'originRegion' to be non-null");
-            $.secretAccessKeyVersion = Objects.requireNonNull($.secretAccessKeyVersion, "expected parameter 'secretAccessKeyVersion' to be non-null");
+            if ($.accessKeyId == null) {
+                throw new MissingRequiredPropertyException("EdgeCacheOriginAwsV4AuthenticationArgs", "accessKeyId");
+            }
+            if ($.originRegion == null) {
+                throw new MissingRequiredPropertyException("EdgeCacheOriginAwsV4AuthenticationArgs", "originRegion");
+            }
+            if ($.secretAccessKeyVersion == null) {
+                throw new MissingRequiredPropertyException("EdgeCacheOriginAwsV4AuthenticationArgs", "secretAccessKeyVersion");
+            }
             return $;
         }
     }

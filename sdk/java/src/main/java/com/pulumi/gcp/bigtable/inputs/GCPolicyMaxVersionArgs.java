@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigtable.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class GCPolicyMaxVersionArgs extends com.pulumi.resources.ResourceA
         }
 
         public GCPolicyMaxVersionArgs build() {
-            $.number = Objects.requireNonNull($.number, "expected parameter 'number' to be non-null");
+            if ($.number == null) {
+                throw new MissingRequiredPropertyException("GCPolicyMaxVersionArgs", "number");
+            }
             return $;
         }
     }

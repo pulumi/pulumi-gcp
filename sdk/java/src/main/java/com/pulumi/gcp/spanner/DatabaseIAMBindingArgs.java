@@ -5,6 +5,7 @@ package com.pulumi.gcp.spanner;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.spanner.inputs.DatabaseIAMBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -275,10 +276,18 @@ public final class DatabaseIAMBindingArgs extends com.pulumi.resources.ResourceA
         }
 
         public DatabaseIAMBindingArgs build() {
-            $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.database == null) {
+                throw new MissingRequiredPropertyException("DatabaseIAMBindingArgs", "database");
+            }
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("DatabaseIAMBindingArgs", "instance");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("DatabaseIAMBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("DatabaseIAMBindingArgs", "role");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildArtifactsArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildAvailableSecretsArgs;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildOptionsArgs;
@@ -608,7 +609,9 @@ public final class TriggerBuildArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public TriggerBuildArgs build() {
-            $.steps = Objects.requireNonNull($.steps, "expected parameter 'steps' to be non-null");
+            if ($.steps == null) {
+                throw new MissingRequiredPropertyException("TriggerBuildArgs", "steps");
+            }
             return $;
         }
     }

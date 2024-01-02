@@ -5,6 +5,7 @@ package com.pulumi.gcp.workstations;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.workstations.inputs.WorkstationIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -305,11 +306,21 @@ public final class WorkstationIamBindingArgs extends com.pulumi.resources.Resour
         }
 
         public WorkstationIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.workstationClusterId = Objects.requireNonNull($.workstationClusterId, "expected parameter 'workstationClusterId' to be non-null");
-            $.workstationConfigId = Objects.requireNonNull($.workstationConfigId, "expected parameter 'workstationConfigId' to be non-null");
-            $.workstationId = Objects.requireNonNull($.workstationId, "expected parameter 'workstationId' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("WorkstationIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("WorkstationIamBindingArgs", "role");
+            }
+            if ($.workstationClusterId == null) {
+                throw new MissingRequiredPropertyException("WorkstationIamBindingArgs", "workstationClusterId");
+            }
+            if ($.workstationConfigId == null) {
+                throw new MissingRequiredPropertyException("WorkstationIamBindingArgs", "workstationConfigId");
+            }
+            if ($.workstationId == null) {
+                throw new MissingRequiredPropertyException("WorkstationIamBindingArgs", "workstationId");
+            }
             return $;
         }
     }

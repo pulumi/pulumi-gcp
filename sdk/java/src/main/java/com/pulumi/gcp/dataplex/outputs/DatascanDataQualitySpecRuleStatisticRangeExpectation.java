@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -111,26 +112,33 @@ public final class DatascanDataQualitySpecRuleStatisticRangeExpectation {
 
         @CustomType.Setter
         public Builder maxValue(@Nullable String maxValue) {
+
             this.maxValue = maxValue;
             return this;
         }
         @CustomType.Setter
         public Builder minValue(@Nullable String minValue) {
+
             this.minValue = minValue;
             return this;
         }
         @CustomType.Setter
         public Builder statistic(String statistic) {
-            this.statistic = Objects.requireNonNull(statistic);
+            if (statistic == null) {
+              throw new MissingRequiredPropertyException("DatascanDataQualitySpecRuleStatisticRangeExpectation", "statistic");
+            }
+            this.statistic = statistic;
             return this;
         }
         @CustomType.Setter
         public Builder strictMaxEnabled(@Nullable Boolean strictMaxEnabled) {
+
             this.strictMaxEnabled = strictMaxEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder strictMinEnabled(@Nullable Boolean strictMinEnabled) {
+
             this.strictMinEnabled = strictMinEnabled;
             return this;
         }

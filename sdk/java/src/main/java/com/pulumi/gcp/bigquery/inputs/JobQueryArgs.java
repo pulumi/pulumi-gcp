@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.JobQueryDefaultDatasetArgs;
 import com.pulumi.gcp.bigquery.inputs.JobQueryDestinationEncryptionConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.JobQueryDestinationTableArgs;
@@ -851,7 +852,9 @@ public final class JobQueryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobQueryArgs build() {
-            $.query = Objects.requireNonNull($.query, "expected parameter 'query' to be non-null");
+            if ($.query == null) {
+                throw new MissingRequiredPropertyException("JobQueryArgs", "query");
+            }
             return $;
         }
     }

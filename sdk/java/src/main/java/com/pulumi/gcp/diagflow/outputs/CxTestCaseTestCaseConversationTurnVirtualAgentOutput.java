@@ -96,16 +96,19 @@ public final class CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
 
         @CustomType.Setter
         public Builder currentPage(@Nullable CxTestCaseTestCaseConversationTurnVirtualAgentOutputCurrentPage currentPage) {
+
             this.currentPage = currentPage;
             return this;
         }
         @CustomType.Setter
         public Builder sessionParameters(@Nullable String sessionParameters) {
+
             this.sessionParameters = sessionParameters;
             return this;
         }
         @CustomType.Setter
         public Builder textResponses(@Nullable List<CxTestCaseTestCaseConversationTurnVirtualAgentOutputTextResponse> textResponses) {
+
             this.textResponses = textResponses;
             return this;
         }
@@ -114,6 +117,7 @@ public final class CxTestCaseTestCaseConversationTurnVirtualAgentOutput {
         }
         @CustomType.Setter
         public Builder triggeredIntent(@Nullable CxTestCaseTestCaseConversationTurnVirtualAgentOutputTriggeredIntent triggeredIntent) {
+
             this.triggeredIntent = triggeredIntent;
             return this;
         }

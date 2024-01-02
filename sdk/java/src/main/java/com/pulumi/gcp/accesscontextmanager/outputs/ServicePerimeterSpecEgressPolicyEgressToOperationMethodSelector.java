@@ -64,11 +64,13 @@ public final class ServicePerimeterSpecEgressPolicyEgressToOperationMethodSelect
 
         @CustomType.Setter
         public Builder method(@Nullable String method) {
+
             this.method = method;
             return this;
         }
         @CustomType.Setter
         public Builder permission(@Nullable String permission) {
+
             this.permission = permission;
             return this;
         }

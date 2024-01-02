@@ -105,26 +105,31 @@ public final class DatabaseInstanceSettingsInsightsConfig {
 
         @CustomType.Setter
         public Builder queryInsightsEnabled(@Nullable Boolean queryInsightsEnabled) {
+
             this.queryInsightsEnabled = queryInsightsEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder queryPlansPerMinute(@Nullable Integer queryPlansPerMinute) {
+
             this.queryPlansPerMinute = queryPlansPerMinute;
             return this;
         }
         @CustomType.Setter
         public Builder queryStringLength(@Nullable Integer queryStringLength) {
+
             this.queryStringLength = queryStringLength;
             return this;
         }
         @CustomType.Setter
         public Builder recordApplicationTags(@Nullable Boolean recordApplicationTags) {
+
             this.recordApplicationTags = recordApplicationTags;
             return this;
         }
         @CustomType.Setter
         public Builder recordClientAddress(@Nullable Boolean recordClientAddress) {
+
             this.recordClientAddress = recordClientAddress;
             return this;
         }

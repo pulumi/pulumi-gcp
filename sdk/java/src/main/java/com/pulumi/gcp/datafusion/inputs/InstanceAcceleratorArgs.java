@@ -5,6 +5,7 @@ package com.pulumi.gcp.datafusion.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class InstanceAcceleratorArgs extends com.pulumi.resources.Resource
         }
 
         public InstanceAcceleratorArgs build() {
-            $.acceleratorType = Objects.requireNonNull($.acceleratorType, "expected parameter 'acceleratorType' to be non-null");
-            $.state = Objects.requireNonNull($.state, "expected parameter 'state' to be non-null");
+            if ($.acceleratorType == null) {
+                throw new MissingRequiredPropertyException("InstanceAcceleratorArgs", "acceleratorType");
+            }
+            if ($.state == null) {
+                throw new MissingRequiredPropertyException("InstanceAcceleratorArgs", "state");
+            }
             return $;
         }
     }

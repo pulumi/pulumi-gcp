@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.outputs.AccessLevelsAccessLevelCustomExpr;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class AccessLevelsAccessLevelCustom {
 
         @CustomType.Setter
         public Builder expr(AccessLevelsAccessLevelCustomExpr expr) {
-            this.expr = Objects.requireNonNull(expr);
+            if (expr == null) {
+              throw new MissingRequiredPropertyException("AccessLevelsAccessLevelCustom", "expr");
+            }
+            this.expr = expr;
             return this;
         }
         public AccessLevelsAccessLevelCustom build() {

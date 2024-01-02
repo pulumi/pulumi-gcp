@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,7 +47,10 @@ public final class SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceL
 
         @CustomType.Setter
         public Builder threshold(String threshold) {
-            this.threshold = Objects.requireNonNull(threshold);
+            if (threshold == null) {
+              throw new MissingRequiredPropertyException("SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency", "threshold");
+            }
+            this.threshold = threshold;
             return this;
         }
         public SloWindowsBasedSliGoodTotalRatioThresholdBasicSliPerformanceLatency build() {

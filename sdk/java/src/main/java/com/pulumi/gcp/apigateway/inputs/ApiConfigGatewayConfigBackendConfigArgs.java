@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class ApiConfigGatewayConfigBackendConfigArgs extends com.pulumi.re
         }
 
         public ApiConfigGatewayConfigBackendConfigArgs build() {
-            $.googleServiceAccount = Objects.requireNonNull($.googleServiceAccount, "expected parameter 'googleServiceAccount' to be non-null");
+            if ($.googleServiceAccount == null) {
+                throw new MissingRequiredPropertyException("ApiConfigGatewayConfigBackendConfigArgs", "googleServiceAccount");
+            }
             return $;
         }
     }

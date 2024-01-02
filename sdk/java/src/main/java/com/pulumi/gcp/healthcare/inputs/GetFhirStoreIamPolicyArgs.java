@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class GetFhirStoreIamPolicyArgs extends com.pulumi.resources.Invoke
         }
 
         public GetFhirStoreIamPolicyArgs build() {
-            $.fhirStoreId = Objects.requireNonNull($.fhirStoreId, "expected parameter 'fhirStoreId' to be non-null");
+            if ($.fhirStoreId == null) {
+                throw new MissingRequiredPropertyException("GetFhirStoreIamPolicyArgs", "fhirStoreId");
+            }
             return $;
         }
     }

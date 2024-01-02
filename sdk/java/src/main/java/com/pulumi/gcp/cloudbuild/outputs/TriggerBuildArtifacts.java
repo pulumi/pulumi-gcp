@@ -139,6 +139,7 @@ public final class TriggerBuildArtifacts {
 
         @CustomType.Setter
         public Builder images(@Nullable List<String> images) {
+
             this.images = images;
             return this;
         }
@@ -147,6 +148,7 @@ public final class TriggerBuildArtifacts {
         }
         @CustomType.Setter
         public Builder mavenArtifacts(@Nullable List<TriggerBuildArtifactsMavenArtifact> mavenArtifacts) {
+
             this.mavenArtifacts = mavenArtifacts;
             return this;
         }
@@ -155,6 +157,7 @@ public final class TriggerBuildArtifacts {
         }
         @CustomType.Setter
         public Builder npmPackages(@Nullable List<TriggerBuildArtifactsNpmPackage> npmPackages) {
+
             this.npmPackages = npmPackages;
             return this;
         }
@@ -163,11 +166,13 @@ public final class TriggerBuildArtifacts {
         }
         @CustomType.Setter
         public Builder objects(@Nullable TriggerBuildArtifactsObjects objects) {
+
             this.objects = objects;
             return this;
         }
         @CustomType.Setter
         public Builder pythonPackages(@Nullable List<TriggerBuildArtifactsPythonPackage> pythonPackages) {
+
             this.pythonPackages = pythonPackages;
             return this;
         }

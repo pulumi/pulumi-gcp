@@ -65,6 +65,7 @@ public final class AlertPolicyAlertStrategyNotificationChannelStrategy {
 
         @CustomType.Setter
         public Builder notificationChannelNames(@Nullable List<String> notificationChannelNames) {
+
             this.notificationChannelNames = notificationChannelNames;
             return this;
         }
@@ -73,6 +74,7 @@ public final class AlertPolicyAlertStrategyNotificationChannelStrategy {
         }
         @CustomType.Setter
         public Builder renotifyInterval(@Nullable String renotifyInterval) {
+
             this.renotifyInterval = renotifyInterval;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.SloRequestBasedSliDistributionCutRangeArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -144,8 +145,12 @@ public final class SloRequestBasedSliDistributionCutArgs extends com.pulumi.reso
         }
 
         public SloRequestBasedSliDistributionCutArgs build() {
-            $.distributionFilter = Objects.requireNonNull($.distributionFilter, "expected parameter 'distributionFilter' to be non-null");
-            $.range = Objects.requireNonNull($.range, "expected parameter 'range' to be non-null");
+            if ($.distributionFilter == null) {
+                throw new MissingRequiredPropertyException("SloRequestBasedSliDistributionCutArgs", "distributionFilter");
+            }
+            if ($.range == null) {
+                throw new MissingRequiredPropertyException("SloRequestBasedSliDistributionCutArgs", "range");
+            }
             return $;
         }
     }

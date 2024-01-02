@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule;
 import com.pulumi.gcp.networkservices.outputs.EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction;
@@ -151,17 +152,22 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder headerAction(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleHeaderAction headerAction) {
+
             this.headerAction = headerAction;
             return this;
         }
         @CustomType.Setter
         public Builder matchRules(List<EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule> matchRules) {
-            this.matchRules = Objects.requireNonNull(matchRules);
+            if (matchRules == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingPathMatcherRouteRule", "matchRules");
+            }
+            this.matchRules = matchRules;
             return this;
         }
         public Builder matchRules(EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRule... matchRules) {
@@ -169,21 +175,27 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRule {
         }
         @CustomType.Setter
         public Builder origin(@Nullable String origin) {
+
             this.origin = origin;
             return this;
         }
         @CustomType.Setter
         public Builder priority(String priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingPathMatcherRouteRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder routeAction(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteAction routeAction) {
+
             this.routeAction = routeAction;
             return this;
         }
         @CustomType.Setter
         public Builder urlRedirect(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleUrlRedirect urlRedirect) {
+
             this.urlRedirect = urlRedirect;
             return this;
         }

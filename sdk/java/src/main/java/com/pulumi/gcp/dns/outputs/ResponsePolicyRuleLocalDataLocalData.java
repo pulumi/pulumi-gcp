@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -92,11 +93,15 @@ public final class ResponsePolicyRuleLocalDataLocalData {
 
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("ResponsePolicyRuleLocalDataLocalData", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder rrdatas(@Nullable List<String> rrdatas) {
+
             this.rrdatas = rrdatas;
             return this;
         }
@@ -105,12 +110,16 @@ public final class ResponsePolicyRuleLocalDataLocalData {
         }
         @CustomType.Setter
         public Builder ttl(@Nullable Integer ttl) {
+
             this.ttl = ttl;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ResponsePolicyRuleLocalDataLocalData", "type");
+            }
+            this.type = type;
             return this;
         }
         public ResponsePolicyRuleLocalDataLocalData build() {

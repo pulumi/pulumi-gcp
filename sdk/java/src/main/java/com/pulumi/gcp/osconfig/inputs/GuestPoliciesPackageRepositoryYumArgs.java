@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -202,8 +203,12 @@ public final class GuestPoliciesPackageRepositoryYumArgs extends com.pulumi.reso
         }
 
         public GuestPoliciesPackageRepositoryYumArgs build() {
-            $.baseUrl = Objects.requireNonNull($.baseUrl, "expected parameter 'baseUrl' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.baseUrl == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryYumArgs", "baseUrl");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("GuestPoliciesPackageRepositoryYumArgs", "id");
+            }
             return $;
         }
     }

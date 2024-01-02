@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerEnv;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerEnvFrom;
 import com.pulumi.gcp.cloudrun.outputs.ServiceTemplateSpecContainerLivenessProbe;
@@ -274,6 +275,7 @@ public final class ServiceTemplateSpecContainer {
 
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -282,6 +284,7 @@ public final class ServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
+
             this.commands = commands;
             return this;
         }
@@ -290,6 +293,7 @@ public final class ServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder envFroms(@Nullable List<ServiceTemplateSpecContainerEnvFrom> envFroms) {
+
             this.envFroms = envFroms;
             return this;
         }
@@ -298,6 +302,7 @@ public final class ServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<ServiceTemplateSpecContainerEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -306,21 +311,27 @@ public final class ServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("ServiceTemplateSpecContainer", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder livenessProbe(@Nullable ServiceTemplateSpecContainerLivenessProbe livenessProbe) {
+
             this.livenessProbe = livenessProbe;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable List<ServiceTemplateSpecContainerPort> ports) {
+
             this.ports = ports;
             return this;
         }
@@ -329,16 +340,19 @@ public final class ServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder resources(@Nullable ServiceTemplateSpecContainerResources resources) {
+
             this.resources = resources;
             return this;
         }
         @CustomType.Setter
         public Builder startupProbe(@Nullable ServiceTemplateSpecContainerStartupProbe startupProbe) {
+
             this.startupProbe = startupProbe;
             return this;
         }
         @CustomType.Setter
         public Builder volumeMounts(@Nullable List<ServiceTemplateSpecContainerVolumeMount> volumeMounts) {
+
             this.volumeMounts = volumeMounts;
             return this;
         }
@@ -347,6 +361,7 @@ public final class ServiceTemplateSpecContainer {
         }
         @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
+
             this.workingDir = workingDir;
             return this;
         }

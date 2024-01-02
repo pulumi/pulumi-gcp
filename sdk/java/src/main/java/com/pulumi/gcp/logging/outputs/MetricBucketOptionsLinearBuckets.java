@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class MetricBucketOptionsLinearBuckets {
 
         @CustomType.Setter
         public Builder numFiniteBuckets(Integer numFiniteBuckets) {
-            this.numFiniteBuckets = Objects.requireNonNull(numFiniteBuckets);
+            if (numFiniteBuckets == null) {
+              throw new MissingRequiredPropertyException("MetricBucketOptionsLinearBuckets", "numFiniteBuckets");
+            }
+            this.numFiniteBuckets = numFiniteBuckets;
             return this;
         }
         @CustomType.Setter
         public Builder offset(Double offset) {
-            this.offset = Objects.requireNonNull(offset);
+            if (offset == null) {
+              throw new MissingRequiredPropertyException("MetricBucketOptionsLinearBuckets", "offset");
+            }
+            this.offset = offset;
             return this;
         }
         @CustomType.Setter
         public Builder width(Double width) {
-            this.width = Objects.requireNonNull(width);
+            if (width == null) {
+              throw new MissingRequiredPropertyException("MetricBucketOptionsLinearBuckets", "width");
+            }
+            this.width = width;
             return this;
         }
         public MetricBucketOptionsLinearBuckets build() {

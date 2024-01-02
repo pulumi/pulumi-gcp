@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigateway.inputs.ApiConfigGatewayConfigArgs;
 import com.pulumi.gcp.apigateway.inputs.ApiConfigGrpcServiceArgs;
 import com.pulumi.gcp.apigateway.inputs.ApiConfigManagedServiceConfigArgs;
@@ -501,7 +502,9 @@ public final class ApiConfigArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ApiConfigArgs build() {
-            $.api = Objects.requireNonNull($.api, "expected parameter 'api' to be non-null");
+            if ($.api == null) {
+                throw new MissingRequiredPropertyException("ApiConfigArgs", "api");
+            }
             return $;
         }
     }

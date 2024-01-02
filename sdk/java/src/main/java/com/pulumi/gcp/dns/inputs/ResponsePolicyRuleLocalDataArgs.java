@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.ResponsePolicyRuleLocalDataLocalDataArgs;
 import java.util.List;
 import java.util.Objects;
@@ -90,7 +91,9 @@ public final class ResponsePolicyRuleLocalDataArgs extends com.pulumi.resources.
         }
 
         public ResponsePolicyRuleLocalDataArgs build() {
-            $.localDatas = Objects.requireNonNull($.localDatas, "expected parameter 'localDatas' to be non-null");
+            if ($.localDatas == null) {
+                throw new MissingRequiredPropertyException("ResponsePolicyRuleLocalDataArgs", "localDatas");
+            }
             return $;
         }
     }

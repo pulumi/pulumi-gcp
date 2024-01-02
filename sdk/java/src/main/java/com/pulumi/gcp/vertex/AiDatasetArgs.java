@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiDatasetEncryptionSpecArgs;
 import java.lang.String;
 import java.util.Map;
@@ -291,8 +292,12 @@ public final class AiDatasetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AiDatasetArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.metadataSchemaUri = Objects.requireNonNull($.metadataSchemaUri, "expected parameter 'metadataSchemaUri' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AiDatasetArgs", "displayName");
+            }
+            if ($.metadataSchemaUri == null) {
+                throw new MissingRequiredPropertyException("AiDatasetArgs", "metadataSchemaUri");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -50,7 +51,10 @@ public final class SubscriptionExpirationPolicy {
 
         @CustomType.Setter
         public Builder ttl(String ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("SubscriptionExpirationPolicy", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         public SubscriptionExpirationPolicy build() {

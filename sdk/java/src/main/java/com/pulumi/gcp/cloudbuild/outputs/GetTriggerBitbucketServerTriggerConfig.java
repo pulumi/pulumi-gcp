@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBitbucketServerTriggerConfigPullRequest;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBitbucketServerTriggerConfigPush;
 import java.lang.String;
@@ -61,17 +62,26 @@ public final class GetTriggerBitbucketServerTriggerConfig {
 
         @CustomType.Setter
         public Builder bitbucketServerConfigResource(String bitbucketServerConfigResource) {
-            this.bitbucketServerConfigResource = Objects.requireNonNull(bitbucketServerConfigResource);
+            if (bitbucketServerConfigResource == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBitbucketServerTriggerConfig", "bitbucketServerConfigResource");
+            }
+            this.bitbucketServerConfigResource = bitbucketServerConfigResource;
             return this;
         }
         @CustomType.Setter
         public Builder projectKey(String projectKey) {
-            this.projectKey = Objects.requireNonNull(projectKey);
+            if (projectKey == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBitbucketServerTriggerConfig", "projectKey");
+            }
+            this.projectKey = projectKey;
             return this;
         }
         @CustomType.Setter
         public Builder pullRequests(List<GetTriggerBitbucketServerTriggerConfigPullRequest> pullRequests) {
-            this.pullRequests = Objects.requireNonNull(pullRequests);
+            if (pullRequests == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBitbucketServerTriggerConfig", "pullRequests");
+            }
+            this.pullRequests = pullRequests;
             return this;
         }
         public Builder pullRequests(GetTriggerBitbucketServerTriggerConfigPullRequest... pullRequests) {
@@ -79,7 +89,10 @@ public final class GetTriggerBitbucketServerTriggerConfig {
         }
         @CustomType.Setter
         public Builder pushes(List<GetTriggerBitbucketServerTriggerConfigPush> pushes) {
-            this.pushes = Objects.requireNonNull(pushes);
+            if (pushes == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBitbucketServerTriggerConfig", "pushes");
+            }
+            this.pushes = pushes;
             return this;
         }
         public Builder pushes(GetTriggerBitbucketServerTriggerConfigPush... pushes) {
@@ -87,7 +100,10 @@ public final class GetTriggerBitbucketServerTriggerConfig {
         }
         @CustomType.Setter
         public Builder repoSlug(String repoSlug) {
-            this.repoSlug = Objects.requireNonNull(repoSlug);
+            if (repoSlug == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBitbucketServerTriggerConfig", "repoSlug");
+            }
+            this.repoSlug = repoSlug;
             return this;
         }
         public GetTriggerBitbucketServerTriggerConfig build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -61,12 +62,16 @@ public final class StandardAppVersionBasicScaling {
 
         @CustomType.Setter
         public Builder idleTimeout(@Nullable String idleTimeout) {
+
             this.idleTimeout = idleTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder maxInstances(Integer maxInstances) {
-            this.maxInstances = Objects.requireNonNull(maxInstances);
+            if (maxInstances == null) {
+              throw new MissingRequiredPropertyException("StandardAppVersionBasicScaling", "maxInstances");
+            }
+            this.maxInstances = maxInstances;
             return this;
         }
         public StandardAppVersionBasicScaling build() {

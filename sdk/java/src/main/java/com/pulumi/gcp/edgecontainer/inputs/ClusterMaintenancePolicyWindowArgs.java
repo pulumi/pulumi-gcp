@@ -5,6 +5,7 @@ package com.pulumi.gcp.edgecontainer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.edgecontainer.inputs.ClusterMaintenancePolicyWindowRecurringWindowArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class ClusterMaintenancePolicyWindowArgs extends com.pulumi.resourc
         }
 
         public ClusterMaintenancePolicyWindowArgs build() {
-            $.recurringWindow = Objects.requireNonNull($.recurringWindow, "expected parameter 'recurringWindow' to be non-null");
+            if ($.recurringWindow == null) {
+                throw new MissingRequiredPropertyException("ClusterMaintenancePolicyWindowArgs", "recurringWindow");
+            }
             return $;
         }
     }

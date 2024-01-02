@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig;
 import java.lang.String;
@@ -80,17 +81,24 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfig {
 
         @CustomType.Setter
         public Builder gkeClusterConfig(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfig gkeClusterConfig) {
-            this.gkeClusterConfig = Objects.requireNonNull(gkeClusterConfig);
+            if (gkeClusterConfig == null) {
+              throw new MissingRequiredPropertyException("ClusterVirtualClusterConfigKubernetesClusterConfig", "gkeClusterConfig");
+            }
+            this.gkeClusterConfig = gkeClusterConfig;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesNamespace(@Nullable String kubernetesNamespace) {
+
             this.kubernetesNamespace = kubernetesNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetesSoftwareConfig(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfig kubernetesSoftwareConfig) {
-            this.kubernetesSoftwareConfig = Objects.requireNonNull(kubernetesSoftwareConfig);
+            if (kubernetesSoftwareConfig == null) {
+              throw new MissingRequiredPropertyException("ClusterVirtualClusterConfigKubernetesClusterConfig", "kubernetesSoftwareConfig");
+            }
+            this.kubernetesSoftwareConfig = kubernetesSoftwareConfig;
             return this;
         }
         public ClusterVirtualClusterConfigKubernetesClusterConfig build() {

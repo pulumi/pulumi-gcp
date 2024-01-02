@@ -50,6 +50,7 @@ public final class ScopeRbacRoleBindingRole {
 
         @CustomType.Setter
         public Builder predefinedRole(@Nullable String predefinedRole) {
+
             this.predefinedRole = predefinedRole;
             return this;
         }

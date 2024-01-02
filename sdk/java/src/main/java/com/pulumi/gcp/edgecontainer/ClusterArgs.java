@@ -5,6 +5,7 @@ package com.pulumi.gcp.edgecontainer;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.edgecontainer.inputs.ClusterAuthorizationArgs;
 import com.pulumi.gcp.edgecontainer.inputs.ClusterControlPlaneArgs;
 import com.pulumi.gcp.edgecontainer.inputs.ClusterControlPlaneEncryptionArgs;
@@ -694,10 +695,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            $.authorization = Objects.requireNonNull($.authorization, "expected parameter 'authorization' to be non-null");
-            $.fleet = Objects.requireNonNull($.fleet, "expected parameter 'fleet' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.networking = Objects.requireNonNull($.networking, "expected parameter 'networking' to be non-null");
+            if ($.authorization == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "authorization");
+            }
+            if ($.fleet == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "fleet");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "location");
+            }
+            if ($.networking == null) {
+                throw new MissingRequiredPropertyException("ClusterArgs", "networking");
+            }
             return $;
         }
     }

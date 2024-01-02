@@ -84,16 +84,19 @@ public final class StreamDestinationConfigBigqueryDestinationConfig {
 
         @CustomType.Setter
         public Builder dataFreshness(@Nullable String dataFreshness) {
+
             this.dataFreshness = dataFreshness;
             return this;
         }
         @CustomType.Setter
         public Builder singleTargetDataset(@Nullable StreamDestinationConfigBigqueryDestinationConfigSingleTargetDataset singleTargetDataset) {
+
             this.singleTargetDataset = singleTargetDataset;
             return this;
         }
         @CustomType.Setter
         public Builder sourceHierarchyDatasets(@Nullable StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasets sourceHierarchyDatasets) {
+
             this.sourceHierarchyDatasets = sourceHierarchyDatasets;
             return this;
         }

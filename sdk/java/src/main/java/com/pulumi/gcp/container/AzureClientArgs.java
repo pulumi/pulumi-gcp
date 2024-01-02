@@ -5,6 +5,7 @@ package com.pulumi.gcp.container;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -232,9 +233,15 @@ public final class AzureClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AzureClientArgs build() {
-            $.applicationId = Objects.requireNonNull($.applicationId, "expected parameter 'applicationId' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.tenantId = Objects.requireNonNull($.tenantId, "expected parameter 'tenantId' to be non-null");
+            if ($.applicationId == null) {
+                throw new MissingRequiredPropertyException("AzureClientArgs", "applicationId");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("AzureClientArgs", "location");
+            }
+            if ($.tenantId == null) {
+                throw new MissingRequiredPropertyException("AzureClientArgs", "tenantId");
+            }
             return $;
         }
     }

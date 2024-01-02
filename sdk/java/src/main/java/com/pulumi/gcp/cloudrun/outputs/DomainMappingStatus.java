@@ -108,6 +108,7 @@ public final class DomainMappingStatus {
 
         @CustomType.Setter
         public Builder conditions(@Nullable List<DomainMappingStatusCondition> conditions) {
+
             this.conditions = conditions;
             return this;
         }
@@ -116,16 +117,19 @@ public final class DomainMappingStatus {
         }
         @CustomType.Setter
         public Builder mappedRouteName(@Nullable String mappedRouteName) {
+
             this.mappedRouteName = mappedRouteName;
             return this;
         }
         @CustomType.Setter
         public Builder observedGeneration(@Nullable Integer observedGeneration) {
+
             this.observedGeneration = observedGeneration;
             return this;
         }
         @CustomType.Setter
         public Builder resourceRecords(@Nullable List<DomainMappingStatusResourceRecord> resourceRecords) {
+
             this.resourceRecords = resourceRecords;
             return this;
         }

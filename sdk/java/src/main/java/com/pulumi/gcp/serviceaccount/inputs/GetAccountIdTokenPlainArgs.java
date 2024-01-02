@@ -4,6 +4,7 @@
 package com.pulumi.gcp.serviceaccount.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -158,7 +159,9 @@ public final class GetAccountIdTokenPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetAccountIdTokenPlainArgs build() {
-            $.targetAudience = Objects.requireNonNull($.targetAudience, "expected parameter 'targetAudience' to be non-null");
+            if ($.targetAudience == null) {
+                throw new MissingRequiredPropertyException("GetAccountIdTokenPlainArgs", "targetAudience");
+            }
             return $;
         }
     }

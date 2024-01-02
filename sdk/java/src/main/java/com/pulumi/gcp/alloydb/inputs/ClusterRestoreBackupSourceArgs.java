@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ClusterRestoreBackupSourceArgs extends com.pulumi.resources.R
         }
 
         public ClusterRestoreBackupSourceArgs build() {
-            $.backupName = Objects.requireNonNull($.backupName, "expected parameter 'backupName' to be non-null");
+            if ($.backupName == null) {
+                throw new MissingRequiredPropertyException("ClusterRestoreBackupSourceArgs", "backupName");
+            }
             return $;
         }
     }

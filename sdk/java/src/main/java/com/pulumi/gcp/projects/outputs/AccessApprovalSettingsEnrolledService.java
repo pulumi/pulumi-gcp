@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,11 +87,15 @@ public final class AccessApprovalSettingsEnrolledService {
 
         @CustomType.Setter
         public Builder cloudProduct(String cloudProduct) {
-            this.cloudProduct = Objects.requireNonNull(cloudProduct);
+            if (cloudProduct == null) {
+              throw new MissingRequiredPropertyException("AccessApprovalSettingsEnrolledService", "cloudProduct");
+            }
+            this.cloudProduct = cloudProduct;
             return this;
         }
         @CustomType.Setter
         public Builder enrollmentLevel(@Nullable String enrollmentLevel) {
+
             this.enrollmentLevel = enrollmentLevel;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ClusterSecondaryConfig {
 
         @CustomType.Setter
         public Builder primaryClusterName(String primaryClusterName) {
-            this.primaryClusterName = Objects.requireNonNull(primaryClusterName);
+            if (primaryClusterName == null) {
+              throw new MissingRequiredPropertyException("ClusterSecondaryConfig", "primaryClusterName");
+            }
+            this.primaryClusterName = primaryClusterName;
             return this;
         }
         public ClusterSecondaryConfig build() {

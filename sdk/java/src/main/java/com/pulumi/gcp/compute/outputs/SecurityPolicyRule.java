@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleHeaderAction;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRuleMatch;
 import com.pulumi.gcp.compute.outputs.SecurityPolicyRulePreconfiguredWafConfig;
@@ -169,46 +170,61 @@ public final class SecurityPolicyRule {
 
         @CustomType.Setter
         public Builder action(String action) {
-            this.action = Objects.requireNonNull(action);
+            if (action == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRule", "action");
+            }
+            this.action = action;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder headerAction(@Nullable SecurityPolicyRuleHeaderAction headerAction) {
+
             this.headerAction = headerAction;
             return this;
         }
         @CustomType.Setter
         public Builder match(SecurityPolicyRuleMatch match) {
-            this.match = Objects.requireNonNull(match);
+            if (match == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRule", "match");
+            }
+            this.match = match;
             return this;
         }
         @CustomType.Setter
         public Builder preconfiguredWafConfig(@Nullable SecurityPolicyRulePreconfiguredWafConfig preconfiguredWafConfig) {
+
             this.preconfiguredWafConfig = preconfiguredWafConfig;
             return this;
         }
         @CustomType.Setter
         public Builder preview(@Nullable Boolean preview) {
+
             this.preview = preview;
             return this;
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder rateLimitOptions(@Nullable SecurityPolicyRuleRateLimitOptions rateLimitOptions) {
+
             this.rateLimitOptions = rateLimitOptions;
             return this;
         }
         @CustomType.Setter
         public Builder redirectOptions(@Nullable SecurityPolicyRuleRedirectOptions redirectOptions) {
+
             this.redirectOptions = redirectOptions;
             return this;
         }

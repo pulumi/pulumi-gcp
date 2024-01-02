@@ -5,6 +5,7 @@ package com.pulumi.gcp.container;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AwsClusterAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterBinaryAuthorizationArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneArgs;
@@ -502,12 +503,24 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AwsClusterArgs build() {
-            $.authorization = Objects.requireNonNull($.authorization, "expected parameter 'authorization' to be non-null");
-            $.awsRegion = Objects.requireNonNull($.awsRegion, "expected parameter 'awsRegion' to be non-null");
-            $.controlPlane = Objects.requireNonNull($.controlPlane, "expected parameter 'controlPlane' to be non-null");
-            $.fleet = Objects.requireNonNull($.fleet, "expected parameter 'fleet' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.networking = Objects.requireNonNull($.networking, "expected parameter 'networking' to be non-null");
+            if ($.authorization == null) {
+                throw new MissingRequiredPropertyException("AwsClusterArgs", "authorization");
+            }
+            if ($.awsRegion == null) {
+                throw new MissingRequiredPropertyException("AwsClusterArgs", "awsRegion");
+            }
+            if ($.controlPlane == null) {
+                throw new MissingRequiredPropertyException("AwsClusterArgs", "controlPlane");
+            }
+            if ($.fleet == null) {
+                throw new MissingRequiredPropertyException("AwsClusterArgs", "fleet");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("AwsClusterArgs", "location");
+            }
+            if ($.networking == null) {
+                throw new MissingRequiredPropertyException("AwsClusterArgs", "networking");
+            }
             return $;
         }
     }

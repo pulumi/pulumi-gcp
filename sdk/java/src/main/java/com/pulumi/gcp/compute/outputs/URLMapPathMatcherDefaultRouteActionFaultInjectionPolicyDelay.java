@@ -63,11 +63,13 @@ public final class URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelay 
 
         @CustomType.Setter
         public Builder fixedDelay(@Nullable URLMapPathMatcherDefaultRouteActionFaultInjectionPolicyDelayFixedDelay fixedDelay) {
+
             this.fixedDelay = fixedDelay;
             return this;
         }
         @CustomType.Setter
         public Builder percentage(@Nullable Double percentage) {
+
             this.percentage = percentage;
             return this;
         }

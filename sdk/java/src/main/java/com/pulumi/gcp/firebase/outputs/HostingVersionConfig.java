@@ -67,6 +67,7 @@ public final class HostingVersionConfig {
 
         @CustomType.Setter
         public Builder redirects(@Nullable List<HostingVersionConfigRedirect> redirects) {
+
             this.redirects = redirects;
             return this;
         }
@@ -75,6 +76,7 @@ public final class HostingVersionConfig {
         }
         @CustomType.Setter
         public Builder rewrites(@Nullable List<HostingVersionConfigRewrite> rewrites) {
+
             this.rewrites = rewrites;
             return this;
         }

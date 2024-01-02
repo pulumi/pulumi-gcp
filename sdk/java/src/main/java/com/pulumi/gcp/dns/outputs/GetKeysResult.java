@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.GetKeysKeySigningKey;
 import com.pulumi.gcp.dns.outputs.GetKeysZoneSigningKey;
 import java.lang.String;
@@ -85,12 +86,18 @@ public final class GetKeysResult {
 
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKeysResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder keySigningKeys(List<GetKeysKeySigningKey> keySigningKeys) {
-            this.keySigningKeys = Objects.requireNonNull(keySigningKeys);
+            if (keySigningKeys == null) {
+              throw new MissingRequiredPropertyException("GetKeysResult", "keySigningKeys");
+            }
+            this.keySigningKeys = keySigningKeys;
             return this;
         }
         public Builder keySigningKeys(GetKeysKeySigningKey... keySigningKeys) {
@@ -98,17 +105,26 @@ public final class GetKeysResult {
         }
         @CustomType.Setter
         public Builder managedZone(String managedZone) {
-            this.managedZone = Objects.requireNonNull(managedZone);
+            if (managedZone == null) {
+              throw new MissingRequiredPropertyException("GetKeysResult", "managedZone");
+            }
+            this.managedZone = managedZone;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetKeysResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder zoneSigningKeys(List<GetKeysZoneSigningKey> zoneSigningKeys) {
-            this.zoneSigningKeys = Objects.requireNonNull(zoneSigningKeys);
+            if (zoneSigningKeys == null) {
+              throw new MissingRequiredPropertyException("GetKeysResult", "zoneSigningKeys");
+            }
+            this.zoneSigningKeys = zoneSigningKeys;
             return this;
         }
         public Builder zoneSigningKeys(GetKeysZoneSigningKey... zoneSigningKeys) {

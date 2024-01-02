@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRule;
 import java.util.List;
@@ -62,7 +63,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSet {
 
         @CustomType.Setter
         public Builder infoTypes(List<PreventionInspectTemplateInspectConfigRuleSetInfoType> infoTypes) {
-            this.infoTypes = Objects.requireNonNull(infoTypes);
+            if (infoTypes == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSet", "infoTypes");
+            }
+            this.infoTypes = infoTypes;
             return this;
         }
         public Builder infoTypes(PreventionInspectTemplateInspectConfigRuleSetInfoType... infoTypes) {
@@ -70,7 +74,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSet {
         }
         @CustomType.Setter
         public Builder rules(List<PreventionInspectTemplateInspectConfigRuleSetRule> rules) {
-            this.rules = Objects.requireNonNull(rules);
+            if (rules == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSet", "rules");
+            }
+            this.rules = rules;
             return this;
         }
         public Builder rules(PreventionInspectTemplateInspectConfigRuleSetRule... rules) {

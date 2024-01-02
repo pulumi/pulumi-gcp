@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -60,12 +61,18 @@ public final class EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabe
 
         @CustomType.Setter
         public Builder labelName(String labelName) {
-            this.labelName = Objects.requireNonNull(labelName);
+            if (labelName == null) {
+              throw new MissingRequiredPropertyException("EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel", "labelName");
+            }
+            this.labelName = labelName;
             return this;
         }
         @CustomType.Setter
         public Builder labelValue(String labelValue) {
-            this.labelValue = Objects.requireNonNull(labelValue);
+            if (labelValue == null) {
+              throw new MissingRequiredPropertyException("EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel", "labelValue");
+            }
+            this.labelValue = labelValue;
             return this;
         }
         public EndpointPolicyEndpointMatcherMetadataLabelMatcherMetadataLabel build() {

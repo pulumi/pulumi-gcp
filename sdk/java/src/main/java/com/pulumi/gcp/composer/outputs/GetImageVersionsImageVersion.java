@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,12 +58,18 @@ public final class GetImageVersionsImageVersion {
 
         @CustomType.Setter
         public Builder imageVersionId(String imageVersionId) {
-            this.imageVersionId = Objects.requireNonNull(imageVersionId);
+            if (imageVersionId == null) {
+              throw new MissingRequiredPropertyException("GetImageVersionsImageVersion", "imageVersionId");
+            }
+            this.imageVersionId = imageVersionId;
             return this;
         }
         @CustomType.Setter
         public Builder supportedPythonVersions(List<String> supportedPythonVersions) {
-            this.supportedPythonVersions = Objects.requireNonNull(supportedPythonVersions);
+            if (supportedPythonVersions == null) {
+              throw new MissingRequiredPropertyException("GetImageVersionsImageVersion", "supportedPythonVersions");
+            }
+            this.supportedPythonVersions = supportedPythonVersions;
             return this;
         }
         public Builder supportedPythonVersions(String... supportedPythonVersions) {

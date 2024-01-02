@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -127,8 +128,12 @@ public final class ClientArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClientArgs build() {
-            $.brand = Objects.requireNonNull($.brand, "expected parameter 'brand' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.brand == null) {
+                throw new MissingRequiredPropertyException("ClientArgs", "brand");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ClientArgs", "displayName");
+            }
             return $;
         }
     }

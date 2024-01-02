@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -240,9 +241,15 @@ public final class ZoneIamPolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ZoneIamPolicyArgs build() {
-            $.dataplexZone = Objects.requireNonNull($.dataplexZone, "expected parameter 'dataplexZone' to be non-null");
-            $.lake = Objects.requireNonNull($.lake, "expected parameter 'lake' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.dataplexZone == null) {
+                throw new MissingRequiredPropertyException("ZoneIamPolicyArgs", "dataplexZone");
+            }
+            if ($.lake == null) {
+                throw new MissingRequiredPropertyException("ZoneIamPolicyArgs", "lake");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("ZoneIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

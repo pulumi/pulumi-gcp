@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.outputs.CxWebhookServiceDirectoryGenericWebService;
 import java.lang.String;
 import java.util.Objects;
@@ -59,12 +60,18 @@ public final class CxWebhookServiceDirectory {
 
         @CustomType.Setter
         public Builder genericWebService(CxWebhookServiceDirectoryGenericWebService genericWebService) {
-            this.genericWebService = Objects.requireNonNull(genericWebService);
+            if (genericWebService == null) {
+              throw new MissingRequiredPropertyException("CxWebhookServiceDirectory", "genericWebService");
+            }
+            this.genericWebService = genericWebService;
             return this;
         }
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("CxWebhookServiceDirectory", "service");
+            }
+            this.service = service;
             return this;
         }
         public CxWebhookServiceDirectory build() {

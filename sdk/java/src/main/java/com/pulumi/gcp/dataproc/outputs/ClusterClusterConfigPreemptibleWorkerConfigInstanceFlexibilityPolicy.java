@@ -51,6 +51,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
 
         @CustomType.Setter
         public Builder instanceSelectionLists(@Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList> instanceSelectionLists) {
+
             this.instanceSelectionLists = instanceSelectionLists;
             return this;
         }
@@ -59,6 +60,7 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
         @CustomType.Setter
         public Builder instanceSelectionResults(@Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> instanceSelectionResults) {
+
             this.instanceSelectionResults = instanceSelectionResults;
             return this;
         }

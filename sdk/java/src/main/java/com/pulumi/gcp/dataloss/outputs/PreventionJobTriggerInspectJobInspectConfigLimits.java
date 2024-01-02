@@ -76,6 +76,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimits {
 
         @CustomType.Setter
         public Builder maxFindingsPerInfoTypes(@Nullable List<PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoType> maxFindingsPerInfoTypes) {
+
             this.maxFindingsPerInfoTypes = maxFindingsPerInfoTypes;
             return this;
         }
@@ -84,11 +85,13 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimits {
         }
         @CustomType.Setter
         public Builder maxFindingsPerItem(@Nullable Integer maxFindingsPerItem) {
+
             this.maxFindingsPerItem = maxFindingsPerItem;
             return this;
         }
         @CustomType.Setter
         public Builder maxFindingsPerRequest(@Nullable Integer maxFindingsPerRequest) {
+
             this.maxFindingsPerRequest = maxFindingsPerRequest;
             return this;
         }

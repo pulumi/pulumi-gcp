@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleNonNullExpectation;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleRangeExpectation;
 import com.pulumi.gcp.dataplex.outputs.DatascanDataQualitySpecRuleRegexExpectation;
@@ -258,71 +259,87 @@ public final class DatascanDataQualitySpecRule {
 
         @CustomType.Setter
         public Builder column(@Nullable String column) {
+
             this.column = column;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dimension(String dimension) {
-            this.dimension = Objects.requireNonNull(dimension);
+            if (dimension == null) {
+              throw new MissingRequiredPropertyException("DatascanDataQualitySpecRule", "dimension");
+            }
+            this.dimension = dimension;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreNull(@Nullable Boolean ignoreNull) {
+
             this.ignoreNull = ignoreNull;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder nonNullExpectation(@Nullable DatascanDataQualitySpecRuleNonNullExpectation nonNullExpectation) {
+
             this.nonNullExpectation = nonNullExpectation;
             return this;
         }
         @CustomType.Setter
         public Builder rangeExpectation(@Nullable DatascanDataQualitySpecRuleRangeExpectation rangeExpectation) {
+
             this.rangeExpectation = rangeExpectation;
             return this;
         }
         @CustomType.Setter
         public Builder regexExpectation(@Nullable DatascanDataQualitySpecRuleRegexExpectation regexExpectation) {
+
             this.regexExpectation = regexExpectation;
             return this;
         }
         @CustomType.Setter
         public Builder rowConditionExpectation(@Nullable DatascanDataQualitySpecRuleRowConditionExpectation rowConditionExpectation) {
+
             this.rowConditionExpectation = rowConditionExpectation;
             return this;
         }
         @CustomType.Setter
         public Builder setExpectation(@Nullable DatascanDataQualitySpecRuleSetExpectation setExpectation) {
+
             this.setExpectation = setExpectation;
             return this;
         }
         @CustomType.Setter
         public Builder statisticRangeExpectation(@Nullable DatascanDataQualitySpecRuleStatisticRangeExpectation statisticRangeExpectation) {
+
             this.statisticRangeExpectation = statisticRangeExpectation;
             return this;
         }
         @CustomType.Setter
         public Builder tableConditionExpectation(@Nullable DatascanDataQualitySpecRuleTableConditionExpectation tableConditionExpectation) {
+
             this.tableConditionExpectation = tableConditionExpectation;
             return this;
         }
         @CustomType.Setter
         public Builder threshold(@Nullable Double threshold) {
+
             this.threshold = threshold;
             return this;
         }
         @CustomType.Setter
         public Builder uniquenessExpectation(@Nullable DatascanDataQualitySpecRuleUniquenessExpectation uniquenessExpectation) {
+
             this.uniquenessExpectation = uniquenessExpectation;
             return this;
         }

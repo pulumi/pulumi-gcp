@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -150,7 +151,9 @@ public final class RegionCommitmentLicenseResourceArgs extends com.pulumi.resour
         }
 
         public RegionCommitmentLicenseResourceArgs build() {
-            $.license = Objects.requireNonNull($.license, "expected parameter 'license' to be non-null");
+            if ($.license == null) {
+                throw new MissingRequiredPropertyException("RegionCommitmentLicenseResourceArgs", "license");
+            }
             return $;
         }
     }

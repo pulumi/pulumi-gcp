@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -93,7 +94,10 @@ public final class GetNetblockIPRangesResult {
 
         @CustomType.Setter
         public Builder cidrBlocks(List<String> cidrBlocks) {
-            this.cidrBlocks = Objects.requireNonNull(cidrBlocks);
+            if (cidrBlocks == null) {
+              throw new MissingRequiredPropertyException("GetNetblockIPRangesResult", "cidrBlocks");
+            }
+            this.cidrBlocks = cidrBlocks;
             return this;
         }
         public Builder cidrBlocks(String... cidrBlocks) {
@@ -101,7 +105,10 @@ public final class GetNetblockIPRangesResult {
         }
         @CustomType.Setter
         public Builder cidrBlocksIpv4s(List<String> cidrBlocksIpv4s) {
-            this.cidrBlocksIpv4s = Objects.requireNonNull(cidrBlocksIpv4s);
+            if (cidrBlocksIpv4s == null) {
+              throw new MissingRequiredPropertyException("GetNetblockIPRangesResult", "cidrBlocksIpv4s");
+            }
+            this.cidrBlocksIpv4s = cidrBlocksIpv4s;
             return this;
         }
         public Builder cidrBlocksIpv4s(String... cidrBlocksIpv4s) {
@@ -109,7 +116,10 @@ public final class GetNetblockIPRangesResult {
         }
         @CustomType.Setter
         public Builder cidrBlocksIpv6s(List<String> cidrBlocksIpv6s) {
-            this.cidrBlocksIpv6s = Objects.requireNonNull(cidrBlocksIpv6s);
+            if (cidrBlocksIpv6s == null) {
+              throw new MissingRequiredPropertyException("GetNetblockIPRangesResult", "cidrBlocksIpv6s");
+            }
+            this.cidrBlocksIpv6s = cidrBlocksIpv6s;
             return this;
         }
         public Builder cidrBlocksIpv6s(String... cidrBlocksIpv6s) {
@@ -117,11 +127,15 @@ public final class GetNetblockIPRangesResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetblockIPRangesResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder rangeType(@Nullable String rangeType) {
+
             this.rangeType = rangeType;
             return this;
         }

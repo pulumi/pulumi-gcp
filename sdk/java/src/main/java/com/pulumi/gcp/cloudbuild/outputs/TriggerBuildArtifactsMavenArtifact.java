@@ -102,26 +102,31 @@ public final class TriggerBuildArtifactsMavenArtifact {
 
         @CustomType.Setter
         public Builder artifactId(@Nullable String artifactId) {
+
             this.artifactId = artifactId;
             return this;
         }
         @CustomType.Setter
         public Builder groupId(@Nullable String groupId) {
+
             this.groupId = groupId;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder repository(@Nullable String repository) {
+
             this.repository = repository;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

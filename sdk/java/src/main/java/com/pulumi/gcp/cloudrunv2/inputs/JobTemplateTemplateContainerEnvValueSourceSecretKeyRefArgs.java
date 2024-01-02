@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs ex
         }
 
         public JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs build() {
-            $.secret = Objects.requireNonNull($.secret, "expected parameter 'secret' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.secret == null) {
+                throw new MissingRequiredPropertyException("JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs", "secret");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("JobTemplateTemplateContainerEnvValueSourceSecretKeyRefArgs", "version");
+            }
             return $;
         }
     }

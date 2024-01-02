@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateContainer;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVolume;
 import com.pulumi.gcp.cloudrunv2.outputs.GetJobTemplateTemplateVpcAccess;
@@ -81,7 +82,10 @@ public final class GetJobTemplateTemplate {
 
         @CustomType.Setter
         public Builder containers(List<GetJobTemplateTemplateContainer> containers) {
-            this.containers = Objects.requireNonNull(containers);
+            if (containers == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "containers");
+            }
+            this.containers = containers;
             return this;
         }
         public Builder containers(GetJobTemplateTemplateContainer... containers) {
@@ -89,32 +93,50 @@ public final class GetJobTemplateTemplate {
         }
         @CustomType.Setter
         public Builder encryptionKey(String encryptionKey) {
-            this.encryptionKey = Objects.requireNonNull(encryptionKey);
+            if (encryptionKey == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "encryptionKey");
+            }
+            this.encryptionKey = encryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder executionEnvironment(String executionEnvironment) {
-            this.executionEnvironment = Objects.requireNonNull(executionEnvironment);
+            if (executionEnvironment == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "executionEnvironment");
+            }
+            this.executionEnvironment = executionEnvironment;
             return this;
         }
         @CustomType.Setter
         public Builder maxRetries(Integer maxRetries) {
-            this.maxRetries = Objects.requireNonNull(maxRetries);
+            if (maxRetries == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "maxRetries");
+            }
+            this.maxRetries = maxRetries;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccount(String serviceAccount) {
-            this.serviceAccount = Objects.requireNonNull(serviceAccount);
+            if (serviceAccount == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "serviceAccount");
+            }
+            this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(String timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(List<GetJobTemplateTemplateVolume> volumes) {
-            this.volumes = Objects.requireNonNull(volumes);
+            if (volumes == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "volumes");
+            }
+            this.volumes = volumes;
             return this;
         }
         public Builder volumes(GetJobTemplateTemplateVolume... volumes) {
@@ -122,7 +144,10 @@ public final class GetJobTemplateTemplate {
         }
         @CustomType.Setter
         public Builder vpcAccesses(List<GetJobTemplateTemplateVpcAccess> vpcAccesses) {
-            this.vpcAccesses = Objects.requireNonNull(vpcAccesses);
+            if (vpcAccesses == null) {
+              throw new MissingRequiredPropertyException("GetJobTemplateTemplate", "vpcAccesses");
+            }
+            this.vpcAccesses = vpcAccesses;
             return this;
         }
         public Builder vpcAccesses(GetJobTemplateTemplateVpcAccess... vpcAccesses) {

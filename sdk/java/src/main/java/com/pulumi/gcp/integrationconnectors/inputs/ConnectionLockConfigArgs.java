@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -114,7 +115,9 @@ public final class ConnectionLockConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public ConnectionLockConfigArgs build() {
-            $.locked = Objects.requireNonNull($.locked, "expected parameter 'locked' to be non-null");
+            if ($.locked == null) {
+                throw new MissingRequiredPropertyException("ConnectionLockConfigArgs", "locked");
+            }
             return $;
         }
     }

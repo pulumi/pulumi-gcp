@@ -97,21 +97,25 @@ public final class AiFeatureStoreEntityTypeMonitoringConfig {
 
         @CustomType.Setter
         public Builder categoricalThresholdConfig(@Nullable AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfig categoricalThresholdConfig) {
+
             this.categoricalThresholdConfig = categoricalThresholdConfig;
             return this;
         }
         @CustomType.Setter
         public Builder importFeaturesAnalysis(@Nullable AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysis importFeaturesAnalysis) {
+
             this.importFeaturesAnalysis = importFeaturesAnalysis;
             return this;
         }
         @CustomType.Setter
         public Builder numericalThresholdConfig(@Nullable AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfig numericalThresholdConfig) {
+
             this.numericalThresholdConfig = numericalThresholdConfig;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotAnalysis(@Nullable AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis snapshotAnalysis) {
+
             this.snapshotAnalysis = snapshotAnalysis;
             return this;
         }

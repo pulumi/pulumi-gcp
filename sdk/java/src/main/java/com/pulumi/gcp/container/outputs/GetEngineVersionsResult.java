@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -162,47 +163,70 @@ public final class GetEngineVersionsResult {
 
         @CustomType.Setter
         public Builder defaultClusterVersion(String defaultClusterVersion) {
-            this.defaultClusterVersion = Objects.requireNonNull(defaultClusterVersion);
+            if (defaultClusterVersion == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "defaultClusterVersion");
+            }
+            this.defaultClusterVersion = defaultClusterVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder latestMasterVersion(String latestMasterVersion) {
-            this.latestMasterVersion = Objects.requireNonNull(latestMasterVersion);
+            if (latestMasterVersion == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "latestMasterVersion");
+            }
+            this.latestMasterVersion = latestMasterVersion;
             return this;
         }
         @CustomType.Setter
         public Builder latestNodeVersion(String latestNodeVersion) {
-            this.latestNodeVersion = Objects.requireNonNull(latestNodeVersion);
+            if (latestNodeVersion == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "latestNodeVersion");
+            }
+            this.latestNodeVersion = latestNodeVersion;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder releaseChannelDefaultVersion(Map<String,String> releaseChannelDefaultVersion) {
-            this.releaseChannelDefaultVersion = Objects.requireNonNull(releaseChannelDefaultVersion);
+            if (releaseChannelDefaultVersion == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "releaseChannelDefaultVersion");
+            }
+            this.releaseChannelDefaultVersion = releaseChannelDefaultVersion;
             return this;
         }
         @CustomType.Setter
         public Builder releaseChannelLatestVersion(Map<String,String> releaseChannelLatestVersion) {
-            this.releaseChannelLatestVersion = Objects.requireNonNull(releaseChannelLatestVersion);
+            if (releaseChannelLatestVersion == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "releaseChannelLatestVersion");
+            }
+            this.releaseChannelLatestVersion = releaseChannelLatestVersion;
             return this;
         }
         @CustomType.Setter
         public Builder validMasterVersions(List<String> validMasterVersions) {
-            this.validMasterVersions = Objects.requireNonNull(validMasterVersions);
+            if (validMasterVersions == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "validMasterVersions");
+            }
+            this.validMasterVersions = validMasterVersions;
             return this;
         }
         public Builder validMasterVersions(String... validMasterVersions) {
@@ -210,7 +234,10 @@ public final class GetEngineVersionsResult {
         }
         @CustomType.Setter
         public Builder validNodeVersions(List<String> validNodeVersions) {
-            this.validNodeVersions = Objects.requireNonNull(validNodeVersions);
+            if (validNodeVersions == null) {
+              throw new MissingRequiredPropertyException("GetEngineVersionsResult", "validNodeVersions");
+            }
+            this.validNodeVersions = validNodeVersions;
             return this;
         }
         public Builder validNodeVersions(String... validNodeVersions) {
@@ -218,6 +245,7 @@ public final class GetEngineVersionsResult {
         }
         @CustomType.Setter
         public Builder versionPrefix(@Nullable String versionPrefix) {
+
             this.versionPrefix = versionPrefix;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -99,21 +100,29 @@ public final class GuestPoliciesRecipeInstallStepFileCopy {
 
         @CustomType.Setter
         public Builder artifactId(String artifactId) {
-            this.artifactId = Objects.requireNonNull(artifactId);
+            if (artifactId == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesRecipeInstallStepFileCopy", "artifactId");
+            }
+            this.artifactId = artifactId;
             return this;
         }
         @CustomType.Setter
         public Builder destination(String destination) {
-            this.destination = Objects.requireNonNull(destination);
+            if (destination == null) {
+              throw new MissingRequiredPropertyException("GuestPoliciesRecipeInstallStepFileCopy", "destination");
+            }
+            this.destination = destination;
             return this;
         }
         @CustomType.Setter
         public Builder overwrite(@Nullable Boolean overwrite) {
+
             this.overwrite = overwrite;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(@Nullable String permissions) {
+
             this.permissions = permissions;
             return this;
         }

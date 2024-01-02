@@ -76,16 +76,19 @@ public final class GuestPoliciesAssignmentOsType {
 
         @CustomType.Setter
         public Builder osArchitecture(@Nullable String osArchitecture) {
+
             this.osArchitecture = osArchitecture;
             return this;
         }
         @CustomType.Setter
         public Builder osShortName(@Nullable String osShortName) {
+
             this.osShortName = osShortName;
             return this;
         }
         @CustomType.Setter
         public Builder osVersion(@Nullable String osVersion) {
+
             this.osVersion = osVersion;
             return this;
         }

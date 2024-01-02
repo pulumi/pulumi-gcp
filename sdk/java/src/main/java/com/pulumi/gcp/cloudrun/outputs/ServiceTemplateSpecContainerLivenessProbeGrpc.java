@@ -65,11 +65,13 @@ public final class ServiceTemplateSpecContainerLivenessProbeGrpc {
 
         @CustomType.Setter
         public Builder port(@Nullable Integer port) {
+
             this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }

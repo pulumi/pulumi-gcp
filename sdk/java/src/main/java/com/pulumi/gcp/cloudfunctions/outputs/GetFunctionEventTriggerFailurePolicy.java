@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctions.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class GetFunctionEventTriggerFailurePolicy {
 
         @CustomType.Setter
         public Builder retry(Boolean retry) {
-            this.retry = Objects.requireNonNull(retry);
+            if (retry == null) {
+              throw new MissingRequiredPropertyException("GetFunctionEventTriggerFailurePolicy", "retry");
+            }
+            this.retry = retry;
             return this;
         }
         public GetFunctionEventTriggerFailurePolicy build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceCircuitBreakerConnectTimeout;
 import java.lang.Integer;
 import java.util.List;
@@ -66,7 +67,10 @@ public final class GetBackendServiceCircuitBreaker {
 
         @CustomType.Setter
         public Builder connectTimeouts(List<GetBackendServiceCircuitBreakerConnectTimeout> connectTimeouts) {
-            this.connectTimeouts = Objects.requireNonNull(connectTimeouts);
+            if (connectTimeouts == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCircuitBreaker", "connectTimeouts");
+            }
+            this.connectTimeouts = connectTimeouts;
             return this;
         }
         public Builder connectTimeouts(GetBackendServiceCircuitBreakerConnectTimeout... connectTimeouts) {
@@ -74,27 +78,42 @@ public final class GetBackendServiceCircuitBreaker {
         }
         @CustomType.Setter
         public Builder maxConnections(Integer maxConnections) {
-            this.maxConnections = Objects.requireNonNull(maxConnections);
+            if (maxConnections == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCircuitBreaker", "maxConnections");
+            }
+            this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxPendingRequests(Integer maxPendingRequests) {
-            this.maxPendingRequests = Objects.requireNonNull(maxPendingRequests);
+            if (maxPendingRequests == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCircuitBreaker", "maxPendingRequests");
+            }
+            this.maxPendingRequests = maxPendingRequests;
             return this;
         }
         @CustomType.Setter
         public Builder maxRequests(Integer maxRequests) {
-            this.maxRequests = Objects.requireNonNull(maxRequests);
+            if (maxRequests == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCircuitBreaker", "maxRequests");
+            }
+            this.maxRequests = maxRequests;
             return this;
         }
         @CustomType.Setter
         public Builder maxRequestsPerConnection(Integer maxRequestsPerConnection) {
-            this.maxRequestsPerConnection = Objects.requireNonNull(maxRequestsPerConnection);
+            if (maxRequestsPerConnection == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCircuitBreaker", "maxRequestsPerConnection");
+            }
+            this.maxRequestsPerConnection = maxRequestsPerConnection;
             return this;
         }
         @CustomType.Setter
         public Builder maxRetries(Integer maxRetries) {
-            this.maxRetries = Objects.requireNonNull(maxRetries);
+            if (maxRetries == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceCircuitBreaker", "maxRetries");
+            }
+            this.maxRetries = maxRetries;
             return this;
         }
         public GetBackendServiceCircuitBreaker build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.folder.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class GetOrganizationPolicyArgs extends com.pulumi.resources.Invoke
         }
 
         public GetOrganizationPolicyArgs build() {
-            $.constraint = Objects.requireNonNull($.constraint, "expected parameter 'constraint' to be non-null");
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
+            if ($.constraint == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationPolicyArgs", "constraint");
+            }
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationPolicyArgs", "folder");
+            }
             return $;
         }
     }

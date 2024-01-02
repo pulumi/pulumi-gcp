@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.ResponsePolicyRuleLocalDataLocalData;
 import java.util.List;
 import java.util.Objects;
@@ -45,7 +46,10 @@ public final class ResponsePolicyRuleLocalData {
 
         @CustomType.Setter
         public Builder localDatas(List<ResponsePolicyRuleLocalDataLocalData> localDatas) {
-            this.localDatas = Objects.requireNonNull(localDatas);
+            if (localDatas == null) {
+              throw new MissingRequiredPropertyException("ResponsePolicyRuleLocalData", "localDatas");
+            }
+            this.localDatas = localDatas;
             return this;
         }
         public Builder localDatas(ResponsePolicyRuleLocalDataLocalData... localDatas) {

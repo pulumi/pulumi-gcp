@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class GetRegionInstanceTemplateAdvancedMachineFeature {
 
         @CustomType.Setter
         public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
-            this.enableNestedVirtualization = Objects.requireNonNull(enableNestedVirtualization);
+            if (enableNestedVirtualization == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateAdvancedMachineFeature", "enableNestedVirtualization");
+            }
+            this.enableNestedVirtualization = enableNestedVirtualization;
             return this;
         }
         @CustomType.Setter
         public Builder threadsPerCore(Integer threadsPerCore) {
-            this.threadsPerCore = Objects.requireNonNull(threadsPerCore);
+            if (threadsPerCore == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateAdvancedMachineFeature", "threadsPerCore");
+            }
+            this.threadsPerCore = threadsPerCore;
             return this;
         }
         @CustomType.Setter
         public Builder visibleCoreCount(Integer visibleCoreCount) {
-            this.visibleCoreCount = Objects.requireNonNull(visibleCoreCount);
+            if (visibleCoreCount == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateAdvancedMachineFeature", "visibleCoreCount");
+            }
+            this.visibleCoreCount = visibleCoreCount;
             return this;
         }
         public GetRegionInstanceTemplateAdvancedMachineFeature build() {

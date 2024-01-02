@@ -44,6 +44,7 @@ public final class RepositoryDockerConfig {
 
         @CustomType.Setter
         public Builder immutableTags(@Nullable Boolean immutableTags) {
+
             this.immutableTags = immutableTags;
             return this;
         }

@@ -58,11 +58,13 @@ public final class ClusterStateInfoUpdateInfo {
 
         @CustomType.Setter
         public Builder targetReplicaCount(@Nullable Integer targetReplicaCount) {
+
             this.targetReplicaCount = targetReplicaCount;
             return this;
         }
         @CustomType.Setter
         public Builder targetShardCount(@Nullable Integer targetShardCount) {
+
             this.targetShardCount = targetShardCount;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigPublicKeyArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigSubjectConfigArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CertificateConfigX509ConfigArgs;
@@ -170,9 +171,15 @@ public final class CertificateConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         public CertificateConfigArgs build() {
-            $.publicKey = Objects.requireNonNull($.publicKey, "expected parameter 'publicKey' to be non-null");
-            $.subjectConfig = Objects.requireNonNull($.subjectConfig, "expected parameter 'subjectConfig' to be non-null");
-            $.x509Config = Objects.requireNonNull($.x509Config, "expected parameter 'x509Config' to be non-null");
+            if ($.publicKey == null) {
+                throw new MissingRequiredPropertyException("CertificateConfigArgs", "publicKey");
+            }
+            if ($.subjectConfig == null) {
+                throw new MissingRequiredPropertyException("CertificateConfigArgs", "subjectConfig");
+            }
+            if ($.x509Config == null) {
+                throw new MissingRequiredPropertyException("CertificateConfigArgs", "x509Config");
+            }
             return $;
         }
     }

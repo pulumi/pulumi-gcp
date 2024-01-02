@@ -70,26 +70,31 @@ public final class DatabaseInstanceServerCaCert {
 
         @CustomType.Setter
         public Builder cert(@Nullable String cert) {
+
             this.cert = cert;
             return this;
         }
         @CustomType.Setter
         public Builder commonName(@Nullable String commonName) {
+
             this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder expirationTime(@Nullable String expirationTime) {
+
             this.expirationTime = expirationTime;
             return this;
         }
         @CustomType.Setter
         public Builder sha1Fingerprint(@Nullable String sha1Fingerprint) {
+
             this.sha1Fingerprint = sha1Fingerprint;
             return this;
         }

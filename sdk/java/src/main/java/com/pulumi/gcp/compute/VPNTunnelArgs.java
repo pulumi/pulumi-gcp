@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -805,7 +806,9 @@ public final class VPNTunnelArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VPNTunnelArgs build() {
-            $.sharedSecret = Objects.requireNonNull($.sharedSecret, "expected parameter 'sharedSecret' to be non-null");
+            if ($.sharedSecret == null) {
+                throw new MissingRequiredPropertyException("VPNTunnelArgs", "sharedSecret");
+            }
             return $;
         }
     }

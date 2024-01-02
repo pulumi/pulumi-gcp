@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
 import java.lang.String;
 import java.util.List;
@@ -587,10 +588,18 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RoutineArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
-            $.definitionBody = Objects.requireNonNull($.definitionBody, "expected parameter 'definitionBody' to be non-null");
-            $.routineId = Objects.requireNonNull($.routineId, "expected parameter 'routineId' to be non-null");
-            $.routineType = Objects.requireNonNull($.routineType, "expected parameter 'routineType' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("RoutineArgs", "datasetId");
+            }
+            if ($.definitionBody == null) {
+                throw new MissingRequiredPropertyException("RoutineArgs", "definitionBody");
+            }
+            if ($.routineId == null) {
+                throw new MissingRequiredPropertyException("RoutineArgs", "routineId");
+            }
+            if ($.routineType == null) {
+                throw new MissingRequiredPropertyException("RoutineArgs", "routineType");
+            }
             return $;
         }
     }

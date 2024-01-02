@@ -208,56 +208,67 @@ public final class DatabaseInstanceReplicaConfiguration {
 
         @CustomType.Setter
         public Builder caCertificate(@Nullable String caCertificate) {
+
             this.caCertificate = caCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientCertificate(@Nullable String clientCertificate) {
+
             this.clientCertificate = clientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(@Nullable String clientKey) {
+
             this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder connectRetryInterval(@Nullable Integer connectRetryInterval) {
+
             this.connectRetryInterval = connectRetryInterval;
             return this;
         }
         @CustomType.Setter
         public Builder dumpFilePath(@Nullable String dumpFilePath) {
+
             this.dumpFilePath = dumpFilePath;
             return this;
         }
         @CustomType.Setter
         public Builder failoverTarget(@Nullable Boolean failoverTarget) {
+
             this.failoverTarget = failoverTarget;
             return this;
         }
         @CustomType.Setter
         public Builder masterHeartbeatPeriod(@Nullable Integer masterHeartbeatPeriod) {
+
             this.masterHeartbeatPeriod = masterHeartbeatPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder password(@Nullable String password) {
+
             this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder sslCipher(@Nullable String sslCipher) {
+
             this.sslCipher = sslCipher;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder verifyServerCertificate(@Nullable Boolean verifyServerCertificate) {
+
             this.verifyServerCertificate = verifyServerCertificate;
             return this;
         }

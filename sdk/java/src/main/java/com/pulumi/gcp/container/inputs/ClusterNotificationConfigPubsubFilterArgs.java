@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class ClusterNotificationConfigPubsubFilterArgs extends com.pulumi.
         }
 
         public ClusterNotificationConfigPubsubFilterArgs build() {
-            $.eventTypes = Objects.requireNonNull($.eventTypes, "expected parameter 'eventTypes' to be non-null");
+            if ($.eventTypes == null) {
+                throw new MissingRequiredPropertyException("ClusterNotificationConfigPubsubFilterArgs", "eventTypes");
+            }
             return $;
         }
     }

@@ -44,6 +44,7 @@ public final class AlertPolicyAlertStrategyNotificationRateLimit {
 
         @CustomType.Setter
         public Builder period(@Nullable String period) {
+
             this.period = period;
             return this;
         }

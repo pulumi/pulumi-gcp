@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexDeployedIndex;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexIndexStat;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexMetadata;
@@ -145,12 +146,18 @@ public final class GetAiIndexResult {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder deployedIndexes(List<GetAiIndexDeployedIndex> deployedIndexes) {
-            this.deployedIndexes = Objects.requireNonNull(deployedIndexes);
+            if (deployedIndexes == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "deployedIndexes");
+            }
+            this.deployedIndexes = deployedIndexes;
             return this;
         }
         public Builder deployedIndexes(GetAiIndexDeployedIndex... deployedIndexes) {
@@ -158,32 +165,50 @@ public final class GetAiIndexResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder indexStats(List<GetAiIndexIndexStat> indexStats) {
-            this.indexStats = Objects.requireNonNull(indexStats);
+            if (indexStats == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "indexStats");
+            }
+            this.indexStats = indexStats;
             return this;
         }
         public Builder indexStats(GetAiIndexIndexStat... indexStats) {
@@ -191,22 +216,34 @@ public final class GetAiIndexResult {
         }
         @CustomType.Setter
         public Builder indexUpdateMethod(String indexUpdateMethod) {
-            this.indexUpdateMethod = Objects.requireNonNull(indexUpdateMethod);
+            if (indexUpdateMethod == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "indexUpdateMethod");
+            }
+            this.indexUpdateMethod = indexUpdateMethod;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder metadataSchemaUri(String metadataSchemaUri) {
-            this.metadataSchemaUri = Objects.requireNonNull(metadataSchemaUri);
+            if (metadataSchemaUri == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "metadataSchemaUri");
+            }
+            this.metadataSchemaUri = metadataSchemaUri;
             return this;
         }
         @CustomType.Setter
         public Builder metadatas(List<GetAiIndexMetadata> metadatas) {
-            this.metadatas = Objects.requireNonNull(metadatas);
+            if (metadatas == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "metadatas");
+            }
+            this.metadatas = metadatas;
             return this;
         }
         public Builder metadatas(GetAiIndexMetadata... metadatas) {
@@ -214,27 +251,40 @@ public final class GetAiIndexResult {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "region");
+            }
+            this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         public GetAiIndexResult build() {

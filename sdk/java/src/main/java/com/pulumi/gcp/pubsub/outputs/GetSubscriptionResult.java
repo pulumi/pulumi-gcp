@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionBigqueryConfig;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionCloudStorageConfig;
 import com.pulumi.gcp.pubsub.outputs.GetSubscriptionDeadLetterPolicy;
@@ -162,12 +163,18 @@ public final class GetSubscriptionResult {
 
         @CustomType.Setter
         public Builder ackDeadlineSeconds(Integer ackDeadlineSeconds) {
-            this.ackDeadlineSeconds = Objects.requireNonNull(ackDeadlineSeconds);
+            if (ackDeadlineSeconds == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "ackDeadlineSeconds");
+            }
+            this.ackDeadlineSeconds = ackDeadlineSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder bigqueryConfigs(List<GetSubscriptionBigqueryConfig> bigqueryConfigs) {
-            this.bigqueryConfigs = Objects.requireNonNull(bigqueryConfigs);
+            if (bigqueryConfigs == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "bigqueryConfigs");
+            }
+            this.bigqueryConfigs = bigqueryConfigs;
             return this;
         }
         public Builder bigqueryConfigs(GetSubscriptionBigqueryConfig... bigqueryConfigs) {
@@ -175,7 +182,10 @@ public final class GetSubscriptionResult {
         }
         @CustomType.Setter
         public Builder cloudStorageConfigs(List<GetSubscriptionCloudStorageConfig> cloudStorageConfigs) {
-            this.cloudStorageConfigs = Objects.requireNonNull(cloudStorageConfigs);
+            if (cloudStorageConfigs == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "cloudStorageConfigs");
+            }
+            this.cloudStorageConfigs = cloudStorageConfigs;
             return this;
         }
         public Builder cloudStorageConfigs(GetSubscriptionCloudStorageConfig... cloudStorageConfigs) {
@@ -183,7 +193,10 @@ public final class GetSubscriptionResult {
         }
         @CustomType.Setter
         public Builder deadLetterPolicies(List<GetSubscriptionDeadLetterPolicy> deadLetterPolicies) {
-            this.deadLetterPolicies = Objects.requireNonNull(deadLetterPolicies);
+            if (deadLetterPolicies == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "deadLetterPolicies");
+            }
+            this.deadLetterPolicies = deadLetterPolicies;
             return this;
         }
         public Builder deadLetterPolicies(GetSubscriptionDeadLetterPolicy... deadLetterPolicies) {
@@ -191,22 +204,34 @@ public final class GetSubscriptionResult {
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder enableExactlyOnceDelivery(Boolean enableExactlyOnceDelivery) {
-            this.enableExactlyOnceDelivery = Objects.requireNonNull(enableExactlyOnceDelivery);
+            if (enableExactlyOnceDelivery == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "enableExactlyOnceDelivery");
+            }
+            this.enableExactlyOnceDelivery = enableExactlyOnceDelivery;
             return this;
         }
         @CustomType.Setter
         public Builder enableMessageOrdering(Boolean enableMessageOrdering) {
-            this.enableMessageOrdering = Objects.requireNonNull(enableMessageOrdering);
+            if (enableMessageOrdering == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "enableMessageOrdering");
+            }
+            this.enableMessageOrdering = enableMessageOrdering;
             return this;
         }
         @CustomType.Setter
         public Builder expirationPolicies(List<GetSubscriptionExpirationPolicy> expirationPolicies) {
-            this.expirationPolicies = Objects.requireNonNull(expirationPolicies);
+            if (expirationPolicies == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "expirationPolicies");
+            }
+            this.expirationPolicies = expirationPolicies;
             return this;
         }
         public Builder expirationPolicies(GetSubscriptionExpirationPolicy... expirationPolicies) {
@@ -214,42 +239,64 @@ public final class GetSubscriptionResult {
         }
         @CustomType.Setter
         public Builder filter(String filter) {
-            this.filter = Objects.requireNonNull(filter);
+            if (filter == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "filter");
+            }
+            this.filter = filter;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder messageRetentionDuration(String messageRetentionDuration) {
-            this.messageRetentionDuration = Objects.requireNonNull(messageRetentionDuration);
+            if (messageRetentionDuration == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "messageRetentionDuration");
+            }
+            this.messageRetentionDuration = messageRetentionDuration;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder pushConfigs(List<GetSubscriptionPushConfig> pushConfigs) {
-            this.pushConfigs = Objects.requireNonNull(pushConfigs);
+            if (pushConfigs == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "pushConfigs");
+            }
+            this.pushConfigs = pushConfigs;
             return this;
         }
         public Builder pushConfigs(GetSubscriptionPushConfig... pushConfigs) {
@@ -257,12 +304,18 @@ public final class GetSubscriptionResult {
         }
         @CustomType.Setter
         public Builder retainAckedMessages(Boolean retainAckedMessages) {
-            this.retainAckedMessages = Objects.requireNonNull(retainAckedMessages);
+            if (retainAckedMessages == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "retainAckedMessages");
+            }
+            this.retainAckedMessages = retainAckedMessages;
             return this;
         }
         @CustomType.Setter
         public Builder retryPolicies(List<GetSubscriptionRetryPolicy> retryPolicies) {
-            this.retryPolicies = Objects.requireNonNull(retryPolicies);
+            if (retryPolicies == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "retryPolicies");
+            }
+            this.retryPolicies = retryPolicies;
             return this;
         }
         public Builder retryPolicies(GetSubscriptionRetryPolicy... retryPolicies) {
@@ -270,7 +323,10 @@ public final class GetSubscriptionResult {
         }
         @CustomType.Setter
         public Builder topic(String topic) {
-            this.topic = Objects.requireNonNull(topic);
+            if (topic == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionResult", "topic");
+            }
+            this.topic = topic;
             return this;
         }
         public GetSubscriptionResult build() {

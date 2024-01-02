@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -63,11 +64,15 @@ public final class SecurityScanConfigSchedule {
 
         @CustomType.Setter
         public Builder intervalDurationDays(Integer intervalDurationDays) {
-            this.intervalDurationDays = Objects.requireNonNull(intervalDurationDays);
+            if (intervalDurationDays == null) {
+              throw new MissingRequiredPropertyException("SecurityScanConfigSchedule", "intervalDurationDays");
+            }
+            this.intervalDurationDays = intervalDurationDays;
             return this;
         }
         @CustomType.Setter
         public Builder scheduleTime(@Nullable String scheduleTime) {
+
             this.scheduleTime = scheduleTime;
             return this;
         }

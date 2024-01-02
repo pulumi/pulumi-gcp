@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.AiIndexMetadataConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -88,16 +89,21 @@ public final class AiIndexMetadata {
 
         @CustomType.Setter
         public Builder config(@Nullable AiIndexMetadataConfig config) {
+
             this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder contentsDeltaUri(String contentsDeltaUri) {
-            this.contentsDeltaUri = Objects.requireNonNull(contentsDeltaUri);
+            if (contentsDeltaUri == null) {
+              throw new MissingRequiredPropertyException("AiIndexMetadata", "contentsDeltaUri");
+            }
+            this.contentsDeltaUri = contentsDeltaUri;
             return this;
         }
         @CustomType.Setter
         public Builder isCompleteOverwrite(@Nullable Boolean isCompleteOverwrite) {
+
             this.isCompleteOverwrite = isCompleteOverwrite;
             return this;
         }

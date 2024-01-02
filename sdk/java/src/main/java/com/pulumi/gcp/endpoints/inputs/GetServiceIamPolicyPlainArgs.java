@@ -4,6 +4,7 @@
 package com.pulumi.gcp.endpoints.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -49,7 +50,9 @@ public final class GetServiceIamPolicyPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetServiceIamPolicyPlainArgs build() {
-            $.serviceName = Objects.requireNonNull($.serviceName, "expected parameter 'serviceName' to be non-null");
+            if ($.serviceName == null) {
+                throw new MissingRequiredPropertyException("GetServiceIamPolicyPlainArgs", "serviceName");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -114,31 +115,39 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci 
 
         @CustomType.Setter
         public Builder gcpServiceAccountEmail(@Nullable String gcpServiceAccountEmail) {
+
             this.gcpServiceAccountEmail = gcpServiceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder policyDir(@Nullable String policyDir) {
+
             this.policyDir = policyDir;
             return this;
         }
         @CustomType.Setter
         public Builder secretType(String secretType) {
-            this.secretType = Objects.requireNonNull(secretType);
+            if (secretType == null) {
+              throw new MissingRequiredPropertyException("FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci", "secretType");
+            }
+            this.secretType = secretType;
             return this;
         }
         @CustomType.Setter
         public Builder syncRepo(@Nullable String syncRepo) {
+
             this.syncRepo = syncRepo;
             return this;
         }
         @CustomType.Setter
         public Builder syncWaitSecs(@Nullable String syncWaitSecs) {
+
             this.syncWaitSecs = syncWaitSecs;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

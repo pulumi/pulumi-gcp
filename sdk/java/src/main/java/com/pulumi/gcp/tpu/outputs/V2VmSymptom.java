@@ -94,21 +94,25 @@ public final class V2VmSymptom {
 
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder details(@Nullable String details) {
+
             this.details = details;
             return this;
         }
         @CustomType.Setter
         public Builder symptomType(@Nullable String symptomType) {
+
             this.symptomType = symptomType;
             return this;
         }
         @CustomType.Setter
         public Builder workerId(@Nullable String workerId) {
+
             this.workerId = workerId;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab;
 import java.lang.String;
 import java.util.Objects;
@@ -73,17 +74,26 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfig {
 
         @CustomType.Setter
         public Builder keytab(MetastoreServiceHiveMetastoreConfigKerberosConfigKeytab keytab) {
-            this.keytab = Objects.requireNonNull(keytab);
+            if (keytab == null) {
+              throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigKerberosConfig", "keytab");
+            }
+            this.keytab = keytab;
             return this;
         }
         @CustomType.Setter
         public Builder krb5ConfigGcsUri(String krb5ConfigGcsUri) {
-            this.krb5ConfigGcsUri = Objects.requireNonNull(krb5ConfigGcsUri);
+            if (krb5ConfigGcsUri == null) {
+              throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigKerberosConfig", "krb5ConfigGcsUri");
+            }
+            this.krb5ConfigGcsUri = krb5ConfigGcsUri;
             return this;
         }
         @CustomType.Setter
         public Builder principal(String principal) {
-            this.principal = Objects.requireNonNull(principal);
+            if (principal == null) {
+              throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigKerberosConfig", "principal");
+            }
+            this.principal = principal;
             return this;
         }
         public MetastoreServiceHiveMetastoreConfigKerberosConfig build() {

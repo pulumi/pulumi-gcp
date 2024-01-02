@@ -5,6 +5,7 @@ package com.pulumi.gcp.serviceusage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
@@ -324,10 +325,18 @@ public final class ConsumerQuotaOverrideArgs extends com.pulumi.resources.Resour
         }
 
         public ConsumerQuotaOverrideArgs build() {
-            $.limit = Objects.requireNonNull($.limit, "expected parameter 'limit' to be non-null");
-            $.metric = Objects.requireNonNull($.metric, "expected parameter 'metric' to be non-null");
-            $.overrideValue = Objects.requireNonNull($.overrideValue, "expected parameter 'overrideValue' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.limit == null) {
+                throw new MissingRequiredPropertyException("ConsumerQuotaOverrideArgs", "limit");
+            }
+            if ($.metric == null) {
+                throw new MissingRequiredPropertyException("ConsumerQuotaOverrideArgs", "metric");
+            }
+            if ($.overrideValue == null) {
+                throw new MissingRequiredPropertyException("ConsumerQuotaOverrideArgs", "overrideValue");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("ConsumerQuotaOverrideArgs", "service");
+            }
             return $;
         }
     }

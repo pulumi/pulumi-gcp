@@ -5,6 +5,7 @@ package com.pulumi.gcp.organizations;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class FolderArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FolderArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("FolderArgs", "displayName");
+            }
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("FolderArgs", "parent");
+            }
             return $;
         }
     }

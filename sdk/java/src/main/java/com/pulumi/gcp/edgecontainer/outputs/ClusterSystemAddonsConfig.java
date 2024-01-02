@@ -50,6 +50,7 @@ public final class ClusterSystemAddonsConfig {
 
         @CustomType.Setter
         public Builder ingress(@Nullable ClusterSystemAddonsConfigIngress ingress) {
+
             this.ingress = ingress;
             return this;
         }

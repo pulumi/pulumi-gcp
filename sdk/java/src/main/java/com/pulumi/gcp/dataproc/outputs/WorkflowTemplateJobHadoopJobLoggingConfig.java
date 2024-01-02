@@ -44,6 +44,7 @@ public final class WorkflowTemplateJobHadoopJobLoggingConfig {
 
         @CustomType.Setter
         public Builder driverLogLevels(@Nullable Map<String,String> driverLogLevels) {
+
             this.driverLogLevels = driverLogLevels;
             return this;
         }

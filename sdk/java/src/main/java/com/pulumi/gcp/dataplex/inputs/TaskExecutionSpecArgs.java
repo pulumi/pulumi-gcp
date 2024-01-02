@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -237,7 +238,9 @@ public final class TaskExecutionSpecArgs extends com.pulumi.resources.ResourceAr
         }
 
         public TaskExecutionSpecArgs build() {
-            $.serviceAccount = Objects.requireNonNull($.serviceAccount, "expected parameter 'serviceAccount' to be non-null");
+            if ($.serviceAccount == null) {
+                throw new MissingRequiredPropertyException("TaskExecutionSpecArgs", "serviceAccount");
+            }
             return $;
         }
     }

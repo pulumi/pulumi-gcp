@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -146,7 +147,9 @@ public final class GetGatewayIamPolicyArgs extends com.pulumi.resources.InvokeAr
         }
 
         public GetGatewayIamPolicyArgs build() {
-            $.gateway = Objects.requireNonNull($.gateway, "expected parameter 'gateway' to be non-null");
+            if ($.gateway == null) {
+                throw new MissingRequiredPropertyException("GetGatewayIamPolicyArgs", "gateway");
+            }
             return $;
         }
     }

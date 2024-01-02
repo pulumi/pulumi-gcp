@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArgs;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigKerberosConfigArgs;
 import java.lang.String;
@@ -200,7 +201,9 @@ public final class MetastoreServiceHiveMetastoreConfigArgs extends com.pulumi.re
         }
 
         public MetastoreServiceHiveMetastoreConfigArgs build() {
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigArgs", "version");
+            }
             return $;
         }
     }

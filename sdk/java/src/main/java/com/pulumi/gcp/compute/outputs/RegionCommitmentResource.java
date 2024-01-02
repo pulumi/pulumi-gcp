@@ -80,16 +80,19 @@ public final class RegionCommitmentResource {
 
         @CustomType.Setter
         public Builder acceleratorType(@Nullable String acceleratorType) {
+
             this.acceleratorType = acceleratorType;
             return this;
         }
         @CustomType.Setter
         public Builder amount(@Nullable String amount) {
+
             this.amount = amount;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

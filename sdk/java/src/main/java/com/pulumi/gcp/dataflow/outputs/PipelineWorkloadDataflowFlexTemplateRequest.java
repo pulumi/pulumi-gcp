@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataflow.outputs.PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter;
 import java.lang.Boolean;
 import java.lang.String;
@@ -92,21 +93,31 @@ public final class PipelineWorkloadDataflowFlexTemplateRequest {
 
         @CustomType.Setter
         public Builder launchParameter(PipelineWorkloadDataflowFlexTemplateRequestLaunchParameter launchParameter) {
-            this.launchParameter = Objects.requireNonNull(launchParameter);
+            if (launchParameter == null) {
+              throw new MissingRequiredPropertyException("PipelineWorkloadDataflowFlexTemplateRequest", "launchParameter");
+            }
+            this.launchParameter = launchParameter;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("PipelineWorkloadDataflowFlexTemplateRequest", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(String projectId) {
-            this.projectId = Objects.requireNonNull(projectId);
+            if (projectId == null) {
+              throw new MissingRequiredPropertyException("PipelineWorkloadDataflowFlexTemplateRequest", "projectId");
+            }
+            this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder validateOnly(@Nullable Boolean validateOnly) {
+
             this.validateOnly = validateOnly;
             return this;
         }

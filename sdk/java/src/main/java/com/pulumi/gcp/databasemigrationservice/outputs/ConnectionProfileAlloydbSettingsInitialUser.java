@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -77,17 +78,24 @@ public final class ConnectionProfileAlloydbSettingsInitialUser {
 
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsInitialUser", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder passwordSet(@Nullable Boolean passwordSet) {
+
             this.passwordSet = passwordSet;
             return this;
         }
         @CustomType.Setter
         public Builder user(String user) {
-            this.user = Objects.requireNonNull(user);
+            if (user == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsInitialUser", "user");
+            }
+            this.user = user;
             return this;
         }
         public ConnectionProfileAlloydbSettingsInitialUser build() {

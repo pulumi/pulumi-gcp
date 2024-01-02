@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetClusterNodeConfigLinuxNodeConfig {
 
         @CustomType.Setter
         public Builder cgroupMode(String cgroupMode) {
-            this.cgroupMode = Objects.requireNonNull(cgroupMode);
+            if (cgroupMode == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigLinuxNodeConfig", "cgroupMode");
+            }
+            this.cgroupMode = cgroupMode;
             return this;
         }
         @CustomType.Setter
         public Builder sysctls(Map<String,String> sysctls) {
-            this.sysctls = Objects.requireNonNull(sysctls);
+            if (sysctls == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigLinuxNodeConfig", "sysctls");
+            }
+            this.sysctls = sysctls;
             return this;
         }
         public GetClusterNodeConfigLinuxNodeConfig build() {

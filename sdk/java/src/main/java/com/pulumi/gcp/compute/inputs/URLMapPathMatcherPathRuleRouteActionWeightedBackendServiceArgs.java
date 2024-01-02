@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceHeaderActionArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -196,8 +197,12 @@ public final class URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArg
         }
 
         public URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs build() {
-            $.backendService = Objects.requireNonNull($.backendService, "expected parameter 'backendService' to be non-null");
-            $.weight = Objects.requireNonNull($.weight, "expected parameter 'weight' to be non-null");
+            if ($.backendService == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs", "backendService");
+            }
+            if ($.weight == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionWeightedBackendServiceArgs", "weight");
+            }
             return $;
         }
     }

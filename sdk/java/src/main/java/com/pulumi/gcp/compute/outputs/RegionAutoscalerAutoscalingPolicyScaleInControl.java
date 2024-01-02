@@ -63,11 +63,13 @@ public final class RegionAutoscalerAutoscalingPolicyScaleInControl {
 
         @CustomType.Setter
         public Builder maxScaledInReplicas(@Nullable RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas maxScaledInReplicas) {
+
             this.maxScaledInReplicas = maxScaledInReplicas;
             return this;
         }
         @CustomType.Setter
         public Builder timeWindowSec(@Nullable Integer timeWindowSec) {
+
             this.timeWindowSec = timeWindowSec;
             return this;
         }

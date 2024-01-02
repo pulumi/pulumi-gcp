@@ -4,6 +4,7 @@
 package com.pulumi.gcp.serviceaccount.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -83,11 +84,15 @@ public final class GetAccountAccessTokenResult {
 
         @CustomType.Setter
         public Builder accessToken(String accessToken) {
-            this.accessToken = Objects.requireNonNull(accessToken);
+            if (accessToken == null) {
+              throw new MissingRequiredPropertyException("GetAccountAccessTokenResult", "accessToken");
+            }
+            this.accessToken = accessToken;
             return this;
         }
         @CustomType.Setter
         public Builder delegates(@Nullable List<String> delegates) {
+
             this.delegates = delegates;
             return this;
         }
@@ -96,17 +101,24 @@ public final class GetAccountAccessTokenResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetAccountAccessTokenResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lifetime(@Nullable String lifetime) {
+
             this.lifetime = lifetime;
             return this;
         }
         @CustomType.Setter
         public Builder scopes(List<String> scopes) {
-            this.scopes = Objects.requireNonNull(scopes);
+            if (scopes == null) {
+              throw new MissingRequiredPropertyException("GetAccountAccessTokenResult", "scopes");
+            }
+            this.scopes = scopes;
             return this;
         }
         public Builder scopes(String... scopes) {
@@ -114,7 +126,10 @@ public final class GetAccountAccessTokenResult {
         }
         @CustomType.Setter
         public Builder targetServiceAccount(String targetServiceAccount) {
-            this.targetServiceAccount = Objects.requireNonNull(targetServiceAccount);
+            if (targetServiceAccount == null) {
+              throw new MissingRequiredPropertyException("GetAccountAccessTokenResult", "targetServiceAccount");
+            }
+            this.targetServiceAccount = targetServiceAccount;
             return this;
         }
         public GetAccountAccessTokenResult build() {

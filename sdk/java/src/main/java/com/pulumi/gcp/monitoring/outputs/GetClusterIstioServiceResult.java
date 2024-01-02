@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.GetClusterIstioServiceTelemetry;
 import java.lang.String;
 import java.util.List;
@@ -133,52 +134,80 @@ public final class GetClusterIstioServiceResult {
 
         @CustomType.Setter
         public Builder clusterName(String clusterName) {
-            this.clusterName = Objects.requireNonNull(clusterName);
+            if (clusterName == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "clusterName");
+            }
+            this.clusterName = clusterName;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "location");
+            }
+            this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder serviceId(String serviceId) {
-            this.serviceId = Objects.requireNonNull(serviceId);
+            if (serviceId == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "serviceId");
+            }
+            this.serviceId = serviceId;
             return this;
         }
         @CustomType.Setter
         public Builder serviceName(String serviceName) {
-            this.serviceName = Objects.requireNonNull(serviceName);
+            if (serviceName == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "serviceName");
+            }
+            this.serviceName = serviceName;
             return this;
         }
         @CustomType.Setter
         public Builder serviceNamespace(String serviceNamespace) {
-            this.serviceNamespace = Objects.requireNonNull(serviceNamespace);
+            if (serviceNamespace == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "serviceNamespace");
+            }
+            this.serviceNamespace = serviceNamespace;
             return this;
         }
         @CustomType.Setter
         public Builder telemetries(List<GetClusterIstioServiceTelemetry> telemetries) {
-            this.telemetries = Objects.requireNonNull(telemetries);
+            if (telemetries == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "telemetries");
+            }
+            this.telemetries = telemetries;
             return this;
         }
         public Builder telemetries(GetClusterIstioServiceTelemetry... telemetries) {
@@ -186,7 +215,10 @@ public final class GetClusterIstioServiceResult {
         }
         @CustomType.Setter
         public Builder userLabels(Map<String,String> userLabels) {
-            this.userLabels = Objects.requireNonNull(userLabels);
+            if (userLabels == null) {
+              throw new MissingRequiredPropertyException("GetClusterIstioServiceResult", "userLabels");
+            }
+            this.userLabels = userLabels;
             return this;
         }
         public GetClusterIstioServiceResult build() {

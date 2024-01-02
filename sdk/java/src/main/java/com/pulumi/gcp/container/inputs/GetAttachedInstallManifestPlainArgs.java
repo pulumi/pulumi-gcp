@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -147,10 +148,18 @@ public final class GetAttachedInstallManifestPlainArgs extends com.pulumi.resour
         }
 
         public GetAttachedInstallManifestPlainArgs build() {
-            $.clusterId = Objects.requireNonNull($.clusterId, "expected parameter 'clusterId' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.platformVersion = Objects.requireNonNull($.platformVersion, "expected parameter 'platformVersion' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.clusterId == null) {
+                throw new MissingRequiredPropertyException("GetAttachedInstallManifestPlainArgs", "clusterId");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("GetAttachedInstallManifestPlainArgs", "location");
+            }
+            if ($.platformVersion == null) {
+                throw new MissingRequiredPropertyException("GetAttachedInstallManifestPlainArgs", "platformVersion");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetAttachedInstallManifestPlainArgs", "project");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.servicenetworking.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -105,10 +106,18 @@ public final class GetPeeredDnsDomainArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetPeeredDnsDomainArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetPeeredDnsDomainArgs", "name");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("GetPeeredDnsDomainArgs", "network");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("GetPeeredDnsDomainArgs", "project");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("GetPeeredDnsDomainArgs", "service");
+            }
             return $;
         }
     }

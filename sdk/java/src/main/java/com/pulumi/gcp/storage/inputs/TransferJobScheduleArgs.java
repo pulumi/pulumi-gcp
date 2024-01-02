@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.TransferJobScheduleScheduleEndDateArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobScheduleScheduleStartDateArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobScheduleStartTimeOfDayArgs;
@@ -190,7 +191,9 @@ public final class TransferJobScheduleArgs extends com.pulumi.resources.Resource
         }
 
         public TransferJobScheduleArgs build() {
-            $.scheduleStartDate = Objects.requireNonNull($.scheduleStartDate, "expected parameter 'scheduleStartDate' to be non-null");
+            if ($.scheduleStartDate == null) {
+                throw new MissingRequiredPropertyException("TransferJobScheduleArgs", "scheduleStartDate");
+            }
             return $;
         }
     }

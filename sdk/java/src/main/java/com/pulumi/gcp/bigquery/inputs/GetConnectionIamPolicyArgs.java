@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -182,7 +183,9 @@ public final class GetConnectionIamPolicyArgs extends com.pulumi.resources.Invok
         }
 
         public GetConnectionIamPolicyArgs build() {
-            $.connectionId = Objects.requireNonNull($.connectionId, "expected parameter 'connectionId' to be non-null");
+            if ($.connectionId == null) {
+                throw new MissingRequiredPropertyException("GetConnectionIamPolicyArgs", "connectionId");
+            }
             return $;
         }
     }

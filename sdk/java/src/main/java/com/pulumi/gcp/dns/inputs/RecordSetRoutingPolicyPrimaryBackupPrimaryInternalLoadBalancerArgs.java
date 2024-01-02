@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -298,12 +299,24 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalance
         }
 
         public RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs build() {
-            $.ipAddress = Objects.requireNonNull($.ipAddress, "expected parameter 'ipAddress' to be non-null");
-            $.ipProtocol = Objects.requireNonNull($.ipProtocol, "expected parameter 'ipProtocol' to be non-null");
-            $.loadBalancerType = Objects.requireNonNull($.loadBalancerType, "expected parameter 'loadBalancerType' to be non-null");
-            $.networkUrl = Objects.requireNonNull($.networkUrl, "expected parameter 'networkUrl' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
+            if ($.ipAddress == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs", "ipAddress");
+            }
+            if ($.ipProtocol == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs", "ipProtocol");
+            }
+            if ($.loadBalancerType == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs", "loadBalancerType");
+            }
+            if ($.networkUrl == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs", "networkUrl");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs", "port");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs", "project");
+            }
             return $;
         }
     }

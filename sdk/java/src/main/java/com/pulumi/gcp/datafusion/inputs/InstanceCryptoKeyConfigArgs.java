@@ -5,6 +5,7 @@ package com.pulumi.gcp.datafusion.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class InstanceCryptoKeyConfigArgs extends com.pulumi.resources.Reso
         }
 
         public InstanceCryptoKeyConfigArgs build() {
-            $.keyReference = Objects.requireNonNull($.keyReference, "expected parameter 'keyReference' to be non-null");
+            if ($.keyReference == null) {
+                throw new MissingRequiredPropertyException("InstanceCryptoKeyConfigArgs", "keyReference");
+            }
             return $;
         }
     }

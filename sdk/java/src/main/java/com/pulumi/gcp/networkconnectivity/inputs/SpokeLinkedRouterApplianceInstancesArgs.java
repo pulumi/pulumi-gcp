@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedRouterApplianceInstancesInstanceArgs;
 import java.lang.Boolean;
 import java.util.List;
@@ -123,8 +124,12 @@ public final class SpokeLinkedRouterApplianceInstancesArgs extends com.pulumi.re
         }
 
         public SpokeLinkedRouterApplianceInstancesArgs build() {
-            $.instances = Objects.requireNonNull($.instances, "expected parameter 'instances' to be non-null");
-            $.siteToSiteDataTransfer = Objects.requireNonNull($.siteToSiteDataTransfer, "expected parameter 'siteToSiteDataTransfer' to be non-null");
+            if ($.instances == null) {
+                throw new MissingRequiredPropertyException("SpokeLinkedRouterApplianceInstancesArgs", "instances");
+            }
+            if ($.siteToSiteDataTransfer == null) {
+                throw new MissingRequiredPropertyException("SpokeLinkedRouterApplianceInstancesArgs", "siteToSiteDataTransfer");
+            }
             return $;
         }
     }

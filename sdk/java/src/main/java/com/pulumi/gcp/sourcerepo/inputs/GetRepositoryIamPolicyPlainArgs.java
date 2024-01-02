@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sourcerepo.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -95,7 +96,9 @@ public final class GetRepositoryIamPolicyPlainArgs extends com.pulumi.resources.
         }
 
         public GetRepositoryIamPolicyPlainArgs build() {
-            $.repository = Objects.requireNonNull($.repository, "expected parameter 'repository' to be non-null");
+            if ($.repository == null) {
+                throw new MissingRequiredPropertyException("GetRepositoryIamPolicyPlainArgs", "repository");
+            }
             return $;
         }
     }

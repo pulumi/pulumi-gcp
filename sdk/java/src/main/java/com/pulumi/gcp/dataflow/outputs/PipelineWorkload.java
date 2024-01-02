@@ -67,11 +67,13 @@ public final class PipelineWorkload {
 
         @CustomType.Setter
         public Builder dataflowFlexTemplateRequest(@Nullable PipelineWorkloadDataflowFlexTemplateRequest dataflowFlexTemplateRequest) {
+
             this.dataflowFlexTemplateRequest = dataflowFlexTemplateRequest;
             return this;
         }
         @CustomType.Setter
         public Builder dataflowLaunchTemplateRequest(@Nullable PipelineWorkloadDataflowLaunchTemplateRequest dataflowLaunchTemplateRequest) {
+
             this.dataflowLaunchTemplateRequest = dataflowLaunchTemplateRequest;
             return this;
         }

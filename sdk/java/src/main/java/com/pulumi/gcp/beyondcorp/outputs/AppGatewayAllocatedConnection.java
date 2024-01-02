@@ -59,11 +59,13 @@ public final class AppGatewayAllocatedConnection {
 
         @CustomType.Setter
         public Builder ingressPort(@Nullable Integer ingressPort) {
+
             this.ingressPort = ingressPort;
             return this;
         }
         @CustomType.Setter
         public Builder pscUri(@Nullable String pscUri) {
+
             this.pscUri = pscUri;
             return this;
         }

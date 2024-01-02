@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -157,8 +158,12 @@ public final class EntityTypeEntityArgs extends com.pulumi.resources.ResourceArg
         }
 
         public EntityTypeEntityArgs build() {
-            $.synonyms = Objects.requireNonNull($.synonyms, "expected parameter 'synonyms' to be non-null");
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.synonyms == null) {
+                throw new MissingRequiredPropertyException("EntityTypeEntityArgs", "synonyms");
+            }
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("EntityTypeEntityArgs", "value");
+            }
             return $;
         }
     }

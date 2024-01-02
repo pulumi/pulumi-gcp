@@ -98,16 +98,19 @@ public final class AutoscalingPolicySecondaryWorkerConfig {
 
         @CustomType.Setter
         public Builder maxInstances(@Nullable Integer maxInstances) {
+
             this.maxInstances = maxInstances;
             return this;
         }
         @CustomType.Setter
         public Builder minInstances(@Nullable Integer minInstances) {
+
             this.minInstances = minInstances;
             return this;
         }
         @CustomType.Setter
         public Builder weight(@Nullable Integer weight) {
+
             this.weight = weight;
             return this;
         }

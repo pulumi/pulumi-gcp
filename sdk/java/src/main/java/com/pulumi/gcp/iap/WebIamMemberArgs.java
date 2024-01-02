@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iap.inputs.WebIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -232,8 +233,12 @@ public final class WebIamMemberArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WebIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("WebIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("WebIamMemberArgs", "role");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.outputs.GetSubnetDhcpAddressRange;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -124,12 +125,18 @@ public final class GetSubnetResult {
 
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dhcpAddressRanges(List<GetSubnetDhcpAddressRange> dhcpAddressRanges) {
-            this.dhcpAddressRanges = Objects.requireNonNull(dhcpAddressRanges);
+            if (dhcpAddressRanges == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "dhcpAddressRanges");
+            }
+            this.dhcpAddressRanges = dhcpAddressRanges;
             return this;
         }
         public Builder dhcpAddressRanges(GetSubnetDhcpAddressRange... dhcpAddressRanges) {
@@ -137,62 +144,98 @@ public final class GetSubnetResult {
         }
         @CustomType.Setter
         public Builder gatewayId(String gatewayId) {
-            this.gatewayId = Objects.requireNonNull(gatewayId);
+            if (gatewayId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "gatewayId");
+            }
+            this.gatewayId = gatewayId;
             return this;
         }
         @CustomType.Setter
         public Builder gatewayIp(String gatewayIp) {
-            this.gatewayIp = Objects.requireNonNull(gatewayIp);
+            if (gatewayIp == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "gatewayIp");
+            }
+            this.gatewayIp = gatewayIp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipCidrRange(String ipCidrRange) {
-            this.ipCidrRange = Objects.requireNonNull(ipCidrRange);
+            if (ipCidrRange == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "ipCidrRange");
+            }
+            this.ipCidrRange = ipCidrRange;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder parent(String parent) {
-            this.parent = Objects.requireNonNull(parent);
+            if (parent == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "parent");
+            }
+            this.parent = parent;
             return this;
         }
         @CustomType.Setter
         public Builder standardConfig(Boolean standardConfig) {
-            this.standardConfig = Objects.requireNonNull(standardConfig);
+            if (standardConfig == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "standardConfig");
+            }
+            this.standardConfig = standardConfig;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uid(String uid) {
-            this.uid = Objects.requireNonNull(uid);
+            if (uid == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "uid");
+            }
+            this.uid = uid;
             return this;
         }
         @CustomType.Setter
         public Builder updateTime(String updateTime) {
-            this.updateTime = Objects.requireNonNull(updateTime);
+            if (updateTime == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "updateTime");
+            }
+            this.updateTime = updateTime;
             return this;
         }
         @CustomType.Setter
         public Builder vlanId(Integer vlanId) {
-            this.vlanId = Objects.requireNonNull(vlanId);
+            if (vlanId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetResult", "vlanId");
+            }
+            this.vlanId = vlanId;
             return this;
         }
         public GetSubnetResult build() {

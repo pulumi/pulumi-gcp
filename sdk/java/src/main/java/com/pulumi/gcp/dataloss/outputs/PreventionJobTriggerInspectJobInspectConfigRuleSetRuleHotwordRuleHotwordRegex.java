@@ -64,6 +64,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
 
         @CustomType.Setter
         public Builder groupIndexes(@Nullable List<Integer> groupIndexes) {
+
             this.groupIndexes = groupIndexes;
             return this;
         }
@@ -72,6 +73,7 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotword
         }
         @CustomType.Setter
         public Builder pattern(@Nullable String pattern) {
+
             this.pattern = pattern;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataflow.inputs.PipelineScheduleInfoArgs;
 import com.pulumi.gcp.dataflow.inputs.PipelineWorkloadArgs;
 import java.lang.String;
@@ -472,8 +473,12 @@ public final class PipelineArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PipelineArgs build() {
-            $.state = Objects.requireNonNull($.state, "expected parameter 'state' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.state == null) {
+                throw new MissingRequiredPropertyException("PipelineArgs", "state");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("PipelineArgs", "type");
+            }
             return $;
         }
     }

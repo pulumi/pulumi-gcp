@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -78,7 +79,9 @@ public final class InstanceFromMachineImageServiceAccountArgs extends com.pulumi
         }
 
         public InstanceFromMachineImageServiceAccountArgs build() {
-            $.scopes = Objects.requireNonNull($.scopes, "expected parameter 'scopes' to be non-null");
+            if ($.scopes == null) {
+                throw new MissingRequiredPropertyException("InstanceFromMachineImageServiceAccountArgs", "scopes");
+            }
             return $;
         }
     }

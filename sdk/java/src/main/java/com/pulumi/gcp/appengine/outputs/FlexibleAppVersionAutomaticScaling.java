@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionAutomaticScalingCpuUtilization;
 import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionAutomaticScalingDiskUtilization;
 import com.pulumi.gcp.appengine.outputs.FlexibleAppVersionAutomaticScalingNetworkUtilization;
@@ -217,61 +218,75 @@ public final class FlexibleAppVersionAutomaticScaling {
 
         @CustomType.Setter
         public Builder coolDownPeriod(@Nullable String coolDownPeriod) {
+
             this.coolDownPeriod = coolDownPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder cpuUtilization(FlexibleAppVersionAutomaticScalingCpuUtilization cpuUtilization) {
-            this.cpuUtilization = Objects.requireNonNull(cpuUtilization);
+            if (cpuUtilization == null) {
+              throw new MissingRequiredPropertyException("FlexibleAppVersionAutomaticScaling", "cpuUtilization");
+            }
+            this.cpuUtilization = cpuUtilization;
             return this;
         }
         @CustomType.Setter
         public Builder diskUtilization(@Nullable FlexibleAppVersionAutomaticScalingDiskUtilization diskUtilization) {
+
             this.diskUtilization = diskUtilization;
             return this;
         }
         @CustomType.Setter
         public Builder maxConcurrentRequests(@Nullable Integer maxConcurrentRequests) {
+
             this.maxConcurrentRequests = maxConcurrentRequests;
             return this;
         }
         @CustomType.Setter
         public Builder maxIdleInstances(@Nullable Integer maxIdleInstances) {
+
             this.maxIdleInstances = maxIdleInstances;
             return this;
         }
         @CustomType.Setter
         public Builder maxPendingLatency(@Nullable String maxPendingLatency) {
+
             this.maxPendingLatency = maxPendingLatency;
             return this;
         }
         @CustomType.Setter
         public Builder maxTotalInstances(@Nullable Integer maxTotalInstances) {
+
             this.maxTotalInstances = maxTotalInstances;
             return this;
         }
         @CustomType.Setter
         public Builder minIdleInstances(@Nullable Integer minIdleInstances) {
+
             this.minIdleInstances = minIdleInstances;
             return this;
         }
         @CustomType.Setter
         public Builder minPendingLatency(@Nullable String minPendingLatency) {
+
             this.minPendingLatency = minPendingLatency;
             return this;
         }
         @CustomType.Setter
         public Builder minTotalInstances(@Nullable Integer minTotalInstances) {
+
             this.minTotalInstances = minTotalInstances;
             return this;
         }
         @CustomType.Setter
         public Builder networkUtilization(@Nullable FlexibleAppVersionAutomaticScalingNetworkUtilization networkUtilization) {
+
             this.networkUtilization = networkUtilization;
             return this;
         }
         @CustomType.Setter
         public Builder requestUtilization(@Nullable FlexibleAppVersionAutomaticScalingRequestUtilization requestUtilization) {
+
             this.requestUtilization = requestUtilization;
             return this;
         }

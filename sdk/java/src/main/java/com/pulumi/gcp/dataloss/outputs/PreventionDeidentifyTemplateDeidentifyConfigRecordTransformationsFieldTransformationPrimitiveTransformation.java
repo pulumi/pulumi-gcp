@@ -236,56 +236,67 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder bucketingConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationBucketingConfig bucketingConfig) {
+
             this.bucketingConfig = bucketingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder characterMaskConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCharacterMaskConfig characterMaskConfig) {
+
             this.characterMaskConfig = characterMaskConfig;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoDeterministicConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoDeterministicConfig cryptoDeterministicConfig) {
+
             this.cryptoDeterministicConfig = cryptoDeterministicConfig;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoHashConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoHashConfig cryptoHashConfig) {
+
             this.cryptoHashConfig = cryptoHashConfig;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoReplaceFfxFpeConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfig cryptoReplaceFfxFpeConfig) {
+
             this.cryptoReplaceFfxFpeConfig = cryptoReplaceFfxFpeConfig;
             return this;
         }
         @CustomType.Setter
         public Builder dateShiftConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfig dateShiftConfig) {
+
             this.dateShiftConfig = dateShiftConfig;
             return this;
         }
         @CustomType.Setter
         public Builder fixedSizeBucketingConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationFixedSizeBucketingConfig fixedSizeBucketingConfig) {
+
             this.fixedSizeBucketingConfig = fixedSizeBucketingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder redactConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationRedactConfig redactConfig) {
+
             this.redactConfig = redactConfig;
             return this;
         }
         @CustomType.Setter
         public Builder replaceConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceConfig replaceConfig) {
+
             this.replaceConfig = replaceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder replaceDictionaryConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationReplaceDictionaryConfig replaceDictionaryConfig) {
+
             this.replaceDictionaryConfig = replaceDictionaryConfig;
             return this;
         }
         @CustomType.Setter
         public Builder timePartConfig(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationTimePartConfig timePartConfig) {
+
             this.timePartConfig = timePartConfig;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.inputs.EntryGroupIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -267,9 +268,15 @@ public final class EntryGroupIamBindingArgs extends com.pulumi.resources.Resourc
         }
 
         public EntryGroupIamBindingArgs build() {
-            $.entryGroup = Objects.requireNonNull($.entryGroup, "expected parameter 'entryGroup' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.entryGroup == null) {
+                throw new MissingRequiredPropertyException("EntryGroupIamBindingArgs", "entryGroup");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("EntryGroupIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("EntryGroupIamBindingArgs", "role");
+            }
             return $;
         }
     }

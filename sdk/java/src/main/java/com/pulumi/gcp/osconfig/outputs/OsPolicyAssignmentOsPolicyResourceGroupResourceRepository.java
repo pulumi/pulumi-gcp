@@ -97,21 +97,25 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepository {
 
         @CustomType.Setter
         public Builder apt(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryApt apt) {
+
             this.apt = apt;
             return this;
         }
         @CustomType.Setter
         public Builder goo(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryGoo goo) {
+
             this.goo = goo;
             return this;
         }
         @CustomType.Setter
         public Builder yum(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryYum yum) {
+
             this.yum = yum;
             return this;
         }
         @CustomType.Setter
         public Builder zypper(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryZypper zypper) {
+
             this.zypper = zypper;
             return this;
         }

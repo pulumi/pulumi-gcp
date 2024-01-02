@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolNetworkConfigNetworkPerformanceConfig;
@@ -82,7 +83,10 @@ public final class GetClusterNodePoolNetworkConfig {
 
         @CustomType.Setter
         public Builder additionalNodeNetworkConfigs(List<GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig> additionalNodeNetworkConfigs) {
-            this.additionalNodeNetworkConfigs = Objects.requireNonNull(additionalNodeNetworkConfigs);
+            if (additionalNodeNetworkConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "additionalNodeNetworkConfigs");
+            }
+            this.additionalNodeNetworkConfigs = additionalNodeNetworkConfigs;
             return this;
         }
         public Builder additionalNodeNetworkConfigs(GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig... additionalNodeNetworkConfigs) {
@@ -90,7 +94,10 @@ public final class GetClusterNodePoolNetworkConfig {
         }
         @CustomType.Setter
         public Builder additionalPodNetworkConfigs(List<GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig> additionalPodNetworkConfigs) {
-            this.additionalPodNetworkConfigs = Objects.requireNonNull(additionalPodNetworkConfigs);
+            if (additionalPodNetworkConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "additionalPodNetworkConfigs");
+            }
+            this.additionalPodNetworkConfigs = additionalPodNetworkConfigs;
             return this;
         }
         public Builder additionalPodNetworkConfigs(GetClusterNodePoolNetworkConfigAdditionalPodNetworkConfig... additionalPodNetworkConfigs) {
@@ -98,17 +105,26 @@ public final class GetClusterNodePoolNetworkConfig {
         }
         @CustomType.Setter
         public Builder createPodRange(Boolean createPodRange) {
-            this.createPodRange = Objects.requireNonNull(createPodRange);
+            if (createPodRange == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "createPodRange");
+            }
+            this.createPodRange = createPodRange;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateNodes(Boolean enablePrivateNodes) {
-            this.enablePrivateNodes = Objects.requireNonNull(enablePrivateNodes);
+            if (enablePrivateNodes == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "enablePrivateNodes");
+            }
+            this.enablePrivateNodes = enablePrivateNodes;
             return this;
         }
         @CustomType.Setter
         public Builder networkPerformanceConfigs(List<GetClusterNodePoolNetworkConfigNetworkPerformanceConfig> networkPerformanceConfigs) {
-            this.networkPerformanceConfigs = Objects.requireNonNull(networkPerformanceConfigs);
+            if (networkPerformanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "networkPerformanceConfigs");
+            }
+            this.networkPerformanceConfigs = networkPerformanceConfigs;
             return this;
         }
         public Builder networkPerformanceConfigs(GetClusterNodePoolNetworkConfigNetworkPerformanceConfig... networkPerformanceConfigs) {
@@ -116,7 +132,10 @@ public final class GetClusterNodePoolNetworkConfig {
         }
         @CustomType.Setter
         public Builder podCidrOverprovisionConfigs(List<GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig> podCidrOverprovisionConfigs) {
-            this.podCidrOverprovisionConfigs = Objects.requireNonNull(podCidrOverprovisionConfigs);
+            if (podCidrOverprovisionConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "podCidrOverprovisionConfigs");
+            }
+            this.podCidrOverprovisionConfigs = podCidrOverprovisionConfigs;
             return this;
         }
         public Builder podCidrOverprovisionConfigs(GetClusterNodePoolNetworkConfigPodCidrOverprovisionConfig... podCidrOverprovisionConfigs) {
@@ -124,12 +143,18 @@ public final class GetClusterNodePoolNetworkConfig {
         }
         @CustomType.Setter
         public Builder podIpv4CidrBlock(String podIpv4CidrBlock) {
-            this.podIpv4CidrBlock = Objects.requireNonNull(podIpv4CidrBlock);
+            if (podIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "podIpv4CidrBlock");
+            }
+            this.podIpv4CidrBlock = podIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder podRange(String podRange) {
-            this.podRange = Objects.requireNonNull(podRange);
+            if (podRange == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfig", "podRange");
+            }
+            this.podRange = podRange;
             return this;
         }
         public GetClusterNodePoolNetworkConfig build() {

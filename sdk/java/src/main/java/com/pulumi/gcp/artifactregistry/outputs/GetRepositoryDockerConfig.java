@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetRepositoryDockerConfig {
 
         @CustomType.Setter
         public Builder immutableTags(Boolean immutableTags) {
-            this.immutableTags = Objects.requireNonNull(immutableTags);
+            if (immutableTags == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryDockerConfig", "immutableTags");
+            }
+            this.immutableTags = immutableTags;
             return this;
         }
         public GetRepositoryDockerConfig build() {

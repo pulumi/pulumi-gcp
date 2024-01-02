@@ -74,6 +74,7 @@ public final class BareMetalAdminClusterStatus {
 
         @CustomType.Setter
         public Builder conditions(@Nullable List<BareMetalAdminClusterStatusCondition> conditions) {
+
             this.conditions = conditions;
             return this;
         }
@@ -82,6 +83,7 @@ public final class BareMetalAdminClusterStatus {
         }
         @CustomType.Setter
         public Builder errorMessage(@Nullable String errorMessage) {
+
             this.errorMessage = errorMessage;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iap.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,8 +91,12 @@ public final class GetClientPlainArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetClientPlainArgs build() {
-            $.brand = Objects.requireNonNull($.brand, "expected parameter 'brand' to be non-null");
-            $.clientId = Objects.requireNonNull($.clientId, "expected parameter 'clientId' to be non-null");
+            if ($.brand == null) {
+                throw new MissingRequiredPropertyException("GetClientPlainArgs", "brand");
+            }
+            if ($.clientId == null) {
+                throw new MissingRequiredPropertyException("GetClientPlainArgs", "clientId");
+            }
             return $;
         }
     }

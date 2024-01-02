@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions;
 import com.pulumi.gcp.alloydb.outputs.GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions;
 import java.lang.Boolean;
@@ -144,37 +145,58 @@ public final class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
 
         @CustomType.Setter
         public Builder acceptsMultipleValues(Boolean acceptsMultipleValues) {
-            this.acceptsMultipleValues = Objects.requireNonNull(acceptsMultipleValues);
+            if (acceptsMultipleValues == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlag", "acceptsMultipleValues");
+            }
+            this.acceptsMultipleValues = acceptsMultipleValues;
             return this;
         }
         @CustomType.Setter
         public Builder flagName(String flagName) {
-            this.flagName = Objects.requireNonNull(flagName);
+            if (flagName == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlag", "flagName");
+            }
+            this.flagName = flagName;
             return this;
         }
         @CustomType.Setter
         public Builder integerRestrictions(GetSupportedDatabaseFlagsSupportedDatabaseFlagIntegerRestrictions integerRestrictions) {
-            this.integerRestrictions = Objects.requireNonNull(integerRestrictions);
+            if (integerRestrictions == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlag", "integerRestrictions");
+            }
+            this.integerRestrictions = integerRestrictions;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlag", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder requiresDbRestart(Boolean requiresDbRestart) {
-            this.requiresDbRestart = Objects.requireNonNull(requiresDbRestart);
+            if (requiresDbRestart == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlag", "requiresDbRestart");
+            }
+            this.requiresDbRestart = requiresDbRestart;
             return this;
         }
         @CustomType.Setter
         public Builder stringRestrictions(GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions stringRestrictions) {
-            this.stringRestrictions = Objects.requireNonNull(stringRestrictions);
+            if (stringRestrictions == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlag", "stringRestrictions");
+            }
+            this.stringRestrictions = stringRestrictions;
             return this;
         }
         @CustomType.Setter
         public Builder supportedDbVersions(List<String> supportedDbVersions) {
-            this.supportedDbVersions = Objects.requireNonNull(supportedDbVersions);
+            if (supportedDbVersions == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlag", "supportedDbVersions");
+            }
+            this.supportedDbVersions = supportedDbVersions;
             return this;
         }
         public Builder supportedDbVersions(String... supportedDbVersions) {
@@ -182,7 +204,10 @@ public final class GetSupportedDatabaseFlagsSupportedDatabaseFlag {
         }
         @CustomType.Setter
         public Builder valueType(String valueType) {
-            this.valueType = Objects.requireNonNull(valueType);
+            if (valueType == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlag", "valueType");
+            }
+            this.valueType = valueType;
             return this;
         }
         public GetSupportedDatabaseFlagsSupportedDatabaseFlag build() {

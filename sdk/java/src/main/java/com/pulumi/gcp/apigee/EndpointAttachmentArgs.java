@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -197,10 +198,18 @@ public final class EndpointAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public EndpointAttachmentArgs build() {
-            $.endpointAttachmentId = Objects.requireNonNull($.endpointAttachmentId, "expected parameter 'endpointAttachmentId' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.serviceAttachment = Objects.requireNonNull($.serviceAttachment, "expected parameter 'serviceAttachment' to be non-null");
+            if ($.endpointAttachmentId == null) {
+                throw new MissingRequiredPropertyException("EndpointAttachmentArgs", "endpointAttachmentId");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("EndpointAttachmentArgs", "location");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("EndpointAttachmentArgs", "orgId");
+            }
+            if ($.serviceAttachment == null) {
+                throw new MissingRequiredPropertyException("EndpointAttachmentArgs", "serviceAttachment");
+            }
             return $;
         }
     }

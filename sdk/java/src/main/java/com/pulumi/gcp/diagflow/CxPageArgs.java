@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxPageAdvancedSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageEntryFulfillmentArgs;
 import com.pulumi.gcp.diagflow.inputs.CxPageEventHandlerArgs;
@@ -540,7 +541,9 @@ public final class CxPageArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CxPageArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("CxPageArgs", "displayName");
+            }
             return $;
         }
     }

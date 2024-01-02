@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -82,7 +83,9 @@ public final class ResponsePolicyGkeClusterArgs extends com.pulumi.resources.Res
         }
 
         public ResponsePolicyGkeClusterArgs build() {
-            $.gkeClusterName = Objects.requireNonNull($.gkeClusterName, "expected parameter 'gkeClusterName' to be non-null");
+            if ($.gkeClusterName == null) {
+                throw new MissingRequiredPropertyException("ResponsePolicyGkeClusterArgs", "gkeClusterName");
+            }
             return $;
         }
     }

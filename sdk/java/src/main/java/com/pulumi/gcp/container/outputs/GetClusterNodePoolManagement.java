@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClusterNodePoolManagement {
 
         @CustomType.Setter
         public Builder autoRepair(Boolean autoRepair) {
-            this.autoRepair = Objects.requireNonNull(autoRepair);
+            if (autoRepair == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolManagement", "autoRepair");
+            }
+            this.autoRepair = autoRepair;
             return this;
         }
         @CustomType.Setter
         public Builder autoUpgrade(Boolean autoUpgrade) {
-            this.autoUpgrade = Objects.requireNonNull(autoUpgrade);
+            if (autoUpgrade == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolManagement", "autoUpgrade");
+            }
+            this.autoUpgrade = autoUpgrade;
             return this;
         }
         public GetClusterNodePoolManagement build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -165,12 +166,18 @@ public final class GetSSLPolicyResult {
 
         @CustomType.Setter
         public Builder creationTimestamp(String creationTimestamp) {
-            this.creationTimestamp = Objects.requireNonNull(creationTimestamp);
+            if (creationTimestamp == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "creationTimestamp");
+            }
+            this.creationTimestamp = creationTimestamp;
             return this;
         }
         @CustomType.Setter
         public Builder customFeatures(List<String> customFeatures) {
-            this.customFeatures = Objects.requireNonNull(customFeatures);
+            if (customFeatures == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "customFeatures");
+            }
+            this.customFeatures = customFeatures;
             return this;
         }
         public Builder customFeatures(String... customFeatures) {
@@ -178,12 +185,18 @@ public final class GetSSLPolicyResult {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder enabledFeatures(List<String> enabledFeatures) {
-            this.enabledFeatures = Objects.requireNonNull(enabledFeatures);
+            if (enabledFeatures == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "enabledFeatures");
+            }
+            this.enabledFeatures = enabledFeatures;
             return this;
         }
         public Builder enabledFeatures(String... enabledFeatures) {
@@ -191,37 +204,56 @@ public final class GetSSLPolicyResult {
         }
         @CustomType.Setter
         public Builder fingerprint(String fingerprint) {
-            this.fingerprint = Objects.requireNonNull(fingerprint);
+            if (fingerprint == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "fingerprint");
+            }
+            this.fingerprint = fingerprint;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder minTlsVersion(String minTlsVersion) {
-            this.minTlsVersion = Objects.requireNonNull(minTlsVersion);
+            if (minTlsVersion == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "minTlsVersion");
+            }
+            this.minTlsVersion = minTlsVersion;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder profile(String profile) {
-            this.profile = Objects.requireNonNull(profile);
+            if (profile == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "profile");
+            }
+            this.profile = profile;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetSSLPolicyResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         public GetSSLPolicyResult build() {

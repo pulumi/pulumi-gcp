@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -196,8 +197,12 @@ public final class CxIntentParameterArgs extends com.pulumi.resources.ResourceAr
         }
 
         public CxIntentParameterArgs build() {
-            $.entityType = Objects.requireNonNull($.entityType, "expected parameter 'entityType' to be non-null");
-            $.id = Objects.requireNonNull($.id, "expected parameter 'id' to be non-null");
+            if ($.entityType == null) {
+                throw new MissingRequiredPropertyException("CxIntentParameterArgs", "entityType");
+            }
+            if ($.id == null) {
+                throw new MissingRequiredPropertyException("CxIntentParameterArgs", "id");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig;
 import java.lang.String;
 import java.util.List;
@@ -82,17 +83,24 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
 
         @CustomType.Setter
         public Builder nodePool(String nodePool) {
-            this.nodePool = Objects.requireNonNull(nodePool);
+            if (nodePool == null) {
+              throw new MissingRequiredPropertyException("ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget", "nodePool");
+            }
+            this.nodePool = nodePool;
             return this;
         }
         @CustomType.Setter
         public Builder nodePoolConfig(@Nullable ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig nodePoolConfig) {
+
             this.nodePoolConfig = nodePoolConfig;
             return this;
         }
         @CustomType.Setter
         public Builder roles(List<String> roles) {
-            this.roles = Objects.requireNonNull(roles);
+            if (roles == null) {
+              throw new MissingRequiredPropertyException("ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget", "roles");
+            }
+            this.roles = roles;
             return this;
         }
         public Builder roles(String... roles) {

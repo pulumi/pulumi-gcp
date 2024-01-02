@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -206,8 +207,12 @@ public final class ImageIamPolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ImageIamPolicyArgs build() {
-            $.image = Objects.requireNonNull($.image, "expected parameter 'image' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.image == null) {
+                throw new MissingRequiredPropertyException("ImageIamPolicyArgs", "image");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("ImageIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

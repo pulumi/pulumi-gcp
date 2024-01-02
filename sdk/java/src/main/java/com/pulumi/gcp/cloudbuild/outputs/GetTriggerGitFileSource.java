@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -70,37 +71,58 @@ public final class GetTriggerGitFileSource {
 
         @CustomType.Setter
         public Builder bitbucketServerConfig(String bitbucketServerConfig) {
-            this.bitbucketServerConfig = Objects.requireNonNull(bitbucketServerConfig);
+            if (bitbucketServerConfig == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGitFileSource", "bitbucketServerConfig");
+            }
+            this.bitbucketServerConfig = bitbucketServerConfig;
             return this;
         }
         @CustomType.Setter
         public Builder githubEnterpriseConfig(String githubEnterpriseConfig) {
-            this.githubEnterpriseConfig = Objects.requireNonNull(githubEnterpriseConfig);
+            if (githubEnterpriseConfig == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGitFileSource", "githubEnterpriseConfig");
+            }
+            this.githubEnterpriseConfig = githubEnterpriseConfig;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGitFileSource", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder repoType(String repoType) {
-            this.repoType = Objects.requireNonNull(repoType);
+            if (repoType == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGitFileSource", "repoType");
+            }
+            this.repoType = repoType;
             return this;
         }
         @CustomType.Setter
         public Builder repository(String repository) {
-            this.repository = Objects.requireNonNull(repository);
+            if (repository == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGitFileSource", "repository");
+            }
+            this.repository = repository;
             return this;
         }
         @CustomType.Setter
         public Builder revision(String revision) {
-            this.revision = Objects.requireNonNull(revision);
+            if (revision == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGitFileSource", "revision");
+            }
+            this.revision = revision;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GetTriggerGitFileSource", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public GetTriggerGitFileSource build() {

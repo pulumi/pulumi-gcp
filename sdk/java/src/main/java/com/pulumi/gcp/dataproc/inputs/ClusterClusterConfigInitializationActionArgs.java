@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -134,7 +135,9 @@ public final class ClusterClusterConfigInitializationActionArgs extends com.pulu
         }
 
         public ClusterClusterConfigInitializationActionArgs build() {
-            $.script = Objects.requireNonNull($.script, "expected parameter 'script' to be non-null");
+            if ($.script == null) {
+                throw new MissingRequiredPropertyException("ClusterClusterConfigInitializationActionArgs", "script");
+            }
             return $;
         }
     }

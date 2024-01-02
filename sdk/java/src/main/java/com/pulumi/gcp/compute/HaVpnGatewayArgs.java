@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.HaVpnGatewayVpnInterfaceArgs;
 import java.lang.String;
 import java.util.List;
@@ -363,7 +364,9 @@ public final class HaVpnGatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public HaVpnGatewayArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("HaVpnGatewayArgs", "network");
+            }
             return $;
         }
     }

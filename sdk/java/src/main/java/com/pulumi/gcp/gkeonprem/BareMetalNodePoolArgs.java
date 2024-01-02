@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalNodePoolNodePoolConfigArgs;
 import java.lang.String;
 import java.util.Map;
@@ -348,9 +349,15 @@ public final class BareMetalNodePoolArgs extends com.pulumi.resources.ResourceAr
         }
 
         public BareMetalNodePoolArgs build() {
-            $.bareMetalCluster = Objects.requireNonNull($.bareMetalCluster, "expected parameter 'bareMetalCluster' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.nodePoolConfig = Objects.requireNonNull($.nodePoolConfig, "expected parameter 'nodePoolConfig' to be non-null");
+            if ($.bareMetalCluster == null) {
+                throw new MissingRequiredPropertyException("BareMetalNodePoolArgs", "bareMetalCluster");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("BareMetalNodePoolArgs", "location");
+            }
+            if ($.nodePoolConfig == null) {
+                throw new MissingRequiredPropertyException("BareMetalNodePoolArgs", "nodePoolConfig");
+            }
             return $;
         }
     }

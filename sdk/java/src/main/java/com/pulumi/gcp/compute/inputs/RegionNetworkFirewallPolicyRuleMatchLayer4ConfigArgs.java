@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -134,7 +135,9 @@ public final class RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs extends 
         }
 
         public RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs build() {
-            $.ipProtocol = Objects.requireNonNull($.ipProtocol, "expected parameter 'ipProtocol' to be non-null");
+            if ($.ipProtocol == null) {
+                throw new MissingRequiredPropertyException("RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs", "ipProtocol");
+            }
             return $;
         }
     }

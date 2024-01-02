@@ -58,11 +58,13 @@ public final class SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfig {
 
         @CustomType.Setter
         public Builder enforceOnKeyName(@Nullable String enforceOnKeyName) {
+
             this.enforceOnKeyName = enforceOnKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder enforceOnKeyType(@Nullable String enforceOnKeyType) {
+
             this.enforceOnKeyType = enforceOnKeyType;
             return this;
         }

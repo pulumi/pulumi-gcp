@@ -72,16 +72,19 @@ public final class VMwareClusterDataplaneV2 {
 
         @CustomType.Setter
         public Builder advancedNetworking(@Nullable Boolean advancedNetworking) {
+
             this.advancedNetworking = advancedNetworking;
             return this;
         }
         @CustomType.Setter
         public Builder dataplaneV2Enabled(@Nullable Boolean dataplaneV2Enabled) {
+
             this.dataplaneV2Enabled = dataplaneV2Enabled;
             return this;
         }
         @CustomType.Setter
         public Builder windowsDataplaneV2Enabled(@Nullable Boolean windowsDataplaneV2Enabled) {
+
             this.windowsDataplaneV2Enabled = windowsDataplaneV2Enabled;
             return this;
         }

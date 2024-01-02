@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigateway.inputs.ApiConfigIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -271,10 +272,18 @@ public final class ApiConfigIamBindingArgs extends com.pulumi.resources.Resource
         }
 
         public ApiConfigIamBindingArgs build() {
-            $.api = Objects.requireNonNull($.api, "expected parameter 'api' to be non-null");
-            $.apiConfig = Objects.requireNonNull($.apiConfig, "expected parameter 'apiConfig' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.api == null) {
+                throw new MissingRequiredPropertyException("ApiConfigIamBindingArgs", "api");
+            }
+            if ($.apiConfig == null) {
+                throw new MissingRequiredPropertyException("ApiConfigIamBindingArgs", "apiConfig");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("ApiConfigIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("ApiConfigIamBindingArgs", "role");
+            }
             return $;
         }
     }

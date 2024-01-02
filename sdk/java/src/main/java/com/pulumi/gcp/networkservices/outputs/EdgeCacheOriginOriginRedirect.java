@@ -50,6 +50,7 @@ public final class EdgeCacheOriginOriginRedirect {
 
         @CustomType.Setter
         public Builder redirectConditions(@Nullable List<String> redirectConditions) {
+
             this.redirectConditions = redirectConditions;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class BareMetalAdminClusterLoadBalancerVipConfigArgs extends com.pu
         }
 
         public BareMetalAdminClusterLoadBalancerVipConfigArgs build() {
-            $.controlPlaneVip = Objects.requireNonNull($.controlPlaneVip, "expected parameter 'controlPlaneVip' to be non-null");
+            if ($.controlPlaneVip == null) {
+                throw new MissingRequiredPropertyException("BareMetalAdminClusterLoadBalancerVipConfigArgs", "controlPlaneVip");
+            }
             return $;
         }
     }

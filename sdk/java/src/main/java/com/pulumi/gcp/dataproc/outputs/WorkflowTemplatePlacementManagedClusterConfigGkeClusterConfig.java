@@ -44,6 +44,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfig
 
         @CustomType.Setter
         public Builder namespacedGkeDeploymentTarget(@Nullable WorkflowTemplatePlacementManagedClusterConfigGkeClusterConfigNamespacedGkeDeploymentTarget namespacedGkeDeploymentTarget) {
+
             this.namespacedGkeDeploymentTarget = namespacedGkeDeploymentTarget;
             return this;
         }

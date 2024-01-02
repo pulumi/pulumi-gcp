@@ -94,21 +94,25 @@ public final class MachineImageMachineImageEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
+
             this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
+
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder rawKey(@Nullable String rawKey) {
+
             this.rawKey = rawKey;
             return this;
         }
         @CustomType.Setter
         public Builder sha256(@Nullable String sha256) {
+
             this.sha256 = sha256;
             return this;
         }

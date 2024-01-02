@@ -46,6 +46,7 @@ public final class ClusterVirtualClusterConfigAuxiliaryServicesConfigSparkHistor
 
         @CustomType.Setter
         public Builder dataprocCluster(@Nullable String dataprocCluster) {
+
             this.dataprocCluster = dataprocCluster;
             return this;
         }

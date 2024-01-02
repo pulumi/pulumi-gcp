@@ -97,21 +97,25 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSource {
 
         @CustomType.Setter
         public Builder allowInsecure(@Nullable Boolean allowInsecure) {
+
             this.allowInsecure = allowInsecure;
             return this;
         }
         @CustomType.Setter
         public Builder gcs(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceGcs gcs) {
+
             this.gcs = gcs;
             return this;
         }
         @CustomType.Setter
         public Builder localPath(@Nullable String localPath) {
+
             this.localPath = localPath;
             return this;
         }
         @CustomType.Setter
         public Builder remote(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourcePkgRpmSourceRemote remote) {
+
             this.remote = remote;
             return this;
         }

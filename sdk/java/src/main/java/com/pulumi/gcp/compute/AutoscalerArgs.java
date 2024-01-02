@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.AutoscalerAutoscalingPolicyArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -302,8 +303,12 @@ public final class AutoscalerArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AutoscalerArgs build() {
-            $.autoscalingPolicy = Objects.requireNonNull($.autoscalingPolicy, "expected parameter 'autoscalingPolicy' to be non-null");
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
+            if ($.autoscalingPolicy == null) {
+                throw new MissingRequiredPropertyException("AutoscalerArgs", "autoscalingPolicy");
+            }
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("AutoscalerArgs", "target");
+            }
             return $;
         }
     }

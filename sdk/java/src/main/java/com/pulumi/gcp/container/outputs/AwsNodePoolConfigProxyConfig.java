@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class AwsNodePoolConfigProxyConfig {
 
         @CustomType.Setter
         public Builder secretArn(String secretArn) {
-            this.secretArn = Objects.requireNonNull(secretArn);
+            if (secretArn == null) {
+              throw new MissingRequiredPropertyException("AwsNodePoolConfigProxyConfig", "secretArn");
+            }
+            this.secretArn = secretArn;
             return this;
         }
         @CustomType.Setter
         public Builder secretVersion(String secretVersion) {
-            this.secretVersion = Objects.requireNonNull(secretVersion);
+            if (secretVersion == null) {
+              throw new MissingRequiredPropertyException("AwsNodePoolConfigProxyConfig", "secretVersion");
+            }
+            this.secretVersion = secretVersion;
             return this;
         }
         public AwsNodePoolConfigProxyConfig build() {

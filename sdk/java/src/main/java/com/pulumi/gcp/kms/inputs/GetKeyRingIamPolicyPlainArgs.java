@@ -4,6 +4,7 @@
 package com.pulumi.gcp.kms.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -72,7 +73,9 @@ public final class GetKeyRingIamPolicyPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetKeyRingIamPolicyPlainArgs build() {
-            $.keyRingId = Objects.requireNonNull($.keyRingId, "expected parameter 'keyRingId' to be non-null");
+            if ($.keyRingId == null) {
+                throw new MissingRequiredPropertyException("GetKeyRingIamPolicyPlainArgs", "keyRingId");
+            }
             return $;
         }
     }

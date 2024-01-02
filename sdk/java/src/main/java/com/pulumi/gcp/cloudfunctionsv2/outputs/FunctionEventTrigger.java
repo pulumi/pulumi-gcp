@@ -150,6 +150,7 @@ public final class FunctionEventTrigger {
 
         @CustomType.Setter
         public Builder eventFilters(@Nullable List<FunctionEventTriggerEventFilter> eventFilters) {
+
             this.eventFilters = eventFilters;
             return this;
         }
@@ -158,31 +159,37 @@ public final class FunctionEventTrigger {
         }
         @CustomType.Setter
         public Builder eventType(@Nullable String eventType) {
+
             this.eventType = eventType;
             return this;
         }
         @CustomType.Setter
         public Builder pubsubTopic(@Nullable String pubsubTopic) {
+
             this.pubsubTopic = pubsubTopic;
             return this;
         }
         @CustomType.Setter
         public Builder retryPolicy(@Nullable String retryPolicy) {
+
             this.retryPolicy = retryPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountEmail(@Nullable String serviceAccountEmail) {
+
             this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder trigger(@Nullable String trigger) {
+
             this.trigger = trigger;
             return this;
         }
         @CustomType.Setter
         public Builder triggerRegion(@Nullable String triggerRegion) {
+
             this.triggerRegion = triggerRegion;
             return this;
         }

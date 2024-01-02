@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.identityplatform.inputs.InboundSamlConfigIdpConfigIdpCertificateArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -205,9 +206,15 @@ public final class InboundSamlConfigIdpConfigArgs extends com.pulumi.resources.R
         }
 
         public InboundSamlConfigIdpConfigArgs build() {
-            $.idpCertificates = Objects.requireNonNull($.idpCertificates, "expected parameter 'idpCertificates' to be non-null");
-            $.idpEntityId = Objects.requireNonNull($.idpEntityId, "expected parameter 'idpEntityId' to be non-null");
-            $.ssoUrl = Objects.requireNonNull($.ssoUrl, "expected parameter 'ssoUrl' to be non-null");
+            if ($.idpCertificates == null) {
+                throw new MissingRequiredPropertyException("InboundSamlConfigIdpConfigArgs", "idpCertificates");
+            }
+            if ($.idpEntityId == null) {
+                throw new MissingRequiredPropertyException("InboundSamlConfigIdpConfigArgs", "idpEntityId");
+            }
+            if ($.ssoUrl == null) {
+                throw new MissingRequiredPropertyException("InboundSamlConfigIdpConfigArgs", "ssoUrl");
+            }
             return $;
         }
     }

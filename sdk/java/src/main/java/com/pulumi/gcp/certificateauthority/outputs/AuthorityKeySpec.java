@@ -68,11 +68,13 @@ public final class AuthorityKeySpec {
 
         @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
+
             this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder cloudKmsKeyVersion(@Nullable String cloudKmsKeyVersion) {
+
             this.cloudKmsKeyVersion = cloudKmsKeyVersion;
             return this;
         }

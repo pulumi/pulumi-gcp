@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class AzureNodePoolAutoscalingArgs extends com.pulumi.resources.Res
         }
 
         public AzureNodePoolAutoscalingArgs build() {
-            $.maxNodeCount = Objects.requireNonNull($.maxNodeCount, "expected parameter 'maxNodeCount' to be non-null");
-            $.minNodeCount = Objects.requireNonNull($.minNodeCount, "expected parameter 'minNodeCount' to be non-null");
+            if ($.maxNodeCount == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolAutoscalingArgs", "maxNodeCount");
+            }
+            if ($.minNodeCount == null) {
+                throw new MissingRequiredPropertyException("AzureNodePoolAutoscalingArgs", "minNodeCount");
+            }
             return $;
         }
     }

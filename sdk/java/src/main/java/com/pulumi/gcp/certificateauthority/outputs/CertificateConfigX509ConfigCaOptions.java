@@ -95,21 +95,25 @@ public final class CertificateConfigX509ConfigCaOptions {
 
         @CustomType.Setter
         public Builder isCa(@Nullable Boolean isCa) {
+
             this.isCa = isCa;
             return this;
         }
         @CustomType.Setter
         public Builder maxIssuerPathLength(@Nullable Integer maxIssuerPathLength) {
+
             this.maxIssuerPathLength = maxIssuerPathLength;
             return this;
         }
         @CustomType.Setter
         public Builder nonCa(@Nullable Boolean nonCa) {
+
             this.nonCa = nonCa;
             return this;
         }
         @CustomType.Setter
         public Builder zeroMaxIssuerPathLength(@Nullable Boolean zeroMaxIssuerPathLength) {
+
             this.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
             return this;
         }

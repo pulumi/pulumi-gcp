@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.ResponsePolicyGkeClusterArgs;
 import com.pulumi.gcp.dns.inputs.ResponsePolicyNetworkArgs;
 import java.lang.String;
@@ -269,7 +270,9 @@ public final class ResponsePolicyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public ResponsePolicyArgs build() {
-            $.responsePolicyName = Objects.requireNonNull($.responsePolicyName, "expected parameter 'responsePolicyName' to be non-null");
+            if ($.responsePolicyName == null) {
+                throw new MissingRequiredPropertyException("ResponsePolicyArgs", "responsePolicyName");
+            }
             return $;
         }
     }

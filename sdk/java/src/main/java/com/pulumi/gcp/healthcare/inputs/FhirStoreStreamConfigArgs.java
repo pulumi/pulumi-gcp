@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigBigqueryDestinationArgs;
 import java.lang.String;
 import java.util.List;
@@ -155,7 +156,9 @@ public final class FhirStoreStreamConfigArgs extends com.pulumi.resources.Resour
         }
 
         public FhirStoreStreamConfigArgs build() {
-            $.bigqueryDestination = Objects.requireNonNull($.bigqueryDestination, "expected parameter 'bigqueryDestination' to be non-null");
+            if ($.bigqueryDestination == null) {
+                throw new MissingRequiredPropertyException("FhirStoreStreamConfigArgs", "bigqueryDestination");
+            }
             return $;
         }
     }

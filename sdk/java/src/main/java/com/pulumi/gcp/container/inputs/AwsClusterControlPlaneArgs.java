@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneAwsServicesAuthenticationArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneConfigEncryptionArgs;
 import com.pulumi.gcp.container.inputs.AwsClusterControlPlaneDatabaseEncryptionArgs;
@@ -587,12 +588,24 @@ public final class AwsClusterControlPlaneArgs extends com.pulumi.resources.Resou
         }
 
         public AwsClusterControlPlaneArgs build() {
-            $.awsServicesAuthentication = Objects.requireNonNull($.awsServicesAuthentication, "expected parameter 'awsServicesAuthentication' to be non-null");
-            $.configEncryption = Objects.requireNonNull($.configEncryption, "expected parameter 'configEncryption' to be non-null");
-            $.databaseEncryption = Objects.requireNonNull($.databaseEncryption, "expected parameter 'databaseEncryption' to be non-null");
-            $.iamInstanceProfile = Objects.requireNonNull($.iamInstanceProfile, "expected parameter 'iamInstanceProfile' to be non-null");
-            $.subnetIds = Objects.requireNonNull($.subnetIds, "expected parameter 'subnetIds' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.awsServicesAuthentication == null) {
+                throw new MissingRequiredPropertyException("AwsClusterControlPlaneArgs", "awsServicesAuthentication");
+            }
+            if ($.configEncryption == null) {
+                throw new MissingRequiredPropertyException("AwsClusterControlPlaneArgs", "configEncryption");
+            }
+            if ($.databaseEncryption == null) {
+                throw new MissingRequiredPropertyException("AwsClusterControlPlaneArgs", "databaseEncryption");
+            }
+            if ($.iamInstanceProfile == null) {
+                throw new MissingRequiredPropertyException("AwsClusterControlPlaneArgs", "iamInstanceProfile");
+            }
+            if ($.subnetIds == null) {
+                throw new MissingRequiredPropertyException("AwsClusterControlPlaneArgs", "subnetIds");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("AwsClusterControlPlaneArgs", "version");
+            }
             return $;
         }
     }

@@ -100,21 +100,25 @@ public final class InstanceGceSetupDataDisks {
 
         @CustomType.Setter
         public Builder diskEncryption(@Nullable String diskEncryption) {
+
             this.diskEncryption = diskEncryption;
             return this;
         }
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable String diskSizeGb) {
+
             this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(@Nullable String diskType) {
+
             this.diskType = diskType;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
+
             this.kmsKey = kmsKey;
             return this;
         }

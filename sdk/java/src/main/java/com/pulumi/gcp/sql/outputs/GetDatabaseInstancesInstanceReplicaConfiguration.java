@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -96,57 +97,90 @@ public final class GetDatabaseInstancesInstanceReplicaConfiguration {
 
         @CustomType.Setter
         public Builder caCertificate(String caCertificate) {
-            this.caCertificate = Objects.requireNonNull(caCertificate);
+            if (caCertificate == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "caCertificate");
+            }
+            this.caCertificate = caCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientCertificate(String clientCertificate) {
-            this.clientCertificate = Objects.requireNonNull(clientCertificate);
+            if (clientCertificate == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "clientCertificate");
+            }
+            this.clientCertificate = clientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientKey(String clientKey) {
-            this.clientKey = Objects.requireNonNull(clientKey);
+            if (clientKey == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "clientKey");
+            }
+            this.clientKey = clientKey;
             return this;
         }
         @CustomType.Setter
         public Builder connectRetryInterval(Integer connectRetryInterval) {
-            this.connectRetryInterval = Objects.requireNonNull(connectRetryInterval);
+            if (connectRetryInterval == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "connectRetryInterval");
+            }
+            this.connectRetryInterval = connectRetryInterval;
             return this;
         }
         @CustomType.Setter
         public Builder dumpFilePath(String dumpFilePath) {
-            this.dumpFilePath = Objects.requireNonNull(dumpFilePath);
+            if (dumpFilePath == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "dumpFilePath");
+            }
+            this.dumpFilePath = dumpFilePath;
             return this;
         }
         @CustomType.Setter
         public Builder failoverTarget(Boolean failoverTarget) {
-            this.failoverTarget = Objects.requireNonNull(failoverTarget);
+            if (failoverTarget == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "failoverTarget");
+            }
+            this.failoverTarget = failoverTarget;
             return this;
         }
         @CustomType.Setter
         public Builder masterHeartbeatPeriod(Integer masterHeartbeatPeriod) {
-            this.masterHeartbeatPeriod = Objects.requireNonNull(masterHeartbeatPeriod);
+            if (masterHeartbeatPeriod == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "masterHeartbeatPeriod");
+            }
+            this.masterHeartbeatPeriod = masterHeartbeatPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder password(String password) {
-            this.password = Objects.requireNonNull(password);
+            if (password == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "password");
+            }
+            this.password = password;
             return this;
         }
         @CustomType.Setter
         public Builder sslCipher(String sslCipher) {
-            this.sslCipher = Objects.requireNonNull(sslCipher);
+            if (sslCipher == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "sslCipher");
+            }
+            this.sslCipher = sslCipher;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "username");
+            }
+            this.username = username;
             return this;
         }
         @CustomType.Setter
         public Builder verifyServerCertificate(Boolean verifyServerCertificate) {
-            this.verifyServerCertificate = Objects.requireNonNull(verifyServerCertificate);
+            if (verifyServerCertificate == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceReplicaConfiguration", "verifyServerCertificate");
+            }
+            this.verifyServerCertificate = verifyServerCertificate;
             return this;
         }
         public GetDatabaseInstancesInstanceReplicaConfiguration build() {

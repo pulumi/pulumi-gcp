@@ -62,11 +62,13 @@ public final class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFul
 
         @CustomType.Setter
         public Builder allowPlaybackInterruption(@Nullable Boolean allowPlaybackInterruption) {
+
             this.allowPlaybackInterruption = allowPlaybackInterruption;
             return this;
         }
         @CustomType.Setter
         public Builder texts(@Nullable List<String> texts) {
+
             this.texts = texts;
             return this;
         }

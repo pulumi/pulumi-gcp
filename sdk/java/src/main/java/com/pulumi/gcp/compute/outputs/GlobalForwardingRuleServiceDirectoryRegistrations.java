@@ -64,11 +64,13 @@ public final class GlobalForwardingRuleServiceDirectoryRegistrations {
 
         @CustomType.Setter
         public Builder namespace(@Nullable String namespace) {
+
             this.namespace = namespace;
             return this;
         }
         @CustomType.Setter
         public Builder serviceDirectoryRegion(@Nullable String serviceDirectoryRegion) {
+
             this.serviceDirectoryRegion = serviceDirectoryRegion;
             return this;
         }

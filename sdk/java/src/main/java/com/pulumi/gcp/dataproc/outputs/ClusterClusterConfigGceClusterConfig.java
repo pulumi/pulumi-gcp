@@ -234,36 +234,43 @@ public final class ClusterClusterConfigGceClusterConfig {
 
         @CustomType.Setter
         public Builder internalIpOnly(@Nullable Boolean internalIpOnly) {
+
             this.internalIpOnly = internalIpOnly;
             return this;
         }
         @CustomType.Setter
         public Builder metadata(@Nullable Map<String,String> metadata) {
+
             this.metadata = metadata;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder nodeGroupAffinity(@Nullable ClusterClusterConfigGceClusterConfigNodeGroupAffinity nodeGroupAffinity) {
+
             this.nodeGroupAffinity = nodeGroupAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder reservationAffinity(@Nullable ClusterClusterConfigGceClusterConfigReservationAffinity reservationAffinity) {
+
             this.reservationAffinity = reservationAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountScopes(@Nullable List<String> serviceAccountScopes) {
+
             this.serviceAccountScopes = serviceAccountScopes;
             return this;
         }
@@ -272,16 +279,19 @@ public final class ClusterClusterConfigGceClusterConfig {
         }
         @CustomType.Setter
         public Builder shieldedInstanceConfig(@Nullable ClusterClusterConfigGceClusterConfigShieldedInstanceConfig shieldedInstanceConfig) {
+
             this.shieldedInstanceConfig = shieldedInstanceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
+
             this.subnetwork = subnetwork;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<String> tags) {
+
             this.tags = tags;
             return this;
         }
@@ -290,6 +300,7 @@ public final class ClusterClusterConfigGceClusterConfig {
         }
         @CustomType.Setter
         public Builder zone(@Nullable String zone) {
+
             this.zone = zone;
             return this;
         }

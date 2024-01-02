@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesAdditionalExtension;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesCaOptions;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesKeyUsage;
@@ -132,6 +133,7 @@ public final class CaPoolIssuancePolicyBaselineValues {
 
         @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<CaPoolIssuancePolicyBaselineValuesAdditionalExtension> additionalExtensions) {
+
             this.additionalExtensions = additionalExtensions;
             return this;
         }
@@ -140,6 +142,7 @@ public final class CaPoolIssuancePolicyBaselineValues {
         }
         @CustomType.Setter
         public Builder aiaOcspServers(@Nullable List<String> aiaOcspServers) {
+
             this.aiaOcspServers = aiaOcspServers;
             return this;
         }
@@ -148,21 +151,29 @@ public final class CaPoolIssuancePolicyBaselineValues {
         }
         @CustomType.Setter
         public Builder caOptions(CaPoolIssuancePolicyBaselineValuesCaOptions caOptions) {
-            this.caOptions = Objects.requireNonNull(caOptions);
+            if (caOptions == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValues", "caOptions");
+            }
+            this.caOptions = caOptions;
             return this;
         }
         @CustomType.Setter
         public Builder keyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsage keyUsage) {
-            this.keyUsage = Objects.requireNonNull(keyUsage);
+            if (keyUsage == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValues", "keyUsage");
+            }
+            this.keyUsage = keyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder nameConstraints(@Nullable CaPoolIssuancePolicyBaselineValuesNameConstraints nameConstraints) {
+
             this.nameConstraints = nameConstraints;
             return this;
         }
         @CustomType.Setter
         public Builder policyIds(@Nullable List<CaPoolIssuancePolicyBaselineValuesPolicyId> policyIds) {
+
             this.policyIds = policyIds;
             return this;
         }

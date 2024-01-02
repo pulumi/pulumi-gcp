@@ -44,6 +44,7 @@ public final class DatabaseInstanceSettingsAdvancedMachineFeatures {
 
         @CustomType.Setter
         public Builder threadsPerCore(@Nullable Integer threadsPerCore) {
+
             this.threadsPerCore = threadsPerCore;
             return this;
         }

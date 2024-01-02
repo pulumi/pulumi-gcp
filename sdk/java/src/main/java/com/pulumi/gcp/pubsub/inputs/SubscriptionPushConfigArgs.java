@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigNoWrapperArgs;
 import com.pulumi.gcp.pubsub.inputs.SubscriptionPushConfigOidcTokenArgs;
 import java.lang.String;
@@ -282,7 +283,9 @@ public final class SubscriptionPushConfigArgs extends com.pulumi.resources.Resou
         }
 
         public SubscriptionPushConfigArgs build() {
-            $.pushEndpoint = Objects.requireNonNull($.pushEndpoint, "expected parameter 'pushEndpoint' to be non-null");
+            if ($.pushEndpoint == null) {
+                throw new MissingRequiredPropertyException("SubscriptionPushConfigArgs", "pushEndpoint");
+            }
             return $;
         }
     }

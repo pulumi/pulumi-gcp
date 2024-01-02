@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.apigateway.inputs.ApiConfigOpenapiDocumentDocumentArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class ApiConfigOpenapiDocumentArgs extends com.pulumi.resources.Res
         }
 
         public ApiConfigOpenapiDocumentArgs build() {
-            $.document = Objects.requireNonNull($.document, "expected parameter 'document' to be non-null");
+            if ($.document == null) {
+                throw new MissingRequiredPropertyException("ApiConfigOpenapiDocumentArgs", "document");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudidentity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipMemberKeyArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipPreferredMemberKeyArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GroupMembershipRoleArgs;
@@ -219,8 +220,12 @@ public final class GroupMembershipArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public GroupMembershipArgs build() {
-            $.group = Objects.requireNonNull($.group, "expected parameter 'group' to be non-null");
-            $.roles = Objects.requireNonNull($.roles, "expected parameter 'roles' to be non-null");
+            if ($.group == null) {
+                throw new MissingRequiredPropertyException("GroupMembershipArgs", "group");
+            }
+            if ($.roles == null) {
+                throw new MissingRequiredPropertyException("GroupMembershipArgs", "roles");
+            }
             return $;
         }
     }

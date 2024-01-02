@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,42 +77,66 @@ public final class GetServiceCondition {
 
         @CustomType.Setter
         public Builder executionReason(String executionReason) {
-            this.executionReason = Objects.requireNonNull(executionReason);
+            if (executionReason == null) {
+              throw new MissingRequiredPropertyException("GetServiceCondition", "executionReason");
+            }
+            this.executionReason = executionReason;
             return this;
         }
         @CustomType.Setter
         public Builder lastTransitionTime(String lastTransitionTime) {
-            this.lastTransitionTime = Objects.requireNonNull(lastTransitionTime);
+            if (lastTransitionTime == null) {
+              throw new MissingRequiredPropertyException("GetServiceCondition", "lastTransitionTime");
+            }
+            this.lastTransitionTime = lastTransitionTime;
             return this;
         }
         @CustomType.Setter
         public Builder message(String message) {
-            this.message = Objects.requireNonNull(message);
+            if (message == null) {
+              throw new MissingRequiredPropertyException("GetServiceCondition", "message");
+            }
+            this.message = message;
             return this;
         }
         @CustomType.Setter
         public Builder reason(String reason) {
-            this.reason = Objects.requireNonNull(reason);
+            if (reason == null) {
+              throw new MissingRequiredPropertyException("GetServiceCondition", "reason");
+            }
+            this.reason = reason;
             return this;
         }
         @CustomType.Setter
         public Builder revisionReason(String revisionReason) {
-            this.revisionReason = Objects.requireNonNull(revisionReason);
+            if (revisionReason == null) {
+              throw new MissingRequiredPropertyException("GetServiceCondition", "revisionReason");
+            }
+            this.revisionReason = revisionReason;
             return this;
         }
         @CustomType.Setter
         public Builder severity(String severity) {
-            this.severity = Objects.requireNonNull(severity);
+            if (severity == null) {
+              throw new MissingRequiredPropertyException("GetServiceCondition", "severity");
+            }
+            this.severity = severity;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetServiceCondition", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetServiceCondition", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetServiceCondition build() {

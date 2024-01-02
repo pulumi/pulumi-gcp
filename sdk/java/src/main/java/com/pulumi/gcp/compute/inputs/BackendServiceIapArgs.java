@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -162,8 +163,12 @@ public final class BackendServiceIapArgs extends com.pulumi.resources.ResourceAr
         }
 
         public BackendServiceIapArgs build() {
-            $.oauth2ClientId = Objects.requireNonNull($.oauth2ClientId, "expected parameter 'oauth2ClientId' to be non-null");
-            $.oauth2ClientSecret = Objects.requireNonNull($.oauth2ClientSecret, "expected parameter 'oauth2ClientSecret' to be non-null");
+            if ($.oauth2ClientId == null) {
+                throw new MissingRequiredPropertyException("BackendServiceIapArgs", "oauth2ClientId");
+            }
+            if ($.oauth2ClientSecret == null) {
+                throw new MissingRequiredPropertyException("BackendServiceIapArgs", "oauth2ClientSecret");
+            }
             return $;
         }
     }

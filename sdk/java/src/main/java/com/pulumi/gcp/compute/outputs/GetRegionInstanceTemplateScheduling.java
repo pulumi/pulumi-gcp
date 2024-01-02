@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingMaxRunDuration;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateSchedulingNodeAffinity;
@@ -160,17 +161,26 @@ public final class GetRegionInstanceTemplateScheduling {
 
         @CustomType.Setter
         public Builder automaticRestart(Boolean automaticRestart) {
-            this.automaticRestart = Objects.requireNonNull(automaticRestart);
+            if (automaticRestart == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "automaticRestart");
+            }
+            this.automaticRestart = automaticRestart;
             return this;
         }
         @CustomType.Setter
         public Builder instanceTerminationAction(String instanceTerminationAction) {
-            this.instanceTerminationAction = Objects.requireNonNull(instanceTerminationAction);
+            if (instanceTerminationAction == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "instanceTerminationAction");
+            }
+            this.instanceTerminationAction = instanceTerminationAction;
             return this;
         }
         @CustomType.Setter
         public Builder localSsdRecoveryTimeouts(List<GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts) {
-            this.localSsdRecoveryTimeouts = Objects.requireNonNull(localSsdRecoveryTimeouts);
+            if (localSsdRecoveryTimeouts == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "localSsdRecoveryTimeouts");
+            }
+            this.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;
             return this;
         }
         public Builder localSsdRecoveryTimeouts(GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout... localSsdRecoveryTimeouts) {
@@ -178,12 +188,18 @@ public final class GetRegionInstanceTemplateScheduling {
         }
         @CustomType.Setter
         public Builder maintenanceInterval(String maintenanceInterval) {
-            this.maintenanceInterval = Objects.requireNonNull(maintenanceInterval);
+            if (maintenanceInterval == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "maintenanceInterval");
+            }
+            this.maintenanceInterval = maintenanceInterval;
             return this;
         }
         @CustomType.Setter
         public Builder maxRunDurations(List<GetRegionInstanceTemplateSchedulingMaxRunDuration> maxRunDurations) {
-            this.maxRunDurations = Objects.requireNonNull(maxRunDurations);
+            if (maxRunDurations == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "maxRunDurations");
+            }
+            this.maxRunDurations = maxRunDurations;
             return this;
         }
         public Builder maxRunDurations(GetRegionInstanceTemplateSchedulingMaxRunDuration... maxRunDurations) {
@@ -191,12 +207,18 @@ public final class GetRegionInstanceTemplateScheduling {
         }
         @CustomType.Setter
         public Builder minNodeCpus(Integer minNodeCpus) {
-            this.minNodeCpus = Objects.requireNonNull(minNodeCpus);
+            if (minNodeCpus == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "minNodeCpus");
+            }
+            this.minNodeCpus = minNodeCpus;
             return this;
         }
         @CustomType.Setter
         public Builder nodeAffinities(List<GetRegionInstanceTemplateSchedulingNodeAffinity> nodeAffinities) {
-            this.nodeAffinities = Objects.requireNonNull(nodeAffinities);
+            if (nodeAffinities == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "nodeAffinities");
+            }
+            this.nodeAffinities = nodeAffinities;
             return this;
         }
         public Builder nodeAffinities(GetRegionInstanceTemplateSchedulingNodeAffinity... nodeAffinities) {
@@ -204,17 +226,26 @@ public final class GetRegionInstanceTemplateScheduling {
         }
         @CustomType.Setter
         public Builder onHostMaintenance(String onHostMaintenance) {
-            this.onHostMaintenance = Objects.requireNonNull(onHostMaintenance);
+            if (onHostMaintenance == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "onHostMaintenance");
+            }
+            this.onHostMaintenance = onHostMaintenance;
             return this;
         }
         @CustomType.Setter
         public Builder preemptible(Boolean preemptible) {
-            this.preemptible = Objects.requireNonNull(preemptible);
+            if (preemptible == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "preemptible");
+            }
+            this.preemptible = preemptible;
             return this;
         }
         @CustomType.Setter
         public Builder provisioningModel(String provisioningModel) {
-            this.provisioningModel = Objects.requireNonNull(provisioningModel);
+            if (provisioningModel == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateScheduling", "provisioningModel");
+            }
+            this.provisioningModel = provisioningModel;
             return this;
         }
         public GetRegionInstanceTemplateScheduling build() {

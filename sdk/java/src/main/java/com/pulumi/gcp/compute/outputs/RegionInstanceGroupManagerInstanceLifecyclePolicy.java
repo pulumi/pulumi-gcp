@@ -46,6 +46,7 @@ public final class RegionInstanceGroupManagerInstanceLifecyclePolicy {
 
         @CustomType.Setter
         public Builder forceUpdateOnRepair(@Nullable String forceUpdateOnRepair) {
+
             this.forceUpdateOnRepair = forceUpdateOnRepair;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.recaptcha.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class EnterpriseKeyWafSettingsArgs extends com.pulumi.resources.Res
         }
 
         public EnterpriseKeyWafSettingsArgs build() {
-            $.wafFeature = Objects.requireNonNull($.wafFeature, "expected parameter 'wafFeature' to be non-null");
-            $.wafService = Objects.requireNonNull($.wafService, "expected parameter 'wafService' to be non-null");
+            if ($.wafFeature == null) {
+                throw new MissingRequiredPropertyException("EnterpriseKeyWafSettingsArgs", "wafFeature");
+            }
+            if ($.wafService == null) {
+                throw new MissingRequiredPropertyException("EnterpriseKeyWafSettingsArgs", "wafService");
+            }
             return $;
         }
     }

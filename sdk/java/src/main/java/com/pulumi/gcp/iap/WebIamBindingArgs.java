@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iap.inputs.WebIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -237,8 +238,12 @@ public final class WebIamBindingArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public WebIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("WebIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("WebIamBindingArgs", "role");
+            }
             return $;
         }
     }

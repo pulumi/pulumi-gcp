@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetSubscriptionRetryPolicy {
 
         @CustomType.Setter
         public Builder maximumBackoff(String maximumBackoff) {
-            this.maximumBackoff = Objects.requireNonNull(maximumBackoff);
+            if (maximumBackoff == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionRetryPolicy", "maximumBackoff");
+            }
+            this.maximumBackoff = maximumBackoff;
             return this;
         }
         @CustomType.Setter
         public Builder minimumBackoff(String minimumBackoff) {
-            this.minimumBackoff = Objects.requireNonNull(minimumBackoff);
+            if (minimumBackoff == null) {
+              throw new MissingRequiredPropertyException("GetSubscriptionRetryPolicy", "minimumBackoff");
+            }
+            this.minimumBackoff = minimumBackoff;
             return this;
         }
         public GetSubscriptionRetryPolicy build() {

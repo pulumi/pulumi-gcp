@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex;
@@ -172,41 +173,51 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoType {
 
         @CustomType.Setter
         public Builder dictionary(@Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionary dictionary) {
+
             this.dictionary = dictionary;
             return this;
         }
         @CustomType.Setter
         public Builder exclusionType(@Nullable String exclusionType) {
+
             this.exclusionType = exclusionType;
             return this;
         }
         @CustomType.Setter
         public Builder infoType(PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoType infoType) {
-            this.infoType = Objects.requireNonNull(infoType);
+            if (infoType == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobInspectConfigCustomInfoType", "infoType");
+            }
+            this.infoType = infoType;
             return this;
         }
         @CustomType.Setter
         public Builder likelihood(@Nullable String likelihood) {
+
             this.likelihood = likelihood;
             return this;
         }
         @CustomType.Setter
         public Builder regex(@Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegex regex) {
+
             this.regex = regex;
             return this;
         }
         @CustomType.Setter
         public Builder sensitivityScore(@Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSensitivityScore sensitivityScore) {
+
             this.sensitivityScore = sensitivityScore;
             return this;
         }
         @CustomType.Setter
         public Builder storedType(@Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeStoredType storedType) {
+
             this.storedType = storedType;
             return this;
         }
         @CustomType.Setter
         public Builder surrogateType(@Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeSurrogateType surrogateType) {
+
             this.surrogateType = surrogateType;
             return this;
         }

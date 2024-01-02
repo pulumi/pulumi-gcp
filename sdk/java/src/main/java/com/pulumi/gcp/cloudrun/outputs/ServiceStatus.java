@@ -152,6 +152,7 @@ public final class ServiceStatus {
 
         @CustomType.Setter
         public Builder conditions(@Nullable List<ServiceStatusCondition> conditions) {
+
             this.conditions = conditions;
             return this;
         }
@@ -160,21 +161,25 @@ public final class ServiceStatus {
         }
         @CustomType.Setter
         public Builder latestCreatedRevisionName(@Nullable String latestCreatedRevisionName) {
+
             this.latestCreatedRevisionName = latestCreatedRevisionName;
             return this;
         }
         @CustomType.Setter
         public Builder latestReadyRevisionName(@Nullable String latestReadyRevisionName) {
+
             this.latestReadyRevisionName = latestReadyRevisionName;
             return this;
         }
         @CustomType.Setter
         public Builder observedGeneration(@Nullable Integer observedGeneration) {
+
             this.observedGeneration = observedGeneration;
             return this;
         }
         @CustomType.Setter
         public Builder traffics(@Nullable List<ServiceStatusTraffic> traffics) {
+
             this.traffics = traffics;
             return this;
         }
@@ -183,6 +188,7 @@ public final class ServiceStatus {
         }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
+
             this.url = url;
             return this;
         }

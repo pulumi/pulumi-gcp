@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetAiIndexMetadataConfigAlgorithmConfig {
 
         @CustomType.Setter
         public Builder bruteForceConfigs(List<GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig> bruteForceConfigs) {
-            this.bruteForceConfigs = Objects.requireNonNull(bruteForceConfigs);
+            if (bruteForceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfigAlgorithmConfig", "bruteForceConfigs");
+            }
+            this.bruteForceConfigs = bruteForceConfigs;
             return this;
         }
         public Builder bruteForceConfigs(GetAiIndexMetadataConfigAlgorithmConfigBruteForceConfig... bruteForceConfigs) {
@@ -50,7 +54,10 @@ public final class GetAiIndexMetadataConfigAlgorithmConfig {
         }
         @CustomType.Setter
         public Builder treeAhConfigs(List<GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig> treeAhConfigs) {
-            this.treeAhConfigs = Objects.requireNonNull(treeAhConfigs);
+            if (treeAhConfigs == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfigAlgorithmConfig", "treeAhConfigs");
+            }
+            this.treeAhConfigs = treeAhConfigs;
             return this;
         }
         public Builder treeAhConfigs(GetAiIndexMetadataConfigAlgorithmConfigTreeAhConfig... treeAhConfigs) {

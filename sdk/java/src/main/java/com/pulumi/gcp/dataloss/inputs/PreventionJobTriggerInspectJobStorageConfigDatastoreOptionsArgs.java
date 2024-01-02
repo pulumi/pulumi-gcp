@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsKindArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsPartitionIdArgs;
 import java.util.Objects;
@@ -124,8 +125,12 @@ public final class PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsAr
         }
 
         public PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs build() {
-            $.kind = Objects.requireNonNull($.kind, "expected parameter 'kind' to be non-null");
-            $.partitionId = Objects.requireNonNull($.partitionId, "expected parameter 'partitionId' to be non-null");
+            if ($.kind == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs", "kind");
+            }
+            if ($.partitionId == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobStorageConfigDatastoreOptionsArgs", "partitionId");
+            }
             return $;
         }
     }
