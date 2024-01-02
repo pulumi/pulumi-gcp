@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigTaintArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareNodePoolConfigVsphereConfigArgs;
 import java.lang.Boolean;
@@ -478,7 +479,9 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public VMwareNodePoolConfigArgs build() {
-            $.imageType = Objects.requireNonNull($.imageType, "expected parameter 'imageType' to be non-null");
+            if ($.imageType == null) {
+                throw new MissingRequiredPropertyException("VMwareNodePoolConfigArgs", "imageType");
+            }
             return $;
         }
     }

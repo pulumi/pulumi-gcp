@@ -95,21 +95,25 @@ public final class Hl7StoreParserConfig {
 
         @CustomType.Setter
         public Builder allowNullHeader(@Nullable Boolean allowNullHeader) {
+
             this.allowNullHeader = allowNullHeader;
             return this;
         }
         @CustomType.Setter
         public Builder schema(@Nullable String schema) {
+
             this.schema = schema;
             return this;
         }
         @CustomType.Setter
         public Builder segmentTerminator(@Nullable String segmentTerminator) {
+
             this.segmentTerminator = segmentTerminator;
             return this;
         }
         @CustomType.Setter
         public Builder version(@Nullable String version) {
+
             this.version = version;
             return this;
         }

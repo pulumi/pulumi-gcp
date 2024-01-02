@@ -5,6 +5,7 @@ package com.pulumi.gcp.tpu;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.tpu.inputs.NodeSchedulingConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -525,8 +526,12 @@ public final class NodeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NodeArgs build() {
-            $.acceleratorType = Objects.requireNonNull($.acceleratorType, "expected parameter 'acceleratorType' to be non-null");
-            $.tensorflowVersion = Objects.requireNonNull($.tensorflowVersion, "expected parameter 'tensorflowVersion' to be non-null");
+            if ($.acceleratorType == null) {
+                throw new MissingRequiredPropertyException("NodeArgs", "acceleratorType");
+            }
+            if ($.tensorflowVersion == null) {
+                throw new MissingRequiredPropertyException("NodeArgs", "tensorflowVersion");
+            }
             return $;
         }
     }

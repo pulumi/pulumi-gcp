@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -123,8 +124,12 @@ public final class PrivateConnectionVpcPeeringConfigArgs extends com.pulumi.reso
         }
 
         public PrivateConnectionVpcPeeringConfigArgs build() {
-            $.subnet = Objects.requireNonNull($.subnet, "expected parameter 'subnet' to be non-null");
-            $.vpcName = Objects.requireNonNull($.vpcName, "expected parameter 'vpcName' to be non-null");
+            if ($.subnet == null) {
+                throw new MissingRequiredPropertyException("PrivateConnectionVpcPeeringConfigArgs", "subnet");
+            }
+            if ($.vpcName == null) {
+                throw new MissingRequiredPropertyException("PrivateConnectionVpcPeeringConfigArgs", "vpcName");
+            }
             return $;
         }
     }

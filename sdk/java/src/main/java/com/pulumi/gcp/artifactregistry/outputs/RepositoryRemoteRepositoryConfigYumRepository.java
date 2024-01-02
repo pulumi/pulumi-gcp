@@ -46,6 +46,7 @@ public final class RepositoryRemoteRepositoryConfigYumRepository {
 
         @CustomType.Setter
         public Builder publicRepository(@Nullable RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository publicRepository) {
+
             this.publicRepository = publicRepository;
             return this;
         }

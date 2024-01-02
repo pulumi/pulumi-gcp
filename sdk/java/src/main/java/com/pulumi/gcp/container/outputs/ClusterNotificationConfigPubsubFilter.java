@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class ClusterNotificationConfigPubsubFilter {
 
         @CustomType.Setter
         public Builder eventTypes(List<String> eventTypes) {
-            this.eventTypes = Objects.requireNonNull(eventTypes);
+            if (eventTypes == null) {
+              throw new MissingRequiredPropertyException("ClusterNotificationConfigPubsubFilter", "eventTypes");
+            }
+            this.eventTypes = eventTypes;
             return this;
         }
         public Builder eventTypes(String... eventTypes) {

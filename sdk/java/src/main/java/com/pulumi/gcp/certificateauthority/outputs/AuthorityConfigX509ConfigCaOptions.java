@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.util.Objects;
@@ -97,21 +98,27 @@ public final class AuthorityConfigX509ConfigCaOptions {
 
         @CustomType.Setter
         public Builder isCa(Boolean isCa) {
-            this.isCa = Objects.requireNonNull(isCa);
+            if (isCa == null) {
+              throw new MissingRequiredPropertyException("AuthorityConfigX509ConfigCaOptions", "isCa");
+            }
+            this.isCa = isCa;
             return this;
         }
         @CustomType.Setter
         public Builder maxIssuerPathLength(@Nullable Integer maxIssuerPathLength) {
+
             this.maxIssuerPathLength = maxIssuerPathLength;
             return this;
         }
         @CustomType.Setter
         public Builder nonCa(@Nullable Boolean nonCa) {
+
             this.nonCa = nonCa;
             return this;
         }
         @CustomType.Setter
         public Builder zeroMaxIssuerPathLength(@Nullable Boolean zeroMaxIssuerPathLength) {
+
             this.zeroMaxIssuerPathLength = zeroMaxIssuerPathLength;
             return this;
         }

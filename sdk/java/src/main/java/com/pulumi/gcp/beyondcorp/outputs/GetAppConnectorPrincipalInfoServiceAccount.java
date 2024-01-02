@@ -4,6 +4,7 @@
 package com.pulumi.gcp.beyondcorp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetAppConnectorPrincipalInfoServiceAccount {
 
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectorPrincipalInfoServiceAccount", "email");
+            }
+            this.email = email;
             return this;
         }
         public GetAppConnectorPrincipalInfoServiceAccount build() {

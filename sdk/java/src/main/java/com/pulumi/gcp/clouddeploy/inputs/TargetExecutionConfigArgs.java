@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -235,7 +236,9 @@ public final class TargetExecutionConfigArgs extends com.pulumi.resources.Resour
         }
 
         public TargetExecutionConfigArgs build() {
-            $.usages = Objects.requireNonNull($.usages, "expected parameter 'usages' to be non-null");
+            if ($.usages == null) {
+                throw new MissingRequiredPropertyException("TargetExecutionConfigArgs", "usages");
+            }
             return $;
         }
     }

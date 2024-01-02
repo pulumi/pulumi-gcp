@@ -58,11 +58,13 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionSchemaSour
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder processorType(@Nullable String processorType) {
+
             this.processorType = processorType;
             return this;
         }

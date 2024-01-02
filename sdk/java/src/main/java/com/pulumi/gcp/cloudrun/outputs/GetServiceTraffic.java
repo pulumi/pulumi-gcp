@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -60,27 +61,42 @@ public final class GetServiceTraffic {
 
         @CustomType.Setter
         public Builder latestRevision(Boolean latestRevision) {
-            this.latestRevision = Objects.requireNonNull(latestRevision);
+            if (latestRevision == null) {
+              throw new MissingRequiredPropertyException("GetServiceTraffic", "latestRevision");
+            }
+            this.latestRevision = latestRevision;
             return this;
         }
         @CustomType.Setter
         public Builder percent(Integer percent) {
-            this.percent = Objects.requireNonNull(percent);
+            if (percent == null) {
+              throw new MissingRequiredPropertyException("GetServiceTraffic", "percent");
+            }
+            this.percent = percent;
             return this;
         }
         @CustomType.Setter
         public Builder revisionName(String revisionName) {
-            this.revisionName = Objects.requireNonNull(revisionName);
+            if (revisionName == null) {
+              throw new MissingRequiredPropertyException("GetServiceTraffic", "revisionName");
+            }
+            this.revisionName = revisionName;
             return this;
         }
         @CustomType.Setter
         public Builder tag(String tag) {
-            this.tag = Objects.requireNonNull(tag);
+            if (tag == null) {
+              throw new MissingRequiredPropertyException("GetServiceTraffic", "tag");
+            }
+            this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetServiceTraffic", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetServiceTraffic build() {

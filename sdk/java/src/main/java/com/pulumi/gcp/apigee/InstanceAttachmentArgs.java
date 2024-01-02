@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -123,8 +124,12 @@ public final class InstanceAttachmentArgs extends com.pulumi.resources.ResourceA
         }
 
         public InstanceAttachmentArgs build() {
-            $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "environment");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("InstanceAttachmentArgs", "instanceId");
+            }
             return $;
         }
     }

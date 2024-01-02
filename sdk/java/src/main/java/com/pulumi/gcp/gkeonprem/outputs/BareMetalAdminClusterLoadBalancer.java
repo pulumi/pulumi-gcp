@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterLoadBalancerManualLbConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterLoadBalancerPortConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterLoadBalancerVipConfig;
@@ -80,17 +81,24 @@ public final class BareMetalAdminClusterLoadBalancer {
 
         @CustomType.Setter
         public Builder manualLbConfig(@Nullable BareMetalAdminClusterLoadBalancerManualLbConfig manualLbConfig) {
+
             this.manualLbConfig = manualLbConfig;
             return this;
         }
         @CustomType.Setter
         public Builder portConfig(BareMetalAdminClusterLoadBalancerPortConfig portConfig) {
-            this.portConfig = Objects.requireNonNull(portConfig);
+            if (portConfig == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterLoadBalancer", "portConfig");
+            }
+            this.portConfig = portConfig;
             return this;
         }
         @CustomType.Setter
         public Builder vipConfig(BareMetalAdminClusterLoadBalancerVipConfig vipConfig) {
-            this.vipConfig = Objects.requireNonNull(vipConfig);
+            if (vipConfig == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterLoadBalancer", "vipConfig");
+            }
+            this.vipConfig = vipConfig;
             return this;
         }
         public BareMetalAdminClusterLoadBalancer build() {

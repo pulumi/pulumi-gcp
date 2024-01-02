@@ -5,6 +5,7 @@ package com.pulumi.gcp.containeranalysis;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.containeranalysis.inputs.OccurenceAttestationArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -277,9 +278,15 @@ public final class OccurenceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public OccurenceArgs build() {
-            $.attestation = Objects.requireNonNull($.attestation, "expected parameter 'attestation' to be non-null");
-            $.noteName = Objects.requireNonNull($.noteName, "expected parameter 'noteName' to be non-null");
-            $.resourceUri = Objects.requireNonNull($.resourceUri, "expected parameter 'resourceUri' to be non-null");
+            if ($.attestation == null) {
+                throw new MissingRequiredPropertyException("OccurenceArgs", "attestation");
+            }
+            if ($.noteName == null) {
+                throw new MissingRequiredPropertyException("OccurenceArgs", "noteName");
+            }
+            if ($.resourceUri == null) {
+                throw new MissingRequiredPropertyException("OccurenceArgs", "resourceUri");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.ConnectionAwsAccessRole;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ConnectionAws {
 
         @CustomType.Setter
         public Builder accessRole(ConnectionAwsAccessRole accessRole) {
-            this.accessRole = Objects.requireNonNull(accessRole);
+            if (accessRole == null) {
+              throw new MissingRequiredPropertyException("ConnectionAws", "accessRole");
+            }
+            this.accessRole = accessRole;
             return this;
         }
         public ConnectionAws build() {

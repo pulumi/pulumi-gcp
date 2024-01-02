@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachin
 
         @CustomType.Setter
         public Builder cpuCount(Integer cpuCount) {
-            this.cpuCount = Objects.requireNonNull(cpuCount);
+            if (cpuCount == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig", "cpuCount");
+            }
+            this.cpuCount = cpuCount;
             return this;
         }
         public ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsMachineConfig build() {

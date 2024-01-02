@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigSubjectConfigSubject;
 import com.pulumi.gcp.certificateauthority.outputs.CertificateConfigSubjectConfigSubjectAltName;
 import java.util.Objects;
@@ -63,11 +64,15 @@ public final class CertificateConfigSubjectConfig {
 
         @CustomType.Setter
         public Builder subject(CertificateConfigSubjectConfigSubject subject) {
-            this.subject = Objects.requireNonNull(subject);
+            if (subject == null) {
+              throw new MissingRequiredPropertyException("CertificateConfigSubjectConfig", "subject");
+            }
+            this.subject = subject;
             return this;
         }
         @CustomType.Setter
         public Builder subjectAltName(@Nullable CertificateConfigSubjectConfigSubjectAltName subjectAltName) {
+
             this.subjectAltName = subjectAltName;
             return this;
         }

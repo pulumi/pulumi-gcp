@@ -63,11 +63,13 @@ public final class AiEndpointDeployedModelDedicatedResourceAutoscalingMetricSpec
 
         @CustomType.Setter
         public Builder metricName(@Nullable String metricName) {
+
             this.metricName = metricName;
             return this;
         }
         @CustomType.Setter
         public Builder target(@Nullable Integer target) {
+
             this.target = target;
             return this;
         }

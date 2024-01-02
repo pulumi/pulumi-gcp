@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetRouterBgpAdvertisedIpRange {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRouterBgpAdvertisedIpRange", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder range(String range) {
-            this.range = Objects.requireNonNull(range);
+            if (range == null) {
+              throw new MissingRequiredPropertyException("GetRouterBgpAdvertisedIpRange", "range");
+            }
+            this.range = range;
             return this;
         }
         public GetRouterBgpAdvertisedIpRange build() {

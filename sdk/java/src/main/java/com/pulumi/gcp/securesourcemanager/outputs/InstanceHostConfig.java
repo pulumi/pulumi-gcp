@@ -94,21 +94,25 @@ public final class InstanceHostConfig {
 
         @CustomType.Setter
         public Builder api(@Nullable String api) {
+
             this.api = api;
             return this;
         }
         @CustomType.Setter
         public Builder gitHttp(@Nullable String gitHttp) {
+
             this.gitHttp = gitHttp;
             return this;
         }
         @CustomType.Setter
         public Builder gitSsh(@Nullable String gitSsh) {
+
             this.gitSsh = gitSsh;
             return this;
         }
         @CustomType.Setter
         public Builder html(@Nullable String html) {
+
             this.html = html;
             return this;
         }

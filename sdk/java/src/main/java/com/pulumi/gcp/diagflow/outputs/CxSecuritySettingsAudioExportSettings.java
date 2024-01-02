@@ -95,21 +95,25 @@ public final class CxSecuritySettingsAudioExportSettings {
 
         @CustomType.Setter
         public Builder audioExportPattern(@Nullable String audioExportPattern) {
+
             this.audioExportPattern = audioExportPattern;
             return this;
         }
         @CustomType.Setter
         public Builder audioFormat(@Nullable String audioFormat) {
+
             this.audioFormat = audioFormat;
             return this;
         }
         @CustomType.Setter
         public Builder enableAudioRedaction(@Nullable Boolean enableAudioRedaction) {
+
             this.enableAudioRedaction = enableAudioRedaction;
             return this;
         }
         @CustomType.Setter
         public Builder gcsBucket(@Nullable String gcsBucket) {
+
             this.gcsBucket = gcsBucket;
             return this;
         }

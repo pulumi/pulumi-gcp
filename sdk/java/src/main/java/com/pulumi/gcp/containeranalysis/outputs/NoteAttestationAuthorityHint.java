@@ -4,6 +4,7 @@
 package com.pulumi.gcp.containeranalysis.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class NoteAttestationAuthorityHint {
 
         @CustomType.Setter
         public Builder humanReadableName(String humanReadableName) {
-            this.humanReadableName = Objects.requireNonNull(humanReadableName);
+            if (humanReadableName == null) {
+              throw new MissingRequiredPropertyException("NoteAttestationAuthorityHint", "humanReadableName");
+            }
+            this.humanReadableName = humanReadableName;
             return this;
         }
         public NoteAttestationAuthorityHint build() {

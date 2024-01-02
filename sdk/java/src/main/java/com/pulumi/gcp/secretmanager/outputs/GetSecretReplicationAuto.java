@@ -4,6 +4,7 @@
 package com.pulumi.gcp.secretmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretReplicationAutoCustomerManagedEncryption;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetSecretReplicationAuto {
 
         @CustomType.Setter
         public Builder customerManagedEncryptions(List<GetSecretReplicationAutoCustomerManagedEncryption> customerManagedEncryptions) {
-            this.customerManagedEncryptions = Objects.requireNonNull(customerManagedEncryptions);
+            if (customerManagedEncryptions == null) {
+              throw new MissingRequiredPropertyException("GetSecretReplicationAuto", "customerManagedEncryptions");
+            }
+            this.customerManagedEncryptions = customerManagedEncryptions;
             return this;
         }
         public Builder customerManagedEncryptions(GetSecretReplicationAutoCustomerManagedEncryption... customerManagedEncryptions) {

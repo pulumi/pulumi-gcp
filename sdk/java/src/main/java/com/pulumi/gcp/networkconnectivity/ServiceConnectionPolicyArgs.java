@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
 import java.lang.String;
 import java.util.Map;
@@ -369,9 +370,15 @@ public final class ServiceConnectionPolicyArgs extends com.pulumi.resources.Reso
         }
 
         public ServiceConnectionPolicyArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.serviceClass = Objects.requireNonNull($.serviceClass, "expected parameter 'serviceClass' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ServiceConnectionPolicyArgs", "location");
+            }
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("ServiceConnectionPolicyArgs", "network");
+            }
+            if ($.serviceClass == null) {
+                throw new MissingRequiredPropertyException("ServiceConnectionPolicyArgs", "serviceClass");
+            }
             return $;
         }
     }

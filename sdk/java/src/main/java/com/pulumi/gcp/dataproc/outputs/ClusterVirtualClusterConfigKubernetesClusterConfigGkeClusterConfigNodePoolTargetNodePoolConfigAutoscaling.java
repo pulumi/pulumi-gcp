@@ -58,11 +58,13 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
 
         @CustomType.Setter
         public Builder maxNodeCount(@Nullable Integer maxNodeCount) {
+
             this.maxNodeCount = maxNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder minNodeCount(@Nullable Integer minNodeCount) {
+
             this.minNodeCount = minNodeCount;
             return this;
         }

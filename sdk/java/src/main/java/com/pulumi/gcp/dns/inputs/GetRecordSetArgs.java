@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -187,9 +188,15 @@ public final class GetRecordSetArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetRecordSetArgs build() {
-            $.managedZone = Objects.requireNonNull($.managedZone, "expected parameter 'managedZone' to be non-null");
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.managedZone == null) {
+                throw new MissingRequiredPropertyException("GetRecordSetArgs", "managedZone");
+            }
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("GetRecordSetArgs", "name");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("GetRecordSetArgs", "type");
+            }
             return $;
         }
     }

@@ -192,31 +192,37 @@ public final class RuntimeSoftwareConfig {
 
         @CustomType.Setter
         public Builder customGpuDriverPath(@Nullable String customGpuDriverPath) {
+
             this.customGpuDriverPath = customGpuDriverPath;
             return this;
         }
         @CustomType.Setter
         public Builder enableHealthMonitoring(@Nullable Boolean enableHealthMonitoring) {
+
             this.enableHealthMonitoring = enableHealthMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder idleShutdown(@Nullable Boolean idleShutdown) {
+
             this.idleShutdown = idleShutdown;
             return this;
         }
         @CustomType.Setter
         public Builder idleShutdownTimeout(@Nullable Integer idleShutdownTimeout) {
+
             this.idleShutdownTimeout = idleShutdownTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder installGpuDriver(@Nullable Boolean installGpuDriver) {
+
             this.installGpuDriver = installGpuDriver;
             return this;
         }
         @CustomType.Setter
         public Builder kernels(@Nullable List<RuntimeSoftwareConfigKernel> kernels) {
+
             this.kernels = kernels;
             return this;
         }
@@ -225,21 +231,25 @@ public final class RuntimeSoftwareConfig {
         }
         @CustomType.Setter
         public Builder notebookUpgradeSchedule(@Nullable String notebookUpgradeSchedule) {
+
             this.notebookUpgradeSchedule = notebookUpgradeSchedule;
             return this;
         }
         @CustomType.Setter
         public Builder postStartupScript(@Nullable String postStartupScript) {
+
             this.postStartupScript = postStartupScript;
             return this;
         }
         @CustomType.Setter
         public Builder postStartupScriptBehavior(@Nullable String postStartupScriptBehavior) {
+
             this.postStartupScriptBehavior = postStartupScriptBehavior;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeable(@Nullable Boolean upgradeable) {
+
             this.upgradeable = upgradeable;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class MembershipAuthorityArgs extends com.pulumi.resources.Resource
         }
 
         public MembershipAuthorityArgs build() {
-            $.issuer = Objects.requireNonNull($.issuer, "expected parameter 'issuer' to be non-null");
+            if ($.issuer == null) {
+                throw new MissingRequiredPropertyException("MembershipAuthorityArgs", "issuer");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigKerberosConfigKeytabArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -153,9 +154,15 @@ public final class MetastoreServiceHiveMetastoreConfigKerberosConfigArgs extends
         }
 
         public MetastoreServiceHiveMetastoreConfigKerberosConfigArgs build() {
-            $.keytab = Objects.requireNonNull($.keytab, "expected parameter 'keytab' to be non-null");
-            $.krb5ConfigGcsUri = Objects.requireNonNull($.krb5ConfigGcsUri, "expected parameter 'krb5ConfigGcsUri' to be non-null");
-            $.principal = Objects.requireNonNull($.principal, "expected parameter 'principal' to be non-null");
+            if ($.keytab == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigKerberosConfigArgs", "keytab");
+            }
+            if ($.krb5ConfigGcsUri == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigKerberosConfigArgs", "krb5ConfigGcsUri");
+            }
+            if ($.principal == null) {
+                throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfigKerberosConfigArgs", "principal");
+            }
             return $;
         }
     }

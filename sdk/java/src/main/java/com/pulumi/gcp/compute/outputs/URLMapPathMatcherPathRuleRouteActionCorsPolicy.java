@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -155,11 +156,13 @@ public final class URLMapPathMatcherPathRuleRouteActionCorsPolicy {
 
         @CustomType.Setter
         public Builder allowCredentials(@Nullable Boolean allowCredentials) {
+
             this.allowCredentials = allowCredentials;
             return this;
         }
         @CustomType.Setter
         public Builder allowHeaders(@Nullable List<String> allowHeaders) {
+
             this.allowHeaders = allowHeaders;
             return this;
         }
@@ -168,6 +171,7 @@ public final class URLMapPathMatcherPathRuleRouteActionCorsPolicy {
         }
         @CustomType.Setter
         public Builder allowMethods(@Nullable List<String> allowMethods) {
+
             this.allowMethods = allowMethods;
             return this;
         }
@@ -176,6 +180,7 @@ public final class URLMapPathMatcherPathRuleRouteActionCorsPolicy {
         }
         @CustomType.Setter
         public Builder allowOriginRegexes(@Nullable List<String> allowOriginRegexes) {
+
             this.allowOriginRegexes = allowOriginRegexes;
             return this;
         }
@@ -184,6 +189,7 @@ public final class URLMapPathMatcherPathRuleRouteActionCorsPolicy {
         }
         @CustomType.Setter
         public Builder allowOrigins(@Nullable List<String> allowOrigins) {
+
             this.allowOrigins = allowOrigins;
             return this;
         }
@@ -192,11 +198,15 @@ public final class URLMapPathMatcherPathRuleRouteActionCorsPolicy {
         }
         @CustomType.Setter
         public Builder disabled(Boolean disabled) {
-            this.disabled = Objects.requireNonNull(disabled);
+            if (disabled == null) {
+              throw new MissingRequiredPropertyException("URLMapPathMatcherPathRuleRouteActionCorsPolicy", "disabled");
+            }
+            this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder exposeHeaders(@Nullable List<String> exposeHeaders) {
+
             this.exposeHeaders = exposeHeaders;
             return this;
         }
@@ -205,6 +215,7 @@ public final class URLMapPathMatcherPathRuleRouteActionCorsPolicy {
         }
         @CustomType.Setter
         public Builder maxAge(@Nullable Integer maxAge) {
+
             this.maxAge = maxAge;
             return this;
         }

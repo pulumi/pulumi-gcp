@@ -5,6 +5,7 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgs;
 import java.lang.String;
 import java.util.List;
@@ -130,7 +131,9 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
         }
 
         public StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs build() {
-            $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
+            if ($.database == null) {
+                throw new MissingRequiredPropertyException("StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs", "database");
+            }
             return $;
         }
     }

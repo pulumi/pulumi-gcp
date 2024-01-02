@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class InstanceGroupManagerStatefulDisk {
 
         @CustomType.Setter
         public Builder deleteRule(@Nullable String deleteRule) {
+
             this.deleteRule = deleteRule;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(String deviceName) {
-            this.deviceName = Objects.requireNonNull(deviceName);
+            if (deviceName == null) {
+              throw new MissingRequiredPropertyException("InstanceGroupManagerStatefulDisk", "deviceName");
+            }
+            this.deviceName = deviceName;
             return this;
         }
         public InstanceGroupManagerStatefulDisk build() {

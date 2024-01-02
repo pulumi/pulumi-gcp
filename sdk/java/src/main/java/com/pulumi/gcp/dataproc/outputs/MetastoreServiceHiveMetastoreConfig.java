@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersion;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceHiveMetastoreConfigKerberosConfig;
 import java.lang.String;
@@ -92,6 +93,7 @@ public final class MetastoreServiceHiveMetastoreConfig {
 
         @CustomType.Setter
         public Builder auxiliaryVersions(@Nullable List<MetastoreServiceHiveMetastoreConfigAuxiliaryVersion> auxiliaryVersions) {
+
             this.auxiliaryVersions = auxiliaryVersions;
             return this;
         }
@@ -100,22 +102,28 @@ public final class MetastoreServiceHiveMetastoreConfig {
         }
         @CustomType.Setter
         public Builder configOverrides(@Nullable Map<String,String> configOverrides) {
+
             this.configOverrides = configOverrides;
             return this;
         }
         @CustomType.Setter
         public Builder endpointProtocol(@Nullable String endpointProtocol) {
+
             this.endpointProtocol = endpointProtocol;
             return this;
         }
         @CustomType.Setter
         public Builder kerberosConfig(@Nullable MetastoreServiceHiveMetastoreConfigKerberosConfig kerberosConfig) {
+
             this.kerberosConfig = kerberosConfig;
             return this;
         }
         @CustomType.Setter
         public Builder version(String version) {
-            this.version = Objects.requireNonNull(version);
+            if (version == null) {
+              throw new MissingRequiredPropertyException("MetastoreServiceHiveMetastoreConfig", "version");
+            }
+            this.version = version;
             return this;
         }
         public MetastoreServiceHiveMetastoreConfig build() {

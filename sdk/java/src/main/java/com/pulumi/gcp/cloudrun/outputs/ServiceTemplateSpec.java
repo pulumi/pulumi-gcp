@@ -150,11 +150,13 @@ public final class ServiceTemplateSpec {
 
         @CustomType.Setter
         public Builder containerConcurrency(@Nullable Integer containerConcurrency) {
+
             this.containerConcurrency = containerConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder containers(@Nullable List<ServiceTemplateSpecContainer> containers) {
+
             this.containers = containers;
             return this;
         }
@@ -163,21 +165,25 @@ public final class ServiceTemplateSpec {
         }
         @CustomType.Setter
         public Builder serviceAccountName(@Nullable String serviceAccountName) {
+
             this.serviceAccountName = serviceAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder servingState(@Nullable String servingState) {
+
             this.servingState = servingState;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
+
             this.timeoutSeconds = timeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable List<ServiceTemplateSpecVolume> volumes) {
+
             this.volumes = volumes;
             return this;
         }

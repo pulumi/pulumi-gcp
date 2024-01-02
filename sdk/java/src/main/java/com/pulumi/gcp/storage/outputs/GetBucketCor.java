@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -54,12 +55,18 @@ public final class GetBucketCor {
 
         @CustomType.Setter
         public Builder maxAgeSeconds(Integer maxAgeSeconds) {
-            this.maxAgeSeconds = Objects.requireNonNull(maxAgeSeconds);
+            if (maxAgeSeconds == null) {
+              throw new MissingRequiredPropertyException("GetBucketCor", "maxAgeSeconds");
+            }
+            this.maxAgeSeconds = maxAgeSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder methods(List<String> methods) {
-            this.methods = Objects.requireNonNull(methods);
+            if (methods == null) {
+              throw new MissingRequiredPropertyException("GetBucketCor", "methods");
+            }
+            this.methods = methods;
             return this;
         }
         public Builder methods(String... methods) {
@@ -67,7 +74,10 @@ public final class GetBucketCor {
         }
         @CustomType.Setter
         public Builder origins(List<String> origins) {
-            this.origins = Objects.requireNonNull(origins);
+            if (origins == null) {
+              throw new MissingRequiredPropertyException("GetBucketCor", "origins");
+            }
+            this.origins = origins;
             return this;
         }
         public Builder origins(String... origins) {
@@ -75,7 +85,10 @@ public final class GetBucketCor {
         }
         @CustomType.Setter
         public Builder responseHeaders(List<String> responseHeaders) {
-            this.responseHeaders = Objects.requireNonNull(responseHeaders);
+            if (responseHeaders == null) {
+              throw new MissingRequiredPropertyException("GetBucketCor", "responseHeaders");
+            }
+            this.responseHeaders = responseHeaders;
             return this;
         }
         public Builder responseHeaders(String... responseHeaders) {

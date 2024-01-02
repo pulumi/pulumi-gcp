@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetInstanceGroupManagerInstanceLifecyclePolicy {
 
         @CustomType.Setter
         public Builder forceUpdateOnRepair(String forceUpdateOnRepair) {
-            this.forceUpdateOnRepair = Objects.requireNonNull(forceUpdateOnRepair);
+            if (forceUpdateOnRepair == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerInstanceLifecyclePolicy", "forceUpdateOnRepair");
+            }
+            this.forceUpdateOnRepair = forceUpdateOnRepair;
             return this;
         }
         public GetInstanceGroupManagerInstanceLifecyclePolicy build() {

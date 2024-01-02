@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn;
 import java.lang.String;
 import java.util.List;
@@ -61,6 +62,7 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
 
         @CustomType.Setter
         public Builder oracleColumns(@Nullable List<StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTableOracleColumn> oracleColumns) {
+
             this.oracleColumns = oracleColumns;
             return this;
         }
@@ -69,7 +71,10 @@ public final class StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchem
         }
         @CustomType.Setter
         public Builder table(String table) {
-            this.table = Objects.requireNonNull(table);
+            if (table == null) {
+              throw new MissingRequiredPropertyException("StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable", "table");
+            }
+            this.table = table;
             return this;
         }
         public StreamSourceConfigOracleSourceConfigExcludeObjectsOracleSchemaOracleTable build() {

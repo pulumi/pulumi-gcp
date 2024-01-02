@@ -87,21 +87,25 @@ public final class OrganizationPolicyListPolicy {
 
         @CustomType.Setter
         public Builder allow(@Nullable OrganizationPolicyListPolicyAllow allow) {
+
             this.allow = allow;
             return this;
         }
         @CustomType.Setter
         public Builder deny(@Nullable OrganizationPolicyListPolicyDeny deny) {
+
             this.deny = deny;
             return this;
         }
         @CustomType.Setter
         public Builder inheritFromParent(@Nullable Boolean inheritFromParent) {
+
             this.inheritFromParent = inheritFromParent;
             return this;
         }
         @CustomType.Setter
         public Builder suggestedValue(@Nullable String suggestedValue) {
+
             this.suggestedValue = suggestedValue;
             return this;
         }

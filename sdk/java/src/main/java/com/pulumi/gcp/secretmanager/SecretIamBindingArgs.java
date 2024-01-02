@@ -5,6 +5,7 @@ package com.pulumi.gcp.secretmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.inputs.SecretIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -230,9 +231,15 @@ public final class SecretIamBindingArgs extends com.pulumi.resources.ResourceArg
         }
 
         public SecretIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.secretId = Objects.requireNonNull($.secretId, "expected parameter 'secretId' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("SecretIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("SecretIamBindingArgs", "role");
+            }
+            if ($.secretId == null) {
+                throw new MissingRequiredPropertyException("SecretIamBindingArgs", "secretId");
+            }
             return $;
         }
     }

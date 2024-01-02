@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +48,10 @@ public final class SecurityPolicyRuleMatchConfig {
 
         @CustomType.Setter
         public Builder srcIpRanges(List<String> srcIpRanges) {
-            this.srcIpRanges = Objects.requireNonNull(srcIpRanges);
+            if (srcIpRanges == null) {
+              throw new MissingRequiredPropertyException("SecurityPolicyRuleMatchConfig", "srcIpRanges");
+            }
+            this.srcIpRanges = srcIpRanges;
             return this;
         }
         public Builder srcIpRanges(String... srcIpRanges) {

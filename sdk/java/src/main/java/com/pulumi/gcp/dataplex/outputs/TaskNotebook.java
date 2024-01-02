@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataplex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.outputs.TaskNotebookInfrastructureSpec;
 import java.lang.String;
 import java.util.List;
@@ -90,6 +91,7 @@ public final class TaskNotebook {
 
         @CustomType.Setter
         public Builder archiveUris(@Nullable List<String> archiveUris) {
+
             this.archiveUris = archiveUris;
             return this;
         }
@@ -98,6 +100,7 @@ public final class TaskNotebook {
         }
         @CustomType.Setter
         public Builder fileUris(@Nullable List<String> fileUris) {
+
             this.fileUris = fileUris;
             return this;
         }
@@ -106,12 +109,16 @@ public final class TaskNotebook {
         }
         @CustomType.Setter
         public Builder infrastructureSpec(@Nullable TaskNotebookInfrastructureSpec infrastructureSpec) {
+
             this.infrastructureSpec = infrastructureSpec;
             return this;
         }
         @CustomType.Setter
         public Builder notebook(String notebook) {
-            this.notebook = Objects.requireNonNull(notebook);
+            if (notebook == null) {
+              throw new MissingRequiredPropertyException("TaskNotebook", "notebook");
+            }
+            this.notebook = notebook;
             return this;
         }
         public TaskNotebook build() {

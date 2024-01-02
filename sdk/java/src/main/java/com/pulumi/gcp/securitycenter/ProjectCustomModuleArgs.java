@@ -5,6 +5,7 @@ package com.pulumi.gcp.securitycenter;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securitycenter.inputs.ProjectCustomModuleCustomConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -216,9 +217,15 @@ public final class ProjectCustomModuleArgs extends com.pulumi.resources.Resource
         }
 
         public ProjectCustomModuleArgs build() {
-            $.customConfig = Objects.requireNonNull($.customConfig, "expected parameter 'customConfig' to be non-null");
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.enablementState = Objects.requireNonNull($.enablementState, "expected parameter 'enablementState' to be non-null");
+            if ($.customConfig == null) {
+                throw new MissingRequiredPropertyException("ProjectCustomModuleArgs", "customConfig");
+            }
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("ProjectCustomModuleArgs", "displayName");
+            }
+            if ($.enablementState == null) {
+                throw new MissingRequiredPropertyException("ProjectCustomModuleArgs", "enablementState");
+            }
             return $;
         }
     }

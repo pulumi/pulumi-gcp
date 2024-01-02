@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.inputs.EntryGcsFilesetSpecSampleGcsFileSpecArgs;
 import java.lang.String;
 import java.util.List;
@@ -205,7 +206,9 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
         }
 
         public EntryGcsFilesetSpecArgs build() {
-            $.filePatterns = Objects.requireNonNull($.filePatterns, "expected parameter 'filePatterns' to be non-null");
+            if ($.filePatterns == null) {
+                throw new MissingRequiredPropertyException("EntryGcsFilesetSpecArgs", "filePatterns");
+            }
             return $;
         }
     }

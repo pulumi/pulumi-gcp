@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerVersionTargetSizeArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -163,7 +164,9 @@ public final class RegionInstanceGroupManagerVersionArgs extends com.pulumi.reso
         }
 
         public RegionInstanceGroupManagerVersionArgs build() {
-            $.instanceTemplate = Objects.requireNonNull($.instanceTemplate, "expected parameter 'instanceTemplate' to be non-null");
+            if ($.instanceTemplate == null) {
+                throw new MissingRequiredPropertyException("RegionInstanceGroupManagerVersionArgs", "instanceTemplate");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.pubsub.inputs.LiteSubscriptionDeliveryConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -278,7 +279,9 @@ public final class LiteSubscriptionArgs extends com.pulumi.resources.ResourceArg
         }
 
         public LiteSubscriptionArgs build() {
-            $.topic = Objects.requireNonNull($.topic, "expected parameter 'topic' to be non-null");
+            if ($.topic == null) {
+                throw new MissingRequiredPropertyException("LiteSubscriptionArgs", "topic");
+            }
             return $;
         }
     }

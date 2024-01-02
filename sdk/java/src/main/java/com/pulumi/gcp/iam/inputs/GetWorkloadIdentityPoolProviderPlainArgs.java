@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -134,8 +135,12 @@ public final class GetWorkloadIdentityPoolProviderPlainArgs extends com.pulumi.r
         }
 
         public GetWorkloadIdentityPoolProviderPlainArgs build() {
-            $.workloadIdentityPoolId = Objects.requireNonNull($.workloadIdentityPoolId, "expected parameter 'workloadIdentityPoolId' to be non-null");
-            $.workloadIdentityPoolProviderId = Objects.requireNonNull($.workloadIdentityPoolProviderId, "expected parameter 'workloadIdentityPoolProviderId' to be non-null");
+            if ($.workloadIdentityPoolId == null) {
+                throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderPlainArgs", "workloadIdentityPoolId");
+            }
+            if ($.workloadIdentityPoolProviderId == null) {
+                throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderPlainArgs", "workloadIdentityPoolProviderId");
+            }
             return $;
         }
     }

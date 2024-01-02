@@ -5,6 +5,7 @@ package com.pulumi.gcp.recaptcha.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -236,7 +237,9 @@ public final class EnterpriseKeyWebSettingsArgs extends com.pulumi.resources.Res
         }
 
         public EnterpriseKeyWebSettingsArgs build() {
-            $.integrationType = Objects.requireNonNull($.integrationType, "expected parameter 'integrationType' to be non-null");
+            if ($.integrationType == null) {
+                throw new MissingRequiredPropertyException("EnterpriseKeyWebSettingsArgs", "integrationType");
+            }
             return $;
         }
     }

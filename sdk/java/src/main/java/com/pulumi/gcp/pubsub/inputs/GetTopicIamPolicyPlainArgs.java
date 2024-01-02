@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -95,7 +96,9 @@ public final class GetTopicIamPolicyPlainArgs extends com.pulumi.resources.Invok
         }
 
         public GetTopicIamPolicyPlainArgs build() {
-            $.topic = Objects.requireNonNull($.topic, "expected parameter 'topic' to be non-null");
+            if ($.topic == null) {
+                throw new MissingRequiredPropertyException("GetTopicIamPolicyPlainArgs", "topic");
+            }
             return $;
         }
     }

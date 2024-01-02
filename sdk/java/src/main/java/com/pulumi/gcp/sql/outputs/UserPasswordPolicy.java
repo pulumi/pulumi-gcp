@@ -96,26 +96,31 @@ public final class UserPasswordPolicy {
 
         @CustomType.Setter
         public Builder allowedFailedAttempts(@Nullable Integer allowedFailedAttempts) {
+
             this.allowedFailedAttempts = allowedFailedAttempts;
             return this;
         }
         @CustomType.Setter
         public Builder enableFailedAttemptsCheck(@Nullable Boolean enableFailedAttemptsCheck) {
+
             this.enableFailedAttemptsCheck = enableFailedAttemptsCheck;
             return this;
         }
         @CustomType.Setter
         public Builder enablePasswordVerification(@Nullable Boolean enablePasswordVerification) {
+
             this.enablePasswordVerification = enablePasswordVerification;
             return this;
         }
         @CustomType.Setter
         public Builder passwordExpirationDuration(@Nullable String passwordExpirationDuration) {
+
             this.passwordExpirationDuration = passwordExpirationDuration;
             return this;
         }
         @CustomType.Setter
         public Builder statuses(@Nullable List<UserPasswordPolicyStatus> statuses) {
+
             this.statuses = statuses;
             return this;
         }

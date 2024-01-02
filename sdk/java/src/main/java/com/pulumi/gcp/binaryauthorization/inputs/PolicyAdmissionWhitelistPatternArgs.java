@@ -5,6 +5,7 @@ package com.pulumi.gcp.binaryauthorization.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class PolicyAdmissionWhitelistPatternArgs extends com.pulumi.resour
         }
 
         public PolicyAdmissionWhitelistPatternArgs build() {
-            $.namePattern = Objects.requireNonNull($.namePattern, "expected parameter 'namePattern' to be non-null");
+            if ($.namePattern == null) {
+                throw new MissingRequiredPropertyException("PolicyAdmissionWhitelistPatternArgs", "namePattern");
+            }
             return $;
         }
     }

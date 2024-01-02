@@ -59,11 +59,13 @@ public final class ClusterSystemAddonsConfigIngress {
 
         @CustomType.Setter
         public Builder disabled(@Nullable Boolean disabled) {
+
             this.disabled = disabled;
             return this;
         }
         @CustomType.Setter
         public Builder ipv4Vip(@Nullable String ipv4Vip) {
+
             this.ipv4Vip = ipv4Vip;
             return this;
         }

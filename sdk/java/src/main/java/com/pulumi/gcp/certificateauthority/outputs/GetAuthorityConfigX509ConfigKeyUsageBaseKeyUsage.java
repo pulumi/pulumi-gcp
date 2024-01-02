@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -82,47 +83,74 @@ public final class GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage {
 
         @CustomType.Setter
         public Builder certSign(Boolean certSign) {
-            this.certSign = Objects.requireNonNull(certSign);
+            if (certSign == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage", "certSign");
+            }
+            this.certSign = certSign;
             return this;
         }
         @CustomType.Setter
         public Builder contentCommitment(Boolean contentCommitment) {
-            this.contentCommitment = Objects.requireNonNull(contentCommitment);
+            if (contentCommitment == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage", "contentCommitment");
+            }
+            this.contentCommitment = contentCommitment;
             return this;
         }
         @CustomType.Setter
         public Builder crlSign(Boolean crlSign) {
-            this.crlSign = Objects.requireNonNull(crlSign);
+            if (crlSign == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage", "crlSign");
+            }
+            this.crlSign = crlSign;
             return this;
         }
         @CustomType.Setter
         public Builder dataEncipherment(Boolean dataEncipherment) {
-            this.dataEncipherment = Objects.requireNonNull(dataEncipherment);
+            if (dataEncipherment == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage", "dataEncipherment");
+            }
+            this.dataEncipherment = dataEncipherment;
             return this;
         }
         @CustomType.Setter
         public Builder decipherOnly(Boolean decipherOnly) {
-            this.decipherOnly = Objects.requireNonNull(decipherOnly);
+            if (decipherOnly == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage", "decipherOnly");
+            }
+            this.decipherOnly = decipherOnly;
             return this;
         }
         @CustomType.Setter
         public Builder digitalSignature(Boolean digitalSignature) {
-            this.digitalSignature = Objects.requireNonNull(digitalSignature);
+            if (digitalSignature == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage", "digitalSignature");
+            }
+            this.digitalSignature = digitalSignature;
             return this;
         }
         @CustomType.Setter
         public Builder encipherOnly(Boolean encipherOnly) {
-            this.encipherOnly = Objects.requireNonNull(encipherOnly);
+            if (encipherOnly == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage", "encipherOnly");
+            }
+            this.encipherOnly = encipherOnly;
             return this;
         }
         @CustomType.Setter
         public Builder keyAgreement(Boolean keyAgreement) {
-            this.keyAgreement = Objects.requireNonNull(keyAgreement);
+            if (keyAgreement == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage", "keyAgreement");
+            }
+            this.keyAgreement = keyAgreement;
             return this;
         }
         @CustomType.Setter
         public Builder keyEncipherment(Boolean keyEncipherment) {
-            this.keyEncipherment = Objects.requireNonNull(keyEncipherment);
+            if (keyEncipherment == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage", "keyEncipherment");
+            }
+            this.keyEncipherment = keyEncipherment;
             return this;
         }
         public GetAuthorityConfigX509ConfigKeyUsageBaseKeyUsage build() {

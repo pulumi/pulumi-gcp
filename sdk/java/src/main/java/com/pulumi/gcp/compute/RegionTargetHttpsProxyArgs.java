@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -371,8 +372,12 @@ public final class RegionTargetHttpsProxyArgs extends com.pulumi.resources.Resou
         }
 
         public RegionTargetHttpsProxyArgs build() {
-            $.sslCertificates = Objects.requireNonNull($.sslCertificates, "expected parameter 'sslCertificates' to be non-null");
-            $.urlMap = Objects.requireNonNull($.urlMap, "expected parameter 'urlMap' to be non-null");
+            if ($.sslCertificates == null) {
+                throw new MissingRequiredPropertyException("RegionTargetHttpsProxyArgs", "sslCertificates");
+            }
+            if ($.urlMap == null) {
+                throw new MissingRequiredPropertyException("RegionTargetHttpsProxyArgs", "urlMap");
+            }
             return $;
         }
     }

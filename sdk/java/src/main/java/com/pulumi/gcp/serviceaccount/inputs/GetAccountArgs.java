@@ -5,6 +5,7 @@ package com.pulumi.gcp.serviceaccount.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -149,7 +150,9 @@ public final class GetAccountArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetAccountArgs build() {
-            $.accountId = Objects.requireNonNull($.accountId, "expected parameter 'accountId' to be non-null");
+            if ($.accountId == null) {
+                throw new MissingRequiredPropertyException("GetAccountArgs", "accountId");
+            }
             return $;
         }
     }

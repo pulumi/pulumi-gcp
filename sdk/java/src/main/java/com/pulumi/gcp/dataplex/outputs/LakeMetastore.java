@@ -44,6 +44,7 @@ public final class LakeMetastore {
 
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }

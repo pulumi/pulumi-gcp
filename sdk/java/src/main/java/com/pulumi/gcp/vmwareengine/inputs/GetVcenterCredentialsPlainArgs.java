@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vmwareengine.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetVcenterCredentialsPlainArgs extends com.pulumi.resources.I
         }
 
         public GetVcenterCredentialsPlainArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("GetVcenterCredentialsPlainArgs", "parent");
+            }
             return $;
         }
     }

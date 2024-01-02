@@ -97,21 +97,25 @@ public final class GuestPoliciesPackageRepository {
 
         @CustomType.Setter
         public Builder apt(@Nullable GuestPoliciesPackageRepositoryApt apt) {
+
             this.apt = apt;
             return this;
         }
         @CustomType.Setter
         public Builder goo(@Nullable GuestPoliciesPackageRepositoryGoo goo) {
+
             this.goo = goo;
             return this;
         }
         @CustomType.Setter
         public Builder yum(@Nullable GuestPoliciesPackageRepositoryYum yum) {
+
             this.yum = yum;
             return this;
         }
         @CustomType.Setter
         public Builder zypper(@Nullable GuestPoliciesPackageRepositoryZypper zypper) {
+
             this.zypper = zypper;
             return this;
         }

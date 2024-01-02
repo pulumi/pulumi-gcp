@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs extends 
         }
 
         public InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs build() {
-            $.ipCidrRange = Objects.requireNonNull($.ipCidrRange, "expected parameter 'ipCidrRange' to be non-null");
+            if ($.ipCidrRange == null) {
+                throw new MissingRequiredPropertyException("InstanceFromTemplateNetworkInterfaceAliasIpRangeArgs", "ipCidrRange");
+            }
             return $;
         }
     }

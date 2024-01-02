@@ -4,6 +4,7 @@
 package com.pulumi.gcp.memcache.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -60,12 +61,18 @@ public final class InstanceNodeConfig {
 
         @CustomType.Setter
         public Builder cpuCount(Integer cpuCount) {
-            this.cpuCount = Objects.requireNonNull(cpuCount);
+            if (cpuCount == null) {
+              throw new MissingRequiredPropertyException("InstanceNodeConfig", "cpuCount");
+            }
+            this.cpuCount = cpuCount;
             return this;
         }
         @CustomType.Setter
         public Builder memorySizeMb(Integer memorySizeMb) {
-            this.memorySizeMb = Objects.requireNonNull(memorySizeMb);
+            if (memorySizeMb == null) {
+              throw new MissingRequiredPropertyException("InstanceNodeConfig", "memorySizeMb");
+            }
+            this.memorySizeMb = memorySizeMb;
             return this;
         }
         public InstanceNodeConfig build() {

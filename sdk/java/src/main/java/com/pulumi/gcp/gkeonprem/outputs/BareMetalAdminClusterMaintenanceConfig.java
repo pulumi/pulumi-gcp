@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -49,7 +50,10 @@ public final class BareMetalAdminClusterMaintenanceConfig {
 
         @CustomType.Setter
         public Builder maintenanceAddressCidrBlocks(List<String> maintenanceAddressCidrBlocks) {
-            this.maintenanceAddressCidrBlocks = Objects.requireNonNull(maintenanceAddressCidrBlocks);
+            if (maintenanceAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterMaintenanceConfig", "maintenanceAddressCidrBlocks");
+            }
+            this.maintenanceAddressCidrBlocks = maintenanceAddressCidrBlocks;
             return this;
         }
         public Builder maintenanceAddressCidrBlocks(String... maintenanceAddressCidrBlocks) {

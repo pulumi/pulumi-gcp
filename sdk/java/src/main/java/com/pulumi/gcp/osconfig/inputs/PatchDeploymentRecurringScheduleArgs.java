@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleMonthlyArgs;
 import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeOfDayArgs;
 import com.pulumi.gcp.osconfig.inputs.PatchDeploymentRecurringScheduleTimeZoneArgs;
@@ -383,8 +384,12 @@ public final class PatchDeploymentRecurringScheduleArgs extends com.pulumi.resou
         }
 
         public PatchDeploymentRecurringScheduleArgs build() {
-            $.timeOfDay = Objects.requireNonNull($.timeOfDay, "expected parameter 'timeOfDay' to be non-null");
-            $.timeZone = Objects.requireNonNull($.timeZone, "expected parameter 'timeZone' to be non-null");
+            if ($.timeOfDay == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentRecurringScheduleArgs", "timeOfDay");
+            }
+            if ($.timeZone == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentRecurringScheduleArgs", "timeZone");
+            }
             return $;
         }
     }

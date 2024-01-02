@@ -63,11 +63,13 @@ public final class PreventionJobTriggerInspectJobInspectConfigRuleSetRule {
 
         @CustomType.Setter
         public Builder exclusionRule(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleExclusionRule exclusionRule) {
+
             this.exclusionRule = exclusionRule;
             return this;
         }
         @CustomType.Setter
         public Builder hotwordRule(@Nullable PreventionJobTriggerInspectJobInspectConfigRuleSetRuleHotwordRule hotwordRule) {
+
             this.hotwordRule = hotwordRule;
             return this;
         }

@@ -145,6 +145,7 @@ public final class WorkflowTemplateJobHadoopJob {
 
         @CustomType.Setter
         public Builder archiveUris(@Nullable List<String> archiveUris) {
+
             this.archiveUris = archiveUris;
             return this;
         }
@@ -153,6 +154,7 @@ public final class WorkflowTemplateJobHadoopJob {
         }
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -161,6 +163,7 @@ public final class WorkflowTemplateJobHadoopJob {
         }
         @CustomType.Setter
         public Builder fileUris(@Nullable List<String> fileUris) {
+
             this.fileUris = fileUris;
             return this;
         }
@@ -169,6 +172,7 @@ public final class WorkflowTemplateJobHadoopJob {
         }
         @CustomType.Setter
         public Builder jarFileUris(@Nullable List<String> jarFileUris) {
+
             this.jarFileUris = jarFileUris;
             return this;
         }
@@ -177,21 +181,25 @@ public final class WorkflowTemplateJobHadoopJob {
         }
         @CustomType.Setter
         public Builder loggingConfig(@Nullable WorkflowTemplateJobHadoopJobLoggingConfig loggingConfig) {
+
             this.loggingConfig = loggingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder mainClass(@Nullable String mainClass) {
+
             this.mainClass = mainClass;
             return this;
         }
         @CustomType.Setter
         public Builder mainJarFileUri(@Nullable String mainJarFileUri) {
+
             this.mainJarFileUri = mainJarFileUri;
             return this;
         }
         @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
+
             this.properties = properties;
             return this;
         }

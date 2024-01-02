@@ -146,41 +146,49 @@ public final class HttpRouteRuleMatchHeader {
 
         @CustomType.Setter
         public Builder exactMatch(@Nullable String exactMatch) {
+
             this.exactMatch = exactMatch;
             return this;
         }
         @CustomType.Setter
         public Builder header(@Nullable String header) {
+
             this.header = header;
             return this;
         }
         @CustomType.Setter
         public Builder invertMatch(@Nullable Boolean invertMatch) {
+
             this.invertMatch = invertMatch;
             return this;
         }
         @CustomType.Setter
         public Builder prefixMatch(@Nullable String prefixMatch) {
+
             this.prefixMatch = prefixMatch;
             return this;
         }
         @CustomType.Setter
         public Builder presentMatch(@Nullable Boolean presentMatch) {
+
             this.presentMatch = presentMatch;
             return this;
         }
         @CustomType.Setter
         public Builder rangeMatch(@Nullable HttpRouteRuleMatchHeaderRangeMatch rangeMatch) {
+
             this.rangeMatch = rangeMatch;
             return this;
         }
         @CustomType.Setter
         public Builder regexMatch(@Nullable String regexMatch) {
+
             this.regexMatch = regexMatch;
             return this;
         }
         @CustomType.Setter
         public Builder suffixMatch(@Nullable String suffixMatch) {
+
             this.suffixMatch = suffixMatch;
             return this;
         }

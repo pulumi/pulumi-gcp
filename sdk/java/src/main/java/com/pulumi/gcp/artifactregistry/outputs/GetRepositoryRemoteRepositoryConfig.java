@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigAptRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigDockerRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigMavenRepository;
@@ -84,7 +85,10 @@ public final class GetRepositoryRemoteRepositoryConfig {
 
         @CustomType.Setter
         public Builder aptRepositories(List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories) {
-            this.aptRepositories = Objects.requireNonNull(aptRepositories);
+            if (aptRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "aptRepositories");
+            }
+            this.aptRepositories = aptRepositories;
             return this;
         }
         public Builder aptRepositories(GetRepositoryRemoteRepositoryConfigAptRepository... aptRepositories) {
@@ -92,12 +96,18 @@ public final class GetRepositoryRemoteRepositoryConfig {
         }
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dockerRepositories(List<GetRepositoryRemoteRepositoryConfigDockerRepository> dockerRepositories) {
-            this.dockerRepositories = Objects.requireNonNull(dockerRepositories);
+            if (dockerRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "dockerRepositories");
+            }
+            this.dockerRepositories = dockerRepositories;
             return this;
         }
         public Builder dockerRepositories(GetRepositoryRemoteRepositoryConfigDockerRepository... dockerRepositories) {
@@ -105,7 +115,10 @@ public final class GetRepositoryRemoteRepositoryConfig {
         }
         @CustomType.Setter
         public Builder mavenRepositories(List<GetRepositoryRemoteRepositoryConfigMavenRepository> mavenRepositories) {
-            this.mavenRepositories = Objects.requireNonNull(mavenRepositories);
+            if (mavenRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "mavenRepositories");
+            }
+            this.mavenRepositories = mavenRepositories;
             return this;
         }
         public Builder mavenRepositories(GetRepositoryRemoteRepositoryConfigMavenRepository... mavenRepositories) {
@@ -113,7 +126,10 @@ public final class GetRepositoryRemoteRepositoryConfig {
         }
         @CustomType.Setter
         public Builder npmRepositories(List<GetRepositoryRemoteRepositoryConfigNpmRepository> npmRepositories) {
-            this.npmRepositories = Objects.requireNonNull(npmRepositories);
+            if (npmRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "npmRepositories");
+            }
+            this.npmRepositories = npmRepositories;
             return this;
         }
         public Builder npmRepositories(GetRepositoryRemoteRepositoryConfigNpmRepository... npmRepositories) {
@@ -121,7 +137,10 @@ public final class GetRepositoryRemoteRepositoryConfig {
         }
         @CustomType.Setter
         public Builder pythonRepositories(List<GetRepositoryRemoteRepositoryConfigPythonRepository> pythonRepositories) {
-            this.pythonRepositories = Objects.requireNonNull(pythonRepositories);
+            if (pythonRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "pythonRepositories");
+            }
+            this.pythonRepositories = pythonRepositories;
             return this;
         }
         public Builder pythonRepositories(GetRepositoryRemoteRepositoryConfigPythonRepository... pythonRepositories) {
@@ -129,7 +148,10 @@ public final class GetRepositoryRemoteRepositoryConfig {
         }
         @CustomType.Setter
         public Builder upstreamCredentials(List<GetRepositoryRemoteRepositoryConfigUpstreamCredential> upstreamCredentials) {
-            this.upstreamCredentials = Objects.requireNonNull(upstreamCredentials);
+            if (upstreamCredentials == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "upstreamCredentials");
+            }
+            this.upstreamCredentials = upstreamCredentials;
             return this;
         }
         public Builder upstreamCredentials(GetRepositoryRemoteRepositoryConfigUpstreamCredential... upstreamCredentials) {
@@ -137,7 +159,10 @@ public final class GetRepositoryRemoteRepositoryConfig {
         }
         @CustomType.Setter
         public Builder yumRepositories(List<GetRepositoryRemoteRepositoryConfigYumRepository> yumRepositories) {
-            this.yumRepositories = Objects.requireNonNull(yumRepositories);
+            if (yumRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "yumRepositories");
+            }
+            this.yumRepositories = yumRepositories;
             return this;
         }
         public Builder yumRepositories(GetRepositoryRemoteRepositoryConfigYumRepository... yumRepositories) {

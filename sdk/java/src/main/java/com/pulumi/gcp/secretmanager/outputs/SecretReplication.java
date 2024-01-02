@@ -63,11 +63,13 @@ public final class SecretReplication {
 
         @CustomType.Setter
         public Builder auto(@Nullable SecretReplicationAuto auto) {
+
             this.auto = auto;
             return this;
         }
         @CustomType.Setter
         public Builder userManaged(@Nullable SecretReplicationUserManaged userManaged) {
+
             this.userManaged = userManaged;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -71,17 +72,26 @@ public final class MetricBucketOptionsExponentialBuckets {
 
         @CustomType.Setter
         public Builder growthFactor(Double growthFactor) {
-            this.growthFactor = Objects.requireNonNull(growthFactor);
+            if (growthFactor == null) {
+              throw new MissingRequiredPropertyException("MetricBucketOptionsExponentialBuckets", "growthFactor");
+            }
+            this.growthFactor = growthFactor;
             return this;
         }
         @CustomType.Setter
         public Builder numFiniteBuckets(Integer numFiniteBuckets) {
-            this.numFiniteBuckets = Objects.requireNonNull(numFiniteBuckets);
+            if (numFiniteBuckets == null) {
+              throw new MissingRequiredPropertyException("MetricBucketOptionsExponentialBuckets", "numFiniteBuckets");
+            }
+            this.numFiniteBuckets = numFiniteBuckets;
             return this;
         }
         @CustomType.Setter
         public Builder scale(Double scale) {
-            this.scale = Objects.requireNonNull(scale);
+            if (scale == null) {
+              throw new MissingRequiredPropertyException("MetricBucketOptionsExponentialBuckets", "scale");
+            }
+            this.scale = scale;
             return this;
         }
         public MetricBucketOptionsExponentialBuckets build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -110,7 +111,9 @@ public final class TopicMessageStoragePolicyArgs extends com.pulumi.resources.Re
         }
 
         public TopicMessageStoragePolicyArgs build() {
-            $.allowedPersistenceRegions = Objects.requireNonNull($.allowedPersistenceRegions, "expected parameter 'allowedPersistenceRegions' to be non-null");
+            if ($.allowedPersistenceRegions == null) {
+                throw new MissingRequiredPropertyException("TopicMessageStoragePolicyArgs", "allowedPersistenceRegions");
+            }
             return $;
         }
     }

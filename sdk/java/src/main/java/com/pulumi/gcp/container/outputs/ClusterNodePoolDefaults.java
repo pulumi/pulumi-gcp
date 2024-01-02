@@ -44,6 +44,7 @@ public final class ClusterNodePoolDefaults {
 
         @CustomType.Setter
         public Builder nodeConfigDefaults(@Nullable ClusterNodePoolDefaultsNodeConfigDefaults nodeConfigDefaults) {
+
             this.nodeConfigDefaults = nodeConfigDefaults;
             return this;
         }

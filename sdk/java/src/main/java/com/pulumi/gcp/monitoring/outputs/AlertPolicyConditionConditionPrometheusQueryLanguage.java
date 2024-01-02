@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -175,31 +176,39 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
 
         @CustomType.Setter
         public Builder alertRule(@Nullable String alertRule) {
+
             this.alertRule = alertRule;
             return this;
         }
         @CustomType.Setter
         public Builder duration(@Nullable String duration) {
+
             this.duration = duration;
             return this;
         }
         @CustomType.Setter
         public Builder evaluationInterval(@Nullable String evaluationInterval) {
+
             this.evaluationInterval = evaluationInterval;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder query(String query) {
-            this.query = Objects.requireNonNull(query);
+            if (query == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyConditionConditionPrometheusQueryLanguage", "query");
+            }
+            this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder ruleGroup(@Nullable String ruleGroup) {
+
             this.ruleGroup = ruleGroup;
             return this;
         }

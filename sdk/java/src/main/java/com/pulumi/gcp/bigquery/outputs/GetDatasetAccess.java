@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccessDataset;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccessRoutine;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccessView;
@@ -86,7 +87,10 @@ public final class GetDatasetAccess {
 
         @CustomType.Setter
         public Builder datasets(List<GetDatasetAccessDataset> datasets) {
-            this.datasets = Objects.requireNonNull(datasets);
+            if (datasets == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "datasets");
+            }
+            this.datasets = datasets;
             return this;
         }
         public Builder datasets(GetDatasetAccessDataset... datasets) {
@@ -94,27 +98,42 @@ public final class GetDatasetAccess {
         }
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder groupByEmail(String groupByEmail) {
-            this.groupByEmail = Objects.requireNonNull(groupByEmail);
+            if (groupByEmail == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "groupByEmail");
+            }
+            this.groupByEmail = groupByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder iamMember(String iamMember) {
-            this.iamMember = Objects.requireNonNull(iamMember);
+            if (iamMember == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "iamMember");
+            }
+            this.iamMember = iamMember;
             return this;
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "role");
+            }
+            this.role = role;
             return this;
         }
         @CustomType.Setter
         public Builder routines(List<GetDatasetAccessRoutine> routines) {
-            this.routines = Objects.requireNonNull(routines);
+            if (routines == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "routines");
+            }
+            this.routines = routines;
             return this;
         }
         public Builder routines(GetDatasetAccessRoutine... routines) {
@@ -122,17 +141,26 @@ public final class GetDatasetAccess {
         }
         @CustomType.Setter
         public Builder specialGroup(String specialGroup) {
-            this.specialGroup = Objects.requireNonNull(specialGroup);
+            if (specialGroup == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "specialGroup");
+            }
+            this.specialGroup = specialGroup;
             return this;
         }
         @CustomType.Setter
         public Builder userByEmail(String userByEmail) {
-            this.userByEmail = Objects.requireNonNull(userByEmail);
+            if (userByEmail == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "userByEmail");
+            }
+            this.userByEmail = userByEmail;
             return this;
         }
         @CustomType.Setter
         public Builder views(List<GetDatasetAccessView> views) {
-            this.views = Objects.requireNonNull(views);
+            if (views == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "views");
+            }
+            this.views = views;
             return this;
         }
         public Builder views(GetDatasetAccessView... views) {

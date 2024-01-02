@@ -4,6 +4,7 @@
 package com.pulumi.gcp.backupdisasterrecovery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetManagementServerManagementUri {
 
         @CustomType.Setter
         public Builder api(String api) {
-            this.api = Objects.requireNonNull(api);
+            if (api == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerManagementUri", "api");
+            }
+            this.api = api;
             return this;
         }
         @CustomType.Setter
         public Builder webUi(String webUi) {
-            this.webUi = Objects.requireNonNull(webUi);
+            if (webUi == null) {
+              throw new MissingRequiredPropertyException("GetManagementServerManagementUri", "webUi");
+            }
+            this.webUi = webUi;
             return this;
         }
         public GetManagementServerManagementUri build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.ManagedZoneForwardingConfigTargetNameServer;
 import java.util.List;
 import java.util.Objects;
@@ -49,7 +50,10 @@ public final class ManagedZoneForwardingConfig {
 
         @CustomType.Setter
         public Builder targetNameServers(List<ManagedZoneForwardingConfigTargetNameServer> targetNameServers) {
-            this.targetNameServers = Objects.requireNonNull(targetNameServers);
+            if (targetNameServers == null) {
+              throw new MissingRequiredPropertyException("ManagedZoneForwardingConfig", "targetNameServers");
+            }
+            this.targetNameServers = targetNameServers;
             return this;
         }
         public Builder targetNameServers(ManagedZoneForwardingConfigTargetNameServer... targetNameServers) {

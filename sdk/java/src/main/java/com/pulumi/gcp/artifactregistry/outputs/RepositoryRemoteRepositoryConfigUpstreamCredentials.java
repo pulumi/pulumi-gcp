@@ -46,6 +46,7 @@ public final class RepositoryRemoteRepositoryConfigUpstreamCredentials {
 
         @CustomType.Setter
         public Builder usernamePasswordCredentials(@Nullable RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentials usernamePasswordCredentials) {
+
             this.usernamePasswordCredentials = usernamePasswordCredentials;
             return this;
         }

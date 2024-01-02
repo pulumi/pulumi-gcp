@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class ConnectionAuthConfigSshPublicKeySshClientCertPass {
 
         @CustomType.Setter
         public Builder secretVersion(String secretVersion) {
-            this.secretVersion = Objects.requireNonNull(secretVersion);
+            if (secretVersion == null) {
+              throw new MissingRequiredPropertyException("ConnectionAuthConfigSshPublicKeySshClientCertPass", "secretVersion");
+            }
+            this.secretVersion = secretVersion;
             return this;
         }
         public ConnectionAuthConfigSshPublicKeySshClientCertPass build() {

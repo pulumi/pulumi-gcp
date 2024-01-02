@@ -46,6 +46,7 @@ public final class ConnectionConnectorVersionInfraConfig {
 
         @CustomType.Setter
         public Builder ratelimitThreshold(@Nullable String ratelimitThreshold) {
+
             this.ratelimitThreshold = ratelimitThreshold;
             return this;
         }

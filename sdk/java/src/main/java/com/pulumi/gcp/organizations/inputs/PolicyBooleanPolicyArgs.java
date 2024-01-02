@@ -5,6 +5,7 @@ package com.pulumi.gcp.organizations.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class PolicyBooleanPolicyArgs extends com.pulumi.resources.Resource
         }
 
         public PolicyBooleanPolicyArgs build() {
-            $.enforced = Objects.requireNonNull($.enforced, "expected parameter 'enforced' to be non-null");
+            if ($.enforced == null) {
+                throw new MissingRequiredPropertyException("PolicyBooleanPolicyArgs", "enforced");
+            }
             return $;
         }
     }

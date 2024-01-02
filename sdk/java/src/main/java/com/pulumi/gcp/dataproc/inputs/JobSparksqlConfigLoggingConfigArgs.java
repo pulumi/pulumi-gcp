@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -55,7 +56,9 @@ public final class JobSparksqlConfigLoggingConfigArgs extends com.pulumi.resourc
         }
 
         public JobSparksqlConfigLoggingConfigArgs build() {
-            $.driverLogLevels = Objects.requireNonNull($.driverLogLevels, "expected parameter 'driverLogLevels' to be non-null");
+            if ($.driverLogLevels == null) {
+                throw new MissingRequiredPropertyException("JobSparksqlConfigLoggingConfigArgs", "driverLogLevels");
+            }
             return $;
         }
     }

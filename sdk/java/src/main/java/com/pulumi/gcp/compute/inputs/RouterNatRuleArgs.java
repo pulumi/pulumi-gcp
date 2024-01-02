@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RouterNatRuleActionArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -221,8 +222,12 @@ public final class RouterNatRuleArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouterNatRuleArgs build() {
-            $.match = Objects.requireNonNull($.match, "expected parameter 'match' to be non-null");
-            $.ruleNumber = Objects.requireNonNull($.ruleNumber, "expected parameter 'ruleNumber' to be non-null");
+            if ($.match == null) {
+                throw new MissingRequiredPropertyException("RouterNatRuleArgs", "match");
+            }
+            if ($.ruleNumber == null) {
+                throw new MissingRequiredPropertyException("RouterNatRuleArgs", "ruleNumber");
+            }
             return $;
         }
     }

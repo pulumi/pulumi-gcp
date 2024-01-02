@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -59,27 +60,42 @@ public final class GetClusterNodePoolAutoscaling {
 
         @CustomType.Setter
         public Builder locationPolicy(String locationPolicy) {
-            this.locationPolicy = Objects.requireNonNull(locationPolicy);
+            if (locationPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolAutoscaling", "locationPolicy");
+            }
+            this.locationPolicy = locationPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder maxNodeCount(Integer maxNodeCount) {
-            this.maxNodeCount = Objects.requireNonNull(maxNodeCount);
+            if (maxNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolAutoscaling", "maxNodeCount");
+            }
+            this.maxNodeCount = maxNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder minNodeCount(Integer minNodeCount) {
-            this.minNodeCount = Objects.requireNonNull(minNodeCount);
+            if (minNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolAutoscaling", "minNodeCount");
+            }
+            this.minNodeCount = minNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder totalMaxNodeCount(Integer totalMaxNodeCount) {
-            this.totalMaxNodeCount = Objects.requireNonNull(totalMaxNodeCount);
+            if (totalMaxNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolAutoscaling", "totalMaxNodeCount");
+            }
+            this.totalMaxNodeCount = totalMaxNodeCount;
             return this;
         }
         @CustomType.Setter
         public Builder totalMinNodeCount(Integer totalMinNodeCount) {
-            this.totalMinNodeCount = Objects.requireNonNull(totalMinNodeCount);
+            if (totalMinNodeCount == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolAutoscaling", "totalMinNodeCount");
+            }
+            this.totalMinNodeCount = totalMinNodeCount;
             return this;
         }
         public GetClusterNodePoolAutoscaling build() {

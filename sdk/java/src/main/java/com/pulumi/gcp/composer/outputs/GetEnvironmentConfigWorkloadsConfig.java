@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigScheduler;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigTriggerer;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigWebServer;
@@ -56,7 +57,10 @@ public final class GetEnvironmentConfigWorkloadsConfig {
 
         @CustomType.Setter
         public Builder schedulers(List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers) {
-            this.schedulers = Objects.requireNonNull(schedulers);
+            if (schedulers == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfig", "schedulers");
+            }
+            this.schedulers = schedulers;
             return this;
         }
         public Builder schedulers(GetEnvironmentConfigWorkloadsConfigScheduler... schedulers) {
@@ -64,7 +68,10 @@ public final class GetEnvironmentConfigWorkloadsConfig {
         }
         @CustomType.Setter
         public Builder triggerers(List<GetEnvironmentConfigWorkloadsConfigTriggerer> triggerers) {
-            this.triggerers = Objects.requireNonNull(triggerers);
+            if (triggerers == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfig", "triggerers");
+            }
+            this.triggerers = triggerers;
             return this;
         }
         public Builder triggerers(GetEnvironmentConfigWorkloadsConfigTriggerer... triggerers) {
@@ -72,7 +79,10 @@ public final class GetEnvironmentConfigWorkloadsConfig {
         }
         @CustomType.Setter
         public Builder webServers(List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers) {
-            this.webServers = Objects.requireNonNull(webServers);
+            if (webServers == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfig", "webServers");
+            }
+            this.webServers = webServers;
             return this;
         }
         public Builder webServers(GetEnvironmentConfigWorkloadsConfigWebServer... webServers) {
@@ -80,7 +90,10 @@ public final class GetEnvironmentConfigWorkloadsConfig {
         }
         @CustomType.Setter
         public Builder workers(List<GetEnvironmentConfigWorkloadsConfigWorker> workers) {
-            this.workers = Objects.requireNonNull(workers);
+            if (workers == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfig", "workers");
+            }
+            this.workers = workers;
             return this;
         }
         public Builder workers(GetEnvironmentConfigWorkloadsConfigWorker... workers) {

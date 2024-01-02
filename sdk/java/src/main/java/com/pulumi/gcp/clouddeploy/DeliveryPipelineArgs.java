@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -362,7 +363,9 @@ public final class DeliveryPipelineArgs extends com.pulumi.resources.ResourceArg
         }
 
         public DeliveryPipelineArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("DeliveryPipelineArgs", "location");
+            }
             return $;
         }
     }

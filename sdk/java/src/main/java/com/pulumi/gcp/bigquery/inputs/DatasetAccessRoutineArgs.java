@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -156,9 +157,15 @@ public final class DatasetAccessRoutineArgs extends com.pulumi.resources.Resourc
         }
 
         public DatasetAccessRoutineArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.routineId = Objects.requireNonNull($.routineId, "expected parameter 'routineId' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("DatasetAccessRoutineArgs", "datasetId");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("DatasetAccessRoutineArgs", "projectId");
+            }
+            if ($.routineId == null) {
+                throw new MissingRequiredPropertyException("DatasetAccessRoutineArgs", "routineId");
+            }
             return $;
         }
     }

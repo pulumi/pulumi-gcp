@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateReservationAffinitySpecificReservation;
 import java.lang.String;
 import java.util.List;
@@ -50,7 +51,10 @@ public final class GetInstanceTemplateReservationAffinity {
 
         @CustomType.Setter
         public Builder specificReservations(List<GetInstanceTemplateReservationAffinitySpecificReservation> specificReservations) {
-            this.specificReservations = Objects.requireNonNull(specificReservations);
+            if (specificReservations == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateReservationAffinity", "specificReservations");
+            }
+            this.specificReservations = specificReservations;
             return this;
         }
         public Builder specificReservations(GetInstanceTemplateReservationAffinitySpecificReservation... specificReservations) {
@@ -58,7 +62,10 @@ public final class GetInstanceTemplateReservationAffinity {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateReservationAffinity", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetInstanceTemplateReservationAffinity build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreNotificationConfigArgs;
 import com.pulumi.gcp.healthcare.inputs.FhirStoreStreamConfigArgs;
 import java.lang.Boolean;
@@ -735,7 +736,9 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FhirStoreArgs build() {
-            $.dataset = Objects.requireNonNull($.dataset, "expected parameter 'dataset' to be non-null");
+            if ($.dataset == null) {
+                throw new MissingRequiredPropertyException("FhirStoreArgs", "dataset");
+            }
             return $;
         }
     }

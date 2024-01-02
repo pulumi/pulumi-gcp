@@ -5,6 +5,7 @@ package com.pulumi.gcp.assuredworkloads.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class WorkloadKmsSettingsArgs extends com.pulumi.resources.Resource
         }
 
         public WorkloadKmsSettingsArgs build() {
-            $.nextRotationTime = Objects.requireNonNull($.nextRotationTime, "expected parameter 'nextRotationTime' to be non-null");
-            $.rotationPeriod = Objects.requireNonNull($.rotationPeriod, "expected parameter 'rotationPeriod' to be non-null");
+            if ($.nextRotationTime == null) {
+                throw new MissingRequiredPropertyException("WorkloadKmsSettingsArgs", "nextRotationTime");
+            }
+            if ($.rotationPeriod == null) {
+                throw new MissingRequiredPropertyException("WorkloadKmsSettingsArgs", "rotationPeriod");
+            }
             return $;
         }
     }

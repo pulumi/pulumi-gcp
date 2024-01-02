@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.GetAiIndexMetadataConfigAlgorithmConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -67,7 +68,10 @@ public final class GetAiIndexMetadataConfig {
 
         @CustomType.Setter
         public Builder algorithmConfigs(List<GetAiIndexMetadataConfigAlgorithmConfig> algorithmConfigs) {
-            this.algorithmConfigs = Objects.requireNonNull(algorithmConfigs);
+            if (algorithmConfigs == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfig", "algorithmConfigs");
+            }
+            this.algorithmConfigs = algorithmConfigs;
             return this;
         }
         public Builder algorithmConfigs(GetAiIndexMetadataConfigAlgorithmConfig... algorithmConfigs) {
@@ -75,27 +79,42 @@ public final class GetAiIndexMetadataConfig {
         }
         @CustomType.Setter
         public Builder approximateNeighborsCount(Integer approximateNeighborsCount) {
-            this.approximateNeighborsCount = Objects.requireNonNull(approximateNeighborsCount);
+            if (approximateNeighborsCount == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfig", "approximateNeighborsCount");
+            }
+            this.approximateNeighborsCount = approximateNeighborsCount;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(Integer dimensions) {
-            this.dimensions = Objects.requireNonNull(dimensions);
+            if (dimensions == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfig", "dimensions");
+            }
+            this.dimensions = dimensions;
             return this;
         }
         @CustomType.Setter
         public Builder distanceMeasureType(String distanceMeasureType) {
-            this.distanceMeasureType = Objects.requireNonNull(distanceMeasureType);
+            if (distanceMeasureType == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfig", "distanceMeasureType");
+            }
+            this.distanceMeasureType = distanceMeasureType;
             return this;
         }
         @CustomType.Setter
         public Builder featureNormType(String featureNormType) {
-            this.featureNormType = Objects.requireNonNull(featureNormType);
+            if (featureNormType == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfig", "featureNormType");
+            }
+            this.featureNormType = featureNormType;
             return this;
         }
         @CustomType.Setter
         public Builder shardSize(String shardSize) {
-            this.shardSize = Objects.requireNonNull(shardSize);
+            if (shardSize == null) {
+              throw new MissingRequiredPropertyException("GetAiIndexMetadataConfig", "shardSize");
+            }
+            this.shardSize = shardSize;
             return this;
         }
         public GetAiIndexMetadataConfig build() {

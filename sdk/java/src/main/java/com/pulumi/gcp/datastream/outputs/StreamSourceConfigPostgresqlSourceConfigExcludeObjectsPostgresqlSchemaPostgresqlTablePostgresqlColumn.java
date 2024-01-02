@@ -152,41 +152,49 @@ public final class StreamSourceConfigPostgresqlSourceConfigExcludeObjectsPostgre
 
         @CustomType.Setter
         public Builder column(@Nullable String column) {
+
             this.column = column;
             return this;
         }
         @CustomType.Setter
         public Builder dataType(@Nullable String dataType) {
+
             this.dataType = dataType;
             return this;
         }
         @CustomType.Setter
         public Builder length(@Nullable Integer length) {
+
             this.length = length;
             return this;
         }
         @CustomType.Setter
         public Builder nullable(@Nullable Boolean nullable) {
+
             this.nullable = nullable;
             return this;
         }
         @CustomType.Setter
         public Builder ordinalPosition(@Nullable Integer ordinalPosition) {
+
             this.ordinalPosition = ordinalPosition;
             return this;
         }
         @CustomType.Setter
         public Builder precision(@Nullable Integer precision) {
+
             this.precision = precision;
             return this;
         }
         @CustomType.Setter
         public Builder primaryKey(@Nullable Boolean primaryKey) {
+
             this.primaryKey = primaryKey;
             return this;
         }
         @CustomType.Setter
         public Builder scale(@Nullable Integer scale) {
+
             this.scale = scale;
             return this;
         }

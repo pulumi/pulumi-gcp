@@ -163,41 +163,49 @@ public final class RepositoryRemoteRepositoryConfig {
 
         @CustomType.Setter
         public Builder aptRepository(@Nullable RepositoryRemoteRepositoryConfigAptRepository aptRepository) {
+
             this.aptRepository = aptRepository;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder dockerRepository(@Nullable RepositoryRemoteRepositoryConfigDockerRepository dockerRepository) {
+
             this.dockerRepository = dockerRepository;
             return this;
         }
         @CustomType.Setter
         public Builder mavenRepository(@Nullable RepositoryRemoteRepositoryConfigMavenRepository mavenRepository) {
+
             this.mavenRepository = mavenRepository;
             return this;
         }
         @CustomType.Setter
         public Builder npmRepository(@Nullable RepositoryRemoteRepositoryConfigNpmRepository npmRepository) {
+
             this.npmRepository = npmRepository;
             return this;
         }
         @CustomType.Setter
         public Builder pythonRepository(@Nullable RepositoryRemoteRepositoryConfigPythonRepository pythonRepository) {
+
             this.pythonRepository = pythonRepository;
             return this;
         }
         @CustomType.Setter
         public Builder upstreamCredentials(@Nullable RepositoryRemoteRepositoryConfigUpstreamCredentials upstreamCredentials) {
+
             this.upstreamCredentials = upstreamCredentials;
             return this;
         }
         @CustomType.Setter
         public Builder yumRepository(@Nullable RepositoryRemoteRepositoryConfigYumRepository yumRepository) {
+
             this.yumRepository = yumRepository;
             return this;
         }

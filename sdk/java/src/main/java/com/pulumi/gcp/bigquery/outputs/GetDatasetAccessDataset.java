@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccessDatasetDataset;
 import java.lang.String;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetDatasetAccessDataset {
 
         @CustomType.Setter
         public Builder datasets(List<GetDatasetAccessDatasetDataset> datasets) {
-            this.datasets = Objects.requireNonNull(datasets);
+            if (datasets == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccessDataset", "datasets");
+            }
+            this.datasets = datasets;
             return this;
         }
         public Builder datasets(GetDatasetAccessDatasetDataset... datasets) {
@@ -50,7 +54,10 @@ public final class GetDatasetAccessDataset {
         }
         @CustomType.Setter
         public Builder targetTypes(List<String> targetTypes) {
-            this.targetTypes = Objects.requireNonNull(targetTypes);
+            if (targetTypes == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccessDataset", "targetTypes");
+            }
+            this.targetTypes = targetTypes;
             return this;
         }
         public Builder targetTypes(String... targetTypes) {

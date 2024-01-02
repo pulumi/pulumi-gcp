@@ -105,6 +105,7 @@ public final class CertificateTemplatePredefinedValues {
 
         @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<CertificateTemplatePredefinedValuesAdditionalExtension> additionalExtensions) {
+
             this.additionalExtensions = additionalExtensions;
             return this;
         }
@@ -113,6 +114,7 @@ public final class CertificateTemplatePredefinedValues {
         }
         @CustomType.Setter
         public Builder aiaOcspServers(@Nullable List<String> aiaOcspServers) {
+
             this.aiaOcspServers = aiaOcspServers;
             return this;
         }
@@ -121,16 +123,19 @@ public final class CertificateTemplatePredefinedValues {
         }
         @CustomType.Setter
         public Builder caOptions(@Nullable CertificateTemplatePredefinedValuesCaOptions caOptions) {
+
             this.caOptions = caOptions;
             return this;
         }
         @CustomType.Setter
         public Builder keyUsage(@Nullable CertificateTemplatePredefinedValuesKeyUsage keyUsage) {
+
             this.keyUsage = keyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder policyIds(@Nullable List<CertificateTemplatePredefinedValuesPolicyId> policyIds) {
+
             this.policyIds = policyIds;
             return this;
         }

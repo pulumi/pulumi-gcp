@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig;
 import java.lang.Integer;
@@ -103,27 +104,36 @@ public final class ClusterNodePoolNodeConfigGuestAccelerator {
 
         @CustomType.Setter
         public Builder count(Integer count) {
-            this.count = Objects.requireNonNull(count);
+            if (count == null) {
+              throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigGuestAccelerator", "count");
+            }
+            this.count = count;
             return this;
         }
         @CustomType.Setter
         public Builder gpuDriverInstallationConfig(@Nullable ClusterNodePoolNodeConfigGuestAcceleratorGpuDriverInstallationConfig gpuDriverInstallationConfig) {
+
             this.gpuDriverInstallationConfig = gpuDriverInstallationConfig;
             return this;
         }
         @CustomType.Setter
         public Builder gpuPartitionSize(@Nullable String gpuPartitionSize) {
+
             this.gpuPartitionSize = gpuPartitionSize;
             return this;
         }
         @CustomType.Setter
         public Builder gpuSharingConfig(@Nullable ClusterNodePoolNodeConfigGuestAcceleratorGpuSharingConfig gpuSharingConfig) {
+
             this.gpuSharingConfig = gpuSharingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigGuestAccelerator", "type");
+            }
+            this.type = type;
             return this;
         }
         public ClusterNodePoolNodeConfigGuestAccelerator build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.databasemigrationservice.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileAlloydbSettingsInitialUser;
 import com.pulumi.gcp.databasemigrationservice.outputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettings;
 import java.lang.String;
@@ -95,22 +96,30 @@ public final class ConnectionProfileAlloydbSettings {
 
         @CustomType.Setter
         public Builder initialUser(ConnectionProfileAlloydbSettingsInitialUser initialUser) {
-            this.initialUser = Objects.requireNonNull(initialUser);
+            if (initialUser == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettings", "initialUser");
+            }
+            this.initialUser = initialUser;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder primaryInstanceSettings(@Nullable ConnectionProfileAlloydbSettingsPrimaryInstanceSettings primaryInstanceSettings) {
+
             this.primaryInstanceSettings = primaryInstanceSettings;
             return this;
         }
         @CustomType.Setter
         public Builder vpcNetwork(String vpcNetwork) {
-            this.vpcNetwork = Objects.requireNonNull(vpcNetwork);
+            if (vpcNetwork == null) {
+              throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettings", "vpcNetwork");
+            }
+            this.vpcNetwork = vpcNetwork;
             return this;
         }
         public ConnectionProfileAlloydbSettings build() {

@@ -76,16 +76,19 @@ public final class PipelineScheduleInfo {
 
         @CustomType.Setter
         public Builder nextJobTime(@Nullable String nextJobTime) {
+
             this.nextJobTime = nextJobTime;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(@Nullable String schedule) {
+
             this.schedule = schedule;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(@Nullable String timeZone) {
+
             this.timeZone = timeZone;
             return this;
         }

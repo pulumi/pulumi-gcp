@@ -60,11 +60,13 @@ public final class RegionInstanceGroupManagerStatusStateful {
 
         @CustomType.Setter
         public Builder hasStatefulConfig(@Nullable Boolean hasStatefulConfig) {
+
             this.hasStatefulConfig = hasStatefulConfig;
             return this;
         }
         @CustomType.Setter
         public Builder perInstanceConfigs(@Nullable List<RegionInstanceGroupManagerStatusStatefulPerInstanceConfig> perInstanceConfigs) {
+
             this.perInstanceConfigs = perInstanceConfigs;
             return this;
         }

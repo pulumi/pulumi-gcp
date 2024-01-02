@@ -4,6 +4,7 @@
 package com.pulumi.gcp.workstations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class WorkstationClusterDomainConfig {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("WorkstationClusterDomainConfig", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         public WorkstationClusterDomainConfig build() {

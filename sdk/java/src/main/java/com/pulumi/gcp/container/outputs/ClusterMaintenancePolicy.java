@@ -229,11 +229,13 @@ public final class ClusterMaintenancePolicy {
 
         @CustomType.Setter
         public Builder dailyMaintenanceWindow(@Nullable ClusterMaintenancePolicyDailyMaintenanceWindow dailyMaintenanceWindow) {
+
             this.dailyMaintenanceWindow = dailyMaintenanceWindow;
             return this;
         }
         @CustomType.Setter
         public Builder maintenanceExclusions(@Nullable List<ClusterMaintenancePolicyMaintenanceExclusion> maintenanceExclusions) {
+
             this.maintenanceExclusions = maintenanceExclusions;
             return this;
         }
@@ -242,6 +244,7 @@ public final class ClusterMaintenancePolicy {
         }
         @CustomType.Setter
         public Builder recurringWindow(@Nullable ClusterMaintenancePolicyRecurringWindow recurringWindow) {
+
             this.recurringWindow = recurringWindow;
             return this;
         }

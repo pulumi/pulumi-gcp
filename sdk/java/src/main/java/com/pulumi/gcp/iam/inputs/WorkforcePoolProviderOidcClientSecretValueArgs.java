@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -121,7 +122,9 @@ public final class WorkforcePoolProviderOidcClientSecretValueArgs extends com.pu
         }
 
         public WorkforcePoolProviderOidcClientSecretValueArgs build() {
-            $.plainText = Objects.requireNonNull($.plainText, "expected parameter 'plainText' to be non-null");
+            if ($.plainText == null) {
+                throw new MissingRequiredPropertyException("WorkforcePoolProviderOidcClientSecretValueArgs", "plainText");
+            }
             return $;
         }
     }

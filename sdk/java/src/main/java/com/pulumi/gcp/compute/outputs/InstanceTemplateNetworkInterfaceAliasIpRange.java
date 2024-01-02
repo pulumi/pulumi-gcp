@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -70,11 +71,15 @@ public final class InstanceTemplateNetworkInterfaceAliasIpRange {
 
         @CustomType.Setter
         public Builder ipCidrRange(String ipCidrRange) {
-            this.ipCidrRange = Objects.requireNonNull(ipCidrRange);
+            if (ipCidrRange == null) {
+              throw new MissingRequiredPropertyException("InstanceTemplateNetworkInterfaceAliasIpRange", "ipCidrRange");
+            }
+            this.ipCidrRange = ipCidrRange;
             return this;
         }
         @CustomType.Setter
         public Builder subnetworkRangeName(@Nullable String subnetworkRangeName) {
+
             this.subnetworkRangeName = subnetworkRangeName;
             return this;
         }

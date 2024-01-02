@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class ClusterNodePoolNodeConfigHostMaintenancePolicy {
 
         @CustomType.Setter
         public Builder maintenanceInterval(String maintenanceInterval) {
-            this.maintenanceInterval = Objects.requireNonNull(maintenanceInterval);
+            if (maintenanceInterval == null) {
+              throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigHostMaintenancePolicy", "maintenanceInterval");
+            }
+            this.maintenanceInterval = maintenanceInterval;
             return this;
         }
         public ClusterNodePoolNodeConfigHostMaintenancePolicy build() {

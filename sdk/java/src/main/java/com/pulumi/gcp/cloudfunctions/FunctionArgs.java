@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctions;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionEventTriggerArgs;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionSecretEnvironmentVariableArgs;
 import com.pulumi.gcp.cloudfunctions.inputs.FunctionSecretVolumeArgs;
@@ -1210,7 +1211,9 @@ public final class FunctionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FunctionArgs build() {
-            $.runtime = Objects.requireNonNull($.runtime, "expected parameter 'runtime' to be non-null");
+            if ($.runtime == null) {
+                throw new MissingRequiredPropertyException("FunctionArgs", "runtime");
+            }
             return $;
         }
     }

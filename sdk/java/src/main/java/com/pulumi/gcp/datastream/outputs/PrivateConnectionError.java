@@ -59,11 +59,13 @@ public final class PrivateConnectionError {
 
         @CustomType.Setter
         public Builder details(@Nullable Map<String,String> details) {
+
             this.details = details;
             return this;
         }
         @CustomType.Setter
         public Builder message(@Nullable String message) {
+
             this.message = message;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -57,7 +58,10 @@ public final class BareMetalAdminClusterNetworkConfigIslandModeCidr {
 
         @CustomType.Setter
         public Builder podAddressCidrBlocks(List<String> podAddressCidrBlocks) {
-            this.podAddressCidrBlocks = Objects.requireNonNull(podAddressCidrBlocks);
+            if (podAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterNetworkConfigIslandModeCidr", "podAddressCidrBlocks");
+            }
+            this.podAddressCidrBlocks = podAddressCidrBlocks;
             return this;
         }
         public Builder podAddressCidrBlocks(String... podAddressCidrBlocks) {
@@ -65,7 +69,10 @@ public final class BareMetalAdminClusterNetworkConfigIslandModeCidr {
         }
         @CustomType.Setter
         public Builder serviceAddressCidrBlocks(List<String> serviceAddressCidrBlocks) {
-            this.serviceAddressCidrBlocks = Objects.requireNonNull(serviceAddressCidrBlocks);
+            if (serviceAddressCidrBlocks == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterNetworkConfigIslandModeCidr", "serviceAddressCidrBlocks");
+            }
+            this.serviceAddressCidrBlocks = serviceAddressCidrBlocks;
             return this;
         }
         public Builder serviceAddressCidrBlocks(String... serviceAddressCidrBlocks) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.workstations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -102,6 +103,7 @@ public final class WorkstationClusterPrivateClusterConfig {
 
         @CustomType.Setter
         public Builder allowedProjects(@Nullable List<String> allowedProjects) {
+
             this.allowedProjects = allowedProjects;
             return this;
         }
@@ -110,16 +112,21 @@ public final class WorkstationClusterPrivateClusterConfig {
         }
         @CustomType.Setter
         public Builder clusterHostname(@Nullable String clusterHostname) {
+
             this.clusterHostname = clusterHostname;
             return this;
         }
         @CustomType.Setter
         public Builder enablePrivateEndpoint(Boolean enablePrivateEndpoint) {
-            this.enablePrivateEndpoint = Objects.requireNonNull(enablePrivateEndpoint);
+            if (enablePrivateEndpoint == null) {
+              throw new MissingRequiredPropertyException("WorkstationClusterPrivateClusterConfig", "enablePrivateEndpoint");
+            }
+            this.enablePrivateEndpoint = enablePrivateEndpoint;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAttachmentUri(@Nullable String serviceAttachmentUri) {
+
             this.serviceAttachmentUri = serviceAttachmentUri;
             return this;
         }

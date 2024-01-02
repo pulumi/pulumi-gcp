@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,12 +63,16 @@ public final class UptimeCheckConfigContentMatcherJsonPathMatcher {
 
         @CustomType.Setter
         public Builder jsonMatcher(@Nullable String jsonMatcher) {
+
             this.jsonMatcher = jsonMatcher;
             return this;
         }
         @CustomType.Setter
         public Builder jsonPath(String jsonPath) {
-            this.jsonPath = Objects.requireNonNull(jsonPath);
+            if (jsonPath == null) {
+              throw new MissingRequiredPropertyException("UptimeCheckConfigContentMatcherJsonPathMatcher", "jsonPath");
+            }
+            this.jsonPath = jsonPath;
             return this;
         }
         public UptimeCheckConfigContentMatcherJsonPathMatcher build() {

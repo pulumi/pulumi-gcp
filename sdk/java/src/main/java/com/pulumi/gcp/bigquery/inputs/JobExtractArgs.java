@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.JobExtractSourceModelArgs;
 import com.pulumi.gcp.bigquery.inputs.JobExtractSourceTableArgs;
 import java.lang.Boolean;
@@ -373,7 +374,9 @@ public final class JobExtractArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public JobExtractArgs build() {
-            $.destinationUris = Objects.requireNonNull($.destinationUris, "expected parameter 'destinationUris' to be non-null");
+            if ($.destinationUris == null) {
+                throw new MissingRequiredPropertyException("JobExtractArgs", "destinationUris");
+            }
             return $;
         }
     }

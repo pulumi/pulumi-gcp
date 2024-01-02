@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -94,21 +95,27 @@ public final class TableMaterializedView {
 
         @CustomType.Setter
         public Builder allowNonIncrementalDefinition(@Nullable Boolean allowNonIncrementalDefinition) {
+
             this.allowNonIncrementalDefinition = allowNonIncrementalDefinition;
             return this;
         }
         @CustomType.Setter
         public Builder enableRefresh(@Nullable Boolean enableRefresh) {
+
             this.enableRefresh = enableRefresh;
             return this;
         }
         @CustomType.Setter
         public Builder query(String query) {
-            this.query = Objects.requireNonNull(query);
+            if (query == null) {
+              throw new MissingRequiredPropertyException("TableMaterializedView", "query");
+            }
+            this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder refreshIntervalMs(@Nullable Integer refreshIntervalMs) {
+
             this.refreshIntervalMs = refreshIntervalMs;
             return this;
         }

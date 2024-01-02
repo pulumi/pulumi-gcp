@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class DataTransferConfigEmailPreferencesArgs extends com.pulumi.res
         }
 
         public DataTransferConfigEmailPreferencesArgs build() {
-            $.enableFailureEmail = Objects.requireNonNull($.enableFailureEmail, "expected parameter 'enableFailureEmail' to be non-null");
+            if ($.enableFailureEmail == null) {
+                throw new MissingRequiredPropertyException("DataTransferConfigEmailPreferencesArgs", "enableFailureEmail");
+            }
             return $;
         }
     }

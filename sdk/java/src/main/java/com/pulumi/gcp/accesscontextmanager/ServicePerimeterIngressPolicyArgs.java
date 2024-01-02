@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterIngressPolicyIngressFromArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.ServicePerimeterIngressPolicyIngressToArgs;
 import java.lang.String;
@@ -176,7 +177,9 @@ public final class ServicePerimeterIngressPolicyArgs extends com.pulumi.resource
         }
 
         public ServicePerimeterIngressPolicyArgs build() {
-            $.perimeter = Objects.requireNonNull($.perimeter, "expected parameter 'perimeter' to be non-null");
+            if ($.perimeter == null) {
+                throw new MissingRequiredPropertyException("ServicePerimeterIngressPolicyArgs", "perimeter");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetClusterMaintenancePolicyMaintenanceExclusionExclusionOptio
 
         @CustomType.Setter
         public Builder scope(String scope) {
-            this.scope = Objects.requireNonNull(scope);
+            if (scope == null) {
+              throw new MissingRequiredPropertyException("GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption", "scope");
+            }
+            this.scope = scope;
             return this;
         }
         public GetClusterMaintenancePolicyMaintenanceExclusionExclusionOption build() {

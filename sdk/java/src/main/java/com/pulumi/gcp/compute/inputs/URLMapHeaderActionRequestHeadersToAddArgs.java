@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -153,9 +154,15 @@ public final class URLMapHeaderActionRequestHeadersToAddArgs extends com.pulumi.
         }
 
         public URLMapHeaderActionRequestHeadersToAddArgs build() {
-            $.headerName = Objects.requireNonNull($.headerName, "expected parameter 'headerName' to be non-null");
-            $.headerValue = Objects.requireNonNull($.headerValue, "expected parameter 'headerValue' to be non-null");
-            $.replace = Objects.requireNonNull($.replace, "expected parameter 'replace' to be non-null");
+            if ($.headerName == null) {
+                throw new MissingRequiredPropertyException("URLMapHeaderActionRequestHeadersToAddArgs", "headerName");
+            }
+            if ($.headerValue == null) {
+                throw new MissingRequiredPropertyException("URLMapHeaderActionRequestHeadersToAddArgs", "headerValue");
+            }
+            if ($.replace == null) {
+                throw new MissingRequiredPropertyException("URLMapHeaderActionRequestHeadersToAddArgs", "replace");
+            }
             return $;
         }
     }

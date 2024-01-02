@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -134,7 +135,9 @@ public final class ClusterClusterConfigDataprocMetricConfigMetricArgs extends co
         }
 
         public ClusterClusterConfigDataprocMetricConfigMetricArgs build() {
-            $.metricSource = Objects.requireNonNull($.metricSource, "expected parameter 'metricSource' to be non-null");
+            if ($.metricSource == null) {
+                throw new MissingRequiredPropertyException("ClusterClusterConfigDataprocMetricConfigMetricArgs", "metricSource");
+            }
             return $;
         }
     }

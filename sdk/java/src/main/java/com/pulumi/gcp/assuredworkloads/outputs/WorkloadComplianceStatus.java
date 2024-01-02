@@ -42,6 +42,7 @@ public final class WorkloadComplianceStatus {
 
         @CustomType.Setter
         public Builder acknowledgedViolationCounts(@Nullable List<Integer> acknowledgedViolationCounts) {
+
             this.acknowledgedViolationCounts = acknowledgedViolationCounts;
             return this;
         }
@@ -50,6 +51,7 @@ public final class WorkloadComplianceStatus {
         }
         @CustomType.Setter
         public Builder activeViolationCounts(@Nullable List<Integer> activeViolationCounts) {
+
             this.activeViolationCounts = activeViolationCounts;
             return this;
         }

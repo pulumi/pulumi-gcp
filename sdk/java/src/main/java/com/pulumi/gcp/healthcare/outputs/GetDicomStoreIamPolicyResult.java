@@ -4,6 +4,7 @@
 package com.pulumi.gcp.healthcare.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,22 +77,34 @@ public final class GetDicomStoreIamPolicyResult {
 
         @CustomType.Setter
         public Builder dicomStoreId(String dicomStoreId) {
-            this.dicomStoreId = Objects.requireNonNull(dicomStoreId);
+            if (dicomStoreId == null) {
+              throw new MissingRequiredPropertyException("GetDicomStoreIamPolicyResult", "dicomStoreId");
+            }
+            this.dicomStoreId = dicomStoreId;
             return this;
         }
         @CustomType.Setter
         public Builder etag(String etag) {
-            this.etag = Objects.requireNonNull(etag);
+            if (etag == null) {
+              throw new MissingRequiredPropertyException("GetDicomStoreIamPolicyResult", "etag");
+            }
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetDicomStoreIamPolicyResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder policyData(String policyData) {
-            this.policyData = Objects.requireNonNull(policyData);
+            if (policyData == null) {
+              throw new MissingRequiredPropertyException("GetDicomStoreIamPolicyResult", "policyData");
+            }
+            this.policyData = policyData;
             return this;
         }
         public GetDicomStoreIamPolicyResult build() {

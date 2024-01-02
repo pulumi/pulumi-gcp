@@ -61,11 +61,13 @@ public final class PreventionJobTriggerTrigger {
 
         @CustomType.Setter
         public Builder manual(@Nullable PreventionJobTriggerTriggerManual manual) {
+
             this.manual = manual;
             return this;
         }
         @CustomType.Setter
         public Builder schedule(@Nullable PreventionJobTriggerTriggerSchedule schedule) {
+
             this.schedule = schedule;
             return this;
         }

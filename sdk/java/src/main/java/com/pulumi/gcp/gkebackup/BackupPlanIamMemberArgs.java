@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkebackup;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkebackup.inputs.BackupPlanIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -286,8 +287,12 @@ public final class BackupPlanIamMemberArgs extends com.pulumi.resources.Resource
         }
 
         public BackupPlanIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("BackupPlanIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("BackupPlanIamMemberArgs", "role");
+            }
             return $;
         }
     }

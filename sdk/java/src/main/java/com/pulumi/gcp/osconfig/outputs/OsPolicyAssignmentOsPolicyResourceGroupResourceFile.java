@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.outputs.OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile;
 import java.lang.String;
 import java.util.Objects;
@@ -121,27 +122,36 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceFile {
 
         @CustomType.Setter
         public Builder content(@Nullable String content) {
+
             this.content = content;
             return this;
         }
         @CustomType.Setter
         public Builder file(@Nullable OsPolicyAssignmentOsPolicyResourceGroupResourceFileFile file) {
+
             this.file = file;
             return this;
         }
         @CustomType.Setter
         public Builder path(String path) {
-            this.path = Objects.requireNonNull(path);
+            if (path == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceFile", "path");
+            }
+            this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder permissions(@Nullable String permissions) {
+
             this.permissions = permissions;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceFile", "state");
+            }
+            this.state = state;
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceFile build() {

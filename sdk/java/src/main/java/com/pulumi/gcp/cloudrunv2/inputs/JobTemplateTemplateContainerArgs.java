@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerEnvArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerPortArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.JobTemplateTemplateContainerResourcesArgs;
@@ -451,7 +452,9 @@ public final class JobTemplateTemplateContainerArgs extends com.pulumi.resources
         }
 
         public JobTemplateTemplateContainerArgs build() {
-            $.image = Objects.requireNonNull($.image, "expected parameter 'image' to be non-null");
+            if ($.image == null) {
+                throw new MissingRequiredPropertyException("JobTemplateTemplateContainerArgs", "image");
+            }
             return $;
         }
     }

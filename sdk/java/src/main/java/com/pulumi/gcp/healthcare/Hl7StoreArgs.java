@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.Hl7StoreNotificationConfigArgs;
 import com.pulumi.gcp.healthcare.inputs.Hl7StoreNotificationConfigsArgs;
 import com.pulumi.gcp.healthcare.inputs.Hl7StoreParserConfigArgs;
@@ -383,7 +384,9 @@ public final class Hl7StoreArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public Hl7StoreArgs build() {
-            $.dataset = Objects.requireNonNull($.dataset, "expected parameter 'dataset' to be non-null");
+            if ($.dataset == null) {
+                throw new MissingRequiredPropertyException("Hl7StoreArgs", "dataset");
+            }
             return $;
         }
     }

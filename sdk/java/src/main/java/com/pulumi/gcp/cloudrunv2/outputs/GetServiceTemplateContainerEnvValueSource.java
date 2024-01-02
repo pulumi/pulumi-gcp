@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerEnvValueSourceSecretKeyRef;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetServiceTemplateContainerEnvValueSource {
 
         @CustomType.Setter
         public Builder secretKeyReves(List<GetServiceTemplateContainerEnvValueSourceSecretKeyRef> secretKeyReves) {
-            this.secretKeyReves = Objects.requireNonNull(secretKeyReves);
+            if (secretKeyReves == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerEnvValueSource", "secretKeyReves");
+            }
+            this.secretKeyReves = secretKeyReves;
             return this;
         }
         public Builder secretKeyReves(GetServiceTemplateContainerEnvValueSourceSecretKeyRef... secretKeyReves) {

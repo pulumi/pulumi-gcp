@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAntiAffinityGroupsArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAuthorizationArgs;
 import com.pulumi.gcp.gkeonprem.inputs.VMwareClusterAutoRepairConfigArgs;
@@ -871,10 +872,18 @@ public final class VMwareClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public VMwareClusterArgs build() {
-            $.adminClusterMembership = Objects.requireNonNull($.adminClusterMembership, "expected parameter 'adminClusterMembership' to be non-null");
-            $.controlPlaneNode = Objects.requireNonNull($.controlPlaneNode, "expected parameter 'controlPlaneNode' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.onPremVersion = Objects.requireNonNull($.onPremVersion, "expected parameter 'onPremVersion' to be non-null");
+            if ($.adminClusterMembership == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterArgs", "adminClusterMembership");
+            }
+            if ($.controlPlaneNode == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterArgs", "controlPlaneNode");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterArgs", "location");
+            }
+            if ($.onPremVersion == null) {
+                throw new MissingRequiredPropertyException("VMwareClusterArgs", "onPremVersion");
+            }
             return $;
         }
     }

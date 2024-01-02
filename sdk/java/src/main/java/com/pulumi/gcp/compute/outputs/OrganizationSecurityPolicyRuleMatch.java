@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.OrganizationSecurityPolicyRuleMatchConfig;
 import java.lang.String;
 import java.util.Objects;
@@ -81,16 +82,21 @@ public final class OrganizationSecurityPolicyRuleMatch {
 
         @CustomType.Setter
         public Builder config(OrganizationSecurityPolicyRuleMatchConfig config) {
-            this.config = Objects.requireNonNull(config);
+            if (config == null) {
+              throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleMatch", "config");
+            }
+            this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder versionedExpr(@Nullable String versionedExpr) {
+
             this.versionedExpr = versionedExpr;
             return this;
         }

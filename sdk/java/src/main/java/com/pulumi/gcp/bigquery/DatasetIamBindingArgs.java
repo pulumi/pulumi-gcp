@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.DatasetIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -238,9 +239,15 @@ public final class DatasetIamBindingArgs extends com.pulumi.resources.ResourceAr
         }
 
         public DatasetIamBindingArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("DatasetIamBindingArgs", "datasetId");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("DatasetIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("DatasetIamBindingArgs", "role");
+            }
             return $;
         }
     }

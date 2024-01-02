@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginAwsV4AuthenticationArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginOverrideActionArgs;
 import com.pulumi.gcp.networkservices.inputs.EdgeCacheOriginOriginRedirectArgs;
@@ -751,7 +752,9 @@ public final class EdgeCacheOriginArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public EdgeCacheOriginArgs build() {
-            $.originAddress = Objects.requireNonNull($.originAddress, "expected parameter 'originAddress' to be non-null");
+            if ($.originAddress == null) {
+                throw new MissingRequiredPropertyException("EdgeCacheOriginArgs", "originAddress");
+            }
             return $;
         }
     }

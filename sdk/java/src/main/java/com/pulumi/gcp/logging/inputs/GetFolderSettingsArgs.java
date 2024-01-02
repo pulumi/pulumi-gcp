@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetFolderSettingsArgs extends com.pulumi.resources.InvokeArgs
         }
 
         public GetFolderSettingsArgs build() {
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("GetFolderSettingsArgs", "folder");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.activedirectory;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -362,9 +363,15 @@ public final class DomainArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DomainArgs build() {
-            $.domainName = Objects.requireNonNull($.domainName, "expected parameter 'domainName' to be non-null");
-            $.locations = Objects.requireNonNull($.locations, "expected parameter 'locations' to be non-null");
-            $.reservedIpRange = Objects.requireNonNull($.reservedIpRange, "expected parameter 'reservedIpRange' to be non-null");
+            if ($.domainName == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "domainName");
+            }
+            if ($.locations == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "locations");
+            }
+            if ($.reservedIpRange == null) {
+                throw new MissingRequiredPropertyException("DomainArgs", "reservedIpRange");
+            }
             return $;
         }
     }

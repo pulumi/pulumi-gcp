@@ -293,61 +293,73 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
 
         @CustomType.Setter
         public Builder addSignatures(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyAddSignatures addSignatures) {
+
             this.addSignatures = addSignatures;
             return this;
         }
         @CustomType.Setter
         public Builder cacheKeyPolicy(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicyCacheKeyPolicy cacheKeyPolicy) {
+
             this.cacheKeyPolicy = cacheKeyPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder cacheMode(@Nullable String cacheMode) {
+
             this.cacheMode = cacheMode;
             return this;
         }
         @CustomType.Setter
         public Builder clientTtl(@Nullable String clientTtl) {
+
             this.clientTtl = clientTtl;
             return this;
         }
         @CustomType.Setter
         public Builder defaultTtl(@Nullable String defaultTtl) {
+
             this.defaultTtl = defaultTtl;
             return this;
         }
         @CustomType.Setter
         public Builder maxTtl(@Nullable String maxTtl) {
+
             this.maxTtl = maxTtl;
             return this;
         }
         @CustomType.Setter
         public Builder negativeCaching(@Nullable Boolean negativeCaching) {
+
             this.negativeCaching = negativeCaching;
             return this;
         }
         @CustomType.Setter
         public Builder negativeCachingPolicy(@Nullable Map<String,String> negativeCachingPolicy) {
+
             this.negativeCachingPolicy = negativeCachingPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder signedRequestKeyset(@Nullable String signedRequestKeyset) {
+
             this.signedRequestKeyset = signedRequestKeyset;
             return this;
         }
         @CustomType.Setter
         public Builder signedRequestMaximumExpirationTtl(@Nullable String signedRequestMaximumExpirationTtl) {
+
             this.signedRequestMaximumExpirationTtl = signedRequestMaximumExpirationTtl;
             return this;
         }
         @CustomType.Setter
         public Builder signedRequestMode(@Nullable String signedRequestMode) {
+
             this.signedRequestMode = signedRequestMode;
             return this;
         }
         @CustomType.Setter
         public Builder signedTokenOptions(@Nullable EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPolicySignedTokenOptions signedTokenOptions) {
+
             this.signedTokenOptions = signedTokenOptions;
             return this;
         }

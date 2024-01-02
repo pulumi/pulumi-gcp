@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudidentity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -94,7 +95,9 @@ public final class GroupMembershipRoleExpiryDetailArgs extends com.pulumi.resour
         }
 
         public GroupMembershipRoleExpiryDetailArgs build() {
-            $.expireTime = Objects.requireNonNull($.expireTime, "expected parameter 'expireTime' to be non-null");
+            if ($.expireTime == null) {
+                throw new MissingRequiredPropertyException("GroupMembershipRoleExpiryDetailArgs", "expireTime");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctions.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -48,12 +49,18 @@ public final class GetFunctionSourceRepository {
 
         @CustomType.Setter
         public Builder deployedUrl(String deployedUrl) {
-            this.deployedUrl = Objects.requireNonNull(deployedUrl);
+            if (deployedUrl == null) {
+              throw new MissingRequiredPropertyException("GetFunctionSourceRepository", "deployedUrl");
+            }
+            this.deployedUrl = deployedUrl;
             return this;
         }
         @CustomType.Setter
         public Builder url(String url) {
-            this.url = Objects.requireNonNull(url);
+            if (url == null) {
+              throw new MissingRequiredPropertyException("GetFunctionSourceRepository", "url");
+            }
+            this.url = url;
             return this;
         }
         public GetFunctionSourceRepository build() {

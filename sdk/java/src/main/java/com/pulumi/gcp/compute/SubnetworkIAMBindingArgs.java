@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SubnetworkIAMBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -323,9 +324,15 @@ public final class SubnetworkIAMBindingArgs extends com.pulumi.resources.Resourc
         }
 
         public SubnetworkIAMBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.subnetwork = Objects.requireNonNull($.subnetwork, "expected parameter 'subnetwork' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("SubnetworkIAMBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("SubnetworkIAMBindingArgs", "role");
+            }
+            if ($.subnetwork == null) {
+                throw new MissingRequiredPropertyException("SubnetworkIAMBindingArgs", "subnetwork");
+            }
             return $;
         }
     }

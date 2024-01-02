@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,17 +48,26 @@ public final class NodePoolNodeConfigSoleTenantConfigNodeAffinity {
 
         @CustomType.Setter
         public Builder key(String key) {
-            this.key = Objects.requireNonNull(key);
+            if (key == null) {
+              throw new MissingRequiredPropertyException("NodePoolNodeConfigSoleTenantConfigNodeAffinity", "key");
+            }
+            this.key = key;
             return this;
         }
         @CustomType.Setter
         public Builder operator(String operator) {
-            this.operator = Objects.requireNonNull(operator);
+            if (operator == null) {
+              throw new MissingRequiredPropertyException("NodePoolNodeConfigSoleTenantConfigNodeAffinity", "operator");
+            }
+            this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder values(List<String> values) {
-            this.values = Objects.requireNonNull(values);
+            if (values == null) {
+              throw new MissingRequiredPropertyException("NodePoolNodeConfigSoleTenantConfigNodeAffinity", "values");
+            }
+            this.values = values;
             return this;
         }
         public Builder values(String... values) {

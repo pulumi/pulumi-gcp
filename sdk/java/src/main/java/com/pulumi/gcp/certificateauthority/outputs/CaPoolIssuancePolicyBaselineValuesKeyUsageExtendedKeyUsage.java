@@ -114,31 +114,37 @@ public final class CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage {
 
         @CustomType.Setter
         public Builder clientAuth(@Nullable Boolean clientAuth) {
+
             this.clientAuth = clientAuth;
             return this;
         }
         @CustomType.Setter
         public Builder codeSigning(@Nullable Boolean codeSigning) {
+
             this.codeSigning = codeSigning;
             return this;
         }
         @CustomType.Setter
         public Builder emailProtection(@Nullable Boolean emailProtection) {
+
             this.emailProtection = emailProtection;
             return this;
         }
         @CustomType.Setter
         public Builder ocspSigning(@Nullable Boolean ocspSigning) {
+
             this.ocspSigning = ocspSigning;
             return this;
         }
         @CustomType.Setter
         public Builder serverAuth(@Nullable Boolean serverAuth) {
+
             this.serverAuth = serverAuth;
             return this;
         }
         @CustomType.Setter
         public Builder timeStamping(@Nullable Boolean timeStamping) {
+
             this.timeStamping = timeStamping;
             return this;
         }

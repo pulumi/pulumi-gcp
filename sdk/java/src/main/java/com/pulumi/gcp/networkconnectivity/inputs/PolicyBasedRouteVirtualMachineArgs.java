@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class PolicyBasedRouteVirtualMachineArgs extends com.pulumi.resourc
         }
 
         public PolicyBasedRouteVirtualMachineArgs build() {
-            $.tags = Objects.requireNonNull($.tags, "expected parameter 'tags' to be non-null");
+            if ($.tags == null) {
+                throw new MissingRequiredPropertyException("PolicyBasedRouteVirtualMachineArgs", "tags");
+            }
             return $;
         }
     }

@@ -69,6 +69,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
 
         @CustomType.Setter
         public Builder allowedSignatureAlgorithms(@Nullable List<String> allowedSignatureAlgorithms) {
+
             this.allowedSignatureAlgorithms = allowedSignatureAlgorithms;
             return this;
         }
@@ -77,6 +78,7 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionCdnPoli
         }
         @CustomType.Setter
         public Builder tokenQueryParameter(@Nullable String tokenQueryParameter) {
+
             this.tokenQueryParameter = tokenQueryParameter;
             return this;
         }

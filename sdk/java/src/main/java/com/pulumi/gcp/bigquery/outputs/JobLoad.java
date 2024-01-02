@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.JobLoadDestinationEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.JobLoadDestinationTable;
 import com.pulumi.gcp.bigquery.outputs.JobLoadParquetOptions;
@@ -453,71 +454,87 @@ public final class JobLoad {
 
         @CustomType.Setter
         public Builder allowJaggedRows(@Nullable Boolean allowJaggedRows) {
+
             this.allowJaggedRows = allowJaggedRows;
             return this;
         }
         @CustomType.Setter
         public Builder allowQuotedNewlines(@Nullable Boolean allowQuotedNewlines) {
+
             this.allowQuotedNewlines = allowQuotedNewlines;
             return this;
         }
         @CustomType.Setter
         public Builder autodetect(@Nullable Boolean autodetect) {
+
             this.autodetect = autodetect;
             return this;
         }
         @CustomType.Setter
         public Builder createDisposition(@Nullable String createDisposition) {
+
             this.createDisposition = createDisposition;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEncryptionConfiguration(@Nullable JobLoadDestinationEncryptionConfiguration destinationEncryptionConfiguration) {
+
             this.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder destinationTable(JobLoadDestinationTable destinationTable) {
-            this.destinationTable = Objects.requireNonNull(destinationTable);
+            if (destinationTable == null) {
+              throw new MissingRequiredPropertyException("JobLoad", "destinationTable");
+            }
+            this.destinationTable = destinationTable;
             return this;
         }
         @CustomType.Setter
         public Builder encoding(@Nullable String encoding) {
+
             this.encoding = encoding;
             return this;
         }
         @CustomType.Setter
         public Builder fieldDelimiter(@Nullable String fieldDelimiter) {
+
             this.fieldDelimiter = fieldDelimiter;
             return this;
         }
         @CustomType.Setter
         public Builder ignoreUnknownValues(@Nullable Boolean ignoreUnknownValues) {
+
             this.ignoreUnknownValues = ignoreUnknownValues;
             return this;
         }
         @CustomType.Setter
         public Builder jsonExtension(@Nullable String jsonExtension) {
+
             this.jsonExtension = jsonExtension;
             return this;
         }
         @CustomType.Setter
         public Builder maxBadRecords(@Nullable Integer maxBadRecords) {
+
             this.maxBadRecords = maxBadRecords;
             return this;
         }
         @CustomType.Setter
         public Builder nullMarker(@Nullable String nullMarker) {
+
             this.nullMarker = nullMarker;
             return this;
         }
         @CustomType.Setter
         public Builder parquetOptions(@Nullable JobLoadParquetOptions parquetOptions) {
+
             this.parquetOptions = parquetOptions;
             return this;
         }
         @CustomType.Setter
         public Builder projectionFields(@Nullable List<String> projectionFields) {
+
             this.projectionFields = projectionFields;
             return this;
         }
@@ -526,11 +543,13 @@ public final class JobLoad {
         }
         @CustomType.Setter
         public Builder quote(@Nullable String quote) {
+
             this.quote = quote;
             return this;
         }
         @CustomType.Setter
         public Builder schemaUpdateOptions(@Nullable List<String> schemaUpdateOptions) {
+
             this.schemaUpdateOptions = schemaUpdateOptions;
             return this;
         }
@@ -539,17 +558,22 @@ public final class JobLoad {
         }
         @CustomType.Setter
         public Builder skipLeadingRows(@Nullable Integer skipLeadingRows) {
+
             this.skipLeadingRows = skipLeadingRows;
             return this;
         }
         @CustomType.Setter
         public Builder sourceFormat(@Nullable String sourceFormat) {
+
             this.sourceFormat = sourceFormat;
             return this;
         }
         @CustomType.Setter
         public Builder sourceUris(List<String> sourceUris) {
-            this.sourceUris = Objects.requireNonNull(sourceUris);
+            if (sourceUris == null) {
+              throw new MissingRequiredPropertyException("JobLoad", "sourceUris");
+            }
+            this.sourceUris = sourceUris;
             return this;
         }
         public Builder sourceUris(String... sourceUris) {
@@ -557,11 +581,13 @@ public final class JobLoad {
         }
         @CustomType.Setter
         public Builder timePartitioning(@Nullable JobLoadTimePartitioning timePartitioning) {
+
             this.timePartitioning = timePartitioning;
             return this;
         }
         @CustomType.Setter
         public Builder writeDisposition(@Nullable String writeDisposition) {
+
             this.writeDisposition = writeDisposition;
             return this;
         }

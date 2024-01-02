@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class DatabaseInstanceSettingsActiveDirectoryConfig {
 
         @CustomType.Setter
         public Builder domain(String domain) {
-            this.domain = Objects.requireNonNull(domain);
+            if (domain == null) {
+              throw new MissingRequiredPropertyException("DatabaseInstanceSettingsActiveDirectoryConfig", "domain");
+            }
+            this.domain = domain;
             return this;
         }
         public DatabaseInstanceSettingsActiveDirectoryConfig build() {

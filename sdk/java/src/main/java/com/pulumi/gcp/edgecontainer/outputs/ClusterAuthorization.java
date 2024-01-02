@@ -4,6 +4,7 @@
 package com.pulumi.gcp.edgecontainer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.edgecontainer.outputs.ClusterAuthorizationAdminUsers;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class ClusterAuthorization {
 
         @CustomType.Setter
         public Builder adminUsers(ClusterAuthorizationAdminUsers adminUsers) {
-            this.adminUsers = Objects.requireNonNull(adminUsers);
+            if (adminUsers == null) {
+              throw new MissingRequiredPropertyException("ClusterAuthorization", "adminUsers");
+            }
+            this.adminUsers = adminUsers;
             return this;
         }
         public ClusterAuthorization build() {

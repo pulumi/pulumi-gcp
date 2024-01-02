@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -47,7 +48,10 @@ public final class GetWorkloadIdentityPoolProviderOidc {
 
         @CustomType.Setter
         public Builder allowedAudiences(List<String> allowedAudiences) {
-            this.allowedAudiences = Objects.requireNonNull(allowedAudiences);
+            if (allowedAudiences == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderOidc", "allowedAudiences");
+            }
+            this.allowedAudiences = allowedAudiences;
             return this;
         }
         public Builder allowedAudiences(String... allowedAudiences) {
@@ -55,12 +59,18 @@ public final class GetWorkloadIdentityPoolProviderOidc {
         }
         @CustomType.Setter
         public Builder issuerUri(String issuerUri) {
-            this.issuerUri = Objects.requireNonNull(issuerUri);
+            if (issuerUri == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderOidc", "issuerUri");
+            }
+            this.issuerUri = issuerUri;
             return this;
         }
         @CustomType.Setter
         public Builder jwksJson(String jwksJson) {
-            this.jwksJson = Objects.requireNonNull(jwksJson);
+            if (jwksJson == null) {
+              throw new MissingRequiredPropertyException("GetWorkloadIdentityPoolProviderOidc", "jwksJson");
+            }
+            this.jwksJson = jwksJson;
             return this;
         }
         public GetWorkloadIdentityPoolProviderOidc build() {

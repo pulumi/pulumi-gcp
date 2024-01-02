@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.FirewallAllowArgs;
 import com.pulumi.gcp.compute.inputs.FirewallDenyArgs;
 import com.pulumi.gcp.compute.inputs.FirewallLogConfigArgs;
@@ -1081,7 +1082,9 @@ public final class FirewallArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FirewallArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("FirewallArgs", "network");
+            }
             return $;
         }
     }

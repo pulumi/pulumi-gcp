@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkebackup.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleFieldActionArgs;
 import com.pulumi.gcp.gkebackup.inputs.RestorePlanRestoreConfigTransformationRuleResourceFilterArgs;
 import java.lang.String;
@@ -203,7 +204,9 @@ public final class RestorePlanRestoreConfigTransformationRuleArgs extends com.pu
         }
 
         public RestorePlanRestoreConfigTransformationRuleArgs build() {
-            $.fieldActions = Objects.requireNonNull($.fieldActions, "expected parameter 'fieldActions' to be non-null");
+            if ($.fieldActions == null) {
+                throw new MissingRequiredPropertyException("RestorePlanRestoreConfigTransformationRuleArgs", "fieldActions");
+            }
             return $;
         }
     }

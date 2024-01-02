@@ -4,6 +4,7 @@
 package com.pulumi.gcp.secretmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption;
 import java.lang.String;
 import java.util.List;
@@ -60,7 +61,10 @@ public final class GetSecretsSecretReplicationUserManagedReplica {
 
         @CustomType.Setter
         public Builder customerManagedEncryptions(List<GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption> customerManagedEncryptions) {
-            this.customerManagedEncryptions = Objects.requireNonNull(customerManagedEncryptions);
+            if (customerManagedEncryptions == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecretReplicationUserManagedReplica", "customerManagedEncryptions");
+            }
+            this.customerManagedEncryptions = customerManagedEncryptions;
             return this;
         }
         public Builder customerManagedEncryptions(GetSecretsSecretReplicationUserManagedReplicaCustomerManagedEncryption... customerManagedEncryptions) {
@@ -68,7 +72,10 @@ public final class GetSecretsSecretReplicationUserManagedReplica {
         }
         @CustomType.Setter
         public Builder location(String location) {
-            this.location = Objects.requireNonNull(location);
+            if (location == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecretReplicationUserManagedReplica", "location");
+            }
+            this.location = location;
             return this;
         }
         public GetSecretsSecretReplicationUserManagedReplica build() {

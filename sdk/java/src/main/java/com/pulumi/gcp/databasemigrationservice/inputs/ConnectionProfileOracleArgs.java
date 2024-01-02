@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileOracleForwardSshConnectivityArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileOraclePrivateConnectivityArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileOracleSslArgs;
@@ -443,11 +444,21 @@ public final class ConnectionProfileOracleArgs extends com.pulumi.resources.Reso
         }
 
         public ConnectionProfileOracleArgs build() {
-            $.databaseService = Objects.requireNonNull($.databaseService, "expected parameter 'databaseService' to be non-null");
-            $.host = Objects.requireNonNull($.host, "expected parameter 'host' to be non-null");
-            $.password = Objects.requireNonNull($.password, "expected parameter 'password' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
-            $.username = Objects.requireNonNull($.username, "expected parameter 'username' to be non-null");
+            if ($.databaseService == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleArgs", "databaseService");
+            }
+            if ($.host == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleArgs", "host");
+            }
+            if ($.password == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleArgs", "password");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleArgs", "port");
+            }
+            if ($.username == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleArgs", "username");
+            }
             return $;
         }
     }

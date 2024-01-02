@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,17 +87,24 @@ public final class FunctionEventTriggerEventFilter {
 
         @CustomType.Setter
         public Builder attribute(String attribute) {
-            this.attribute = Objects.requireNonNull(attribute);
+            if (attribute == null) {
+              throw new MissingRequiredPropertyException("FunctionEventTriggerEventFilter", "attribute");
+            }
+            this.attribute = attribute;
             return this;
         }
         @CustomType.Setter
         public Builder operator(@Nullable String operator) {
+
             this.operator = operator;
             return this;
         }
         @CustomType.Setter
         public Builder value(String value) {
-            this.value = Objects.requireNonNull(value);
+            if (value == null) {
+              throw new MissingRequiredPropertyException("FunctionEventTriggerEventFilter", "value");
+            }
+            this.value = value;
             return this;
         }
         public FunctionEventTriggerEventFilter build() {

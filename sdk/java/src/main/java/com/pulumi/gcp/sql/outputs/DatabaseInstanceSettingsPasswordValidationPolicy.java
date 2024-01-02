@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -122,31 +123,39 @@ public final class DatabaseInstanceSettingsPasswordValidationPolicy {
 
         @CustomType.Setter
         public Builder complexity(@Nullable String complexity) {
+
             this.complexity = complexity;
             return this;
         }
         @CustomType.Setter
         public Builder disallowUsernameSubstring(@Nullable Boolean disallowUsernameSubstring) {
+
             this.disallowUsernameSubstring = disallowUsernameSubstring;
             return this;
         }
         @CustomType.Setter
         public Builder enablePasswordPolicy(Boolean enablePasswordPolicy) {
-            this.enablePasswordPolicy = Objects.requireNonNull(enablePasswordPolicy);
+            if (enablePasswordPolicy == null) {
+              throw new MissingRequiredPropertyException("DatabaseInstanceSettingsPasswordValidationPolicy", "enablePasswordPolicy");
+            }
+            this.enablePasswordPolicy = enablePasswordPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder minLength(@Nullable Integer minLength) {
+
             this.minLength = minLength;
             return this;
         }
         @CustomType.Setter
         public Builder passwordChangeInterval(@Nullable String passwordChangeInterval) {
+
             this.passwordChangeInterval = passwordChangeInterval;
             return this;
         }
         @CustomType.Setter
         public Builder reuseInterval(@Nullable Integer reuseInterval) {
+
             this.reuseInterval = reuseInterval;
             return this;
         }

@@ -44,6 +44,7 @@ public final class InstanceSettingsMetadata {
 
         @CustomType.Setter
         public Builder items(@Nullable Map<String,String> items) {
+
             this.items = items;
             return this;
         }

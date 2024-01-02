@@ -4,6 +4,7 @@
 package com.pulumi.gcp.integrationconnectors.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionSslConfigAdditionalVariable;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionSslConfigClientCertificate;
 import com.pulumi.gcp.integrationconnectors.outputs.ConnectionSslConfigClientPrivateKey;
@@ -195,6 +196,7 @@ public final class ConnectionSslConfig {
 
         @CustomType.Setter
         public Builder additionalVariables(@Nullable List<ConnectionSslConfigAdditionalVariable> additionalVariables) {
+
             this.additionalVariables = additionalVariables;
             return this;
         }
@@ -203,46 +205,57 @@ public final class ConnectionSslConfig {
         }
         @CustomType.Setter
         public Builder clientCertType(@Nullable String clientCertType) {
+
             this.clientCertType = clientCertType;
             return this;
         }
         @CustomType.Setter
         public Builder clientCertificate(@Nullable ConnectionSslConfigClientCertificate clientCertificate) {
+
             this.clientCertificate = clientCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder clientPrivateKey(@Nullable ConnectionSslConfigClientPrivateKey clientPrivateKey) {
+
             this.clientPrivateKey = clientPrivateKey;
             return this;
         }
         @CustomType.Setter
         public Builder clientPrivateKeyPass(@Nullable ConnectionSslConfigClientPrivateKeyPass clientPrivateKeyPass) {
+
             this.clientPrivateKeyPass = clientPrivateKeyPass;
             return this;
         }
         @CustomType.Setter
         public Builder privateServerCertificate(@Nullable ConnectionSslConfigPrivateServerCertificate privateServerCertificate) {
+
             this.privateServerCertificate = privateServerCertificate;
             return this;
         }
         @CustomType.Setter
         public Builder serverCertType(@Nullable String serverCertType) {
+
             this.serverCertType = serverCertType;
             return this;
         }
         @CustomType.Setter
         public Builder trustModel(@Nullable String trustModel) {
+
             this.trustModel = trustModel;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("ConnectionSslConfig", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder useSsl(@Nullable Boolean useSsl) {
+
             this.useSsl = useSsl;
             return this;
         }

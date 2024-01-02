@@ -103,11 +103,13 @@ public final class CxAgentGitIntegrationSettingsGithubSettings {
 
         @CustomType.Setter
         public Builder accessToken(@Nullable String accessToken) {
+
             this.accessToken = accessToken;
             return this;
         }
         @CustomType.Setter
         public Builder branches(@Nullable List<String> branches) {
+
             this.branches = branches;
             return this;
         }
@@ -116,16 +118,19 @@ public final class CxAgentGitIntegrationSettingsGithubSettings {
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder repositoryUri(@Nullable String repositoryUri) {
+
             this.repositoryUri = repositoryUri;
             return this;
         }
         @CustomType.Setter
         public Builder trackingBranch(@Nullable String trackingBranch) {
+
             this.trackingBranch = trackingBranch;
             return this;
         }

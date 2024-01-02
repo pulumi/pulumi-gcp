@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig {
 
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(String subnetwork) {
-            this.subnetwork = Objects.requireNonNull(subnetwork);
+            if (subnetwork == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig", "subnetwork");
+            }
+            this.subnetwork = subnetwork;
             return this;
         }
         public GetClusterNodePoolNetworkConfigAdditionalNodeNetworkConfig build() {

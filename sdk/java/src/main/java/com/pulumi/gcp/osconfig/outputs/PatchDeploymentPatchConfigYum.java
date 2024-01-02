@@ -92,6 +92,7 @@ public final class PatchDeploymentPatchConfigYum {
 
         @CustomType.Setter
         public Builder excludes(@Nullable List<String> excludes) {
+
             this.excludes = excludes;
             return this;
         }
@@ -100,6 +101,7 @@ public final class PatchDeploymentPatchConfigYum {
         }
         @CustomType.Setter
         public Builder exclusivePackages(@Nullable List<String> exclusivePackages) {
+
             this.exclusivePackages = exclusivePackages;
             return this;
         }
@@ -108,11 +110,13 @@ public final class PatchDeploymentPatchConfigYum {
         }
         @CustomType.Setter
         public Builder minimal(@Nullable Boolean minimal) {
+
             this.minimal = minimal;
             return this;
         }
         @CustomType.Setter
         public Builder security(@Nullable Boolean security) {
+
             this.security = security;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiTensorboardEncryptionSpecArgs;
 import java.lang.String;
 import java.util.Map;
@@ -291,7 +292,9 @@ public final class AiTensorboardArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AiTensorboardArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("AiTensorboardArgs", "displayName");
+            }
             return $;
         }
     }

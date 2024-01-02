@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -58,12 +59,16 @@ public final class VMwareClusterNetworkConfigStaticIpConfigIpBlockIp {
 
         @CustomType.Setter
         public Builder hostname(@Nullable String hostname) {
+
             this.hostname = hostname;
             return this;
         }
         @CustomType.Setter
         public Builder ip(String ip) {
-            this.ip = Objects.requireNonNull(ip);
+            if (ip == null) {
+              throw new MissingRequiredPropertyException("VMwareClusterNetworkConfigStaticIpConfigIpBlockIp", "ip");
+            }
+            this.ip = ip;
             return this;
         }
         public VMwareClusterNetworkConfigStaticIpConfigIpBlockIp build() {

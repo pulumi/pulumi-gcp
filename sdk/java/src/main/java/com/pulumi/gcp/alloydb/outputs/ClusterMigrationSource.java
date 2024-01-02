@@ -72,16 +72,19 @@ public final class ClusterMigrationSource {
 
         @CustomType.Setter
         public Builder hostPort(@Nullable String hostPort) {
+
             this.hostPort = hostPort;
             return this;
         }
         @CustomType.Setter
         public Builder referenceId(@Nullable String referenceId) {
+
             this.referenceId = referenceId;
             return this;
         }
         @CustomType.Setter
         public Builder sourceType(@Nullable String sourceType) {
+
             this.sourceType = sourceType;
             return this;
         }

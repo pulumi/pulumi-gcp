@@ -86,16 +86,19 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder kmsWrapped(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyKmsWrapped kmsWrapped) {
+
             this.kmsWrapped = kmsWrapped;
             return this;
         }
         @CustomType.Setter("transient")
         public Builder transient_(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyTransient transient_) {
+
             this.transient_ = transient_;
             return this;
         }
         @CustomType.Setter
         public Builder unwrapped(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationCryptoReplaceFfxFpeConfigCryptoKeyUnwrapped unwrapped) {
+
             this.unwrapped = unwrapped;
             return this;
         }

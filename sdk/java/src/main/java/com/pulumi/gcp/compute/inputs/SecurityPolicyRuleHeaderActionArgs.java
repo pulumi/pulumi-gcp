@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.SecurityPolicyRuleHeaderActionRequestHeadersToAddArgs;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class SecurityPolicyRuleHeaderActionArgs extends com.pulumi.resourc
         }
 
         public SecurityPolicyRuleHeaderActionArgs build() {
-            $.requestHeadersToAdds = Objects.requireNonNull($.requestHeadersToAdds, "expected parameter 'requestHeadersToAdds' to be non-null");
+            if ($.requestHeadersToAdds == null) {
+                throw new MissingRequiredPropertyException("SecurityPolicyRuleHeaderActionArgs", "requestHeadersToAdds");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.datacatalog;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.inputs.PolicyTagIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -204,9 +205,15 @@ public final class PolicyTagIamMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         public PolicyTagIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.policyTag = Objects.requireNonNull($.policyTag, "expected parameter 'policyTag' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("PolicyTagIamMemberArgs", "member");
+            }
+            if ($.policyTag == null) {
+                throw new MissingRequiredPropertyException("PolicyTagIamMemberArgs", "policyTag");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("PolicyTagIamMemberArgs", "role");
+            }
             return $;
         }
     }

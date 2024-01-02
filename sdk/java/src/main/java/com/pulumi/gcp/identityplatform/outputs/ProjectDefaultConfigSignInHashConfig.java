@@ -111,26 +111,31 @@ public final class ProjectDefaultConfigSignInHashConfig {
 
         @CustomType.Setter
         public Builder algorithm(@Nullable String algorithm) {
+
             this.algorithm = algorithm;
             return this;
         }
         @CustomType.Setter
         public Builder memoryCost(@Nullable Integer memoryCost) {
+
             this.memoryCost = memoryCost;
             return this;
         }
         @CustomType.Setter
         public Builder rounds(@Nullable Integer rounds) {
+
             this.rounds = rounds;
             return this;
         }
         @CustomType.Setter
         public Builder saltSeparator(@Nullable String saltSeparator) {
+
             this.saltSeparator = saltSeparator;
             return this;
         }
         @CustomType.Setter
         public Builder signerKey(@Nullable String signerKey) {
+
             this.signerKey = signerKey;
             return this;
         }

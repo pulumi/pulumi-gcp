@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigGceClusterConfig
 
         @CustomType.Setter
         public Builder nodeGroup(String nodeGroup) {
-            this.nodeGroup = Objects.requireNonNull(nodeGroup);
+            if (nodeGroup == null) {
+              throw new MissingRequiredPropertyException("WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity", "nodeGroup");
+            }
+            this.nodeGroup = nodeGroup;
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigGceClusterConfigNodeGroupAffinity build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetInstanceGroupManagerStatusAllInstancesConfig {
 
         @CustomType.Setter
         public Builder effective(Boolean effective) {
-            this.effective = Objects.requireNonNull(effective);
+            if (effective == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatusAllInstancesConfig", "effective");
+            }
+            this.effective = effective;
             return this;
         }
         public GetInstanceGroupManagerStatusAllInstancesConfig build() {

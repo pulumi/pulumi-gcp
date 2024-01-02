@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -86,26 +87,39 @@ public final class GetProjectServiceAccountResult {
 
         @CustomType.Setter
         public Builder emailAddress(String emailAddress) {
-            this.emailAddress = Objects.requireNonNull(emailAddress);
+            if (emailAddress == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceAccountResult", "emailAddress");
+            }
+            this.emailAddress = emailAddress;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceAccountResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder member(String member) {
-            this.member = Objects.requireNonNull(member);
+            if (member == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceAccountResult", "member");
+            }
+            this.member = member;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetProjectServiceAccountResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder userProject(@Nullable String userProject) {
+
             this.userProject = userProject;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetTriggerApprovalConfig {
 
         @CustomType.Setter
         public Builder approvalRequired(Boolean approvalRequired) {
-            this.approvalRequired = Objects.requireNonNull(approvalRequired);
+            if (approvalRequired == null) {
+              throw new MissingRequiredPropertyException("GetTriggerApprovalConfig", "approvalRequired");
+            }
+            this.approvalRequired = approvalRequired;
             return this;
         }
         public GetTriggerApprovalConfig build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -54,7 +55,9 @@ public final class NodePoolNodeConfigAdvancedMachineFeaturesArgs extends com.pul
         }
 
         public NodePoolNodeConfigAdvancedMachineFeaturesArgs build() {
-            $.threadsPerCore = Objects.requireNonNull($.threadsPerCore, "expected parameter 'threadsPerCore' to be non-null");
+            if ($.threadsPerCore == null) {
+                throw new MissingRequiredPropertyException("NodePoolNodeConfigAdvancedMachineFeaturesArgs", "threadsPerCore");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -158,8 +159,12 @@ public final class GetTriggerArgs extends com.pulumi.resources.InvokeArgs {
         }
 
         public GetTriggerArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.triggerId = Objects.requireNonNull($.triggerId, "expected parameter 'triggerId' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("GetTriggerArgs", "location");
+            }
+            if ($.triggerId == null) {
+                throw new MissingRequiredPropertyException("GetTriggerArgs", "triggerId");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigee;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -232,10 +233,18 @@ public final class SharedflowDeploymentArgs extends com.pulumi.resources.Resourc
         }
 
         public SharedflowDeploymentArgs build() {
-            $.environment = Objects.requireNonNull($.environment, "expected parameter 'environment' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
-            $.revision = Objects.requireNonNull($.revision, "expected parameter 'revision' to be non-null");
-            $.sharedflowId = Objects.requireNonNull($.sharedflowId, "expected parameter 'sharedflowId' to be non-null");
+            if ($.environment == null) {
+                throw new MissingRequiredPropertyException("SharedflowDeploymentArgs", "environment");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("SharedflowDeploymentArgs", "orgId");
+            }
+            if ($.revision == null) {
+                throw new MissingRequiredPropertyException("SharedflowDeploymentArgs", "revision");
+            }
+            if ($.sharedflowId == null) {
+                throw new MissingRequiredPropertyException("SharedflowDeploymentArgs", "sharedflowId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.projects.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -60,12 +61,18 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication {
 
         @CustomType.Setter
         public Builder packageName(String packageName) {
-            this.packageName = Objects.requireNonNull(packageName);
+            if (packageName == null) {
+              throw new MissingRequiredPropertyException("ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication", "packageName");
+            }
+            this.packageName = packageName;
             return this;
         }
         @CustomType.Setter
         public Builder sha1Fingerprint(String sha1Fingerprint) {
-            this.sha1Fingerprint = Objects.requireNonNull(sha1Fingerprint);
+            if (sha1Fingerprint == null) {
+              throw new MissingRequiredPropertyException("ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication", "sha1Fingerprint");
+            }
+            this.sha1Fingerprint = sha1Fingerprint;
             return this;
         }
         public ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplication build() {

@@ -89,11 +89,13 @@ public final class SubscriptionDeadLetterPolicy {
 
         @CustomType.Setter
         public Builder deadLetterTopic(@Nullable String deadLetterTopic) {
+
             this.deadLetterTopic = deadLetterTopic;
             return this;
         }
         @CustomType.Setter
         public Builder maxDeliveryAttempts(@Nullable Integer maxDeliveryAttempts) {
+
             this.maxDeliveryAttempts = maxDeliveryAttempts;
             return this;
         }

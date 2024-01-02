@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.FolderSinkBigqueryOptionsArgs;
 import com.pulumi.gcp.logging.inputs.FolderSinkExclusionArgs;
 import java.lang.Boolean;
@@ -434,8 +435,12 @@ public final class FolderSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FolderSinkArgs build() {
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("FolderSinkArgs", "destination");
+            }
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("FolderSinkArgs", "folder");
+            }
             return $;
         }
     }

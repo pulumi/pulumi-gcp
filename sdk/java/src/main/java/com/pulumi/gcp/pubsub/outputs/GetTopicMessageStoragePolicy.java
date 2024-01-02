@@ -4,6 +4,7 @@
 package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetTopicMessageStoragePolicy {
 
         @CustomType.Setter
         public Builder allowedPersistenceRegions(List<String> allowedPersistenceRegions) {
-            this.allowedPersistenceRegions = Objects.requireNonNull(allowedPersistenceRegions);
+            if (allowedPersistenceRegions == null) {
+              throw new MissingRequiredPropertyException("GetTopicMessageStoragePolicy", "allowedPersistenceRegions");
+            }
+            this.allowedPersistenceRegions = allowedPersistenceRegions;
             return this;
         }
         public Builder allowedPersistenceRegions(String... allowedPersistenceRegions) {

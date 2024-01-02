@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class RepositoryGitRemoteSettingsSshAuthenticationConfigArgs extend
         }
 
         public RepositoryGitRemoteSettingsSshAuthenticationConfigArgs build() {
-            $.hostPublicKey = Objects.requireNonNull($.hostPublicKey, "expected parameter 'hostPublicKey' to be non-null");
-            $.userPrivateKeySecretVersion = Objects.requireNonNull($.userPrivateKeySecretVersion, "expected parameter 'userPrivateKeySecretVersion' to be non-null");
+            if ($.hostPublicKey == null) {
+                throw new MissingRequiredPropertyException("RepositoryGitRemoteSettingsSshAuthenticationConfigArgs", "hostPublicKey");
+            }
+            if ($.userPrivateKeySecretVersion == null) {
+                throw new MissingRequiredPropertyException("RepositoryGitRemoteSettingsSshAuthenticationConfigArgs", "userPrivateKeySecretVersion");
+            }
             return $;
         }
     }

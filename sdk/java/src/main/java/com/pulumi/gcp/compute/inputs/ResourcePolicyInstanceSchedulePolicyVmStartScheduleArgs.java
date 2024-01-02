@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs exten
         }
 
         public ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs build() {
-            $.schedule = Objects.requireNonNull($.schedule, "expected parameter 'schedule' to be non-null");
+            if ($.schedule == null) {
+                throw new MissingRequiredPropertyException("ResourcePolicyInstanceSchedulePolicyVmStartScheduleArgs", "schedule");
+            }
             return $;
         }
     }

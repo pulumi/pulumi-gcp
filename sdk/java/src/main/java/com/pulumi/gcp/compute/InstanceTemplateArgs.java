@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateAdvancedMachineFeaturesArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateDiskArgs;
@@ -1166,8 +1167,12 @@ public final class InstanceTemplateArgs extends com.pulumi.resources.ResourceArg
         }
 
         public InstanceTemplateArgs build() {
-            $.disks = Objects.requireNonNull($.disks, "expected parameter 'disks' to be non-null");
-            $.machineType = Objects.requireNonNull($.machineType, "expected parameter 'machineType' to be non-null");
+            if ($.disks == null) {
+                throw new MissingRequiredPropertyException("InstanceTemplateArgs", "disks");
+            }
+            if ($.machineType == null) {
+                throw new MissingRequiredPropertyException("InstanceTemplateArgs", "machineType");
+            }
             return $;
         }
     }

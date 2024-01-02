@@ -46,6 +46,7 @@ public final class BareMetalAdminClusterNodeAccessConfig {
 
         @CustomType.Setter
         public Builder loginUser(@Nullable String loginUser) {
+
             this.loginUser = loginUser;
             return this;
         }

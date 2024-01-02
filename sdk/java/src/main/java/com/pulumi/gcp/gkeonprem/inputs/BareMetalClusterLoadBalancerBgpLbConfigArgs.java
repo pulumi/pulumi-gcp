@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerBgpLbConfigAddressPoolArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerBgpLbConfigBgpPeerConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalClusterLoadBalancerBgpLbConfigLoadBalancerNodePoolConfigArgs;
@@ -267,9 +268,15 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigArgs extends com.pulum
         }
 
         public BareMetalClusterLoadBalancerBgpLbConfigArgs build() {
-            $.addressPools = Objects.requireNonNull($.addressPools, "expected parameter 'addressPools' to be non-null");
-            $.asn = Objects.requireNonNull($.asn, "expected parameter 'asn' to be non-null");
-            $.bgpPeerConfigs = Objects.requireNonNull($.bgpPeerConfigs, "expected parameter 'bgpPeerConfigs' to be non-null");
+            if ($.addressPools == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfigArgs", "addressPools");
+            }
+            if ($.asn == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfigArgs", "asn");
+            }
+            if ($.bgpPeerConfigs == null) {
+                throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfigArgs", "bgpPeerConfigs");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.alloydb.inputs.BackupEncryptionConfigArgs;
 import java.lang.String;
 import java.util.Map;
@@ -459,9 +460,15 @@ public final class BackupArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BackupArgs build() {
-            $.backupId = Objects.requireNonNull($.backupId, "expected parameter 'backupId' to be non-null");
-            $.clusterName = Objects.requireNonNull($.clusterName, "expected parameter 'clusterName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.backupId == null) {
+                throw new MissingRequiredPropertyException("BackupArgs", "backupId");
+            }
+            if ($.clusterName == null) {
+                throw new MissingRequiredPropertyException("BackupArgs", "clusterName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("BackupArgs", "location");
+            }
             return $;
         }
     }

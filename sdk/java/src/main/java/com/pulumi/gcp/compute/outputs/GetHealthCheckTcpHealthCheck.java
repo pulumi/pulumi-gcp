@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -65,32 +66,50 @@ public final class GetHealthCheckTcpHealthCheck {
 
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTcpHealthCheck", "port");
+            }
+            this.port = port;
             return this;
         }
         @CustomType.Setter
         public Builder portName(String portName) {
-            this.portName = Objects.requireNonNull(portName);
+            if (portName == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTcpHealthCheck", "portName");
+            }
+            this.portName = portName;
             return this;
         }
         @CustomType.Setter
         public Builder portSpecification(String portSpecification) {
-            this.portSpecification = Objects.requireNonNull(portSpecification);
+            if (portSpecification == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTcpHealthCheck", "portSpecification");
+            }
+            this.portSpecification = portSpecification;
             return this;
         }
         @CustomType.Setter
         public Builder proxyHeader(String proxyHeader) {
-            this.proxyHeader = Objects.requireNonNull(proxyHeader);
+            if (proxyHeader == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTcpHealthCheck", "proxyHeader");
+            }
+            this.proxyHeader = proxyHeader;
             return this;
         }
         @CustomType.Setter
         public Builder request(String request) {
-            this.request = Objects.requireNonNull(request);
+            if (request == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTcpHealthCheck", "request");
+            }
+            this.request = request;
             return this;
         }
         @CustomType.Setter
         public Builder response(String response) {
-            this.response = Objects.requireNonNull(response);
+            if (response == null) {
+              throw new MissingRequiredPropertyException("GetHealthCheckTcpHealthCheck", "response");
+            }
+            this.response = response;
             return this;
         }
         public GetHealthCheckTcpHealthCheck build() {

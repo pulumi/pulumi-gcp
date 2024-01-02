@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -154,8 +155,12 @@ public final class ConfigBlockingFunctionsTriggerArgs extends com.pulumi.resourc
         }
 
         public ConfigBlockingFunctionsTriggerArgs build() {
-            $.eventType = Objects.requireNonNull($.eventType, "expected parameter 'eventType' to be non-null");
-            $.functionUri = Objects.requireNonNull($.functionUri, "expected parameter 'functionUri' to be non-null");
+            if ($.eventType == null) {
+                throw new MissingRequiredPropertyException("ConfigBlockingFunctionsTriggerArgs", "eventType");
+            }
+            if ($.functionUri == null) {
+                throw new MissingRequiredPropertyException("ConfigBlockingFunctionsTriggerArgs", "functionUri");
+            }
             return $;
         }
     }

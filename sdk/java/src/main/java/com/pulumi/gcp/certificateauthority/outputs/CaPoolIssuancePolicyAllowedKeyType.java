@@ -63,11 +63,13 @@ public final class CaPoolIssuancePolicyAllowedKeyType {
 
         @CustomType.Setter
         public Builder ellipticCurve(@Nullable CaPoolIssuancePolicyAllowedKeyTypeEllipticCurve ellipticCurve) {
+
             this.ellipticCurve = ellipticCurve;
             return this;
         }
         @CustomType.Setter
         public Builder rsa(@Nullable CaPoolIssuancePolicyAllowedKeyTypeRsa rsa) {
+
             this.rsa = rsa;
             return this;
         }

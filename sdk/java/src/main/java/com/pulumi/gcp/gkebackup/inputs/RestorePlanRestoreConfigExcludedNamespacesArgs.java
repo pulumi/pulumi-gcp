@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkebackup.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -85,7 +86,9 @@ public final class RestorePlanRestoreConfigExcludedNamespacesArgs extends com.pu
         }
 
         public RestorePlanRestoreConfigExcludedNamespacesArgs build() {
-            $.namespaces = Objects.requireNonNull($.namespaces, "expected parameter 'namespaces' to be non-null");
+            if ($.namespaces == null) {
+                throw new MissingRequiredPropertyException("RestorePlanRestoreConfigExcludedNamespacesArgs", "namespaces");
+            }
             return $;
         }
     }

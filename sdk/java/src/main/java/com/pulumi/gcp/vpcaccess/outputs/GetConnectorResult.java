@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vpcaccess.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vpcaccess.outputs.GetConnectorSubnet;
 import java.lang.Integer;
 import java.lang.String;
@@ -131,7 +132,10 @@ public final class GetConnectorResult {
 
         @CustomType.Setter
         public Builder connectedProjects(List<String> connectedProjects) {
-            this.connectedProjects = Objects.requireNonNull(connectedProjects);
+            if (connectedProjects == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "connectedProjects");
+            }
+            this.connectedProjects = connectedProjects;
             return this;
         }
         public Builder connectedProjects(String... connectedProjects) {
@@ -139,72 +143,110 @@ public final class GetConnectorResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder ipCidrRange(String ipCidrRange) {
-            this.ipCidrRange = Objects.requireNonNull(ipCidrRange);
+            if (ipCidrRange == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "ipCidrRange");
+            }
+            this.ipCidrRange = ipCidrRange;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(String machineType) {
-            this.machineType = Objects.requireNonNull(machineType);
+            if (machineType == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "machineType");
+            }
+            this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder maxInstances(Integer maxInstances) {
-            this.maxInstances = Objects.requireNonNull(maxInstances);
+            if (maxInstances == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "maxInstances");
+            }
+            this.maxInstances = maxInstances;
             return this;
         }
         @CustomType.Setter
         public Builder maxThroughput(Integer maxThroughput) {
-            this.maxThroughput = Objects.requireNonNull(maxThroughput);
+            if (maxThroughput == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "maxThroughput");
+            }
+            this.maxThroughput = maxThroughput;
             return this;
         }
         @CustomType.Setter
         public Builder minInstances(Integer minInstances) {
-            this.minInstances = Objects.requireNonNull(minInstances);
+            if (minInstances == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "minInstances");
+            }
+            this.minInstances = minInstances;
             return this;
         }
         @CustomType.Setter
         public Builder minThroughput(Integer minThroughput) {
-            this.minThroughput = Objects.requireNonNull(minThroughput);
+            if (minThroughput == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "minThroughput");
+            }
+            this.minThroughput = minThroughput;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder subnets(List<GetConnectorSubnet> subnets) {
-            this.subnets = Objects.requireNonNull(subnets);
+            if (subnets == null) {
+              throw new MissingRequiredPropertyException("GetConnectorResult", "subnets");
+            }
+            this.subnets = subnets;
             return this;
         }
         public Builder subnets(GetConnectorSubnet... subnets) {

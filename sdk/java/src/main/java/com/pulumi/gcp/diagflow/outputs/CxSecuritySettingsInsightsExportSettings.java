@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class CxSecuritySettingsInsightsExportSettings {
 
         @CustomType.Setter
         public Builder enableInsightsExport(Boolean enableInsightsExport) {
-            this.enableInsightsExport = Objects.requireNonNull(enableInsightsExport);
+            if (enableInsightsExport == null) {
+              throw new MissingRequiredPropertyException("CxSecuritySettingsInsightsExportSettings", "enableInsightsExport");
+            }
+            this.enableInsightsExport = enableInsightsExport;
             return this;
         }
         public CxSecuritySettingsInsightsExportSettings build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class PatchDeploymentOneTimeSchedule {
 
         @CustomType.Setter
         public Builder executeTime(String executeTime) {
-            this.executeTime = Objects.requireNonNull(executeTime);
+            if (executeTime == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentOneTimeSchedule", "executeTime");
+            }
+            this.executeTime = executeTime;
             return this;
         }
         public PatchDeploymentOneTimeSchedule build() {

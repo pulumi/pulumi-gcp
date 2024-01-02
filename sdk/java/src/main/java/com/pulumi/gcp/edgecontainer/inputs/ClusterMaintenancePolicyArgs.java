@@ -5,6 +5,7 @@ package com.pulumi.gcp.edgecontainer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.edgecontainer.inputs.ClusterMaintenancePolicyWindowArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class ClusterMaintenancePolicyArgs extends com.pulumi.resources.Res
         }
 
         public ClusterMaintenancePolicyArgs build() {
-            $.window = Objects.requireNonNull($.window, "expected parameter 'window' to be non-null");
+            if ($.window == null) {
+                throw new MissingRequiredPropertyException("ClusterMaintenancePolicyArgs", "window");
+            }
             return $;
         }
     }

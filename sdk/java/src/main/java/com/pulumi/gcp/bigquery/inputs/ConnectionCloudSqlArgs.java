@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.ConnectionCloudSqlCredentialArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -237,10 +238,18 @@ public final class ConnectionCloudSqlArgs extends com.pulumi.resources.ResourceA
         }
 
         public ConnectionCloudSqlArgs build() {
-            $.credential = Objects.requireNonNull($.credential, "expected parameter 'credential' to be non-null");
-            $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
-            $.instanceId = Objects.requireNonNull($.instanceId, "expected parameter 'instanceId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.credential == null) {
+                throw new MissingRequiredPropertyException("ConnectionCloudSqlArgs", "credential");
+            }
+            if ($.database == null) {
+                throw new MissingRequiredPropertyException("ConnectionCloudSqlArgs", "database");
+            }
+            if ($.instanceId == null) {
+                throw new MissingRequiredPropertyException("ConnectionCloudSqlArgs", "instanceId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("ConnectionCloudSqlArgs", "type");
+            }
             return $;
         }
     }

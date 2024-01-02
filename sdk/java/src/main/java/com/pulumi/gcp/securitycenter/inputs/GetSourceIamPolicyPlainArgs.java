@@ -4,6 +4,7 @@
 package com.pulumi.gcp.securitycenter.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -76,8 +77,12 @@ public final class GetSourceIamPolicyPlainArgs extends com.pulumi.resources.Invo
         }
 
         public GetSourceIamPolicyPlainArgs build() {
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("GetSourceIamPolicyPlainArgs", "organization");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("GetSourceIamPolicyPlainArgs", "source");
+            }
             return $;
         }
     }

@@ -78,16 +78,19 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
 
         @CustomType.Setter
         public Builder git(@Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit git) {
+
             this.git = git;
             return this;
         }
         @CustomType.Setter
         public Builder oci(@Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci oci) {
+
             this.oci = oci;
             return this;
         }
         @CustomType.Setter
         public Builder sourceFormat(@Nullable String sourceFormat) {
+
             this.sourceFormat = sourceFormat;
             return this;
         }

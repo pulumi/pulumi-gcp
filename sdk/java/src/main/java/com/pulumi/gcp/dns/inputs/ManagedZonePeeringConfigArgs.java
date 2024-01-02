@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.ManagedZonePeeringConfigTargetNetworkArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class ManagedZonePeeringConfigArgs extends com.pulumi.resources.Res
         }
 
         public ManagedZonePeeringConfigArgs build() {
-            $.targetNetwork = Objects.requireNonNull($.targetNetwork, "expected parameter 'targetNetwork' to be non-null");
+            if ($.targetNetwork == null) {
+                throw new MissingRequiredPropertyException("ManagedZonePeeringConfigArgs", "targetNetwork");
+            }
             return $;
         }
     }

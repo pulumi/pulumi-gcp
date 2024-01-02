@@ -63,11 +63,13 @@ public final class RegionUrlMapDefaultRouteActionFaultInjectionPolicyAbort {
 
         @CustomType.Setter
         public Builder httpStatus(@Nullable Integer httpStatus) {
+
             this.httpStatus = httpStatus;
             return this;
         }
         @CustomType.Setter
         public Builder percentage(@Nullable Double percentage) {
+
             this.percentage = percentage;
             return this;
         }

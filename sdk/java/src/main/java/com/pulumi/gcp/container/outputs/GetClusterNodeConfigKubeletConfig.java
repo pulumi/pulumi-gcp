@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -54,22 +55,34 @@ public final class GetClusterNodeConfigKubeletConfig {
 
         @CustomType.Setter
         public Builder cpuCfsQuota(Boolean cpuCfsQuota) {
-            this.cpuCfsQuota = Objects.requireNonNull(cpuCfsQuota);
+            if (cpuCfsQuota == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "cpuCfsQuota");
+            }
+            this.cpuCfsQuota = cpuCfsQuota;
             return this;
         }
         @CustomType.Setter
         public Builder cpuCfsQuotaPeriod(String cpuCfsQuotaPeriod) {
-            this.cpuCfsQuotaPeriod = Objects.requireNonNull(cpuCfsQuotaPeriod);
+            if (cpuCfsQuotaPeriod == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "cpuCfsQuotaPeriod");
+            }
+            this.cpuCfsQuotaPeriod = cpuCfsQuotaPeriod;
             return this;
         }
         @CustomType.Setter
         public Builder cpuManagerPolicy(String cpuManagerPolicy) {
-            this.cpuManagerPolicy = Objects.requireNonNull(cpuManagerPolicy);
+            if (cpuManagerPolicy == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "cpuManagerPolicy");
+            }
+            this.cpuManagerPolicy = cpuManagerPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder podPidsLimit(Integer podPidsLimit) {
-            this.podPidsLimit = Objects.requireNonNull(podPidsLimit);
+            if (podPidsLimit == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfigKubeletConfig", "podPidsLimit");
+            }
+            this.podPidsLimit = podPidsLimit;
             return this;
         }
         public GetClusterNodeConfigKubeletConfig build() {

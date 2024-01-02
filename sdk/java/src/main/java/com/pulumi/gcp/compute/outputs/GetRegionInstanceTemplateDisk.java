@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateDiskDiskEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateDiskSourceImageEncryptionKey;
 import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey;
@@ -311,22 +312,34 @@ public final class GetRegionInstanceTemplateDisk {
 
         @CustomType.Setter
         public Builder autoDelete(Boolean autoDelete) {
-            this.autoDelete = Objects.requireNonNull(autoDelete);
+            if (autoDelete == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "autoDelete");
+            }
+            this.autoDelete = autoDelete;
             return this;
         }
         @CustomType.Setter
         public Builder boot(Boolean boot) {
-            this.boot = Objects.requireNonNull(boot);
+            if (boot == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "boot");
+            }
+            this.boot = boot;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(String deviceName) {
-            this.deviceName = Objects.requireNonNull(deviceName);
+            if (deviceName == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "deviceName");
+            }
+            this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeys(List<GetRegionInstanceTemplateDiskDiskEncryptionKey> diskEncryptionKeys) {
-            this.diskEncryptionKeys = Objects.requireNonNull(diskEncryptionKeys);
+            if (diskEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "diskEncryptionKeys");
+            }
+            this.diskEncryptionKeys = diskEncryptionKeys;
             return this;
         }
         public Builder diskEncryptionKeys(GetRegionInstanceTemplateDiskDiskEncryptionKey... diskEncryptionKeys) {
@@ -334,42 +347,66 @@ public final class GetRegionInstanceTemplateDisk {
         }
         @CustomType.Setter
         public Builder diskName(String diskName) {
-            this.diskName = Objects.requireNonNull(diskName);
+            if (diskName == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "diskName");
+            }
+            this.diskName = diskName;
             return this;
         }
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
-            this.diskSizeGb = Objects.requireNonNull(diskSizeGb);
+            if (diskSizeGb == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "diskSizeGb");
+            }
+            this.diskSizeGb = diskSizeGb;
             return this;
         }
         @CustomType.Setter
         public Builder diskType(String diskType) {
-            this.diskType = Objects.requireNonNull(diskType);
+            if (diskType == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "diskType");
+            }
+            this.diskType = diskType;
             return this;
         }
         @CustomType.Setter("interface")
         public Builder interface_(String interface_) {
-            this.interface_ = Objects.requireNonNull(interface_);
+            if (interface_ == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "interface_");
+            }
+            this.interface_ = interface_;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder mode(String mode) {
-            this.mode = Objects.requireNonNull(mode);
+            if (mode == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "mode");
+            }
+            this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder provisionedIops(Integer provisionedIops) {
-            this.provisionedIops = Objects.requireNonNull(provisionedIops);
+            if (provisionedIops == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "provisionedIops");
+            }
+            this.provisionedIops = provisionedIops;
             return this;
         }
         @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
-            this.resourcePolicies = Objects.requireNonNull(resourcePolicies);
+            if (resourcePolicies == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "resourcePolicies");
+            }
+            this.resourcePolicies = resourcePolicies;
             return this;
         }
         public Builder resourcePolicies(String... resourcePolicies) {
@@ -377,17 +414,26 @@ public final class GetRegionInstanceTemplateDisk {
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "source");
+            }
+            this.source = source;
             return this;
         }
         @CustomType.Setter
         public Builder sourceImage(String sourceImage) {
-            this.sourceImage = Objects.requireNonNull(sourceImage);
+            if (sourceImage == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "sourceImage");
+            }
+            this.sourceImage = sourceImage;
             return this;
         }
         @CustomType.Setter
         public Builder sourceImageEncryptionKeys(List<GetRegionInstanceTemplateDiskSourceImageEncryptionKey> sourceImageEncryptionKeys) {
-            this.sourceImageEncryptionKeys = Objects.requireNonNull(sourceImageEncryptionKeys);
+            if (sourceImageEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "sourceImageEncryptionKeys");
+            }
+            this.sourceImageEncryptionKeys = sourceImageEncryptionKeys;
             return this;
         }
         public Builder sourceImageEncryptionKeys(GetRegionInstanceTemplateDiskSourceImageEncryptionKey... sourceImageEncryptionKeys) {
@@ -395,12 +441,18 @@ public final class GetRegionInstanceTemplateDisk {
         }
         @CustomType.Setter
         public Builder sourceSnapshot(String sourceSnapshot) {
-            this.sourceSnapshot = Objects.requireNonNull(sourceSnapshot);
+            if (sourceSnapshot == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "sourceSnapshot");
+            }
+            this.sourceSnapshot = sourceSnapshot;
             return this;
         }
         @CustomType.Setter
         public Builder sourceSnapshotEncryptionKeys(List<GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey> sourceSnapshotEncryptionKeys) {
-            this.sourceSnapshotEncryptionKeys = Objects.requireNonNull(sourceSnapshotEncryptionKeys);
+            if (sourceSnapshotEncryptionKeys == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "sourceSnapshotEncryptionKeys");
+            }
+            this.sourceSnapshotEncryptionKeys = sourceSnapshotEncryptionKeys;
             return this;
         }
         public Builder sourceSnapshotEncryptionKeys(GetRegionInstanceTemplateDiskSourceSnapshotEncryptionKey... sourceSnapshotEncryptionKeys) {
@@ -408,7 +460,10 @@ public final class GetRegionInstanceTemplateDisk {
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateDisk", "type");
+            }
+            this.type = type;
             return this;
         }
         public GetRegionInstanceTemplateDisk build() {

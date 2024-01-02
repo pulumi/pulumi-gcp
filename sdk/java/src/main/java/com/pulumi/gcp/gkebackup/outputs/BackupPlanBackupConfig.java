@@ -129,31 +129,37 @@ public final class BackupPlanBackupConfig {
 
         @CustomType.Setter
         public Builder allNamespaces(@Nullable Boolean allNamespaces) {
+
             this.allNamespaces = allNamespaces;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionKey(@Nullable BackupPlanBackupConfigEncryptionKey encryptionKey) {
+
             this.encryptionKey = encryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder includeSecrets(@Nullable Boolean includeSecrets) {
+
             this.includeSecrets = includeSecrets;
             return this;
         }
         @CustomType.Setter
         public Builder includeVolumeData(@Nullable Boolean includeVolumeData) {
+
             this.includeVolumeData = includeVolumeData;
             return this;
         }
         @CustomType.Setter
         public Builder selectedApplications(@Nullable BackupPlanBackupConfigSelectedApplications selectedApplications) {
+
             this.selectedApplications = selectedApplications;
             return this;
         }
         @CustomType.Setter
         public Builder selectedNamespaces(@Nullable BackupPlanBackupConfigSelectedNamespaces selectedNamespaces) {
+
             this.selectedNamespaces = selectedNamespaces;
             return this;
         }

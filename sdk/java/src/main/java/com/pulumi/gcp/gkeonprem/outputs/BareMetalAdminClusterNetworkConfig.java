@@ -46,6 +46,7 @@ public final class BareMetalAdminClusterNetworkConfig {
 
         @CustomType.Setter
         public Builder islandModeCidr(@Nullable BareMetalAdminClusterNetworkConfigIslandModeCidr islandModeCidr) {
+
             this.islandModeCidr = islandModeCidr;
             return this;
         }

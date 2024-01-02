@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleRouteActionArgs;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherPathRuleUrlRedirectArgs;
 import java.lang.String;
@@ -275,7 +276,9 @@ public final class RegionUrlMapPathMatcherPathRuleArgs extends com.pulumi.resour
         }
 
         public RegionUrlMapPathMatcherPathRuleArgs build() {
-            $.paths = Objects.requireNonNull($.paths, "expected parameter 'paths' to be non-null");
+            if ($.paths == null) {
+                throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherPathRuleArgs", "paths");
+            }
             return $;
         }
     }

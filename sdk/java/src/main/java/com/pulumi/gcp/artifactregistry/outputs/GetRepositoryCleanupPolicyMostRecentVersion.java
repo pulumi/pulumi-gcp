@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -42,12 +43,18 @@ public final class GetRepositoryCleanupPolicyMostRecentVersion {
 
         @CustomType.Setter
         public Builder keepCount(Integer keepCount) {
-            this.keepCount = Objects.requireNonNull(keepCount);
+            if (keepCount == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicyMostRecentVersion", "keepCount");
+            }
+            this.keepCount = keepCount;
             return this;
         }
         @CustomType.Setter
         public Builder packageNamePrefixes(List<String> packageNamePrefixes) {
-            this.packageNamePrefixes = Objects.requireNonNull(packageNamePrefixes);
+            if (packageNamePrefixes == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryCleanupPolicyMostRecentVersion", "packageNamePrefixes");
+            }
+            this.packageNamePrefixes = packageNamePrefixes;
             return this;
         }
         public Builder packageNamePrefixes(String... packageNamePrefixes) {

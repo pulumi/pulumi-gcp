@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GlobalForwardingRuleMetadataFilterFilterLabel;
 import java.lang.String;
 import java.util.List;
@@ -76,7 +77,10 @@ public final class GlobalForwardingRuleMetadataFilter {
 
         @CustomType.Setter
         public Builder filterLabels(List<GlobalForwardingRuleMetadataFilterFilterLabel> filterLabels) {
-            this.filterLabels = Objects.requireNonNull(filterLabels);
+            if (filterLabels == null) {
+              throw new MissingRequiredPropertyException("GlobalForwardingRuleMetadataFilter", "filterLabels");
+            }
+            this.filterLabels = filterLabels;
             return this;
         }
         public Builder filterLabels(GlobalForwardingRuleMetadataFilterFilterLabel... filterLabels) {
@@ -84,7 +88,10 @@ public final class GlobalForwardingRuleMetadataFilter {
         }
         @CustomType.Setter
         public Builder filterMatchCriteria(String filterMatchCriteria) {
-            this.filterMatchCriteria = Objects.requireNonNull(filterMatchCriteria);
+            if (filterMatchCriteria == null) {
+              throw new MissingRequiredPropertyException("GlobalForwardingRuleMetadataFilter", "filterMatchCriteria");
+            }
+            this.filterMatchCriteria = filterMatchCriteria;
             return this;
         }
         public GlobalForwardingRuleMetadataFilter build() {

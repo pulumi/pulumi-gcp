@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -420,7 +421,9 @@ public final class TargetSSLProxyArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public TargetSSLProxyArgs build() {
-            $.backendService = Objects.requireNonNull($.backendService, "expected parameter 'backendService' to be non-null");
+            if ($.backendService == null) {
+                throw new MissingRequiredPropertyException("TargetSSLProxyArgs", "backendService");
+            }
             return $;
         }
     }

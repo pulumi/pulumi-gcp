@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -156,9 +157,15 @@ public final class JobExtractSourceModelArgs extends com.pulumi.resources.Resour
         }
 
         public JobExtractSourceModelArgs build() {
-            $.datasetId = Objects.requireNonNull($.datasetId, "expected parameter 'datasetId' to be non-null");
-            $.modelId = Objects.requireNonNull($.modelId, "expected parameter 'modelId' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.datasetId == null) {
+                throw new MissingRequiredPropertyException("JobExtractSourceModelArgs", "datasetId");
+            }
+            if ($.modelId == null) {
+                throw new MissingRequiredPropertyException("JobExtractSourceModelArgs", "modelId");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("JobExtractSourceModelArgs", "projectId");
+            }
             return $;
         }
     }

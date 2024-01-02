@@ -4,6 +4,7 @@
 package com.pulumi.gcp.logging.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -145,42 +146,66 @@ public final class GetFolderSettingsResult {
 
         @CustomType.Setter
         public Builder disableDefaultSink(Boolean disableDefaultSink) {
-            this.disableDefaultSink = Objects.requireNonNull(disableDefaultSink);
+            if (disableDefaultSink == null) {
+              throw new MissingRequiredPropertyException("GetFolderSettingsResult", "disableDefaultSink");
+            }
+            this.disableDefaultSink = disableDefaultSink;
             return this;
         }
         @CustomType.Setter
         public Builder folder(String folder) {
-            this.folder = Objects.requireNonNull(folder);
+            if (folder == null) {
+              throw new MissingRequiredPropertyException("GetFolderSettingsResult", "folder");
+            }
+            this.folder = folder;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetFolderSettingsResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyName(String kmsKeyName) {
-            this.kmsKeyName = Objects.requireNonNull(kmsKeyName);
+            if (kmsKeyName == null) {
+              throw new MissingRequiredPropertyException("GetFolderSettingsResult", "kmsKeyName");
+            }
+            this.kmsKeyName = kmsKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder kmsServiceAccountId(String kmsServiceAccountId) {
-            this.kmsServiceAccountId = Objects.requireNonNull(kmsServiceAccountId);
+            if (kmsServiceAccountId == null) {
+              throw new MissingRequiredPropertyException("GetFolderSettingsResult", "kmsServiceAccountId");
+            }
+            this.kmsServiceAccountId = kmsServiceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder loggingServiceAccountId(String loggingServiceAccountId) {
-            this.loggingServiceAccountId = Objects.requireNonNull(loggingServiceAccountId);
+            if (loggingServiceAccountId == null) {
+              throw new MissingRequiredPropertyException("GetFolderSettingsResult", "loggingServiceAccountId");
+            }
+            this.loggingServiceAccountId = loggingServiceAccountId;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetFolderSettingsResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder storageLocation(String storageLocation) {
-            this.storageLocation = Objects.requireNonNull(storageLocation);
+            if (storageLocation == null) {
+              throw new MissingRequiredPropertyException("GetFolderSettingsResult", "storageLocation");
+            }
+            this.storageLocation = storageLocation;
             return this;
         }
         public GetFolderSettingsResult build() {

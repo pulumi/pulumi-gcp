@@ -59,11 +59,13 @@ public final class WorkflowTemplateParameterValidation {
 
         @CustomType.Setter
         public Builder regex(@Nullable WorkflowTemplateParameterValidationRegex regex) {
+
             this.regex = regex;
             return this;
         }
         @CustomType.Setter
         public Builder values(@Nullable WorkflowTemplateParameterValidationValues values) {
+
             this.values = values;
             return this;
         }

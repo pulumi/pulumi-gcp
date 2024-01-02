@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRouterStatusBestRoute;
 import com.pulumi.gcp.compute.outputs.GetRouterStatusBestRoutesForRouter;
 import java.lang.String;
@@ -109,7 +110,10 @@ public final class GetRouterStatusResult {
 
         @CustomType.Setter
         public Builder bestRoutes(List<GetRouterStatusBestRoute> bestRoutes) {
-            this.bestRoutes = Objects.requireNonNull(bestRoutes);
+            if (bestRoutes == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusResult", "bestRoutes");
+            }
+            this.bestRoutes = bestRoutes;
             return this;
         }
         public Builder bestRoutes(GetRouterStatusBestRoute... bestRoutes) {
@@ -117,7 +121,10 @@ public final class GetRouterStatusResult {
         }
         @CustomType.Setter
         public Builder bestRoutesForRouters(List<GetRouterStatusBestRoutesForRouter> bestRoutesForRouters) {
-            this.bestRoutesForRouters = Objects.requireNonNull(bestRoutesForRouters);
+            if (bestRoutesForRouters == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusResult", "bestRoutesForRouters");
+            }
+            this.bestRoutesForRouters = bestRoutesForRouters;
             return this;
         }
         public Builder bestRoutesForRouters(GetRouterStatusBestRoutesForRouter... bestRoutesForRouters) {
@@ -125,27 +132,40 @@ public final class GetRouterStatusResult {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(String region) {
-            this.region = Objects.requireNonNull(region);
+            if (region == null) {
+              throw new MissingRequiredPropertyException("GetRouterStatusResult", "region");
+            }
+            this.region = region;
             return this;
         }
         public GetRouterStatusResult build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.iam.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -99,27 +100,42 @@ public final class GetTestablePermissionsPermission {
 
         @CustomType.Setter
         public Builder apiDisabled(Boolean apiDisabled) {
-            this.apiDisabled = Objects.requireNonNull(apiDisabled);
+            if (apiDisabled == null) {
+              throw new MissingRequiredPropertyException("GetTestablePermissionsPermission", "apiDisabled");
+            }
+            this.apiDisabled = apiDisabled;
             return this;
         }
         @CustomType.Setter
         public Builder customSupportLevel(String customSupportLevel) {
-            this.customSupportLevel = Objects.requireNonNull(customSupportLevel);
+            if (customSupportLevel == null) {
+              throw new MissingRequiredPropertyException("GetTestablePermissionsPermission", "customSupportLevel");
+            }
+            this.customSupportLevel = customSupportLevel;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTestablePermissionsPermission", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder stage(String stage) {
-            this.stage = Objects.requireNonNull(stage);
+            if (stage == null) {
+              throw new MissingRequiredPropertyException("GetTestablePermissionsPermission", "stage");
+            }
+            this.stage = stage;
             return this;
         }
         @CustomType.Setter
         public Builder title(String title) {
-            this.title = Objects.requireNonNull(title);
+            if (title == null) {
+              throw new MissingRequiredPropertyException("GetTestablePermissionsPermission", "title");
+            }
+            this.title = title;
             return this;
         }
         public GetTestablePermissionsPermission build() {

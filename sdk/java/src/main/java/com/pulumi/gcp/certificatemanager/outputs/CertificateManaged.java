@@ -139,6 +139,7 @@ public final class CertificateManaged {
 
         @CustomType.Setter
         public Builder authorizationAttemptInfos(@Nullable List<CertificateManagedAuthorizationAttemptInfo> authorizationAttemptInfos) {
+
             this.authorizationAttemptInfos = authorizationAttemptInfos;
             return this;
         }
@@ -147,6 +148,7 @@ public final class CertificateManaged {
         }
         @CustomType.Setter
         public Builder dnsAuthorizations(@Nullable List<String> dnsAuthorizations) {
+
             this.dnsAuthorizations = dnsAuthorizations;
             return this;
         }
@@ -155,6 +157,7 @@ public final class CertificateManaged {
         }
         @CustomType.Setter
         public Builder domains(@Nullable List<String> domains) {
+
             this.domains = domains;
             return this;
         }
@@ -163,11 +166,13 @@ public final class CertificateManaged {
         }
         @CustomType.Setter
         public Builder issuanceConfig(@Nullable String issuanceConfig) {
+
             this.issuanceConfig = issuanceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder provisioningIssues(@Nullable List<CertificateManagedProvisioningIssue> provisioningIssues) {
+
             this.provisioningIssues = provisioningIssues;
             return this;
         }
@@ -176,6 +181,7 @@ public final class CertificateManaged {
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

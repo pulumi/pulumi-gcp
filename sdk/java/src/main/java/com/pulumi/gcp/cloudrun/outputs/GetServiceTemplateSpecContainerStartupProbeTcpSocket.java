@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -34,7 +35,10 @@ public final class GetServiceTemplateSpecContainerStartupProbeTcpSocket {
 
         @CustomType.Setter
         public Builder port(Integer port) {
-            this.port = Objects.requireNonNull(port);
+            if (port == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerStartupProbeTcpSocket", "port");
+            }
+            this.port = port;
             return this;
         }
         public GetServiceTemplateSpecContainerStartupProbeTcpSocket build() {

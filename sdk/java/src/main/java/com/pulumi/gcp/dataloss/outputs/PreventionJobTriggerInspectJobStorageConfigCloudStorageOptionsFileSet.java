@@ -69,11 +69,13 @@ public final class PreventionJobTriggerInspectJobStorageConfigCloudStorageOption
 
         @CustomType.Setter
         public Builder regexFileSet(@Nullable PreventionJobTriggerInspectJobStorageConfigCloudStorageOptionsFileSetRegexFileSet regexFileSet) {
+
             this.regexFileSet = regexFileSet;
             return this;
         }
         @CustomType.Setter
         public Builder url(@Nullable String url) {
+
             this.url = url;
             return this;
         }

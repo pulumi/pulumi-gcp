@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionInspectTemplateInspectConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -261,7 +262,9 @@ public final class PreventionInspectTemplateArgs extends com.pulumi.resources.Re
         }
 
         public PreventionInspectTemplateArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("PreventionInspectTemplateArgs", "parent");
+            }
             return $;
         }
     }

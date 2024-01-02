@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -103,57 +104,90 @@ public final class GetNetworkPeeringResult {
 
         @CustomType.Setter
         public Builder exportCustomRoutes(Boolean exportCustomRoutes) {
-            this.exportCustomRoutes = Objects.requireNonNull(exportCustomRoutes);
+            if (exportCustomRoutes == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "exportCustomRoutes");
+            }
+            this.exportCustomRoutes = exportCustomRoutes;
             return this;
         }
         @CustomType.Setter
         public Builder exportSubnetRoutesWithPublicIp(Boolean exportSubnetRoutesWithPublicIp) {
-            this.exportSubnetRoutesWithPublicIp = Objects.requireNonNull(exportSubnetRoutesWithPublicIp);
+            if (exportSubnetRoutesWithPublicIp == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "exportSubnetRoutesWithPublicIp");
+            }
+            this.exportSubnetRoutesWithPublicIp = exportSubnetRoutesWithPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder importCustomRoutes(Boolean importCustomRoutes) {
-            this.importCustomRoutes = Objects.requireNonNull(importCustomRoutes);
+            if (importCustomRoutes == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "importCustomRoutes");
+            }
+            this.importCustomRoutes = importCustomRoutes;
             return this;
         }
         @CustomType.Setter
         public Builder importSubnetRoutesWithPublicIp(Boolean importSubnetRoutesWithPublicIp) {
-            this.importSubnetRoutesWithPublicIp = Objects.requireNonNull(importSubnetRoutesWithPublicIp);
+            if (importSubnetRoutesWithPublicIp == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "importSubnetRoutesWithPublicIp");
+            }
+            this.importSubnetRoutesWithPublicIp = importSubnetRoutesWithPublicIp;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder peerNetwork(String peerNetwork) {
-            this.peerNetwork = Objects.requireNonNull(peerNetwork);
+            if (peerNetwork == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "peerNetwork");
+            }
+            this.peerNetwork = peerNetwork;
             return this;
         }
         @CustomType.Setter
         public Builder stackType(String stackType) {
-            this.stackType = Objects.requireNonNull(stackType);
+            if (stackType == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "stackType");
+            }
+            this.stackType = stackType;
             return this;
         }
         @CustomType.Setter
         public Builder state(String state) {
-            this.state = Objects.requireNonNull(state);
+            if (state == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "state");
+            }
+            this.state = state;
             return this;
         }
         @CustomType.Setter
         public Builder stateDetails(String stateDetails) {
-            this.stateDetails = Objects.requireNonNull(stateDetails);
+            if (stateDetails == null) {
+              throw new MissingRequiredPropertyException("GetNetworkPeeringResult", "stateDetails");
+            }
+            this.stateDetails = stateDetails;
             return this;
         }
         public GetNetworkPeeringResult build() {

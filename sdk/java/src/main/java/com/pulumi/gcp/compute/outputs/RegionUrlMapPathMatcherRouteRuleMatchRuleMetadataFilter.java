@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel;
 import java.lang.String;
 import java.util.List;
@@ -76,7 +77,10 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
 
         @CustomType.Setter
         public Builder filterLabels(List<RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel> filterLabels) {
-            this.filterLabels = Objects.requireNonNull(filterLabels);
+            if (filterLabels == null) {
+              throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter", "filterLabels");
+            }
+            this.filterLabels = filterLabels;
             return this;
         }
         public Builder filterLabels(RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilterFilterLabel... filterLabels) {
@@ -84,7 +88,10 @@ public final class RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter {
         }
         @CustomType.Setter
         public Builder filterMatchCriteria(String filterMatchCriteria) {
-            this.filterMatchCriteria = Objects.requireNonNull(filterMatchCriteria);
+            if (filterMatchCriteria == null) {
+              throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter", "filterMatchCriteria");
+            }
+            this.filterMatchCriteria = filterMatchCriteria;
             return this;
         }
         public RegionUrlMapPathMatcherRouteRuleMatchRuleMetadataFilter build() {

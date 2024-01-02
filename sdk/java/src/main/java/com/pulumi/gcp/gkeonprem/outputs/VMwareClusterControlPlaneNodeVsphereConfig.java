@@ -66,11 +66,13 @@ public final class VMwareClusterControlPlaneNodeVsphereConfig {
 
         @CustomType.Setter
         public Builder datastore(@Nullable String datastore) {
+
             this.datastore = datastore;
             return this;
         }
         @CustomType.Setter
         public Builder storagePolicyName(@Nullable String storagePolicyName) {
+
             this.storagePolicyName = storagePolicyName;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.identityplatform.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.identityplatform.outputs.TenantInboundSamlConfigSpConfigSpCertificate;
 import java.lang.String;
 import java.util.List;
@@ -81,11 +82,15 @@ public final class TenantInboundSamlConfigSpConfig {
 
         @CustomType.Setter
         public Builder callbackUri(String callbackUri) {
-            this.callbackUri = Objects.requireNonNull(callbackUri);
+            if (callbackUri == null) {
+              throw new MissingRequiredPropertyException("TenantInboundSamlConfigSpConfig", "callbackUri");
+            }
+            this.callbackUri = callbackUri;
             return this;
         }
         @CustomType.Setter
         public Builder spCertificates(@Nullable List<TenantInboundSamlConfigSpConfigSpCertificate> spCertificates) {
+
             this.spCertificates = spCertificates;
             return this;
         }
@@ -94,7 +99,10 @@ public final class TenantInboundSamlConfigSpConfig {
         }
         @CustomType.Setter
         public Builder spEntityId(String spEntityId) {
-            this.spEntityId = Objects.requireNonNull(spEntityId);
+            if (spEntityId == null) {
+              throw new MissingRequiredPropertyException("TenantInboundSamlConfigSpConfig", "spEntityId");
+            }
+            this.spEntityId = spEntityId;
             return this;
         }
         public TenantInboundSamlConfigSpConfig build() {

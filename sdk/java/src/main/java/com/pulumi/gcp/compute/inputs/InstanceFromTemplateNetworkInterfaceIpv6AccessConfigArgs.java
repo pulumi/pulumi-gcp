@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -165,7 +166,9 @@ public final class InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs exte
         }
 
         public InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs build() {
-            $.networkTier = Objects.requireNonNull($.networkTier, "expected parameter 'networkTier' to be non-null");
+            if ($.networkTier == null) {
+                throw new MissingRequiredPropertyException("InstanceFromTemplateNetworkInterfaceIpv6AccessConfigArgs", "networkTier");
+            }
             return $;
         }
     }

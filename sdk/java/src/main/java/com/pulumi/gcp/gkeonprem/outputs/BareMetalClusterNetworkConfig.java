@@ -101,21 +101,25 @@ public final class BareMetalClusterNetworkConfig {
 
         @CustomType.Setter
         public Builder advancedNetworking(@Nullable Boolean advancedNetworking) {
+
             this.advancedNetworking = advancedNetworking;
             return this;
         }
         @CustomType.Setter
         public Builder islandModeCidr(@Nullable BareMetalClusterNetworkConfigIslandModeCidr islandModeCidr) {
+
             this.islandModeCidr = islandModeCidr;
             return this;
         }
         @CustomType.Setter
         public Builder multipleNetworkInterfacesConfig(@Nullable BareMetalClusterNetworkConfigMultipleNetworkInterfacesConfig multipleNetworkInterfacesConfig) {
+
             this.multipleNetworkInterfacesConfig = multipleNetworkInterfacesConfig;
             return this;
         }
         @CustomType.Setter
         public Builder srIovConfig(@Nullable BareMetalClusterNetworkConfigSrIovConfig srIovConfig) {
+
             this.srIovConfig = srIovConfig;
             return this;
         }

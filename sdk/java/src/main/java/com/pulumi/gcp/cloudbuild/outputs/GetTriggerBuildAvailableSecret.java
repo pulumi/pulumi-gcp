@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildAvailableSecretSecretManager;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetTriggerBuildAvailableSecret {
 
         @CustomType.Setter
         public Builder secretManagers(List<GetTriggerBuildAvailableSecretSecretManager> secretManagers) {
-            this.secretManagers = Objects.requireNonNull(secretManagers);
+            if (secretManagers == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildAvailableSecret", "secretManagers");
+            }
+            this.secretManagers = secretManagers;
             return this;
         }
         public Builder secretManagers(GetTriggerBuildAvailableSecretSecretManager... secretManagers) {

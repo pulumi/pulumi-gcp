@@ -140,36 +140,43 @@ public final class PreventionJobTriggerInspectJobAction {
 
         @CustomType.Setter
         public Builder deidentify(@Nullable PreventionJobTriggerInspectJobActionDeidentify deidentify) {
+
             this.deidentify = deidentify;
             return this;
         }
         @CustomType.Setter
         public Builder jobNotificationEmails(@Nullable PreventionJobTriggerInspectJobActionJobNotificationEmails jobNotificationEmails) {
+
             this.jobNotificationEmails = jobNotificationEmails;
             return this;
         }
         @CustomType.Setter
         public Builder pubSub(@Nullable PreventionJobTriggerInspectJobActionPubSub pubSub) {
+
             this.pubSub = pubSub;
             return this;
         }
         @CustomType.Setter
         public Builder publishFindingsToCloudDataCatalog(@Nullable PreventionJobTriggerInspectJobActionPublishFindingsToCloudDataCatalog publishFindingsToCloudDataCatalog) {
+
             this.publishFindingsToCloudDataCatalog = publishFindingsToCloudDataCatalog;
             return this;
         }
         @CustomType.Setter
         public Builder publishSummaryToCscc(@Nullable PreventionJobTriggerInspectJobActionPublishSummaryToCscc publishSummaryToCscc) {
+
             this.publishSummaryToCscc = publishSummaryToCscc;
             return this;
         }
         @CustomType.Setter
         public Builder publishToStackdriver(@Nullable PreventionJobTriggerInspectJobActionPublishToStackdriver publishToStackdriver) {
+
             this.publishToStackdriver = publishToStackdriver;
             return this;
         }
         @CustomType.Setter
         public Builder saveFindings(@Nullable PreventionJobTriggerInspectJobActionSaveFindings saveFindings) {
+
             this.saveFindings = saveFindings;
             return this;
         }

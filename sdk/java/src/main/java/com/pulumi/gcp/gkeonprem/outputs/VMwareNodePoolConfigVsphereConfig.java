@@ -70,11 +70,13 @@ public final class VMwareNodePoolConfigVsphereConfig {
 
         @CustomType.Setter
         public Builder datastore(@Nullable String datastore) {
+
             this.datastore = datastore;
             return this;
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<VMwareNodePoolConfigVsphereConfigTag> tags) {
+
             this.tags = tags;
             return this;
         }

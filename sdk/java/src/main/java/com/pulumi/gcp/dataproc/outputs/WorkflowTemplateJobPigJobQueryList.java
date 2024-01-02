@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class WorkflowTemplateJobPigJobQueryList {
 
         @CustomType.Setter
         public Builder queries(List<String> queries) {
-            this.queries = Objects.requireNonNull(queries);
+            if (queries == null) {
+              throw new MissingRequiredPropertyException("WorkflowTemplateJobPigJobQueryList", "queries");
+            }
+            this.queries = queries;
             return this;
         }
         public Builder queries(String... queries) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecContainer;
 import com.pulumi.gcp.cloudrun.outputs.GetServiceTemplateSpecVolume;
 import java.lang.Integer;
@@ -68,12 +69,18 @@ public final class GetServiceTemplateSpec {
 
         @CustomType.Setter
         public Builder containerConcurrency(Integer containerConcurrency) {
-            this.containerConcurrency = Objects.requireNonNull(containerConcurrency);
+            if (containerConcurrency == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpec", "containerConcurrency");
+            }
+            this.containerConcurrency = containerConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder containers(List<GetServiceTemplateSpecContainer> containers) {
-            this.containers = Objects.requireNonNull(containers);
+            if (containers == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpec", "containers");
+            }
+            this.containers = containers;
             return this;
         }
         public Builder containers(GetServiceTemplateSpecContainer... containers) {
@@ -81,22 +88,34 @@ public final class GetServiceTemplateSpec {
         }
         @CustomType.Setter
         public Builder serviceAccountName(String serviceAccountName) {
-            this.serviceAccountName = Objects.requireNonNull(serviceAccountName);
+            if (serviceAccountName == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpec", "serviceAccountName");
+            }
+            this.serviceAccountName = serviceAccountName;
             return this;
         }
         @CustomType.Setter
         public Builder servingState(String servingState) {
-            this.servingState = Objects.requireNonNull(servingState);
+            if (servingState == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpec", "servingState");
+            }
+            this.servingState = servingState;
             return this;
         }
         @CustomType.Setter
         public Builder timeoutSeconds(Integer timeoutSeconds) {
-            this.timeoutSeconds = Objects.requireNonNull(timeoutSeconds);
+            if (timeoutSeconds == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpec", "timeoutSeconds");
+            }
+            this.timeoutSeconds = timeoutSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(List<GetServiceTemplateSpecVolume> volumes) {
-            this.volumes = Objects.requireNonNull(volumes);
+            if (volumes == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpec", "volumes");
+            }
+            this.volumes = volumes;
             return this;
         }
         public Builder volumes(GetServiceTemplateSpecVolume... volumes) {

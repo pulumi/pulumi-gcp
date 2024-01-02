@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -75,17 +76,24 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth {
 
         @CustomType.Setter
         public Builder dayOfWeek(String dayOfWeek) {
-            this.dayOfWeek = Objects.requireNonNull(dayOfWeek);
+            if (dayOfWeek == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth", "dayOfWeek");
+            }
+            this.dayOfWeek = dayOfWeek;
             return this;
         }
         @CustomType.Setter
         public Builder dayOffset(@Nullable Integer dayOffset) {
+
             this.dayOffset = dayOffset;
             return this;
         }
         @CustomType.Setter
         public Builder weekOrdinal(Integer weekOrdinal) {
-            this.weekOrdinal = Objects.requireNonNull(weekOrdinal);
+            if (weekOrdinal == null) {
+              throw new MissingRequiredPropertyException("PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth", "weekOrdinal");
+            }
+            this.weekOrdinal = weekOrdinal;
             return this;
         }
         public PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonth build() {

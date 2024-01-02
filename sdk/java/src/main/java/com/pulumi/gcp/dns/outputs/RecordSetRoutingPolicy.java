@@ -96,11 +96,13 @@ public final class RecordSetRoutingPolicy {
 
         @CustomType.Setter
         public Builder enableGeoFencing(@Nullable Boolean enableGeoFencing) {
+
             this.enableGeoFencing = enableGeoFencing;
             return this;
         }
         @CustomType.Setter
         public Builder geos(@Nullable List<RecordSetRoutingPolicyGeo> geos) {
+
             this.geos = geos;
             return this;
         }
@@ -109,11 +111,13 @@ public final class RecordSetRoutingPolicy {
         }
         @CustomType.Setter
         public Builder primaryBackup(@Nullable RecordSetRoutingPolicyPrimaryBackup primaryBackup) {
+
             this.primaryBackup = primaryBackup;
             return this;
         }
         @CustomType.Setter
         public Builder wrrs(@Nullable List<RecordSetRoutingPolicyWrr> wrrs) {
+
             this.wrrs = wrrs;
             return this;
         }

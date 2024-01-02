@@ -62,11 +62,13 @@ public final class SpokeLinkedRouterApplianceInstancesInstance {
 
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder virtualMachine(@Nullable String virtualMachine) {
+
             this.virtualMachine = virtualMachine;
             return this;
         }

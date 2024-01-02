@@ -63,11 +63,13 @@ public final class ClusterContinuousBackupInfoEncryptionInfo {
 
         @CustomType.Setter
         public Builder encryptionType(@Nullable String encryptionType) {
+
             this.encryptionType = encryptionType;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyVersions(@Nullable List<String> kmsKeyVersions) {
+
             this.kmsKeyVersions = kmsKeyVersions;
             return this;
         }

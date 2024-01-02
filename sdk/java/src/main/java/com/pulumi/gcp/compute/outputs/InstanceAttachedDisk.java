@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -124,32 +125,40 @@ public final class InstanceAttachedDisk {
 
         @CustomType.Setter
         public Builder deviceName(@Nullable String deviceName) {
+
             this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeyRaw(@Nullable String diskEncryptionKeyRaw) {
+
             this.diskEncryptionKeyRaw = diskEncryptionKeyRaw;
             return this;
         }
         @CustomType.Setter
         public Builder diskEncryptionKeySha256(@Nullable String diskEncryptionKeySha256) {
+
             this.diskEncryptionKeySha256 = diskEncryptionKeySha256;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeySelfLink(@Nullable String kmsKeySelfLink) {
+
             this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("InstanceAttachedDisk", "source");
+            }
+            this.source = source;
             return this;
         }
         public InstanceAttachedDisk build() {

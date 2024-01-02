@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionDiskAsyncPrimaryDiskArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskDiskEncryptionKeyArgs;
 import com.pulumi.gcp.compute.inputs.RegionDiskGuestOsFeatureArgs;
@@ -933,7 +934,9 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RegionDiskArgs build() {
-            $.replicaZones = Objects.requireNonNull($.replicaZones, "expected parameter 'replicaZones' to be non-null");
+            if ($.replicaZones == null) {
+                throw new MissingRequiredPropertyException("RegionDiskArgs", "replicaZones");
+            }
             return $;
         }
     }

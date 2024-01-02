@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.inputs.TriggerBuildStepVolumeArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -859,7 +860,9 @@ public final class TriggerBuildStepArgs extends com.pulumi.resources.ResourceArg
         }
 
         public TriggerBuildStepArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("TriggerBuildStepArgs", "name");
+            }
             return $;
         }
     }

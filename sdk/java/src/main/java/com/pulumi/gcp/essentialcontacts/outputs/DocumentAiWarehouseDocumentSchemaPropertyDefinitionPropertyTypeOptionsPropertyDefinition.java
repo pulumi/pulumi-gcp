@@ -4,6 +4,7 @@
 package com.pulumi.gcp.essentialcontacts.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.essentialcontacts.outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions;
 import com.pulumi.gcp.essentialcontacts.outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions;
 import com.pulumi.gcp.essentialcontacts.outputs.DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions;
@@ -270,71 +271,87 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
 
         @CustomType.Setter
         public Builder dateTimeTypeOptions(@Nullable DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionDateTimeTypeOptions dateTimeTypeOptions) {
+
             this.dateTimeTypeOptions = dateTimeTypeOptions;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder enumTypeOptions(@Nullable DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionEnumTypeOptions enumTypeOptions) {
+
             this.enumTypeOptions = enumTypeOptions;
             return this;
         }
         @CustomType.Setter
         public Builder floatTypeOptions(@Nullable DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionFloatTypeOptions floatTypeOptions) {
+
             this.floatTypeOptions = floatTypeOptions;
             return this;
         }
         @CustomType.Setter
         public Builder integerTypeOptions(@Nullable DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionIntegerTypeOptions integerTypeOptions) {
+
             this.integerTypeOptions = integerTypeOptions;
             return this;
         }
         @CustomType.Setter
         public Builder isFilterable(@Nullable Boolean isFilterable) {
+
             this.isFilterable = isFilterable;
             return this;
         }
         @CustomType.Setter
         public Builder isMetadata(@Nullable Boolean isMetadata) {
+
             this.isMetadata = isMetadata;
             return this;
         }
         @CustomType.Setter
         public Builder isRepeatable(@Nullable Boolean isRepeatable) {
+
             this.isRepeatable = isRepeatable;
             return this;
         }
         @CustomType.Setter
         public Builder isRequired(@Nullable Boolean isRequired) {
+
             this.isRequired = isRequired;
             return this;
         }
         @CustomType.Setter
         public Builder isSearchable(@Nullable Boolean isSearchable) {
+
             this.isSearchable = isSearchable;
             return this;
         }
         @CustomType.Setter
         public Builder mapTypeOptions(@Nullable DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionMapTypeOptions mapTypeOptions) {
+
             this.mapTypeOptions = mapTypeOptions;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinition", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder retrievalImportance(@Nullable String retrievalImportance) {
+
             this.retrievalImportance = retrievalImportance;
             return this;
         }
         @CustomType.Setter
         public Builder schemaSources(@Nullable List<DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionSchemaSource> schemaSources) {
+
             this.schemaSources = schemaSources;
             return this;
         }
@@ -343,11 +360,13 @@ public final class DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTy
         }
         @CustomType.Setter
         public Builder textTypeOptions(@Nullable DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTextTypeOptions textTypeOptions) {
+
             this.textTypeOptions = textTypeOptions;
             return this;
         }
         @CustomType.Setter
         public Builder timestampTypeOptions(@Nullable DocumentAiWarehouseDocumentSchemaPropertyDefinitionPropertyTypeOptionsPropertyDefinitionTimestampTypeOptions timestampTypeOptions) {
+
             this.timestampTypeOptions = timestampTypeOptions;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -215,7 +216,9 @@ public final class ConnectionProfileOracleSslArgs extends com.pulumi.resources.R
         }
 
         public ConnectionProfileOracleSslArgs build() {
-            $.caCertificate = Objects.requireNonNull($.caCertificate, "expected parameter 'caCertificate' to be non-null");
+            if ($.caCertificate == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileOracleSslArgs", "caCertificate");
+            }
             return $;
         }
     }

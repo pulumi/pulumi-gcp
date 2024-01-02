@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataform.inputs.RepositoryWorkflowConfigInvocationConfigArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -352,7 +353,9 @@ public final class RepositoryWorkflowConfigArgs extends com.pulumi.resources.Res
         }
 
         public RepositoryWorkflowConfigArgs build() {
-            $.releaseConfig = Objects.requireNonNull($.releaseConfig, "expected parameter 'releaseConfig' to be non-null");
+            if ($.releaseConfig == null) {
+                throw new MissingRequiredPropertyException("RepositoryWorkflowConfigArgs", "releaseConfig");
+            }
             return $;
         }
     }

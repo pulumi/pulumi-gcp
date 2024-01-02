@@ -48,6 +48,7 @@ public final class InstanceGroupManagerInstanceLifecyclePolicy {
 
         @CustomType.Setter
         public Builder forceUpdateOnRepair(@Nullable String forceUpdateOnRepair) {
+
             this.forceUpdateOnRepair = forceUpdateOnRepair;
             return this;
         }

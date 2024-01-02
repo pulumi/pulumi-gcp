@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class AuthorizationPolicyRuleDestinationHttpHeaderMatch {
 
         @CustomType.Setter
         public Builder headerName(String headerName) {
-            this.headerName = Objects.requireNonNull(headerName);
+            if (headerName == null) {
+              throw new MissingRequiredPropertyException("AuthorizationPolicyRuleDestinationHttpHeaderMatch", "headerName");
+            }
+            this.headerName = headerName;
             return this;
         }
         @CustomType.Setter
         public Builder regexMatch(String regexMatch) {
-            this.regexMatch = Objects.requireNonNull(regexMatch);
+            if (regexMatch == null) {
+              throw new MissingRequiredPropertyException("AuthorizationPolicyRuleDestinationHttpHeaderMatch", "regexMatch");
+            }
+            this.regexMatch = regexMatch;
             return this;
         }
         public AuthorizationPolicyRuleDestinationHttpHeaderMatch build() {

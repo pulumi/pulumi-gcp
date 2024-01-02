@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -340,8 +341,12 @@ public final class NetworkPeeringArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public NetworkPeeringArgs build() {
-            $.network = Objects.requireNonNull($.network, "expected parameter 'network' to be non-null");
-            $.peerNetwork = Objects.requireNonNull($.peerNetwork, "expected parameter 'peerNetwork' to be non-null");
+            if ($.network == null) {
+                throw new MissingRequiredPropertyException("NetworkPeeringArgs", "network");
+            }
+            if ($.peerNetwork == null) {
+                throw new MissingRequiredPropertyException("NetworkPeeringArgs", "peerNetwork");
+            }
             return $;
         }
     }

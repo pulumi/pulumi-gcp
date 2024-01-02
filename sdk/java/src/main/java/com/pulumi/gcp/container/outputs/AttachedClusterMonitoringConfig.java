@@ -46,6 +46,7 @@ public final class AttachedClusterMonitoringConfig {
 
         @CustomType.Setter
         public Builder managedPrometheusConfig(@Nullable AttachedClusterMonitoringConfigManagedPrometheusConfig managedPrometheusConfig) {
+
             this.managedPrometheusConfig = managedPrometheusConfig;
             return this;
         }

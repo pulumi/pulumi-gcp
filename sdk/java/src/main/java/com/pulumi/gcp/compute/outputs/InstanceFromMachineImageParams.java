@@ -37,6 +37,7 @@ public final class InstanceFromMachineImageParams {
 
         @CustomType.Setter
         public Builder resourceManagerTags(@Nullable Map<String,Object> resourceManagerTags) {
+
             this.resourceManagerTags = resourceManagerTags;
             return this;
         }

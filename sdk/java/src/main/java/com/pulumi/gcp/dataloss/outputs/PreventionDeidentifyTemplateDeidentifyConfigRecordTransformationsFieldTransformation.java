@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField;
 import com.pulumi.gcp.dataloss.outputs.PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations;
@@ -112,12 +113,16 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder condition(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationCondition condition) {
+
             this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder fields(List<PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField> fields) {
-            this.fields = Objects.requireNonNull(fields);
+            if (fields == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformation", "fields");
+            }
+            this.fields = fields;
             return this;
         }
         public Builder fields(PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationField... fields) {
@@ -125,11 +130,13 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
         }
         @CustomType.Setter
         public Builder infoTypeTransformations(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformations infoTypeTransformations) {
+
             this.infoTypeTransformations = infoTypeTransformations;
             return this;
         }
         @CustomType.Setter
         public Builder primitiveTransformation(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformation primitiveTransformation) {
+
             this.primitiveTransformation = primitiveTransformation;
             return this;
         }

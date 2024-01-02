@@ -5,6 +5,7 @@ package com.pulumi.gcp.identityplatform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigIdpConfigArgs;
 import com.pulumi.gcp.identityplatform.inputs.TenantInboundSamlConfigSpConfigArgs;
 import java.lang.Boolean;
@@ -325,10 +326,18 @@ public final class TenantInboundSamlConfigArgs extends com.pulumi.resources.Reso
         }
 
         public TenantInboundSamlConfigArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.idpConfig = Objects.requireNonNull($.idpConfig, "expected parameter 'idpConfig' to be non-null");
-            $.spConfig = Objects.requireNonNull($.spConfig, "expected parameter 'spConfig' to be non-null");
-            $.tenant = Objects.requireNonNull($.tenant, "expected parameter 'tenant' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("TenantInboundSamlConfigArgs", "displayName");
+            }
+            if ($.idpConfig == null) {
+                throw new MissingRequiredPropertyException("TenantInboundSamlConfigArgs", "idpConfig");
+            }
+            if ($.spConfig == null) {
+                throw new MissingRequiredPropertyException("TenantInboundSamlConfigArgs", "spConfig");
+            }
+            if ($.tenant == null) {
+                throw new MissingRequiredPropertyException("TenantInboundSamlConfigArgs", "tenant");
+            }
             return $;
         }
     }

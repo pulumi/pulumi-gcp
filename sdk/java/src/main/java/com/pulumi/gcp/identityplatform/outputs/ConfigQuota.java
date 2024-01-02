@@ -46,6 +46,7 @@ public final class ConfigQuota {
 
         @CustomType.Setter
         public Builder signUpQuotaConfig(@Nullable ConfigQuotaSignUpQuotaConfig signUpQuotaConfig) {
+
             this.signUpQuotaConfig = signUpQuotaConfig;
             return this;
         }

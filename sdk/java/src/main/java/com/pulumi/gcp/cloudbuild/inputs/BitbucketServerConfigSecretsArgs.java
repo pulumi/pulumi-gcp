@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -160,9 +161,15 @@ public final class BitbucketServerConfigSecretsArgs extends com.pulumi.resources
         }
 
         public BitbucketServerConfigSecretsArgs build() {
-            $.adminAccessTokenVersionName = Objects.requireNonNull($.adminAccessTokenVersionName, "expected parameter 'adminAccessTokenVersionName' to be non-null");
-            $.readAccessTokenVersionName = Objects.requireNonNull($.readAccessTokenVersionName, "expected parameter 'readAccessTokenVersionName' to be non-null");
-            $.webhookSecretVersionName = Objects.requireNonNull($.webhookSecretVersionName, "expected parameter 'webhookSecretVersionName' to be non-null");
+            if ($.adminAccessTokenVersionName == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigSecretsArgs", "adminAccessTokenVersionName");
+            }
+            if ($.readAccessTokenVersionName == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigSecretsArgs", "readAccessTokenVersionName");
+            }
+            if ($.webhookSecretVersionName == null) {
+                throw new MissingRequiredPropertyException("BitbucketServerConfigSecretsArgs", "webhookSecretVersionName");
+            }
             return $;
         }
     }

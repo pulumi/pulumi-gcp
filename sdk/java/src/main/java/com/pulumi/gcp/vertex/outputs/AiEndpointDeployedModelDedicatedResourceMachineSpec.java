@@ -79,16 +79,19 @@ public final class AiEndpointDeployedModelDedicatedResourceMachineSpec {
 
         @CustomType.Setter
         public Builder acceleratorCount(@Nullable Integer acceleratorCount) {
+
             this.acceleratorCount = acceleratorCount;
             return this;
         }
         @CustomType.Setter
         public Builder acceleratorType(@Nullable String acceleratorType) {
+
             this.acceleratorType = acceleratorType;
             return this;
         }
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }

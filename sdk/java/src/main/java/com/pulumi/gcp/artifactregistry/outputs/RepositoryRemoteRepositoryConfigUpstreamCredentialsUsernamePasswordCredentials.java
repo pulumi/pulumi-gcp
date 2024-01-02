@@ -62,11 +62,13 @@ public final class RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePa
 
         @CustomType.Setter
         public Builder passwordSecretVersion(@Nullable String passwordSecretVersion) {
+
             this.passwordSecretVersion = passwordSecretVersion;
             return this;
         }
         @CustomType.Setter
         public Builder username(@Nullable String username) {
+
             this.username = username;
             return this;
         }

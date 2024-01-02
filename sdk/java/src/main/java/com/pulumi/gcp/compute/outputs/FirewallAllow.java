@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -74,6 +75,7 @@ public final class FirewallAllow {
 
         @CustomType.Setter
         public Builder ports(@Nullable List<String> ports) {
+
             this.ports = ports;
             return this;
         }
@@ -82,7 +84,10 @@ public final class FirewallAllow {
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("FirewallAllow", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         public FirewallAllow build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetServiceTemplateScaling {
 
         @CustomType.Setter
         public Builder maxInstanceCount(Integer maxInstanceCount) {
-            this.maxInstanceCount = Objects.requireNonNull(maxInstanceCount);
+            if (maxInstanceCount == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateScaling", "maxInstanceCount");
+            }
+            this.maxInstanceCount = maxInstanceCount;
             return this;
         }
         @CustomType.Setter
         public Builder minInstanceCount(Integer minInstanceCount) {
-            this.minInstanceCount = Objects.requireNonNull(minInstanceCount);
+            if (minInstanceCount == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateScaling", "minInstanceCount");
+            }
+            this.minInstanceCount = minInstanceCount;
             return this;
         }
         public GetServiceTemplateScaling build() {

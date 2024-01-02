@@ -80,6 +80,7 @@ public final class CertificateCertificateDescriptionX509DescriptionKeyUsage {
 
         @CustomType.Setter
         public Builder baseKeyUsages(@Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsageBaseKeyUsage> baseKeyUsages) {
+
             this.baseKeyUsages = baseKeyUsages;
             return this;
         }
@@ -88,6 +89,7 @@ public final class CertificateCertificateDescriptionX509DescriptionKeyUsage {
         }
         @CustomType.Setter
         public Builder extendedKeyUsages(@Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsageExtendedKeyUsage> extendedKeyUsages) {
+
             this.extendedKeyUsages = extendedKeyUsages;
             return this;
         }
@@ -96,6 +98,7 @@ public final class CertificateCertificateDescriptionX509DescriptionKeyUsage {
         }
         @CustomType.Setter
         public Builder unknownExtendedKeyUsages(@Nullable List<CertificateCertificateDescriptionX509DescriptionKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
+
             this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
             return this;
         }

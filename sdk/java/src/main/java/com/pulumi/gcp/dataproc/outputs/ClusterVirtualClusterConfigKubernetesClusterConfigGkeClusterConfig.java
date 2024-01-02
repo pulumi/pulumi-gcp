@@ -66,11 +66,13 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
 
         @CustomType.Setter
         public Builder gkeClusterTarget(@Nullable String gkeClusterTarget) {
+
             this.gkeClusterTarget = gkeClusterTarget;
             return this;
         }
         @CustomType.Setter
         public Builder nodePoolTargets(@Nullable List<ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget> nodePoolTargets) {
+
             this.nodePoolTargets = nodePoolTargets;
             return this;
         }

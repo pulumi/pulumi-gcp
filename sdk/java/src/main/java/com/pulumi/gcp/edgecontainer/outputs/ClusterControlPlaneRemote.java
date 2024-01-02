@@ -46,6 +46,7 @@ public final class ClusterControlPlaneRemote {
 
         @CustomType.Setter
         public Builder nodeLocation(@Nullable String nodeLocation) {
+
             this.nodeLocation = nodeLocation;
             return this;
         }

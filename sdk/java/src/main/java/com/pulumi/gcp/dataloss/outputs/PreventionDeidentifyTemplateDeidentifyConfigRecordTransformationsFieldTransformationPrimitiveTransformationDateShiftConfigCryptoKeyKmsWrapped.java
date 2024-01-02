@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -58,12 +59,18 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder cryptoKeyName(String cryptoKeyName) {
-            this.cryptoKeyName = Objects.requireNonNull(cryptoKeyName);
+            if (cryptoKeyName == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped", "cryptoKeyName");
+            }
+            this.cryptoKeyName = cryptoKeyName;
             return this;
         }
         @CustomType.Setter
         public Builder wrappedKey(String wrappedKey) {
-            this.wrappedKey = Objects.requireNonNull(wrappedKey);
+            if (wrappedKey == null) {
+              throw new MissingRequiredPropertyException("PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped", "wrappedKey");
+            }
+            this.wrappedKey = wrappedKey;
             return this;
         }
         public PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationPrimitiveTransformationDateShiftConfigCryptoKeyKmsWrapped build() {

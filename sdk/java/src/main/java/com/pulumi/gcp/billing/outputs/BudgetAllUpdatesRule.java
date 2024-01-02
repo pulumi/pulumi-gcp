@@ -110,11 +110,13 @@ public final class BudgetAllUpdatesRule {
 
         @CustomType.Setter
         public Builder disableDefaultIamRecipients(@Nullable Boolean disableDefaultIamRecipients) {
+
             this.disableDefaultIamRecipients = disableDefaultIamRecipients;
             return this;
         }
         @CustomType.Setter
         public Builder monitoringNotificationChannels(@Nullable List<String> monitoringNotificationChannels) {
+
             this.monitoringNotificationChannels = monitoringNotificationChannels;
             return this;
         }
@@ -123,11 +125,13 @@ public final class BudgetAllUpdatesRule {
         }
         @CustomType.Setter
         public Builder pubsubTopic(@Nullable String pubsubTopic) {
+
             this.pubsubTopic = pubsubTopic;
             return this;
         }
         @CustomType.Setter
         public Builder schemaVersion(@Nullable String schemaVersion) {
+
             this.schemaVersion = schemaVersion;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable;
 import java.lang.String;
 import java.util.Objects;
@@ -75,12 +76,16 @@ public final class PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig 
 
         @CustomType.Setter
         public Builder outputSchema(@Nullable String outputSchema) {
+
             this.outputSchema = outputSchema;
             return this;
         }
         @CustomType.Setter
         public Builder table(PreventionJobTriggerInspectJobActionSaveFindingsOutputConfigTable table) {
-            this.table = Objects.requireNonNull(table);
+            if (table == null) {
+              throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig", "table");
+            }
+            this.table = table;
             return this;
         }
         public PreventionJobTriggerInspectJobActionSaveFindingsOutputConfig build() {

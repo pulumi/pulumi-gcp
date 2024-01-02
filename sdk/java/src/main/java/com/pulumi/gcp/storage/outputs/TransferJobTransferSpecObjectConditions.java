@@ -115,6 +115,7 @@ public final class TransferJobTransferSpecObjectConditions {
 
         @CustomType.Setter
         public Builder excludePrefixes(@Nullable List<String> excludePrefixes) {
+
             this.excludePrefixes = excludePrefixes;
             return this;
         }
@@ -123,6 +124,7 @@ public final class TransferJobTransferSpecObjectConditions {
         }
         @CustomType.Setter
         public Builder includePrefixes(@Nullable List<String> includePrefixes) {
+
             this.includePrefixes = includePrefixes;
             return this;
         }
@@ -131,21 +133,25 @@ public final class TransferJobTransferSpecObjectConditions {
         }
         @CustomType.Setter
         public Builder lastModifiedBefore(@Nullable String lastModifiedBefore) {
+
             this.lastModifiedBefore = lastModifiedBefore;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifiedSince(@Nullable String lastModifiedSince) {
+
             this.lastModifiedSince = lastModifiedSince;
             return this;
         }
         @CustomType.Setter
         public Builder maxTimeElapsedSinceLastModification(@Nullable String maxTimeElapsedSinceLastModification) {
+
             this.maxTimeElapsedSinceLastModification = maxTimeElapsedSinceLastModification;
             return this;
         }
         @CustomType.Setter
         public Builder minTimeElapsedSinceLastModification(@Nullable String minTimeElapsedSinceLastModification) {
+
             this.minTimeElapsedSinceLastModification = minTimeElapsedSinceLastModification;
             return this;
         }

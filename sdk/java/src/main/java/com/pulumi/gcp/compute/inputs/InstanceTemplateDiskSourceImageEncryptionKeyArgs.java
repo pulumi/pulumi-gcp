@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -125,7 +126,9 @@ public final class InstanceTemplateDiskSourceImageEncryptionKeyArgs extends com.
         }
 
         public InstanceTemplateDiskSourceImageEncryptionKeyArgs build() {
-            $.kmsKeySelfLink = Objects.requireNonNull($.kmsKeySelfLink, "expected parameter 'kmsKeySelfLink' to be non-null");
+            if ($.kmsKeySelfLink == null) {
+                throw new MissingRequiredPropertyException("InstanceTemplateDiskSourceImageEncryptionKeyArgs", "kmsKeySelfLink");
+            }
             return $;
         }
     }

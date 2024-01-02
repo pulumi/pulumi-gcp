@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataform;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -107,8 +108,12 @@ public final class RepositoryIamPolicyArgs extends com.pulumi.resources.Resource
         }
 
         public RepositoryIamPolicyArgs build() {
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
-            $.repository = Objects.requireNonNull($.repository, "expected parameter 'repository' to be non-null");
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("RepositoryIamPolicyArgs", "policyData");
+            }
+            if ($.repository == null) {
+                throw new MissingRequiredPropertyException("RepositoryIamPolicyArgs", "repository");
+            }
             return $;
         }
     }

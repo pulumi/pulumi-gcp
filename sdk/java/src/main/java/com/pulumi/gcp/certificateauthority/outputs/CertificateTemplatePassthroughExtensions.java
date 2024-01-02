@@ -59,6 +59,7 @@ public final class CertificateTemplatePassthroughExtensions {
 
         @CustomType.Setter
         public Builder additionalExtensions(@Nullable List<CertificateTemplatePassthroughExtensionsAdditionalExtension> additionalExtensions) {
+
             this.additionalExtensions = additionalExtensions;
             return this;
         }
@@ -67,6 +68,7 @@ public final class CertificateTemplatePassthroughExtensions {
         }
         @CustomType.Setter
         public Builder knownExtensions(@Nullable List<String> knownExtensions) {
+
             this.knownExtensions = knownExtensions;
             return this;
         }

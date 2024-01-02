@@ -5,6 +5,7 @@ package com.pulumi.gcp.billing;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -133,7 +134,9 @@ public final class ProjectInfoArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ProjectInfoArgs build() {
-            $.billingAccount = Objects.requireNonNull($.billingAccount, "expected parameter 'billingAccount' to be non-null");
+            if ($.billingAccount == null) {
+                throw new MissingRequiredPropertyException("ProjectInfoArgs", "billingAccount");
+            }
             return $;
         }
     }

@@ -105,16 +105,19 @@ public final class TableExternalDataConfigurationHivePartitioningOptions {
 
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder requirePartitionFilter(@Nullable Boolean requirePartitionFilter) {
+
             this.requirePartitionFilter = requirePartitionFilter;
             return this;
         }
         @CustomType.Setter
         public Builder sourceUriPrefix(@Nullable String sourceUriPrefix) {
+
             this.sourceUriPrefix = sourceUriPrefix;
             return this;
         }

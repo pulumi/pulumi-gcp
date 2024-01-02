@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -151,8 +152,12 @@ public final class JobTemplateTemplateVolumeSecretItemArgs extends com.pulumi.re
         }
 
         public JobTemplateTemplateVolumeSecretItemArgs build() {
-            $.path = Objects.requireNonNull($.path, "expected parameter 'path' to be non-null");
-            $.version = Objects.requireNonNull($.version, "expected parameter 'version' to be non-null");
+            if ($.path == null) {
+                throw new MissingRequiredPropertyException("JobTemplateTemplateVolumeSecretItemArgs", "path");
+            }
+            if ($.version == null) {
+                throw new MissingRequiredPropertyException("JobTemplateTemplateVolumeSecretItemArgs", "version");
+            }
             return $;
         }
     }

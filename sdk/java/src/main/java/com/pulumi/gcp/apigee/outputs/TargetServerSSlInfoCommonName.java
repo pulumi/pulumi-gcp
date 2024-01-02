@@ -59,11 +59,13 @@ public final class TargetServerSSlInfoCommonName {
 
         @CustomType.Setter
         public Builder value(@Nullable String value) {
+
             this.value = value;
             return this;
         }
         @CustomType.Setter
         public Builder wildcardMatch(@Nullable Boolean wildcardMatch) {
+
             this.wildcardMatch = wildcardMatch;
             return this;
         }

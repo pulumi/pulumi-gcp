@@ -85,16 +85,19 @@ public final class HaVpnGatewayVpnInterface {
 
         @CustomType.Setter
         public Builder id(@Nullable Integer id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder interconnectAttachment(@Nullable String interconnectAttachment) {
+
             this.interconnectAttachment = interconnectAttachment;
             return this;
         }
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }

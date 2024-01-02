@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsInitialUserArgs;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileAlloydbSettingsPrimaryInstanceSettingsArgs;
 import java.lang.String;
@@ -202,8 +203,12 @@ public final class ConnectionProfileAlloydbSettingsArgs extends com.pulumi.resou
         }
 
         public ConnectionProfileAlloydbSettingsArgs build() {
-            $.initialUser = Objects.requireNonNull($.initialUser, "expected parameter 'initialUser' to be non-null");
-            $.vpcNetwork = Objects.requireNonNull($.vpcNetwork, "expected parameter 'vpcNetwork' to be non-null");
+            if ($.initialUser == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsArgs", "initialUser");
+            }
+            if ($.vpcNetwork == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileAlloydbSettingsArgs", "vpcNetwork");
+            }
             return $;
         }
     }

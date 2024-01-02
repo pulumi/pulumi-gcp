@@ -48,6 +48,7 @@ public final class FeatureState {
 
         @CustomType.Setter
         public Builder states(@Nullable List<FeatureStateState> states) {
+
             this.states = states;
             return this;
         }

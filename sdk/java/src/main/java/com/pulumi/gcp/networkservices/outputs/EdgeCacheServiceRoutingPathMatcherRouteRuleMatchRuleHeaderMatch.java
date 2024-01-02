@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -117,31 +118,39 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMat
 
         @CustomType.Setter
         public Builder exactMatch(@Nullable String exactMatch) {
+
             this.exactMatch = exactMatch;
             return this;
         }
         @CustomType.Setter
         public Builder headerName(String headerName) {
-            this.headerName = Objects.requireNonNull(headerName);
+            if (headerName == null) {
+              throw new MissingRequiredPropertyException("EdgeCacheServiceRoutingPathMatcherRouteRuleMatchRuleHeaderMatch", "headerName");
+            }
+            this.headerName = headerName;
             return this;
         }
         @CustomType.Setter
         public Builder invertMatch(@Nullable Boolean invertMatch) {
+
             this.invertMatch = invertMatch;
             return this;
         }
         @CustomType.Setter
         public Builder prefixMatch(@Nullable String prefixMatch) {
+
             this.prefixMatch = prefixMatch;
             return this;
         }
         @CustomType.Setter
         public Builder presentMatch(@Nullable Boolean presentMatch) {
+
             this.presentMatch = presentMatch;
             return this;
         }
         @CustomType.Setter
         public Builder suffixMatch(@Nullable String suffixMatch) {
+
             this.suffixMatch = suffixMatch;
             return this;
         }

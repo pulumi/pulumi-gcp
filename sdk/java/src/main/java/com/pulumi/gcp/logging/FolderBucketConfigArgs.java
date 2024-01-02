@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.FolderBucketConfigCmekSettingsArgs;
 import com.pulumi.gcp.logging.inputs.FolderBucketConfigIndexConfigArgs;
 import java.lang.Integer;
@@ -320,9 +321,15 @@ public final class FolderBucketConfigArgs extends com.pulumi.resources.ResourceA
         }
 
         public FolderBucketConfigArgs build() {
-            $.bucketId = Objects.requireNonNull($.bucketId, "expected parameter 'bucketId' to be non-null");
-            $.folder = Objects.requireNonNull($.folder, "expected parameter 'folder' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.bucketId == null) {
+                throw new MissingRequiredPropertyException("FolderBucketConfigArgs", "bucketId");
+            }
+            if ($.folder == null) {
+                throw new MissingRequiredPropertyException("FolderBucketConfigArgs", "folder");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("FolderBucketConfigArgs", "location");
+            }
             return $;
         }
     }

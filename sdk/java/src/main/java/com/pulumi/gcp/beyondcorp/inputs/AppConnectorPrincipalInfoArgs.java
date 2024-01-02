@@ -5,6 +5,7 @@ package com.pulumi.gcp.beyondcorp.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.beyondcorp.inputs.AppConnectorPrincipalInfoServiceAccountArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class AppConnectorPrincipalInfoArgs extends com.pulumi.resources.Re
         }
 
         public AppConnectorPrincipalInfoArgs build() {
-            $.serviceAccount = Objects.requireNonNull($.serviceAccount, "expected parameter 'serviceAccount' to be non-null");
+            if ($.serviceAccount == null) {
+                throw new MissingRequiredPropertyException("AppConnectorPrincipalInfoArgs", "serviceAccount");
+            }
             return $;
         }
     }

@@ -67,11 +67,13 @@ public final class TagTemplateFieldType {
 
         @CustomType.Setter
         public Builder enumType(@Nullable TagTemplateFieldTypeEnumType enumType) {
+
             this.enumType = enumType;
             return this;
         }
         @CustomType.Setter
         public Builder primitiveType(@Nullable String primitiveType) {
+
             this.primitiveType = primitiveType;
             return this;
         }

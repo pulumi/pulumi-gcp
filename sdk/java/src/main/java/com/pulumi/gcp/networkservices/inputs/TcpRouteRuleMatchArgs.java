@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkservices.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -115,8 +116,12 @@ public final class TcpRouteRuleMatchArgs extends com.pulumi.resources.ResourceAr
         }
 
         public TcpRouteRuleMatchArgs build() {
-            $.address = Objects.requireNonNull($.address, "expected parameter 'address' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.address == null) {
+                throw new MissingRequiredPropertyException("TcpRouteRuleMatchArgs", "address");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("TcpRouteRuleMatchArgs", "port");
+            }
             return $;
         }
     }

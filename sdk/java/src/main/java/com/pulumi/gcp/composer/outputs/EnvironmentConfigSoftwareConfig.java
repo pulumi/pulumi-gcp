@@ -75,36 +75,43 @@ public final class EnvironmentConfigSoftwareConfig {
 
         @CustomType.Setter
         public Builder airflowConfigOverrides(@Nullable Map<String,String> airflowConfigOverrides) {
+
             this.airflowConfigOverrides = airflowConfigOverrides;
             return this;
         }
         @CustomType.Setter
         public Builder cloudDataLineageIntegration(@Nullable EnvironmentConfigSoftwareConfigCloudDataLineageIntegration cloudDataLineageIntegration) {
+
             this.cloudDataLineageIntegration = cloudDataLineageIntegration;
             return this;
         }
         @CustomType.Setter
         public Builder envVariables(@Nullable Map<String,String> envVariables) {
+
             this.envVariables = envVariables;
             return this;
         }
         @CustomType.Setter
         public Builder imageVersion(@Nullable String imageVersion) {
+
             this.imageVersion = imageVersion;
             return this;
         }
         @CustomType.Setter
         public Builder pypiPackages(@Nullable Map<String,String> pypiPackages) {
+
             this.pypiPackages = pypiPackages;
             return this;
         }
         @CustomType.Setter
         public Builder pythonVersion(@Nullable String pythonVersion) {
+
             this.pythonVersion = pythonVersion;
             return this;
         }
         @CustomType.Setter
         public Builder schedulerCount(@Nullable Integer schedulerCount) {
+
             this.schedulerCount = schedulerCount;
             return this;
         }

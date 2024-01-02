@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLocalityLbPolicyCustomPolicy;
 import com.pulumi.gcp.compute.outputs.GetBackendServiceLocalityLbPolicyPolicy;
 import java.util.List;
@@ -42,7 +43,10 @@ public final class GetBackendServiceLocalityLbPolicy {
 
         @CustomType.Setter
         public Builder customPolicies(List<GetBackendServiceLocalityLbPolicyCustomPolicy> customPolicies) {
-            this.customPolicies = Objects.requireNonNull(customPolicies);
+            if (customPolicies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceLocalityLbPolicy", "customPolicies");
+            }
+            this.customPolicies = customPolicies;
             return this;
         }
         public Builder customPolicies(GetBackendServiceLocalityLbPolicyCustomPolicy... customPolicies) {
@@ -50,7 +54,10 @@ public final class GetBackendServiceLocalityLbPolicy {
         }
         @CustomType.Setter
         public Builder policies(List<GetBackendServiceLocalityLbPolicyPolicy> policies) {
-            this.policies = Objects.requireNonNull(policies);
+            if (policies == null) {
+              throw new MissingRequiredPropertyException("GetBackendServiceLocalityLbPolicy", "policies");
+            }
+            this.policies = policies;
             return this;
         }
         public Builder policies(GetBackendServiceLocalityLbPolicyPolicy... policies) {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class FlexibleAppVersionDeploymentContainer {
 
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("FlexibleAppVersionDeploymentContainer", "image");
+            }
+            this.image = image;
             return this;
         }
         public FlexibleAppVersionDeploymentContainer build() {

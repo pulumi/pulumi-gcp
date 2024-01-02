@@ -144,36 +144,43 @@ public final class FlexibleAppVersionHandlerStaticFiles {
 
         @CustomType.Setter
         public Builder applicationReadable(@Nullable Boolean applicationReadable) {
+
             this.applicationReadable = applicationReadable;
             return this;
         }
         @CustomType.Setter
         public Builder expiration(@Nullable String expiration) {
+
             this.expiration = expiration;
             return this;
         }
         @CustomType.Setter
         public Builder httpHeaders(@Nullable Map<String,String> httpHeaders) {
+
             this.httpHeaders = httpHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder mimeType(@Nullable String mimeType) {
+
             this.mimeType = mimeType;
             return this;
         }
         @CustomType.Setter
         public Builder path(@Nullable String path) {
+
             this.path = path;
             return this;
         }
         @CustomType.Setter
         public Builder requireMatchingFile(@Nullable Boolean requireMatchingFile) {
+
             this.requireMatchingFile = requireMatchingFile;
             return this;
         }
         @CustomType.Setter
         public Builder uploadPathRegex(@Nullable String uploadPathRegex) {
+
             this.uploadPathRegex = uploadPathRegex;
             return this;
         }

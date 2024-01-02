@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig 
 
         @CustomType.Setter
         public Builder dataprocMetastoreService(String dataprocMetastoreService) {
-            this.dataprocMetastoreService = Objects.requireNonNull(dataprocMetastoreService);
+            if (dataprocMetastoreService == null) {
+              throw new MissingRequiredPropertyException("WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig", "dataprocMetastoreService");
+            }
+            this.dataprocMetastoreService = dataprocMetastoreService;
             return this;
         }
         public WorkflowTemplatePlacementManagedClusterConfigMetastoreConfig build() {

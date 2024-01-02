@@ -5,6 +5,7 @@ package com.pulumi.gcp.vmwareengine;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudManagementClusterArgs;
 import com.pulumi.gcp.vmwareengine.inputs.PrivateCloudNetworkConfigArgs;
 import java.lang.String;
@@ -320,9 +321,15 @@ public final class PrivateCloudArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PrivateCloudArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.managementCluster = Objects.requireNonNull($.managementCluster, "expected parameter 'managementCluster' to be non-null");
-            $.networkConfig = Objects.requireNonNull($.networkConfig, "expected parameter 'networkConfig' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("PrivateCloudArgs", "location");
+            }
+            if ($.managementCluster == null) {
+                throw new MissingRequiredPropertyException("PrivateCloudArgs", "managementCluster");
+            }
+            if ($.networkConfig == null) {
+                throw new MissingRequiredPropertyException("PrivateCloudArgs", "networkConfig");
+            }
             return $;
         }
     }

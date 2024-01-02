@@ -44,6 +44,7 @@ public final class WorkflowTemplatePlacementManagedClusterConfigAutoscalingConfi
 
         @CustomType.Setter
         public Builder policy(@Nullable String policy) {
+
             this.policy = policy;
             return this;
         }

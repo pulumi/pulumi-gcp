@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationAdminGroupArgs;
 import com.pulumi.gcp.container.inputs.AzureClusterAuthorizationAdminUserArgs;
 import java.util.List;
@@ -135,7 +136,9 @@ public final class AzureClusterAuthorizationArgs extends com.pulumi.resources.Re
         }
 
         public AzureClusterAuthorizationArgs build() {
-            $.adminUsers = Objects.requireNonNull($.adminUsers, "expected parameter 'adminUsers' to be non-null");
+            if ($.adminUsers == null) {
+                throw new MissingRequiredPropertyException("AzureClusterAuthorizationArgs", "adminUsers");
+            }
             return $;
         }
     }

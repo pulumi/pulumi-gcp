@@ -60,11 +60,13 @@ public final class EnterpriseKeyAndroidSettings {
 
         @CustomType.Setter
         public Builder allowAllPackageNames(@Nullable Boolean allowAllPackageNames) {
+
             this.allowAllPackageNames = allowAllPackageNames;
             return this;
         }
         @CustomType.Setter
         public Builder allowedPackageNames(@Nullable List<String> allowedPackageNames) {
+
             this.allowedPackageNames = allowedPackageNames;
             return this;
         }

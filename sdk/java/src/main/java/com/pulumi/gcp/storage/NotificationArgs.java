@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -293,9 +294,15 @@ public final class NotificationArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public NotificationArgs build() {
-            $.bucket = Objects.requireNonNull($.bucket, "expected parameter 'bucket' to be non-null");
-            $.payloadFormat = Objects.requireNonNull($.payloadFormat, "expected parameter 'payloadFormat' to be non-null");
-            $.topic = Objects.requireNonNull($.topic, "expected parameter 'topic' to be non-null");
+            if ($.bucket == null) {
+                throw new MissingRequiredPropertyException("NotificationArgs", "bucket");
+            }
+            if ($.payloadFormat == null) {
+                throw new MissingRequiredPropertyException("NotificationArgs", "payloadFormat");
+            }
+            if ($.topic == null) {
+                throw new MissingRequiredPropertyException("NotificationArgs", "topic");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -103,21 +104,27 @@ public final class FlexibleAppVersionEndpointsApiService {
 
         @CustomType.Setter
         public Builder configId(@Nullable String configId) {
+
             this.configId = configId;
             return this;
         }
         @CustomType.Setter
         public Builder disableTraceSampling(@Nullable Boolean disableTraceSampling) {
+
             this.disableTraceSampling = disableTraceSampling;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("FlexibleAppVersionEndpointsApiService", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder rolloutStrategy(@Nullable String rolloutStrategy) {
+
             this.rolloutStrategy = rolloutStrategy;
             return this;
         }

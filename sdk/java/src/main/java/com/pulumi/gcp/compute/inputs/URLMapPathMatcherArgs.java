@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultRouteActionArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherDefaultUrlRedirectArgs;
 import com.pulumi.gcp.compute.inputs.URLMapPathMatcherHeaderActionArgs;
@@ -469,7 +470,9 @@ public final class URLMapPathMatcherArgs extends com.pulumi.resources.ResourceAr
         }
 
         public URLMapPathMatcherArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("URLMapPathMatcherArgs", "name");
+            }
             return $;
         }
     }

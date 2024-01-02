@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.GetFunctionBuildConfigSource;
 import java.lang.String;
 import java.util.List;
@@ -73,32 +74,50 @@ public final class GetFunctionBuildConfig {
 
         @CustomType.Setter
         public Builder build(String build) {
-            this.build = Objects.requireNonNull(build);
+            if (build == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "build");
+            }
+            this.build = build;
             return this;
         }
         @CustomType.Setter
         public Builder dockerRepository(String dockerRepository) {
-            this.dockerRepository = Objects.requireNonNull(dockerRepository);
+            if (dockerRepository == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "dockerRepository");
+            }
+            this.dockerRepository = dockerRepository;
             return this;
         }
         @CustomType.Setter
         public Builder entryPoint(String entryPoint) {
-            this.entryPoint = Objects.requireNonNull(entryPoint);
+            if (entryPoint == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "entryPoint");
+            }
+            this.entryPoint = entryPoint;
             return this;
         }
         @CustomType.Setter
         public Builder environmentVariables(Map<String,String> environmentVariables) {
-            this.environmentVariables = Objects.requireNonNull(environmentVariables);
+            if (environmentVariables == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "environmentVariables");
+            }
+            this.environmentVariables = environmentVariables;
             return this;
         }
         @CustomType.Setter
         public Builder runtime(String runtime) {
-            this.runtime = Objects.requireNonNull(runtime);
+            if (runtime == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "runtime");
+            }
+            this.runtime = runtime;
             return this;
         }
         @CustomType.Setter
         public Builder sources(List<GetFunctionBuildConfigSource> sources) {
-            this.sources = Objects.requireNonNull(sources);
+            if (sources == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "sources");
+            }
+            this.sources = sources;
             return this;
         }
         public Builder sources(GetFunctionBuildConfigSource... sources) {
@@ -106,7 +125,10 @@ public final class GetFunctionBuildConfig {
         }
         @CustomType.Setter
         public Builder workerPool(String workerPool) {
-            this.workerPool = Objects.requireNonNull(workerPool);
+            if (workerPool == null) {
+              throw new MissingRequiredPropertyException("GetFunctionBuildConfig", "workerPool");
+            }
+            this.workerPool = workerPool;
             return this;
         }
         public GetFunctionBuildConfig build() {

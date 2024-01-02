@@ -4,6 +4,7 @@
 package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsername
 
         @CustomType.Setter
         public Builder passwordSecretVersion(String passwordSecretVersion) {
-            this.passwordSecretVersion = Objects.requireNonNull(passwordSecretVersion);
+            if (passwordSecretVersion == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential", "passwordSecretVersion");
+            }
+            this.passwordSecretVersion = passwordSecretVersion;
             return this;
         }
         @CustomType.Setter
         public Builder username(String username) {
-            this.username = Objects.requireNonNull(username);
+            if (username == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential", "username");
+            }
+            this.username = username;
             return this;
         }
         public GetRepositoryRemoteRepositoryConfigUpstreamCredentialUsernamePasswordCredential build() {

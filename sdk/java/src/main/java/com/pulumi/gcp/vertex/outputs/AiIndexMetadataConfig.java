@@ -4,6 +4,7 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.AiIndexMetadataConfigAlgorithmConfig;
 import java.lang.Integer;
 import java.lang.String;
@@ -144,31 +145,39 @@ public final class AiIndexMetadataConfig {
 
         @CustomType.Setter
         public Builder algorithmConfig(@Nullable AiIndexMetadataConfigAlgorithmConfig algorithmConfig) {
+
             this.algorithmConfig = algorithmConfig;
             return this;
         }
         @CustomType.Setter
         public Builder approximateNeighborsCount(@Nullable Integer approximateNeighborsCount) {
+
             this.approximateNeighborsCount = approximateNeighborsCount;
             return this;
         }
         @CustomType.Setter
         public Builder dimensions(Integer dimensions) {
-            this.dimensions = Objects.requireNonNull(dimensions);
+            if (dimensions == null) {
+              throw new MissingRequiredPropertyException("AiIndexMetadataConfig", "dimensions");
+            }
+            this.dimensions = dimensions;
             return this;
         }
         @CustomType.Setter
         public Builder distanceMeasureType(@Nullable String distanceMeasureType) {
+
             this.distanceMeasureType = distanceMeasureType;
             return this;
         }
         @CustomType.Setter
         public Builder featureNormType(@Nullable String featureNormType) {
+
             this.featureNormType = featureNormType;
             return this;
         }
         @CustomType.Setter
         public Builder shardSize(@Nullable String shardSize) {
+
             this.shardSize = shardSize;
             return this;
         }

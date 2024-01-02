@@ -5,6 +5,7 @@ package com.pulumi.gcp.integrationconnectors;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionAuthConfigArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionConfigVariableArgs;
 import com.pulumi.gcp.integrationconnectors.inputs.ConnectionDestinationConfigArgs;
@@ -761,8 +762,12 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ConnectionArgs build() {
-            $.connectorVersion = Objects.requireNonNull($.connectorVersion, "expected parameter 'connectorVersion' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.connectorVersion == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "connectorVersion");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("ConnectionArgs", "location");
+            }
             return $;
         }
     }

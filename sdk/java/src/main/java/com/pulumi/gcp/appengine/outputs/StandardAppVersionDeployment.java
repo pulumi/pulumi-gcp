@@ -66,6 +66,7 @@ public final class StandardAppVersionDeployment {
 
         @CustomType.Setter
         public Builder files(@Nullable List<StandardAppVersionDeploymentFile> files) {
+
             this.files = files;
             return this;
         }
@@ -74,6 +75,7 @@ public final class StandardAppVersionDeployment {
         }
         @CustomType.Setter
         public Builder zip(@Nullable StandardAppVersionDeploymentZip zip) {
+
             this.zip = zip;
             return this;
         }

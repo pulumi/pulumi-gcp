@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -89,17 +90,24 @@ public final class CaPoolPublishingOptions {
 
         @CustomType.Setter
         public Builder encodingFormat(@Nullable String encodingFormat) {
+
             this.encodingFormat = encodingFormat;
             return this;
         }
         @CustomType.Setter
         public Builder publishCaCert(Boolean publishCaCert) {
-            this.publishCaCert = Objects.requireNonNull(publishCaCert);
+            if (publishCaCert == null) {
+              throw new MissingRequiredPropertyException("CaPoolPublishingOptions", "publishCaCert");
+            }
+            this.publishCaCert = publishCaCert;
             return this;
         }
         @CustomType.Setter
         public Builder publishCrl(Boolean publishCrl) {
-            this.publishCrl = Objects.requireNonNull(publishCrl);
+            if (publishCrl == null) {
+              throw new MissingRequiredPropertyException("CaPoolPublishingOptions", "publishCrl");
+            }
+            this.publishCrl = publishCrl;
             return this;
         }
         public CaPoolPublishingOptions build() {

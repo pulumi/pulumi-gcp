@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.InstanceTemplateReservationAffinitySpecificReservationArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -118,7 +119,9 @@ public final class InstanceTemplateReservationAffinityArgs extends com.pulumi.re
         }
 
         public InstanceTemplateReservationAffinityArgs build() {
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("InstanceTemplateReservationAffinityArgs", "type");
+            }
             return $;
         }
     }

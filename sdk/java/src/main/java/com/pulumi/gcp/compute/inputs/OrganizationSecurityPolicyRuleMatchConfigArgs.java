@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.OrganizationSecurityPolicyRuleMatchConfigLayer4ConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -207,7 +208,9 @@ public final class OrganizationSecurityPolicyRuleMatchConfigArgs extends com.pul
         }
 
         public OrganizationSecurityPolicyRuleMatchConfigArgs build() {
-            $.layer4Configs = Objects.requireNonNull($.layer4Configs, "expected parameter 'layer4Configs' to be non-null");
+            if ($.layer4Configs == null) {
+                throw new MissingRequiredPropertyException("OrganizationSecurityPolicyRuleMatchConfigArgs", "layer4Configs");
+            }
             return $;
         }
     }

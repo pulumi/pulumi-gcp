@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationAvroOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationCsvOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationGoogleSheetsOptionsArgs;
@@ -901,8 +902,12 @@ public final class TableExternalDataConfigurationArgs extends com.pulumi.resourc
         }
 
         public TableExternalDataConfigurationArgs build() {
-            $.autodetect = Objects.requireNonNull($.autodetect, "expected parameter 'autodetect' to be non-null");
-            $.sourceUris = Objects.requireNonNull($.sourceUris, "expected parameter 'sourceUris' to be non-null");
+            if ($.autodetect == null) {
+                throw new MissingRequiredPropertyException("TableExternalDataConfigurationArgs", "autodetect");
+            }
+            if ($.sourceUris == null) {
+                throw new MissingRequiredPropertyException("TableExternalDataConfigurationArgs", "sourceUris");
+            }
             return $;
         }
     }

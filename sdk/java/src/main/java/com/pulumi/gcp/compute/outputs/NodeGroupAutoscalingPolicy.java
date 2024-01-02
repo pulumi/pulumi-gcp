@@ -89,16 +89,19 @@ public final class NodeGroupAutoscalingPolicy {
 
         @CustomType.Setter
         public Builder maxNodes(@Nullable Integer maxNodes) {
+
             this.maxNodes = maxNodes;
             return this;
         }
         @CustomType.Setter
         public Builder minNodes(@Nullable Integer minNodes) {
+
             this.minNodes = minNodes;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -134,7 +135,9 @@ public final class GetTunnelInstanceIamPolicyArgs extends com.pulumi.resources.I
         }
 
         public GetTunnelInstanceIamPolicyArgs build() {
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("GetTunnelInstanceIamPolicyArgs", "instance");
+            }
             return $;
         }
     }

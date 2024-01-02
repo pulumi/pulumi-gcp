@@ -131,31 +131,37 @@ public final class BackendServiceCircuitBreakers {
 
         @CustomType.Setter
         public Builder connectTimeout(@Nullable BackendServiceCircuitBreakersConnectTimeout connectTimeout) {
+
             this.connectTimeout = connectTimeout;
             return this;
         }
         @CustomType.Setter
         public Builder maxConnections(@Nullable Integer maxConnections) {
+
             this.maxConnections = maxConnections;
             return this;
         }
         @CustomType.Setter
         public Builder maxPendingRequests(@Nullable Integer maxPendingRequests) {
+
             this.maxPendingRequests = maxPendingRequests;
             return this;
         }
         @CustomType.Setter
         public Builder maxRequests(@Nullable Integer maxRequests) {
+
             this.maxRequests = maxRequests;
             return this;
         }
         @CustomType.Setter
         public Builder maxRequestsPerConnection(@Nullable Integer maxRequestsPerConnection) {
+
             this.maxRequestsPerConnection = maxRequestsPerConnection;
             return this;
         }
         @CustomType.Setter
         public Builder maxRetries(@Nullable Integer maxRetries) {
+
             this.maxRetries = maxRetries;
             return this;
         }

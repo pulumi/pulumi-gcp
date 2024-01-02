@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -58,7 +59,10 @@ public final class ClusterClusterConfigAutoscalingConfig {
 
         @CustomType.Setter
         public Builder policyUri(String policyUri) {
-            this.policyUri = Objects.requireNonNull(policyUri);
+            if (policyUri == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigAutoscalingConfig", "policyUri");
+            }
+            this.policyUri = policyUri;
             return this;
         }
         public ClusterClusterConfigAutoscalingConfig build() {

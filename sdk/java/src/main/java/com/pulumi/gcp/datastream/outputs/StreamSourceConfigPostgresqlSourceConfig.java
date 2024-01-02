@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfigExcludeObjects;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigPostgresqlSourceConfigIncludeObjects;
 import java.lang.Integer;
@@ -113,27 +114,36 @@ public final class StreamSourceConfigPostgresqlSourceConfig {
 
         @CustomType.Setter
         public Builder excludeObjects(@Nullable StreamSourceConfigPostgresqlSourceConfigExcludeObjects excludeObjects) {
+
             this.excludeObjects = excludeObjects;
             return this;
         }
         @CustomType.Setter
         public Builder includeObjects(@Nullable StreamSourceConfigPostgresqlSourceConfigIncludeObjects includeObjects) {
+
             this.includeObjects = includeObjects;
             return this;
         }
         @CustomType.Setter
         public Builder maxConcurrentBackfillTasks(@Nullable Integer maxConcurrentBackfillTasks) {
+
             this.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             return this;
         }
         @CustomType.Setter
         public Builder publication(String publication) {
-            this.publication = Objects.requireNonNull(publication);
+            if (publication == null) {
+              throw new MissingRequiredPropertyException("StreamSourceConfigPostgresqlSourceConfig", "publication");
+            }
+            this.publication = publication;
             return this;
         }
         @CustomType.Setter
         public Builder replicationSlot(String replicationSlot) {
-            this.replicationSlot = Objects.requireNonNull(replicationSlot);
+            if (replicationSlot == null) {
+              throw new MissingRequiredPropertyException("StreamSourceConfigPostgresqlSourceConfig", "replicationSlot");
+            }
+            this.replicationSlot = replicationSlot;
             return this;
         }
         public StreamSourceConfigPostgresqlSourceConfig build() {

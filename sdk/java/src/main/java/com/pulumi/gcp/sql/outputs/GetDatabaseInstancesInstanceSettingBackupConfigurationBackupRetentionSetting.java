@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -41,12 +42,18 @@ public final class GetDatabaseInstancesInstanceSettingBackupConfigurationBackupR
 
         @CustomType.Setter
         public Builder retainedBackups(Integer retainedBackups) {
-            this.retainedBackups = Objects.requireNonNull(retainedBackups);
+            if (retainedBackups == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting", "retainedBackups");
+            }
+            this.retainedBackups = retainedBackups;
             return this;
         }
         @CustomType.Setter
         public Builder retentionUnit(String retentionUnit) {
-            this.retentionUnit = Objects.requireNonNull(retentionUnit);
+            if (retentionUnit == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting", "retentionUnit");
+            }
+            this.retentionUnit = retentionUnit;
             return this;
         }
         public GetDatabaseInstancesInstanceSettingBackupConfigurationBackupRetentionSetting build() {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.SloWindowsBasedSliMetricMeanInRangeRangeArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -160,8 +161,12 @@ public final class SloWindowsBasedSliMetricMeanInRangeArgs extends com.pulumi.re
         }
 
         public SloWindowsBasedSliMetricMeanInRangeArgs build() {
-            $.range = Objects.requireNonNull($.range, "expected parameter 'range' to be non-null");
-            $.timeSeries = Objects.requireNonNull($.timeSeries, "expected parameter 'timeSeries' to be non-null");
+            if ($.range == null) {
+                throw new MissingRequiredPropertyException("SloWindowsBasedSliMetricMeanInRangeArgs", "range");
+            }
+            if ($.timeSeries == null) {
+                throw new MissingRequiredPropertyException("SloWindowsBasedSliMetricMeanInRangeArgs", "timeSeries");
+            }
             return $;
         }
     }

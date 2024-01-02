@@ -4,6 +4,7 @@
 package com.pulumi.gcp.kms.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -125,8 +126,12 @@ public final class GetKMSSecretAsymmetricPlainArgs extends com.pulumi.resources.
         }
 
         public GetKMSSecretAsymmetricPlainArgs build() {
-            $.ciphertext = Objects.requireNonNull($.ciphertext, "expected parameter 'ciphertext' to be non-null");
-            $.cryptoKeyVersion = Objects.requireNonNull($.cryptoKeyVersion, "expected parameter 'cryptoKeyVersion' to be non-null");
+            if ($.ciphertext == null) {
+                throw new MissingRequiredPropertyException("GetKMSSecretAsymmetricPlainArgs", "ciphertext");
+            }
+            if ($.cryptoKeyVersion == null) {
+                throw new MissingRequiredPropertyException("GetKMSSecretAsymmetricPlainArgs", "cryptoKeyVersion");
+            }
             return $;
         }
     }

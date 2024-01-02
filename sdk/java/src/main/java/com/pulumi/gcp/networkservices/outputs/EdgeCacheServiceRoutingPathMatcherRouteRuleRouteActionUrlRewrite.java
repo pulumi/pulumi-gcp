@@ -92,16 +92,19 @@ public final class EdgeCacheServiceRoutingPathMatcherRouteRuleRouteActionUrlRewr
 
         @CustomType.Setter
         public Builder hostRewrite(@Nullable String hostRewrite) {
+
             this.hostRewrite = hostRewrite;
             return this;
         }
         @CustomType.Setter
         public Builder pathPrefixRewrite(@Nullable String pathPrefixRewrite) {
+
             this.pathPrefixRewrite = pathPrefixRewrite;
             return this;
         }
         @CustomType.Setter
         public Builder pathTemplateRewrite(@Nullable String pathTemplateRewrite) {
+
             this.pathTemplateRewrite = pathTemplateRewrite;
             return this;
         }

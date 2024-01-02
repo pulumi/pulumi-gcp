@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.projects.inputs.IAMAuditConfigAuditLogConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -164,9 +165,15 @@ public final class IAMAuditConfigArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public IAMAuditConfigArgs build() {
-            $.auditLogConfigs = Objects.requireNonNull($.auditLogConfigs, "expected parameter 'auditLogConfigs' to be non-null");
-            $.project = Objects.requireNonNull($.project, "expected parameter 'project' to be non-null");
-            $.service = Objects.requireNonNull($.service, "expected parameter 'service' to be non-null");
+            if ($.auditLogConfigs == null) {
+                throw new MissingRequiredPropertyException("IAMAuditConfigArgs", "auditLogConfigs");
+            }
+            if ($.project == null) {
+                throw new MissingRequiredPropertyException("IAMAuditConfigArgs", "project");
+            }
+            if ($.service == null) {
+                throw new MissingRequiredPropertyException("IAMAuditConfigArgs", "service");
+            }
             return $;
         }
     }

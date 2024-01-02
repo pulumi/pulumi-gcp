@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionAbsent;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionMatchedLog;
 import com.pulumi.gcp.monitoring.outputs.AlertPolicyConditionConditionMonitoringQueryLanguage;
@@ -175,36 +176,45 @@ public final class AlertPolicyCondition {
 
         @CustomType.Setter
         public Builder conditionAbsent(@Nullable AlertPolicyConditionConditionAbsent conditionAbsent) {
+
             this.conditionAbsent = conditionAbsent;
             return this;
         }
         @CustomType.Setter
         public Builder conditionMatchedLog(@Nullable AlertPolicyConditionConditionMatchedLog conditionMatchedLog) {
+
             this.conditionMatchedLog = conditionMatchedLog;
             return this;
         }
         @CustomType.Setter
         public Builder conditionMonitoringQueryLanguage(@Nullable AlertPolicyConditionConditionMonitoringQueryLanguage conditionMonitoringQueryLanguage) {
+
             this.conditionMonitoringQueryLanguage = conditionMonitoringQueryLanguage;
             return this;
         }
         @CustomType.Setter
         public Builder conditionPrometheusQueryLanguage(@Nullable AlertPolicyConditionConditionPrometheusQueryLanguage conditionPrometheusQueryLanguage) {
+
             this.conditionPrometheusQueryLanguage = conditionPrometheusQueryLanguage;
             return this;
         }
         @CustomType.Setter
         public Builder conditionThreshold(@Nullable AlertPolicyConditionConditionThreshold conditionThreshold) {
+
             this.conditionThreshold = conditionThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("AlertPolicyCondition", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

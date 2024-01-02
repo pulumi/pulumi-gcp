@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceMetadataIntegrationDataCatalogConfig;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class MetastoreServiceMetadataIntegration {
 
         @CustomType.Setter
         public Builder dataCatalogConfig(MetastoreServiceMetadataIntegrationDataCatalogConfig dataCatalogConfig) {
-            this.dataCatalogConfig = Objects.requireNonNull(dataCatalogConfig);
+            if (dataCatalogConfig == null) {
+              throw new MissingRequiredPropertyException("MetastoreServiceMetadataIntegration", "dataCatalogConfig");
+            }
+            this.dataCatalogConfig = dataCatalogConfig;
             return this;
         }
         public MetastoreServiceMetadataIntegration build() {

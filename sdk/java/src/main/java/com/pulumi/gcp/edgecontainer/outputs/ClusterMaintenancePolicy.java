@@ -4,6 +4,7 @@
 package com.pulumi.gcp.edgecontainer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.edgecontainer.outputs.ClusterMaintenancePolicyWindow;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class ClusterMaintenancePolicy {
 
         @CustomType.Setter
         public Builder window(ClusterMaintenancePolicyWindow window) {
-            this.window = Objects.requireNonNull(window);
+            if (window == null) {
+              throw new MissingRequiredPropertyException("ClusterMaintenancePolicy", "window");
+            }
+            this.window = window;
             return this;
         }
         public ClusterMaintenancePolicy build() {

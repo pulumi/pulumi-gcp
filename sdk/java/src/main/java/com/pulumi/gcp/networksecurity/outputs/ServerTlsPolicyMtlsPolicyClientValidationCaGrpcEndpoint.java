@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networksecurity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint {
 
         @CustomType.Setter
         public Builder targetUri(String targetUri) {
-            this.targetUri = Objects.requireNonNull(targetUri);
+            if (targetUri == null) {
+              throw new MissingRequiredPropertyException("ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint", "targetUri");
+            }
+            this.targetUri = targetUri;
             return this;
         }
         public ServerTlsPolicyMtlsPolicyClientValidationCaGrpcEndpoint build() {

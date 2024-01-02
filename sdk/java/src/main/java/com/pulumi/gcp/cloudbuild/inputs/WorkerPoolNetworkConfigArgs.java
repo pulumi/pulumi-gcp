@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudbuild.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class WorkerPoolNetworkConfigArgs extends com.pulumi.resources.Reso
         }
 
         public WorkerPoolNetworkConfigArgs build() {
-            $.peeredNetwork = Objects.requireNonNull($.peeredNetwork, "expected parameter 'peeredNetwork' to be non-null");
+            if ($.peeredNetwork == null) {
+                throw new MissingRequiredPropertyException("WorkerPoolNetworkConfigArgs", "peeredNetwork");
+            }
             return $;
         }
     }

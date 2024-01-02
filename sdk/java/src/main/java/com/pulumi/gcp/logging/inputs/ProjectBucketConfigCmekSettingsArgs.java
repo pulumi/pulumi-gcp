@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -235,7 +236,9 @@ public final class ProjectBucketConfigCmekSettingsArgs extends com.pulumi.resour
         }
 
         public ProjectBucketConfigCmekSettingsArgs build() {
-            $.kmsKeyName = Objects.requireNonNull($.kmsKeyName, "expected parameter 'kmsKeyName' to be non-null");
+            if ($.kmsKeyName == null) {
+                throw new MissingRequiredPropertyException("ProjectBucketConfigCmekSettingsArgs", "kmsKeyName");
+            }
             return $;
         }
     }

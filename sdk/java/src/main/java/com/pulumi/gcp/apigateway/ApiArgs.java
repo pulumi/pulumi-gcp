@@ -5,6 +5,7 @@ package com.pulumi.gcp.apigateway;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -253,7 +254,9 @@ public final class ApiArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ApiArgs build() {
-            $.apiId = Objects.requireNonNull($.apiId, "expected parameter 'apiId' to be non-null");
+            if ($.apiId == null) {
+                throw new MissingRequiredPropertyException("ApiArgs", "apiId");
+            }
             return $;
         }
     }

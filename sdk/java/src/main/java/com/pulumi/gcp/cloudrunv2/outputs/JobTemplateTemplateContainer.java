@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrunv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerEnv;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerPort;
 import com.pulumi.gcp.cloudrunv2.outputs.JobTemplateTemplateContainerResources;
@@ -171,6 +172,7 @@ public final class JobTemplateTemplateContainer {
 
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -179,6 +181,7 @@ public final class JobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
+
             this.commands = commands;
             return this;
         }
@@ -187,6 +190,7 @@ public final class JobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder envs(@Nullable List<JobTemplateTemplateContainerEnv> envs) {
+
             this.envs = envs;
             return this;
         }
@@ -195,16 +199,21 @@ public final class JobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder image(String image) {
-            this.image = Objects.requireNonNull(image);
+            if (image == null) {
+              throw new MissingRequiredPropertyException("JobTemplateTemplateContainer", "image");
+            }
+            this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder ports(@Nullable List<JobTemplateTemplateContainerPort> ports) {
+
             this.ports = ports;
             return this;
         }
@@ -213,11 +222,13 @@ public final class JobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder resources(@Nullable JobTemplateTemplateContainerResources resources) {
+
             this.resources = resources;
             return this;
         }
         @CustomType.Setter
         public Builder volumeMounts(@Nullable List<JobTemplateTemplateContainerVolumeMount> volumeMounts) {
+
             this.volumeMounts = volumeMounts;
             return this;
         }
@@ -226,6 +237,7 @@ public final class JobTemplateTemplateContainer {
         }
         @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
+
             this.workingDir = workingDir;
             return this;
         }

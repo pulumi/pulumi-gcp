@@ -144,41 +144,49 @@ public final class VMwareClusterVcenter {
 
         @CustomType.Setter
         public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder caCertData(@Nullable String caCertData) {
+
             this.caCertData = caCertData;
             return this;
         }
         @CustomType.Setter
         public Builder cluster(@Nullable String cluster) {
+
             this.cluster = cluster;
             return this;
         }
         @CustomType.Setter
         public Builder datacenter(@Nullable String datacenter) {
+
             this.datacenter = datacenter;
             return this;
         }
         @CustomType.Setter
         public Builder datastore(@Nullable String datastore) {
+
             this.datastore = datastore;
             return this;
         }
         @CustomType.Setter
         public Builder folder(@Nullable String folder) {
+
             this.folder = folder;
             return this;
         }
         @CustomType.Setter
         public Builder resourcePool(@Nullable String resourcePool) {
+
             this.resourcePool = resourcePool;
             return this;
         }
         @CustomType.Setter
         public Builder storagePolicyName(@Nullable String storagePolicyName) {
+
             this.storagePolicyName = storagePolicyName;
             return this;
         }

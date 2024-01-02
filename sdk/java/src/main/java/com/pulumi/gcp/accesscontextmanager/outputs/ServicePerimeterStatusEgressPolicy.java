@@ -65,11 +65,13 @@ public final class ServicePerimeterStatusEgressPolicy {
 
         @CustomType.Setter
         public Builder egressFrom(@Nullable ServicePerimeterStatusEgressPolicyEgressFrom egressFrom) {
+
             this.egressFrom = egressFrom;
             return this;
         }
         @CustomType.Setter
         public Builder egressTo(@Nullable ServicePerimeterStatusEgressPolicyEgressTo egressTo) {
+
             this.egressTo = egressTo;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.logging.inputs.BillingAccountBucketConfigCmekSettingsArgs;
 import com.pulumi.gcp.logging.inputs.BillingAccountBucketConfigIndexConfigArgs;
 import java.lang.Integer;
@@ -320,9 +321,15 @@ public final class BillingAccountBucketConfigArgs extends com.pulumi.resources.R
         }
 
         public BillingAccountBucketConfigArgs build() {
-            $.billingAccount = Objects.requireNonNull($.billingAccount, "expected parameter 'billingAccount' to be non-null");
-            $.bucketId = Objects.requireNonNull($.bucketId, "expected parameter 'bucketId' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.billingAccount == null) {
+                throw new MissingRequiredPropertyException("BillingAccountBucketConfigArgs", "billingAccount");
+            }
+            if ($.bucketId == null) {
+                throw new MissingRequiredPropertyException("BillingAccountBucketConfigArgs", "bucketId");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("BillingAccountBucketConfigArgs", "location");
+            }
             return $;
         }
     }

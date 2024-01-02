@@ -97,21 +97,25 @@ public final class CxTestCaseTestCaseConversationTurnUserInputInput {
 
         @CustomType.Setter
         public Builder dtmf(@Nullable CxTestCaseTestCaseConversationTurnUserInputInputDtmf dtmf) {
+
             this.dtmf = dtmf;
             return this;
         }
         @CustomType.Setter
         public Builder event(@Nullable CxTestCaseTestCaseConversationTurnUserInputInputEvent event) {
+
             this.event = event;
             return this;
         }
         @CustomType.Setter
         public Builder languageCode(@Nullable String languageCode) {
+
             this.languageCode = languageCode;
             return this;
         }
         @CustomType.Setter
         public Builder text(@Nullable CxTestCaseTestCaseConversationTurnUserInputInputText text) {
+
             this.text = text;
             return this;
         }

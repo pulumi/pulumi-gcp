@@ -67,11 +67,13 @@ public final class RegionSecurityPolicyRuleMatch {
 
         @CustomType.Setter
         public Builder config(@Nullable RegionSecurityPolicyRuleMatchConfig config) {
+
             this.config = config;
             return this;
         }
         @CustomType.Setter
         public Builder versionedExpr(@Nullable String versionedExpr) {
+
             this.versionedExpr = versionedExpr;
             return this;
         }

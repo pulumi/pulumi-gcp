@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxEnvironmentVersionConfigArgs;
 import java.lang.String;
 import java.util.List;
@@ -208,8 +209,12 @@ public final class CxEnvironmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CxEnvironmentArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.versionConfigs = Objects.requireNonNull($.versionConfigs, "expected parameter 'versionConfigs' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("CxEnvironmentArgs", "displayName");
+            }
+            if ($.versionConfigs == null) {
+                throw new MissingRequiredPropertyException("CxEnvironmentArgs", "versionConfigs");
+            }
             return $;
         }
     }

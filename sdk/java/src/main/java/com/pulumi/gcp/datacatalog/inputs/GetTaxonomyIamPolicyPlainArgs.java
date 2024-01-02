@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datacatalog.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,7 +109,9 @@ public final class GetTaxonomyIamPolicyPlainArgs extends com.pulumi.resources.In
         }
 
         public GetTaxonomyIamPolicyPlainArgs build() {
-            $.taxonomy = Objects.requireNonNull($.taxonomy, "expected parameter 'taxonomy' to be non-null");
+            if ($.taxonomy == null) {
+                throw new MissingRequiredPropertyException("GetTaxonomyIamPolicyPlainArgs", "taxonomy");
+            }
             return $;
         }
     }

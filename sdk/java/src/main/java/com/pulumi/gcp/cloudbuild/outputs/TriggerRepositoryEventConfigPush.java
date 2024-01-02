@@ -73,16 +73,19 @@ public final class TriggerRepositoryEventConfigPush {
 
         @CustomType.Setter
         public Builder branch(@Nullable String branch) {
+
             this.branch = branch;
             return this;
         }
         @CustomType.Setter
         public Builder invertRegex(@Nullable Boolean invertRegex) {
+
             this.invertRegex = invertRegex;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }

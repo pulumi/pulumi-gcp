@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudrun.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Map;
@@ -503,7 +504,9 @@ public final class DomainMappingMetadataArgs extends com.pulumi.resources.Resour
         }
 
         public DomainMappingMetadataArgs build() {
-            $.namespace = Objects.requireNonNull($.namespace, "expected parameter 'namespace' to be non-null");
+            if ($.namespace == null) {
+                throw new MissingRequiredPropertyException("DomainMappingMetadataArgs", "namespace");
+            }
             return $;
         }
     }

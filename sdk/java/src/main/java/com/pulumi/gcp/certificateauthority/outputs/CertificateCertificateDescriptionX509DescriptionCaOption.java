@@ -61,11 +61,13 @@ public final class CertificateCertificateDescriptionX509DescriptionCaOption {
 
         @CustomType.Setter
         public Builder isCa(@Nullable Boolean isCa) {
+
             this.isCa = isCa;
             return this;
         }
         @CustomType.Setter
         public Builder maxIssuerPathLength(@Nullable Integer maxIssuerPathLength) {
+
             this.maxIssuerPathLength = maxIssuerPathLength;
             return this;
         }

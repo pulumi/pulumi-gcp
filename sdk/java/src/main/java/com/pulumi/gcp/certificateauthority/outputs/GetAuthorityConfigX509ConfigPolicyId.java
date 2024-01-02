@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetAuthorityConfigX509ConfigPolicyId {
 
         @CustomType.Setter
         public Builder objectIdPaths(List<Integer> objectIdPaths) {
-            this.objectIdPaths = Objects.requireNonNull(objectIdPaths);
+            if (objectIdPaths == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigPolicyId", "objectIdPaths");
+            }
+            this.objectIdPaths = objectIdPaths;
             return this;
         }
         public Builder objectIdPaths(Integer... objectIdPaths) {

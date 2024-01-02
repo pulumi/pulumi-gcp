@@ -44,6 +44,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyStandardPredeploy 
 
         @CustomType.Setter
         public Builder actions(@Nullable List<String> actions) {
+
             this.actions = actions;
             return this;
         }

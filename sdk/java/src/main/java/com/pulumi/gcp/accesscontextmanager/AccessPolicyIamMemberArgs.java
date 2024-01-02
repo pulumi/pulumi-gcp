@@ -5,6 +5,7 @@ package com.pulumi.gcp.accesscontextmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.accesscontextmanager.inputs.AccessPolicyIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -204,8 +205,12 @@ public final class AccessPolicyIamMemberArgs extends com.pulumi.resources.Resour
         }
 
         public AccessPolicyIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AccessPolicyIamMemberArgs", "role");
+            }
             return $;
         }
     }

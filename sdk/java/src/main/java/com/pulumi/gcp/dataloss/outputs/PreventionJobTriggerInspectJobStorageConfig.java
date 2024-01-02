@@ -114,26 +114,31 @@ public final class PreventionJobTriggerInspectJobStorageConfig {
 
         @CustomType.Setter
         public Builder bigQueryOptions(@Nullable PreventionJobTriggerInspectJobStorageConfigBigQueryOptions bigQueryOptions) {
+
             this.bigQueryOptions = bigQueryOptions;
             return this;
         }
         @CustomType.Setter
         public Builder cloudStorageOptions(@Nullable PreventionJobTriggerInspectJobStorageConfigCloudStorageOptions cloudStorageOptions) {
+
             this.cloudStorageOptions = cloudStorageOptions;
             return this;
         }
         @CustomType.Setter
         public Builder datastoreOptions(@Nullable PreventionJobTriggerInspectJobStorageConfigDatastoreOptions datastoreOptions) {
+
             this.datastoreOptions = datastoreOptions;
             return this;
         }
         @CustomType.Setter
         public Builder hybridOptions(@Nullable PreventionJobTriggerInspectJobStorageConfigHybridOptions hybridOptions) {
+
             this.hybridOptions = hybridOptions;
             return this;
         }
         @CustomType.Setter
         public Builder timespanConfig(@Nullable PreventionJobTriggerInspectJobStorageConfigTimespanConfig timespanConfig) {
+
             this.timespanConfig = timespanConfig;
             return this;
         }

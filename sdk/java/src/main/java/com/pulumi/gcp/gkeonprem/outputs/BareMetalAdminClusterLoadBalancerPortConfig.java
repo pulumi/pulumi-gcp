@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class BareMetalAdminClusterLoadBalancerPortConfig {
 
         @CustomType.Setter
         public Builder controlPlaneLoadBalancerPort(Integer controlPlaneLoadBalancerPort) {
-            this.controlPlaneLoadBalancerPort = Objects.requireNonNull(controlPlaneLoadBalancerPort);
+            if (controlPlaneLoadBalancerPort == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterLoadBalancerPortConfig", "controlPlaneLoadBalancerPort");
+            }
+            this.controlPlaneLoadBalancerPort = controlPlaneLoadBalancerPort;
             return this;
         }
         public BareMetalAdminClusterLoadBalancerPortConfig build() {

@@ -46,6 +46,7 @@ public final class InstanceClientConnectionConfigSslConfig {
 
         @CustomType.Setter
         public Builder sslMode(@Nullable String sslMode) {
+
             this.sslMode = sslMode;
             return this;
         }

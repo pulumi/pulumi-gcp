@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.DatascanExecutionSpecTriggerArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -118,7 +119,9 @@ public final class DatascanExecutionSpecArgs extends com.pulumi.resources.Resour
         }
 
         public DatascanExecutionSpecArgs build() {
-            $.trigger = Objects.requireNonNull($.trigger, "expected parameter 'trigger' to be non-null");
+            if ($.trigger == null) {
+                throw new MissingRequiredPropertyException("DatascanExecutionSpecArgs", "trigger");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudfunctionsv2.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctionsv2.outputs.GetFunctionEventTriggerEventFilter;
 import java.lang.String;
 import java.util.List;
@@ -72,7 +73,10 @@ public final class GetFunctionEventTrigger {
 
         @CustomType.Setter
         public Builder eventFilters(List<GetFunctionEventTriggerEventFilter> eventFilters) {
-            this.eventFilters = Objects.requireNonNull(eventFilters);
+            if (eventFilters == null) {
+              throw new MissingRequiredPropertyException("GetFunctionEventTrigger", "eventFilters");
+            }
+            this.eventFilters = eventFilters;
             return this;
         }
         public Builder eventFilters(GetFunctionEventTriggerEventFilter... eventFilters) {
@@ -80,32 +84,50 @@ public final class GetFunctionEventTrigger {
         }
         @CustomType.Setter
         public Builder eventType(String eventType) {
-            this.eventType = Objects.requireNonNull(eventType);
+            if (eventType == null) {
+              throw new MissingRequiredPropertyException("GetFunctionEventTrigger", "eventType");
+            }
+            this.eventType = eventType;
             return this;
         }
         @CustomType.Setter
         public Builder pubsubTopic(String pubsubTopic) {
-            this.pubsubTopic = Objects.requireNonNull(pubsubTopic);
+            if (pubsubTopic == null) {
+              throw new MissingRequiredPropertyException("GetFunctionEventTrigger", "pubsubTopic");
+            }
+            this.pubsubTopic = pubsubTopic;
             return this;
         }
         @CustomType.Setter
         public Builder retryPolicy(String retryPolicy) {
-            this.retryPolicy = Objects.requireNonNull(retryPolicy);
+            if (retryPolicy == null) {
+              throw new MissingRequiredPropertyException("GetFunctionEventTrigger", "retryPolicy");
+            }
+            this.retryPolicy = retryPolicy;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccountEmail(String serviceAccountEmail) {
-            this.serviceAccountEmail = Objects.requireNonNull(serviceAccountEmail);
+            if (serviceAccountEmail == null) {
+              throw new MissingRequiredPropertyException("GetFunctionEventTrigger", "serviceAccountEmail");
+            }
+            this.serviceAccountEmail = serviceAccountEmail;
             return this;
         }
         @CustomType.Setter
         public Builder trigger(String trigger) {
-            this.trigger = Objects.requireNonNull(trigger);
+            if (trigger == null) {
+              throw new MissingRequiredPropertyException("GetFunctionEventTrigger", "trigger");
+            }
+            this.trigger = trigger;
             return this;
         }
         @CustomType.Setter
         public Builder triggerRegion(String triggerRegion) {
-            this.triggerRegion = Objects.requireNonNull(triggerRegion);
+            if (triggerRegion == null) {
+              throw new MissingRequiredPropertyException("GetFunctionEventTrigger", "triggerRegion");
+            }
+            this.triggerRegion = triggerRegion;
             return this;
         }
         public GetFunctionEventTrigger build() {

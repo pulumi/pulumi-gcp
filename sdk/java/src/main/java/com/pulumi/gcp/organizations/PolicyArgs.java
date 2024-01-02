@@ -5,6 +5,7 @@ package com.pulumi.gcp.organizations;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.organizations.inputs.PolicyBooleanPolicyArgs;
 import com.pulumi.gcp.organizations.inputs.PolicyListPolicyArgs;
 import com.pulumi.gcp.organizations.inputs.PolicyRestorePolicyArgs;
@@ -297,8 +298,12 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PolicyArgs build() {
-            $.constraint = Objects.requireNonNull($.constraint, "expected parameter 'constraint' to be non-null");
-            $.orgId = Objects.requireNonNull($.orgId, "expected parameter 'orgId' to be non-null");
+            if ($.constraint == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "constraint");
+            }
+            if ($.orgId == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "orgId");
+            }
             return $;
         }
     }

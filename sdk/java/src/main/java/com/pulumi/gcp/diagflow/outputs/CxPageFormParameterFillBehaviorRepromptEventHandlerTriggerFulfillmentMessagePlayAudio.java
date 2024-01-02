@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -61,12 +62,16 @@ public final class CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFul
 
         @CustomType.Setter
         public Builder allowPlaybackInterruption(@Nullable Boolean allowPlaybackInterruption) {
+
             this.allowPlaybackInterruption = allowPlaybackInterruption;
             return this;
         }
         @CustomType.Setter
         public Builder audioUri(String audioUri) {
-            this.audioUri = Objects.requireNonNull(audioUri);
+            if (audioUri == null) {
+              throw new MissingRequiredPropertyException("CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio", "audioUri");
+            }
+            this.audioUri = audioUri;
             return this;
         }
         public CxPageFormParameterFillBehaviorRepromptEventHandlerTriggerFulfillmentMessagePlayAudio build() {

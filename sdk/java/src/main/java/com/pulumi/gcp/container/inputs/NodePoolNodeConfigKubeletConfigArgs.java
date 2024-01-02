@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -109,7 +110,9 @@ public final class NodePoolNodeConfigKubeletConfigArgs extends com.pulumi.resour
         }
 
         public NodePoolNodeConfigKubeletConfigArgs build() {
-            $.cpuManagerPolicy = Objects.requireNonNull($.cpuManagerPolicy, "expected parameter 'cpuManagerPolicy' to be non-null");
+            if ($.cpuManagerPolicy == null) {
+                throw new MissingRequiredPropertyException("NodePoolNodeConfigKubeletConfigArgs", "cpuManagerPolicy");
+            }
             return $;
         }
     }

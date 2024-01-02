@@ -63,11 +63,13 @@ public final class BackupPlanBackupSchedule {
 
         @CustomType.Setter
         public Builder cronSchedule(@Nullable String cronSchedule) {
+
             this.cronSchedule = cronSchedule;
             return this;
         }
         @CustomType.Setter
         public Builder paused(@Nullable Boolean paused) {
+
             this.paused = paused;
             return this;
         }

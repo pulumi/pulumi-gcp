@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.JobPysparkConfigLoggingConfig;
 import java.lang.String;
 import java.util.List;
@@ -141,6 +142,7 @@ public final class JobPysparkConfig {
 
         @CustomType.Setter
         public Builder archiveUris(@Nullable List<String> archiveUris) {
+
             this.archiveUris = archiveUris;
             return this;
         }
@@ -149,6 +151,7 @@ public final class JobPysparkConfig {
         }
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -157,6 +160,7 @@ public final class JobPysparkConfig {
         }
         @CustomType.Setter
         public Builder fileUris(@Nullable List<String> fileUris) {
+
             this.fileUris = fileUris;
             return this;
         }
@@ -165,6 +169,7 @@ public final class JobPysparkConfig {
         }
         @CustomType.Setter
         public Builder jarFileUris(@Nullable List<String> jarFileUris) {
+
             this.jarFileUris = jarFileUris;
             return this;
         }
@@ -173,21 +178,27 @@ public final class JobPysparkConfig {
         }
         @CustomType.Setter
         public Builder loggingConfig(@Nullable JobPysparkConfigLoggingConfig loggingConfig) {
+
             this.loggingConfig = loggingConfig;
             return this;
         }
         @CustomType.Setter
         public Builder mainPythonFileUri(String mainPythonFileUri) {
-            this.mainPythonFileUri = Objects.requireNonNull(mainPythonFileUri);
+            if (mainPythonFileUri == null) {
+              throw new MissingRequiredPropertyException("JobPysparkConfig", "mainPythonFileUri");
+            }
+            this.mainPythonFileUri = mainPythonFileUri;
             return this;
         }
         @CustomType.Setter
         public Builder properties(@Nullable Map<String,String> properties) {
+
             this.properties = properties;
             return this;
         }
         @CustomType.Setter
         public Builder pythonFileUris(@Nullable List<String> pythonFileUris) {
+
             this.pythonFileUris = pythonFileUris;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.iap;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iap.inputs.WebRegionBackendServiceIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -286,9 +287,15 @@ public final class WebRegionBackendServiceIamMemberArgs extends com.pulumi.resou
         }
 
         public WebRegionBackendServiceIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.webRegionBackendService = Objects.requireNonNull($.webRegionBackendService, "expected parameter 'webRegionBackendService' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("WebRegionBackendServiceIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("WebRegionBackendServiceIamMemberArgs", "role");
+            }
+            if ($.webRegionBackendService == null) {
+                throw new MissingRequiredPropertyException("WebRegionBackendServiceIamMemberArgs", "webRegionBackendService");
+            }
             return $;
         }
     }

@@ -110,26 +110,31 @@ public final class NetworkAttachmentConnectionEndpoint {
 
         @CustomType.Setter
         public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
         public Builder projectIdOrNum(@Nullable String projectIdOrNum) {
+
             this.projectIdOrNum = projectIdOrNum;
             return this;
         }
         @CustomType.Setter
         public Builder secondaryIpCidrRanges(@Nullable String secondaryIpCidrRanges) {
+
             this.secondaryIpCidrRanges = secondaryIpCidrRanges;
             return this;
         }
         @CustomType.Setter
         public Builder status(@Nullable String status) {
+
             this.status = status;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
+
             this.subnetwork = subnetwork;
             return this;
         }

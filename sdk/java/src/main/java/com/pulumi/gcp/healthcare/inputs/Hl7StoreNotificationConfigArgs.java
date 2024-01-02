@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -94,7 +95,9 @@ public final class Hl7StoreNotificationConfigArgs extends com.pulumi.resources.R
         }
 
         public Hl7StoreNotificationConfigArgs build() {
-            $.pubsubTopic = Objects.requireNonNull($.pubsubTopic, "expected parameter 'pubsubTopic' to be non-null");
+            if ($.pubsubTopic == null) {
+                throw new MissingRequiredPropertyException("Hl7StoreNotificationConfigArgs", "pubsubTopic");
+            }
             return $;
         }
     }

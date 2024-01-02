@@ -59,11 +59,13 @@ public final class JobTemplateTemplateContainerPort {
 
         @CustomType.Setter
         public Builder containerPort(@Nullable Integer containerPort) {
+
             this.containerPort = containerPort;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

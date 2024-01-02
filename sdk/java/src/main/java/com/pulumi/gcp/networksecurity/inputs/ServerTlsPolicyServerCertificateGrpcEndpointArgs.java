@@ -5,6 +5,7 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ServerTlsPolicyServerCertificateGrpcEndpointArgs extends com.
         }
 
         public ServerTlsPolicyServerCertificateGrpcEndpointArgs build() {
-            $.targetUri = Objects.requireNonNull($.targetUri, "expected parameter 'targetUri' to be non-null");
+            if ($.targetUri == null) {
+                throw new MissingRequiredPropertyException("ServerTlsPolicyServerCertificateGrpcEndpointArgs", "targetUri");
+            }
             return $;
         }
     }

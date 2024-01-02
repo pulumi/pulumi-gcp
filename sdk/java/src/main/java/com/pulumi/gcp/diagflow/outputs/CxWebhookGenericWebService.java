@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -73,6 +74,7 @@ public final class CxWebhookGenericWebService {
 
         @CustomType.Setter
         public Builder allowedCaCerts(@Nullable List<String> allowedCaCerts) {
+
             this.allowedCaCerts = allowedCaCerts;
             return this;
         }
@@ -81,12 +83,16 @@ public final class CxWebhookGenericWebService {
         }
         @CustomType.Setter
         public Builder requestHeaders(@Nullable Map<String,String> requestHeaders) {
+
             this.requestHeaders = requestHeaders;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("CxWebhookGenericWebService", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public CxWebhookGenericWebService build() {

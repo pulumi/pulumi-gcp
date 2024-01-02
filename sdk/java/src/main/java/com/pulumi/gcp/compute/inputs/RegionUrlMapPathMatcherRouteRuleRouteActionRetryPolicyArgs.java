@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyPerTryTimeoutArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -230,7 +231,9 @@ public final class RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs ex
         }
 
         public RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs build() {
-            $.numRetries = Objects.requireNonNull($.numRetries, "expected parameter 'numRetries' to be non-null");
+            if ($.numRetries == null) {
+                throw new MissingRequiredPropertyException("RegionUrlMapPathMatcherRouteRuleRouteActionRetryPolicyArgs", "numRetries");
+            }
             return $;
         }
     }

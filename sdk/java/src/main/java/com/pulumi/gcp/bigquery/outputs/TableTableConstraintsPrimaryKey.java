@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class TableTableConstraintsPrimaryKey {
 
         @CustomType.Setter
         public Builder columns(List<String> columns) {
-            this.columns = Objects.requireNonNull(columns);
+            if (columns == null) {
+              throw new MissingRequiredPropertyException("TableTableConstraintsPrimaryKey", "columns");
+            }
+            this.columns = columns;
             return this;
         }
         public Builder columns(String... columns) {

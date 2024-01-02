@@ -73,11 +73,13 @@ public final class TaskNotebookInfrastructureSpecVpcNetwork {
 
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder networkTags(@Nullable List<String> networkTags) {
+
             this.networkTags = networkTags;
             return this;
         }
@@ -86,6 +88,7 @@ public final class TaskNotebookInfrastructureSpecVpcNetwork {
         }
         @CustomType.Setter
         public Builder subNetwork(@Nullable String subNetwork) {
+
             this.subNetwork = subNetwork;
             return this;
         }

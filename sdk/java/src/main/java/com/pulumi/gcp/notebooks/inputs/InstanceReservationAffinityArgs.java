@@ -5,6 +5,7 @@ package com.pulumi.gcp.notebooks.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -165,7 +166,9 @@ public final class InstanceReservationAffinityArgs extends com.pulumi.resources.
         }
 
         public InstanceReservationAffinityArgs build() {
-            $.consumeReservationType = Objects.requireNonNull($.consumeReservationType, "expected parameter 'consumeReservationType' to be non-null");
+            if ($.consumeReservationType == null) {
+                throw new MissingRequiredPropertyException("InstanceReservationAffinityArgs", "consumeReservationType");
+            }
             return $;
         }
     }

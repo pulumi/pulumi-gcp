@@ -67,11 +67,13 @@ public final class DatabaseHiveOptions {
 
         @CustomType.Setter
         public Builder locationUri(@Nullable String locationUri) {
+
             this.locationUri = locationUri;
             return this;
         }
         @CustomType.Setter
         public Builder parameters(@Nullable Map<String,String> parameters) {
+
             this.parameters = parameters;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolNodeConfigSoleTenantConfigNodeAffinityArgs;
 import java.util.List;
 import java.util.Objects;
@@ -59,7 +60,9 @@ public final class ClusterNodePoolNodeConfigSoleTenantConfigArgs extends com.pul
         }
 
         public ClusterNodePoolNodeConfigSoleTenantConfigArgs build() {
-            $.nodeAffinities = Objects.requireNonNull($.nodeAffinities, "expected parameter 'nodeAffinities' to be non-null");
+            if ($.nodeAffinities == null) {
+                throw new MissingRequiredPropertyException("ClusterNodePoolNodeConfigSoleTenantConfigArgs", "nodeAffinities");
+            }
             return $;
         }
     }

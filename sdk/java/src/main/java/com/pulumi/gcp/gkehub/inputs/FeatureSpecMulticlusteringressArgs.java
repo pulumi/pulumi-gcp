@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class FeatureSpecMulticlusteringressArgs extends com.pulumi.resourc
         }
 
         public FeatureSpecMulticlusteringressArgs build() {
-            $.configMembership = Objects.requireNonNull($.configMembership, "expected parameter 'configMembership' to be non-null");
+            if ($.configMembership == null) {
+                throw new MissingRequiredPropertyException("FeatureSpecMulticlusteringressArgs", "configMembership");
+            }
             return $;
         }
     }

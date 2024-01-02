@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalNodePoolNodePoolConfigNodeConfig;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalNodePoolNodePoolConfigTaint;
 import java.lang.String;
@@ -112,12 +113,16 @@ public final class BareMetalNodePoolNodePoolConfig {
 
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder nodeConfigs(List<BareMetalNodePoolNodePoolConfigNodeConfig> nodeConfigs) {
-            this.nodeConfigs = Objects.requireNonNull(nodeConfigs);
+            if (nodeConfigs == null) {
+              throw new MissingRequiredPropertyException("BareMetalNodePoolNodePoolConfig", "nodeConfigs");
+            }
+            this.nodeConfigs = nodeConfigs;
             return this;
         }
         public Builder nodeConfigs(BareMetalNodePoolNodePoolConfigNodeConfig... nodeConfigs) {
@@ -125,11 +130,13 @@ public final class BareMetalNodePoolNodePoolConfig {
         }
         @CustomType.Setter
         public Builder operatingSystem(@Nullable String operatingSystem) {
+
             this.operatingSystem = operatingSystem;
             return this;
         }
         @CustomType.Setter
         public Builder taints(@Nullable List<BareMetalNodePoolNodePoolConfigTaint> taints) {
+
             this.taints = taints;
             return this;
         }

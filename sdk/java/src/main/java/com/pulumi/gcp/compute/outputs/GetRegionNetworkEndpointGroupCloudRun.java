@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -46,17 +47,26 @@ public final class GetRegionNetworkEndpointGroupCloudRun {
 
         @CustomType.Setter
         public Builder service(String service) {
-            this.service = Objects.requireNonNull(service);
+            if (service == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupCloudRun", "service");
+            }
+            this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder tag(String tag) {
-            this.tag = Objects.requireNonNull(tag);
+            if (tag == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupCloudRun", "tag");
+            }
+            this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder urlMask(String urlMask) {
-            this.urlMask = Objects.requireNonNull(urlMask);
+            if (urlMask == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupCloudRun", "urlMask");
+            }
+            this.urlMask = urlMask;
             return this;
         }
         public GetRegionNetworkEndpointGroupCloudRun build() {

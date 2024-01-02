@@ -58,11 +58,13 @@ public final class JobLoadParquetOptions {
 
         @CustomType.Setter
         public Builder enableListInference(@Nullable Boolean enableListInference) {
+
             this.enableListInference = enableListInference;
             return this;
         }
         @CustomType.Setter
         public Builder enumAsString(@Nullable Boolean enumAsString) {
+
             this.enumAsString = enumAsString;
             return this;
         }

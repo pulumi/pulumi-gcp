@@ -48,6 +48,7 @@ public final class VMwareClusterValidationCheckStatus {
 
         @CustomType.Setter
         public Builder results(@Nullable List<VMwareClusterValidationCheckStatusResult> results) {
+
             this.results = results;
             return this;
         }

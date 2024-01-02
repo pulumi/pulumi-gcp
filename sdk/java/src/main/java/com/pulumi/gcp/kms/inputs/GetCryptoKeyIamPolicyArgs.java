@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetCryptoKeyIamPolicyArgs extends com.pulumi.resources.Invoke
         }
 
         public GetCryptoKeyIamPolicyArgs build() {
-            $.cryptoKeyId = Objects.requireNonNull($.cryptoKeyId, "expected parameter 'cryptoKeyId' to be non-null");
+            if ($.cryptoKeyId == null) {
+                throw new MissingRequiredPropertyException("GetCryptoKeyIamPolicyArgs", "cryptoKeyId");
+            }
             return $;
         }
     }

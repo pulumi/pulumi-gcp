@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.projects.inputs.AccessApprovalSettingsEnrolledServiceArgs;
 import java.lang.String;
 import java.util.List;
@@ -312,8 +313,12 @@ public final class AccessApprovalSettingsArgs extends com.pulumi.resources.Resou
         }
 
         public AccessApprovalSettingsArgs build() {
-            $.enrolledServices = Objects.requireNonNull($.enrolledServices, "expected parameter 'enrolledServices' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
+            if ($.enrolledServices == null) {
+                throw new MissingRequiredPropertyException("AccessApprovalSettingsArgs", "enrolledServices");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("AccessApprovalSettingsArgs", "projectId");
+            }
             return $;
         }
     }

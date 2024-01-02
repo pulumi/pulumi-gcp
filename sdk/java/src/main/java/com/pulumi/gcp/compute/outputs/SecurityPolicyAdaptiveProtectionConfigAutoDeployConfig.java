@@ -87,21 +87,25 @@ public final class SecurityPolicyAdaptiveProtectionConfigAutoDeployConfig {
 
         @CustomType.Setter
         public Builder confidenceThreshold(@Nullable Double confidenceThreshold) {
+
             this.confidenceThreshold = confidenceThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder expirationSec(@Nullable Integer expirationSec) {
+
             this.expirationSec = expirationSec;
             return this;
         }
         @CustomType.Setter
         public Builder impactedBaselineThreshold(@Nullable Double impactedBaselineThreshold) {
+
             this.impactedBaselineThreshold = impactedBaselineThreshold;
             return this;
         }
         @CustomType.Setter
         public Builder loadThreshold(@Nullable Double loadThreshold) {
+
             this.loadThreshold = loadThreshold;
             return this;
         }

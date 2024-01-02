@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkeonprem.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterLoadBalancerManualLbConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterLoadBalancerPortConfigArgs;
 import com.pulumi.gcp.gkeonprem.inputs.BareMetalAdminClusterLoadBalancerVipConfigArgs;
@@ -164,8 +165,12 @@ public final class BareMetalAdminClusterLoadBalancerArgs extends com.pulumi.reso
         }
 
         public BareMetalAdminClusterLoadBalancerArgs build() {
-            $.portConfig = Objects.requireNonNull($.portConfig, "expected parameter 'portConfig' to be non-null");
-            $.vipConfig = Objects.requireNonNull($.vipConfig, "expected parameter 'vipConfig' to be non-null");
+            if ($.portConfig == null) {
+                throw new MissingRequiredPropertyException("BareMetalAdminClusterLoadBalancerArgs", "portConfig");
+            }
+            if ($.vipConfig == null) {
+                throw new MissingRequiredPropertyException("BareMetalAdminClusterLoadBalancerArgs", "vipConfig");
+            }
             return $;
         }
     }

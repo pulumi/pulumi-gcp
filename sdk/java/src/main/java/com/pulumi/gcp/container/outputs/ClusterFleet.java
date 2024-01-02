@@ -57,16 +57,19 @@ public final class ClusterFleet {
 
         @CustomType.Setter
         public Builder membership(@Nullable String membership) {
+
             this.membership = membership;
             return this;
         }
         @CustomType.Setter
         public Builder preRegistered(@Nullable Boolean preRegistered) {
+
             this.preRegistered = preRegistered;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }

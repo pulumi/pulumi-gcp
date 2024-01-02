@@ -5,6 +5,7 @@ package com.pulumi.gcp.sourcerepo.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -174,8 +175,12 @@ public final class RepositoryPubsubConfigArgs extends com.pulumi.resources.Resou
         }
 
         public RepositoryPubsubConfigArgs build() {
-            $.messageFormat = Objects.requireNonNull($.messageFormat, "expected parameter 'messageFormat' to be non-null");
-            $.topic = Objects.requireNonNull($.topic, "expected parameter 'topic' to be non-null");
+            if ($.messageFormat == null) {
+                throw new MissingRequiredPropertyException("RepositoryPubsubConfigArgs", "messageFormat");
+            }
+            if ($.topic == null) {
+                throw new MissingRequiredPropertyException("RepositoryPubsubConfigArgs", "topic");
+            }
             return $;
         }
     }

@@ -65,11 +65,13 @@ public final class PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsP
 
         @CustomType.Setter
         public Builder infoType(@Nullable PreventionJobTriggerInspectJobInspectConfigLimitsMaxFindingsPerInfoTypeInfoType infoType) {
+
             this.infoType = infoType;
             return this;
         }
         @CustomType.Setter
         public Builder maxFindings(@Nullable Integer maxFindings) {
+
             this.maxFindings = maxFindings;
             return this;
         }

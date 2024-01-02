@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolIssuancePolicyArgs;
 import com.pulumi.gcp.certificateauthority.inputs.CaPoolPublishingOptionsArgs;
 import java.lang.String;
@@ -349,8 +350,12 @@ public final class CaPoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public CaPoolArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.tier = Objects.requireNonNull($.tier, "expected parameter 'tier' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("CaPoolArgs", "location");
+            }
+            if ($.tier == null) {
+                throw new MissingRequiredPropertyException("CaPoolArgs", "tier");
+            }
             return $;
         }
     }

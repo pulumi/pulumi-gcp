@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.UptimeCheckConfigContentMatcherJsonPathMatcherArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -163,7 +164,9 @@ public final class UptimeCheckConfigContentMatcherArgs extends com.pulumi.resour
         }
 
         public UptimeCheckConfigContentMatcherArgs build() {
-            $.content = Objects.requireNonNull($.content, "expected parameter 'content' to be non-null");
+            if ($.content == null) {
+                throw new MissingRequiredPropertyException("UptimeCheckConfigContentMatcherArgs", "content");
+            }
             return $;
         }
     }

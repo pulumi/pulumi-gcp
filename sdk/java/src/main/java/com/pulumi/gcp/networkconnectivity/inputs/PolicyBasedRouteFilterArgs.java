@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -199,7 +200,9 @@ public final class PolicyBasedRouteFilterArgs extends com.pulumi.resources.Resou
         }
 
         public PolicyBasedRouteFilterArgs build() {
-            $.protocolVersion = Objects.requireNonNull($.protocolVersion, "expected parameter 'protocolVersion' to be non-null");
+            if ($.protocolVersion == null) {
+                throw new MissingRequiredPropertyException("PolicyBasedRouteFilterArgs", "protocolVersion");
+            }
             return $;
         }
     }

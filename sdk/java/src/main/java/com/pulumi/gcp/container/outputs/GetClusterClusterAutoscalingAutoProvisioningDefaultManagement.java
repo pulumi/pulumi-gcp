@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption;
 import java.lang.Boolean;
 import java.util.List;
@@ -48,17 +49,26 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefaultManagement
 
         @CustomType.Setter
         public Builder autoRepair(Boolean autoRepair) {
-            this.autoRepair = Objects.requireNonNull(autoRepair);
+            if (autoRepair == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultManagement", "autoRepair");
+            }
+            this.autoRepair = autoRepair;
             return this;
         }
         @CustomType.Setter
         public Builder autoUpgrade(Boolean autoUpgrade) {
-            this.autoUpgrade = Objects.requireNonNull(autoUpgrade);
+            if (autoUpgrade == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultManagement", "autoUpgrade");
+            }
+            this.autoUpgrade = autoUpgrade;
             return this;
         }
         @CustomType.Setter
         public Builder upgradeOptions(List<GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption> upgradeOptions) {
-            this.upgradeOptions = Objects.requireNonNull(upgradeOptions);
+            if (upgradeOptions == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultManagement", "upgradeOptions");
+            }
+            this.upgradeOptions = upgradeOptions;
             return this;
         }
         public Builder upgradeOptions(GetClusterClusterAutoscalingAutoProvisioningDefaultManagementUpgradeOption... upgradeOptions) {

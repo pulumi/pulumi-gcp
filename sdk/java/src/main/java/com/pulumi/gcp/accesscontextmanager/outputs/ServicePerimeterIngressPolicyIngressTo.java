@@ -77,6 +77,7 @@ public final class ServicePerimeterIngressPolicyIngressTo {
 
         @CustomType.Setter
         public Builder operations(@Nullable List<ServicePerimeterIngressPolicyIngressToOperation> operations) {
+
             this.operations = operations;
             return this;
         }
@@ -85,6 +86,7 @@ public final class ServicePerimeterIngressPolicyIngressTo {
         }
         @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
+
             this.resources = resources;
             return this;
         }

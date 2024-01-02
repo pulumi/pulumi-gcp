@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -231,8 +232,12 @@ public final class MembershipIamPolicyArgs extends com.pulumi.resources.Resource
         }
 
         public MembershipIamPolicyArgs build() {
-            $.membershipId = Objects.requireNonNull($.membershipId, "expected parameter 'membershipId' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.membershipId == null) {
+                throw new MissingRequiredPropertyException("MembershipIamPolicyArgs", "membershipId");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("MembershipIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

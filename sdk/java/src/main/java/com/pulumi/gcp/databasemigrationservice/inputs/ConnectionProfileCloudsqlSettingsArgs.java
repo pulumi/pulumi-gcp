@@ -5,6 +5,7 @@ package com.pulumi.gcp.databasemigrationservice.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.databasemigrationservice.inputs.ConnectionProfileCloudsqlSettingsIpConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -707,7 +708,9 @@ public final class ConnectionProfileCloudsqlSettingsArgs extends com.pulumi.reso
         }
 
         public ConnectionProfileCloudsqlSettingsArgs build() {
-            $.sourceId = Objects.requireNonNull($.sourceId, "expected parameter 'sourceId' to be non-null");
+            if ($.sourceId == null) {
+                throw new MissingRequiredPropertyException("ConnectionProfileCloudsqlSettingsArgs", "sourceId");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkeonprem.outputs.BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig;
 import java.util.Objects;
 
@@ -44,7 +45,10 @@ public final class BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig {
 
         @CustomType.Setter
         public Builder nodePoolConfig(BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfigNodePoolConfig nodePoolConfig) {
-            this.nodePoolConfig = Objects.requireNonNull(nodePoolConfig);
+            if (nodePoolConfig == null) {
+              throw new MissingRequiredPropertyException("BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig", "nodePoolConfig");
+            }
+            this.nodePoolConfig = nodePoolConfig;
             return this;
         }
         public BareMetalAdminClusterControlPlaneControlPlaneNodePoolConfig build() {

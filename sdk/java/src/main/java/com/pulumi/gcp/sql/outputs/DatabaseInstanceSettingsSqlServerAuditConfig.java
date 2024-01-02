@@ -72,16 +72,19 @@ public final class DatabaseInstanceSettingsSqlServerAuditConfig {
 
         @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
+
             this.bucket = bucket;
             return this;
         }
         @CustomType.Setter
         public Builder retentionInterval(@Nullable String retentionInterval) {
+
             this.retentionInterval = retentionInterval;
             return this;
         }
         @CustomType.Setter
         public Builder uploadInterval(@Nullable String uploadInterval) {
+
             this.uploadInterval = uploadInterval;
             return this;
         }

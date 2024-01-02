@@ -93,21 +93,25 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigImageTransformati
 
         @CustomType.Setter
         public Builder allInfoTypes(@Nullable PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllInfoTypes allInfoTypes) {
+
             this.allInfoTypes = allInfoTypes;
             return this;
         }
         @CustomType.Setter
         public Builder allText(@Nullable PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformAllText allText) {
+
             this.allText = allText;
             return this;
         }
         @CustomType.Setter
         public Builder redactionColor(@Nullable PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformRedactionColor redactionColor) {
+
             this.redactionColor = redactionColor;
             return this;
         }
         @CustomType.Setter
         public Builder selectedInfoTypes(@Nullable PreventionDeidentifyTemplateDeidentifyConfigImageTransformationsTransformSelectedInfoTypes selectedInfoTypes) {
+
             this.selectedInfoTypes = selectedInfoTypes;
             return this;
         }

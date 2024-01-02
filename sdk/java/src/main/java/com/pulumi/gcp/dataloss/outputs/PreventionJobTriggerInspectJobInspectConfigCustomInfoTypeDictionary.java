@@ -63,11 +63,13 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDict
 
         @CustomType.Setter
         public Builder cloudStoragePath(@Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryCloudStoragePath cloudStoragePath) {
+
             this.cloudStoragePath = cloudStoragePath;
             return this;
         }
         @CustomType.Setter
         public Builder wordList(@Nullable PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryWordList wordList) {
+
             this.wordList = wordList;
             return this;
         }

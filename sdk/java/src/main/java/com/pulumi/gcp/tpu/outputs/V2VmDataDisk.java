@@ -4,6 +4,7 @@
 package com.pulumi.gcp.tpu.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -66,12 +67,16 @@ public final class V2VmDataDisk {
 
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder sourceDisk(String sourceDisk) {
-            this.sourceDisk = Objects.requireNonNull(sourceDisk);
+            if (sourceDisk == null) {
+              throw new MissingRequiredPropertyException("V2VmDataDisk", "sourceDisk");
+            }
+            this.sourceDisk = sourceDisk;
             return this;
         }
         public V2VmDataDisk build() {

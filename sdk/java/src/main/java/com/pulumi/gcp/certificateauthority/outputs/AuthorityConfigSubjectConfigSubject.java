@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -142,41 +143,53 @@ public final class AuthorityConfigSubjectConfigSubject {
 
         @CustomType.Setter
         public Builder commonName(String commonName) {
-            this.commonName = Objects.requireNonNull(commonName);
+            if (commonName == null) {
+              throw new MissingRequiredPropertyException("AuthorityConfigSubjectConfigSubject", "commonName");
+            }
+            this.commonName = commonName;
             return this;
         }
         @CustomType.Setter
         public Builder countryCode(@Nullable String countryCode) {
+
             this.countryCode = countryCode;
             return this;
         }
         @CustomType.Setter
         public Builder locality(@Nullable String locality) {
+
             this.locality = locality;
             return this;
         }
         @CustomType.Setter
         public Builder organization(String organization) {
-            this.organization = Objects.requireNonNull(organization);
+            if (organization == null) {
+              throw new MissingRequiredPropertyException("AuthorityConfigSubjectConfigSubject", "organization");
+            }
+            this.organization = organization;
             return this;
         }
         @CustomType.Setter
         public Builder organizationalUnit(@Nullable String organizationalUnit) {
+
             this.organizationalUnit = organizationalUnit;
             return this;
         }
         @CustomType.Setter
         public Builder postalCode(@Nullable String postalCode) {
+
             this.postalCode = postalCode;
             return this;
         }
         @CustomType.Setter
         public Builder province(@Nullable String province) {
+
             this.province = province;
             return this;
         }
         @CustomType.Setter
         public Builder streetAddress(@Nullable String streetAddress) {
+
             this.streetAddress = streetAddress;
             return this;
         }

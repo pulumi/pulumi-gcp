@@ -106,16 +106,19 @@ public final class SloRequestBasedSliGoodTotalRatio {
 
         @CustomType.Setter
         public Builder badServiceFilter(@Nullable String badServiceFilter) {
+
             this.badServiceFilter = badServiceFilter;
             return this;
         }
         @CustomType.Setter
         public Builder goodServiceFilter(@Nullable String goodServiceFilter) {
+
             this.goodServiceFilter = goodServiceFilter;
             return this;
         }
         @CustomType.Setter
         public Builder totalServiceFilter(@Nullable String totalServiceFilter) {
+
             this.totalServiceFilter = totalServiceFilter;
             return this;
         }

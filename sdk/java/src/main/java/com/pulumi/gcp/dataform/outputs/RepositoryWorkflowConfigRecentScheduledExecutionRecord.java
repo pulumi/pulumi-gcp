@@ -82,6 +82,7 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
 
         @CustomType.Setter
         public Builder errorStatuses(@Nullable List<RepositoryWorkflowConfigRecentScheduledExecutionRecordErrorStatus> errorStatuses) {
+
             this.errorStatuses = errorStatuses;
             return this;
         }
@@ -90,11 +91,13 @@ public final class RepositoryWorkflowConfigRecentScheduledExecutionRecord {
         }
         @CustomType.Setter
         public Builder executionTime(@Nullable String executionTime) {
+
             this.executionTime = executionTime;
             return this;
         }
         @CustomType.Setter
         public Builder workflowInvocation(@Nullable String workflowInvocation) {
+
             this.workflowInvocation = workflowInvocation;
             return this;
         }

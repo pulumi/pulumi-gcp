@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdC
         }
 
         public AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs build() {
-            $.value = Objects.requireNonNull($.value, "expected parameter 'value' to be non-null");
+            if ($.value == null) {
+                throw new MissingRequiredPropertyException("AiFeatureStoreEntityTypeMonitoringConfigCategoricalThresholdConfigArgs", "value");
+            }
             return $;
         }
     }

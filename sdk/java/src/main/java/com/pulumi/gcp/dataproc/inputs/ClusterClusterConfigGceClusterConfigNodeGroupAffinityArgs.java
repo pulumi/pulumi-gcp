@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs ext
         }
 
         public ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs build() {
-            $.nodeGroupUri = Objects.requireNonNull($.nodeGroupUri, "expected parameter 'nodeGroupUri' to be non-null");
+            if ($.nodeGroupUri == null) {
+                throw new MissingRequiredPropertyException("ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs", "nodeGroupUri");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.outputs.GetTriggerBuildStepVolume;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -116,7 +117,10 @@ public final class GetTriggerBuildStep {
 
         @CustomType.Setter
         public Builder allowExitCodes(List<Integer> allowExitCodes) {
-            this.allowExitCodes = Objects.requireNonNull(allowExitCodes);
+            if (allowExitCodes == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "allowExitCodes");
+            }
+            this.allowExitCodes = allowExitCodes;
             return this;
         }
         public Builder allowExitCodes(Integer... allowExitCodes) {
@@ -124,12 +128,18 @@ public final class GetTriggerBuildStep {
         }
         @CustomType.Setter
         public Builder allowFailure(Boolean allowFailure) {
-            this.allowFailure = Objects.requireNonNull(allowFailure);
+            if (allowFailure == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "allowFailure");
+            }
+            this.allowFailure = allowFailure;
             return this;
         }
         @CustomType.Setter
         public Builder args(List<String> args) {
-            this.args = Objects.requireNonNull(args);
+            if (args == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "args");
+            }
+            this.args = args;
             return this;
         }
         public Builder args(String... args) {
@@ -137,17 +147,26 @@ public final class GetTriggerBuildStep {
         }
         @CustomType.Setter
         public Builder dir(String dir) {
-            this.dir = Objects.requireNonNull(dir);
+            if (dir == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "dir");
+            }
+            this.dir = dir;
             return this;
         }
         @CustomType.Setter
         public Builder entrypoint(String entrypoint) {
-            this.entrypoint = Objects.requireNonNull(entrypoint);
+            if (entrypoint == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "entrypoint");
+            }
+            this.entrypoint = entrypoint;
             return this;
         }
         @CustomType.Setter
         public Builder envs(List<String> envs) {
-            this.envs = Objects.requireNonNull(envs);
+            if (envs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "envs");
+            }
+            this.envs = envs;
             return this;
         }
         public Builder envs(String... envs) {
@@ -155,22 +174,34 @@ public final class GetTriggerBuildStep {
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder script(String script) {
-            this.script = Objects.requireNonNull(script);
+            if (script == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "script");
+            }
+            this.script = script;
             return this;
         }
         @CustomType.Setter
         public Builder secretEnvs(List<String> secretEnvs) {
-            this.secretEnvs = Objects.requireNonNull(secretEnvs);
+            if (secretEnvs == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "secretEnvs");
+            }
+            this.secretEnvs = secretEnvs;
             return this;
         }
         public Builder secretEnvs(String... secretEnvs) {
@@ -178,17 +209,26 @@ public final class GetTriggerBuildStep {
         }
         @CustomType.Setter
         public Builder timeout(String timeout) {
-            this.timeout = Objects.requireNonNull(timeout);
+            if (timeout == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "timeout");
+            }
+            this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder timing(String timing) {
-            this.timing = Objects.requireNonNull(timing);
+            if (timing == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "timing");
+            }
+            this.timing = timing;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(List<GetTriggerBuildStepVolume> volumes) {
-            this.volumes = Objects.requireNonNull(volumes);
+            if (volumes == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "volumes");
+            }
+            this.volumes = volumes;
             return this;
         }
         public Builder volumes(GetTriggerBuildStepVolume... volumes) {
@@ -196,7 +236,10 @@ public final class GetTriggerBuildStep {
         }
         @CustomType.Setter
         public Builder waitFors(List<String> waitFors) {
-            this.waitFors = Objects.requireNonNull(waitFors);
+            if (waitFors == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildStep", "waitFors");
+            }
+            this.waitFors = waitFors;
             return this;
         }
         public Builder waitFors(String... waitFors) {

@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleNetworkMatchArgs;
 import java.lang.Boolean;
@@ -456,10 +457,18 @@ public final class RegionSecurityPolicyRuleArgs extends com.pulumi.resources.Res
         }
 
         public RegionSecurityPolicyRuleArgs build() {
-            $.action = Objects.requireNonNull($.action, "expected parameter 'action' to be non-null");
-            $.priority = Objects.requireNonNull($.priority, "expected parameter 'priority' to be non-null");
-            $.region = Objects.requireNonNull($.region, "expected parameter 'region' to be non-null");
-            $.securityPolicy = Objects.requireNonNull($.securityPolicy, "expected parameter 'securityPolicy' to be non-null");
+            if ($.action == null) {
+                throw new MissingRequiredPropertyException("RegionSecurityPolicyRuleArgs", "action");
+            }
+            if ($.priority == null) {
+                throw new MissingRequiredPropertyException("RegionSecurityPolicyRuleArgs", "priority");
+            }
+            if ($.region == null) {
+                throw new MissingRequiredPropertyException("RegionSecurityPolicyRuleArgs", "region");
+            }
+            if ($.securityPolicy == null) {
+                throw new MissingRequiredPropertyException("RegionSecurityPolicyRuleArgs", "securityPolicy");
+            }
             return $;
         }
     }

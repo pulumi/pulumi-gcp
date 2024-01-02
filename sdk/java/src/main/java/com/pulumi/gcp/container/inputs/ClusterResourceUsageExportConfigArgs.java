@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.container.inputs.ClusterResourceUsageExportConfigBigqueryDestinationArgs;
 import java.lang.Boolean;
 import java.util.Objects;
@@ -267,7 +268,9 @@ public final class ClusterResourceUsageExportConfigArgs extends com.pulumi.resou
         }
 
         public ClusterResourceUsageExportConfigArgs build() {
-            $.bigqueryDestination = Objects.requireNonNull($.bigqueryDestination, "expected parameter 'bigqueryDestination' to be non-null");
+            if ($.bigqueryDestination == null) {
+                throw new MissingRequiredPropertyException("ClusterResourceUsageExportConfigArgs", "bigqueryDestination");
+            }
             return $;
         }
     }

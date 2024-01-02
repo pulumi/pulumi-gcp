@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -208,7 +209,9 @@ public final class LiteReservationArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public LiteReservationArgs build() {
-            $.throughputCapacity = Objects.requireNonNull($.throughputCapacity, "expected parameter 'throughputCapacity' to be non-null");
+            if ($.throughputCapacity == null) {
+                throw new MissingRequiredPropertyException("LiteReservationArgs", "throughputCapacity");
+            }
             return $;
         }
     }

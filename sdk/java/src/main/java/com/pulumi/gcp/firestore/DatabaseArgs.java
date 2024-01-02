@@ -5,6 +5,7 @@ package com.pulumi.gcp.firestore;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -476,8 +477,12 @@ public final class DatabaseArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DatabaseArgs build() {
-            $.locationId = Objects.requireNonNull($.locationId, "expected parameter 'locationId' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.locationId == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "locationId");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DatabaseArgs", "type");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudasset.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudasset.inputs.ProjectFeedFeedOutputConfigPubsubDestinationArgs;
 import java.util.Objects;
 
@@ -78,7 +79,9 @@ public final class ProjectFeedFeedOutputConfigArgs extends com.pulumi.resources.
         }
 
         public ProjectFeedFeedOutputConfigArgs build() {
-            $.pubsubDestination = Objects.requireNonNull($.pubsubDestination, "expected parameter 'pubsubDestination' to be non-null");
+            if ($.pubsubDestination == null) {
+                throw new MissingRequiredPropertyException("ProjectFeedFeedOutputConfigArgs", "pubsubDestination");
+            }
             return $;
         }
     }

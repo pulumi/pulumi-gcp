@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudrun.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -55,17 +56,26 @@ public final class GetServiceTemplateSpecContainerPort {
 
         @CustomType.Setter
         public Builder containerPort(Integer containerPort) {
-            this.containerPort = Objects.requireNonNull(containerPort);
+            if (containerPort == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerPort", "containerPort");
+            }
+            this.containerPort = containerPort;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerPort", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder protocol(String protocol) {
-            this.protocol = Objects.requireNonNull(protocol);
+            if (protocol == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateSpecContainerPort", "protocol");
+            }
+            this.protocol = protocol;
             return this;
         }
         public GetServiceTemplateSpecContainerPort build() {

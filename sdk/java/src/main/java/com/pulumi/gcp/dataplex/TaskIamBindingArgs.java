@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.TaskIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -312,10 +313,18 @@ public final class TaskIamBindingArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         public TaskIamBindingArgs build() {
-            $.lake = Objects.requireNonNull($.lake, "expected parameter 'lake' to be non-null");
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.taskId = Objects.requireNonNull($.taskId, "expected parameter 'taskId' to be non-null");
+            if ($.lake == null) {
+                throw new MissingRequiredPropertyException("TaskIamBindingArgs", "lake");
+            }
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("TaskIamBindingArgs", "members");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("TaskIamBindingArgs", "role");
+            }
+            if ($.taskId == null) {
+                throw new MissingRequiredPropertyException("TaskIamBindingArgs", "taskId");
+            }
             return $;
         }
     }

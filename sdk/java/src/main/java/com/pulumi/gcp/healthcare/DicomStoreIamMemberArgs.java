@@ -5,6 +5,7 @@ package com.pulumi.gcp.healthcare;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.healthcare.inputs.DicomStoreIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -204,9 +205,15 @@ public final class DicomStoreIamMemberArgs extends com.pulumi.resources.Resource
         }
 
         public DicomStoreIamMemberArgs build() {
-            $.dicomStoreId = Objects.requireNonNull($.dicomStoreId, "expected parameter 'dicomStoreId' to be non-null");
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.dicomStoreId == null) {
+                throw new MissingRequiredPropertyException("DicomStoreIamMemberArgs", "dicomStoreId");
+            }
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("DicomStoreIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("DicomStoreIamMemberArgs", "role");
+            }
             return $;
         }
     }

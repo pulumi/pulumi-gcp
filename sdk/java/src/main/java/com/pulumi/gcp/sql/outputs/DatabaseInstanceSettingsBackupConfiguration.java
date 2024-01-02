@@ -135,36 +135,43 @@ public final class DatabaseInstanceSettingsBackupConfiguration {
 
         @CustomType.Setter
         public Builder backupRetentionSettings(@Nullable DatabaseInstanceSettingsBackupConfigurationBackupRetentionSettings backupRetentionSettings) {
+
             this.backupRetentionSettings = backupRetentionSettings;
             return this;
         }
         @CustomType.Setter
         public Builder binaryLogEnabled(@Nullable Boolean binaryLogEnabled) {
+
             this.binaryLogEnabled = binaryLogEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder location(@Nullable String location) {
+
             this.location = location;
             return this;
         }
         @CustomType.Setter
         public Builder pointInTimeRecoveryEnabled(@Nullable Boolean pointInTimeRecoveryEnabled) {
+
             this.pointInTimeRecoveryEnabled = pointInTimeRecoveryEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }
         @CustomType.Setter
         public Builder transactionLogRetentionDays(@Nullable Integer transactionLogRetentionDays) {
+
             this.transactionLogRetentionDays = transactionLogRetentionDays;
             return this;
         }

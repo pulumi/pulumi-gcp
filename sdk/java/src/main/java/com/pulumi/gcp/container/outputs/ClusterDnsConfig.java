@@ -72,16 +72,19 @@ public final class ClusterDnsConfig {
 
         @CustomType.Setter
         public Builder clusterDns(@Nullable String clusterDns) {
+
             this.clusterDns = clusterDns;
             return this;
         }
         @CustomType.Setter
         public Builder clusterDnsDomain(@Nullable String clusterDnsDomain) {
+
             this.clusterDnsDomain = clusterDnsDomain;
             return this;
         }
         @CustomType.Setter
         public Builder clusterDnsScope(@Nullable String clusterDnsScope) {
+
             this.clusterDnsScope = clusterDnsScope;
             return this;
         }

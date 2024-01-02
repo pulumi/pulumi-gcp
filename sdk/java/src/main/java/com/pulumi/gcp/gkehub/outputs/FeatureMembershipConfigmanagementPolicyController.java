@@ -145,16 +145,19 @@ public final class FeatureMembershipConfigmanagementPolicyController {
 
         @CustomType.Setter
         public Builder auditIntervalSeconds(@Nullable String auditIntervalSeconds) {
+
             this.auditIntervalSeconds = auditIntervalSeconds;
             return this;
         }
         @CustomType.Setter
         public Builder enabled(@Nullable Boolean enabled) {
+
             this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder exemptableNamespaces(@Nullable List<String> exemptableNamespaces) {
+
             this.exemptableNamespaces = exemptableNamespaces;
             return this;
         }
@@ -163,26 +166,31 @@ public final class FeatureMembershipConfigmanagementPolicyController {
         }
         @CustomType.Setter
         public Builder logDeniesEnabled(@Nullable Boolean logDeniesEnabled) {
+
             this.logDeniesEnabled = logDeniesEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder monitoring(@Nullable FeatureMembershipConfigmanagementPolicyControllerMonitoring monitoring) {
+
             this.monitoring = monitoring;
             return this;
         }
         @CustomType.Setter
         public Builder mutationEnabled(@Nullable Boolean mutationEnabled) {
+
             this.mutationEnabled = mutationEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder referentialRulesEnabled(@Nullable Boolean referentialRulesEnabled) {
+
             this.referentialRulesEnabled = referentialRulesEnabled;
             return this;
         }
         @CustomType.Setter
         public Builder templateLibraryInstalled(@Nullable Boolean templateLibraryInstalled) {
+
             this.templateLibraryInstalled = templateLibraryInstalled;
             return this;
         }

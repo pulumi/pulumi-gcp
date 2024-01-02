@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.FulfillmentFeatureArgs;
 import com.pulumi.gcp.diagflow.inputs.FulfillmentGenericWebServiceArgs;
 import java.lang.Boolean;
@@ -259,7 +260,9 @@ public final class FulfillmentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public FulfillmentArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("FulfillmentArgs", "displayName");
+            }
             return $;
         }
     }

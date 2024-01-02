@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Double;
 import java.lang.Integer;
 import java.util.Objects;
@@ -89,9 +90,15 @@ public final class EnvironmentConfigWorkloadsConfigTriggererArgs extends com.pul
         }
 
         public EnvironmentConfigWorkloadsConfigTriggererArgs build() {
-            $.count = Objects.requireNonNull($.count, "expected parameter 'count' to be non-null");
-            $.cpu = Objects.requireNonNull($.cpu, "expected parameter 'cpu' to be non-null");
-            $.memoryGb = Objects.requireNonNull($.memoryGb, "expected parameter 'memoryGb' to be non-null");
+            if ($.count == null) {
+                throw new MissingRequiredPropertyException("EnvironmentConfigWorkloadsConfigTriggererArgs", "count");
+            }
+            if ($.cpu == null) {
+                throw new MissingRequiredPropertyException("EnvironmentConfigWorkloadsConfigTriggererArgs", "cpu");
+            }
+            if ($.memoryGb == null) {
+                throw new MissingRequiredPropertyException("EnvironmentConfigWorkloadsConfigTriggererArgs", "memoryGb");
+            }
             return $;
         }
     }

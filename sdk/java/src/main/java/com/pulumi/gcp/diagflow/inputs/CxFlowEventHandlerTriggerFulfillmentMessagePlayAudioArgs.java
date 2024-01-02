@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -118,7 +119,9 @@ public final class CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs exte
         }
 
         public CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs build() {
-            $.audioUri = Objects.requireNonNull($.audioUri, "expected parameter 'audioUri' to be non-null");
+            if ($.audioUri == null) {
+                throw new MissingRequiredPropertyException("CxFlowEventHandlerTriggerFulfillmentMessagePlayAudioArgs", "audioUri");
+            }
             return $;
         }
     }

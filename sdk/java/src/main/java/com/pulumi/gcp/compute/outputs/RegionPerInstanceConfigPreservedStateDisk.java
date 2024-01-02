@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -104,22 +105,30 @@ public final class RegionPerInstanceConfigPreservedStateDisk {
 
         @CustomType.Setter
         public Builder deleteRule(@Nullable String deleteRule) {
+
             this.deleteRule = deleteRule;
             return this;
         }
         @CustomType.Setter
         public Builder deviceName(String deviceName) {
-            this.deviceName = Objects.requireNonNull(deviceName);
+            if (deviceName == null) {
+              throw new MissingRequiredPropertyException("RegionPerInstanceConfigPreservedStateDisk", "deviceName");
+            }
+            this.deviceName = deviceName;
             return this;
         }
         @CustomType.Setter
         public Builder mode(@Nullable String mode) {
+
             this.mode = mode;
             return this;
         }
         @CustomType.Setter
         public Builder source(String source) {
-            this.source = Objects.requireNonNull(source);
+            if (source == null) {
+              throw new MissingRequiredPropertyException("RegionPerInstanceConfigPreservedStateDisk", "source");
+            }
+            this.source = source;
             return this;
         }
         public RegionPerInstanceConfigPreservedStateDisk build() {

@@ -84,16 +84,19 @@ public final class IndexField {
 
         @CustomType.Setter
         public Builder arrayConfig(@Nullable String arrayConfig) {
+
             this.arrayConfig = arrayConfig;
             return this;
         }
         @CustomType.Setter
         public Builder fieldPath(@Nullable String fieldPath) {
+
             this.fieldPath = fieldPath;
             return this;
         }
         @CustomType.Setter
         public Builder order(@Nullable String order) {
+
             this.order = order;
             return this;
         }

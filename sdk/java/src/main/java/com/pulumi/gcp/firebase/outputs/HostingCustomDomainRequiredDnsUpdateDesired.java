@@ -62,11 +62,13 @@ public final class HostingCustomDomainRequiredDnsUpdateDesired {
 
         @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
+
             this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder records(@Nullable List<HostingCustomDomainRequiredDnsUpdateDesiredRecord> records) {
+
             this.records = records;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.notebooks;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -243,8 +244,12 @@ public final class InstanceIamPolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public InstanceIamPolicyArgs build() {
-            $.instanceName = Objects.requireNonNull($.instanceName, "expected parameter 'instanceName' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.instanceName == null) {
+                throw new MissingRequiredPropertyException("InstanceIamPolicyArgs", "instanceName");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("InstanceIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.firebaserules.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.firebaserules.inputs.RulesetSourceFileArgs;
 import java.lang.String;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class RulesetSourceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RulesetSourceArgs build() {
-            $.files = Objects.requireNonNull($.files, "expected parameter 'files' to be non-null");
+            if ($.files == null) {
+                throw new MissingRequiredPropertyException("RulesetSourceArgs", "files");
+            }
             return $;
         }
     }

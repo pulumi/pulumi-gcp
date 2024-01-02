@@ -5,6 +5,7 @@ package com.pulumi.gcp.networkmanagement;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestDestinationArgs;
 import com.pulumi.gcp.networkmanagement.inputs.ConnectivityTestSourceArgs;
 import java.lang.String;
@@ -507,8 +508,12 @@ public final class ConnectivityTestArgs extends com.pulumi.resources.ResourceArg
         }
 
         public ConnectivityTestArgs build() {
-            $.destination = Objects.requireNonNull($.destination, "expected parameter 'destination' to be non-null");
-            $.source = Objects.requireNonNull($.source, "expected parameter 'source' to be non-null");
+            if ($.destination == null) {
+                throw new MissingRequiredPropertyException("ConnectivityTestArgs", "destination");
+            }
+            if ($.source == null) {
+                throw new MissingRequiredPropertyException("ConnectivityTestArgs", "source");
+            }
             return $;
         }
     }

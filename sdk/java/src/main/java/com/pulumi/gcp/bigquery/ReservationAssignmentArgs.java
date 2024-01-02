@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -232,9 +233,15 @@ public final class ReservationAssignmentArgs extends com.pulumi.resources.Resour
         }
 
         public ReservationAssignmentArgs build() {
-            $.assignee = Objects.requireNonNull($.assignee, "expected parameter 'assignee' to be non-null");
-            $.jobType = Objects.requireNonNull($.jobType, "expected parameter 'jobType' to be non-null");
-            $.reservation = Objects.requireNonNull($.reservation, "expected parameter 'reservation' to be non-null");
+            if ($.assignee == null) {
+                throw new MissingRequiredPropertyException("ReservationAssignmentArgs", "assignee");
+            }
+            if ($.jobType == null) {
+                throw new MissingRequiredPropertyException("ReservationAssignmentArgs", "jobType");
+            }
+            if ($.reservation == null) {
+                throw new MissingRequiredPropertyException("ReservationAssignmentArgs", "reservation");
+            }
             return $;
         }
     }

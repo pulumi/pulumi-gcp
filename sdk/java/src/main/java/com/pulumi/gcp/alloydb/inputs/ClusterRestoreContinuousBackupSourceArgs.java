@@ -5,6 +5,7 @@ package com.pulumi.gcp.alloydb.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class ClusterRestoreContinuousBackupSourceArgs extends com.pulumi.r
         }
 
         public ClusterRestoreContinuousBackupSourceArgs build() {
-            $.cluster = Objects.requireNonNull($.cluster, "expected parameter 'cluster' to be non-null");
-            $.pointInTime = Objects.requireNonNull($.pointInTime, "expected parameter 'pointInTime' to be non-null");
+            if ($.cluster == null) {
+                throw new MissingRequiredPropertyException("ClusterRestoreContinuousBackupSourceArgs", "cluster");
+            }
+            if ($.pointInTime == null) {
+                throw new MissingRequiredPropertyException("ClusterRestoreContinuousBackupSourceArgs", "pointInTime");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class AiEndpointEncryptionSpecArgs extends com.pulumi.resources.Res
         }
 
         public AiEndpointEncryptionSpecArgs build() {
-            $.kmsKeyName = Objects.requireNonNull($.kmsKeyName, "expected parameter 'kmsKeyName' to be non-null");
+            if ($.kmsKeyName == null) {
+                throw new MissingRequiredPropertyException("AiEndpointEncryptionSpecArgs", "kmsKeyName");
+            }
             return $;
         }
     }

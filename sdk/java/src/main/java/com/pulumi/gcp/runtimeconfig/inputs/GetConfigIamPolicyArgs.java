@@ -5,6 +5,7 @@ package com.pulumi.gcp.runtimeconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -117,7 +118,9 @@ public final class GetConfigIamPolicyArgs extends com.pulumi.resources.InvokeArg
         }
 
         public GetConfigIamPolicyArgs build() {
-            $.config = Objects.requireNonNull($.config, "expected parameter 'config' to be non-null");
+            if ($.config == null) {
+                throw new MissingRequiredPropertyException("GetConfigIamPolicyArgs", "config");
+            }
             return $;
         }
     }

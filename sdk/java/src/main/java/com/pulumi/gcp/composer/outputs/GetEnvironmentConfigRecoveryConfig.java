@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetEnvironmentConfigRecoveryConfig {
 
         @CustomType.Setter
         public Builder scheduledSnapshotsConfigs(List<GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig> scheduledSnapshotsConfigs) {
-            this.scheduledSnapshotsConfigs = Objects.requireNonNull(scheduledSnapshotsConfigs);
+            if (scheduledSnapshotsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigRecoveryConfig", "scheduledSnapshotsConfigs");
+            }
+            this.scheduledSnapshotsConfigs = scheduledSnapshotsConfigs;
             return this;
         }
         public Builder scheduledSnapshotsConfigs(GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig... scheduledSnapshotsConfigs) {

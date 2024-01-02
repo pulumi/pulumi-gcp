@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -84,12 +85,18 @@ public final class GetAuthorityConfigX509ConfigNameConstraint {
 
         @CustomType.Setter
         public Builder critical(Boolean critical) {
-            this.critical = Objects.requireNonNull(critical);
+            if (critical == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigNameConstraint", "critical");
+            }
+            this.critical = critical;
             return this;
         }
         @CustomType.Setter
         public Builder excludedDnsNames(List<String> excludedDnsNames) {
-            this.excludedDnsNames = Objects.requireNonNull(excludedDnsNames);
+            if (excludedDnsNames == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigNameConstraint", "excludedDnsNames");
+            }
+            this.excludedDnsNames = excludedDnsNames;
             return this;
         }
         public Builder excludedDnsNames(String... excludedDnsNames) {
@@ -97,7 +104,10 @@ public final class GetAuthorityConfigX509ConfigNameConstraint {
         }
         @CustomType.Setter
         public Builder excludedEmailAddresses(List<String> excludedEmailAddresses) {
-            this.excludedEmailAddresses = Objects.requireNonNull(excludedEmailAddresses);
+            if (excludedEmailAddresses == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigNameConstraint", "excludedEmailAddresses");
+            }
+            this.excludedEmailAddresses = excludedEmailAddresses;
             return this;
         }
         public Builder excludedEmailAddresses(String... excludedEmailAddresses) {
@@ -105,7 +115,10 @@ public final class GetAuthorityConfigX509ConfigNameConstraint {
         }
         @CustomType.Setter
         public Builder excludedIpRanges(List<String> excludedIpRanges) {
-            this.excludedIpRanges = Objects.requireNonNull(excludedIpRanges);
+            if (excludedIpRanges == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigNameConstraint", "excludedIpRanges");
+            }
+            this.excludedIpRanges = excludedIpRanges;
             return this;
         }
         public Builder excludedIpRanges(String... excludedIpRanges) {
@@ -113,7 +126,10 @@ public final class GetAuthorityConfigX509ConfigNameConstraint {
         }
         @CustomType.Setter
         public Builder excludedUris(List<String> excludedUris) {
-            this.excludedUris = Objects.requireNonNull(excludedUris);
+            if (excludedUris == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigNameConstraint", "excludedUris");
+            }
+            this.excludedUris = excludedUris;
             return this;
         }
         public Builder excludedUris(String... excludedUris) {
@@ -121,7 +137,10 @@ public final class GetAuthorityConfigX509ConfigNameConstraint {
         }
         @CustomType.Setter
         public Builder permittedDnsNames(List<String> permittedDnsNames) {
-            this.permittedDnsNames = Objects.requireNonNull(permittedDnsNames);
+            if (permittedDnsNames == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigNameConstraint", "permittedDnsNames");
+            }
+            this.permittedDnsNames = permittedDnsNames;
             return this;
         }
         public Builder permittedDnsNames(String... permittedDnsNames) {
@@ -129,7 +148,10 @@ public final class GetAuthorityConfigX509ConfigNameConstraint {
         }
         @CustomType.Setter
         public Builder permittedEmailAddresses(List<String> permittedEmailAddresses) {
-            this.permittedEmailAddresses = Objects.requireNonNull(permittedEmailAddresses);
+            if (permittedEmailAddresses == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigNameConstraint", "permittedEmailAddresses");
+            }
+            this.permittedEmailAddresses = permittedEmailAddresses;
             return this;
         }
         public Builder permittedEmailAddresses(String... permittedEmailAddresses) {
@@ -137,7 +159,10 @@ public final class GetAuthorityConfigX509ConfigNameConstraint {
         }
         @CustomType.Setter
         public Builder permittedIpRanges(List<String> permittedIpRanges) {
-            this.permittedIpRanges = Objects.requireNonNull(permittedIpRanges);
+            if (permittedIpRanges == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigNameConstraint", "permittedIpRanges");
+            }
+            this.permittedIpRanges = permittedIpRanges;
             return this;
         }
         public Builder permittedIpRanges(String... permittedIpRanges) {
@@ -145,7 +170,10 @@ public final class GetAuthorityConfigX509ConfigNameConstraint {
         }
         @CustomType.Setter
         public Builder permittedUris(List<String> permittedUris) {
-            this.permittedUris = Objects.requireNonNull(permittedUris);
+            if (permittedUris == null) {
+              throw new MissingRequiredPropertyException("GetAuthorityConfigX509ConfigNameConstraint", "permittedUris");
+            }
+            this.permittedUris = permittedUris;
             return this;
         }
         public Builder permittedUris(String... permittedUris) {

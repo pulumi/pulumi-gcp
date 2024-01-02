@@ -5,6 +5,7 @@ package com.pulumi.gcp.essentialcontacts;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -236,9 +237,15 @@ public final class DocumentAiProcessorArgs extends com.pulumi.resources.Resource
         }
 
         public DocumentAiProcessorArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
-            $.type = Objects.requireNonNull($.type, "expected parameter 'type' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("DocumentAiProcessorArgs", "displayName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("DocumentAiProcessorArgs", "location");
+            }
+            if ($.type == null) {
+                throw new MissingRequiredPropertyException("DocumentAiProcessorArgs", "type");
+            }
             return $;
         }
     }

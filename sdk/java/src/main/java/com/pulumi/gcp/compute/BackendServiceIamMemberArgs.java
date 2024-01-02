@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.BackendServiceIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -269,8 +270,12 @@ public final class BackendServiceIamMemberArgs extends com.pulumi.resources.Reso
         }
 
         public BackendServiceIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("BackendServiceIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("BackendServiceIamMemberArgs", "role");
+            }
             return $;
         }
     }

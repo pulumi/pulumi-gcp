@@ -94,16 +94,19 @@ public final class RegionNetworkEndpointGroupCloudRun {
 
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder tag(@Nullable String tag) {
+
             this.tag = tag;
             return this;
         }
         @CustomType.Setter
         public Builder urlMask(@Nullable String urlMask) {
+
             this.urlMask = urlMask;
             return this;
         }

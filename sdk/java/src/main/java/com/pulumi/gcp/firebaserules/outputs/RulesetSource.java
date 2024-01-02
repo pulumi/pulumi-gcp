@@ -4,6 +4,7 @@
 package com.pulumi.gcp.firebaserules.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.firebaserules.outputs.RulesetSourceFile;
 import java.lang.String;
 import java.util.List;
@@ -60,7 +61,10 @@ public final class RulesetSource {
 
         @CustomType.Setter
         public Builder files(List<RulesetSourceFile> files) {
-            this.files = Objects.requireNonNull(files);
+            if (files == null) {
+              throw new MissingRequiredPropertyException("RulesetSource", "files");
+            }
+            this.files = files;
             return this;
         }
         public Builder files(RulesetSourceFile... files) {
@@ -68,6 +72,7 @@ public final class RulesetSource {
         }
         @CustomType.Setter
         public Builder language(@Nullable String language) {
+
             this.language = language;
             return this;
         }

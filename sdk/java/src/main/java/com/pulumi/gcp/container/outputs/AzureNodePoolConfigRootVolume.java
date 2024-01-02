@@ -44,6 +44,7 @@ public final class AzureNodePoolConfigRootVolume {
 
         @CustomType.Setter
         public Builder sizeGib(@Nullable Integer sizeGib) {
+
             this.sizeGib = sizeGib;
             return this;
         }

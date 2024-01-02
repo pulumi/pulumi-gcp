@@ -4,6 +4,7 @@
 package com.pulumi.gcp.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -84,27 +85,40 @@ public final class GetKMSSecretAsymmetricResult {
 
         @CustomType.Setter
         public Builder ciphertext(String ciphertext) {
-            this.ciphertext = Objects.requireNonNull(ciphertext);
+            if (ciphertext == null) {
+              throw new MissingRequiredPropertyException("GetKMSSecretAsymmetricResult", "ciphertext");
+            }
+            this.ciphertext = ciphertext;
             return this;
         }
         @CustomType.Setter
         public Builder crc32(@Nullable String crc32) {
+
             this.crc32 = crc32;
             return this;
         }
         @CustomType.Setter
         public Builder cryptoKeyVersion(String cryptoKeyVersion) {
-            this.cryptoKeyVersion = Objects.requireNonNull(cryptoKeyVersion);
+            if (cryptoKeyVersion == null) {
+              throw new MissingRequiredPropertyException("GetKMSSecretAsymmetricResult", "cryptoKeyVersion");
+            }
+            this.cryptoKeyVersion = cryptoKeyVersion;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetKMSSecretAsymmetricResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder plaintext(String plaintext) {
-            this.plaintext = Objects.requireNonNull(plaintext);
+            if (plaintext == null) {
+              throw new MissingRequiredPropertyException("GetKMSSecretAsymmetricResult", "plaintext");
+            }
+            this.plaintext = plaintext;
             return this;
         }
         public GetKMSSecretAsymmetricResult build() {

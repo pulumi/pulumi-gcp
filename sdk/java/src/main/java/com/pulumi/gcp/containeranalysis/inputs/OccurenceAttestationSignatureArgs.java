@@ -5,6 +5,7 @@ package com.pulumi.gcp.containeranalysis.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -181,7 +182,9 @@ public final class OccurenceAttestationSignatureArgs extends com.pulumi.resource
         }
 
         public OccurenceAttestationSignatureArgs build() {
-            $.publicKeyId = Objects.requireNonNull($.publicKeyId, "expected parameter 'publicKeyId' to be non-null");
+            if ($.publicKeyId == null) {
+                throw new MissingRequiredPropertyException("OccurenceAttestationSignatureArgs", "publicKeyId");
+            }
             return $;
         }
     }

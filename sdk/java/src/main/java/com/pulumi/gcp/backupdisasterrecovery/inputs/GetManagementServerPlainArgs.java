@@ -4,6 +4,7 @@
 package com.pulumi.gcp.backupdisasterrecovery.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -49,7 +50,9 @@ public final class GetManagementServerPlainArgs extends com.pulumi.resources.Inv
         }
 
         public GetManagementServerPlainArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("GetManagementServerPlainArgs", "location");
+            }
             return $;
         }
     }

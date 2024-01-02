@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdAggregationArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdDenominatorAggregationArgs;
 import com.pulumi.gcp.monitoring.inputs.AlertPolicyConditionConditionThresholdForecastOptionsArgs;
@@ -840,8 +841,12 @@ public final class AlertPolicyConditionConditionThresholdArgs extends com.pulumi
         }
 
         public AlertPolicyConditionConditionThresholdArgs build() {
-            $.comparison = Objects.requireNonNull($.comparison, "expected parameter 'comparison' to be non-null");
-            $.duration = Objects.requireNonNull($.duration, "expected parameter 'duration' to be non-null");
+            if ($.comparison == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyConditionConditionThresholdArgs", "comparison");
+            }
+            if ($.duration == null) {
+                throw new MissingRequiredPropertyException("AlertPolicyConditionConditionThresholdArgs", "duration");
+            }
             return $;
         }
     }

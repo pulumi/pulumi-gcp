@@ -4,6 +4,7 @@
 package com.pulumi.gcp.looker.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.looker.outputs.InstanceMaintenanceWindowStartTime;
 import java.lang.String;
 import java.util.Objects;
@@ -75,12 +76,18 @@ public final class InstanceMaintenanceWindow {
 
         @CustomType.Setter
         public Builder dayOfWeek(String dayOfWeek) {
-            this.dayOfWeek = Objects.requireNonNull(dayOfWeek);
+            if (dayOfWeek == null) {
+              throw new MissingRequiredPropertyException("InstanceMaintenanceWindow", "dayOfWeek");
+            }
+            this.dayOfWeek = dayOfWeek;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(InstanceMaintenanceWindowStartTime startTime) {
-            this.startTime = Objects.requireNonNull(startTime);
+            if (startTime == null) {
+              throw new MissingRequiredPropertyException("InstanceMaintenanceWindow", "startTime");
+            }
+            this.startTime = startTime;
             return this;
         }
         public InstanceMaintenanceWindow build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.diagflow.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -91,21 +92,29 @@ public final class CxIntentParameter {
 
         @CustomType.Setter
         public Builder entityType(String entityType) {
-            this.entityType = Objects.requireNonNull(entityType);
+            if (entityType == null) {
+              throw new MissingRequiredPropertyException("CxIntentParameter", "entityType");
+            }
+            this.entityType = entityType;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("CxIntentParameter", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder isList(@Nullable Boolean isList) {
+
             this.isList = isList;
             return this;
         }
         @CustomType.Setter
         public Builder redact(@Nullable Boolean redact) {
+
             this.redact = redact;
             return this;
         }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataplex.inputs.ZoneDiscoverySpecCsvOptionsArgs;
 import com.pulumi.gcp.dataplex.inputs.ZoneDiscoverySpecJsonOptionsArgs;
 import java.lang.Boolean;
@@ -285,7 +286,9 @@ public final class ZoneDiscoverySpecArgs extends com.pulumi.resources.ResourceAr
         }
 
         public ZoneDiscoverySpecArgs build() {
-            $.enabled = Objects.requireNonNull($.enabled, "expected parameter 'enabled' to be non-null");
+            if ($.enabled == null) {
+                throw new MissingRequiredPropertyException("ZoneDiscoverySpecArgs", "enabled");
+            }
             return $;
         }
     }

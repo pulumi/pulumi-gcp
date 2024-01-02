@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -56,12 +57,18 @@ public final class ClusterRestoreContinuousBackupSource {
 
         @CustomType.Setter
         public Builder cluster(String cluster) {
-            this.cluster = Objects.requireNonNull(cluster);
+            if (cluster == null) {
+              throw new MissingRequiredPropertyException("ClusterRestoreContinuousBackupSource", "cluster");
+            }
+            this.cluster = cluster;
             return this;
         }
         @CustomType.Setter
         public Builder pointInTime(String pointInTime) {
-            this.pointInTime = Objects.requireNonNull(pointInTime);
+            if (pointInTime == null) {
+              throw new MissingRequiredPropertyException("ClusterRestoreContinuousBackupSource", "pointInTime");
+            }
+            this.pointInTime = pointInTime;
             return this;
         }
         public ClusterRestoreContinuousBackupSource build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetBucketWebsite {
 
         @CustomType.Setter
         public Builder mainPageSuffix(String mainPageSuffix) {
-            this.mainPageSuffix = Objects.requireNonNull(mainPageSuffix);
+            if (mainPageSuffix == null) {
+              throw new MissingRequiredPropertyException("GetBucketWebsite", "mainPageSuffix");
+            }
+            this.mainPageSuffix = mainPageSuffix;
             return this;
         }
         @CustomType.Setter
         public Builder notFoundPage(String notFoundPage) {
-            this.notFoundPage = Objects.requireNonNull(notFoundPage);
+            if (notFoundPage == null) {
+              throw new MissingRequiredPropertyException("GetBucketWebsite", "notFoundPage");
+            }
+            this.notFoundPage = notFoundPage;
             return this;
         }
         public GetBucketWebsite build() {

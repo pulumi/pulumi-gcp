@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -194,8 +195,12 @@ public final class WorkforcePoolProviderOidcWebSsoConfigArgs extends com.pulumi.
         }
 
         public WorkforcePoolProviderOidcWebSsoConfigArgs build() {
-            $.assertionClaimsBehavior = Objects.requireNonNull($.assertionClaimsBehavior, "expected parameter 'assertionClaimsBehavior' to be non-null");
-            $.responseType = Objects.requireNonNull($.responseType, "expected parameter 'responseType' to be non-null");
+            if ($.assertionClaimsBehavior == null) {
+                throw new MissingRequiredPropertyException("WorkforcePoolProviderOidcWebSsoConfigArgs", "assertionClaimsBehavior");
+            }
+            if ($.responseType == null) {
+                throw new MissingRequiredPropertyException("WorkforcePoolProviderOidcWebSsoConfigArgs", "responseType");
+            }
             return $;
         }
     }

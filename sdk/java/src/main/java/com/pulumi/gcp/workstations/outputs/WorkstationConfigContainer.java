@@ -119,6 +119,7 @@ public final class WorkstationConfigContainer {
 
         @CustomType.Setter
         public Builder args(@Nullable List<String> args) {
+
             this.args = args;
             return this;
         }
@@ -127,6 +128,7 @@ public final class WorkstationConfigContainer {
         }
         @CustomType.Setter
         public Builder commands(@Nullable List<String> commands) {
+
             this.commands = commands;
             return this;
         }
@@ -135,21 +137,25 @@ public final class WorkstationConfigContainer {
         }
         @CustomType.Setter
         public Builder env(@Nullable Map<String,String> env) {
+
             this.env = env;
             return this;
         }
         @CustomType.Setter
         public Builder image(@Nullable String image) {
+
             this.image = image;
             return this;
         }
         @CustomType.Setter
         public Builder runAsUser(@Nullable Integer runAsUser) {
+
             this.runAsUser = runAsUser;
             return this;
         }
         @CustomType.Setter
         public Builder workingDir(@Nullable String workingDir) {
+
             this.workingDir = workingDir;
             return this;
         }

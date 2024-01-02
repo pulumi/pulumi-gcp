@@ -5,6 +5,7 @@ package com.pulumi.gcp.orgpolicy;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.orgpolicy.inputs.PolicyDryRunSpecArgs;
 import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
 import java.lang.String;
@@ -197,7 +198,9 @@ public final class PolicyArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public PolicyArgs build() {
-            $.parent = Objects.requireNonNull($.parent, "expected parameter 'parent' to be non-null");
+            if ($.parent == null) {
+                throw new MissingRequiredPropertyException("PolicyArgs", "parent");
+            }
             return $;
         }
     }

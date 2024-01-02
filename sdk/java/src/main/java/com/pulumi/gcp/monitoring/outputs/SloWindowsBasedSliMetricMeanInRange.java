@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.SloWindowsBasedSliMetricMeanInRangeRange;
 import java.lang.String;
 import java.util.Objects;
@@ -81,12 +82,18 @@ public final class SloWindowsBasedSliMetricMeanInRange {
 
         @CustomType.Setter
         public Builder range(SloWindowsBasedSliMetricMeanInRangeRange range) {
-            this.range = Objects.requireNonNull(range);
+            if (range == null) {
+              throw new MissingRequiredPropertyException("SloWindowsBasedSliMetricMeanInRange", "range");
+            }
+            this.range = range;
             return this;
         }
         @CustomType.Setter
         public Builder timeSeries(String timeSeries) {
-            this.timeSeries = Objects.requireNonNull(timeSeries);
+            if (timeSeries == null) {
+              throw new MissingRequiredPropertyException("SloWindowsBasedSliMetricMeanInRange", "timeSeries");
+            }
+            this.timeSeries = timeSeries;
             return this;
         }
         public SloWindowsBasedSliMetricMeanInRange build() {

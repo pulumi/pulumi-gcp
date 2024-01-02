@@ -156,36 +156,43 @@ public final class ClusterIpAllocationPolicy {
 
         @CustomType.Setter
         public Builder additionalPodRangesConfig(@Nullable ClusterIpAllocationPolicyAdditionalPodRangesConfig additionalPodRangesConfig) {
+
             this.additionalPodRangesConfig = additionalPodRangesConfig;
             return this;
         }
         @CustomType.Setter
         public Builder clusterIpv4CidrBlock(@Nullable String clusterIpv4CidrBlock) {
+
             this.clusterIpv4CidrBlock = clusterIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder clusterSecondaryRangeName(@Nullable String clusterSecondaryRangeName) {
+
             this.clusterSecondaryRangeName = clusterSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder podCidrOverprovisionConfig(@Nullable ClusterIpAllocationPolicyPodCidrOverprovisionConfig podCidrOverprovisionConfig) {
+
             this.podCidrOverprovisionConfig = podCidrOverprovisionConfig;
             return this;
         }
         @CustomType.Setter
         public Builder servicesIpv4CidrBlock(@Nullable String servicesIpv4CidrBlock) {
+
             this.servicesIpv4CidrBlock = servicesIpv4CidrBlock;
             return this;
         }
         @CustomType.Setter
         public Builder servicesSecondaryRangeName(@Nullable String servicesSecondaryRangeName) {
+
             this.servicesSecondaryRangeName = servicesSecondaryRangeName;
             return this;
         }
         @CustomType.Setter
         public Builder stackType(@Nullable String stackType) {
+
             this.stackType = stackType;
             return this;
         }

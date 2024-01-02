@@ -74,6 +74,7 @@ public final class AttachedClusterAuthorization {
 
         @CustomType.Setter
         public Builder adminGroups(@Nullable List<String> adminGroups) {
+
             this.adminGroups = adminGroups;
             return this;
         }
@@ -82,6 +83,7 @@ public final class AttachedClusterAuthorization {
         }
         @CustomType.Setter
         public Builder adminUsers(@Nullable List<String> adminUsers) {
+
             this.adminUsers = adminUsers;
             return this;
         }

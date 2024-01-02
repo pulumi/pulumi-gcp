@@ -51,11 +51,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
 
         @CustomType.Setter
         public Builder machineType(@Nullable String machineType) {
+
             this.machineType = machineType;
             return this;
         }
         @CustomType.Setter
         public Builder vmCount(@Nullable Integer vmCount) {
+
             this.vmCount = vmCount;
             return this;
         }

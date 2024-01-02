@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -53,22 +54,34 @@ public final class GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig {
 
         @CustomType.Setter
         public Builder enabled(Boolean enabled) {
-            this.enabled = Objects.requireNonNull(enabled);
+            if (enabled == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig", "enabled");
+            }
+            this.enabled = enabled;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotCreationSchedule(String snapshotCreationSchedule) {
-            this.snapshotCreationSchedule = Objects.requireNonNull(snapshotCreationSchedule);
+            if (snapshotCreationSchedule == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig", "snapshotCreationSchedule");
+            }
+            this.snapshotCreationSchedule = snapshotCreationSchedule;
             return this;
         }
         @CustomType.Setter
         public Builder snapshotLocation(String snapshotLocation) {
-            this.snapshotLocation = Objects.requireNonNull(snapshotLocation);
+            if (snapshotLocation == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig", "snapshotLocation");
+            }
+            this.snapshotLocation = snapshotLocation;
             return this;
         }
         @CustomType.Setter
         public Builder timeZone(String timeZone) {
-            this.timeZone = Objects.requireNonNull(timeZone);
+            if (timeZone == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig", "timeZone");
+            }
+            this.timeZone = timeZone;
             return this;
         }
         public GetEnvironmentConfigRecoveryConfigScheduledSnapshotsConfig build() {

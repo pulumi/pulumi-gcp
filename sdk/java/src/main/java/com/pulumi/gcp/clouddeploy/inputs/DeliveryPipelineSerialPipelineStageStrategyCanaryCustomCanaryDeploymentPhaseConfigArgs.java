@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeployArgs;
 import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeployArgs;
 import java.lang.Boolean;
@@ -284,8 +285,12 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         }
 
         public DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs build() {
-            $.percentage = Objects.requireNonNull($.percentage, "expected parameter 'percentage' to be non-null");
-            $.phaseId = Objects.requireNonNull($.phaseId, "expected parameter 'phaseId' to be non-null");
+            if ($.percentage == null) {
+                throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs", "percentage");
+            }
+            if ($.phaseId == null) {
+                throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigArgs", "phaseId");
+            }
             return $;
         }
     }

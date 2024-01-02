@@ -5,6 +5,7 @@ package com.pulumi.gcp.storage.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -113,7 +114,9 @@ public final class BucketObjectCustomerEncryptionArgs extends com.pulumi.resourc
         }
 
         public BucketObjectCustomerEncryptionArgs build() {
-            $.encryptionKey = Objects.requireNonNull($.encryptionKey, "expected parameter 'encryptionKey' to be non-null");
+            if ($.encryptionKey == null) {
+                throw new MissingRequiredPropertyException("BucketObjectCustomerEncryptionArgs", "encryptionKey");
+            }
             return $;
         }
     }

@@ -5,6 +5,7 @@ package com.pulumi.gcp.certificateauthority.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -111,8 +112,12 @@ public final class CaPoolIssuancePolicyAllowedIssuanceModesArgs extends com.pulu
         }
 
         public CaPoolIssuancePolicyAllowedIssuanceModesArgs build() {
-            $.allowConfigBasedIssuance = Objects.requireNonNull($.allowConfigBasedIssuance, "expected parameter 'allowConfigBasedIssuance' to be non-null");
-            $.allowCsrBasedIssuance = Objects.requireNonNull($.allowCsrBasedIssuance, "expected parameter 'allowCsrBasedIssuance' to be non-null");
+            if ($.allowConfigBasedIssuance == null) {
+                throw new MissingRequiredPropertyException("CaPoolIssuancePolicyAllowedIssuanceModesArgs", "allowConfigBasedIssuance");
+            }
+            if ($.allowCsrBasedIssuance == null) {
+                throw new MissingRequiredPropertyException("CaPoolIssuancePolicyAllowedIssuanceModesArgs", "allowCsrBasedIssuance");
+            }
             return $;
         }
     }

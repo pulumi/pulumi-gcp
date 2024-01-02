@@ -4,6 +4,7 @@
 package com.pulumi.gcp.alloydb.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,7 +36,10 @@ public final class GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestricti
 
         @CustomType.Setter
         public Builder allowedValues(List<String> allowedValues) {
-            this.allowedValues = Objects.requireNonNull(allowedValues);
+            if (allowedValues == null) {
+              throw new MissingRequiredPropertyException("GetSupportedDatabaseFlagsSupportedDatabaseFlagStringRestrictions", "allowedValues");
+            }
+            this.allowedValues = allowedValues;
             return this;
         }
         public Builder allowedValues(String... allowedValues) {

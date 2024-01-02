@@ -4,6 +4,7 @@
 package com.pulumi.gcp.certificateauthority.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage;
 import com.pulumi.gcp.certificateauthority.outputs.CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage;
@@ -80,16 +81,23 @@ public final class CaPoolIssuancePolicyBaselineValuesKeyUsage {
 
         @CustomType.Setter
         public Builder baseKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageBaseKeyUsage baseKeyUsage) {
-            this.baseKeyUsage = Objects.requireNonNull(baseKeyUsage);
+            if (baseKeyUsage == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValuesKeyUsage", "baseKeyUsage");
+            }
+            this.baseKeyUsage = baseKeyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder extendedKeyUsage(CaPoolIssuancePolicyBaselineValuesKeyUsageExtendedKeyUsage extendedKeyUsage) {
-            this.extendedKeyUsage = Objects.requireNonNull(extendedKeyUsage);
+            if (extendedKeyUsage == null) {
+              throw new MissingRequiredPropertyException("CaPoolIssuancePolicyBaselineValuesKeyUsage", "extendedKeyUsage");
+            }
+            this.extendedKeyUsage = extendedKeyUsage;
             return this;
         }
         @CustomType.Setter
         public Builder unknownExtendedKeyUsages(@Nullable List<CaPoolIssuancePolicyBaselineValuesKeyUsageUnknownExtendedKeyUsage> unknownExtendedKeyUsages) {
+
             this.unknownExtendedKeyUsages = unknownExtendedKeyUsages;
             return this;
         }

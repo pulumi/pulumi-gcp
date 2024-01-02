@@ -102,6 +102,7 @@ public final class RestorePlanRestoreConfigTransformationRuleResourceFilter {
 
         @CustomType.Setter
         public Builder groupKinds(@Nullable List<RestorePlanRestoreConfigTransformationRuleResourceFilterGroupKind> groupKinds) {
+
             this.groupKinds = groupKinds;
             return this;
         }
@@ -110,11 +111,13 @@ public final class RestorePlanRestoreConfigTransformationRuleResourceFilter {
         }
         @CustomType.Setter
         public Builder jsonPath(@Nullable String jsonPath) {
+
             this.jsonPath = jsonPath;
             return this;
         }
         @CustomType.Setter
         public Builder namespaces(@Nullable List<String> namespaces) {
+
             this.namespaces = namespaces;
             return this;
         }

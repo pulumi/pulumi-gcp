@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleHeaderAction;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleMatchRule;
 import com.pulumi.gcp.compute.outputs.URLMapPathMatcherRouteRuleRouteAction;
@@ -184,11 +185,13 @@ public final class URLMapPathMatcherRouteRule {
 
         @CustomType.Setter
         public Builder headerAction(@Nullable URLMapPathMatcherRouteRuleHeaderAction headerAction) {
+
             this.headerAction = headerAction;
             return this;
         }
         @CustomType.Setter
         public Builder matchRules(@Nullable List<URLMapPathMatcherRouteRuleMatchRule> matchRules) {
+
             this.matchRules = matchRules;
             return this;
         }
@@ -197,21 +200,27 @@ public final class URLMapPathMatcherRouteRule {
         }
         @CustomType.Setter
         public Builder priority(Integer priority) {
-            this.priority = Objects.requireNonNull(priority);
+            if (priority == null) {
+              throw new MissingRequiredPropertyException("URLMapPathMatcherRouteRule", "priority");
+            }
+            this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder routeAction(@Nullable URLMapPathMatcherRouteRuleRouteAction routeAction) {
+
             this.routeAction = routeAction;
             return this;
         }
         @CustomType.Setter
         public Builder service(@Nullable String service) {
+
             this.service = service;
             return this;
         }
         @CustomType.Setter
         public Builder urlRedirect(@Nullable URLMapPathMatcherRouteRuleUrlRedirect urlRedirect) {
+
             this.urlRedirect = urlRedirect;
             return this;
         }

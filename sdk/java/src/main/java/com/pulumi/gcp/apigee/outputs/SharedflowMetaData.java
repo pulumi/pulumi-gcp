@@ -72,16 +72,19 @@ public final class SharedflowMetaData {
 
         @CustomType.Setter
         public Builder createdAt(@Nullable String createdAt) {
+
             this.createdAt = createdAt;
             return this;
         }
         @CustomType.Setter
         public Builder lastModifiedAt(@Nullable String lastModifiedAt) {
+
             this.lastModifiedAt = lastModifiedAt;
             return this;
         }
         @CustomType.Setter
         public Builder subType(@Nullable String subType) {
+
             this.subType = subType;
             return this;
         }

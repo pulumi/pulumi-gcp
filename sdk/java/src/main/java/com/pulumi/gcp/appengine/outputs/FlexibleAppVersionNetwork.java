@@ -4,6 +4,7 @@
 package com.pulumi.gcp.appengine.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -110,6 +111,7 @@ public final class FlexibleAppVersionNetwork {
 
         @CustomType.Setter
         public Builder forwardedPorts(@Nullable List<String> forwardedPorts) {
+
             this.forwardedPorts = forwardedPorts;
             return this;
         }
@@ -118,21 +120,27 @@ public final class FlexibleAppVersionNetwork {
         }
         @CustomType.Setter
         public Builder instanceTag(@Nullable String instanceTag) {
+
             this.instanceTag = instanceTag;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("FlexibleAppVersionNetwork", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder sessionAffinity(@Nullable Boolean sessionAffinity) {
+
             this.sessionAffinity = sessionAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
+
             this.subnetwork = subnetwork;
             return this;
         }

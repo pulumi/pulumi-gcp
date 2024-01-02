@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -248,10 +249,18 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptA
         }
 
         public OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs build() {
-            $.archiveType = Objects.requireNonNull($.archiveType, "expected parameter 'archiveType' to be non-null");
-            $.components = Objects.requireNonNull($.components, "expected parameter 'components' to be non-null");
-            $.distribution = Objects.requireNonNull($.distribution, "expected parameter 'distribution' to be non-null");
-            $.uri = Objects.requireNonNull($.uri, "expected parameter 'uri' to be non-null");
+            if ($.archiveType == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs", "archiveType");
+            }
+            if ($.components == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs", "components");
+            }
+            if ($.distribution == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs", "distribution");
+            }
+            if ($.uri == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceRepositoryAptArgs", "uri");
+            }
             return $;
         }
     }

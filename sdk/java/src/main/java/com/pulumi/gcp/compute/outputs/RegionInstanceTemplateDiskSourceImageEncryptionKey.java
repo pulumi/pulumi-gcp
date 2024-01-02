@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -64,11 +65,15 @@ public final class RegionInstanceTemplateDiskSourceImageEncryptionKey {
 
         @CustomType.Setter
         public Builder kmsKeySelfLink(String kmsKeySelfLink) {
-            this.kmsKeySelfLink = Objects.requireNonNull(kmsKeySelfLink);
+            if (kmsKeySelfLink == null) {
+              throw new MissingRequiredPropertyException("RegionInstanceTemplateDiskSourceImageEncryptionKey", "kmsKeySelfLink");
+            }
+            this.kmsKeySelfLink = kmsKeySelfLink;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKeyServiceAccount(@Nullable String kmsKeyServiceAccount) {
+
             this.kmsKeyServiceAccount = kmsKeyServiceAccount;
             return this;
         }

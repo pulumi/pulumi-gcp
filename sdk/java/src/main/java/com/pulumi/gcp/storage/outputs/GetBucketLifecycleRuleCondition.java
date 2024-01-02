@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -103,32 +104,50 @@ public final class GetBucketLifecycleRuleCondition {
 
         @CustomType.Setter
         public Builder age(Integer age) {
-            this.age = Objects.requireNonNull(age);
+            if (age == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "age");
+            }
+            this.age = age;
             return this;
         }
         @CustomType.Setter
         public Builder createdBefore(String createdBefore) {
-            this.createdBefore = Objects.requireNonNull(createdBefore);
+            if (createdBefore == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "createdBefore");
+            }
+            this.createdBefore = createdBefore;
             return this;
         }
         @CustomType.Setter
         public Builder customTimeBefore(String customTimeBefore) {
-            this.customTimeBefore = Objects.requireNonNull(customTimeBefore);
+            if (customTimeBefore == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "customTimeBefore");
+            }
+            this.customTimeBefore = customTimeBefore;
             return this;
         }
         @CustomType.Setter
         public Builder daysSinceCustomTime(Integer daysSinceCustomTime) {
-            this.daysSinceCustomTime = Objects.requireNonNull(daysSinceCustomTime);
+            if (daysSinceCustomTime == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "daysSinceCustomTime");
+            }
+            this.daysSinceCustomTime = daysSinceCustomTime;
             return this;
         }
         @CustomType.Setter
         public Builder daysSinceNoncurrentTime(Integer daysSinceNoncurrentTime) {
-            this.daysSinceNoncurrentTime = Objects.requireNonNull(daysSinceNoncurrentTime);
+            if (daysSinceNoncurrentTime == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "daysSinceNoncurrentTime");
+            }
+            this.daysSinceNoncurrentTime = daysSinceNoncurrentTime;
             return this;
         }
         @CustomType.Setter
         public Builder matchesPrefixes(List<String> matchesPrefixes) {
-            this.matchesPrefixes = Objects.requireNonNull(matchesPrefixes);
+            if (matchesPrefixes == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "matchesPrefixes");
+            }
+            this.matchesPrefixes = matchesPrefixes;
             return this;
         }
         public Builder matchesPrefixes(String... matchesPrefixes) {
@@ -136,7 +155,10 @@ public final class GetBucketLifecycleRuleCondition {
         }
         @CustomType.Setter
         public Builder matchesStorageClasses(List<String> matchesStorageClasses) {
-            this.matchesStorageClasses = Objects.requireNonNull(matchesStorageClasses);
+            if (matchesStorageClasses == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "matchesStorageClasses");
+            }
+            this.matchesStorageClasses = matchesStorageClasses;
             return this;
         }
         public Builder matchesStorageClasses(String... matchesStorageClasses) {
@@ -144,7 +166,10 @@ public final class GetBucketLifecycleRuleCondition {
         }
         @CustomType.Setter
         public Builder matchesSuffixes(List<String> matchesSuffixes) {
-            this.matchesSuffixes = Objects.requireNonNull(matchesSuffixes);
+            if (matchesSuffixes == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "matchesSuffixes");
+            }
+            this.matchesSuffixes = matchesSuffixes;
             return this;
         }
         public Builder matchesSuffixes(String... matchesSuffixes) {
@@ -152,22 +177,34 @@ public final class GetBucketLifecycleRuleCondition {
         }
         @CustomType.Setter
         public Builder noAge(Boolean noAge) {
-            this.noAge = Objects.requireNonNull(noAge);
+            if (noAge == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "noAge");
+            }
+            this.noAge = noAge;
             return this;
         }
         @CustomType.Setter
         public Builder noncurrentTimeBefore(String noncurrentTimeBefore) {
-            this.noncurrentTimeBefore = Objects.requireNonNull(noncurrentTimeBefore);
+            if (noncurrentTimeBefore == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "noncurrentTimeBefore");
+            }
+            this.noncurrentTimeBefore = noncurrentTimeBefore;
             return this;
         }
         @CustomType.Setter
         public Builder numNewerVersions(Integer numNewerVersions) {
-            this.numNewerVersions = Objects.requireNonNull(numNewerVersions);
+            if (numNewerVersions == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "numNewerVersions");
+            }
+            this.numNewerVersions = numNewerVersions;
             return this;
         }
         @CustomType.Setter
         public Builder withState(String withState) {
-            this.withState = Objects.requireNonNull(withState);
+            if (withState == null) {
+              throw new MissingRequiredPropertyException("GetBucketLifecycleRuleCondition", "withState");
+            }
+            this.withState = withState;
             return this;
         }
         public GetBucketLifecycleRuleCondition build() {

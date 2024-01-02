@@ -98,21 +98,25 @@ public final class CertificateManagedAuthorizationAttemptInfo {
 
         @CustomType.Setter
         public Builder details(@Nullable String details) {
+
             this.details = details;
             return this;
         }
         @CustomType.Setter
         public Builder domain(@Nullable String domain) {
+
             this.domain = domain;
             return this;
         }
         @CustomType.Setter
         public Builder failureReason(@Nullable String failureReason) {
+
             this.failureReason = failureReason;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

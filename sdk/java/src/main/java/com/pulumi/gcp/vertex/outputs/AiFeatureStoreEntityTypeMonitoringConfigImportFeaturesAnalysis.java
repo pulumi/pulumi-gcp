@@ -70,11 +70,13 @@ public final class AiFeatureStoreEntityTypeMonitoringConfigImportFeaturesAnalysi
 
         @CustomType.Setter
         public Builder anomalyDetectionBaseline(@Nullable String anomalyDetectionBaseline) {
+
             this.anomalyDetectionBaseline = anomalyDetectionBaseline;
             return this;
         }
         @CustomType.Setter
         public Builder state(@Nullable String state) {
+
             this.state = state;
             return this;
         }

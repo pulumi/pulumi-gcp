@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class GetOrganizationSettingsArgs extends com.pulumi.resources.Invo
         }
 
         public GetOrganizationSettingsArgs build() {
-            $.organization = Objects.requireNonNull($.organization, "expected parameter 'organization' to be non-null");
+            if ($.organization == null) {
+                throw new MissingRequiredPropertyException("GetOrganizationSettingsArgs", "organization");
+            }
             return $;
         }
     }

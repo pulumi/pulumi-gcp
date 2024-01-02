@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataplex;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -227,8 +228,12 @@ public final class DatascanIamPolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public DatascanIamPolicyArgs build() {
-            $.dataScanId = Objects.requireNonNull($.dataScanId, "expected parameter 'dataScanId' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.dataScanId == null) {
+                throw new MissingRequiredPropertyException("DatascanIamPolicyArgs", "dataScanId");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("DatascanIamPolicyArgs", "policyData");
+            }
             return $;
         }
     }

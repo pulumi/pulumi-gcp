@@ -5,6 +5,7 @@ package com.pulumi.gcp.projects.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -119,8 +120,12 @@ public final class ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArg
         }
 
         public ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs build() {
-            $.packageName = Objects.requireNonNull($.packageName, "expected parameter 'packageName' to be non-null");
-            $.sha1Fingerprint = Objects.requireNonNull($.sha1Fingerprint, "expected parameter 'sha1Fingerprint' to be non-null");
+            if ($.packageName == null) {
+                throw new MissingRequiredPropertyException("ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs", "packageName");
+            }
+            if ($.sha1Fingerprint == null) {
+                throw new MissingRequiredPropertyException("ApiKeyRestrictionsAndroidKeyRestrictionsAllowedApplicationArgs", "sha1Fingerprint");
+            }
             return $;
         }
     }

@@ -44,6 +44,7 @@ public final class VpnConnectionDetailCloudRouter {
 
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }

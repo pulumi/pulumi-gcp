@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkeonprem.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -90,7 +91,10 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigAddressPool {
 
         @CustomType.Setter
         public Builder addresses(List<String> addresses) {
-            this.addresses = Objects.requireNonNull(addresses);
+            if (addresses == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfigAddressPool", "addresses");
+            }
+            this.addresses = addresses;
             return this;
         }
         public Builder addresses(String... addresses) {
@@ -98,17 +102,22 @@ public final class BareMetalClusterLoadBalancerBgpLbConfigAddressPool {
         }
         @CustomType.Setter
         public Builder avoidBuggyIps(@Nullable Boolean avoidBuggyIps) {
+
             this.avoidBuggyIps = avoidBuggyIps;
             return this;
         }
         @CustomType.Setter
         public Builder manualAssign(@Nullable String manualAssign) {
+
             this.manualAssign = manualAssign;
             return this;
         }
         @CustomType.Setter
         public Builder pool(String pool) {
-            this.pool = Objects.requireNonNull(pool);
+            if (pool == null) {
+              throw new MissingRequiredPropertyException("BareMetalClusterLoadBalancerBgpLbConfigAddressPool", "pool");
+            }
+            this.pool = pool;
             return this;
         }
         public BareMetalClusterLoadBalancerBgpLbConfigAddressPool build() {

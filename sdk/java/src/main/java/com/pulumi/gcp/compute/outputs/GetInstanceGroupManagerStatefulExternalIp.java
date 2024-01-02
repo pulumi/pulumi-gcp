@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetInstanceGroupManagerStatefulExternalIp {
 
         @CustomType.Setter
         public Builder deleteRule(String deleteRule) {
-            this.deleteRule = Objects.requireNonNull(deleteRule);
+            if (deleteRule == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatefulExternalIp", "deleteRule");
+            }
+            this.deleteRule = deleteRule;
             return this;
         }
         @CustomType.Setter
         public Builder interfaceName(String interfaceName) {
-            this.interfaceName = Objects.requireNonNull(interfaceName);
+            if (interfaceName == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerStatefulExternalIp", "interfaceName");
+            }
+            this.interfaceName = interfaceName;
             return this;
         }
         public GetInstanceGroupManagerStatefulExternalIp build() {

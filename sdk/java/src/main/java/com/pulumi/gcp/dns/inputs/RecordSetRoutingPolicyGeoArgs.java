@@ -5,6 +5,7 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs;
 import java.lang.String;
 import java.util.List;
@@ -166,7 +167,9 @@ public final class RecordSetRoutingPolicyGeoArgs extends com.pulumi.resources.Re
         }
 
         public RecordSetRoutingPolicyGeoArgs build() {
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyGeoArgs", "location");
+            }
             return $;
         }
     }

@@ -46,6 +46,7 @@ public final class ClusterAutomatedBackupPolicyTimeBasedRetention {
 
         @CustomType.Setter
         public Builder retentionPeriod(@Nullable String retentionPeriod) {
+
             this.retentionPeriod = retentionPeriod;
             return this;
         }

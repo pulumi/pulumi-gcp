@@ -44,6 +44,7 @@ public final class InsightsReportConfigObjectMetadataReportOptionsStorageFilters
 
         @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
+
             this.bucket = bucket;
             return this;
         }

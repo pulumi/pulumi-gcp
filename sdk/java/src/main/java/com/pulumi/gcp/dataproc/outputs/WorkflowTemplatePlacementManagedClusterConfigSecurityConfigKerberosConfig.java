@@ -242,76 +242,91 @@ public final class WorkflowTemplatePlacementManagedClusterConfigSecurityConfigKe
 
         @CustomType.Setter
         public Builder crossRealmTrustAdminServer(@Nullable String crossRealmTrustAdminServer) {
+
             this.crossRealmTrustAdminServer = crossRealmTrustAdminServer;
             return this;
         }
         @CustomType.Setter
         public Builder crossRealmTrustKdc(@Nullable String crossRealmTrustKdc) {
+
             this.crossRealmTrustKdc = crossRealmTrustKdc;
             return this;
         }
         @CustomType.Setter
         public Builder crossRealmTrustRealm(@Nullable String crossRealmTrustRealm) {
+
             this.crossRealmTrustRealm = crossRealmTrustRealm;
             return this;
         }
         @CustomType.Setter
         public Builder crossRealmTrustSharedPassword(@Nullable String crossRealmTrustSharedPassword) {
+
             this.crossRealmTrustSharedPassword = crossRealmTrustSharedPassword;
             return this;
         }
         @CustomType.Setter
         public Builder enableKerberos(@Nullable Boolean enableKerberos) {
+
             this.enableKerberos = enableKerberos;
             return this;
         }
         @CustomType.Setter
         public Builder kdcDbKey(@Nullable String kdcDbKey) {
+
             this.kdcDbKey = kdcDbKey;
             return this;
         }
         @CustomType.Setter
         public Builder keyPassword(@Nullable String keyPassword) {
+
             this.keyPassword = keyPassword;
             return this;
         }
         @CustomType.Setter
         public Builder keystore(@Nullable String keystore) {
+
             this.keystore = keystore;
             return this;
         }
         @CustomType.Setter
         public Builder keystorePassword(@Nullable String keystorePassword) {
+
             this.keystorePassword = keystorePassword;
             return this;
         }
         @CustomType.Setter
         public Builder kmsKey(@Nullable String kmsKey) {
+
             this.kmsKey = kmsKey;
             return this;
         }
         @CustomType.Setter
         public Builder realm(@Nullable String realm) {
+
             this.realm = realm;
             return this;
         }
         @CustomType.Setter
         public Builder rootPrincipalPassword(@Nullable String rootPrincipalPassword) {
+
             this.rootPrincipalPassword = rootPrincipalPassword;
             return this;
         }
         @CustomType.Setter
         public Builder tgtLifetimeHours(@Nullable Integer tgtLifetimeHours) {
+
             this.tgtLifetimeHours = tgtLifetimeHours;
             return this;
         }
         @CustomType.Setter
         public Builder truststore(@Nullable String truststore) {
+
             this.truststore = truststore;
             return this;
         }
         @CustomType.Setter
         public Builder truststorePassword(@Nullable String truststorePassword) {
+
             this.truststorePassword = truststorePassword;
             return this;
         }

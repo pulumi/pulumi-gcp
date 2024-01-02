@@ -5,6 +5,7 @@ package com.pulumi.gcp.spanner;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -231,9 +232,15 @@ public final class DatabaseIAMPolicyArgs extends com.pulumi.resources.ResourceAr
         }
 
         public DatabaseIAMPolicyArgs build() {
-            $.database = Objects.requireNonNull($.database, "expected parameter 'database' to be non-null");
-            $.instance = Objects.requireNonNull($.instance, "expected parameter 'instance' to be non-null");
-            $.policyData = Objects.requireNonNull($.policyData, "expected parameter 'policyData' to be non-null");
+            if ($.database == null) {
+                throw new MissingRequiredPropertyException("DatabaseIAMPolicyArgs", "database");
+            }
+            if ($.instance == null) {
+                throw new MissingRequiredPropertyException("DatabaseIAMPolicyArgs", "instance");
+            }
+            if ($.policyData == null) {
+                throw new MissingRequiredPropertyException("DatabaseIAMPolicyArgs", "policyData");
+            }
             return $;
         }
     }

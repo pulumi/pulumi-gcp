@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.AutoscalingPolicyIamBindingConditionArgs;
 import java.lang.String;
 import java.util.List;
@@ -307,9 +308,15 @@ public final class AutoscalingPolicyIamBindingArgs extends com.pulumi.resources.
         }
 
         public AutoscalingPolicyIamBindingArgs build() {
-            $.members = Objects.requireNonNull($.members, "expected parameter 'members' to be non-null");
-            $.policyId = Objects.requireNonNull($.policyId, "expected parameter 'policyId' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
+            if ($.members == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyIamBindingArgs", "members");
+            }
+            if ($.policyId == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyIamBindingArgs", "policyId");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("AutoscalingPolicyIamBindingArgs", "role");
+            }
             return $;
         }
     }

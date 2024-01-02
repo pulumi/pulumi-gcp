@@ -89,6 +89,7 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
 
         @CustomType.Setter
         public Builder externalResources(@Nullable List<String> externalResources) {
+
             this.externalResources = externalResources;
             return this;
         }
@@ -97,6 +98,7 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
         }
         @CustomType.Setter
         public Builder operations(@Nullable List<ServicePerimetersServicePerimeterSpecEgressPolicyEgressToOperation> operations) {
+
             this.operations = operations;
             return this;
         }
@@ -105,6 +107,7 @@ public final class ServicePerimetersServicePerimeterSpecEgressPolicyEgressTo {
         }
         @CustomType.Setter
         public Builder resources(@Nullable List<String> resources) {
+
             this.resources = resources;
             return this;
         }

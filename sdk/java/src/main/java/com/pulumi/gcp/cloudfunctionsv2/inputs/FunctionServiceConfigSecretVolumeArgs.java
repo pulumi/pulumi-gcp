@@ -5,6 +5,7 @@ package com.pulumi.gcp.cloudfunctionsv2.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudfunctionsv2.inputs.FunctionServiceConfigSecretVolumeVersionArgs;
 import java.lang.String;
 import java.util.List;
@@ -204,9 +205,15 @@ public final class FunctionServiceConfigSecretVolumeArgs extends com.pulumi.reso
         }
 
         public FunctionServiceConfigSecretVolumeArgs build() {
-            $.mountPath = Objects.requireNonNull($.mountPath, "expected parameter 'mountPath' to be non-null");
-            $.projectId = Objects.requireNonNull($.projectId, "expected parameter 'projectId' to be non-null");
-            $.secret = Objects.requireNonNull($.secret, "expected parameter 'secret' to be non-null");
+            if ($.mountPath == null) {
+                throw new MissingRequiredPropertyException("FunctionServiceConfigSecretVolumeArgs", "mountPath");
+            }
+            if ($.projectId == null) {
+                throw new MissingRequiredPropertyException("FunctionServiceConfigSecretVolumeArgs", "projectId");
+            }
+            if ($.secret == null) {
+                throw new MissingRequiredPropertyException("FunctionServiceConfigSecretVolumeArgs", "secret");
+            }
             return $;
         }
     }

@@ -111,11 +111,13 @@ public final class ClusterNodePoolNodeConfigLinuxNodeConfig {
 
         @CustomType.Setter
         public Builder cgroupMode(@Nullable String cgroupMode) {
+
             this.cgroupMode = cgroupMode;
             return this;
         }
         @CustomType.Setter
         public Builder sysctls(@Nullable Map<String,String> sysctls) {
+
             this.sysctls = sysctls;
             return this;
         }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.osconfig.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -60,12 +61,16 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFi
 
         @CustomType.Setter
         public Builder sha256Checksum(@Nullable String sha256Checksum) {
+
             this.sha256Checksum = sha256Checksum;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateFileRemote build() {

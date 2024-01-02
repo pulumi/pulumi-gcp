@@ -58,11 +58,13 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
 
         @CustomType.Setter
         public Builder cpu(@Nullable String cpu) {
+
             this.cpu = cpu;
             return this;
         }
         @CustomType.Setter
         public Builder memory(@Nullable String memory) {
+
             this.memory = memory;
             return this;
         }

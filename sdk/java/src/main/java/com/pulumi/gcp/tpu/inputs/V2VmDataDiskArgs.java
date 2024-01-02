@@ -5,6 +5,7 @@ package com.pulumi.gcp.tpu.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -129,7 +130,9 @@ public final class V2VmDataDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public V2VmDataDiskArgs build() {
-            $.sourceDisk = Objects.requireNonNull($.sourceDisk, "expected parameter 'sourceDisk' to be non-null");
+            if ($.sourceDisk == null) {
+                throw new MissingRequiredPropertyException("V2VmDataDiskArgs", "sourceDisk");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetHcVpnGatewayVpnInterface;
 import java.lang.String;
 import java.util.List;
@@ -94,47 +95,70 @@ public final class GetHcVpnGatewayResult {
 
         @CustomType.Setter
         public Builder description(String description) {
-            this.description = Objects.requireNonNull(description);
+            if (description == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "description");
+            }
+            this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder project(@Nullable String project) {
+
             this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder region(@Nullable String region) {
+
             this.region = region;
             return this;
         }
         @CustomType.Setter
         public Builder selfLink(String selfLink) {
-            this.selfLink = Objects.requireNonNull(selfLink);
+            if (selfLink == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "selfLink");
+            }
+            this.selfLink = selfLink;
             return this;
         }
         @CustomType.Setter
         public Builder stackType(String stackType) {
-            this.stackType = Objects.requireNonNull(stackType);
+            if (stackType == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "stackType");
+            }
+            this.stackType = stackType;
             return this;
         }
         @CustomType.Setter
         public Builder vpnInterfaces(List<GetHcVpnGatewayVpnInterface> vpnInterfaces) {
-            this.vpnInterfaces = Objects.requireNonNull(vpnInterfaces);
+            if (vpnInterfaces == null) {
+              throw new MissingRequiredPropertyException("GetHcVpnGatewayResult", "vpnInterfaces");
+            }
+            this.vpnInterfaces = vpnInterfaces;
             return this;
         }
         public Builder vpnInterfaces(GetHcVpnGatewayVpnInterface... vpnInterfaces) {

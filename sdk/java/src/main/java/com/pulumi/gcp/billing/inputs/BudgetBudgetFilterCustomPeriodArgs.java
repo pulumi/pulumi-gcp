@@ -5,6 +5,7 @@ package com.pulumi.gcp.billing.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterCustomPeriodEndDateArgs;
 import com.pulumi.gcp.billing.inputs.BudgetBudgetFilterCustomPeriodStartDateArgs;
 import java.util.Objects;
@@ -126,7 +127,9 @@ public final class BudgetBudgetFilterCustomPeriodArgs extends com.pulumi.resourc
         }
 
         public BudgetBudgetFilterCustomPeriodArgs build() {
-            $.startDate = Objects.requireNonNull($.startDate, "expected parameter 'startDate' to be non-null");
+            if ($.startDate == null) {
+                throw new MissingRequiredPropertyException("BudgetBudgetFilterCustomPeriodArgs", "startDate");
+            }
             return $;
         }
     }

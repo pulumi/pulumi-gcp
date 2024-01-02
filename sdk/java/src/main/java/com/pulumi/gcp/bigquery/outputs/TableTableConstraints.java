@@ -70,6 +70,7 @@ public final class TableTableConstraints {
 
         @CustomType.Setter
         public Builder foreignKeys(@Nullable List<TableTableConstraintsForeignKey> foreignKeys) {
+
             this.foreignKeys = foreignKeys;
             return this;
         }
@@ -78,6 +79,7 @@ public final class TableTableConstraints {
         }
         @CustomType.Setter
         public Builder primaryKey(@Nullable TableTableConstraintsPrimaryKey primaryKey) {
+
             this.primaryKey = primaryKey;
             return this;
         }

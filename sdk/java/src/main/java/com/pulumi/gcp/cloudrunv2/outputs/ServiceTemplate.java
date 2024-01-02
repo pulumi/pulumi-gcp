@@ -244,11 +244,13 @@ public final class ServiceTemplate {
 
         @CustomType.Setter
         public Builder annotations(@Nullable Map<String,String> annotations) {
+
             this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder containers(@Nullable List<ServiceTemplateContainer> containers) {
+
             this.containers = containers;
             return this;
         }
@@ -257,51 +259,61 @@ public final class ServiceTemplate {
         }
         @CustomType.Setter
         public Builder encryptionKey(@Nullable String encryptionKey) {
+
             this.encryptionKey = encryptionKey;
             return this;
         }
         @CustomType.Setter
         public Builder executionEnvironment(@Nullable String executionEnvironment) {
+
             this.executionEnvironment = executionEnvironment;
             return this;
         }
         @CustomType.Setter
         public Builder labels(@Nullable Map<String,String> labels) {
+
             this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder maxInstanceRequestConcurrency(@Nullable Integer maxInstanceRequestConcurrency) {
+
             this.maxInstanceRequestConcurrency = maxInstanceRequestConcurrency;
             return this;
         }
         @CustomType.Setter
         public Builder revision(@Nullable String revision) {
+
             this.revision = revision;
             return this;
         }
         @CustomType.Setter
         public Builder scaling(@Nullable ServiceTemplateScaling scaling) {
+
             this.scaling = scaling;
             return this;
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder sessionAffinity(@Nullable Boolean sessionAffinity) {
+
             this.sessionAffinity = sessionAffinity;
             return this;
         }
         @CustomType.Setter
         public Builder timeout(@Nullable String timeout) {
+
             this.timeout = timeout;
             return this;
         }
         @CustomType.Setter
         public Builder volumes(@Nullable List<ServiceTemplateVolume> volumes) {
+
             this.volumes = volumes;
             return this;
         }
@@ -310,6 +322,7 @@ public final class ServiceTemplate {
         }
         @CustomType.Setter
         public Builder vpcAccess(@Nullable ServiceTemplateVpcAccess vpcAccess) {
+
             this.vpcAccess = vpcAccess;
             return this;
         }

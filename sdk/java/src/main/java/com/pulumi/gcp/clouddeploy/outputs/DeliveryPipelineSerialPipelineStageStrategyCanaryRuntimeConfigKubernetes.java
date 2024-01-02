@@ -59,11 +59,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
 
         @CustomType.Setter
         public Builder gatewayServiceMesh(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh gatewayServiceMesh) {
+
             this.gatewayServiceMesh = gatewayServiceMesh;
             return this;
         }
         @CustomType.Setter
         public Builder serviceNetworking(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking serviceNetworking) {
+
             this.serviceNetworking = serviceNetworking;
             return this;
         }

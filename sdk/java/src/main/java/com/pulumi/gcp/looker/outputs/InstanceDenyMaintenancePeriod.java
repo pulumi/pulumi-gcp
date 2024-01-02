@@ -4,6 +4,7 @@
 package com.pulumi.gcp.looker.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.looker.outputs.InstanceDenyMaintenancePeriodEndDate;
 import com.pulumi.gcp.looker.outputs.InstanceDenyMaintenancePeriodStartDate;
 import com.pulumi.gcp.looker.outputs.InstanceDenyMaintenancePeriodTime;
@@ -78,17 +79,26 @@ public final class InstanceDenyMaintenancePeriod {
 
         @CustomType.Setter
         public Builder endDate(InstanceDenyMaintenancePeriodEndDate endDate) {
-            this.endDate = Objects.requireNonNull(endDate);
+            if (endDate == null) {
+              throw new MissingRequiredPropertyException("InstanceDenyMaintenancePeriod", "endDate");
+            }
+            this.endDate = endDate;
             return this;
         }
         @CustomType.Setter
         public Builder startDate(InstanceDenyMaintenancePeriodStartDate startDate) {
-            this.startDate = Objects.requireNonNull(startDate);
+            if (startDate == null) {
+              throw new MissingRequiredPropertyException("InstanceDenyMaintenancePeriod", "startDate");
+            }
+            this.startDate = startDate;
             return this;
         }
         @CustomType.Setter
         public Builder time(InstanceDenyMaintenancePeriodTime time) {
-            this.time = Objects.requireNonNull(time);
+            if (time == null) {
+              throw new MissingRequiredPropertyException("InstanceDenyMaintenancePeriod", "time");
+            }
+            this.time = time;
             return this;
         }
         public InstanceDenyMaintenancePeriod build() {

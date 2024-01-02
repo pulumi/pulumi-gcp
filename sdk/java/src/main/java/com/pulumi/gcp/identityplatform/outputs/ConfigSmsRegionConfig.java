@@ -63,11 +63,13 @@ public final class ConfigSmsRegionConfig {
 
         @CustomType.Setter
         public Builder allowByDefault(@Nullable ConfigSmsRegionConfigAllowByDefault allowByDefault) {
+
             this.allowByDefault = allowByDefault;
             return this;
         }
         @CustomType.Setter
         public Builder allowlistOnly(@Nullable ConfigSmsRegionConfigAllowlistOnly allowlistOnly) {
+
             this.allowlistOnly = allowlistOnly;
             return this;
         }

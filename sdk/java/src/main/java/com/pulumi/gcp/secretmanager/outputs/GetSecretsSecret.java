@@ -4,6 +4,7 @@
 package com.pulumi.gcp.secretmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretsSecretReplication;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretsSecretRotation;
 import com.pulumi.gcp.secretmanager.outputs.GetSecretsSecretTopic;
@@ -209,52 +210,82 @@ public final class GetSecretsSecret {
 
         @CustomType.Setter
         public Builder annotations(Map<String,String> annotations) {
-            this.annotations = Objects.requireNonNull(annotations);
+            if (annotations == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "annotations");
+            }
+            this.annotations = annotations;
             return this;
         }
         @CustomType.Setter
         public Builder createTime(String createTime) {
-            this.createTime = Objects.requireNonNull(createTime);
+            if (createTime == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "createTime");
+            }
+            this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveAnnotations(Map<String,String> effectiveAnnotations) {
-            this.effectiveAnnotations = Objects.requireNonNull(effectiveAnnotations);
+            if (effectiveAnnotations == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "effectiveAnnotations");
+            }
+            this.effectiveAnnotations = effectiveAnnotations;
             return this;
         }
         @CustomType.Setter
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
-            this.effectiveLabels = Objects.requireNonNull(effectiveLabels);
+            if (effectiveLabels == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "effectiveLabels");
+            }
+            this.effectiveLabels = effectiveLabels;
             return this;
         }
         @CustomType.Setter
         public Builder expireTime(String expireTime) {
-            this.expireTime = Objects.requireNonNull(expireTime);
+            if (expireTime == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "expireTime");
+            }
+            this.expireTime = expireTime;
             return this;
         }
         @CustomType.Setter
         public Builder labels(Map<String,String> labels) {
-            this.labels = Objects.requireNonNull(labels);
+            if (labels == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "labels");
+            }
+            this.labels = labels;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
-            this.pulumiLabels = Objects.requireNonNull(pulumiLabels);
+            if (pulumiLabels == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "pulumiLabels");
+            }
+            this.pulumiLabels = pulumiLabels;
             return this;
         }
         @CustomType.Setter
         public Builder replications(List<GetSecretsSecretReplication> replications) {
-            this.replications = Objects.requireNonNull(replications);
+            if (replications == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "replications");
+            }
+            this.replications = replications;
             return this;
         }
         public Builder replications(GetSecretsSecretReplication... replications) {
@@ -262,7 +293,10 @@ public final class GetSecretsSecret {
         }
         @CustomType.Setter
         public Builder rotations(List<GetSecretsSecretRotation> rotations) {
-            this.rotations = Objects.requireNonNull(rotations);
+            if (rotations == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "rotations");
+            }
+            this.rotations = rotations;
             return this;
         }
         public Builder rotations(GetSecretsSecretRotation... rotations) {
@@ -270,12 +304,18 @@ public final class GetSecretsSecret {
         }
         @CustomType.Setter
         public Builder secretId(String secretId) {
-            this.secretId = Objects.requireNonNull(secretId);
+            if (secretId == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "secretId");
+            }
+            this.secretId = secretId;
             return this;
         }
         @CustomType.Setter
         public Builder topics(List<GetSecretsSecretTopic> topics) {
-            this.topics = Objects.requireNonNull(topics);
+            if (topics == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "topics");
+            }
+            this.topics = topics;
             return this;
         }
         public Builder topics(GetSecretsSecretTopic... topics) {
@@ -283,12 +323,18 @@ public final class GetSecretsSecret {
         }
         @CustomType.Setter
         public Builder ttl(String ttl) {
-            this.ttl = Objects.requireNonNull(ttl);
+            if (ttl == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "ttl");
+            }
+            this.ttl = ttl;
             return this;
         }
         @CustomType.Setter
         public Builder versionAliases(Map<String,String> versionAliases) {
-            this.versionAliases = Objects.requireNonNull(versionAliases);
+            if (versionAliases == null) {
+              throw new MissingRequiredPropertyException("GetSecretsSecret", "versionAliases");
+            }
+            this.versionAliases = versionAliases;
             return this;
         }
         public GetSecretsSecret build() {

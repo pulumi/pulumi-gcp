@@ -5,6 +5,7 @@ package com.pulumi.gcp.beyondcorp;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.beyondcorp.inputs.AppConnectorPrincipalInfoArgs;
 import java.lang.String;
 import java.util.Map;
@@ -283,7 +284,9 @@ public final class AppConnectorArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public AppConnectorArgs build() {
-            $.principalInfo = Objects.requireNonNull($.principalInfo, "expected parameter 'principalInfo' to be non-null");
+            if ($.principalInfo == null) {
+                throw new MissingRequiredPropertyException("AppConnectorArgs", "principalInfo");
+            }
             return $;
         }
     }

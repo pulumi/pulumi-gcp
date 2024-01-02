@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RouterBgpAdvertisedIpRangeArgs;
 import java.lang.Integer;
 import java.lang.String;
@@ -349,7 +350,9 @@ public final class RouterBgpArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public RouterBgpArgs build() {
-            $.asn = Objects.requireNonNull($.asn, "expected parameter 'asn' to be non-null");
+            if ($.asn == null) {
+                throw new MissingRequiredPropertyException("RouterBgpArgs", "asn");
+            }
             return $;
         }
     }

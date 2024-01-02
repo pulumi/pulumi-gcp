@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -73,7 +74,9 @@ public final class ClusterMaintenancePolicyDailyMaintenanceWindowArgs extends co
         }
 
         public ClusterMaintenancePolicyDailyMaintenanceWindowArgs build() {
-            $.startTime = Objects.requireNonNull($.startTime, "expected parameter 'startTime' to be non-null");
+            if ($.startTime == null) {
+                throw new MissingRequiredPropertyException("ClusterMaintenancePolicyDailyMaintenanceWindowArgs", "startTime");
+            }
             return $;
         }
     }

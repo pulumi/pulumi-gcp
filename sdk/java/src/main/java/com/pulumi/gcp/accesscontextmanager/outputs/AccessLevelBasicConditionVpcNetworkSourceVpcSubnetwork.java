@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accesscontextmanager.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -58,11 +59,15 @@ public final class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
 
         @CustomType.Setter
         public Builder network(String network) {
-            this.network = Objects.requireNonNull(network);
+            if (network == null) {
+              throw new MissingRequiredPropertyException("AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork", "network");
+            }
+            this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder vpcIpSubnetworks(@Nullable List<String> vpcIpSubnetworks) {
+
             this.vpcIpSubnetworks = vpcIpSubnetworks;
             return this;
         }

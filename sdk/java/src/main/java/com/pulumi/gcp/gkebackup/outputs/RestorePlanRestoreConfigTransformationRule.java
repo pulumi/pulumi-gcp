@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkebackup.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.gkebackup.outputs.RestorePlanRestoreConfigTransformationRuleFieldAction;
 import com.pulumi.gcp.gkebackup.outputs.RestorePlanRestoreConfigTransformationRuleResourceFilter;
 import java.lang.String;
@@ -93,12 +94,16 @@ public final class RestorePlanRestoreConfigTransformationRule {
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder fieldActions(List<RestorePlanRestoreConfigTransformationRuleFieldAction> fieldActions) {
-            this.fieldActions = Objects.requireNonNull(fieldActions);
+            if (fieldActions == null) {
+              throw new MissingRequiredPropertyException("RestorePlanRestoreConfigTransformationRule", "fieldActions");
+            }
+            this.fieldActions = fieldActions;
             return this;
         }
         public Builder fieldActions(RestorePlanRestoreConfigTransformationRuleFieldAction... fieldActions) {
@@ -106,6 +111,7 @@ public final class RestorePlanRestoreConfigTransformationRule {
         }
         @CustomType.Setter
         public Builder resourceFilter(@Nullable RestorePlanRestoreConfigTransformationRuleResourceFilter resourceFilter) {
+
             this.resourceFilter = resourceFilter;
             return this;
         }

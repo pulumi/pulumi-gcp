@@ -5,6 +5,7 @@ package com.pulumi.gcp.logging.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -86,7 +87,9 @@ public final class ProjectSinkBigqueryOptionsArgs extends com.pulumi.resources.R
         }
 
         public ProjectSinkBigqueryOptionsArgs build() {
-            $.usePartitionedTables = Objects.requireNonNull($.usePartitionedTables, "expected parameter 'usePartitionedTables' to be non-null");
+            if ($.usePartitionedTables == null) {
+                throw new MissingRequiredPropertyException("ProjectSinkBigqueryOptionsArgs", "usePartitionedTables");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.networkservices.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -43,7 +44,10 @@ public final class EndpointPolicyTrafficPortSelector {
 
         @CustomType.Setter
         public Builder ports(List<String> ports) {
-            this.ports = Objects.requireNonNull(ports);
+            if (ports == null) {
+              throw new MissingRequiredPropertyException("EndpointPolicyTrafficPortSelector", "ports");
+            }
+            this.ports = ports;
             return this;
         }
         public Builder ports(String... ports) {

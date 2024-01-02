@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -155,8 +156,12 @@ public final class PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs ext
         }
 
         public PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs build() {
-            $.dayOfWeek = Objects.requireNonNull($.dayOfWeek, "expected parameter 'dayOfWeek' to be non-null");
-            $.weekOrdinal = Objects.requireNonNull($.weekOrdinal, "expected parameter 'weekOrdinal' to be non-null");
+            if ($.dayOfWeek == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs", "dayOfWeek");
+            }
+            if ($.weekOrdinal == null) {
+                throw new MissingRequiredPropertyException("PatchDeploymentRecurringScheduleMonthlyWeekDayOfMonthArgs", "weekOrdinal");
+            }
             return $;
         }
     }

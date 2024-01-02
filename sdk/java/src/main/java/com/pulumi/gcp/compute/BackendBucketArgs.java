@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.BackendBucketCdnPolicyArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -433,7 +434,9 @@ public final class BackendBucketArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public BackendBucketArgs build() {
-            $.bucketName = Objects.requireNonNull($.bucketName, "expected parameter 'bucketName' to be non-null");
+            if ($.bucketName == null) {
+                throw new MissingRequiredPropertyException("BackendBucketArgs", "bucketName");
+            }
             return $;
         }
     }

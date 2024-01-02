@@ -5,6 +5,7 @@ package com.pulumi.gcp.deploymentmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.deploymentmanager.inputs.DeploymentLabelArgs;
 import com.pulumi.gcp.deploymentmanager.inputs.DeploymentTargetArgs;
 import java.lang.Boolean;
@@ -446,7 +447,9 @@ public final class DeploymentArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public DeploymentArgs build() {
-            $.target = Objects.requireNonNull($.target, "expected parameter 'target' to be non-null");
+            if ($.target == null) {
+                throw new MissingRequiredPropertyException("DeploymentArgs", "target");
+            }
             return $;
         }
     }

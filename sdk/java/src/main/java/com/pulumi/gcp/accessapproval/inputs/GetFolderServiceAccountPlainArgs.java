@@ -4,6 +4,7 @@
 package com.pulumi.gcp.accessapproval.inputs;
 
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -63,7 +64,9 @@ public final class GetFolderServiceAccountPlainArgs extends com.pulumi.resources
         }
 
         public GetFolderServiceAccountPlainArgs build() {
-            $.folderId = Objects.requireNonNull($.folderId, "expected parameter 'folderId' to be non-null");
+            if ($.folderId == null) {
+                throw new MissingRequiredPropertyException("GetFolderServiceAccountPlainArgs", "folderId");
+            }
             return $;
         }
     }

@@ -154,41 +154,49 @@ public final class PreventionDeidentifyTemplateDeidentifyConfigRecordTransformat
 
         @CustomType.Setter
         public Builder booleanValue(@Nullable Boolean booleanValue) {
+
             this.booleanValue = booleanValue;
             return this;
         }
         @CustomType.Setter
         public Builder dateValue(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueDateValue dateValue) {
+
             this.dateValue = dateValue;
             return this;
         }
         @CustomType.Setter
         public Builder dayOfWeekValue(@Nullable String dayOfWeekValue) {
+
             this.dayOfWeekValue = dayOfWeekValue;
             return this;
         }
         @CustomType.Setter
         public Builder floatValue(@Nullable Double floatValue) {
+
             this.floatValue = floatValue;
             return this;
         }
         @CustomType.Setter
         public Builder integerValue(@Nullable String integerValue) {
+
             this.integerValue = integerValue;
             return this;
         }
         @CustomType.Setter
         public Builder stringValue(@Nullable String stringValue) {
+
             this.stringValue = stringValue;
             return this;
         }
         @CustomType.Setter
         public Builder timeValue(@Nullable PreventionDeidentifyTemplateDeidentifyConfigRecordTransformationsFieldTransformationInfoTypeTransformationsTransformationPrimitiveTransformationReplaceConfigNewValueTimeValue timeValue) {
+
             this.timeValue = timeValue;
             return this;
         }
         @CustomType.Setter
         public Builder timestampValue(@Nullable String timestampValue) {
+
             this.timestampValue = timestampValue;
             return this;
         }

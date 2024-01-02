@@ -108,26 +108,31 @@ public final class ClusterPscConnection {
 
         @CustomType.Setter
         public Builder address(@Nullable String address) {
+
             this.address = address;
             return this;
         }
         @CustomType.Setter
         public Builder forwardingRule(@Nullable String forwardingRule) {
+
             this.forwardingRule = forwardingRule;
             return this;
         }
         @CustomType.Setter
         public Builder network(@Nullable String network) {
+
             this.network = network;
             return this;
         }
         @CustomType.Setter
         public Builder projectId(@Nullable String projectId) {
+
             this.projectId = projectId;
             return this;
         }
         @CustomType.Setter
         public Builder pscConnectionId(@Nullable String pscConnectionId) {
+
             this.pscConnectionId = pscConnectionId;
             return this;
         }

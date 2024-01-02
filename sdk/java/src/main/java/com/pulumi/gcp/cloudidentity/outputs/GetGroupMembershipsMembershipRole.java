@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudidentity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudidentity.outputs.GetGroupMembershipsMembershipRoleExpiryDetail;
 import java.lang.String;
 import java.util.List;
@@ -50,7 +51,10 @@ public final class GetGroupMembershipsMembershipRole {
 
         @CustomType.Setter
         public Builder expiryDetails(List<GetGroupMembershipsMembershipRoleExpiryDetail> expiryDetails) {
-            this.expiryDetails = Objects.requireNonNull(expiryDetails);
+            if (expiryDetails == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembershipRole", "expiryDetails");
+            }
+            this.expiryDetails = expiryDetails;
             return this;
         }
         public Builder expiryDetails(GetGroupMembershipsMembershipRoleExpiryDetail... expiryDetails) {
@@ -58,7 +62,10 @@ public final class GetGroupMembershipsMembershipRole {
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetGroupMembershipsMembershipRole", "name");
+            }
+            this.name = name;
             return this;
         }
         public GetGroupMembershipsMembershipRole build() {

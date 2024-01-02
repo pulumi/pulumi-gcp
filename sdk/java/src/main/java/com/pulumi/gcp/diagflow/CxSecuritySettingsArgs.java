@@ -5,6 +5,7 @@ package com.pulumi.gcp.diagflow;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.diagflow.inputs.CxSecuritySettingsAudioExportSettingsArgs;
 import com.pulumi.gcp.diagflow.inputs.CxSecuritySettingsInsightsExportSettingsArgs;
 import java.lang.Integer;
@@ -586,8 +587,12 @@ public final class CxSecuritySettingsArgs extends com.pulumi.resources.ResourceA
         }
 
         public CxSecuritySettingsArgs build() {
-            $.displayName = Objects.requireNonNull($.displayName, "expected parameter 'displayName' to be non-null");
-            $.location = Objects.requireNonNull($.location, "expected parameter 'location' to be non-null");
+            if ($.displayName == null) {
+                throw new MissingRequiredPropertyException("CxSecuritySettingsArgs", "displayName");
+            }
+            if ($.location == null) {
+                throw new MissingRequiredPropertyException("CxSecuritySettingsArgs", "location");
+            }
             return $;
         }
     }

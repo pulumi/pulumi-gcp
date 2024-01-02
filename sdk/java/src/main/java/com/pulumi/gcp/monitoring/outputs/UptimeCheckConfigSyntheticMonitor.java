@@ -4,6 +4,7 @@
 package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.monitoring.outputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2;
 import java.util.Objects;
 
@@ -48,7 +49,10 @@ public final class UptimeCheckConfigSyntheticMonitor {
 
         @CustomType.Setter
         public Builder cloudFunctionV2(UptimeCheckConfigSyntheticMonitorCloudFunctionV2 cloudFunctionV2) {
-            this.cloudFunctionV2 = Objects.requireNonNull(cloudFunctionV2);
+            if (cloudFunctionV2 == null) {
+              throw new MissingRequiredPropertyException("UptimeCheckConfigSyntheticMonitor", "cloudFunctionV2");
+            }
+            this.cloudFunctionV2 = cloudFunctionV2;
             return this;
         }
         public UptimeCheckConfigSyntheticMonitor build() {

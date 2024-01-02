@@ -5,6 +5,7 @@ package com.pulumi.gcp.tpu.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -74,7 +75,9 @@ public final class NodeSchedulingConfigArgs extends com.pulumi.resources.Resourc
         }
 
         public NodeSchedulingConfigArgs build() {
-            $.preemptible = Objects.requireNonNull($.preemptible, "expected parameter 'preemptible' to be non-null");
+            if ($.preemptible == null) {
+                throw new MissingRequiredPropertyException("NodeSchedulingConfigArgs", "preemptible");
+            }
             return $;
         }
     }

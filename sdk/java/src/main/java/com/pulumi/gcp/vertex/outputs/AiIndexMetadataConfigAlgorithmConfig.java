@@ -65,11 +65,13 @@ public final class AiIndexMetadataConfigAlgorithmConfig {
 
         @CustomType.Setter
         public Builder bruteForceConfig(@Nullable AiIndexMetadataConfigAlgorithmConfigBruteForceConfig bruteForceConfig) {
+
             this.bruteForceConfig = bruteForceConfig;
             return this;
         }
         @CustomType.Setter
         public Builder treeAhConfig(@Nullable AiIndexMetadataConfigAlgorithmConfigTreeAhConfig treeAhConfig) {
+
             this.treeAhConfig = treeAhConfig;
             return this;
         }

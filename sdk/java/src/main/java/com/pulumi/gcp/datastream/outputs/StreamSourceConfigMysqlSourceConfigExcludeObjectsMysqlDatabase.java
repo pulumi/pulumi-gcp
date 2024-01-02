@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable;
 import java.lang.String;
 import java.util.List;
@@ -61,11 +62,15 @@ public final class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabas
 
         @CustomType.Setter
         public Builder database(String database) {
-            this.database = Objects.requireNonNull(database);
+            if (database == null) {
+              throw new MissingRequiredPropertyException("StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase", "database");
+            }
+            this.database = database;
             return this;
         }
         @CustomType.Setter
         public Builder mysqlTables(@Nullable List<StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable> mysqlTables) {
+
             this.mysqlTables = mysqlTables;
             return this;
         }

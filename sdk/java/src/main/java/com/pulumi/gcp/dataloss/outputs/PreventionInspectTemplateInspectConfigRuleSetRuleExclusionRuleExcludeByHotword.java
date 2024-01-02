@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex;
 import com.pulumi.gcp.dataloss.outputs.PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity;
 import java.util.Objects;
@@ -69,12 +70,18 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRul
 
         @CustomType.Setter
         public Builder hotwordRegex(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordHotwordRegex hotwordRegex) {
-            this.hotwordRegex = Objects.requireNonNull(hotwordRegex);
+            if (hotwordRegex == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword", "hotwordRegex");
+            }
+            this.hotwordRegex = hotwordRegex;
             return this;
         }
         @CustomType.Setter
         public Builder proximity(PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotwordProximity proximity) {
-            this.proximity = Objects.requireNonNull(proximity);
+            if (proximity == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword", "proximity");
+            }
+            this.proximity = proximity;
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleExclusionRuleExcludeByHotword build() {

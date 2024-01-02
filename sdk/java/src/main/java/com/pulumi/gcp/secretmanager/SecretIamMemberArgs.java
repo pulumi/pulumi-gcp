@@ -5,6 +5,7 @@ package com.pulumi.gcp.secretmanager;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.secretmanager.inputs.SecretIamMemberConditionArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -225,9 +226,15 @@ public final class SecretIamMemberArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public SecretIamMemberArgs build() {
-            $.member = Objects.requireNonNull($.member, "expected parameter 'member' to be non-null");
-            $.role = Objects.requireNonNull($.role, "expected parameter 'role' to be non-null");
-            $.secretId = Objects.requireNonNull($.secretId, "expected parameter 'secretId' to be non-null");
+            if ($.member == null) {
+                throw new MissingRequiredPropertyException("SecretIamMemberArgs", "member");
+            }
+            if ($.role == null) {
+                throw new MissingRequiredPropertyException("SecretIamMemberArgs", "role");
+            }
+            if ($.secretId == null) {
+                throw new MissingRequiredPropertyException("SecretIamMemberArgs", "secretId");
+            }
             return $;
         }
     }

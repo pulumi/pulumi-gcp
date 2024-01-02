@@ -5,6 +5,7 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -125,7 +126,9 @@ public final class AiIndexEndpointPrivateServiceConnectConfigArgs extends com.pu
         }
 
         public AiIndexEndpointPrivateServiceConnectConfigArgs build() {
-            $.enablePrivateServiceConnect = Objects.requireNonNull($.enablePrivateServiceConnect, "expected parameter 'enablePrivateServiceConnect' to be non-null");
+            if ($.enablePrivateServiceConnect == null) {
+                throw new MissingRequiredPropertyException("AiIndexEndpointPrivateServiceConnectConfigArgs", "enablePrivateServiceConnect");
+            }
             return $;
         }
     }

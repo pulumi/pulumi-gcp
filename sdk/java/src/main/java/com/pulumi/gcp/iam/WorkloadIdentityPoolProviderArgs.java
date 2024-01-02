@@ -5,6 +5,7 @@ package com.pulumi.gcp.iam;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderAwsArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderOidcArgs;
 import com.pulumi.gcp.iam.inputs.WorkloadIdentityPoolProviderSamlArgs;
@@ -831,8 +832,12 @@ public final class WorkloadIdentityPoolProviderArgs extends com.pulumi.resources
         }
 
         public WorkloadIdentityPoolProviderArgs build() {
-            $.workloadIdentityPoolId = Objects.requireNonNull($.workloadIdentityPoolId, "expected parameter 'workloadIdentityPoolId' to be non-null");
-            $.workloadIdentityPoolProviderId = Objects.requireNonNull($.workloadIdentityPoolProviderId, "expected parameter 'workloadIdentityPoolProviderId' to be non-null");
+            if ($.workloadIdentityPoolId == null) {
+                throw new MissingRequiredPropertyException("WorkloadIdentityPoolProviderArgs", "workloadIdentityPoolId");
+            }
+            if ($.workloadIdentityPoolProviderId == null) {
+                throw new MissingRequiredPropertyException("WorkloadIdentityPoolProviderArgs", "workloadIdentityPoolProviderId");
+            }
             return $;
         }
     }

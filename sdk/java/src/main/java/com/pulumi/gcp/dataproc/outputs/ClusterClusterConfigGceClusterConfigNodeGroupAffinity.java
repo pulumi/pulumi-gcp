@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
 
         @CustomType.Setter
         public Builder nodeGroupUri(String nodeGroupUri) {
-            this.nodeGroupUri = Objects.requireNonNull(nodeGroupUri);
+            if (nodeGroupUri == null) {
+              throw new MissingRequiredPropertyException("ClusterClusterConfigGceClusterConfigNodeGroupAffinity", "nodeGroupUri");
+            }
+            this.nodeGroupUri = nodeGroupUri;
             return this;
         }
         public ClusterClusterConfigGceClusterConfigNodeGroupAffinity build() {

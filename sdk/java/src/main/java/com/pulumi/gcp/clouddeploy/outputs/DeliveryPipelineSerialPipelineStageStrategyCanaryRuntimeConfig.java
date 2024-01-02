@@ -59,11 +59,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
 
         @CustomType.Setter
         public Builder cloudRun(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigCloudRun cloudRun) {
+
             this.cloudRun = cloudRun;
             return this;
         }
         @CustomType.Setter
         public Builder kubernetes(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes kubernetes) {
+
             this.kubernetes = kubernetes;
             return this;
         }

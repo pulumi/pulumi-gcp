@@ -4,6 +4,7 @@
 package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy;
 import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy;
 import java.lang.Boolean;
@@ -123,26 +124,35 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
 
         @CustomType.Setter
         public Builder percentage(Integer percentage) {
-            this.percentage = Objects.requireNonNull(percentage);
+            if (percentage == null) {
+              throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig", "percentage");
+            }
+            this.percentage = percentage;
             return this;
         }
         @CustomType.Setter
         public Builder phaseId(String phaseId) {
-            this.phaseId = Objects.requireNonNull(phaseId);
+            if (phaseId == null) {
+              throw new MissingRequiredPropertyException("DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfig", "phaseId");
+            }
+            this.phaseId = phaseId;
             return this;
         }
         @CustomType.Setter
         public Builder postdeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPostdeploy postdeploy) {
+
             this.postdeploy = postdeploy;
             return this;
         }
         @CustomType.Setter
         public Builder predeploy(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanaryDeploymentPhaseConfigPredeploy predeploy) {
+
             this.predeploy = predeploy;
             return this;
         }
         @CustomType.Setter
         public Builder profiles(@Nullable List<String> profiles) {
+
             this.profiles = profiles;
             return this;
         }
@@ -151,6 +161,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryCustomCanary
         }
         @CustomType.Setter
         public Builder verify(@Nullable Boolean verify) {
+
             this.verify = verify;
             return this;
         }

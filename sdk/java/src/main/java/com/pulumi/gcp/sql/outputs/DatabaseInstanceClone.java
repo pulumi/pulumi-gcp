@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -105,11 +106,13 @@ public final class DatabaseInstanceClone {
 
         @CustomType.Setter
         public Builder allocatedIpRange(@Nullable String allocatedIpRange) {
+
             this.allocatedIpRange = allocatedIpRange;
             return this;
         }
         @CustomType.Setter
         public Builder databaseNames(@Nullable List<String> databaseNames) {
+
             this.databaseNames = databaseNames;
             return this;
         }
@@ -118,17 +121,22 @@ public final class DatabaseInstanceClone {
         }
         @CustomType.Setter
         public Builder pointInTime(@Nullable String pointInTime) {
+
             this.pointInTime = pointInTime;
             return this;
         }
         @CustomType.Setter
         public Builder preferredZone(@Nullable String preferredZone) {
+
             this.preferredZone = preferredZone;
             return this;
         }
         @CustomType.Setter
         public Builder sourceInstanceName(String sourceInstanceName) {
-            this.sourceInstanceName = Objects.requireNonNull(sourceInstanceName);
+            if (sourceInstanceName == null) {
+              throw new MissingRequiredPropertyException("DatabaseInstanceClone", "sourceInstanceName");
+            }
+            this.sourceInstanceName = sourceInstanceName;
             return this;
         }
         public DatabaseInstanceClone build() {

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.outputs.JobQueryDefaultDataset;
 import com.pulumi.gcp.bigquery.outputs.JobQueryDestinationEncryptionConfiguration;
 import com.pulumi.gcp.bigquery.outputs.JobQueryDestinationTable;
@@ -350,61 +351,75 @@ public final class JobQuery {
 
         @CustomType.Setter
         public Builder allowLargeResults(@Nullable Boolean allowLargeResults) {
+
             this.allowLargeResults = allowLargeResults;
             return this;
         }
         @CustomType.Setter
         public Builder createDisposition(@Nullable String createDisposition) {
+
             this.createDisposition = createDisposition;
             return this;
         }
         @CustomType.Setter
         public Builder defaultDataset(@Nullable JobQueryDefaultDataset defaultDataset) {
+
             this.defaultDataset = defaultDataset;
             return this;
         }
         @CustomType.Setter
         public Builder destinationEncryptionConfiguration(@Nullable JobQueryDestinationEncryptionConfiguration destinationEncryptionConfiguration) {
+
             this.destinationEncryptionConfiguration = destinationEncryptionConfiguration;
             return this;
         }
         @CustomType.Setter
         public Builder destinationTable(@Nullable JobQueryDestinationTable destinationTable) {
+
             this.destinationTable = destinationTable;
             return this;
         }
         @CustomType.Setter
         public Builder flattenResults(@Nullable Boolean flattenResults) {
+
             this.flattenResults = flattenResults;
             return this;
         }
         @CustomType.Setter
         public Builder maximumBillingTier(@Nullable Integer maximumBillingTier) {
+
             this.maximumBillingTier = maximumBillingTier;
             return this;
         }
         @CustomType.Setter
         public Builder maximumBytesBilled(@Nullable String maximumBytesBilled) {
+
             this.maximumBytesBilled = maximumBytesBilled;
             return this;
         }
         @CustomType.Setter
         public Builder parameterMode(@Nullable String parameterMode) {
+
             this.parameterMode = parameterMode;
             return this;
         }
         @CustomType.Setter
         public Builder priority(@Nullable String priority) {
+
             this.priority = priority;
             return this;
         }
         @CustomType.Setter
         public Builder query(String query) {
-            this.query = Objects.requireNonNull(query);
+            if (query == null) {
+              throw new MissingRequiredPropertyException("JobQuery", "query");
+            }
+            this.query = query;
             return this;
         }
         @CustomType.Setter
         public Builder schemaUpdateOptions(@Nullable List<String> schemaUpdateOptions) {
+
             this.schemaUpdateOptions = schemaUpdateOptions;
             return this;
         }
@@ -413,21 +428,25 @@ public final class JobQuery {
         }
         @CustomType.Setter
         public Builder scriptOptions(@Nullable JobQueryScriptOptions scriptOptions) {
+
             this.scriptOptions = scriptOptions;
             return this;
         }
         @CustomType.Setter
         public Builder useLegacySql(@Nullable Boolean useLegacySql) {
+
             this.useLegacySql = useLegacySql;
             return this;
         }
         @CustomType.Setter
         public Builder useQueryCache(@Nullable Boolean useQueryCache) {
+
             this.useQueryCache = useQueryCache;
             return this;
         }
         @CustomType.Setter
         public Builder userDefinedFunctionResources(@Nullable List<JobQueryUserDefinedFunctionResource> userDefinedFunctionResources) {
+
             this.userDefinedFunctionResources = userDefinedFunctionResources;
             return this;
         }
@@ -436,6 +455,7 @@ public final class JobQuery {
         }
         @CustomType.Setter
         public Builder writeDisposition(@Nullable String writeDisposition) {
+
             this.writeDisposition = writeDisposition;
             return this;
         }

@@ -59,11 +59,13 @@ public final class UserPasswordPolicyStatus {
 
         @CustomType.Setter
         public Builder locked(@Nullable Boolean locked) {
+
             this.locked = locked;
             return this;
         }
         @CustomType.Setter
         public Builder passwordExpirationTime(@Nullable String passwordExpirationTime) {
+
             this.passwordExpirationTime = passwordExpirationTime;
             return this;
         }

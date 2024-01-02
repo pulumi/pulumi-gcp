@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -116,8 +117,12 @@ public final class RegionInstanceGroupManagerNamedPortArgs extends com.pulumi.re
         }
 
         public RegionInstanceGroupManagerNamedPortArgs build() {
-            $.name = Objects.requireNonNull($.name, "expected parameter 'name' to be non-null");
-            $.port = Objects.requireNonNull($.port, "expected parameter 'port' to be non-null");
+            if ($.name == null) {
+                throw new MissingRequiredPropertyException("RegionInstanceGroupManagerNamedPortArgs", "name");
+            }
+            if ($.port == null) {
+                throw new MissingRequiredPropertyException("RegionInstanceGroupManagerNamedPortArgs", "port");
+            }
             return $;
         }
     }

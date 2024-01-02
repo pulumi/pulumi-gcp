@@ -96,21 +96,25 @@ public final class InstanceAutoscalingConfigAutoscalingLimits {
 
         @CustomType.Setter
         public Builder maxNodes(@Nullable Integer maxNodes) {
+
             this.maxNodes = maxNodes;
             return this;
         }
         @CustomType.Setter
         public Builder maxProcessingUnits(@Nullable Integer maxProcessingUnits) {
+
             this.maxProcessingUnits = maxProcessingUnits;
             return this;
         }
         @CustomType.Setter
         public Builder minNodes(@Nullable Integer minNodes) {
+
             this.minNodes = minNodes;
             return this;
         }
         @CustomType.Setter
         public Builder minProcessingUnits(@Nullable Integer minProcessingUnits) {
+
             this.minProcessingUnits = minProcessingUnits;
             return this;
         }

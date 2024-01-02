@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -90,27 +91,42 @@ public final class GetTransferProjectServiceAccountResult {
 
         @CustomType.Setter
         public Builder email(String email) {
-            this.email = Objects.requireNonNull(email);
+            if (email == null) {
+              throw new MissingRequiredPropertyException("GetTransferProjectServiceAccountResult", "email");
+            }
+            this.email = email;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetTransferProjectServiceAccountResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder member(String member) {
-            this.member = Objects.requireNonNull(member);
+            if (member == null) {
+              throw new MissingRequiredPropertyException("GetTransferProjectServiceAccountResult", "member");
+            }
+            this.member = member;
             return this;
         }
         @CustomType.Setter
         public Builder project(String project) {
-            this.project = Objects.requireNonNull(project);
+            if (project == null) {
+              throw new MissingRequiredPropertyException("GetTransferProjectServiceAccountResult", "project");
+            }
+            this.project = project;
             return this;
         }
         @CustomType.Setter
         public Builder subjectId(String subjectId) {
-            this.subjectId = Objects.requireNonNull(subjectId);
+            if (subjectId == null) {
+              throw new MissingRequiredPropertyException("GetTransferProjectServiceAccountResult", "subjectId");
+            }
+            this.subjectId = subjectId;
             return this;
         }
         public GetTransferProjectServiceAccountResult build() {

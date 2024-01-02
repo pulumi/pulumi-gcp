@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataloss.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -63,6 +64,7 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
 
         @CustomType.Setter
         public Builder groupIndexes(@Nullable List<Integer> groupIndexes) {
+
             this.groupIndexes = groupIndexes;
             return this;
         }
@@ -71,7 +73,10 @@ public final class PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleH
         }
         @CustomType.Setter
         public Builder pattern(String pattern) {
-            this.pattern = Objects.requireNonNull(pattern);
+            if (pattern == null) {
+              throw new MissingRequiredPropertyException("PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex", "pattern");
+            }
+            this.pattern = pattern;
             return this;
         }
         public PreventionInspectTemplateInspectConfigRuleSetRuleHotwordRuleHotwordRegex build() {

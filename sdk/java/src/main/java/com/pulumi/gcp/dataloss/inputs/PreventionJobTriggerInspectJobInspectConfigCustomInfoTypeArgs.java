@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataloss.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeDictionaryArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeInfoTypeArgs;
 import com.pulumi.gcp.dataloss.inputs.PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeRegexArgs;
@@ -389,7 +390,9 @@ public final class PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs
         }
 
         public PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs build() {
-            $.infoType = Objects.requireNonNull($.infoType, "expected parameter 'infoType' to be non-null");
+            if ($.infoType == null) {
+                throw new MissingRequiredPropertyException("PreventionJobTriggerInspectJobInspectConfigCustomInfoTypeArgs", "infoType");
+            }
             return $;
         }
     }

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.datacatalog.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.datacatalog.outputs.EntryGcsFilesetSpecSampleGcsFileSpec;
 import java.lang.String;
 import java.util.List;
@@ -87,7 +88,10 @@ public final class EntryGcsFilesetSpec {
 
         @CustomType.Setter
         public Builder filePatterns(List<String> filePatterns) {
-            this.filePatterns = Objects.requireNonNull(filePatterns);
+            if (filePatterns == null) {
+              throw new MissingRequiredPropertyException("EntryGcsFilesetSpec", "filePatterns");
+            }
+            this.filePatterns = filePatterns;
             return this;
         }
         public Builder filePatterns(String... filePatterns) {
@@ -95,6 +99,7 @@ public final class EntryGcsFilesetSpec {
         }
         @CustomType.Setter
         public Builder sampleGcsFileSpecs(@Nullable List<EntryGcsFilesetSpecSampleGcsFileSpec> sampleGcsFileSpecs) {
+
             this.sampleGcsFileSpecs = sampleGcsFileSpecs;
             return this;
         }

@@ -231,6 +231,7 @@ public final class AiEndpointDeployedModel {
 
         @CustomType.Setter
         public Builder automaticResources(@Nullable List<AiEndpointDeployedModelAutomaticResource> automaticResources) {
+
             this.automaticResources = automaticResources;
             return this;
         }
@@ -239,11 +240,13 @@ public final class AiEndpointDeployedModel {
         }
         @CustomType.Setter
         public Builder createTime(@Nullable String createTime) {
+
             this.createTime = createTime;
             return this;
         }
         @CustomType.Setter
         public Builder dedicatedResources(@Nullable List<AiEndpointDeployedModelDedicatedResource> dedicatedResources) {
+
             this.dedicatedResources = dedicatedResources;
             return this;
         }
@@ -252,36 +255,43 @@ public final class AiEndpointDeployedModel {
         }
         @CustomType.Setter
         public Builder displayName(@Nullable String displayName) {
+
             this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder enableAccessLogging(@Nullable Boolean enableAccessLogging) {
+
             this.enableAccessLogging = enableAccessLogging;
             return this;
         }
         @CustomType.Setter
         public Builder enableContainerLogging(@Nullable Boolean enableContainerLogging) {
+
             this.enableContainerLogging = enableContainerLogging;
             return this;
         }
         @CustomType.Setter
         public Builder id(@Nullable String id) {
+
             this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder model(@Nullable String model) {
+
             this.model = model;
             return this;
         }
         @CustomType.Setter
         public Builder modelVersionId(@Nullable String modelVersionId) {
+
             this.modelVersionId = modelVersionId;
             return this;
         }
         @CustomType.Setter
         public Builder privateEndpoints(@Nullable List<AiEndpointDeployedModelPrivateEndpoint> privateEndpoints) {
+
             this.privateEndpoints = privateEndpoints;
             return this;
         }
@@ -290,11 +300,13 @@ public final class AiEndpointDeployedModel {
         }
         @CustomType.Setter
         public Builder serviceAccount(@Nullable String serviceAccount) {
+
             this.serviceAccount = serviceAccount;
             return this;
         }
         @CustomType.Setter
         public Builder sharedResources(@Nullable String sharedResources) {
+
             this.sharedResources = sharedResources;
             return this;
         }

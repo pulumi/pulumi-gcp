@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -42,7 +43,10 @@ public final class DataTransferConfigEmailPreferences {
 
         @CustomType.Setter
         public Builder enableFailureEmail(Boolean enableFailureEmail) {
-            this.enableFailureEmail = Objects.requireNonNull(enableFailureEmail);
+            if (enableFailureEmail == null) {
+              throw new MissingRequiredPropertyException("DataTransferConfigEmailPreferences", "enableFailureEmail");
+            }
+            this.enableFailureEmail = enableFailureEmail;
             return this;
         }
         public DataTransferConfigEmailPreferences build() {

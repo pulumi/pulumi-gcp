@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.Objects;
@@ -61,12 +62,16 @@ public final class AppProfileSingleClusterRouting {
 
         @CustomType.Setter
         public Builder allowTransactionalWrites(@Nullable Boolean allowTransactionalWrites) {
+
             this.allowTransactionalWrites = allowTransactionalWrites;
             return this;
         }
         @CustomType.Setter
         public Builder clusterId(String clusterId) {
-            this.clusterId = Objects.requireNonNull(clusterId);
+            if (clusterId == null) {
+              throw new MissingRequiredPropertyException("AppProfileSingleClusterRouting", "clusterId");
+            }
+            this.clusterId = clusterId;
             return this;
         }
         public AppProfileSingleClusterRouting build() {

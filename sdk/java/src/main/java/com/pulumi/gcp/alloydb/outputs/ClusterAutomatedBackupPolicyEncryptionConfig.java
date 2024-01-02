@@ -44,6 +44,7 @@ public final class ClusterAutomatedBackupPolicyEncryptionConfig {
 
         @CustomType.Setter
         public Builder kmsKeyName(@Nullable String kmsKeyName) {
+
             this.kmsKeyName = kmsKeyName;
             return this;
         }

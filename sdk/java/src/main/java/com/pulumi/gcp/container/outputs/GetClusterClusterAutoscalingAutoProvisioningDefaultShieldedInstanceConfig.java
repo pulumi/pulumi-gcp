@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedIn
 
         @CustomType.Setter
         public Builder enableIntegrityMonitoring(Boolean enableIntegrityMonitoring) {
-            this.enableIntegrityMonitoring = Objects.requireNonNull(enableIntegrityMonitoring);
+            if (enableIntegrityMonitoring == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig", "enableIntegrityMonitoring");
+            }
+            this.enableIntegrityMonitoring = enableIntegrityMonitoring;
             return this;
         }
         @CustomType.Setter
         public Builder enableSecureBoot(Boolean enableSecureBoot) {
-            this.enableSecureBoot = Objects.requireNonNull(enableSecureBoot);
+            if (enableSecureBoot == null) {
+              throw new MissingRequiredPropertyException("GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig", "enableSecureBoot");
+            }
+            this.enableSecureBoot = enableSecureBoot;
             return this;
         }
         public GetClusterClusterAutoscalingAutoProvisioningDefaultShieldedInstanceConfig build() {

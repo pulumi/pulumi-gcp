@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -100,37 +101,54 @@ public final class GetBillingAccountResult {
 
         @CustomType.Setter
         public Builder billingAccount(@Nullable String billingAccount) {
+
             this.billingAccount = billingAccount;
             return this;
         }
         @CustomType.Setter
         public Builder displayName(String displayName) {
-            this.displayName = Objects.requireNonNull(displayName);
+            if (displayName == null) {
+              throw new MissingRequiredPropertyException("GetBillingAccountResult", "displayName");
+            }
+            this.displayName = displayName;
             return this;
         }
         @CustomType.Setter
         public Builder id(String id) {
-            this.id = Objects.requireNonNull(id);
+            if (id == null) {
+              throw new MissingRequiredPropertyException("GetBillingAccountResult", "id");
+            }
+            this.id = id;
             return this;
         }
         @CustomType.Setter
         public Builder lookupProjects(@Nullable Boolean lookupProjects) {
+
             this.lookupProjects = lookupProjects;
             return this;
         }
         @CustomType.Setter
         public Builder name(String name) {
-            this.name = Objects.requireNonNull(name);
+            if (name == null) {
+              throw new MissingRequiredPropertyException("GetBillingAccountResult", "name");
+            }
+            this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder open(Boolean open) {
-            this.open = Objects.requireNonNull(open);
+            if (open == null) {
+              throw new MissingRequiredPropertyException("GetBillingAccountResult", "open");
+            }
+            this.open = open;
             return this;
         }
         @CustomType.Setter
         public Builder projectIds(List<String> projectIds) {
-            this.projectIds = Objects.requireNonNull(projectIds);
+            if (projectIds == null) {
+              throw new MissingRequiredPropertyException("GetBillingAccountResult", "projectIds");
+            }
+            this.projectIds = projectIds;
             return this;
         }
         public Builder projectIds(String... projectIds) {

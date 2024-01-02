@@ -146,6 +146,7 @@ public final class RegionSecurityPolicyRuleNetworkMatch {
 
         @CustomType.Setter
         public Builder destIpRanges(@Nullable List<String> destIpRanges) {
+
             this.destIpRanges = destIpRanges;
             return this;
         }
@@ -154,6 +155,7 @@ public final class RegionSecurityPolicyRuleNetworkMatch {
         }
         @CustomType.Setter
         public Builder destPorts(@Nullable List<String> destPorts) {
+
             this.destPorts = destPorts;
             return this;
         }
@@ -162,6 +164,7 @@ public final class RegionSecurityPolicyRuleNetworkMatch {
         }
         @CustomType.Setter
         public Builder ipProtocols(@Nullable List<String> ipProtocols) {
+
             this.ipProtocols = ipProtocols;
             return this;
         }
@@ -170,6 +173,7 @@ public final class RegionSecurityPolicyRuleNetworkMatch {
         }
         @CustomType.Setter
         public Builder srcAsns(@Nullable List<Integer> srcAsns) {
+
             this.srcAsns = srcAsns;
             return this;
         }
@@ -178,6 +182,7 @@ public final class RegionSecurityPolicyRuleNetworkMatch {
         }
         @CustomType.Setter
         public Builder srcIpRanges(@Nullable List<String> srcIpRanges) {
+
             this.srcIpRanges = srcIpRanges;
             return this;
         }
@@ -186,6 +191,7 @@ public final class RegionSecurityPolicyRuleNetworkMatch {
         }
         @CustomType.Setter
         public Builder srcPorts(@Nullable List<String> srcPorts) {
+
             this.srcPorts = srcPorts;
             return this;
         }
@@ -194,6 +200,7 @@ public final class RegionSecurityPolicyRuleNetworkMatch {
         }
         @CustomType.Setter
         public Builder srcRegionCodes(@Nullable List<String> srcRegionCodes) {
+
             this.srcRegionCodes = srcRegionCodes;
             return this;
         }
@@ -202,6 +209,7 @@ public final class RegionSecurityPolicyRuleNetworkMatch {
         }
         @CustomType.Setter
         public Builder userDefinedFields(@Nullable List<RegionSecurityPolicyRuleNetworkMatchUserDefinedField> userDefinedFields) {
+
             this.userDefinedFields = userDefinedFields;
             return this;
         }

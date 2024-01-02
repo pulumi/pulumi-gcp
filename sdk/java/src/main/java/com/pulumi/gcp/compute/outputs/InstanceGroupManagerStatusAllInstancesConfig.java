@@ -36,6 +36,7 @@ public final class InstanceGroupManagerStatusAllInstancesConfig {
 
         @CustomType.Setter
         public Builder effective(@Nullable Boolean effective) {
+
             this.effective = effective;
             return this;
         }

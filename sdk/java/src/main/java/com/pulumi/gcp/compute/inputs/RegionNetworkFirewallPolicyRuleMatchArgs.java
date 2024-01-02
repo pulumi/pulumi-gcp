@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs;
 import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs;
 import java.lang.String;
@@ -616,7 +617,9 @@ public final class RegionNetworkFirewallPolicyRuleMatchArgs extends com.pulumi.r
         }
 
         public RegionNetworkFirewallPolicyRuleMatchArgs build() {
-            $.layer4Configs = Objects.requireNonNull($.layer4Configs, "expected parameter 'layer4Configs' to be non-null");
+            if ($.layer4Configs == null) {
+                throw new MissingRequiredPropertyException("RegionNetworkFirewallPolicyRuleMatchArgs", "layer4Configs");
+            }
             return $;
         }
     }

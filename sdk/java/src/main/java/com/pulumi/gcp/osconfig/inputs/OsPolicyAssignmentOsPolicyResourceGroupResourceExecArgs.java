@@ -5,6 +5,7 @@ package com.pulumi.gcp.osconfig.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecEnforceArgs;
 import com.pulumi.gcp.osconfig.inputs.OsPolicyAssignmentOsPolicyResourceGroupResourceExecValidateArgs;
 import java.util.Objects;
@@ -142,7 +143,9 @@ public final class OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs exten
         }
 
         public OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs build() {
-            $.validate = Objects.requireNonNull($.validate, "expected parameter 'validate' to be non-null");
+            if ($.validate == null) {
+                throw new MissingRequiredPropertyException("OsPolicyAssignmentOsPolicyResourceGroupResourceExecArgs", "validate");
+            }
             return $;
         }
     }

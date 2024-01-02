@@ -95,16 +95,19 @@ public final class DataTransferConfigScheduleOptions {
 
         @CustomType.Setter
         public Builder disableAutoScheduling(@Nullable Boolean disableAutoScheduling) {
+
             this.disableAutoScheduling = disableAutoScheduling;
             return this;
         }
         @CustomType.Setter
         public Builder endTime(@Nullable String endTime) {
+
             this.endTime = endTime;
             return this;
         }
         @CustomType.Setter
         public Builder startTime(@Nullable String startTime) {
+
             this.startTime = startTime;
             return this;
         }

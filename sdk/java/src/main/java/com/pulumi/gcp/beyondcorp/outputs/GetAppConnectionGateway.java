@@ -4,6 +4,7 @@
 package com.pulumi.gcp.beyondcorp.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -53,22 +54,34 @@ public final class GetAppConnectionGateway {
 
         @CustomType.Setter
         public Builder appGateway(String appGateway) {
-            this.appGateway = Objects.requireNonNull(appGateway);
+            if (appGateway == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectionGateway", "appGateway");
+            }
+            this.appGateway = appGateway;
             return this;
         }
         @CustomType.Setter
         public Builder ingressPort(Integer ingressPort) {
-            this.ingressPort = Objects.requireNonNull(ingressPort);
+            if (ingressPort == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectionGateway", "ingressPort");
+            }
+            this.ingressPort = ingressPort;
             return this;
         }
         @CustomType.Setter
         public Builder type(String type) {
-            this.type = Objects.requireNonNull(type);
+            if (type == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectionGateway", "type");
+            }
+            this.type = type;
             return this;
         }
         @CustomType.Setter
         public Builder uri(String uri) {
-            this.uri = Objects.requireNonNull(uri);
+            if (uri == null) {
+              throw new MissingRequiredPropertyException("GetAppConnectionGateway", "uri");
+            }
+            this.uri = uri;
             return this;
         }
         public GetAppConnectionGateway build() {

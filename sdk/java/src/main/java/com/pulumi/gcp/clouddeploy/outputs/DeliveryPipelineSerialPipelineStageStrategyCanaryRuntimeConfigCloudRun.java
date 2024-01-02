@@ -44,6 +44,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
 
         @CustomType.Setter
         public Builder automaticTrafficControl(@Nullable Boolean automaticTrafficControl) {
+
             this.automaticTrafficControl = automaticTrafficControl;
             return this;
         }

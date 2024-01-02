@@ -4,6 +4,7 @@
 package com.pulumi.gcp.cloudbuild.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetTriggerBuildArtifactNpmPackage {
 
         @CustomType.Setter
         public Builder packagePath(String packagePath) {
-            this.packagePath = Objects.requireNonNull(packagePath);
+            if (packagePath == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifactNpmPackage", "packagePath");
+            }
+            this.packagePath = packagePath;
             return this;
         }
         @CustomType.Setter
         public Builder repository(String repository) {
-            this.repository = Objects.requireNonNull(repository);
+            if (repository == null) {
+              throw new MissingRequiredPropertyException("GetTriggerBuildArtifactNpmPackage", "repository");
+            }
+            this.repository = repository;
             return this;
         }
         public GetTriggerBuildArtifactNpmPackage build() {

@@ -95,21 +95,25 @@ public final class ConnectionProfileCloudsql {
 
         @CustomType.Setter
         public Builder cloudSqlId(@Nullable String cloudSqlId) {
+
             this.cloudSqlId = cloudSqlId;
             return this;
         }
         @CustomType.Setter
         public Builder privateIp(@Nullable String privateIp) {
+
             this.privateIp = privateIp;
             return this;
         }
         @CustomType.Setter
         public Builder publicIp(@Nullable String publicIp) {
+
             this.publicIp = publicIp;
             return this;
         }
         @CustomType.Setter
         public Builder settings(@Nullable ConnectionProfileCloudsqlSettings settings) {
+
             this.settings = settings;
             return this;
         }

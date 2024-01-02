@@ -70,11 +70,13 @@ public final class CxTestCaseLastTestResultConversationTurnVirtualAgentOutputDif
 
         @CustomType.Setter
         public Builder description(@Nullable String description) {
+
             this.description = description;
             return this;
         }
         @CustomType.Setter
         public Builder type(@Nullable String type) {
+
             this.type = type;
             return this;
         }

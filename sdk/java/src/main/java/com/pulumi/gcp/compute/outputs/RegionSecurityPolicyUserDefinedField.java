@@ -4,6 +4,7 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -115,26 +116,33 @@ public final class RegionSecurityPolicyUserDefinedField {
 
         @CustomType.Setter
         public Builder base(String base) {
-            this.base = Objects.requireNonNull(base);
+            if (base == null) {
+              throw new MissingRequiredPropertyException("RegionSecurityPolicyUserDefinedField", "base");
+            }
+            this.base = base;
             return this;
         }
         @CustomType.Setter
         public Builder mask(@Nullable String mask) {
+
             this.mask = mask;
             return this;
         }
         @CustomType.Setter
         public Builder name(@Nullable String name) {
+
             this.name = name;
             return this;
         }
         @CustomType.Setter
         public Builder offset(@Nullable Integer offset) {
+
             this.offset = offset;
             return this;
         }
         @CustomType.Setter
         public Builder size(@Nullable Integer size) {
+
             this.size = size;
             return this;
         }

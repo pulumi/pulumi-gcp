@@ -62,11 +62,13 @@ public final class HostingCustomDomainCertVerificationDnsDesired {
 
         @CustomType.Setter
         public Builder domainName(@Nullable String domainName) {
+
             this.domainName = domainName;
             return this;
         }
         @CustomType.Setter
         public Builder records(@Nullable List<HostingCustomDomainCertVerificationDnsDesiredRecord> records) {
+
             this.records = records;
             return this;
         }

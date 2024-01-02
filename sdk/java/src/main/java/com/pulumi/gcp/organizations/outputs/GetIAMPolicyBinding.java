@@ -4,6 +4,7 @@
 package com.pulumi.gcp.organizations.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.organizations.outputs.GetIAMPolicyBindingCondition;
 import java.lang.String;
 import java.util.List;
@@ -92,12 +93,16 @@ public final class GetIAMPolicyBinding {
 
         @CustomType.Setter
         public Builder condition(@Nullable GetIAMPolicyBindingCondition condition) {
+
             this.condition = condition;
             return this;
         }
         @CustomType.Setter
         public Builder members(List<String> members) {
-            this.members = Objects.requireNonNull(members);
+            if (members == null) {
+              throw new MissingRequiredPropertyException("GetIAMPolicyBinding", "members");
+            }
+            this.members = members;
             return this;
         }
         public Builder members(String... members) {
@@ -105,7 +110,10 @@ public final class GetIAMPolicyBinding {
         }
         @CustomType.Setter
         public Builder role(String role) {
-            this.role = Objects.requireNonNull(role);
+            if (role == null) {
+              throw new MissingRequiredPropertyException("GetIAMPolicyBinding", "role");
+            }
+            this.role = role;
             return this;
         }
         public GetIAMPolicyBinding build() {

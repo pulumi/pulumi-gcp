@@ -4,6 +4,7 @@
 package com.pulumi.gcp.storage.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
 
@@ -40,12 +41,18 @@ public final class GetBucketObjectCustomerEncryption {
 
         @CustomType.Setter
         public Builder encryptionAlgorithm(String encryptionAlgorithm) {
-            this.encryptionAlgorithm = Objects.requireNonNull(encryptionAlgorithm);
+            if (encryptionAlgorithm == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectCustomerEncryption", "encryptionAlgorithm");
+            }
+            this.encryptionAlgorithm = encryptionAlgorithm;
             return this;
         }
         @CustomType.Setter
         public Builder encryptionKey(String encryptionKey) {
-            this.encryptionKey = Objects.requireNonNull(encryptionKey);
+            if (encryptionKey == null) {
+              throw new MissingRequiredPropertyException("GetBucketObjectCustomerEncryption", "encryptionKey");
+            }
+            this.encryptionKey = encryptionKey;
             return this;
         }
         public GetBucketObjectCustomerEncryption build() {

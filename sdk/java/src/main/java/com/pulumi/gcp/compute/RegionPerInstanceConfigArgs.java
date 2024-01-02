@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.inputs.RegionPerInstanceConfigPreservedStateArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -442,7 +443,9 @@ public final class RegionPerInstanceConfigArgs extends com.pulumi.resources.Reso
         }
 
         public RegionPerInstanceConfigArgs build() {
-            $.regionInstanceGroupManager = Objects.requireNonNull($.regionInstanceGroupManager, "expected parameter 'regionInstanceGroupManager' to be non-null");
+            if ($.regionInstanceGroupManager == null) {
+                throw new MissingRequiredPropertyException("RegionPerInstanceConfigArgs", "regionInstanceGroupManager");
+            }
             return $;
         }
     }
