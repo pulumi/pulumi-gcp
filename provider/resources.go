@@ -2510,44 +2510,25 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_identity_platform_tenant": {Tok: gcpResource(gcpIdentityPlatform, "Tenant")},
 
-			// Diagflow
-			"google_dialogflow_agent":          {Tok: gcpResource(gcpDiagflow, "Agent")},
-			"google_dialogflow_intent":         {Tok: gcpResource(gcpDiagflow, "Intent")},
-			"google_dialogflow_entity_type":    {Tok: gcpResource(gcpDiagflow, "EntityType")},
-			"google_dialogflow_fulfillment":    {Tok: gcpResource(gcpDiagflow, "Fulfillment")},
-			"google_dialogflow_cx_agent":       {Tok: gcpResource(gcpDiagflow, "CxAgent")},
-			"google_dialogflow_cx_flow":        {Tok: gcpResource(gcpDiagflow, "CxFlow")},
-			"google_dialogflow_cx_intent":      {Tok: gcpResource(gcpDiagflow, "CxIntent")},
-			"google_dialogflow_cx_version":     {Tok: gcpResource(gcpDiagflow, "CxVersion")},
-			"google_dialogflow_cx_entity_type": {Tok: gcpResource(gcpDiagflow, "CxEntityType")},
-			"google_dialogflow_cx_page":        {Tok: gcpResource(gcpDiagflow, "CxPage")},
-			"google_dialogflow_cx_environment": {Tok: gcpResource(gcpDiagflow, "CxEnvironment")},
-			"google_dialogflow_cx_webhook":     {Tok: gcpResource(gcpDiagflow, "CxWebhook")},
-
 			// Secret Manager
-			"google_secret_manager_secret": {Tok: gcpResource(gcpSecretManager, "Secret")},
+			"google_secret_manager_secret": {
+				DeleteBeforeReplace: true,
+			},
 			"google_secret_manager_secret_iam_binding": {
-				Tok: gcpResource(gcpSecretManager, "SecretIamBinding"),
 				Docs: &tfbridge.DocInfo{
 					Source: "secret_manager_secret_iam.html.markdown",
 				},
 			},
 			"google_secret_manager_secret_iam_member": {
-				Tok: gcpResource(gcpSecretManager, "SecretIamMember"),
 				Docs: &tfbridge.DocInfo{
 					Source: "secret_manager_secret_iam.html.markdown",
 				},
 			},
 			"google_secret_manager_secret_iam_policy": {
-				Tok: gcpResource(gcpSecretManager, "SecretIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "secret_manager_secret_iam.html.markdown",
 				},
 			},
-			"google_secret_manager_secret_version": {Tok: gcpResource(gcpSecretManager, "SecretVersion")},
-
-			// OS Login
-			"google_os_login_ssh_public_key": {Tok: gcpResource(gcpOsLogin, "SshPublicKey")},
 
 			// Org Policy
 			"google_org_policy_custom_constraint": {Tok: gcpResource(gcpOrgPolicy, "CustomConstraint")},
