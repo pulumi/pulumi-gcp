@@ -338,3 +338,33 @@ func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
 	}]`,
 	)
 }
+
+func TestOrganizationsProjectAutoNaming(t *testing.T) {
+	replay.Replay(t, providerServer(t), `
+{
+    "method": "/pulumirpc.ResourceProvider/Check",
+    "request": {
+        "urn": "urn:pulumi:dev::dev-yaml::gcp:organizations/project:Project::my-proj",
+        "olds": {},
+        "news": {},
+        "randomSeed": "ZgqzJVOmtvl2Ni5Y/2HRvTkquku0LpRubgZVUzBO1nc="
+    },
+    "response": {
+        "inputs": {
+            "__defaults": [
+                "autoCreateNetwork",
+                "name",
+                "projectId"
+            ],
+            "autoCreateNetwork": true,
+            "name": "my-proj",
+            "projectId": "my-proj-760b06d"
+        }
+    },
+    "metadata": {
+        "kind": "resource",
+        "mode": "client",
+        "name": "gcp"
+    }
+}`)
+}
