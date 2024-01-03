@@ -933,15 +933,17 @@ func Provider() tfbridge.ProviderInfo {
 					// numbers, and hyphens. We recommend you use the generated project ID, but you
 					// can edit it during project creation. After the project has been created, the
 					// project ID is permanent.
-
+					//
 					// A project ID has the following requirements:
-
+					//
 					// - Must be 6 to 30 characters in length.
 					// - Can only contain lowercase letters, numbers, and hyphens.
 					// - Must start with a letter.
 					// - Cannot end with a hyphen.
 					// - Cannot be in use or previously used; this includes deleted projects.
 					// - Cannot contain restricted strings, such as google, null, undefined, and ssl.
+					//
+					// From https://cloud.google.com/resource-manager/docs/creating-managing-projects
 					"project_id": tfbridge.AutoNameWithCustomOptions("",
 						tfbridge.AutoNameOptions{
 							Separator: "-",
