@@ -113,7 +113,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;your-project-id&#34;)
  *             .folderId(myFolder.name())
  *             .build());
  * 

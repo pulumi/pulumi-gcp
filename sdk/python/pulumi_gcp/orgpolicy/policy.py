@@ -196,9 +196,7 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            org_id="123456789",
-            project_id="id")
+        basic = gcp.organizations.Project("basic", org_id="123456789")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
@@ -243,9 +241,7 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            org_id="123456789",
-            project_id="id")
+        basic = gcp.organizations.Project("basic", org_id="123456789")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
@@ -344,9 +340,7 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            org_id="123456789",
-            project_id="id")
+        basic = gcp.organizations.Project("basic", org_id="123456789")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(
@@ -391,9 +385,7 @@ class Policy(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        basic = gcp.organizations.Project("basic",
-            org_id="123456789",
-            project_id="id")
+        basic = gcp.organizations.Project("basic", org_id="123456789")
         primary = gcp.orgpolicy.Policy("primary",
             parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec=gcp.orgpolicy.PolicySpecArgs(

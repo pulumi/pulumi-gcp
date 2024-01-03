@@ -423,9 +423,7 @@ class Application(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
-            project_id="your-project-id",
-            org_id="1234567")
+        my_project = gcp.organizations.Project("myProject", org_id="1234567")
         app = gcp.appengine.Application("app",
             project=my_project.project_id,
             location_id="us-central")
@@ -485,9 +483,7 @@ class Application(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
-            project_id="your-project-id",
-            org_id="1234567")
+        my_project = gcp.organizations.Project("myProject", org_id="1234567")
         app = gcp.appengine.Application("app",
             project=my_project.project_id,
             location_id="us-central")

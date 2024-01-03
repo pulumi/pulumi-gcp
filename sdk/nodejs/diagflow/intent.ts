@@ -38,10 +38,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const agentProjectProject = new gcp.organizations.Project("agentProjectProject", {
- *     projectId: "my-project",
- *     orgId: "123456789",
- * });
+ * const agentProjectProject = new gcp.organizations.Project("agentProjectProject", {orgId: "123456789"});
  * const agentProjectService = new gcp.projects.Service("agentProjectService", {
  *     project: agentProjectProject.projectId,
  *     service: "dialogflow.googleapis.com",

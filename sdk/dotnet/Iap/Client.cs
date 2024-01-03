@@ -35,7 +35,6 @@ namespace Pulumi.Gcp.Iap
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "my-project",
     ///         OrgId = "123456789",
     ///     });
     /// 

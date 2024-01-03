@@ -339,7 +339,6 @@ class Peering(pulumi.CustomResource):
             authorized_networks=[source_network.id],
             opts=pulumi.ResourceOptions(provider=google_beta))
         peered_project = gcp.organizations.Project("peered-project",
-            project_id="my-peered-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -398,7 +397,6 @@ class Peering(pulumi.CustomResource):
             authorized_networks=[source_network.id],
             opts=pulumi.ResourceOptions(provider=google_beta))
         peered_project = gcp.organizations.Project("peered-project",
-            project_id="my-peered-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             opts=pulumi.ResourceOptions(provider=google_beta))

@@ -52,7 +52,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
  *             .orgId(&#34;123456789&#34;)
- *             .projectId(&#34;id&#34;)
  *             .build());
  * 
  *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        
@@ -173,7 +172,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
  *             .orgId(&#34;123456789&#34;)
- *             .projectId(&#34;id&#34;)
  *             .build());
  * 
  *         var primary = new Policy(&#34;primary&#34;, PolicyArgs.builder()        

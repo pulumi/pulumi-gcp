@@ -43,10 +43,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myProject = new gcp.organizations.Project("myProject", {
- *     projectId: "your-project-id",
- *     orgId: "123456789",
- * });
+ * const myProject = new gcp.organizations.Project("myProject", {orgId: "123456789"});
  * const keyRing = new gcp.kms.KeyRing("keyRing", {
  *     location: "global",
  *     project: myProject.projectId,

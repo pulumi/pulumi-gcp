@@ -45,8 +45,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-//				OrgId:     pulumi.String("1234567"),
-//				ProjectId: pulumi.String("your-project-id"),
+//				OrgId: pulumi.String("1234567"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,8 +78,7 @@ import (
 //				return err
 //			}
 //			_, err = organizations.NewProject(ctx, "myProject-in-a-folder", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("your-project-id"),
-//				FolderId:  department1.Name,
+//				FolderId: department1.Name,
 //			})
 //			if err != nil {
 //				return err

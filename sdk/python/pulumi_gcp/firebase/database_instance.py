@@ -331,7 +331,6 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_project = gcp.organizations.Project("defaultProject",
-            project_id="rtdb-project",
             org_id="123456789",
             labels={
                 "firebase": "enabled",
@@ -440,7 +439,6 @@ class DatabaseInstance(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_project = gcp.organizations.Project("defaultProject",
-            project_id="rtdb-project",
             org_id="123456789",
             labels={
                 "firebase": "enabled",

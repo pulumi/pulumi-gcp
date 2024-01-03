@@ -70,7 +70,6 @@ namespace Pulumi.Gcp.Folder
     /// 
     ///     var myProject = new Gcp.Organizations.Project("myProject", new()
     ///     {
-    ///         ProjectId = "your-project-id",
     ///         FolderId = myFolder.Name,
     ///     });
     /// 

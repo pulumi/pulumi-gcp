@@ -146,7 +146,6 @@ class EnvGroupAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="my-project",
             org_id="",
             billing_account="")
         apigee = gcp.projects.Service("apigee",
@@ -243,7 +242,6 @@ class EnvGroupAttachment(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="my-project",
             org_id="",
             billing_account="")
         apigee = gcp.projects.Service("apigee",

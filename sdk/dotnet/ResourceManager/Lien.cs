@@ -23,10 +23,7 @@ namespace Pulumi.Gcp.ResourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var project = new Gcp.Organizations.Project("project", new()
-    ///     {
-    ///         ProjectId = "staging-project",
-    ///     });
+    ///     var project = new Gcp.Organizations.Project("project");
     /// 
     ///     var lien = new Gcp.ResourceManager.Lien("lien", new()
     ///     {

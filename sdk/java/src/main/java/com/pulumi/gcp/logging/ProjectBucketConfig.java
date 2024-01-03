@@ -51,7 +51,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Project(&#34;default&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;your-project-id&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 

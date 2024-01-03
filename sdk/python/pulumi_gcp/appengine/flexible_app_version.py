@@ -1129,7 +1129,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_project = gcp.organizations.Project("myProject",
-            project_id="appeng-flex",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         app = gcp.appengine.Application("app",
@@ -1313,7 +1312,6 @@ class FlexibleAppVersion(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         my_project = gcp.organizations.Project("myProject",
-            project_id="appeng-flex",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         app = gcp.appengine.Application("app",

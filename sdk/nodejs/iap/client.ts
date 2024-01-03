@@ -24,10 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.organizations.Project("project", {
- *     projectId: "my-project",
- *     orgId: "123456789",
- * });
+ * const project = new gcp.organizations.Project("project", {orgId: "123456789"});
  * const projectService = new gcp.projects.Service("projectService", {
  *     project: project.projectId,
  *     service: "iap.googleapis.com",

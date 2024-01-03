@@ -30,7 +30,6 @@ namespace Pulumi.Gcp.Organizations
         /// 
         ///     var myProject = new Gcp.Organizations.Project("myProject", new()
         ///     {
-        ///         ProjectId = "your-project-id",
         ///         OrgId = "1234567",
         ///         BillingAccount = acct.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
         ///     });
@@ -60,7 +59,6 @@ namespace Pulumi.Gcp.Organizations
         /// 
         ///     var myProject = new Gcp.Organizations.Project("myProject", new()
         ///     {
-        ///         ProjectId = "your-project-id",
         ///         OrgId = "1234567",
         ///         BillingAccount = acct.Apply(getBillingAccountResult =&gt; getBillingAccountResult.Id),
         ///     });

@@ -16,10 +16,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     orgId: "123456789",
- * });
+ * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
  * const primary = new gcp.projects.ApiKey("primary", {
  *     displayName: "sample-key",
  *     project: basic.name,
@@ -43,10 +40,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     orgId: "123456789",
- * });
+ * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
  * const primary = new gcp.projects.ApiKey("primary", {
  *     displayName: "sample-key",
  *     project: basic.name,
@@ -67,10 +61,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     orgId: "123456789",
- * });
+ * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
  * const primary = new gcp.projects.ApiKey("primary", {
  *     displayName: "sample-key",
  *     project: basic.name,
@@ -91,10 +82,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     orgId: "123456789",
- * });
+ * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
  * const primary = new gcp.projects.ApiKey("primary", {
  *     displayName: "sample-key",
  *     project: basic.name,
@@ -106,10 +94,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     projectId: "app",
- *     orgId: "123456789",
- * });
+ * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
  * const primary = new gcp.projects.ApiKey("primary", {
  *     displayName: "sample-key",
  *     project: basic.name,

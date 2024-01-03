@@ -88,8 +88,7 @@ import (
 //				return err
 //			}
 //			myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("your-project-id"),
-//				FolderId:  myFolder.Name,
+//				FolderId: myFolder.Name,
 //			})
 //			if err != nil {
 //				return err

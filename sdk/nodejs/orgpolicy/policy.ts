@@ -20,10 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     orgId: "123456789",
- *     projectId: "id",
- * });
+ * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
  * const primary = new gcp.orgpolicy.Policy("primary", {
  *     parent: pulumi.interpolate`projects/${basic.name}`,
  *     spec: {
@@ -72,10 +69,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const basic = new gcp.organizations.Project("basic", {
- *     orgId: "123456789",
- *     projectId: "id",
- * });
+ * const basic = new gcp.organizations.Project("basic", {orgId: "123456789"});
  * const primary = new gcp.orgpolicy.Policy("primary", {
  *     parent: pulumi.interpolate`projects/${basic.name}`,
  *     spec: {

@@ -73,7 +73,6 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var defaultProject = new Project(&#34;defaultProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;my-project&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .labels(Map.of(&#34;firebase&#34;, &#34;enabled&#34;))

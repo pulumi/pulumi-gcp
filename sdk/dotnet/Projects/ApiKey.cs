@@ -25,7 +25,6 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         ProjectId = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 
@@ -74,7 +73,6 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         ProjectId = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 
@@ -119,7 +117,6 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         ProjectId = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 
@@ -164,7 +161,6 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         ProjectId = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 
@@ -188,7 +184,6 @@ namespace Pulumi.Gcp.Projects
     /// {
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         ProjectId = "app",
     ///         OrgId = "123456789",
     ///     });
     /// 

@@ -47,7 +47,6 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     ///     var peered_project = new Gcp.Organizations.Project("peered-project", new()
     ///     {
-    ///         ProjectId = "my-peered-project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///     }, new CustomResourceOptions

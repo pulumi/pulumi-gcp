@@ -69,7 +69,6 @@ namespace Pulumi.Gcp.Firebase
     /// {
     ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
     ///     {
-    ///         ProjectId = "rtdb-project",
     ///         OrgId = "123456789",
     ///         Labels = 
     ///         {

@@ -29,7 +29,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const defaultProject = new gcp.organizations.Project("defaultProject", {
- *     projectId: "my-project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  *     labels: {

@@ -43,7 +43,6 @@ import (
 //				return err
 //			}
 //			rejectedProducerProject, err := organizations.NewProject(ctx, "rejectedProducerProject", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("prj-rejected"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //			}, pulumi.Provider(google_beta))
@@ -51,7 +50,6 @@ import (
 //				return err
 //			}
 //			acceptedProducerProject, err := organizations.NewProject(ctx, "acceptedProducerProject", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("prj-accepted"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //			}, pulumi.Provider(google_beta))

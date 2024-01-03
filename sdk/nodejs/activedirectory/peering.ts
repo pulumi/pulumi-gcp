@@ -24,7 +24,6 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * const peered_project = new gcp.organizations.Project("peered-project", {
- *     projectId: "my-peered-project",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  * }, {

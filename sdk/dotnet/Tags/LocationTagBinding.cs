@@ -34,7 +34,6 @@ namespace Pulumi.Gcp.Tags
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
     ///         OrgId = "123456789",
-    ///         ProjectId = "project_id",
     ///     });
     /// 
     ///     var key = new Gcp.Tags.TagKey("key", new()
@@ -73,7 +72,6 @@ namespace Pulumi.Gcp.Tags
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
     ///         OrgId = "123456789",
-    ///         ProjectId = "project_id",
     ///     });
     /// 
     ///     var key = new Gcp.Tags.TagKey("key", new()

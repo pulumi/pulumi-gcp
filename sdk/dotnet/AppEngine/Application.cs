@@ -29,7 +29,6 @@ namespace Pulumi.Gcp.AppEngine
     /// {
     ///     var myProject = new Gcp.Organizations.Project("myProject", new()
     ///     {
-    ///         ProjectId = "your-project-id",
     ///         OrgId = "1234567",
     ///     });
     /// 

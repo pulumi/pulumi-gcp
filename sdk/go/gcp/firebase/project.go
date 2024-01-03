@@ -39,8 +39,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			defaultProject, err := organizations.NewProject(ctx, "defaultProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("my-project"),
-//				OrgId:     pulumi.String("123456789"),
+//				OrgId: pulumi.String("123456789"),
 //				Labels: pulumi.StringMap{
 //					"firebase": pulumi.String("enabled"),
 //				},

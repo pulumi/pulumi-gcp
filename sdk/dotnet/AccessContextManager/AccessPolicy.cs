@@ -60,7 +60,6 @@ namespace Pulumi.Gcp.AccessContextManager
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
     ///         OrgId = "123456789",
-    ///         ProjectId = "acm-test-proj-123",
     ///     });
     /// 
     ///     var access_policy = new Gcp.AccessContextManager.AccessPolicy("access-policy", new()
