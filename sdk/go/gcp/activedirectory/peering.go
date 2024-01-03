@@ -48,7 +48,6 @@ import (
 //				return err
 //			}
 //			_, err = organizations.NewProject(ctx, "peered-project", &organizations.ProjectArgs{
-//				ProjectId:      pulumi.String("my-peered-project"),
 //				OrgId:          pulumi.String("123456789"),
 //				BillingAccount: pulumi.String("000000-0000000-0000000-000000"),
 //			}, pulumi.Provider(google_beta))

@@ -41,7 +41,6 @@ namespace Pulumi.Gcp.Organizations
     ///     var myProject = new Gcp.Organizations.Project("myProject", new()
     ///     {
     ///         OrgId = "1234567",
-    ///         ProjectId = "your-project-id",
     ///     });
     /// 
     /// });
@@ -65,7 +64,6 @@ namespace Pulumi.Gcp.Organizations
     /// 
     ///     var myProject_in_a_folder = new Gcp.Organizations.Project("myProject-in-a-folder", new()
     ///     {
-    ///         ProjectId = "your-project-id",
     ///         FolderId = department1.Name,
     ///     });
     /// 
@@ -183,7 +181,7 @@ namespace Pulumi.Gcp.Organizations
         /// <param name="name">The unique name of the resource</param>
         /// <param name="args">The arguments used to populate this resource's properties</param>
         /// <param name="options">A bag of options that control this resource's behavior</param>
-        public Project(string name, ProjectArgs args, CustomResourceOptions? options = null)
+        public Project(string name, ProjectArgs? args = null, CustomResourceOptions? options = null)
             : base("gcp:organizations/project:Project", name, args ?? new ProjectArgs(), MakeResourceOptions(options, ""))
         {
         }
@@ -288,8 +286,8 @@ namespace Pulumi.Gcp.Organizations
         /// <summary>
         /// The project ID. Changing this forces a new project to be created.
         /// </summary>
-        [Input("projectId", required: true)]
-        public Input<string> ProjectId { get; set; } = null!;
+        [Input("projectId")]
+        public Input<string>? ProjectId { get; set; }
 
         /// <summary>
         /// If true, the resource can be deleted

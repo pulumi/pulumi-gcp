@@ -575,9 +575,7 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        guest_project = gcp.organizations.Project("guestProject",
-            project_id="project-id",
-            org_id="123456789")
+        guest_project = gcp.organizations.Project("guestProject", org_id="123456789")
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
             region="us-central1",
             node_type="n1-node-96-624")
@@ -734,9 +732,7 @@ class NodeGroup(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        guest_project = gcp.organizations.Project("guestProject",
-            project_id="project-id",
-            org_id="123456789")
+        guest_project = gcp.organizations.Project("guestProject", org_id="123456789")
         soletenant_tmpl = gcp.compute.NodeTemplate("soletenant-tmpl",
             region="us-central1",
             node_type="n1-node-96-624")

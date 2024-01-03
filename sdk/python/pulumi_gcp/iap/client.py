@@ -171,9 +171,7 @@ class Client(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789")
+        project = gcp.organizations.Project("project", org_id="123456789")
         project_service = gcp.projects.Service("projectService",
             project=project.project_id,
             service="iap.googleapis.com")
@@ -242,9 +240,7 @@ class Client(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project",
-            project_id="my-project",
-            org_id="123456789")
+        project = gcp.organizations.Project("project", org_id="123456789")
         project_service = gcp.projects.Service("projectService",
             project=project.project_id,
             service="iap.googleapis.com")

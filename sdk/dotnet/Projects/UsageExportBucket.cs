@@ -41,7 +41,6 @@ namespace Pulumi.Gcp.Projects
     ///     var myProject = new Gcp.Organizations.Project("myProject", new()
     ///     {
     ///         OrgId = "1234567",
-    ///         ProjectId = "your-project-id",
     ///     });
     /// 
     /// });
@@ -65,7 +64,6 @@ namespace Pulumi.Gcp.Projects
     /// 
     ///     var myProject_in_a_folder = new Gcp.Organizations.Project("myProject-in-a-folder", new()
     ///     {
-    ///         ProjectId = "your-project-id",
     ///         FolderId = department1.Name,
     ///     });
     /// 

@@ -25,14 +25,12 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * const rejectedProducerProject = new gcp.organizations.Project("rejectedProducerProject", {
- *     projectId: "prj-rejected",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  * }, {
  *     provider: google_beta,
  * });
  * const acceptedProducerProject = new gcp.organizations.Project("acceptedProducerProject", {
- *     projectId: "prj-accepted",
  *     orgId: "123456789",
  *     billingAccount: "000000-0000000-0000000-000000",
  * }, {

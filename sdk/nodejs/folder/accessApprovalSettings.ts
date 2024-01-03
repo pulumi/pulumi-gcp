@@ -45,10 +45,7 @@ import * as utilities from "../utilities";
  *     displayName: "my-folder",
  *     parent: "organizations/123456789",
  * });
- * const myProject = new gcp.organizations.Project("myProject", {
- *     projectId: "your-project-id",
- *     folderId: myFolder.name,
- * });
+ * const myProject = new gcp.organizations.Project("myProject", {folderId: myFolder.name});
  * const keyRing = new gcp.kms.KeyRing("keyRing", {
  *     location: "global",
  *     project: myProject.projectId,

@@ -29,10 +29,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const myProject = new gcp.organizations.Project("myProject", {
- *     orgId: "1234567",
- *     projectId: "your-project-id",
- * });
+ * const myProject = new gcp.organizations.Project("myProject", {orgId: "1234567"});
  * ```
  *
  * To create a project under a specific folder
@@ -45,10 +42,7 @@ import * as utilities from "../utilities";
  *     displayName: "Department 1",
  *     parent: "organizations/1234567",
  * });
- * const myProject_in_a_folder = new gcp.organizations.Project("myProject-in-a-folder", {
- *     projectId: "your-project-id",
- *     folderId: department1.name,
- * });
+ * const myProject_in_a_folder = new gcp.organizations.Project("myProject-in-a-folder", {folderId: department1.name});
  * ```
  *
  * ## Import
@@ -165,7 +159,7 @@ export class Project extends pulumi.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param opts A bag of options that control this resource's behavior.
      */
-    constructor(name: string, args: ProjectArgs, opts?: pulumi.CustomResourceOptions)
+    constructor(name: string, args?: ProjectArgs, opts?: pulumi.CustomResourceOptions)
     constructor(name: string, argsOrState?: ProjectArgs | ProjectState, opts?: pulumi.CustomResourceOptions) {
         let resourceInputs: pulumi.Inputs = {};
         opts = opts || {};
@@ -184,9 +178,6 @@ export class Project extends pulumi.CustomResource {
             resourceInputs["skipDelete"] = state ? state.skipDelete : undefined;
         } else {
             const args = argsOrState as ProjectArgs | undefined;
-            if ((!args || args.projectId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'projectId'");
-            }
             resourceInputs["autoCreateNetwork"] = args ? args.autoCreateNetwork : undefined;
             resourceInputs["billingAccount"] = args ? args.billingAccount : undefined;
             resourceInputs["folderId"] = args ? args.folderId : undefined;
@@ -322,7 +313,7 @@ export interface ProjectArgs {
     /**
      * The project ID. Changing this forces a new project to be created.
      */
-    projectId: pulumi.Input<string>;
+    projectId?: pulumi.Input<string>;
     /**
      * If true, the resource can be deleted
      * without deleting the Project via the Google API.

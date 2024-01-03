@@ -156,9 +156,7 @@ class UsageExportBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
-            org_id="1234567",
-            project_id="your-project-id")
+        my_project = gcp.organizations.Project("myProject", org_id="1234567")
         ```
 
         To create a project under a specific folder
@@ -170,9 +168,7 @@ class UsageExportBucket(pulumi.CustomResource):
         department1 = gcp.organizations.Folder("department1",
             display_name="Department 1",
             parent="organizations/1234567")
-        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
-            project_id="your-project-id",
-            folder_id=department1.name)
+        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder", folder_id=department1.name)
         ```
 
         ## Import
@@ -228,9 +224,7 @@ class UsageExportBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
-            org_id="1234567",
-            project_id="your-project-id")
+        my_project = gcp.organizations.Project("myProject", org_id="1234567")
         ```
 
         To create a project under a specific folder
@@ -242,9 +236,7 @@ class UsageExportBucket(pulumi.CustomResource):
         department1 = gcp.organizations.Folder("department1",
             display_name="Department 1",
             parent="organizations/1234567")
-        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
-            project_id="your-project-id",
-            folder_id=department1.name)
+        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder", folder_id=department1.name)
         ```
 
         ## Import

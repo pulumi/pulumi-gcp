@@ -36,7 +36,6 @@ namespace Pulumi.Gcp.Monitoring
     /// 
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
-    ///         ProjectId = "m-id",
     ///         OrgId = "123456789",
     ///     });
     /// 

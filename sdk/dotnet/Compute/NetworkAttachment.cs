@@ -41,7 +41,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var rejectedProducerProject = new Gcp.Organizations.Project("rejectedProducerProject", new()
     ///     {
-    ///         ProjectId = "prj-rejected",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///     }, new CustomResourceOptions
@@ -51,7 +50,6 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var acceptedProducerProject = new Gcp.Organizations.Project("acceptedProducerProject", new()
     ///     {
-    ///         ProjectId = "prj-accepted",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///     }, new CustomResourceOptions

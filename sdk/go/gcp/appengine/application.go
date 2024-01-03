@@ -36,8 +36,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myProject, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("your-project-id"),
-//				OrgId:     pulumi.String("1234567"),
+//				OrgId: pulumi.String("1234567"),
 //			})
 //			if err != nil {
 //				return err

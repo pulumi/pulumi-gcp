@@ -451,12 +451,10 @@ class NetworkAttachment(pulumi.CustomResource):
             ip_cidr_range="10.0.0.0/16",
             opts=pulumi.ResourceOptions(provider=google_beta))
         rejected_producer_project = gcp.organizations.Project("rejectedProducerProject",
-            project_id="prj-rejected",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             opts=pulumi.ResourceOptions(provider=google_beta))
         accepted_producer_project = gcp.organizations.Project("acceptedProducerProject",
-            project_id="prj-accepted",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             opts=pulumi.ResourceOptions(provider=google_beta))
@@ -573,12 +571,10 @@ class NetworkAttachment(pulumi.CustomResource):
             ip_cidr_range="10.0.0.0/16",
             opts=pulumi.ResourceOptions(provider=google_beta))
         rejected_producer_project = gcp.organizations.Project("rejectedProducerProject",
-            project_id="prj-rejected",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             opts=pulumi.ResourceOptions(provider=google_beta))
         accepted_producer_project = gcp.organizations.Project("acceptedProducerProject",
-            project_id="prj-accepted",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             opts=pulumi.ResourceOptions(provider=google_beta))

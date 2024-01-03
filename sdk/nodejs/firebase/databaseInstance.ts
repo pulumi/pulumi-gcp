@@ -43,7 +43,6 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const defaultProject = new gcp.organizations.Project("defaultProject", {
- *     projectId: "rtdb-project",
  *     orgId: "123456789",
  *     labels: {
  *         firebase: "enabled",

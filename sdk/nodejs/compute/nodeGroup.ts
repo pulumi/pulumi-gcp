@@ -92,10 +92,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const guestProject = new gcp.organizations.Project("guestProject", {
- *     projectId: "project-id",
- *     orgId: "123456789",
- * });
+ * const guestProject = new gcp.organizations.Project("guestProject", {orgId: "123456789"});
  * const soletenant_tmpl = new gcp.compute.NodeTemplate("soletenant-tmpl", {
  *     region: "us-central1",
  *     nodeType: "n1-node-96-624",

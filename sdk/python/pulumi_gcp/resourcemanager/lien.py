@@ -255,7 +255,7 @@ class Lien(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", project_id="staging-project")
+        project = gcp.organizations.Project("project")
         lien = gcp.resourcemanager.Lien("lien",
             origin="machine-readable-explanation",
             parent=project.number.apply(lambda number: f"projects/{number}"),
@@ -315,7 +315,7 @@ class Lien(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project", project_id="staging-project")
+        project = gcp.organizations.Project("project")
         lien = gcp.resourcemanager.Lien("lien",
             origin="machine-readable-explanation",
             parent=project.number.apply(lambda number: f"projects/{number}"),

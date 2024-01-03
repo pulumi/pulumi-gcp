@@ -37,7 +37,6 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// {
     ///     var defaultProject = new Gcp.Organizations.Project("defaultProject", new()
     ///     {
-    ///         ProjectId = "my-project",
     ///         OrgId = "123456789",
     ///         BillingAccount = "000000-0000000-0000000-000000",
     ///         Labels = 

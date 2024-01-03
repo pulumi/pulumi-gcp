@@ -7,7 +7,6 @@ import (
 	"context"
 	"reflect"
 
-	"errors"
 	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/internal"
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
@@ -45,8 +44,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := organizations.NewProject(ctx, "myProject", &organizations.ProjectArgs{
-//				OrgId:     pulumi.String("1234567"),
-//				ProjectId: pulumi.String("your-project-id"),
+//				OrgId: pulumi.String("1234567"),
 //			})
 //			if err != nil {
 //				return err
@@ -79,8 +77,7 @@ import (
 //				return err
 //			}
 //			_, err = organizations.NewProject(ctx, "myProject-in-a-folder", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("your-project-id"),
-//				FolderId:  department1.Name,
+//				FolderId: department1.Name,
 //			})
 //			if err != nil {
 //				return err
@@ -159,12 +156,9 @@ type Project struct {
 func NewProject(ctx *pulumi.Context,
 	name string, args *ProjectArgs, opts ...pulumi.ResourceOption) (*Project, error) {
 	if args == nil {
-		return nil, errors.New("missing one or more required arguments")
+		args = &ProjectArgs{}
 	}
 
-	if args.ProjectId == nil {
-		return nil, errors.New("invalid value for required argument 'ProjectId'")
-	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
 		"effectiveLabels",
 		"pulumiLabels",
@@ -313,7 +307,7 @@ type projectArgs struct {
 	// organization.
 	OrgId *string `pulumi:"orgId"`
 	// The project ID. Changing this forces a new project to be created.
-	ProjectId string `pulumi:"projectId"`
+	ProjectId *string `pulumi:"projectId"`
 	// If true, the resource can be deleted
 	// without deleting the Project via the Google API.
 	SkipDelete *bool `pulumi:"skipDelete"`
@@ -351,7 +345,7 @@ type ProjectArgs struct {
 	// organization.
 	OrgId pulumi.StringPtrInput
 	// The project ID. Changing this forces a new project to be created.
-	ProjectId pulumi.StringInput
+	ProjectId pulumi.StringPtrInput
 	// If true, the resource can be deleted
 	// without deleting the Project via the Google API.
 	SkipDelete pulumi.BoolPtrInput

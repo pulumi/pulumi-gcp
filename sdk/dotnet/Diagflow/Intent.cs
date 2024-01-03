@@ -62,7 +62,6 @@ namespace Pulumi.Gcp.Diagflow
     /// {
     ///     var agentProjectProject = new Gcp.Organizations.Project("agentProjectProject", new()
     ///     {
-    ///         ProjectId = "my-project",
     ///         OrgId = "123456789",
     ///     });
     /// 

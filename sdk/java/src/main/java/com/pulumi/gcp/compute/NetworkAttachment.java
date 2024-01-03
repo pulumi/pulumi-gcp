@@ -62,7 +62,6 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var rejectedProducerProject = new Project(&#34;rejectedProducerProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;prj-rejected&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build(), CustomResourceOptions.builder()
@@ -70,7 +69,6 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var acceptedProducerProject = new Project(&#34;acceptedProducerProject&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;prj-accepted&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .billingAccount(&#34;000000-0000000-0000000-000000&#34;)
  *             .build(), CustomResourceOptions.builder()

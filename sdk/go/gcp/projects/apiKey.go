@@ -30,8 +30,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("app"),
-//				OrgId:     pulumi.String("123456789"),
+//				OrgId: pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
@@ -82,8 +81,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("app"),
-//				OrgId:     pulumi.String("123456789"),
+//				OrgId: pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
@@ -131,8 +129,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("app"),
-//				OrgId:     pulumi.String("123456789"),
+//				OrgId: pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
@@ -180,8 +177,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("app"),
-//				OrgId:     pulumi.String("123456789"),
+//				OrgId: pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err
@@ -214,8 +210,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
-//				ProjectId: pulumi.String("app"),
-//				OrgId:     pulumi.String("123456789"),
+//				OrgId: pulumi.String("123456789"),
 //			})
 //			if err != nil {
 //				return err

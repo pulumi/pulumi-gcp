@@ -132,7 +132,6 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var guestProject = new Gcp.Organizations.Project("guestProject", new()
     ///     {
-    ///         ProjectId = "project-id",
     ///         OrgId = "123456789",
     ///     });
     /// 

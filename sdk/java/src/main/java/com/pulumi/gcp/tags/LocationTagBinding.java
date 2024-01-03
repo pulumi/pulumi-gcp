@@ -56,7 +56,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
  *             .orgId(&#34;123456789&#34;)
- *             .projectId(&#34;project_id&#34;)
  *             .build());
  * 
  *         var key = new TagKey(&#34;key&#34;, TagKeyArgs.builder()        
@@ -110,7 +109,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var project = new Project(&#34;project&#34;, ProjectArgs.builder()        
  *             .orgId(&#34;123456789&#34;)
- *             .projectId(&#34;project_id&#34;)
  *             .build());
  * 
  *         var key = new TagKey(&#34;key&#34;, TagKeyArgs.builder()        

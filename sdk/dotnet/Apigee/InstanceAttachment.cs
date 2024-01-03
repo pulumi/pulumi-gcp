@@ -31,7 +31,6 @@ namespace Pulumi.Gcp.Apigee
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "my-project",
     ///         OrgId = "",
     ///         BillingAccount = "",
     ///     });

@@ -60,7 +60,6 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
  *             .orgId(&#34;1234567&#34;)
- *             .projectId(&#34;your-project-id&#34;)
  *             .build());
  * 
  *     }
@@ -97,7 +96,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var myProject_in_a_folder = new Project(&#34;myProject-in-a-folder&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;your-project-id&#34;)
  *             .folderId(department1.name())
  *             .build());
  * 
@@ -327,7 +325,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param name The _unique_ name of the resulting resource.
      * @param args The arguments to use to populate this resource's properties.
      */
-    public Project(String name, ProjectArgs args) {
+    public Project(String name, @Nullable ProjectArgs args) {
         this(name, args, null);
     }
     /**
@@ -336,7 +334,7 @@ public class Project extends com.pulumi.resources.CustomResource {
      * @param args The arguments to use to populate this resource's properties.
      * @param options A bag of options that control this resource's behavior.
      */
-    public Project(String name, ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
+    public Project(String name, @Nullable ProjectArgs args, @Nullable com.pulumi.resources.CustomResourceOptions options) {
         super("gcp:organizations/project:Project", name, args == null ? ProjectArgs.Empty : args, makeResourceOptions(options, Codegen.empty()));
     }
 

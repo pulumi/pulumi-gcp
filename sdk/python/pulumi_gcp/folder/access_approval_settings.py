@@ -303,9 +303,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         my_folder = gcp.organizations.Folder("myFolder",
             display_name="my-folder",
             parent="organizations/123456789")
-        my_project = gcp.organizations.Project("myProject",
-            project_id="your-project-id",
-            folder_id=my_folder.name)
+        my_project = gcp.organizations.Project("myProject", folder_id=my_folder.name)
         key_ring = gcp.kms.KeyRing("keyRing",
             location="global",
             project=my_project.project_id)
@@ -407,9 +405,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
         my_folder = gcp.organizations.Folder("myFolder",
             display_name="my-folder",
             parent="organizations/123456789")
-        my_project = gcp.organizations.Project("myProject",
-            project_id="your-project-id",
-            folder_id=my_folder.name)
+        my_project = gcp.organizations.Project("myProject", folder_id=my_folder.name)
         key_ring = gcp.kms.KeyRing("keyRing",
             location="global",
             project=my_project.project_id)

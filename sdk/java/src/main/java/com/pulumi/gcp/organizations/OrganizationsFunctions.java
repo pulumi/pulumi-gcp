@@ -218,7 +218,6 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -262,7 +261,6 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -306,7 +304,6 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -350,7 +347,6 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -394,7 +390,6 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());
@@ -438,7 +433,6 @@ public final class OrganizationsFunctions {
      *             .build());
      * 
      *         var myProject = new Project(&#34;myProject&#34;, ProjectArgs.builder()        
-     *             .projectId(&#34;your-project-id&#34;)
      *             .orgId(&#34;1234567&#34;)
      *             .billingAccount(acct.applyValue(getBillingAccountResult -&gt; getBillingAccountResult.id()))
      *             .build());

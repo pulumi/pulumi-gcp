@@ -172,9 +172,7 @@ class LocationTagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
+        project = gcp.organizations.Project("project", org_id="123456789")
         key = gcp.tags.TagKey("key",
             description="For keyname resources.",
             parent="organizations/123456789",
@@ -194,9 +192,7 @@ class LocationTagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
+        project = gcp.organizations.Project("project", org_id="123456789")
         key = gcp.tags.TagKey("key",
             description="For keyname resources.",
             parent="organizations/123456789",
@@ -259,9 +255,7 @@ class LocationTagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
+        project = gcp.organizations.Project("project", org_id="123456789")
         key = gcp.tags.TagKey("key",
             description="For keyname resources.",
             parent="organizations/123456789",
@@ -281,9 +275,7 @@ class LocationTagBinding(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        project = gcp.organizations.Project("project",
-            org_id="123456789",
-            project_id="project_id")
+        project = gcp.organizations.Project("project", org_id="123456789")
         key = gcp.tags.TagKey("key",
             description="For keyname resources.",
             parent="organizations/123456789",

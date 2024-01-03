@@ -22,10 +22,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.organizations.Project("project", {
- *     orgId: "123456789",
- *     projectId: "project_id",
- * });
+ * const project = new gcp.organizations.Project("project", {orgId: "123456789"});
  * const key = new gcp.tags.TagKey("key", {
  *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
@@ -48,10 +45,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project = new gcp.organizations.Project("project", {
- *     orgId: "123456789",
- *     projectId: "project_id",
- * });
+ * const project = new gcp.organizations.Project("project", {orgId: "123456789"});
  * const key = new gcp.tags.TagKey("key", {
  *     description: "For keyname resources.",
  *     parent: "organizations/123456789",

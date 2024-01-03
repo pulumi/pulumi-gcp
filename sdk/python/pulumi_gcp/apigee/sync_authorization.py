@@ -157,7 +157,6 @@ class SyncAuthorization(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="my-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         apigee = gcp.projects.Service("apigee",
@@ -233,7 +232,6 @@ class SyncAuthorization(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         project = gcp.organizations.Project("project",
-            project_id="my-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000")
         apigee = gcp.projects.Service("apigee",

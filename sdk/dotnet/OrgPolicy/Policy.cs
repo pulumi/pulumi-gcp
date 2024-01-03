@@ -30,7 +30,6 @@ namespace Pulumi.Gcp.OrgPolicy
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
     ///         OrgId = "123456789",
-    ///         ProjectId = "id",
     ///     });
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
@@ -118,7 +117,6 @@ namespace Pulumi.Gcp.OrgPolicy
     ///     var basic = new Gcp.Organizations.Project("basic", new()
     ///     {
     ///         OrgId = "123456789",
-    ///         ProjectId = "id",
     ///     });
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()

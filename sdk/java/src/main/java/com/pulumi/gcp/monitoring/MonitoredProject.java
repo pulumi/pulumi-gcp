@@ -52,7 +52,6 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basic = new Project(&#34;basic&#34;, ProjectArgs.builder()        
- *             .projectId(&#34;m-id&#34;)
  *             .orgId(&#34;123456789&#34;)
  *             .build());
  * 

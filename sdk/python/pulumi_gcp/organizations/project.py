@@ -14,17 +14,16 @@ __all__ = ['ProjectArgs', 'Project']
 @pulumi.input_type
 class ProjectArgs:
     def __init__(__self__, *,
-                 project_id: pulumi.Input[str],
                  auto_create_network: Optional[pulumi.Input[bool]] = None,
                  billing_account: Optional[pulumi.Input[str]] = None,
                  folder_id: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
                  skip_delete: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a Project resource.
-        :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
         :param pulumi.Input[bool] auto_create_network: Create the 'default' network automatically. Default true. If set to false, the default network will be deleted. Note
                that, for quota purposes, you will still need to have 1 network slot available to create the project successfully, even
                if you set auto_create_network to false, since the network will exist momentarily.
@@ -48,10 +47,10 @@ class ProjectArgs:
                specified then the project is created at the top level. Changing
                this forces the project to be migrated to the newly specified
                organization.
+        :param pulumi.Input[str] project_id: The project ID. Changing this forces a new project to be created.
         :param pulumi.Input[bool] skip_delete: If true, the resource can be deleted
                without deleting the Project via the Google API.
         """
-        pulumi.set(__self__, "project_id", project_id)
         if auto_create_network is not None:
             pulumi.set(__self__, "auto_create_network", auto_create_network)
         if billing_account is not None:
@@ -64,20 +63,10 @@ class ProjectArgs:
             pulumi.set(__self__, "name", name)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
         if skip_delete is not None:
             pulumi.set(__self__, "skip_delete", skip_delete)
-
-    @property
-    @pulumi.getter(name="projectId")
-    def project_id(self) -> pulumi.Input[str]:
-        """
-        The project ID. Changing this forces a new project to be created.
-        """
-        return pulumi.get(self, "project_id")
-
-    @project_id.setter
-    def project_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="autoCreateNetwork")
@@ -167,6 +156,18 @@ class ProjectArgs:
     @org_id.setter
     def org_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "org_id", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID. Changing this forces a new project to be created.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
 
     @property
     @pulumi.getter(name="skipDelete")
@@ -441,9 +442,7 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
-            org_id="1234567",
-            project_id="your-project-id")
+        my_project = gcp.organizations.Project("myProject", org_id="1234567")
         ```
 
         To create a project under a specific folder
@@ -455,9 +454,7 @@ class Project(pulumi.CustomResource):
         department1 = gcp.organizations.Folder("department1",
             display_name="Department 1",
             parent="organizations/1234567")
-        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
-            project_id="your-project-id",
-            folder_id=department1.name)
+        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder", folder_id=department1.name)
         ```
 
         ## Import
@@ -509,7 +506,7 @@ class Project(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: ProjectArgs,
+                 args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows creation and management of a Google Cloud Platform project.
@@ -536,9 +533,7 @@ class Project(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("myProject",
-            org_id="1234567",
-            project_id="your-project-id")
+        my_project = gcp.organizations.Project("myProject", org_id="1234567")
         ```
 
         To create a project under a specific folder
@@ -550,9 +545,7 @@ class Project(pulumi.CustomResource):
         department1 = gcp.organizations.Folder("department1",
             display_name="Department 1",
             parent="organizations/1234567")
-        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder",
-            project_id="your-project-id",
-            folder_id=department1.name)
+        my_project_in_a_folder = gcp.organizations.Project("myProject-in-a-folder", folder_id=department1.name)
         ```
 
         ## Import
@@ -609,8 +602,6 @@ class Project(pulumi.CustomResource):
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
             __props__.__dict__["org_id"] = org_id
-            if project_id is None and not opts.urn:
-                raise TypeError("Missing required property 'project_id'")
             __props__.__dict__["project_id"] = project_id
             __props__.__dict__["skip_delete"] = skip_delete
             __props__.__dict__["effective_labels"] = None

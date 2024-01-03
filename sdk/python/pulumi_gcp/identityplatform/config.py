@@ -325,7 +325,6 @@ class Config(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             labels={
@@ -454,7 +453,6 @@ class Config(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default_project = gcp.organizations.Project("defaultProject",
-            project_id="my-project",
             org_id="123456789",
             billing_account="000000-0000000-0000000-000000",
             labels={
