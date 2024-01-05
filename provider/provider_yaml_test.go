@@ -80,6 +80,14 @@ func TestCloudFunction(t *testing.T) {
 	runTest(t, test(t, "test-programs/cloudfunctions-function"))
 }
 
+func TestNetwork(t *testing.T) {
+	runTest(t, test(t, "test-programs/network"))
+}
+
+func TestCluster(t *testing.T) {
+	runTest(t, test(t, "test-programs/cluster"))
+}
+
 // Test programs that were automatically extracted from examples without autocorrection.
 func TestAutoExtractedPrograms(t *testing.T) {
 	type testCase struct {
