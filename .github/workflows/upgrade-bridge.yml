@@ -56,7 +56,6 @@ jobs:
         automerge: ${{ inputs.automerge }}
         target-bridge-version: ${{ inputs.target-bridge-version }}
         target-pulumi-version: ${{ inputs.target-pulumi-version }}
-        target-java-version: v0.9.7
         pr-reviewers: ${{ inputs.pr-reviewers }}
         pr-description: ${{ inputs.pr-description }}
     - name: Call upgrade provider action
