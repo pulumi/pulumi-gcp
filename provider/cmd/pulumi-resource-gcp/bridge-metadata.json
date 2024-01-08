@@ -1952,6 +1952,9 @@
                     },
                     "publisher": {
                         "maxItemsOne": true
+                    },
+                    "restricted_export_config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -3872,6 +3875,42 @@
                 "current": "gcp:cloudbuildv2/repository:Repository",
                 "majorVersion": 7
             },
+            "google_clouddeploy_automation": {
+                "current": "gcp:clouddeploy/automation:Automation",
+                "majorVersion": 7,
+                "fields": {
+                    "rules": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "advance_rollout_rule": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "source_phases": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "promote_release_rule": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "selector": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "targets": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_clouddeploy_delivery_pipeline": {
                 "current": "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline",
                 "majorVersion": 7,
@@ -4308,6 +4347,9 @@
                                     "maxItemsOne": true,
                                     "elem": {
                                         "fields": {
+                                            "dag_processor": {
+                                                "maxItemsOne": true
+                                            },
                                             "scheduler": {
                                                 "maxItemsOne": true
                                             },
@@ -9050,6 +9092,9 @@
                     "vertical_pod_autoscaling": {
                         "maxItemsOne": true
                     },
+                    "workload_alts_config": {
+                        "maxItemsOne": true
+                    },
                     "workload_identity_config": {
                         "maxItemsOne": true
                     }
@@ -11935,6 +11980,39 @@
                             "fields": {
                                 "autoscaling_config": {
                                     "maxItemsOne": true
+                                },
+                                "auxiliary_node_groups": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "node_group": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "node_group_config": {
+                                                            "maxItemsOne": true,
+                                                            "elem": {
+                                                                "fields": {
+                                                                    "accelerators": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "disk_config": {
+                                                                        "maxItemsOne": true
+                                                                    },
+                                                                    "instance_names": {
+                                                                        "maxItemsOne": false
+                                                                    }
+                                                                }
+                                                            }
+                                                        },
+                                                        "roles": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
                                 },
                                 "dataproc_metric_config": {
                                     "maxItemsOne": true,
@@ -17241,10 +17319,17 @@
                     }
                 }
             },
+            "google_integration_connectors_endpoint_attachment": {
+                "current": "gcp:integrationconnectors/endpointAttachment:EndpointAttachment",
+                "majorVersion": 7
+            },
             "google_kms_crypto_key": {
                 "current": "gcp:kms/cryptoKey:CryptoKey",
                 "majorVersion": 7,
                 "fields": {
+                    "primary": {
+                        "maxItemsOne": false
+                    },
                     "version_template": {
                         "maxItemsOne": true
                     }
@@ -17383,6 +17468,10 @@
                 "current": "gcp:logging/folderExclusion:FolderExclusion",
                 "majorVersion": 7
             },
+            "google_logging_folder_settings": {
+                "current": "gcp:logging/folderSettings:FolderSettings",
+                "majorVersion": 7
+            },
             "google_logging_folder_sink": {
                 "current": "gcp:logging/folderSink:FolderSink",
                 "majorVersion": 7,
@@ -17461,6 +17550,10 @@
             },
             "google_logging_organization_exclusion": {
                 "current": "gcp:logging/organizationExclusion:OrganizationExclusion",
+                "majorVersion": 7
+            },
+            "google_logging_organization_settings": {
+                "current": "gcp:logging/organizationSettings:OrganizationSettings",
                 "majorVersion": 7
             },
             "google_logging_organization_sink": {
@@ -17960,6 +18053,22 @@
                         }
                     }
                 }
+            },
+            "google_netapp_active_directory": {
+                "current": "gcp:netapp/activeDirectory:ActiveDirectory",
+                "majorVersion": 7,
+                "fields": {
+                    "backup_operators": {
+                        "maxItemsOne": false
+                    },
+                    "security_operators": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_netapp_backup_vault": {
+                "current": "gcp:netapp/backupVault:BackupVault",
+                "majorVersion": 7
             },
             "google_netapp_storage_pool": {
                 "current": "gcp:netapp/storagePool:StoragePool",
@@ -22234,6 +22343,64 @@
                 "current": "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy",
                 "majorVersion": 7
             },
+            "google_vertex_ai_feature_group": {
+                "current": "gcp:vertex/aiFeatureGroup:AiFeatureGroup",
+                "majorVersion": 7,
+                "fields": {
+                    "big_query": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "big_query_source": {
+                                    "maxItemsOne": true
+                                },
+                                "entity_id_columns": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_vertex_ai_feature_online_store": {
+                "current": "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore",
+                "majorVersion": 7,
+                "fields": {
+                    "bigtable": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "auto_scaling": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "dedicated_serving_endpoint": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "private_service_connect_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "project_allowlist": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "embedding_management": {
+                        "maxItemsOne": true
+                    },
+                    "optimized": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_vertex_ai_featurestore": {
                 "current": "gcp:vertex/aiFeatureStore:AiFeatureStore",
                 "majorVersion": 7,
@@ -24029,6 +24196,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "dag_processor": {
+                                                "maxItemsOne": false
+                                            },
                                             "scheduler": {
                                                 "maxItemsOne": false
                                             },
@@ -24923,6 +25093,42 @@
                 "fields": {
                     "names": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_compute_reservation": {
+                "current": "gcp:compute/getReservation:getReservation",
+                "majorVersion": 7,
+                "fields": {
+                    "share_settings": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "project_map": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "specific_reservation": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "instance_properties": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "guest_accelerators": {
+                                                "maxItemsOne": false
+                                            },
+                                            "local_ssds": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -25834,6 +26040,9 @@
                     "vertical_pod_autoscaling": {
                         "maxItemsOne": false
                     },
+                    "workload_alts_config": {
+                        "maxItemsOne": false
+                    },
                     "workload_identity_config": {
                         "maxItemsOne": false
                     }
@@ -26252,6 +26461,9 @@
                 "current": "gcp:kms/getKMSCryptoKey:getKMSCryptoKey",
                 "majorVersion": 7,
                 "fields": {
+                    "primary": {
+                        "maxItemsOne": false
+                    },
                     "version_template": {
                         "maxItemsOne": false
                     }
@@ -27743,6 +27955,7 @@
             "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember": 0,
             "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy": 0,
             "gcp:cloudbuildv2/repository:Repository": 0,
+            "gcp:clouddeploy/automation:Automation": 0,
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": 0,
             "gcp:clouddeploy/target:Target": 0,
             "gcp:cloudfunctions/function:Function": 0,
@@ -28173,6 +28386,7 @@
             "gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig": 0,
             "gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig": 0,
             "gcp:integrationconnectors/connection:Connection": 0,
+            "gcp:integrationconnectors/endpointAttachment:EndpointAttachment": 0,
             "gcp:kms/cryptoKey:CryptoKey": 0,
             "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding": 0,
             "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember": 0,
@@ -28189,12 +28403,14 @@
             "gcp:logging/billingAccountSink:BillingAccountSink": 0,
             "gcp:logging/folderBucketConfig:FolderBucketConfig": 0,
             "gcp:logging/folderExclusion:FolderExclusion": 0,
+            "gcp:logging/folderSettings:FolderSettings": 0,
             "gcp:logging/folderSink:FolderSink": 0,
             "gcp:logging/linkedDataset:LinkedDataset": 0,
             "gcp:logging/logView:LogView": 0,
             "gcp:logging/metric:Metric": 0,
             "gcp:logging/organizationBucketConfig:OrganizationBucketConfig": 0,
             "gcp:logging/organizationExclusion:OrganizationExclusion": 0,
+            "gcp:logging/organizationSettings:OrganizationSettings": 0,
             "gcp:logging/organizationSink:OrganizationSink": 0,
             "gcp:logging/projectBucketConfig:ProjectBucketConfig": 0,
             "gcp:logging/projectExclusion:ProjectExclusion": 0,
@@ -28213,6 +28429,8 @@
             "gcp:monitoring/notificationChannel:NotificationChannel": 0,
             "gcp:monitoring/slo:Slo": 0,
             "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": 0,
+            "gcp:netapp/activeDirectory:ActiveDirectory": 0,
+            "gcp:netapp/backupVault:BackupVault": 0,
             "gcp:netapp/storagePool:StoragePool": 0,
             "gcp:networkconnectivity/hub:Hub": 0,
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": 0,
@@ -28388,6 +28606,8 @@
             "gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding": 0,
             "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember": 0,
             "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": 0,
+            "gcp:vertex/aiFeatureGroup:AiFeatureGroup": 0,
+            "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": 0,
             "gcp:vertex/aiFeatureStore:AiFeatureStore": 0,
             "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType": 0,
             "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature": 0,
@@ -28517,6 +28737,7 @@
             "gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup": 0,
             "gcp:compute/getRegionSslCertificate:getRegionSslCertificate": 0,
             "gcp:compute/getRegions:getRegions": 0,
+            "gcp:compute/getReservation:getReservation": 0,
             "gcp:compute/getResourcePolicy:getResourcePolicy": 0,
             "gcp:compute/getRouter:getRouter": 0,
             "gcp:compute/getRouterNat:getRouterNat": 0,
@@ -28861,6 +29082,7 @@
             "gcp:cloudbuildv2/connectionIAMMember:ConnectionIAMMember": "google_cloudbuildv2_connection_iam_member",
             "gcp:cloudbuildv2/connectionIAMPolicy:ConnectionIAMPolicy": "google_cloudbuildv2_connection_iam_policy",
             "gcp:cloudbuildv2/repository:Repository": "google_cloudbuildv2_repository",
+            "gcp:clouddeploy/automation:Automation": "google_clouddeploy_automation",
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": "google_clouddeploy_delivery_pipeline",
             "gcp:clouddeploy/target:Target": "google_clouddeploy_target",
             "gcp:cloudfunctions/function:Function": "google_cloudfunctions_function",
@@ -29291,6 +29513,7 @@
             "gcp:identityplatform/tenantInboundSamlConfig:TenantInboundSamlConfig": "google_identity_platform_tenant_inbound_saml_config",
             "gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig": "google_identity_platform_tenant_oauth_idp_config",
             "gcp:integrationconnectors/connection:Connection": "google_integration_connectors_connection",
+            "gcp:integrationconnectors/endpointAttachment:EndpointAttachment": "google_integration_connectors_endpoint_attachment",
             "gcp:kms/cryptoKey:CryptoKey": "google_kms_crypto_key",
             "gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding": "google_kms_crypto_key_iam_binding",
             "gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember": "google_kms_crypto_key_iam_member",
@@ -29307,12 +29530,14 @@
             "gcp:logging/billingAccountSink:BillingAccountSink": "google_logging_billing_account_sink",
             "gcp:logging/folderBucketConfig:FolderBucketConfig": "google_logging_folder_bucket_config",
             "gcp:logging/folderExclusion:FolderExclusion": "google_logging_folder_exclusion",
+            "gcp:logging/folderSettings:FolderSettings": "google_logging_folder_settings",
             "gcp:logging/folderSink:FolderSink": "google_logging_folder_sink",
             "gcp:logging/linkedDataset:LinkedDataset": "google_logging_linked_dataset",
             "gcp:logging/logView:LogView": "google_logging_log_view",
             "gcp:logging/metric:Metric": "google_logging_metric",
             "gcp:logging/organizationBucketConfig:OrganizationBucketConfig": "google_logging_organization_bucket_config",
             "gcp:logging/organizationExclusion:OrganizationExclusion": "google_logging_organization_exclusion",
+            "gcp:logging/organizationSettings:OrganizationSettings": "google_logging_organization_settings",
             "gcp:logging/organizationSink:OrganizationSink": "google_logging_organization_sink",
             "gcp:logging/projectBucketConfig:ProjectBucketConfig": "google_logging_project_bucket_config",
             "gcp:logging/projectExclusion:ProjectExclusion": "google_logging_project_exclusion",
@@ -29331,6 +29556,8 @@
             "gcp:monitoring/notificationChannel:NotificationChannel": "google_monitoring_notification_channel",
             "gcp:monitoring/slo:Slo": "google_monitoring_slo",
             "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": "google_monitoring_uptime_check_config",
+            "gcp:netapp/activeDirectory:ActiveDirectory": "google_netapp_active_directory",
+            "gcp:netapp/backupVault:BackupVault": "google_netapp_backup_vault",
             "gcp:netapp/storagePool:StoragePool": "google_netapp_storage_pool",
             "gcp:networkconnectivity/hub:Hub": "google_network_connectivity_hub",
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": "google_network_connectivity_policy_based_route",
@@ -29506,6 +29733,8 @@
             "gcp:vertex/aiEndpointIamBinding:AiEndpointIamBinding": "google_vertex_ai_endpoint_iam_binding",
             "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember": "google_vertex_ai_endpoint_iam_member",
             "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": "google_vertex_ai_endpoint_iam_policy",
+            "gcp:vertex/aiFeatureGroup:AiFeatureGroup": "google_vertex_ai_feature_group",
+            "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": "google_vertex_ai_feature_online_store",
             "gcp:vertex/aiFeatureStore:AiFeatureStore": "google_vertex_ai_featurestore",
             "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType": "google_vertex_ai_featurestore_entitytype",
             "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature": "google_vertex_ai_featurestore_entitytype_feature",
@@ -29635,6 +29864,7 @@
             "gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup": "google_compute_region_network_endpoint_group",
             "gcp:compute/getRegionSslCertificate:getRegionSslCertificate": "google_compute_region_ssl_certificate",
             "gcp:compute/getRegions:getRegions": "google_compute_regions",
+            "gcp:compute/getReservation:getReservation": "google_compute_reservation",
             "gcp:compute/getResourcePolicy:getResourcePolicy": "google_compute_resource_policy",
             "gcp:compute/getRouter:getRouter": "google_compute_router",
             "gcp:compute/getRouterNat:getRouterNat": "google_compute_router_nat",
@@ -31711,6 +31941,9 @@
             "gcp:bigqueryanalyticshub/ListingPublisher:ListingPublisher": {
                 "primaryContact": "primary_contact"
             },
+            "gcp:bigqueryanalyticshub/ListingRestrictedExportConfig:ListingRestrictedExportConfig": {
+                "restrictQueryResult": "restrict_query_result"
+            },
             "gcp:bigqueryanalyticshub/dataExchange:DataExchange": {
                 "dataExchangeId": "data_exchange_id",
                 "displayName": "display_name",
@@ -31743,7 +31976,8 @@
                 "displayName": "display_name",
                 "listingId": "listing_id",
                 "primaryContact": "primary_contact",
-                "requestAccess": "request_access"
+                "requestAccess": "request_access",
+                "restrictedExportConfig": "restricted_export_config"
             },
             "gcp:bigqueryanalyticshub/listingIamBinding:ListingIamBinding": {
                 "dataExchangeId": "data_exchange_id",
@@ -33063,6 +33297,17 @@
                 "remoteUri": "remote_uri",
                 "updateTime": "update_time"
             },
+            "gcp:clouddeploy/AutomationRule:AutomationRule": {
+                "advanceRolloutRule": "advance_rollout_rule",
+                "promoteReleaseRule": "promote_release_rule"
+            },
+            "gcp:clouddeploy/AutomationRuleAdvanceRolloutRule:AutomationRuleAdvanceRolloutRule": {
+                "sourcePhases": "source_phases"
+            },
+            "gcp:clouddeploy/AutomationRulePromoteReleaseRule:AutomationRulePromoteReleaseRule": {
+                "destinationPhase": "destination_phase",
+                "destinationTargetId": "destination_target_id"
+            },
             "gcp:clouddeploy/DeliveryPipelineCondition:DeliveryPipelineCondition": {
                 "pipelineReadyConditions": "pipeline_ready_condition",
                 "targetsPresentConditions": "targets_present_condition",
@@ -33124,6 +33369,15 @@
             },
             "gcp:clouddeploy/TargetMultiTarget:TargetMultiTarget": {
                 "targetIds": "target_ids"
+            },
+            "gcp:clouddeploy/automation:Automation": {
+                "createTime": "create_time",
+                "deliveryPipeline": "delivery_pipeline",
+                "effectiveAnnotations": "effective_annotations",
+                "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
+                "serviceAccount": "service_account",
+                "updateTime": "update_time"
             },
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": {
                 "conditions": "condition",
@@ -34137,6 +34391,7 @@
                 "displayName": "display_name"
             },
             "gcp:composer/EnvironmentConfigNodeConfig:EnvironmentConfigNodeConfig": {
+                "composerInternalIpv4CidrBlock": "composer_internal_ipv4_cidr_block",
                 "diskSizeGb": "disk_size_gb",
                 "enableIpMasqAgent": "enable_ip_masq_agent",
                 "ipAllocationPolicy": "ip_allocation_policy",
@@ -34177,7 +34432,8 @@
                 "imageVersion": "image_version",
                 "pypiPackages": "pypi_packages",
                 "pythonVersion": "python_version",
-                "schedulerCount": "scheduler_count"
+                "schedulerCount": "scheduler_count",
+                "webServerPluginsMode": "web_server_plugins_mode"
             },
             "gcp:composer/EnvironmentConfigWebServerConfig:EnvironmentConfigWebServerConfig": {
                 "machineType": "machine_type"
@@ -34186,7 +34442,12 @@
                 "allowedIpRanges": "allowed_ip_range"
             },
             "gcp:composer/EnvironmentConfigWorkloadsConfig:EnvironmentConfigWorkloadsConfig": {
+                "dagProcessor": "dag_processor",
                 "webServer": "web_server"
+            },
+            "gcp:composer/EnvironmentConfigWorkloadsConfigDagProcessor:EnvironmentConfigWorkloadsConfigDagProcessor": {
+                "memoryGb": "memory_gb",
+                "storageGb": "storage_gb"
             },
             "gcp:composer/EnvironmentConfigWorkloadsConfigScheduler:EnvironmentConfigWorkloadsConfigScheduler": {
                 "memoryGb": "memory_gb",
@@ -34253,6 +34514,7 @@
                 "displayName": "display_name"
             },
             "gcp:composer/getEnvironmentConfigNodeConfig:getEnvironmentConfigNodeConfig": {
+                "composerInternalIpv4CidrBlock": "composer_internal_ipv4_cidr_block",
                 "diskSizeGb": "disk_size_gb",
                 "enableIpMasqAgent": "enable_ip_masq_agent",
                 "ipAllocationPolicies": "ip_allocation_policy",
@@ -34293,7 +34555,8 @@
                 "imageVersion": "image_version",
                 "pypiPackages": "pypi_packages",
                 "pythonVersion": "python_version",
-                "schedulerCount": "scheduler_count"
+                "schedulerCount": "scheduler_count",
+                "webServerPluginsMode": "web_server_plugins_mode"
             },
             "gcp:composer/getEnvironmentConfigWebServerConfig:getEnvironmentConfigWebServerConfig": {
                 "machineType": "machine_type"
@@ -34302,10 +34565,15 @@
                 "allowedIpRanges": "allowed_ip_range"
             },
             "gcp:composer/getEnvironmentConfigWorkloadsConfig:getEnvironmentConfigWorkloadsConfig": {
+                "dagProcessors": "dag_processor",
                 "schedulers": "scheduler",
                 "triggerers": "triggerer",
                 "webServers": "web_server",
                 "workers": "worker"
+            },
+            "gcp:composer/getEnvironmentConfigWorkloadsConfigDagProcessor:getEnvironmentConfigWorkloadsConfigDagProcessor": {
+                "memoryGb": "memory_gb",
+                "storageGb": "storage_gb"
             },
             "gcp:composer/getEnvironmentConfigWorkloadsConfigScheduler:getEnvironmentConfigWorkloadsConfigScheduler": {
                 "memoryGb": "memory_gb",
@@ -34563,6 +34831,8 @@
             },
             "gcp:compute/InstanceBootDiskInitializeParams:InstanceBootDiskInitializeParams": {
                 "enableConfidentialCompute": "enable_confidential_compute",
+                "provisionedIops": "provisioned_iops",
+                "provisionedThroughput": "provisioned_throughput",
                 "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceConfidentialInstanceConfig:InstanceConfidentialInstanceConfig": {
@@ -34589,6 +34859,8 @@
             },
             "gcp:compute/InstanceFromMachineImageBootDiskInitializeParams:InstanceFromMachineImageBootDiskInitializeParams": {
                 "enableConfidentialCompute": "enable_confidential_compute",
+                "provisionedIops": "provisioned_iops",
+                "provisionedThroughput": "provisioned_throughput",
                 "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceFromMachineImageConfidentialInstanceConfig:InstanceFromMachineImageConfidentialInstanceConfig": {
@@ -34675,6 +34947,8 @@
             },
             "gcp:compute/InstanceFromTemplateBootDiskInitializeParams:InstanceFromTemplateBootDiskInitializeParams": {
                 "enableConfidentialCompute": "enable_confidential_compute",
+                "provisionedIops": "provisioned_iops",
+                "provisionedThroughput": "provisioned_throughput",
                 "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/InstanceFromTemplateConfidentialInstanceConfig:InstanceFromTemplateConfidentialInstanceConfig": {
@@ -34865,6 +35139,7 @@
                 "diskSizeGb": "disk_size_gb",
                 "diskType": "disk_type",
                 "provisionedIops": "provisioned_iops",
+                "resourceManagerTags": "resource_manager_tags",
                 "resourcePolicies": "resource_policies",
                 "sourceImage": "source_image",
                 "sourceImageEncryptionKey": "source_image_encryption_key",
@@ -35231,6 +35506,7 @@
                 "diskSizeGb": "disk_size_gb",
                 "diskType": "disk_type",
                 "provisionedIops": "provisioned_iops",
+                "resourceManagerTags": "resource_manager_tags",
                 "resourcePolicies": "resource_policies",
                 "sourceImage": "source_image",
                 "sourceImageEncryptionKey": "source_image_encryption_key",
@@ -36756,6 +37032,8 @@
             },
             "gcp:compute/getInstanceBootDiskInitializeParam:getInstanceBootDiskInitializeParam": {
                 "enableConfidentialCompute": "enable_confidential_compute",
+                "provisionedIops": "provisioned_iops",
+                "provisionedThroughput": "provisioned_throughput",
                 "resourceManagerTags": "resource_manager_tags"
             },
             "gcp:compute/getInstanceConfidentialInstanceConfig:getInstanceConfidentialInstanceConfig": {
@@ -36917,6 +37195,7 @@
                 "networkPerformanceConfigs": "network_performance_config",
                 "pulumiLabels": "terraform_labels",
                 "reservationAffinities": "reservation_affinity",
+                "resourceManagerTags": "resource_manager_tags",
                 "resourcePolicies": "resource_policies",
                 "schedulings": "scheduling",
                 "selfLink": "self_link",
@@ -36941,6 +37220,7 @@
                 "diskSizeGb": "disk_size_gb",
                 "diskType": "disk_type",
                 "provisionedIops": "provisioned_iops",
+                "resourceManagerTags": "resource_manager_tags",
                 "resourcePolicies": "resource_policies",
                 "sourceImage": "source_image",
                 "sourceImageEncryptionKeys": "source_image_encryption_key",
@@ -37103,6 +37383,7 @@
                 "networkPerformanceConfigs": "network_performance_config",
                 "pulumiLabels": "terraform_labels",
                 "reservationAffinities": "reservation_affinity",
+                "resourceManagerTags": "resource_manager_tags",
                 "resourcePolicies": "resource_policies",
                 "schedulings": "scheduling",
                 "selfLink": "self_link",
@@ -37126,6 +37407,7 @@
                 "diskSizeGb": "disk_size_gb",
                 "diskType": "disk_type",
                 "provisionedIops": "provisioned_iops",
+                "resourceManagerTags": "resource_manager_tags",
                 "resourcePolicies": "resource_policies",
                 "sourceImage": "source_image",
                 "sourceImageEncryptionKeys": "source_image_encryption_key",
@@ -37221,6 +37503,37 @@
                 "namePrefix": "name_prefix",
                 "privateKey": "private_key",
                 "selfLink": "self_link"
+            },
+            "gcp:compute/getReservation:getReservation": {
+                "creationTimestamp": "creation_timestamp",
+                "selfLink": "self_link",
+                "shareSettings": "share_settings",
+                "specificReservationRequired": "specific_reservation_required",
+                "specificReservations": "specific_reservation"
+            },
+            "gcp:compute/getReservationShareSetting:getReservationShareSetting": {
+                "projectMaps": "project_map",
+                "shareType": "share_type"
+            },
+            "gcp:compute/getReservationShareSettingProjectMap:getReservationShareSettingProjectMap": {
+                "projectId": "project_id"
+            },
+            "gcp:compute/getReservationSpecificReservation:getReservationSpecificReservation": {
+                "inUseCount": "in_use_count",
+                "instanceProperties": "instance_properties"
+            },
+            "gcp:compute/getReservationSpecificReservationInstanceProperty:getReservationSpecificReservationInstanceProperty": {
+                "guestAccelerators": "guest_accelerators",
+                "localSsds": "local_ssds",
+                "machineType": "machine_type",
+                "minCpuPlatform": "min_cpu_platform"
+            },
+            "gcp:compute/getReservationSpecificReservationInstancePropertyGuestAccelerator:getReservationSpecificReservationInstancePropertyGuestAccelerator": {
+                "acceleratorCount": "accelerator_count",
+                "acceleratorType": "accelerator_type"
+            },
+            "gcp:compute/getReservationSpecificReservationInstancePropertyLocalSsd:getReservationSpecificReservationInstancePropertyLocalSsd": {
+                "diskSizeGb": "disk_size_gb"
             },
             "gcp:compute/getResourcePolicy:getResourcePolicy": {
                 "diskConsistencyGroupPolicies": "disk_consistency_group_policy",
@@ -37638,6 +37951,7 @@
                 "networkPerformanceConfig": "network_performance_config",
                 "pulumiLabels": "terraform_labels",
                 "reservationAffinity": "reservation_affinity",
+                "resourceManagerTags": "resource_manager_tags",
                 "resourcePolicies": "resource_policies",
                 "selfLink": "self_link",
                 "selfLinkUnique": "self_link_unique",
@@ -37941,6 +38255,7 @@
                 "networkPerformanceConfig": "network_performance_config",
                 "pulumiLabels": "terraform_labels",
                 "reservationAffinity": "reservation_affinity",
+                "resourceManagerTags": "resource_manager_tags",
                 "resourcePolicies": "resource_policies",
                 "selfLink": "self_link",
                 "serviceAccount": "service_account",
@@ -38937,6 +39252,9 @@
                 "ipv4CidrBlock": "ipv4_cidr_block",
                 "useServiceNetworking": "use_service_networking"
             },
+            "gcp:container/ClusterWorkloadAltsConfig:ClusterWorkloadAltsConfig": {
+                "enableAlts": "enable_alts"
+            },
             "gcp:container/ClusterWorkloadIdentityConfig:ClusterWorkloadIdentityConfig": {
                 "workloadPool": "workload_pool"
             },
@@ -39190,6 +39508,7 @@
                 "tpuConfig": "tpu_config",
                 "tpuIpv4CidrBlock": "tpu_ipv4_cidr_block",
                 "verticalPodAutoscaling": "vertical_pod_autoscaling",
+                "workloadAltsConfig": "workload_alts_config",
                 "workloadIdentityConfig": "workload_identity_config"
             },
             "gcp:container/getAttachedInstallManifest:getAttachedInstallManifest": {
@@ -39273,6 +39592,7 @@
                 "tpuConfigs": "tpu_config",
                 "tpuIpv4CidrBlock": "tpu_ipv4_cidr_block",
                 "verticalPodAutoscalings": "vertical_pod_autoscaling",
+                "workloadAltsConfigs": "workload_alts_config",
                 "workloadIdentityConfigs": "workload_identity_config"
             },
             "gcp:container/getClusterAddonsConfig:getClusterAddonsConfig": {
@@ -39698,6 +40018,9 @@
             "gcp:container/getClusterTpuConfig:getClusterTpuConfig": {
                 "ipv4CidrBlock": "ipv4_cidr_block",
                 "useServiceNetworking": "use_service_networking"
+            },
+            "gcp:container/getClusterWorkloadAltsConfig:getClusterWorkloadAltsConfig": {
+                "enableAlts": "enable_alts"
             },
             "gcp:container/getClusterWorkloadIdentityConfig:getClusterWorkloadIdentityConfig": {
                 "workloadPool": "workload_pool"
@@ -41366,6 +41689,7 @@
             },
             "gcp:dataproc/ClusterClusterConfig:ClusterClusterConfig": {
                 "autoscalingConfig": "autoscaling_config",
+                "auxiliaryNodeGroups": "auxiliary_node_groups",
                 "dataprocMetricConfig": "dataproc_metric_config",
                 "encryptionConfig": "encryption_config",
                 "endpointConfig": "endpoint_config",
@@ -41383,6 +41707,29 @@
             },
             "gcp:dataproc/ClusterClusterConfigAutoscalingConfig:ClusterClusterConfigAutoscalingConfig": {
                 "policyUri": "policy_uri"
+            },
+            "gcp:dataproc/ClusterClusterConfigAuxiliaryNodeGroup:ClusterClusterConfigAuxiliaryNodeGroup": {
+                "nodeGroupId": "node_group_id",
+                "nodeGroups": "node_group"
+            },
+            "gcp:dataproc/ClusterClusterConfigAuxiliaryNodeGroupNodeGroup:ClusterClusterConfigAuxiliaryNodeGroupNodeGroup": {
+                "nodeGroupConfig": "node_group_config"
+            },
+            "gcp:dataproc/ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig:ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig": {
+                "diskConfig": "disk_config",
+                "instanceNames": "instance_names",
+                "machineType": "machine_type",
+                "minCpuPlatform": "min_cpu_platform",
+                "numInstances": "num_instances"
+            },
+            "gcp:dataproc/ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator:ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator": {
+                "acceleratorCount": "accelerator_count",
+                "acceleratorType": "accelerator_type"
+            },
+            "gcp:dataproc/ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig:ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig": {
+                "bootDiskSizeGb": "boot_disk_size_gb",
+                "bootDiskType": "boot_disk_type",
+                "numLocalSsds": "num_local_ssds"
             },
             "gcp:dataproc/ClusterClusterConfigDataprocMetricConfigMetric:ClusterClusterConfigDataprocMetricConfigMetric": {
                 "metricOverrides": "metric_overrides",
@@ -41659,6 +42006,9 @@
             },
             "gcp:dataproc/MetastoreServiceMetadataIntegration:MetastoreServiceMetadataIntegration": {
                 "dataCatalogConfig": "data_catalog_config"
+            },
+            "gcp:dataproc/MetastoreServiceNetworkConfig:MetastoreServiceNetworkConfig": {
+                "customRoutesEnabled": "custom_routes_enabled"
             },
             "gcp:dataproc/MetastoreServiceNetworkConfigConsumer:MetastoreServiceNetworkConfigConsumer": {
                 "endpointUri": "endpoint_uri"
@@ -45203,6 +45553,14 @@
                 "subscriptionType": "subscription_type",
                 "updateTime": "update_time"
             },
+            "gcp:integrationconnectors/endpointAttachment:EndpointAttachment": {
+                "createTime": "create_time",
+                "effectiveLabels": "effective_labels",
+                "endpointIp": "endpoint_ip",
+                "pulumiLabels": "terraform_labels",
+                "serviceAttachment": "service_attachment",
+                "updateTime": "update_time"
+            },
             "gcp:kms/CryptoKeyVersionAttestation:CryptoKeyVersionAttestation": {
                 "certChains": "cert_chains",
                 "externalProtectionLevelOptions": "external_protection_level_options"
@@ -45224,6 +45582,7 @@
                 "effectiveLabels": "effective_labels",
                 "importOnly": "import_only",
                 "keyRing": "key_ring",
+                "primaries": "primary",
                 "pulumiLabels": "terraform_labels",
                 "rotationPeriod": "rotation_period",
                 "skipInitialVersionCreation": "skip_initial_version_creation",
@@ -45254,6 +45613,7 @@
                 "effectiveLabels": "effective_labels",
                 "importOnly": "import_only",
                 "keyRing": "key_ring",
+                "primaries": "primary",
                 "pulumiLabels": "terraform_labels",
                 "rotationPeriod": "rotation_period",
                 "skipInitialVersionCreation": "skip_initial_version_creation",
@@ -45394,6 +45754,13 @@
                 "lifecycleState": "lifecycle_state",
                 "retentionDays": "retention_days"
             },
+            "gcp:logging/folderSettings:FolderSettings": {
+                "disableDefaultSink": "disable_default_sink",
+                "kmsKeyName": "kms_key_name",
+                "kmsServiceAccountId": "kms_service_account_id",
+                "loggingServiceAccountId": "logging_service_account_id",
+                "storageLocation": "storage_location"
+            },
             "gcp:logging/folderSink:FolderSink": {
                 "bigqueryOptions": "bigquery_options",
                 "includeChildren": "include_children",
@@ -45458,6 +45825,13 @@
             },
             "gcp:logging/organizationExclusion:OrganizationExclusion": {
                 "orgId": "org_id"
+            },
+            "gcp:logging/organizationSettings:OrganizationSettings": {
+                "disableDefaultSink": "disable_default_sink",
+                "kmsKeyName": "kms_key_name",
+                "kmsServiceAccountId": "kms_service_account_id",
+                "loggingServiceAccountId": "logging_service_account_id",
+                "storageLocation": "storage_location"
             },
             "gcp:logging/organizationSink:OrganizationSink": {
                 "bigqueryOptions": "bigquery_options",
@@ -45882,6 +46256,27 @@
                 "tcpCheck": "tcp_check",
                 "uptimeCheckId": "uptime_check_id",
                 "userLabels": "user_labels"
+            },
+            "gcp:netapp/activeDirectory:ActiveDirectory": {
+                "aesEncryption": "aes_encryption",
+                "backupOperators": "backup_operators",
+                "createTime": "create_time",
+                "effectiveLabels": "effective_labels",
+                "encryptDcConnections": "encrypt_dc_connections",
+                "kdcHostname": "kdc_hostname",
+                "kdcIp": "kdc_ip",
+                "ldapSigning": "ldap_signing",
+                "netBiosPrefix": "net_bios_prefix",
+                "nfsUsersWithLdap": "nfs_users_with_ldap",
+                "organizationalUnit": "organizational_unit",
+                "pulumiLabels": "terraform_labels",
+                "securityOperators": "security_operators",
+                "stateDetails": "state_details"
+            },
+            "gcp:netapp/backupVault:BackupVault": {
+                "createTime": "create_time",
+                "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels"
             },
             "gcp:netapp/storagePool:StoragePool": {
                 "activeDirectory": "active_directory",
@@ -48956,6 +49351,30 @@
             "gcp:vertex/AiEndpointEncryptionSpec:AiEndpointEncryptionSpec": {
                 "kmsKeyName": "kms_key_name"
             },
+            "gcp:vertex/AiFeatureGroupBigQuery:AiFeatureGroupBigQuery": {
+                "bigQuerySource": "big_query_source",
+                "entityIdColumns": "entity_id_columns"
+            },
+            "gcp:vertex/AiFeatureGroupBigQueryBigQuerySource:AiFeatureGroupBigQueryBigQuerySource": {
+                "inputUri": "input_uri"
+            },
+            "gcp:vertex/AiFeatureOnlineStoreBigtable:AiFeatureOnlineStoreBigtable": {
+                "autoScaling": "auto_scaling"
+            },
+            "gcp:vertex/AiFeatureOnlineStoreBigtableAutoScaling:AiFeatureOnlineStoreBigtableAutoScaling": {
+                "cpuUtilizationTarget": "cpu_utilization_target",
+                "maxNodeCount": "max_node_count",
+                "minNodeCount": "min_node_count"
+            },
+            "gcp:vertex/AiFeatureOnlineStoreDedicatedServingEndpoint:AiFeatureOnlineStoreDedicatedServingEndpoint": {
+                "privateServiceConnectConfig": "private_service_connect_config",
+                "publicEndpointDomainName": "public_endpoint_domain_name",
+                "serviceAttachment": "service_attachment"
+            },
+            "gcp:vertex/AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig:AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig": {
+                "enablePrivateServiceConnect": "enable_private_service_connect",
+                "projectAllowlists": "project_allowlist"
+            },
             "gcp:vertex/AiFeatureStoreEncryptionSpec:AiFeatureStoreEncryptionSpec": {
                 "kmsKeyName": "kms_key_name"
             },
@@ -49041,6 +49460,22 @@
             },
             "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": {
                 "policyData": "policy_data"
+            },
+            "gcp:vertex/aiFeatureGroup:AiFeatureGroup": {
+                "bigQuery": "big_query",
+                "createTime": "create_time",
+                "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
+                "updateTime": "update_time"
+            },
+            "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": {
+                "createTime": "create_time",
+                "dedicatedServingEndpoint": "dedicated_serving_endpoint",
+                "effectiveLabels": "effective_labels",
+                "embeddingManagement": "embedding_management",
+                "forceDestroy": "force_destroy",
+                "pulumiLabels": "terraform_labels",
+                "updateTime": "update_time"
             },
             "gcp:vertex/aiFeatureStore:AiFeatureStore": {
                 "createTime": "create_time",
