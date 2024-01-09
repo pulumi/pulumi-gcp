@@ -13,7 +13,9 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
     /**
-     * @return The name of a Compute Engine machine type.
+     * @return The name of a Google Compute Engine machine type
+     * to create for the node group. If not specified, GCP will default to a predetermined
+     * computed value (currently `n1-standard-4`).
      * 
      */
     private @Nullable String machineType;
@@ -21,7 +23,9 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
 
     private ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult() {}
     /**
-     * @return The name of a Compute Engine machine type.
+     * @return The name of a Google Compute Engine machine type
+     * to create for the node group. If not specified, GCP will default to a predetermined
+     * computed value (currently `n1-standard-4`).
      * 
      */
     public Optional<String> machineType() {

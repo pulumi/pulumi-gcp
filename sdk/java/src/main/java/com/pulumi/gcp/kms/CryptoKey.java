@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.kms.CryptoKeyArgs;
 import com.pulumi.gcp.kms.inputs.CryptoKeyState;
+import com.pulumi.gcp.kms.outputs.CryptoKeyPrimary;
 import com.pulumi.gcp.kms.outputs.CryptoKeyVersionTemplate;
 import java.lang.Boolean;
 import java.lang.String;
@@ -217,6 +218,24 @@ public class CryptoKey extends com.pulumi.resources.CustomResource {
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+     * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="primaries", refs={List.class,CryptoKeyPrimary.class}, tree="[0,1]")
+    private Output<List<CryptoKeyPrimary>> primaries;
+
+    /**
+     * @return A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+     * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<CryptoKeyPrimary>> primaries() {
+        return this.primaries;
     }
     /**
      * The combination of labels configured directly on the resource

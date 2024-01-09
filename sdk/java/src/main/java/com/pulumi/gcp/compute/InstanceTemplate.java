@@ -811,6 +811,20 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.reservationAffinity);
     }
     /**
+     * A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * 
+     */
+    @Export(name="resourceManagerTags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> resourceManagerTags;
+
+    /**
+     * @return A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> resourceManagerTags() {
+        return Codegen.optional(this.resourceManagerTags);
+    }
+    /**
      * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */

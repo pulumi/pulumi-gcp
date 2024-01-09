@@ -167,14 +167,15 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const _default = new gcp.cloudrunv2.Job("default", {
- *     location: "us-central1",
  *     launchStage: "BETA",
+ *     location: "us-central1",
  *     template: {
  *         template: {
  *             containers: [{
  *                 image: "us-docker.pkg.dev/cloudrun/container/job",
  *             }],
  *             vpcAccess: {
+ *                 egress: "ALL_TRAFFIC",
  *                 networkInterfaces: [{
  *                     network: "default",
  *                     subnetwork: "default",
@@ -184,7 +185,6 @@ import * as utilities from "../utilities";
  *                         "tag3",
  *                     ],
  *                 }],
- *                 egress: "ALL_TRAFFIC",
  *             },
  *         },
  *     },

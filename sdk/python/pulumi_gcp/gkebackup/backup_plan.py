@@ -574,7 +574,9 @@ class BackupPlan(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -602,7 +604,9 @@ class BackupPlan(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
             cluster=primary.id,
             location="us-central1",
@@ -629,7 +633,9 @@ class BackupPlan(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
@@ -666,7 +672,9 @@ class BackupPlan(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         full = gcp.gkebackup.BackupPlan("full",
             cluster=primary.id,
             location="us-central1",
@@ -780,7 +788,9 @@ class BackupPlan(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -808,7 +818,9 @@ class BackupPlan(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         autopilot = gcp.gkebackup.BackupPlan("autopilot",
             cluster=primary.id,
             location="us-central1",
@@ -835,7 +847,9 @@ class BackupPlan(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         key_ring = gcp.kms.KeyRing("keyRing", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=key_ring.id)
         cmek = gcp.gkebackup.BackupPlan("cmek",
@@ -872,7 +886,9 @@ class BackupPlan(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         full = gcp.gkebackup.BackupPlan("full",
             cluster=primary.id,
             location="us-central1",

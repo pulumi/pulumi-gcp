@@ -25,6 +25,8 @@ public final class GetInstanceBootDiskInitializeParam {
      * 
      */
     private Map<String,Object> labels;
+    private Integer provisionedIops;
+    private Integer provisionedThroughput;
     private Map<String,Object> resourceManagerTags;
     /**
      * @return The size of the image in gigabytes.
@@ -54,6 +56,12 @@ public final class GetInstanceBootDiskInitializeParam {
      */
     public Map<String,Object> labels() {
         return this.labels;
+    }
+    public Integer provisionedIops() {
+        return this.provisionedIops;
+    }
+    public Integer provisionedThroughput() {
+        return this.provisionedThroughput;
     }
     public Map<String,Object> resourceManagerTags() {
         return this.resourceManagerTags;
@@ -85,6 +93,8 @@ public final class GetInstanceBootDiskInitializeParam {
         private Boolean enableConfidentialCompute;
         private String image;
         private Map<String,Object> labels;
+        private Integer provisionedIops;
+        private Integer provisionedThroughput;
         private Map<String,Object> resourceManagerTags;
         private Integer size;
         private String type;
@@ -94,6 +104,8 @@ public final class GetInstanceBootDiskInitializeParam {
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
+    	      this.provisionedIops = defaults.provisionedIops;
+    	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.size = defaults.size;
     	      this.type = defaults.type;
@@ -121,6 +133,22 @@ public final class GetInstanceBootDiskInitializeParam {
               throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "labels");
             }
             this.labels = labels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionedIops(Integer provisionedIops) {
+            if (provisionedIops == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "provisionedIops");
+            }
+            this.provisionedIops = provisionedIops;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionedThroughput(Integer provisionedThroughput) {
+            if (provisionedThroughput == null) {
+              throw new MissingRequiredPropertyException("GetInstanceBootDiskInitializeParam", "provisionedThroughput");
+            }
+            this.provisionedThroughput = provisionedThroughput;
             return this;
         }
         @CustomType.Setter
@@ -152,6 +180,8 @@ public final class GetInstanceBootDiskInitializeParam {
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
             _resultValue.image = image;
             _resultValue.labels = labels;
+            _resultValue.provisionedIops = provisionedIops;
+            _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.size = size;
             _resultValue.type = type;

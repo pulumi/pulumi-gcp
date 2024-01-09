@@ -13,6 +13,742 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AutomationRule struct {
+	// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+	// Structure is documented below.
+	AdvanceRolloutRule *AutomationRuleAdvanceRolloutRule `pulumi:"advanceRolloutRule"`
+	// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+	// Structure is documented below.
+	PromoteReleaseRule *AutomationRulePromoteReleaseRule `pulumi:"promoteReleaseRule"`
+}
+
+// AutomationRuleInput is an input type that accepts AutomationRuleArgs and AutomationRuleOutput values.
+// You can construct a concrete instance of `AutomationRuleInput` via:
+//
+//	AutomationRuleArgs{...}
+type AutomationRuleInput interface {
+	pulumi.Input
+
+	ToAutomationRuleOutput() AutomationRuleOutput
+	ToAutomationRuleOutputWithContext(context.Context) AutomationRuleOutput
+}
+
+type AutomationRuleArgs struct {
+	// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+	// Structure is documented below.
+	AdvanceRolloutRule AutomationRuleAdvanceRolloutRulePtrInput `pulumi:"advanceRolloutRule"`
+	// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+	// Structure is documented below.
+	PromoteReleaseRule AutomationRulePromoteReleaseRulePtrInput `pulumi:"promoteReleaseRule"`
+}
+
+func (AutomationRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRule)(nil)).Elem()
+}
+
+func (i AutomationRuleArgs) ToAutomationRuleOutput() AutomationRuleOutput {
+	return i.ToAutomationRuleOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleArgs) ToAutomationRuleOutputWithContext(ctx context.Context) AutomationRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleOutput)
+}
+
+// AutomationRuleArrayInput is an input type that accepts AutomationRuleArray and AutomationRuleArrayOutput values.
+// You can construct a concrete instance of `AutomationRuleArrayInput` via:
+//
+//	AutomationRuleArray{ AutomationRuleArgs{...} }
+type AutomationRuleArrayInput interface {
+	pulumi.Input
+
+	ToAutomationRuleArrayOutput() AutomationRuleArrayOutput
+	ToAutomationRuleArrayOutputWithContext(context.Context) AutomationRuleArrayOutput
+}
+
+type AutomationRuleArray []AutomationRuleInput
+
+func (AutomationRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutomationRule)(nil)).Elem()
+}
+
+func (i AutomationRuleArray) ToAutomationRuleArrayOutput() AutomationRuleArrayOutput {
+	return i.ToAutomationRuleArrayOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleArray) ToAutomationRuleArrayOutputWithContext(ctx context.Context) AutomationRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleArrayOutput)
+}
+
+type AutomationRuleOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRule)(nil)).Elem()
+}
+
+func (o AutomationRuleOutput) ToAutomationRuleOutput() AutomationRuleOutput {
+	return o
+}
+
+func (o AutomationRuleOutput) ToAutomationRuleOutputWithContext(ctx context.Context) AutomationRuleOutput {
+	return o
+}
+
+// Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+// Structure is documented below.
+func (o AutomationRuleOutput) AdvanceRolloutRule() AutomationRuleAdvanceRolloutRulePtrOutput {
+	return o.ApplyT(func(v AutomationRule) *AutomationRuleAdvanceRolloutRule { return v.AdvanceRolloutRule }).(AutomationRuleAdvanceRolloutRulePtrOutput)
+}
+
+// Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+// Structure is documented below.
+func (o AutomationRuleOutput) PromoteReleaseRule() AutomationRulePromoteReleaseRulePtrOutput {
+	return o.ApplyT(func(v AutomationRule) *AutomationRulePromoteReleaseRule { return v.PromoteReleaseRule }).(AutomationRulePromoteReleaseRulePtrOutput)
+}
+
+type AutomationRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutomationRule)(nil)).Elem()
+}
+
+func (o AutomationRuleArrayOutput) ToAutomationRuleArrayOutput() AutomationRuleArrayOutput {
+	return o
+}
+
+func (o AutomationRuleArrayOutput) ToAutomationRuleArrayOutputWithContext(ctx context.Context) AutomationRuleArrayOutput {
+	return o
+}
+
+func (o AutomationRuleArrayOutput) Index(i pulumi.IntInput) AutomationRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutomationRule {
+		return vs[0].([]AutomationRule)[vs[1].(int)]
+	}).(AutomationRuleOutput)
+}
+
+type AutomationRuleAdvanceRolloutRule struct {
+	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id string `pulumi:"id"`
+	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	//
+	// ***
+	SourcePhases []string `pulumi:"sourcePhases"`
+	// Optional. How long to wait after a rollout is finished.
+	Wait *string `pulumi:"wait"`
+}
+
+// AutomationRuleAdvanceRolloutRuleInput is an input type that accepts AutomationRuleAdvanceRolloutRuleArgs and AutomationRuleAdvanceRolloutRuleOutput values.
+// You can construct a concrete instance of `AutomationRuleAdvanceRolloutRuleInput` via:
+//
+//	AutomationRuleAdvanceRolloutRuleArgs{...}
+type AutomationRuleAdvanceRolloutRuleInput interface {
+	pulumi.Input
+
+	ToAutomationRuleAdvanceRolloutRuleOutput() AutomationRuleAdvanceRolloutRuleOutput
+	ToAutomationRuleAdvanceRolloutRuleOutputWithContext(context.Context) AutomationRuleAdvanceRolloutRuleOutput
+}
+
+type AutomationRuleAdvanceRolloutRuleArgs struct {
+	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	//
+	// ***
+	SourcePhases pulumi.StringArrayInput `pulumi:"sourcePhases"`
+	// Optional. How long to wait after a rollout is finished.
+	Wait pulumi.StringPtrInput `pulumi:"wait"`
+}
+
+func (AutomationRuleAdvanceRolloutRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleAdvanceRolloutRule)(nil)).Elem()
+}
+
+func (i AutomationRuleAdvanceRolloutRuleArgs) ToAutomationRuleAdvanceRolloutRuleOutput() AutomationRuleAdvanceRolloutRuleOutput {
+	return i.ToAutomationRuleAdvanceRolloutRuleOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleAdvanceRolloutRuleArgs) ToAutomationRuleAdvanceRolloutRuleOutputWithContext(ctx context.Context) AutomationRuleAdvanceRolloutRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleAdvanceRolloutRuleOutput)
+}
+
+func (i AutomationRuleAdvanceRolloutRuleArgs) ToAutomationRuleAdvanceRolloutRulePtrOutput() AutomationRuleAdvanceRolloutRulePtrOutput {
+	return i.ToAutomationRuleAdvanceRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (i AutomationRuleAdvanceRolloutRuleArgs) ToAutomationRuleAdvanceRolloutRulePtrOutputWithContext(ctx context.Context) AutomationRuleAdvanceRolloutRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleAdvanceRolloutRuleOutput).ToAutomationRuleAdvanceRolloutRulePtrOutputWithContext(ctx)
+}
+
+// AutomationRuleAdvanceRolloutRulePtrInput is an input type that accepts AutomationRuleAdvanceRolloutRuleArgs, AutomationRuleAdvanceRolloutRulePtr and AutomationRuleAdvanceRolloutRulePtrOutput values.
+// You can construct a concrete instance of `AutomationRuleAdvanceRolloutRulePtrInput` via:
+//
+//	        AutomationRuleAdvanceRolloutRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomationRuleAdvanceRolloutRulePtrInput interface {
+	pulumi.Input
+
+	ToAutomationRuleAdvanceRolloutRulePtrOutput() AutomationRuleAdvanceRolloutRulePtrOutput
+	ToAutomationRuleAdvanceRolloutRulePtrOutputWithContext(context.Context) AutomationRuleAdvanceRolloutRulePtrOutput
+}
+
+type automationRuleAdvanceRolloutRulePtrType AutomationRuleAdvanceRolloutRuleArgs
+
+func AutomationRuleAdvanceRolloutRulePtr(v *AutomationRuleAdvanceRolloutRuleArgs) AutomationRuleAdvanceRolloutRulePtrInput {
+	return (*automationRuleAdvanceRolloutRulePtrType)(v)
+}
+
+func (*automationRuleAdvanceRolloutRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleAdvanceRolloutRule)(nil)).Elem()
+}
+
+func (i *automationRuleAdvanceRolloutRulePtrType) ToAutomationRuleAdvanceRolloutRulePtrOutput() AutomationRuleAdvanceRolloutRulePtrOutput {
+	return i.ToAutomationRuleAdvanceRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (i *automationRuleAdvanceRolloutRulePtrType) ToAutomationRuleAdvanceRolloutRulePtrOutputWithContext(ctx context.Context) AutomationRuleAdvanceRolloutRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRuleAdvanceRolloutRulePtrOutput)
+}
+
+type AutomationRuleAdvanceRolloutRuleOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleAdvanceRolloutRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRuleAdvanceRolloutRule)(nil)).Elem()
+}
+
+func (o AutomationRuleAdvanceRolloutRuleOutput) ToAutomationRuleAdvanceRolloutRuleOutput() AutomationRuleAdvanceRolloutRuleOutput {
+	return o
+}
+
+func (o AutomationRuleAdvanceRolloutRuleOutput) ToAutomationRuleAdvanceRolloutRuleOutputWithContext(ctx context.Context) AutomationRuleAdvanceRolloutRuleOutput {
+	return o
+}
+
+func (o AutomationRuleAdvanceRolloutRuleOutput) ToAutomationRuleAdvanceRolloutRulePtrOutput() AutomationRuleAdvanceRolloutRulePtrOutput {
+	return o.ToAutomationRuleAdvanceRolloutRulePtrOutputWithContext(context.Background())
+}
+
+func (o AutomationRuleAdvanceRolloutRuleOutput) ToAutomationRuleAdvanceRolloutRulePtrOutputWithContext(ctx context.Context) AutomationRuleAdvanceRolloutRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationRuleAdvanceRolloutRule) *AutomationRuleAdvanceRolloutRule {
+		return &v
+	}).(AutomationRuleAdvanceRolloutRulePtrOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AutomationRuleAdvanceRolloutRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRuleAdvanceRolloutRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+//
+// ***
+func (o AutomationRuleAdvanceRolloutRuleOutput) SourcePhases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AutomationRuleAdvanceRolloutRule) []string { return v.SourcePhases }).(pulumi.StringArrayOutput)
+}
+
+// Optional. How long to wait after a rollout is finished.
+func (o AutomationRuleAdvanceRolloutRuleOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRuleAdvanceRolloutRule) *string { return v.Wait }).(pulumi.StringPtrOutput)
+}
+
+type AutomationRuleAdvanceRolloutRulePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomationRuleAdvanceRolloutRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRuleAdvanceRolloutRule)(nil)).Elem()
+}
+
+func (o AutomationRuleAdvanceRolloutRulePtrOutput) ToAutomationRuleAdvanceRolloutRulePtrOutput() AutomationRuleAdvanceRolloutRulePtrOutput {
+	return o
+}
+
+func (o AutomationRuleAdvanceRolloutRulePtrOutput) ToAutomationRuleAdvanceRolloutRulePtrOutputWithContext(ctx context.Context) AutomationRuleAdvanceRolloutRulePtrOutput {
+	return o
+}
+
+func (o AutomationRuleAdvanceRolloutRulePtrOutput) Elem() AutomationRuleAdvanceRolloutRuleOutput {
+	return o.ApplyT(func(v *AutomationRuleAdvanceRolloutRule) AutomationRuleAdvanceRolloutRule {
+		if v != nil {
+			return *v
+		}
+		var ret AutomationRuleAdvanceRolloutRule
+		return ret
+	}).(AutomationRuleAdvanceRolloutRuleOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AutomationRuleAdvanceRolloutRulePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleAdvanceRolloutRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+//
+// ***
+func (o AutomationRuleAdvanceRolloutRulePtrOutput) SourcePhases() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AutomationRuleAdvanceRolloutRule) []string {
+		if v == nil {
+			return nil
+		}
+		return v.SourcePhases
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. How long to wait after a rollout is finished.
+func (o AutomationRuleAdvanceRolloutRulePtrOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRuleAdvanceRolloutRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutomationRulePromoteReleaseRule struct {
+	// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+	DestinationPhase *string `pulumi:"destinationPhase"`
+	// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+	DestinationTargetId *string `pulumi:"destinationTargetId"`
+	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id string `pulumi:"id"`
+	// Optional. How long the release need to be paused until being promoted to the next target.
+	Wait *string `pulumi:"wait"`
+}
+
+// AutomationRulePromoteReleaseRuleInput is an input type that accepts AutomationRulePromoteReleaseRuleArgs and AutomationRulePromoteReleaseRuleOutput values.
+// You can construct a concrete instance of `AutomationRulePromoteReleaseRuleInput` via:
+//
+//	AutomationRulePromoteReleaseRuleArgs{...}
+type AutomationRulePromoteReleaseRuleInput interface {
+	pulumi.Input
+
+	ToAutomationRulePromoteReleaseRuleOutput() AutomationRulePromoteReleaseRuleOutput
+	ToAutomationRulePromoteReleaseRuleOutputWithContext(context.Context) AutomationRulePromoteReleaseRuleOutput
+}
+
+type AutomationRulePromoteReleaseRuleArgs struct {
+	// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+	DestinationPhase pulumi.StringPtrInput `pulumi:"destinationPhase"`
+	// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+	DestinationTargetId pulumi.StringPtrInput `pulumi:"destinationTargetId"`
+	// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+	Id pulumi.StringInput `pulumi:"id"`
+	// Optional. How long the release need to be paused until being promoted to the next target.
+	Wait pulumi.StringPtrInput `pulumi:"wait"`
+}
+
+func (AutomationRulePromoteReleaseRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRulePromoteReleaseRule)(nil)).Elem()
+}
+
+func (i AutomationRulePromoteReleaseRuleArgs) ToAutomationRulePromoteReleaseRuleOutput() AutomationRulePromoteReleaseRuleOutput {
+	return i.ToAutomationRulePromoteReleaseRuleOutputWithContext(context.Background())
+}
+
+func (i AutomationRulePromoteReleaseRuleArgs) ToAutomationRulePromoteReleaseRuleOutputWithContext(ctx context.Context) AutomationRulePromoteReleaseRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePromoteReleaseRuleOutput)
+}
+
+func (i AutomationRulePromoteReleaseRuleArgs) ToAutomationRulePromoteReleaseRulePtrOutput() AutomationRulePromoteReleaseRulePtrOutput {
+	return i.ToAutomationRulePromoteReleaseRulePtrOutputWithContext(context.Background())
+}
+
+func (i AutomationRulePromoteReleaseRuleArgs) ToAutomationRulePromoteReleaseRulePtrOutputWithContext(ctx context.Context) AutomationRulePromoteReleaseRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePromoteReleaseRuleOutput).ToAutomationRulePromoteReleaseRulePtrOutputWithContext(ctx)
+}
+
+// AutomationRulePromoteReleaseRulePtrInput is an input type that accepts AutomationRulePromoteReleaseRuleArgs, AutomationRulePromoteReleaseRulePtr and AutomationRulePromoteReleaseRulePtrOutput values.
+// You can construct a concrete instance of `AutomationRulePromoteReleaseRulePtrInput` via:
+//
+//	        AutomationRulePromoteReleaseRuleArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomationRulePromoteReleaseRulePtrInput interface {
+	pulumi.Input
+
+	ToAutomationRulePromoteReleaseRulePtrOutput() AutomationRulePromoteReleaseRulePtrOutput
+	ToAutomationRulePromoteReleaseRulePtrOutputWithContext(context.Context) AutomationRulePromoteReleaseRulePtrOutput
+}
+
+type automationRulePromoteReleaseRulePtrType AutomationRulePromoteReleaseRuleArgs
+
+func AutomationRulePromoteReleaseRulePtr(v *AutomationRulePromoteReleaseRuleArgs) AutomationRulePromoteReleaseRulePtrInput {
+	return (*automationRulePromoteReleaseRulePtrType)(v)
+}
+
+func (*automationRulePromoteReleaseRulePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRulePromoteReleaseRule)(nil)).Elem()
+}
+
+func (i *automationRulePromoteReleaseRulePtrType) ToAutomationRulePromoteReleaseRulePtrOutput() AutomationRulePromoteReleaseRulePtrOutput {
+	return i.ToAutomationRulePromoteReleaseRulePtrOutputWithContext(context.Background())
+}
+
+func (i *automationRulePromoteReleaseRulePtrType) ToAutomationRulePromoteReleaseRulePtrOutputWithContext(ctx context.Context) AutomationRulePromoteReleaseRulePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationRulePromoteReleaseRulePtrOutput)
+}
+
+type AutomationRulePromoteReleaseRuleOutput struct{ *pulumi.OutputState }
+
+func (AutomationRulePromoteReleaseRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationRulePromoteReleaseRule)(nil)).Elem()
+}
+
+func (o AutomationRulePromoteReleaseRuleOutput) ToAutomationRulePromoteReleaseRuleOutput() AutomationRulePromoteReleaseRuleOutput {
+	return o
+}
+
+func (o AutomationRulePromoteReleaseRuleOutput) ToAutomationRulePromoteReleaseRuleOutputWithContext(ctx context.Context) AutomationRulePromoteReleaseRuleOutput {
+	return o
+}
+
+func (o AutomationRulePromoteReleaseRuleOutput) ToAutomationRulePromoteReleaseRulePtrOutput() AutomationRulePromoteReleaseRulePtrOutput {
+	return o.ToAutomationRulePromoteReleaseRulePtrOutputWithContext(context.Background())
+}
+
+func (o AutomationRulePromoteReleaseRuleOutput) ToAutomationRulePromoteReleaseRulePtrOutputWithContext(ctx context.Context) AutomationRulePromoteReleaseRulePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationRulePromoteReleaseRule) *AutomationRulePromoteReleaseRule {
+		return &v
+	}).(AutomationRulePromoteReleaseRulePtrOutput)
+}
+
+// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+func (o AutomationRulePromoteReleaseRuleOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRulePromoteReleaseRule) *string { return v.DestinationPhase }).(pulumi.StringPtrOutput)
+}
+
+// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+func (o AutomationRulePromoteReleaseRuleOutput) DestinationTargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRulePromoteReleaseRule) *string { return v.DestinationTargetId }).(pulumi.StringPtrOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AutomationRulePromoteReleaseRuleOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v AutomationRulePromoteReleaseRule) string { return v.Id }).(pulumi.StringOutput)
+}
+
+// Optional. How long the release need to be paused until being promoted to the next target.
+func (o AutomationRulePromoteReleaseRuleOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationRulePromoteReleaseRule) *string { return v.Wait }).(pulumi.StringPtrOutput)
+}
+
+type AutomationRulePromoteReleaseRulePtrOutput struct{ *pulumi.OutputState }
+
+func (AutomationRulePromoteReleaseRulePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationRulePromoteReleaseRule)(nil)).Elem()
+}
+
+func (o AutomationRulePromoteReleaseRulePtrOutput) ToAutomationRulePromoteReleaseRulePtrOutput() AutomationRulePromoteReleaseRulePtrOutput {
+	return o
+}
+
+func (o AutomationRulePromoteReleaseRulePtrOutput) ToAutomationRulePromoteReleaseRulePtrOutputWithContext(ctx context.Context) AutomationRulePromoteReleaseRulePtrOutput {
+	return o
+}
+
+func (o AutomationRulePromoteReleaseRulePtrOutput) Elem() AutomationRulePromoteReleaseRuleOutput {
+	return o.ApplyT(func(v *AutomationRulePromoteReleaseRule) AutomationRulePromoteReleaseRule {
+		if v != nil {
+			return *v
+		}
+		var ret AutomationRulePromoteReleaseRule
+		return ret
+	}).(AutomationRulePromoteReleaseRuleOutput)
+}
+
+// Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+func (o AutomationRulePromoteReleaseRulePtrOutput) DestinationPhase() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRulePromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationPhase
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+func (o AutomationRulePromoteReleaseRulePtrOutput) DestinationTargetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRulePromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationTargetId
+	}).(pulumi.StringPtrOutput)
+}
+
+// Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+func (o AutomationRulePromoteReleaseRulePtrOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRulePromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Id
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. How long the release need to be paused until being promoted to the next target.
+func (o AutomationRulePromoteReleaseRulePtrOutput) Wait() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AutomationRulePromoteReleaseRule) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Wait
+	}).(pulumi.StringPtrOutput)
+}
+
+type AutomationSelector struct {
+	// Contains attributes about a target.
+	// Structure is documented below.
+	Targets []AutomationSelectorTarget `pulumi:"targets"`
+}
+
+// AutomationSelectorInput is an input type that accepts AutomationSelectorArgs and AutomationSelectorOutput values.
+// You can construct a concrete instance of `AutomationSelectorInput` via:
+//
+//	AutomationSelectorArgs{...}
+type AutomationSelectorInput interface {
+	pulumi.Input
+
+	ToAutomationSelectorOutput() AutomationSelectorOutput
+	ToAutomationSelectorOutputWithContext(context.Context) AutomationSelectorOutput
+}
+
+type AutomationSelectorArgs struct {
+	// Contains attributes about a target.
+	// Structure is documented below.
+	Targets AutomationSelectorTargetArrayInput `pulumi:"targets"`
+}
+
+func (AutomationSelectorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationSelector)(nil)).Elem()
+}
+
+func (i AutomationSelectorArgs) ToAutomationSelectorOutput() AutomationSelectorOutput {
+	return i.ToAutomationSelectorOutputWithContext(context.Background())
+}
+
+func (i AutomationSelectorArgs) ToAutomationSelectorOutputWithContext(ctx context.Context) AutomationSelectorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationSelectorOutput)
+}
+
+func (i AutomationSelectorArgs) ToAutomationSelectorPtrOutput() AutomationSelectorPtrOutput {
+	return i.ToAutomationSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i AutomationSelectorArgs) ToAutomationSelectorPtrOutputWithContext(ctx context.Context) AutomationSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationSelectorOutput).ToAutomationSelectorPtrOutputWithContext(ctx)
+}
+
+// AutomationSelectorPtrInput is an input type that accepts AutomationSelectorArgs, AutomationSelectorPtr and AutomationSelectorPtrOutput values.
+// You can construct a concrete instance of `AutomationSelectorPtrInput` via:
+//
+//	        AutomationSelectorArgs{...}
+//
+//	or:
+//
+//	        nil
+type AutomationSelectorPtrInput interface {
+	pulumi.Input
+
+	ToAutomationSelectorPtrOutput() AutomationSelectorPtrOutput
+	ToAutomationSelectorPtrOutputWithContext(context.Context) AutomationSelectorPtrOutput
+}
+
+type automationSelectorPtrType AutomationSelectorArgs
+
+func AutomationSelectorPtr(v *AutomationSelectorArgs) AutomationSelectorPtrInput {
+	return (*automationSelectorPtrType)(v)
+}
+
+func (*automationSelectorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationSelector)(nil)).Elem()
+}
+
+func (i *automationSelectorPtrType) ToAutomationSelectorPtrOutput() AutomationSelectorPtrOutput {
+	return i.ToAutomationSelectorPtrOutputWithContext(context.Background())
+}
+
+func (i *automationSelectorPtrType) ToAutomationSelectorPtrOutputWithContext(ctx context.Context) AutomationSelectorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationSelectorPtrOutput)
+}
+
+type AutomationSelectorOutput struct{ *pulumi.OutputState }
+
+func (AutomationSelectorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationSelector)(nil)).Elem()
+}
+
+func (o AutomationSelectorOutput) ToAutomationSelectorOutput() AutomationSelectorOutput {
+	return o
+}
+
+func (o AutomationSelectorOutput) ToAutomationSelectorOutputWithContext(ctx context.Context) AutomationSelectorOutput {
+	return o
+}
+
+func (o AutomationSelectorOutput) ToAutomationSelectorPtrOutput() AutomationSelectorPtrOutput {
+	return o.ToAutomationSelectorPtrOutputWithContext(context.Background())
+}
+
+func (o AutomationSelectorOutput) ToAutomationSelectorPtrOutputWithContext(ctx context.Context) AutomationSelectorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AutomationSelector) *AutomationSelector {
+		return &v
+	}).(AutomationSelectorPtrOutput)
+}
+
+// Contains attributes about a target.
+// Structure is documented below.
+func (o AutomationSelectorOutput) Targets() AutomationSelectorTargetArrayOutput {
+	return o.ApplyT(func(v AutomationSelector) []AutomationSelectorTarget { return v.Targets }).(AutomationSelectorTargetArrayOutput)
+}
+
+type AutomationSelectorPtrOutput struct{ *pulumi.OutputState }
+
+func (AutomationSelectorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AutomationSelector)(nil)).Elem()
+}
+
+func (o AutomationSelectorPtrOutput) ToAutomationSelectorPtrOutput() AutomationSelectorPtrOutput {
+	return o
+}
+
+func (o AutomationSelectorPtrOutput) ToAutomationSelectorPtrOutputWithContext(ctx context.Context) AutomationSelectorPtrOutput {
+	return o
+}
+
+func (o AutomationSelectorPtrOutput) Elem() AutomationSelectorOutput {
+	return o.ApplyT(func(v *AutomationSelector) AutomationSelector {
+		if v != nil {
+			return *v
+		}
+		var ret AutomationSelector
+		return ret
+	}).(AutomationSelectorOutput)
+}
+
+// Contains attributes about a target.
+// Structure is documented below.
+func (o AutomationSelectorPtrOutput) Targets() AutomationSelectorTargetArrayOutput {
+	return o.ApplyT(func(v *AutomationSelector) []AutomationSelectorTarget {
+		if v == nil {
+			return nil
+		}
+		return v.Targets
+	}).(AutomationSelectorTargetArrayOutput)
+}
+
+type AutomationSelectorTarget struct {
+	// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+	Id *string `pulumi:"id"`
+	// Target labels.
+	Labels map[string]string `pulumi:"labels"`
+}
+
+// AutomationSelectorTargetInput is an input type that accepts AutomationSelectorTargetArgs and AutomationSelectorTargetOutput values.
+// You can construct a concrete instance of `AutomationSelectorTargetInput` via:
+//
+//	AutomationSelectorTargetArgs{...}
+type AutomationSelectorTargetInput interface {
+	pulumi.Input
+
+	ToAutomationSelectorTargetOutput() AutomationSelectorTargetOutput
+	ToAutomationSelectorTargetOutputWithContext(context.Context) AutomationSelectorTargetOutput
+}
+
+type AutomationSelectorTargetArgs struct {
+	// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+	Id pulumi.StringPtrInput `pulumi:"id"`
+	// Target labels.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+}
+
+func (AutomationSelectorTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationSelectorTarget)(nil)).Elem()
+}
+
+func (i AutomationSelectorTargetArgs) ToAutomationSelectorTargetOutput() AutomationSelectorTargetOutput {
+	return i.ToAutomationSelectorTargetOutputWithContext(context.Background())
+}
+
+func (i AutomationSelectorTargetArgs) ToAutomationSelectorTargetOutputWithContext(ctx context.Context) AutomationSelectorTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationSelectorTargetOutput)
+}
+
+// AutomationSelectorTargetArrayInput is an input type that accepts AutomationSelectorTargetArray and AutomationSelectorTargetArrayOutput values.
+// You can construct a concrete instance of `AutomationSelectorTargetArrayInput` via:
+//
+//	AutomationSelectorTargetArray{ AutomationSelectorTargetArgs{...} }
+type AutomationSelectorTargetArrayInput interface {
+	pulumi.Input
+
+	ToAutomationSelectorTargetArrayOutput() AutomationSelectorTargetArrayOutput
+	ToAutomationSelectorTargetArrayOutputWithContext(context.Context) AutomationSelectorTargetArrayOutput
+}
+
+type AutomationSelectorTargetArray []AutomationSelectorTargetInput
+
+func (AutomationSelectorTargetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutomationSelectorTarget)(nil)).Elem()
+}
+
+func (i AutomationSelectorTargetArray) ToAutomationSelectorTargetArrayOutput() AutomationSelectorTargetArrayOutput {
+	return i.ToAutomationSelectorTargetArrayOutputWithContext(context.Background())
+}
+
+func (i AutomationSelectorTargetArray) ToAutomationSelectorTargetArrayOutputWithContext(ctx context.Context) AutomationSelectorTargetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AutomationSelectorTargetArrayOutput)
+}
+
+type AutomationSelectorTargetOutput struct{ *pulumi.OutputState }
+
+func (AutomationSelectorTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AutomationSelectorTarget)(nil)).Elem()
+}
+
+func (o AutomationSelectorTargetOutput) ToAutomationSelectorTargetOutput() AutomationSelectorTargetOutput {
+	return o
+}
+
+func (o AutomationSelectorTargetOutput) ToAutomationSelectorTargetOutputWithContext(ctx context.Context) AutomationSelectorTargetOutput {
+	return o
+}
+
+// ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+func (o AutomationSelectorTargetOutput) Id() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AutomationSelectorTarget) *string { return v.Id }).(pulumi.StringPtrOutput)
+}
+
+// Target labels.
+func (o AutomationSelectorTargetOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v AutomationSelectorTarget) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+type AutomationSelectorTargetArrayOutput struct{ *pulumi.OutputState }
+
+func (AutomationSelectorTargetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]AutomationSelectorTarget)(nil)).Elem()
+}
+
+func (o AutomationSelectorTargetArrayOutput) ToAutomationSelectorTargetArrayOutput() AutomationSelectorTargetArrayOutput {
+	return o
+}
+
+func (o AutomationSelectorTargetArrayOutput) ToAutomationSelectorTargetArrayOutputWithContext(ctx context.Context) AutomationSelectorTargetArrayOutput {
+	return o
+}
+
+func (o AutomationSelectorTargetArrayOutput) Index(i pulumi.IntInput) AutomationSelectorTargetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) AutomationSelectorTarget {
+		return vs[0].([]AutomationSelectorTarget)[vs[1].(int)]
+	}).(AutomationSelectorTargetOutput)
+}
+
 type DeliveryPipelineCondition struct {
 	PipelineReadyConditions  []DeliveryPipelineConditionPipelineReadyCondition  `pulumi:"pipelineReadyConditions"`
 	TargetsPresentConditions []DeliveryPipelineConditionTargetsPresentCondition `pulumi:"targetsPresentConditions"`
@@ -4200,6 +4936,16 @@ func (o TargetRunPtrOutput) Location() pulumi.StringPtrOutput {
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleInput)(nil)).Elem(), AutomationRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleArrayInput)(nil)).Elem(), AutomationRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleAdvanceRolloutRuleInput)(nil)).Elem(), AutomationRuleAdvanceRolloutRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRuleAdvanceRolloutRulePtrInput)(nil)).Elem(), AutomationRuleAdvanceRolloutRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRulePromoteReleaseRuleInput)(nil)).Elem(), AutomationRulePromoteReleaseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationRulePromoteReleaseRulePtrInput)(nil)).Elem(), AutomationRulePromoteReleaseRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorInput)(nil)).Elem(), AutomationSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorPtrInput)(nil)).Elem(), AutomationSelectorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorTargetInput)(nil)).Elem(), AutomationSelectorTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AutomationSelectorTargetArrayInput)(nil)).Elem(), AutomationSelectorTargetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionInput)(nil)).Elem(), DeliveryPipelineConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionArrayInput)(nil)).Elem(), DeliveryPipelineConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineConditionPipelineReadyConditionInput)(nil)).Elem(), DeliveryPipelineConditionPipelineReadyConditionArgs{})
@@ -4258,6 +5004,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetMultiTargetPtrInput)(nil)).Elem(), TargetMultiTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetRunInput)(nil)).Elem(), TargetRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetRunPtrInput)(nil)).Elem(), TargetRunArgs{})
+	pulumi.RegisterOutputType(AutomationRuleOutput{})
+	pulumi.RegisterOutputType(AutomationRuleArrayOutput{})
+	pulumi.RegisterOutputType(AutomationRuleAdvanceRolloutRuleOutput{})
+	pulumi.RegisterOutputType(AutomationRuleAdvanceRolloutRulePtrOutput{})
+	pulumi.RegisterOutputType(AutomationRulePromoteReleaseRuleOutput{})
+	pulumi.RegisterOutputType(AutomationRulePromoteReleaseRulePtrOutput{})
+	pulumi.RegisterOutputType(AutomationSelectorOutput{})
+	pulumi.RegisterOutputType(AutomationSelectorPtrOutput{})
+	pulumi.RegisterOutputType(AutomationSelectorTargetOutput{})
+	pulumi.RegisterOutputType(AutomationSelectorTargetArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionArrayOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineConditionPipelineReadyConditionOutput{})

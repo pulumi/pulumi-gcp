@@ -13,6 +13,7 @@ from . import outputs
 __all__ = [
     'CryptoKeyIAMBindingCondition',
     'CryptoKeyIAMMemberCondition',
+    'CryptoKeyPrimary',
     'CryptoKeyVersionAttestation',
     'CryptoKeyVersionAttestationCertChains',
     'CryptoKeyVersionAttestationExternalProtectionLevelOptions',
@@ -21,6 +22,7 @@ __all__ = [
     'KeyRingIAMMemberCondition',
     'KeyRingImportJobAttestation',
     'KeyRingImportJobPublicKey',
+    'GetKMSCryptoKeyPrimaryResult',
     'GetKMSCryptoKeyVersionPublicKeyResult',
     'GetKMSCryptoKeyVersionTemplateResult',
 ]
@@ -121,6 +123,39 @@ class CryptoKeyIAMMemberCondition(dict):
         consider it to be an entirely different resource and will treat it as such.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class CryptoKeyPrimary(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str name: The resource name for the CryptoKey.
+        :param str state: (Output)
+               The current state of the CryptoKeyVersion.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The resource name for the CryptoKey.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        The current state of the CryptoKeyVersion.
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type
@@ -524,6 +559,33 @@ class KeyRingImportJobPublicKey(dict):
         for General Considerations and Textual Encoding of Subject Public Key Info.
         """
         return pulumi.get(self, "pem")
+
+
+@pulumi.output_type
+class GetKMSCryptoKeyPrimaryResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 state: str):
+        """
+        :param str name: The CryptoKey's name.
+               A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The CryptoKey's name.
+        A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

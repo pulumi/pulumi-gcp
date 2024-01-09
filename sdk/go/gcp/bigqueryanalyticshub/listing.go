@@ -72,6 +72,61 @@ import (
 //	}
 //
 // ```
+// ### Bigquery Analyticshub Listing Restricted
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigquery"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/bigqueryanalyticshub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			listingDataExchange, err := bigqueryanalyticshub.NewDataExchange(ctx, "listingDataExchange", &bigqueryanalyticshub.DataExchangeArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: pulumi.String("my_data_exchange"),
+//				DisplayName:    pulumi.String("my_data_exchange"),
+//				Description:    pulumi.String("example data exchange"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			listingDataset, err := bigquery.NewDataset(ctx, "listingDataset", &bigquery.DatasetArgs{
+//				DatasetId:    pulumi.String("my_listing"),
+//				FriendlyName: pulumi.String("my_listing"),
+//				Description:  pulumi.String("example data exchange"),
+//				Location:     pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = bigqueryanalyticshub.NewListing(ctx, "listingListing", &bigqueryanalyticshub.ListingArgs{
+//				Location:       pulumi.String("US"),
+//				DataExchangeId: listingDataExchange.DataExchangeId,
+//				ListingId:      pulumi.String("my_listing"),
+//				DisplayName:    pulumi.String("my_listing"),
+//				Description:    pulumi.String("example data exchange"),
+//				BigqueryDataset: &bigqueryanalyticshub.ListingBigqueryDatasetArgs{
+//					Dataset: listingDataset.ID(),
+//				},
+//				RestrictedExportConfig: &bigqueryanalyticshub.ListingRestrictedExportConfigArgs{
+//					Enabled:             pulumi.Bool(true),
+//					RestrictQueryResult: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -141,6 +196,9 @@ type Listing struct {
 	Publisher ListingPublisherPtrOutput `pulumi:"publisher"`
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess pulumi.StringPtrOutput `pulumi:"requestAccess"`
+	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
+	RestrictedExportConfig ListingRestrictedExportConfigPtrOutput `pulumi:"restrictedExportConfig"`
 }
 
 // NewListing registers a new resource with the given unique name, arguments, and options.
@@ -222,6 +280,9 @@ type listingState struct {
 	Publisher *ListingPublisher `pulumi:"publisher"`
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess *string `pulumi:"requestAccess"`
+	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
+	RestrictedExportConfig *ListingRestrictedExportConfig `pulumi:"restrictedExportConfig"`
 }
 
 type ListingState struct {
@@ -259,6 +320,9 @@ type ListingState struct {
 	Publisher ListingPublisherPtrInput
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess pulumi.StringPtrInput
+	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
+	RestrictedExportConfig ListingRestrictedExportConfigPtrInput
 }
 
 func (ListingState) ElementType() reflect.Type {
@@ -298,6 +362,9 @@ type listingArgs struct {
 	Publisher *ListingPublisher `pulumi:"publisher"`
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess *string `pulumi:"requestAccess"`
+	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
+	RestrictedExportConfig *ListingRestrictedExportConfig `pulumi:"restrictedExportConfig"`
 }
 
 // The set of arguments for constructing a Listing resource.
@@ -334,6 +401,9 @@ type ListingArgs struct {
 	Publisher ListingPublisherPtrInput
 	// Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 	RequestAccess pulumi.StringPtrInput
+	// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+	// Structure is documented below.
+	RestrictedExportConfig ListingRestrictedExportConfigPtrInput
 }
 
 func (ListingArgs) ElementType() reflect.Type {
@@ -500,6 +570,12 @@ func (o ListingOutput) Publisher() ListingPublisherPtrOutput {
 // Email or URL of the request access of the listing. Subscribers can use this reference to request access.
 func (o ListingOutput) RequestAccess() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Listing) pulumi.StringPtrOutput { return v.RequestAccess }).(pulumi.StringPtrOutput)
+}
+
+// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+// Structure is documented below.
+func (o ListingOutput) RestrictedExportConfig() ListingRestrictedExportConfigPtrOutput {
+	return o.ApplyT(func(v *Listing) ListingRestrictedExportConfigPtrOutput { return v.RestrictedExportConfig }).(ListingRestrictedExportConfigPtrOutput)
 }
 
 type ListingArrayOutput struct{ *pulumi.OutputState }

@@ -28,7 +28,7 @@ import * as utilities from "../utilities";
  *
  * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
  * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
- *     topic: exampleTopic.name,
+ *     topic: exampleTopic.id,
  *     ackDeadlineSeconds: 20,
  *     labels: {
  *         foo: "bar",
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  *
  * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
  * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
- *     topic: exampleTopic.name,
+ *     topic: exampleTopic.id,
  *     labels: {
  *         foo: "bar",
  *     },
@@ -65,18 +65,6 @@ import * as utilities from "../utilities";
  *     enableMessageOrdering: false,
  * });
  * ```
- * ### Pubsub Subscription Different Project
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {project: "topic-project"});
- * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
- *     project: "subscription-project",
- *     topic: exampleTopic.name,
- * });
- * ```
  * ### Pubsub Subscription Dead Letter
  *
  * ```typescript
@@ -86,7 +74,7 @@ import * as utilities from "../utilities";
  * const exampleTopic = new gcp.pubsub.Topic("exampleTopic", {});
  * const exampleDeadLetter = new gcp.pubsub.Topic("exampleDeadLetter", {});
  * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
- *     topic: exampleTopic.name,
+ *     topic: exampleTopic.id,
  *     deadLetterPolicy: {
  *         deadLetterTopic: exampleDeadLetter.id,
  *         maxDeliveryAttempts: 10,
@@ -127,7 +115,7 @@ import * as utilities from "../utilities";
  * `,
  * });
  * const exampleSubscription = new gcp.pubsub.Subscription("exampleSubscription", {
- *     topic: exampleTopic.name,
+ *     topic: exampleTopic.id,
  *     bigqueryConfig: {
  *         table: pulumi.interpolate`${testTable.project}.${testTable.datasetId}.${testTable.tableId}`,
  *     },
@@ -325,7 +313,9 @@ export class Subscription extends pulumi.CustomResource {
      */
     public readonly retryPolicy!: pulumi.Output<outputs.pubsub.SubscriptionRetryPolicy | undefined>;
     /**
-     * A reference to a Topic resource.
+     * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+     * (as in the id property of a google_pubsub_topic), or just a topic name if
+     * the topic is in the same project as the subscription.
      *
      *
      * - - -
@@ -532,7 +522,9 @@ export interface SubscriptionState {
      */
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
     /**
-     * A reference to a Topic resource.
+     * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+     * (as in the id property of a google_pubsub_topic), or just a topic name if
+     * the topic is in the same project as the subscription.
      *
      *
      * - - -
@@ -669,7 +661,9 @@ export interface SubscriptionArgs {
      */
     retryPolicy?: pulumi.Input<inputs.pubsub.SubscriptionRetryPolicy>;
     /**
-     * A reference to a Topic resource.
+     * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+     * (as in the id property of a google_pubsub_topic), or just a topic name if
+     * the topic is in the same project as the subscription.
      *
      *
      * - - -

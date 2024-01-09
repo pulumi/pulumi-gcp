@@ -71,6 +71,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;true&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -128,6 +130,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;true&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var autopilot = new BackupPlan(&#34;autopilot&#34;, BackupPlanArgs.builder()        
@@ -189,6 +193,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;true&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var keyRing = new KeyRing(&#34;keyRing&#34;, KeyRingArgs.builder()        
@@ -262,6 +268,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;true&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var full = new BackupPlan(&#34;full&#34;, BackupPlanArgs.builder()        

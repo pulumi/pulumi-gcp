@@ -17,6 +17,7 @@ __all__ = [
     'ListingIamBindingCondition',
     'ListingIamMemberCondition',
     'ListingPublisher',
+    'ListingRestrictedExportConfig',
 ]
 
 @pulumi.output_type
@@ -241,5 +242,53 @@ class ListingPublisher(dict):
         Email or URL of the listing publisher.
         """
         return pulumi.get(self, "primary_contact")
+
+
+@pulumi.output_type
+class ListingRestrictedExportConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "restrictQueryResult":
+            suggest = "restrict_query_result"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ListingRestrictedExportConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ListingRestrictedExportConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ListingRestrictedExportConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None,
+                 restrict_query_result: Optional[bool] = None):
+        """
+        :param bool enabled: If true, enable restricted export.
+        :param bool restrict_query_result: If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if restrict_query_result is not None:
+            pulumi.set(__self__, "restrict_query_result", restrict_query_result)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        If true, enable restricted export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter(name="restrictQueryResult")
+    def restrict_query_result(self) -> Optional[bool]:
+        """
+        If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        return pulumi.get(self, "restrict_query_result")
 
 

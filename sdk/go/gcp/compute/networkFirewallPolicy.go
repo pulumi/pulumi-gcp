@@ -14,7 +14,8 @@ import (
 // The Compute NetworkFirewallPolicy resource
 //
 // ## Example Usage
-// ### Global
+// ### Network Firewall Policy Full
+//
 // ```go
 // package main
 //
@@ -27,9 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetworkFirewallPolicy(ctx, "primary", &compute.NetworkFirewallPolicyArgs{
-//				Description: pulumi.String("Sample global network firewall policy"),
-//				Project:     pulumi.String("my-project-name"),
+//			_, err := compute.NewNetworkFirewallPolicy(ctx, "policy", &compute.NetworkFirewallPolicyArgs{
+//				Description: pulumi.String("Terraform test"),
 //			})
 //			if err != nil {
 //				return err
@@ -86,7 +86,8 @@ type NetworkFirewallPolicy struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NetworkFirewallPolicyId pulumi.StringOutput `pulumi:"networkFirewallPolicyId"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
@@ -138,7 +139,8 @@ type networkFirewallPolicyState struct {
 	Name *string `pulumi:"name"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NetworkFirewallPolicyId *string `pulumi:"networkFirewallPolicyId"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
@@ -161,7 +163,8 @@ type NetworkFirewallPolicyState struct {
 	Name pulumi.StringPtrInput
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NetworkFirewallPolicyId pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 	// Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
 	RuleTupleCount pulumi.IntPtrInput
@@ -182,7 +185,8 @@ type networkFirewallPolicyArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
 }
 
@@ -194,7 +198,8 @@ type NetworkFirewallPolicyArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
 }
 
@@ -312,7 +317,8 @@ func (o NetworkFirewallPolicyOutput) NetworkFirewallPolicyId() pulumi.StringOutp
 	return o.ApplyT(func(v *NetworkFirewallPolicy) pulumi.StringOutput { return v.NetworkFirewallPolicyId }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o NetworkFirewallPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *NetworkFirewallPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }

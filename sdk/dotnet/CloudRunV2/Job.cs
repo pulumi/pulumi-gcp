@@ -271,8 +271,8 @@ namespace Pulumi.Gcp.CloudRunV2
     /// {
     ///     var @default = new Gcp.CloudRunV2.Job("default", new()
     ///     {
-    ///         Location = "us-central1",
     ///         LaunchStage = "BETA",
+    ///         Location = "us-central1",
     ///         Template = new Gcp.CloudRunV2.Inputs.JobTemplateArgs
     ///         {
     ///             Template = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateArgs
@@ -286,6 +286,7 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                 },
     ///                 VpcAccess = new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVpcAccessArgs
     ///                 {
+    ///                     Egress = "ALL_TRAFFIC",
     ///                     NetworkInterfaces = new[]
     ///                     {
     ///                         new Gcp.CloudRunV2.Inputs.JobTemplateTemplateVpcAccessNetworkInterfaceArgs
@@ -300,7 +301,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///                             },
     ///                         },
     ///                     },
-    ///                     Egress = "ALL_TRAFFIC",
     ///                 },
     ///             },
     ///         },

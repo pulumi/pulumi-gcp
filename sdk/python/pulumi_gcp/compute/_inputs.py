@@ -5936,6 +5936,8 @@ class InstanceBootDiskInitializeParamsArgs:
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[int]] = None,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -5952,6 +5954,20 @@ class InstanceBootDiskInitializeParamsArgs:
                These images can be referred by family name here.
         :param pulumi.Input[Mapping[str, Any]] labels: A set of key/value label pairs assigned to the disk. This
                field is only applicable for persistent disks.
+        :param pulumi.Input[int] provisioned_iops: Indicates how many IOPS to provision for the disk.
+               This sets the number of I/O operations per second that the disk can handle.
+               Values must be between 10,000 and 120,000. For more details,see the
+               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+               Note: Updating currently is only supported for hyperdisk skus via disk update
+               api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+               for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+               you'll need to manually delete and recreate it.
+        :param pulumi.Input[int] provisioned_throughput: Indicates how much throughput to provision for the disk.
+               This sets the number of throughput mb per second that the disk can handle.
+               Values must be between 1 and 7,124. Note: Updating currently is only supported
+               for hyperdisk skus via disk update api/gcloud without the need to delete and
+               recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+               To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
         :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param pulumi.Input[str] type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
@@ -5962,6 +5978,10 @@ class InstanceBootDiskInitializeParamsArgs:
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
@@ -6013,6 +6033,42 @@ class InstanceBootDiskInitializeParamsArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how many IOPS to provision for the disk.
+        This sets the number of I/O operations per second that the disk can handle.
+        Values must be between 10,000 and 120,000. For more details,see the
+        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        Note: Updating currently is only supported for hyperdisk skus via disk update
+        api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+        for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+        you'll need to manually delete and recreate it.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        """
+        Indicates how much throughput to provision for the disk.
+        This sets the number of throughput mb per second that the disk can handle.
+        Values must be between 1 and 7,124. Note: Updating currently is only supported
+        for hyperdisk skus via disk update api/gcloud without the need to delete and
+        recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+        To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+        """
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_throughput", value)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -6295,6 +6351,8 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[int]] = None,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -6304,6 +6362,10 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
@@ -6337,6 +6399,24 @@ class InstanceFromMachineImageBootDiskInitializeParamsArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_throughput", value)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -7419,6 +7499,8 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
                  enable_confidential_compute: Optional[pulumi.Input[bool]] = None,
                  image: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 provisioned_throughput: Optional[pulumi.Input[int]] = None,
                  resource_manager_tags: Optional[pulumi.Input[Mapping[str, Any]]] = None,
                  size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
@@ -7428,6 +7510,10 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
@@ -7461,6 +7547,24 @@ class InstanceFromTemplateBootDiskInitializeParamsArgs:
     @labels.setter
     def labels(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
         pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "provisioned_iops")
+
+    @provisioned_iops.setter
+    def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[pulumi.Input[int]]:
+        return pulumi.get(self, "provisioned_throughput")
+
+    @provisioned_throughput.setter
+    def provisioned_throughput(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "provisioned_throughput", value)
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -10444,6 +10548,7 @@ class InstanceTemplateDiskArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
@@ -10487,6 +10592,7 @@ class InstanceTemplateDiskArgs:
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[str] resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[str] source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
@@ -10536,6 +10642,8 @@ class InstanceTemplateDiskArgs:
             pulumi.set(__self__, "mode", mode)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if source is not None:
@@ -10706,6 +10814,18 @@ class InstanceTemplateDiskArgs:
     @provisioned_iops.setter
     def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -18192,6 +18312,7 @@ class RegionInstanceTemplateDiskArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mode: Optional[pulumi.Input[str]] = None,
                  provisioned_iops: Optional[pulumi.Input[int]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  source: Optional[pulumi.Input[str]] = None,
                  source_image: Optional[pulumi.Input[str]] = None,
@@ -18235,6 +18356,7 @@ class RegionInstanceTemplateDiskArgs:
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[str] resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[str] source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
@@ -18284,6 +18406,8 @@ class RegionInstanceTemplateDiskArgs:
             pulumi.set(__self__, "mode", mode)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if source is not None:
@@ -18454,6 +18578,18 @@ class RegionInstanceTemplateDiskArgs:
     @provisioned_iops.setter
     def provisioned_iops(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "provisioned_iops", value)
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
 
     @property
     @pulumi.getter(name="resourcePolicies")

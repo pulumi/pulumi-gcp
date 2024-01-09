@@ -1489,6 +1489,1223 @@ func (o AiEndpointIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiFeatureGroupBigQuery struct {
+	// The BigQuery source URI that points to either a BigQuery Table or View.
+	// Structure is documented below.
+	BigQuerySource AiFeatureGroupBigQueryBigQuerySource `pulumi:"bigQuerySource"`
+	// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+	EntityIdColumns []string `pulumi:"entityIdColumns"`
+}
+
+// AiFeatureGroupBigQueryInput is an input type that accepts AiFeatureGroupBigQueryArgs and AiFeatureGroupBigQueryOutput values.
+// You can construct a concrete instance of `AiFeatureGroupBigQueryInput` via:
+//
+//	AiFeatureGroupBigQueryArgs{...}
+type AiFeatureGroupBigQueryInput interface {
+	pulumi.Input
+
+	ToAiFeatureGroupBigQueryOutput() AiFeatureGroupBigQueryOutput
+	ToAiFeatureGroupBigQueryOutputWithContext(context.Context) AiFeatureGroupBigQueryOutput
+}
+
+type AiFeatureGroupBigQueryArgs struct {
+	// The BigQuery source URI that points to either a BigQuery Table or View.
+	// Structure is documented below.
+	BigQuerySource AiFeatureGroupBigQueryBigQuerySourceInput `pulumi:"bigQuerySource"`
+	// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+	EntityIdColumns pulumi.StringArrayInput `pulumi:"entityIdColumns"`
+}
+
+func (AiFeatureGroupBigQueryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureGroupBigQuery)(nil)).Elem()
+}
+
+func (i AiFeatureGroupBigQueryArgs) ToAiFeatureGroupBigQueryOutput() AiFeatureGroupBigQueryOutput {
+	return i.ToAiFeatureGroupBigQueryOutputWithContext(context.Background())
+}
+
+func (i AiFeatureGroupBigQueryArgs) ToAiFeatureGroupBigQueryOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupBigQueryOutput)
+}
+
+func (i AiFeatureGroupBigQueryArgs) ToAiFeatureGroupBigQueryPtrOutput() AiFeatureGroupBigQueryPtrOutput {
+	return i.ToAiFeatureGroupBigQueryPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureGroupBigQueryArgs) ToAiFeatureGroupBigQueryPtrOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupBigQueryOutput).ToAiFeatureGroupBigQueryPtrOutputWithContext(ctx)
+}
+
+// AiFeatureGroupBigQueryPtrInput is an input type that accepts AiFeatureGroupBigQueryArgs, AiFeatureGroupBigQueryPtr and AiFeatureGroupBigQueryPtrOutput values.
+// You can construct a concrete instance of `AiFeatureGroupBigQueryPtrInput` via:
+//
+//	        AiFeatureGroupBigQueryArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureGroupBigQueryPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureGroupBigQueryPtrOutput() AiFeatureGroupBigQueryPtrOutput
+	ToAiFeatureGroupBigQueryPtrOutputWithContext(context.Context) AiFeatureGroupBigQueryPtrOutput
+}
+
+type aiFeatureGroupBigQueryPtrType AiFeatureGroupBigQueryArgs
+
+func AiFeatureGroupBigQueryPtr(v *AiFeatureGroupBigQueryArgs) AiFeatureGroupBigQueryPtrInput {
+	return (*aiFeatureGroupBigQueryPtrType)(v)
+}
+
+func (*aiFeatureGroupBigQueryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureGroupBigQuery)(nil)).Elem()
+}
+
+func (i *aiFeatureGroupBigQueryPtrType) ToAiFeatureGroupBigQueryPtrOutput() AiFeatureGroupBigQueryPtrOutput {
+	return i.ToAiFeatureGroupBigQueryPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureGroupBigQueryPtrType) ToAiFeatureGroupBigQueryPtrOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupBigQueryPtrOutput)
+}
+
+type AiFeatureGroupBigQueryOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureGroupBigQueryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureGroupBigQuery)(nil)).Elem()
+}
+
+func (o AiFeatureGroupBigQueryOutput) ToAiFeatureGroupBigQueryOutput() AiFeatureGroupBigQueryOutput {
+	return o
+}
+
+func (o AiFeatureGroupBigQueryOutput) ToAiFeatureGroupBigQueryOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryOutput {
+	return o
+}
+
+func (o AiFeatureGroupBigQueryOutput) ToAiFeatureGroupBigQueryPtrOutput() AiFeatureGroupBigQueryPtrOutput {
+	return o.ToAiFeatureGroupBigQueryPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureGroupBigQueryOutput) ToAiFeatureGroupBigQueryPtrOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureGroupBigQuery) *AiFeatureGroupBigQuery {
+		return &v
+	}).(AiFeatureGroupBigQueryPtrOutput)
+}
+
+// The BigQuery source URI that points to either a BigQuery Table or View.
+// Structure is documented below.
+func (o AiFeatureGroupBigQueryOutput) BigQuerySource() AiFeatureGroupBigQueryBigQuerySourceOutput {
+	return o.ApplyT(func(v AiFeatureGroupBigQuery) AiFeatureGroupBigQueryBigQuerySource { return v.BigQuerySource }).(AiFeatureGroupBigQueryBigQuerySourceOutput)
+}
+
+// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+func (o AiFeatureGroupBigQueryOutput) EntityIdColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiFeatureGroupBigQuery) []string { return v.EntityIdColumns }).(pulumi.StringArrayOutput)
+}
+
+type AiFeatureGroupBigQueryPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureGroupBigQueryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureGroupBigQuery)(nil)).Elem()
+}
+
+func (o AiFeatureGroupBigQueryPtrOutput) ToAiFeatureGroupBigQueryPtrOutput() AiFeatureGroupBigQueryPtrOutput {
+	return o
+}
+
+func (o AiFeatureGroupBigQueryPtrOutput) ToAiFeatureGroupBigQueryPtrOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryPtrOutput {
+	return o
+}
+
+func (o AiFeatureGroupBigQueryPtrOutput) Elem() AiFeatureGroupBigQueryOutput {
+	return o.ApplyT(func(v *AiFeatureGroupBigQuery) AiFeatureGroupBigQuery {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureGroupBigQuery
+		return ret
+	}).(AiFeatureGroupBigQueryOutput)
+}
+
+// The BigQuery source URI that points to either a BigQuery Table or View.
+// Structure is documented below.
+func (o AiFeatureGroupBigQueryPtrOutput) BigQuerySource() AiFeatureGroupBigQueryBigQuerySourcePtrOutput {
+	return o.ApplyT(func(v *AiFeatureGroupBigQuery) *AiFeatureGroupBigQueryBigQuerySource {
+		if v == nil {
+			return nil
+		}
+		return &v.BigQuerySource
+	}).(AiFeatureGroupBigQueryBigQuerySourcePtrOutput)
+}
+
+// Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+func (o AiFeatureGroupBigQueryPtrOutput) EntityIdColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiFeatureGroupBigQuery) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityIdColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiFeatureGroupBigQueryBigQuerySource struct {
+	// BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+	InputUri string `pulumi:"inputUri"`
+}
+
+// AiFeatureGroupBigQueryBigQuerySourceInput is an input type that accepts AiFeatureGroupBigQueryBigQuerySourceArgs and AiFeatureGroupBigQueryBigQuerySourceOutput values.
+// You can construct a concrete instance of `AiFeatureGroupBigQueryBigQuerySourceInput` via:
+//
+//	AiFeatureGroupBigQueryBigQuerySourceArgs{...}
+type AiFeatureGroupBigQueryBigQuerySourceInput interface {
+	pulumi.Input
+
+	ToAiFeatureGroupBigQueryBigQuerySourceOutput() AiFeatureGroupBigQueryBigQuerySourceOutput
+	ToAiFeatureGroupBigQueryBigQuerySourceOutputWithContext(context.Context) AiFeatureGroupBigQueryBigQuerySourceOutput
+}
+
+type AiFeatureGroupBigQueryBigQuerySourceArgs struct {
+	// BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+	InputUri pulumi.StringInput `pulumi:"inputUri"`
+}
+
+func (AiFeatureGroupBigQueryBigQuerySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureGroupBigQueryBigQuerySource)(nil)).Elem()
+}
+
+func (i AiFeatureGroupBigQueryBigQuerySourceArgs) ToAiFeatureGroupBigQueryBigQuerySourceOutput() AiFeatureGroupBigQueryBigQuerySourceOutput {
+	return i.ToAiFeatureGroupBigQueryBigQuerySourceOutputWithContext(context.Background())
+}
+
+func (i AiFeatureGroupBigQueryBigQuerySourceArgs) ToAiFeatureGroupBigQueryBigQuerySourceOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryBigQuerySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupBigQueryBigQuerySourceOutput)
+}
+
+func (i AiFeatureGroupBigQueryBigQuerySourceArgs) ToAiFeatureGroupBigQueryBigQuerySourcePtrOutput() AiFeatureGroupBigQueryBigQuerySourcePtrOutput {
+	return i.ToAiFeatureGroupBigQueryBigQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureGroupBigQueryBigQuerySourceArgs) ToAiFeatureGroupBigQueryBigQuerySourcePtrOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryBigQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupBigQueryBigQuerySourceOutput).ToAiFeatureGroupBigQueryBigQuerySourcePtrOutputWithContext(ctx)
+}
+
+// AiFeatureGroupBigQueryBigQuerySourcePtrInput is an input type that accepts AiFeatureGroupBigQueryBigQuerySourceArgs, AiFeatureGroupBigQueryBigQuerySourcePtr and AiFeatureGroupBigQueryBigQuerySourcePtrOutput values.
+// You can construct a concrete instance of `AiFeatureGroupBigQueryBigQuerySourcePtrInput` via:
+//
+//	        AiFeatureGroupBigQueryBigQuerySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureGroupBigQueryBigQuerySourcePtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureGroupBigQueryBigQuerySourcePtrOutput() AiFeatureGroupBigQueryBigQuerySourcePtrOutput
+	ToAiFeatureGroupBigQueryBigQuerySourcePtrOutputWithContext(context.Context) AiFeatureGroupBigQueryBigQuerySourcePtrOutput
+}
+
+type aiFeatureGroupBigQueryBigQuerySourcePtrType AiFeatureGroupBigQueryBigQuerySourceArgs
+
+func AiFeatureGroupBigQueryBigQuerySourcePtr(v *AiFeatureGroupBigQueryBigQuerySourceArgs) AiFeatureGroupBigQueryBigQuerySourcePtrInput {
+	return (*aiFeatureGroupBigQueryBigQuerySourcePtrType)(v)
+}
+
+func (*aiFeatureGroupBigQueryBigQuerySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureGroupBigQueryBigQuerySource)(nil)).Elem()
+}
+
+func (i *aiFeatureGroupBigQueryBigQuerySourcePtrType) ToAiFeatureGroupBigQueryBigQuerySourcePtrOutput() AiFeatureGroupBigQueryBigQuerySourcePtrOutput {
+	return i.ToAiFeatureGroupBigQueryBigQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureGroupBigQueryBigQuerySourcePtrType) ToAiFeatureGroupBigQueryBigQuerySourcePtrOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryBigQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureGroupBigQueryBigQuerySourcePtrOutput)
+}
+
+type AiFeatureGroupBigQueryBigQuerySourceOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureGroupBigQueryBigQuerySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureGroupBigQueryBigQuerySource)(nil)).Elem()
+}
+
+func (o AiFeatureGroupBigQueryBigQuerySourceOutput) ToAiFeatureGroupBigQueryBigQuerySourceOutput() AiFeatureGroupBigQueryBigQuerySourceOutput {
+	return o
+}
+
+func (o AiFeatureGroupBigQueryBigQuerySourceOutput) ToAiFeatureGroupBigQueryBigQuerySourceOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryBigQuerySourceOutput {
+	return o
+}
+
+func (o AiFeatureGroupBigQueryBigQuerySourceOutput) ToAiFeatureGroupBigQueryBigQuerySourcePtrOutput() AiFeatureGroupBigQueryBigQuerySourcePtrOutput {
+	return o.ToAiFeatureGroupBigQueryBigQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureGroupBigQueryBigQuerySourceOutput) ToAiFeatureGroupBigQueryBigQuerySourcePtrOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryBigQuerySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureGroupBigQueryBigQuerySource) *AiFeatureGroupBigQueryBigQuerySource {
+		return &v
+	}).(AiFeatureGroupBigQueryBigQuerySourcePtrOutput)
+}
+
+// BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+func (o AiFeatureGroupBigQueryBigQuerySourceOutput) InputUri() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureGroupBigQueryBigQuerySource) string { return v.InputUri }).(pulumi.StringOutput)
+}
+
+type AiFeatureGroupBigQueryBigQuerySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureGroupBigQueryBigQuerySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureGroupBigQueryBigQuerySource)(nil)).Elem()
+}
+
+func (o AiFeatureGroupBigQueryBigQuerySourcePtrOutput) ToAiFeatureGroupBigQueryBigQuerySourcePtrOutput() AiFeatureGroupBigQueryBigQuerySourcePtrOutput {
+	return o
+}
+
+func (o AiFeatureGroupBigQueryBigQuerySourcePtrOutput) ToAiFeatureGroupBigQueryBigQuerySourcePtrOutputWithContext(ctx context.Context) AiFeatureGroupBigQueryBigQuerySourcePtrOutput {
+	return o
+}
+
+func (o AiFeatureGroupBigQueryBigQuerySourcePtrOutput) Elem() AiFeatureGroupBigQueryBigQuerySourceOutput {
+	return o.ApplyT(func(v *AiFeatureGroupBigQueryBigQuerySource) AiFeatureGroupBigQueryBigQuerySource {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureGroupBigQueryBigQuerySource
+		return ret
+	}).(AiFeatureGroupBigQueryBigQuerySourceOutput)
+}
+
+// BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+func (o AiFeatureGroupBigQueryBigQuerySourcePtrOutput) InputUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureGroupBigQueryBigQuerySource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InputUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureOnlineStoreBigtable struct {
+	// Autoscaling config applied to Bigtable Instance.
+	// Structure is documented below.
+	AutoScaling AiFeatureOnlineStoreBigtableAutoScaling `pulumi:"autoScaling"`
+}
+
+// AiFeatureOnlineStoreBigtableInput is an input type that accepts AiFeatureOnlineStoreBigtableArgs and AiFeatureOnlineStoreBigtableOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreBigtableInput` via:
+//
+//	AiFeatureOnlineStoreBigtableArgs{...}
+type AiFeatureOnlineStoreBigtableInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreBigtableOutput() AiFeatureOnlineStoreBigtableOutput
+	ToAiFeatureOnlineStoreBigtableOutputWithContext(context.Context) AiFeatureOnlineStoreBigtableOutput
+}
+
+type AiFeatureOnlineStoreBigtableArgs struct {
+	// Autoscaling config applied to Bigtable Instance.
+	// Structure is documented below.
+	AutoScaling AiFeatureOnlineStoreBigtableAutoScalingInput `pulumi:"autoScaling"`
+}
+
+func (AiFeatureOnlineStoreBigtableArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreBigtable)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreBigtableArgs) ToAiFeatureOnlineStoreBigtableOutput() AiFeatureOnlineStoreBigtableOutput {
+	return i.ToAiFeatureOnlineStoreBigtableOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreBigtableArgs) ToAiFeatureOnlineStoreBigtableOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtableOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreBigtableOutput)
+}
+
+func (i AiFeatureOnlineStoreBigtableArgs) ToAiFeatureOnlineStoreBigtablePtrOutput() AiFeatureOnlineStoreBigtablePtrOutput {
+	return i.ToAiFeatureOnlineStoreBigtablePtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreBigtableArgs) ToAiFeatureOnlineStoreBigtablePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreBigtableOutput).ToAiFeatureOnlineStoreBigtablePtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreBigtablePtrInput is an input type that accepts AiFeatureOnlineStoreBigtableArgs, AiFeatureOnlineStoreBigtablePtr and AiFeatureOnlineStoreBigtablePtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreBigtablePtrInput` via:
+//
+//	        AiFeatureOnlineStoreBigtableArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreBigtablePtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreBigtablePtrOutput() AiFeatureOnlineStoreBigtablePtrOutput
+	ToAiFeatureOnlineStoreBigtablePtrOutputWithContext(context.Context) AiFeatureOnlineStoreBigtablePtrOutput
+}
+
+type aiFeatureOnlineStoreBigtablePtrType AiFeatureOnlineStoreBigtableArgs
+
+func AiFeatureOnlineStoreBigtablePtr(v *AiFeatureOnlineStoreBigtableArgs) AiFeatureOnlineStoreBigtablePtrInput {
+	return (*aiFeatureOnlineStoreBigtablePtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreBigtablePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreBigtable)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreBigtablePtrType) ToAiFeatureOnlineStoreBigtablePtrOutput() AiFeatureOnlineStoreBigtablePtrOutput {
+	return i.ToAiFeatureOnlineStoreBigtablePtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreBigtablePtrType) ToAiFeatureOnlineStoreBigtablePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtablePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreBigtablePtrOutput)
+}
+
+type AiFeatureOnlineStoreBigtableOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreBigtableOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreBigtable)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreBigtableOutput) ToAiFeatureOnlineStoreBigtableOutput() AiFeatureOnlineStoreBigtableOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreBigtableOutput) ToAiFeatureOnlineStoreBigtableOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtableOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreBigtableOutput) ToAiFeatureOnlineStoreBigtablePtrOutput() AiFeatureOnlineStoreBigtablePtrOutput {
+	return o.ToAiFeatureOnlineStoreBigtablePtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreBigtableOutput) ToAiFeatureOnlineStoreBigtablePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtablePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreBigtable) *AiFeatureOnlineStoreBigtable {
+		return &v
+	}).(AiFeatureOnlineStoreBigtablePtrOutput)
+}
+
+// Autoscaling config applied to Bigtable Instance.
+// Structure is documented below.
+func (o AiFeatureOnlineStoreBigtableOutput) AutoScaling() AiFeatureOnlineStoreBigtableAutoScalingOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreBigtable) AiFeatureOnlineStoreBigtableAutoScaling { return v.AutoScaling }).(AiFeatureOnlineStoreBigtableAutoScalingOutput)
+}
+
+type AiFeatureOnlineStoreBigtablePtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreBigtablePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreBigtable)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreBigtablePtrOutput) ToAiFeatureOnlineStoreBigtablePtrOutput() AiFeatureOnlineStoreBigtablePtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreBigtablePtrOutput) ToAiFeatureOnlineStoreBigtablePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtablePtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreBigtablePtrOutput) Elem() AiFeatureOnlineStoreBigtableOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreBigtable) AiFeatureOnlineStoreBigtable {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreBigtable
+		return ret
+	}).(AiFeatureOnlineStoreBigtableOutput)
+}
+
+// Autoscaling config applied to Bigtable Instance.
+// Structure is documented below.
+func (o AiFeatureOnlineStoreBigtablePtrOutput) AutoScaling() AiFeatureOnlineStoreBigtableAutoScalingPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreBigtable) *AiFeatureOnlineStoreBigtableAutoScaling {
+		if v == nil {
+			return nil
+		}
+		return &v.AutoScaling
+	}).(AiFeatureOnlineStoreBigtableAutoScalingPtrOutput)
+}
+
+type AiFeatureOnlineStoreBigtableAutoScaling struct {
+	// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+	CpuUtilizationTarget *int `pulumi:"cpuUtilizationTarget"`
+	// The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+	MaxNodeCount int `pulumi:"maxNodeCount"`
+	// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+	MinNodeCount int `pulumi:"minNodeCount"`
+}
+
+// AiFeatureOnlineStoreBigtableAutoScalingInput is an input type that accepts AiFeatureOnlineStoreBigtableAutoScalingArgs and AiFeatureOnlineStoreBigtableAutoScalingOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreBigtableAutoScalingInput` via:
+//
+//	AiFeatureOnlineStoreBigtableAutoScalingArgs{...}
+type AiFeatureOnlineStoreBigtableAutoScalingInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreBigtableAutoScalingOutput() AiFeatureOnlineStoreBigtableAutoScalingOutput
+	ToAiFeatureOnlineStoreBigtableAutoScalingOutputWithContext(context.Context) AiFeatureOnlineStoreBigtableAutoScalingOutput
+}
+
+type AiFeatureOnlineStoreBigtableAutoScalingArgs struct {
+	// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+	CpuUtilizationTarget pulumi.IntPtrInput `pulumi:"cpuUtilizationTarget"`
+	// The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+	MaxNodeCount pulumi.IntInput `pulumi:"maxNodeCount"`
+	// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+	MinNodeCount pulumi.IntInput `pulumi:"minNodeCount"`
+}
+
+func (AiFeatureOnlineStoreBigtableAutoScalingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreBigtableAutoScaling)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreBigtableAutoScalingArgs) ToAiFeatureOnlineStoreBigtableAutoScalingOutput() AiFeatureOnlineStoreBigtableAutoScalingOutput {
+	return i.ToAiFeatureOnlineStoreBigtableAutoScalingOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreBigtableAutoScalingArgs) ToAiFeatureOnlineStoreBigtableAutoScalingOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtableAutoScalingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreBigtableAutoScalingOutput)
+}
+
+func (i AiFeatureOnlineStoreBigtableAutoScalingArgs) ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutput() AiFeatureOnlineStoreBigtableAutoScalingPtrOutput {
+	return i.ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreBigtableAutoScalingArgs) ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtableAutoScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreBigtableAutoScalingOutput).ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreBigtableAutoScalingPtrInput is an input type that accepts AiFeatureOnlineStoreBigtableAutoScalingArgs, AiFeatureOnlineStoreBigtableAutoScalingPtr and AiFeatureOnlineStoreBigtableAutoScalingPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreBigtableAutoScalingPtrInput` via:
+//
+//	        AiFeatureOnlineStoreBigtableAutoScalingArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreBigtableAutoScalingPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutput() AiFeatureOnlineStoreBigtableAutoScalingPtrOutput
+	ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(context.Context) AiFeatureOnlineStoreBigtableAutoScalingPtrOutput
+}
+
+type aiFeatureOnlineStoreBigtableAutoScalingPtrType AiFeatureOnlineStoreBigtableAutoScalingArgs
+
+func AiFeatureOnlineStoreBigtableAutoScalingPtr(v *AiFeatureOnlineStoreBigtableAutoScalingArgs) AiFeatureOnlineStoreBigtableAutoScalingPtrInput {
+	return (*aiFeatureOnlineStoreBigtableAutoScalingPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreBigtableAutoScalingPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreBigtableAutoScaling)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreBigtableAutoScalingPtrType) ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutput() AiFeatureOnlineStoreBigtableAutoScalingPtrOutput {
+	return i.ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreBigtableAutoScalingPtrType) ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtableAutoScalingPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreBigtableAutoScalingPtrOutput)
+}
+
+type AiFeatureOnlineStoreBigtableAutoScalingOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreBigtableAutoScalingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreBigtableAutoScaling)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreBigtableAutoScalingOutput) ToAiFeatureOnlineStoreBigtableAutoScalingOutput() AiFeatureOnlineStoreBigtableAutoScalingOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreBigtableAutoScalingOutput) ToAiFeatureOnlineStoreBigtableAutoScalingOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtableAutoScalingOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreBigtableAutoScalingOutput) ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutput() AiFeatureOnlineStoreBigtableAutoScalingPtrOutput {
+	return o.ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreBigtableAutoScalingOutput) ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtableAutoScalingPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreBigtableAutoScaling) *AiFeatureOnlineStoreBigtableAutoScaling {
+		return &v
+	}).(AiFeatureOnlineStoreBigtableAutoScalingPtrOutput)
+}
+
+// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+func (o AiFeatureOnlineStoreBigtableAutoScalingOutput) CpuUtilizationTarget() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreBigtableAutoScaling) *int { return v.CpuUtilizationTarget }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+func (o AiFeatureOnlineStoreBigtableAutoScalingOutput) MaxNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreBigtableAutoScaling) int { return v.MaxNodeCount }).(pulumi.IntOutput)
+}
+
+// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+func (o AiFeatureOnlineStoreBigtableAutoScalingOutput) MinNodeCount() pulumi.IntOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreBigtableAutoScaling) int { return v.MinNodeCount }).(pulumi.IntOutput)
+}
+
+type AiFeatureOnlineStoreBigtableAutoScalingPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreBigtableAutoScalingPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreBigtableAutoScaling)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreBigtableAutoScalingPtrOutput) ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutput() AiFeatureOnlineStoreBigtableAutoScalingPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreBigtableAutoScalingPtrOutput) ToAiFeatureOnlineStoreBigtableAutoScalingPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreBigtableAutoScalingPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreBigtableAutoScalingPtrOutput) Elem() AiFeatureOnlineStoreBigtableAutoScalingOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreBigtableAutoScaling) AiFeatureOnlineStoreBigtableAutoScaling {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreBigtableAutoScaling
+		return ret
+	}).(AiFeatureOnlineStoreBigtableAutoScalingOutput)
+}
+
+// A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+func (o AiFeatureOnlineStoreBigtableAutoScalingPtrOutput) CpuUtilizationTarget() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreBigtableAutoScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return v.CpuUtilizationTarget
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+func (o AiFeatureOnlineStoreBigtableAutoScalingPtrOutput) MaxNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreBigtableAutoScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MaxNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+// The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+func (o AiFeatureOnlineStoreBigtableAutoScalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreBigtableAutoScaling) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.MinNodeCount
+	}).(pulumi.IntPtrOutput)
+}
+
+type AiFeatureOnlineStoreDedicatedServingEndpoint struct {
+	// Private service connect config.
+	// Structure is documented below.
+	PrivateServiceConnectConfig *AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig `pulumi:"privateServiceConnectConfig"`
+	// (Output)
+	// Domain name to use for this FeatureOnlineStore
+	PublicEndpointDomainName *string `pulumi:"publicEndpointDomainName"`
+	// (Output)
+	// Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+	ServiceAttachment *string `pulumi:"serviceAttachment"`
+}
+
+// AiFeatureOnlineStoreDedicatedServingEndpointInput is an input type that accepts AiFeatureOnlineStoreDedicatedServingEndpointArgs and AiFeatureOnlineStoreDedicatedServingEndpointOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreDedicatedServingEndpointInput` via:
+//
+//	AiFeatureOnlineStoreDedicatedServingEndpointArgs{...}
+type AiFeatureOnlineStoreDedicatedServingEndpointInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreDedicatedServingEndpointOutput() AiFeatureOnlineStoreDedicatedServingEndpointOutput
+	ToAiFeatureOnlineStoreDedicatedServingEndpointOutputWithContext(context.Context) AiFeatureOnlineStoreDedicatedServingEndpointOutput
+}
+
+type AiFeatureOnlineStoreDedicatedServingEndpointArgs struct {
+	// Private service connect config.
+	// Structure is documented below.
+	PrivateServiceConnectConfig AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrInput `pulumi:"privateServiceConnectConfig"`
+	// (Output)
+	// Domain name to use for this FeatureOnlineStore
+	PublicEndpointDomainName pulumi.StringPtrInput `pulumi:"publicEndpointDomainName"`
+	// (Output)
+	// Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
+}
+
+func (AiFeatureOnlineStoreDedicatedServingEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpoint)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreDedicatedServingEndpointArgs) ToAiFeatureOnlineStoreDedicatedServingEndpointOutput() AiFeatureOnlineStoreDedicatedServingEndpointOutput {
+	return i.ToAiFeatureOnlineStoreDedicatedServingEndpointOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreDedicatedServingEndpointArgs) ToAiFeatureOnlineStoreDedicatedServingEndpointOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreDedicatedServingEndpointOutput)
+}
+
+func (i AiFeatureOnlineStoreDedicatedServingEndpointArgs) ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput {
+	return i.ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreDedicatedServingEndpointArgs) ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreDedicatedServingEndpointOutput).ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreDedicatedServingEndpointPtrInput is an input type that accepts AiFeatureOnlineStoreDedicatedServingEndpointArgs, AiFeatureOnlineStoreDedicatedServingEndpointPtr and AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreDedicatedServingEndpointPtrInput` via:
+//
+//	        AiFeatureOnlineStoreDedicatedServingEndpointArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreDedicatedServingEndpointPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput
+	ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput
+}
+
+type aiFeatureOnlineStoreDedicatedServingEndpointPtrType AiFeatureOnlineStoreDedicatedServingEndpointArgs
+
+func AiFeatureOnlineStoreDedicatedServingEndpointPtr(v *AiFeatureOnlineStoreDedicatedServingEndpointArgs) AiFeatureOnlineStoreDedicatedServingEndpointPtrInput {
+	return (*aiFeatureOnlineStoreDedicatedServingEndpointPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreDedicatedServingEndpointPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreDedicatedServingEndpoint)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreDedicatedServingEndpointPtrType) ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput {
+	return i.ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreDedicatedServingEndpointPtrType) ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput)
+}
+
+type AiFeatureOnlineStoreDedicatedServingEndpointOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreDedicatedServingEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpoint)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointOutput() AiFeatureOnlineStoreDedicatedServingEndpointOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput {
+	return o.ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreDedicatedServingEndpoint) *AiFeatureOnlineStoreDedicatedServingEndpoint {
+		return &v
+	}).(AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput)
+}
+
+// Private service connect config.
+// Structure is documented below.
+func (o AiFeatureOnlineStoreDedicatedServingEndpointOutput) PrivateServiceConnectConfig() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreDedicatedServingEndpoint) *AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
+		return v.PrivateServiceConnectConfig
+	}).(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput)
+}
+
+// (Output)
+// Domain name to use for this FeatureOnlineStore
+func (o AiFeatureOnlineStoreDedicatedServingEndpointOutput) PublicEndpointDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreDedicatedServingEndpoint) *string { return v.PublicEndpointDomainName }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+func (o AiFeatureOnlineStoreDedicatedServingEndpointOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreDedicatedServingEndpoint) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreDedicatedServingEndpoint)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput) Elem() AiFeatureOnlineStoreDedicatedServingEndpointOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreDedicatedServingEndpoint) AiFeatureOnlineStoreDedicatedServingEndpoint {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreDedicatedServingEndpoint
+		return ret
+	}).(AiFeatureOnlineStoreDedicatedServingEndpointOutput)
+}
+
+// Private service connect config.
+// Structure is documented below.
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput) PrivateServiceConnectConfig() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreDedicatedServingEndpoint) *AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateServiceConnectConfig
+	}).(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput)
+}
+
+// (Output)
+// Domain name to use for this FeatureOnlineStore
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput) PublicEndpointDomainName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreDedicatedServingEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PublicEndpointDomainName
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreDedicatedServingEndpoint) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig struct {
+	// If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+	EnablePrivateServiceConnect bool `pulumi:"enablePrivateServiceConnect"`
+	// A list of Projects from which the forwarding rule will target the service attachment.
+	ProjectAllowlists []string `pulumi:"projectAllowlists"`
+}
+
+// AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigInput is an input type that accepts AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs and AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigInput` via:
+//
+//	AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs{...}
+type AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput
+	ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutputWithContext(context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput
+}
+
+type AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs struct {
+	// If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+	EnablePrivateServiceConnect pulumi.BoolInput `pulumi:"enablePrivateServiceConnect"`
+	// A list of Projects from which the forwarding rule will target the service attachment.
+	ProjectAllowlists pulumi.StringArrayInput `pulumi:"projectAllowlists"`
+}
+
+func (AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput {
+	return i.ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput)
+}
+
+func (i AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput).ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrInput is an input type that accepts AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs, AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtr and AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrInput` via:
+//
+//	        AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput
+	ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput
+}
+
+type aiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrType AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs
+
+func AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtr(v *AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrInput {
+	return (*aiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrType) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrType) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput)
+}
+
+type AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return o.ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig) *AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
+		return &v
+	}).(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput)
+}
+
+// If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput) EnablePrivateServiceConnect() pulumi.BoolOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig) bool {
+		return v.EnablePrivateServiceConnect
+	}).(pulumi.BoolOutput)
+}
+
+// A list of Projects from which the forwarding rule will target the service attachment.
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput) ProjectAllowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig) []string {
+		return v.ProjectAllowlists
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput) ToAiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput) Elem() AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig) AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig
+		return ret
+	}).(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput)
+}
+
+// If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput) EnablePrivateServiceConnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnablePrivateServiceConnect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of Projects from which the forwarding rule will target the service attachment.
+func (o AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput) ProjectAllowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectAllowlists
+	}).(pulumi.StringArrayOutput)
+}
+
+type AiFeatureOnlineStoreEmbeddingManagement struct {
+	// Enable embedding management.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// AiFeatureOnlineStoreEmbeddingManagementInput is an input type that accepts AiFeatureOnlineStoreEmbeddingManagementArgs and AiFeatureOnlineStoreEmbeddingManagementOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreEmbeddingManagementInput` via:
+//
+//	AiFeatureOnlineStoreEmbeddingManagementArgs{...}
+type AiFeatureOnlineStoreEmbeddingManagementInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreEmbeddingManagementOutput() AiFeatureOnlineStoreEmbeddingManagementOutput
+	ToAiFeatureOnlineStoreEmbeddingManagementOutputWithContext(context.Context) AiFeatureOnlineStoreEmbeddingManagementOutput
+}
+
+type AiFeatureOnlineStoreEmbeddingManagementArgs struct {
+	// Enable embedding management.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (AiFeatureOnlineStoreEmbeddingManagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreEmbeddingManagement)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreEmbeddingManagementArgs) ToAiFeatureOnlineStoreEmbeddingManagementOutput() AiFeatureOnlineStoreEmbeddingManagementOutput {
+	return i.ToAiFeatureOnlineStoreEmbeddingManagementOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreEmbeddingManagementArgs) ToAiFeatureOnlineStoreEmbeddingManagementOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEmbeddingManagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreEmbeddingManagementOutput)
+}
+
+func (i AiFeatureOnlineStoreEmbeddingManagementArgs) ToAiFeatureOnlineStoreEmbeddingManagementPtrOutput() AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
+	return i.ToAiFeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreEmbeddingManagementArgs) ToAiFeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreEmbeddingManagementOutput).ToAiFeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreEmbeddingManagementPtrInput is an input type that accepts AiFeatureOnlineStoreEmbeddingManagementArgs, AiFeatureOnlineStoreEmbeddingManagementPtr and AiFeatureOnlineStoreEmbeddingManagementPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreEmbeddingManagementPtrInput` via:
+//
+//	        AiFeatureOnlineStoreEmbeddingManagementArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreEmbeddingManagementPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreEmbeddingManagementPtrOutput() AiFeatureOnlineStoreEmbeddingManagementPtrOutput
+	ToAiFeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(context.Context) AiFeatureOnlineStoreEmbeddingManagementPtrOutput
+}
+
+type aiFeatureOnlineStoreEmbeddingManagementPtrType AiFeatureOnlineStoreEmbeddingManagementArgs
+
+func AiFeatureOnlineStoreEmbeddingManagementPtr(v *AiFeatureOnlineStoreEmbeddingManagementArgs) AiFeatureOnlineStoreEmbeddingManagementPtrInput {
+	return (*aiFeatureOnlineStoreEmbeddingManagementPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreEmbeddingManagementPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreEmbeddingManagement)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreEmbeddingManagementPtrType) ToAiFeatureOnlineStoreEmbeddingManagementPtrOutput() AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
+	return i.ToAiFeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreEmbeddingManagementPtrType) ToAiFeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreEmbeddingManagementPtrOutput)
+}
+
+type AiFeatureOnlineStoreEmbeddingManagementOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreEmbeddingManagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreEmbeddingManagement)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreEmbeddingManagementOutput) ToAiFeatureOnlineStoreEmbeddingManagementOutput() AiFeatureOnlineStoreEmbeddingManagementOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreEmbeddingManagementOutput) ToAiFeatureOnlineStoreEmbeddingManagementOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEmbeddingManagementOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreEmbeddingManagementOutput) ToAiFeatureOnlineStoreEmbeddingManagementPtrOutput() AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
+	return o.ToAiFeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreEmbeddingManagementOutput) ToAiFeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreEmbeddingManagement) *AiFeatureOnlineStoreEmbeddingManagement {
+		return &v
+	}).(AiFeatureOnlineStoreEmbeddingManagementPtrOutput)
+}
+
+// Enable embedding management.
+func (o AiFeatureOnlineStoreEmbeddingManagementOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreEmbeddingManagement) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type AiFeatureOnlineStoreEmbeddingManagementPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreEmbeddingManagementPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreEmbeddingManagement)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreEmbeddingManagementPtrOutput) ToAiFeatureOnlineStoreEmbeddingManagementPtrOutput() AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreEmbeddingManagementPtrOutput) ToAiFeatureOnlineStoreEmbeddingManagementPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreEmbeddingManagementPtrOutput) Elem() AiFeatureOnlineStoreEmbeddingManagementOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreEmbeddingManagement) AiFeatureOnlineStoreEmbeddingManagement {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreEmbeddingManagement
+		return ret
+	}).(AiFeatureOnlineStoreEmbeddingManagementOutput)
+}
+
+// Enable embedding management.
+func (o AiFeatureOnlineStoreEmbeddingManagementPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreEmbeddingManagement) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type AiFeatureOnlineStoreOptimized struct {
+}
+
+// AiFeatureOnlineStoreOptimizedInput is an input type that accepts AiFeatureOnlineStoreOptimizedArgs and AiFeatureOnlineStoreOptimizedOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreOptimizedInput` via:
+//
+//	AiFeatureOnlineStoreOptimizedArgs{...}
+type AiFeatureOnlineStoreOptimizedInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreOptimizedOutput() AiFeatureOnlineStoreOptimizedOutput
+	ToAiFeatureOnlineStoreOptimizedOutputWithContext(context.Context) AiFeatureOnlineStoreOptimizedOutput
+}
+
+type AiFeatureOnlineStoreOptimizedArgs struct {
+}
+
+func (AiFeatureOnlineStoreOptimizedArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreOptimized)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreOptimizedArgs) ToAiFeatureOnlineStoreOptimizedOutput() AiFeatureOnlineStoreOptimizedOutput {
+	return i.ToAiFeatureOnlineStoreOptimizedOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreOptimizedArgs) ToAiFeatureOnlineStoreOptimizedOutputWithContext(ctx context.Context) AiFeatureOnlineStoreOptimizedOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreOptimizedOutput)
+}
+
+func (i AiFeatureOnlineStoreOptimizedArgs) ToAiFeatureOnlineStoreOptimizedPtrOutput() AiFeatureOnlineStoreOptimizedPtrOutput {
+	return i.ToAiFeatureOnlineStoreOptimizedPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreOptimizedArgs) ToAiFeatureOnlineStoreOptimizedPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreOptimizedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreOptimizedOutput).ToAiFeatureOnlineStoreOptimizedPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreOptimizedPtrInput is an input type that accepts AiFeatureOnlineStoreOptimizedArgs, AiFeatureOnlineStoreOptimizedPtr and AiFeatureOnlineStoreOptimizedPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreOptimizedPtrInput` via:
+//
+//	        AiFeatureOnlineStoreOptimizedArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreOptimizedPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreOptimizedPtrOutput() AiFeatureOnlineStoreOptimizedPtrOutput
+	ToAiFeatureOnlineStoreOptimizedPtrOutputWithContext(context.Context) AiFeatureOnlineStoreOptimizedPtrOutput
+}
+
+type aiFeatureOnlineStoreOptimizedPtrType AiFeatureOnlineStoreOptimizedArgs
+
+func AiFeatureOnlineStoreOptimizedPtr(v *AiFeatureOnlineStoreOptimizedArgs) AiFeatureOnlineStoreOptimizedPtrInput {
+	return (*aiFeatureOnlineStoreOptimizedPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreOptimizedPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreOptimized)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreOptimizedPtrType) ToAiFeatureOnlineStoreOptimizedPtrOutput() AiFeatureOnlineStoreOptimizedPtrOutput {
+	return i.ToAiFeatureOnlineStoreOptimizedPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreOptimizedPtrType) ToAiFeatureOnlineStoreOptimizedPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreOptimizedPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreOptimizedPtrOutput)
+}
+
+type AiFeatureOnlineStoreOptimizedOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreOptimizedOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreOptimized)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreOptimizedOutput) ToAiFeatureOnlineStoreOptimizedOutput() AiFeatureOnlineStoreOptimizedOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreOptimizedOutput) ToAiFeatureOnlineStoreOptimizedOutputWithContext(ctx context.Context) AiFeatureOnlineStoreOptimizedOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreOptimizedOutput) ToAiFeatureOnlineStoreOptimizedPtrOutput() AiFeatureOnlineStoreOptimizedPtrOutput {
+	return o.ToAiFeatureOnlineStoreOptimizedPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreOptimizedOutput) ToAiFeatureOnlineStoreOptimizedPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreOptimizedPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreOptimized) *AiFeatureOnlineStoreOptimized {
+		return &v
+	}).(AiFeatureOnlineStoreOptimizedPtrOutput)
+}
+
+type AiFeatureOnlineStoreOptimizedPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreOptimizedPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreOptimized)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreOptimizedPtrOutput) ToAiFeatureOnlineStoreOptimizedPtrOutput() AiFeatureOnlineStoreOptimizedPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreOptimizedPtrOutput) ToAiFeatureOnlineStoreOptimizedPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreOptimizedPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreOptimizedPtrOutput) Elem() AiFeatureOnlineStoreOptimizedOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreOptimized) AiFeatureOnlineStoreOptimized {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreOptimized
+		return ret
+	}).(AiFeatureOnlineStoreOptimizedOutput)
+}
+
 type AiFeatureStoreEncryptionSpec struct {
 	// The Cloud KMS resource identifier of the customer managed encryption key used to protect a resource. Has the form: projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key. The key needs to be in the same region as where the compute resource is created.
 	KmsKeyName string `pulumi:"kmsKeyName"`
@@ -5912,6 +7129,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamBindingConditionPtrInput)(nil)).Elem(), AiEndpointIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamMemberConditionInput)(nil)).Elem(), AiEndpointIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamMemberConditionPtrInput)(nil)).Elem(), AiEndpointIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryPtrInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryBigQuerySourceInput)(nil)).Elem(), AiFeatureGroupBigQueryBigQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryBigQuerySourcePtrInput)(nil)).Elem(), AiFeatureGroupBigQueryBigQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreBigtableInput)(nil)).Elem(), AiFeatureOnlineStoreBigtableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreBigtablePtrInput)(nil)).Elem(), AiFeatureOnlineStoreBigtableArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreBigtableAutoScalingInput)(nil)).Elem(), AiFeatureOnlineStoreBigtableAutoScalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreBigtableAutoScalingPtrInput)(nil)).Elem(), AiFeatureOnlineStoreBigtableAutoScalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpointInput)(nil)).Elem(), AiFeatureOnlineStoreDedicatedServingEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpointPtrInput)(nil)).Elem(), AiFeatureOnlineStoreDedicatedServingEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigInput)(nil)).Elem(), AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreEmbeddingManagementInput)(nil)).Elem(), AiFeatureOnlineStoreEmbeddingManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreEmbeddingManagementPtrInput)(nil)).Elem(), AiFeatureOnlineStoreEmbeddingManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreOptimizedInput)(nil)).Elem(), AiFeatureOnlineStoreOptimizedArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreOptimizedPtrInput)(nil)).Elem(), AiFeatureOnlineStoreOptimizedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecPtrInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEntityTypeIamBindingConditionInput)(nil)).Elem(), AiFeatureStoreEntityTypeIamBindingConditionArgs{})
@@ -5992,6 +7225,22 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(AiEndpointIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureGroupBigQueryOutput{})
+	pulumi.RegisterOutputType(AiFeatureGroupBigQueryPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureGroupBigQueryBigQuerySourceOutput{})
+	pulumi.RegisterOutputType(AiFeatureGroupBigQueryBigQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreBigtableOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreBigtablePtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreBigtableAutoScalingOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreBigtableAutoScalingPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreDedicatedServingEndpointOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreDedicatedServingEndpointPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreEmbeddingManagementOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreEmbeddingManagementPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreOptimizedOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreOptimizedPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEntityTypeIamBindingConditionOutput{})

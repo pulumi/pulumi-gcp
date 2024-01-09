@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.gkehub.outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -17,6 +18,11 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
      * 
      */
     private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSync configSync;
+    /**
+     * @return Version of ACM installed
+     * 
+     */
+    private @Nullable String version;
 
     private FeatureFleetDefaultMemberConfigConfigmanagement() {}
     /**
@@ -26,6 +32,13 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
      */
     public Optional<FeatureFleetDefaultMemberConfigConfigmanagementConfigSync> configSync() {
         return Optional.ofNullable(this.configSync);
+    }
+    /**
+     * @return Version of ACM installed
+     * 
+     */
+    public Optional<String> version() {
+        return Optional.ofNullable(this.version);
     }
 
     public static Builder builder() {
@@ -38,10 +51,12 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable FeatureFleetDefaultMemberConfigConfigmanagementConfigSync configSync;
+        private @Nullable String version;
         public Builder() {}
         public Builder(FeatureFleetDefaultMemberConfigConfigmanagement defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.configSync = defaults.configSync;
+    	      this.version = defaults.version;
         }
 
         @CustomType.Setter
@@ -50,9 +65,16 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagement {
             this.configSync = configSync;
             return this;
         }
+        @CustomType.Setter
+        public Builder version(@Nullable String version) {
+
+            this.version = version;
+            return this;
+        }
         public FeatureFleetDefaultMemberConfigConfigmanagement build() {
             final var _resultValue = new FeatureFleetDefaultMemberConfigConfigmanagement();
             _resultValue.configSync = configSync;
+            _resultValue.version = version;
             return _resultValue;
         }
     }

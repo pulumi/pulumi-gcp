@@ -84,6 +84,8 @@ import com.pulumi.gcp.compute.inputs.GetRegionSslCertificateArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionSslCertificatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionsArgs;
 import com.pulumi.gcp.compute.inputs.GetRegionsPlainArgs;
+import com.pulumi.gcp.compute.inputs.GetReservationArgs;
+import com.pulumi.gcp.compute.inputs.GetReservationPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetResourcePolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetResourcePolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetRouterArgs;
@@ -147,6 +149,7 @@ import com.pulumi.gcp.compute.outputs.GetRegionInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupResult;
 import com.pulumi.gcp.compute.outputs.GetRegionSslCertificateResult;
 import com.pulumi.gcp.compute.outputs.GetRegionsResult;
+import com.pulumi.gcp.compute.outputs.GetReservationResult;
 import com.pulumi.gcp.compute.outputs.GetResourcePolicyResult;
 import com.pulumi.gcp.compute.outputs.GetRouterNatResult;
 import com.pulumi.gcp.compute.outputs.GetRouterResult;
@@ -8088,6 +8091,154 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetRegionsResult> getRegionsPlain(GetRegionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getRegions:getRegions", TypeShape.of(GetRegionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available Google Compute Reservation Resources for a given project.
+     * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var reservation = ComputeFunctions.getReservation(GetReservationArgs.builder()
+     *             .name(&#34;gce-reservation&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetReservationResult> getReservation(GetReservationArgs args) {
+        return getReservation(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available Google Compute Reservation Resources for a given project.
+     * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var reservation = ComputeFunctions.getReservation(GetReservationArgs.builder()
+     *             .name(&#34;gce-reservation&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetReservationResult> getReservationPlain(GetReservationPlainArgs args) {
+        return getReservationPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Provides access to available Google Compute Reservation Resources for a given project.
+     * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var reservation = ComputeFunctions.getReservation(GetReservationArgs.builder()
+     *             .name(&#34;gce-reservation&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetReservationResult> getReservation(GetReservationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getReservation:getReservation", TypeShape.of(GetReservationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides access to available Google Compute Reservation Resources for a given project.
+     * See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetReservationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var reservation = ComputeFunctions.getReservation(GetReservationArgs.builder()
+     *             .name(&#34;gce-reservation&#34;)
+     *             .zone(&#34;us-central1-a&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetReservationResult> getReservationPlain(GetReservationPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getReservation:getReservation", TypeShape.of(GetReservationResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Provide access to a Resource Policy&#39;s attributes. For more information see [the official documentation](https://cloud.google.com/compute/docs/disks/scheduled-snapshots) or the [API](https://cloud.google.com/compute/docs/reference/rest/beta/resourcePolicies).

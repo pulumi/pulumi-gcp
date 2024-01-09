@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:clouddeploy/automation:Automation":
+		r = &Automation{}
 	case "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline":
 		r = &DeliveryPipeline{}
 	case "gcp:clouddeploy/target:Target":
@@ -38,6 +40,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"clouddeploy/automation",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"clouddeploy/deliveryPipeline",

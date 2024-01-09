@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * The Compute NetworkFirewallPolicy resource
  * 
  * ## Example Usage
- * ### Regional
+ * ### Region Network Firewall Policy Full
  * ```java
  * package generated_program;
  * 
@@ -41,10 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new RegionNetworkFirewallPolicy(&#34;primary&#34;, RegionNetworkFirewallPolicyArgs.builder()        
- *             .description(&#34;Sample regional network firewall policy&#34;)
- *             .project(&#34;my-project-name&#34;)
- *             .region(&#34;us-west1&#34;)
+ *         var policy = new RegionNetworkFirewallPolicy(&#34;policy&#34;, RegionNetworkFirewallPolicyArgs.builder()        
+ *             .description(&#34;Terraform test&#34;)
  *             .build());
  * 
  *     }
@@ -53,14 +51,14 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicy using one of the formats above. For exampletf import {
+ * RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkFirewallPolicy using one of the formats above. For exampletf import {
  * 
  *  id = &#34;projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}&#34;
  * 
  *  to = google_compute_region_network_firewall_policy.default }
  * 
  * ```sh
- *  $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicy can be imported using one of the formats above. For example
+ *  $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
  * ```
  * 
  * ```sh
@@ -143,28 +141,30 @@ public class RegionNetworkFirewallPolicy extends com.pulumi.resources.CustomReso
         return this.name;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
         return this.project;
     }
     /**
-     * The location of this resource.
+     * The region of this resource.
      * 
      */
     @Export(name="region", refs={String.class}, tree="[0]")
     private Output<String> region;
 
     /**
-     * @return The location of this resource.
+     * @return The region of this resource.
      * 
      */
     public Output<String> region() {

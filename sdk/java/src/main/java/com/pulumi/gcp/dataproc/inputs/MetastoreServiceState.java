@@ -185,6 +185,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
 
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      * 
      */
     @Import(name="metadataIntegration")
@@ -192,6 +193,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<MetastoreServiceMetadataIntegrationArgs>> metadataIntegration() {
@@ -696,6 +698,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param metadataIntegration The setting that defines how metastore metadata should be integrated with external services and systems.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -707,6 +710,7 @@ public final class MetastoreServiceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param metadataIntegration The setting that defines how metastore metadata should be integrated with external services and systems.
+         * Structure is documented below.
          * 
          * @return builder
          * 

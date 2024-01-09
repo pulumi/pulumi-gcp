@@ -25,8 +25,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// </summary>
         public readonly Outputs.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig? NodePoolConfig;
         /// <summary>
-        /// The roles associated with the GKE node pool. 
-        /// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+        /// Node group roles. 
+        /// One of `"DRIVER"`.
         /// </summary>
         public readonly ImmutableArray<string> Roles;
 

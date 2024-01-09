@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigNodeConfigResult
     {
+        public readonly string ComposerInternalIpv4CidrBlock;
         public readonly int DiskSizeGb;
         public readonly bool EnableIpMasqAgent;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult> IpAllocationPolicies;
@@ -27,6 +28,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
         [OutputConstructor]
         private GetEnvironmentConfigNodeConfigResult(
+            string composerInternalIpv4CidrBlock,
+
             int diskSizeGb,
 
             bool enableIpMasqAgent,
@@ -49,6 +52,7 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string zone)
         {
+            ComposerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
             DiskSizeGb = diskSizeGb;
             EnableIpMasqAgent = enableIpMasqAgent;
             IpAllocationPolicies = ipAllocationPolicies;

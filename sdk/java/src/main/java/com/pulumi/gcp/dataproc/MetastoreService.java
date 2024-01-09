@@ -187,6 +187,69 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Dataproc Metastore Service Private Service Connect Custom Routes
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.dataproc.MetastoreService;
+ * import com.pulumi.gcp.dataproc.MetastoreServiceArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceHiveMetastoreConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var net = new Network(&#34;net&#34;, NetworkArgs.builder()        
+ *             .autoCreateSubnetworks(false)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var subnet = new Subnetwork(&#34;subnet&#34;, SubnetworkArgs.builder()        
+ *             .region(&#34;us-central1&#34;)
+ *             .network(net.id())
+ *             .ipCidrRange(&#34;10.0.0.0/22&#34;)
+ *             .privateIpGoogleAccess(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *         var default_ = new MetastoreService(&#34;default&#34;, MetastoreServiceArgs.builder()        
+ *             .serviceId(&#34;metastore-srv&#34;)
+ *             .location(&#34;us-central1&#34;)
+ *             .hiveMetastoreConfig(MetastoreServiceHiveMetastoreConfigArgs.builder()
+ *                 .version(&#34;3.1.2&#34;)
+ *                 .build())
+ *             .networkConfig(MetastoreServiceNetworkConfigArgs.builder()
+ *                 .consumers(MetastoreServiceNetworkConfigConsumerArgs.builder()
+ *                     .subnetwork(subnet.id())
+ *                     .build())
+ *                 .customRoutesEnabled(true)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .provider(google_beta)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * ```
  * ### Dataproc Metastore Service Dpms2
  * ```java
  * package generated_program;
@@ -445,6 +508,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
     }
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      * 
      */
     @Export(name="metadataIntegration", refs={MetastoreServiceMetadataIntegration.class}, tree="[0]")
@@ -452,6 +516,7 @@ public class MetastoreService extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<MetastoreServiceMetadataIntegration>> metadataIntegration() {

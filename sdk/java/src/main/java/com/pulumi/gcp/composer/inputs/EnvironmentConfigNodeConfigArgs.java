@@ -19,6 +19,13 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
 
     public static final EnvironmentConfigNodeConfigArgs Empty = new EnvironmentConfigNodeConfigArgs();
 
+    @Import(name="composerInternalIpv4CidrBlock")
+    private @Nullable Output<String> composerInternalIpv4CidrBlock;
+
+    public Optional<Output<String>> composerInternalIpv4CidrBlock() {
+        return Optional.ofNullable(this.composerInternalIpv4CidrBlock);
+    }
+
     @Import(name="diskSizeGb")
     private @Nullable Output<Integer> diskSizeGb;
 
@@ -99,6 +106,7 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
     private EnvironmentConfigNodeConfigArgs() {}
 
     private EnvironmentConfigNodeConfigArgs(EnvironmentConfigNodeConfigArgs $) {
+        this.composerInternalIpv4CidrBlock = $.composerInternalIpv4CidrBlock;
         this.diskSizeGb = $.diskSizeGb;
         this.enableIpMasqAgent = $.enableIpMasqAgent;
         this.ipAllocationPolicy = $.ipAllocationPolicy;
@@ -128,6 +136,15 @@ public final class EnvironmentConfigNodeConfigArgs extends com.pulumi.resources.
 
         public Builder(EnvironmentConfigNodeConfigArgs defaults) {
             $ = new EnvironmentConfigNodeConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder composerInternalIpv4CidrBlock(@Nullable Output<String> composerInternalIpv4CidrBlock) {
+            $.composerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
+            return this;
+        }
+
+        public Builder composerInternalIpv4CidrBlock(String composerInternalIpv4CidrBlock) {
+            return composerInternalIpv4CidrBlock(Output.of(composerInternalIpv4CidrBlock));
         }
 
         public Builder diskSizeGb(@Nullable Output<Integer> diskSizeGb) {

@@ -26,6 +26,12 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _labels = value;
         }
 
+        [Input("provisionedIops")]
+        public Input<int>? ProvisionedIops { get; set; }
+
+        [Input("provisionedThroughput")]
+        public Input<int>? ProvisionedThroughput { get; set; }
+
         [Input("resourceManagerTags")]
         private InputMap<object>? _resourceManagerTags;
         public InputMap<object> ResourceManagerTags

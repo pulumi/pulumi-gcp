@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.GetOrganizationSettings(ctx, &logging.GetOrganizationSettingsArgs{
+//			_, err := logging.LookupOrganizationSettings(ctx, &logging.LookupOrganizationSettingsArgs{
 //				Organization: "my-organization-name",
 //			}, nil)
 //			if err != nil {
@@ -44,9 +44,9 @@ import (
 //	}
 //
 // ```
-func GetOrganizationSettings(ctx *pulumi.Context, args *GetOrganizationSettingsArgs, opts ...pulumi.InvokeOption) (*GetOrganizationSettingsResult, error) {
+func LookupOrganizationSettings(ctx *pulumi.Context, args *LookupOrganizationSettingsArgs, opts ...pulumi.InvokeOption) (*LookupOrganizationSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetOrganizationSettingsResult
+	var rv LookupOrganizationSettingsResult
 	err := ctx.Invoke("gcp:logging/getOrganizationSettings:getOrganizationSettings", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -55,13 +55,13 @@ func GetOrganizationSettings(ctx *pulumi.Context, args *GetOrganizationSettingsA
 }
 
 // A collection of arguments for invoking getOrganizationSettings.
-type GetOrganizationSettingsArgs struct {
+type LookupOrganizationSettingsArgs struct {
 	// The ID of the organization for which to retrieve settings.
 	Organization string `pulumi:"organization"`
 }
 
 // A collection of values returned by getOrganizationSettings.
-type GetOrganizationSettingsResult struct {
+type LookupOrganizationSettingsResult struct {
 	// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
 	DisableDefaultSink bool `pulumi:"disableDefaultSink"`
 	// The provider-assigned unique ID for this managed resource.
@@ -85,52 +85,52 @@ type GetOrganizationSettingsResult struct {
 	StorageLocation string `pulumi:"storageLocation"`
 }
 
-func GetOrganizationSettingsOutput(ctx *pulumi.Context, args GetOrganizationSettingsOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationSettingsResultOutput {
+func LookupOrganizationSettingsOutput(ctx *pulumi.Context, args LookupOrganizationSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupOrganizationSettingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetOrganizationSettingsResult, error) {
-			args := v.(GetOrganizationSettingsArgs)
-			r, err := GetOrganizationSettings(ctx, &args, opts...)
-			var s GetOrganizationSettingsResult
+		ApplyT(func(v interface{}) (LookupOrganizationSettingsResult, error) {
+			args := v.(LookupOrganizationSettingsArgs)
+			r, err := LookupOrganizationSettings(ctx, &args, opts...)
+			var s LookupOrganizationSettingsResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetOrganizationSettingsResultOutput)
+		}).(LookupOrganizationSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getOrganizationSettings.
-type GetOrganizationSettingsOutputArgs struct {
+type LookupOrganizationSettingsOutputArgs struct {
 	// The ID of the organization for which to retrieve settings.
 	Organization pulumi.StringInput `pulumi:"organization"`
 }
 
-func (GetOrganizationSettingsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOrganizationSettingsArgs)(nil)).Elem()
+func (LookupOrganizationSettingsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOrganizationSettingsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getOrganizationSettings.
-type GetOrganizationSettingsResultOutput struct{ *pulumi.OutputState }
+type LookupOrganizationSettingsResultOutput struct{ *pulumi.OutputState }
 
-func (GetOrganizationSettingsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetOrganizationSettingsResult)(nil)).Elem()
+func (LookupOrganizationSettingsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupOrganizationSettingsResult)(nil)).Elem()
 }
 
-func (o GetOrganizationSettingsResultOutput) ToGetOrganizationSettingsResultOutput() GetOrganizationSettingsResultOutput {
+func (o LookupOrganizationSettingsResultOutput) ToLookupOrganizationSettingsResultOutput() LookupOrganizationSettingsResultOutput {
 	return o
 }
 
-func (o GetOrganizationSettingsResultOutput) ToGetOrganizationSettingsResultOutputWithContext(ctx context.Context) GetOrganizationSettingsResultOutput {
+func (o LookupOrganizationSettingsResultOutput) ToLookupOrganizationSettingsResultOutputWithContext(ctx context.Context) LookupOrganizationSettingsResultOutput {
 	return o
 }
 
 // If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
-func (o GetOrganizationSettingsResultOutput) DisableDefaultSink() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetOrganizationSettingsResult) bool { return v.DisableDefaultSink }).(pulumi.BoolOutput)
+func (o LookupOrganizationSettingsResultOutput) DisableDefaultSink() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupOrganizationSettingsResult) bool { return v.DisableDefaultSink }).(pulumi.BoolOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetOrganizationSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationSettingsResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupOrganizationSettingsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The resource name for the configured Cloud KMS key.
@@ -139,35 +139,35 @@ func (o GetOrganizationSettingsResultOutput) Id() pulumi.StringOutput {
 // To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
 // The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
 // See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
-func (o GetOrganizationSettingsResultOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationSettingsResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
+func (o LookupOrganizationSettingsResultOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationSettingsResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 // The service account associated with a project for which CMEK will apply.
 // Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
-func (o GetOrganizationSettingsResultOutput) KmsServiceAccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationSettingsResult) string { return v.KmsServiceAccountId }).(pulumi.StringOutput)
+func (o LookupOrganizationSettingsResultOutput) KmsServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationSettingsResult) string { return v.KmsServiceAccountId }).(pulumi.StringOutput)
 }
 
 // The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
-func (o GetOrganizationSettingsResultOutput) LoggingServiceAccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationSettingsResult) string { return v.LoggingServiceAccountId }).(pulumi.StringOutput)
+func (o LookupOrganizationSettingsResultOutput) LoggingServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationSettingsResult) string { return v.LoggingServiceAccountId }).(pulumi.StringOutput)
 }
 
 // The resource name of the settings.
-func (o GetOrganizationSettingsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationSettingsResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupOrganizationSettingsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationSettingsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
-func (o GetOrganizationSettingsResultOutput) Organization() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationSettingsResult) string { return v.Organization }).(pulumi.StringOutput)
+func (o LookupOrganizationSettingsResultOutput) Organization() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationSettingsResult) string { return v.Organization }).(pulumi.StringOutput)
 }
 
 // The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
-func (o GetOrganizationSettingsResultOutput) StorageLocation() pulumi.StringOutput {
-	return o.ApplyT(func(v GetOrganizationSettingsResult) string { return v.StorageLocation }).(pulumi.StringOutput)
+func (o LookupOrganizationSettingsResultOutput) StorageLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupOrganizationSettingsResult) string { return v.StorageLocation }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetOrganizationSettingsResultOutput{})
+	pulumi.RegisterOutputType(LookupOrganizationSettingsResultOutput{})
 }

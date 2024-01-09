@@ -4,6 +4,7 @@
 package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.composer.outputs.EnvironmentConfigWorkloadsConfigDagProcessor;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWorkloadsConfigScheduler;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWorkloadsConfigTriggerer;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWorkloadsConfigWebServer;
@@ -14,12 +15,16 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigWorkloadsConfig {
+    private @Nullable EnvironmentConfigWorkloadsConfigDagProcessor dagProcessor;
     private @Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler;
     private @Nullable EnvironmentConfigWorkloadsConfigTriggerer triggerer;
     private @Nullable EnvironmentConfigWorkloadsConfigWebServer webServer;
     private @Nullable EnvironmentConfigWorkloadsConfigWorker worker;
 
     private EnvironmentConfigWorkloadsConfig() {}
+    public Optional<EnvironmentConfigWorkloadsConfigDagProcessor> dagProcessor() {
+        return Optional.ofNullable(this.dagProcessor);
+    }
     public Optional<EnvironmentConfigWorkloadsConfigScheduler> scheduler() {
         return Optional.ofNullable(this.scheduler);
     }
@@ -42,6 +47,7 @@ public final class EnvironmentConfigWorkloadsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable EnvironmentConfigWorkloadsConfigDagProcessor dagProcessor;
         private @Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler;
         private @Nullable EnvironmentConfigWorkloadsConfigTriggerer triggerer;
         private @Nullable EnvironmentConfigWorkloadsConfigWebServer webServer;
@@ -49,12 +55,19 @@ public final class EnvironmentConfigWorkloadsConfig {
         public Builder() {}
         public Builder(EnvironmentConfigWorkloadsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dagProcessor = defaults.dagProcessor;
     	      this.scheduler = defaults.scheduler;
     	      this.triggerer = defaults.triggerer;
     	      this.webServer = defaults.webServer;
     	      this.worker = defaults.worker;
         }
 
+        @CustomType.Setter
+        public Builder dagProcessor(@Nullable EnvironmentConfigWorkloadsConfigDagProcessor dagProcessor) {
+
+            this.dagProcessor = dagProcessor;
+            return this;
+        }
         @CustomType.Setter
         public Builder scheduler(@Nullable EnvironmentConfigWorkloadsConfigScheduler scheduler) {
 
@@ -81,6 +94,7 @@ public final class EnvironmentConfigWorkloadsConfig {
         }
         public EnvironmentConfigWorkloadsConfig build() {
             final var _resultValue = new EnvironmentConfigWorkloadsConfig();
+            _resultValue.dagProcessor = dagProcessor;
             _resultValue.scheduler = scheduler;
             _resultValue.triggerer = triggerer;
             _resultValue.webServer = webServer;

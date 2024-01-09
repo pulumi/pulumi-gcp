@@ -224,6 +224,7 @@ namespace Pulumi.Gcp.Container
         public readonly ImmutableArray<Outputs.GetClusterTpuConfigResult> TpuConfigs;
         public readonly string TpuIpv4CidrBlock;
         public readonly ImmutableArray<Outputs.GetClusterVerticalPodAutoscalingResult> VerticalPodAutoscalings;
+        public readonly ImmutableArray<Outputs.GetClusterWorkloadAltsConfigResult> WorkloadAltsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterWorkloadIdentityConfigResult> WorkloadIdentityConfigs;
 
         [OutputConstructor]
@@ -376,6 +377,8 @@ namespace Pulumi.Gcp.Container
 
             ImmutableArray<Outputs.GetClusterVerticalPodAutoscalingResult> verticalPodAutoscalings,
 
+            ImmutableArray<Outputs.GetClusterWorkloadAltsConfigResult> workloadAltsConfigs,
+
             ImmutableArray<Outputs.GetClusterWorkloadIdentityConfigResult> workloadIdentityConfigs)
         {
             AddonsConfigs = addonsConfigs;
@@ -452,6 +455,7 @@ namespace Pulumi.Gcp.Container
             TpuConfigs = tpuConfigs;
             TpuIpv4CidrBlock = tpuIpv4CidrBlock;
             VerticalPodAutoscalings = verticalPodAutoscalings;
+            WorkloadAltsConfigs = workloadAltsConfigs;
             WorkloadIdentityConfigs = workloadIdentityConfigs;
         }
     }

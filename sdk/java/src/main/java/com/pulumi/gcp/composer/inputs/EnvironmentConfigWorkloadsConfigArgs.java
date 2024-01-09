@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigDagProcessorArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigSchedulerArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigTriggererArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigWebServerArgs;
@@ -17,6 +18,13 @@ import javax.annotation.Nullable;
 public final class EnvironmentConfigWorkloadsConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final EnvironmentConfigWorkloadsConfigArgs Empty = new EnvironmentConfigWorkloadsConfigArgs();
+
+    @Import(name="dagProcessor")
+    private @Nullable Output<EnvironmentConfigWorkloadsConfigDagProcessorArgs> dagProcessor;
+
+    public Optional<Output<EnvironmentConfigWorkloadsConfigDagProcessorArgs>> dagProcessor() {
+        return Optional.ofNullable(this.dagProcessor);
+    }
 
     @Import(name="scheduler")
     private @Nullable Output<EnvironmentConfigWorkloadsConfigSchedulerArgs> scheduler;
@@ -49,6 +57,7 @@ public final class EnvironmentConfigWorkloadsConfigArgs extends com.pulumi.resou
     private EnvironmentConfigWorkloadsConfigArgs() {}
 
     private EnvironmentConfigWorkloadsConfigArgs(EnvironmentConfigWorkloadsConfigArgs $) {
+        this.dagProcessor = $.dagProcessor;
         this.scheduler = $.scheduler;
         this.triggerer = $.triggerer;
         this.webServer = $.webServer;
@@ -71,6 +80,15 @@ public final class EnvironmentConfigWorkloadsConfigArgs extends com.pulumi.resou
 
         public Builder(EnvironmentConfigWorkloadsConfigArgs defaults) {
             $ = new EnvironmentConfigWorkloadsConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        public Builder dagProcessor(@Nullable Output<EnvironmentConfigWorkloadsConfigDagProcessorArgs> dagProcessor) {
+            $.dagProcessor = dagProcessor;
+            return this;
+        }
+
+        public Builder dagProcessor(EnvironmentConfigWorkloadsConfigDagProcessorArgs dagProcessor) {
+            return dagProcessor(Output.of(dagProcessor));
         }
 
         public Builder scheduler(@Nullable Output<EnvironmentConfigWorkloadsConfigSchedulerArgs> scheduler) {

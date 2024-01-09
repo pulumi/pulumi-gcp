@@ -13,6 +13,7 @@ import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingState;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingBigqueryDataset;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingDataProvider;
 import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingPublisher;
+import com.pulumi.gcp.bigqueryanalyticshub.outputs.ListingRestrictedExportConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -77,6 +78,66 @@ import javax.annotation.Nullable;
  *             .description(&#34;example data exchange&#34;)
  *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
  *                 .dataset(listingDataset.id())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Bigquery Analyticshub Listing Restricted
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchange;
+ * import com.pulumi.gcp.bigqueryanalyticshub.DataExchangeArgs;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.Listing;
+ * import com.pulumi.gcp.bigqueryanalyticshub.ListingArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
+ * import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var listingDataExchange = new DataExchange(&#34;listingDataExchange&#34;, DataExchangeArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .dataExchangeId(&#34;my_data_exchange&#34;)
+ *             .displayName(&#34;my_data_exchange&#34;)
+ *             .description(&#34;example data exchange&#34;)
+ *             .build());
+ * 
+ *         var listingDataset = new Dataset(&#34;listingDataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;my_listing&#34;)
+ *             .friendlyName(&#34;my_listing&#34;)
+ *             .description(&#34;example data exchange&#34;)
+ *             .location(&#34;US&#34;)
+ *             .build());
+ * 
+ *         var listingListing = new Listing(&#34;listingListing&#34;, ListingArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .dataExchangeId(listingDataExchange.dataExchangeId())
+ *             .listingId(&#34;my_listing&#34;)
+ *             .displayName(&#34;my_listing&#34;)
+ *             .description(&#34;example data exchange&#34;)
+ *             .bigqueryDataset(ListingBigqueryDatasetArgs.builder()
+ *                 .dataset(listingDataset.id())
+ *                 .build())
+ *             .restrictedExportConfig(ListingRestrictedExportConfigArgs.builder()
+ *                 .enabled(true)
+ *                 .restrictQueryResult(true)
  *                 .build())
  *             .build());
  * 
@@ -328,6 +389,22 @@ public class Listing extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> requestAccess() {
         return Codegen.optional(this.requestAccess);
+    }
+    /**
+     * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="restrictedExportConfig", refs={ListingRestrictedExportConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ListingRestrictedExportConfig> restrictedExportConfig;
+
+    /**
+     * @return If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ListingRestrictedExportConfig>> restrictedExportConfig() {
+        return Codegen.optional(this.restrictedExportConfig);
     }
 
     /**

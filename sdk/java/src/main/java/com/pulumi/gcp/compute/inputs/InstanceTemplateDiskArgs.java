@@ -235,6 +235,21 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
     }
 
     /**
+     * A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * 
+     */
+    @Import(name="resourceManagerTags")
+    private @Nullable Output<Map<String,String>> resourceManagerTags;
+
+    /**
+     * @return A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> resourceManagerTags() {
+        return Optional.ofNullable(this.resourceManagerTags);
+    }
+
+    /**
      * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
      */
@@ -391,6 +406,7 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
         this.labels = $.labels;
         this.mode = $.mode;
         this.provisionedIops = $.provisionedIops;
+        this.resourceManagerTags = $.resourceManagerTags;
         this.resourcePolicies = $.resourcePolicies;
         this.source = $.source;
         this.sourceImage = $.sourceImage;
@@ -695,6 +711,27 @@ public final class InstanceTemplateDiskArgs extends com.pulumi.resources.Resourc
          */
         public Builder provisionedIops(Integer provisionedIops) {
             return provisionedIops(Output.of(provisionedIops));
+        }
+
+        /**
+         * @param resourceManagerTags A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(@Nullable Output<Map<String,String>> resourceManagerTags) {
+            $.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+
+        /**
+         * @param resourceManagerTags A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
+            return resourceManagerTags(Output.of(resourceManagerTags));
         }
 
         /**

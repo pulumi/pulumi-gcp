@@ -20,6 +20,11 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Structure defined below.
         /// </summary>
         public readonly Outputs.ClusterClusterConfigAutoscalingConfig? AutoscalingConfig;
+        /// <summary>
+        /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+        /// Structure defined below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.ClusterClusterConfigAuxiliaryNodeGroup> AuxiliaryNodeGroups;
         public readonly string? Bucket;
         /// <summary>
         /// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -105,6 +110,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         private ClusterClusterConfig(
             Outputs.ClusterClusterConfigAutoscalingConfig? autoscalingConfig,
 
+            ImmutableArray<Outputs.ClusterClusterConfigAuxiliaryNodeGroup> auxiliaryNodeGroups,
+
             string? bucket,
 
             Outputs.ClusterClusterConfigDataprocMetricConfig? dataprocMetricConfig,
@@ -136,6 +143,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
             Outputs.ClusterClusterConfigWorkerConfig? workerConfig)
         {
             AutoscalingConfig = autoscalingConfig;
+            AuxiliaryNodeGroups = auxiliaryNodeGroups;
             Bucket = bucket;
             DataprocMetricConfig = dataprocMetricConfig;
             EncryptionConfig = encryptionConfig;

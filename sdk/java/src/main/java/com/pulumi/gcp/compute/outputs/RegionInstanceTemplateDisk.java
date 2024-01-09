@@ -97,6 +97,11 @@ public final class RegionInstanceTemplateDisk {
      */
     private @Nullable Integer provisionedIops;
     /**
+     * @return A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * 
+     */
+    private @Nullable Map<String,String> resourceManagerTags;
+    /**
      * @return - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
      */
@@ -254,6 +259,13 @@ public final class RegionInstanceTemplateDisk {
         return Optional.ofNullable(this.provisionedIops);
     }
     /**
+     * @return A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * 
+     */
+    public Map<String,String> resourceManagerTags() {
+        return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
+    }
+    /**
      * @return - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
      */
@@ -342,6 +354,7 @@ public final class RegionInstanceTemplateDisk {
         private @Nullable Map<String,String> labels;
         private @Nullable String mode;
         private @Nullable Integer provisionedIops;
+        private @Nullable Map<String,String> resourceManagerTags;
         private @Nullable String resourcePolicies;
         private @Nullable String source;
         private @Nullable String sourceImage;
@@ -363,6 +376,7 @@ public final class RegionInstanceTemplateDisk {
     	      this.labels = defaults.labels;
     	      this.mode = defaults.mode;
     	      this.provisionedIops = defaults.provisionedIops;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.source = defaults.source;
     	      this.sourceImage = defaults.sourceImage;
@@ -439,6 +453,12 @@ public final class RegionInstanceTemplateDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceManagerTags(@Nullable Map<String,String> resourceManagerTags) {
+
+            this.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourcePolicies(@Nullable String resourcePolicies) {
 
             this.resourcePolicies = resourcePolicies;
@@ -493,6 +513,7 @@ public final class RegionInstanceTemplateDisk {
             _resultValue.labels = labels;
             _resultValue.mode = mode;
             _resultValue.provisionedIops = provisionedIops;
+            _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.source = source;
             _resultValue.sourceImage = sourceImage;

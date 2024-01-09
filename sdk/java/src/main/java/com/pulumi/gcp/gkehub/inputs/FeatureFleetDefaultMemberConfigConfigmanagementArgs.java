@@ -6,6 +6,7 @@ package com.pulumi.gcp.gkehub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs;
+import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -32,10 +33,26 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementArgs extends c
         return Optional.ofNullable(this.configSync);
     }
 
+    /**
+     * Version of ACM installed
+     * 
+     */
+    @Import(name="version")
+    private @Nullable Output<String> version;
+
+    /**
+     * @return Version of ACM installed
+     * 
+     */
+    public Optional<Output<String>> version() {
+        return Optional.ofNullable(this.version);
+    }
+
     private FeatureFleetDefaultMemberConfigConfigmanagementArgs() {}
 
     private FeatureFleetDefaultMemberConfigConfigmanagementArgs(FeatureFleetDefaultMemberConfigConfigmanagementArgs $) {
         this.configSync = $.configSync;
+        this.version = $.version;
     }
 
     public static Builder builder() {
@@ -77,6 +94,27 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementArgs extends c
          */
         public Builder configSync(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs configSync) {
             return configSync(Output.of(configSync));
+        }
+
+        /**
+         * @param version Version of ACM installed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(@Nullable Output<String> version) {
+            $.version = version;
+            return this;
+        }
+
+        /**
+         * @param version Version of ACM installed
+         * 
+         * @return builder
+         * 
+         */
+        public Builder version(String version) {
+            return version(Output.of(version));
         }
 
         public FeatureFleetDefaultMemberConfigConfigmanagementArgs build() {

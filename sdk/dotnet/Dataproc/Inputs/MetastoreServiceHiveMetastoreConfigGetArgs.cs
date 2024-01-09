@@ -14,6 +14,15 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     {
         [Input("auxiliaryVersions")]
         private InputList<Inputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersionGetArgs>? _auxiliaryVersions;
+
+        /// <summary>
+        /// A mapping of Hive metastore version to the auxiliary version configuration.
+        /// When specified, a secondary Hive metastore service is created along with the primary service.
+        /// All auxiliary versions must be less than the service's primary version.
+        /// The key is the auxiliary service name and it must match the regular expression a-z?.
+        /// This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+        /// Structure is documented below.
+        /// </summary>
         public InputList<Inputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersionGetArgs> AuxiliaryVersions
         {
             get => _auxiliaryVersions ?? (_auxiliaryVersions = new InputList<Inputs.MetastoreServiceHiveMetastoreConfigAuxiliaryVersionGetArgs>());
@@ -33,6 +42,11 @@ namespace Pulumi.Gcp.Dataproc.Inputs
             set => _configOverrides = value;
         }
 
+        /// <summary>
+        /// The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+        /// Default value is `THRIFT`.
+        /// Possible values are: `THRIFT`, `GRPC`.
+        /// </summary>
         [Input("endpointProtocol")]
         public Input<string>? EndpointProtocol { get; set; }
 

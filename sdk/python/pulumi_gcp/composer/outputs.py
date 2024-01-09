@@ -28,6 +28,7 @@ __all__ = [
     'EnvironmentConfigWebServerNetworkAccessControl',
     'EnvironmentConfigWebServerNetworkAccessControlAllowedIpRange',
     'EnvironmentConfigWorkloadsConfig',
+    'EnvironmentConfigWorkloadsConfigDagProcessor',
     'EnvironmentConfigWorkloadsConfigScheduler',
     'EnvironmentConfigWorkloadsConfigTriggerer',
     'EnvironmentConfigWorkloadsConfigWebServer',
@@ -50,6 +51,7 @@ __all__ = [
     'GetEnvironmentConfigWebServerNetworkAccessControlResult',
     'GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult',
     'GetEnvironmentConfigWorkloadsConfigResult',
+    'GetEnvironmentConfigWorkloadsConfigDagProcessorResult',
     'GetEnvironmentConfigWorkloadsConfigSchedulerResult',
     'GetEnvironmentConfigWorkloadsConfigTriggererResult',
     'GetEnvironmentConfigWorkloadsConfigWebServerResult',
@@ -441,7 +443,9 @@ class EnvironmentConfigNodeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "diskSizeGb":
+        if key == "composerInternalIpv4CidrBlock":
+            suggest = "composer_internal_ipv4_cidr_block"
+        elif key == "diskSizeGb":
             suggest = "disk_size_gb"
         elif key == "enableIpMasqAgent":
             suggest = "enable_ip_masq_agent"
@@ -468,6 +472,7 @@ class EnvironmentConfigNodeConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 composer_internal_ipv4_cidr_block: Optional[str] = None,
                  disk_size_gb: Optional[int] = None,
                  enable_ip_masq_agent: Optional[bool] = None,
                  ip_allocation_policy: Optional['outputs.EnvironmentConfigNodeConfigIpAllocationPolicy'] = None,
@@ -479,6 +484,8 @@ class EnvironmentConfigNodeConfig(dict):
                  subnetwork: Optional[str] = None,
                  tags: Optional[Sequence[str]] = None,
                  zone: Optional[str] = None):
+        if composer_internal_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "composer_internal_ipv4_cidr_block", composer_internal_ipv4_cidr_block)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if enable_ip_masq_agent is not None:
@@ -501,6 +508,11 @@ class EnvironmentConfigNodeConfig(dict):
             pulumi.set(__self__, "tags", tags)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="composerInternalIpv4CidrBlock")
+    def composer_internal_ipv4_cidr_block(self) -> Optional[str]:
+        return pulumi.get(self, "composer_internal_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -834,6 +846,8 @@ class EnvironmentConfigSoftwareConfig(dict):
             suggest = "python_version"
         elif key == "schedulerCount":
             suggest = "scheduler_count"
+        elif key == "webServerPluginsMode":
+            suggest = "web_server_plugins_mode"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigSoftwareConfig. Access the value via the '{suggest}' property getter instead.")
@@ -853,7 +867,8 @@ class EnvironmentConfigSoftwareConfig(dict):
                  image_version: Optional[str] = None,
                  pypi_packages: Optional[Mapping[str, str]] = None,
                  python_version: Optional[str] = None,
-                 scheduler_count: Optional[int] = None):
+                 scheduler_count: Optional[int] = None,
+                 web_server_plugins_mode: Optional[str] = None):
         if airflow_config_overrides is not None:
             pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
         if cloud_data_lineage_integration is not None:
@@ -868,6 +883,8 @@ class EnvironmentConfigSoftwareConfig(dict):
             pulumi.set(__self__, "python_version", python_version)
         if scheduler_count is not None:
             pulumi.set(__self__, "scheduler_count", scheduler_count)
+        if web_server_plugins_mode is not None:
+            pulumi.set(__self__, "web_server_plugins_mode", web_server_plugins_mode)
 
     @property
     @pulumi.getter(name="airflowConfigOverrides")
@@ -903,6 +920,11 @@ class EnvironmentConfigSoftwareConfig(dict):
     @pulumi.getter(name="schedulerCount")
     def scheduler_count(self) -> Optional[int]:
         return pulumi.get(self, "scheduler_count")
+
+    @property
+    @pulumi.getter(name="webServerPluginsMode")
+    def web_server_plugins_mode(self) -> Optional[str]:
+        return pulumi.get(self, "web_server_plugins_mode")
 
 
 @pulumi.output_type
@@ -1001,7 +1023,9 @@ class EnvironmentConfigWorkloadsConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "webServer":
+        if key == "dagProcessor":
+            suggest = "dag_processor"
+        elif key == "webServer":
             suggest = "web_server"
 
         if suggest:
@@ -1016,10 +1040,13 @@ class EnvironmentConfigWorkloadsConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 dag_processor: Optional['outputs.EnvironmentConfigWorkloadsConfigDagProcessor'] = None,
                  scheduler: Optional['outputs.EnvironmentConfigWorkloadsConfigScheduler'] = None,
                  triggerer: Optional['outputs.EnvironmentConfigWorkloadsConfigTriggerer'] = None,
                  web_server: Optional['outputs.EnvironmentConfigWorkloadsConfigWebServer'] = None,
                  worker: Optional['outputs.EnvironmentConfigWorkloadsConfigWorker'] = None):
+        if dag_processor is not None:
+            pulumi.set(__self__, "dag_processor", dag_processor)
         if scheduler is not None:
             pulumi.set(__self__, "scheduler", scheduler)
         if triggerer is not None:
@@ -1028,6 +1055,11 @@ class EnvironmentConfigWorkloadsConfig(dict):
             pulumi.set(__self__, "web_server", web_server)
         if worker is not None:
             pulumi.set(__self__, "worker", worker)
+
+    @property
+    @pulumi.getter(name="dagProcessor")
+    def dag_processor(self) -> Optional['outputs.EnvironmentConfigWorkloadsConfigDagProcessor']:
+        return pulumi.get(self, "dag_processor")
 
     @property
     @pulumi.getter
@@ -1048,6 +1080,54 @@ class EnvironmentConfigWorkloadsConfig(dict):
     @pulumi.getter
     def worker(self) -> Optional['outputs.EnvironmentConfigWorkloadsConfigWorker']:
         return pulumi.get(self, "worker")
+
+
+@pulumi.output_type
+class EnvironmentConfigWorkloadsConfigDagProcessor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "memoryGb":
+            suggest = "memory_gb"
+        elif key == "storageGb":
+            suggest = "storage_gb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigWorkloadsConfigDagProcessor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigWorkloadsConfigDagProcessor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigWorkloadsConfigDagProcessor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cpu: Optional[float] = None,
+                 memory_gb: Optional[float] = None,
+                 storage_gb: Optional[float] = None):
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+        if storage_gb is not None:
+            pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[float]:
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> Optional[float]:
+        return pulumi.get(self, "memory_gb")
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> Optional[float]:
+        return pulumi.get(self, "storage_gb")
 
 
 @pulumi.output_type
@@ -1499,6 +1579,7 @@ class GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockResult(dict):
 @pulumi.output_type
 class GetEnvironmentConfigNodeConfigResult(dict):
     def __init__(__self__, *,
+                 composer_internal_ipv4_cidr_block: str,
                  disk_size_gb: int,
                  enable_ip_masq_agent: bool,
                  ip_allocation_policies: Sequence['outputs.GetEnvironmentConfigNodeConfigIpAllocationPolicyResult'],
@@ -1510,6 +1591,7 @@ class GetEnvironmentConfigNodeConfigResult(dict):
                  subnetwork: str,
                  tags: Sequence[str],
                  zone: str):
+        pulumi.set(__self__, "composer_internal_ipv4_cidr_block", composer_internal_ipv4_cidr_block)
         pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         pulumi.set(__self__, "enable_ip_masq_agent", enable_ip_masq_agent)
         pulumi.set(__self__, "ip_allocation_policies", ip_allocation_policies)
@@ -1521,6 +1603,11 @@ class GetEnvironmentConfigNodeConfigResult(dict):
         pulumi.set(__self__, "subnetwork", subnetwork)
         pulumi.set(__self__, "tags", tags)
         pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="composerInternalIpv4CidrBlock")
+    def composer_internal_ipv4_cidr_block(self) -> str:
+        return pulumi.get(self, "composer_internal_ipv4_cidr_block")
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -1733,7 +1820,8 @@ class GetEnvironmentConfigSoftwareConfigResult(dict):
                  image_version: str,
                  pypi_packages: Mapping[str, str],
                  python_version: str,
-                 scheduler_count: int):
+                 scheduler_count: int,
+                 web_server_plugins_mode: str):
         pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
         pulumi.set(__self__, "cloud_data_lineage_integrations", cloud_data_lineage_integrations)
         pulumi.set(__self__, "env_variables", env_variables)
@@ -1741,6 +1829,7 @@ class GetEnvironmentConfigSoftwareConfigResult(dict):
         pulumi.set(__self__, "pypi_packages", pypi_packages)
         pulumi.set(__self__, "python_version", python_version)
         pulumi.set(__self__, "scheduler_count", scheduler_count)
+        pulumi.set(__self__, "web_server_plugins_mode", web_server_plugins_mode)
 
     @property
     @pulumi.getter(name="airflowConfigOverrides")
@@ -1776,6 +1865,11 @@ class GetEnvironmentConfigSoftwareConfigResult(dict):
     @pulumi.getter(name="schedulerCount")
     def scheduler_count(self) -> int:
         return pulumi.get(self, "scheduler_count")
+
+    @property
+    @pulumi.getter(name="webServerPluginsMode")
+    def web_server_plugins_mode(self) -> str:
+        return pulumi.get(self, "web_server_plugins_mode")
 
 
 @pulumi.output_type
@@ -1836,14 +1930,21 @@ class GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeResult(dict
 @pulumi.output_type
 class GetEnvironmentConfigWorkloadsConfigResult(dict):
     def __init__(__self__, *,
+                 dag_processors: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigDagProcessorResult'],
                  schedulers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigSchedulerResult'],
                  triggerers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigTriggererResult'],
                  web_servers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigWebServerResult'],
                  workers: Sequence['outputs.GetEnvironmentConfigWorkloadsConfigWorkerResult']):
+        pulumi.set(__self__, "dag_processors", dag_processors)
         pulumi.set(__self__, "schedulers", schedulers)
         pulumi.set(__self__, "triggerers", triggerers)
         pulumi.set(__self__, "web_servers", web_servers)
         pulumi.set(__self__, "workers", workers)
+
+    @property
+    @pulumi.getter(name="dagProcessors")
+    def dag_processors(self) -> Sequence['outputs.GetEnvironmentConfigWorkloadsConfigDagProcessorResult']:
+        return pulumi.get(self, "dag_processors")
 
     @property
     @pulumi.getter
@@ -1864,6 +1965,32 @@ class GetEnvironmentConfigWorkloadsConfigResult(dict):
     @pulumi.getter
     def workers(self) -> Sequence['outputs.GetEnvironmentConfigWorkloadsConfigWorkerResult']:
         return pulumi.get(self, "workers")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigWorkloadsConfigDagProcessorResult(dict):
+    def __init__(__self__, *,
+                 cpu: float,
+                 memory_gb: float,
+                 storage_gb: float):
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory_gb", memory_gb)
+        pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> float:
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> float:
+        return pulumi.get(self, "memory_gb")
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> float:
+        return pulumi.get(self, "storage_gb")
 
 
 @pulumi.output_type

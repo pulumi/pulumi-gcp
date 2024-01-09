@@ -179,6 +179,7 @@ export interface GetInstanceTemplateResult {
      */
     readonly region: string;
     readonly reservationAffinities: outputs.compute.GetInstanceTemplateReservationAffinity[];
+    readonly resourceManagerTags: {[key: string]: string};
     /**
      * (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      */

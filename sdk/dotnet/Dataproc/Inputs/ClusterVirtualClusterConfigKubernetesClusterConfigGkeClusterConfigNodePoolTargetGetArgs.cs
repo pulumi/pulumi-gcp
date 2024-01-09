@@ -31,8 +31,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         private InputList<string>? _roles;
 
         /// <summary>
-        /// The roles associated with the GKE node pool. 
-        /// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+        /// Node group roles. 
+        /// One of `"DRIVER"`.
         /// </summary>
         public InputList<string> Roles
         {

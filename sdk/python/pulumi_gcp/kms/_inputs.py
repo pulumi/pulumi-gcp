@@ -12,6 +12,7 @@ from .. import _utilities
 __all__ = [
     'CryptoKeyIAMBindingConditionArgs',
     'CryptoKeyIAMMemberConditionArgs',
+    'CryptoKeyPrimaryArgs',
     'CryptoKeyVersionAttestationArgs',
     'CryptoKeyVersionAttestationCertChainsArgs',
     'CryptoKeyVersionAttestationExternalProtectionLevelOptionsArgs',
@@ -142,6 +143,47 @@ class CryptoKeyIAMMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class CryptoKeyPrimaryArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The resource name for the CryptoKey.
+        :param pulumi.Input[str] state: (Output)
+               The current state of the CryptoKeyVersion.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name for the CryptoKey.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The current state of the CryptoKeyVersion.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 @pulumi.input_type

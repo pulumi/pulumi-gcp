@@ -395,7 +395,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     }
     /**
      * The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
      * 
      */
     @Export(name="tier", refs={String.class}, tree="[0]")
@@ -403,7 +403,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The service tier of the instance.
-     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+     * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
      * 
      */
     public Output<String> tier() {

@@ -145,7 +145,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database&#39;s built-in user type. Flags
-     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
      * 
      */
     @Import(name="type")
@@ -154,7 +154,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The user type. It determines the method to authenticate the
      * user during login. The default is the database&#39;s built-in user type. Flags
-     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
      * 
      */
     public Optional<Output<String>> type() {
@@ -358,7 +358,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The user type. It determines the method to authenticate the
          * user during login. The default is the database&#39;s built-in user type. Flags
-         * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+         * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
          * 
          * @return builder
          * 
@@ -371,7 +371,7 @@ public final class UserArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param type The user type. It determines the method to authenticate the
          * user during login. The default is the database&#39;s built-in user type. Flags
-         * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+         * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
          * 
          * @return builder
          * 

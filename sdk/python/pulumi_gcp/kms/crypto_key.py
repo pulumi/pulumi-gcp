@@ -205,6 +205,7 @@ class _CryptoKeyState:
                  key_ring: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 primaries: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  purpose: Optional[pulumi.Input[str]] = None,
                  rotation_period: Optional[pulumi.Input[str]] = None,
@@ -226,6 +227,9 @@ class _CryptoKeyState:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the CryptoKey.
+        :param pulumi.Input[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]] primaries: A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+               Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The immutable purpose of this CryptoKey. See the
@@ -253,6 +257,8 @@ class _CryptoKeyState:
             pulumi.set(__self__, "labels", labels)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if primaries is not None:
+            pulumi.set(__self__, "primaries", primaries)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if purpose is not None:
@@ -343,6 +349,20 @@ class _CryptoKeyState:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def primaries(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]]]:
+        """
+        A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+        Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "primaries")
+
+    @primaries.setter
+    def primaries(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['CryptoKeyPrimaryArgs']]]]):
+        pulumi.set(self, "primaries", value)
 
     @property
     @pulumi.getter(name="pulumiLabels")
@@ -604,6 +624,7 @@ class CryptoKey(pulumi.CustomResource):
             __props__.__dict__["skip_initial_version_creation"] = skip_initial_version_creation
             __props__.__dict__["version_template"] = version_template
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["primaries"] = None
             __props__.__dict__["pulumi_labels"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
@@ -623,6 +644,7 @@ class CryptoKey(pulumi.CustomResource):
             key_ring: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            primaries: Optional[pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyPrimaryArgs']]]]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             purpose: Optional[pulumi.Input[str]] = None,
             rotation_period: Optional[pulumi.Input[str]] = None,
@@ -649,6 +671,9 @@ class CryptoKey(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name for the CryptoKey.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['CryptoKeyPrimaryArgs']]]] primaries: A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+               Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The immutable purpose of this CryptoKey. See the
@@ -674,6 +699,7 @@ class CryptoKey(pulumi.CustomResource):
         __props__.__dict__["key_ring"] = key_ring
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
+        __props__.__dict__["primaries"] = primaries
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["purpose"] = purpose
         __props__.__dict__["rotation_period"] = rotation_period
@@ -736,6 +762,16 @@ class CryptoKey(pulumi.CustomResource):
         The resource name for the CryptoKey.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def primaries(self) -> pulumi.Output[Sequence['outputs.CryptoKeyPrimary']]:
+        """
+        A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+        Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "primaries")
 
     @property
     @pulumi.getter(name="pulumiLabels")

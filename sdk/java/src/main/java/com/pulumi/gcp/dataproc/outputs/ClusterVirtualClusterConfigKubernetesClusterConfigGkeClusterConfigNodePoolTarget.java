@@ -28,8 +28,8 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
      */
     private @Nullable ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig nodePoolConfig;
     /**
-     * @return The roles associated with the GKE node pool.
-     * One of `&#34;DEFAULT&#34;`, `&#34;CONTROLLER&#34;`, `&#34;SPARK_DRIVER&#34;` or `&#34;SPARK_EXECUTOR&#34;`.
+     * @return Node group roles.
+     * One of `&#34;DRIVER&#34;`.
      * 
      */
     private List<String> roles;
@@ -53,8 +53,8 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         return Optional.ofNullable(this.nodePoolConfig);
     }
     /**
-     * @return The roles associated with the GKE node pool.
-     * One of `&#34;DEFAULT&#34;`, `&#34;CONTROLLER&#34;`, `&#34;SPARK_DRIVER&#34;` or `&#34;SPARK_EXECUTOR&#34;`.
+     * @return Node group roles.
+     * One of `&#34;DRIVER&#34;`.
      * 
      */
     public List<String> roles() {

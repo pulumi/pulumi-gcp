@@ -87,8 +87,7 @@ public class ProjectSink extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
+     * The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
      * 
      * - `storage.googleapis.com/[GCS_BUCKET]`
      * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
@@ -103,8 +102,7 @@ public class ProjectSink extends com.pulumi.resources.CustomResource {
     private Output<String> destination;
 
     /**
-     * @return The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
+     * @return The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
      * 
      * - `storage.googleapis.com/[GCS_BUCKET]`
      * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`

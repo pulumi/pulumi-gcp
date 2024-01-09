@@ -44,7 +44,7 @@ import (
 //				return err
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
-//				Topic:              exampleTopic.Name,
+//				Topic:              exampleTopic.ID(),
 //				AckDeadlineSeconds: pulumi.Int(20),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
@@ -83,7 +83,7 @@ import (
 //				return err
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
-//				Topic: exampleTopic.Name,
+//				Topic: exampleTopic.ID(),
 //				Labels: pulumi.StringMap{
 //					"foo": pulumi.String("bar"),
 //				},
@@ -97,38 +97,6 @@ import (
 //					MinimumBackoff: pulumi.String("10s"),
 //				},
 //				EnableMessageOrdering: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-// ### Pubsub Subscription Different Project
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/pubsub"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			exampleTopic, err := pubsub.NewTopic(ctx, "exampleTopic", &pubsub.TopicArgs{
-//				Project: pulumi.String("topic-project"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
-//				Project: pulumi.String("subscription-project"),
-//				Topic:   exampleTopic.Name,
 //			})
 //			if err != nil {
 //				return err
@@ -161,7 +129,7 @@ import (
 //				return err
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
-//				Topic: exampleTopic.Name,
+//				Topic: exampleTopic.ID(),
 //				DeadLetterPolicy: &pubsub.SubscriptionDeadLetterPolicyArgs{
 //					DeadLetterTopic:     exampleDeadLetter.ID(),
 //					MaxDeliveryAttempts: pulumi.Int(10),
@@ -244,7 +212,7 @@ import (
 //				return err
 //			}
 //			_, err = pubsub.NewSubscription(ctx, "exampleSubscription", &pubsub.SubscriptionArgs{
-//				Topic: exampleTopic.Name,
+//				Topic: exampleTopic.ID(),
 //				BigqueryConfig: &pubsub.SubscriptionBigqueryConfigArgs{
 //					Table: pulumi.All(testTable.Project, testTable.DatasetId, testTable.TableId).ApplyT(func(_args []interface{}) (string, error) {
 //						project := _args[0].(string)
@@ -399,7 +367,9 @@ type Subscription struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrOutput `pulumi:"retryPolicy"`
-	// A reference to a Topic resource.
+	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+	// (as in the id property of a google_pubsub_topic), or just a topic name if
+	// the topic is in the same project as the subscription.
 	//
 	// ***
 	Topic pulumi.StringOutput `pulumi:"topic"`
@@ -542,7 +512,9 @@ type subscriptionState struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
-	// A reference to a Topic resource.
+	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+	// (as in the id property of a google_pubsub_topic), or just a topic name if
+	// the topic is in the same project as the subscription.
 	//
 	// ***
 	Topic *string `pulumi:"topic"`
@@ -648,7 +620,9 @@ type SubscriptionState struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrInput
-	// A reference to a Topic resource.
+	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+	// (as in the id property of a google_pubsub_topic), or just a topic name if
+	// the topic is in the same project as the subscription.
 	//
 	// ***
 	Topic pulumi.StringPtrInput
@@ -753,7 +727,9 @@ type subscriptionArgs struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy *SubscriptionRetryPolicy `pulumi:"retryPolicy"`
-	// A reference to a Topic resource.
+	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+	// (as in the id property of a google_pubsub_topic), or just a topic name if
+	// the topic is in the same project as the subscription.
 	//
 	// ***
 	Topic string `pulumi:"topic"`
@@ -855,7 +831,9 @@ type SubscriptionArgs struct {
 	// RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
 	// Structure is documented below.
 	RetryPolicy SubscriptionRetryPolicyPtrInput
-	// A reference to a Topic resource.
+	// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+	// (as in the id property of a google_pubsub_topic), or just a topic name if
+	// the topic is in the same project as the subscription.
 	//
 	// ***
 	Topic pulumi.StringInput
@@ -1098,7 +1076,9 @@ func (o SubscriptionOutput) RetryPolicy() SubscriptionRetryPolicyPtrOutput {
 	return o.ApplyT(func(v *Subscription) SubscriptionRetryPolicyPtrOutput { return v.RetryPolicy }).(SubscriptionRetryPolicyPtrOutput)
 }
 
-// A reference to a Topic resource.
+// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+// (as in the id property of a google_pubsub_topic), or just a topic name if
+// the topic is in the same project as the subscription.
 //
 // ***
 func (o SubscriptionOutput) Topic() pulumi.StringOutput {

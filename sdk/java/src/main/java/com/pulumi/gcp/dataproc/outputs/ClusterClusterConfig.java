@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigAutoscalingConfig;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigAuxiliaryNodeGroup;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigDataprocMetricConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigEncryptionConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigEndpointConfig;
@@ -33,6 +34,12 @@ public final class ClusterClusterConfig {
      * 
      */
     private @Nullable ClusterClusterConfigAutoscalingConfig autoscalingConfig;
+    /**
+     * @return A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+     * Structure defined below.
+     * 
+     */
+    private @Nullable List<ClusterClusterConfigAuxiliaryNodeGroup> auxiliaryNodeGroups;
     private @Nullable String bucket;
     /**
      * @return The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -138,6 +145,14 @@ public final class ClusterClusterConfig {
      */
     public Optional<ClusterClusterConfigAutoscalingConfig> autoscalingConfig() {
         return Optional.ofNullable(this.autoscalingConfig);
+    }
+    /**
+     * @return A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+     * Structure defined below.
+     * 
+     */
+    public List<ClusterClusterConfigAuxiliaryNodeGroup> auxiliaryNodeGroups() {
+        return this.auxiliaryNodeGroups == null ? List.of() : this.auxiliaryNodeGroups;
     }
     public Optional<String> bucket() {
         return Optional.ofNullable(this.bucket);
@@ -274,6 +289,7 @@ public final class ClusterClusterConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable ClusterClusterConfigAutoscalingConfig autoscalingConfig;
+        private @Nullable List<ClusterClusterConfigAuxiliaryNodeGroup> auxiliaryNodeGroups;
         private @Nullable String bucket;
         private @Nullable ClusterClusterConfigDataprocMetricConfig dataprocMetricConfig;
         private @Nullable ClusterClusterConfigEncryptionConfig encryptionConfig;
@@ -293,6 +309,7 @@ public final class ClusterClusterConfig {
         public Builder(ClusterClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.autoscalingConfig = defaults.autoscalingConfig;
+    	      this.auxiliaryNodeGroups = defaults.auxiliaryNodeGroups;
     	      this.bucket = defaults.bucket;
     	      this.dataprocMetricConfig = defaults.dataprocMetricConfig;
     	      this.encryptionConfig = defaults.encryptionConfig;
@@ -315,6 +332,15 @@ public final class ClusterClusterConfig {
 
             this.autoscalingConfig = autoscalingConfig;
             return this;
+        }
+        @CustomType.Setter
+        public Builder auxiliaryNodeGroups(@Nullable List<ClusterClusterConfigAuxiliaryNodeGroup> auxiliaryNodeGroups) {
+
+            this.auxiliaryNodeGroups = auxiliaryNodeGroups;
+            return this;
+        }
+        public Builder auxiliaryNodeGroups(ClusterClusterConfigAuxiliaryNodeGroup... auxiliaryNodeGroups) {
+            return auxiliaryNodeGroups(List.of(auxiliaryNodeGroups));
         }
         @CustomType.Setter
         public Builder bucket(@Nullable String bucket) {
@@ -412,6 +438,7 @@ public final class ClusterClusterConfig {
         public ClusterClusterConfig build() {
             final var _resultValue = new ClusterClusterConfig();
             _resultValue.autoscalingConfig = autoscalingConfig;
+            _resultValue.auxiliaryNodeGroups = auxiliaryNodeGroups;
             _resultValue.bucket = bucket;
             _resultValue.dataprocMetricConfig = dataprocMetricConfig;
             _resultValue.encryptionConfig = encryptionConfig;

@@ -117,6 +117,12 @@ export class CryptoKey extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+     * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+     * Structure is documented below.
+     */
+    public /*out*/ readonly primaries!: pulumi.Output<outputs.kms.CryptoKeyPrimary[]>;
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      */
@@ -165,6 +171,7 @@ export class CryptoKey extends pulumi.CustomResource {
             resourceInputs["keyRing"] = state ? state.keyRing : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["primaries"] = state ? state.primaries : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["purpose"] = state ? state.purpose : undefined;
             resourceInputs["rotationPeriod"] = state ? state.rotationPeriod : undefined;
@@ -185,6 +192,7 @@ export class CryptoKey extends pulumi.CustomResource {
             resourceInputs["skipInitialVersionCreation"] = args ? args.skipInitialVersionCreation : undefined;
             resourceInputs["versionTemplate"] = args ? args.versionTemplate : undefined;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["primaries"] = undefined /*out*/;
             resourceInputs["pulumiLabels"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -230,6 +238,12 @@ export interface CryptoKeyState {
      * The resource name for the CryptoKey.
      */
     name?: pulumi.Input<string>;
+    /**
+     * A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+     * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+     * Structure is documented below.
+     */
+    primaries?: pulumi.Input<pulumi.Input<inputs.kms.CryptoKeyPrimary>[]>;
     /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.

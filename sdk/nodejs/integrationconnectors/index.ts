@@ -10,6 +10,11 @@ export type Connection = import("./connection").Connection;
 export const Connection: typeof import("./connection").Connection = null as any;
 utilities.lazyLoad(exports, ["Connection"], () => require("./connection"));
 
+export { EndpointAttachmentArgs, EndpointAttachmentState } from "./endpointAttachment";
+export type EndpointAttachment = import("./endpointAttachment").EndpointAttachment;
+export const EndpointAttachment: typeof import("./endpointAttachment").EndpointAttachment = null as any;
+utilities.lazyLoad(exports, ["EndpointAttachment"], () => require("./endpointAttachment"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -17,9 +22,12 @@ const _module = {
         switch (type) {
             case "gcp:integrationconnectors/connection:Connection":
                 return new Connection(name, <any>undefined, { urn })
+            case "gcp:integrationconnectors/endpointAttachment:EndpointAttachment":
+                return new EndpointAttachment(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "integrationconnectors/connection", _module)
+pulumi.runtime.registerResourceModule("gcp", "integrationconnectors/endpointAttachment", _module)

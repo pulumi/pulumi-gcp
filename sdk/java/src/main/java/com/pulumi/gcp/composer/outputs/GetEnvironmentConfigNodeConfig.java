@@ -14,6 +14,7 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigNodeConfig {
+    private String composerInternalIpv4CidrBlock;
     private Integer diskSizeGb;
     private Boolean enableIpMasqAgent;
     private List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies;
@@ -27,6 +28,9 @@ public final class GetEnvironmentConfigNodeConfig {
     private String zone;
 
     private GetEnvironmentConfigNodeConfig() {}
+    public String composerInternalIpv4CidrBlock() {
+        return this.composerInternalIpv4CidrBlock;
+    }
     public Integer diskSizeGb() {
         return this.diskSizeGb;
     }
@@ -70,6 +74,7 @@ public final class GetEnvironmentConfigNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private String composerInternalIpv4CidrBlock;
         private Integer diskSizeGb;
         private Boolean enableIpMasqAgent;
         private List<GetEnvironmentConfigNodeConfigIpAllocationPolicy> ipAllocationPolicies;
@@ -84,6 +89,7 @@ public final class GetEnvironmentConfigNodeConfig {
         public Builder() {}
         public Builder(GetEnvironmentConfigNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.composerInternalIpv4CidrBlock = defaults.composerInternalIpv4CidrBlock;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.enableIpMasqAgent = defaults.enableIpMasqAgent;
     	      this.ipAllocationPolicies = defaults.ipAllocationPolicies;
@@ -97,6 +103,14 @@ public final class GetEnvironmentConfigNodeConfig {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder composerInternalIpv4CidrBlock(String composerInternalIpv4CidrBlock) {
+            if (composerInternalIpv4CidrBlock == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigNodeConfig", "composerInternalIpv4CidrBlock");
+            }
+            this.composerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
+            return this;
+        }
         @CustomType.Setter
         public Builder diskSizeGb(Integer diskSizeGb) {
             if (diskSizeGb == null) {
@@ -196,6 +210,7 @@ public final class GetEnvironmentConfigNodeConfig {
         }
         public GetEnvironmentConfigNodeConfig build() {
             final var _resultValue = new GetEnvironmentConfigNodeConfig();
+            _resultValue.composerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.enableIpMasqAgent = enableIpMasqAgent;
             _resultValue.ipAllocationPolicies = ipAllocationPolicies;

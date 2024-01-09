@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class GetEnvironmentConfigWorkloadsConfigResult
     {
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigDagProcessorResult> DagProcessors;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigSchedulerResult> Schedulers;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigTriggererResult> Triggerers;
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigWebServerResult> WebServers;
@@ -20,6 +21,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
         [OutputConstructor]
         private GetEnvironmentConfigWorkloadsConfigResult(
+            ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigDagProcessorResult> dagProcessors,
+
             ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigSchedulerResult> schedulers,
 
             ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigTriggererResult> triggerers,
@@ -28,6 +31,7 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             ImmutableArray<Outputs.GetEnvironmentConfigWorkloadsConfigWorkerResult> workers)
         {
+            DagProcessors = dagProcessors;
             Schedulers = schedulers;
             Triggerers = triggerers;
             WebServers = webServers;

@@ -250,7 +250,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -290,7 +292,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -341,7 +345,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -385,7 +391,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -424,7 +432,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -492,7 +502,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -604,7 +616,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -644,7 +658,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -695,7 +711,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -739,7 +757,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -778,7 +798,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",
@@ -846,7 +868,9 @@ class RestorePlanIamBinding(pulumi.CustomResource):
                     enabled=True,
                 ),
             ),
-            deletion_protection="")
+            deletion_protection="",
+            network="default",
+            subnetwork="default")
         basic = gcp.gkebackup.BackupPlan("basic",
             cluster=primary.id,
             location="us-central1",

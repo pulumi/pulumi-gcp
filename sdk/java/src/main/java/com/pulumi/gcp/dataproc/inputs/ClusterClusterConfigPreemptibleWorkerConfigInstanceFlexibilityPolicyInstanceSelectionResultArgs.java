@@ -17,14 +17,18 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     public static final ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs Empty = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs();
 
     /**
-     * The name of a Compute Engine machine type.
+     * The name of a Google Compute Engine machine type
+     * to create for the node group. If not specified, GCP will default to a predetermined
+     * computed value (currently `n1-standard-4`).
      * 
      */
     @Import(name="machineType")
     private @Nullable Output<String> machineType;
 
     /**
-     * @return The name of a Compute Engine machine type.
+     * @return The name of a Google Compute Engine machine type
+     * to create for the node group. If not specified, GCP will default to a predetermined
+     * computed value (currently `n1-standard-4`).
      * 
      */
     public Optional<Output<String>> machineType() {
@@ -64,7 +68,9 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param machineType The name of a Compute Engine machine type.
+         * @param machineType The name of a Google Compute Engine machine type
+         * to create for the node group. If not specified, GCP will default to a predetermined
+         * computed value (currently `n1-standard-4`).
          * 
          * @return builder
          * 
@@ -75,7 +81,9 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         }
 
         /**
-         * @param machineType The name of a Compute Engine machine type.
+         * @param machineType The name of a Google Compute Engine machine type
+         * to create for the node group. If not specified, GCP will default to a predetermined
+         * computed value (currently `n1-standard-4`).
          * 
          * @return builder
          * 

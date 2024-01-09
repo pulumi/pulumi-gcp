@@ -178,7 +178,7 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * The user type. It determines the method to authenticate the
      * user during login. The default is the database&#39;s built-in user type. Flags
-     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
@@ -187,7 +187,7 @@ public class User extends com.pulumi.resources.CustomResource {
     /**
      * @return The user type. It determines the method to authenticate the
      * user during login. The default is the database&#39;s built-in user type. Flags
-     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
+     * include &#34;BUILT_IN&#34;, &#34;CLOUD_IAM_USER&#34;, &#34;CLOUD_IAM_GROUP&#34; or &#34;CLOUD_IAM_SERVICE_ACCOUNT&#34;.
      * 
      */
     public Output<Optional<String>> type() {

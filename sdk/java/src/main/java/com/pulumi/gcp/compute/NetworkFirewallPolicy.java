@@ -19,7 +19,7 @@ import javax.annotation.Nullable;
  * The Compute NetworkFirewallPolicy resource
  * 
  * ## Example Usage
- * ### Global
+ * ### Network Firewall Policy Full
  * ```java
  * package generated_program;
  * 
@@ -41,9 +41,8 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var primary = new NetworkFirewallPolicy(&#34;primary&#34;, NetworkFirewallPolicyArgs.builder()        
- *             .description(&#34;Sample global network firewall policy&#34;)
- *             .project(&#34;my-project-name&#34;)
+ *         var policy = new NetworkFirewallPolicy(&#34;policy&#34;, NetworkFirewallPolicyArgs.builder()        
+ *             .description(&#34;Terraform test&#34;)
  *             .build());
  * 
  *     }
@@ -152,14 +151,16 @@ public class NetworkFirewallPolicy extends com.pulumi.resources.CustomResource {
         return this.networkFirewallPolicyId;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {

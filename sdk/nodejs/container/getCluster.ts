@@ -137,6 +137,7 @@ export interface GetClusterResult {
     readonly tpuConfigs: outputs.container.GetClusterTpuConfig[];
     readonly tpuIpv4CidrBlock: string;
     readonly verticalPodAutoscalings: outputs.container.GetClusterVerticalPodAutoscaling[];
+    readonly workloadAltsConfigs: outputs.container.GetClusterWorkloadAltsConfig[];
     readonly workloadIdentityConfigs: outputs.container.GetClusterWorkloadIdentityConfig[];
 }
 /**

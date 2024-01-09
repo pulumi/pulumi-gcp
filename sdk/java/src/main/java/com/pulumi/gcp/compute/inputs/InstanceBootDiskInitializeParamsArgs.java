@@ -82,6 +82,60 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         return Optional.ofNullable(this.labels);
     }
 
+    /**
+     * Indicates how many IOPS to provision for the disk.
+     * This sets the number of I/O operations per second that the disk can handle.
+     * Values must be between 10,000 and 120,000. For more details,see the
+     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * Note: Updating currently is only supported for hyperdisk skus via disk update
+     * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+     * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+     * you&#39;ll need to manually delete and recreate it.
+     * 
+     */
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    /**
+     * @return Indicates how many IOPS to provision for the disk.
+     * This sets the number of I/O operations per second that the disk can handle.
+     * Values must be between 10,000 and 120,000. For more details,see the
+     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * Note: Updating currently is only supported for hyperdisk skus via disk update
+     * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+     * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+     * you&#39;ll need to manually delete and recreate it.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
+    /**
+     * Indicates how much throughput to provision for the disk.
+     * This sets the number of throughput mb per second that the disk can handle.
+     * Values must be between 1 and 7,124. Note: Updating currently is only supported
+     * for hyperdisk skus via disk update api/gcloud without the need to delete and
+     * recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+     * To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it.
+     * 
+     */
+    @Import(name="provisionedThroughput")
+    private @Nullable Output<Integer> provisionedThroughput;
+
+    /**
+     * @return Indicates how much throughput to provision for the disk.
+     * This sets the number of throughput mb per second that the disk can handle.
+     * Values must be between 1 and 7,124. Note: Updating currently is only supported
+     * for hyperdisk skus via disk update api/gcloud without the need to delete and
+     * recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+     * To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it.
+     * 
+     */
+    public Optional<Output<Integer>> provisionedThroughput() {
+        return Optional.ofNullable(this.provisionedThroughput);
+    }
+
     @Import(name="resourceManagerTags")
     private @Nullable Output<Map<String,Object>> resourceManagerTags;
 
@@ -127,6 +181,8 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         this.enableConfidentialCompute = $.enableConfidentialCompute;
         this.image = $.image;
         this.labels = $.labels;
+        this.provisionedIops = $.provisionedIops;
+        this.provisionedThroughput = $.provisionedThroughput;
         this.resourceManagerTags = $.resourceManagerTags;
         this.size = $.size;
         this.type = $.type;
@@ -229,6 +285,72 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
          */
         public Builder labels(Map<String,Object> labels) {
             return labels(Output.of(labels));
+        }
+
+        /**
+         * @param provisionedIops Indicates how many IOPS to provision for the disk.
+         * This sets the number of I/O operations per second that the disk can handle.
+         * Values must be between 10,000 and 120,000. For more details,see the
+         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * Note: Updating currently is only supported for hyperdisk skus via disk update
+         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+         * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+         * you&#39;ll need to manually delete and recreate it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        /**
+         * @param provisionedIops Indicates how many IOPS to provision for the disk.
+         * This sets the number of I/O operations per second that the disk can handle.
+         * Values must be between 10,000 and 120,000. For more details,see the
+         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * Note: Updating currently is only supported for hyperdisk skus via disk update
+         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+         * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+         * you&#39;ll need to manually delete and recreate it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
+        }
+
+        /**
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk.
+         * This sets the number of throughput mb per second that the disk can handle.
+         * Values must be between 1 and 7,124. Note: Updating currently is only supported
+         * for hyperdisk skus via disk update api/gcloud without the need to delete and
+         * recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+         * To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedThroughput(@Nullable Output<Integer> provisionedThroughput) {
+            $.provisionedThroughput = provisionedThroughput;
+            return this;
+        }
+
+        /**
+         * @param provisionedThroughput Indicates how much throughput to provision for the disk.
+         * This sets the number of throughput mb per second that the disk can handle.
+         * Values must be between 1 and 7,124. Note: Updating currently is only supported
+         * for hyperdisk skus via disk update api/gcloud without the need to delete and
+         * recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+         * To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisionedThroughput(Integer provisionedThroughput) {
+            return provisionedThroughput(Output.of(provisionedThroughput));
         }
 
         public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {

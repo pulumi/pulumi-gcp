@@ -21,6 +21,7 @@ public final class GetEnvironmentConfigSoftwareConfig {
     private Map<String,String> pypiPackages;
     private String pythonVersion;
     private Integer schedulerCount;
+    private String webServerPluginsMode;
 
     private GetEnvironmentConfigSoftwareConfig() {}
     public Map<String,String> airflowConfigOverrides() {
@@ -44,6 +45,9 @@ public final class GetEnvironmentConfigSoftwareConfig {
     public Integer schedulerCount() {
         return this.schedulerCount;
     }
+    public String webServerPluginsMode() {
+        return this.webServerPluginsMode;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -61,6 +65,7 @@ public final class GetEnvironmentConfigSoftwareConfig {
         private Map<String,String> pypiPackages;
         private String pythonVersion;
         private Integer schedulerCount;
+        private String webServerPluginsMode;
         public Builder() {}
         public Builder(GetEnvironmentConfigSoftwareConfig defaults) {
     	      Objects.requireNonNull(defaults);
@@ -71,6 +76,7 @@ public final class GetEnvironmentConfigSoftwareConfig {
     	      this.pypiPackages = defaults.pypiPackages;
     	      this.pythonVersion = defaults.pythonVersion;
     	      this.schedulerCount = defaults.schedulerCount;
+    	      this.webServerPluginsMode = defaults.webServerPluginsMode;
         }
 
         @CustomType.Setter
@@ -132,6 +138,14 @@ public final class GetEnvironmentConfigSoftwareConfig {
             this.schedulerCount = schedulerCount;
             return this;
         }
+        @CustomType.Setter
+        public Builder webServerPluginsMode(String webServerPluginsMode) {
+            if (webServerPluginsMode == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigSoftwareConfig", "webServerPluginsMode");
+            }
+            this.webServerPluginsMode = webServerPluginsMode;
+            return this;
+        }
         public GetEnvironmentConfigSoftwareConfig build() {
             final var _resultValue = new GetEnvironmentConfigSoftwareConfig();
             _resultValue.airflowConfigOverrides = airflowConfigOverrides;
@@ -141,6 +155,7 @@ public final class GetEnvironmentConfigSoftwareConfig {
             _resultValue.pypiPackages = pypiPackages;
             _resultValue.pythonVersion = pythonVersion;
             _resultValue.schedulerCount = schedulerCount;
+            _resultValue.webServerPluginsMode = webServerPluginsMode;
             return _resultValue;
         }
     }

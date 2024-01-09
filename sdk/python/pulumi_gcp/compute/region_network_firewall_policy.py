@@ -24,10 +24,10 @@ class RegionNetworkFirewallPolicyArgs:
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] region: The location of this resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of this resource.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -57,7 +57,6 @@ class RegionNetworkFirewallPolicyArgs:
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
 
-
         - - -
         """
         return pulumi.get(self, "name")
@@ -70,7 +69,8 @@ class RegionNetworkFirewallPolicyArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -82,7 +82,7 @@ class RegionNetworkFirewallPolicyArgs:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of this resource.
+        The region of this resource.
         """
         return pulumi.get(self, "region")
 
@@ -112,10 +112,10 @@ class _RegionNetworkFirewallPolicyState:
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] region: The location of this resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of this resource.
         :param pulumi.Input[str] region_network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
@@ -185,7 +185,6 @@ class _RegionNetworkFirewallPolicyState:
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
 
-
         - - -
         """
         return pulumi.get(self, "name")
@@ -198,7 +197,8 @@ class _RegionNetworkFirewallPolicyState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -210,7 +210,7 @@ class _RegionNetworkFirewallPolicyState:
     @pulumi.getter
     def region(self) -> Optional[pulumi.Input[str]]:
         """
-        The location of this resource.
+        The region of this resource.
         """
         return pulumi.get(self, "region")
 
@@ -281,27 +281,25 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
-        ### Regional
+        ### Region Network Firewall Policy Full
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.compute.RegionNetworkFirewallPolicy("primary",
-            description="Sample regional network firewall policy",
-            project="my-project-name",
-            region="us-west1")
+        policy = gcp.compute.RegionNetworkFirewallPolicy("policy", description="Terraform test")
         ```
 
         ## Import
 
-        NetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicy using one of the formats above. For exampletf import {
+        RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkFirewallPolicy using one of the formats above. For exampletf import {
 
          id = "projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}"
 
          to = google_compute_region_network_firewall_policy.default }
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicy can be imported using one of the formats above. For example
+         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
         ```
 
         ```sh
@@ -326,10 +324,10 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] region: The location of this resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of this resource.
         """
         ...
     @overload
@@ -341,27 +339,25 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
-        ### Regional
+        ### Region Network Firewall Policy Full
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.compute.RegionNetworkFirewallPolicy("primary",
-            description="Sample regional network firewall policy",
-            project="my-project-name",
-            region="us-west1")
+        policy = gcp.compute.RegionNetworkFirewallPolicy("policy", description="Terraform test")
         ```
 
         ## Import
 
-        NetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicy using one of the formats above. For exampletf import {
+        RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkFirewallPolicy using one of the formats above. For exampletf import {
 
          id = "projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}"
 
          to = google_compute_region_network_firewall_policy.default }
 
         ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicy can be imported using one of the formats above. For example
+         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
         ```
 
         ```sh
@@ -451,10 +447,10 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] region: The location of this resource.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] region: The region of this resource.
         :param pulumi.Input[str] region_network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
@@ -507,7 +503,6 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
 
-
         - - -
         """
         return pulumi.get(self, "name")
@@ -516,7 +511,8 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -524,7 +520,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
     @pulumi.getter
     def region(self) -> pulumi.Output[str]:
         """
-        The location of this resource.
+        The region of this resource.
         """
         return pulumi.get(self, "region")
 

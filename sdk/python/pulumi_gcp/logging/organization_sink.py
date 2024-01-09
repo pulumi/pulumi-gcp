@@ -27,13 +27,13 @@ class OrganizationSinkArgs:
                  name: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a OrganizationSink resource.
-        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
                - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-               - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]`
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[str] org_id: The numeric ID of the organization to be exported to the sink.
@@ -69,13 +69,13 @@ class OrganizationSinkArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
         """
-        The destination of the sink (or, in other words, where logs are written to). Can be a
-        Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 
         - `storage.googleapis.com/[GCS_BUCKET]`
         - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
         - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-        - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]`
 
         The writer associated with the sink must have access to write to the above resource.
         """
@@ -202,13 +202,13 @@ class _OrganizationSinkState:
         Input properties used for looking up and filtering OrganizationSink resources.
         :param pulumi.Input['OrganizationSinkBigqueryOptionsArgs'] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
-        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
                - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-               - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]`
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
@@ -272,13 +272,13 @@ class _OrganizationSinkState:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination of the sink (or, in other words, where logs are written to). Can be a
-        Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 
         - `storage.googleapis.com/[GCS_BUCKET]`
         - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
         - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-        - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]`
 
         The writer associated with the sink must have access to write to the above resource.
         """
@@ -436,13 +436,13 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OrganizationSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
-        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
                - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-               - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]`
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
@@ -577,13 +577,13 @@ class OrganizationSink(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[pulumi.InputType['OrganizationSinkBigqueryOptionsArgs']] bigquery_options: Options that affect sinks exporting data to BigQuery. Structure documented below.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
-        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
                - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-               - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+               - `logging.googleapis.com/projects/[PROJECT_ID]`
                
                The writer associated with the sink must have access to write to the above resource.
         :param pulumi.Input[bool] disabled: If set to True, then this sink is disabled and it does not export any log entries.
@@ -634,13 +634,13 @@ class OrganizationSink(pulumi.CustomResource):
     @pulumi.getter
     def destination(self) -> pulumi.Output[str]:
         """
-        The destination of the sink (or, in other words, where logs are written to). Can be a
-        Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+        The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 
         - `storage.googleapis.com/[GCS_BUCKET]`
         - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
         - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-        - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+        - `logging.googleapis.com/projects/[PROJECT_ID]`
 
         The writer associated with the sink must have access to write to the above resource.
         """

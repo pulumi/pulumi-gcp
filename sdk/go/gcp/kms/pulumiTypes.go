@@ -395,6 +395,115 @@ func (o CryptoKeyIAMMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type CryptoKeyPrimary struct {
+	// The resource name for the CryptoKey.
+	Name *string `pulumi:"name"`
+	// (Output)
+	// The current state of the CryptoKeyVersion.
+	State *string `pulumi:"state"`
+}
+
+// CryptoKeyPrimaryInput is an input type that accepts CryptoKeyPrimaryArgs and CryptoKeyPrimaryOutput values.
+// You can construct a concrete instance of `CryptoKeyPrimaryInput` via:
+//
+//	CryptoKeyPrimaryArgs{...}
+type CryptoKeyPrimaryInput interface {
+	pulumi.Input
+
+	ToCryptoKeyPrimaryOutput() CryptoKeyPrimaryOutput
+	ToCryptoKeyPrimaryOutputWithContext(context.Context) CryptoKeyPrimaryOutput
+}
+
+type CryptoKeyPrimaryArgs struct {
+	// The resource name for the CryptoKey.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// (Output)
+	// The current state of the CryptoKeyVersion.
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (CryptoKeyPrimaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyPrimary)(nil)).Elem()
+}
+
+func (i CryptoKeyPrimaryArgs) ToCryptoKeyPrimaryOutput() CryptoKeyPrimaryOutput {
+	return i.ToCryptoKeyPrimaryOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyPrimaryArgs) ToCryptoKeyPrimaryOutputWithContext(ctx context.Context) CryptoKeyPrimaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyPrimaryOutput)
+}
+
+// CryptoKeyPrimaryArrayInput is an input type that accepts CryptoKeyPrimaryArray and CryptoKeyPrimaryArrayOutput values.
+// You can construct a concrete instance of `CryptoKeyPrimaryArrayInput` via:
+//
+//	CryptoKeyPrimaryArray{ CryptoKeyPrimaryArgs{...} }
+type CryptoKeyPrimaryArrayInput interface {
+	pulumi.Input
+
+	ToCryptoKeyPrimaryArrayOutput() CryptoKeyPrimaryArrayOutput
+	ToCryptoKeyPrimaryArrayOutputWithContext(context.Context) CryptoKeyPrimaryArrayOutput
+}
+
+type CryptoKeyPrimaryArray []CryptoKeyPrimaryInput
+
+func (CryptoKeyPrimaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CryptoKeyPrimary)(nil)).Elem()
+}
+
+func (i CryptoKeyPrimaryArray) ToCryptoKeyPrimaryArrayOutput() CryptoKeyPrimaryArrayOutput {
+	return i.ToCryptoKeyPrimaryArrayOutputWithContext(context.Background())
+}
+
+func (i CryptoKeyPrimaryArray) ToCryptoKeyPrimaryArrayOutputWithContext(ctx context.Context) CryptoKeyPrimaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(CryptoKeyPrimaryArrayOutput)
+}
+
+type CryptoKeyPrimaryOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyPrimaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*CryptoKeyPrimary)(nil)).Elem()
+}
+
+func (o CryptoKeyPrimaryOutput) ToCryptoKeyPrimaryOutput() CryptoKeyPrimaryOutput {
+	return o
+}
+
+func (o CryptoKeyPrimaryOutput) ToCryptoKeyPrimaryOutputWithContext(ctx context.Context) CryptoKeyPrimaryOutput {
+	return o
+}
+
+// The resource name for the CryptoKey.
+func (o CryptoKeyPrimaryOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyPrimary) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The current state of the CryptoKeyVersion.
+func (o CryptoKeyPrimaryOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v CryptoKeyPrimary) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type CryptoKeyPrimaryArrayOutput struct{ *pulumi.OutputState }
+
+func (CryptoKeyPrimaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]CryptoKeyPrimary)(nil)).Elem()
+}
+
+func (o CryptoKeyPrimaryArrayOutput) ToCryptoKeyPrimaryArrayOutput() CryptoKeyPrimaryArrayOutput {
+	return o
+}
+
+func (o CryptoKeyPrimaryArrayOutput) ToCryptoKeyPrimaryArrayOutputWithContext(ctx context.Context) CryptoKeyPrimaryArrayOutput {
+	return o
+}
+
+func (o CryptoKeyPrimaryArrayOutput) Index(i pulumi.IntInput) CryptoKeyPrimaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) CryptoKeyPrimary {
+		return vs[0].([]CryptoKeyPrimary)[vs[1].(int)]
+	}).(CryptoKeyPrimaryOutput)
+}
+
 type CryptoKeyVersionAttestation struct {
 	// The certificate chains needed to validate the attestation
 	// Structure is documented below.
@@ -1626,6 +1735,112 @@ func (o KeyRingImportJobPublicKeyArrayOutput) Index(i pulumi.IntInput) KeyRingIm
 	}).(KeyRingImportJobPublicKeyOutput)
 }
 
+type GetKMSCryptoKeyPrimary struct {
+	// The CryptoKey's name.
+	// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	Name  string `pulumi:"name"`
+	State string `pulumi:"state"`
+}
+
+// GetKMSCryptoKeyPrimaryInput is an input type that accepts GetKMSCryptoKeyPrimaryArgs and GetKMSCryptoKeyPrimaryOutput values.
+// You can construct a concrete instance of `GetKMSCryptoKeyPrimaryInput` via:
+//
+//	GetKMSCryptoKeyPrimaryArgs{...}
+type GetKMSCryptoKeyPrimaryInput interface {
+	pulumi.Input
+
+	ToGetKMSCryptoKeyPrimaryOutput() GetKMSCryptoKeyPrimaryOutput
+	ToGetKMSCryptoKeyPrimaryOutputWithContext(context.Context) GetKMSCryptoKeyPrimaryOutput
+}
+
+type GetKMSCryptoKeyPrimaryArgs struct {
+	// The CryptoKey's name.
+	// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+	Name  pulumi.StringInput `pulumi:"name"`
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetKMSCryptoKeyPrimaryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKMSCryptoKeyPrimary)(nil)).Elem()
+}
+
+func (i GetKMSCryptoKeyPrimaryArgs) ToGetKMSCryptoKeyPrimaryOutput() GetKMSCryptoKeyPrimaryOutput {
+	return i.ToGetKMSCryptoKeyPrimaryOutputWithContext(context.Background())
+}
+
+func (i GetKMSCryptoKeyPrimaryArgs) ToGetKMSCryptoKeyPrimaryOutputWithContext(ctx context.Context) GetKMSCryptoKeyPrimaryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyPrimaryOutput)
+}
+
+// GetKMSCryptoKeyPrimaryArrayInput is an input type that accepts GetKMSCryptoKeyPrimaryArray and GetKMSCryptoKeyPrimaryArrayOutput values.
+// You can construct a concrete instance of `GetKMSCryptoKeyPrimaryArrayInput` via:
+//
+//	GetKMSCryptoKeyPrimaryArray{ GetKMSCryptoKeyPrimaryArgs{...} }
+type GetKMSCryptoKeyPrimaryArrayInput interface {
+	pulumi.Input
+
+	ToGetKMSCryptoKeyPrimaryArrayOutput() GetKMSCryptoKeyPrimaryArrayOutput
+	ToGetKMSCryptoKeyPrimaryArrayOutputWithContext(context.Context) GetKMSCryptoKeyPrimaryArrayOutput
+}
+
+type GetKMSCryptoKeyPrimaryArray []GetKMSCryptoKeyPrimaryInput
+
+func (GetKMSCryptoKeyPrimaryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKMSCryptoKeyPrimary)(nil)).Elem()
+}
+
+func (i GetKMSCryptoKeyPrimaryArray) ToGetKMSCryptoKeyPrimaryArrayOutput() GetKMSCryptoKeyPrimaryArrayOutput {
+	return i.ToGetKMSCryptoKeyPrimaryArrayOutputWithContext(context.Background())
+}
+
+func (i GetKMSCryptoKeyPrimaryArray) ToGetKMSCryptoKeyPrimaryArrayOutputWithContext(ctx context.Context) GetKMSCryptoKeyPrimaryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKMSCryptoKeyPrimaryArrayOutput)
+}
+
+type GetKMSCryptoKeyPrimaryOutput struct{ *pulumi.OutputState }
+
+func (GetKMSCryptoKeyPrimaryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKMSCryptoKeyPrimary)(nil)).Elem()
+}
+
+func (o GetKMSCryptoKeyPrimaryOutput) ToGetKMSCryptoKeyPrimaryOutput() GetKMSCryptoKeyPrimaryOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyPrimaryOutput) ToGetKMSCryptoKeyPrimaryOutputWithContext(ctx context.Context) GetKMSCryptoKeyPrimaryOutput {
+	return o
+}
+
+// The CryptoKey's name.
+// A CryptoKey’s name belonging to the specified Google Cloud Platform KeyRing and match the regular expression `[a-zA-Z0-9_-]{1,63}`
+func (o GetKMSCryptoKeyPrimaryOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyPrimary) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetKMSCryptoKeyPrimaryOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKMSCryptoKeyPrimary) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetKMSCryptoKeyPrimaryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKMSCryptoKeyPrimaryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKMSCryptoKeyPrimary)(nil)).Elem()
+}
+
+func (o GetKMSCryptoKeyPrimaryArrayOutput) ToGetKMSCryptoKeyPrimaryArrayOutput() GetKMSCryptoKeyPrimaryArrayOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyPrimaryArrayOutput) ToGetKMSCryptoKeyPrimaryArrayOutputWithContext(ctx context.Context) GetKMSCryptoKeyPrimaryArrayOutput {
+	return o
+}
+
+func (o GetKMSCryptoKeyPrimaryArrayOutput) Index(i pulumi.IntInput) GetKMSCryptoKeyPrimaryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKMSCryptoKeyPrimary {
+		return vs[0].([]GetKMSCryptoKeyPrimary)[vs[1].(int)]
+	}).(GetKMSCryptoKeyPrimaryOutput)
+}
+
 type GetKMSCryptoKeyVersionPublicKey struct {
 	// The CryptoKeyVersionAlgorithm that this CryptoKeyVersion supports.
 	Algorithm string `pulumi:"algorithm"`
@@ -1837,6 +2052,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMBindingConditionPtrInput)(nil)).Elem(), CryptoKeyIAMBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberConditionInput)(nil)).Elem(), CryptoKeyIAMMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyIAMMemberConditionPtrInput)(nil)).Elem(), CryptoKeyIAMMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyPrimaryInput)(nil)).Elem(), CryptoKeyPrimaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyPrimaryArrayInput)(nil)).Elem(), CryptoKeyPrimaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationInput)(nil)).Elem(), CryptoKeyVersionAttestationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationArrayInput)(nil)).Elem(), CryptoKeyVersionAttestationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*CryptoKeyVersionAttestationCertChainsInput)(nil)).Elem(), CryptoKeyVersionAttestationCertChainsArgs{})
@@ -1853,6 +2070,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobAttestationArrayInput)(nil)).Elem(), KeyRingImportJobAttestationArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyInput)(nil)).Elem(), KeyRingImportJobPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeyRingImportJobPublicKeyArrayInput)(nil)).Elem(), KeyRingImportJobPublicKeyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyPrimaryInput)(nil)).Elem(), GetKMSCryptoKeyPrimaryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyPrimaryArrayInput)(nil)).Elem(), GetKMSCryptoKeyPrimaryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionPublicKeyInput)(nil)).Elem(), GetKMSCryptoKeyVersionPublicKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionPublicKeyArrayInput)(nil)).Elem(), GetKMSCryptoKeyVersionPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionTemplateInput)(nil)).Elem(), GetKMSCryptoKeyVersionTemplateArgs{})
@@ -1861,6 +2080,8 @@ func init() {
 	pulumi.RegisterOutputType(CryptoKeyIAMBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberConditionOutput{})
 	pulumi.RegisterOutputType(CryptoKeyIAMMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(CryptoKeyPrimaryOutput{})
+	pulumi.RegisterOutputType(CryptoKeyPrimaryArrayOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationArrayOutput{})
 	pulumi.RegisterOutputType(CryptoKeyVersionAttestationCertChainsOutput{})
@@ -1877,6 +2098,8 @@ func init() {
 	pulumi.RegisterOutputType(KeyRingImportJobAttestationArrayOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyOutput{})
 	pulumi.RegisterOutputType(KeyRingImportJobPublicKeyArrayOutput{})
+	pulumi.RegisterOutputType(GetKMSCryptoKeyPrimaryOutput{})
+	pulumi.RegisterOutputType(GetKMSCryptoKeyPrimaryArrayOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionPublicKeyOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionTemplateOutput{})

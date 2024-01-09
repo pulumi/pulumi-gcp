@@ -1256,7 +1256,10 @@ type ClusterClusterConfig struct {
 	// only be removed by setting `policyUri = ""`, rather than removing the whole block.
 	// Structure defined below.
 	AutoscalingConfig *ClusterClusterConfigAutoscalingConfig `pulumi:"autoscalingConfig"`
-	Bucket            *string                                `pulumi:"bucket"`
+	// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+	// Structure defined below.
+	AuxiliaryNodeGroups []ClusterClusterConfigAuxiliaryNodeGroup `pulumi:"auxiliaryNodeGroups"`
+	Bucket              *string                                  `pulumi:"bucket"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
 	DataprocMetricConfig *ClusterClusterConfigDataprocMetricConfig `pulumi:"dataprocMetricConfig"`
@@ -1327,7 +1330,10 @@ type ClusterClusterConfigArgs struct {
 	// only be removed by setting `policyUri = ""`, rather than removing the whole block.
 	// Structure defined below.
 	AutoscalingConfig ClusterClusterConfigAutoscalingConfigPtrInput `pulumi:"autoscalingConfig"`
-	Bucket            pulumi.StringPtrInput                         `pulumi:"bucket"`
+	// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+	// Structure defined below.
+	AuxiliaryNodeGroups ClusterClusterConfigAuxiliaryNodeGroupArrayInput `pulumi:"auxiliaryNodeGroups"`
+	Bucket              pulumi.StringPtrInput                            `pulumi:"bucket"`
 	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
 	// Structure defined below.
 	DataprocMetricConfig ClusterClusterConfigDataprocMetricConfigPtrInput `pulumi:"dataprocMetricConfig"`
@@ -1466,6 +1472,12 @@ func (o ClusterClusterConfigOutput) AutoscalingConfig() ClusterClusterConfigAuto
 	return o.ApplyT(func(v ClusterClusterConfig) *ClusterClusterConfigAutoscalingConfig { return v.AutoscalingConfig }).(ClusterClusterConfigAutoscalingConfigPtrOutput)
 }
 
+// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+// Structure defined below.
+func (o ClusterClusterConfigOutput) AuxiliaryNodeGroups() ClusterClusterConfigAuxiliaryNodeGroupArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfig) []ClusterClusterConfigAuxiliaryNodeGroup { return v.AuxiliaryNodeGroups }).(ClusterClusterConfigAuxiliaryNodeGroupArrayOutput)
+}
+
 func (o ClusterClusterConfigOutput) Bucket() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfig) *string { return v.Bucket }).(pulumi.StringPtrOutput)
 }
@@ -1602,6 +1614,17 @@ func (o ClusterClusterConfigPtrOutput) AutoscalingConfig() ClusterClusterConfigA
 		}
 		return v.AutoscalingConfig
 	}).(ClusterClusterConfigAutoscalingConfigPtrOutput)
+}
+
+// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+// Structure defined below.
+func (o ClusterClusterConfigPtrOutput) AuxiliaryNodeGroups() ClusterClusterConfigAuxiliaryNodeGroupArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfig) []ClusterClusterConfigAuxiliaryNodeGroup {
+		if v == nil {
+			return nil
+		}
+		return v.AuxiliaryNodeGroups
+	}).(ClusterClusterConfigAuxiliaryNodeGroupArrayOutput)
 }
 
 func (o ClusterClusterConfigPtrOutput) Bucket() pulumi.StringPtrOutput {
@@ -1943,6 +1966,825 @@ func (o ClusterClusterConfigAutoscalingConfigPtrOutput) PolicyUri() pulumi.Strin
 		}
 		return &v.PolicyUri
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroup struct {
+	NodeGroupId *string `pulumi:"nodeGroupId"`
+	// Node group configuration.
+	NodeGroups []ClusterClusterConfigAuxiliaryNodeGroupNodeGroup `pulumi:"nodeGroups"`
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupArgs and ClusterClusterConfigAuxiliaryNodeGroupOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupInput` via:
+//
+//	ClusterClusterConfigAuxiliaryNodeGroupArgs{...}
+type ClusterClusterConfigAuxiliaryNodeGroupInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupOutput() ClusterClusterConfigAuxiliaryNodeGroupOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupOutput
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupArgs struct {
+	NodeGroupId pulumi.StringPtrInput `pulumi:"nodeGroupId"`
+	// Node group configuration.
+	NodeGroups ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayInput `pulumi:"nodeGroups"`
+}
+
+func (ClusterClusterConfigAuxiliaryNodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroup)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupArgs) ToClusterClusterConfigAuxiliaryNodeGroupOutput() ClusterClusterConfigAuxiliaryNodeGroupOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupArgs) ToClusterClusterConfigAuxiliaryNodeGroupOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupOutput)
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupArrayInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupArray and ClusterClusterConfigAuxiliaryNodeGroupArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupArrayInput` via:
+//
+//	ClusterClusterConfigAuxiliaryNodeGroupArray{ ClusterClusterConfigAuxiliaryNodeGroupArgs{...} }
+type ClusterClusterConfigAuxiliaryNodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupArrayOutput() ClusterClusterConfigAuxiliaryNodeGroupArrayOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupArrayOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupArrayOutput
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupArray []ClusterClusterConfigAuxiliaryNodeGroupInput
+
+func (ClusterClusterConfigAuxiliaryNodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigAuxiliaryNodeGroup)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupArray) ToClusterClusterConfigAuxiliaryNodeGroupArrayOutput() ClusterClusterConfigAuxiliaryNodeGroupArrayOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupArray) ToClusterClusterConfigAuxiliaryNodeGroupArrayOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupArrayOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroup)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupOutput) ToClusterClusterConfigAuxiliaryNodeGroupOutput() ClusterClusterConfigAuxiliaryNodeGroupOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupOutput) ToClusterClusterConfigAuxiliaryNodeGroupOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupOutput) NodeGroupId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroup) *string { return v.NodeGroupId }).(pulumi.StringPtrOutput)
+}
+
+// Node group configuration.
+func (o ClusterClusterConfigAuxiliaryNodeGroupOutput) NodeGroups() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroup) []ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
+		return v.NodeGroups
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigAuxiliaryNodeGroup)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupArrayOutput) ToClusterClusterConfigAuxiliaryNodeGroupArrayOutput() ClusterClusterConfigAuxiliaryNodeGroupArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupArrayOutput) ToClusterClusterConfigAuxiliaryNodeGroupArrayOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigAuxiliaryNodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigAuxiliaryNodeGroup {
+		return vs[0].([]ClusterClusterConfigAuxiliaryNodeGroup)[vs[1].(int)]
+	}).(ClusterClusterConfigAuxiliaryNodeGroupOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroup struct {
+	// The name of the cluster, unique within the project and
+	// zone.
+	//
+	// ***
+	Name *string `pulumi:"name"`
+	// The node group instance group configuration.
+	NodeGroupConfig *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig `pulumi:"nodeGroupConfig"`
+	// Node group roles.
+	// One of `"DRIVER"`.
+	Roles []string `pulumi:"roles"`
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupNodeGroupInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs and ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupNodeGroupInput` via:
+//
+//	ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs{...}
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs struct {
+	// The name of the cluster, unique within the project and
+	// zone.
+	//
+	// ***
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The node group instance group configuration.
+	NodeGroupConfig ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrInput `pulumi:"nodeGroupConfig"`
+	// Node group roles.
+	// One of `"DRIVER"`.
+	Roles pulumi.StringArrayInput `pulumi:"roles"`
+}
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroup)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput)
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArray and ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayInput` via:
+//
+//	ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArray{ ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs{...} }
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArray []ClusterClusterConfigAuxiliaryNodeGroupNodeGroupInput
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigAuxiliaryNodeGroupNodeGroup)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArray) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArray) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroup)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput {
+	return o
+}
+
+// The name of the cluster, unique within the project and
+// zone.
+//
+// ***
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The node group instance group configuration.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput) NodeGroupConfig() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroup) *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
+		return v.NodeGroupConfig
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
+}
+
+// Node group roles.
+// One of `"DRIVER"`.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput) Roles() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroup) []string { return v.Roles }).(pulumi.StringArrayOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigAuxiliaryNodeGroupNodeGroup)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
+		return vs[0].([]ClusterClusterConfigAuxiliaryNodeGroupNodeGroup)[vs[1].(int)]
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig struct {
+	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+	// multiple times.
+	Accelerators []ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator `pulumi:"accelerators"`
+	// Disk Config
+	DiskConfig    *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig `pulumi:"diskConfig"`
+	InstanceNames []string                                                                  `pulumi:"instanceNames"`
+	// The name of a Google Compute Engine machine type
+	// to create for the node group. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
+	MachineType *string `pulumi:"machineType"`
+	// The name of a minimum generation of CPU family
+	// for the node group. If not specified, GCP will default to a predetermined computed value
+	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for details about which CPU families are available (and defaulted) for each zone.
+	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
+	// Specifies the number of master nodes to create.
+	// Please set a number greater than 0. Node Group must have at least 1 instance.
+	NumInstances *int `pulumi:"numInstances"`
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs and ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigInput` via:
+//
+//	ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs{...}
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs struct {
+	// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+	// multiple times.
+	Accelerators ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayInput `pulumi:"accelerators"`
+	// Disk Config
+	DiskConfig    ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrInput `pulumi:"diskConfig"`
+	InstanceNames pulumi.StringArrayInput                                                          `pulumi:"instanceNames"`
+	// The name of a Google Compute Engine machine type
+	// to create for the node group. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
+	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
+	// The name of a minimum generation of CPU family
+	// for the node group. If not specified, GCP will default to a predetermined computed value
+	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for details about which CPU families are available (and defaulted) for each zone.
+	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
+	// Specifies the number of master nodes to create.
+	// Please set a number greater than 0. Node Group must have at least 1 instance.
+	NumInstances pulumi.IntPtrInput `pulumi:"numInstances"`
+}
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput)
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput).ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs, ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtr and ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrInput` via:
+//
+//	        ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput
+}
+
+type clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrType ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs
+
+func ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtr(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrInput {
+	return (*clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrType) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrType) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput {
+	return o.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
+		return &v
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput)
+}
+
+// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+// multiple times.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) Accelerators() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) []ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
+		return v.Accelerators
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput)
+}
+
+// Disk Config
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) DiskConfig() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig {
+		return v.DiskConfig
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput)
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) []string {
+		return v.InstanceNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of a Google Compute Engine machine type
+// to create for the node group. If not specified, GCP will default to a predetermined
+// computed value (currently `n1-standard-4`).
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *string { return v.MachineType }).(pulumi.StringPtrOutput)
+}
+
+// The name of a minimum generation of CPU family
+// for the node group. If not specified, GCP will default to a predetermined computed value
+// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for details about which CPU families are available (and defaulted) for each zone.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *string {
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of master nodes to create.
+// Please set a number greater than 0. Node Group must have at least 1 instance.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *int { return v.NumInstances }).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) Elem() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig
+		return ret
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput)
+}
+
+// The Compute Engine accelerator (GPU) configuration for these instances. Can be specified
+// multiple times.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) Accelerators() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) []ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
+		if v == nil {
+			return nil
+		}
+		return v.Accelerators
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput)
+}
+
+// Disk Config
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) DiskConfig() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DiskConfig
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput)
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) InstanceNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.InstanceNames
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of a Google Compute Engine machine type
+// to create for the node group. If not specified, GCP will default to a predetermined
+// computed value (currently `n1-standard-4`).
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MachineType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of a minimum generation of CPU family
+// for the node group. If not specified, GCP will default to a predetermined computed value
+// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for details about which CPU families are available (and defaulted) for each zone.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinCpuPlatform
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the number of master nodes to create.
+// Please set a number greater than 0. Node Group must have at least 1 instance.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput) NumInstances() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumInstances
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator struct {
+	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+	//
+	// ***
+	AcceleratorCount int `pulumi:"acceleratorCount"`
+	// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+	AcceleratorType string `pulumi:"acceleratorType"`
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs and ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorInput` via:
+//
+//	ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs{...}
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs struct {
+	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+	//
+	// ***
+	AcceleratorCount pulumi.IntInput `pulumi:"acceleratorCount"`
+	// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+	AcceleratorType pulumi.StringInput `pulumi:"acceleratorType"`
+}
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput)
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArray and ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayInput` via:
+//
+//	ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArray{ ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs{...} }
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArray []ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorInput
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArray) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArray) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput {
+	return o
+}
+
+// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+//
+// ***
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput) AcceleratorCount() pulumi.IntOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator) int {
+		return v.AcceleratorCount
+	}).(pulumi.IntOutput)
+}
+
+// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator) string {
+		return v.AcceleratorType
+	}).(pulumi.StringOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput) Index(i pulumi.IntInput) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
+		return vs[0].([]ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator)[vs[1].(int)]
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig struct {
+	// Size of the primary disk attached to each node, specified
+	// in GB. The primary disk contains the boot volume and system libraries, and the
+	// smallest allowed disk size is 10GB. GCP will default to a predetermined
+	// computed value if not set (currently 500GB). Note: If SSDs are not
+	// attached, it also contains the HDFS data blocks and Hadoop working directories.
+	BootDiskSizeGb *int `pulumi:"bootDiskSizeGb"`
+	// The disk type of the primary disk attached to each node.
+	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+	BootDiskType *string `pulumi:"bootDiskType"`
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
+	NumLocalSsds *int `pulumi:"numLocalSsds"`
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs and ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigInput` via:
+//
+//	ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs{...}
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs struct {
+	// Size of the primary disk attached to each node, specified
+	// in GB. The primary disk contains the boot volume and system libraries, and the
+	// smallest allowed disk size is 10GB. GCP will default to a predetermined
+	// computed value if not set (currently 500GB). Note: If SSDs are not
+	// attached, it also contains the HDFS data blocks and Hadoop working directories.
+	BootDiskSizeGb pulumi.IntPtrInput `pulumi:"bootDiskSizeGb"`
+	// The disk type of the primary disk attached to each node.
+	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
+	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
+}
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput)
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput).ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrInput is an input type that accepts ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs, ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtr and ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrInput` via:
+//
+//	        ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput
+	ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutputWithContext(context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput
+}
+
+type clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrType ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs
+
+func ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtr(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrInput {
+	return (*clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrType) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return i.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrType) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return o.ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig {
+		return &v
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput)
+}
+
+// Size of the primary disk attached to each node, specified
+// in GB. The primary disk contains the boot volume and system libraries, and the
+// smallest allowed disk size is 10GB. GCP will default to a predetermined
+// computed value if not set (currently 500GB). Note: If SSDs are not
+// attached, it also contains the HDFS data blocks and Hadoop working directories.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the primary disk attached to each node.
+// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *string {
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) ToClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) Elem() ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig
+		return ret
+	}).(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput)
+}
+
+// Size of the primary disk attached to each node, specified
+// in GB. The primary disk contains the boot volume and system libraries, and the
+// smallest allowed disk size is 10GB. GCP will default to a predetermined
+// computed value if not set (currently 500GB). Note: If SSDs are not
+// attached, it also contains the HDFS data blocks and Hadoop working directories.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) BootDiskSizeGb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskSizeGb
+	}).(pulumi.IntPtrOutput)
+}
+
+// The disk type of the primary disk attached to each node.
+// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) BootDiskType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BootDiskType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
+func (o ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.NumLocalSsds
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterClusterConfigDataprocMetricConfig struct {
@@ -4015,10 +4857,6 @@ func (o ClusterClusterConfigMasterConfigPtrOutput) NumInstances() pulumi.IntPtrO
 type ClusterClusterConfigMasterConfigAccelerator struct {
 	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
 	//
-	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-	// if you are trying to use accelerators in a given zone.
-	//
 	// ***
 	AcceleratorCount int `pulumi:"acceleratorCount"`
 	// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
@@ -4038,10 +4876,6 @@ type ClusterClusterConfigMasterConfigAcceleratorInput interface {
 
 type ClusterClusterConfigMasterConfigAcceleratorArgs struct {
 	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-	//
-	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-	// if you are trying to use accelerators in a given zone.
 	//
 	// ***
 	AcceleratorCount pulumi.IntInput `pulumi:"acceleratorCount"`
@@ -4102,10 +4936,6 @@ func (o ClusterClusterConfigMasterConfigAcceleratorOutput) ToClusterClusterConfi
 
 // The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
 //
-// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-// if you are trying to use accelerators in a given zone.
-//
 // ***
 func (o ClusterClusterConfigMasterConfigAcceleratorOutput) AcceleratorCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigAccelerator) int { return v.AcceleratorCount }).(pulumi.IntOutput)
@@ -4146,8 +4976,8 @@ type ClusterClusterConfigMasterConfigDiskConfig struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be
-	// attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -4172,8 +5002,8 @@ type ClusterClusterConfigMasterConfigDiskConfigArgs struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be
-	// attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -4269,8 +5099,8 @@ func (o ClusterClusterConfigMasterConfigDiskConfigOutput) BootDiskType() pulumi.
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
 func (o ClusterClusterConfigMasterConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigMasterConfigDiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
 }
@@ -4324,8 +5154,8 @@ func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) BootDiskType() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
 func (o ClusterClusterConfigMasterConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigMasterConfigDiskConfig) *int {
 		if v == nil {
@@ -4731,8 +5561,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfig struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be
-	// attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -4757,8 +5587,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigDiskConfigArgs struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be
-	// attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -4854,8 +5684,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) BootDiskTyp
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
 }
@@ -4909,8 +5739,8 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) BootDisk
 	}).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
 func (o ClusterClusterConfigPreemptibleWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigDiskConfig) *int {
 		if v == nil {
@@ -5193,7 +6023,9 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult struct {
-	// The name of a Compute Engine machine type.
+	// The name of a Google Compute Engine machine type
+	// to create for the node group. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
 	MachineType *string `pulumi:"machineType"`
 	VmCount     *int    `pulumi:"vmCount"`
 }
@@ -5210,7 +6042,9 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanc
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs struct {
-	// The name of a Compute Engine machine type.
+	// The name of a Google Compute Engine machine type
+	// to create for the node group. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
 	VmCount     pulumi.IntPtrInput    `pulumi:"vmCount"`
 }
@@ -5266,7 +6100,9 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 	return o
 }
 
-// The name of a Compute Engine machine type.
+// The name of a Google Compute Engine machine type
+// to create for the node group. If not specified, GCP will default to a predetermined
+// computed value (currently `n1-standard-4`).
 func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult) *string {
 		return v.MachineType
@@ -6470,10 +7306,6 @@ func (o ClusterClusterConfigWorkerConfigPtrOutput) NumInstances() pulumi.IntPtrO
 type ClusterClusterConfigWorkerConfigAccelerator struct {
 	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
 	//
-	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-	// if you are trying to use accelerators in a given zone.
-	//
 	// ***
 	AcceleratorCount int `pulumi:"acceleratorCount"`
 	// The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
@@ -6493,10 +7325,6 @@ type ClusterClusterConfigWorkerConfigAcceleratorInput interface {
 
 type ClusterClusterConfigWorkerConfigAcceleratorArgs struct {
 	// The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
-	//
-	// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-	// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-	// if you are trying to use accelerators in a given zone.
 	//
 	// ***
 	AcceleratorCount pulumi.IntInput `pulumi:"acceleratorCount"`
@@ -6557,10 +7385,6 @@ func (o ClusterClusterConfigWorkerConfigAcceleratorOutput) ToClusterClusterConfi
 
 // The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
 //
-// > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-// zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-// if you are trying to use accelerators in a given zone.
-//
 // ***
 func (o ClusterClusterConfigWorkerConfigAcceleratorOutput) AcceleratorCount() pulumi.IntOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigAccelerator) int { return v.AcceleratorCount }).(pulumi.IntOutput)
@@ -6601,8 +7425,8 @@ type ClusterClusterConfigWorkerConfigDiskConfig struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType *string `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be
-	// attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
 	NumLocalSsds *int `pulumi:"numLocalSsds"`
 }
 
@@ -6627,8 +7451,8 @@ type ClusterClusterConfigWorkerConfigDiskConfigArgs struct {
 	// The disk type of the primary disk attached to each node.
 	// One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
 	BootDiskType pulumi.StringPtrInput `pulumi:"bootDiskType"`
-	// The amount of local SSD disks that will be
-	// attached to each master cluster node. Defaults to 0.
+	// The amount of local SSD disks that will be attached to each master cluster node.
+	// Defaults to 0.
 	NumLocalSsds pulumi.IntPtrInput `pulumi:"numLocalSsds"`
 }
 
@@ -6724,8 +7548,8 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) BootDiskType() pulumi.
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *string { return v.BootDiskType }).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
 func (o ClusterClusterConfigWorkerConfigDiskConfigOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterClusterConfigWorkerConfigDiskConfig) *int { return v.NumLocalSsds }).(pulumi.IntPtrOutput)
 }
@@ -6779,8 +7603,8 @@ func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) BootDiskType() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
-// The amount of local SSD disks that will be
-// attached to each master cluster node. Defaults to 0.
+// The amount of local SSD disks that will be attached to each master cluster node.
+// Defaults to 0.
 func (o ClusterClusterConfigWorkerConfigDiskConfigPtrOutput) NumLocalSsds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterConfigWorkerConfigDiskConfig) *int {
 		if v == nil {
@@ -8160,8 +8984,8 @@ type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolT
 	// If one with the same name already exists, it is verified against all specified fields.
 	// If a field differs, the virtual cluster creation will fail.
 	NodePoolConfig *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig `pulumi:"nodePoolConfig"`
-	// The roles associated with the GKE node pool.
-	// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+	// Node group roles.
+	// One of `"DRIVER"`.
 	Roles []string `pulumi:"roles"`
 }
 
@@ -8184,8 +9008,8 @@ type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolT
 	// If one with the same name already exists, it is verified against all specified fields.
 	// If a field differs, the virtual cluster creation will fail.
 	NodePoolConfig ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrInput `pulumi:"nodePoolConfig"`
-	// The roles associated with the GKE node pool.
-	// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+	// Node group roles.
+	// One of `"DRIVER"`.
 	Roles pulumi.StringArrayInput `pulumi:"roles"`
 }
 
@@ -8257,8 +9081,8 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigPtrOutput)
 }
 
-// The roles associated with the GKE node pool.
-// One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+// Node group roles.
+// One of `"DRIVER"`.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetOutput) Roles() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTarget) []string {
 		return v.Roles
@@ -8642,11 +9466,14 @@ type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolT
 	// The number of local SSD disks to attach to the node,
 	// which is limited by the maximum number of disks allowable per zone.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
-	// The name of a Compute Engine machine type.
+	// The name of a Google Compute Engine machine type
+	// to create for the node group. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
 	MachineType *string `pulumi:"machineType"`
-	// Minimum CPU platform to be used by this instance.
-	// The instance may be scheduled on the specified or a newer CPU platform.
-	// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+	// The name of a minimum generation of CPU family
+	// for the node group. If not specified, GCP will default to a predetermined computed value
+	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for details about which CPU families are available (and defaulted) for each zone.
 	MinCpuPlatform *string `pulumi:"minCpuPlatform"`
 	// Whether the nodes are created as preemptible VM instances.
 	// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
@@ -8671,11 +9498,14 @@ type ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolT
 	// The number of local SSD disks to attach to the node,
 	// which is limited by the maximum number of disks allowable per zone.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
-	// The name of a Compute Engine machine type.
+	// The name of a Google Compute Engine machine type
+	// to create for the node group. If not specified, GCP will default to a predetermined
+	// computed value (currently `n1-standard-4`).
 	MachineType pulumi.StringPtrInput `pulumi:"machineType"`
-	// Minimum CPU platform to be used by this instance.
-	// The instance may be scheduled on the specified or a newer CPU platform.
-	// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+	// The name of a minimum generation of CPU family
+	// for the node group. If not specified, GCP will default to a predetermined computed value
+	// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+	// for details about which CPU families are available (and defaulted) for each zone.
 	MinCpuPlatform pulumi.StringPtrInput `pulumi:"minCpuPlatform"`
 	// Whether the nodes are created as preemptible VM instances.
 	// Preemptible nodes cannot be used in a node pool with the CONTROLLER role or in the DEFAULT node pool if the
@@ -8770,16 +9600,19 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(pulumi.IntPtrOutput)
 }
 
-// The name of a Compute Engine machine type.
+// The name of a Google Compute Engine machine type
+// to create for the node group. If not specified, GCP will default to a predetermined
+// computed value (currently `n1-standard-4`).
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		return v.MachineType
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum CPU platform to be used by this instance.
-// The instance may be scheduled on the specified or a newer CPU platform.
-// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+// The name of a minimum generation of CPU family
+// for the node group. If not specified, GCP will default to a predetermined computed value
+// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for details about which CPU families are available (and defaulted) for each zone.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		return v.MinCpuPlatform
@@ -8837,7 +9670,9 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(pulumi.IntPtrOutput)
 }
 
-// The name of a Compute Engine machine type.
+// The name of a Google Compute Engine machine type
+// to create for the node group. If not specified, GCP will default to a predetermined
+// computed value (currently `n1-standard-4`).
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) MachineType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		if v == nil {
@@ -8847,9 +9682,10 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePo
 	}).(pulumi.StringPtrOutput)
 }
 
-// Minimum CPU platform to be used by this instance.
-// The instance may be scheduled on the specified or a newer CPU platform.
-// Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+// The name of a minimum generation of CPU family
+// for the node group. If not specified, GCP will default to a predetermined computed value
+// for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+// for details about which CPU families are available (and defaulted) for each zone.
 func (o ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput) MinCpuPlatform() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfig) *string {
 		if v == nil {
@@ -13150,11 +13986,20 @@ func (o MetastoreServiceEncryptionConfigPtrOutput) KmsKey() pulumi.StringPtrOutp
 }
 
 type MetastoreServiceHiveMetastoreConfig struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration.
+	// When specified, a secondary Hive metastore service is created along with the primary service.
+	// All auxiliary versions must be less than the service's primary version.
+	// The key is the auxiliary service name and it must match the regular expression a-z?.
+	// This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	// Structure is documented below.
 	AuxiliaryVersions []MetastoreServiceHiveMetastoreConfigAuxiliaryVersion `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
 	// The mappings override system defaults (some keys cannot be overridden)
-	ConfigOverrides  map[string]string `pulumi:"configOverrides"`
-	EndpointProtocol *string           `pulumi:"endpointProtocol"`
+	ConfigOverrides map[string]string `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+	// Default value is `THRIFT`.
+	// Possible values are: `THRIFT`, `GRPC`.
+	EndpointProtocol *string `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
 	// Structure is documented below.
 	KerberosConfig *MetastoreServiceHiveMetastoreConfigKerberosConfig `pulumi:"kerberosConfig"`
@@ -13174,10 +14019,19 @@ type MetastoreServiceHiveMetastoreConfigInput interface {
 }
 
 type MetastoreServiceHiveMetastoreConfigArgs struct {
+	// A mapping of Hive metastore version to the auxiliary version configuration.
+	// When specified, a secondary Hive metastore service is created along with the primary service.
+	// All auxiliary versions must be less than the service's primary version.
+	// The key is the auxiliary service name and it must match the regular expression a-z?.
+	// This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+	// Structure is documented below.
 	AuxiliaryVersions MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayInput `pulumi:"auxiliaryVersions"`
 	// A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
 	// The mappings override system defaults (some keys cannot be overridden)
-	ConfigOverrides  pulumi.StringMapInput `pulumi:"configOverrides"`
+	ConfigOverrides pulumi.StringMapInput `pulumi:"configOverrides"`
+	// The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+	// Default value is `THRIFT`.
+	// Possible values are: `THRIFT`, `GRPC`.
 	EndpointProtocol pulumi.StringPtrInput `pulumi:"endpointProtocol"`
 	// Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
 	// Structure is documented below.
@@ -13263,6 +14117,12 @@ func (o MetastoreServiceHiveMetastoreConfigOutput) ToMetastoreServiceHiveMetasto
 	}).(MetastoreServiceHiveMetastoreConfigPtrOutput)
 }
 
+// A mapping of Hive metastore version to the auxiliary version configuration.
+// When specified, a secondary Hive metastore service is created along with the primary service.
+// All auxiliary versions must be less than the service's primary version.
+// The key is the auxiliary service name and it must match the regular expression a-z?.
+// This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+// Structure is documented below.
 func (o MetastoreServiceHiveMetastoreConfigOutput) AuxiliaryVersions() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
 	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) []MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
 		return v.AuxiliaryVersions
@@ -13275,6 +14135,9 @@ func (o MetastoreServiceHiveMetastoreConfigOutput) ConfigOverrides() pulumi.Stri
 	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) map[string]string { return v.ConfigOverrides }).(pulumi.StringMapOutput)
 }
 
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+// Default value is `THRIFT`.
+// Possible values are: `THRIFT`, `GRPC`.
 func (o MetastoreServiceHiveMetastoreConfigOutput) EndpointProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v MetastoreServiceHiveMetastoreConfig) *string { return v.EndpointProtocol }).(pulumi.StringPtrOutput)
 }
@@ -13316,6 +14179,12 @@ func (o MetastoreServiceHiveMetastoreConfigPtrOutput) Elem() MetastoreServiceHiv
 	}).(MetastoreServiceHiveMetastoreConfigOutput)
 }
 
+// A mapping of Hive metastore version to the auxiliary version configuration.
+// When specified, a secondary Hive metastore service is created along with the primary service.
+// All auxiliary versions must be less than the service's primary version.
+// The key is the auxiliary service name and it must match the regular expression a-z?.
+// This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+// Structure is documented below.
 func (o MetastoreServiceHiveMetastoreConfigPtrOutput) AuxiliaryVersions() MetastoreServiceHiveMetastoreConfigAuxiliaryVersionArrayOutput {
 	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) []MetastoreServiceHiveMetastoreConfigAuxiliaryVersion {
 		if v == nil {
@@ -13336,6 +14205,9 @@ func (o MetastoreServiceHiveMetastoreConfigPtrOutput) ConfigOverrides() pulumi.S
 	}).(pulumi.StringMapOutput)
 }
 
+// The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+// Default value is `THRIFT`.
+// Possible values are: `THRIFT`, `GRPC`.
 func (o MetastoreServiceHiveMetastoreConfigPtrOutput) EndpointProtocol() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *MetastoreServiceHiveMetastoreConfig) *string {
 		if v == nil {
@@ -14577,7 +15449,8 @@ func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) Enabled()
 type MetastoreServiceNetworkConfig struct {
 	// The consumer-side network configuration for the Dataproc Metastore instance.
 	// Structure is documented below.
-	Consumers []MetastoreServiceNetworkConfigConsumer `pulumi:"consumers"`
+	Consumers           []MetastoreServiceNetworkConfigConsumer `pulumi:"consumers"`
+	CustomRoutesEnabled *bool                                   `pulumi:"customRoutesEnabled"`
 }
 
 // MetastoreServiceNetworkConfigInput is an input type that accepts MetastoreServiceNetworkConfigArgs and MetastoreServiceNetworkConfigOutput values.
@@ -14594,7 +15467,8 @@ type MetastoreServiceNetworkConfigInput interface {
 type MetastoreServiceNetworkConfigArgs struct {
 	// The consumer-side network configuration for the Dataproc Metastore instance.
 	// Structure is documented below.
-	Consumers MetastoreServiceNetworkConfigConsumerArrayInput `pulumi:"consumers"`
+	Consumers           MetastoreServiceNetworkConfigConsumerArrayInput `pulumi:"consumers"`
+	CustomRoutesEnabled pulumi.BoolPtrInput                             `pulumi:"customRoutesEnabled"`
 }
 
 func (MetastoreServiceNetworkConfigArgs) ElementType() reflect.Type {
@@ -14680,6 +15554,10 @@ func (o MetastoreServiceNetworkConfigOutput) Consumers() MetastoreServiceNetwork
 	return o.ApplyT(func(v MetastoreServiceNetworkConfig) []MetastoreServiceNetworkConfigConsumer { return v.Consumers }).(MetastoreServiceNetworkConfigConsumerArrayOutput)
 }
 
+func (o MetastoreServiceNetworkConfigOutput) CustomRoutesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v MetastoreServiceNetworkConfig) *bool { return v.CustomRoutesEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type MetastoreServiceNetworkConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (MetastoreServiceNetworkConfigPtrOutput) ElementType() reflect.Type {
@@ -14713,6 +15591,15 @@ func (o MetastoreServiceNetworkConfigPtrOutput) Consumers() MetastoreServiceNetw
 		}
 		return v.Consumers
 	}).(MetastoreServiceNetworkConfigConsumerArrayOutput)
+}
+
+func (o MetastoreServiceNetworkConfigPtrOutput) CustomRoutesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *MetastoreServiceNetworkConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CustomRoutesEnabled
+	}).(pulumi.BoolPtrOutput)
 }
 
 type MetastoreServiceNetworkConfigConsumer struct {
@@ -25495,6 +26382,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPtrInput)(nil)).Elem(), ClusterClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAutoscalingConfigInput)(nil)).Elem(), ClusterClusterConfigAutoscalingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAutoscalingConfigPtrInput)(nil)).Elem(), ClusterClusterConfigAutoscalingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupArrayInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrInput)(nil)).Elem(), ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfigInput)(nil)).Elem(), ClusterClusterConfigDataprocMetricConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfigPtrInput)(nil)).Elem(), ClusterClusterConfigDataprocMetricConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigDataprocMetricConfigMetricInput)(nil)).Elem(), ClusterClusterConfigDataprocMetricConfigMetricArgs{})
@@ -25771,6 +26668,16 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigAutoscalingConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigAutoscalingConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupArrayOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigDataprocMetricConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigDataprocMetricConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigDataprocMetricConfigMetricOutput{})

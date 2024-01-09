@@ -15,6 +15,7 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class EnvironmentConfigNodeConfig {
+    private @Nullable String composerInternalIpv4CidrBlock;
     private @Nullable Integer diskSizeGb;
     private @Nullable Boolean enableIpMasqAgent;
     private @Nullable EnvironmentConfigNodeConfigIpAllocationPolicy ipAllocationPolicy;
@@ -28,6 +29,9 @@ public final class EnvironmentConfigNodeConfig {
     private @Nullable String zone;
 
     private EnvironmentConfigNodeConfig() {}
+    public Optional<String> composerInternalIpv4CidrBlock() {
+        return Optional.ofNullable(this.composerInternalIpv4CidrBlock);
+    }
     public Optional<Integer> diskSizeGb() {
         return Optional.ofNullable(this.diskSizeGb);
     }
@@ -71,6 +75,7 @@ public final class EnvironmentConfigNodeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable String composerInternalIpv4CidrBlock;
         private @Nullable Integer diskSizeGb;
         private @Nullable Boolean enableIpMasqAgent;
         private @Nullable EnvironmentConfigNodeConfigIpAllocationPolicy ipAllocationPolicy;
@@ -85,6 +90,7 @@ public final class EnvironmentConfigNodeConfig {
         public Builder() {}
         public Builder(EnvironmentConfigNodeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.composerInternalIpv4CidrBlock = defaults.composerInternalIpv4CidrBlock;
     	      this.diskSizeGb = defaults.diskSizeGb;
     	      this.enableIpMasqAgent = defaults.enableIpMasqAgent;
     	      this.ipAllocationPolicy = defaults.ipAllocationPolicy;
@@ -98,6 +104,12 @@ public final class EnvironmentConfigNodeConfig {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder composerInternalIpv4CidrBlock(@Nullable String composerInternalIpv4CidrBlock) {
+
+            this.composerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
+            return this;
+        }
         @CustomType.Setter
         public Builder diskSizeGb(@Nullable Integer diskSizeGb) {
 
@@ -172,6 +184,7 @@ public final class EnvironmentConfigNodeConfig {
         }
         public EnvironmentConfigNodeConfig build() {
             final var _resultValue = new EnvironmentConfigNodeConfig();
+            _resultValue.composerInternalIpv4CidrBlock = composerInternalIpv4CidrBlock;
             _resultValue.diskSizeGb = diskSizeGb;
             _resultValue.enableIpMasqAgent = enableIpMasqAgent;
             _resultValue.ipAllocationPolicy = ipAllocationPolicy;

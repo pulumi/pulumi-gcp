@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         public readonly bool? EnableConfidentialCompute;
         public readonly string? Image;
         public readonly ImmutableDictionary<string, object>? Labels;
+        public readonly int? ProvisionedIops;
+        public readonly int? ProvisionedThroughput;
         public readonly ImmutableDictionary<string, object>? ResourceManagerTags;
         public readonly int? Size;
         public readonly string? Type;
@@ -28,6 +30,10 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableDictionary<string, object>? labels,
 
+            int? provisionedIops,
+
+            int? provisionedThroughput,
+
             ImmutableDictionary<string, object>? resourceManagerTags,
 
             int? size,
@@ -37,6 +43,8 @@ namespace Pulumi.Gcp.Compute.Outputs
             EnableConfidentialCompute = enableConfidentialCompute;
             Image = image;
             Labels = labels;
+            ProvisionedIops = provisionedIops;
+            ProvisionedThroughput = provisionedThroughput;
             ResourceManagerTags = resourceManagerTags;
             Size = size;
             Type = type;

@@ -40,6 +40,20 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         return Optional.ofNullable(this.labels);
     }
 
+    @Import(name="provisionedIops")
+    private @Nullable Output<Integer> provisionedIops;
+
+    public Optional<Output<Integer>> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+
+    @Import(name="provisionedThroughput")
+    private @Nullable Output<Integer> provisionedThroughput;
+
+    public Optional<Output<Integer>> provisionedThroughput() {
+        return Optional.ofNullable(this.provisionedThroughput);
+    }
+
     @Import(name="resourceManagerTags")
     private @Nullable Output<Map<String,Object>> resourceManagerTags;
 
@@ -67,6 +81,8 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
         this.enableConfidentialCompute = $.enableConfidentialCompute;
         this.image = $.image;
         this.labels = $.labels;
+        this.provisionedIops = $.provisionedIops;
+        this.provisionedThroughput = $.provisionedThroughput;
         this.resourceManagerTags = $.resourceManagerTags;
         this.size = $.size;
         this.type = $.type;
@@ -115,6 +131,24 @@ public final class InstanceFromMachineImageBootDiskInitializeParamsArgs extends 
 
         public Builder labels(Map<String,Object> labels) {
             return labels(Output.of(labels));
+        }
+
+        public Builder provisionedIops(@Nullable Output<Integer> provisionedIops) {
+            $.provisionedIops = provisionedIops;
+            return this;
+        }
+
+        public Builder provisionedIops(Integer provisionedIops) {
+            return provisionedIops(Output.of(provisionedIops));
+        }
+
+        public Builder provisionedThroughput(@Nullable Output<Integer> provisionedThroughput) {
+            $.provisionedThroughput = provisionedThroughput;
+            return this;
+        }
+
+        public Builder provisionedThroughput(Integer provisionedThroughput) {
+            return provisionedThroughput(Output.of(provisionedThroughput));
         }
 
         public Builder resourceManagerTags(@Nullable Output<Map<String,Object>> resourceManagerTags) {

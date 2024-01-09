@@ -45,6 +45,8 @@ namespace Pulumi.Gcp.GkeBackup
     ///             },
     ///         },
     ///         DeletionProtection = "",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
@@ -105,6 +107,8 @@ namespace Pulumi.Gcp.GkeBackup
     ///             },
     ///         },
     ///         DeletionProtection = "",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
@@ -183,6 +187,8 @@ namespace Pulumi.Gcp.GkeBackup
     ///             },
     ///         },
     ///         DeletionProtection = "",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
@@ -252,6 +258,8 @@ namespace Pulumi.Gcp.GkeBackup
     ///             },
     ///         },
     ///         DeletionProtection = "",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
@@ -311,6 +319,8 @@ namespace Pulumi.Gcp.GkeBackup
     ///             },
     ///         },
     ///         DeletionProtection = "",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()
@@ -423,6 +433,8 @@ namespace Pulumi.Gcp.GkeBackup
     ///             },
     ///         },
     ///         DeletionProtection = "",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var basic = new Gcp.GkeBackup.BackupPlan("basic", new()

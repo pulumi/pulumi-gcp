@@ -7558,8 +7558,10 @@ type GetInstanceBootDiskInitializeParam struct {
 	// The image from which this disk was initialised.
 	Image string `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
-	Labels              map[string]interface{} `pulumi:"labels"`
-	ResourceManagerTags map[string]interface{} `pulumi:"resourceManagerTags"`
+	Labels                map[string]interface{} `pulumi:"labels"`
+	ProvisionedIops       int                    `pulumi:"provisionedIops"`
+	ProvisionedThroughput int                    `pulumi:"provisionedThroughput"`
+	ResourceManagerTags   map[string]interface{} `pulumi:"resourceManagerTags"`
 	// The size of the image in gigabytes.
 	Size int `pulumi:"size"`
 	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -7582,8 +7584,10 @@ type GetInstanceBootDiskInitializeParamArgs struct {
 	// The image from which this disk was initialised.
 	Image pulumi.StringInput `pulumi:"image"`
 	// A set of key/value label pairs assigned to the disk.
-	Labels              pulumi.MapInput `pulumi:"labels"`
-	ResourceManagerTags pulumi.MapInput `pulumi:"resourceManagerTags"`
+	Labels                pulumi.MapInput `pulumi:"labels"`
+	ProvisionedIops       pulumi.IntInput `pulumi:"provisionedIops"`
+	ProvisionedThroughput pulumi.IntInput `pulumi:"provisionedThroughput"`
+	ResourceManagerTags   pulumi.MapInput `pulumi:"resourceManagerTags"`
 	// The size of the image in gigabytes.
 	Size pulumi.IntInput `pulumi:"size"`
 	// The accelerator type resource exposed to this instance. E.g. `nvidia-tesla-k80`.
@@ -7653,6 +7657,14 @@ func (o GetInstanceBootDiskInitializeParamOutput) Image() pulumi.StringOutput {
 // A set of key/value label pairs assigned to the disk.
 func (o GetInstanceBootDiskInitializeParamOutput) Labels() pulumi.MapOutput {
 	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) map[string]interface{} { return v.Labels }).(pulumi.MapOutput)
+}
+
+func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceBootDiskInitializeParamOutput) ProvisionedThroughput() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceBootDiskInitializeParam) int { return v.ProvisionedThroughput }).(pulumi.IntOutput)
 }
 
 func (o GetInstanceBootDiskInitializeParamOutput) ResourceManagerTags() pulumi.MapOutput {
@@ -11577,7 +11589,8 @@ type GetInstanceTemplateDisk struct {
 	// sets the number of I/O operations per second that the disk can handle.
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-	ProvisionedIops int `pulumi:"provisionedIops"`
+	ProvisionedIops     int               `pulumi:"provisionedIops"`
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
@@ -11648,7 +11661,8 @@ type GetInstanceTemplateDiskArgs struct {
 	// sets the number of I/O operations per second that the disk can handle.
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	ProvisionedIops     pulumi.IntInput       `pulumi:"provisionedIops"`
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
@@ -11792,6 +11806,10 @@ func (o GetInstanceTemplateDiskOutput) Mode() pulumi.StringOutput {
 // [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 func (o GetInstanceTemplateDiskOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetInstanceTemplateDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceTemplateDiskOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetInstanceTemplateDisk) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -14797,7 +14815,8 @@ type GetRegionInstanceTemplateDisk struct {
 	// sets the number of I/O operations per second that the disk can handle.
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-	ProvisionedIops int `pulumi:"provisionedIops"`
+	ProvisionedIops     int               `pulumi:"provisionedIops"`
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
@@ -14868,7 +14887,8 @@ type GetRegionInstanceTemplateDiskArgs struct {
 	// sets the number of I/O operations per second that the disk can handle.
 	// Values must be between 10,000 and 120,000. For more details, see the
 	// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
-	ProvisionedIops pulumi.IntInput `pulumi:"provisionedIops"`
+	ProvisionedIops     pulumi.IntInput       `pulumi:"provisionedIops"`
+	ResourceManagerTags pulumi.StringMapInput `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringArrayInput `pulumi:"resourcePolicies"`
 	// The name (**not self_link**)
@@ -15012,6 +15032,10 @@ func (o GetRegionInstanceTemplateDiskOutput) Mode() pulumi.StringOutput {
 // [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
 func (o GetRegionInstanceTemplateDiskOutput) ProvisionedIops() pulumi.IntOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) int { return v.ProvisionedIops }).(pulumi.IntOutput)
+}
+
+func (o GetRegionInstanceTemplateDiskOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateDisk) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
@@ -17555,6 +17579,634 @@ func (o GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput) Index(i pu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionNetworkEndpointGroupServerlessDeployment {
 		return vs[0].([]GetRegionNetworkEndpointGroupServerlessDeployment)[vs[1].(int)]
 	}).(GetRegionNetworkEndpointGroupServerlessDeploymentOutput)
+}
+
+type GetReservationShareSetting struct {
+	ProjectMaps []GetReservationShareSettingProjectMap `pulumi:"projectMaps"`
+	ShareType   string                                 `pulumi:"shareType"`
+}
+
+// GetReservationShareSettingInput is an input type that accepts GetReservationShareSettingArgs and GetReservationShareSettingOutput values.
+// You can construct a concrete instance of `GetReservationShareSettingInput` via:
+//
+//	GetReservationShareSettingArgs{...}
+type GetReservationShareSettingInput interface {
+	pulumi.Input
+
+	ToGetReservationShareSettingOutput() GetReservationShareSettingOutput
+	ToGetReservationShareSettingOutputWithContext(context.Context) GetReservationShareSettingOutput
+}
+
+type GetReservationShareSettingArgs struct {
+	ProjectMaps GetReservationShareSettingProjectMapArrayInput `pulumi:"projectMaps"`
+	ShareType   pulumi.StringInput                             `pulumi:"shareType"`
+}
+
+func (GetReservationShareSettingArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationShareSetting)(nil)).Elem()
+}
+
+func (i GetReservationShareSettingArgs) ToGetReservationShareSettingOutput() GetReservationShareSettingOutput {
+	return i.ToGetReservationShareSettingOutputWithContext(context.Background())
+}
+
+func (i GetReservationShareSettingArgs) ToGetReservationShareSettingOutputWithContext(ctx context.Context) GetReservationShareSettingOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationShareSettingOutput)
+}
+
+// GetReservationShareSettingArrayInput is an input type that accepts GetReservationShareSettingArray and GetReservationShareSettingArrayOutput values.
+// You can construct a concrete instance of `GetReservationShareSettingArrayInput` via:
+//
+//	GetReservationShareSettingArray{ GetReservationShareSettingArgs{...} }
+type GetReservationShareSettingArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationShareSettingArrayOutput() GetReservationShareSettingArrayOutput
+	ToGetReservationShareSettingArrayOutputWithContext(context.Context) GetReservationShareSettingArrayOutput
+}
+
+type GetReservationShareSettingArray []GetReservationShareSettingInput
+
+func (GetReservationShareSettingArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationShareSetting)(nil)).Elem()
+}
+
+func (i GetReservationShareSettingArray) ToGetReservationShareSettingArrayOutput() GetReservationShareSettingArrayOutput {
+	return i.ToGetReservationShareSettingArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationShareSettingArray) ToGetReservationShareSettingArrayOutputWithContext(ctx context.Context) GetReservationShareSettingArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationShareSettingArrayOutput)
+}
+
+type GetReservationShareSettingOutput struct{ *pulumi.OutputState }
+
+func (GetReservationShareSettingOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationShareSetting)(nil)).Elem()
+}
+
+func (o GetReservationShareSettingOutput) ToGetReservationShareSettingOutput() GetReservationShareSettingOutput {
+	return o
+}
+
+func (o GetReservationShareSettingOutput) ToGetReservationShareSettingOutputWithContext(ctx context.Context) GetReservationShareSettingOutput {
+	return o
+}
+
+func (o GetReservationShareSettingOutput) ProjectMaps() GetReservationShareSettingProjectMapArrayOutput {
+	return o.ApplyT(func(v GetReservationShareSetting) []GetReservationShareSettingProjectMap { return v.ProjectMaps }).(GetReservationShareSettingProjectMapArrayOutput)
+}
+
+func (o GetReservationShareSettingOutput) ShareType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationShareSetting) string { return v.ShareType }).(pulumi.StringOutput)
+}
+
+type GetReservationShareSettingArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationShareSettingArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationShareSetting)(nil)).Elem()
+}
+
+func (o GetReservationShareSettingArrayOutput) ToGetReservationShareSettingArrayOutput() GetReservationShareSettingArrayOutput {
+	return o
+}
+
+func (o GetReservationShareSettingArrayOutput) ToGetReservationShareSettingArrayOutputWithContext(ctx context.Context) GetReservationShareSettingArrayOutput {
+	return o
+}
+
+func (o GetReservationShareSettingArrayOutput) Index(i pulumi.IntInput) GetReservationShareSettingOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationShareSetting {
+		return vs[0].([]GetReservationShareSetting)[vs[1].(int)]
+	}).(GetReservationShareSettingOutput)
+}
+
+type GetReservationShareSettingProjectMap struct {
+	Id        string `pulumi:"id"`
+	ProjectId string `pulumi:"projectId"`
+}
+
+// GetReservationShareSettingProjectMapInput is an input type that accepts GetReservationShareSettingProjectMap and GetReservationShareSettingProjectMapOutput values.
+// You can construct a concrete instance of `GetReservationShareSettingProjectMapInput` via:
+//
+//	GetReservationShareSettingProjectMap{ "key": GetReservationShareSettingProjectArgs{...} }
+type GetReservationShareSettingProjectMapInput interface {
+	pulumi.Input
+
+	ToGetReservationShareSettingProjectMapOutput() GetReservationShareSettingProjectMapOutput
+	ToGetReservationShareSettingProjectMapOutputWithContext(context.Context) GetReservationShareSettingProjectMapOutput
+}
+
+type GetReservationShareSettingProjectMapArgs struct {
+	Id        pulumi.StringInput `pulumi:"id"`
+	ProjectId pulumi.StringInput `pulumi:"projectId"`
+}
+
+func (GetReservationShareSettingProjectMapArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationShareSettingProjectMap)(nil)).Elem()
+}
+
+func (i GetReservationShareSettingProjectMapArgs) ToGetReservationShareSettingProjectMapOutput() GetReservationShareSettingProjectMapOutput {
+	return i.ToGetReservationShareSettingProjectMapOutputWithContext(context.Background())
+}
+
+func (i GetReservationShareSettingProjectMapArgs) ToGetReservationShareSettingProjectMapOutputWithContext(ctx context.Context) GetReservationShareSettingProjectMapOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationShareSettingProjectMapOutput)
+}
+
+// GetReservationShareSettingProjectMapArrayInput is an input type that accepts GetReservationShareSettingProjectMapArray and GetReservationShareSettingProjectMapArrayOutput values.
+// You can construct a concrete instance of `GetReservationShareSettingProjectMapArrayInput` via:
+//
+//	GetReservationShareSettingProjectMapArray{ GetReservationShareSettingProjectMapArgs{...} }
+type GetReservationShareSettingProjectMapArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationShareSettingProjectMapArrayOutput() GetReservationShareSettingProjectMapArrayOutput
+	ToGetReservationShareSettingProjectMapArrayOutputWithContext(context.Context) GetReservationShareSettingProjectMapArrayOutput
+}
+
+type GetReservationShareSettingProjectMapArray []GetReservationShareSettingProjectMapInput
+
+func (GetReservationShareSettingProjectMapArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationShareSettingProjectMap)(nil)).Elem()
+}
+
+func (i GetReservationShareSettingProjectMapArray) ToGetReservationShareSettingProjectMapArrayOutput() GetReservationShareSettingProjectMapArrayOutput {
+	return i.ToGetReservationShareSettingProjectMapArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationShareSettingProjectMapArray) ToGetReservationShareSettingProjectMapArrayOutputWithContext(ctx context.Context) GetReservationShareSettingProjectMapArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationShareSettingProjectMapArrayOutput)
+}
+
+type GetReservationShareSettingProjectMapOutput struct{ *pulumi.OutputState }
+
+func (GetReservationShareSettingProjectMapOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationShareSettingProjectMap)(nil)).Elem()
+}
+
+func (o GetReservationShareSettingProjectMapOutput) ToGetReservationShareSettingProjectMapOutput() GetReservationShareSettingProjectMapOutput {
+	return o
+}
+
+func (o GetReservationShareSettingProjectMapOutput) ToGetReservationShareSettingProjectMapOutputWithContext(ctx context.Context) GetReservationShareSettingProjectMapOutput {
+	return o
+}
+
+func (o GetReservationShareSettingProjectMapOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationShareSettingProjectMap) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetReservationShareSettingProjectMapOutput) ProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationShareSettingProjectMap) string { return v.ProjectId }).(pulumi.StringOutput)
+}
+
+type GetReservationShareSettingProjectMapArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationShareSettingProjectMapArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationShareSettingProjectMap)(nil)).Elem()
+}
+
+func (o GetReservationShareSettingProjectMapArrayOutput) ToGetReservationShareSettingProjectMapArrayOutput() GetReservationShareSettingProjectMapArrayOutput {
+	return o
+}
+
+func (o GetReservationShareSettingProjectMapArrayOutput) ToGetReservationShareSettingProjectMapArrayOutputWithContext(ctx context.Context) GetReservationShareSettingProjectMapArrayOutput {
+	return o
+}
+
+func (o GetReservationShareSettingProjectMapArrayOutput) Index(i pulumi.IntInput) GetReservationShareSettingProjectMapOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationShareSettingProjectMap {
+		return vs[0].([]GetReservationShareSettingProjectMap)[vs[1].(int)]
+	}).(GetReservationShareSettingProjectMapOutput)
+}
+
+type GetReservationSpecificReservation struct {
+	Count              int                                                 `pulumi:"count"`
+	InUseCount         int                                                 `pulumi:"inUseCount"`
+	InstanceProperties []GetReservationSpecificReservationInstanceProperty `pulumi:"instanceProperties"`
+}
+
+// GetReservationSpecificReservationInput is an input type that accepts GetReservationSpecificReservationArgs and GetReservationSpecificReservationOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInput` via:
+//
+//	GetReservationSpecificReservationArgs{...}
+type GetReservationSpecificReservationInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationOutput() GetReservationSpecificReservationOutput
+	ToGetReservationSpecificReservationOutputWithContext(context.Context) GetReservationSpecificReservationOutput
+}
+
+type GetReservationSpecificReservationArgs struct {
+	Count              pulumi.IntInput                                             `pulumi:"count"`
+	InUseCount         pulumi.IntInput                                             `pulumi:"inUseCount"`
+	InstanceProperties GetReservationSpecificReservationInstancePropertyArrayInput `pulumi:"instanceProperties"`
+}
+
+func (GetReservationSpecificReservationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservation)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationArgs) ToGetReservationSpecificReservationOutput() GetReservationSpecificReservationOutput {
+	return i.ToGetReservationSpecificReservationOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationArgs) ToGetReservationSpecificReservationOutputWithContext(ctx context.Context) GetReservationSpecificReservationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationOutput)
+}
+
+// GetReservationSpecificReservationArrayInput is an input type that accepts GetReservationSpecificReservationArray and GetReservationSpecificReservationArrayOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationArrayInput` via:
+//
+//	GetReservationSpecificReservationArray{ GetReservationSpecificReservationArgs{...} }
+type GetReservationSpecificReservationArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationArrayOutput() GetReservationSpecificReservationArrayOutput
+	ToGetReservationSpecificReservationArrayOutputWithContext(context.Context) GetReservationSpecificReservationArrayOutput
+}
+
+type GetReservationSpecificReservationArray []GetReservationSpecificReservationInput
+
+func (GetReservationSpecificReservationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservation)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationArray) ToGetReservationSpecificReservationArrayOutput() GetReservationSpecificReservationArrayOutput {
+	return i.ToGetReservationSpecificReservationArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationArray) ToGetReservationSpecificReservationArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationArrayOutput)
+}
+
+type GetReservationSpecificReservationOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservation)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationOutput) ToGetReservationSpecificReservationOutput() GetReservationSpecificReservationOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationOutput) ToGetReservationSpecificReservationOutputWithContext(ctx context.Context) GetReservationSpecificReservationOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationOutput) Count() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservation) int { return v.Count }).(pulumi.IntOutput)
+}
+
+func (o GetReservationSpecificReservationOutput) InUseCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservation) int { return v.InUseCount }).(pulumi.IntOutput)
+}
+
+func (o GetReservationSpecificReservationOutput) InstanceProperties() GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservation) []GetReservationSpecificReservationInstanceProperty {
+		return v.InstanceProperties
+	}).(GetReservationSpecificReservationInstancePropertyArrayOutput)
+}
+
+type GetReservationSpecificReservationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservation)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationArrayOutput) ToGetReservationSpecificReservationArrayOutput() GetReservationSpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationArrayOutput) ToGetReservationSpecificReservationArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationArrayOutput) Index(i pulumi.IntInput) GetReservationSpecificReservationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSpecificReservation {
+		return vs[0].([]GetReservationSpecificReservation)[vs[1].(int)]
+	}).(GetReservationSpecificReservationOutput)
+}
+
+type GetReservationSpecificReservationInstanceProperty struct {
+	GuestAccelerators []GetReservationSpecificReservationInstancePropertyGuestAccelerator `pulumi:"guestAccelerators"`
+	LocalSsds         []GetReservationSpecificReservationInstancePropertyLocalSsd         `pulumi:"localSsds"`
+	MachineType       string                                                              `pulumi:"machineType"`
+	MinCpuPlatform    string                                                              `pulumi:"minCpuPlatform"`
+}
+
+// GetReservationSpecificReservationInstancePropertyInput is an input type that accepts GetReservationSpecificReservationInstancePropertyArgs and GetReservationSpecificReservationInstancePropertyOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyArgs{...}
+type GetReservationSpecificReservationInstancePropertyInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyOutput() GetReservationSpecificReservationInstancePropertyOutput
+	ToGetReservationSpecificReservationInstancePropertyOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyArgs struct {
+	GuestAccelerators GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput `pulumi:"guestAccelerators"`
+	LocalSsds         GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput         `pulumi:"localSsds"`
+	MachineType       pulumi.StringInput                                                          `pulumi:"machineType"`
+	MinCpuPlatform    pulumi.StringInput                                                          `pulumi:"minCpuPlatform"`
+}
+
+func (GetReservationSpecificReservationInstancePropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstanceProperty)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyArgs) ToGetReservationSpecificReservationInstancePropertyOutput() GetReservationSpecificReservationInstancePropertyOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyArgs) ToGetReservationSpecificReservationInstancePropertyOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyOutput)
+}
+
+// GetReservationSpecificReservationInstancePropertyArrayInput is an input type that accepts GetReservationSpecificReservationInstancePropertyArray and GetReservationSpecificReservationInstancePropertyArrayOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyArrayInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyArray{ GetReservationSpecificReservationInstancePropertyArgs{...} }
+type GetReservationSpecificReservationInstancePropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyArrayOutput() GetReservationSpecificReservationInstancePropertyArrayOutput
+	ToGetReservationSpecificReservationInstancePropertyArrayOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyArrayOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyArray []GetReservationSpecificReservationInstancePropertyInput
+
+func (GetReservationSpecificReservationInstancePropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstanceProperty)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyArray) ToGetReservationSpecificReservationInstancePropertyArrayOutput() GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyArray) ToGetReservationSpecificReservationInstancePropertyArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyArrayOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstanceProperty)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyOutput) ToGetReservationSpecificReservationInstancePropertyOutput() GetReservationSpecificReservationInstancePropertyOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyOutput) ToGetReservationSpecificReservationInstancePropertyOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyOutput) GuestAccelerators() GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) []GetReservationSpecificReservationInstancePropertyGuestAccelerator {
+		return v.GuestAccelerators
+	}).(GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput)
+}
+
+func (o GetReservationSpecificReservationInstancePropertyOutput) LocalSsds() GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) []GetReservationSpecificReservationInstancePropertyLocalSsd {
+		return v.LocalSsds
+	}).(GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput)
+}
+
+func (o GetReservationSpecificReservationInstancePropertyOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) string { return v.MachineType }).(pulumi.StringOutput)
+}
+
+func (o GetReservationSpecificReservationInstancePropertyOutput) MinCpuPlatform() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstanceProperty) string { return v.MinCpuPlatform }).(pulumi.StringOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstanceProperty)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyArrayOutput) ToGetReservationSpecificReservationInstancePropertyArrayOutput() GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyArrayOutput) ToGetReservationSpecificReservationInstancePropertyArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyArrayOutput) Index(i pulumi.IntInput) GetReservationSpecificReservationInstancePropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSpecificReservationInstanceProperty {
+		return vs[0].([]GetReservationSpecificReservationInstanceProperty)[vs[1].(int)]
+	}).(GetReservationSpecificReservationInstancePropertyOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAccelerator struct {
+	AcceleratorCount int    `pulumi:"acceleratorCount"`
+	AcceleratorType  string `pulumi:"acceleratorType"`
+}
+
+// GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput is an input type that accepts GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs and GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs{...}
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput
+	ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs struct {
+	AcceleratorCount pulumi.IntInput    `pulumi:"acceleratorCount"`
+	AcceleratorType  pulumi.StringInput `pulumi:"acceleratorType"`
+}
+
+func (GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput)
+}
+
+// GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput is an input type that accepts GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray and GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray{ GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs{...} }
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput
+	ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray []GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput
+
+func (GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstancePropertyGuestAccelerator)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) AcceleratorCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyGuestAccelerator) int {
+		return v.AcceleratorCount
+	}).(pulumi.IntOutput)
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput) AcceleratorType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyGuestAccelerator) string {
+		return v.AcceleratorType
+	}).(pulumi.StringOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstancePropertyGuestAccelerator)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput() GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput) ToGetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput) Index(i pulumi.IntInput) GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSpecificReservationInstancePropertyGuestAccelerator {
+		return vs[0].([]GetReservationSpecificReservationInstancePropertyGuestAccelerator)[vs[1].(int)]
+	}).(GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsd struct {
+	DiskSizeGb int    `pulumi:"diskSizeGb"`
+	Interface  string `pulumi:"interface"`
+}
+
+// GetReservationSpecificReservationInstancePropertyLocalSsdInput is an input type that accepts GetReservationSpecificReservationInstancePropertyLocalSsdArgs and GetReservationSpecificReservationInstancePropertyLocalSsdOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyLocalSsdInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyLocalSsdArgs{...}
+type GetReservationSpecificReservationInstancePropertyLocalSsdInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyLocalSsdOutput() GetReservationSpecificReservationInstancePropertyLocalSsdOutput
+	ToGetReservationSpecificReservationInstancePropertyLocalSsdOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsdArgs struct {
+	DiskSizeGb pulumi.IntInput    `pulumi:"diskSizeGb"`
+	Interface  pulumi.StringInput `pulumi:"interface"`
+}
+
+func (GetReservationSpecificReservationInstancePropertyLocalSsdArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsd)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyLocalSsdArgs) ToGetReservationSpecificReservationInstancePropertyLocalSsdOutput() GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyLocalSsdOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyLocalSsdArgs) ToGetReservationSpecificReservationInstancePropertyLocalSsdOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyLocalSsdOutput)
+}
+
+// GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput is an input type that accepts GetReservationSpecificReservationInstancePropertyLocalSsdArray and GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput values.
+// You can construct a concrete instance of `GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput` via:
+//
+//	GetReservationSpecificReservationInstancePropertyLocalSsdArray{ GetReservationSpecificReservationInstancePropertyLocalSsdArgs{...} }
+type GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput interface {
+	pulumi.Input
+
+	ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput() GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput
+	ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutputWithContext(context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsdArray []GetReservationSpecificReservationInstancePropertyLocalSsdInput
+
+func (GetReservationSpecificReservationInstancePropertyLocalSsdArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstancePropertyLocalSsd)(nil)).Elem()
+}
+
+func (i GetReservationSpecificReservationInstancePropertyLocalSsdArray) ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput() GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return i.ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutputWithContext(context.Background())
+}
+
+func (i GetReservationSpecificReservationInstancePropertyLocalSsdArray) ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsdOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyLocalSsdOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsd)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) ToGetReservationSpecificReservationInstancePropertyLocalSsdOutput() GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) ToGetReservationSpecificReservationInstancePropertyLocalSsdOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) DiskSizeGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyLocalSsd) int { return v.DiskSizeGb }).(pulumi.IntOutput)
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdOutput) Interface() pulumi.StringOutput {
+	return o.ApplyT(func(v GetReservationSpecificReservationInstancePropertyLocalSsd) string { return v.Interface }).(pulumi.StringOutput)
+}
+
+type GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput struct{ *pulumi.OutputState }
+
+func (GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetReservationSpecificReservationInstancePropertyLocalSsd)(nil)).Elem()
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput() GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) ToGetReservationSpecificReservationInstancePropertyLocalSsdArrayOutputWithContext(ctx context.Context) GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput {
+	return o
+}
+
+func (o GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput) Index(i pulumi.IntInput) GetReservationSpecificReservationInstancePropertyLocalSsdOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetReservationSpecificReservationInstancePropertyLocalSsd {
+		return vs[0].([]GetReservationSpecificReservationInstancePropertyLocalSsd)[vs[1].(int)]
+	}).(GetReservationSpecificReservationInstancePropertyLocalSsdOutput)
 }
 
 type GetResourcePolicyDiskConsistencyGroupPolicy struct {
@@ -20556,6 +21208,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRunArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudRunArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingInput)(nil)).Elem(), GetReservationShareSettingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingArrayInput)(nil)).Elem(), GetReservationShareSettingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingProjectMapInput)(nil)).Elem(), GetReservationShareSettingProjectMapArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingProjectMapArrayInput)(nil)).Elem(), GetReservationShareSettingProjectMapArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInput)(nil)).Elem(), GetReservationSpecificReservationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationArrayInput)(nil)).Elem(), GetReservationSpecificReservationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyArrayInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyGuestAcceleratorInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyGuestAcceleratorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyGuestAcceleratorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsdInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyLocalSsdArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationSpecificReservationInstancePropertyLocalSsdArrayInput)(nil)).Elem(), GetReservationSpecificReservationInstancePropertyLocalSsdArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicyInput)(nil)).Elem(), GetResourcePolicyDiskConsistencyGroupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyDiskConsistencyGroupPolicyArrayInput)(nil)).Elem(), GetResourcePolicyDiskConsistencyGroupPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetResourcePolicyGroupPlacementPolicyInput)(nil)).Elem(), GetResourcePolicyGroupPlacementPolicyArgs{})
@@ -20888,6 +21552,18 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudRunArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationShareSettingOutput{})
+	pulumi.RegisterOutputType(GetReservationShareSettingArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationShareSettingProjectMapOutput{})
+	pulumi.RegisterOutputType(GetReservationShareSettingProjectMapArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyGuestAcceleratorOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyGuestAcceleratorArrayOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyLocalSsdOutput{})
+	pulumi.RegisterOutputType(GetReservationSpecificReservationInstancePropertyLocalSsdArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyDiskConsistencyGroupPolicyOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyDiskConsistencyGroupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetResourcePolicyGroupPlacementPolicyOutput{})

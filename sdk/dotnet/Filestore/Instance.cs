@@ -270,7 +270,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
-        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         /// </summary>
         [Output("tier")]
         public Output<string> Tier { get; private set; } = null!;
@@ -405,7 +405,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
-        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         /// </summary>
         [Input("tier", required: true)]
         public Input<string> Tier { get; set; } = null!;
@@ -543,7 +543,7 @@ namespace Pulumi.Gcp.Filestore
 
         /// <summary>
         /// The service tier of the instance.
-        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+        /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         /// </summary>
         [Input("tier")]
         public Input<string>? Tier { get; set; }

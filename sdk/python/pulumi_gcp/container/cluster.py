@@ -82,6 +82,7 @@ class ClusterArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
+                 workload_alts_config: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']] = None,
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
@@ -145,8 +146,6 @@ class ClusterArgs:
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -286,6 +285,10 @@ class ClusterArgs:
         :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
+        :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: )
+               Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -422,6 +425,8 @@ class ClusterArgs:
             pulumi.set(__self__, "tpu_config", tpu_config)
         if vertical_pod_autoscaling is not None:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
+        if workload_alts_config is not None:
+            pulumi.set(__self__, "workload_alts_config", workload_alts_config)
         if workload_identity_config is not None:
             pulumi.set(__self__, "workload_identity_config", workload_identity_config)
 
@@ -775,8 +780,6 @@ class ClusterArgs:
     def fleet(self) -> Optional[pulumi.Input['ClusterFleetArgs']]:
         """
         Fleet configuration for the cluster. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "fleet")
 
@@ -1353,6 +1356,21 @@ class ClusterArgs:
         pulumi.set(self, "vertical_pod_autoscaling", value)
 
     @property
+    @pulumi.getter(name="workloadAltsConfig")
+    def workload_alts_config(self) -> Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]:
+        """
+        )
+        Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "workload_alts_config")
+
+    @workload_alts_config.setter
+    def workload_alts_config(self, value: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]):
+        pulumi.set(self, "workload_alts_config", value)
+
+    @property
     @pulumi.getter(name="workloadIdentityConfig")
     def workload_identity_config(self) -> Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']]:
         """
@@ -1443,6 +1461,7 @@ class _ClusterState:
                  tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
+                 workload_alts_config: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']] = None,
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Cluster resources.
@@ -1507,8 +1526,6 @@ class _ClusterState:
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -1660,6 +1677,10 @@ class _ClusterState:
                notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
+        :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: )
+               Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -1810,6 +1831,8 @@ class _ClusterState:
             pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
         if vertical_pod_autoscaling is not None:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
+        if workload_alts_config is not None:
+            pulumi.set(__self__, "workload_alts_config", workload_alts_config)
         if workload_identity_config is not None:
             pulumi.set(__self__, "workload_identity_config", workload_identity_config)
 
@@ -2175,8 +2198,6 @@ class _ClusterState:
     def fleet(self) -> Optional[pulumi.Input['ClusterFleetArgs']]:
         """
         Fleet configuration for the cluster. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "fleet")
 
@@ -2829,6 +2850,21 @@ class _ClusterState:
         pulumi.set(self, "vertical_pod_autoscaling", value)
 
     @property
+    @pulumi.getter(name="workloadAltsConfig")
+    def workload_alts_config(self) -> Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]:
+        """
+        )
+        Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "workload_alts_config")
+
+    @workload_alts_config.setter
+    def workload_alts_config(self, value: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]):
+        pulumi.set(self, "workload_alts_config", value)
+
+    @property
     @pulumi.getter(name="workloadIdentityConfig")
     def workload_identity_config(self) -> Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']]:
         """
@@ -2914,6 +2950,7 @@ class Cluster(pulumi.CustomResource):
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
+                 workload_alts_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadAltsConfigArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']]] = None,
                  __props__=None):
         """
@@ -3060,8 +3097,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[pulumi.InputType['ClusterFleetArgs']] fleet: Fleet configuration for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -3201,6 +3236,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']] tpu_config: TPU configuration for the cluster.
         :param pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterWorkloadAltsConfigArgs']] workload_alts_config: )
+               Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -3374,6 +3413,7 @@ class Cluster(pulumi.CustomResource):
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
+                 workload_alts_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadAltsConfigArgs']]] = None,
                  workload_identity_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -3450,6 +3490,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["tpu_config"] = tpu_config
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
+            __props__.__dict__["workload_alts_config"] = workload_alts_config
             __props__.__dict__["workload_identity_config"] = workload_identity_config
             __props__.__dict__["endpoint"] = None
             __props__.__dict__["label_fingerprint"] = None
@@ -3541,6 +3582,7 @@ class Cluster(pulumi.CustomResource):
             tpu_config: Optional[pulumi.Input[pulumi.InputType['ClusterTpuConfigArgs']]] = None,
             tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
             vertical_pod_autoscaling: Optional[pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']]] = None,
+            workload_alts_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadAltsConfigArgs']]] = None,
             workload_identity_config: Optional[pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']]] = None) -> 'Cluster':
         """
         Get an existing Cluster resource's state with the given name, id, and optional extra
@@ -3610,8 +3652,6 @@ class Cluster(pulumi.CustomResource):
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
         :param pulumi.Input[pulumi.InputType['ClusterFleetArgs']] fleet: Fleet configuration for the cluster. Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterGatewayApiConfigArgs']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[pulumi.InputType['ClusterIdentityServiceConfigArgs']] identity_service_config: . Structure is documented below.
         :param pulumi.Input[int] initial_node_count: The number of nodes to create in this
@@ -3763,6 +3803,10 @@ class Cluster(pulumi.CustomResource):
                notation (e.g. `1.2.3.4/29`).
         :param pulumi.Input[pulumi.InputType['ClusterVerticalPodAutoscalingArgs']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['ClusterWorkloadAltsConfigArgs']] workload_alts_config: )
+               Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[pulumi.InputType['ClusterWorkloadIdentityConfigArgs']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -3844,6 +3888,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["tpu_config"] = tpu_config
         __props__.__dict__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
         __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
+        __props__.__dict__["workload_alts_config"] = workload_alts_config
         __props__.__dict__["workload_identity_config"] = workload_identity_config
         return Cluster(resource_name, opts=opts, __props__=__props__)
 
@@ -4101,8 +4146,6 @@ class Cluster(pulumi.CustomResource):
     def fleet(self) -> pulumi.Output[Optional['outputs.ClusterFleet']]:
         """
         Fleet configuration for the cluster. Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "fleet")
 
@@ -4569,6 +4612,17 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "vertical_pod_autoscaling")
+
+    @property
+    @pulumi.getter(name="workloadAltsConfig")
+    def workload_alts_config(self) -> pulumi.Output['outputs.ClusterWorkloadAltsConfig']:
+        """
+        )
+        Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "workload_alts_config")
 
     @property
     @pulumi.getter(name="workloadIdentityConfig")

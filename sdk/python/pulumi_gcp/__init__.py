@@ -1611,6 +1611,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "clouddeploy/automation",
+  "fqn": "pulumi_gcp.clouddeploy",
+  "classes": {
+   "gcp:clouddeploy/automation:Automation": "Automation"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "clouddeploy/deliveryPipeline",
   "fqn": "pulumi_gcp.clouddeploy",
   "classes": {
@@ -5051,6 +5059,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "integrationconnectors/endpointAttachment",
+  "fqn": "pulumi_gcp.integrationconnectors",
+  "classes": {
+   "gcp:integrationconnectors/endpointAttachment:EndpointAttachment": "EndpointAttachment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "kms/cryptoKey",
   "fqn": "pulumi_gcp.kms",
   "classes": {
@@ -5179,6 +5195,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "logging/folderSettings",
+  "fqn": "pulumi_gcp.logging",
+  "classes": {
+   "gcp:logging/folderSettings:FolderSettings": "FolderSettings"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "logging/folderSink",
   "fqn": "pulumi_gcp.logging",
   "classes": {
@@ -5223,6 +5247,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.logging",
   "classes": {
    "gcp:logging/organizationExclusion:OrganizationExclusion": "OrganizationExclusion"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "logging/organizationSettings",
+  "fqn": "pulumi_gcp.logging",
+  "classes": {
+   "gcp:logging/organizationSettings:OrganizationSettings": "OrganizationSettings"
   }
  },
  {
@@ -5367,6 +5399,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.monitoring",
   "classes": {
    "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": "UptimeCheckConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "netapp/activeDirectory",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/activeDirectory:ActiveDirectory": "ActiveDirectory"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "netapp/backupVault",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/backupVault:BackupVault": "BackupVault"
   }
  },
  {
@@ -6767,6 +6815,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": "AiEndpointIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureGroup",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureGroup:AiFeatureGroup": "AiFeatureGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureOnlineStore",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": "AiFeatureOnlineStore"
   }
  },
  {

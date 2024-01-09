@@ -238,8 +238,6 @@ type Cluster struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringOutput `pulumi:"endpoint"`
 	// Fleet configuration for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	Fleet ClusterFleetPtrOutput `pulumi:"fleet"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig ClusterGatewayApiConfigOutput `pulumi:"gatewayApiConfig"`
@@ -437,6 +435,11 @@ type Cluster struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingOutput `pulumi:"verticalPodAutoscaling"`
+	// )
+	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	WorkloadAltsConfig ClusterWorkloadAltsConfigOutput `pulumi:"workloadAltsConfig"`
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 	// Structure is documented below.
@@ -561,8 +564,6 @@ type clusterState struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint *string `pulumi:"endpoint"`
 	// Fleet configuration for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	Fleet *ClusterFleet `pulumi:"fleet"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
@@ -760,6 +761,11 @@ type clusterState struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling *ClusterVerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
+	// )
+	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	WorkloadAltsConfig *ClusterWorkloadAltsConfig `pulumi:"workloadAltsConfig"`
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 	// Structure is documented below.
@@ -855,8 +861,6 @@ type ClusterState struct {
 	// The IP address of this cluster's Kubernetes master.
 	Endpoint pulumi.StringPtrInput
 	// Fleet configuration for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	Fleet ClusterFleetPtrInput
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig ClusterGatewayApiConfigPtrInput
@@ -1054,6 +1058,11 @@ type ClusterState struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrInput
+	// )
+	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	WorkloadAltsConfig ClusterWorkloadAltsConfigPtrInput
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 	// Structure is documented below.
@@ -1151,8 +1160,6 @@ type clusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu *bool `pulumi:"enableTpu"`
 	// Fleet configuration for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	Fleet *ClusterFleet `pulumi:"fleet"`
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig *ClusterGatewayApiConfig `pulumi:"gatewayApiConfig"`
@@ -1332,6 +1339,11 @@ type clusterArgs struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling *ClusterVerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
+	// )
+	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	WorkloadAltsConfig *ClusterWorkloadAltsConfig `pulumi:"workloadAltsConfig"`
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 	// Structure is documented below.
@@ -1426,8 +1438,6 @@ type ClusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
 	EnableTpu pulumi.BoolPtrInput
 	// Fleet configuration for the cluster. Structure is documented below.
-	//
-	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 	Fleet ClusterFleetPtrInput
 	// Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
 	GatewayApiConfig ClusterGatewayApiConfigPtrInput
@@ -1607,6 +1617,11 @@ type ClusterArgs struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrInput
+	// )
+	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+	//
+	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+	WorkloadAltsConfig ClusterWorkloadAltsConfigPtrInput
 	// Workload Identity allows Kubernetes service accounts to act as a user-managed
 	// [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
 	// Structure is documented below.
@@ -1869,8 +1884,6 @@ func (o ClusterOutput) Endpoint() pulumi.StringOutput {
 }
 
 // Fleet configuration for the cluster. Structure is documented below.
-//
-// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
 func (o ClusterOutput) Fleet() ClusterFleetPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterFleetPtrOutput { return v.Fleet }).(ClusterFleetPtrOutput)
 }
@@ -2204,6 +2217,14 @@ func (o ClusterOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
 // Structure is documented below.
 func (o ClusterOutput) VerticalPodAutoscaling() ClusterVerticalPodAutoscalingOutput {
 	return o.ApplyT(func(v *Cluster) ClusterVerticalPodAutoscalingOutput { return v.VerticalPodAutoscaling }).(ClusterVerticalPodAutoscalingOutput)
+}
+
+// )
+// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+//
+// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+func (o ClusterOutput) WorkloadAltsConfig() ClusterWorkloadAltsConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterWorkloadAltsConfigOutput { return v.WorkloadAltsConfig }).(ClusterWorkloadAltsConfigOutput)
 }
 
 // Workload Identity allows Kubernetes service accounts to act as a user-managed

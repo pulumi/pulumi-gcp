@@ -151,6 +151,7 @@ namespace Pulumi.Gcp.Kms
         public readonly string KeyRing;
         public readonly ImmutableDictionary<string, string> Labels;
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetKMSCryptoKeyPrimaryResult> Primaries;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
         /// <summary>
         /// Defines the cryptographic capabilities of the key.
@@ -181,6 +182,8 @@ namespace Pulumi.Gcp.Kms
 
             string name,
 
+            ImmutableArray<Outputs.GetKMSCryptoKeyPrimaryResult> primaries,
+
             ImmutableDictionary<string, string> pulumiLabels,
 
             string purpose,
@@ -198,6 +201,7 @@ namespace Pulumi.Gcp.Kms
             KeyRing = keyRing;
             Labels = labels;
             Name = name;
+            Primaries = primaries;
             PulumiLabels = pulumiLabels;
             Purpose = purpose;
             RotationPeriod = rotationPeriod;

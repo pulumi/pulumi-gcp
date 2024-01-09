@@ -1122,6 +1122,162 @@ func (o ListingPublisherPtrOutput) PrimaryContact() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type ListingRestrictedExportConfig struct {
+	// If true, enable restricted export.
+	Enabled *bool `pulumi:"enabled"`
+	// If true, restrict export of query result derived from restricted linked dataset table.
+	RestrictQueryResult *bool `pulumi:"restrictQueryResult"`
+}
+
+// ListingRestrictedExportConfigInput is an input type that accepts ListingRestrictedExportConfigArgs and ListingRestrictedExportConfigOutput values.
+// You can construct a concrete instance of `ListingRestrictedExportConfigInput` via:
+//
+//	ListingRestrictedExportConfigArgs{...}
+type ListingRestrictedExportConfigInput interface {
+	pulumi.Input
+
+	ToListingRestrictedExportConfigOutput() ListingRestrictedExportConfigOutput
+	ToListingRestrictedExportConfigOutputWithContext(context.Context) ListingRestrictedExportConfigOutput
+}
+
+type ListingRestrictedExportConfigArgs struct {
+	// If true, enable restricted export.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// If true, restrict export of query result derived from restricted linked dataset table.
+	RestrictQueryResult pulumi.BoolPtrInput `pulumi:"restrictQueryResult"`
+}
+
+func (ListingRestrictedExportConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingRestrictedExportConfig)(nil)).Elem()
+}
+
+func (i ListingRestrictedExportConfigArgs) ToListingRestrictedExportConfigOutput() ListingRestrictedExportConfigOutput {
+	return i.ToListingRestrictedExportConfigOutputWithContext(context.Background())
+}
+
+func (i ListingRestrictedExportConfigArgs) ToListingRestrictedExportConfigOutputWithContext(ctx context.Context) ListingRestrictedExportConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingRestrictedExportConfigOutput)
+}
+
+func (i ListingRestrictedExportConfigArgs) ToListingRestrictedExportConfigPtrOutput() ListingRestrictedExportConfigPtrOutput {
+	return i.ToListingRestrictedExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ListingRestrictedExportConfigArgs) ToListingRestrictedExportConfigPtrOutputWithContext(ctx context.Context) ListingRestrictedExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingRestrictedExportConfigOutput).ToListingRestrictedExportConfigPtrOutputWithContext(ctx)
+}
+
+// ListingRestrictedExportConfigPtrInput is an input type that accepts ListingRestrictedExportConfigArgs, ListingRestrictedExportConfigPtr and ListingRestrictedExportConfigPtrOutput values.
+// You can construct a concrete instance of `ListingRestrictedExportConfigPtrInput` via:
+//
+//	        ListingRestrictedExportConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ListingRestrictedExportConfigPtrInput interface {
+	pulumi.Input
+
+	ToListingRestrictedExportConfigPtrOutput() ListingRestrictedExportConfigPtrOutput
+	ToListingRestrictedExportConfigPtrOutputWithContext(context.Context) ListingRestrictedExportConfigPtrOutput
+}
+
+type listingRestrictedExportConfigPtrType ListingRestrictedExportConfigArgs
+
+func ListingRestrictedExportConfigPtr(v *ListingRestrictedExportConfigArgs) ListingRestrictedExportConfigPtrInput {
+	return (*listingRestrictedExportConfigPtrType)(v)
+}
+
+func (*listingRestrictedExportConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingRestrictedExportConfig)(nil)).Elem()
+}
+
+func (i *listingRestrictedExportConfigPtrType) ToListingRestrictedExportConfigPtrOutput() ListingRestrictedExportConfigPtrOutput {
+	return i.ToListingRestrictedExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *listingRestrictedExportConfigPtrType) ToListingRestrictedExportConfigPtrOutputWithContext(ctx context.Context) ListingRestrictedExportConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ListingRestrictedExportConfigPtrOutput)
+}
+
+type ListingRestrictedExportConfigOutput struct{ *pulumi.OutputState }
+
+func (ListingRestrictedExportConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ListingRestrictedExportConfig)(nil)).Elem()
+}
+
+func (o ListingRestrictedExportConfigOutput) ToListingRestrictedExportConfigOutput() ListingRestrictedExportConfigOutput {
+	return o
+}
+
+func (o ListingRestrictedExportConfigOutput) ToListingRestrictedExportConfigOutputWithContext(ctx context.Context) ListingRestrictedExportConfigOutput {
+	return o
+}
+
+func (o ListingRestrictedExportConfigOutput) ToListingRestrictedExportConfigPtrOutput() ListingRestrictedExportConfigPtrOutput {
+	return o.ToListingRestrictedExportConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ListingRestrictedExportConfigOutput) ToListingRestrictedExportConfigPtrOutputWithContext(ctx context.Context) ListingRestrictedExportConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ListingRestrictedExportConfig) *ListingRestrictedExportConfig {
+		return &v
+	}).(ListingRestrictedExportConfigPtrOutput)
+}
+
+// If true, enable restricted export.
+func (o ListingRestrictedExportConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingRestrictedExportConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// If true, restrict export of query result derived from restricted linked dataset table.
+func (o ListingRestrictedExportConfigOutput) RestrictQueryResult() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ListingRestrictedExportConfig) *bool { return v.RestrictQueryResult }).(pulumi.BoolPtrOutput)
+}
+
+type ListingRestrictedExportConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ListingRestrictedExportConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ListingRestrictedExportConfig)(nil)).Elem()
+}
+
+func (o ListingRestrictedExportConfigPtrOutput) ToListingRestrictedExportConfigPtrOutput() ListingRestrictedExportConfigPtrOutput {
+	return o
+}
+
+func (o ListingRestrictedExportConfigPtrOutput) ToListingRestrictedExportConfigPtrOutputWithContext(ctx context.Context) ListingRestrictedExportConfigPtrOutput {
+	return o
+}
+
+func (o ListingRestrictedExportConfigPtrOutput) Elem() ListingRestrictedExportConfigOutput {
+	return o.ApplyT(func(v *ListingRestrictedExportConfig) ListingRestrictedExportConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ListingRestrictedExportConfig
+		return ret
+	}).(ListingRestrictedExportConfigOutput)
+}
+
+// If true, enable restricted export.
+func (o ListingRestrictedExportConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingRestrictedExportConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If true, restrict export of query result derived from restricted linked dataset table.
+func (o ListingRestrictedExportConfigPtrOutput) RestrictQueryResult() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ListingRestrictedExportConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RestrictQueryResult
+	}).(pulumi.BoolPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataExchangeIamBindingConditionPtrInput)(nil)).Elem(), DataExchangeIamBindingConditionArgs{})
@@ -1137,6 +1293,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingIamMemberConditionPtrInput)(nil)).Elem(), ListingIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingPublisherInput)(nil)).Elem(), ListingPublisherArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ListingPublisherPtrInput)(nil)).Elem(), ListingPublisherArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingRestrictedExportConfigInput)(nil)).Elem(), ListingRestrictedExportConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ListingRestrictedExportConfigPtrInput)(nil)).Elem(), ListingRestrictedExportConfigArgs{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DataExchangeIamMemberConditionOutput{})
@@ -1151,4 +1309,6 @@ func init() {
 	pulumi.RegisterOutputType(ListingIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(ListingPublisherOutput{})
 	pulumi.RegisterOutputType(ListingPublisherPtrOutput{})
+	pulumi.RegisterOutputType(ListingRestrictedExportConfigOutput{})
+	pulumi.RegisterOutputType(ListingRestrictedExportConfigPtrOutput{})
 }

@@ -28,8 +28,8 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
      */
     private @Nullable String bootDiskType;
     /**
-     * @return The amount of local SSD disks that will be
-     * attached to each master cluster node. Defaults to 0.
+     * @return The amount of local SSD disks that will be attached to each master cluster node.
+     * Defaults to 0.
      * 
      */
     private @Nullable Integer numLocalSsds;
@@ -55,8 +55,8 @@ public final class ClusterClusterConfigMasterConfigDiskConfig {
         return Optional.ofNullable(this.bootDiskType);
     }
     /**
-     * @return The amount of local SSD disks that will be
-     * attached to each master cluster node. Defaults to 0.
+     * @return The amount of local SSD disks that will be attached to each master cluster node.
+     * Defaults to 0.
      * 
      */
     public Optional<Integer> numLocalSsds() {

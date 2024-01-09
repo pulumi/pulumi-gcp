@@ -209,6 +209,7 @@ __all__ = [
     'ClusterServiceExternalIpsConfig',
     'ClusterTpuConfig',
     'ClusterVerticalPodAutoscaling',
+    'ClusterWorkloadAltsConfig',
     'ClusterWorkloadIdentityConfig',
     'NodePoolAutoscaling',
     'NodePoolManagement',
@@ -376,6 +377,7 @@ __all__ = [
     'GetClusterServiceExternalIpsConfigResult',
     'GetClusterTpuConfigResult',
     'GetClusterVerticalPodAutoscalingResult',
+    'GetClusterWorkloadAltsConfigResult',
     'GetClusterWorkloadIdentityConfigResult',
 ]
 
@@ -11191,6 +11193,41 @@ class ClusterVerticalPodAutoscaling(dict):
 
 
 @pulumi.output_type
+class ClusterWorkloadAltsConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableAlts":
+            suggest = "enable_alts"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterWorkloadAltsConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterWorkloadAltsConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterWorkloadAltsConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_alts: bool):
+        """
+        :param bool enable_alts: Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
+        """
+        pulumi.set(__self__, "enable_alts", enable_alts)
+
+    @property
+    @pulumi.getter(name="enableAlts")
+    def enable_alts(self) -> bool:
+        """
+        Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
+        """
+        return pulumi.get(self, "enable_alts")
+
+
+@pulumi.output_type
 class ClusterWorkloadIdentityConfig(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -16213,6 +16250,18 @@ class GetClusterVerticalPodAutoscalingResult(dict):
     @pulumi.getter
     def enabled(self) -> bool:
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class GetClusterWorkloadAltsConfigResult(dict):
+    def __init__(__self__, *,
+                 enable_alts: bool):
+        pulumi.set(__self__, "enable_alts", enable_alts)
+
+    @property
+    @pulumi.getter(name="enableAlts")
+    def enable_alts(self) -> bool:
+        return pulumi.get(self, "enable_alts")
 
 
 @pulumi.output_type

@@ -21,6 +21,14 @@ __all__ = [
     'AiEndpointEncryptionSpec',
     'AiEndpointIamBindingCondition',
     'AiEndpointIamMemberCondition',
+    'AiFeatureGroupBigQuery',
+    'AiFeatureGroupBigQueryBigQuerySource',
+    'AiFeatureOnlineStoreBigtable',
+    'AiFeatureOnlineStoreBigtableAutoScaling',
+    'AiFeatureOnlineStoreDedicatedServingEndpoint',
+    'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig',
+    'AiFeatureOnlineStoreEmbeddingManagement',
+    'AiFeatureOnlineStoreOptimized',
     'AiFeatureStoreEncryptionSpec',
     'AiFeatureStoreEntityTypeIamBindingCondition',
     'AiFeatureStoreEntityTypeIamMemberCondition',
@@ -744,6 +752,335 @@ class AiEndpointIamMemberCondition(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AiFeatureGroupBigQuery(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bigQuerySource":
+            suggest = "big_query_source"
+        elif key == "entityIdColumns":
+            suggest = "entity_id_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureGroupBigQuery. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureGroupBigQuery.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureGroupBigQuery.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 big_query_source: 'outputs.AiFeatureGroupBigQueryBigQuerySource',
+                 entity_id_columns: Optional[Sequence[str]] = None):
+        """
+        :param 'AiFeatureGroupBigQueryBigQuerySourceArgs' big_query_source: The BigQuery source URI that points to either a BigQuery Table or View.
+               Structure is documented below.
+        :param Sequence[str] entity_id_columns: Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+        """
+        pulumi.set(__self__, "big_query_source", big_query_source)
+        if entity_id_columns is not None:
+            pulumi.set(__self__, "entity_id_columns", entity_id_columns)
+
+    @property
+    @pulumi.getter(name="bigQuerySource")
+    def big_query_source(self) -> 'outputs.AiFeatureGroupBigQueryBigQuerySource':
+        """
+        The BigQuery source URI that points to either a BigQuery Table or View.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "big_query_source")
+
+    @property
+    @pulumi.getter(name="entityIdColumns")
+    def entity_id_columns(self) -> Optional[Sequence[str]]:
+        """
+        Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+        """
+        return pulumi.get(self, "entity_id_columns")
+
+
+@pulumi.output_type
+class AiFeatureGroupBigQueryBigQuerySource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inputUri":
+            suggest = "input_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureGroupBigQueryBigQuerySource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureGroupBigQueryBigQuerySource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureGroupBigQueryBigQuerySource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 input_uri: str):
+        """
+        :param str input_uri: BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+        """
+        pulumi.set(__self__, "input_uri", input_uri)
+
+    @property
+    @pulumi.getter(name="inputUri")
+    def input_uri(self) -> str:
+        """
+        BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+        """
+        return pulumi.get(self, "input_uri")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreBigtable(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "autoScaling":
+            suggest = "auto_scaling"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreBigtable. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureOnlineStoreBigtable.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureOnlineStoreBigtable.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 auto_scaling: 'outputs.AiFeatureOnlineStoreBigtableAutoScaling'):
+        """
+        :param 'AiFeatureOnlineStoreBigtableAutoScalingArgs' auto_scaling: Autoscaling config applied to Bigtable Instance.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "auto_scaling", auto_scaling)
+
+    @property
+    @pulumi.getter(name="autoScaling")
+    def auto_scaling(self) -> 'outputs.AiFeatureOnlineStoreBigtableAutoScaling':
+        """
+        Autoscaling config applied to Bigtable Instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auto_scaling")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreBigtableAutoScaling(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxNodeCount":
+            suggest = "max_node_count"
+        elif key == "minNodeCount":
+            suggest = "min_node_count"
+        elif key == "cpuUtilizationTarget":
+            suggest = "cpu_utilization_target"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreBigtableAutoScaling. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureOnlineStoreBigtableAutoScaling.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureOnlineStoreBigtableAutoScaling.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_node_count: int,
+                 min_node_count: int,
+                 cpu_utilization_target: Optional[int] = None):
+        """
+        :param int max_node_count: The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+        :param int min_node_count: The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+        :param int cpu_utilization_target: A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+        """
+        pulumi.set(__self__, "max_node_count", max_node_count)
+        pulumi.set(__self__, "min_node_count", min_node_count)
+        if cpu_utilization_target is not None:
+            pulumi.set(__self__, "cpu_utilization_target", cpu_utilization_target)
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> int:
+        """
+        The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> int:
+        """
+        The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+        """
+        return pulumi.get(self, "min_node_count")
+
+    @property
+    @pulumi.getter(name="cpuUtilizationTarget")
+    def cpu_utilization_target(self) -> Optional[int]:
+        """
+        A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+        """
+        return pulumi.get(self, "cpu_utilization_target")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreDedicatedServingEndpoint(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "privateServiceConnectConfig":
+            suggest = "private_service_connect_config"
+        elif key == "publicEndpointDomainName":
+            suggest = "public_endpoint_domain_name"
+        elif key == "serviceAttachment":
+            suggest = "service_attachment"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreDedicatedServingEndpoint. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureOnlineStoreDedicatedServingEndpoint.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureOnlineStoreDedicatedServingEndpoint.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 private_service_connect_config: Optional['outputs.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig'] = None,
+                 public_endpoint_domain_name: Optional[str] = None,
+                 service_attachment: Optional[str] = None):
+        """
+        :param 'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs' private_service_connect_config: Private service connect config.
+               Structure is documented below.
+        :param str public_endpoint_domain_name: (Output)
+               Domain name to use for this FeatureOnlineStore
+        :param str service_attachment: (Output)
+               Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+        """
+        if private_service_connect_config is not None:
+            pulumi.set(__self__, "private_service_connect_config", private_service_connect_config)
+        if public_endpoint_domain_name is not None:
+            pulumi.set(__self__, "public_endpoint_domain_name", public_endpoint_domain_name)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="privateServiceConnectConfig")
+    def private_service_connect_config(self) -> Optional['outputs.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig']:
+        """
+        Private service connect config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_service_connect_config")
+
+    @property
+    @pulumi.getter(name="publicEndpointDomainName")
+    def public_endpoint_domain_name(self) -> Optional[str]:
+        """
+        (Output)
+        Domain name to use for this FeatureOnlineStore
+        """
+        return pulumi.get(self, "public_endpoint_domain_name")
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[str]:
+        """
+        (Output)
+        Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+        """
+        return pulumi.get(self, "service_attachment")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enablePrivateServiceConnect":
+            suggest = "enable_private_service_connect"
+        elif key == "projectAllowlists":
+            suggest = "project_allowlists"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_private_service_connect: bool,
+                 project_allowlists: Optional[Sequence[str]] = None):
+        """
+        :param bool enable_private_service_connect: If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+        :param Sequence[str] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        pulumi.set(__self__, "enable_private_service_connect", enable_private_service_connect)
+        if project_allowlists is not None:
+            pulumi.set(__self__, "project_allowlists", project_allowlists)
+
+    @property
+    @pulumi.getter(name="enablePrivateServiceConnect")
+    def enable_private_service_connect(self) -> bool:
+        """
+        If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+        """
+        return pulumi.get(self, "enable_private_service_connect")
+
+    @property
+    @pulumi.getter(name="projectAllowlists")
+    def project_allowlists(self) -> Optional[Sequence[str]]:
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        return pulumi.get(self, "project_allowlists")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreEmbeddingManagement(dict):
+    def __init__(__self__, *,
+                 enabled: Optional[bool] = None):
+        """
+        :param bool enabled: Enable embedding management.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[bool]:
+        """
+        Enable embedding management.
+        """
+        return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreOptimized(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

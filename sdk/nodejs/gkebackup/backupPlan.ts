@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -64,6 +66,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const autopilot = new gcp.gkebackup.BackupPlan("autopilot", {
  *     cluster: primary.id,
@@ -93,6 +97,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const keyRing = new gcp.kms.KeyRing("keyRing", {location: "us-central1"});
  * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyRing.id});
@@ -132,6 +138,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const full = new gcp.gkebackup.BackupPlan("full", {
  *     cluster: primary.id,

@@ -58,6 +58,7 @@ class MetastoreServiceArgs:
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
         :param pulumi.Input['MetastoreServiceMetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+               Structure is documented below.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input['MetastoreServiceNetworkConfigArgs'] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
@@ -212,6 +213,7 @@ class MetastoreServiceArgs:
     def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
+        Structure is documented below.
         """
         return pulumi.get(self, "metadata_integration")
 
@@ -375,6 +377,7 @@ class _MetastoreServiceState:
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
         :param pulumi.Input['MetastoreServiceMetadataIntegrationArgs'] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+               Structure is documented below.
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -578,6 +581,7 @@ class _MetastoreServiceState:
     def metadata_integration(self) -> Optional[pulumi.Input['MetastoreServiceMetadataIntegrationArgs']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
+        Structure is documented below.
         """
         return pulumi.get(self, "metadata_integration")
 
@@ -868,6 +872,34 @@ class MetastoreService(pulumi.CustomResource):
                 )],
             ))
         ```
+        ### Dataproc Metastore Service Private Service Connect Custom Routes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        subnet = gcp.compute.Subnetwork("subnet",
+            region="us-central1",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/22",
+            private_ip_google_access=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArgs(
+                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArgs(
+                    subnetwork=subnet.id,
+                )],
+                custom_routes_enabled=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
         ### Dataproc Metastore Service Dpms2
 
         ```python
@@ -947,6 +979,7 @@ class MetastoreService(pulumi.CustomResource):
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+               Structure is documented below.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
         :param pulumi.Input[pulumi.InputType['MetastoreServiceNetworkConfigArgs']] network_config: The configuration specifying the network settings for the Dataproc Metastore service.
@@ -1053,6 +1086,34 @@ class MetastoreService(pulumi.CustomResource):
                     subnetwork=subnet.id,
                 )],
             ))
+        ```
+        ### Dataproc Metastore Service Private Service Connect Custom Routes
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        net = gcp.compute.Network("net", auto_create_subnetworks=False,
+        opts=pulumi.ResourceOptions(provider=google_beta))
+        subnet = gcp.compute.Subnetwork("subnet",
+            region="us-central1",
+            network=net.id,
+            ip_cidr_range="10.0.0.0/22",
+            private_ip_google_access=True,
+            opts=pulumi.ResourceOptions(provider=google_beta))
+        default = gcp.dataproc.MetastoreService("default",
+            service_id="metastore-srv",
+            location="us-central1",
+            hive_metastore_config=gcp.dataproc.MetastoreServiceHiveMetastoreConfigArgs(
+                version="3.1.2",
+            ),
+            network_config=gcp.dataproc.MetastoreServiceNetworkConfigArgs(
+                consumers=[gcp.dataproc.MetastoreServiceNetworkConfigConsumerArgs(
+                    subnetwork=subnet.id,
+                )],
+                custom_routes_enabled=True,
+            ),
+            opts=pulumi.ResourceOptions(provider=google_beta))
         ```
         ### Dataproc Metastore Service Dpms2
 
@@ -1244,6 +1305,7 @@ class MetastoreService(pulumi.CustomResource):
                Maintenance window is not needed for services with the `SPANNER` database type.
                Structure is documented below.
         :param pulumi.Input[pulumi.InputType['MetastoreServiceMetadataIntegrationArgs']] metadata_integration: The setting that defines how metastore metadata should be integrated with external services and systems.
+               Structure is documented below.
         :param pulumi.Input[str] name: The relative resource name of the metastore service.
         :param pulumi.Input[str] network: The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
                "projects/{projectNumber}/global/networks/{network_id}".
@@ -1392,6 +1454,7 @@ class MetastoreService(pulumi.CustomResource):
     def metadata_integration(self) -> pulumi.Output[Optional['outputs.MetastoreServiceMetadataIntegration']]:
         """
         The setting that defines how metastore metadata should be integrated with external services and systems.
+        Structure is documented below.
         """
         return pulumi.get(self, "metadata_integration")
 

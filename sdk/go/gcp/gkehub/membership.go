@@ -42,6 +42,8 @@ import (
 //				DeletionProtection: pulumi.Bool(false),
 //				InitialNodeCount:   pulumi.Int(1),
 //				Location:           pulumi.String("us-central1-a"),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
@@ -86,6 +88,8 @@ import (
 //				DeletionProtection: pulumi.Bool(true),
 //				InitialNodeCount:   pulumi.Int(1),
 //				Location:           pulumi.String("us-central1-a"),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
@@ -135,6 +139,8 @@ import (
 //					WorkloadPool: pulumi.String("my-project-name.svc.id.goog"),
 //				},
 //				DeletionProtection: pulumi.Bool(true),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err

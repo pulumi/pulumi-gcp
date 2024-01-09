@@ -80,7 +80,7 @@ type User struct {
 	SqlServerUserDetails UserSqlServerUserDetailArrayOutput `pulumi:"sqlServerUserDetails"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
-	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_GROUP" or "CLOUD_IAM_SERVICE_ACCOUNT".
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 }
 
@@ -154,7 +154,7 @@ type userState struct {
 	SqlServerUserDetails []UserSqlServerUserDetail `pulumi:"sqlServerUserDetails"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
-	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_GROUP" or "CLOUD_IAM_SERVICE_ACCOUNT".
 	Type *string `pulumi:"type"`
 }
 
@@ -189,7 +189,7 @@ type UserState struct {
 	SqlServerUserDetails UserSqlServerUserDetailArrayInput
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
-	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_GROUP" or "CLOUD_IAM_SERVICE_ACCOUNT".
 	Type pulumi.StringPtrInput
 }
 
@@ -227,7 +227,7 @@ type userArgs struct {
 	Project *string `pulumi:"project"`
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
-	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_GROUP" or "CLOUD_IAM_SERVICE_ACCOUNT".
 	Type *string `pulumi:"type"`
 }
 
@@ -262,7 +262,7 @@ type UserArgs struct {
 	Project pulumi.StringPtrInput
 	// The user type. It determines the method to authenticate the
 	// user during login. The default is the database's built-in user type. Flags
-	// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+	// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_GROUP" or "CLOUD_IAM_SERVICE_ACCOUNT".
 	Type pulumi.StringPtrInput
 }
 
@@ -407,7 +407,7 @@ func (o UserOutput) SqlServerUserDetails() UserSqlServerUserDetailArrayOutput {
 
 // The user type. It determines the method to authenticate the
 // user during login. The default is the database's built-in user type. Flags
-// include "BUILT_IN", "CLOUD_IAM_USER", or "CLOUD_IAM_SERVICE_ACCOUNT".
+// include "BUILT_IN", "CLOUD_IAM_USER", "CLOUD_IAM_GROUP" or "CLOUD_IAM_SERVICE_ACCOUNT".
 func (o UserOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *User) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

@@ -10,6 +10,8 @@ from .ai_endpoint import *
 from .ai_endpoint_iam_binding import *
 from .ai_endpoint_iam_member import *
 from .ai_endpoint_iam_policy import *
+from .ai_feature_group import *
+from .ai_feature_online_store import *
 from .ai_feature_store import *
 from .ai_feature_store_entity_type import *
 from .ai_feature_store_entity_type_feature import *

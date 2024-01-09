@@ -51,6 +51,21 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The name of the Transfer Job. This name must start with &#34;transferJobs/&#34; prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
+     * 
+     */
+    @Import(name="name")
+    private @Nullable Output<String> name;
+
+    /**
+     * @return The name of the Transfer Job. This name must start with &#34;transferJobs/&#34; prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
+     * 
+     */
+    public Optional<Output<String>> name() {
+        return Optional.ofNullable(this.name);
+    }
+
+    /**
      * Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
      * 
      */
@@ -136,6 +151,7 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
     private TransferJobArgs(TransferJobArgs $) {
         this.description = $.description;
         this.eventStream = $.eventStream;
+        this.name = $.name;
         this.notificationConfig = $.notificationConfig;
         this.project = $.project;
         this.schedule = $.schedule;
@@ -201,6 +217,27 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder eventStream(TransferJobEventStreamArgs eventStream) {
             return eventStream(Output.of(eventStream));
+        }
+
+        /**
+         * @param name The name of the Transfer Job. This name must start with &#34;transferJobs/&#34; prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(@Nullable Output<String> name) {
+            $.name = name;
+            return this;
+        }
+
+        /**
+         * @param name The name of the Transfer Job. This name must start with &#34;transferJobs/&#34; prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder name(String name) {
+            return name(Output.of(name));
         }
 
         /**

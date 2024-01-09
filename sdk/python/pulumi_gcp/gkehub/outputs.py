@@ -138,13 +138,17 @@ class FeatureFleetDefaultMemberConfigConfigmanagement(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 config_sync: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync'] = None):
+                 config_sync: Optional['outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync'] = None,
+                 version: Optional[str] = None):
         """
         :param 'FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs' config_sync: ConfigSync configuration for the cluster
                Structure is documented below.
+        :param str version: Version of ACM installed
         """
         if config_sync is not None:
             pulumi.set(__self__, "config_sync", config_sync)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
 
     @property
     @pulumi.getter(name="configSync")
@@ -154,6 +158,14 @@ class FeatureFleetDefaultMemberConfigConfigmanagement(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "config_sync")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of ACM installed
+        """
+        return pulumi.get(self, "version")
 
 
 @pulumi.output_type
@@ -393,7 +405,10 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci(dict):
         :param str policy_dir: The absolute path of the directory that contains the local resources. Default: the root directory of the image
         :param str sync_repo: The OCI image repository URL for the package to sync from
         :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15
-        :param str version: Version of ACM installed
+        :param str version: (Optional, Deprecated)
+               Version of ACM installed
+               
+               > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
         """
         pulumi.set(__self__, "secret_type", secret_type)
         if gcp_service_account_email is not None:
@@ -451,8 +466,14 @@ class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci(dict):
     @pulumi.getter
     def version(self) -> Optional[str]:
         """
+        (Optional, Deprecated)
         Version of ACM installed
+
+        > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
         """
+        warnings.warn("""The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.""", DeprecationWarning)
+        pulumi.log.warn("""version is deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.""")
+
         return pulumi.get(self, "version")
 
 

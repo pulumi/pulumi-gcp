@@ -48,6 +48,8 @@ import (
 //					},
 //				},
 //				DeletionProtection: pulumi.Bool(""),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
@@ -113,6 +115,8 @@ import (
 //					},
 //				},
 //				DeletionProtection: pulumi.Bool(""),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
@@ -191,6 +195,8 @@ import (
 //					},
 //				},
 //				DeletionProtection: pulumi.Bool(""),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
@@ -262,6 +268,8 @@ import (
 //					},
 //				},
 //				DeletionProtection: pulumi.Bool(""),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
@@ -326,6 +334,8 @@ import (
 //					},
 //				},
 //				DeletionProtection: pulumi.Bool(""),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
@@ -429,6 +439,8 @@ import (
 //					},
 //				},
 //				DeletionProtection: pulumi.Bool(""),
+//				Network:            pulumi.String("default"),
+//				Subnetwork:         pulumi.String("default"),
 //			})
 //			if err != nil {
 //				return err
