@@ -7,8 +7,11 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.inputs.MetastoreServiceNetworkConfigConsumerArgs;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class MetastoreServiceNetworkConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -32,10 +35,18 @@ public final class MetastoreServiceNetworkConfigArgs extends com.pulumi.resource
         return this.consumers;
     }
 
+    @Import(name="customRoutesEnabled")
+    private @Nullable Output<Boolean> customRoutesEnabled;
+
+    public Optional<Output<Boolean>> customRoutesEnabled() {
+        return Optional.ofNullable(this.customRoutesEnabled);
+    }
+
     private MetastoreServiceNetworkConfigArgs() {}
 
     private MetastoreServiceNetworkConfigArgs(MetastoreServiceNetworkConfigArgs $) {
         this.consumers = $.consumers;
+        this.customRoutesEnabled = $.customRoutesEnabled;
     }
 
     public static Builder builder() {
@@ -88,6 +99,15 @@ public final class MetastoreServiceNetworkConfigArgs extends com.pulumi.resource
          */
         public Builder consumers(MetastoreServiceNetworkConfigConsumerArgs... consumers) {
             return consumers(List.of(consumers));
+        }
+
+        public Builder customRoutesEnabled(@Nullable Output<Boolean> customRoutesEnabled) {
+            $.customRoutesEnabled = customRoutesEnabled;
+            return this;
+        }
+
+        public Builder customRoutesEnabled(Boolean customRoutesEnabled) {
+            return customRoutesEnabled(Output.of(customRoutesEnabled));
         }
 
         public MetastoreServiceNetworkConfigArgs build() {

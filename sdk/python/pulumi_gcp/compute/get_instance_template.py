@@ -22,7 +22,7 @@ class GetInstanceTemplateResult:
     """
     A collection of values returned by getInstanceTemplate.
     """
-    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_policies=None, schedulings=None, self_link=None, self_link_unique=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
+    def __init__(__self__, advanced_machine_features=None, can_ip_forward=None, confidential_instance_configs=None, description=None, disks=None, effective_labels=None, enable_display=None, filter=None, guest_accelerators=None, id=None, instance_description=None, labels=None, machine_type=None, metadata=None, metadata_fingerprint=None, metadata_startup_script=None, min_cpu_platform=None, most_recent=None, name=None, name_prefix=None, network_interfaces=None, network_performance_configs=None, project=None, pulumi_labels=None, region=None, reservation_affinities=None, resource_manager_tags=None, resource_policies=None, schedulings=None, self_link=None, self_link_unique=None, service_accounts=None, shielded_instance_configs=None, tags=None, tags_fingerprint=None):
         if advanced_machine_features and not isinstance(advanced_machine_features, list):
             raise TypeError("Expected argument 'advanced_machine_features' to be a list")
         pulumi.set(__self__, "advanced_machine_features", advanced_machine_features)
@@ -101,6 +101,9 @@ class GetInstanceTemplateResult:
         if reservation_affinities and not isinstance(reservation_affinities, list):
             raise TypeError("Expected argument 'reservation_affinities' to be a list")
         pulumi.set(__self__, "reservation_affinities", reservation_affinities)
+        if resource_manager_tags and not isinstance(resource_manager_tags, dict):
+            raise TypeError("Expected argument 'resource_manager_tags' to be a dict")
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies and not isinstance(resource_policies, list):
             raise TypeError("Expected argument 'resource_policies' to be a list")
         pulumi.set(__self__, "resource_policies", resource_policies)
@@ -334,6 +337,11 @@ class GetInstanceTemplateResult:
         return pulumi.get(self, "reservation_affinities")
 
     @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        return pulumi.get(self, "resource_manager_tags")
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Sequence[str]:
         """
@@ -433,6 +441,7 @@ class AwaitableGetInstanceTemplateResult(GetInstanceTemplateResult):
             pulumi_labels=self.pulumi_labels,
             region=self.region,
             reservation_affinities=self.reservation_affinities,
+            resource_manager_tags=self.resource_manager_tags,
             resource_policies=self.resource_policies,
             schedulings=self.schedulings,
             self_link=self.self_link,
@@ -515,6 +524,7 @@ def get_instance_template(filter: Optional[str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         region=pulumi.get(__ret__, 'region'),
         reservation_affinities=pulumi.get(__ret__, 'reservation_affinities'),
+        resource_manager_tags=pulumi.get(__ret__, 'resource_manager_tags'),
         resource_policies=pulumi.get(__ret__, 'resource_policies'),
         schedulings=pulumi.get(__ret__, 'schedulings'),
         self_link=pulumi.get(__ret__, 'self_link'),

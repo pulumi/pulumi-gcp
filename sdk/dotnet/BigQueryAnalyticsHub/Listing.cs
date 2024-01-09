@@ -60,6 +60,52 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
     /// 
     /// });
     /// ```
+    /// ### Bigquery Analyticshub Listing Restricted
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var listingDataExchange = new Gcp.BigQueryAnalyticsHub.DataExchange("listingDataExchange", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = "my_data_exchange",
+    ///         DisplayName = "my_data_exchange",
+    ///         Description = "example data exchange",
+    ///     });
+    /// 
+    ///     var listingDataset = new Gcp.BigQuery.Dataset("listingDataset", new()
+    ///     {
+    ///         DatasetId = "my_listing",
+    ///         FriendlyName = "my_listing",
+    ///         Description = "example data exchange",
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var listingListing = new Gcp.BigQueryAnalyticsHub.Listing("listingListing", new()
+    ///     {
+    ///         Location = "US",
+    ///         DataExchangeId = listingDataExchange.DataExchangeId,
+    ///         ListingId = "my_listing",
+    ///         DisplayName = "my_listing",
+    ///         Description = "example data exchange",
+    ///         BigqueryDataset = new Gcp.BigQueryAnalyticsHub.Inputs.ListingBigqueryDatasetArgs
+    ///         {
+    ///             Dataset = listingDataset.Id,
+    ///         },
+    ///         RestrictedExportConfig = new Gcp.BigQueryAnalyticsHub.Inputs.ListingRestrictedExportConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///             RestrictQueryResult = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -181,6 +227,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Output("requestAccess")]
         public Output<string?> RequestAccess { get; private set; } = null!;
+
+        /// <summary>
+        /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("restrictedExportConfig")]
+        public Output<Outputs.ListingRestrictedExportConfig?> RestrictedExportConfig { get; private set; } = null!;
 
 
         /// <summary>
@@ -322,6 +375,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         [Input("requestAccess")]
         public Input<string>? RequestAccess { get; set; }
 
+        /// <summary>
+        /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restrictedExportConfig")]
+        public Input<Inputs.ListingRestrictedExportConfigArgs>? RestrictedExportConfig { get; set; }
+
         public ListingArgs()
         {
         }
@@ -429,6 +489,13 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         [Input("requestAccess")]
         public Input<string>? RequestAccess { get; set; }
+
+        /// <summary>
+        /// If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("restrictedExportConfig")]
+        public Input<Inputs.ListingRestrictedExportConfigGetArgs>? RestrictedExportConfig { get; set; }
 
         public ListingState()
         {

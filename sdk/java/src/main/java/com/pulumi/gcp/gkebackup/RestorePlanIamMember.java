@@ -69,6 +69,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -144,6 +146,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -229,6 +233,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -307,6 +313,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -381,6 +389,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        
@@ -483,6 +493,8 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .build())
  *             .deletionProtection(&#34;&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var basic = new BackupPlan(&#34;basic&#34;, BackupPlanArgs.builder()        

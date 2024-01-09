@@ -128,6 +128,10 @@ type CryptoKey struct {
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+	// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+	// Structure is documented below.
+	Primaries CryptoKeyPrimaryArrayOutput `pulumi:"primaries"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
@@ -206,6 +210,10 @@ type cryptoKeyState struct {
 	Labels map[string]string `pulumi:"labels"`
 	// The resource name for the CryptoKey.
 	Name *string `pulumi:"name"`
+	// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+	// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+	// Structure is documented below.
+	Primaries []CryptoKeyPrimary `pulumi:"primaries"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
@@ -247,6 +255,10 @@ type CryptoKeyState struct {
 	Labels pulumi.StringMapInput
 	// The resource name for the CryptoKey.
 	Name pulumi.StringPtrInput
+	// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+	// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+	// Structure is documented below.
+	Primaries CryptoKeyPrimaryArrayInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
@@ -467,6 +479,13 @@ func (o CryptoKeyOutput) Labels() pulumi.StringMapOutput {
 // The resource name for the CryptoKey.
 func (o CryptoKeyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *CryptoKey) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+// Structure is documented below.
+func (o CryptoKeyOutput) Primaries() CryptoKeyPrimaryArrayOutput {
+	return o.ApplyT(func(v *CryptoKey) CryptoKeyPrimaryArrayOutput { return v.Primaries }).(CryptoKeyPrimaryArrayOutput)
 }
 
 // The combination of labels configured directly on the resource

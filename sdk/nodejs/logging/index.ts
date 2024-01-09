@@ -30,6 +30,11 @@ export type FolderExclusion = import("./folderExclusion").FolderExclusion;
 export const FolderExclusion: typeof import("./folderExclusion").FolderExclusion = null as any;
 utilities.lazyLoad(exports, ["FolderExclusion"], () => require("./folderExclusion"));
 
+export { FolderSettingsArgs, FolderSettingsState } from "./folderSettings";
+export type FolderSettings = import("./folderSettings").FolderSettings;
+export const FolderSettings: typeof import("./folderSettings").FolderSettings = null as any;
+utilities.lazyLoad(exports, ["FolderSettings"], () => require("./folderSettings"));
+
 export { FolderSinkArgs, FolderSinkState } from "./folderSink";
 export type FolderSink = import("./folderSink").FolderSink;
 export const FolderSink: typeof import("./folderSink").FolderSink = null as any;
@@ -85,6 +90,11 @@ export type OrganizationExclusion = import("./organizationExclusion").Organizati
 export const OrganizationExclusion: typeof import("./organizationExclusion").OrganizationExclusion = null as any;
 utilities.lazyLoad(exports, ["OrganizationExclusion"], () => require("./organizationExclusion"));
 
+export { OrganizationSettingsArgs, OrganizationSettingsState } from "./organizationSettings";
+export type OrganizationSettings = import("./organizationSettings").OrganizationSettings;
+export const OrganizationSettings: typeof import("./organizationSettings").OrganizationSettings = null as any;
+utilities.lazyLoad(exports, ["OrganizationSettings"], () => require("./organizationSettings"));
+
 export { OrganizationSinkArgs, OrganizationSinkState } from "./organizationSink";
 export type OrganizationSink = import("./organizationSink").OrganizationSink;
 export const OrganizationSink: typeof import("./organizationSink").OrganizationSink = null as any;
@@ -120,6 +130,8 @@ const _module = {
                 return new FolderBucketConfig(name, <any>undefined, { urn })
             case "gcp:logging/folderExclusion:FolderExclusion":
                 return new FolderExclusion(name, <any>undefined, { urn })
+            case "gcp:logging/folderSettings:FolderSettings":
+                return new FolderSettings(name, <any>undefined, { urn })
             case "gcp:logging/folderSink:FolderSink":
                 return new FolderSink(name, <any>undefined, { urn })
             case "gcp:logging/linkedDataset:LinkedDataset":
@@ -132,6 +144,8 @@ const _module = {
                 return new OrganizationBucketConfig(name, <any>undefined, { urn })
             case "gcp:logging/organizationExclusion:OrganizationExclusion":
                 return new OrganizationExclusion(name, <any>undefined, { urn })
+            case "gcp:logging/organizationSettings:OrganizationSettings":
+                return new OrganizationSettings(name, <any>undefined, { urn })
             case "gcp:logging/organizationSink:OrganizationSink":
                 return new OrganizationSink(name, <any>undefined, { urn })
             case "gcp:logging/projectBucketConfig:ProjectBucketConfig":
@@ -150,12 +164,14 @@ pulumi.runtime.registerResourceModule("gcp", "logging/billingAccountExclusion", 
 pulumi.runtime.registerResourceModule("gcp", "logging/billingAccountSink", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderBucketConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderExclusion", _module)
+pulumi.runtime.registerResourceModule("gcp", "logging/folderSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/folderSink", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/linkedDataset", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/logView", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/metric", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/organizationBucketConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/organizationExclusion", _module)
+pulumi.runtime.registerResourceModule("gcp", "logging/organizationSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/organizationSink", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/projectBucketConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "logging/projectExclusion", _module)

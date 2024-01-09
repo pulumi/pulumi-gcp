@@ -18,11 +18,19 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync? ConfigSync;
+        /// <summary>
+        /// Version of ACM installed
+        /// </summary>
+        public readonly string? Version;
 
         [OutputConstructor]
-        private FeatureFleetDefaultMemberConfigConfigmanagement(Outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync? configSync)
+        private FeatureFleetDefaultMemberConfigConfigmanagement(
+            Outputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync? configSync,
+
+            string? version)
         {
             ConfigSync = configSync;
+            Version = version;
         }
     }
 }

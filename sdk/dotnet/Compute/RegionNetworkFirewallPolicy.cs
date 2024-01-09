@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Compute
     /// The Compute NetworkFirewallPolicy resource
     /// 
     /// ## Example Usage
-    /// ### Regional
+    /// ### Region Network Firewall Policy Full
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,11 +23,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var primary = new Gcp.Compute.RegionNetworkFirewallPolicy("primary", new()
+    ///     var policy = new Gcp.Compute.RegionNetworkFirewallPolicy("policy", new()
     ///     {
-    ///         Description = "Sample regional network firewall policy",
-    ///         Project = "my-project-name",
-    ///         Region = "us-west1",
+    ///         Description = "Terraform test",
     ///     });
     /// 
     /// });
@@ -34,14 +33,14 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// NetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicy using one of the formats above. For exampletf import {
+    /// RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkFirewallPolicy using one of the formats above. For exampletf import {
     /// 
     ///  id = "projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}"
     /// 
     ///  to = google_compute_region_network_firewall_policy.default }
     /// 
     /// ```sh
-    ///  $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicy can be imported using one of the formats above. For example
+    ///  $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
     /// ```
     /// 
     /// ```sh
@@ -85,20 +84,20 @@ namespace Pulumi.Gcp.Compute
         /// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The location of this resource.
+        /// The region of this resource.
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
@@ -183,20 +182,20 @@ namespace Pulumi.Gcp.Compute
         /// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The location of this resource.
+        /// The region of this resource.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
@@ -231,20 +230,20 @@ namespace Pulumi.Gcp.Compute
         /// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The location of this resource.
+        /// The region of this resource.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

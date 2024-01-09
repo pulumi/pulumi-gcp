@@ -173,7 +173,7 @@ type TransferJob struct {
 	EventStream TransferJobEventStreamPtrOutput `pulumi:"eventStream"`
 	// When the Transfer Job was last modified.
 	LastModificationTime pulumi.StringOutput `pulumi:"lastModificationTime"`
-	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+	// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig TransferJobNotificationConfigPtrOutput `pulumi:"notificationConfig"`
@@ -236,7 +236,7 @@ type transferJobState struct {
 	EventStream *TransferJobEventStream `pulumi:"eventStream"`
 	// When the Transfer Job was last modified.
 	LastModificationTime *string `pulumi:"lastModificationTime"`
-	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+	// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
 	Name *string `pulumi:"name"`
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig *TransferJobNotificationConfig `pulumi:"notificationConfig"`
@@ -264,7 +264,7 @@ type TransferJobState struct {
 	EventStream TransferJobEventStreamPtrInput
 	// When the Transfer Job was last modified.
 	LastModificationTime pulumi.StringPtrInput
-	// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+	// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
 	Name pulumi.StringPtrInput
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig TransferJobNotificationConfigPtrInput
@@ -290,6 +290,8 @@ type transferJobArgs struct {
 	Description string `pulumi:"description"`
 	// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
 	EventStream *TransferJobEventStream `pulumi:"eventStream"`
+	// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
+	Name *string `pulumi:"name"`
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig *TransferJobNotificationConfig `pulumi:"notificationConfig"`
 	// The project in which the resource belongs. If it
@@ -311,6 +313,8 @@ type TransferJobArgs struct {
 	Description pulumi.StringInput
 	// Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `eventStream` or `schedule` must be set.
 	EventStream TransferJobEventStreamPtrInput
+	// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
+	Name pulumi.StringPtrInput
 	// Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
 	NotificationConfig TransferJobNotificationConfigPtrInput
 	// The project in which the resource belongs. If it
@@ -438,7 +442,7 @@ func (o TransferJobOutput) LastModificationTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.LastModificationTime }).(pulumi.StringOutput)
 }
 
-// Specifies a unique name of the resource such as AWS SQS ARN in the form 'arn:aws:sqs:region:account_id:queue_name', or Pub/Sub subscription resource name in the form 'projects/{project}/subscriptions/{sub}'.
+// The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
 func (o TransferJobOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

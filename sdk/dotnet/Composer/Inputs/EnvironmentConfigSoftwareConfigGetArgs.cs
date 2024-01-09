@@ -48,6 +48,9 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("schedulerCount")]
         public Input<int>? SchedulerCount { get; set; }
 
+        [Input("webServerPluginsMode")]
+        public Input<string>? WebServerPluginsMode { get; set; }
+
         public EnvironmentConfigSoftwareConfigGetArgs()
         {
         }

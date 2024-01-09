@@ -69,6 +69,7 @@ export interface GetKMSCryptoKeyResult {
     readonly keyRing: string;
     readonly labels: {[key: string]: string};
     readonly name: string;
+    readonly primaries: outputs.kms.GetKMSCryptoKeyPrimary[];
     readonly pulumiLabels: {[key: string]: string};
     /**
      * Defines the cryptographic capabilities of the key.

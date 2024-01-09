@@ -50,14 +50,16 @@ public final class RegionNetworkFirewallPolicyArgs extends com.pulumi.resources.
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -65,14 +67,14 @@ public final class RegionNetworkFirewallPolicyArgs extends com.pulumi.resources.
     }
 
     /**
-     * The location of this resource.
+     * The region of this resource.
      * 
      */
     @Import(name="region")
     private @Nullable Output<String> region;
 
     /**
-     * @return The location of this resource.
+     * @return The region of this resource.
      * 
      */
     public Optional<Output<String>> region() {
@@ -153,7 +155,8 @@ public final class RegionNetworkFirewallPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -164,7 +167,8 @@ public final class RegionNetworkFirewallPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -174,7 +178,7 @@ public final class RegionNetworkFirewallPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region The location of this resource.
+         * @param region The region of this resource.
          * 
          * @return builder
          * 
@@ -185,7 +189,7 @@ public final class RegionNetworkFirewallPolicyArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param region The location of this resource.
+         * @param region The region of this resource.
          * 
          * @return builder
          * 

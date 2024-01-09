@@ -208,6 +208,7 @@ __all__ = [
     'ClusterServiceExternalIpsConfigArgs',
     'ClusterTpuConfigArgs',
     'ClusterVerticalPodAutoscalingArgs',
+    'ClusterWorkloadAltsConfigArgs',
     'ClusterWorkloadIdentityConfigArgs',
     'NodePoolAutoscalingArgs',
     'NodePoolManagementArgs',
@@ -10353,6 +10354,28 @@ class ClusterVerticalPodAutoscalingArgs:
     @enabled.setter
     def enabled(self, value: pulumi.Input[bool]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class ClusterWorkloadAltsConfigArgs:
+    def __init__(__self__, *,
+                 enable_alts: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enable_alts: Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
+        """
+        pulumi.set(__self__, "enable_alts", enable_alts)
+
+    @property
+    @pulumi.getter(name="enableAlts")
+    def enable_alts(self) -> pulumi.Input[bool]:
+        """
+        Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
+        """
+        return pulumi.get(self, "enable_alts")
+
+    @enable_alts.setter
+    def enable_alts(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_alts", value)
 
 
 @pulumi.input_type

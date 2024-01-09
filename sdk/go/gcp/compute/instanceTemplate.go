@@ -327,6 +327,8 @@ type InstanceTemplate struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrOutput `pulumi:"reservationAffinity"`
+	// A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapOutput `pulumi:"resourceManagerTags"`
 	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrOutput `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
@@ -469,6 +471,8 @@ type instanceTemplateState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
+	// A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
@@ -571,6 +575,8 @@ type InstanceTemplateState struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
+	// A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput
 	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
@@ -671,6 +677,8 @@ type instanceTemplateArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity *InstanceTemplateReservationAffinity `pulumi:"reservationAffinity"`
+	// A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	ResourceManagerTags map[string]string `pulumi:"resourceManagerTags"`
 	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies *string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
@@ -761,6 +769,8 @@ type InstanceTemplateArgs struct {
 	// Specifies the reservations that this instance can consume from.
 	// Structure is documented below.
 	ReservationAffinity InstanceTemplateReservationAffinityPtrInput
+	// A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+	ResourceManagerTags pulumi.StringMapInput
 	// - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
 	ResourcePolicies pulumi.StringPtrInput
 	// The scheduling strategy to use. More details about
@@ -1015,6 +1025,11 @@ func (o InstanceTemplateOutput) Region() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceTemplateOutput) ReservationAffinity() InstanceTemplateReservationAffinityPtrOutput {
 	return o.ApplyT(func(v *InstanceTemplate) InstanceTemplateReservationAffinityPtrOutput { return v.ReservationAffinity }).(InstanceTemplateReservationAffinityPtrOutput)
+}
+
+// A set of key/value resource manager tag pairs to bind to the instances. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+func (o InstanceTemplateOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *InstanceTemplate) pulumi.StringMapOutput { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.

@@ -102,13 +102,13 @@ type FolderSink struct {
 	BigqueryOptions FolderSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
@@ -173,13 +173,13 @@ type folderSinkState struct {
 	BigqueryOptions *FolderSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
@@ -209,13 +209,13 @@ type FolderSinkState struct {
 	BigqueryOptions FolderSinkBigqueryOptionsPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
@@ -249,13 +249,13 @@ type folderSinkArgs struct {
 	BigqueryOptions *FolderSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
@@ -283,13 +283,13 @@ type FolderSinkArgs struct {
 	BigqueryOptions FolderSinkBigqueryOptionsPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
@@ -408,13 +408,13 @@ func (o FolderSinkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FolderSink) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The destination of the sink (or, in other words, where logs are written to). Can be a
-// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 //
 // - `storage.googleapis.com/[GCS_BUCKET]`
 // - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 // - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+// - `logging.googleapis.com/projects/[PROJECT_ID]`
 //
 // The writer associated with the sink must have access to write to the above resource.
 func (o FolderSinkOutput) Destination() pulumi.StringOutput {

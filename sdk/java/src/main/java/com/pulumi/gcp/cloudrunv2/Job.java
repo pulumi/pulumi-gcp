@@ -318,14 +318,15 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var default_ = new Job(&#34;default&#34;, JobArgs.builder()        
- *             .location(&#34;us-central1&#34;)
  *             .launchStage(&#34;BETA&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .template(JobTemplateArgs.builder()
  *                 .template(JobTemplateTemplateArgs.builder()
  *                     .containers(JobTemplateTemplateContainerArgs.builder()
  *                         .image(&#34;us-docker.pkg.dev/cloudrun/container/job&#34;)
  *                         .build())
  *                     .vpcAccess(JobTemplateTemplateVpcAccessArgs.builder()
+ *                         .egress(&#34;ALL_TRAFFIC&#34;)
  *                         .networkInterfaces(JobTemplateTemplateVpcAccessNetworkInterfaceArgs.builder()
  *                             .network(&#34;default&#34;)
  *                             .subnetwork(&#34;default&#34;)
@@ -334,7 +335,6 @@ import javax.annotation.Nullable;
  *                                 &#34;tag2&#34;,
  *                                 &#34;tag3&#34;)
  *                             .build())
- *                         .egress(&#34;ALL_TRAFFIC&#34;)
  *                         .build())
  *                     .build())
  *                 .build())

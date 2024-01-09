@@ -406,7 +406,9 @@ class Membership(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             deletion_protection=False,
             initial_node_count=1,
-            location="us-central1-a")
+            location="us-central1-a",
+            network="default",
+            subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
@@ -425,7 +427,9 @@ class Membership(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             deletion_protection=True,
             initial_node_count=1,
-            location="us-central1-a")
+            location="us-central1-a",
+            network="default",
+            subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
@@ -449,7 +453,9 @@ class Membership(pulumi.CustomResource):
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
                 workload_pool="my-project-name.svc.id.goog",
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
@@ -536,7 +542,9 @@ class Membership(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             deletion_protection=False,
             initial_node_count=1,
-            location="us-central1-a")
+            location="us-central1-a",
+            network="default",
+            subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
@@ -555,7 +563,9 @@ class Membership(pulumi.CustomResource):
         primary = gcp.container.Cluster("primary",
             deletion_protection=True,
             initial_node_count=1,
-            location="us-central1-a")
+            location="us-central1-a",
+            network="default",
+            subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             endpoint=gcp.gkehub.MembershipEndpointArgs(
                 gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
@@ -579,7 +589,9 @@ class Membership(pulumi.CustomResource):
             workload_identity_config=gcp.container.ClusterWorkloadIdentityConfigArgs(
                 workload_pool="my-project-name.svc.id.goog",
             ),
-            deletion_protection=True)
+            deletion_protection=True,
+            network="default",
+            subnetwork="default")
         membership = gcp.gkehub.Membership("membership",
             membership_id="basic",
             endpoint=gcp.gkehub.MembershipEndpointArgs(

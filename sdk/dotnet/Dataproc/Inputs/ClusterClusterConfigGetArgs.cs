@@ -21,6 +21,19 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         [Input("autoscalingConfig")]
         public Input<Inputs.ClusterClusterConfigAutoscalingConfigGetArgs>? AutoscalingConfig { get; set; }
 
+        [Input("auxiliaryNodeGroups")]
+        private InputList<Inputs.ClusterClusterConfigAuxiliaryNodeGroupGetArgs>? _auxiliaryNodeGroups;
+
+        /// <summary>
+        /// A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+        /// Structure defined below.
+        /// </summary>
+        public InputList<Inputs.ClusterClusterConfigAuxiliaryNodeGroupGetArgs> AuxiliaryNodeGroups
+        {
+            get => _auxiliaryNodeGroups ?? (_auxiliaryNodeGroups = new InputList<Inputs.ClusterClusterConfigAuxiliaryNodeGroupGetArgs>());
+            set => _auxiliaryNodeGroups = value;
+        }
+
         [Input("bucket")]
         public Input<string>? Bucket { get; set; }
 

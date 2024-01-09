@@ -67,6 +67,13 @@ public final class EnvironmentConfigSoftwareConfigArgs extends com.pulumi.resour
         return Optional.ofNullable(this.schedulerCount);
     }
 
+    @Import(name="webServerPluginsMode")
+    private @Nullable Output<String> webServerPluginsMode;
+
+    public Optional<Output<String>> webServerPluginsMode() {
+        return Optional.ofNullable(this.webServerPluginsMode);
+    }
+
     private EnvironmentConfigSoftwareConfigArgs() {}
 
     private EnvironmentConfigSoftwareConfigArgs(EnvironmentConfigSoftwareConfigArgs $) {
@@ -77,6 +84,7 @@ public final class EnvironmentConfigSoftwareConfigArgs extends com.pulumi.resour
         this.pypiPackages = $.pypiPackages;
         this.pythonVersion = $.pythonVersion;
         this.schedulerCount = $.schedulerCount;
+        this.webServerPluginsMode = $.webServerPluginsMode;
     }
 
     public static Builder builder() {
@@ -158,6 +166,15 @@ public final class EnvironmentConfigSoftwareConfigArgs extends com.pulumi.resour
 
         public Builder schedulerCount(Integer schedulerCount) {
             return schedulerCount(Output.of(schedulerCount));
+        }
+
+        public Builder webServerPluginsMode(@Nullable Output<String> webServerPluginsMode) {
+            $.webServerPluginsMode = webServerPluginsMode;
+            return this;
+        }
+
+        public Builder webServerPluginsMode(String webServerPluginsMode) {
+            return webServerPluginsMode(Output.of(webServerPluginsMode));
         }
 
         public EnvironmentConfigSoftwareConfigArgs build() {

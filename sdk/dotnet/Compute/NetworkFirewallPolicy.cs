@@ -13,7 +13,8 @@ namespace Pulumi.Gcp.Compute
     /// The Compute NetworkFirewallPolicy resource
     /// 
     /// ## Example Usage
-    /// ### Global
+    /// ### Network Firewall Policy Full
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
@@ -22,10 +23,9 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var primary = new Gcp.Compute.NetworkFirewallPolicy("primary", new()
+    ///     var policy = new Gcp.Compute.NetworkFirewallPolicy("policy", new()
     ///     {
-    ///         Description = "Sample global network firewall policy",
-    ///         Project = "my-project-name",
+    ///         Description = "Terraform test",
     ///     });
     /// 
     /// });
@@ -80,7 +80,6 @@ namespace Pulumi.Gcp.Compute
         /// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Output("name")]
@@ -93,7 +92,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string> NetworkFirewallPolicyId { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
@@ -172,14 +172,14 @@ namespace Pulumi.Gcp.Compute
         /// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
@@ -214,7 +214,6 @@ namespace Pulumi.Gcp.Compute
         /// User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
         /// 
         /// 
-        /// 
         /// - - -
         /// </summary>
         [Input("name")]
@@ -227,7 +226,8 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NetworkFirewallPolicyId { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }

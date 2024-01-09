@@ -379,7 +379,9 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A reference to a Topic resource.
+     * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+     * (as in the id property of a google_pubsub_topic), or just a topic name if
+     * the topic is in the same project as the subscription.
      * 
      * ***
      * 
@@ -388,7 +390,9 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> topic;
 
     /**
-     * @return A reference to a Topic resource.
+     * @return A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+     * (as in the id property of a google_pubsub_topic), or just a topic name if
+     * the topic is in the same project as the subscription.
      * 
      * ***
      * 
@@ -880,7 +884,9 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic A reference to a Topic resource.
+         * @param topic A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+         * (as in the id property of a google_pubsub_topic), or just a topic name if
+         * the topic is in the same project as the subscription.
          * 
          * ***
          * 
@@ -893,7 +899,9 @@ public final class SubscriptionArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param topic A reference to a Topic resource.
+         * @param topic A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+         * (as in the id property of a google_pubsub_topic), or just a topic name if
+         * the topic is in the same project as the subscription.
          * 
          * ***
          * 

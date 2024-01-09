@@ -18,6 +18,8 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
     private @Nullable Boolean enableConfidentialCompute;
     private @Nullable String image;
     private @Nullable Map<String,Object> labels;
+    private @Nullable Integer provisionedIops;
+    private @Nullable Integer provisionedThroughput;
     private @Nullable Map<String,Object> resourceManagerTags;
     private @Nullable Integer size;
     private @Nullable String type;
@@ -31,6 +33,12 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
     }
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
+    }
+    public Optional<Integer> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+    public Optional<Integer> provisionedThroughput() {
+        return Optional.ofNullable(this.provisionedThroughput);
     }
     public Map<String,Object> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
@@ -54,6 +62,8 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
         private @Nullable Boolean enableConfidentialCompute;
         private @Nullable String image;
         private @Nullable Map<String,Object> labels;
+        private @Nullable Integer provisionedIops;
+        private @Nullable Integer provisionedThroughput;
         private @Nullable Map<String,Object> resourceManagerTags;
         private @Nullable Integer size;
         private @Nullable String type;
@@ -63,6 +73,8 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
+    	      this.provisionedIops = defaults.provisionedIops;
+    	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.size = defaults.size;
     	      this.type = defaults.type;
@@ -84,6 +96,18 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
         public Builder labels(@Nullable Map<String,Object> labels) {
 
             this.labels = labels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionedIops(@Nullable Integer provisionedIops) {
+
+            this.provisionedIops = provisionedIops;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionedThroughput(@Nullable Integer provisionedThroughput) {
+
+            this.provisionedThroughput = provisionedThroughput;
             return this;
         }
         @CustomType.Setter
@@ -109,6 +133,8 @@ public final class InstanceFromMachineImageBootDiskInitializeParams {
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
             _resultValue.image = image;
             _resultValue.labels = labels;
+            _resultValue.provisionedIops = provisionedIops;
+            _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.size = size;
             _resultValue.type = type;

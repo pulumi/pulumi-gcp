@@ -145,6 +145,7 @@ type LookupInstanceTemplateResult struct {
 	// Provider if no value is given.
 	Region                string                                   `pulumi:"region"`
 	ReservationAffinities []GetInstanceTemplateReservationAffinity `pulumi:"reservationAffinities"`
+	ResourceManagerTags   map[string]string                        `pulumi:"resourceManagerTags"`
 	// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
 	ResourcePolicies []string `pulumi:"resourcePolicies"`
 	// The scheduling strategy to use. More details about
@@ -365,6 +366,10 @@ func (o LookupInstanceTemplateResultOutput) ReservationAffinities() GetInstanceT
 	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateReservationAffinity {
 		return v.ReservationAffinities
 	}).(GetInstanceTemplateReservationAffinityArrayOutput)
+}
+
+func (o LookupInstanceTemplateResultOutput) ResourceManagerTags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceTemplateResult) map[string]string { return v.ResourceManagerTags }).(pulumi.StringMapOutput)
 }
 
 // (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.

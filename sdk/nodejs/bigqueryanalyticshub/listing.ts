@@ -45,6 +45,39 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Bigquery Analyticshub Listing Restricted
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const listingDataExchange = new gcp.bigqueryanalyticshub.DataExchange("listingDataExchange", {
+ *     location: "US",
+ *     dataExchangeId: "my_data_exchange",
+ *     displayName: "my_data_exchange",
+ *     description: "example data exchange",
+ * });
+ * const listingDataset = new gcp.bigquery.Dataset("listingDataset", {
+ *     datasetId: "my_listing",
+ *     friendlyName: "my_listing",
+ *     description: "example data exchange",
+ *     location: "US",
+ * });
+ * const listingListing = new gcp.bigqueryanalyticshub.Listing("listingListing", {
+ *     location: "US",
+ *     dataExchangeId: listingDataExchange.dataExchangeId,
+ *     listingId: "my_listing",
+ *     displayName: "my_listing",
+ *     description: "example data exchange",
+ *     bigqueryDataset: {
+ *         dataset: listingDataset.id,
+ *     },
+ *     restrictedExportConfig: {
+ *         enabled: true,
+ *         restrictQueryResult: true,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -162,6 +195,11 @@ export class Listing extends pulumi.CustomResource {
      * Email or URL of the request access of the listing. Subscribers can use this reference to request access.
      */
     public readonly requestAccess!: pulumi.Output<string | undefined>;
+    /**
+     * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
+     */
+    public readonly restrictedExportConfig!: pulumi.Output<outputs.bigqueryanalyticshub.ListingRestrictedExportConfig | undefined>;
 
     /**
      * Create a Listing resource with the given unique name, arguments, and options.
@@ -191,6 +229,7 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["publisher"] = state ? state.publisher : undefined;
             resourceInputs["requestAccess"] = state ? state.requestAccess : undefined;
+            resourceInputs["restrictedExportConfig"] = state ? state.restrictedExportConfig : undefined;
         } else {
             const args = argsOrState as ListingArgs | undefined;
             if ((!args || args.bigqueryDataset === undefined) && !opts.urn) {
@@ -222,6 +261,7 @@ export class Listing extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["publisher"] = args ? args.publisher : undefined;
             resourceInputs["requestAccess"] = args ? args.requestAccess : undefined;
+            resourceInputs["restrictedExportConfig"] = args ? args.restrictedExportConfig : undefined;
             resourceInputs["name"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -297,6 +337,11 @@ export interface ListingState {
      * Email or URL of the request access of the listing. Subscribers can use this reference to request access.
      */
     requestAccess?: pulumi.Input<string>;
+    /**
+     * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
+     */
+    restrictedExportConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingRestrictedExportConfig>;
 }
 
 /**
@@ -363,4 +408,9 @@ export interface ListingArgs {
      * Email or URL of the request access of the listing. Subscribers can use this reference to request access.
      */
     requestAccess?: pulumi.Input<string>;
+    /**
+     * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
+     */
+    restrictedExportConfig?: pulumi.Input<inputs.bigqueryanalyticshub.ListingRestrictedExportConfig>;
 }

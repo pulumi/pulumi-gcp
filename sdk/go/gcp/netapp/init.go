@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:netapp/activeDirectory:ActiveDirectory":
+		r = &ActiveDirectory{}
+	case "gcp:netapp/backupVault:BackupVault":
+		r = &BackupVault{}
 	case "gcp:netapp/storagePool:StoragePool":
 		r = &StoragePool{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"netapp/activeDirectory",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"netapp/backupVault",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"netapp/storagePool",

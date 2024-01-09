@@ -46,6 +46,7 @@ import com.pulumi.gcp.container.outputs.ClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.ClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.ClusterTpuConfig;
 import com.pulumi.gcp.container.outputs.ClusterVerticalPodAutoscaling;
+import com.pulumi.gcp.container.outputs.ClusterWorkloadAltsConfig;
 import com.pulumi.gcp.container.outputs.ClusterWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -688,16 +689,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Fleet configuration for the cluster. Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Export(name="fleet", refs={ClusterFleet.class}, tree="[0]")
     private Output</* @Nullable */ ClusterFleet> fleet;
 
     /**
      * @return Fleet configuration for the cluster. Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Output<Optional<ClusterFleet>> fleet() {
@@ -1538,6 +1535,26 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<ClusterVerticalPodAutoscaling> verticalPodAutoscaling() {
         return this.verticalPodAutoscaling;
+    }
+    /**
+     * )
+     * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Export(name="workloadAltsConfig", refs={ClusterWorkloadAltsConfig.class}, tree="[0]")
+    private Output<ClusterWorkloadAltsConfig> workloadAltsConfig;
+
+    /**
+     * @return )
+     * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Output<ClusterWorkloadAltsConfig> workloadAltsConfig() {
+        return this.workloadAltsConfig;
     }
     /**
      * Workload Identity allows Kubernetes service accounts to act as a user-managed

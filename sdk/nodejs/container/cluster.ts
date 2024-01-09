@@ -264,8 +264,6 @@ export class Cluster extends pulumi.CustomResource {
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
      * Fleet configuration for the cluster. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     public readonly fleet!: pulumi.Output<outputs.container.ClusterFleet | undefined>;
     /**
@@ -553,6 +551,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.ClusterVerticalPodAutoscaling>;
     /**
+     * )
+     * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    public readonly workloadAltsConfig!: pulumi.Output<outputs.container.ClusterWorkloadAltsConfig>;
+    /**
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
@@ -645,6 +650,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["tpuConfig"] = state ? state.tpuConfig : undefined;
             resourceInputs["tpuIpv4CidrBlock"] = state ? state.tpuIpv4CidrBlock : undefined;
             resourceInputs["verticalPodAutoscaling"] = state ? state.verticalPodAutoscaling : undefined;
+            resourceInputs["workloadAltsConfig"] = state ? state.workloadAltsConfig : undefined;
             resourceInputs["workloadIdentityConfig"] = state ? state.workloadIdentityConfig : undefined;
         } else {
             const args = argsOrState as ClusterArgs | undefined;
@@ -714,6 +720,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["subnetwork"] = args ? args.subnetwork : undefined;
             resourceInputs["tpuConfig"] = args ? args.tpuConfig : undefined;
             resourceInputs["verticalPodAutoscaling"] = args ? args.verticalPodAutoscaling : undefined;
+            resourceInputs["workloadAltsConfig"] = args ? args.workloadAltsConfig : undefined;
             resourceInputs["workloadIdentityConfig"] = args ? args.workloadIdentityConfig : undefined;
             resourceInputs["endpoint"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
@@ -875,8 +882,6 @@ export interface ClusterState {
     endpoint?: pulumi.Input<string>;
     /**
      * Fleet configuration for the cluster. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     fleet?: pulumi.Input<inputs.container.ClusterFleet>;
     /**
@@ -1164,6 +1169,13 @@ export interface ClusterState {
      */
     verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
+     * )
+     * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    workloadAltsConfig?: pulumi.Input<inputs.container.ClusterWorkloadAltsConfig>;
+    /**
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
      * Structure is documented below.
@@ -1314,8 +1326,6 @@ export interface ClusterArgs {
     enableTpu?: pulumi.Input<boolean>;
     /**
      * Fleet configuration for the cluster. Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     fleet?: pulumi.Input<inputs.container.ClusterFleet>;
     /**
@@ -1574,6 +1584,13 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
+    /**
+     * )
+     * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    workloadAltsConfig?: pulumi.Input<inputs.container.ClusterWorkloadAltsConfig>;
     /**
      * Workload Identity allows Kubernetes service accounts to act as a user-managed
      * [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).

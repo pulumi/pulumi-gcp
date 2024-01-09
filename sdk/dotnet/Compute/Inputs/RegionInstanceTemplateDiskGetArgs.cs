@@ -108,6 +108,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("provisionedIops")]
         public Input<int>? ProvisionedIops { get; set; }
 
+        [Input("resourceManagerTags")]
+        private InputMap<string>? _resourceManagerTags;
+
+        /// <summary>
+        /// A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        /// </summary>
+        public InputMap<string> ResourceManagerTags
+        {
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<string>());
+            set => _resourceManagerTags = value;
+        }
+
         /// <summary>
         /// - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         /// </summary>

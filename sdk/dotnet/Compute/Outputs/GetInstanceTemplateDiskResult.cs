@@ -73,6 +73,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         /// </summary>
         public readonly int ProvisionedIops;
+        public readonly ImmutableDictionary<string, string> ResourceManagerTags;
         /// <summary>
         /// (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         /// </summary>
@@ -125,6 +126,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int provisionedIops,
 
+            ImmutableDictionary<string, string> resourceManagerTags,
+
             ImmutableArray<string> resourcePolicies,
 
             string source,
@@ -150,6 +153,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Labels = labels;
             Mode = mode;
             ProvisionedIops = provisionedIops;
+            ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;
             Source = source;
             SourceImage = sourceImage;

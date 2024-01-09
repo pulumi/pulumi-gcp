@@ -55,16 +55,16 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
     }
 
     /**
-     * The roles associated with the GKE node pool.
-     * One of `&#34;DEFAULT&#34;`, `&#34;CONTROLLER&#34;`, `&#34;SPARK_DRIVER&#34;` or `&#34;SPARK_EXECUTOR&#34;`.
+     * Node group roles.
+     * One of `&#34;DRIVER&#34;`.
      * 
      */
     @Import(name="roles", required=true)
     private Output<List<String>> roles;
 
     /**
-     * @return The roles associated with the GKE node pool.
-     * One of `&#34;DEFAULT&#34;`, `&#34;CONTROLLER&#34;`, `&#34;SPARK_DRIVER&#34;` or `&#34;SPARK_EXECUTOR&#34;`.
+     * @return Node group roles.
+     * One of `&#34;DRIVER&#34;`.
      * 
      */
     public Output<List<String>> roles() {
@@ -146,8 +146,8 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param roles The roles associated with the GKE node pool.
-         * One of `&#34;DEFAULT&#34;`, `&#34;CONTROLLER&#34;`, `&#34;SPARK_DRIVER&#34;` or `&#34;SPARK_EXECUTOR&#34;`.
+         * @param roles Node group roles.
+         * One of `&#34;DRIVER&#34;`.
          * 
          * @return builder
          * 
@@ -158,8 +158,8 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param roles The roles associated with the GKE node pool.
-         * One of `&#34;DEFAULT&#34;`, `&#34;CONTROLLER&#34;`, `&#34;SPARK_DRIVER&#34;` or `&#34;SPARK_EXECUTOR&#34;`.
+         * @param roles Node group roles.
+         * One of `&#34;DRIVER&#34;`.
          * 
          * @return builder
          * 
@@ -169,8 +169,8 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         }
 
         /**
-         * @param roles The roles associated with the GKE node pool.
-         * One of `&#34;DEFAULT&#34;`, `&#34;CONTROLLER&#34;`, `&#34;SPARK_DRIVER&#34;` or `&#34;SPARK_EXECUTOR&#34;`.
+         * @param roles Node group roles.
+         * One of `&#34;DRIVER&#34;`.
          * 
          * @return builder
          * 

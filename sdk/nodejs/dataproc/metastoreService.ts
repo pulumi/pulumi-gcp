@@ -91,6 +91,39 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dataproc Metastore Service Private Service Connect Custom Routes
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const net = new gcp.compute.Network("net", {autoCreateSubnetworks: false}, {
+ *     provider: google_beta,
+ * });
+ * const subnet = new gcp.compute.Subnetwork("subnet", {
+ *     region: "us-central1",
+ *     network: net.id,
+ *     ipCidrRange: "10.0.0.0/22",
+ *     privateIpGoogleAccess: true,
+ * }, {
+ *     provider: google_beta,
+ * });
+ * const _default = new gcp.dataproc.MetastoreService("default", {
+ *     serviceId: "metastore-srv",
+ *     location: "us-central1",
+ *     hiveMetastoreConfig: {
+ *         version: "3.1.2",
+ *     },
+ *     networkConfig: {
+ *         consumers: [{
+ *             subnetwork: subnet.id,
+ *         }],
+ *         customRoutesEnabled: true,
+ *     },
+ * }, {
+ *     provider: google_beta,
+ * });
+ * ```
  * ### Dataproc Metastore Service Dpms2
  *
  * ```typescript
@@ -230,6 +263,7 @@ export class MetastoreService extends pulumi.CustomResource {
     public readonly maintenanceWindow!: pulumi.Output<outputs.dataproc.MetastoreServiceMaintenanceWindow | undefined>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      */
     public readonly metadataIntegration!: pulumi.Output<outputs.dataproc.MetastoreServiceMetadataIntegration | undefined>;
     /**
@@ -431,6 +465,7 @@ export interface MetastoreServiceState {
     maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      */
     metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration>;
     /**
@@ -546,6 +581,7 @@ export interface MetastoreServiceArgs {
     maintenanceWindow?: pulumi.Input<inputs.dataproc.MetastoreServiceMaintenanceWindow>;
     /**
      * The setting that defines how metastore metadata should be integrated with external services and systems.
+     * Structure is documented below.
      */
     metadataIntegration?: pulumi.Input<inputs.dataproc.MetastoreServiceMetadataIntegration>;
     /**

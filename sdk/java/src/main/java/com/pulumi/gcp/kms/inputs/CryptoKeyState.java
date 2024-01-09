@@ -5,9 +5,11 @@ package com.pulumi.gcp.kms.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.kms.inputs.CryptoKeyPrimaryArgs;
 import com.pulumi.gcp.kms.inputs.CryptoKeyVersionTemplateArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
@@ -123,6 +125,25 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+     * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="primaries")
+    private @Nullable Output<List<CryptoKeyPrimaryArgs>> primaries;
+
+    /**
+     * @return A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+     * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<CryptoKeyPrimaryArgs>>> primaries() {
+        return Optional.ofNullable(this.primaries);
+    }
+
+    /**
      * The combination of labels configured directly on the resource
      * and default labels configured on the provider.
      * 
@@ -224,6 +245,7 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
         this.keyRing = $.keyRing;
         this.labels = $.labels;
         this.name = $.name;
+        this.primaries = $.primaries;
         this.pulumiLabels = $.pulumiLabels;
         this.purpose = $.purpose;
         this.rotationPeriod = $.rotationPeriod;
@@ -387,6 +409,43 @@ public final class CryptoKeyState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param primaries A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+         * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaries(@Nullable Output<List<CryptoKeyPrimaryArgs>> primaries) {
+            $.primaries = primaries;
+            return this;
+        }
+
+        /**
+         * @param primaries A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+         * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaries(List<CryptoKeyPrimaryArgs> primaries) {
+            return primaries(Output.of(primaries));
+        }
+
+        /**
+         * @param primaries A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+         * Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder primaries(CryptoKeyPrimaryArgs... primaries) {
+            return primaries(List.of(primaries));
         }
 
         /**

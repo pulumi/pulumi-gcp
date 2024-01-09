@@ -29,7 +29,8 @@ class ListingArgs:
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
-                 request_access: Optional[pulumi.Input[str]] = None):
+                 request_access: Optional[pulumi.Input[str]] = None,
+                 restricted_export_config: Optional[pulumi.Input['ListingRestrictedExportConfigArgs']] = None):
         """
         The set of arguments for constructing a Listing resource.
         :param pulumi.Input['ListingBigqueryDatasetArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
@@ -50,6 +51,8 @@ class ListingArgs:
         :param pulumi.Input['ListingPublisherArgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
+        :param pulumi.Input['ListingRestrictedExportConfigArgs'] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
+               Structure is documented below.
         """
         pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
         pulumi.set(__self__, "data_exchange_id", data_exchange_id)
@@ -74,6 +77,8 @@ class ListingArgs:
             pulumi.set(__self__, "publisher", publisher)
         if request_access is not None:
             pulumi.set(__self__, "request_access", request_access)
+        if restricted_export_config is not None:
+            pulumi.set(__self__, "restricted_export_config", restricted_export_config)
 
     @property
     @pulumi.getter(name="bigqueryDataset")
@@ -247,6 +252,19 @@ class ListingArgs:
     def request_access(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_access", value)
 
+    @property
+    @pulumi.getter(name="restrictedExportConfig")
+    def restricted_export_config(self) -> Optional[pulumi.Input['ListingRestrictedExportConfigArgs']]:
+        """
+        If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restricted_export_config")
+
+    @restricted_export_config.setter
+    def restricted_export_config(self, value: Optional[pulumi.Input['ListingRestrictedExportConfigArgs']]):
+        pulumi.set(self, "restricted_export_config", value)
+
 
 @pulumi.input_type
 class _ListingState:
@@ -265,7 +283,8 @@ class _ListingState:
                  primary_contact: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  publisher: Optional[pulumi.Input['ListingPublisherArgs']] = None,
-                 request_access: Optional[pulumi.Input[str]] = None):
+                 request_access: Optional[pulumi.Input[str]] = None,
+                 restricted_export_config: Optional[pulumi.Input['ListingRestrictedExportConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Listing resources.
         :param pulumi.Input['ListingBigqueryDatasetArgs'] bigquery_dataset: Shared dataset i.e. BigQuery dataset source.
@@ -287,6 +306,8 @@ class _ListingState:
         :param pulumi.Input['ListingPublisherArgs'] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
+        :param pulumi.Input['ListingRestrictedExportConfigArgs'] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
+               Structure is documented below.
         """
         if bigquery_dataset is not None:
             pulumi.set(__self__, "bigquery_dataset", bigquery_dataset)
@@ -318,6 +339,8 @@ class _ListingState:
             pulumi.set(__self__, "publisher", publisher)
         if request_access is not None:
             pulumi.set(__self__, "request_access", request_access)
+        if restricted_export_config is not None:
+            pulumi.set(__self__, "restricted_export_config", restricted_export_config)
 
     @property
     @pulumi.getter(name="bigqueryDataset")
@@ -503,6 +526,19 @@ class _ListingState:
     def request_access(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "request_access", value)
 
+    @property
+    @pulumi.getter(name="restrictedExportConfig")
+    def restricted_export_config(self) -> Optional[pulumi.Input['ListingRestrictedExportConfigArgs']]:
+        """
+        If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restricted_export_config")
+
+    @restricted_export_config.setter
+    def restricted_export_config(self, value: Optional[pulumi.Input['ListingRestrictedExportConfigArgs']]):
+        pulumi.set(self, "restricted_export_config", value)
+
 
 class Listing(pulumi.CustomResource):
     @overload
@@ -523,6 +559,7 @@ class Listing(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArgs']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
+                 restricted_export_config: Optional[pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']]] = None,
                  __props__=None):
         """
         A Bigquery Analytics Hub data exchange listing
@@ -558,6 +595,36 @@ class Listing(pulumi.CustomResource):
             description="example data exchange",
             bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
                 dataset=listing_dataset.id,
+            ))
+        ```
+        ### Bigquery Analyticshub Listing Restricted
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example data exchange")
+        listing_dataset = gcp.bigquery.Dataset("listingDataset",
+            dataset_id="my_listing",
+            friendly_name="my_listing",
+            description="example data exchange",
+            location="US")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
+            location="US",
+            data_exchange_id=listing_data_exchange.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example data exchange",
+            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
+                dataset=listing_dataset.id,
+            ),
+            restricted_export_config=gcp.bigqueryanalyticshub.ListingRestrictedExportConfigArgs(
+                enabled=True,
+                restrict_query_result=True,
             ))
         ```
 
@@ -605,6 +672,8 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
+        :param pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
+               Structure is documented below.
         """
         ...
     @overload
@@ -646,6 +715,36 @@ class Listing(pulumi.CustomResource):
             description="example data exchange",
             bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
                 dataset=listing_dataset.id,
+            ))
+        ```
+        ### Bigquery Analyticshub Listing Restricted
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        listing_data_exchange = gcp.bigqueryanalyticshub.DataExchange("listingDataExchange",
+            location="US",
+            data_exchange_id="my_data_exchange",
+            display_name="my_data_exchange",
+            description="example data exchange")
+        listing_dataset = gcp.bigquery.Dataset("listingDataset",
+            dataset_id="my_listing",
+            friendly_name="my_listing",
+            description="example data exchange",
+            location="US")
+        listing_listing = gcp.bigqueryanalyticshub.Listing("listingListing",
+            location="US",
+            data_exchange_id=listing_data_exchange.data_exchange_id,
+            listing_id="my_listing",
+            display_name="my_listing",
+            description="example data exchange",
+            bigquery_dataset=gcp.bigqueryanalyticshub.ListingBigqueryDatasetArgs(
+                dataset=listing_dataset.id,
+            ),
+            restricted_export_config=gcp.bigqueryanalyticshub.ListingRestrictedExportConfigArgs(
+                enabled=True,
+                restrict_query_result=True,
             ))
         ```
 
@@ -702,6 +801,7 @@ class Listing(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArgs']]] = None,
                  request_access: Optional[pulumi.Input[str]] = None,
+                 restricted_export_config: Optional[pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -735,6 +835,7 @@ class Listing(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["publisher"] = publisher
             __props__.__dict__["request_access"] = request_access
+            __props__.__dict__["restricted_export_config"] = restricted_export_config
             __props__.__dict__["name"] = None
         super(Listing, __self__).__init__(
             'gcp:bigqueryanalyticshub/listing:Listing',
@@ -760,7 +861,8 @@ class Listing(pulumi.CustomResource):
             primary_contact: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             publisher: Optional[pulumi.Input[pulumi.InputType['ListingPublisherArgs']]] = None,
-            request_access: Optional[pulumi.Input[str]] = None) -> 'Listing':
+            request_access: Optional[pulumi.Input[str]] = None,
+            restricted_export_config: Optional[pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']]] = None) -> 'Listing':
         """
         Get an existing Listing resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -787,6 +889,8 @@ class Listing(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ListingPublisherArgs']] publisher: Details of the publisher who owns the listing and who can share the source data.
                Structure is documented below.
         :param pulumi.Input[str] request_access: Email or URL of the request access of the listing. Subscribers can use this reference to request access.
+        :param pulumi.Input[pulumi.InputType['ListingRestrictedExportConfigArgs']] restricted_export_config: If set, restricted export configuration will be propagated and enforced on the linked dataset.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -807,6 +911,7 @@ class Listing(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["publisher"] = publisher
         __props__.__dict__["request_access"] = request_access
+        __props__.__dict__["restricted_export_config"] = restricted_export_config
         return Listing(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -932,4 +1037,13 @@ class Listing(pulumi.CustomResource):
         Email or URL of the request access of the listing. Subscribers can use this reference to request access.
         """
         return pulumi.get(self, "request_access")
+
+    @property
+    @pulumi.getter(name="restrictedExportConfig")
+    def restricted_export_config(self) -> pulumi.Output[Optional['outputs.ListingRestrictedExportConfig']]:
+        """
+        If set, restricted export configuration will be propagated and enforced on the linked dataset.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "restricted_export_config")
 

@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  *         var exampleTopic = new Topic(&#34;exampleTopic&#34;);
  * 
  *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .topic(exampleTopic.name())
+ *             .topic(exampleTopic.id())
  *             .ackDeadlineSeconds(20)
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .pushConfig(SubscriptionPushConfigArgs.builder()
@@ -105,7 +105,7 @@ import javax.annotation.Nullable;
  *         var exampleTopic = new Topic(&#34;exampleTopic&#34;);
  * 
  *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .topic(exampleTopic.name())
+ *             .topic(exampleTopic.id())
  *             .labels(Map.of(&#34;foo&#34;, &#34;bar&#34;))
  *             .messageRetentionDuration(&#34;1200s&#34;)
  *             .retainAckedMessages(true)
@@ -117,42 +117,6 @@ import javax.annotation.Nullable;
  *                 .minimumBackoff(&#34;10s&#34;)
  *                 .build())
  *             .enableMessageOrdering(false)
- *             .build());
- * 
- *     }
- * }
- * ```
- * ### Pubsub Subscription Different Project
- * ```java
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.pubsub.Topic;
- * import com.pulumi.gcp.pubsub.TopicArgs;
- * import com.pulumi.gcp.pubsub.Subscription;
- * import com.pulumi.gcp.pubsub.SubscriptionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var exampleTopic = new Topic(&#34;exampleTopic&#34;, TopicArgs.builder()        
- *             .project(&#34;topic-project&#34;)
- *             .build());
- * 
- *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .project(&#34;subscription-project&#34;)
- *             .topic(exampleTopic.name())
  *             .build());
  * 
  *     }
@@ -187,7 +151,7 @@ import javax.annotation.Nullable;
  *         var exampleDeadLetter = new Topic(&#34;exampleDeadLetter&#34;);
  * 
  *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .topic(exampleTopic.name())
+ *             .topic(exampleTopic.id())
  *             .deadLetterPolicy(SubscriptionDeadLetterPolicyArgs.builder()
  *                 .deadLetterTopic(exampleDeadLetter.id())
  *                 .maxDeliveryAttempts(10)
@@ -267,7 +231,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var exampleSubscription = new Subscription(&#34;exampleSubscription&#34;, SubscriptionArgs.builder()        
- *             .topic(exampleTopic.name())
+ *             .topic(exampleTopic.id())
  *             .bigqueryConfig(SubscriptionBigqueryConfigArgs.builder()
  *                 .table(Output.tuple(testTable.project(), testTable.datasetId(), testTable.tableId()).applyValue(values -&gt; {
  *                     var project = values.t1;
@@ -682,7 +646,9 @@ public class Subscription extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.retryPolicy);
     }
     /**
-     * A reference to a Topic resource.
+     * A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+     * (as in the id property of a google_pubsub_topic), or just a topic name if
+     * the topic is in the same project as the subscription.
      * 
      * ***
      * 
@@ -691,7 +657,9 @@ public class Subscription extends com.pulumi.resources.CustomResource {
     private Output<String> topic;
 
     /**
-     * @return A reference to a Topic resource.
+     * @return A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+     * (as in the id property of a google_pubsub_topic), or just a topic name if
+     * the topic is in the same project as the subscription.
      * 
      * ***
      * 

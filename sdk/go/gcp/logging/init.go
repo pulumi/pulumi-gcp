@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &FolderBucketConfig{}
 	case "gcp:logging/folderExclusion:FolderExclusion":
 		r = &FolderExclusion{}
+	case "gcp:logging/folderSettings:FolderSettings":
+		r = &FolderSettings{}
 	case "gcp:logging/folderSink:FolderSink":
 		r = &FolderSink{}
 	case "gcp:logging/linkedDataset:LinkedDataset":
@@ -43,6 +45,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &OrganizationBucketConfig{}
 	case "gcp:logging/organizationExclusion:OrganizationExclusion":
 		r = &OrganizationExclusion{}
+	case "gcp:logging/organizationSettings:OrganizationSettings":
+		r = &OrganizationSettings{}
 	case "gcp:logging/organizationSink:OrganizationSink":
 		r = &OrganizationSink{}
 	case "gcp:logging/projectBucketConfig:ProjectBucketConfig":
@@ -91,6 +95,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"logging/folderSettings",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"logging/folderSink",
 		&module{version},
 	)
@@ -117,6 +126,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"logging/organizationExclusion",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"logging/organizationSettings",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

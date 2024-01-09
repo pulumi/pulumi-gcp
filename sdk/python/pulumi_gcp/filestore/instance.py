@@ -35,7 +35,7 @@ class InstanceArgs:
                only a single network is supported.
                Structure is documented below.
         :param pulumi.Input[str] tier: The service tier of the instance.
-               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         :param pulumi.Input[str] description: A description of the instance.
         :param pulumi.Input[str] kms_key_name: KMS key name used for data encryption.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Resource labels to represent user-provided metadata.
@@ -105,7 +105,7 @@ class InstanceArgs:
     def tier(self) -> pulumi.Input[str]:
         """
         The service tier of the instance.
-        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         """
         return pulumi.get(self, "tier")
 
@@ -250,7 +250,7 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance.
-               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
                
@@ -447,7 +447,7 @@ class _InstanceState:
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
         The service tier of the instance.
-        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         """
         return pulumi.get(self, "tier")
 
@@ -618,7 +618,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] tier: The service tier of the instance.
-               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
                
@@ -849,7 +849,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] tier: The service tier of the instance.
-               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+               Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         :param pulumi.Input[str] zone: (Optional, Deprecated)
                The name of the Filestore zone of the instance.
                
@@ -986,7 +986,7 @@ class Instance(pulumi.CustomResource):
     def tier(self) -> pulumi.Output[str]:
         """
         The service tier of the instance.
-        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL and ENTERPRISE
+        Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         """
         return pulumi.get(self, "tier")
 

@@ -36,6 +36,7 @@ class RegionInstanceTemplateArgs:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['RegionInstanceTemplateReservationAffinityArgs']] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input['RegionInstanceTemplateSchedulingArgs']] = None,
                  service_account: Optional[pulumi.Input['RegionInstanceTemplateServiceAccountArgs']] = None,
@@ -92,6 +93,7 @@ class RegionInstanceTemplateArgs:
                If region is not provided, the provider region is used.
         :param pulumi.Input['RegionInstanceTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['RegionInstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
@@ -138,6 +140,8 @@ class RegionInstanceTemplateArgs:
             pulumi.set(__self__, "region", region)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if scheduling is not None:
@@ -419,6 +423,18 @@ class RegionInstanceTemplateArgs:
         pulumi.set(self, "reservation_affinity", value)
 
     @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[str]]:
         """
@@ -507,6 +523,7 @@ class _RegionInstanceTemplateState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input['RegionInstanceTemplateReservationAffinityArgs']] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input['RegionInstanceTemplateSchedulingArgs']] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -568,6 +585,7 @@ class _RegionInstanceTemplateState:
                If region is not provided, the provider region is used.
         :param pulumi.Input['RegionInstanceTemplateReservationAffinityArgs'] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input['RegionInstanceTemplateSchedulingArgs'] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
@@ -624,6 +642,8 @@ class _RegionInstanceTemplateState:
             pulumi.set(__self__, "region", region)
         if reservation_affinity is not None:
             pulumi.set(__self__, "reservation_affinity", reservation_affinity)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if scheduling is not None:
@@ -945,6 +965,18 @@ class _RegionInstanceTemplateState:
         pulumi.set(self, "reservation_affinity", value)
 
     @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
+
+    @resource_manager_tags.setter
+    def resource_manager_tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "resource_manager_tags", value)
+
+    @property
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1056,6 +1088,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateReservationAffinityArgs']]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateSchedulingArgs']]] = None,
                  service_account: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateServiceAccountArgs']]] = None,
@@ -1138,6 +1171,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                If region is not provided, the provider region is used.
         :param pulumi.Input[pulumi.InputType['RegionInstanceTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['RegionInstanceTemplateSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
@@ -1212,6 +1246,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  reservation_affinity: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateReservationAffinityArgs']]] = None,
+                 resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  resource_policies: Optional[pulumi.Input[str]] = None,
                  scheduling: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateSchedulingArgs']]] = None,
                  service_account: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateServiceAccountArgs']]] = None,
@@ -1250,6 +1285,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
             __props__.__dict__["reservation_affinity"] = reservation_affinity
+            __props__.__dict__["resource_manager_tags"] = resource_manager_tags
             __props__.__dict__["resource_policies"] = resource_policies
             __props__.__dict__["scheduling"] = scheduling
             __props__.__dict__["service_account"] = service_account
@@ -1295,6 +1331,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             reservation_affinity: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateReservationAffinityArgs']]] = None,
+            resource_manager_tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             resource_policies: Optional[pulumi.Input[str]] = None,
             scheduling: Optional[pulumi.Input[pulumi.InputType['RegionInstanceTemplateSchedulingArgs']]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -1361,6 +1398,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
                If region is not provided, the provider region is used.
         :param pulumi.Input[pulumi.InputType['RegionInstanceTemplateReservationAffinityArgs']] reservation_affinity: Specifies the reservations that this instance can consume from.
                Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] resource_manager_tags: A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param pulumi.Input[str] resource_policies: - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[pulumi.InputType['RegionInstanceTemplateSchedulingArgs']] scheduling: The scheduling strategy to use. More details about
                this configuration option are detailed below.
@@ -1398,6 +1436,7 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["reservation_affinity"] = reservation_affinity
+        __props__.__dict__["resource_manager_tags"] = resource_manager_tags
         __props__.__dict__["resource_policies"] = resource_policies
         __props__.__dict__["scheduling"] = scheduling
         __props__.__dict__["self_link"] = self_link
@@ -1619,6 +1658,14 @@ class RegionInstanceTemplate(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "reservation_affinity")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter(name="resourcePolicies")

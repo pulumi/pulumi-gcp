@@ -39,6 +39,28 @@ public final class InstanceBootDiskInitializeParams {
      * 
      */
     private @Nullable Map<String,Object> labels;
+    /**
+     * @return Indicates how many IOPS to provision for the disk.
+     * This sets the number of I/O operations per second that the disk can handle.
+     * Values must be between 10,000 and 120,000. For more details,see the
+     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * Note: Updating currently is only supported for hyperdisk skus via disk update
+     * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+     * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+     * you&#39;ll need to manually delete and recreate it.
+     * 
+     */
+    private @Nullable Integer provisionedIops;
+    /**
+     * @return Indicates how much throughput to provision for the disk.
+     * This sets the number of throughput mb per second that the disk can handle.
+     * Values must be between 1 and 7,124. Note: Updating currently is only supported
+     * for hyperdisk skus via disk update api/gcloud without the need to delete and
+     * recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+     * To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it.
+     * 
+     */
+    private @Nullable Integer provisionedThroughput;
     private @Nullable Map<String,Object> resourceManagerTags;
     /**
      * @return The size of the image in gigabytes. If not specified, it
@@ -83,6 +105,32 @@ public final class InstanceBootDiskInitializeParams {
     public Map<String,Object> labels() {
         return this.labels == null ? Map.of() : this.labels;
     }
+    /**
+     * @return Indicates how many IOPS to provision for the disk.
+     * This sets the number of I/O operations per second that the disk can handle.
+     * Values must be between 10,000 and 120,000. For more details,see the
+     * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+     * Note: Updating currently is only supported for hyperdisk skus via disk update
+     * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+     * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+     * you&#39;ll need to manually delete and recreate it.
+     * 
+     */
+    public Optional<Integer> provisionedIops() {
+        return Optional.ofNullable(this.provisionedIops);
+    }
+    /**
+     * @return Indicates how much throughput to provision for the disk.
+     * This sets the number of throughput mb per second that the disk can handle.
+     * Values must be between 1 and 7,124. Note: Updating currently is only supported
+     * for hyperdisk skus via disk update api/gcloud without the need to delete and
+     * recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+     * To update your hyperdisk more frequently, you&#39;ll need to manually delete and recreate it.
+     * 
+     */
+    public Optional<Integer> provisionedThroughput() {
+        return Optional.ofNullable(this.provisionedThroughput);
+    }
     public Map<String,Object> resourceManagerTags() {
         return this.resourceManagerTags == null ? Map.of() : this.resourceManagerTags;
     }
@@ -114,6 +162,8 @@ public final class InstanceBootDiskInitializeParams {
         private @Nullable Boolean enableConfidentialCompute;
         private @Nullable String image;
         private @Nullable Map<String,Object> labels;
+        private @Nullable Integer provisionedIops;
+        private @Nullable Integer provisionedThroughput;
         private @Nullable Map<String,Object> resourceManagerTags;
         private @Nullable Integer size;
         private @Nullable String type;
@@ -123,6 +173,8 @@ public final class InstanceBootDiskInitializeParams {
     	      this.enableConfidentialCompute = defaults.enableConfidentialCompute;
     	      this.image = defaults.image;
     	      this.labels = defaults.labels;
+    	      this.provisionedIops = defaults.provisionedIops;
+    	      this.provisionedThroughput = defaults.provisionedThroughput;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.size = defaults.size;
     	      this.type = defaults.type;
@@ -144,6 +196,18 @@ public final class InstanceBootDiskInitializeParams {
         public Builder labels(@Nullable Map<String,Object> labels) {
 
             this.labels = labels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionedIops(@Nullable Integer provisionedIops) {
+
+            this.provisionedIops = provisionedIops;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder provisionedThroughput(@Nullable Integer provisionedThroughput) {
+
+            this.provisionedThroughput = provisionedThroughput;
             return this;
         }
         @CustomType.Setter
@@ -169,6 +233,8 @@ public final class InstanceBootDiskInitializeParams {
             _resultValue.enableConfidentialCompute = enableConfidentialCompute;
             _resultValue.image = image;
             _resultValue.labels = labels;
+            _resultValue.provisionedIops = provisionedIops;
+            _resultValue.provisionedThroughput = provisionedThroughput;
             _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.size = size;
             _resultValue.type = type;

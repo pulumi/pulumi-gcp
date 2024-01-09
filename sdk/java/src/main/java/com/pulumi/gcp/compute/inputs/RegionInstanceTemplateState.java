@@ -433,6 +433,21 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
     }
 
     /**
+     * A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * 
+     */
+    @Import(name="resourceManagerTags")
+    private @Nullable Output<Map<String,String>> resourceManagerTags;
+
+    /**
+     * @return A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> resourceManagerTags() {
+        return Optional.ofNullable(this.resourceManagerTags);
+    }
+
+    /**
      * - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      * 
      */
@@ -567,6 +582,7 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
         this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
         this.reservationAffinity = $.reservationAffinity;
+        this.resourceManagerTags = $.resourceManagerTags;
         this.resourcePolicies = $.resourcePolicies;
         this.scheduling = $.scheduling;
         this.selfLink = $.selfLink;
@@ -1167,6 +1183,27 @@ public final class RegionInstanceTemplateState extends com.pulumi.resources.Reso
          */
         public Builder reservationAffinity(RegionInstanceTemplateReservationAffinityArgs reservationAffinity) {
             return reservationAffinity(Output.of(reservationAffinity));
+        }
+
+        /**
+         * @param resourceManagerTags A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(@Nullable Output<Map<String,String>> resourceManagerTags) {
+            $.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+
+        /**
+         * @param resourceManagerTags A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
+            return resourceManagerTags(Output.of(resourceManagerTags));
         }
 
         /**

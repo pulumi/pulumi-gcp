@@ -88,6 +88,7 @@ public final class GetInstanceTemplateDisk {
      * 
      */
     private Integer provisionedIops;
+    private Map<String,String> resourceManagerTags;
     /**
      * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
@@ -214,6 +215,9 @@ public final class GetInstanceTemplateDisk {
     public Integer provisionedIops() {
         return this.provisionedIops;
     }
+    public Map<String,String> resourceManagerTags() {
+        return this.resourceManagerTags;
+    }
     /**
      * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
@@ -280,6 +284,7 @@ public final class GetInstanceTemplateDisk {
         private Map<String,String> labels;
         private String mode;
         private Integer provisionedIops;
+        private Map<String,String> resourceManagerTags;
         private List<String> resourcePolicies;
         private String source;
         private String sourceImage;
@@ -301,6 +306,7 @@ public final class GetInstanceTemplateDisk {
     	      this.labels = defaults.labels;
     	      this.mode = defaults.mode;
     	      this.provisionedIops = defaults.provisionedIops;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.source = defaults.source;
     	      this.sourceImage = defaults.sourceImage;
@@ -402,6 +408,14 @@ public final class GetInstanceTemplateDisk {
             return this;
         }
         @CustomType.Setter
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
+            if (resourceManagerTags == null) {
+              throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "resourceManagerTags");
+            }
+            this.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
             if (resourcePolicies == null) {
               throw new MissingRequiredPropertyException("GetInstanceTemplateDisk", "resourcePolicies");
@@ -479,6 +493,7 @@ public final class GetInstanceTemplateDisk {
             _resultValue.labels = labels;
             _resultValue.mode = mode;
             _resultValue.provisionedIops = provisionedIops;
+            _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.source = source;
             _resultValue.sourceImage = sourceImage;

@@ -653,6 +653,12 @@ __all__ = [
     'GetRegionNetworkEndpointGroupCloudFunctionResult',
     'GetRegionNetworkEndpointGroupCloudRunResult',
     'GetRegionNetworkEndpointGroupServerlessDeploymentResult',
+    'GetReservationShareSettingResult',
+    'GetReservationShareSettingProjectMapResult',
+    'GetReservationSpecificReservationResult',
+    'GetReservationSpecificReservationInstancePropertyResult',
+    'GetReservationSpecificReservationInstancePropertyGuestAcceleratorResult',
+    'GetReservationSpecificReservationInstancePropertyLocalSsdResult',
     'GetResourcePolicyDiskConsistencyGroupPolicyResult',
     'GetResourcePolicyGroupPlacementPolicyResult',
     'GetResourcePolicyInstanceSchedulePolicyResult',
@@ -5966,6 +5972,10 @@ class InstanceBootDiskInitializeParams(dict):
         suggest = None
         if key == "enableConfidentialCompute":
             suggest = "enable_confidential_compute"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
         elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
 
@@ -5984,6 +5994,8 @@ class InstanceBootDiskInitializeParams(dict):
                  enable_confidential_compute: Optional[bool] = None,
                  image: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
+                 provisioned_iops: Optional[int] = None,
+                 provisioned_throughput: Optional[int] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
                  type: Optional[str] = None):
@@ -6000,6 +6012,20 @@ class InstanceBootDiskInitializeParams(dict):
                These images can be referred by family name here.
         :param Mapping[str, Any] labels: A set of key/value label pairs assigned to the disk. This
                field is only applicable for persistent disks.
+        :param int provisioned_iops: Indicates how many IOPS to provision for the disk.
+               This sets the number of I/O operations per second that the disk can handle.
+               Values must be between 10,000 and 120,000. For more details,see the
+               [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+               Note: Updating currently is only supported for hyperdisk skus via disk update
+               api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+               for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+               you'll need to manually delete and recreate it.
+        :param int provisioned_throughput: Indicates how much throughput to provision for the disk.
+               This sets the number of throughput mb per second that the disk can handle.
+               Values must be between 1 and 7,124. Note: Updating currently is only supported
+               for hyperdisk skus via disk update api/gcloud without the need to delete and
+               recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+               To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param str type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
@@ -6010,6 +6036,10 @@ class InstanceBootDiskInitializeParams(dict):
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
@@ -6049,6 +6079,34 @@ class InstanceBootDiskInitializeParams(dict):
         field is only applicable for persistent disks.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[int]:
+        """
+        Indicates how many IOPS to provision for the disk.
+        This sets the number of I/O operations per second that the disk can handle.
+        Values must be between 10,000 and 120,000. For more details,see the
+        [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        Note: Updating currently is only supported for hyperdisk skus via disk update
+        api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+        for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+        you'll need to manually delete and recreate it.
+        """
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[int]:
+        """
+        Indicates how much throughput to provision for the disk.
+        This sets the number of throughput mb per second that the disk can handle.
+        Values must be between 1 and 7,124. Note: Updating currently is only supported
+        for hyperdisk skus via disk update api/gcloud without the need to delete and
+        recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+        To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+        """
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -6336,6 +6394,10 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
         suggest = None
         if key == "enableConfidentialCompute":
             suggest = "enable_confidential_compute"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
         elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
 
@@ -6354,6 +6416,8 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
                  enable_confidential_compute: Optional[bool] = None,
                  image: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
+                 provisioned_iops: Optional[int] = None,
+                 provisioned_throughput: Optional[int] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
                  type: Optional[str] = None):
@@ -6363,6 +6427,10 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
@@ -6384,6 +6452,16 @@ class InstanceFromMachineImageBootDiskInitializeParams(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[int]:
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -7457,6 +7535,10 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
         suggest = None
         if key == "enableConfidentialCompute":
             suggest = "enable_confidential_compute"
+        elif key == "provisionedIops":
+            suggest = "provisioned_iops"
+        elif key == "provisionedThroughput":
+            suggest = "provisioned_throughput"
         elif key == "resourceManagerTags":
             suggest = "resource_manager_tags"
 
@@ -7475,6 +7557,8 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
                  enable_confidential_compute: Optional[bool] = None,
                  image: Optional[str] = None,
                  labels: Optional[Mapping[str, Any]] = None,
+                 provisioned_iops: Optional[int] = None,
+                 provisioned_throughput: Optional[int] = None,
                  resource_manager_tags: Optional[Mapping[str, Any]] = None,
                  size: Optional[int] = None,
                  type: Optional[str] = None):
@@ -7484,6 +7568,10 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
             pulumi.set(__self__, "image", image)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
+        if provisioned_iops is not None:
+            pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if provisioned_throughput is not None:
+            pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if size is not None:
@@ -7505,6 +7593,16 @@ class InstanceFromTemplateBootDiskInitializeParams(dict):
     @pulumi.getter
     def labels(self) -> Optional[Mapping[str, Any]]:
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> Optional[int]:
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> Optional[int]:
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -10525,6 +10623,8 @@ class InstanceTemplateDisk(dict):
             suggest = "disk_type"
         elif key == "provisionedIops":
             suggest = "provisioned_iops"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
         elif key == "sourceImage":
@@ -10559,6 +10659,7 @@ class InstanceTemplateDisk(dict):
                  labels: Optional[Mapping[str, str]] = None,
                  mode: Optional[str] = None,
                  provisioned_iops: Optional[int] = None,
+                 resource_manager_tags: Optional[Mapping[str, str]] = None,
                  resource_policies: Optional[str] = None,
                  source: Optional[str] = None,
                  source_image: Optional[str] = None,
@@ -10602,6 +10703,7 @@ class InstanceTemplateDisk(dict):
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param Mapping[str, str] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
@@ -10651,6 +10753,8 @@ class InstanceTemplateDisk(dict):
             pulumi.set(__self__, "mode", mode)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if source is not None:
@@ -10777,6 +10881,14 @@ class InstanceTemplateDisk(dict):
         [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -18266,6 +18378,8 @@ class RegionInstanceTemplateDisk(dict):
             suggest = "disk_type"
         elif key == "provisionedIops":
             suggest = "provisioned_iops"
+        elif key == "resourceManagerTags":
+            suggest = "resource_manager_tags"
         elif key == "resourcePolicies":
             suggest = "resource_policies"
         elif key == "sourceImage":
@@ -18300,6 +18414,7 @@ class RegionInstanceTemplateDisk(dict):
                  labels: Optional[Mapping[str, str]] = None,
                  mode: Optional[str] = None,
                  provisioned_iops: Optional[int] = None,
+                 resource_manager_tags: Optional[Mapping[str, str]] = None,
                  resource_policies: Optional[str] = None,
                  source: Optional[str] = None,
                  source_image: Optional[str] = None,
@@ -18343,6 +18458,7 @@ class RegionInstanceTemplateDisk(dict):
                sets the number of I/O operations per second that the disk can handle.
                Values must be between 10,000 and 120,000. For more details, see the
                [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+        :param Mapping[str, str] resource_manager_tags: A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
         :param str resource_policies: - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         :param str source: The name (**not self_link**)
                of the disk (such as those managed by `compute.Disk`) to attach.
@@ -18392,6 +18508,8 @@ class RegionInstanceTemplateDisk(dict):
             pulumi.set(__self__, "mode", mode)
         if provisioned_iops is not None:
             pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        if resource_manager_tags is not None:
+            pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         if resource_policies is not None:
             pulumi.set(__self__, "resource_policies", resource_policies)
         if source is not None:
@@ -18518,6 +18636,14 @@ class RegionInstanceTemplateDisk(dict):
         [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Optional[Mapping[str, str]]:
+        """
+        A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        """
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -38145,6 +38271,8 @@ class GetInstanceBootDiskInitializeParamResult(dict):
                  enable_confidential_compute: bool,
                  image: str,
                  labels: Mapping[str, Any],
+                 provisioned_iops: int,
+                 provisioned_throughput: int,
                  resource_manager_tags: Mapping[str, Any],
                  size: int,
                  type: str):
@@ -38157,6 +38285,8 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
         pulumi.set(__self__, "image", image)
         pulumi.set(__self__, "labels", labels)
+        pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "provisioned_throughput", provisioned_throughput)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "size", size)
         pulumi.set(__self__, "type", type)
@@ -38181,6 +38311,16 @@ class GetInstanceBootDiskInitializeParamResult(dict):
         A set of key/value label pairs assigned to the disk.
         """
         return pulumi.get(self, "labels")
+
+    @property
+    @pulumi.getter(name="provisionedIops")
+    def provisioned_iops(self) -> int:
+        return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="provisionedThroughput")
+    def provisioned_throughput(self) -> int:
+        return pulumi.get(self, "provisioned_throughput")
 
     @property
     @pulumi.getter(name="resourceManagerTags")
@@ -39311,6 +39451,7 @@ class GetInstanceTemplateDiskResult(dict):
                  labels: Mapping[str, str],
                  mode: str,
                  provisioned_iops: int,
+                 resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  source: str,
                  source_image: str,
@@ -39370,6 +39511,7 @@ class GetInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_image", source_image)
@@ -39481,6 +39623,11 @@ class GetInstanceTemplateDiskResult(dict):
         [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -40479,6 +40626,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
                  labels: Mapping[str, str],
                  mode: str,
                  provisioned_iops: int,
+                 resource_manager_tags: Mapping[str, str],
                  resource_policies: Sequence[str],
                  source: str,
                  source_image: str,
@@ -40538,6 +40686,7 @@ class GetRegionInstanceTemplateDiskResult(dict):
         pulumi.set(__self__, "labels", labels)
         pulumi.set(__self__, "mode", mode)
         pulumi.set(__self__, "provisioned_iops", provisioned_iops)
+        pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
         pulumi.set(__self__, "resource_policies", resource_policies)
         pulumi.set(__self__, "source", source)
         pulumi.set(__self__, "source_image", source_image)
@@ -40649,6 +40798,11 @@ class GetRegionInstanceTemplateDiskResult(dict):
         [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
         """
         return pulumi.get(self, "provisioned_iops")
+
+    @property
+    @pulumi.getter(name="resourceManagerTags")
+    def resource_manager_tags(self) -> Mapping[str, str]:
+        return pulumi.get(self, "resource_manager_tags")
 
     @property
     @pulumi.getter(name="resourcePolicies")
@@ -41525,6 +41679,141 @@ class GetRegionNetworkEndpointGroupServerlessDeploymentResult(dict):
     @pulumi.getter
     def version(self) -> str:
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetReservationShareSettingResult(dict):
+    def __init__(__self__, *,
+                 project_maps: Sequence['outputs.GetReservationShareSettingProjectMapResult'],
+                 share_type: str):
+        pulumi.set(__self__, "project_maps", project_maps)
+        pulumi.set(__self__, "share_type", share_type)
+
+    @property
+    @pulumi.getter(name="projectMaps")
+    def project_maps(self) -> Sequence['outputs.GetReservationShareSettingProjectMapResult']:
+        return pulumi.get(self, "project_maps")
+
+    @property
+    @pulumi.getter(name="shareType")
+    def share_type(self) -> str:
+        return pulumi.get(self, "share_type")
+
+
+@pulumi.output_type
+class GetReservationShareSettingProjectMapResult(dict):
+    def __init__(__self__, *,
+                 id: str,
+                 project_id: str):
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "project_id", project_id)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> str:
+        return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class GetReservationSpecificReservationResult(dict):
+    def __init__(__self__, *,
+                 count: int,
+                 in_use_count: int,
+                 instance_properties: Sequence['outputs.GetReservationSpecificReservationInstancePropertyResult']):
+        pulumi.set(__self__, "count", count)
+        pulumi.set(__self__, "in_use_count", in_use_count)
+        pulumi.set(__self__, "instance_properties", instance_properties)
+
+    @property
+    @pulumi.getter
+    def count(self) -> int:
+        return pulumi.get(self, "count")
+
+    @property
+    @pulumi.getter(name="inUseCount")
+    def in_use_count(self) -> int:
+        return pulumi.get(self, "in_use_count")
+
+    @property
+    @pulumi.getter(name="instanceProperties")
+    def instance_properties(self) -> Sequence['outputs.GetReservationSpecificReservationInstancePropertyResult']:
+        return pulumi.get(self, "instance_properties")
+
+
+@pulumi.output_type
+class GetReservationSpecificReservationInstancePropertyResult(dict):
+    def __init__(__self__, *,
+                 guest_accelerators: Sequence['outputs.GetReservationSpecificReservationInstancePropertyGuestAcceleratorResult'],
+                 local_ssds: Sequence['outputs.GetReservationSpecificReservationInstancePropertyLocalSsdResult'],
+                 machine_type: str,
+                 min_cpu_platform: str):
+        pulumi.set(__self__, "guest_accelerators", guest_accelerators)
+        pulumi.set(__self__, "local_ssds", local_ssds)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "min_cpu_platform", min_cpu_platform)
+
+    @property
+    @pulumi.getter(name="guestAccelerators")
+    def guest_accelerators(self) -> Sequence['outputs.GetReservationSpecificReservationInstancePropertyGuestAcceleratorResult']:
+        return pulumi.get(self, "guest_accelerators")
+
+    @property
+    @pulumi.getter(name="localSsds")
+    def local_ssds(self) -> Sequence['outputs.GetReservationSpecificReservationInstancePropertyLocalSsdResult']:
+        return pulumi.get(self, "local_ssds")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter(name="minCpuPlatform")
+    def min_cpu_platform(self) -> str:
+        return pulumi.get(self, "min_cpu_platform")
+
+
+@pulumi.output_type
+class GetReservationSpecificReservationInstancePropertyGuestAcceleratorResult(dict):
+    def __init__(__self__, *,
+                 accelerator_count: int,
+                 accelerator_type: str):
+        pulumi.set(__self__, "accelerator_count", accelerator_count)
+        pulumi.set(__self__, "accelerator_type", accelerator_type)
+
+    @property
+    @pulumi.getter(name="acceleratorCount")
+    def accelerator_count(self) -> int:
+        return pulumi.get(self, "accelerator_count")
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> str:
+        return pulumi.get(self, "accelerator_type")
+
+
+@pulumi.output_type
+class GetReservationSpecificReservationInstancePropertyLocalSsdResult(dict):
+    def __init__(__self__, *,
+                 disk_size_gb: int,
+                 interface: str):
+        pulumi.set(__self__, "disk_size_gb", disk_size_gb)
+        pulumi.set(__self__, "interface", interface)
+
+    @property
+    @pulumi.getter(name="diskSizeGb")
+    def disk_size_gb(self) -> int:
+        return pulumi.get(self, "disk_size_gb")
+
+    @property
+    @pulumi.getter
+    def interface(self) -> str:
+        return pulumi.get(self, "interface")
 
 
 @pulumi.output_type

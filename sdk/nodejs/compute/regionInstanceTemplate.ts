@@ -181,6 +181,10 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
      */
     public readonly reservationAffinity!: pulumi.Output<outputs.compute.RegionInstanceTemplateReservationAffinity | undefined>;
     /**
+     * A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     */
+    public readonly resourceManagerTags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
     public readonly resourcePolicies!: pulumi.Output<string | undefined>;
@@ -247,6 +251,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["reservationAffinity"] = state ? state.reservationAffinity : undefined;
+            resourceInputs["resourceManagerTags"] = state ? state.resourceManagerTags : undefined;
             resourceInputs["resourcePolicies"] = state ? state.resourcePolicies : undefined;
             resourceInputs["scheduling"] = state ? state.scheduling : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -282,6 +287,7 @@ export class RegionInstanceTemplate extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["reservationAffinity"] = args ? args.reservationAffinity : undefined;
+            resourceInputs["resourceManagerTags"] = args ? args.resourceManagerTags : undefined;
             resourceInputs["resourcePolicies"] = args ? args.resourcePolicies : undefined;
             resourceInputs["scheduling"] = args ? args.scheduling : undefined;
             resourceInputs["serviceAccount"] = args ? args.serviceAccount : undefined;
@@ -425,6 +431,10 @@ export interface RegionInstanceTemplateState {
      * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.compute.RegionInstanceTemplateReservationAffinity>;
+    /**
+     * A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     */
+    resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */
@@ -570,6 +580,10 @@ export interface RegionInstanceTemplateArgs {
      * Structure is documented below.
      */
     reservationAffinity?: pulumi.Input<inputs.compute.RegionInstanceTemplateReservationAffinity>;
+    /**
+     * A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+     */
+    resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * - A list of selfLinks of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
      */

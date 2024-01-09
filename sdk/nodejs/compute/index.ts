@@ -330,6 +330,11 @@ export const getRegions: typeof import("./getRegions").getRegions = null as any;
 export const getRegionsOutput: typeof import("./getRegions").getRegionsOutput = null as any;
 utilities.lazyLoad(exports, ["getRegions","getRegionsOutput"], () => require("./getRegions"));
 
+export { GetReservationArgs, GetReservationResult, GetReservationOutputArgs } from "./getReservation";
+export const getReservation: typeof import("./getReservation").getReservation = null as any;
+export const getReservationOutput: typeof import("./getReservation").getReservationOutput = null as any;
+utilities.lazyLoad(exports, ["getReservation","getReservationOutput"], () => require("./getReservation"));
+
 export { GetResourcePolicyArgs, GetResourcePolicyResult, GetResourcePolicyOutputArgs } from "./getResourcePolicy";
 export const getResourcePolicy: typeof import("./getResourcePolicy").getResourcePolicy = null as any;
 export const getResourcePolicyOutput: typeof import("./getResourcePolicy").getResourcePolicyOutput = null as any;

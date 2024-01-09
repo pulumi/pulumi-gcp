@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigNodeConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("composerInternalIpv4CidrBlock")]
+        public Input<string>? ComposerInternalIpv4CidrBlock { get; set; }
+
         [Input("diskSizeGb")]
         public Input<int>? DiskSizeGb { get; set; }
 

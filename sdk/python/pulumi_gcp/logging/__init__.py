@@ -10,6 +10,7 @@ from .billing_account_exclusion import *
 from .billing_account_sink import *
 from .folder_bucket_config import *
 from .folder_exclusion import *
+from .folder_settings import *
 from .folder_sink import *
 from .get_folder_settings import *
 from .get_organization_settings import *
@@ -21,6 +22,7 @@ from .log_view import *
 from .metric import *
 from .organization_bucket_config import *
 from .organization_exclusion import *
+from .organization_settings import *
 from .organization_sink import *
 from .project_bucket_config import *
 from .project_exclusion import *

@@ -6,6 +6,7 @@ package com.pulumi.gcp.dataproc.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigAutoscalingConfigArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigAuxiliaryNodeGroupArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigDataprocMetricConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigEncryptionConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigEndpointConfigArgs;
@@ -48,6 +49,23 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
      */
     public Optional<Output<ClusterClusterConfigAutoscalingConfigArgs>> autoscalingConfig() {
         return Optional.ofNullable(this.autoscalingConfig);
+    }
+
+    /**
+     * A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+     * Structure defined below.
+     * 
+     */
+    @Import(name="auxiliaryNodeGroups")
+    private @Nullable Output<List<ClusterClusterConfigAuxiliaryNodeGroupArgs>> auxiliaryNodeGroups;
+
+    /**
+     * @return A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+     * Structure defined below.
+     * 
+     */
+    public Optional<Output<List<ClusterClusterConfigAuxiliaryNodeGroupArgs>>> auxiliaryNodeGroups() {
+        return Optional.ofNullable(this.auxiliaryNodeGroups);
     }
 
     @Import(name="bucket")
@@ -317,6 +335,7 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
 
     private ClusterClusterConfigArgs(ClusterClusterConfigArgs $) {
         this.autoscalingConfig = $.autoscalingConfig;
+        this.auxiliaryNodeGroups = $.auxiliaryNodeGroups;
         this.bucket = $.bucket;
         this.dataprocMetricConfig = $.dataprocMetricConfig;
         this.encryptionConfig = $.encryptionConfig;
@@ -377,6 +396,40 @@ public final class ClusterClusterConfigArgs extends com.pulumi.resources.Resourc
          */
         public Builder autoscalingConfig(ClusterClusterConfigAutoscalingConfigArgs autoscalingConfig) {
             return autoscalingConfig(Output.of(autoscalingConfig));
+        }
+
+        /**
+         * @param auxiliaryNodeGroups A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auxiliaryNodeGroups(@Nullable Output<List<ClusterClusterConfigAuxiliaryNodeGroupArgs>> auxiliaryNodeGroups) {
+            $.auxiliaryNodeGroups = auxiliaryNodeGroups;
+            return this;
+        }
+
+        /**
+         * @param auxiliaryNodeGroups A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auxiliaryNodeGroups(List<ClusterClusterConfigAuxiliaryNodeGroupArgs> auxiliaryNodeGroups) {
+            return auxiliaryNodeGroups(Output.of(auxiliaryNodeGroups));
+        }
+
+        /**
+         * @param auxiliaryNodeGroups A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role.
+         * Structure defined below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder auxiliaryNodeGroups(ClusterClusterConfigAuxiliaryNodeGroupArgs... auxiliaryNodeGroups) {
+            return auxiliaryNodeGroups(List.of(auxiliaryNodeGroups));
         }
 
         public Builder bucket(@Nullable Output<String> bucket) {

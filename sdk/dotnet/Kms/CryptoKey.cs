@@ -130,6 +130,14 @@ namespace Pulumi.Gcp.Kms
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
+        /// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+        /// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("primaries")]
+        public Output<ImmutableArray<Outputs.CryptoKeyPrimary>> Primaries { get; private set; } = null!;
+
+        /// <summary>
         /// The combination of labels configured directly on the resource
         /// and default labels configured on the provider.
         /// </summary>
@@ -362,6 +370,20 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        [Input("primaries")]
+        private InputList<Inputs.CryptoKeyPrimaryGetArgs>? _primaries;
+
+        /// <summary>
+        /// A copy of the primary CryptoKeyVersion that will be used by cryptoKeys.encrypt when this CryptoKey is given in EncryptRequest.name.
+        /// Keys with purpose ENCRYPT_DECRYPT may have a primary. For other keys, this field will be unset.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.CryptoKeyPrimaryGetArgs> Primaries
+        {
+            get => _primaries ?? (_primaries = new InputList<Inputs.CryptoKeyPrimaryGetArgs>());
+            set => _primaries = value;
+        }
 
         [Input("pulumiLabels")]
         private InputMap<string>? _pulumiLabels;

@@ -17,6 +17,7 @@ __all__ = [
     'ListingIamBindingConditionArgs',
     'ListingIamMemberConditionArgs',
     'ListingPublisherArgs',
+    'ListingRestrictedExportConfigArgs',
 ]
 
 @pulumi.input_type
@@ -275,5 +276,44 @@ class ListingPublisherArgs:
     @primary_contact.setter
     def primary_contact(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "primary_contact", value)
+
+
+@pulumi.input_type
+class ListingRestrictedExportConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None,
+                 restrict_query_result: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: If true, enable restricted export.
+        :param pulumi.Input[bool] restrict_query_result: If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+        if restrict_query_result is not None:
+            pulumi.set(__self__, "restrict_query_result", restrict_query_result)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, enable restricted export.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+    @property
+    @pulumi.getter(name="restrictQueryResult")
+    def restrict_query_result(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, restrict export of query result derived from restricted linked dataset table.
+        """
+        return pulumi.get(self, "restrict_query_result")
+
+    @restrict_query_result.setter
+    def restrict_query_result(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "restrict_query_result", value)
 
 

@@ -1087,17 +1087,18 @@ func (o EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) Ind
 }
 
 type EnvironmentConfigNodeConfig struct {
-	DiskSizeGb         *int                                           `pulumi:"diskSizeGb"`
-	EnableIpMasqAgent  *bool                                          `pulumi:"enableIpMasqAgent"`
-	IpAllocationPolicy *EnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
-	MachineType        *string                                        `pulumi:"machineType"`
-	MaxPodsPerNode     *int                                           `pulumi:"maxPodsPerNode"`
-	Network            *string                                        `pulumi:"network"`
-	OauthScopes        []string                                       `pulumi:"oauthScopes"`
-	ServiceAccount     *string                                        `pulumi:"serviceAccount"`
-	Subnetwork         *string                                        `pulumi:"subnetwork"`
-	Tags               []string                                       `pulumi:"tags"`
-	Zone               *string                                        `pulumi:"zone"`
+	ComposerInternalIpv4CidrBlock *string                                        `pulumi:"composerInternalIpv4CidrBlock"`
+	DiskSizeGb                    *int                                           `pulumi:"diskSizeGb"`
+	EnableIpMasqAgent             *bool                                          `pulumi:"enableIpMasqAgent"`
+	IpAllocationPolicy            *EnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicy"`
+	MachineType                   *string                                        `pulumi:"machineType"`
+	MaxPodsPerNode                *int                                           `pulumi:"maxPodsPerNode"`
+	Network                       *string                                        `pulumi:"network"`
+	OauthScopes                   []string                                       `pulumi:"oauthScopes"`
+	ServiceAccount                *string                                        `pulumi:"serviceAccount"`
+	Subnetwork                    *string                                        `pulumi:"subnetwork"`
+	Tags                          []string                                       `pulumi:"tags"`
+	Zone                          *string                                        `pulumi:"zone"`
 }
 
 // EnvironmentConfigNodeConfigInput is an input type that accepts EnvironmentConfigNodeConfigArgs and EnvironmentConfigNodeConfigOutput values.
@@ -1112,17 +1113,18 @@ type EnvironmentConfigNodeConfigInput interface {
 }
 
 type EnvironmentConfigNodeConfigArgs struct {
-	DiskSizeGb         pulumi.IntPtrInput                                    `pulumi:"diskSizeGb"`
-	EnableIpMasqAgent  pulumi.BoolPtrInput                                   `pulumi:"enableIpMasqAgent"`
-	IpAllocationPolicy EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
-	MachineType        pulumi.StringPtrInput                                 `pulumi:"machineType"`
-	MaxPodsPerNode     pulumi.IntPtrInput                                    `pulumi:"maxPodsPerNode"`
-	Network            pulumi.StringPtrInput                                 `pulumi:"network"`
-	OauthScopes        pulumi.StringArrayInput                               `pulumi:"oauthScopes"`
-	ServiceAccount     pulumi.StringPtrInput                                 `pulumi:"serviceAccount"`
-	Subnetwork         pulumi.StringPtrInput                                 `pulumi:"subnetwork"`
-	Tags               pulumi.StringArrayInput                               `pulumi:"tags"`
-	Zone               pulumi.StringPtrInput                                 `pulumi:"zone"`
+	ComposerInternalIpv4CidrBlock pulumi.StringPtrInput                                 `pulumi:"composerInternalIpv4CidrBlock"`
+	DiskSizeGb                    pulumi.IntPtrInput                                    `pulumi:"diskSizeGb"`
+	EnableIpMasqAgent             pulumi.BoolPtrInput                                   `pulumi:"enableIpMasqAgent"`
+	IpAllocationPolicy            EnvironmentConfigNodeConfigIpAllocationPolicyPtrInput `pulumi:"ipAllocationPolicy"`
+	MachineType                   pulumi.StringPtrInput                                 `pulumi:"machineType"`
+	MaxPodsPerNode                pulumi.IntPtrInput                                    `pulumi:"maxPodsPerNode"`
+	Network                       pulumi.StringPtrInput                                 `pulumi:"network"`
+	OauthScopes                   pulumi.StringArrayInput                               `pulumi:"oauthScopes"`
+	ServiceAccount                pulumi.StringPtrInput                                 `pulumi:"serviceAccount"`
+	Subnetwork                    pulumi.StringPtrInput                                 `pulumi:"subnetwork"`
+	Tags                          pulumi.StringArrayInput                               `pulumi:"tags"`
+	Zone                          pulumi.StringPtrInput                                 `pulumi:"zone"`
 }
 
 func (EnvironmentConfigNodeConfigArgs) ElementType() reflect.Type {
@@ -1202,6 +1204,10 @@ func (o EnvironmentConfigNodeConfigOutput) ToEnvironmentConfigNodeConfigPtrOutpu
 	}).(EnvironmentConfigNodeConfigPtrOutput)
 }
 
+func (o EnvironmentConfigNodeConfigOutput) ComposerInternalIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *string { return v.ComposerInternalIpv4CidrBlock }).(pulumi.StringPtrOutput)
+}
+
 func (o EnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigNodeConfig) *int { return v.DiskSizeGb }).(pulumi.IntPtrOutput)
 }
@@ -1270,6 +1276,15 @@ func (o EnvironmentConfigNodeConfigPtrOutput) Elem() EnvironmentConfigNodeConfig
 		var ret EnvironmentConfigNodeConfig
 		return ret
 	}).(EnvironmentConfigNodeConfigOutput)
+}
+
+func (o EnvironmentConfigNodeConfigPtrOutput) ComposerInternalIpv4CidrBlock() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ComposerInternalIpv4CidrBlock
+	}).(pulumi.StringPtrOutput)
 }
 
 func (o EnvironmentConfigNodeConfigPtrOutput) DiskSizeGb() pulumi.IntPtrOutput {
@@ -2125,6 +2140,7 @@ type EnvironmentConfigSoftwareConfig struct {
 	PypiPackages                map[string]string                                           `pulumi:"pypiPackages"`
 	PythonVersion               *string                                                     `pulumi:"pythonVersion"`
 	SchedulerCount              *int                                                        `pulumi:"schedulerCount"`
+	WebServerPluginsMode        *string                                                     `pulumi:"webServerPluginsMode"`
 }
 
 // EnvironmentConfigSoftwareConfigInput is an input type that accepts EnvironmentConfigSoftwareConfigArgs and EnvironmentConfigSoftwareConfigOutput values.
@@ -2146,6 +2162,7 @@ type EnvironmentConfigSoftwareConfigArgs struct {
 	PypiPackages                pulumi.StringMapInput                                              `pulumi:"pypiPackages"`
 	PythonVersion               pulumi.StringPtrInput                                              `pulumi:"pythonVersion"`
 	SchedulerCount              pulumi.IntPtrInput                                                 `pulumi:"schedulerCount"`
+	WebServerPluginsMode        pulumi.StringPtrInput                                              `pulumi:"webServerPluginsMode"`
 }
 
 func (EnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -2255,6 +2272,10 @@ func (o EnvironmentConfigSoftwareConfigOutput) SchedulerCount() pulumi.IntPtrOut
 	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *int { return v.SchedulerCount }).(pulumi.IntPtrOutput)
 }
 
+func (o EnvironmentConfigSoftwareConfigOutput) WebServerPluginsMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigSoftwareConfig) *string { return v.WebServerPluginsMode }).(pulumi.StringPtrOutput)
+}
+
 type EnvironmentConfigSoftwareConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (EnvironmentConfigSoftwareConfigPtrOutput) ElementType() reflect.Type {
@@ -2340,6 +2361,15 @@ func (o EnvironmentConfigSoftwareConfigPtrOutput) SchedulerCount() pulumi.IntPtr
 		}
 		return v.SchedulerCount
 	}).(pulumi.IntPtrOutput)
+}
+
+func (o EnvironmentConfigSoftwareConfigPtrOutput) WebServerPluginsMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigSoftwareConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WebServerPluginsMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type EnvironmentConfigSoftwareConfigCloudDataLineageIntegration struct {
@@ -2844,10 +2874,11 @@ func (o EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput)
 }
 
 type EnvironmentConfigWorkloadsConfig struct {
-	Scheduler *EnvironmentConfigWorkloadsConfigScheduler `pulumi:"scheduler"`
-	Triggerer *EnvironmentConfigWorkloadsConfigTriggerer `pulumi:"triggerer"`
-	WebServer *EnvironmentConfigWorkloadsConfigWebServer `pulumi:"webServer"`
-	Worker    *EnvironmentConfigWorkloadsConfigWorker    `pulumi:"worker"`
+	DagProcessor *EnvironmentConfigWorkloadsConfigDagProcessor `pulumi:"dagProcessor"`
+	Scheduler    *EnvironmentConfigWorkloadsConfigScheduler    `pulumi:"scheduler"`
+	Triggerer    *EnvironmentConfigWorkloadsConfigTriggerer    `pulumi:"triggerer"`
+	WebServer    *EnvironmentConfigWorkloadsConfigWebServer    `pulumi:"webServer"`
+	Worker       *EnvironmentConfigWorkloadsConfigWorker       `pulumi:"worker"`
 }
 
 // EnvironmentConfigWorkloadsConfigInput is an input type that accepts EnvironmentConfigWorkloadsConfigArgs and EnvironmentConfigWorkloadsConfigOutput values.
@@ -2862,10 +2893,11 @@ type EnvironmentConfigWorkloadsConfigInput interface {
 }
 
 type EnvironmentConfigWorkloadsConfigArgs struct {
-	Scheduler EnvironmentConfigWorkloadsConfigSchedulerPtrInput `pulumi:"scheduler"`
-	Triggerer EnvironmentConfigWorkloadsConfigTriggererPtrInput `pulumi:"triggerer"`
-	WebServer EnvironmentConfigWorkloadsConfigWebServerPtrInput `pulumi:"webServer"`
-	Worker    EnvironmentConfigWorkloadsConfigWorkerPtrInput    `pulumi:"worker"`
+	DagProcessor EnvironmentConfigWorkloadsConfigDagProcessorPtrInput `pulumi:"dagProcessor"`
+	Scheduler    EnvironmentConfigWorkloadsConfigSchedulerPtrInput    `pulumi:"scheduler"`
+	Triggerer    EnvironmentConfigWorkloadsConfigTriggererPtrInput    `pulumi:"triggerer"`
+	WebServer    EnvironmentConfigWorkloadsConfigWebServerPtrInput    `pulumi:"webServer"`
+	Worker       EnvironmentConfigWorkloadsConfigWorkerPtrInput       `pulumi:"worker"`
 }
 
 func (EnvironmentConfigWorkloadsConfigArgs) ElementType() reflect.Type {
@@ -2945,6 +2977,12 @@ func (o EnvironmentConfigWorkloadsConfigOutput) ToEnvironmentConfigWorkloadsConf
 	}).(EnvironmentConfigWorkloadsConfigPtrOutput)
 }
 
+func (o EnvironmentConfigWorkloadsConfigOutput) DagProcessor() EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigDagProcessor {
+		return v.DagProcessor
+	}).(EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput)
+}
+
 func (o EnvironmentConfigWorkloadsConfigOutput) Scheduler() EnvironmentConfigWorkloadsConfigSchedulerPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigScheduler {
 		return v.Scheduler
@@ -2991,6 +3029,15 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) Elem() EnvironmentConfigWorkl
 	}).(EnvironmentConfigWorkloadsConfigOutput)
 }
 
+func (o EnvironmentConfigWorkloadsConfigPtrOutput) DagProcessor() EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigDagProcessor {
+		if v == nil {
+			return nil
+		}
+		return v.DagProcessor
+	}).(EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput)
+}
+
 func (o EnvironmentConfigWorkloadsConfigPtrOutput) Scheduler() EnvironmentConfigWorkloadsConfigSchedulerPtrOutput {
 	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfig) *EnvironmentConfigWorkloadsConfigScheduler {
 		if v == nil {
@@ -3025,6 +3072,169 @@ func (o EnvironmentConfigWorkloadsConfigPtrOutput) Worker() EnvironmentConfigWor
 		}
 		return v.Worker
 	}).(EnvironmentConfigWorkloadsConfigWorkerPtrOutput)
+}
+
+type EnvironmentConfigWorkloadsConfigDagProcessor struct {
+	Cpu       *float64 `pulumi:"cpu"`
+	MemoryGb  *float64 `pulumi:"memoryGb"`
+	StorageGb *float64 `pulumi:"storageGb"`
+}
+
+// EnvironmentConfigWorkloadsConfigDagProcessorInput is an input type that accepts EnvironmentConfigWorkloadsConfigDagProcessorArgs and EnvironmentConfigWorkloadsConfigDagProcessorOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWorkloadsConfigDagProcessorInput` via:
+//
+//	EnvironmentConfigWorkloadsConfigDagProcessorArgs{...}
+type EnvironmentConfigWorkloadsConfigDagProcessorInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWorkloadsConfigDagProcessorOutput() EnvironmentConfigWorkloadsConfigDagProcessorOutput
+	ToEnvironmentConfigWorkloadsConfigDagProcessorOutputWithContext(context.Context) EnvironmentConfigWorkloadsConfigDagProcessorOutput
+}
+
+type EnvironmentConfigWorkloadsConfigDagProcessorArgs struct {
+	Cpu       pulumi.Float64PtrInput `pulumi:"cpu"`
+	MemoryGb  pulumi.Float64PtrInput `pulumi:"memoryGb"`
+	StorageGb pulumi.Float64PtrInput `pulumi:"storageGb"`
+}
+
+func (EnvironmentConfigWorkloadsConfigDagProcessorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWorkloadsConfigDagProcessor)(nil)).Elem()
+}
+
+func (i EnvironmentConfigWorkloadsConfigDagProcessorArgs) ToEnvironmentConfigWorkloadsConfigDagProcessorOutput() EnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return i.ToEnvironmentConfigWorkloadsConfigDagProcessorOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWorkloadsConfigDagProcessorArgs) ToEnvironmentConfigWorkloadsConfigDagProcessorOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigDagProcessorOutput)
+}
+
+func (i EnvironmentConfigWorkloadsConfigDagProcessorArgs) ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutput() EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return i.ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentConfigWorkloadsConfigDagProcessorArgs) ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigDagProcessorOutput).ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutputWithContext(ctx)
+}
+
+// EnvironmentConfigWorkloadsConfigDagProcessorPtrInput is an input type that accepts EnvironmentConfigWorkloadsConfigDagProcessorArgs, EnvironmentConfigWorkloadsConfigDagProcessorPtr and EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput values.
+// You can construct a concrete instance of `EnvironmentConfigWorkloadsConfigDagProcessorPtrInput` via:
+//
+//	        EnvironmentConfigWorkloadsConfigDagProcessorArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentConfigWorkloadsConfigDagProcessorPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutput() EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput
+	ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutputWithContext(context.Context) EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput
+}
+
+type environmentConfigWorkloadsConfigDagProcessorPtrType EnvironmentConfigWorkloadsConfigDagProcessorArgs
+
+func EnvironmentConfigWorkloadsConfigDagProcessorPtr(v *EnvironmentConfigWorkloadsConfigDagProcessorArgs) EnvironmentConfigWorkloadsConfigDagProcessorPtrInput {
+	return (*environmentConfigWorkloadsConfigDagProcessorPtrType)(v)
+}
+
+func (*environmentConfigWorkloadsConfigDagProcessorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigWorkloadsConfigDagProcessor)(nil)).Elem()
+}
+
+func (i *environmentConfigWorkloadsConfigDagProcessorPtrType) ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutput() EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return i.ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentConfigWorkloadsConfigDagProcessorPtrType) ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput)
+}
+
+type EnvironmentConfigWorkloadsConfigDagProcessorOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWorkloadsConfigDagProcessorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentConfigWorkloadsConfigDagProcessor)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) ToEnvironmentConfigWorkloadsConfigDagProcessorOutput() EnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return o
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) ToEnvironmentConfigWorkloadsConfigDagProcessorOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return o
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutput() EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return o.ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentConfigWorkloadsConfigDagProcessor) *EnvironmentConfigWorkloadsConfigDagProcessor {
+		return &v
+	}).(EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigDagProcessor) *float64 { return v.Cpu }).(pulumi.Float64PtrOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigDagProcessor) *float64 { return v.MemoryGb }).(pulumi.Float64PtrOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorOutput) StorageGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v EnvironmentConfigWorkloadsConfigDagProcessor) *float64 { return v.StorageGb }).(pulumi.Float64PtrOutput)
+}
+
+type EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentConfigWorkloadsConfigDagProcessor)(nil)).Elem()
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutput() EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) ToEnvironmentConfigWorkloadsConfigDagProcessorPtrOutputWithContext(ctx context.Context) EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput {
+	return o
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) Elem() EnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigDagProcessor) EnvironmentConfigWorkloadsConfigDagProcessor {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentConfigWorkloadsConfigDagProcessor
+		return ret
+	}).(EnvironmentConfigWorkloadsConfigDagProcessorOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) Cpu() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigDagProcessor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.Cpu
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) MemoryGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigDagProcessor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.MemoryGb
+	}).(pulumi.Float64PtrOutput)
+}
+
+func (o EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput) StorageGb() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfigWorkloadsConfigDagProcessor) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.StorageGb
+	}).(pulumi.Float64PtrOutput)
 }
 
 type EnvironmentConfigWorkloadsConfigScheduler struct {
@@ -4556,17 +4766,18 @@ func (o GetEnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArrayOutput) 
 }
 
 type GetEnvironmentConfigNodeConfig struct {
-	DiskSizeGb           int                                                `pulumi:"diskSizeGb"`
-	EnableIpMasqAgent    bool                                               `pulumi:"enableIpMasqAgent"`
-	IpAllocationPolicies []GetEnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
-	MachineType          string                                             `pulumi:"machineType"`
-	MaxPodsPerNode       int                                                `pulumi:"maxPodsPerNode"`
-	Network              string                                             `pulumi:"network"`
-	OauthScopes          []string                                           `pulumi:"oauthScopes"`
-	ServiceAccount       string                                             `pulumi:"serviceAccount"`
-	Subnetwork           string                                             `pulumi:"subnetwork"`
-	Tags                 []string                                           `pulumi:"tags"`
-	Zone                 string                                             `pulumi:"zone"`
+	ComposerInternalIpv4CidrBlock string                                             `pulumi:"composerInternalIpv4CidrBlock"`
+	DiskSizeGb                    int                                                `pulumi:"diskSizeGb"`
+	EnableIpMasqAgent             bool                                               `pulumi:"enableIpMasqAgent"`
+	IpAllocationPolicies          []GetEnvironmentConfigNodeConfigIpAllocationPolicy `pulumi:"ipAllocationPolicies"`
+	MachineType                   string                                             `pulumi:"machineType"`
+	MaxPodsPerNode                int                                                `pulumi:"maxPodsPerNode"`
+	Network                       string                                             `pulumi:"network"`
+	OauthScopes                   []string                                           `pulumi:"oauthScopes"`
+	ServiceAccount                string                                             `pulumi:"serviceAccount"`
+	Subnetwork                    string                                             `pulumi:"subnetwork"`
+	Tags                          []string                                           `pulumi:"tags"`
+	Zone                          string                                             `pulumi:"zone"`
 }
 
 // GetEnvironmentConfigNodeConfigInput is an input type that accepts GetEnvironmentConfigNodeConfigArgs and GetEnvironmentConfigNodeConfigOutput values.
@@ -4581,17 +4792,18 @@ type GetEnvironmentConfigNodeConfigInput interface {
 }
 
 type GetEnvironmentConfigNodeConfigArgs struct {
-	DiskSizeGb           pulumi.IntInput                                            `pulumi:"diskSizeGb"`
-	EnableIpMasqAgent    pulumi.BoolInput                                           `pulumi:"enableIpMasqAgent"`
-	IpAllocationPolicies GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayInput `pulumi:"ipAllocationPolicies"`
-	MachineType          pulumi.StringInput                                         `pulumi:"machineType"`
-	MaxPodsPerNode       pulumi.IntInput                                            `pulumi:"maxPodsPerNode"`
-	Network              pulumi.StringInput                                         `pulumi:"network"`
-	OauthScopes          pulumi.StringArrayInput                                    `pulumi:"oauthScopes"`
-	ServiceAccount       pulumi.StringInput                                         `pulumi:"serviceAccount"`
-	Subnetwork           pulumi.StringInput                                         `pulumi:"subnetwork"`
-	Tags                 pulumi.StringArrayInput                                    `pulumi:"tags"`
-	Zone                 pulumi.StringInput                                         `pulumi:"zone"`
+	ComposerInternalIpv4CidrBlock pulumi.StringInput                                         `pulumi:"composerInternalIpv4CidrBlock"`
+	DiskSizeGb                    pulumi.IntInput                                            `pulumi:"diskSizeGb"`
+	EnableIpMasqAgent             pulumi.BoolInput                                           `pulumi:"enableIpMasqAgent"`
+	IpAllocationPolicies          GetEnvironmentConfigNodeConfigIpAllocationPolicyArrayInput `pulumi:"ipAllocationPolicies"`
+	MachineType                   pulumi.StringInput                                         `pulumi:"machineType"`
+	MaxPodsPerNode                pulumi.IntInput                                            `pulumi:"maxPodsPerNode"`
+	Network                       pulumi.StringInput                                         `pulumi:"network"`
+	OauthScopes                   pulumi.StringArrayInput                                    `pulumi:"oauthScopes"`
+	ServiceAccount                pulumi.StringInput                                         `pulumi:"serviceAccount"`
+	Subnetwork                    pulumi.StringInput                                         `pulumi:"subnetwork"`
+	Tags                          pulumi.StringArrayInput                                    `pulumi:"tags"`
+	Zone                          pulumi.StringInput                                         `pulumi:"zone"`
 }
 
 func (GetEnvironmentConfigNodeConfigArgs) ElementType() reflect.Type {
@@ -4643,6 +4855,10 @@ func (o GetEnvironmentConfigNodeConfigOutput) ToGetEnvironmentConfigNodeConfigOu
 
 func (o GetEnvironmentConfigNodeConfigOutput) ToGetEnvironmentConfigNodeConfigOutputWithContext(ctx context.Context) GetEnvironmentConfigNodeConfigOutput {
 	return o
+}
+
+func (o GetEnvironmentConfigNodeConfigOutput) ComposerInternalIpv4CidrBlock() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigNodeConfig) string { return v.ComposerInternalIpv4CidrBlock }).(pulumi.StringOutput)
 }
 
 func (o GetEnvironmentConfigNodeConfigOutput) DiskSizeGb() pulumi.IntOutput {
@@ -5187,6 +5403,7 @@ type GetEnvironmentConfigSoftwareConfig struct {
 	PypiPackages                 map[string]string                                               `pulumi:"pypiPackages"`
 	PythonVersion                string                                                          `pulumi:"pythonVersion"`
 	SchedulerCount               int                                                             `pulumi:"schedulerCount"`
+	WebServerPluginsMode         string                                                          `pulumi:"webServerPluginsMode"`
 }
 
 // GetEnvironmentConfigSoftwareConfigInput is an input type that accepts GetEnvironmentConfigSoftwareConfigArgs and GetEnvironmentConfigSoftwareConfigOutput values.
@@ -5208,6 +5425,7 @@ type GetEnvironmentConfigSoftwareConfigArgs struct {
 	PypiPackages                 pulumi.StringMapInput                                                   `pulumi:"pypiPackages"`
 	PythonVersion                pulumi.StringInput                                                      `pulumi:"pythonVersion"`
 	SchedulerCount               pulumi.IntInput                                                         `pulumi:"schedulerCount"`
+	WebServerPluginsMode         pulumi.StringInput                                                      `pulumi:"webServerPluginsMode"`
 }
 
 func (GetEnvironmentConfigSoftwareConfigArgs) ElementType() reflect.Type {
@@ -5289,6 +5507,10 @@ func (o GetEnvironmentConfigSoftwareConfigOutput) PythonVersion() pulumi.StringO
 
 func (o GetEnvironmentConfigSoftwareConfigOutput) SchedulerCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) int { return v.SchedulerCount }).(pulumi.IntOutput)
+}
+
+func (o GetEnvironmentConfigSoftwareConfigOutput) WebServerPluginsMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigSoftwareConfig) string { return v.WebServerPluginsMode }).(pulumi.StringOutput)
 }
 
 type GetEnvironmentConfigSoftwareConfigArrayOutput struct{ *pulumi.OutputState }
@@ -5696,10 +5918,11 @@ func (o GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutp
 }
 
 type GetEnvironmentConfigWorkloadsConfig struct {
-	Schedulers []GetEnvironmentConfigWorkloadsConfigScheduler `pulumi:"schedulers"`
-	Triggerers []GetEnvironmentConfigWorkloadsConfigTriggerer `pulumi:"triggerers"`
-	WebServers []GetEnvironmentConfigWorkloadsConfigWebServer `pulumi:"webServers"`
-	Workers    []GetEnvironmentConfigWorkloadsConfigWorker    `pulumi:"workers"`
+	DagProcessors []GetEnvironmentConfigWorkloadsConfigDagProcessor `pulumi:"dagProcessors"`
+	Schedulers    []GetEnvironmentConfigWorkloadsConfigScheduler    `pulumi:"schedulers"`
+	Triggerers    []GetEnvironmentConfigWorkloadsConfigTriggerer    `pulumi:"triggerers"`
+	WebServers    []GetEnvironmentConfigWorkloadsConfigWebServer    `pulumi:"webServers"`
+	Workers       []GetEnvironmentConfigWorkloadsConfigWorker       `pulumi:"workers"`
 }
 
 // GetEnvironmentConfigWorkloadsConfigInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigArgs and GetEnvironmentConfigWorkloadsConfigOutput values.
@@ -5714,10 +5937,11 @@ type GetEnvironmentConfigWorkloadsConfigInput interface {
 }
 
 type GetEnvironmentConfigWorkloadsConfigArgs struct {
-	Schedulers GetEnvironmentConfigWorkloadsConfigSchedulerArrayInput `pulumi:"schedulers"`
-	Triggerers GetEnvironmentConfigWorkloadsConfigTriggererArrayInput `pulumi:"triggerers"`
-	WebServers GetEnvironmentConfigWorkloadsConfigWebServerArrayInput `pulumi:"webServers"`
-	Workers    GetEnvironmentConfigWorkloadsConfigWorkerArrayInput    `pulumi:"workers"`
+	DagProcessors GetEnvironmentConfigWorkloadsConfigDagProcessorArrayInput `pulumi:"dagProcessors"`
+	Schedulers    GetEnvironmentConfigWorkloadsConfigSchedulerArrayInput    `pulumi:"schedulers"`
+	Triggerers    GetEnvironmentConfigWorkloadsConfigTriggererArrayInput    `pulumi:"triggerers"`
+	WebServers    GetEnvironmentConfigWorkloadsConfigWebServerArrayInput    `pulumi:"webServers"`
+	Workers       GetEnvironmentConfigWorkloadsConfigWorkerArrayInput       `pulumi:"workers"`
 }
 
 func (GetEnvironmentConfigWorkloadsConfigArgs) ElementType() reflect.Type {
@@ -5771,6 +5995,12 @@ func (o GetEnvironmentConfigWorkloadsConfigOutput) ToGetEnvironmentConfigWorkloa
 	return o
 }
 
+func (o GetEnvironmentConfigWorkloadsConfigOutput) DagProcessors() GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput {
+	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfig) []GetEnvironmentConfigWorkloadsConfigDagProcessor {
+		return v.DagProcessors
+	}).(GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput)
+}
+
 func (o GetEnvironmentConfigWorkloadsConfigOutput) Schedulers() GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfig) []GetEnvironmentConfigWorkloadsConfigScheduler {
 		return v.Schedulers
@@ -5813,6 +6043,112 @@ func (o GetEnvironmentConfigWorkloadsConfigArrayOutput) Index(i pulumi.IntInput)
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigWorkloadsConfig {
 		return vs[0].([]GetEnvironmentConfigWorkloadsConfig)[vs[1].(int)]
 	}).(GetEnvironmentConfigWorkloadsConfigOutput)
+}
+
+type GetEnvironmentConfigWorkloadsConfigDagProcessor struct {
+	Cpu       float64 `pulumi:"cpu"`
+	MemoryGb  float64 `pulumi:"memoryGb"`
+	StorageGb float64 `pulumi:"storageGb"`
+}
+
+// GetEnvironmentConfigWorkloadsConfigDagProcessorInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigDagProcessorArgs and GetEnvironmentConfigWorkloadsConfigDagProcessorOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigWorkloadsConfigDagProcessorInput` via:
+//
+//	GetEnvironmentConfigWorkloadsConfigDagProcessorArgs{...}
+type GetEnvironmentConfigWorkloadsConfigDagProcessorInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigWorkloadsConfigDagProcessorOutput() GetEnvironmentConfigWorkloadsConfigDagProcessorOutput
+	ToGetEnvironmentConfigWorkloadsConfigDagProcessorOutputWithContext(context.Context) GetEnvironmentConfigWorkloadsConfigDagProcessorOutput
+}
+
+type GetEnvironmentConfigWorkloadsConfigDagProcessorArgs struct {
+	Cpu       pulumi.Float64Input `pulumi:"cpu"`
+	MemoryGb  pulumi.Float64Input `pulumi:"memoryGb"`
+	StorageGb pulumi.Float64Input `pulumi:"storageGb"`
+}
+
+func (GetEnvironmentConfigWorkloadsConfigDagProcessorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigDagProcessor)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigWorkloadsConfigDagProcessorArgs) ToGetEnvironmentConfigWorkloadsConfigDagProcessorOutput() GetEnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return i.ToGetEnvironmentConfigWorkloadsConfigDagProcessorOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigWorkloadsConfigDagProcessorArgs) ToGetEnvironmentConfigWorkloadsConfigDagProcessorOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigDagProcessorOutput)
+}
+
+// GetEnvironmentConfigWorkloadsConfigDagProcessorArrayInput is an input type that accepts GetEnvironmentConfigWorkloadsConfigDagProcessorArray and GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput values.
+// You can construct a concrete instance of `GetEnvironmentConfigWorkloadsConfigDagProcessorArrayInput` via:
+//
+//	GetEnvironmentConfigWorkloadsConfigDagProcessorArray{ GetEnvironmentConfigWorkloadsConfigDagProcessorArgs{...} }
+type GetEnvironmentConfigWorkloadsConfigDagProcessorArrayInput interface {
+	pulumi.Input
+
+	ToGetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput() GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput
+	ToGetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutputWithContext(context.Context) GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput
+}
+
+type GetEnvironmentConfigWorkloadsConfigDagProcessorArray []GetEnvironmentConfigWorkloadsConfigDagProcessorInput
+
+func (GetEnvironmentConfigWorkloadsConfigDagProcessorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigWorkloadsConfigDagProcessor)(nil)).Elem()
+}
+
+func (i GetEnvironmentConfigWorkloadsConfigDagProcessorArray) ToGetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput() GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput {
+	return i.ToGetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutputWithContext(context.Background())
+}
+
+func (i GetEnvironmentConfigWorkloadsConfigDagProcessorArray) ToGetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput)
+}
+
+type GetEnvironmentConfigWorkloadsConfigDagProcessorOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigDagProcessor)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) ToGetEnvironmentConfigWorkloadsConfigDagProcessorOutput() GetEnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) ToGetEnvironmentConfigWorkloadsConfigDagProcessorOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) Cpu() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigDagProcessor) float64 { return v.Cpu }).(pulumi.Float64Output)
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) MemoryGb() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigDagProcessor) float64 { return v.MemoryGb }).(pulumi.Float64Output)
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigDagProcessorOutput) StorageGb() pulumi.Float64Output {
+	return o.ApplyT(func(v GetEnvironmentConfigWorkloadsConfigDagProcessor) float64 { return v.StorageGb }).(pulumi.Float64Output)
+}
+
+type GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetEnvironmentConfigWorkloadsConfigDagProcessor)(nil)).Elem()
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput) ToGetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput() GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput) ToGetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutputWithContext(ctx context.Context) GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput {
+	return o
+}
+
+func (o GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput) Index(i pulumi.IntInput) GetEnvironmentConfigWorkloadsConfigDagProcessorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetEnvironmentConfigWorkloadsConfigDagProcessor {
+		return vs[0].([]GetEnvironmentConfigWorkloadsConfigDagProcessor)[vs[1].(int)]
+	}).(GetEnvironmentConfigWorkloadsConfigDagProcessorOutput)
 }
 
 type GetEnvironmentConfigWorkloadsConfigScheduler struct {
@@ -6492,6 +6828,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput)(nil)).Elem(), EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigPtrInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigDagProcessorInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigDagProcessorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigDagProcessorPtrInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigDagProcessorArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigSchedulerInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigSchedulerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigSchedulerPtrInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigSchedulerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentConfigWorkloadsConfigTriggererInput)(nil)).Elem(), EnvironmentConfigWorkloadsConfigTriggererArgs{})
@@ -6536,6 +6874,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayInput)(nil)).Elem(), GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigArrayInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigDagProcessorInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigDagProcessorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigDagProcessorArrayInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigDagProcessorArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigSchedulerInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigSchedulerArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigSchedulerArrayInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigSchedulerArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetEnvironmentConfigWorkloadsConfigTriggererInput)(nil)).Elem(), GetEnvironmentConfigWorkloadsConfigTriggererArgs{})
@@ -6582,6 +6922,8 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigDagProcessorOutput{})
+	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigDagProcessorPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigSchedulerOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigSchedulerPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentConfigWorkloadsConfigTriggererOutput{})
@@ -6626,6 +6968,8 @@ func init() {
 	pulumi.RegisterOutputType(GetEnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigDagProcessorOutput{})
+	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigDagProcessorArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigSchedulerOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigSchedulerArrayOutput{})
 	pulumi.RegisterOutputType(GetEnvironmentConfigWorkloadsConfigTriggererOutput{})

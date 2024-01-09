@@ -31,6 +31,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AiEndpointIamMember{}
 	case "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy":
 		r = &AiEndpointIamPolicy{}
+	case "gcp:vertex/aiFeatureGroup:AiFeatureGroup":
+		r = &AiFeatureGroup{}
+	case "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore":
+		r = &AiFeatureOnlineStore{}
 	case "gcp:vertex/aiFeatureStore:AiFeatureStore":
 		r = &AiFeatureStore{}
 	case "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType":
@@ -93,6 +97,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"vertex/aiEndpointIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"vertex/aiFeatureOnlineStore",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

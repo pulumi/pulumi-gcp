@@ -33,7 +33,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := logging.GetFolderSettings(ctx, &logging.GetFolderSettingsArgs{
+//			_, err := logging.LookupFolderSettings(ctx, &logging.LookupFolderSettingsArgs{
 //				Folder: "my-folder-name",
 //			}, nil)
 //			if err != nil {
@@ -44,9 +44,9 @@ import (
 //	}
 //
 // ```
-func GetFolderSettings(ctx *pulumi.Context, args *GetFolderSettingsArgs, opts ...pulumi.InvokeOption) (*GetFolderSettingsResult, error) {
+func LookupFolderSettings(ctx *pulumi.Context, args *LookupFolderSettingsArgs, opts ...pulumi.InvokeOption) (*LookupFolderSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
-	var rv GetFolderSettingsResult
+	var rv LookupFolderSettingsResult
 	err := ctx.Invoke("gcp:logging/getFolderSettings:getFolderSettings", args, &rv, opts...)
 	if err != nil {
 		return nil, err
@@ -55,13 +55,13 @@ func GetFolderSettings(ctx *pulumi.Context, args *GetFolderSettingsArgs, opts ..
 }
 
 // A collection of arguments for invoking getFolderSettings.
-type GetFolderSettingsArgs struct {
+type LookupFolderSettingsArgs struct {
 	// The ID of the folder for which to retrieve settings.
 	Folder string `pulumi:"folder"`
 }
 
 // A collection of values returned by getFolderSettings.
-type GetFolderSettingsResult struct {
+type LookupFolderSettingsResult struct {
 	// If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
 	DisableDefaultSink bool   `pulumi:"disableDefaultSink"`
 	Folder             string `pulumi:"folder"`
@@ -85,56 +85,56 @@ type GetFolderSettingsResult struct {
 	StorageLocation string `pulumi:"storageLocation"`
 }
 
-func GetFolderSettingsOutput(ctx *pulumi.Context, args GetFolderSettingsOutputArgs, opts ...pulumi.InvokeOption) GetFolderSettingsResultOutput {
+func LookupFolderSettingsOutput(ctx *pulumi.Context, args LookupFolderSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupFolderSettingsResultOutput {
 	return pulumi.ToOutputWithContext(context.Background(), args).
-		ApplyT(func(v interface{}) (GetFolderSettingsResult, error) {
-			args := v.(GetFolderSettingsArgs)
-			r, err := GetFolderSettings(ctx, &args, opts...)
-			var s GetFolderSettingsResult
+		ApplyT(func(v interface{}) (LookupFolderSettingsResult, error) {
+			args := v.(LookupFolderSettingsArgs)
+			r, err := LookupFolderSettings(ctx, &args, opts...)
+			var s LookupFolderSettingsResult
 			if r != nil {
 				s = *r
 			}
 			return s, err
-		}).(GetFolderSettingsResultOutput)
+		}).(LookupFolderSettingsResultOutput)
 }
 
 // A collection of arguments for invoking getFolderSettings.
-type GetFolderSettingsOutputArgs struct {
+type LookupFolderSettingsOutputArgs struct {
 	// The ID of the folder for which to retrieve settings.
 	Folder pulumi.StringInput `pulumi:"folder"`
 }
 
-func (GetFolderSettingsOutputArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFolderSettingsArgs)(nil)).Elem()
+func (LookupFolderSettingsOutputArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFolderSettingsArgs)(nil)).Elem()
 }
 
 // A collection of values returned by getFolderSettings.
-type GetFolderSettingsResultOutput struct{ *pulumi.OutputState }
+type LookupFolderSettingsResultOutput struct{ *pulumi.OutputState }
 
-func (GetFolderSettingsResultOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*GetFolderSettingsResult)(nil)).Elem()
+func (LookupFolderSettingsResultOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*LookupFolderSettingsResult)(nil)).Elem()
 }
 
-func (o GetFolderSettingsResultOutput) ToGetFolderSettingsResultOutput() GetFolderSettingsResultOutput {
+func (o LookupFolderSettingsResultOutput) ToLookupFolderSettingsResultOutput() LookupFolderSettingsResultOutput {
 	return o
 }
 
-func (o GetFolderSettingsResultOutput) ToGetFolderSettingsResultOutputWithContext(ctx context.Context) GetFolderSettingsResultOutput {
+func (o LookupFolderSettingsResultOutput) ToLookupFolderSettingsResultOutputWithContext(ctx context.Context) LookupFolderSettingsResultOutput {
 	return o
 }
 
 // If set to true, the _Default sink in newly created projects and folders will created in a disabled state. This can be used to automatically disable log storage if there is already an aggregated sink configured in the hierarchy. The _Default sink can be re-enabled manually if needed.
-func (o GetFolderSettingsResultOutput) DisableDefaultSink() pulumi.BoolOutput {
-	return o.ApplyT(func(v GetFolderSettingsResult) bool { return v.DisableDefaultSink }).(pulumi.BoolOutput)
+func (o LookupFolderSettingsResultOutput) DisableDefaultSink() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupFolderSettingsResult) bool { return v.DisableDefaultSink }).(pulumi.BoolOutput)
 }
 
-func (o GetFolderSettingsResultOutput) Folder() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFolderSettingsResult) string { return v.Folder }).(pulumi.StringOutput)
+func (o LookupFolderSettingsResultOutput) Folder() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderSettingsResult) string { return v.Folder }).(pulumi.StringOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.
-func (o GetFolderSettingsResultOutput) Id() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFolderSettingsResult) string { return v.Id }).(pulumi.StringOutput)
+func (o LookupFolderSettingsResultOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderSettingsResult) string { return v.Id }).(pulumi.StringOutput)
 }
 
 // The resource name for the configured Cloud KMS key.
@@ -143,31 +143,31 @@ func (o GetFolderSettingsResultOutput) Id() pulumi.StringOutput {
 // To enable CMEK for the bucket, set this field to a valid kmsKeyName for which the associated service account has the required cloudkms.cryptoKeyEncrypterDecrypter roles assigned for the key.
 // The Cloud KMS key used by the bucket can be updated by changing the kmsKeyName to a new valid key name. Encryption operations that are in progress will be completed with the key that was in use when they started. Decryption operations will be completed using the key that was used at the time of encryption unless access to that key has been revoked.
 // See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
-func (o GetFolderSettingsResultOutput) KmsKeyName() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFolderSettingsResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
+func (o LookupFolderSettingsResultOutput) KmsKeyName() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderSettingsResult) string { return v.KmsKeyName }).(pulumi.StringOutput)
 }
 
 // The service account associated with a project for which CMEK will apply.
 // Before enabling CMEK for a logging bucket, you must first assign the cloudkms.cryptoKeyEncrypterDecrypter role to the service account associated with the project for which CMEK will apply. See [Enabling CMEK for Logging Buckets](https://cloud.google.com/logging/docs/routing/managed-encryption-storage) for more information.
-func (o GetFolderSettingsResultOutput) KmsServiceAccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFolderSettingsResult) string { return v.KmsServiceAccountId }).(pulumi.StringOutput)
+func (o LookupFolderSettingsResultOutput) KmsServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderSettingsResult) string { return v.KmsServiceAccountId }).(pulumi.StringOutput)
 }
 
 // The service account for the given container. Sinks use this service account as their writerIdentity if no custom service account is provided.
-func (o GetFolderSettingsResultOutput) LoggingServiceAccountId() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFolderSettingsResult) string { return v.LoggingServiceAccountId }).(pulumi.StringOutput)
+func (o LookupFolderSettingsResultOutput) LoggingServiceAccountId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderSettingsResult) string { return v.LoggingServiceAccountId }).(pulumi.StringOutput)
 }
 
 // The resource name of the settings.
-func (o GetFolderSettingsResultOutput) Name() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFolderSettingsResult) string { return v.Name }).(pulumi.StringOutput)
+func (o LookupFolderSettingsResultOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderSettingsResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
 // The storage location that Cloud Logging will use to create new resources when a location is needed but not explicitly provided.
-func (o GetFolderSettingsResultOutput) StorageLocation() pulumi.StringOutput {
-	return o.ApplyT(func(v GetFolderSettingsResult) string { return v.StorageLocation }).(pulumi.StringOutput)
+func (o LookupFolderSettingsResultOutput) StorageLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupFolderSettingsResult) string { return v.StorageLocation }).(pulumi.StringOutput)
 }
 
 func init() {
-	pulumi.RegisterOutputType(GetFolderSettingsResultOutput{})
+	pulumi.RegisterOutputType(LookupFolderSettingsResultOutput{})
 }

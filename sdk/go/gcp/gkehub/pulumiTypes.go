@@ -208,6 +208,8 @@ type FeatureFleetDefaultMemberConfigConfigmanagement struct {
 	// ConfigSync configuration for the cluster
 	// Structure is documented below.
 	ConfigSync *FeatureFleetDefaultMemberConfigConfigmanagementConfigSync `pulumi:"configSync"`
+	// Version of ACM installed
+	Version *string `pulumi:"version"`
 }
 
 // FeatureFleetDefaultMemberConfigConfigmanagementInput is an input type that accepts FeatureFleetDefaultMemberConfigConfigmanagementArgs and FeatureFleetDefaultMemberConfigConfigmanagementOutput values.
@@ -225,6 +227,8 @@ type FeatureFleetDefaultMemberConfigConfigmanagementArgs struct {
 	// ConfigSync configuration for the cluster
 	// Structure is documented below.
 	ConfigSync FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrInput `pulumi:"configSync"`
+	// Version of ACM installed
+	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
 func (FeatureFleetDefaultMemberConfigConfigmanagementArgs) ElementType() reflect.Type {
@@ -312,6 +316,11 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) ConfigSync() Feat
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
 }
 
+// Version of ACM installed
+func (o FeatureFleetDefaultMemberConfigConfigmanagementOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagement) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
 type FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput struct{ *pulumi.OutputState }
 
 func (FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) ElementType() reflect.Type {
@@ -345,6 +354,16 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) ConfigSync() F
 		}
 		return v.ConfigSync
 	}).(FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncPtrOutput)
+}
+
+// Version of ACM installed
+func (o FeatureFleetDefaultMemberConfigConfigmanagementPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagement) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
 }
 
 type FeatureFleetDefaultMemberConfigConfigmanagementConfigSync struct {
@@ -817,7 +836,12 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci struct {
 	SyncRepo *string `pulumi:"syncRepo"`
 	// Period in seconds between consecutive syncs. Default: 15
 	SyncWaitSecs *string `pulumi:"syncWaitSecs"`
+	// (Optional, Deprecated)
 	// Version of ACM installed
+	//
+	// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+	//
+	// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
 	Version *string `pulumi:"version"`
 }
 
@@ -843,7 +867,12 @@ type FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs struct {
 	SyncRepo pulumi.StringPtrInput `pulumi:"syncRepo"`
 	// Period in seconds between consecutive syncs. Default: 15
 	SyncWaitSecs pulumi.StringPtrInput `pulumi:"syncWaitSecs"`
+	// (Optional, Deprecated)
 	// Version of ACM installed
+	//
+	// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+	//
+	// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
 	Version pulumi.StringPtrInput `pulumi:"version"`
 }
 
@@ -951,7 +980,12 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) Sync
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string { return v.SyncWaitSecs }).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Deprecated)
 // Version of ACM installed
+//
+// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+//
+// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
 func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string { return v.Version }).(pulumi.StringPtrOutput)
 }
@@ -1030,7 +1064,12 @@ func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) S
 	}).(pulumi.StringPtrOutput)
 }
 
+// (Optional, Deprecated)
 // Version of ACM installed
+//
+// > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+//
+// Deprecated: The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
 func (o FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciPtrOutput) Version() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) *string {
 		if v == nil {

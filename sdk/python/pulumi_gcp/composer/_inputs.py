@@ -27,6 +27,7 @@ __all__ = [
     'EnvironmentConfigWebServerNetworkAccessControlArgs',
     'EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs',
     'EnvironmentConfigWorkloadsConfigArgs',
+    'EnvironmentConfigWorkloadsConfigDagProcessorArgs',
     'EnvironmentConfigWorkloadsConfigSchedulerArgs',
     'EnvironmentConfigWorkloadsConfigTriggererArgs',
     'EnvironmentConfigWorkloadsConfigWebServerArgs',
@@ -385,6 +386,7 @@ class EnvironmentConfigMasterAuthorizedNetworksConfigCidrBlockArgs:
 @pulumi.input_type
 class EnvironmentConfigNodeConfigArgs:
     def __init__(__self__, *,
+                 composer_internal_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
                  disk_size_gb: Optional[pulumi.Input[int]] = None,
                  enable_ip_masq_agent: Optional[pulumi.Input[bool]] = None,
                  ip_allocation_policy: Optional[pulumi.Input['EnvironmentConfigNodeConfigIpAllocationPolicyArgs']] = None,
@@ -396,6 +398,8 @@ class EnvironmentConfigNodeConfigArgs:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
+        if composer_internal_ipv4_cidr_block is not None:
+            pulumi.set(__self__, "composer_internal_ipv4_cidr_block", composer_internal_ipv4_cidr_block)
         if disk_size_gb is not None:
             pulumi.set(__self__, "disk_size_gb", disk_size_gb)
         if enable_ip_masq_agent is not None:
@@ -418,6 +422,15 @@ class EnvironmentConfigNodeConfigArgs:
             pulumi.set(__self__, "tags", tags)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="composerInternalIpv4CidrBlock")
+    def composer_internal_ipv4_cidr_block(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "composer_internal_ipv4_cidr_block")
+
+    @composer_internal_ipv4_cidr_block.setter
+    def composer_internal_ipv4_cidr_block(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "composer_internal_ipv4_cidr_block", value)
 
     @property
     @pulumi.getter(name="diskSizeGb")
@@ -763,7 +776,8 @@ class EnvironmentConfigSoftwareConfigArgs:
                  image_version: Optional[pulumi.Input[str]] = None,
                  pypi_packages: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  python_version: Optional[pulumi.Input[str]] = None,
-                 scheduler_count: Optional[pulumi.Input[int]] = None):
+                 scheduler_count: Optional[pulumi.Input[int]] = None,
+                 web_server_plugins_mode: Optional[pulumi.Input[str]] = None):
         if airflow_config_overrides is not None:
             pulumi.set(__self__, "airflow_config_overrides", airflow_config_overrides)
         if cloud_data_lineage_integration is not None:
@@ -778,6 +792,8 @@ class EnvironmentConfigSoftwareConfigArgs:
             pulumi.set(__self__, "python_version", python_version)
         if scheduler_count is not None:
             pulumi.set(__self__, "scheduler_count", scheduler_count)
+        if web_server_plugins_mode is not None:
+            pulumi.set(__self__, "web_server_plugins_mode", web_server_plugins_mode)
 
     @property
     @pulumi.getter(name="airflowConfigOverrides")
@@ -841,6 +857,15 @@ class EnvironmentConfigSoftwareConfigArgs:
     @scheduler_count.setter
     def scheduler_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "scheduler_count", value)
+
+    @property
+    @pulumi.getter(name="webServerPluginsMode")
+    def web_server_plugins_mode(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "web_server_plugins_mode")
+
+    @web_server_plugins_mode.setter
+    def web_server_plugins_mode(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "web_server_plugins_mode", value)
 
 
 @pulumi.input_type
@@ -923,10 +948,13 @@ class EnvironmentConfigWebServerNetworkAccessControlAllowedIpRangeArgs:
 @pulumi.input_type
 class EnvironmentConfigWorkloadsConfigArgs:
     def __init__(__self__, *,
+                 dag_processor: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigDagProcessorArgs']] = None,
                  scheduler: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigSchedulerArgs']] = None,
                  triggerer: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigTriggererArgs']] = None,
                  web_server: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWebServerArgs']] = None,
                  worker: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArgs']] = None):
+        if dag_processor is not None:
+            pulumi.set(__self__, "dag_processor", dag_processor)
         if scheduler is not None:
             pulumi.set(__self__, "scheduler", scheduler)
         if triggerer is not None:
@@ -935,6 +963,15 @@ class EnvironmentConfigWorkloadsConfigArgs:
             pulumi.set(__self__, "web_server", web_server)
         if worker is not None:
             pulumi.set(__self__, "worker", worker)
+
+    @property
+    @pulumi.getter(name="dagProcessor")
+    def dag_processor(self) -> Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigDagProcessorArgs']]:
+        return pulumi.get(self, "dag_processor")
+
+    @dag_processor.setter
+    def dag_processor(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigDagProcessorArgs']]):
+        pulumi.set(self, "dag_processor", value)
 
     @property
     @pulumi.getter
@@ -971,6 +1008,47 @@ class EnvironmentConfigWorkloadsConfigArgs:
     @worker.setter
     def worker(self, value: Optional[pulumi.Input['EnvironmentConfigWorkloadsConfigWorkerArgs']]):
         pulumi.set(self, "worker", value)
+
+
+@pulumi.input_type
+class EnvironmentConfigWorkloadsConfigDagProcessorArgs:
+    def __init__(__self__, *,
+                 cpu: Optional[pulumi.Input[float]] = None,
+                 memory_gb: Optional[pulumi.Input[float]] = None,
+                 storage_gb: Optional[pulumi.Input[float]] = None):
+        if cpu is not None:
+            pulumi.set(__self__, "cpu", cpu)
+        if memory_gb is not None:
+            pulumi.set(__self__, "memory_gb", memory_gb)
+        if storage_gb is not None:
+            pulumi.set(__self__, "storage_gb", storage_gb)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "cpu")
+
+    @cpu.setter
+    def cpu(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "cpu", value)
+
+    @property
+    @pulumi.getter(name="memoryGb")
+    def memory_gb(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "memory_gb")
+
+    @memory_gb.setter
+    def memory_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "memory_gb", value)
+
+    @property
+    @pulumi.getter(name="storageGb")
+    def storage_gb(self) -> Optional[pulumi.Input[float]]:
+        return pulumi.get(self, "storage_gb")
+
+    @storage_gb.setter
+    def storage_gb(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "storage_gb", value)
 
 
 @pulumi.input_type

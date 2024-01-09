@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .automation import *
 from .delivery_pipeline import *
 from .target import *
 from ._inputs import *

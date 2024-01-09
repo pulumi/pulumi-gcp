@@ -30,8 +30,8 @@ namespace Pulumi.Gcp.Dataproc.Inputs
         public Input<string>? BootDiskType { get; set; }
 
         /// <summary>
-        /// The amount of local SSD disks that will be
-        /// attached to each master cluster node. Defaults to 0.
+        /// The amount of local SSD disks that will be attached to each master cluster node. 
+        /// Defaults to 0.
         /// </summary>
         [Input("numLocalSsds")]
         public Input<int>? NumLocalSsds { get; set; }

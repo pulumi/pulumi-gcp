@@ -23,9 +23,9 @@ class NetworkFirewallPolicyArgs:
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -53,7 +53,6 @@ class NetworkFirewallPolicyArgs:
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
 
-
         - - -
         """
         return pulumi.get(self, "name")
@@ -66,7 +65,8 @@ class NetworkFirewallPolicyArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -95,10 +95,10 @@ class _NetworkFirewallPolicyState:
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
                
                
-               
                - - -
         :param pulumi.Input[str] network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource with the resource id.
@@ -165,7 +165,6 @@ class _NetworkFirewallPolicyState:
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
 
-
         - - -
         """
         return pulumi.get(self, "name")
@@ -190,7 +189,8 @@ class _NetworkFirewallPolicyState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -248,14 +248,13 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
-        ### Global
+        ### Network Firewall Policy Full
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.compute.NetworkFirewallPolicy("primary",
-            description="Sample global network firewall policy",
-            project="my-project-name")
+        policy = gcp.compute.NetworkFirewallPolicy("policy", description="Terraform test")
         ```
 
         ## Import
@@ -288,9 +287,9 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
                
                
-               
                - - -
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         ...
     @overload
@@ -302,14 +301,13 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         The Compute NetworkFirewallPolicy resource
 
         ## Example Usage
-        ### Global
+        ### Network Firewall Policy Full
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        primary = gcp.compute.NetworkFirewallPolicy("primary",
-            description="Sample global network firewall policy",
-            project="my-project-name")
+        policy = gcp.compute.NetworkFirewallPolicy("policy", description="Terraform test")
         ```
 
         ## Import
@@ -404,10 +402,10 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] name: User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
                
                
-               
                - - -
         :param pulumi.Input[str] network_firewall_policy_id: The unique identifier for the resource. This identifier is defined by the server.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[int] rule_tuple_count: Total count of all firewall policy rule tuples. A firewall policy can not exceed a set number of tuples.
         :param pulumi.Input[str] self_link: Server-defined URL for the resource.
         :param pulumi.Input[str] self_link_with_id: Server-defined URL for this resource with the resource id.
@@ -458,7 +456,6 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
         User-provided name of the Network firewall policy. The name should be unique in the project in which the firewall policy is created. The name must be 1-63 characters long, and comply with RFC1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z? which means the first character must be a lowercase letter, and all following characters must be a dash, lowercase letter, or digit, except the last character, which cannot be a dash.
 
 
-
         - - -
         """
         return pulumi.get(self, "name")
@@ -475,7 +472,8 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 

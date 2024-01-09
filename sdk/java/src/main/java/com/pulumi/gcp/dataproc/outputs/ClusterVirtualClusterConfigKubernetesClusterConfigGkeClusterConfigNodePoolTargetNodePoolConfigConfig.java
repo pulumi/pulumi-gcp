@@ -20,14 +20,17 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
      */
     private @Nullable Integer localSsdCount;
     /**
-     * @return The name of a Compute Engine machine type.
+     * @return The name of a Google Compute Engine machine type
+     * to create for the node group. If not specified, GCP will default to a predetermined
+     * computed value (currently `n1-standard-4`).
      * 
      */
     private @Nullable String machineType;
     /**
-     * @return Minimum CPU platform to be used by this instance.
-     * The instance may be scheduled on the specified or a newer CPU platform.
-     * Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
+     * @return The name of a minimum generation of CPU family
+     * for the node group. If not specified, GCP will default to a predetermined computed value
+     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+     * for details about which CPU families are available (and defaulted) for each zone.
      * 
      */
     private @Nullable String minCpuPlatform;
@@ -54,16 +57,19 @@ public final class ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterC
         return Optional.ofNullable(this.localSsdCount);
     }
     /**
-     * @return The name of a Compute Engine machine type.
+     * @return The name of a Google Compute Engine machine type
+     * to create for the node group. If not specified, GCP will default to a predetermined
+     * computed value (currently `n1-standard-4`).
      * 
      */
     public Optional<String> machineType() {
         return Optional.ofNullable(this.machineType);
     }
     /**
-     * @return Minimum CPU platform to be used by this instance.
-     * The instance may be scheduled on the specified or a newer CPU platform.
-     * Specify the friendly names of CPU platforms, such as &#34;Intel Haswell&#34; or &#34;Intel Sandy Bridge&#34;.
+     * @return The name of a minimum generation of CPU family
+     * for the node group. If not specified, GCP will default to a predetermined computed value
+     * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+     * for details about which CPU families are available (and defaulted) for each zone.
      * 
      */
     public Optional<String> minCpuPlatform() {

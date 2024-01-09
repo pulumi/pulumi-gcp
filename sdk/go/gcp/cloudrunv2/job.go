@@ -287,8 +287,8 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := cloudrunv2.NewJob(ctx, "default", &cloudrunv2.JobArgs{
-//				Location:    pulumi.String("us-central1"),
 //				LaunchStage: pulumi.String("BETA"),
+//				Location:    pulumi.String("us-central1"),
 //				Template: &cloudrunv2.JobTemplateArgs{
 //					Template: &cloudrunv2.JobTemplateTemplateArgs{
 //						Containers: cloudrunv2.JobTemplateTemplateContainerArray{
@@ -297,6 +297,7 @@ import (
 //							},
 //						},
 //						VpcAccess: &cloudrunv2.JobTemplateTemplateVpcAccessArgs{
+//							Egress: pulumi.String("ALL_TRAFFIC"),
 //							NetworkInterfaces: cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArray{
 //								&cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs{
 //									Network:    pulumi.String("default"),
@@ -308,7 +309,6 @@ import (
 //									},
 //								},
 //							},
-//							Egress: pulumi.String("ALL_TRAFFIC"),
 //						},
 //					},
 //				},

@@ -5,6 +5,7 @@ package com.pulumi.gcp.kms.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyPrimary;
 import com.pulumi.gcp.kms.outputs.GetKMSCryptoKeyVersionTemplate;
 import java.lang.Boolean;
 import java.lang.String;
@@ -25,6 +26,7 @@ public final class GetKMSCryptoKeyResult {
     private String keyRing;
     private Map<String,String> labels;
     private String name;
+    private List<GetKMSCryptoKeyPrimary> primaries;
     private Map<String,String> pulumiLabels;
     /**
      * @return Defines the cryptographic capabilities of the key.
@@ -66,6 +68,9 @@ public final class GetKMSCryptoKeyResult {
     }
     public String name() {
         return this.name;
+    }
+    public List<GetKMSCryptoKeyPrimary> primaries() {
+        return this.primaries;
     }
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
@@ -109,6 +114,7 @@ public final class GetKMSCryptoKeyResult {
         private String keyRing;
         private Map<String,String> labels;
         private String name;
+        private List<GetKMSCryptoKeyPrimary> primaries;
         private Map<String,String> pulumiLabels;
         private String purpose;
         private String rotationPeriod;
@@ -124,6 +130,7 @@ public final class GetKMSCryptoKeyResult {
     	      this.keyRing = defaults.keyRing;
     	      this.labels = defaults.labels;
     	      this.name = defaults.name;
+    	      this.primaries = defaults.primaries;
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.purpose = defaults.purpose;
     	      this.rotationPeriod = defaults.rotationPeriod;
@@ -188,6 +195,17 @@ public final class GetKMSCryptoKeyResult {
             return this;
         }
         @CustomType.Setter
+        public Builder primaries(List<GetKMSCryptoKeyPrimary> primaries) {
+            if (primaries == null) {
+              throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "primaries");
+            }
+            this.primaries = primaries;
+            return this;
+        }
+        public Builder primaries(GetKMSCryptoKeyPrimary... primaries) {
+            return primaries(List.of(primaries));
+        }
+        @CustomType.Setter
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             if (pulumiLabels == null) {
               throw new MissingRequiredPropertyException("GetKMSCryptoKeyResult", "pulumiLabels");
@@ -239,6 +257,7 @@ public final class GetKMSCryptoKeyResult {
             _resultValue.keyRing = keyRing;
             _resultValue.labels = labels;
             _resultValue.name = name;
+            _resultValue.primaries = primaries;
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.purpose = purpose;
             _resultValue.rotationPeriod = rotationPeriod;

@@ -14,7 +14,8 @@ import (
 // The Compute NetworkFirewallPolicy resource
 //
 // ## Example Usage
-// ### Regional
+// ### Region Network Firewall Policy Full
+//
 // ```go
 // package main
 //
@@ -27,10 +28,8 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionNetworkFirewallPolicy(ctx, "primary", &compute.RegionNetworkFirewallPolicyArgs{
-//				Description: pulumi.String("Sample regional network firewall policy"),
-//				Project:     pulumi.String("my-project-name"),
-//				Region:      pulumi.String("us-west1"),
+//			_, err := compute.NewRegionNetworkFirewallPolicy(ctx, "policy", &compute.RegionNetworkFirewallPolicyArgs{
+//				Description: pulumi.String("Terraform test"),
 //			})
 //			if err != nil {
 //				return err
@@ -43,7 +42,7 @@ import (
 //
 // ## Import
 //
-// NetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicy using one of the formats above. For exampletf import {
+// RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkFirewallPolicy using one of the formats above. For exampletf import {
 //
 //	id = "projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}"
 //
@@ -51,7 +50,7 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicy can be imported using one of the formats above. For example
+//	$ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
 //
 // ```
 //
@@ -91,9 +90,10 @@ type RegionNetworkFirewallPolicy struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The location of this resource.
+	// The region of this resource.
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	RegionNetworkFirewallPolicyId pulumi.StringOutput `pulumi:"regionNetworkFirewallPolicyId"`
@@ -145,9 +145,10 @@ type regionNetworkFirewallPolicyState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The location of this resource.
+	// The region of this resource.
 	Region *string `pulumi:"region"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	RegionNetworkFirewallPolicyId *string `pulumi:"regionNetworkFirewallPolicyId"`
@@ -170,9 +171,10 @@ type RegionNetworkFirewallPolicyState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The location of this resource.
+	// The region of this resource.
 	Region pulumi.StringPtrInput
 	// The unique identifier for the resource. This identifier is defined by the server.
 	RegionNetworkFirewallPolicyId pulumi.StringPtrInput
@@ -195,9 +197,10 @@ type regionNetworkFirewallPolicyArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The location of this resource.
+	// The region of this resource.
 	Region *string `pulumi:"region"`
 }
 
@@ -209,9 +212,10 @@ type RegionNetworkFirewallPolicyArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
-	// The project for the resource
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The location of this resource.
+	// The region of this resource.
 	Region pulumi.StringPtrInput
 }
 
@@ -324,12 +328,13 @@ func (o RegionNetworkFirewallPolicyOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkFirewallPolicy) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o RegionNetworkFirewallPolicyOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkFirewallPolicy) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The location of this resource.
+// The region of this resource.
 func (o RegionNetworkFirewallPolicyOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkFirewallPolicy) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }

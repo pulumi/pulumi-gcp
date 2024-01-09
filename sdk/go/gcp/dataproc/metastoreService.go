@@ -157,6 +157,59 @@ import (
 //	}
 //
 // ```
+// ### Dataproc Metastore Service Private Service Connect Custom Routes
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			net, err := compute.NewNetwork(ctx, "net", &compute.NetworkArgs{
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			subnet, err := compute.NewSubnetwork(ctx, "subnet", &compute.SubnetworkArgs{
+//				Region:                pulumi.String("us-central1"),
+//				Network:               net.ID(),
+//				IpCidrRange:           pulumi.String("10.0.0.0/22"),
+//				PrivateIpGoogleAccess: pulumi.Bool(true),
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dataproc.NewMetastoreService(ctx, "default", &dataproc.MetastoreServiceArgs{
+//				ServiceId: pulumi.String("metastore-srv"),
+//				Location:  pulumi.String("us-central1"),
+//				HiveMetastoreConfig: &dataproc.MetastoreServiceHiveMetastoreConfigArgs{
+//					Version: pulumi.String("3.1.2"),
+//				},
+//				NetworkConfig: &dataproc.MetastoreServiceNetworkConfigArgs{
+//					Consumers: dataproc.MetastoreServiceNetworkConfigConsumerArray{
+//						&dataproc.MetastoreServiceNetworkConfigConsumerArgs{
+//							Subnetwork: subnet.ID(),
+//						},
+//					},
+//					CustomRoutesEnabled: pulumi.Bool(true),
+//				},
+//			}, pulumi.Provider(google_beta))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Dataproc Metastore Service Dpms2
 //
 // ```go
@@ -289,6 +342,7 @@ type MetastoreService struct {
 	// Structure is documented below.
 	MaintenanceWindow MetastoreServiceMaintenanceWindowPtrOutput `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration MetastoreServiceMetadataIntegrationPtrOutput `pulumi:"metadataIntegration"`
 	// The relative resource name of the metastore service.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -402,6 +456,7 @@ type metastoreServiceState struct {
 	// Structure is documented below.
 	MaintenanceWindow *MetastoreServiceMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration *MetastoreServiceMetadataIntegration `pulumi:"metadataIntegration"`
 	// The relative resource name of the metastore service.
 	Name *string `pulumi:"name"`
@@ -478,6 +533,7 @@ type MetastoreServiceState struct {
 	// Structure is documented below.
 	MaintenanceWindow MetastoreServiceMaintenanceWindowPtrInput
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration MetastoreServiceMetadataIntegrationPtrInput
 	// The relative resource name of the metastore service.
 	Name pulumi.StringPtrInput
@@ -551,6 +607,7 @@ type metastoreServiceArgs struct {
 	// Structure is documented below.
 	MaintenanceWindow *MetastoreServiceMaintenanceWindow `pulumi:"maintenanceWindow"`
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration *MetastoreServiceMetadataIntegration `pulumi:"metadataIntegration"`
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -610,6 +667,7 @@ type MetastoreServiceArgs struct {
 	// Structure is documented below.
 	MaintenanceWindow MetastoreServiceMaintenanceWindowPtrInput
 	// The setting that defines how metastore metadata should be integrated with external services and systems.
+	// Structure is documented below.
 	MetadataIntegration MetastoreServiceMetadataIntegrationPtrInput
 	// The relative resource name of the VPC network on which the instance can be accessed. It is specified in the following form:
 	// "projects/{projectNumber}/global/networks/{network_id}".
@@ -788,6 +846,7 @@ func (o MetastoreServiceOutput) MaintenanceWindow() MetastoreServiceMaintenanceW
 }
 
 // The setting that defines how metastore metadata should be integrated with external services and systems.
+// Structure is documented below.
 func (o MetastoreServiceOutput) MetadataIntegration() MetastoreServiceMetadataIntegrationPtrOutput {
 	return o.ApplyT(func(v *MetastoreService) MetastoreServiceMetadataIntegrationPtrOutput { return v.MetadataIntegration }).(MetastoreServiceMetadataIntegrationPtrOutput)
 }

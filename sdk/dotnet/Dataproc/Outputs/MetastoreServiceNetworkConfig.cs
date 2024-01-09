@@ -18,11 +18,16 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.MetastoreServiceNetworkConfigConsumer> Consumers;
+        public readonly bool? CustomRoutesEnabled;
 
         [OutputConstructor]
-        private MetastoreServiceNetworkConfig(ImmutableArray<Outputs.MetastoreServiceNetworkConfigConsumer> consumers)
+        private MetastoreServiceNetworkConfig(
+            ImmutableArray<Outputs.MetastoreServiceNetworkConfigConsumer> consumers,
+
+            bool? customRoutesEnabled)
         {
             Consumers = consumers;
+            CustomRoutesEnabled = customRoutesEnabled;
         }
     }
 }

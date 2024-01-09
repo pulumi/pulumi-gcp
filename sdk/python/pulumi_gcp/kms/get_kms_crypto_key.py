@@ -22,7 +22,7 @@ class GetKMSCryptoKeyResult:
     """
     A collection of values returned by getKMSCryptoKey.
     """
-    def __init__(__self__, destroy_scheduled_duration=None, effective_labels=None, id=None, import_only=None, key_ring=None, labels=None, name=None, pulumi_labels=None, purpose=None, rotation_period=None, skip_initial_version_creation=None, version_templates=None):
+    def __init__(__self__, destroy_scheduled_duration=None, effective_labels=None, id=None, import_only=None, key_ring=None, labels=None, name=None, primaries=None, pulumi_labels=None, purpose=None, rotation_period=None, skip_initial_version_creation=None, version_templates=None):
         if destroy_scheduled_duration and not isinstance(destroy_scheduled_duration, str):
             raise TypeError("Expected argument 'destroy_scheduled_duration' to be a str")
         pulumi.set(__self__, "destroy_scheduled_duration", destroy_scheduled_duration)
@@ -44,6 +44,9 @@ class GetKMSCryptoKeyResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if primaries and not isinstance(primaries, list):
+            raise TypeError("Expected argument 'primaries' to be a list")
+        pulumi.set(__self__, "primaries", primaries)
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
@@ -99,6 +102,11 @@ class GetKMSCryptoKeyResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter
+    def primaries(self) -> Sequence['outputs.GetKMSCryptoKeyPrimaryResult']:
+        return pulumi.get(self, "primaries")
+
+    @property
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Mapping[str, str]:
         return pulumi.get(self, "pulumi_labels")
@@ -145,6 +153,7 @@ class AwaitableGetKMSCryptoKeyResult(GetKMSCryptoKeyResult):
             key_ring=self.key_ring,
             labels=self.labels,
             name=self.name,
+            primaries=self.primaries,
             pulumi_labels=self.pulumi_labels,
             purpose=self.purpose,
             rotation_period=self.rotation_period,
@@ -195,6 +204,7 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
         key_ring=pulumi.get(__ret__, 'key_ring'),
         labels=pulumi.get(__ret__, 'labels'),
         name=pulumi.get(__ret__, 'name'),
+        primaries=pulumi.get(__ret__, 'primaries'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         purpose=pulumi.get(__ret__, 'purpose'),
         rotation_period=pulumi.get(__ret__, 'rotation_period'),

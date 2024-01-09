@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
     ///     {
-    ///         Topic = exampleTopic.Name,
+    ///         Topic = exampleTopic.Id,
     ///         AckDeadlineSeconds = 20,
     ///         Labels = 
     ///         {
@@ -69,7 +69,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
     ///     {
-    ///         Topic = exampleTopic.Name,
+    ///         Topic = exampleTopic.Id,
     ///         Labels = 
     ///         {
     ///             { "foo", "bar" },
@@ -90,29 +90,6 @@ namespace Pulumi.Gcp.PubSub
     /// 
     /// });
     /// ```
-    /// ### Pubsub Subscription Different Project
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var exampleTopic = new Gcp.PubSub.Topic("exampleTopic", new()
-    ///     {
-    ///         Project = "topic-project",
-    ///     });
-    /// 
-    ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
-    ///     {
-    ///         Project = "subscription-project",
-    ///         Topic = exampleTopic.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
     /// ### Pubsub Subscription Dead Letter
     /// 
     /// ```csharp
@@ -129,7 +106,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
     ///     {
-    ///         Topic = exampleTopic.Name,
+    ///         Topic = exampleTopic.Id,
     ///         DeadLetterPolicy = new Gcp.PubSub.Inputs.SubscriptionDeadLetterPolicyArgs
     ///         {
     ///             DeadLetterTopic = exampleDeadLetter.Id,
@@ -190,7 +167,7 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var exampleSubscription = new Gcp.PubSub.Subscription("exampleSubscription", new()
     ///     {
-    ///         Topic = exampleTopic.Name,
+    ///         Topic = exampleTopic.Id,
     ///         BigqueryConfig = new Gcp.PubSub.Inputs.SubscriptionBigqueryConfigArgs
     ///         {
     ///             Table = Output.Tuple(testTable.Project, testTable.DatasetId, testTable.TableId).Apply(values =&gt;
@@ -408,7 +385,9 @@ namespace Pulumi.Gcp.PubSub
         public Output<Outputs.SubscriptionRetryPolicy?> RetryPolicy { get; private set; } = null!;
 
         /// <summary>
-        /// A reference to a Topic resource.
+        /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+        /// (as in the id property of a google_pubsub_topic), or just a topic name if
+        /// the topic is in the same project as the subscription.
         /// 
         /// 
         /// - - -
@@ -628,7 +607,9 @@ namespace Pulumi.Gcp.PubSub
         public Input<Inputs.SubscriptionRetryPolicyArgs>? RetryPolicy { get; set; }
 
         /// <summary>
-        /// A reference to a Topic resource.
+        /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+        /// (as in the id property of a google_pubsub_topic), or just a topic name if
+        /// the topic is in the same project as the subscription.
         /// 
         /// 
         /// - - -
@@ -838,7 +819,9 @@ namespace Pulumi.Gcp.PubSub
         public Input<Inputs.SubscriptionRetryPolicyGetArgs>? RetryPolicy { get; set; }
 
         /// <summary>
-        /// A reference to a Topic resource.
+        /// A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+        /// (as in the id property of a google_pubsub_topic), or just a topic name if
+        /// the topic is in the same project as the subscription.
         /// 
         /// 
         /// - - -

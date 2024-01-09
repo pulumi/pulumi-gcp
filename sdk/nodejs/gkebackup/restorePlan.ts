@@ -34,6 +34,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: "",
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -77,6 +79,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: "",
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -131,6 +135,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: "",
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -178,6 +184,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: "",
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -220,6 +228,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: "",
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,
@@ -291,6 +301,8 @@ import * as utilities from "../utilities";
  *         },
  *     },
  *     deletionProtection: "",
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const basic = new gcp.gkebackup.BackupPlan("basic", {
  *     cluster: primary.id,

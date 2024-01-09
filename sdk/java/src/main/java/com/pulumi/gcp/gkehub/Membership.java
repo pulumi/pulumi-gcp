@@ -58,6 +58,8 @@ import javax.annotation.Nullable;
  *             .deletionProtection(false)
  *             .initialNodeCount(1)
  *             .location(&#34;us-central1-a&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
@@ -103,6 +105,8 @@ import javax.annotation.Nullable;
  *             .deletionProtection(&#34;true&#34;)
  *             .initialNodeCount(1)
  *             .location(&#34;us-central1-a&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
@@ -153,6 +157,8 @@ import javax.annotation.Nullable;
  *                 .workloadPool(&#34;my-project-name.svc.id.goog&#34;)
  *                 .build())
  *             .deletionProtection(&#34;true&#34;)
+ *             .network(&#34;default&#34;)
+ *             .subnetwork(&#34;default&#34;)
  *             .build());
  * 
  *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        

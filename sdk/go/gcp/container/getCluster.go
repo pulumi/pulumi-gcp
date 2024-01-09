@@ -143,6 +143,7 @@ type LookupClusterResult struct {
 	TpuConfigs                      []GetClusterTpuConfig                      `pulumi:"tpuConfigs"`
 	TpuIpv4CidrBlock                string                                     `pulumi:"tpuIpv4CidrBlock"`
 	VerticalPodAutoscalings         []GetClusterVerticalPodAutoscaling         `pulumi:"verticalPodAutoscalings"`
+	WorkloadAltsConfigs             []GetClusterWorkloadAltsConfig             `pulumi:"workloadAltsConfigs"`
 	WorkloadIdentityConfigs         []GetClusterWorkloadIdentityConfig         `pulumi:"workloadIdentityConfigs"`
 }
 
@@ -488,6 +489,10 @@ func (o LookupClusterResultOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
 
 func (o LookupClusterResultOutput) VerticalPodAutoscalings() GetClusterVerticalPodAutoscalingArrayOutput {
 	return o.ApplyT(func(v LookupClusterResult) []GetClusterVerticalPodAutoscaling { return v.VerticalPodAutoscalings }).(GetClusterVerticalPodAutoscalingArrayOutput)
+}
+
+func (o LookupClusterResultOutput) WorkloadAltsConfigs() GetClusterWorkloadAltsConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterWorkloadAltsConfig { return v.WorkloadAltsConfigs }).(GetClusterWorkloadAltsConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) WorkloadIdentityConfigs() GetClusterWorkloadIdentityConfigArrayOutput {

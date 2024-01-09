@@ -885,14 +885,15 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
             launch_stage="BETA",
+            location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
                         image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                     vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
+                        egress="ALL_TRAFFIC",
                         network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
                             network="default",
                             subnetwork="default",
@@ -902,7 +903,6 @@ class Job(pulumi.CustomResource):
                                 "tag3",
                             ],
                         )],
-                        egress="ALL_TRAFFIC",
                     ),
                 ),
             ))
@@ -1196,14 +1196,15 @@ class Job(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         default = gcp.cloudrunv2.Job("default",
-            location="us-central1",
             launch_stage="BETA",
+            location="us-central1",
             template=gcp.cloudrunv2.JobTemplateArgs(
                 template=gcp.cloudrunv2.JobTemplateTemplateArgs(
                     containers=[gcp.cloudrunv2.JobTemplateTemplateContainerArgs(
                         image="us-docker.pkg.dev/cloudrun/container/job",
                     )],
                     vpc_access=gcp.cloudrunv2.JobTemplateTemplateVpcAccessArgs(
+                        egress="ALL_TRAFFIC",
                         network_interfaces=[gcp.cloudrunv2.JobTemplateTemplateVpcAccessNetworkInterfaceArgs(
                             network="default",
                             subnetwork="default",
@@ -1213,7 +1214,6 @@ class Job(pulumi.CustomResource):
                                 "tag3",
                             ],
                         )],
-                        egress="ALL_TRAFFIC",
                     ),
                 ),
             ))

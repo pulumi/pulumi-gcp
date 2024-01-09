@@ -20,6 +20,7 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly ImmutableDictionary<string, string> PypiPackages;
         public readonly string PythonVersion;
         public readonly int SchedulerCount;
+        public readonly string WebServerPluginsMode;
 
         [OutputConstructor]
         private GetEnvironmentConfigSoftwareConfigResult(
@@ -35,7 +36,9 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             string pythonVersion,
 
-            int schedulerCount)
+            int schedulerCount,
+
+            string webServerPluginsMode)
         {
             AirflowConfigOverrides = airflowConfigOverrides;
             CloudDataLineageIntegrations = cloudDataLineageIntegrations;
@@ -44,6 +47,7 @@ namespace Pulumi.Gcp.Composer.Outputs
             PypiPackages = pypiPackages;
             PythonVersion = pythonVersion;
             SchedulerCount = schedulerCount;
+            WebServerPluginsMode = webServerPluginsMode;
         }
     }
 }

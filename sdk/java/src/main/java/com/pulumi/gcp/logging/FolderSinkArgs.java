@@ -51,13 +51,13 @@ public final class FolderSinkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+     * The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
      * 
      * - `storage.googleapis.com/[GCS_BUCKET]`
      * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
      * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]`
      * 
      * The writer associated with the sink must have access to write to the above resource.
      * 
@@ -66,13 +66,13 @@ public final class FolderSinkArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> destination;
 
     /**
-     * @return The destination of the sink (or, in other words, where logs are written to). Can be a
-     * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+     * @return The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
      * 
      * - `storage.googleapis.com/[GCS_BUCKET]`
      * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
      * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-     * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+     * - `logging.googleapis.com/projects/[PROJECT_ID]`
      * 
      * The writer associated with the sink must have access to write to the above resource.
      * 
@@ -254,13 +254,13 @@ public final class FolderSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destination The destination of the sink (or, in other words, where logs are written to). Can be a
-         * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+         * @param destination The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
          * 
          * - `storage.googleapis.com/[GCS_BUCKET]`
          * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
          * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-         * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+         * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+         * - `logging.googleapis.com/projects/[PROJECT_ID]`
          * 
          * The writer associated with the sink must have access to write to the above resource.
          * 
@@ -273,13 +273,13 @@ public final class FolderSinkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param destination The destination of the sink (or, in other words, where logs are written to). Can be a
-         * Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+         * @param destination The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
          * 
          * - `storage.googleapis.com/[GCS_BUCKET]`
          * - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
          * - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-         * - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+         * - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+         * - `logging.googleapis.com/projects/[PROJECT_ID]`
          * 
          * The writer associated with the sink must have access to write to the above resource.
          * 

@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.GkeHub.Inputs
         [Input("configSync")]
         public Input<Inputs.FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGetArgs>? ConfigSync { get; set; }
 
+        /// <summary>
+        /// Version of ACM installed
+        /// </summary>
+        [Input("version")]
+        public Input<string>? Version { get; set; }
+
         public FeatureFleetDefaultMemberConfigConfigmanagementGetArgs()
         {
         }

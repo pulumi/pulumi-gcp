@@ -205,6 +205,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionInstanceTemplateReservationAffinity?> ReservationAffinity { get; private set; } = null!;
 
         /// <summary>
+        /// A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        /// </summary>
+        [Output("resourceManagerTags")]
+        public Output<ImmutableDictionary<string, string>?> ResourceManagerTags { get; private set; } = null!;
+
+        /// <summary>
         /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
         [Output("resourcePolicies")]
@@ -478,6 +484,18 @@ namespace Pulumi.Gcp.Compute
         [Input("reservationAffinity")]
         public Input<Inputs.RegionInstanceTemplateReservationAffinityArgs>? ReservationAffinity { get; set; }
 
+        [Input("resourceManagerTags")]
+        private InputMap<string>? _resourceManagerTags;
+
+        /// <summary>
+        /// A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        /// </summary>
+        public InputMap<string> ResourceManagerTags
+        {
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<string>());
+            set => _resourceManagerTags = value;
+        }
+
         /// <summary>
         /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         /// </summary>
@@ -740,6 +758,18 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("reservationAffinity")]
         public Input<Inputs.RegionInstanceTemplateReservationAffinityGetArgs>? ReservationAffinity { get; set; }
+
+        [Input("resourceManagerTags")]
+        private InputMap<string>? _resourceManagerTags;
+
+        /// <summary>
+        /// A set of key/value resource manager tag pairs to bind to the instance. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        /// </summary>
+        public InputMap<string> ResourceManagerTags
+        {
+            get => _resourceManagerTags ?? (_resourceManagerTags = new InputMap<string>());
+            set => _resourceManagerTags = value;
+        }
 
         /// <summary>
         /// - A list of self_links of resource policies to attach to the instance. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.

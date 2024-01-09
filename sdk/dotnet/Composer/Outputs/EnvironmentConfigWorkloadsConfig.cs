@@ -13,6 +13,7 @@ namespace Pulumi.Gcp.Composer.Outputs
     [OutputType]
     public sealed class EnvironmentConfigWorkloadsConfig
     {
+        public readonly Outputs.EnvironmentConfigWorkloadsConfigDagProcessor? DagProcessor;
         public readonly Outputs.EnvironmentConfigWorkloadsConfigScheduler? Scheduler;
         public readonly Outputs.EnvironmentConfigWorkloadsConfigTriggerer? Triggerer;
         public readonly Outputs.EnvironmentConfigWorkloadsConfigWebServer? WebServer;
@@ -20,6 +21,8 @@ namespace Pulumi.Gcp.Composer.Outputs
 
         [OutputConstructor]
         private EnvironmentConfigWorkloadsConfig(
+            Outputs.EnvironmentConfigWorkloadsConfigDagProcessor? dagProcessor,
+
             Outputs.EnvironmentConfigWorkloadsConfigScheduler? scheduler,
 
             Outputs.EnvironmentConfigWorkloadsConfigTriggerer? triggerer,
@@ -28,6 +31,7 @@ namespace Pulumi.Gcp.Composer.Outputs
 
             Outputs.EnvironmentConfigWorkloadsConfigWorker? worker)
         {
+            DagProcessor = dagProcessor;
             Scheduler = scheduler;
             Triggerer = triggerer;
             WebServer = webServer;

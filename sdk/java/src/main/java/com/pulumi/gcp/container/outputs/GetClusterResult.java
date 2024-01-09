@@ -41,6 +41,7 @@ import com.pulumi.gcp.container.outputs.GetClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.GetClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterTpuConfig;
 import com.pulumi.gcp.container.outputs.GetClusterVerticalPodAutoscaling;
+import com.pulumi.gcp.container.outputs.GetClusterWorkloadAltsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterWorkloadIdentityConfig;
 import java.lang.Boolean;
 import java.lang.Integer;
@@ -131,6 +132,7 @@ public final class GetClusterResult {
     private List<GetClusterTpuConfig> tpuConfigs;
     private String tpuIpv4CidrBlock;
     private List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings;
+    private List<GetClusterWorkloadAltsConfig> workloadAltsConfigs;
     private List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs;
 
     private GetClusterResult() {}
@@ -360,6 +362,9 @@ public final class GetClusterResult {
     public List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings() {
         return this.verticalPodAutoscalings;
     }
+    public List<GetClusterWorkloadAltsConfig> workloadAltsConfigs() {
+        return this.workloadAltsConfigs;
+    }
     public List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs() {
         return this.workloadIdentityConfigs;
     }
@@ -447,6 +452,7 @@ public final class GetClusterResult {
         private List<GetClusterTpuConfig> tpuConfigs;
         private String tpuIpv4CidrBlock;
         private List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings;
+        private List<GetClusterWorkloadAltsConfig> workloadAltsConfigs;
         private List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs;
         public Builder() {}
         public Builder(GetClusterResult defaults) {
@@ -525,6 +531,7 @@ public final class GetClusterResult {
     	      this.tpuConfigs = defaults.tpuConfigs;
     	      this.tpuIpv4CidrBlock = defaults.tpuIpv4CidrBlock;
     	      this.verticalPodAutoscalings = defaults.verticalPodAutoscalings;
+    	      this.workloadAltsConfigs = defaults.workloadAltsConfigs;
     	      this.workloadIdentityConfigs = defaults.workloadIdentityConfigs;
         }
 
@@ -1228,6 +1235,17 @@ public final class GetClusterResult {
             return verticalPodAutoscalings(List.of(verticalPodAutoscalings));
         }
         @CustomType.Setter
+        public Builder workloadAltsConfigs(List<GetClusterWorkloadAltsConfig> workloadAltsConfigs) {
+            if (workloadAltsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "workloadAltsConfigs");
+            }
+            this.workloadAltsConfigs = workloadAltsConfigs;
+            return this;
+        }
+        public Builder workloadAltsConfigs(GetClusterWorkloadAltsConfig... workloadAltsConfigs) {
+            return workloadAltsConfigs(List.of(workloadAltsConfigs));
+        }
+        @CustomType.Setter
         public Builder workloadIdentityConfigs(List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs) {
             if (workloadIdentityConfigs == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "workloadIdentityConfigs");
@@ -1314,6 +1332,7 @@ public final class GetClusterResult {
             _resultValue.tpuConfigs = tpuConfigs;
             _resultValue.tpuIpv4CidrBlock = tpuIpv4CidrBlock;
             _resultValue.verticalPodAutoscalings = verticalPodAutoscalings;
+            _resultValue.workloadAltsConfigs = workloadAltsConfigs;
             _resultValue.workloadIdentityConfigs = workloadIdentityConfigs;
             return _resultValue;
         }

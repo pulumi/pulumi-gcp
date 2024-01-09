@@ -28,8 +28,7 @@ class ProjectSinkArgs:
                  unique_writer_identity: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a ProjectSink resource.
-        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
@@ -80,8 +79,7 @@ class ProjectSinkArgs:
     @pulumi.getter
     def destination(self) -> pulumi.Input[str]:
         """
-        The destination of the sink (or, in other words, where logs are written to). Can be a
-        Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
+        The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 
         - `storage.googleapis.com/[GCS_BUCKET]`
         - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
@@ -236,8 +234,7 @@ class _ProjectSinkState:
                routing logs to a destination outside this sink's project. If not specified, a Logging service account
                will automatically be generated.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
-        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
@@ -326,8 +323,7 @@ class _ProjectSinkState:
     @pulumi.getter
     def destination(self) -> Optional[pulumi.Input[str]]:
         """
-        The destination of the sink (or, in other words, where logs are written to). Can be a
-        Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
+        The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 
         - `storage.googleapis.com/[GCS_BUCKET]`
         - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
@@ -475,8 +471,7 @@ class ProjectSink(pulumi.CustomResource):
                routing logs to a destination outside this sink's project. If not specified, a Logging service account
                will automatically be generated.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
-        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
@@ -601,8 +596,7 @@ class ProjectSink(pulumi.CustomResource):
                routing logs to a destination outside this sink's project. If not specified, a Logging service account
                will automatically be generated.
         :param pulumi.Input[str] description: A description of this sink. The maximum length of the description is 8000 characters.
-        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a
-               Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
+        :param pulumi.Input[str] destination: The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
                
                - `storage.googleapis.com/[GCS_BUCKET]`
                - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
@@ -673,8 +667,7 @@ class ProjectSink(pulumi.CustomResource):
     @pulumi.getter
     def destination(self) -> pulumi.Output[str]:
         """
-        The destination of the sink (or, in other words, where logs are written to). Can be a
-        Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket . Examples:
+        The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 
         - `storage.googleapis.com/[GCS_BUCKET]`
         - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`

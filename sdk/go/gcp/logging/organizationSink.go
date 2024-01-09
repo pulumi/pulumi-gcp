@@ -92,13 +92,13 @@ type OrganizationSink struct {
 	BigqueryOptions OrganizationSinkBigqueryOptionsOutput `pulumi:"bigqueryOptions"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringOutput `pulumi:"destination"`
@@ -162,13 +162,13 @@ type organizationSinkState struct {
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination *string `pulumi:"destination"`
@@ -197,13 +197,13 @@ type OrganizationSinkState struct {
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringPtrInput
@@ -236,13 +236,13 @@ type organizationSinkArgs struct {
 	BigqueryOptions *OrganizationSinkBigqueryOptions `pulumi:"bigqueryOptions"`
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description *string `pulumi:"description"`
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination string `pulumi:"destination"`
@@ -269,13 +269,13 @@ type OrganizationSinkArgs struct {
 	BigqueryOptions OrganizationSinkBigqueryOptionsPtrInput
 	// A description of this sink. The maximum length of the description is 8000 characters.
 	Description pulumi.StringPtrInput
-	// The destination of the sink (or, in other words, where logs are written to). Can be a
-	// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+	// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 	//
 	// - `storage.googleapis.com/[GCS_BUCKET]`
 	// - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 	// - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-	// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+	// - `logging.googleapis.com/projects/[PROJECT_ID]`
 	//
 	// The writer associated with the sink must have access to write to the above resource.
 	Destination pulumi.StringInput
@@ -393,13 +393,13 @@ func (o OrganizationSinkOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *OrganizationSink) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The destination of the sink (or, in other words, where logs are written to). Can be a
-// Cloud Storage bucket, a PubSub topic, a BigQuery dataset or a Cloud Logging bucket. Examples:
+// The destination of the sink (or, in other words, where logs are written to). Can be a Cloud Storage bucket, a PubSub topic, a BigQuery dataset, a Cloud Logging bucket, or a Google Cloud project. Examples:
 //
 // - `storage.googleapis.com/[GCS_BUCKET]`
 // - `bigquery.googleapis.com/projects/[PROJECT_ID]/datasets/[DATASET]`
 // - `pubsub.googleapis.com/projects/[PROJECT_ID]/topics/[TOPIC_ID]`
-// - `logging.googleapis.com/projects/[PROJECT_ID]]/locations/global/buckets/[BUCKET_ID]`
+// - `logging.googleapis.com/projects/[PROJECT_ID]/locations/global/buckets/[BUCKET_ID]`
+// - `logging.googleapis.com/projects/[PROJECT_ID]`
 //
 // The writer associated with the sink must have access to write to the above resource.
 func (o OrganizationSinkOutput) Destination() pulumi.StringOutput {

@@ -9,6 +9,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingBigqueryDatasetArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingDataProviderArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingPublisherArgs;
+import com.pulumi.gcp.bigqueryanalyticshub.inputs.ListingRestrictedExportConfigArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -238,6 +239,23 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.requestAccess);
     }
 
+    /**
+     * If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="restrictedExportConfig")
+    private @Nullable Output<ListingRestrictedExportConfigArgs> restrictedExportConfig;
+
+    /**
+     * @return If set, restricted export configuration will be propagated and enforced on the linked dataset.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ListingRestrictedExportConfigArgs>> restrictedExportConfig() {
+        return Optional.ofNullable(this.restrictedExportConfig);
+    }
+
     private ListingArgs() {}
 
     private ListingArgs(ListingArgs $) {
@@ -255,6 +273,7 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
         this.project = $.project;
         this.publisher = $.publisher;
         this.requestAccess = $.requestAccess;
+        this.restrictedExportConfig = $.restrictedExportConfig;
     }
 
     public static Builder builder() {
@@ -585,6 +604,29 @@ public final class ListingArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder requestAccess(String requestAccess) {
             return requestAccess(Output.of(requestAccess));
+        }
+
+        /**
+         * @param restrictedExportConfig If set, restricted export configuration will be propagated and enforced on the linked dataset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictedExportConfig(@Nullable Output<ListingRestrictedExportConfigArgs> restrictedExportConfig) {
+            $.restrictedExportConfig = restrictedExportConfig;
+            return this;
+        }
+
+        /**
+         * @param restrictedExportConfig If set, restricted export configuration will be propagated and enforced on the linked dataset.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder restrictedExportConfig(ListingRestrictedExportConfigArgs restrictedExportConfig) {
+            return restrictedExportConfig(Output.of(restrictedExportConfig));
         }
 
         public ListingArgs build() {

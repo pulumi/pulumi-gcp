@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigDagProcessor;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigScheduler;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigTriggerer;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfigWebServer;
@@ -14,12 +15,16 @@ import java.util.Objects;
 
 @CustomType
 public final class GetEnvironmentConfigWorkloadsConfig {
+    private List<GetEnvironmentConfigWorkloadsConfigDagProcessor> dagProcessors;
     private List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers;
     private List<GetEnvironmentConfigWorkloadsConfigTriggerer> triggerers;
     private List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers;
     private List<GetEnvironmentConfigWorkloadsConfigWorker> workers;
 
     private GetEnvironmentConfigWorkloadsConfig() {}
+    public List<GetEnvironmentConfigWorkloadsConfigDagProcessor> dagProcessors() {
+        return this.dagProcessors;
+    }
     public List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers() {
         return this.schedulers;
     }
@@ -42,6 +47,7 @@ public final class GetEnvironmentConfigWorkloadsConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetEnvironmentConfigWorkloadsConfigDagProcessor> dagProcessors;
         private List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers;
         private List<GetEnvironmentConfigWorkloadsConfigTriggerer> triggerers;
         private List<GetEnvironmentConfigWorkloadsConfigWebServer> webServers;
@@ -49,12 +55,24 @@ public final class GetEnvironmentConfigWorkloadsConfig {
         public Builder() {}
         public Builder(GetEnvironmentConfigWorkloadsConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.dagProcessors = defaults.dagProcessors;
     	      this.schedulers = defaults.schedulers;
     	      this.triggerers = defaults.triggerers;
     	      this.webServers = defaults.webServers;
     	      this.workers = defaults.workers;
         }
 
+        @CustomType.Setter
+        public Builder dagProcessors(List<GetEnvironmentConfigWorkloadsConfigDagProcessor> dagProcessors) {
+            if (dagProcessors == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigWorkloadsConfig", "dagProcessors");
+            }
+            this.dagProcessors = dagProcessors;
+            return this;
+        }
+        public Builder dagProcessors(GetEnvironmentConfigWorkloadsConfigDagProcessor... dagProcessors) {
+            return dagProcessors(List.of(dagProcessors));
+        }
         @CustomType.Setter
         public Builder schedulers(List<GetEnvironmentConfigWorkloadsConfigScheduler> schedulers) {
             if (schedulers == null) {
@@ -101,6 +119,7 @@ public final class GetEnvironmentConfigWorkloadsConfig {
         }
         public GetEnvironmentConfigWorkloadsConfig build() {
             final var _resultValue = new GetEnvironmentConfigWorkloadsConfig();
+            _resultValue.dagProcessors = dagProcessors;
             _resultValue.schedulers = schedulers;
             _resultValue.triggerers = triggerers;
             _resultValue.webServers = webServers;

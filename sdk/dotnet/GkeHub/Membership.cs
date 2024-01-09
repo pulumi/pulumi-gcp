@@ -34,6 +34,8 @@ namespace Pulumi.Gcp.GkeHub
     ///         DeletionProtection = false,
     ///         InitialNodeCount = 1,
     ///         Location = "us-central1-a",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
@@ -66,6 +68,8 @@ namespace Pulumi.Gcp.GkeHub
     ///         DeletionProtection = true,
     ///         InitialNodeCount = 1,
     ///         Location = "us-central1-a",
+    ///         Network = "default",
+    ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()
@@ -105,6 +109,8 @@ namespace Pulumi.Gcp.GkeHub
     ///             WorkloadPool = "my-project-name.svc.id.goog",
     ///         },
     ///         DeletionProtection = true,
+    ///         Network = "default",
+    ///         Subnetwork = "default",
     ///     });
     /// 
     ///     var membership = new Gcp.GkeHub.Membership("membership", new()

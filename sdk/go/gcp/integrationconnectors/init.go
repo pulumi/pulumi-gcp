@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:integrationconnectors/connection:Connection":
 		r = &Connection{}
+	case "gcp:integrationconnectors/endpointAttachment:EndpointAttachment":
+		r = &EndpointAttachment{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -39,6 +41,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"integrationconnectors/connection",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"integrationconnectors/endpointAttachment",
 		&module{version},
 	)
 }

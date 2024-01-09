@@ -34358,6 +34358,143 @@ func (o ClusterVerticalPodAutoscalingPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClusterWorkloadAltsConfig struct {
+	// Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
+	EnableAlts bool `pulumi:"enableAlts"`
+}
+
+// ClusterWorkloadAltsConfigInput is an input type that accepts ClusterWorkloadAltsConfigArgs and ClusterWorkloadAltsConfigOutput values.
+// You can construct a concrete instance of `ClusterWorkloadAltsConfigInput` via:
+//
+//	ClusterWorkloadAltsConfigArgs{...}
+type ClusterWorkloadAltsConfigInput interface {
+	pulumi.Input
+
+	ToClusterWorkloadAltsConfigOutput() ClusterWorkloadAltsConfigOutput
+	ToClusterWorkloadAltsConfigOutputWithContext(context.Context) ClusterWorkloadAltsConfigOutput
+}
+
+type ClusterWorkloadAltsConfigArgs struct {
+	// Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
+	EnableAlts pulumi.BoolInput `pulumi:"enableAlts"`
+}
+
+func (ClusterWorkloadAltsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterWorkloadAltsConfig)(nil)).Elem()
+}
+
+func (i ClusterWorkloadAltsConfigArgs) ToClusterWorkloadAltsConfigOutput() ClusterWorkloadAltsConfigOutput {
+	return i.ToClusterWorkloadAltsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterWorkloadAltsConfigArgs) ToClusterWorkloadAltsConfigOutputWithContext(ctx context.Context) ClusterWorkloadAltsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterWorkloadAltsConfigOutput)
+}
+
+func (i ClusterWorkloadAltsConfigArgs) ToClusterWorkloadAltsConfigPtrOutput() ClusterWorkloadAltsConfigPtrOutput {
+	return i.ToClusterWorkloadAltsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterWorkloadAltsConfigArgs) ToClusterWorkloadAltsConfigPtrOutputWithContext(ctx context.Context) ClusterWorkloadAltsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterWorkloadAltsConfigOutput).ToClusterWorkloadAltsConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterWorkloadAltsConfigPtrInput is an input type that accepts ClusterWorkloadAltsConfigArgs, ClusterWorkloadAltsConfigPtr and ClusterWorkloadAltsConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterWorkloadAltsConfigPtrInput` via:
+//
+//	        ClusterWorkloadAltsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterWorkloadAltsConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterWorkloadAltsConfigPtrOutput() ClusterWorkloadAltsConfigPtrOutput
+	ToClusterWorkloadAltsConfigPtrOutputWithContext(context.Context) ClusterWorkloadAltsConfigPtrOutput
+}
+
+type clusterWorkloadAltsConfigPtrType ClusterWorkloadAltsConfigArgs
+
+func ClusterWorkloadAltsConfigPtr(v *ClusterWorkloadAltsConfigArgs) ClusterWorkloadAltsConfigPtrInput {
+	return (*clusterWorkloadAltsConfigPtrType)(v)
+}
+
+func (*clusterWorkloadAltsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterWorkloadAltsConfig)(nil)).Elem()
+}
+
+func (i *clusterWorkloadAltsConfigPtrType) ToClusterWorkloadAltsConfigPtrOutput() ClusterWorkloadAltsConfigPtrOutput {
+	return i.ToClusterWorkloadAltsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterWorkloadAltsConfigPtrType) ToClusterWorkloadAltsConfigPtrOutputWithContext(ctx context.Context) ClusterWorkloadAltsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterWorkloadAltsConfigPtrOutput)
+}
+
+type ClusterWorkloadAltsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterWorkloadAltsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterWorkloadAltsConfig)(nil)).Elem()
+}
+
+func (o ClusterWorkloadAltsConfigOutput) ToClusterWorkloadAltsConfigOutput() ClusterWorkloadAltsConfigOutput {
+	return o
+}
+
+func (o ClusterWorkloadAltsConfigOutput) ToClusterWorkloadAltsConfigOutputWithContext(ctx context.Context) ClusterWorkloadAltsConfigOutput {
+	return o
+}
+
+func (o ClusterWorkloadAltsConfigOutput) ToClusterWorkloadAltsConfigPtrOutput() ClusterWorkloadAltsConfigPtrOutput {
+	return o.ToClusterWorkloadAltsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterWorkloadAltsConfigOutput) ToClusterWorkloadAltsConfigPtrOutputWithContext(ctx context.Context) ClusterWorkloadAltsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterWorkloadAltsConfig) *ClusterWorkloadAltsConfig {
+		return &v
+	}).(ClusterWorkloadAltsConfigPtrOutput)
+}
+
+// Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
+func (o ClusterWorkloadAltsConfigOutput) EnableAlts() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterWorkloadAltsConfig) bool { return v.EnableAlts }).(pulumi.BoolOutput)
+}
+
+type ClusterWorkloadAltsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterWorkloadAltsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterWorkloadAltsConfig)(nil)).Elem()
+}
+
+func (o ClusterWorkloadAltsConfigPtrOutput) ToClusterWorkloadAltsConfigPtrOutput() ClusterWorkloadAltsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterWorkloadAltsConfigPtrOutput) ToClusterWorkloadAltsConfigPtrOutputWithContext(ctx context.Context) ClusterWorkloadAltsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterWorkloadAltsConfigPtrOutput) Elem() ClusterWorkloadAltsConfigOutput {
+	return o.ApplyT(func(v *ClusterWorkloadAltsConfig) ClusterWorkloadAltsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterWorkloadAltsConfig
+		return ret
+	}).(ClusterWorkloadAltsConfigOutput)
+}
+
+// Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
+func (o ClusterWorkloadAltsConfigPtrOutput) EnableAlts() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterWorkloadAltsConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnableAlts
+	}).(pulumi.BoolPtrOutput)
+}
+
 type ClusterWorkloadIdentityConfig struct {
 	// The workload pool to attach all Kubernetes service accounts to.
 	//
@@ -54155,6 +54292,100 @@ func (o GetClusterVerticalPodAutoscalingArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetClusterVerticalPodAutoscalingOutput)
 }
 
+type GetClusterWorkloadAltsConfig struct {
+	EnableAlts bool `pulumi:"enableAlts"`
+}
+
+// GetClusterWorkloadAltsConfigInput is an input type that accepts GetClusterWorkloadAltsConfigArgs and GetClusterWorkloadAltsConfigOutput values.
+// You can construct a concrete instance of `GetClusterWorkloadAltsConfigInput` via:
+//
+//	GetClusterWorkloadAltsConfigArgs{...}
+type GetClusterWorkloadAltsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterWorkloadAltsConfigOutput() GetClusterWorkloadAltsConfigOutput
+	ToGetClusterWorkloadAltsConfigOutputWithContext(context.Context) GetClusterWorkloadAltsConfigOutput
+}
+
+type GetClusterWorkloadAltsConfigArgs struct {
+	EnableAlts pulumi.BoolInput `pulumi:"enableAlts"`
+}
+
+func (GetClusterWorkloadAltsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterWorkloadAltsConfig)(nil)).Elem()
+}
+
+func (i GetClusterWorkloadAltsConfigArgs) ToGetClusterWorkloadAltsConfigOutput() GetClusterWorkloadAltsConfigOutput {
+	return i.ToGetClusterWorkloadAltsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterWorkloadAltsConfigArgs) ToGetClusterWorkloadAltsConfigOutputWithContext(ctx context.Context) GetClusterWorkloadAltsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterWorkloadAltsConfigOutput)
+}
+
+// GetClusterWorkloadAltsConfigArrayInput is an input type that accepts GetClusterWorkloadAltsConfigArray and GetClusterWorkloadAltsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterWorkloadAltsConfigArrayInput` via:
+//
+//	GetClusterWorkloadAltsConfigArray{ GetClusterWorkloadAltsConfigArgs{...} }
+type GetClusterWorkloadAltsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterWorkloadAltsConfigArrayOutput() GetClusterWorkloadAltsConfigArrayOutput
+	ToGetClusterWorkloadAltsConfigArrayOutputWithContext(context.Context) GetClusterWorkloadAltsConfigArrayOutput
+}
+
+type GetClusterWorkloadAltsConfigArray []GetClusterWorkloadAltsConfigInput
+
+func (GetClusterWorkloadAltsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterWorkloadAltsConfig)(nil)).Elem()
+}
+
+func (i GetClusterWorkloadAltsConfigArray) ToGetClusterWorkloadAltsConfigArrayOutput() GetClusterWorkloadAltsConfigArrayOutput {
+	return i.ToGetClusterWorkloadAltsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterWorkloadAltsConfigArray) ToGetClusterWorkloadAltsConfigArrayOutputWithContext(ctx context.Context) GetClusterWorkloadAltsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterWorkloadAltsConfigArrayOutput)
+}
+
+type GetClusterWorkloadAltsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterWorkloadAltsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterWorkloadAltsConfig)(nil)).Elem()
+}
+
+func (o GetClusterWorkloadAltsConfigOutput) ToGetClusterWorkloadAltsConfigOutput() GetClusterWorkloadAltsConfigOutput {
+	return o
+}
+
+func (o GetClusterWorkloadAltsConfigOutput) ToGetClusterWorkloadAltsConfigOutputWithContext(ctx context.Context) GetClusterWorkloadAltsConfigOutput {
+	return o
+}
+
+func (o GetClusterWorkloadAltsConfigOutput) EnableAlts() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterWorkloadAltsConfig) bool { return v.EnableAlts }).(pulumi.BoolOutput)
+}
+
+type GetClusterWorkloadAltsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterWorkloadAltsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterWorkloadAltsConfig)(nil)).Elem()
+}
+
+func (o GetClusterWorkloadAltsConfigArrayOutput) ToGetClusterWorkloadAltsConfigArrayOutput() GetClusterWorkloadAltsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterWorkloadAltsConfigArrayOutput) ToGetClusterWorkloadAltsConfigArrayOutputWithContext(ctx context.Context) GetClusterWorkloadAltsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterWorkloadAltsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterWorkloadAltsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterWorkloadAltsConfig {
+		return vs[0].([]GetClusterWorkloadAltsConfig)[vs[1].(int)]
+	}).(GetClusterWorkloadAltsConfigOutput)
+}
+
 type GetClusterWorkloadIdentityConfig struct {
 	WorkloadPool string `pulumi:"workloadPool"`
 }
@@ -54646,6 +54877,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTpuConfigPtrInput)(nil)).Elem(), ClusterTpuConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVerticalPodAutoscalingInput)(nil)).Elem(), ClusterVerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVerticalPodAutoscalingPtrInput)(nil)).Elem(), ClusterVerticalPodAutoscalingArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadAltsConfigInput)(nil)).Elem(), ClusterWorkloadAltsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadAltsConfigPtrInput)(nil)).Elem(), ClusterWorkloadAltsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadIdentityConfigInput)(nil)).Elem(), ClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadIdentityConfigPtrInput)(nil)).Elem(), ClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodePoolAutoscalingInput)(nil)).Elem(), NodePoolAutoscalingArgs{})
@@ -54980,6 +55213,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigArrayInput)(nil)).Elem(), GetClusterTpuConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingArrayInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigArrayInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadIdentityConfigArrayInput)(nil)).Elem(), GetClusterWorkloadIdentityConfigArray{})
 	pulumi.RegisterOutputType(AttachedClusterAuthorizationOutput{})
@@ -55378,6 +55613,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterTpuConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterVerticalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterVerticalPodAutoscalingPtrOutput{})
+	pulumi.RegisterOutputType(ClusterWorkloadAltsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterWorkloadAltsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadIdentityConfigOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadIdentityConfigPtrOutput{})
 	pulumi.RegisterOutputType(NodePoolAutoscalingOutput{})
@@ -55712,6 +55949,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterTpuConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterVerticalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterVerticalPodAutoscalingArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterWorkloadAltsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterWorkloadAltsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterWorkloadIdentityConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterWorkloadIdentityConfigArrayOutput{})
 }

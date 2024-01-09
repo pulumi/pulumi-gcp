@@ -5518,6 +5518,17 @@ export namespace bigqueryanalyticshub {
          */
         primaryContact?: pulumi.Input<string>;
     }
+
+    export interface ListingRestrictedExportConfig {
+        /**
+         * If true, enable restricted export.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * If true, restrict export of query result derived from restricted linked dataset table.
+         */
+        restrictQueryResult?: pulumi.Input<boolean>;
+    }
 }
 
 export namespace bigquerydatapolicy {
@@ -9233,6 +9244,74 @@ export namespace cloudbuildv2 {
 }
 
 export namespace clouddeploy {
+    export interface AutomationRule {
+        /**
+         * Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+         * Structure is documented below.
+         */
+        advanceRolloutRule?: pulumi.Input<inputs.clouddeploy.AutomationRuleAdvanceRolloutRule>;
+        /**
+         * Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+         * Structure is documented below.
+         */
+        promoteReleaseRule?: pulumi.Input<inputs.clouddeploy.AutomationRulePromoteReleaseRule>;
+    }
+
+    export interface AutomationRuleAdvanceRolloutRule {
+        /**
+         * Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+         *
+         * - - -
+         */
+        sourcePhases?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Optional. How long to wait after a rollout is finished.
+         */
+        wait?: pulumi.Input<string>;
+    }
+
+    export interface AutomationRulePromoteReleaseRule {
+        /**
+         * Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+         */
+        destinationPhase?: pulumi.Input<string>;
+        /**
+         * Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+         */
+        destinationTargetId?: pulumi.Input<string>;
+        /**
+         * Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+         */
+        id: pulumi.Input<string>;
+        /**
+         * Optional. How long the release need to be paused until being promoted to the next target.
+         */
+        wait?: pulumi.Input<string>;
+    }
+
+    export interface AutomationSelector {
+        /**
+         * Contains attributes about a target.
+         * Structure is documented below.
+         */
+        targets: pulumi.Input<pulumi.Input<inputs.clouddeploy.AutomationSelectorTarget>[]>;
+    }
+
+    export interface AutomationSelectorTarget {
+        /**
+         * ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+         */
+        id?: pulumi.Input<string>;
+        /**
+         * Target labels.
+         */
+        labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
     export interface DeliveryPipelineCondition {
         pipelineReadyConditions?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeliveryPipelineConditionPipelineReadyCondition>[]>;
         targetsPresentConditions?: pulumi.Input<pulumi.Input<inputs.clouddeploy.DeliveryPipelineConditionTargetsPresentCondition>[]>;
@@ -12465,6 +12544,7 @@ export namespace composer {
     }
 
     export interface EnvironmentConfigNodeConfig {
+        composerInternalIpv4CidrBlock?: pulumi.Input<string>;
         diskSizeGb?: pulumi.Input<number>;
         enableIpMasqAgent?: pulumi.Input<boolean>;
         ipAllocationPolicy?: pulumi.Input<inputs.composer.EnvironmentConfigNodeConfigIpAllocationPolicy>;
@@ -12516,6 +12596,7 @@ export namespace composer {
         pypiPackages?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         pythonVersion?: pulumi.Input<string>;
         schedulerCount?: pulumi.Input<number>;
+        webServerPluginsMode?: pulumi.Input<string>;
     }
 
     export interface EnvironmentConfigSoftwareConfigCloudDataLineageIntegration {
@@ -12536,10 +12617,17 @@ export namespace composer {
     }
 
     export interface EnvironmentConfigWorkloadsConfig {
+        dagProcessor?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigDagProcessor>;
         scheduler?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigScheduler>;
         triggerer?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigTriggerer>;
         webServer?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWebServer>;
         worker?: pulumi.Input<inputs.composer.EnvironmentConfigWorkloadsConfigWorker>;
+    }
+
+    export interface EnvironmentConfigWorkloadsConfigDagProcessor {
+        cpu?: pulumi.Input<number>;
+        memoryGb?: pulumi.Input<number>;
+        storageGb?: pulumi.Input<number>;
     }
 
     export interface EnvironmentConfigWorkloadsConfigScheduler {
@@ -14256,6 +14344,26 @@ export namespace compute {
          * field is only applicable for persistent disks.
          */
         labels?: pulumi.Input<{[key: string]: any}>;
+        /**
+         * Indicates how many IOPS to provision for the disk.
+         * This sets the number of I/O operations per second that the disk can handle.
+         * Values must be between 10,000 and 120,000. For more details,see the
+         * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
+         * Note: Updating currently is only supported for hyperdisk skus via disk update
+         * api/gcloud without the need to delete and recreate the disk, hyperdisk allows
+         * for an update of IOPS every 4 hours. To update your hyperdisk more frequently,
+         * you'll need to manually delete and recreate it.
+         */
+        provisionedIops?: pulumi.Input<number>;
+        /**
+         * Indicates how much throughput to provision for the disk.
+         * This sets the number of throughput mb per second that the disk can handle.
+         * Values must be between 1 and 7,124. Note: Updating currently is only supported
+         * for hyperdisk skus via disk update api/gcloud without the need to delete and
+         * recreate the disk, hyperdisk allows for an update of throughput every 4 hours.
+         * To update your hyperdisk more frequently, you'll need to manually delete and recreate it.
+         */
+        provisionedThroughput?: pulumi.Input<number>;
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
         /**
          * The size of the image in gigabytes. If not specified, it
@@ -14305,6 +14413,8 @@ export namespace compute {
         enableConfidentialCompute?: pulumi.Input<boolean>;
         image?: pulumi.Input<string>;
         labels?: pulumi.Input<{[key: string]: any}>;
+        provisionedIops?: pulumi.Input<number>;
+        provisionedThroughput?: pulumi.Input<number>;
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
         size?: pulumi.Input<number>;
         type?: pulumi.Input<string>;
@@ -14461,6 +14571,8 @@ export namespace compute {
         enableConfidentialCompute?: pulumi.Input<boolean>;
         image?: pulumi.Input<string>;
         labels?: pulumi.Input<{[key: string]: any}>;
+        provisionedIops?: pulumi.Input<number>;
+        provisionedThroughput?: pulumi.Input<number>;
         resourceManagerTags?: pulumi.Input<{[key: string]: any}>;
         size?: pulumi.Input<number>;
         type?: pulumi.Input<string>;
@@ -15258,6 +15370,10 @@ export namespace compute {
          * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
          */
         provisionedIops?: pulumi.Input<number>;
+        /**
+         * A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+         */
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          */
@@ -17609,6 +17725,10 @@ export namespace compute {
          * [Extreme persistent disk documentation](https://cloud.google.com/compute/docs/disks/extreme-persistent-disk).
          */
         provisionedIops?: pulumi.Input<number>;
+        /**
+         * A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+         */
+        resourceManagerTags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
          * - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
          */
@@ -25864,6 +25984,13 @@ export namespace container {
         enabled: pulumi.Input<boolean>;
     }
 
+    export interface ClusterWorkloadAltsConfig {
+        /**
+         * Whether the alts handshaker should be enabled or not for direct-path. Requires Workload Identity (workloadPool) must be non-empty).
+         */
+        enableAlts: pulumi.Input<boolean>;
+    }
+
     export interface ClusterWorkloadIdentityConfig {
         /**
          * The workload pool to attach all Kubernetes service accounts to.
@@ -33567,6 +33694,11 @@ export namespace dataproc {
          * Structure defined below.
          */
         autoscalingConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigAutoscalingConfig>;
+        /**
+         * A Dataproc NodeGroup resource is a group of Dataproc cluster nodes that execute an assigned role. 
+         * Structure defined below.
+         */
+        auxiliaryNodeGroups?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroup>[]>;
         bucket?: pulumi.Input<string>;
         /**
          * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified multiple times.
@@ -33662,6 +33794,99 @@ export namespace dataproc {
          * - - -
          */
         policyUri: pulumi.Input<string>;
+    }
+
+    export interface ClusterClusterConfigAuxiliaryNodeGroup {
+        nodeGroupId?: pulumi.Input<string>;
+        /**
+         * Node group configuration.
+         */
+        nodeGroups: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroupNodeGroup>[]>;
+    }
+
+    export interface ClusterClusterConfigAuxiliaryNodeGroupNodeGroup {
+        /**
+         * The name of the cluster, unique within the project and
+         * zone.
+         *
+         * - - -
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The node group instance group configuration.
+         */
+        nodeGroupConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig>;
+        /**
+         * Node group roles. 
+         * One of `"DRIVER"`.
+         */
+        roles: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfig {
+        /**
+         * The Compute Engine accelerator (GPU) configuration for these instances. Can be specified 
+         * multiple times.
+         */
+        accelerators?: pulumi.Input<pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator>[]>;
+        /**
+         * Disk Config
+         */
+        diskConfig?: pulumi.Input<inputs.dataproc.ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig>;
+        instanceNames?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The name of a Google Compute Engine machine type
+         * to create for the node group. If not specified, GCP will default to a predetermined
+         * computed value (currently `n1-standard-4`).
+         */
+        machineType?: pulumi.Input<string>;
+        /**
+         * The name of a minimum generation of CPU family
+         * for the node group. If not specified, GCP will default to a predetermined computed value
+         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+         * for details about which CPU families are available (and defaulted) for each zone.
+         */
+        minCpuPlatform?: pulumi.Input<string>;
+        /**
+         * Specifies the number of master nodes to create.
+         * Please set a number greater than 0. Node Group must have at least 1 instance.
+         */
+        numInstances?: pulumi.Input<number>;
+    }
+
+    export interface ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigAccelerator {
+        /**
+         * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
+         *
+         *
+         * - - -
+         */
+        acceleratorCount: pulumi.Input<number>;
+        /**
+         * The short name of the accelerator type to expose to this instance. For example, `nvidia-tesla-k80`.
+         */
+        acceleratorType: pulumi.Input<string>;
+    }
+
+    export interface ClusterClusterConfigAuxiliaryNodeGroupNodeGroupNodeGroupConfigDiskConfig {
+        /**
+         * Size of the primary disk attached to each node, specified
+         * in GB. The primary disk contains the boot volume and system libraries, and the
+         * smallest allowed disk size is 10GB. GCP will default to a predetermined
+         * computed value if not set (currently 500GB). Note: If SSDs are not
+         * attached, it also contains the HDFS data blocks and Hadoop working directories.
+         */
+        bootDiskSizeGb?: pulumi.Input<number>;
+        /**
+         * The disk type of the primary disk attached to each node.
+         * One of `"pd-ssd"` or `"pd-standard"`. Defaults to `"pd-standard"`.
+         */
+        bootDiskType?: pulumi.Input<string>;
+        /**
+         * The amount of local SSD disks that will be attached to each master cluster node. 
+         * Defaults to 0.
+         */
+        numLocalSsds?: pulumi.Input<number>;
     }
 
     export interface ClusterClusterConfigDataprocMetricConfig {
@@ -33883,9 +34108,6 @@ export namespace dataproc {
         /**
          * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
          *
-         * > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-         * zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-         * if you are trying to use accelerators in a given zone.
          *
          * - - -
          */
@@ -33911,8 +34133,8 @@ export namespace dataproc {
          */
         bootDiskType?: pulumi.Input<string>;
         /**
-         * The amount of local SSD disks that will be
-         * attached to each master cluster node. Defaults to 0.
+         * The amount of local SSD disks that will be attached to each master cluster node. 
+         * Defaults to 0.
          */
         numLocalSsds?: pulumi.Input<number>;
     }
@@ -33968,8 +34190,8 @@ export namespace dataproc {
          */
         bootDiskType?: pulumi.Input<string>;
         /**
-         * The amount of local SSD disks that will be
-         * attached to each master cluster node. Defaults to 0.
+         * The amount of local SSD disks that will be attached to each master cluster node. 
+         * Defaults to 0.
          */
         numLocalSsds?: pulumi.Input<number>;
     }
@@ -33997,7 +34219,9 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
         /**
-         * The name of a Compute Engine machine type.
+         * The name of a Google Compute Engine machine type
+         * to create for the node group. If not specified, GCP will default to a predetermined
+         * computed value (currently `n1-standard-4`).
          */
         machineType?: pulumi.Input<string>;
         vmCount?: pulumi.Input<number>;
@@ -34168,9 +34392,6 @@ export namespace dataproc {
         /**
          * The number of the accelerator cards of this type exposed to this instance. Often restricted to one of `1`, `2`, `4`, or `8`.
          *
-         * > The Cloud Dataproc API can return unintuitive error messages when using accelerators; even when you have defined an accelerator, Auto Zone Placement does not exclusively select
-         * zones that have that accelerator available. If you get a 400 error that the accelerator can't be found, this is a likely cause. Make sure you check [accelerator availability by zone](https://cloud.google.com/compute/docs/reference/rest/v1/acceleratorTypes/list)
-         * if you are trying to use accelerators in a given zone.
          *
          * - - -
          */
@@ -34196,8 +34417,8 @@ export namespace dataproc {
          */
         bootDiskType?: pulumi.Input<string>;
         /**
-         * The amount of local SSD disks that will be
-         * attached to each master cluster node. Defaults to 0.
+         * The amount of local SSD disks that will be attached to each master cluster node. 
+         * Defaults to 0.
          */
         numLocalSsds?: pulumi.Input<number>;
     }
@@ -34313,8 +34534,8 @@ export namespace dataproc {
          */
         nodePoolConfig?: pulumi.Input<inputs.dataproc.ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfig>;
         /**
-         * The roles associated with the GKE node pool. 
-         * One of `"DEFAULT"`, `"CONTROLLER"`, `"SPARK_DRIVER"` or `"SPARK_EXECUTOR"`.
+         * Node group roles. 
+         * One of `"DRIVER"`.
          */
         roles: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -34355,13 +34576,16 @@ export namespace dataproc {
          */
         localSsdCount?: pulumi.Input<number>;
         /**
-         * The name of a Compute Engine machine type.
+         * The name of a Google Compute Engine machine type
+         * to create for the node group. If not specified, GCP will default to a predetermined
+         * computed value (currently `n1-standard-4`).
          */
         machineType?: pulumi.Input<string>;
         /**
-         * Minimum CPU platform to be used by this instance. 
-         * The instance may be scheduled on the specified or a newer CPU platform.
-         * Specify the friendly names of CPU platforms, such as "Intel Haswell" or "Intel Sandy Bridge".
+         * The name of a minimum generation of CPU family
+         * for the node group. If not specified, GCP will default to a predetermined computed value
+         * for each zone. See [the guide](https://cloud.google.com/compute/docs/instances/specify-min-cpu-platform)
+         * for details about which CPU families are available (and defaulted) for each zone.
          */
         minCpuPlatform?: pulumi.Input<string>;
         /**
@@ -34711,12 +34935,25 @@ export namespace dataproc {
     }
 
     export interface MetastoreServiceHiveMetastoreConfig {
+        /**
+         * A mapping of Hive metastore version to the auxiliary version configuration.
+         * When specified, a secondary Hive metastore service is created along with the primary service.
+         * All auxiliary versions must be less than the service's primary version.
+         * The key is the auxiliary service name and it must match the regular expression a-z?.
+         * This means that the first character must be a lowercase letter, and all the following characters must be hyphens, lowercase letters, or digits, except the last character, which cannot be a hyphen.
+         * Structure is documented below.
+         */
         auxiliaryVersions?: pulumi.Input<pulumi.Input<inputs.dataproc.MetastoreServiceHiveMetastoreConfigAuxiliaryVersion>[]>;
         /**
          * A mapping of Hive metastore configuration key-value pairs to apply to the Hive metastore (configured in hive-site.xml).
          * The mappings override system defaults (some keys cannot be overridden)
          */
         configOverrides?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The protocol to use for the metastore service endpoint. If unspecified, defaults to `THRIFT`.
+         * Default value is `THRIFT`.
+         * Possible values are: `THRIFT`, `GRPC`.
+         */
         endpointProtocol?: pulumi.Input<string>;
         /**
          * Information used to configure the Hive metastore service as a service principal in a Kerberos realm.
@@ -34814,6 +35051,7 @@ export namespace dataproc {
          * Structure is documented below.
          */
         consumers: pulumi.Input<pulumi.Input<inputs.dataproc.MetastoreServiceNetworkConfigConsumer>[]>;
+        customRoutesEnabled?: pulumi.Input<boolean>;
     }
 
     export interface MetastoreServiceNetworkConfigConsumer {
@@ -41602,6 +41840,10 @@ export namespace gkehub {
          * Structure is documented below.
          */
         configSync?: pulumi.Input<inputs.gkehub.FeatureFleetDefaultMemberConfigConfigmanagementConfigSync>;
+        /**
+         * Version of ACM installed
+         */
+        version?: pulumi.Input<string>;
     }
 
     export interface FeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
@@ -41678,7 +41920,12 @@ export namespace gkehub {
          */
         syncWaitSecs?: pulumi.Input<string>;
         /**
+         * (Optional, Deprecated)
          * Version of ACM installed
+         *
+         * > **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         *
+         * @deprecated The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
          */
         version?: pulumi.Input<string>;
     }
@@ -46239,6 +46486,18 @@ export namespace kms {
          * A title for the expression, i.e. a short string describing its purpose.
          */
         title: pulumi.Input<string>;
+    }
+
+    export interface CryptoKeyPrimary {
+        /**
+         * The resource name for the CryptoKey.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The current state of the CryptoKeyVersion.
+         */
+        state?: pulumi.Input<string>;
     }
 
     export interface CryptoKeyVersionAttestation {
@@ -56287,6 +56546,87 @@ export namespace vertex {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureGroupBigQuery {
+        /**
+         * The BigQuery source URI that points to either a BigQuery Table or View.
+         * Structure is documented below.
+         */
+        bigQuerySource: pulumi.Input<inputs.vertex.AiFeatureGroupBigQueryBigQuerySource>;
+        /**
+         * Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+         */
+        entityIdColumns?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface AiFeatureGroupBigQueryBigQuerySource {
+        /**
+         * BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+         */
+        inputUri: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureOnlineStoreBigtable {
+        /**
+         * Autoscaling config applied to Bigtable Instance.
+         * Structure is documented below.
+         */
+        autoScaling: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreBigtableAutoScaling>;
+    }
+
+    export interface AiFeatureOnlineStoreBigtableAutoScaling {
+        /**
+         * A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+         */
+        cpuUtilizationTarget?: pulumi.Input<number>;
+        /**
+         * The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+         */
+        maxNodeCount: pulumi.Input<number>;
+        /**
+         * The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+         */
+        minNodeCount: pulumi.Input<number>;
+    }
+
+    export interface AiFeatureOnlineStoreDedicatedServingEndpoint {
+        /**
+         * Private service connect config.
+         * Structure is documented below.
+         */
+        privateServiceConnectConfig?: pulumi.Input<inputs.vertex.AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig>;
+        /**
+         * (Output)
+         * Domain name to use for this FeatureOnlineStore
+         */
+        publicEndpointDomainName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+         */
+        serviceAttachment?: pulumi.Input<string>;
+    }
+
+    export interface AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig {
+        /**
+         * If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+         */
+        enablePrivateServiceConnect: pulumi.Input<boolean>;
+        /**
+         * A list of Projects from which the forwarding rule will target the service attachment.
+         */
+        projectAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface AiFeatureOnlineStoreEmbeddingManagement {
+        /**
+         * Enable embedding management.
+         */
+        enabled?: pulumi.Input<boolean>;
+    }
+
+    export interface AiFeatureOnlineStoreOptimized {
     }
 
     export interface AiFeatureStoreEncryptionSpec {

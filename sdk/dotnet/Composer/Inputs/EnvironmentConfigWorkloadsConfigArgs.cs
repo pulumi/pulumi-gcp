@@ -12,6 +12,9 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigWorkloadsConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("dagProcessor")]
+        public Input<Inputs.EnvironmentConfigWorkloadsConfigDagProcessorArgs>? DagProcessor { get; set; }
+
         [Input("scheduler")]
         public Input<Inputs.EnvironmentConfigWorkloadsConfigSchedulerArgs>? Scheduler { get; set; }
 

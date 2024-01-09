@@ -82,6 +82,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? ProvisionedIops;
         /// <summary>
+        /// A set of key/value resource manager tag pairs to bind to this disk. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456.
+        /// </summary>
+        public readonly ImmutableDictionary<string, string>? ResourceManagerTags;
+        /// <summary>
         /// - A list (short name or id) of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
         /// </summary>
         public readonly string? ResourcePolicies;
@@ -153,6 +157,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             int? provisionedIops,
 
+            ImmutableDictionary<string, string>? resourceManagerTags,
+
             string? resourcePolicies,
 
             string? source,
@@ -178,6 +184,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             Labels = labels;
             Mode = mode;
             ProvisionedIops = provisionedIops;
+            ResourceManagerTags = resourceManagerTags;
             ResourcePolicies = resourcePolicies;
             Source = source;
             SourceImage = sourceImage;

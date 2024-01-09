@@ -20,6 +20,14 @@ __all__ = [
     'AiEndpointEncryptionSpecArgs',
     'AiEndpointIamBindingConditionArgs',
     'AiEndpointIamMemberConditionArgs',
+    'AiFeatureGroupBigQueryArgs',
+    'AiFeatureGroupBigQueryBigQuerySourceArgs',
+    'AiFeatureOnlineStoreBigtableArgs',
+    'AiFeatureOnlineStoreBigtableAutoScalingArgs',
+    'AiFeatureOnlineStoreDedicatedServingEndpointArgs',
+    'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs',
+    'AiFeatureOnlineStoreEmbeddingManagementArgs',
+    'AiFeatureOnlineStoreOptimizedArgs',
     'AiFeatureStoreEncryptionSpecArgs',
     'AiFeatureStoreEntityTypeIamBindingConditionArgs',
     'AiFeatureStoreEntityTypeIamMemberConditionArgs',
@@ -704,6 +712,273 @@ class AiEndpointIamMemberConditionArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class AiFeatureGroupBigQueryArgs:
+    def __init__(__self__, *,
+                 big_query_source: pulumi.Input['AiFeatureGroupBigQueryBigQuerySourceArgs'],
+                 entity_id_columns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input['AiFeatureGroupBigQueryBigQuerySourceArgs'] big_query_source: The BigQuery source URI that points to either a BigQuery Table or View.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] entity_id_columns: Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+        """
+        pulumi.set(__self__, "big_query_source", big_query_source)
+        if entity_id_columns is not None:
+            pulumi.set(__self__, "entity_id_columns", entity_id_columns)
+
+    @property
+    @pulumi.getter(name="bigQuerySource")
+    def big_query_source(self) -> pulumi.Input['AiFeatureGroupBigQueryBigQuerySourceArgs']:
+        """
+        The BigQuery source URI that points to either a BigQuery Table or View.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "big_query_source")
+
+    @big_query_source.setter
+    def big_query_source(self, value: pulumi.Input['AiFeatureGroupBigQueryBigQuerySourceArgs']):
+        pulumi.set(self, "big_query_source", value)
+
+    @property
+    @pulumi.getter(name="entityIdColumns")
+    def entity_id_columns(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Columns to construct entityId / row keys. Currently only supports 1 entity_id_column. If not provided defaults to entityId.
+        """
+        return pulumi.get(self, "entity_id_columns")
+
+    @entity_id_columns.setter
+    def entity_id_columns(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "entity_id_columns", value)
+
+
+@pulumi.input_type
+class AiFeatureGroupBigQueryBigQuerySourceArgs:
+    def __init__(__self__, *,
+                 input_uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] input_uri: BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+        """
+        pulumi.set(__self__, "input_uri", input_uri)
+
+    @property
+    @pulumi.getter(name="inputUri")
+    def input_uri(self) -> pulumi.Input[str]:
+        """
+        BigQuery URI to a table, up to 2000 characters long. For example: `bq://projectId.bqDatasetId.bqTableId.`
+        """
+        return pulumi.get(self, "input_uri")
+
+    @input_uri.setter
+    def input_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "input_uri", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreBigtableArgs:
+    def __init__(__self__, *,
+                 auto_scaling: pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs']):
+        """
+        :param pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs'] auto_scaling: Autoscaling config applied to Bigtable Instance.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "auto_scaling", auto_scaling)
+
+    @property
+    @pulumi.getter(name="autoScaling")
+    def auto_scaling(self) -> pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs']:
+        """
+        Autoscaling config applied to Bigtable Instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auto_scaling")
+
+    @auto_scaling.setter
+    def auto_scaling(self, value: pulumi.Input['AiFeatureOnlineStoreBigtableAutoScalingArgs']):
+        pulumi.set(self, "auto_scaling", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreBigtableAutoScalingArgs:
+    def __init__(__self__, *,
+                 max_node_count: pulumi.Input[int],
+                 min_node_count: pulumi.Input[int],
+                 cpu_utilization_target: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] max_node_count: The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+        :param pulumi.Input[int] min_node_count: The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+        :param pulumi.Input[int] cpu_utilization_target: A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+        """
+        pulumi.set(__self__, "max_node_count", max_node_count)
+        pulumi.set(__self__, "min_node_count", min_node_count)
+        if cpu_utilization_target is not None:
+            pulumi.set(__self__, "cpu_utilization_target", cpu_utilization_target)
+
+    @property
+    @pulumi.getter(name="maxNodeCount")
+    def max_node_count(self) -> pulumi.Input[int]:
+        """
+        The maximum number of nodes to scale up to. Must be greater than or equal to minNodeCount, and less than or equal to 10 times of 'minNodeCount'.
+        """
+        return pulumi.get(self, "max_node_count")
+
+    @max_node_count.setter
+    def max_node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "max_node_count", value)
+
+    @property
+    @pulumi.getter(name="minNodeCount")
+    def min_node_count(self) -> pulumi.Input[int]:
+        """
+        The minimum number of nodes to scale down to. Must be greater than or equal to 1.
+        """
+        return pulumi.get(self, "min_node_count")
+
+    @min_node_count.setter
+    def min_node_count(self, value: pulumi.Input[int]):
+        pulumi.set(self, "min_node_count", value)
+
+    @property
+    @pulumi.getter(name="cpuUtilizationTarget")
+    def cpu_utilization_target(self) -> Optional[pulumi.Input[int]]:
+        """
+        A percentage of the cluster's CPU capacity. Can be from 10% to 80%. When a cluster's CPU utilization exceeds the target that you have set, Bigtable immediately adds nodes to the cluster. When CPU utilization is substantially lower than the target, Bigtable removes nodes. If not set will default to 50%.
+        """
+        return pulumi.get(self, "cpu_utilization_target")
+
+    @cpu_utilization_target.setter
+    def cpu_utilization_target(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpu_utilization_target", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreDedicatedServingEndpointArgs:
+    def __init__(__self__, *,
+                 private_service_connect_config: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']] = None,
+                 public_endpoint_domain_name: Optional[pulumi.Input[str]] = None,
+                 service_attachment: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs'] private_service_connect_config: Private service connect config.
+               Structure is documented below.
+        :param pulumi.Input[str] public_endpoint_domain_name: (Output)
+               Domain name to use for this FeatureOnlineStore
+        :param pulumi.Input[str] service_attachment: (Output)
+               Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+        """
+        if private_service_connect_config is not None:
+            pulumi.set(__self__, "private_service_connect_config", private_service_connect_config)
+        if public_endpoint_domain_name is not None:
+            pulumi.set(__self__, "public_endpoint_domain_name", public_endpoint_domain_name)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="privateServiceConnectConfig")
+    def private_service_connect_config(self) -> Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']]:
+        """
+        Private service connect config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_service_connect_config")
+
+    @private_service_connect_config.setter
+    def private_service_connect_config(self, value: Optional[pulumi.Input['AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs']]):
+        pulumi.set(self, "private_service_connect_config", value)
+
+    @property
+    @pulumi.getter(name="publicEndpointDomainName")
+    def public_endpoint_domain_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Domain name to use for this FeatureOnlineStore
+        """
+        return pulumi.get(self, "public_endpoint_domain_name")
+
+    @public_endpoint_domain_name.setter
+    def public_endpoint_domain_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "public_endpoint_domain_name", value)
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Name of the service attachment resource. Applicable only if private service connect is enabled and after FeatureViewSync is created.
+        """
+        return pulumi.get(self, "service_attachment")
+
+    @service_attachment.setter
+    def service_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_attachment", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs:
+    def __init__(__self__, *,
+                 enable_private_service_connect: pulumi.Input[bool],
+                 project_allowlists: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[bool] enable_private_service_connect: If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] project_allowlists: A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        pulumi.set(__self__, "enable_private_service_connect", enable_private_service_connect)
+        if project_allowlists is not None:
+            pulumi.set(__self__, "project_allowlists", project_allowlists)
+
+    @property
+    @pulumi.getter(name="enablePrivateServiceConnect")
+    def enable_private_service_connect(self) -> pulumi.Input[bool]:
+        """
+        If set to true, customers will use private service connection to send request. Otherwise, the connection will set to public endpoint.
+        """
+        return pulumi.get(self, "enable_private_service_connect")
+
+    @enable_private_service_connect.setter
+    def enable_private_service_connect(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enable_private_service_connect", value)
+
+    @property
+    @pulumi.getter(name="projectAllowlists")
+    def project_allowlists(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        A list of Projects from which the forwarding rule will target the service attachment.
+        """
+        return pulumi.get(self, "project_allowlists")
+
+    @project_allowlists.setter
+    def project_allowlists(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "project_allowlists", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreEmbeddingManagementArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Enable embedding management.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Enable embedding management.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreOptimizedArgs:
+    def __init__(__self__):
+        pass
 
 
 @pulumi.input_type

@@ -10,6 +10,11 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AutomationRuleArgs',
+    'AutomationRuleAdvanceRolloutRuleArgs',
+    'AutomationRulePromoteReleaseRuleArgs',
+    'AutomationSelectorArgs',
+    'AutomationSelectorTargetArgs',
     'DeliveryPipelineConditionArgs',
     'DeliveryPipelineConditionPipelineReadyConditionArgs',
     'DeliveryPipelineConditionTargetsPresentConditionArgs',
@@ -40,6 +45,240 @@ __all__ = [
     'TargetMultiTargetArgs',
     'TargetRunArgs',
 ]
+
+@pulumi.input_type
+class AutomationRuleArgs:
+    def __init__(__self__, *,
+                 advance_rollout_rule: Optional[pulumi.Input['AutomationRuleAdvanceRolloutRuleArgs']] = None,
+                 promote_release_rule: Optional[pulumi.Input['AutomationRulePromoteReleaseRuleArgs']] = None):
+        """
+        :param pulumi.Input['AutomationRuleAdvanceRolloutRuleArgs'] advance_rollout_rule: Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+               Structure is documented below.
+        :param pulumi.Input['AutomationRulePromoteReleaseRuleArgs'] promote_release_rule: Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+               Structure is documented below.
+        """
+        if advance_rollout_rule is not None:
+            pulumi.set(__self__, "advance_rollout_rule", advance_rollout_rule)
+        if promote_release_rule is not None:
+            pulumi.set(__self__, "promote_release_rule", promote_release_rule)
+
+    @property
+    @pulumi.getter(name="advanceRolloutRule")
+    def advance_rollout_rule(self) -> Optional[pulumi.Input['AutomationRuleAdvanceRolloutRuleArgs']]:
+        """
+        Optional. The `AdvanceRolloutRule` will automatically advance a successful Rollout.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "advance_rollout_rule")
+
+    @advance_rollout_rule.setter
+    def advance_rollout_rule(self, value: Optional[pulumi.Input['AutomationRuleAdvanceRolloutRuleArgs']]):
+        pulumi.set(self, "advance_rollout_rule", value)
+
+    @property
+    @pulumi.getter(name="promoteReleaseRule")
+    def promote_release_rule(self) -> Optional[pulumi.Input['AutomationRulePromoteReleaseRuleArgs']]:
+        """
+        Optional. `PromoteReleaseRule` will automatically promote a release from the current target to a specified target.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "promote_release_rule")
+
+    @promote_release_rule.setter
+    def promote_release_rule(self, value: Optional[pulumi.Input['AutomationRulePromoteReleaseRuleArgs']]):
+        pulumi.set(self, "promote_release_rule", value)
+
+
+@pulumi.input_type
+class AutomationRuleAdvanceRolloutRuleArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 source_phases: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 wait: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_phases: Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+               
+               - - -
+        :param pulumi.Input[str] wait: Optional. How long to wait after a rollout is finished.
+        """
+        pulumi.set(__self__, "id", id)
+        if source_phases is not None:
+            pulumi.set(__self__, "source_phases", source_phases)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="sourcePhases")
+    def source_phases(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Proceeds only after phase name matched any one in the list. This value must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+
+        - - -
+        """
+        return pulumi.get(self, "source_phases")
+
+    @source_phases.setter
+    def source_phases(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "source_phases", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. How long to wait after a rollout is finished.
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wait", value)
+
+
+@pulumi.input_type
+class AutomationRulePromoteReleaseRuleArgs:
+    def __init__(__self__, *,
+                 id: pulumi.Input[str],
+                 destination_phase: Optional[pulumi.Input[str]] = None,
+                 destination_target_id: Optional[pulumi.Input[str]] = None,
+                 wait: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] id: Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        :param pulumi.Input[str] destination_phase: Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+        :param pulumi.Input[str] destination_target_id: Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+        :param pulumi.Input[str] wait: Optional. How long the release need to be paused until being promoted to the next target.
+        """
+        pulumi.set(__self__, "id", id)
+        if destination_phase is not None:
+            pulumi.set(__self__, "destination_phase", destination_phase)
+        if destination_target_id is not None:
+            pulumi.set(__self__, "destination_target_id", destination_target_id)
+        if wait is not None:
+            pulumi.set(__self__, "wait", wait)
+
+    @property
+    @pulumi.getter
+    def id(self) -> pulumi.Input[str]:
+        """
+        Required. ID of the rule. This id must be unique in the `Automation` resource to which this rule belongs. The format is `a-z{0,62}`.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="destinationPhase")
+    def destination_phase(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The starting phase of the rollout created by this operation. Default to the first phase.
+        """
+        return pulumi.get(self, "destination_phase")
+
+    @destination_phase.setter
+    def destination_phase(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_phase", value)
+
+    @property
+    @pulumi.getter(name="destinationTargetId")
+    def destination_target_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The ID of the stage in the pipeline to which this `Release` is deploying. If unspecified, default it to the next stage in the promotion flow. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine if the target is one of the stages in the promotion sequence defined in the pipeline. * "@next", the next target in the promotion sequence.
+        """
+        return pulumi.get(self, "destination_target_id")
+
+    @destination_target_id.setter
+    def destination_target_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "destination_target_id", value)
+
+    @property
+    @pulumi.getter
+    def wait(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. How long the release need to be paused until being promoted to the next target.
+        """
+        return pulumi.get(self, "wait")
+
+    @wait.setter
+    def wait(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "wait", value)
+
+
+@pulumi.input_type
+class AutomationSelectorArgs:
+    def __init__(__self__, *,
+                 targets: pulumi.Input[Sequence[pulumi.Input['AutomationSelectorTargetArgs']]]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['AutomationSelectorTargetArgs']]] targets: Contains attributes about a target.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "targets", targets)
+
+    @property
+    @pulumi.getter
+    def targets(self) -> pulumi.Input[Sequence[pulumi.Input['AutomationSelectorTargetArgs']]]:
+        """
+        Contains attributes about a target.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "targets")
+
+    @targets.setter
+    def targets(self, value: pulumi.Input[Sequence[pulumi.Input['AutomationSelectorTargetArgs']]]):
+        pulumi.set(self, "targets", value)
+
+
+@pulumi.input_type
+class AutomationSelectorTargetArgs:
+    def __init__(__self__, *,
+                 id: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[str] id: ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Target labels.
+        """
+        if id is not None:
+            pulumi.set(__self__, "id", id)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
+
+    @property
+    @pulumi.getter
+    def id(self) -> Optional[pulumi.Input[str]]:
+        """
+        ID of the `Target`. The value of this field could be one of the following: * The last segment of a target name. It only needs the ID to determine which target is being referred to * "*", all targets in a location.
+        """
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Target labels.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
 
 @pulumi.input_type
 class DeliveryPipelineConditionArgs:

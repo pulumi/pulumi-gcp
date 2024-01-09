@@ -92,16 +92,30 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciA
     }
 
     /**
+     * (Optional, Deprecated)
      * Version of ACM installed
      * 
+     * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+     * 
+     * @deprecated
+     * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+     * 
      */
+    @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead. */
     @Import(name="version")
     private @Nullable Output<String> version;
 
     /**
-     * @return Version of ACM installed
+     * @return (Optional, Deprecated)
+     * Version of ACM installed
+     * 
+     * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+     * 
+     * @deprecated
+     * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
      * 
      */
+    @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead. */
     public Optional<Output<String>> version() {
         return Optional.ofNullable(this.version);
     }
@@ -241,22 +255,36 @@ public final class FeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciA
         }
 
         /**
-         * @param version Version of ACM installed
+         * @param version (Optional, Deprecated)
+         * Version of ACM installed
+         * 
+         * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * 
          */
+        @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead. */
         public Builder version(@Nullable Output<String> version) {
             $.version = version;
             return this;
         }
 
         /**
-         * @param version Version of ACM installed
+         * @param version (Optional, Deprecated)
+         * Version of ACM installed
+         * 
+         * &gt; **Warning:** The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
          * 
          * @return builder
          * 
+         * @deprecated
+         * The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead.
+         * 
          */
+        @Deprecated /* The `configmanagement.config_sync.oci.version` field is deprecated and will be removed in a future major release. Please use `configmanagement.version` field to specify the version of ACM installed instead. */
         public Builder version(String version) {
             return version(Output.of(version));
         }

@@ -25,6 +25,9 @@ namespace Pulumi.Gcp.Dataproc.Inputs
             set => _consumers = value;
         }
 
+        [Input("customRoutesEnabled")]
+        public Input<bool>? CustomRoutesEnabled { get; set; }
+
         public MetastoreServiceNetworkConfigGetArgs()
         {
         }

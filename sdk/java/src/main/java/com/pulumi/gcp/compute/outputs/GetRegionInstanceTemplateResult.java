@@ -140,6 +140,7 @@ public final class GetRegionInstanceTemplateResult {
     private Map<String,String> pulumiLabels;
     private @Nullable String region;
     private List<GetRegionInstanceTemplateReservationAffinity> reservationAffinities;
+    private Map<String,String> resourceManagerTags;
     /**
      * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
@@ -345,6 +346,9 @@ public final class GetRegionInstanceTemplateResult {
     public List<GetRegionInstanceTemplateReservationAffinity> reservationAffinities() {
         return this.reservationAffinities;
     }
+    public Map<String,String> resourceManagerTags() {
+        return this.resourceManagerTags;
+    }
     /**
      * @return (Optional) -- A list of short names of resource policies to attach to this disk for automatic snapshot creations. Currently a max of 1 resource policy is supported.
      * 
@@ -432,6 +436,7 @@ public final class GetRegionInstanceTemplateResult {
         private Map<String,String> pulumiLabels;
         private @Nullable String region;
         private List<GetRegionInstanceTemplateReservationAffinity> reservationAffinities;
+        private Map<String,String> resourceManagerTags;
         private List<String> resourcePolicies;
         private List<GetRegionInstanceTemplateScheduling> schedulings;
         private String selfLink;
@@ -468,6 +473,7 @@ public final class GetRegionInstanceTemplateResult {
     	      this.pulumiLabels = defaults.pulumiLabels;
     	      this.region = defaults.region;
     	      this.reservationAffinities = defaults.reservationAffinities;
+    	      this.resourceManagerTags = defaults.resourceManagerTags;
     	      this.resourcePolicies = defaults.resourcePolicies;
     	      this.schedulings = defaults.schedulings;
     	      this.selfLink = defaults.selfLink;
@@ -697,6 +703,14 @@ public final class GetRegionInstanceTemplateResult {
             return reservationAffinities(List.of(reservationAffinities));
         }
         @CustomType.Setter
+        public Builder resourceManagerTags(Map<String,String> resourceManagerTags) {
+            if (resourceManagerTags == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "resourceManagerTags");
+            }
+            this.resourceManagerTags = resourceManagerTags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder resourcePolicies(List<String> resourcePolicies) {
             if (resourcePolicies == null) {
               throw new MissingRequiredPropertyException("GetRegionInstanceTemplateResult", "resourcePolicies");
@@ -795,6 +809,7 @@ public final class GetRegionInstanceTemplateResult {
             _resultValue.pulumiLabels = pulumiLabels;
             _resultValue.region = region;
             _resultValue.reservationAffinities = reservationAffinities;
+            _resultValue.resourceManagerTags = resourceManagerTags;
             _resultValue.resourcePolicies = resourcePolicies;
             _resultValue.schedulings = schedulings;
             _resultValue.selfLink = selfLink;

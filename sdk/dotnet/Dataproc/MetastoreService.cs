@@ -140,6 +140,61 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// ### Dataproc Metastore Service Private Service Connect Custom Routes
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var net = new Gcp.Compute.Network("net", new()
+    ///     {
+    ///         AutoCreateSubnetworks = false,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var subnet = new Gcp.Compute.Subnetwork("subnet", new()
+    ///     {
+    ///         Region = "us-central1",
+    ///         Network = net.Id,
+    ///         IpCidrRange = "10.0.0.0/22",
+    ///         PrivateIpGoogleAccess = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Dataproc.MetastoreService("default", new()
+    ///     {
+    ///         ServiceId = "metastore-srv",
+    ///         Location = "us-central1",
+    ///         HiveMetastoreConfig = new Gcp.Dataproc.Inputs.MetastoreServiceHiveMetastoreConfigArgs
+    ///         {
+    ///             Version = "3.1.2",
+    ///         },
+    ///         NetworkConfig = new Gcp.Dataproc.Inputs.MetastoreServiceNetworkConfigArgs
+    ///         {
+    ///             Consumers = new[]
+    ///             {
+    ///                 new Gcp.Dataproc.Inputs.MetastoreServiceNetworkConfigConsumerArgs
+    ///                 {
+    ///                     Subnetwork = subnet.Id,
+    ///                 },
+    ///             },
+    ///             CustomRoutesEnabled = true,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         Provider = google_beta,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Dataproc Metastore Service Dpms2
     /// 
     /// ```csharp
@@ -290,6 +345,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// Structure is documented below.
         /// </summary>
         [Output("metadataIntegration")]
         public Output<Outputs.MetastoreServiceMetadataIntegration?> MetadataIntegration { get; private set; } = null!;
@@ -498,6 +554,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// Structure is documented below.
         /// </summary>
         [Input("metadataIntegration")]
         public Input<Inputs.MetastoreServiceMetadataIntegrationArgs>? MetadataIntegration { get; set; }
@@ -661,6 +718,7 @@ namespace Pulumi.Gcp.Dataproc
 
         /// <summary>
         /// The setting that defines how metastore metadata should be integrated with external services and systems.
+        /// Structure is documented below.
         /// </summary>
         [Input("metadataIntegration")]
         public Input<Inputs.MetastoreServiceMetadataIntegrationGetArgs>? MetadataIntegration { get; set; }

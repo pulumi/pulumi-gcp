@@ -6,8 +6,11 @@ package com.pulumi.gcp.dataproc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dataproc.outputs.MetastoreServiceNetworkConfigConsumer;
+import java.lang.Boolean;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class MetastoreServiceNetworkConfig {
@@ -17,6 +20,7 @@ public final class MetastoreServiceNetworkConfig {
      * 
      */
     private List<MetastoreServiceNetworkConfigConsumer> consumers;
+    private @Nullable Boolean customRoutesEnabled;
 
     private MetastoreServiceNetworkConfig() {}
     /**
@@ -26,6 +30,9 @@ public final class MetastoreServiceNetworkConfig {
      */
     public List<MetastoreServiceNetworkConfigConsumer> consumers() {
         return this.consumers;
+    }
+    public Optional<Boolean> customRoutesEnabled() {
+        return Optional.ofNullable(this.customRoutesEnabled);
     }
 
     public static Builder builder() {
@@ -38,10 +45,12 @@ public final class MetastoreServiceNetworkConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<MetastoreServiceNetworkConfigConsumer> consumers;
+        private @Nullable Boolean customRoutesEnabled;
         public Builder() {}
         public Builder(MetastoreServiceNetworkConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.consumers = defaults.consumers;
+    	      this.customRoutesEnabled = defaults.customRoutesEnabled;
         }
 
         @CustomType.Setter
@@ -55,9 +64,16 @@ public final class MetastoreServiceNetworkConfig {
         public Builder consumers(MetastoreServiceNetworkConfigConsumer... consumers) {
             return consumers(List.of(consumers));
         }
+        @CustomType.Setter
+        public Builder customRoutesEnabled(@Nullable Boolean customRoutesEnabled) {
+
+            this.customRoutesEnabled = customRoutesEnabled;
+            return this;
+        }
         public MetastoreServiceNetworkConfig build() {
             final var _resultValue = new MetastoreServiceNetworkConfig();
             _resultValue.consumers = consumers;
+            _resultValue.customRoutesEnabled = customRoutesEnabled;
             return _resultValue;
         }
     }

@@ -26,6 +26,8 @@ import * as utilities from "../utilities";
  *     deletionProtection: false,
  *     initialNodeCount: 1,
  *     location: "us-central1-a",
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
  *     endpoint: {
@@ -47,6 +49,8 @@ import * as utilities from "../utilities";
  *     deletionProtection: true,
  *     initialNodeCount: 1,
  *     location: "us-central1-a",
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
  *     endpoint: {
@@ -73,6 +77,8 @@ import * as utilities from "../utilities";
  *         workloadPool: "my-project-name.svc.id.goog",
  *     },
  *     deletionProtection: true,
+ *     network: "default",
+ *     subnetwork: "default",
  * });
  * const membership = new gcp.gkehub.Membership("membership", {
  *     membershipId: "basic",

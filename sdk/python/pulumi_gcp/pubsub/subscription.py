@@ -34,7 +34,9 @@ class SubscriptionArgs:
                  retry_policy: Optional[pulumi.Input['SubscriptionRetryPolicyArgs']] = None):
         """
         The set of arguments for constructing a Subscription resource.
-        :param pulumi.Input[str] topic: A reference to a Topic resource.
+        :param pulumi.Input[str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+               (as in the id property of a google_pubsub_topic), or just a topic name if
+               the topic is in the same project as the subscription.
                
                
                - - -
@@ -154,7 +156,9 @@ class SubscriptionArgs:
     @pulumi.getter
     def topic(self) -> pulumi.Input[str]:
         """
-        A reference to a Topic resource.
+        A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+        (as in the id property of a google_pubsub_topic), or just a topic name if
+        the topic is in the same project as the subscription.
 
 
         - - -
@@ -515,7 +519,9 @@ class _SubscriptionState:
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
-        :param pulumi.Input[str] topic: A reference to a Topic resource.
+        :param pulumi.Input[str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+               (as in the id property of a google_pubsub_topic), or just a topic name if
+               the topic is in the same project as the subscription.
                
                
                - - -
@@ -830,7 +836,9 @@ class _SubscriptionState:
     @pulumi.getter
     def topic(self) -> Optional[pulumi.Input[str]]:
         """
-        A reference to a Topic resource.
+        A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+        (as in the id property of a google_pubsub_topic), or just a topic name if
+        the topic is in the same project as the subscription.
 
 
         - - -
@@ -886,7 +894,7 @@ class Subscription(pulumi.CustomResource):
 
         example_topic = gcp.pubsub.Topic("exampleTopic")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
+            topic=example_topic.id,
             ack_deadline_seconds=20,
             labels={
                 "foo": "bar",
@@ -906,7 +914,7 @@ class Subscription(pulumi.CustomResource):
 
         example_topic = gcp.pubsub.Topic("exampleTopic")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
+            topic=example_topic.id,
             labels={
                 "foo": "bar",
             },
@@ -921,17 +929,6 @@ class Subscription(pulumi.CustomResource):
             ),
             enable_message_ordering=False)
         ```
-        ### Pubsub Subscription Different Project
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic", project="topic-project")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            project="subscription-project",
-            topic=example_topic.name)
-        ```
         ### Pubsub Subscription Dead Letter
 
         ```python
@@ -941,7 +938,7 @@ class Subscription(pulumi.CustomResource):
         example_topic = gcp.pubsub.Topic("exampleTopic")
         example_dead_letter = gcp.pubsub.Topic("exampleDeadLetter")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
+            topic=example_topic.id,
             dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArgs(
                 dead_letter_topic=example_dead_letter.id,
                 max_delivery_attempts=10,
@@ -978,7 +975,7 @@ class Subscription(pulumi.CustomResource):
         ]
         \"\"\")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
+            topic=example_topic.id,
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
             ),
@@ -1093,7 +1090,9 @@ class Subscription(pulumi.CustomResource):
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
-        :param pulumi.Input[str] topic: A reference to a Topic resource.
+        :param pulumi.Input[str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+               (as in the id property of a google_pubsub_topic), or just a topic name if
+               the topic is in the same project as the subscription.
                
                
                - - -
@@ -1126,7 +1125,7 @@ class Subscription(pulumi.CustomResource):
 
         example_topic = gcp.pubsub.Topic("exampleTopic")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
+            topic=example_topic.id,
             ack_deadline_seconds=20,
             labels={
                 "foo": "bar",
@@ -1146,7 +1145,7 @@ class Subscription(pulumi.CustomResource):
 
         example_topic = gcp.pubsub.Topic("exampleTopic")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
+            topic=example_topic.id,
             labels={
                 "foo": "bar",
             },
@@ -1161,17 +1160,6 @@ class Subscription(pulumi.CustomResource):
             ),
             enable_message_ordering=False)
         ```
-        ### Pubsub Subscription Different Project
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        example_topic = gcp.pubsub.Topic("exampleTopic", project="topic-project")
-        example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            project="subscription-project",
-            topic=example_topic.name)
-        ```
         ### Pubsub Subscription Dead Letter
 
         ```python
@@ -1181,7 +1169,7 @@ class Subscription(pulumi.CustomResource):
         example_topic = gcp.pubsub.Topic("exampleTopic")
         example_dead_letter = gcp.pubsub.Topic("exampleDeadLetter")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
+            topic=example_topic.id,
             dead_letter_policy=gcp.pubsub.SubscriptionDeadLetterPolicyArgs(
                 dead_letter_topic=example_dead_letter.id,
                 max_delivery_attempts=10,
@@ -1218,7 +1206,7 @@ class Subscription(pulumi.CustomResource):
         ]
         \"\"\")
         example_subscription = gcp.pubsub.Subscription("exampleSubscription",
-            topic=example_topic.name,
+            topic=example_topic.id,
             bigquery_config=gcp.pubsub.SubscriptionBigqueryConfigArgs(
                 table=pulumi.Output.all(test_table.project, test_table.dataset_id, test_table.table_id).apply(lambda project, dataset_id, table_id: f"{project}.{dataset_id}.{table_id}"),
             ),
@@ -1431,7 +1419,9 @@ class Subscription(pulumi.CustomResource):
                If not set, the default retry policy is applied. This generally implies that messages will be retried as soon as possible for healthy subscribers.
                RetryPolicy will be triggered on NACKs or acknowledgement deadline exceeded events for a given message
                Structure is documented below.
-        :param pulumi.Input[str] topic: A reference to a Topic resource.
+        :param pulumi.Input[str] topic: A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+               (as in the id property of a google_pubsub_topic), or just a topic name if
+               the topic is in the same project as the subscription.
                
                
                - - -
@@ -1665,7 +1655,9 @@ class Subscription(pulumi.CustomResource):
     @pulumi.getter
     def topic(self) -> pulumi.Output[str]:
         """
-        A reference to a Topic resource.
+        A reference to a Topic resource, of the form projects/{project}/topics/{{name}}
+        (as in the id property of a google_pubsub_topic), or just a topic name if
+        the topic is in the same project as the subscription.
 
 
         - - -
