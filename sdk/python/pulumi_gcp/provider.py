@@ -2287,7 +2287,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["artifact_registry_custom_endpoint"] = artifact_registry_custom_endpoint
             __props__.__dict__["assured_workloads_custom_endpoint"] = assured_workloads_custom_endpoint
             __props__.__dict__["backup_dr_custom_endpoint"] = backup_dr_custom_endpoint
-            __props__.__dict__["batching"] = pulumi.Output.from_input(batching).apply(pulumi.runtime.to_json) if batching is not None else None
+            __props__.__dict__["batching"] = pulumi.Output.from_input(batching) if batching is not None else None
             __props__.__dict__["beyondcorp_custom_endpoint"] = beyondcorp_custom_endpoint
             __props__.__dict__["big_query_custom_endpoint"] = big_query_custom_endpoint
             __props__.__dict__["biglake_custom_endpoint"] = biglake_custom_endpoint
@@ -2337,11 +2337,11 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
             __props__.__dict__["datastore_custom_endpoint"] = datastore_custom_endpoint
             __props__.__dict__["datastream_custom_endpoint"] = datastream_custom_endpoint
-            __props__.__dict__["default_labels"] = pulumi.Output.from_input(default_labels).apply(pulumi.runtime.to_json) if default_labels is not None else None
+            __props__.__dict__["default_labels"] = pulumi.Output.from_input(default_labels) if default_labels is not None else None
             __props__.__dict__["deployment_manager_custom_endpoint"] = deployment_manager_custom_endpoint
             __props__.__dict__["dialogflow_custom_endpoint"] = dialogflow_custom_endpoint
             __props__.__dict__["dialogflow_cx_custom_endpoint"] = dialogflow_cx_custom_endpoint
-            __props__.__dict__["disable_google_partner_name"] = pulumi.Output.from_input(disable_google_partner_name).apply(pulumi.runtime.to_json) if disable_google_partner_name is not None else None
+            __props__.__dict__["disable_google_partner_name"] = pulumi.Output.from_input(disable_google_partner_name) if disable_google_partner_name is not None else None
             __props__.__dict__["dns_custom_endpoint"] = dns_custom_endpoint
             __props__.__dict__["document_ai_custom_endpoint"] = document_ai_custom_endpoint
             __props__.__dict__["document_ai_warehouse_custom_endpoint"] = document_ai_warehouse_custom_endpoint
@@ -2372,7 +2372,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["iap_custom_endpoint"] = iap_custom_endpoint
             __props__.__dict__["identity_platform_custom_endpoint"] = identity_platform_custom_endpoint
             __props__.__dict__["impersonate_service_account"] = impersonate_service_account
-            __props__.__dict__["impersonate_service_account_delegates"] = pulumi.Output.from_input(impersonate_service_account_delegates).apply(pulumi.runtime.to_json) if impersonate_service_account_delegates is not None else None
+            __props__.__dict__["impersonate_service_account_delegates"] = pulumi.Output.from_input(impersonate_service_account_delegates) if impersonate_service_account_delegates is not None else None
             __props__.__dict__["integration_connectors_custom_endpoint"] = integration_connectors_custom_endpoint
             __props__.__dict__["kms_custom_endpoint"] = kms_custom_endpoint
             __props__.__dict__["logging_custom_endpoint"] = logging_custom_endpoint
@@ -2408,7 +2408,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["resource_manager_v3_custom_endpoint"] = resource_manager_v3_custom_endpoint
             __props__.__dict__["runtime_config_custom_endpoint"] = runtime_config_custom_endpoint
             __props__.__dict__["runtimeconfig_custom_endpoint"] = runtimeconfig_custom_endpoint
-            __props__.__dict__["scopes"] = pulumi.Output.from_input(scopes).apply(pulumi.runtime.to_json) if scopes is not None else None
+            __props__.__dict__["scopes"] = pulumi.Output.from_input(scopes) if scopes is not None else None
             __props__.__dict__["secret_manager_custom_endpoint"] = secret_manager_custom_endpoint
             __props__.__dict__["secure_source_manager_custom_endpoint"] = secure_source_manager_custom_endpoint
             __props__.__dict__["security_center_custom_endpoint"] = security_center_custom_endpoint
@@ -2428,7 +2428,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["tpu_custom_endpoint"] = tpu_custom_endpoint
             __props__.__dict__["tpu_v2_custom_endpoint"] = tpu_v2_custom_endpoint
             __props__.__dict__["universe_domain"] = universe_domain
-            __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override).apply(pulumi.runtime.to_json) if user_project_override is not None else None
+            __props__.__dict__["user_project_override"] = pulumi.Output.from_input(user_project_override) if user_project_override is not None else None
             __props__.__dict__["vertex_ai_custom_endpoint"] = vertex_ai_custom_endpoint
             __props__.__dict__["vmwareengine_custom_endpoint"] = vmwareengine_custom_endpoint
             __props__.__dict__["vpc_access_custom_endpoint"] = vpc_access_custom_endpoint
