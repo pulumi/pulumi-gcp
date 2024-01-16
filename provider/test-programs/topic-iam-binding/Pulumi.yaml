@@ -15,5 +15,5 @@ resources:
     properties:
       topic: ${myTopic.name}
       members:
-        - "serviceAccount:${myServiceAccount.accountId}@${myServiceAccount.project}.iam.gserviceaccount.com"
+        - "serviceAccount:${myServiceAccount.email}"
       role: "roles/pubsub.publisher"
