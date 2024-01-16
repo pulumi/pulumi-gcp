@@ -1,0 +1,12 @@
+name: iam-binding
+runtime: yaml
+description: A minimal Pulumi YAML program
+resources:
+  # An IAM Binding for the viewer role to your project
+  viewerBinding:
+    type: gcp:projects/iAMBinding:IAMBinding
+    properties:
+      project: my-gcp-project # change to your project id
+      members: 
+        - user:testuser@gmail.com # change to the user id
+      role: roles/viewer # viewer role
