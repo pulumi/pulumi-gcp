@@ -88,6 +88,10 @@ func TestCluster(t *testing.T) {
 	runTest(t, test(t, "test-programs/cluster"))
 }
 
+func TestIamBinding(t *testing.T) {
+	runTest(t, test(t, "test-programs/iam-binding"))
+}
+
 // Test programs that were automatically extracted from examples without autocorrection.
 func TestAutoExtractedPrograms(t *testing.T) {
 	type testCase struct {
