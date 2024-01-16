@@ -100,6 +100,10 @@ func TestLogSink(t *testing.T) {
 	runTest(t, test(t, "test-programs/logsink"))
 }
 
+func TestTopicIamBinding(t *testing.T) {
+	runTest(t, test(t, "test-programs/topic-iam-binding"))
+}
+
 // Test programs that were automatically extracted from examples without autocorrection.
 func TestAutoExtractedPrograms(t *testing.T) {
 	type testCase struct {

@@ -1,0 +1,19 @@
+name: topic-iam-binding
+runtime: yaml
+description: A minimal Pulumi YAML program
+resources:
+  myTopic:
+    type: gcp:pubsub/topic:Topic
+
+  myServiceAccount:
+    type: gcp:serviceaccount:Account
+    properties:
+      accountId: my-service-account-topic
+
+  myTopicIAMBinding:
+    type: gcp:pubsub/topicIAMBinding:TopicIAMBinding
+    properties:
+      topic: ${myTopic.name}
+      members:
+        - "serviceAccount:${myServiceAccount.accountId}@${myServiceAccount.project}.iam.gserviceaccount.com"
+      role: "roles/pubsub.publisher"

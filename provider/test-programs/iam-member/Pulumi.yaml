@@ -14,7 +14,7 @@ resources:
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: my-service-account
+      accountId: my-service-account-iam-member
 
   serviceAccountIAMMember:
     type: gcp:serviceaccount:IAMMember

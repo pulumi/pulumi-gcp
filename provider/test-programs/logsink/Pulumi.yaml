@@ -6,7 +6,7 @@ resources:
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: pulumi-service-account
+      accountId: my-service-account-logsink
 
   # Create a GCP storage bucket
   bucket:
