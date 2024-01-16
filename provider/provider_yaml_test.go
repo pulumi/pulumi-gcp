@@ -18,6 +18,7 @@
 package gcp
 
 import (
+	"os"
 	"path/filepath"
 	"testing"
 
@@ -88,19 +89,29 @@ func TestCluster(t *testing.T) {
 	runTest(t, test(t, "test-programs/cluster"))
 }
 
+func skipIfNotCI(t *testing.T) {
+	if os.Getenv("GITHUB_ACTIONS") == "" {
+		t.Skipf("Skipping outside of CI - dev accounts do not have permissions to run these.")
+	}
+}
+
 func TestIamBinding(t *testing.T) {
+	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/iam-binding"))
 }
 
 func TestIamMember(t *testing.T) {
+	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/iam-member"))
 }
 
 func TestLogSink(t *testing.T) {
+	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/logsink"))
 }
 
 func TestTopicIamBinding(t *testing.T) {
+	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/topic-iam-binding"))
 }
 
