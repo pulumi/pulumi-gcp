@@ -96,6 +96,10 @@ func TestIamMember(t *testing.T) {
 	runTest(t, test(t, "test-programs/iam-member"))
 }
 
+func TestLogSink(t *testing.T) {
+	runTest(t, test(t, "test-programs/logsink"))
+}
+
 // Test programs that were automatically extracted from examples without autocorrection.
 func TestAutoExtractedPrograms(t *testing.T) {
 	type testCase struct {
