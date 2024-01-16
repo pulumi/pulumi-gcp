@@ -92,6 +92,10 @@ func TestIamBinding(t *testing.T) {
 	runTest(t, test(t, "test-programs/iam-binding"))
 }
 
+func TestIamMember(t *testing.T) {
+	runTest(t, test(t, "test-programs/iam-member"))
+}
+
 // Test programs that were automatically extracted from examples without autocorrection.
 func TestAutoExtractedPrograms(t *testing.T) {
 	type testCase struct {
