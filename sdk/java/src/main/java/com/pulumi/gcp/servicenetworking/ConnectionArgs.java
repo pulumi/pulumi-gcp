@@ -9,11 +9,30 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ConnectionArgs Empty = new ConnectionArgs();
+
+    /**
+     * When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+     * failures with CloudSQL. Note: The resource will still exist.
+     * 
+     */
+    @Import(name="deletionPolicy")
+    private @Nullable Output<String> deletionPolicy;
+
+    /**
+     * @return When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+     * failures with CloudSQL. Note: The resource will still exist.
+     * 
+     */
+    public Optional<Output<String>> deletionPolicy() {
+        return Optional.ofNullable(this.deletionPolicy);
+    }
 
     /**
      * Name of VPC network connected with service producers using VPC peering.
@@ -71,6 +90,7 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
     private ConnectionArgs() {}
 
     private ConnectionArgs(ConnectionArgs $) {
+        this.deletionPolicy = $.deletionPolicy;
         this.network = $.network;
         this.reservedPeeringRanges = $.reservedPeeringRanges;
         this.service = $.service;
@@ -92,6 +112,29 @@ public final class ConnectionArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(ConnectionArgs defaults) {
             $ = new ConnectionArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param deletionPolicy When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+         * failures with CloudSQL. Note: The resource will still exist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(@Nullable Output<String> deletionPolicy) {
+            $.deletionPolicy = deletionPolicy;
+            return this;
+        }
+
+        /**
+         * @param deletionPolicy When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+         * failures with CloudSQL. Note: The resource will still exist.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deletionPolicy(String deletionPolicy) {
+            return deletionPolicy(Output.of(deletionPolicy));
         }
 
         /**

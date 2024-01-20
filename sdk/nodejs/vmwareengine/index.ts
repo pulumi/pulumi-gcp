@@ -10,6 +10,11 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ExternalAccessRuleArgs, ExternalAccessRuleState } from "./externalAccessRule";
+export type ExternalAccessRule = import("./externalAccessRule").ExternalAccessRule;
+export const ExternalAccessRule: typeof import("./externalAccessRule").ExternalAccessRule = null as any;
+utilities.lazyLoad(exports, ["ExternalAccessRule"], () => require("./externalAccessRule"));
+
 export { ExternalAddressArgs, ExternalAddressState } from "./externalAddress";
 export type ExternalAddress = import("./externalAddress").ExternalAddress;
 export const ExternalAddress: typeof import("./externalAddress").ExternalAddress = null as any;
@@ -19,6 +24,11 @@ export { GetClusterArgs, GetClusterResult, GetClusterOutputArgs } from "./getClu
 export const getCluster: typeof import("./getCluster").getCluster = null as any;
 export const getClusterOutput: typeof import("./getCluster").getClusterOutput = null as any;
 utilities.lazyLoad(exports, ["getCluster","getClusterOutput"], () => require("./getCluster"));
+
+export { GetExternalAccessRuleArgs, GetExternalAccessRuleResult, GetExternalAccessRuleOutputArgs } from "./getExternalAccessRule";
+export const getExternalAccessRule: typeof import("./getExternalAccessRule").getExternalAccessRule = null as any;
+export const getExternalAccessRuleOutput: typeof import("./getExternalAccessRule").getExternalAccessRuleOutput = null as any;
+utilities.lazyLoad(exports, ["getExternalAccessRule","getExternalAccessRuleOutput"], () => require("./getExternalAccessRule"));
 
 export { GetExternalAddressArgs, GetExternalAddressResult, GetExternalAddressOutputArgs } from "./getExternalAddress";
 export const getExternalAddress: typeof import("./getExternalAddress").getExternalAddress = null as any;
@@ -92,6 +102,8 @@ const _module = {
         switch (type) {
             case "gcp:vmwareengine/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "gcp:vmwareengine/externalAccessRule:ExternalAccessRule":
+                return new ExternalAccessRule(name, <any>undefined, { urn })
             case "gcp:vmwareengine/externalAddress:ExternalAddress":
                 return new ExternalAddress(name, <any>undefined, { urn })
             case "gcp:vmwareengine/network:Network":
@@ -110,6 +122,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/cluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "vmwareengine/externalAccessRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/externalAddress", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/network", _module)
 pulumi.runtime.registerResourceModule("gcp", "vmwareengine/networkPeering", _module)

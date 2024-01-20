@@ -391,6 +391,39 @@ import (
 //	}
 //
 // ```
+// ### Gkehub Feature Clusterupgrade
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Location: pulumi.String("global"),
+//				Spec: &gkehub.FeatureSpecArgs{
+//					Clusterupgrade: &gkehub.FeatureSpecClusterupgradeArgs{
+//						PostConditions: &gkehub.FeatureSpecClusterupgradePostConditionsArgs{
+//							Soaking: pulumi.String("60s"),
+//						},
+//						UpstreamFleets: pulumi.StringArray{},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

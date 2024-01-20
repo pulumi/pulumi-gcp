@@ -309,6 +309,139 @@ import (
 //	}
 //
 // ```
+// ### Policy Controller With Minimal Configuration
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("my-membership"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//				Location:   pulumi.String("global"),
+//				Feature:    feature.Name,
+//				Membership: membership.MembershipId,
+//				Policycontroller: &gkehub.FeatureMembershipPolicycontrollerArgs{
+//					PolicyControllerHubConfig: &gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs{
+//						InstallSpec: pulumi.String("INSTALL_SPEC_ENABLED"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Policy Controller With Custom Configurations
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/container"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/gkehub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			cluster, err := container.NewCluster(ctx, "cluster", &container.ClusterArgs{
+//				Location:         pulumi.String("us-central1-a"),
+//				InitialNodeCount: pulumi.Int(1),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			membership, err := gkehub.NewMembership(ctx, "membership", &gkehub.MembershipArgs{
+//				MembershipId: pulumi.String("my-membership"),
+//				Endpoint: &gkehub.MembershipEndpointArgs{
+//					GkeCluster: &gkehub.MembershipEndpointGkeClusterArgs{
+//						ResourceLink: cluster.ID().ApplyT(func(id string) (string, error) {
+//							return fmt.Sprintf("//container.googleapis.com/%v", id), nil
+//						}).(pulumi.StringOutput),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			feature, err := gkehub.NewFeature(ctx, "feature", &gkehub.FeatureArgs{
+//				Location: pulumi.String("global"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gkehub.NewFeatureMembership(ctx, "featureMember", &gkehub.FeatureMembershipArgs{
+//				Location:   pulumi.String("global"),
+//				Feature:    feature.Name,
+//				Membership: membership.MembershipId,
+//				Policycontroller: &gkehub.FeatureMembershipPolicycontrollerArgs{
+//					PolicyControllerHubConfig: &gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs{
+//						InstallSpec: pulumi.String("INSTALL_SPEC_SUSPENDED"),
+//						PolicyContent: &gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{
+//							TemplateLibrary: &gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{
+//								Installation: pulumi.String("NOT_INSTALLED"),
+//							},
+//						},
+//						ConstraintViolationLimit: pulumi.Int(50),
+//						AuditIntervalSeconds:     pulumi.Int(120),
+//						ReferentialRulesEnabled:  pulumi.Bool(true),
+//						LogDeniesEnabled:         pulumi.Bool(true),
+//						MutationEnabled:          pulumi.Bool(true),
+//					},
+//					Version: pulumi.String("1.17.0"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -356,6 +489,8 @@ type FeatureMembership struct {
 	MembershipLocation pulumi.StringPtrOutput `pulumi:"membershipLocation"`
 	// Service mesh specific spec. Structure is documented below.
 	Mesh FeatureMembershipMeshPtrOutput `pulumi:"mesh"`
+	// Policy Controller-specific spec. Structure is documented below.
+	Policycontroller FeatureMembershipPolicycontrollerPtrOutput `pulumi:"policycontroller"`
 	// The project of the feature
 	Project pulumi.StringOutput `pulumi:"project"`
 }
@@ -411,6 +546,8 @@ type featureMembershipState struct {
 	MembershipLocation *string `pulumi:"membershipLocation"`
 	// Service mesh specific spec. Structure is documented below.
 	Mesh *FeatureMembershipMesh `pulumi:"mesh"`
+	// Policy Controller-specific spec. Structure is documented below.
+	Policycontroller *FeatureMembershipPolicycontroller `pulumi:"policycontroller"`
 	// The project of the feature
 	Project *string `pulumi:"project"`
 }
@@ -428,6 +565,8 @@ type FeatureMembershipState struct {
 	MembershipLocation pulumi.StringPtrInput
 	// Service mesh specific spec. Structure is documented below.
 	Mesh FeatureMembershipMeshPtrInput
+	// Policy Controller-specific spec. Structure is documented below.
+	Policycontroller FeatureMembershipPolicycontrollerPtrInput
 	// The project of the feature
 	Project pulumi.StringPtrInput
 }
@@ -449,6 +588,8 @@ type featureMembershipArgs struct {
 	MembershipLocation *string `pulumi:"membershipLocation"`
 	// Service mesh specific spec. Structure is documented below.
 	Mesh *FeatureMembershipMesh `pulumi:"mesh"`
+	// Policy Controller-specific spec. Structure is documented below.
+	Policycontroller *FeatureMembershipPolicycontroller `pulumi:"policycontroller"`
 	// The project of the feature
 	Project *string `pulumi:"project"`
 }
@@ -467,6 +608,8 @@ type FeatureMembershipArgs struct {
 	MembershipLocation pulumi.StringPtrInput
 	// Service mesh specific spec. Structure is documented below.
 	Mesh FeatureMembershipMeshPtrInput
+	// Policy Controller-specific spec. Structure is documented below.
+	Policycontroller FeatureMembershipPolicycontrollerPtrInput
 	// The project of the feature
 	Project pulumi.StringPtrInput
 }
@@ -586,6 +729,11 @@ func (o FeatureMembershipOutput) MembershipLocation() pulumi.StringPtrOutput {
 // Service mesh specific spec. Structure is documented below.
 func (o FeatureMembershipOutput) Mesh() FeatureMembershipMeshPtrOutput {
 	return o.ApplyT(func(v *FeatureMembership) FeatureMembershipMeshPtrOutput { return v.Mesh }).(FeatureMembershipMeshPtrOutput)
+}
+
+// Policy Controller-specific spec. Structure is documented below.
+func (o FeatureMembershipOutput) Policycontroller() FeatureMembershipPolicycontrollerPtrOutput {
+	return o.ApplyT(func(v *FeatureMembership) FeatureMembershipPolicycontrollerPtrOutput { return v.Policycontroller }).(FeatureMembershipPolicycontrollerPtrOutput)
 }
 
 // The project of the feature

@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     public sealed class FeatureSpec
     {
         /// <summary>
+        /// Clusterupgrade feature spec.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.FeatureSpecClusterupgrade? Clusterupgrade;
+        /// <summary>
         /// Fleet Observability feature spec.
         /// Structure is documented below.
         /// </summary>
@@ -26,10 +31,13 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
         [OutputConstructor]
         private FeatureSpec(
+            Outputs.FeatureSpecClusterupgrade? clusterupgrade,
+
             Outputs.FeatureSpecFleetobservability? fleetobservability,
 
             Outputs.FeatureSpecMulticlusteringress? multiclusteringress)
         {
+            Clusterupgrade = clusterupgrade;
             Fleetobservability = fleetobservability;
             Multiclusteringress = multiclusteringress;
         }

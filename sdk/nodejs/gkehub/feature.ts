@@ -217,6 +217,24 @@ import * as utilities from "../utilities";
  *     location: "global",
  * });
  * ```
+ * ### Gkehub Feature Clusterupgrade
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const feature = new gcp.gkehub.Feature("feature", {
+ *     location: "global",
+ *     spec: {
+ *         clusterupgrade: {
+ *             postConditions: {
+ *                 soaking: "60s",
+ *             },
+ *             upstreamFleets: [],
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -383,7 +383,8 @@ class _VPNTunnelState:
         :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
                peer VPN gateway.
                Acceptable IKE versions are 1 or 2. Default version is 2.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this VpnTunnel.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -548,7 +549,8 @@ class _VPNTunnelState:
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -1170,7 +1172,8 @@ class VPNTunnel(pulumi.CustomResource):
         :param pulumi.Input[int] ike_version: IKE protocol version to use when establishing the VPN tunnel with
                peer VPN gateway.
                Acceptable IKE versions are 1 or 2. Default version is 2.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this VpnTunnel.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -1295,7 +1298,8 @@ class VPNTunnel(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 

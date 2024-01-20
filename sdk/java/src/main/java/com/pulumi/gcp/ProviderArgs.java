@@ -300,6 +300,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.clouddeployCustomEndpoint);
     }
 
+    @Import(name="clouddomainsCustomEndpoint")
+    private @Nullable Output<String> clouddomainsCustomEndpoint;
+
+    public Optional<Output<String>> clouddomainsCustomEndpoint() {
+        return Optional.ofNullable(this.clouddomainsCustomEndpoint);
+    }
+
     @Import(name="cloudfunctions2CustomEndpoint")
     private @Nullable Output<String> cloudfunctions2CustomEndpoint;
 
@@ -1162,6 +1169,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.cloudTasksCustomEndpoint = $.cloudTasksCustomEndpoint;
         this.cloudbuildv2CustomEndpoint = $.cloudbuildv2CustomEndpoint;
         this.clouddeployCustomEndpoint = $.clouddeployCustomEndpoint;
+        this.clouddomainsCustomEndpoint = $.clouddomainsCustomEndpoint;
         this.cloudfunctions2CustomEndpoint = $.cloudfunctions2CustomEndpoint;
         this.composerCustomEndpoint = $.composerCustomEndpoint;
         this.computeCustomEndpoint = $.computeCustomEndpoint;
@@ -1657,6 +1665,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder clouddeployCustomEndpoint(String clouddeployCustomEndpoint) {
             return clouddeployCustomEndpoint(Output.of(clouddeployCustomEndpoint));
+        }
+
+        public Builder clouddomainsCustomEndpoint(@Nullable Output<String> clouddomainsCustomEndpoint) {
+            $.clouddomainsCustomEndpoint = clouddomainsCustomEndpoint;
+            return this;
+        }
+
+        public Builder clouddomainsCustomEndpoint(String clouddomainsCustomEndpoint) {
+            return clouddomainsCustomEndpoint(Output.of(clouddomainsCustomEndpoint));
         }
 
         public Builder cloudfunctions2CustomEndpoint(@Nullable Output<String> cloudfunctions2CustomEndpoint) {

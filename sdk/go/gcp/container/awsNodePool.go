@@ -563,7 +563,7 @@ type AwsNodePool struct {
 	SubnetId pulumi.StringOutput `pulumi:"subnetId"`
 	// Output only. A globally unique identifier for the node pool.
 	Uid pulumi.StringOutput `pulumi:"uid"`
-	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	// Optional. Update settings control the speed and disruption of the node pool update.
 	UpdateSettings AwsNodePoolUpdateSettingsOutput `pulumi:"updateSettings"`
 	// Output only. The time at which this node pool was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -658,7 +658,7 @@ type awsNodePoolState struct {
 	SubnetId *string `pulumi:"subnetId"`
 	// Output only. A globally unique identifier for the node pool.
 	Uid *string `pulumi:"uid"`
-	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	// Optional. Update settings control the speed and disruption of the node pool update.
 	UpdateSettings *AwsNodePoolUpdateSettings `pulumi:"updateSettings"`
 	// Output only. The time at which this node pool was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -703,7 +703,7 @@ type AwsNodePoolState struct {
 	SubnetId pulumi.StringPtrInput
 	// Output only. A globally unique identifier for the node pool.
 	Uid pulumi.StringPtrInput
-	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	// Optional. Update settings control the speed and disruption of the node pool update.
 	UpdateSettings AwsNodePoolUpdateSettingsPtrInput
 	// Output only. The time at which this node pool was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -739,7 +739,7 @@ type awsNodePoolArgs struct {
 	Project *string `pulumi:"project"`
 	// The subnet where the node pool node run.
 	SubnetId string `pulumi:"subnetId"`
-	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	// Optional. Update settings control the speed and disruption of the node pool update.
 	UpdateSettings *AwsNodePoolUpdateSettings `pulumi:"updateSettings"`
 	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
 	Version string `pulumi:"version"`
@@ -770,7 +770,7 @@ type AwsNodePoolArgs struct {
 	Project pulumi.StringPtrInput
 	// The subnet where the node pool node run.
 	SubnetId pulumi.StringInput
-	// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+	// Optional. Update settings control the speed and disruption of the node pool update.
 	UpdateSettings AwsNodePoolUpdateSettingsPtrInput
 	// The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
 	Version pulumi.StringInput
@@ -947,7 +947,7 @@ func (o AwsNodePoolOutput) Uid() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsNodePool) pulumi.StringOutput { return v.Uid }).(pulumi.StringOutput)
 }
 
-// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+// Optional. Update settings control the speed and disruption of the node pool update.
 func (o AwsNodePoolOutput) UpdateSettings() AwsNodePoolUpdateSettingsOutput {
 	return o.ApplyT(func(v *AwsNodePool) AwsNodePoolUpdateSettingsOutput { return v.UpdateSettings }).(AwsNodePoolUpdateSettingsOutput)
 }

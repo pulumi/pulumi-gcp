@@ -13,14 +13,12 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     public sealed class VMwareNodePoolConfigVsphereConfigTagGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
         /// The Vsphere tag category.
         /// </summary>
         [Input("category")]
         public Input<string>? Category { get; set; }
 
         /// <summary>
-        /// (Output)
         /// The Vsphere tag name.
         /// 
         /// - - -

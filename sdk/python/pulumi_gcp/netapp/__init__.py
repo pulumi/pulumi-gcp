@@ -7,4 +7,5 @@ import typing
 # Export this package's modules as members:
 from .active_directory import *
 from .backup_vault import *
+from .kmsconfig import *
 from .storage_pool import *

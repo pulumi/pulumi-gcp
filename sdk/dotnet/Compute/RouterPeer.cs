@@ -337,6 +337,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> ManagementType { get; private set; } = null!;
 
         /// <summary>
+        /// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+        /// Router.md5_authentication_keys. The field must comply with RFC1035.
+        /// </summary>
+        [Output("md5AuthenticationKey")]
+        public Output<Outputs.RouterPeerMd5AuthenticationKey?> Md5AuthenticationKey { get; private set; } = null!;
+
+        /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long,
         /// and comply with RFC1035. Specifically, the name must be 1-63 characters
         /// long and match the regular expression `a-z?` which
@@ -540,6 +547,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Ipv6NexthopAddress { get; set; }
 
         /// <summary>
+        /// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+        /// Router.md5_authentication_keys. The field must comply with RFC1035.
+        /// </summary>
+        [Input("md5AuthenticationKey")]
+        public Input<Inputs.RouterPeerMd5AuthenticationKeyArgs>? Md5AuthenticationKey { get; set; }
+
+        /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long,
         /// and comply with RFC1035. Specifically, the name must be 1-63 characters
         /// long and match the regular expression `a-z?` which
@@ -709,6 +723,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("managementType")]
         public Input<string>? ManagementType { get; set; }
+
+        /// <summary>
+        /// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+        /// Router.md5_authentication_keys. The field must comply with RFC1035.
+        /// </summary>
+        [Input("md5AuthenticationKey")]
+        public Input<Inputs.RouterPeerMd5AuthenticationKeyGetArgs>? Md5AuthenticationKey { get; set; }
 
         /// <summary>
         /// Name of this BGP peer. The name must be 1-63 characters long,

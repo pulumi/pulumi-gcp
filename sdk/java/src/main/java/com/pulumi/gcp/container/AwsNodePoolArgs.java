@@ -179,14 +179,14 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * Optional. Update settings control the speed and disruption of the node pool update.
      * 
      */
     @Import(name="updateSettings")
     private @Nullable Output<AwsNodePoolUpdateSettingsArgs> updateSettings;
 
     /**
-     * @return (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * @return Optional. Update settings control the speed and disruption of the node pool update.
      * 
      */
     public Optional<Output<AwsNodePoolUpdateSettingsArgs>> updateSettings() {
@@ -460,7 +460,7 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateSettings (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+         * @param updateSettings Optional. Update settings control the speed and disruption of the node pool update.
          * 
          * @return builder
          * 
@@ -471,7 +471,7 @@ public final class AwsNodePoolArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param updateSettings (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+         * @param updateSettings Optional. Update settings control the speed and disruption of the node pool update.
          * 
          * @return builder
          * 

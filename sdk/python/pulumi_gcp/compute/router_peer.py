@@ -28,6 +28,7 @@ class RouterPeerArgs:
                  enable_ipv6: Optional[pulumi.Input[bool]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
+                 md5_authentication_key: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
                  peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
@@ -71,6 +72,8 @@ class RouterPeerArgs:
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        :param pulumi.Input['RouterPeerMd5AuthenticationKeyArgs'] md5_authentication_key: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+               Router.md5_authentication_keys. The field must comply with RFC1035.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -113,6 +116,8 @@ class RouterPeerArgs:
             pulumi.set(__self__, "ip_address", ip_address)
         if ipv6_nexthop_address is not None:
             pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
+        if md5_authentication_key is not None:
+            pulumi.set(__self__, "md5_authentication_key", md5_authentication_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if peer_ip_address is not None:
@@ -294,6 +299,19 @@ class RouterPeerArgs:
         pulumi.set(self, "ipv6_nexthop_address", value)
 
     @property
+    @pulumi.getter(name="md5AuthenticationKey")
+    def md5_authentication_key(self) -> Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]:
+        """
+        Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+        Router.md5_authentication_keys. The field must comply with RFC1035.
+        """
+        return pulumi.get(self, "md5_authentication_key")
+
+    @md5_authentication_key.setter
+    def md5_authentication_key(self, value: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]):
+        pulumi.set(self, "md5_authentication_key", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -394,6 +412,7 @@ class _RouterPeerState:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  management_type: Optional[pulumi.Input[str]] = None,
+                 md5_authentication_key: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -434,6 +453,8 @@ class _RouterPeerState:
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer.
+        :param pulumi.Input['RouterPeerMd5AuthenticationKeyArgs'] md5_authentication_key: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+               Router.md5_authentication_keys. The field must comply with RFC1035.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -483,6 +504,8 @@ class _RouterPeerState:
             pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
         if management_type is not None:
             pulumi.set(__self__, "management_type", management_type)
+        if md5_authentication_key is not None:
+            pulumi.set(__self__, "md5_authentication_key", md5_authentication_key)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if peer_asn is not None:
@@ -652,6 +675,19 @@ class _RouterPeerState:
         pulumi.set(self, "management_type", value)
 
     @property
+    @pulumi.getter(name="md5AuthenticationKey")
+    def md5_authentication_key(self) -> Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]:
+        """
+        Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+        Router.md5_authentication_keys. The field must comply with RFC1035.
+        """
+        return pulumi.get(self, "md5_authentication_key")
+
+    @md5_authentication_key.setter
+    def md5_authentication_key(self, value: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']]):
+        pulumi.set(self, "md5_authentication_key", value)
+
+    @property
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -781,6 +817,7 @@ class RouterPeer(pulumi.CustomResource):
                  interface: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
+                 md5_authentication_key: Optional[pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -983,6 +1020,8 @@ class RouterPeer(pulumi.CustomResource):
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        :param pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']] md5_authentication_key: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+               Router.md5_authentication_keys. The field must comply with RFC1035.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -1203,6 +1242,7 @@ class RouterPeer(pulumi.CustomResource):
                  interface: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
+                 md5_authentication_key: Optional[pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  peer_asn: Optional[pulumi.Input[int]] = None,
                  peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1232,6 +1272,7 @@ class RouterPeer(pulumi.CustomResource):
             __props__.__dict__["interface"] = interface
             __props__.__dict__["ip_address"] = ip_address
             __props__.__dict__["ipv6_nexthop_address"] = ipv6_nexthop_address
+            __props__.__dict__["md5_authentication_key"] = md5_authentication_key
             __props__.__dict__["name"] = name
             if peer_asn is None and not opts.urn:
                 raise TypeError("Missing required property 'peer_asn'")
@@ -1266,6 +1307,7 @@ class RouterPeer(pulumi.CustomResource):
             ip_address: Optional[pulumi.Input[str]] = None,
             ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
             management_type: Optional[pulumi.Input[str]] = None,
+            md5_authentication_key: Optional[pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']]] = None,
             name: Optional[pulumi.Input[str]] = None,
             peer_asn: Optional[pulumi.Input[int]] = None,
             peer_ip_address: Optional[pulumi.Input[str]] = None,
@@ -1311,6 +1353,8 @@ class RouterPeer(pulumi.CustomResource):
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer.
+        :param pulumi.Input[pulumi.InputType['RouterPeerMd5AuthenticationKeyArgs']] md5_authentication_key: Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+               Router.md5_authentication_keys. The field must comply with RFC1035.
         :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
                and comply with RFC1035. Specifically, the name must be 1-63 characters
                long and match the regular expression `a-z?` which
@@ -1353,6 +1397,7 @@ class RouterPeer(pulumi.CustomResource):
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["ipv6_nexthop_address"] = ipv6_nexthop_address
         __props__.__dict__["management_type"] = management_type
+        __props__.__dict__["md5_authentication_key"] = md5_authentication_key
         __props__.__dict__["name"] = name
         __props__.__dict__["peer_asn"] = peer_asn
         __props__.__dict__["peer_ip_address"] = peer_ip_address
@@ -1469,6 +1514,15 @@ class RouterPeer(pulumi.CustomResource):
         The resource that configures and manages this BGP peer.
         """
         return pulumi.get(self, "management_type")
+
+    @property
+    @pulumi.getter(name="md5AuthenticationKey")
+    def md5_authentication_key(self) -> pulumi.Output[Optional['outputs.RouterPeerMd5AuthenticationKey']]:
+        """
+        Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+        Router.md5_authentication_keys. The field must comply with RFC1035.
+        """
+        return pulumi.get(self, "md5_authentication_key")
 
     @property
     @pulumi.getter

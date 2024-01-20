@@ -80,6 +80,8 @@ type Account struct {
 	// must be 6-30 characters long, and match the regular expression `a-z`
 	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId pulumi.StringOutput `pulumi:"accountId"`
+	// If set to true, skip service account creation if a service account with the same email already exists.
+	CreateIgnoreAlreadyExists pulumi.BoolPtrOutput `pulumi:"createIgnoreAlreadyExists"`
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
@@ -148,6 +150,8 @@ type accountState struct {
 	// must be 6-30 characters long, and match the regular expression `a-z`
 	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId *string `pulumi:"accountId"`
+	// If set to true, skip service account creation if a service account with the same email already exists.
+	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description *string `pulumi:"description"`
@@ -178,6 +182,8 @@ type AccountState struct {
 	// must be 6-30 characters long, and match the regular expression `a-z`
 	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId pulumi.StringPtrInput
+	// If set to true, skip service account creation if a service account with the same email already exists.
+	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description pulumi.StringPtrInput
@@ -212,6 +218,8 @@ type accountArgs struct {
 	// must be 6-30 characters long, and match the regular expression `a-z`
 	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId string `pulumi:"accountId"`
+	// If set to true, skip service account creation if a service account with the same email already exists.
+	CreateIgnoreAlreadyExists *bool `pulumi:"createIgnoreAlreadyExists"`
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description *string `pulumi:"description"`
@@ -233,6 +241,8 @@ type AccountArgs struct {
 	// must be 6-30 characters long, and match the regular expression `a-z`
 	// to comply with RFC1035. Changing this forces a new service account to be created.
 	AccountId pulumi.StringInput
+	// If set to true, skip service account creation if a service account with the same email already exists.
+	CreateIgnoreAlreadyExists pulumi.BoolPtrInput
 	// A text description of the service account.
 	// Must be less than or equal to 256 UTF-8 bytes.
 	Description pulumi.StringPtrInput
@@ -340,6 +350,11 @@ func (o AccountOutput) ToAccountOutputWithContext(ctx context.Context) AccountOu
 // to comply with RFC1035. Changing this forces a new service account to be created.
 func (o AccountOutput) AccountId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Account) pulumi.StringOutput { return v.AccountId }).(pulumi.StringOutput)
+}
+
+// If set to true, skip service account creation if a service account with the same email already exists.
+func (o AccountOutput) CreateIgnoreAlreadyExists() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Account) pulumi.BoolPtrOutput { return v.CreateIgnoreAlreadyExists }).(pulumi.BoolPtrOutput)
 }
 
 // A text description of the service account.

@@ -22,6 +22,7 @@ class FeatureMembershipArgs:
                  configmanagement: Optional[pulumi.Input['FeatureMembershipConfigmanagementArgs']] = None,
                  membership_location: Optional[pulumi.Input[str]] = None,
                  mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
+                 policycontroller: Optional[pulumi.Input['FeatureMembershipPolicycontrollerArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a FeatureMembership resource.
@@ -31,6 +32,7 @@ class FeatureMembershipArgs:
         :param pulumi.Input['FeatureMembershipConfigmanagementArgs'] configmanagement: Config Management-specific spec. Structure is documented below.
         :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
         :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipPolicycontrollerArgs'] policycontroller: Policy Controller-specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
         pulumi.set(__self__, "feature", feature)
@@ -42,6 +44,8 @@ class FeatureMembershipArgs:
             pulumi.set(__self__, "membership_location", membership_location)
         if mesh is not None:
             pulumi.set(__self__, "mesh", mesh)
+        if policycontroller is not None:
+            pulumi.set(__self__, "policycontroller", policycontroller)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -119,6 +123,18 @@ class FeatureMembershipArgs:
 
     @property
     @pulumi.getter
+    def policycontroller(self) -> Optional[pulumi.Input['FeatureMembershipPolicycontrollerArgs']]:
+        """
+        Policy Controller-specific spec. Structure is documented below.
+        """
+        return pulumi.get(self, "policycontroller")
+
+    @policycontroller.setter
+    def policycontroller(self, value: Optional[pulumi.Input['FeatureMembershipPolicycontrollerArgs']]):
+        pulumi.set(self, "policycontroller", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The project of the feature
@@ -139,6 +155,7 @@ class _FeatureMembershipState:
                  membership: Optional[pulumi.Input[str]] = None,
                  membership_location: Optional[pulumi.Input[str]] = None,
                  mesh: Optional[pulumi.Input['FeatureMembershipMeshArgs']] = None,
+                 policycontroller: Optional[pulumi.Input['FeatureMembershipPolicycontrollerArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering FeatureMembership resources.
@@ -148,6 +165,7 @@ class _FeatureMembershipState:
         :param pulumi.Input[str] membership: The name of the membership
         :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
         :param pulumi.Input['FeatureMembershipMeshArgs'] mesh: Service mesh specific spec. Structure is documented below.
+        :param pulumi.Input['FeatureMembershipPolicycontrollerArgs'] policycontroller: Policy Controller-specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
         if configmanagement is not None:
@@ -162,6 +180,8 @@ class _FeatureMembershipState:
             pulumi.set(__self__, "membership_location", membership_location)
         if mesh is not None:
             pulumi.set(__self__, "mesh", mesh)
+        if policycontroller is not None:
+            pulumi.set(__self__, "policycontroller", policycontroller)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -239,6 +259,18 @@ class _FeatureMembershipState:
 
     @property
     @pulumi.getter
+    def policycontroller(self) -> Optional[pulumi.Input['FeatureMembershipPolicycontrollerArgs']]:
+        """
+        Policy Controller-specific spec. Structure is documented below.
+        """
+        return pulumi.get(self, "policycontroller")
+
+    @policycontroller.setter
+    def policycontroller(self, value: Optional[pulumi.Input['FeatureMembershipPolicycontrollerArgs']]):
+        pulumi.set(self, "policycontroller", value)
+
+    @property
+    @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
         The project of the feature
@@ -261,6 +293,7 @@ class FeatureMembership(pulumi.CustomResource):
                  membership: Optional[pulumi.Input[str]] = None,
                  membership_location: Optional[pulumi.Input[str]] = None,
                  mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
+                 policycontroller: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -412,6 +445,71 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Policy Controller With Minimal Configuration
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        feature = gcp.gkehub.Feature("feature", location="global")
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            policycontroller=gcp.gkehub.FeatureMembershipPolicycontrollerArgs(
+                policy_controller_hub_config=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs(
+                    install_spec="INSTALL_SPEC_ENABLED",
+                ),
+            ))
+        ```
+        ### Policy Controller With Custom Configurations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        feature = gcp.gkehub.Feature("feature", location="global")
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            policycontroller=gcp.gkehub.FeatureMembershipPolicycontrollerArgs(
+                policy_controller_hub_config=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs(
+                    install_spec="INSTALL_SPEC_SUSPENDED",
+                    policy_content=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
+                        template_library=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
+                            installation="NOT_INSTALLED",
+                        ),
+                    ),
+                    constraint_violation_limit=50,
+                    audit_interval_seconds=120,
+                    referential_rules_enabled=True,
+                    log_denies_enabled=True,
+                    mutation_enabled=True,
+                ),
+                version="1.17.0",
+            ))
+        ```
 
         ## Import
 
@@ -445,6 +543,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[str] membership: The name of the membership
         :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
         :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']] policycontroller: Policy Controller-specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
         ...
@@ -602,6 +701,71 @@ class FeatureMembership(pulumi.CustomResource):
                 ),
             ))
         ```
+        ### Policy Controller With Minimal Configuration
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        feature = gcp.gkehub.Feature("feature", location="global")
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            policycontroller=gcp.gkehub.FeatureMembershipPolicycontrollerArgs(
+                policy_controller_hub_config=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs(
+                    install_spec="INSTALL_SPEC_ENABLED",
+                ),
+            ))
+        ```
+        ### Policy Controller With Custom Configurations
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        cluster = gcp.container.Cluster("cluster",
+            location="us-central1-a",
+            initial_node_count=1)
+        membership = gcp.gkehub.Membership("membership",
+            membership_id="my-membership",
+            endpoint=gcp.gkehub.MembershipEndpointArgs(
+                gke_cluster=gcp.gkehub.MembershipEndpointGkeClusterArgs(
+                    resource_link=cluster.id.apply(lambda id: f"//container.googleapis.com/{id}"),
+                ),
+            ))
+        feature = gcp.gkehub.Feature("feature", location="global")
+        feature_member = gcp.gkehub.FeatureMembership("featureMember",
+            location="global",
+            feature=feature.name,
+            membership=membership.membership_id,
+            policycontroller=gcp.gkehub.FeatureMembershipPolicycontrollerArgs(
+                policy_controller_hub_config=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs(
+                    install_spec="INSTALL_SPEC_SUSPENDED",
+                    policy_content=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs(
+                        template_library=gcp.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs(
+                            installation="NOT_INSTALLED",
+                        ),
+                    ),
+                    constraint_violation_limit=50,
+                    audit_interval_seconds=120,
+                    referential_rules_enabled=True,
+                    log_denies_enabled=True,
+                    mutation_enabled=True,
+                ),
+                version="1.17.0",
+            ))
+        ```
 
         ## Import
 
@@ -648,6 +812,7 @@ class FeatureMembership(pulumi.CustomResource):
                  membership: Optional[pulumi.Input[str]] = None,
                  membership_location: Optional[pulumi.Input[str]] = None,
                  mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
+                 policycontroller: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -670,6 +835,7 @@ class FeatureMembership(pulumi.CustomResource):
             __props__.__dict__["membership"] = membership
             __props__.__dict__["membership_location"] = membership_location
             __props__.__dict__["mesh"] = mesh
+            __props__.__dict__["policycontroller"] = policycontroller
             __props__.__dict__["project"] = project
         super(FeatureMembership, __self__).__init__(
             'gcp:gkehub/featureMembership:FeatureMembership',
@@ -687,6 +853,7 @@ class FeatureMembership(pulumi.CustomResource):
             membership: Optional[pulumi.Input[str]] = None,
             membership_location: Optional[pulumi.Input[str]] = None,
             mesh: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']]] = None,
+            policycontroller: Optional[pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']]] = None,
             project: Optional[pulumi.Input[str]] = None) -> 'FeatureMembership':
         """
         Get an existing FeatureMembership resource's state with the given name, id, and optional extra
@@ -701,6 +868,7 @@ class FeatureMembership(pulumi.CustomResource):
         :param pulumi.Input[str] membership: The name of the membership
         :param pulumi.Input[str] membership_location: The location of the membership, for example, "us-central1". Default is "global".
         :param pulumi.Input[pulumi.InputType['FeatureMembershipMeshArgs']] mesh: Service mesh specific spec. Structure is documented below.
+        :param pulumi.Input[pulumi.InputType['FeatureMembershipPolicycontrollerArgs']] policycontroller: Policy Controller-specific spec. Structure is documented below.
         :param pulumi.Input[str] project: The project of the feature
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -713,6 +881,7 @@ class FeatureMembership(pulumi.CustomResource):
         __props__.__dict__["membership"] = membership
         __props__.__dict__["membership_location"] = membership_location
         __props__.__dict__["mesh"] = mesh
+        __props__.__dict__["policycontroller"] = policycontroller
         __props__.__dict__["project"] = project
         return FeatureMembership(resource_name, opts=opts, __props__=__props__)
 
@@ -763,6 +932,14 @@ class FeatureMembership(pulumi.CustomResource):
         Service mesh specific spec. Structure is documented below.
         """
         return pulumi.get(self, "mesh")
+
+    @property
+    @pulumi.getter
+    def policycontroller(self) -> pulumi.Output[Optional['outputs.FeatureMembershipPolicycontroller']]:
+        """
+        Policy Controller-specific spec. Structure is documented below.
+        """
+        return pulumi.get(self, "policycontroller")
 
     @property
     @pulumi.getter

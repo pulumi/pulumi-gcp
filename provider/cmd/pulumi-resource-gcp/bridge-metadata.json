@@ -4126,6 +4126,130 @@
                     }
                 }
             },
+            "google_clouddomains_registration": {
+                "current": "gcp:clouddomains/registration:Registration",
+                "majorVersion": 7,
+                "fields": {
+                    "contact_notices": {
+                        "maxItemsOne": false
+                    },
+                    "contact_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "admin_contact": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "postal_address": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "address_lines": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "registrant_contact": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "postal_address": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "address_lines": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                },
+                                "technical_contact": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "postal_address": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "address_lines": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "recipients": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "dns_settings": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "custom_dns": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "ds_records": {
+                                                "maxItemsOne": false
+                                            },
+                                            "name_servers": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
+                                "glue_records": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ipv4_addresses": {
+                                                "maxItemsOne": false
+                                            },
+                                            "ipv6_addresses": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "domain_notices": {
+                        "maxItemsOne": false
+                    },
+                    "issues": {
+                        "maxItemsOne": false
+                    },
+                    "management_settings": {
+                        "maxItemsOne": true
+                    },
+                    "supported_privacy": {
+                        "maxItemsOne": false
+                    },
+                    "yearly_price": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_cloudfunctions2_function": {
                 "current": "gcp:cloudfunctionsv2/function:Function",
                 "majorVersion": 7,
@@ -7201,6 +7325,9 @@
                         "maxItemsOne": false
                     },
                     "bfd": {
+                        "maxItemsOne": true
+                    },
+                    "md5_authentication_key": {
                         "maxItemsOne": true
                     }
                 }
@@ -15392,6 +15519,32 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
+                                "clusterupgrade": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "gke_upgrade_overrides": {
+                                                "maxItemsOne": false,
+                                                "elem": {
+                                                    "fields": {
+                                                        "post_conditions": {
+                                                            "maxItemsOne": true
+                                                        },
+                                                        "upgrade": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "post_conditions": {
+                                                "maxItemsOne": true
+                                            },
+                                            "upstream_fleets": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                },
                                 "fleetobservability": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -15507,6 +15660,43 @@
                     },
                     "mesh": {
                         "maxItemsOne": true
+                    },
+                    "policycontroller": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "policy_controller_hub_config": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "exemptable_namespaces": {
+                                                "maxItemsOne": false
+                                            },
+                                            "monitoring": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "backends": {
+                                                            "maxItemsOne": false
+                                                        }
+                                                    }
+                                                }
+                                            },
+                                            "policy_content": {
+                                                "maxItemsOne": true,
+                                                "elem": {
+                                                    "fields": {
+                                                        "template_library": {
+                                                            "maxItemsOne": true
+                                                        }
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -16317,6 +16507,9 @@
                                     "maxItemsOne": false,
                                     "elem": {
                                         "fields": {
+                                            "host_groups": {
+                                                "maxItemsOne": false
+                                            },
                                             "tags": {
                                                 "maxItemsOne": false
                                             }
@@ -18068,6 +18261,10 @@
             },
             "google_netapp_backup_vault": {
                 "current": "gcp:netapp/backupVault:BackupVault",
+                "majorVersion": 7
+            },
+            "google_netapp_kmsconfig": {
+                "current": "gcp:netapp/kmsconfig:Kmsconfig",
                 "majorVersion": 7
             },
             "google_netapp_storage_pool": {
@@ -22401,6 +22598,25 @@
                     }
                 }
             },
+            "google_vertex_ai_feature_online_store_featureview": {
+                "current": "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview",
+                "majorVersion": 7,
+                "fields": {
+                    "big_query_source": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "entity_id_columns": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "sync_config": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_vertex_ai_featurestore": {
                 "current": "gcp:vertex/aiFeatureStore:AiFeatureStore",
                 "majorVersion": 7,
@@ -22580,6 +22796,24 @@
                 "majorVersion": 7,
                 "fields": {
                     "node_type_configs": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_vmwareengine_external_access_rule": {
+                "current": "gcp:vmwareengine/externalAccessRule:ExternalAccessRule",
+                "majorVersion": 7,
+                "fields": {
+                    "destination_ip_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "destination_ports": {
+                        "maxItemsOne": false
+                    },
+                    "source_ip_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "source_ports": {
                         "maxItemsOne": false
                     }
                 }
@@ -26180,6 +26414,22 @@
                 "current": "gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy",
                 "majorVersion": 7
             },
+            "google_dns_managed_zones": {
+                "current": "gcp:dns/getManagedZones:getManagedZones",
+                "majorVersion": 7,
+                "fields": {
+                    "managed_zones": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "name_servers": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_dns_record_set": {
                 "current": "gcp:dns/getRecordSet:getRecordSet",
                 "majorVersion": 7,
@@ -26196,6 +26446,42 @@
             "google_endpoints_service_iam_policy": {
                 "current": "gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy",
                 "majorVersion": 7
+            },
+            "google_filestore_instance": {
+                "current": "gcp:filestore/getInstance:getInstance",
+                "majorVersion": 7,
+                "fields": {
+                    "file_shares": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "nfs_export_options": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "ip_ranges": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "networks": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ip_addresses": {
+                                    "maxItemsOne": false
+                                },
+                                "modes": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_firebase_android_app": {
                 "current": "gcp:firebase/getAndroidApp:getAndroidApp",
@@ -27656,6 +27942,24 @@
                     }
                 }
             },
+            "google_vmwareengine_external_access_rule": {
+                "current": "gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule",
+                "majorVersion": 7,
+                "fields": {
+                    "destination_ip_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "destination_ports": {
+                        "maxItemsOne": false
+                    },
+                    "source_ip_ranges": {
+                        "maxItemsOne": false
+                    },
+                    "source_ports": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_vmwareengine_external_address": {
                 "current": "gcp:vmwareengine/getExternalAddress:getExternalAddress",
                 "majorVersion": 7
@@ -27766,6 +28070,11 @@
             "google_gkeonprem_vmware_cluster": {
                 "maxItemsOneOverrides": {
                     "vcenter": false
+                }
+            },
+            "google_gkeonprem_vmware_node_pool": {
+                "maxItemsOneOverrides": {
+                    "config.$.vsphere_config": false
                 }
             },
             "google_service_account": {
@@ -27958,6 +28267,7 @@
             "gcp:clouddeploy/automation:Automation": 0,
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": 0,
             "gcp:clouddeploy/target:Target": 0,
+            "gcp:clouddomains/registration:Registration": 0,
             "gcp:cloudfunctions/function:Function": 0,
             "gcp:cloudfunctions/functionIamBinding:FunctionIamBinding": 0,
             "gcp:cloudfunctions/functionIamMember:FunctionIamMember": 0,
@@ -28431,6 +28741,7 @@
             "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": 0,
             "gcp:netapp/activeDirectory:ActiveDirectory": 0,
             "gcp:netapp/backupVault:BackupVault": 0,
+            "gcp:netapp/kmsconfig:Kmsconfig": 0,
             "gcp:netapp/storagePool:StoragePool": 0,
             "gcp:networkconnectivity/hub:Hub": 0,
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": 0,
@@ -28608,6 +28919,7 @@
             "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": 0,
             "gcp:vertex/aiFeatureGroup:AiFeatureGroup": 0,
             "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": 0,
+            "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview": 0,
             "gcp:vertex/aiFeatureStore:AiFeatureStore": 0,
             "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType": 0,
             "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature": 0,
@@ -28622,6 +28934,7 @@
             "gcp:vertex/aiMetadataStore:AiMetadataStore": 0,
             "gcp:vertex/aiTensorboard:AiTensorboard": 0,
             "gcp:vmwareengine/cluster:Cluster": 0,
+            "gcp:vmwareengine/externalAccessRule:ExternalAccessRule": 0,
             "gcp:vmwareengine/externalAddress:ExternalAddress": 0,
             "gcp:vmwareengine/network:Network": 0,
             "gcp:vmwareengine/networkPeering:NetworkPeering": 0,
@@ -28779,9 +29092,11 @@
             "gcp:dns/getKeys:getKeys": 1,
             "gcp:dns/getManagedZone:getManagedZone": 1,
             "gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy": 0,
+            "gcp:dns/getManagedZones:getManagedZones": 1,
             "gcp:dns/getRecordSet:getRecordSet": 1,
             "gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy": 0,
             "gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy": 0,
+            "gcp:filestore/getInstance:getInstance": 0,
             "gcp:firebase/getAndroidApp:getAndroidApp": 0,
             "gcp:firebase/getAndroidAppConfig:getAndroidAppConfig": 1,
             "gcp:firebase/getAppleApp:getAppleApp": 0,
@@ -28908,6 +29223,7 @@
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": 0,
             "gcp:vertex/getAiIndex:getAiIndex": 0,
             "gcp:vmwareengine/getCluster:getCluster": 0,
+            "gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule": 0,
             "gcp:vmwareengine/getExternalAddress:getExternalAddress": 0,
             "gcp:vmwareengine/getNetwork:getNetwork": 0,
             "gcp:vmwareengine/getNetworkPeering:getNetworkPeering": 0,
@@ -29085,6 +29401,7 @@
             "gcp:clouddeploy/automation:Automation": "google_clouddeploy_automation",
             "gcp:clouddeploy/deliveryPipeline:DeliveryPipeline": "google_clouddeploy_delivery_pipeline",
             "gcp:clouddeploy/target:Target": "google_clouddeploy_target",
+            "gcp:clouddomains/registration:Registration": "google_clouddomains_registration",
             "gcp:cloudfunctions/function:Function": "google_cloudfunctions_function",
             "gcp:cloudfunctions/functionIamBinding:FunctionIamBinding": "google_cloudfunctions_function_iam_binding",
             "gcp:cloudfunctions/functionIamMember:FunctionIamMember": "google_cloudfunctions_function_iam_member",
@@ -29558,6 +29875,7 @@
             "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": "google_monitoring_uptime_check_config",
             "gcp:netapp/activeDirectory:ActiveDirectory": "google_netapp_active_directory",
             "gcp:netapp/backupVault:BackupVault": "google_netapp_backup_vault",
+            "gcp:netapp/kmsconfig:Kmsconfig": "google_netapp_kmsconfig",
             "gcp:netapp/storagePool:StoragePool": "google_netapp_storage_pool",
             "gcp:networkconnectivity/hub:Hub": "google_network_connectivity_hub",
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": "google_network_connectivity_policy_based_route",
@@ -29735,6 +30053,7 @@
             "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": "google_vertex_ai_endpoint_iam_policy",
             "gcp:vertex/aiFeatureGroup:AiFeatureGroup": "google_vertex_ai_feature_group",
             "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": "google_vertex_ai_feature_online_store",
+            "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview": "google_vertex_ai_feature_online_store_featureview",
             "gcp:vertex/aiFeatureStore:AiFeatureStore": "google_vertex_ai_featurestore",
             "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType": "google_vertex_ai_featurestore_entitytype",
             "gcp:vertex/aiFeatureStoreEntityTypeFeature:AiFeatureStoreEntityTypeFeature": "google_vertex_ai_featurestore_entitytype_feature",
@@ -29749,6 +30068,7 @@
             "gcp:vertex/aiMetadataStore:AiMetadataStore": "google_vertex_ai_metadata_store",
             "gcp:vertex/aiTensorboard:AiTensorboard": "google_vertex_ai_tensorboard",
             "gcp:vmwareengine/cluster:Cluster": "google_vmwareengine_cluster",
+            "gcp:vmwareengine/externalAccessRule:ExternalAccessRule": "google_vmwareengine_external_access_rule",
             "gcp:vmwareengine/externalAddress:ExternalAddress": "google_vmwareengine_external_address",
             "gcp:vmwareengine/network:Network": "google_vmwareengine_network",
             "gcp:vmwareengine/networkPeering:NetworkPeering": "google_vmwareengine_network_peering",
@@ -29906,9 +30226,11 @@
             "gcp:dns/getKeys:getKeys": "google_dns_keys",
             "gcp:dns/getManagedZone:getManagedZone": "google_dns_managed_zone",
             "gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy": "google_dns_managed_zone_iam_policy",
+            "gcp:dns/getManagedZones:getManagedZones": "google_dns_managed_zones",
             "gcp:dns/getRecordSet:getRecordSet": "google_dns_record_set",
             "gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy": "google_endpoints_service_consumers_iam_policy",
             "gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy": "google_endpoints_service_iam_policy",
+            "gcp:filestore/getInstance:getInstance": "google_filestore_instance",
             "gcp:firebase/getAndroidApp:getAndroidApp": "google_firebase_android_app",
             "gcp:firebase/getAndroidAppConfig:getAndroidAppConfig": "google_firebase_android_app_config",
             "gcp:firebase/getAppleApp:getAppleApp": "google_firebase_apple_app",
@@ -30035,6 +30357,7 @@
             "gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy": "google_vertex_ai_featurestore_iam_policy",
             "gcp:vertex/getAiIndex:getAiIndex": "google_vertex_ai_index",
             "gcp:vmwareengine/getCluster:getCluster": "google_vmwareengine_cluster",
+            "gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule": "google_vmwareengine_external_access_rule",
             "gcp:vmwareengine/getExternalAddress:getExternalAddress": "google_vmwareengine_external_address",
             "gcp:vmwareengine/getNetwork:getNetwork": "google_vmwareengine_network",
             "gcp:vmwareengine/getNetworkPeering:getNetworkPeering": "google_vmwareengine_network_peering",
@@ -33400,6 +33723,84 @@
                 "requireApproval": "require_approval",
                 "targetId": "target_id",
                 "updateTime": "update_time"
+            },
+            "gcp:clouddomains/RegistrationContactSettings:RegistrationContactSettings": {
+                "adminContact": "admin_contact",
+                "registrantContact": "registrant_contact",
+                "technicalContact": "technical_contact"
+            },
+            "gcp:clouddomains/RegistrationContactSettingsAdminContact:RegistrationContactSettingsAdminContact": {
+                "faxNumber": "fax_number",
+                "phoneNumber": "phone_number",
+                "postalAddress": "postal_address"
+            },
+            "gcp:clouddomains/RegistrationContactSettingsAdminContactPostalAddress:RegistrationContactSettingsAdminContactPostalAddress": {
+                "addressLines": "address_lines",
+                "administrativeArea": "administrative_area",
+                "postalCode": "postal_code",
+                "regionCode": "region_code"
+            },
+            "gcp:clouddomains/RegistrationContactSettingsRegistrantContact:RegistrationContactSettingsRegistrantContact": {
+                "faxNumber": "fax_number",
+                "phoneNumber": "phone_number",
+                "postalAddress": "postal_address"
+            },
+            "gcp:clouddomains/RegistrationContactSettingsRegistrantContactPostalAddress:RegistrationContactSettingsRegistrantContactPostalAddress": {
+                "addressLines": "address_lines",
+                "administrativeArea": "administrative_area",
+                "postalCode": "postal_code",
+                "regionCode": "region_code"
+            },
+            "gcp:clouddomains/RegistrationContactSettingsTechnicalContact:RegistrationContactSettingsTechnicalContact": {
+                "faxNumber": "fax_number",
+                "phoneNumber": "phone_number",
+                "postalAddress": "postal_address"
+            },
+            "gcp:clouddomains/RegistrationContactSettingsTechnicalContactPostalAddress:RegistrationContactSettingsTechnicalContactPostalAddress": {
+                "addressLines": "address_lines",
+                "administrativeArea": "administrative_area",
+                "postalCode": "postal_code",
+                "regionCode": "region_code"
+            },
+            "gcp:clouddomains/RegistrationDnsSettings:RegistrationDnsSettings": {
+                "customDns": "custom_dns",
+                "glueRecords": "glue_records"
+            },
+            "gcp:clouddomains/RegistrationDnsSettingsCustomDns:RegistrationDnsSettingsCustomDns": {
+                "dsRecords": "ds_records",
+                "nameServers": "name_servers"
+            },
+            "gcp:clouddomains/RegistrationDnsSettingsCustomDnsDsRecord:RegistrationDnsSettingsCustomDnsDsRecord": {
+                "digestType": "digest_type",
+                "keyTag": "key_tag"
+            },
+            "gcp:clouddomains/RegistrationDnsSettingsGlueRecord:RegistrationDnsSettingsGlueRecord": {
+                "hostName": "host_name",
+                "ipv4Addresses": "ipv4_addresses",
+                "ipv6Addresses": "ipv6_addresses"
+            },
+            "gcp:clouddomains/RegistrationManagementSettings:RegistrationManagementSettings": {
+                "preferredRenewalMethod": "preferred_renewal_method",
+                "renewalMethod": "renewal_method",
+                "transferLockState": "transfer_lock_state"
+            },
+            "gcp:clouddomains/RegistrationYearlyPrice:RegistrationYearlyPrice": {
+                "currencyCode": "currency_code"
+            },
+            "gcp:clouddomains/registration:Registration": {
+                "contactNotices": "contact_notices",
+                "contactSettings": "contact_settings",
+                "createTime": "create_time",
+                "dnsSettings": "dns_settings",
+                "domainName": "domain_name",
+                "domainNotices": "domain_notices",
+                "effectiveLabels": "effective_labels",
+                "expireTime": "expire_time",
+                "managementSettings": "management_settings",
+                "pulumiLabels": "terraform_labels",
+                "registerFailureReason": "register_failure_reason",
+                "supportedPrivacies": "supported_privacy",
+                "yearlyPrice": "yearly_price"
             },
             "gcp:cloudfunctions/FunctionEventTrigger:FunctionEventTrigger": {
                 "eventType": "event_type",
@@ -38421,6 +38822,7 @@
                 "ipAddress": "ip_address",
                 "ipv6NexthopAddress": "ipv6_nexthop_address",
                 "managementType": "management_type",
+                "md5AuthenticationKey": "md5_authentication_key",
                 "peerAsn": "peer_asn",
                 "peerIpAddress": "peer_ip_address",
                 "peerIpv6NexthopAddress": "peer_ipv6_nexthop_address",
@@ -43305,6 +43707,14 @@
                 "managedZone": "managed_zone",
                 "policyData": "policy_data"
             },
+            "gcp:dns/getManagedZones:getManagedZones": {
+                "managedZones": "managed_zones"
+            },
+            "gcp:dns/getManagedZonesManagedZone:getManagedZonesManagedZone": {
+                "dnsName": "dns_name",
+                "managedZoneId": "managed_zone_id",
+                "nameServers": "name_servers"
+            },
             "gcp:dns/getRecordSet:getRecordSet": {
                 "managedZone": "managed_zone"
             },
@@ -43619,6 +44029,30 @@
                 "sourceInstance": "source_instance",
                 "sourceInstanceTier": "source_instance_tier",
                 "storageBytes": "storage_bytes"
+            },
+            "gcp:filestore/getInstance:getInstance": {
+                "createTime": "create_time",
+                "effectiveLabels": "effective_labels",
+                "fileShares": "file_shares",
+                "kmsKeyName": "kms_key_name",
+                "pulumiLabels": "terraform_labels"
+            },
+            "gcp:filestore/getInstanceFileShare:getInstanceFileShare": {
+                "capacityGb": "capacity_gb",
+                "nfsExportOptions": "nfs_export_options",
+                "sourceBackup": "source_backup"
+            },
+            "gcp:filestore/getInstanceFileShareNfsExportOption:getInstanceFileShareNfsExportOption": {
+                "accessMode": "access_mode",
+                "anonGid": "anon_gid",
+                "anonUid": "anon_uid",
+                "ipRanges": "ip_ranges",
+                "squashMode": "squash_mode"
+            },
+            "gcp:filestore/getInstanceNetwork:getInstanceNetwork": {
+                "connectMode": "connect_mode",
+                "ipAddresses": "ip_addresses",
+                "reservedIpRange": "reserved_ip_range"
             },
             "gcp:filestore/instance:Instance": {
                 "createTime": "create_time",
@@ -44117,8 +44551,32 @@
             "gcp:gkehub/FeatureMembershipMesh:FeatureMembershipMesh": {
                 "controlPlane": "control_plane"
             },
+            "gcp:gkehub/FeatureMembershipPolicycontroller:FeatureMembershipPolicycontroller": {
+                "policyControllerHubConfig": "policy_controller_hub_config"
+            },
+            "gcp:gkehub/FeatureMembershipPolicycontrollerPolicyControllerHubConfig:FeatureMembershipPolicycontrollerPolicyControllerHubConfig": {
+                "auditIntervalSeconds": "audit_interval_seconds",
+                "constraintViolationLimit": "constraint_violation_limit",
+                "exemptableNamespaces": "exemptable_namespaces",
+                "installSpec": "install_spec",
+                "logDeniesEnabled": "log_denies_enabled",
+                "mutationEnabled": "mutation_enabled",
+                "policyContent": "policy_content",
+                "referentialRulesEnabled": "referential_rules_enabled"
+            },
+            "gcp:gkehub/FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent:FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent": {
+                "templateLibrary": "template_library"
+            },
             "gcp:gkehub/FeatureResourceState:FeatureResourceState": {
                 "hasResources": "has_resources"
+            },
+            "gcp:gkehub/FeatureSpecClusterupgrade:FeatureSpecClusterupgrade": {
+                "gkeUpgradeOverrides": "gke_upgrade_overrides",
+                "postConditions": "post_conditions",
+                "upstreamFleets": "upstream_fleets"
+            },
+            "gcp:gkehub/FeatureSpecClusterupgradeGkeUpgradeOverride:FeatureSpecClusterupgradeGkeUpgradeOverride": {
+                "postConditions": "post_conditions"
             },
             "gcp:gkehub/FeatureSpecFleetobservability:FeatureSpecFleetobservability": {
                 "loggingConfig": "logging_config"
@@ -44585,6 +45043,9 @@
                 "imageType": "image_type",
                 "memoryMb": "memory_mb",
                 "vsphereConfigs": "vsphere_config"
+            },
+            "gcp:gkeonprem/VMwareNodePoolConfigVsphereConfig:VMwareNodePoolConfigVsphereConfig": {
+                "hostGroups": "host_groups"
             },
             "gcp:gkeonprem/VMwareNodePoolNodePoolAutoscaling:VMwareNodePoolNodePoolAutoscaling": {
                 "maxReplicas": "max_replicas",
@@ -45243,6 +45704,7 @@
                 "cloudTasksCustomEndpoint": "cloud_tasks_custom_endpoint",
                 "cloudbuildv2CustomEndpoint": "cloudbuildv2_custom_endpoint",
                 "clouddeployCustomEndpoint": "clouddeploy_custom_endpoint",
+                "clouddomainsCustomEndpoint": "clouddomains_custom_endpoint",
                 "cloudfunctions2CustomEndpoint": "cloudfunctions2_custom_endpoint",
                 "composerCustomEndpoint": "composer_custom_endpoint",
                 "computeCustomEndpoint": "compute_custom_endpoint",
@@ -46277,6 +46739,12 @@
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
                 "pulumiLabels": "terraform_labels"
+            },
+            "gcp:netapp/kmsconfig:Kmsconfig": {
+                "cryptoKeyName": "crypto_key_name",
+                "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
+                "serviceAccount": "service_account"
             },
             "gcp:netapp/storagePool:StoragePool": {
                 "activeDirectory": "active_directory",
@@ -48151,6 +48619,7 @@
             },
             "gcp:serviceaccount/account:Account": {
                 "accountId": "account_id",
+                "createIgnoreAlreadyExists": "create_ignore_already_exists",
                 "displayName": "display_name",
                 "uniqueId": "unique_id"
             },
@@ -48227,6 +48696,7 @@
                 "policyData": "policy_data"
             },
             "gcp:servicenetworking/connection:Connection": {
+                "deletionPolicy": "deletion_policy",
                 "reservedPeeringRanges": "reserved_peering_ranges"
             },
             "gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain": {
@@ -49375,6 +49845,9 @@
                 "enablePrivateServiceConnect": "enable_private_service_connect",
                 "projectAllowlists": "project_allowlist"
             },
+            "gcp:vertex/AiFeatureOnlineStoreFeatureviewBigQuerySource:AiFeatureOnlineStoreFeatureviewBigQuerySource": {
+                "entityIdColumns": "entity_id_columns"
+            },
             "gcp:vertex/AiFeatureStoreEncryptionSpec:AiFeatureStoreEncryptionSpec": {
                 "kmsKeyName": "kms_key_name"
             },
@@ -49475,6 +49948,15 @@
                 "embeddingManagement": "embedding_management",
                 "forceDestroy": "force_destroy",
                 "pulumiLabels": "terraform_labels",
+                "updateTime": "update_time"
+            },
+            "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview": {
+                "bigQuerySource": "big_query_source",
+                "createTime": "create_time",
+                "effectiveLabels": "effective_labels",
+                "featureOnlineStore": "feature_online_store",
+                "pulumiLabels": "terraform_labels",
+                "syncConfig": "sync_config",
                 "updateTime": "update_time"
             },
             "gcp:vertex/aiFeatureStore:AiFeatureStore": {
@@ -49599,6 +50081,14 @@
                 "nodeCount": "node_count",
                 "nodeTypeId": "node_type_id"
             },
+            "gcp:vmwareengine/ExternalAccessRuleDestinationIpRange:ExternalAccessRuleDestinationIpRange": {
+                "externalAddress": "external_address",
+                "ipAddressRange": "ip_address_range"
+            },
+            "gcp:vmwareengine/ExternalAccessRuleSourceIpRange:ExternalAccessRuleSourceIpRange": {
+                "ipAddress": "ip_address",
+                "ipAddressRange": "ip_address_range"
+            },
             "gcp:vmwareengine/PrivateCloudHcx:PrivateCloudHcx": {
                 "internalIp": "internal_ip"
             },
@@ -49631,6 +50121,15 @@
             "gcp:vmwareengine/cluster:Cluster": {
                 "nodeTypeConfigs": "node_type_configs"
             },
+            "gcp:vmwareengine/externalAccessRule:ExternalAccessRule": {
+                "createTime": "create_time",
+                "destinationIpRanges": "destination_ip_ranges",
+                "destinationPorts": "destination_ports",
+                "ipProtocol": "ip_protocol",
+                "sourceIpRanges": "source_ip_ranges",
+                "sourcePorts": "source_ports",
+                "updateTime": "update_time"
+            },
             "gcp:vmwareengine/externalAddress:ExternalAddress": {
                 "createTime": "create_time",
                 "externalIp": "external_ip",
@@ -49644,6 +50143,23 @@
                 "customCoreCount": "custom_core_count",
                 "nodeCount": "node_count",
                 "nodeTypeId": "node_type_id"
+            },
+            "gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule": {
+                "createTime": "create_time",
+                "destinationIpRanges": "destination_ip_ranges",
+                "destinationPorts": "destination_ports",
+                "ipProtocol": "ip_protocol",
+                "sourceIpRanges": "source_ip_ranges",
+                "sourcePorts": "source_ports",
+                "updateTime": "update_time"
+            },
+            "gcp:vmwareengine/getExternalAccessRuleDestinationIpRange:getExternalAccessRuleDestinationIpRange": {
+                "externalAddress": "external_address",
+                "ipAddressRange": "ip_address_range"
+            },
+            "gcp:vmwareengine/getExternalAccessRuleSourceIpRange:getExternalAccessRuleSourceIpRange": {
+                "ipAddress": "ip_address",
+                "ipAddressRange": "ip_address_range"
             },
             "gcp:vmwareengine/getExternalAddress:getExternalAddress": {
                 "createTime": "create_time",
@@ -50022,6 +50538,7 @@
             "cloudTasksCustomEndpoint": "cloud_tasks_custom_endpoint",
             "cloudbuildv2CustomEndpoint": "cloudbuildv2_custom_endpoint",
             "clouddeployCustomEndpoint": "clouddeploy_custom_endpoint",
+            "clouddomainsCustomEndpoint": "clouddomains_custom_endpoint",
             "cloudfunctions2CustomEndpoint": "cloudfunctions2_custom_endpoint",
             "composerCustomEndpoint": "composer_custom_endpoint",
             "computeCustomEndpoint": "compute_custom_endpoint",

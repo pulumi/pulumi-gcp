@@ -508,7 +508,7 @@ export class AwsNodePool extends pulumi.CustomResource {
      */
     public /*out*/ readonly uid!: pulumi.Output<string>;
     /**
-     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * Optional. Update settings control the speed and disruption of the node pool update.
      */
     public readonly updateSettings!: pulumi.Output<outputs.container.AwsNodePoolUpdateSettings>;
     /**
@@ -673,7 +673,7 @@ export interface AwsNodePoolState {
      */
     uid?: pulumi.Input<string>;
     /**
-     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * Optional. Update settings control the speed and disruption of the node pool update.
      */
     updateSettings?: pulumi.Input<inputs.container.AwsNodePoolUpdateSettings>;
     /**
@@ -734,7 +734,7 @@ export interface AwsNodePoolArgs {
      */
     subnetId: pulumi.Input<string>;
     /**
-     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * Optional. Update settings control the speed and disruption of the node pool update.
      */
     updateSettings?: pulumi.Input<inputs.container.AwsNodePoolUpdateSettings>;
     /**

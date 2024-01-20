@@ -586,6 +586,23 @@ class Feature(pulumi.CustomResource):
             ),
             location="global")
         ```
+        ### Gkehub Feature Clusterupgrade
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            spec=gcp.gkehub.FeatureSpecArgs(
+                clusterupgrade=gcp.gkehub.FeatureSpecClusterupgradeArgs(
+                    post_conditions=gcp.gkehub.FeatureSpecClusterupgradePostConditionsArgs(
+                        soaking="60s",
+                    ),
+                    upstream_fleets=[],
+                ),
+            ))
+        ```
 
         ## Import
 
@@ -833,6 +850,23 @@ class Feature(pulumi.CustomResource):
                 ),
             ),
             location="global")
+        ```
+        ### Gkehub Feature Clusterupgrade
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        feature = gcp.gkehub.Feature("feature",
+            location="global",
+            spec=gcp.gkehub.FeatureSpecArgs(
+                clusterupgrade=gcp.gkehub.FeatureSpecClusterupgradeArgs(
+                    post_conditions=gcp.gkehub.FeatureSpecClusterupgradePostConditionsArgs(
+                        soaking="60s",
+                    ),
+                    upstream_fleets=[],
+                ),
+            ))
         ```
 
         ## Import

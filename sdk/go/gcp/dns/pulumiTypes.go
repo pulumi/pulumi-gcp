@@ -5427,6 +5427,142 @@ func (o GetKeysZoneSigningKeyDigestArrayOutput) Index(i pulumi.IntInput) GetKeys
 	}).(GetKeysZoneSigningKeyDigestOutput)
 }
 
+type GetManagedZonesManagedZone struct {
+	Description   string   `pulumi:"description"`
+	DnsName       string   `pulumi:"dnsName"`
+	Id            string   `pulumi:"id"`
+	ManagedZoneId int      `pulumi:"managedZoneId"`
+	Name          string   `pulumi:"name"`
+	NameServers   []string `pulumi:"nameServers"`
+	Project       string   `pulumi:"project"`
+	Visibility    string   `pulumi:"visibility"`
+}
+
+// GetManagedZonesManagedZoneInput is an input type that accepts GetManagedZonesManagedZoneArgs and GetManagedZonesManagedZoneOutput values.
+// You can construct a concrete instance of `GetManagedZonesManagedZoneInput` via:
+//
+//	GetManagedZonesManagedZoneArgs{...}
+type GetManagedZonesManagedZoneInput interface {
+	pulumi.Input
+
+	ToGetManagedZonesManagedZoneOutput() GetManagedZonesManagedZoneOutput
+	ToGetManagedZonesManagedZoneOutputWithContext(context.Context) GetManagedZonesManagedZoneOutput
+}
+
+type GetManagedZonesManagedZoneArgs struct {
+	Description   pulumi.StringInput      `pulumi:"description"`
+	DnsName       pulumi.StringInput      `pulumi:"dnsName"`
+	Id            pulumi.StringInput      `pulumi:"id"`
+	ManagedZoneId pulumi.IntInput         `pulumi:"managedZoneId"`
+	Name          pulumi.StringInput      `pulumi:"name"`
+	NameServers   pulumi.StringArrayInput `pulumi:"nameServers"`
+	Project       pulumi.StringInput      `pulumi:"project"`
+	Visibility    pulumi.StringInput      `pulumi:"visibility"`
+}
+
+func (GetManagedZonesManagedZoneArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedZonesManagedZone)(nil)).Elem()
+}
+
+func (i GetManagedZonesManagedZoneArgs) ToGetManagedZonesManagedZoneOutput() GetManagedZonesManagedZoneOutput {
+	return i.ToGetManagedZonesManagedZoneOutputWithContext(context.Background())
+}
+
+func (i GetManagedZonesManagedZoneArgs) ToGetManagedZonesManagedZoneOutputWithContext(ctx context.Context) GetManagedZonesManagedZoneOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedZonesManagedZoneOutput)
+}
+
+// GetManagedZonesManagedZoneArrayInput is an input type that accepts GetManagedZonesManagedZoneArray and GetManagedZonesManagedZoneArrayOutput values.
+// You can construct a concrete instance of `GetManagedZonesManagedZoneArrayInput` via:
+//
+//	GetManagedZonesManagedZoneArray{ GetManagedZonesManagedZoneArgs{...} }
+type GetManagedZonesManagedZoneArrayInput interface {
+	pulumi.Input
+
+	ToGetManagedZonesManagedZoneArrayOutput() GetManagedZonesManagedZoneArrayOutput
+	ToGetManagedZonesManagedZoneArrayOutputWithContext(context.Context) GetManagedZonesManagedZoneArrayOutput
+}
+
+type GetManagedZonesManagedZoneArray []GetManagedZonesManagedZoneInput
+
+func (GetManagedZonesManagedZoneArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedZonesManagedZone)(nil)).Elem()
+}
+
+func (i GetManagedZonesManagedZoneArray) ToGetManagedZonesManagedZoneArrayOutput() GetManagedZonesManagedZoneArrayOutput {
+	return i.ToGetManagedZonesManagedZoneArrayOutputWithContext(context.Background())
+}
+
+func (i GetManagedZonesManagedZoneArray) ToGetManagedZonesManagedZoneArrayOutputWithContext(ctx context.Context) GetManagedZonesManagedZoneArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetManagedZonesManagedZoneArrayOutput)
+}
+
+type GetManagedZonesManagedZoneOutput struct{ *pulumi.OutputState }
+
+func (GetManagedZonesManagedZoneOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetManagedZonesManagedZone)(nil)).Elem()
+}
+
+func (o GetManagedZonesManagedZoneOutput) ToGetManagedZonesManagedZoneOutput() GetManagedZonesManagedZoneOutput {
+	return o
+}
+
+func (o GetManagedZonesManagedZoneOutput) ToGetManagedZonesManagedZoneOutputWithContext(ctx context.Context) GetManagedZonesManagedZoneOutput {
+	return o
+}
+
+func (o GetManagedZonesManagedZoneOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Description }).(pulumi.StringOutput)
+}
+
+func (o GetManagedZonesManagedZoneOutput) DnsName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.DnsName }).(pulumi.StringOutput)
+}
+
+func (o GetManagedZonesManagedZoneOutput) Id() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o GetManagedZonesManagedZoneOutput) ManagedZoneId() pulumi.IntOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) int { return v.ManagedZoneId }).(pulumi.IntOutput)
+}
+
+func (o GetManagedZonesManagedZoneOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetManagedZonesManagedZoneOutput) NameServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) []string { return v.NameServers }).(pulumi.StringArrayOutput)
+}
+
+func (o GetManagedZonesManagedZoneOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Project }).(pulumi.StringOutput)
+}
+
+func (o GetManagedZonesManagedZoneOutput) Visibility() pulumi.StringOutput {
+	return o.ApplyT(func(v GetManagedZonesManagedZone) string { return v.Visibility }).(pulumi.StringOutput)
+}
+
+type GetManagedZonesManagedZoneArrayOutput struct{ *pulumi.OutputState }
+
+func (GetManagedZonesManagedZoneArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetManagedZonesManagedZone)(nil)).Elem()
+}
+
+func (o GetManagedZonesManagedZoneArrayOutput) ToGetManagedZonesManagedZoneArrayOutput() GetManagedZonesManagedZoneArrayOutput {
+	return o
+}
+
+func (o GetManagedZonesManagedZoneArrayOutput) ToGetManagedZonesManagedZoneArrayOutputWithContext(ctx context.Context) GetManagedZonesManagedZoneArrayOutput {
+	return o
+}
+
+func (o GetManagedZonesManagedZoneArrayOutput) Index(i pulumi.IntInput) GetManagedZonesManagedZoneOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetManagedZonesManagedZone {
+		return vs[0].([]GetManagedZonesManagedZone)[vs[1].(int)]
+	}).(GetManagedZonesManagedZoneOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamBindingConditionInput)(nil)).Elem(), DnsManagedZoneIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DnsManagedZoneIamBindingConditionPtrInput)(nil)).Elem(), DnsManagedZoneIamBindingConditionArgs{})
@@ -5504,6 +5640,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyArrayInput)(nil)).Elem(), GetKeysZoneSigningKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyDigestInput)(nil)).Elem(), GetKeysZoneSigningKeyDigestArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeysZoneSigningKeyDigestArrayInput)(nil)).Elem(), GetKeysZoneSigningKeyDigestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedZonesManagedZoneInput)(nil)).Elem(), GetManagedZonesManagedZoneArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetManagedZonesManagedZoneArrayInput)(nil)).Elem(), GetManagedZonesManagedZoneArray{})
 	pulumi.RegisterOutputType(DnsManagedZoneIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(DnsManagedZoneIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(DnsManagedZoneIamMemberConditionOutput{})
@@ -5580,4 +5718,6 @@ func init() {
 	pulumi.RegisterOutputType(GetKeysZoneSigningKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetKeysZoneSigningKeyDigestOutput{})
 	pulumi.RegisterOutputType(GetKeysZoneSigningKeyDigestArrayOutput{})
+	pulumi.RegisterOutputType(GetManagedZonesManagedZoneOutput{})
+	pulumi.RegisterOutputType(GetManagedZonesManagedZoneArrayOutput{})
 }

@@ -175,6 +175,7 @@ var moduleMapping = map[string]string{
 	"clouddeploy":                     gcpCloudDeploy,
 	"cloudfunctions":                  gcpCloudFunctions,
 	"cloudfunctions2":                 gcpCloudFunctionsV2,
+	"clouddomains":                    "CloudDomains",
 	"cloud_ids":                       gcpCloudIds,
 	"cloud_identity":                  gcpCloudIdentity,
 	"cloud_run":                       gcpCloudRun,
@@ -3557,13 +3558,10 @@ func Provider() tfbridge.ProviderInfo {
 			},
 
 			"google_dns_managed_zone": {
-				Tok: gcpDataSource(gcpDNS, "getManagedZone"),
-				Docs: &tfbridge.DocInfo{
-					Source: "dns_managed_zone.html.markdown",
-				},
+				Docs: &tfbridge.DocInfo{Source: "dns_managed_zone.html.markdown"},
 			},
+			"google_dns_managed_zones": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"google_dns_keys": {
-				Tok: gcpDataSource(gcpDNS, "getKeys"),
 				Docs: &tfbridge.DocInfo{
 					Source: "datasource_dns_keys.html.markdown",
 				},

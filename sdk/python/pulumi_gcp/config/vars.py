@@ -177,6 +177,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('clouddeployCustomEndpoint')
 
     @property
+    def clouddomains_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('clouddomainsCustomEndpoint')
+
+    @property
     def cloudfunctions2_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudfunctions2CustomEndpoint')
 

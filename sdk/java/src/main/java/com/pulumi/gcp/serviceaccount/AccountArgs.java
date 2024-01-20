@@ -39,6 +39,21 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * If set to true, skip service account creation if a service account with the same email already exists.
+     * 
+     */
+    @Import(name="createIgnoreAlreadyExists")
+    private @Nullable Output<Boolean> createIgnoreAlreadyExists;
+
+    /**
+     * @return If set to true, skip service account creation if a service account with the same email already exists.
+     * 
+     */
+    public Optional<Output<Boolean>> createIgnoreAlreadyExists() {
+        return Optional.ofNullable(this.createIgnoreAlreadyExists);
+    }
+
+    /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
      * 
@@ -110,6 +125,7 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
 
     private AccountArgs(AccountArgs $) {
         this.accountId = $.accountId;
+        this.createIgnoreAlreadyExists = $.createIgnoreAlreadyExists;
         this.description = $.description;
         this.disabled = $.disabled;
         this.displayName = $.displayName;
@@ -159,6 +175,27 @@ public final class AccountArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder accountId(String accountId) {
             return accountId(Output.of(accountId));
+        }
+
+        /**
+         * @param createIgnoreAlreadyExists If set to true, skip service account creation if a service account with the same email already exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createIgnoreAlreadyExists(@Nullable Output<Boolean> createIgnoreAlreadyExists) {
+            $.createIgnoreAlreadyExists = createIgnoreAlreadyExists;
+            return this;
+        }
+
+        /**
+         * @param createIgnoreAlreadyExists If set to true, skip service account creation if a service account with the same email already exists.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder createIgnoreAlreadyExists(Boolean createIgnoreAlreadyExists) {
+            return createIgnoreAlreadyExists(Output.of(createIgnoreAlreadyExists));
         }
 
         /**

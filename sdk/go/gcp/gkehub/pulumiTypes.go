@@ -4900,6 +4900,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerPtrOutput) TemplateLibr
 }
 
 type FeatureMembershipConfigmanagementPolicyControllerMonitoring struct {
+	// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
 	Backends []string `pulumi:"backends"`
 }
 
@@ -4915,6 +4916,7 @@ type FeatureMembershipConfigmanagementPolicyControllerMonitoringInput interface 
 }
 
 type FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs struct {
+	// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
 	Backends pulumi.StringArrayInput `pulumi:"backends"`
 }
 
@@ -4995,6 +4997,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) ToFea
 	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput)
 }
 
+// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
 func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput) Backends() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementPolicyControllerMonitoring) []string { return v.Backends }).(pulumi.StringArrayOutput)
 }
@@ -5023,6 +5026,7 @@ func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) El
 	}).(FeatureMembershipConfigmanagementPolicyControllerMonitoringOutput)
 }
 
+// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
 func (o FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput) Backends() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementPolicyControllerMonitoring) []string {
 		if v == nil {
@@ -5188,6 +5192,880 @@ func (o FeatureMembershipMeshPtrOutput) Management() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type FeatureMembershipPolicycontroller struct {
+	// Policy Controller configuration for the cluster. Structure is documented below.
+	PolicyControllerHubConfig FeatureMembershipPolicycontrollerPolicyControllerHubConfig `pulumi:"policyControllerHubConfig"`
+	// Version of Policy Controller to install. Defaults to the latest version.
+	Version *string `pulumi:"version"`
+}
+
+// FeatureMembershipPolicycontrollerInput is an input type that accepts FeatureMembershipPolicycontrollerArgs and FeatureMembershipPolicycontrollerOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerInput` via:
+//
+//	FeatureMembershipPolicycontrollerArgs{...}
+type FeatureMembershipPolicycontrollerInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerOutput() FeatureMembershipPolicycontrollerOutput
+	ToFeatureMembershipPolicycontrollerOutputWithContext(context.Context) FeatureMembershipPolicycontrollerOutput
+}
+
+type FeatureMembershipPolicycontrollerArgs struct {
+	// Policy Controller configuration for the cluster. Structure is documented below.
+	PolicyControllerHubConfig FeatureMembershipPolicycontrollerPolicyControllerHubConfigInput `pulumi:"policyControllerHubConfig"`
+	// Version of Policy Controller to install. Defaults to the latest version.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (FeatureMembershipPolicycontrollerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontroller)(nil)).Elem()
+}
+
+func (i FeatureMembershipPolicycontrollerArgs) ToFeatureMembershipPolicycontrollerOutput() FeatureMembershipPolicycontrollerOutput {
+	return i.ToFeatureMembershipPolicycontrollerOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerArgs) ToFeatureMembershipPolicycontrollerOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerOutput)
+}
+
+func (i FeatureMembershipPolicycontrollerArgs) ToFeatureMembershipPolicycontrollerPtrOutput() FeatureMembershipPolicycontrollerPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerArgs) ToFeatureMembershipPolicycontrollerPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerOutput).ToFeatureMembershipPolicycontrollerPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipPolicycontrollerPtrInput is an input type that accepts FeatureMembershipPolicycontrollerArgs, FeatureMembershipPolicycontrollerPtr and FeatureMembershipPolicycontrollerPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerPtrInput` via:
+//
+//	        FeatureMembershipPolicycontrollerArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureMembershipPolicycontrollerPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerPtrOutput() FeatureMembershipPolicycontrollerPtrOutput
+	ToFeatureMembershipPolicycontrollerPtrOutputWithContext(context.Context) FeatureMembershipPolicycontrollerPtrOutput
+}
+
+type featureMembershipPolicycontrollerPtrType FeatureMembershipPolicycontrollerArgs
+
+func FeatureMembershipPolicycontrollerPtr(v *FeatureMembershipPolicycontrollerArgs) FeatureMembershipPolicycontrollerPtrInput {
+	return (*featureMembershipPolicycontrollerPtrType)(v)
+}
+
+func (*featureMembershipPolicycontrollerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontroller)(nil)).Elem()
+}
+
+func (i *featureMembershipPolicycontrollerPtrType) ToFeatureMembershipPolicycontrollerPtrOutput() FeatureMembershipPolicycontrollerPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipPolicycontrollerPtrType) ToFeatureMembershipPolicycontrollerPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontroller)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerOutput) ToFeatureMembershipPolicycontrollerOutput() FeatureMembershipPolicycontrollerOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerOutput) ToFeatureMembershipPolicycontrollerOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerOutput) ToFeatureMembershipPolicycontrollerPtrOutput() FeatureMembershipPolicycontrollerPtrOutput {
+	return o.ToFeatureMembershipPolicycontrollerPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipPolicycontrollerOutput) ToFeatureMembershipPolicycontrollerPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipPolicycontroller) *FeatureMembershipPolicycontroller {
+		return &v
+	}).(FeatureMembershipPolicycontrollerPtrOutput)
+}
+
+// Policy Controller configuration for the cluster. Structure is documented below.
+func (o FeatureMembershipPolicycontrollerOutput) PolicyControllerHubConfig() FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontroller) FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
+		return v.PolicyControllerHubConfig
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput)
+}
+
+// Version of Policy Controller to install. Defaults to the latest version.
+func (o FeatureMembershipPolicycontrollerOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontroller) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontroller)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerPtrOutput) ToFeatureMembershipPolicycontrollerPtrOutput() FeatureMembershipPolicycontrollerPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPtrOutput) ToFeatureMembershipPolicycontrollerPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPtrOutput) Elem() FeatureMembershipPolicycontrollerOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontroller) FeatureMembershipPolicycontroller {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipPolicycontroller
+		return ret
+	}).(FeatureMembershipPolicycontrollerOutput)
+}
+
+// Policy Controller configuration for the cluster. Structure is documented below.
+func (o FeatureMembershipPolicycontrollerPtrOutput) PolicyControllerHubConfig() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontroller) *FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.PolicyControllerHubConfig
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput)
+}
+
+// Version of Policy Controller to install. Defaults to the latest version.
+func (o FeatureMembershipPolicycontrollerPtrOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontroller) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Version
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfig struct {
+	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+	AuditIntervalSeconds *int `pulumi:"auditIntervalSeconds"`
+	// The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
+	ConstraintViolationLimit *int `pulumi:"constraintViolationLimit"`
+	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
+	// Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
+	InstallSpec *string `pulumi:"installSpec"`
+	// Logs all denies and dry run failures.
+	LogDeniesEnabled *bool `pulumi:"logDeniesEnabled"`
+	// Specifies the backends Policy Controller should export metrics to. Structure is documented below.
+	Monitoring *FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring `pulumi:"monitoring"`
+	// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+	MutationEnabled *bool `pulumi:"mutationEnabled"`
+	// Specifies the desired policy content on the cluster. Structure is documented below.
+	PolicyContent *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent `pulumi:"policyContent"`
+	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+	ReferentialRulesEnabled *bool `pulumi:"referentialRulesEnabled"`
+}
+
+// FeatureMembershipPolicycontrollerPolicyControllerHubConfigInput is an input type that accepts FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs and FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerPolicyControllerHubConfigInput` via:
+//
+//	FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs{...}
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigOutputWithContext(context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs struct {
+	// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+	AuditIntervalSeconds pulumi.IntPtrInput `pulumi:"auditIntervalSeconds"`
+	// The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
+	ConstraintViolationLimit pulumi.IntPtrInput `pulumi:"constraintViolationLimit"`
+	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
+	// Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
+	InstallSpec pulumi.StringPtrInput `pulumi:"installSpec"`
+	// Logs all denies and dry run failures.
+	LogDeniesEnabled pulumi.BoolPtrInput `pulumi:"logDeniesEnabled"`
+	// Specifies the backends Policy Controller should export metrics to. Structure is documented below.
+	Monitoring FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput `pulumi:"monitoring"`
+	// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+	MutationEnabled pulumi.BoolPtrInput `pulumi:"mutationEnabled"`
+	// Specifies the desired policy content on the cluster. Structure is documented below.
+	PolicyContent FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput `pulumi:"policyContent"`
+	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+	ReferentialRulesEnabled pulumi.BoolPtrInput `pulumi:"referentialRulesEnabled"`
+}
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput)
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput).ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrInput is an input type that accepts FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs, FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtr and FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrInput` via:
+//
+//	        FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput
+}
+
+type featureMembershipPolicycontrollerPolicyControllerHubConfigPtrType FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs
+
+func FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtr(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrInput {
+	return (*featureMembershipPolicycontrollerPolicyControllerHubConfigPtrType)(v)
+}
+
+func (*featureMembershipPolicycontrollerPolicyControllerHubConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (i *featureMembershipPolicycontrollerPolicyControllerHubConfigPtrType) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipPolicycontrollerPolicyControllerHubConfigPtrType) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
+		return &v
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput)
+}
+
+// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) AuditIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *int { return v.AuditIntervalSeconds }).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) ConstraintViolationLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *int {
+		return v.ConstraintViolationLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) ExemptableNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) []string {
+		return v.ExemptableNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) InstallSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *string { return v.InstallSpec }).(pulumi.StringPtrOutput)
+}
+
+// Logs all denies and dry run failures.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) LogDeniesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *bool { return v.LogDeniesEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the backends Policy Controller should export metrics to. Structure is documented below.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) Monitoring() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring {
+		return v.Monitoring
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput)
+}
+
+// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) MutationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *bool { return v.MutationEnabled }).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the desired policy content on the cluster. Structure is documented below.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) PolicyContent() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		return v.PolicyContent
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput)
+}
+
+// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput) ReferentialRulesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *bool {
+		return v.ReferentialRulesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) Elem() FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipPolicycontrollerPolicyControllerHubConfig
+		return ret
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput)
+}
+
+// Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) AuditIntervalSeconds() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AuditIntervalSeconds
+	}).(pulumi.IntPtrOutput)
+}
+
+// The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) ConstraintViolationLimit() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ConstraintViolationLimit
+	}).(pulumi.IntPtrOutput)
+}
+
+// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) ExemptableNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExemptableNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) InstallSpec() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InstallSpec
+	}).(pulumi.StringPtrOutput)
+}
+
+// Logs all denies and dry run failures.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) LogDeniesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.LogDeniesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the backends Policy Controller should export metrics to. Structure is documented below.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) Monitoring() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring {
+		if v == nil {
+			return nil
+		}
+		return v.Monitoring
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput)
+}
+
+// Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) MutationEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.MutationEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Specifies the desired policy content on the cluster. Structure is documented below.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) PolicyContent() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		if v == nil {
+			return nil
+		}
+		return v.PolicyContent
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput)
+}
+
+// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput) ReferentialRulesEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReferentialRulesEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring struct {
+	// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+	Backends []string `pulumi:"backends"`
+}
+
+// FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringInput is an input type that accepts FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs and FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringInput` via:
+//
+//	FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs{...}
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs struct {
+	// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+	Backends pulumi.StringArrayInput `pulumi:"backends"`
+}
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput)
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput).ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput is an input type that accepts FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs, FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtr and FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput` via:
+//
+//	        FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput
+}
+
+type featureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrType FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs
+
+func FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtr(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput {
+	return (*featureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrType)(v)
+}
+
+func (*featureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (i *featureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrType) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrType) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring) *FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring {
+		return &v
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput)
+}
+
+// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput) Backends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring) []string {
+		return v.Backends
+	}).(pulumi.StringArrayOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) Elem() FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring) FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring
+		return ret
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput)
+}
+
+// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput) Backends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Backends
+	}).(pulumi.StringArrayOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent struct {
+	// Configures the installation of the Template Library. Structure is documented below.
+	TemplateLibrary *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary `pulumi:"templateLibrary"`
+}
+
+// FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentInput is an input type that accepts FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs and FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentInput` via:
+//
+//	FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{...}
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs struct {
+	// Configures the installation of the Template Library. Structure is documented below.
+	TemplateLibrary FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput `pulumi:"templateLibrary"`
+}
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput)
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput).ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput is an input type that accepts FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs, FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtr and FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput` via:
+//
+//	        FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput
+}
+
+type featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs
+
+func FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtr(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput {
+	return (*featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType)(v)
+}
+
+func (*featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (i *featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrType) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent) *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		return &v
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput)
+}
+
+// Configures the installation of the Template Library. Structure is documented below.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) TemplateLibrary() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent) *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		return v.TemplateLibrary
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) Elem() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent
+		return ret
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput)
+}
+
+// Configures the installation of the Template Library. Structure is documented below.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput) TemplateLibrary() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent) *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		if v == nil {
+			return nil
+		}
+		return v.TemplateLibrary
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary struct {
+	// Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
+	Installation *string `pulumi:"installation"`
+}
+
+// FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput is an input type that accepts FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs and FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput` via:
+//
+//	FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{...}
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs struct {
+	// Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
+	Installation pulumi.StringPtrInput `pulumi:"installation"`
+}
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput)
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput).ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx)
+}
+
+// FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput is an input type that accepts FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs, FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtr and FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput values.
+// You can construct a concrete instance of `FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput` via:
+//
+//	        FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput interface {
+	pulumi.Input
+
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput
+	ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput
+}
+
+type featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs
+
+func FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtr(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput {
+	return (*featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType)(v)
+}
+
+func (*featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (i *featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return i.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(context.Background())
+}
+
+func (i *featureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrType) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o.ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		return &v
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput)
+}
+
+// Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) Installation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) *string {
+		return v.Installation
+	}).(pulumi.StringPtrOutput)
+}
+
+type FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) ToFeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutputWithContext(ctx context.Context) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput {
+	return o
+}
+
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) Elem() FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary
+		return ret
+	}).(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput)
+}
+
+// Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
+func (o FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) Installation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Installation
+	}).(pulumi.StringPtrOutput)
+}
+
 type FeatureResourceState struct {
 	// (Output)
 	// Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
@@ -5304,6 +6182,9 @@ func (o FeatureResourceStateArrayOutput) Index(i pulumi.IntInput) FeatureResourc
 }
 
 type FeatureSpec struct {
+	// Clusterupgrade feature spec.
+	// Structure is documented below.
+	Clusterupgrade *FeatureSpecClusterupgrade `pulumi:"clusterupgrade"`
 	// Fleet Observability feature spec.
 	// Structure is documented below.
 	Fleetobservability *FeatureSpecFleetobservability `pulumi:"fleetobservability"`
@@ -5324,6 +6205,9 @@ type FeatureSpecInput interface {
 }
 
 type FeatureSpecArgs struct {
+	// Clusterupgrade feature spec.
+	// Structure is documented below.
+	Clusterupgrade FeatureSpecClusterupgradePtrInput `pulumi:"clusterupgrade"`
 	// Fleet Observability feature spec.
 	// Structure is documented below.
 	Fleetobservability FeatureSpecFleetobservabilityPtrInput `pulumi:"fleetobservability"`
@@ -5409,6 +6293,12 @@ func (o FeatureSpecOutput) ToFeatureSpecPtrOutputWithContext(ctx context.Context
 	}).(FeatureSpecPtrOutput)
 }
 
+// Clusterupgrade feature spec.
+// Structure is documented below.
+func (o FeatureSpecOutput) Clusterupgrade() FeatureSpecClusterupgradePtrOutput {
+	return o.ApplyT(func(v FeatureSpec) *FeatureSpecClusterupgrade { return v.Clusterupgrade }).(FeatureSpecClusterupgradePtrOutput)
+}
+
 // Fleet Observability feature spec.
 // Structure is documented below.
 func (o FeatureSpecOutput) Fleetobservability() FeatureSpecFleetobservabilityPtrOutput {
@@ -5445,6 +6335,17 @@ func (o FeatureSpecPtrOutput) Elem() FeatureSpecOutput {
 	}).(FeatureSpecOutput)
 }
 
+// Clusterupgrade feature spec.
+// Structure is documented below.
+func (o FeatureSpecPtrOutput) Clusterupgrade() FeatureSpecClusterupgradePtrOutput {
+	return o.ApplyT(func(v *FeatureSpec) *FeatureSpecClusterupgrade {
+		if v == nil {
+			return nil
+		}
+		return v.Clusterupgrade
+	}).(FeatureSpecClusterupgradePtrOutput)
+}
+
 // Fleet Observability feature spec.
 // Structure is documented below.
 func (o FeatureSpecPtrOutput) Fleetobservability() FeatureSpecFleetobservabilityPtrOutput {
@@ -5465,6 +6366,557 @@ func (o FeatureSpecPtrOutput) Multiclusteringress() FeatureSpecMulticlusteringre
 		}
 		return v.Multiclusteringress
 	}).(FeatureSpecMulticlusteringressPtrOutput)
+}
+
+type FeatureSpecClusterupgrade struct {
+	// Configuration overrides for individual upgrades.
+	// Structure is documented below.
+	GkeUpgradeOverrides []FeatureSpecClusterupgradeGkeUpgradeOverride `pulumi:"gkeUpgradeOverrides"`
+	// Post conditions to override for the specified upgrade.
+	// Structure is documented below.
+	PostConditions *FeatureSpecClusterupgradePostConditions `pulumi:"postConditions"`
+	// Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+	UpstreamFleets []string `pulumi:"upstreamFleets"`
+}
+
+// FeatureSpecClusterupgradeInput is an input type that accepts FeatureSpecClusterupgradeArgs and FeatureSpecClusterupgradeOutput values.
+// You can construct a concrete instance of `FeatureSpecClusterupgradeInput` via:
+//
+//	FeatureSpecClusterupgradeArgs{...}
+type FeatureSpecClusterupgradeInput interface {
+	pulumi.Input
+
+	ToFeatureSpecClusterupgradeOutput() FeatureSpecClusterupgradeOutput
+	ToFeatureSpecClusterupgradeOutputWithContext(context.Context) FeatureSpecClusterupgradeOutput
+}
+
+type FeatureSpecClusterupgradeArgs struct {
+	// Configuration overrides for individual upgrades.
+	// Structure is documented below.
+	GkeUpgradeOverrides FeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput `pulumi:"gkeUpgradeOverrides"`
+	// Post conditions to override for the specified upgrade.
+	// Structure is documented below.
+	PostConditions FeatureSpecClusterupgradePostConditionsPtrInput `pulumi:"postConditions"`
+	// Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+	UpstreamFleets pulumi.StringArrayInput `pulumi:"upstreamFleets"`
+}
+
+func (FeatureSpecClusterupgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgrade)(nil)).Elem()
+}
+
+func (i FeatureSpecClusterupgradeArgs) ToFeatureSpecClusterupgradeOutput() FeatureSpecClusterupgradeOutput {
+	return i.ToFeatureSpecClusterupgradeOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecClusterupgradeArgs) ToFeatureSpecClusterupgradeOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradeOutput)
+}
+
+func (i FeatureSpecClusterupgradeArgs) ToFeatureSpecClusterupgradePtrOutput() FeatureSpecClusterupgradePtrOutput {
+	return i.ToFeatureSpecClusterupgradePtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecClusterupgradeArgs) ToFeatureSpecClusterupgradePtrOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradeOutput).ToFeatureSpecClusterupgradePtrOutputWithContext(ctx)
+}
+
+// FeatureSpecClusterupgradePtrInput is an input type that accepts FeatureSpecClusterupgradeArgs, FeatureSpecClusterupgradePtr and FeatureSpecClusterupgradePtrOutput values.
+// You can construct a concrete instance of `FeatureSpecClusterupgradePtrInput` via:
+//
+//	        FeatureSpecClusterupgradeArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureSpecClusterupgradePtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecClusterupgradePtrOutput() FeatureSpecClusterupgradePtrOutput
+	ToFeatureSpecClusterupgradePtrOutputWithContext(context.Context) FeatureSpecClusterupgradePtrOutput
+}
+
+type featureSpecClusterupgradePtrType FeatureSpecClusterupgradeArgs
+
+func FeatureSpecClusterupgradePtr(v *FeatureSpecClusterupgradeArgs) FeatureSpecClusterupgradePtrInput {
+	return (*featureSpecClusterupgradePtrType)(v)
+}
+
+func (*featureSpecClusterupgradePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecClusterupgrade)(nil)).Elem()
+}
+
+func (i *featureSpecClusterupgradePtrType) ToFeatureSpecClusterupgradePtrOutput() FeatureSpecClusterupgradePtrOutput {
+	return i.ToFeatureSpecClusterupgradePtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecClusterupgradePtrType) ToFeatureSpecClusterupgradePtrOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradePtrOutput)
+}
+
+type FeatureSpecClusterupgradeOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecClusterupgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgrade)(nil)).Elem()
+}
+
+func (o FeatureSpecClusterupgradeOutput) ToFeatureSpecClusterupgradeOutput() FeatureSpecClusterupgradeOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradeOutput) ToFeatureSpecClusterupgradeOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradeOutput) ToFeatureSpecClusterupgradePtrOutput() FeatureSpecClusterupgradePtrOutput {
+	return o.ToFeatureSpecClusterupgradePtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecClusterupgradeOutput) ToFeatureSpecClusterupgradePtrOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecClusterupgrade) *FeatureSpecClusterupgrade {
+		return &v
+	}).(FeatureSpecClusterupgradePtrOutput)
+}
+
+// Configuration overrides for individual upgrades.
+// Structure is documented below.
+func (o FeatureSpecClusterupgradeOutput) GkeUpgradeOverrides() FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return o.ApplyT(func(v FeatureSpecClusterupgrade) []FeatureSpecClusterupgradeGkeUpgradeOverride {
+		return v.GkeUpgradeOverrides
+	}).(FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput)
+}
+
+// Post conditions to override for the specified upgrade.
+// Structure is documented below.
+func (o FeatureSpecClusterupgradeOutput) PostConditions() FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return o.ApplyT(func(v FeatureSpecClusterupgrade) *FeatureSpecClusterupgradePostConditions { return v.PostConditions }).(FeatureSpecClusterupgradePostConditionsPtrOutput)
+}
+
+// Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+func (o FeatureSpecClusterupgradeOutput) UpstreamFleets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v FeatureSpecClusterupgrade) []string { return v.UpstreamFleets }).(pulumi.StringArrayOutput)
+}
+
+type FeatureSpecClusterupgradePtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecClusterupgradePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecClusterupgrade)(nil)).Elem()
+}
+
+func (o FeatureSpecClusterupgradePtrOutput) ToFeatureSpecClusterupgradePtrOutput() FeatureSpecClusterupgradePtrOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradePtrOutput) ToFeatureSpecClusterupgradePtrOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePtrOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradePtrOutput) Elem() FeatureSpecClusterupgradeOutput {
+	return o.ApplyT(func(v *FeatureSpecClusterupgrade) FeatureSpecClusterupgrade {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecClusterupgrade
+		return ret
+	}).(FeatureSpecClusterupgradeOutput)
+}
+
+// Configuration overrides for individual upgrades.
+// Structure is documented below.
+func (o FeatureSpecClusterupgradePtrOutput) GkeUpgradeOverrides() FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return o.ApplyT(func(v *FeatureSpecClusterupgrade) []FeatureSpecClusterupgradeGkeUpgradeOverride {
+		if v == nil {
+			return nil
+		}
+		return v.GkeUpgradeOverrides
+	}).(FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput)
+}
+
+// Post conditions to override for the specified upgrade.
+// Structure is documented below.
+func (o FeatureSpecClusterupgradePtrOutput) PostConditions() FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return o.ApplyT(func(v *FeatureSpecClusterupgrade) *FeatureSpecClusterupgradePostConditions {
+		if v == nil {
+			return nil
+		}
+		return v.PostConditions
+	}).(FeatureSpecClusterupgradePostConditionsPtrOutput)
+}
+
+// Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+func (o FeatureSpecClusterupgradePtrOutput) UpstreamFleets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *FeatureSpecClusterupgrade) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UpstreamFleets
+	}).(pulumi.StringArrayOutput)
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverride struct {
+	// Post conditions to override for the specified upgrade.
+	// Structure is documented below.
+	PostConditions FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions `pulumi:"postConditions"`
+	// Which upgrade to override.
+	// Structure is documented below.
+	Upgrade FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade `pulumi:"upgrade"`
+}
+
+// FeatureSpecClusterupgradeGkeUpgradeOverrideInput is an input type that accepts FeatureSpecClusterupgradeGkeUpgradeOverrideArgs and FeatureSpecClusterupgradeGkeUpgradeOverrideOutput values.
+// You can construct a concrete instance of `FeatureSpecClusterupgradeGkeUpgradeOverrideInput` via:
+//
+//	FeatureSpecClusterupgradeGkeUpgradeOverrideArgs{...}
+type FeatureSpecClusterupgradeGkeUpgradeOverrideInput interface {
+	pulumi.Input
+
+	ToFeatureSpecClusterupgradeGkeUpgradeOverrideOutput() FeatureSpecClusterupgradeGkeUpgradeOverrideOutput
+	ToFeatureSpecClusterupgradeGkeUpgradeOverrideOutputWithContext(context.Context) FeatureSpecClusterupgradeGkeUpgradeOverrideOutput
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverrideArgs struct {
+	// Post conditions to override for the specified upgrade.
+	// Structure is documented below.
+	PostConditions FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsInput `pulumi:"postConditions"`
+	// Which upgrade to override.
+	// Structure is documented below.
+	Upgrade FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput `pulumi:"upgrade"`
+}
+
+func (FeatureSpecClusterupgradeGkeUpgradeOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverride)(nil)).Elem()
+}
+
+func (i FeatureSpecClusterupgradeGkeUpgradeOverrideArgs) ToFeatureSpecClusterupgradeGkeUpgradeOverrideOutput() FeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return i.ToFeatureSpecClusterupgradeGkeUpgradeOverrideOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecClusterupgradeGkeUpgradeOverrideArgs) ToFeatureSpecClusterupgradeGkeUpgradeOverrideOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradeGkeUpgradeOverrideOutput)
+}
+
+// FeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput is an input type that accepts FeatureSpecClusterupgradeGkeUpgradeOverrideArray and FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput values.
+// You can construct a concrete instance of `FeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput` via:
+//
+//	FeatureSpecClusterupgradeGkeUpgradeOverrideArray{ FeatureSpecClusterupgradeGkeUpgradeOverrideArgs{...} }
+type FeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput interface {
+	pulumi.Input
+
+	ToFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput() FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput
+	ToFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutputWithContext(context.Context) FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverrideArray []FeatureSpecClusterupgradeGkeUpgradeOverrideInput
+
+func (FeatureSpecClusterupgradeGkeUpgradeOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureSpecClusterupgradeGkeUpgradeOverride)(nil)).Elem()
+}
+
+func (i FeatureSpecClusterupgradeGkeUpgradeOverrideArray) ToFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput() FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return i.ToFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecClusterupgradeGkeUpgradeOverrideArray) ToFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput)
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverrideOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecClusterupgradeGkeUpgradeOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverride)(nil)).Elem()
+}
+
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideOutput) ToFeatureSpecClusterupgradeGkeUpgradeOverrideOutput() FeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideOutput) ToFeatureSpecClusterupgradeGkeUpgradeOverrideOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return o
+}
+
+// Post conditions to override for the specified upgrade.
+// Structure is documented below.
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideOutput) PostConditions() FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput {
+	return o.ApplyT(func(v FeatureSpecClusterupgradeGkeUpgradeOverride) FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions {
+		return v.PostConditions
+	}).(FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput)
+}
+
+// Which upgrade to override.
+// Structure is documented below.
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideOutput) Upgrade() FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return o.ApplyT(func(v FeatureSpecClusterupgradeGkeUpgradeOverride) FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
+		return v.Upgrade
+	}).(FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput)
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]FeatureSpecClusterupgradeGkeUpgradeOverride)(nil)).Elem()
+}
+
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput) ToFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput() FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput) ToFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput) Index(i pulumi.IntInput) FeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) FeatureSpecClusterupgradeGkeUpgradeOverride {
+		return vs[0].([]FeatureSpecClusterupgradeGkeUpgradeOverride)[vs[1].(int)]
+	}).(FeatureSpecClusterupgradeGkeUpgradeOverrideOutput)
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions struct {
+	// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+	Soaking string `pulumi:"soaking"`
+}
+
+// FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsInput is an input type that accepts FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs and FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput values.
+// You can construct a concrete instance of `FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsInput` via:
+//
+//	FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs{...}
+type FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsInput interface {
+	pulumi.Input
+
+	ToFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput() FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput
+	ToFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutputWithContext(context.Context) FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs struct {
+	// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+	Soaking pulumi.StringInput `pulumi:"soaking"`
+}
+
+func (FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions)(nil)).Elem()
+}
+
+func (i FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs) ToFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput() FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput {
+	return i.ToFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs) ToFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput)
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions)(nil)).Elem()
+}
+
+func (o FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput) ToFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput() FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput) ToFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput {
+	return o
+}
+
+// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+func (o FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput) Soaking() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions) string { return v.Soaking }).(pulumi.StringOutput)
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade struct {
+	// Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+	Name string `pulumi:"name"`
+	// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+	Version string `pulumi:"version"`
+}
+
+// FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput is an input type that accepts FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs and FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput values.
+// You can construct a concrete instance of `FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput` via:
+//
+//	FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs{...}
+type FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput interface {
+	pulumi.Input
+
+	ToFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput() FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput
+	ToFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutputWithContext(context.Context) FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs struct {
+	// Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade)(nil)).Elem()
+}
+
+func (i FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs) ToFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput() FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return i.ToFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs) ToFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput)
+}
+
+type FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade)(nil)).Elem()
+}
+
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) ToFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput() FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) ToFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutputWithContext(ctx context.Context) FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return o
+}
+
+// Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+func (o FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type FeatureSpecClusterupgradePostConditions struct {
+	// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+	Soaking string `pulumi:"soaking"`
+}
+
+// FeatureSpecClusterupgradePostConditionsInput is an input type that accepts FeatureSpecClusterupgradePostConditionsArgs and FeatureSpecClusterupgradePostConditionsOutput values.
+// You can construct a concrete instance of `FeatureSpecClusterupgradePostConditionsInput` via:
+//
+//	FeatureSpecClusterupgradePostConditionsArgs{...}
+type FeatureSpecClusterupgradePostConditionsInput interface {
+	pulumi.Input
+
+	ToFeatureSpecClusterupgradePostConditionsOutput() FeatureSpecClusterupgradePostConditionsOutput
+	ToFeatureSpecClusterupgradePostConditionsOutputWithContext(context.Context) FeatureSpecClusterupgradePostConditionsOutput
+}
+
+type FeatureSpecClusterupgradePostConditionsArgs struct {
+	// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+	Soaking pulumi.StringInput `pulumi:"soaking"`
+}
+
+func (FeatureSpecClusterupgradePostConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgradePostConditions)(nil)).Elem()
+}
+
+func (i FeatureSpecClusterupgradePostConditionsArgs) ToFeatureSpecClusterupgradePostConditionsOutput() FeatureSpecClusterupgradePostConditionsOutput {
+	return i.ToFeatureSpecClusterupgradePostConditionsOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecClusterupgradePostConditionsArgs) ToFeatureSpecClusterupgradePostConditionsOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePostConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradePostConditionsOutput)
+}
+
+func (i FeatureSpecClusterupgradePostConditionsArgs) ToFeatureSpecClusterupgradePostConditionsPtrOutput() FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return i.ToFeatureSpecClusterupgradePostConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i FeatureSpecClusterupgradePostConditionsArgs) ToFeatureSpecClusterupgradePostConditionsPtrOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradePostConditionsOutput).ToFeatureSpecClusterupgradePostConditionsPtrOutputWithContext(ctx)
+}
+
+// FeatureSpecClusterupgradePostConditionsPtrInput is an input type that accepts FeatureSpecClusterupgradePostConditionsArgs, FeatureSpecClusterupgradePostConditionsPtr and FeatureSpecClusterupgradePostConditionsPtrOutput values.
+// You can construct a concrete instance of `FeatureSpecClusterupgradePostConditionsPtrInput` via:
+//
+//	        FeatureSpecClusterupgradePostConditionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type FeatureSpecClusterupgradePostConditionsPtrInput interface {
+	pulumi.Input
+
+	ToFeatureSpecClusterupgradePostConditionsPtrOutput() FeatureSpecClusterupgradePostConditionsPtrOutput
+	ToFeatureSpecClusterupgradePostConditionsPtrOutputWithContext(context.Context) FeatureSpecClusterupgradePostConditionsPtrOutput
+}
+
+type featureSpecClusterupgradePostConditionsPtrType FeatureSpecClusterupgradePostConditionsArgs
+
+func FeatureSpecClusterupgradePostConditionsPtr(v *FeatureSpecClusterupgradePostConditionsArgs) FeatureSpecClusterupgradePostConditionsPtrInput {
+	return (*featureSpecClusterupgradePostConditionsPtrType)(v)
+}
+
+func (*featureSpecClusterupgradePostConditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecClusterupgradePostConditions)(nil)).Elem()
+}
+
+func (i *featureSpecClusterupgradePostConditionsPtrType) ToFeatureSpecClusterupgradePostConditionsPtrOutput() FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return i.ToFeatureSpecClusterupgradePostConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *featureSpecClusterupgradePostConditionsPtrType) ToFeatureSpecClusterupgradePostConditionsPtrOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FeatureSpecClusterupgradePostConditionsPtrOutput)
+}
+
+type FeatureSpecClusterupgradePostConditionsOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecClusterupgradePostConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FeatureSpecClusterupgradePostConditions)(nil)).Elem()
+}
+
+func (o FeatureSpecClusterupgradePostConditionsOutput) ToFeatureSpecClusterupgradePostConditionsOutput() FeatureSpecClusterupgradePostConditionsOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradePostConditionsOutput) ToFeatureSpecClusterupgradePostConditionsOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePostConditionsOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradePostConditionsOutput) ToFeatureSpecClusterupgradePostConditionsPtrOutput() FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return o.ToFeatureSpecClusterupgradePostConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o FeatureSpecClusterupgradePostConditionsOutput) ToFeatureSpecClusterupgradePostConditionsPtrOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FeatureSpecClusterupgradePostConditions) *FeatureSpecClusterupgradePostConditions {
+		return &v
+	}).(FeatureSpecClusterupgradePostConditionsPtrOutput)
+}
+
+// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+func (o FeatureSpecClusterupgradePostConditionsOutput) Soaking() pulumi.StringOutput {
+	return o.ApplyT(func(v FeatureSpecClusterupgradePostConditions) string { return v.Soaking }).(pulumi.StringOutput)
+}
+
+type FeatureSpecClusterupgradePostConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (FeatureSpecClusterupgradePostConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FeatureSpecClusterupgradePostConditions)(nil)).Elem()
+}
+
+func (o FeatureSpecClusterupgradePostConditionsPtrOutput) ToFeatureSpecClusterupgradePostConditionsPtrOutput() FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradePostConditionsPtrOutput) ToFeatureSpecClusterupgradePostConditionsPtrOutputWithContext(ctx context.Context) FeatureSpecClusterupgradePostConditionsPtrOutput {
+	return o
+}
+
+func (o FeatureSpecClusterupgradePostConditionsPtrOutput) Elem() FeatureSpecClusterupgradePostConditionsOutput {
+	return o.ApplyT(func(v *FeatureSpecClusterupgradePostConditions) FeatureSpecClusterupgradePostConditions {
+		if v != nil {
+			return *v
+		}
+		var ret FeatureSpecClusterupgradePostConditions
+		return ret
+	}).(FeatureSpecClusterupgradePostConditionsOutput)
+}
+
+// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+func (o FeatureSpecClusterupgradePostConditionsPtrOutput) Soaking() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FeatureSpecClusterupgradePostConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Soaking
+	}).(pulumi.StringPtrOutput)
 }
 
 type FeatureSpecFleetobservability struct {
@@ -9039,10 +10491,28 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrInput)(nil)).Elem(), FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipMeshInput)(nil)).Elem(), FeatureMembershipMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipMeshPtrInput)(nil)).Elem(), FeatureMembershipMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerInput)(nil)).Elem(), FeatureMembershipPolicycontrollerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerPtrInput)(nil)).Elem(), FeatureMembershipPolicycontrollerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigInput)(nil)).Elem(), FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrInput)(nil)).Elem(), FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringInput)(nil)).Elem(), FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrInput)(nil)).Elem(), FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentInput)(nil)).Elem(), FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrInput)(nil)).Elem(), FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput)(nil)).Elem(), FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrInput)(nil)).Elem(), FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureResourceStateInput)(nil)).Elem(), FeatureResourceStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureResourceStateArrayInput)(nil)).Elem(), FeatureResourceStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecInput)(nil)).Elem(), FeatureSpecArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecPtrInput)(nil)).Elem(), FeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecClusterupgradeInput)(nil)).Elem(), FeatureSpecClusterupgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecClusterupgradePtrInput)(nil)).Elem(), FeatureSpecClusterupgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverrideInput)(nil)).Elem(), FeatureSpecClusterupgradeGkeUpgradeOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput)(nil)).Elem(), FeatureSpecClusterupgradeGkeUpgradeOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsInput)(nil)).Elem(), FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput)(nil)).Elem(), FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecClusterupgradePostConditionsInput)(nil)).Elem(), FeatureSpecClusterupgradePostConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecClusterupgradePostConditionsPtrInput)(nil)).Elem(), FeatureSpecClusterupgradePostConditionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityInput)(nil)).Elem(), FeatureSpecFleetobservabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityPtrInput)(nil)).Elem(), FeatureSpecFleetobservabilityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*FeatureSpecFleetobservabilityLoggingConfigInput)(nil)).Elem(), FeatureSpecFleetobservabilityLoggingConfigArgs{})
@@ -9151,10 +10621,28 @@ func init() {
 	pulumi.RegisterOutputType(FeatureMembershipConfigmanagementPolicyControllerMonitoringPtrOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipMeshOutput{})
 	pulumi.RegisterOutputType(FeatureMembershipMeshPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerPolicyControllerHubConfigOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentPtrOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput{})
+	pulumi.RegisterOutputType(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput{})
 	pulumi.RegisterOutputType(FeatureResourceStateOutput{})
 	pulumi.RegisterOutputType(FeatureResourceStateArrayOutput{})
 	pulumi.RegisterOutputType(FeatureSpecOutput{})
 	pulumi.RegisterOutputType(FeatureSpecPtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecClusterupgradeOutput{})
+	pulumi.RegisterOutputType(FeatureSpecClusterupgradePtrOutput{})
+	pulumi.RegisterOutputType(FeatureSpecClusterupgradeGkeUpgradeOverrideOutput{})
+	pulumi.RegisterOutputType(FeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput{})
+	pulumi.RegisterOutputType(FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsOutput{})
+	pulumi.RegisterOutputType(FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput{})
+	pulumi.RegisterOutputType(FeatureSpecClusterupgradePostConditionsOutput{})
+	pulumi.RegisterOutputType(FeatureSpecClusterupgradePostConditionsPtrOutput{})
 	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityOutput{})
 	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityPtrOutput{})
 	pulumi.RegisterOutputType(FeatureSpecFleetobservabilityLoggingConfigOutput{})

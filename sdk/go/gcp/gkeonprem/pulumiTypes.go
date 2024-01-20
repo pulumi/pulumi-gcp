@@ -17696,7 +17696,6 @@ type VMwareNodePoolConfig struct {
 	// The initial taints assigned to nodes of this node pool.
 	// Structure is documented below.
 	Taints []VMwareNodePoolConfigTaint `pulumi:"taints"`
-	// (Output)
 	// Specifies the vSphere config for node pool.
 	// Structure is documented below.
 	VsphereConfigs []VMwareNodePoolConfigVsphereConfig `pulumi:"vsphereConfigs"`
@@ -17740,7 +17739,6 @@ type VMwareNodePoolConfigArgs struct {
 	// The initial taints assigned to nodes of this node pool.
 	// Structure is documented below.
 	Taints VMwareNodePoolConfigTaintArrayInput `pulumi:"taints"`
-	// (Output)
 	// Specifies the vSphere config for node pool.
 	// Structure is documented below.
 	VsphereConfigs VMwareNodePoolConfigVsphereConfigArrayInput `pulumi:"vsphereConfigs"`
@@ -17876,7 +17874,6 @@ func (o VMwareNodePoolConfigOutput) Taints() VMwareNodePoolConfigTaintArrayOutpu
 	return o.ApplyT(func(v VMwareNodePoolConfig) []VMwareNodePoolConfigTaint { return v.Taints }).(VMwareNodePoolConfigTaintArrayOutput)
 }
 
-// (Output)
 // Specifies the vSphere config for node pool.
 // Structure is documented below.
 func (o VMwareNodePoolConfigOutput) VsphereConfigs() VMwareNodePoolConfigVsphereConfigArrayOutput {
@@ -18005,7 +18002,6 @@ func (o VMwareNodePoolConfigPtrOutput) Taints() VMwareNodePoolConfigTaintArrayOu
 	}).(VMwareNodePoolConfigTaintArrayOutput)
 }
 
-// (Output)
 // Specifies the vSphere config for node pool.
 // Structure is documented below.
 func (o VMwareNodePoolConfigPtrOutput) VsphereConfigs() VMwareNodePoolConfigVsphereConfigArrayOutput {
@@ -18020,8 +18016,6 @@ func (o VMwareNodePoolConfigPtrOutput) VsphereConfigs() VMwareNodePoolConfigVsph
 type VMwareNodePoolConfigTaint struct {
 	// Available taint effects.
 	// Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-	//
-	// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 	Effect *string `pulumi:"effect"`
 	// Key associated with the effect.
 	Key string `pulumi:"key"`
@@ -18043,8 +18037,6 @@ type VMwareNodePoolConfigTaintInput interface {
 type VMwareNodePoolConfigTaintArgs struct {
 	// Available taint effects.
 	// Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-	//
-	// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 	Effect pulumi.StringPtrInput `pulumi:"effect"`
 	// Key associated with the effect.
 	Key pulumi.StringInput `pulumi:"key"`
@@ -18105,8 +18097,6 @@ func (o VMwareNodePoolConfigTaintOutput) ToVMwareNodePoolConfigTaintOutputWithCo
 
 // Available taint effects.
 // Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-//
-// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
 func (o VMwareNodePoolConfigTaintOutput) Effect() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigTaint) *string { return v.Effect }).(pulumi.StringPtrOutput)
 }
@@ -18142,14 +18132,12 @@ func (o VMwareNodePoolConfigTaintArrayOutput) Index(i pulumi.IntInput) VMwareNod
 }
 
 type VMwareNodePoolConfigVsphereConfig struct {
-	// (Output)
 	// The name of the vCenter datastore. Inherited from the user cluster.
 	Datastore *string `pulumi:"datastore"`
-	// (Output)
+	// Vsphere host groups to apply to all VMs in the node pool
+	HostGroups []string `pulumi:"hostGroups"`
 	// Tags to apply to VMs.
 	// Structure is documented below.
-	//
-	// <a name="nestedTags"></a>The `tags` block contains:
 	Tags []VMwareNodePoolConfigVsphereConfigTag `pulumi:"tags"`
 }
 
@@ -18165,14 +18153,12 @@ type VMwareNodePoolConfigVsphereConfigInput interface {
 }
 
 type VMwareNodePoolConfigVsphereConfigArgs struct {
-	// (Output)
 	// The name of the vCenter datastore. Inherited from the user cluster.
 	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
-	// (Output)
+	// Vsphere host groups to apply to all VMs in the node pool
+	HostGroups pulumi.StringArrayInput `pulumi:"hostGroups"`
 	// Tags to apply to VMs.
 	// Structure is documented below.
-	//
-	// <a name="nestedTags"></a>The `tags` block contains:
 	Tags VMwareNodePoolConfigVsphereConfigTagArrayInput `pulumi:"tags"`
 }
 
@@ -18227,17 +18213,18 @@ func (o VMwareNodePoolConfigVsphereConfigOutput) ToVMwareNodePoolConfigVsphereCo
 	return o
 }
 
-// (Output)
 // The name of the vCenter datastore. Inherited from the user cluster.
 func (o VMwareNodePoolConfigVsphereConfigOutput) Datastore() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfig) *string { return v.Datastore }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
+// Vsphere host groups to apply to all VMs in the node pool
+func (o VMwareNodePoolConfigVsphereConfigOutput) HostGroups() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfig) []string { return v.HostGroups }).(pulumi.StringArrayOutput)
+}
+
 // Tags to apply to VMs.
 // Structure is documented below.
-//
-// <a name="nestedTags"></a>The `tags` block contains:
 func (o VMwareNodePoolConfigVsphereConfigOutput) Tags() VMwareNodePoolConfigVsphereConfigTagArrayOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfig) []VMwareNodePoolConfigVsphereConfigTag { return v.Tags }).(VMwareNodePoolConfigVsphereConfigTagArrayOutput)
 }
@@ -18263,10 +18250,8 @@ func (o VMwareNodePoolConfigVsphereConfigArrayOutput) Index(i pulumi.IntInput) V
 }
 
 type VMwareNodePoolConfigVsphereConfigTag struct {
-	// (Output)
 	// The Vsphere tag category.
 	Category *string `pulumi:"category"`
-	// (Output)
 	// The Vsphere tag name.
 	//
 	// ***
@@ -18285,10 +18270,8 @@ type VMwareNodePoolConfigVsphereConfigTagInput interface {
 }
 
 type VMwareNodePoolConfigVsphereConfigTagArgs struct {
-	// (Output)
 	// The Vsphere tag category.
 	Category pulumi.StringPtrInput `pulumi:"category"`
-	// (Output)
 	// The Vsphere tag name.
 	//
 	// ***
@@ -18346,13 +18329,11 @@ func (o VMwareNodePoolConfigVsphereConfigTagOutput) ToVMwareNodePoolConfigVspher
 	return o
 }
 
-// (Output)
 // The Vsphere tag category.
 func (o VMwareNodePoolConfigVsphereConfigTagOutput) Category() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareNodePoolConfigVsphereConfigTag) *string { return v.Category }).(pulumi.StringPtrOutput)
 }
 
-// (Output)
 // The Vsphere tag name.
 //
 // ***

@@ -89,6 +89,11 @@ export class Connection extends pulumi.CustomResource {
     }
 
     /**
+     * When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+     * failures with CloudSQL. Note: The resource will still exist.
+     */
+    public readonly deletionPolicy!: pulumi.Output<string | undefined>;
+    /**
      * Name of VPC network connected with service producers using VPC peering.
      */
     public readonly network!: pulumi.Output<string>;
@@ -122,6 +127,7 @@ export class Connection extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ConnectionState | undefined;
+            resourceInputs["deletionPolicy"] = state ? state.deletionPolicy : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["peering"] = state ? state.peering : undefined;
             resourceInputs["reservedPeeringRanges"] = state ? state.reservedPeeringRanges : undefined;
@@ -137,6 +143,7 @@ export class Connection extends pulumi.CustomResource {
             if ((!args || args.service === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'service'");
             }
+            resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["reservedPeeringRanges"] = args ? args.reservedPeeringRanges : undefined;
             resourceInputs["service"] = args ? args.service : undefined;
@@ -151,6 +158,11 @@ export class Connection extends pulumi.CustomResource {
  * Input properties used for looking up and filtering Connection resources.
  */
 export interface ConnectionState {
+    /**
+     * When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+     * failures with CloudSQL. Note: The resource will still exist.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Name of VPC network connected with service producers using VPC peering.
      */
@@ -177,6 +189,11 @@ export interface ConnectionState {
  * The set of arguments for constructing a Connection resource.
  */
 export interface ConnectionArgs {
+    /**
+     * When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+     * failures with CloudSQL. Note: The resource will still exist.
+     */
+    deletionPolicy?: pulumi.Input<string>;
     /**
      * Name of VPC network connected with service producers using VPC peering.
      */

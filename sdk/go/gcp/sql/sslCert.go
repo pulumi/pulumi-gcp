@@ -106,7 +106,9 @@ func NewSslCert(ctx *pulumi.Context,
 		return nil, errors.New("invalid value for required argument 'Instance'")
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"cert",
 		"privateKey",
+		"serverCaCert",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)

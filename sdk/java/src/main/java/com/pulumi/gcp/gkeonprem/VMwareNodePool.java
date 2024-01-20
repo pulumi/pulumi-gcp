@@ -198,6 +198,21 @@ import javax.annotation.Nullable;
  *                         .effect(&#34;NO_SCHEDULE&#34;)
  *                         .build())
  *                 .labels()
+ *                 .vsphereConfigs(VMwareNodePoolConfigVsphereConfigArgs.builder()
+ *                     .datastore(&#34;test-datastore&#34;)
+ *                     .tags(                    
+ *                         VMwareNodePoolConfigVsphereConfigTagArgs.builder()
+ *                             .category(&#34;test-category-1&#34;)
+ *                             .tag(&#34;tag-1&#34;)
+ *                             .build(),
+ *                         VMwareNodePoolConfigVsphereConfigTagArgs.builder()
+ *                             .category(&#34;test-category-2&#34;)
+ *                             .tag(&#34;tag-2&#34;)
+ *                             .build())
+ *                     .hostGroups(                    
+ *                         &#34;host1&#34;,
+ *                         &#34;host2&#34;)
+ *                     .build())
  *                 .enableLoadBalancer(true)
  *                 .build())
  *             .nodePoolAutoscaling(VMwareNodePoolNodePoolAutoscalingArgs.builder()

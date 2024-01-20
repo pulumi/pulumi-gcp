@@ -180,7 +180,26 @@ import (
 //							Effect: pulumi.String("NO_SCHEDULE"),
 //						},
 //					},
-//					Labels:             nil,
+//					Labels: nil,
+//					VsphereConfigs: gkeonprem.VMwareNodePoolConfigVsphereConfigArray{
+//						&gkeonprem.VMwareNodePoolConfigVsphereConfigArgs{
+//							Datastore: pulumi.String("test-datastore"),
+//							Tags: gkeonprem.VMwareNodePoolConfigVsphereConfigTagArray{
+//								&gkeonprem.VMwareNodePoolConfigVsphereConfigTagArgs{
+//									Category: pulumi.String("test-category-1"),
+//									Tag:      pulumi.String("tag-1"),
+//								},
+//								&gkeonprem.VMwareNodePoolConfigVsphereConfigTagArgs{
+//									Category: pulumi.String("test-category-2"),
+//									Tag:      pulumi.String("tag-2"),
+//								},
+//							},
+//							HostGroups: pulumi.StringArray{
+//								pulumi.String("host1"),
+//								pulumi.String("host2"),
+//							},
+//						},
+//					},
 //					EnableLoadBalancer: pulumi.Bool(true),
 //				},
 //				NodePoolAutoscaling: &gkeonprem.VMwareNodePoolNodePoolAutoscalingArgs{

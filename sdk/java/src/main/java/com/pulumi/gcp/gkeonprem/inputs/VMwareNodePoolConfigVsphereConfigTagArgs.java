@@ -16,7 +16,6 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
     public static final VMwareNodePoolConfigVsphereConfigTagArgs Empty = new VMwareNodePoolConfigVsphereConfigTagArgs();
 
     /**
-     * (Output)
      * The Vsphere tag category.
      * 
      */
@@ -24,8 +23,7 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
     private @Nullable Output<String> category;
 
     /**
-     * @return (Output)
-     * The Vsphere tag category.
+     * @return The Vsphere tag category.
      * 
      */
     public Optional<Output<String>> category() {
@@ -33,7 +31,6 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
     }
 
     /**
-     * (Output)
      * The Vsphere tag name.
      * 
      * ***
@@ -43,8 +40,7 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
     private @Nullable Output<String> tag;
 
     /**
-     * @return (Output)
-     * The Vsphere tag name.
+     * @return The Vsphere tag name.
      * 
      * ***
      * 
@@ -79,8 +75,7 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
         }
 
         /**
-         * @param category (Output)
-         * The Vsphere tag category.
+         * @param category The Vsphere tag category.
          * 
          * @return builder
          * 
@@ -91,8 +86,7 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
         }
 
         /**
-         * @param category (Output)
-         * The Vsphere tag category.
+         * @param category The Vsphere tag category.
          * 
          * @return builder
          * 
@@ -102,8 +96,7 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
         }
 
         /**
-         * @param tag (Output)
-         * The Vsphere tag name.
+         * @param tag The Vsphere tag name.
          * 
          * ***
          * 
@@ -116,8 +109,7 @@ public final class VMwareNodePoolConfigVsphereConfigTagArgs extends com.pulumi.r
         }
 
         /**
-         * @param tag (Output)
-         * The Vsphere tag name.
+         * @param tag The Vsphere tag name.
          * 
          * ***
          * 

@@ -44,6 +44,7 @@ __all__ = [
     'ResponsePolicyNetworkArgs',
     'ResponsePolicyRuleLocalDataArgs',
     'ResponsePolicyRuleLocalDataLocalDataArgs',
+    'GetManagedZonesManagedZoneArgs',
 ]
 
 @pulumi.input_type
@@ -1688,5 +1689,98 @@ class ResponsePolicyRuleLocalDataLocalDataArgs:
     @ttl.setter
     def ttl(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "ttl", value)
+
+
+@pulumi.input_type
+class GetManagedZonesManagedZoneArgs:
+    def __init__(__self__, *,
+                 description: str,
+                 dns_name: str,
+                 id: str,
+                 managed_zone_id: int,
+                 name: str,
+                 name_servers: Sequence[str],
+                 project: str,
+                 visibility: str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dns_name", dns_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "managed_zone_id", managed_zone_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name_servers", name_servers)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: str):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> str:
+        return pulumi.get(self, "dns_name")
+
+    @dns_name.setter
+    def dns_name(self, value: str):
+        pulumi.set(self, "dns_name", value)
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @id.setter
+    def id(self, value: str):
+        pulumi.set(self, "id", value)
+
+    @property
+    @pulumi.getter(name="managedZoneId")
+    def managed_zone_id(self) -> int:
+        return pulumi.get(self, "managed_zone_id")
+
+    @managed_zone_id.setter
+    def managed_zone_id(self, value: int):
+        pulumi.set(self, "managed_zone_id", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: str):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Sequence[str]:
+        return pulumi.get(self, "name_servers")
+
+    @name_servers.setter
+    def name_servers(self, value: Sequence[str]):
+        pulumi.set(self, "name_servers", value)
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @project.setter
+    def project(self, value: str):
+        pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> str:
+        return pulumi.get(self, "visibility")
+
+    @visibility.setter
+    def visibility(self, value: str):
+        pulumi.set(self, "visibility", value)
 
 

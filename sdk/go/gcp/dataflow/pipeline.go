@@ -162,7 +162,7 @@ type Pipeline struct {
 	// Structure is documented below.
 	ScheduleInfo PipelineScheduleInfoPtrOutput `pulumi:"scheduleInfo"`
 	// Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
-	SchedulerServiceAccountEmail pulumi.StringPtrOutput `pulumi:"schedulerServiceAccountEmail"`
+	SchedulerServiceAccountEmail pulumi.StringOutput `pulumi:"schedulerServiceAccountEmail"`
 	// The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.
 	// https://cloud.google.com/dataflow/docs/reference/data-pipelines/rest/v1/projects.locations.pipelines#state
 	// Possible values are: `STATE_UNSPECIFIED`, `STATE_RESUMING`, `STATE_ACTIVE`, `STATE_STOPPING`, `STATE_ARCHIVED`, `STATE_PAUSED`.
@@ -529,8 +529,8 @@ func (o PipelineOutput) ScheduleInfo() PipelineScheduleInfoPtrOutput {
 }
 
 // Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
-func (o PipelineOutput) SchedulerServiceAccountEmail() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *Pipeline) pulumi.StringPtrOutput { return v.SchedulerServiceAccountEmail }).(pulumi.StringPtrOutput)
+func (o PipelineOutput) SchedulerServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v *Pipeline) pulumi.StringOutput { return v.SchedulerServiceAccountEmail }).(pulumi.StringOutput)
 }
 
 // The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.

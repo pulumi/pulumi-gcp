@@ -14,12 +14,10 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
     public sealed class VMwareNodePoolConfigVsphereConfigTag
     {
         /// <summary>
-        /// (Output)
         /// The Vsphere tag category.
         /// </summary>
         public readonly string? Category;
         /// <summary>
-        /// (Output)
         /// The Vsphere tag name.
         /// 
         /// - - -

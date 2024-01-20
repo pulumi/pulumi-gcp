@@ -188,7 +188,7 @@ namespace Pulumi.Gcp.Dataflow
         /// Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
         /// </summary>
         [Output("schedulerServiceAccountEmail")]
-        public Output<string?> SchedulerServiceAccountEmail { get; private set; } = null!;
+        public Output<string> SchedulerServiceAccountEmail { get; private set; } = null!;
 
         /// <summary>
         /// The state of the pipeline. When the pipeline is created, the state is set to 'PIPELINE_STATE_ACTIVE' by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.

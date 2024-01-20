@@ -544,6 +544,46 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Gkehub Feature Clusterupgrade
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecClusterupgradeArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureSpecClusterupgradePostConditionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .spec(FeatureSpecArgs.builder()
+ *                 .clusterupgrade(FeatureSpecClusterupgradeArgs.builder()
+ *                     .postConditions(FeatureSpecClusterupgradePostConditionsArgs.builder()
+ *                         .soaking(&#34;60s&#34;)
+ *                         .build())
+ *                     .upstreamFleets()
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

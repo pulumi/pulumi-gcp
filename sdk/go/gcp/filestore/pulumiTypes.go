@@ -562,6 +562,363 @@ func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutp
 	}).(InstanceNetworkOutput)
 }
 
+type GetInstanceFileShare struct {
+	CapacityGb int `pulumi:"capacityGb"`
+	// The name of a Filestore instance.
+	//
+	// ***
+	Name             string                                `pulumi:"name"`
+	NfsExportOptions []GetInstanceFileShareNfsExportOption `pulumi:"nfsExportOptions"`
+	SourceBackup     string                                `pulumi:"sourceBackup"`
+}
+
+// GetInstanceFileShareInput is an input type that accepts GetInstanceFileShareArgs and GetInstanceFileShareOutput values.
+// You can construct a concrete instance of `GetInstanceFileShareInput` via:
+//
+//	GetInstanceFileShareArgs{...}
+type GetInstanceFileShareInput interface {
+	pulumi.Input
+
+	ToGetInstanceFileShareOutput() GetInstanceFileShareOutput
+	ToGetInstanceFileShareOutputWithContext(context.Context) GetInstanceFileShareOutput
+}
+
+type GetInstanceFileShareArgs struct {
+	CapacityGb pulumi.IntInput `pulumi:"capacityGb"`
+	// The name of a Filestore instance.
+	//
+	// ***
+	Name             pulumi.StringInput                            `pulumi:"name"`
+	NfsExportOptions GetInstanceFileShareNfsExportOptionArrayInput `pulumi:"nfsExportOptions"`
+	SourceBackup     pulumi.StringInput                            `pulumi:"sourceBackup"`
+}
+
+func (GetInstanceFileShareArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceFileShare)(nil)).Elem()
+}
+
+func (i GetInstanceFileShareArgs) ToGetInstanceFileShareOutput() GetInstanceFileShareOutput {
+	return i.ToGetInstanceFileShareOutputWithContext(context.Background())
+}
+
+func (i GetInstanceFileShareArgs) ToGetInstanceFileShareOutputWithContext(ctx context.Context) GetInstanceFileShareOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceFileShareOutput)
+}
+
+// GetInstanceFileShareArrayInput is an input type that accepts GetInstanceFileShareArray and GetInstanceFileShareArrayOutput values.
+// You can construct a concrete instance of `GetInstanceFileShareArrayInput` via:
+//
+//	GetInstanceFileShareArray{ GetInstanceFileShareArgs{...} }
+type GetInstanceFileShareArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceFileShareArrayOutput() GetInstanceFileShareArrayOutput
+	ToGetInstanceFileShareArrayOutputWithContext(context.Context) GetInstanceFileShareArrayOutput
+}
+
+type GetInstanceFileShareArray []GetInstanceFileShareInput
+
+func (GetInstanceFileShareArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceFileShare)(nil)).Elem()
+}
+
+func (i GetInstanceFileShareArray) ToGetInstanceFileShareArrayOutput() GetInstanceFileShareArrayOutput {
+	return i.ToGetInstanceFileShareArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceFileShareArray) ToGetInstanceFileShareArrayOutputWithContext(ctx context.Context) GetInstanceFileShareArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceFileShareArrayOutput)
+}
+
+type GetInstanceFileShareOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceFileShareOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceFileShare)(nil)).Elem()
+}
+
+func (o GetInstanceFileShareOutput) ToGetInstanceFileShareOutput() GetInstanceFileShareOutput {
+	return o
+}
+
+func (o GetInstanceFileShareOutput) ToGetInstanceFileShareOutputWithContext(ctx context.Context) GetInstanceFileShareOutput {
+	return o
+}
+
+func (o GetInstanceFileShareOutput) CapacityGb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceFileShare) int { return v.CapacityGb }).(pulumi.IntOutput)
+}
+
+// The name of a Filestore instance.
+//
+// ***
+func (o GetInstanceFileShareOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceFileShare) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceFileShareOutput) NfsExportOptions() GetInstanceFileShareNfsExportOptionArrayOutput {
+	return o.ApplyT(func(v GetInstanceFileShare) []GetInstanceFileShareNfsExportOption { return v.NfsExportOptions }).(GetInstanceFileShareNfsExportOptionArrayOutput)
+}
+
+func (o GetInstanceFileShareOutput) SourceBackup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceFileShare) string { return v.SourceBackup }).(pulumi.StringOutput)
+}
+
+type GetInstanceFileShareArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceFileShareArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceFileShare)(nil)).Elem()
+}
+
+func (o GetInstanceFileShareArrayOutput) ToGetInstanceFileShareArrayOutput() GetInstanceFileShareArrayOutput {
+	return o
+}
+
+func (o GetInstanceFileShareArrayOutput) ToGetInstanceFileShareArrayOutputWithContext(ctx context.Context) GetInstanceFileShareArrayOutput {
+	return o
+}
+
+func (o GetInstanceFileShareArrayOutput) Index(i pulumi.IntInput) GetInstanceFileShareOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceFileShare {
+		return vs[0].([]GetInstanceFileShare)[vs[1].(int)]
+	}).(GetInstanceFileShareOutput)
+}
+
+type GetInstanceFileShareNfsExportOption struct {
+	AccessMode string   `pulumi:"accessMode"`
+	AnonGid    int      `pulumi:"anonGid"`
+	AnonUid    int      `pulumi:"anonUid"`
+	IpRanges   []string `pulumi:"ipRanges"`
+	SquashMode string   `pulumi:"squashMode"`
+}
+
+// GetInstanceFileShareNfsExportOptionInput is an input type that accepts GetInstanceFileShareNfsExportOptionArgs and GetInstanceFileShareNfsExportOptionOutput values.
+// You can construct a concrete instance of `GetInstanceFileShareNfsExportOptionInput` via:
+//
+//	GetInstanceFileShareNfsExportOptionArgs{...}
+type GetInstanceFileShareNfsExportOptionInput interface {
+	pulumi.Input
+
+	ToGetInstanceFileShareNfsExportOptionOutput() GetInstanceFileShareNfsExportOptionOutput
+	ToGetInstanceFileShareNfsExportOptionOutputWithContext(context.Context) GetInstanceFileShareNfsExportOptionOutput
+}
+
+type GetInstanceFileShareNfsExportOptionArgs struct {
+	AccessMode pulumi.StringInput      `pulumi:"accessMode"`
+	AnonGid    pulumi.IntInput         `pulumi:"anonGid"`
+	AnonUid    pulumi.IntInput         `pulumi:"anonUid"`
+	IpRanges   pulumi.StringArrayInput `pulumi:"ipRanges"`
+	SquashMode pulumi.StringInput      `pulumi:"squashMode"`
+}
+
+func (GetInstanceFileShareNfsExportOptionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceFileShareNfsExportOption)(nil)).Elem()
+}
+
+func (i GetInstanceFileShareNfsExportOptionArgs) ToGetInstanceFileShareNfsExportOptionOutput() GetInstanceFileShareNfsExportOptionOutput {
+	return i.ToGetInstanceFileShareNfsExportOptionOutputWithContext(context.Background())
+}
+
+func (i GetInstanceFileShareNfsExportOptionArgs) ToGetInstanceFileShareNfsExportOptionOutputWithContext(ctx context.Context) GetInstanceFileShareNfsExportOptionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceFileShareNfsExportOptionOutput)
+}
+
+// GetInstanceFileShareNfsExportOptionArrayInput is an input type that accepts GetInstanceFileShareNfsExportOptionArray and GetInstanceFileShareNfsExportOptionArrayOutput values.
+// You can construct a concrete instance of `GetInstanceFileShareNfsExportOptionArrayInput` via:
+//
+//	GetInstanceFileShareNfsExportOptionArray{ GetInstanceFileShareNfsExportOptionArgs{...} }
+type GetInstanceFileShareNfsExportOptionArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceFileShareNfsExportOptionArrayOutput() GetInstanceFileShareNfsExportOptionArrayOutput
+	ToGetInstanceFileShareNfsExportOptionArrayOutputWithContext(context.Context) GetInstanceFileShareNfsExportOptionArrayOutput
+}
+
+type GetInstanceFileShareNfsExportOptionArray []GetInstanceFileShareNfsExportOptionInput
+
+func (GetInstanceFileShareNfsExportOptionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceFileShareNfsExportOption)(nil)).Elem()
+}
+
+func (i GetInstanceFileShareNfsExportOptionArray) ToGetInstanceFileShareNfsExportOptionArrayOutput() GetInstanceFileShareNfsExportOptionArrayOutput {
+	return i.ToGetInstanceFileShareNfsExportOptionArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceFileShareNfsExportOptionArray) ToGetInstanceFileShareNfsExportOptionArrayOutputWithContext(ctx context.Context) GetInstanceFileShareNfsExportOptionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceFileShareNfsExportOptionArrayOutput)
+}
+
+type GetInstanceFileShareNfsExportOptionOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceFileShareNfsExportOptionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceFileShareNfsExportOption)(nil)).Elem()
+}
+
+func (o GetInstanceFileShareNfsExportOptionOutput) ToGetInstanceFileShareNfsExportOptionOutput() GetInstanceFileShareNfsExportOptionOutput {
+	return o
+}
+
+func (o GetInstanceFileShareNfsExportOptionOutput) ToGetInstanceFileShareNfsExportOptionOutputWithContext(ctx context.Context) GetInstanceFileShareNfsExportOptionOutput {
+	return o
+}
+
+func (o GetInstanceFileShareNfsExportOptionOutput) AccessMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) string { return v.AccessMode }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceFileShareNfsExportOptionOutput) AnonGid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) int { return v.AnonGid }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceFileShareNfsExportOptionOutput) AnonUid() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) int { return v.AnonUid }).(pulumi.IntOutput)
+}
+
+func (o GetInstanceFileShareNfsExportOptionOutput) IpRanges() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) []string { return v.IpRanges }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstanceFileShareNfsExportOptionOutput) SquashMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceFileShareNfsExportOption) string { return v.SquashMode }).(pulumi.StringOutput)
+}
+
+type GetInstanceFileShareNfsExportOptionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceFileShareNfsExportOptionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceFileShareNfsExportOption)(nil)).Elem()
+}
+
+func (o GetInstanceFileShareNfsExportOptionArrayOutput) ToGetInstanceFileShareNfsExportOptionArrayOutput() GetInstanceFileShareNfsExportOptionArrayOutput {
+	return o
+}
+
+func (o GetInstanceFileShareNfsExportOptionArrayOutput) ToGetInstanceFileShareNfsExportOptionArrayOutputWithContext(ctx context.Context) GetInstanceFileShareNfsExportOptionArrayOutput {
+	return o
+}
+
+func (o GetInstanceFileShareNfsExportOptionArrayOutput) Index(i pulumi.IntInput) GetInstanceFileShareNfsExportOptionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceFileShareNfsExportOption {
+		return vs[0].([]GetInstanceFileShareNfsExportOption)[vs[1].(int)]
+	}).(GetInstanceFileShareNfsExportOptionOutput)
+}
+
+type GetInstanceNetwork struct {
+	ConnectMode     string   `pulumi:"connectMode"`
+	IpAddresses     []string `pulumi:"ipAddresses"`
+	Modes           []string `pulumi:"modes"`
+	Network         string   `pulumi:"network"`
+	ReservedIpRange string   `pulumi:"reservedIpRange"`
+}
+
+// GetInstanceNetworkInput is an input type that accepts GetInstanceNetworkArgs and GetInstanceNetworkOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkInput` via:
+//
+//	GetInstanceNetworkArgs{...}
+type GetInstanceNetworkInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkOutput() GetInstanceNetworkOutput
+	ToGetInstanceNetworkOutputWithContext(context.Context) GetInstanceNetworkOutput
+}
+
+type GetInstanceNetworkArgs struct {
+	ConnectMode     pulumi.StringInput      `pulumi:"connectMode"`
+	IpAddresses     pulumi.StringArrayInput `pulumi:"ipAddresses"`
+	Modes           pulumi.StringArrayInput `pulumi:"modes"`
+	Network         pulumi.StringInput      `pulumi:"network"`
+	ReservedIpRange pulumi.StringInput      `pulumi:"reservedIpRange"`
+}
+
+func (GetInstanceNetworkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetwork)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkArgs) ToGetInstanceNetworkOutput() GetInstanceNetworkOutput {
+	return i.ToGetInstanceNetworkOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkArgs) ToGetInstanceNetworkOutputWithContext(ctx context.Context) GetInstanceNetworkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkOutput)
+}
+
+// GetInstanceNetworkArrayInput is an input type that accepts GetInstanceNetworkArray and GetInstanceNetworkArrayOutput values.
+// You can construct a concrete instance of `GetInstanceNetworkArrayInput` via:
+//
+//	GetInstanceNetworkArray{ GetInstanceNetworkArgs{...} }
+type GetInstanceNetworkArrayInput interface {
+	pulumi.Input
+
+	ToGetInstanceNetworkArrayOutput() GetInstanceNetworkArrayOutput
+	ToGetInstanceNetworkArrayOutputWithContext(context.Context) GetInstanceNetworkArrayOutput
+}
+
+type GetInstanceNetworkArray []GetInstanceNetworkInput
+
+func (GetInstanceNetworkArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetwork)(nil)).Elem()
+}
+
+func (i GetInstanceNetworkArray) ToGetInstanceNetworkArrayOutput() GetInstanceNetworkArrayOutput {
+	return i.ToGetInstanceNetworkArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstanceNetworkArray) ToGetInstanceNetworkArrayOutputWithContext(ctx context.Context) GetInstanceNetworkArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstanceNetworkArrayOutput)
+}
+
+type GetInstanceNetworkOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstanceNetwork)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkOutput) ToGetInstanceNetworkOutput() GetInstanceNetworkOutput {
+	return o
+}
+
+func (o GetInstanceNetworkOutput) ToGetInstanceNetworkOutputWithContext(ctx context.Context) GetInstanceNetworkOutput {
+	return o
+}
+
+func (o GetInstanceNetworkOutput) ConnectMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetwork) string { return v.ConnectMode }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkOutput) IpAddresses() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetwork) []string { return v.IpAddresses }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstanceNetworkOutput) Modes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetInstanceNetwork) []string { return v.Modes }).(pulumi.StringArrayOutput)
+}
+
+func (o GetInstanceNetworkOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetwork) string { return v.Network }).(pulumi.StringOutput)
+}
+
+func (o GetInstanceNetworkOutput) ReservedIpRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceNetwork) string { return v.ReservedIpRange }).(pulumi.StringOutput)
+}
+
+type GetInstanceNetworkArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstanceNetworkArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstanceNetwork)(nil)).Elem()
+}
+
+func (o GetInstanceNetworkArrayOutput) ToGetInstanceNetworkArrayOutput() GetInstanceNetworkArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkArrayOutput) ToGetInstanceNetworkArrayOutputWithContext(ctx context.Context) GetInstanceNetworkArrayOutput {
+	return o
+}
+
+func (o GetInstanceNetworkArrayOutput) Index(i pulumi.IntInput) GetInstanceNetworkOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstanceNetwork {
+		return vs[0].([]GetInstanceNetwork)[vs[1].(int)]
+	}).(GetInstanceNetworkOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesInput)(nil)).Elem(), InstanceFileSharesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesPtrInput)(nil)).Elem(), InstanceFileSharesArgs{})
@@ -569,10 +926,22 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesNfsExportOptionArrayInput)(nil)).Elem(), InstanceFileSharesNfsExportOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkArrayInput)(nil)).Elem(), InstanceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareInput)(nil)).Elem(), GetInstanceFileShareArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareArrayInput)(nil)).Elem(), GetInstanceFileShareArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareNfsExportOptionInput)(nil)).Elem(), GetInstanceFileShareNfsExportOptionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareNfsExportOptionArrayInput)(nil)).Elem(), GetInstanceFileShareNfsExportOptionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInput)(nil)).Elem(), GetInstanceNetworkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkArrayInput)(nil)).Elem(), GetInstanceNetworkArray{})
 	pulumi.RegisterOutputType(InstanceFileSharesOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceFileShareOutput{})
+	pulumi.RegisterOutputType(GetInstanceFileShareArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceFileShareNfsExportOptionOutput{})
+	pulumi.RegisterOutputType(GetInstanceFileShareNfsExportOptionArrayOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkOutput{})
+	pulumi.RegisterOutputType(GetInstanceNetworkArrayOutput{})
 }

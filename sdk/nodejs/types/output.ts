@@ -10306,6 +10306,335 @@ export namespace clouddeploy {
 
 }
 
+export namespace clouddomains {
+    export interface RegistrationContactSettings {
+        /**
+         * Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
+         * Warning: For new Registrations, the registrant receives an email confirmation that they must complete within 15 days to
+         * avoid domain suspension.
+         * Structure is documented below.
+         */
+        adminContact: outputs.clouddomains.RegistrationContactSettingsAdminContact;
+        /**
+         * Required. Privacy setting for the contacts associated with the Registration.
+         * Values are PUBLIC_CONTACT_DATA, PRIVATE_CONTACT_DATA, and REDACTED_CONTACT_DATA
+         */
+        privacy: string;
+        /**
+         * Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
+         * Warning: For new Registrations, the registrant receives an email confirmation that they must complete within 15 days to
+         * avoid domain suspension.
+         * Structure is documented below.
+         */
+        registrantContact: outputs.clouddomains.RegistrationContactSettingsRegistrantContact;
+        /**
+         * Caution: Anyone with access to this email address, phone number, and/or postal address can take control of the domain.
+         * Warning: For new Registrations, the registrant receives an email confirmation that they must complete within 15 days to
+         * avoid domain suspension.
+         * Structure is documented below.
+         */
+        technicalContact: outputs.clouddomains.RegistrationContactSettingsTechnicalContact;
+    }
+
+    export interface RegistrationContactSettingsAdminContact {
+        /**
+         * Required. Email address of the contact.
+         */
+        email: string;
+        /**
+         * Fax number of the contact in international format. For example, "+1-800-555-0123".
+         */
+        faxNumber?: string;
+        /**
+         * Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
+         */
+        phoneNumber: string;
+        /**
+         * Required. Postal address of the contact.
+         * Structure is documented below.
+         */
+        postalAddress: outputs.clouddomains.RegistrationContactSettingsAdminContactPostalAddress;
+    }
+
+    export interface RegistrationContactSettingsAdminContactPostalAddress {
+        /**
+         * Unstructured address lines describing the lower levels of an address.
+         * Because values in addressLines do not have type information and may sometimes contain multiple values in a single
+         * field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
+         * "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), addressLanguage
+         * is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
+         * the most specific line of an address can be selected based on the language.
+         */
+        addressLines?: string[];
+        /**
+         * Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
+         * a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
+         * (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
+         * this should be left unpopulated.
+         */
+        administrativeArea?: string;
+        /**
+         * Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
+         * where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
+         */
+        locality?: string;
+        /**
+         * The name of the organization at the address.
+         */
+        organization?: string;
+        /**
+         * Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
+         * they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+         */
+        postalCode?: string;
+        /**
+         * The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
+         * it might contain "care of" information.
+         *
+         * - - -
+         */
+        recipients?: string[];
+        /**
+         * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
+         * ensure the value is correct. See https://cldr.unicode.org/ and
+         * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+         */
+        regionCode: string;
+    }
+
+    export interface RegistrationContactSettingsRegistrantContact {
+        /**
+         * Required. Email address of the contact.
+         */
+        email: string;
+        /**
+         * Fax number of the contact in international format. For example, "+1-800-555-0123".
+         */
+        faxNumber?: string;
+        /**
+         * Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
+         */
+        phoneNumber: string;
+        /**
+         * Required. Postal address of the contact.
+         * Structure is documented below.
+         */
+        postalAddress: outputs.clouddomains.RegistrationContactSettingsRegistrantContactPostalAddress;
+    }
+
+    export interface RegistrationContactSettingsRegistrantContactPostalAddress {
+        /**
+         * Unstructured address lines describing the lower levels of an address.
+         * Because values in addressLines do not have type information and may sometimes contain multiple values in a single
+         * field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
+         * "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), addressLanguage
+         * is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
+         * the most specific line of an address can be selected based on the language.
+         */
+        addressLines?: string[];
+        /**
+         * Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
+         * a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
+         * (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
+         * this should be left unpopulated.
+         */
+        administrativeArea?: string;
+        /**
+         * Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
+         * where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
+         */
+        locality?: string;
+        /**
+         * The name of the organization at the address.
+         */
+        organization?: string;
+        /**
+         * Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
+         * they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+         */
+        postalCode?: string;
+        /**
+         * The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
+         * it might contain "care of" information.
+         *
+         * - - -
+         */
+        recipients?: string[];
+        /**
+         * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
+         * ensure the value is correct. See https://cldr.unicode.org/ and
+         * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+         */
+        regionCode: string;
+    }
+
+    export interface RegistrationContactSettingsTechnicalContact {
+        /**
+         * Required. Email address of the contact.
+         */
+        email: string;
+        /**
+         * Fax number of the contact in international format. For example, "+1-800-555-0123".
+         */
+        faxNumber?: string;
+        /**
+         * Required. Phone number of the contact in international format. For example, "+1-800-555-0123".
+         */
+        phoneNumber: string;
+        /**
+         * Required. Postal address of the contact.
+         * Structure is documented below.
+         */
+        postalAddress: outputs.clouddomains.RegistrationContactSettingsTechnicalContactPostalAddress;
+    }
+
+    export interface RegistrationContactSettingsTechnicalContactPostalAddress {
+        /**
+         * Unstructured address lines describing the lower levels of an address.
+         * Because values in addressLines do not have type information and may sometimes contain multiple values in a single
+         * field (e.g. "Austin, TX"), it is important that the line order is clear. The order of address lines should be
+         * "envelope order" for the country/region of the address. In places where this can vary (e.g. Japan), addressLanguage
+         * is used to make it explicit (e.g. "ja" for large-to-small ordering and "ja-Latn" or "en" for small-to-large). This way,
+         * the most specific line of an address can be selected based on the language.
+         */
+        addressLines?: string[];
+        /**
+         * Highest administrative subdivision which is used for postal addresses of a country or region. For example, this can be a state,
+         * a province, an oblast, or a prefecture. Specifically, for Spain this is the province and not the autonomous community
+         * (e.g. "Barcelona" and not "Catalonia"). Many countries don't use an administrative area in postal addresses. E.g. in Switzerland
+         * this should be left unpopulated.
+         */
+        administrativeArea?: string;
+        /**
+         * Generally refers to the city/town portion of the address. Examples: US city, IT comune, UK post town. In regions of the world
+         * where localities are not well defined or do not fit into this structure well, leave locality empty and use addressLines.
+         */
+        locality?: string;
+        /**
+         * The name of the organization at the address.
+         */
+        organization?: string;
+        /**
+         * Postal code of the address. Not all countries use or require postal codes to be present, but where they are used,
+         * they may trigger additional validation with other parts of the address (e.g. state/zip validation in the U.S.A.).
+         */
+        postalCode?: string;
+        /**
+         * The recipient at the address. This field may, under certain circumstances, contain multiline information. For example,
+         * it might contain "care of" information.
+         *
+         * - - -
+         */
+        recipients?: string[];
+        /**
+         * Required. CLDR region code of the country/region of the address. This is never inferred and it is up to the user to
+         * ensure the value is correct. See https://cldr.unicode.org/ and
+         * https://www.unicode.org/cldr/charts/30/supplemental/territory_information.html for details. Example: "CH" for Switzerland.
+         */
+        regionCode: string;
+    }
+
+    export interface RegistrationDnsSettings {
+        /**
+         * Configuration for an arbitrary DNS provider.
+         * Structure is documented below.
+         */
+        customDns?: outputs.clouddomains.RegistrationDnsSettingsCustomDns;
+        /**
+         * The list of glue records for this Registration. Commonly empty.
+         * Structure is documented below.
+         */
+        glueRecords?: outputs.clouddomains.RegistrationDnsSettingsGlueRecord[];
+    }
+
+    export interface RegistrationDnsSettingsCustomDns {
+        /**
+         * The list of DS records for this domain, which are used to enable DNSSEC. The domain's DNS provider can provide
+         * the values to set here. If this field is empty, DNSSEC is disabled.
+         * Structure is documented below.
+         */
+        dsRecords?: outputs.clouddomains.RegistrationDnsSettingsCustomDnsDsRecord[];
+        /**
+         * Required. A list of name servers that store the DNS zone for this domain. Each name server is a domain
+         * name, with Unicode domain names expressed in Punycode format.
+         */
+        nameServers: string[];
+    }
+
+    export interface RegistrationDnsSettingsCustomDnsDsRecord {
+        /**
+         * The algorithm used to generate the referenced DNSKEY.
+         */
+        algorithm?: string;
+        /**
+         * The digest generated from the referenced DNSKEY.
+         */
+        digest?: string;
+        /**
+         * The hash function used to generate the digest of the referenced DNSKEY.
+         */
+        digestType?: string;
+        /**
+         * The key tag of the record. Must be set in range 0 -- 65535.
+         */
+        keyTag?: number;
+    }
+
+    export interface RegistrationDnsSettingsGlueRecord {
+        /**
+         * Required. Domain name of the host in Punycode format.
+         */
+        hostName: string;
+        /**
+         * List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
+         * At least one of ipv4Address and ipv6Address must be set.
+         */
+        ipv4Addresses?: string[];
+        /**
+         * List of IPv4 addresses corresponding to this host in the standard decimal format (e.g. 198.51.100.1).
+         * At least one of ipv4Address and ipv6Address must be set.
+         */
+        ipv6Addresses?: string[];
+    }
+
+    export interface RegistrationManagementSettings {
+        /**
+         * The desired renewal method for this Registration. The actual renewalMethod is automatically updated to reflect this choice.
+         * If unset or equal to RENEWAL_METHOD_UNSPECIFIED, the actual renewalMethod is treated as if it were set to AUTOMATIC_RENEWAL.
+         * You cannot use RENEWAL_DISABLED during resource creation, and you can update the renewal status only when the Registration
+         * resource has state ACTIVE or SUSPENDED.
+         * When preferredRenewalMethod is set to AUTOMATIC_RENEWAL, the actual renewalMethod can be set to RENEWAL_DISABLED in case of
+         * problems with the billing account or reported domain abuse. In such cases, check the issues field on the Registration. After
+         * the problem is resolved, the renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
+         */
+        preferredRenewalMethod: string;
+        /**
+         * (Output)
+         * Output only. The actual renewal method for this Registration. When preferredRenewalMethod is set to AUTOMATIC_RENEWAL,
+         * the actual renewalMethod can be equal to RENEWAL_DISABLED—for example, when there are problems with the billing account
+         * or reported domain abuse. In such cases, check the issues field on the Registration. After the problem is resolved, the
+         * renewalMethod is automatically updated to preferredRenewalMethod in a few hours.
+         */
+        renewalMethod: string;
+        /**
+         * Controls whether the domain can be transferred to another registrar. Values are UNLOCKED or LOCKED.
+         */
+        transferLockState: string;
+    }
+
+    export interface RegistrationYearlyPrice {
+        /**
+         * The three-letter currency code defined in ISO 4217.
+         */
+        currencyCode?: string;
+        /**
+         * The whole units of the amount. For example if currencyCode is "USD", then 1 unit is one US dollar.
+         */
+        units?: string;
+    }
+
+}
+
 export namespace cloudfunctions {
     export interface FunctionEventTrigger {
         /**
@@ -23920,6 +24249,19 @@ export namespace compute {
          * Possible values are: `ACTIVE`, `DISABLED`, `PASSIVE`.
          */
         sessionInitializationMode: string;
+    }
+
+    export interface RouterPeerMd5AuthenticationKey {
+        key: string;
+        /**
+         * Name of this BGP peer. The name must be 1-63 characters long,
+         * and comply with RFC1035. Specifically, the name must be 1-63 characters
+         * long and match the regular expression `a-z?` which
+         * means the first character must be a lowercase letter, and all
+         * following characters must be a dash, lowercase letter, or digit,
+         * except the last character, which cannot be a dash.
+         */
+        name: string;
     }
 
     export interface RouterStatusBestRoute {
@@ -43825,6 +44167,17 @@ export namespace dns {
         type: string;
     }
 
+    export interface GetManagedZonesManagedZone {
+        description: string;
+        dnsName: string;
+        id: string;
+        managedZoneId: number;
+        name: string;
+        nameServers: string[];
+        project: string;
+        visibility: string;
+    }
+
     export interface ManagedZoneCloudLoggingConfig {
         /**
          * If set, enable query logging for this ManagedZone. False by default, making logging opt-in.
@@ -45064,6 +45417,34 @@ export namespace eventarc {
 }
 
 export namespace filestore {
+    export interface GetInstanceFileShare {
+        capacityGb: number;
+        /**
+         * The name of a Filestore instance.
+         *
+         * - - -
+         */
+        name: string;
+        nfsExportOptions: outputs.filestore.GetInstanceFileShareNfsExportOption[];
+        sourceBackup: string;
+    }
+
+    export interface GetInstanceFileShareNfsExportOption {
+        accessMode: string;
+        anonGid: number;
+        anonUid: number;
+        ipRanges: string[];
+        squashMode: string;
+    }
+
+    export interface GetInstanceNetwork {
+        connectMode: string;
+        ipAddresses: string[];
+        modes: string[];
+        network: string;
+        reservedIpRange: string;
+    }
+
     export interface InstanceFileShares {
         /**
          * File share capacity in GiB. This must be at least 1024 GiB
@@ -46735,6 +47116,9 @@ export namespace gkehub {
     }
 
     export interface FeatureMembershipConfigmanagementPolicyControllerMonitoring {
+        /**
+         * Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+         */
         backends: string[];
     }
 
@@ -46747,6 +47131,77 @@ export namespace gkehub {
          * Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
          */
         management?: string;
+    }
+
+    export interface FeatureMembershipPolicycontroller {
+        /**
+         * Policy Controller configuration for the cluster. Structure is documented below.
+         */
+        policyControllerHubConfig: outputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfig;
+        /**
+         * Version of Policy Controller to install. Defaults to the latest version.
+         */
+        version: string;
+    }
+
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfig {
+        /**
+         * Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+         */
+        auditIntervalSeconds?: number;
+        /**
+         * The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
+         */
+        constraintViolationLimit?: number;
+        /**
+         * The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+         */
+        exemptableNamespaces?: string[];
+        /**
+         * Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
+         */
+        installSpec?: string;
+        /**
+         * Logs all denies and dry run failures.
+         */
+        logDeniesEnabled?: boolean;
+        /**
+         * Specifies the backends Policy Controller should export metrics to. Structure is documented below.
+         */
+        monitoring: outputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring;
+        /**
+         * Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+         */
+        mutationEnabled?: boolean;
+        /**
+         * Specifies the desired policy content on the cluster. Structure is documented below.
+         */
+        policyContent: outputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent;
+        /**
+         * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+         */
+        referentialRulesEnabled?: boolean;
+    }
+
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring {
+        /**
+         * Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+         */
+        backends: string[];
+    }
+
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent {
+        /**
+         * Configures the installation of the Template Library. Structure is documented below.
+         */
+        templateLibrary: outputs.gkehub.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary;
+    }
+
+    export interface FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+        /**
+         * Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
+         */
+        installation?: string;
     }
 
     export interface FeatureResourceState {
@@ -46765,6 +47220,11 @@ export namespace gkehub {
 
     export interface FeatureSpec {
         /**
+         * Clusterupgrade feature spec.
+         * Structure is documented below.
+         */
+        clusterupgrade?: outputs.gkehub.FeatureSpecClusterupgrade;
+        /**
          * Fleet Observability feature spec.
          * Structure is documented below.
          */
@@ -46774,6 +47234,61 @@ export namespace gkehub {
          * Structure is documented below.
          */
         multiclusteringress?: outputs.gkehub.FeatureSpecMulticlusteringress;
+    }
+
+    export interface FeatureSpecClusterupgrade {
+        /**
+         * Configuration overrides for individual upgrades.
+         * Structure is documented below.
+         */
+        gkeUpgradeOverrides?: outputs.gkehub.FeatureSpecClusterupgradeGkeUpgradeOverride[];
+        /**
+         * Post conditions to override for the specified upgrade.
+         * Structure is documented below.
+         */
+        postConditions: outputs.gkehub.FeatureSpecClusterupgradePostConditions;
+        /**
+         * Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+         */
+        upstreamFleets: string[];
+    }
+
+    export interface FeatureSpecClusterupgradeGkeUpgradeOverride {
+        /**
+         * Post conditions to override for the specified upgrade.
+         * Structure is documented below.
+         */
+        postConditions: outputs.gkehub.FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions;
+        /**
+         * Which upgrade to override.
+         * Structure is documented below.
+         */
+        upgrade: outputs.gkehub.FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade;
+    }
+
+    export interface FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions {
+        /**
+         * Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+         */
+        soaking: string;
+    }
+
+    export interface FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
+        /**
+         * Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+         */
+        name: string;
+        /**
+         * Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+         */
+        version: string;
+    }
+
+    export interface FeatureSpecClusterupgradePostConditions {
+        /**
+         * Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+         */
+        soaking: string;
     }
 
     export interface FeatureSpecFleetobservability {
@@ -48826,19 +49341,16 @@ export namespace gkeonprem {
          */
         taints?: outputs.gkeonprem.VMwareNodePoolConfigTaint[];
         /**
-         * (Output)
          * Specifies the vSphere config for node pool.
          * Structure is documented below.
          */
-        vsphereConfigs: outputs.gkeonprem.VMwareNodePoolConfigVsphereConfig[];
+        vsphereConfigs?: outputs.gkeonprem.VMwareNodePoolConfigVsphereConfig[];
     }
 
     export interface VMwareNodePoolConfigTaint {
         /**
          * Available taint effects.
          * Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-         *
-         * <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
          */
         effect?: string;
         /**
@@ -48853,34 +49365,31 @@ export namespace gkeonprem {
 
     export interface VMwareNodePoolConfigVsphereConfig {
         /**
-         * (Output)
          * The name of the vCenter datastore. Inherited from the user cluster.
          */
-        datastore: string;
+        datastore?: string;
         /**
-         * (Output)
+         * Vsphere host groups to apply to all VMs in the node pool
+         */
+        hostGroups?: string[];
+        /**
          * Tags to apply to VMs.
          * Structure is documented below.
-         *
-         *
-         * <a name="nestedTags"></a>The `tags` block contains:
          */
-        tags: outputs.gkeonprem.VMwareNodePoolConfigVsphereConfigTag[];
+        tags?: outputs.gkeonprem.VMwareNodePoolConfigVsphereConfigTag[];
     }
 
     export interface VMwareNodePoolConfigVsphereConfigTag {
         /**
-         * (Output)
          * The Vsphere tag category.
          */
-        category: string;
+        category?: string;
         /**
-         * (Output)
          * The Vsphere tag name.
          *
          * - - -
          */
-        tag: string;
+        tag?: string;
     }
 
     export interface VMwareNodePoolNodePoolAutoscaling {
@@ -62108,6 +62617,25 @@ export namespace vertex {
         enabled?: boolean;
     }
 
+    export interface AiFeatureOnlineStoreFeatureviewBigQuerySource {
+        /**
+         * Columns to construct entityId / row keys. Start by supporting 1 only.
+         */
+        entityIdColumns: string[];
+        /**
+         * The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+         */
+        uri: string;
+    }
+
+    export interface AiFeatureOnlineStoreFeatureviewSyncConfig {
+        /**
+         * Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+         * To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+         */
+        cron: string;
+    }
+
     export interface AiFeatureOnlineStoreOptimized {
     }
 
@@ -62451,10 +62979,44 @@ export namespace vmwareengine {
         nodeTypeId: string;
     }
 
+    export interface ExternalAccessRuleDestinationIpRange {
+        /**
+         * The name of an `ExternalAddress` resource.
+         *
+         * - - -
+         */
+        externalAddress?: string;
+        /**
+         * An IP address range in the CIDR format.
+         */
+        ipAddressRange?: string;
+    }
+
+    export interface ExternalAccessRuleSourceIpRange {
+        /**
+         * A single IP address.
+         */
+        ipAddress?: string;
+        /**
+         * An IP address range in the CIDR format.
+         */
+        ipAddressRange?: string;
+    }
+
     export interface GetClusterNodeTypeConfig {
         customCoreCount: number;
         nodeCount: number;
         nodeTypeId: string;
+    }
+
+    export interface GetExternalAccessRuleDestinationIpRange {
+        externalAddress: string;
+        ipAddressRange: string;
+    }
+
+    export interface GetExternalAccessRuleSourceIpRange {
+        ipAddress: string;
+        ipAddressRange: string;
     }
 
     export interface GetNetworkPolicyExternalIp {

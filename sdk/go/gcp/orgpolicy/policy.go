@@ -271,6 +271,8 @@ type Policy struct {
 
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 	DryRunSpec PolicyDryRunSpecPtrOutput `pulumi:"dryRunSpec"`
+	// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The parent of the resource.
@@ -316,6 +318,8 @@ func GetPolicy(ctx *pulumi.Context,
 type policyState struct {
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 	DryRunSpec *PolicyDryRunSpec `pulumi:"dryRunSpec"`
+	// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+	Etag *string `pulumi:"etag"`
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name *string `pulumi:"name"`
 	// The parent of the resource.
@@ -329,6 +333,8 @@ type policyState struct {
 type PolicyState struct {
 	// Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 	DryRunSpec PolicyDryRunSpecPtrInput
+	// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+	Etag pulumi.StringPtrInput
 	// Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
 	Name pulumi.StringPtrInput
 	// The parent of the resource.
@@ -460,6 +466,11 @@ func (o PolicyOutput) ToPolicyOutputWithContext(ctx context.Context) PolicyOutpu
 // Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
 func (o PolicyOutput) DryRunSpec() PolicyDryRunSpecPtrOutput {
 	return o.ApplyT(func(v *Policy) PolicyDryRunSpecPtrOutput { return v.DryRunSpec }).(PolicyDryRunSpecPtrOutput)
+}
+
+// An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy`is returned from either a`GetPolicy`or a`ListPolicies`request, this`etag`indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a`GetEffectivePolicy`request, the`etag` will be unset.
+func (o PolicyOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *Policy) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.

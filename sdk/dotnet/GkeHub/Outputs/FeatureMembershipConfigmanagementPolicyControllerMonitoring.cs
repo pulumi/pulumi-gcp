@@ -13,6 +13,9 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     [OutputType]
     public sealed class FeatureMembershipConfigmanagementPolicyControllerMonitoring
     {
+        /// <summary>
+        /// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+        /// </summary>
         public readonly ImmutableArray<string> Backends;
 
         [OutputConstructor]

@@ -137,6 +137,224 @@ func (o ClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) ClusterNodeTy
 	}).(ClusterNodeTypeConfigOutput)
 }
 
+type ExternalAccessRuleDestinationIpRange struct {
+	// The name of an `ExternalAddress` resource.
+	//
+	// ***
+	ExternalAddress *string `pulumi:"externalAddress"`
+	// An IP address range in the CIDR format.
+	IpAddressRange *string `pulumi:"ipAddressRange"`
+}
+
+// ExternalAccessRuleDestinationIpRangeInput is an input type that accepts ExternalAccessRuleDestinationIpRangeArgs and ExternalAccessRuleDestinationIpRangeOutput values.
+// You can construct a concrete instance of `ExternalAccessRuleDestinationIpRangeInput` via:
+//
+//	ExternalAccessRuleDestinationIpRangeArgs{...}
+type ExternalAccessRuleDestinationIpRangeInput interface {
+	pulumi.Input
+
+	ToExternalAccessRuleDestinationIpRangeOutput() ExternalAccessRuleDestinationIpRangeOutput
+	ToExternalAccessRuleDestinationIpRangeOutputWithContext(context.Context) ExternalAccessRuleDestinationIpRangeOutput
+}
+
+type ExternalAccessRuleDestinationIpRangeArgs struct {
+	// The name of an `ExternalAddress` resource.
+	//
+	// ***
+	ExternalAddress pulumi.StringPtrInput `pulumi:"externalAddress"`
+	// An IP address range in the CIDR format.
+	IpAddressRange pulumi.StringPtrInput `pulumi:"ipAddressRange"`
+}
+
+func (ExternalAccessRuleDestinationIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalAccessRuleDestinationIpRange)(nil)).Elem()
+}
+
+func (i ExternalAccessRuleDestinationIpRangeArgs) ToExternalAccessRuleDestinationIpRangeOutput() ExternalAccessRuleDestinationIpRangeOutput {
+	return i.ToExternalAccessRuleDestinationIpRangeOutputWithContext(context.Background())
+}
+
+func (i ExternalAccessRuleDestinationIpRangeArgs) ToExternalAccessRuleDestinationIpRangeOutputWithContext(ctx context.Context) ExternalAccessRuleDestinationIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalAccessRuleDestinationIpRangeOutput)
+}
+
+// ExternalAccessRuleDestinationIpRangeArrayInput is an input type that accepts ExternalAccessRuleDestinationIpRangeArray and ExternalAccessRuleDestinationIpRangeArrayOutput values.
+// You can construct a concrete instance of `ExternalAccessRuleDestinationIpRangeArrayInput` via:
+//
+//	ExternalAccessRuleDestinationIpRangeArray{ ExternalAccessRuleDestinationIpRangeArgs{...} }
+type ExternalAccessRuleDestinationIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToExternalAccessRuleDestinationIpRangeArrayOutput() ExternalAccessRuleDestinationIpRangeArrayOutput
+	ToExternalAccessRuleDestinationIpRangeArrayOutputWithContext(context.Context) ExternalAccessRuleDestinationIpRangeArrayOutput
+}
+
+type ExternalAccessRuleDestinationIpRangeArray []ExternalAccessRuleDestinationIpRangeInput
+
+func (ExternalAccessRuleDestinationIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalAccessRuleDestinationIpRange)(nil)).Elem()
+}
+
+func (i ExternalAccessRuleDestinationIpRangeArray) ToExternalAccessRuleDestinationIpRangeArrayOutput() ExternalAccessRuleDestinationIpRangeArrayOutput {
+	return i.ToExternalAccessRuleDestinationIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i ExternalAccessRuleDestinationIpRangeArray) ToExternalAccessRuleDestinationIpRangeArrayOutputWithContext(ctx context.Context) ExternalAccessRuleDestinationIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalAccessRuleDestinationIpRangeArrayOutput)
+}
+
+type ExternalAccessRuleDestinationIpRangeOutput struct{ *pulumi.OutputState }
+
+func (ExternalAccessRuleDestinationIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalAccessRuleDestinationIpRange)(nil)).Elem()
+}
+
+func (o ExternalAccessRuleDestinationIpRangeOutput) ToExternalAccessRuleDestinationIpRangeOutput() ExternalAccessRuleDestinationIpRangeOutput {
+	return o
+}
+
+func (o ExternalAccessRuleDestinationIpRangeOutput) ToExternalAccessRuleDestinationIpRangeOutputWithContext(ctx context.Context) ExternalAccessRuleDestinationIpRangeOutput {
+	return o
+}
+
+// The name of an `ExternalAddress` resource.
+//
+// ***
+func (o ExternalAccessRuleDestinationIpRangeOutput) ExternalAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalAccessRuleDestinationIpRange) *string { return v.ExternalAddress }).(pulumi.StringPtrOutput)
+}
+
+// An IP address range in the CIDR format.
+func (o ExternalAccessRuleDestinationIpRangeOutput) IpAddressRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalAccessRuleDestinationIpRange) *string { return v.IpAddressRange }).(pulumi.StringPtrOutput)
+}
+
+type ExternalAccessRuleDestinationIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (ExternalAccessRuleDestinationIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalAccessRuleDestinationIpRange)(nil)).Elem()
+}
+
+func (o ExternalAccessRuleDestinationIpRangeArrayOutput) ToExternalAccessRuleDestinationIpRangeArrayOutput() ExternalAccessRuleDestinationIpRangeArrayOutput {
+	return o
+}
+
+func (o ExternalAccessRuleDestinationIpRangeArrayOutput) ToExternalAccessRuleDestinationIpRangeArrayOutputWithContext(ctx context.Context) ExternalAccessRuleDestinationIpRangeArrayOutput {
+	return o
+}
+
+func (o ExternalAccessRuleDestinationIpRangeArrayOutput) Index(i pulumi.IntInput) ExternalAccessRuleDestinationIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalAccessRuleDestinationIpRange {
+		return vs[0].([]ExternalAccessRuleDestinationIpRange)[vs[1].(int)]
+	}).(ExternalAccessRuleDestinationIpRangeOutput)
+}
+
+type ExternalAccessRuleSourceIpRange struct {
+	// A single IP address.
+	IpAddress *string `pulumi:"ipAddress"`
+	// An IP address range in the CIDR format.
+	IpAddressRange *string `pulumi:"ipAddressRange"`
+}
+
+// ExternalAccessRuleSourceIpRangeInput is an input type that accepts ExternalAccessRuleSourceIpRangeArgs and ExternalAccessRuleSourceIpRangeOutput values.
+// You can construct a concrete instance of `ExternalAccessRuleSourceIpRangeInput` via:
+//
+//	ExternalAccessRuleSourceIpRangeArgs{...}
+type ExternalAccessRuleSourceIpRangeInput interface {
+	pulumi.Input
+
+	ToExternalAccessRuleSourceIpRangeOutput() ExternalAccessRuleSourceIpRangeOutput
+	ToExternalAccessRuleSourceIpRangeOutputWithContext(context.Context) ExternalAccessRuleSourceIpRangeOutput
+}
+
+type ExternalAccessRuleSourceIpRangeArgs struct {
+	// A single IP address.
+	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	// An IP address range in the CIDR format.
+	IpAddressRange pulumi.StringPtrInput `pulumi:"ipAddressRange"`
+}
+
+func (ExternalAccessRuleSourceIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalAccessRuleSourceIpRange)(nil)).Elem()
+}
+
+func (i ExternalAccessRuleSourceIpRangeArgs) ToExternalAccessRuleSourceIpRangeOutput() ExternalAccessRuleSourceIpRangeOutput {
+	return i.ToExternalAccessRuleSourceIpRangeOutputWithContext(context.Background())
+}
+
+func (i ExternalAccessRuleSourceIpRangeArgs) ToExternalAccessRuleSourceIpRangeOutputWithContext(ctx context.Context) ExternalAccessRuleSourceIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalAccessRuleSourceIpRangeOutput)
+}
+
+// ExternalAccessRuleSourceIpRangeArrayInput is an input type that accepts ExternalAccessRuleSourceIpRangeArray and ExternalAccessRuleSourceIpRangeArrayOutput values.
+// You can construct a concrete instance of `ExternalAccessRuleSourceIpRangeArrayInput` via:
+//
+//	ExternalAccessRuleSourceIpRangeArray{ ExternalAccessRuleSourceIpRangeArgs{...} }
+type ExternalAccessRuleSourceIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToExternalAccessRuleSourceIpRangeArrayOutput() ExternalAccessRuleSourceIpRangeArrayOutput
+	ToExternalAccessRuleSourceIpRangeArrayOutputWithContext(context.Context) ExternalAccessRuleSourceIpRangeArrayOutput
+}
+
+type ExternalAccessRuleSourceIpRangeArray []ExternalAccessRuleSourceIpRangeInput
+
+func (ExternalAccessRuleSourceIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalAccessRuleSourceIpRange)(nil)).Elem()
+}
+
+func (i ExternalAccessRuleSourceIpRangeArray) ToExternalAccessRuleSourceIpRangeArrayOutput() ExternalAccessRuleSourceIpRangeArrayOutput {
+	return i.ToExternalAccessRuleSourceIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i ExternalAccessRuleSourceIpRangeArray) ToExternalAccessRuleSourceIpRangeArrayOutputWithContext(ctx context.Context) ExternalAccessRuleSourceIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ExternalAccessRuleSourceIpRangeArrayOutput)
+}
+
+type ExternalAccessRuleSourceIpRangeOutput struct{ *pulumi.OutputState }
+
+func (ExternalAccessRuleSourceIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ExternalAccessRuleSourceIpRange)(nil)).Elem()
+}
+
+func (o ExternalAccessRuleSourceIpRangeOutput) ToExternalAccessRuleSourceIpRangeOutput() ExternalAccessRuleSourceIpRangeOutput {
+	return o
+}
+
+func (o ExternalAccessRuleSourceIpRangeOutput) ToExternalAccessRuleSourceIpRangeOutputWithContext(ctx context.Context) ExternalAccessRuleSourceIpRangeOutput {
+	return o
+}
+
+// A single IP address.
+func (o ExternalAccessRuleSourceIpRangeOutput) IpAddress() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalAccessRuleSourceIpRange) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// An IP address range in the CIDR format.
+func (o ExternalAccessRuleSourceIpRangeOutput) IpAddressRange() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ExternalAccessRuleSourceIpRange) *string { return v.IpAddressRange }).(pulumi.StringPtrOutput)
+}
+
+type ExternalAccessRuleSourceIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (ExternalAccessRuleSourceIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ExternalAccessRuleSourceIpRange)(nil)).Elem()
+}
+
+func (o ExternalAccessRuleSourceIpRangeArrayOutput) ToExternalAccessRuleSourceIpRangeArrayOutput() ExternalAccessRuleSourceIpRangeArrayOutput {
+	return o
+}
+
+func (o ExternalAccessRuleSourceIpRangeArrayOutput) ToExternalAccessRuleSourceIpRangeArrayOutputWithContext(ctx context.Context) ExternalAccessRuleSourceIpRangeArrayOutput {
+	return o
+}
+
+func (o ExternalAccessRuleSourceIpRangeArrayOutput) Index(i pulumi.IntInput) ExternalAccessRuleSourceIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ExternalAccessRuleSourceIpRange {
+		return vs[0].([]ExternalAccessRuleSourceIpRange)[vs[1].(int)]
+	}).(ExternalAccessRuleSourceIpRangeOutput)
+}
+
 type NetworkPolicyExternalIp struct {
 	// True if the service is enabled; false otherwise.
 	Enabled *bool `pulumi:"enabled"`
@@ -1744,6 +1962,206 @@ func (o GetClusterNodeTypeConfigArrayOutput) Index(i pulumi.IntInput) GetCluster
 	}).(GetClusterNodeTypeConfigOutput)
 }
 
+type GetExternalAccessRuleDestinationIpRange struct {
+	ExternalAddress string `pulumi:"externalAddress"`
+	IpAddressRange  string `pulumi:"ipAddressRange"`
+}
+
+// GetExternalAccessRuleDestinationIpRangeInput is an input type that accepts GetExternalAccessRuleDestinationIpRangeArgs and GetExternalAccessRuleDestinationIpRangeOutput values.
+// You can construct a concrete instance of `GetExternalAccessRuleDestinationIpRangeInput` via:
+//
+//	GetExternalAccessRuleDestinationIpRangeArgs{...}
+type GetExternalAccessRuleDestinationIpRangeInput interface {
+	pulumi.Input
+
+	ToGetExternalAccessRuleDestinationIpRangeOutput() GetExternalAccessRuleDestinationIpRangeOutput
+	ToGetExternalAccessRuleDestinationIpRangeOutputWithContext(context.Context) GetExternalAccessRuleDestinationIpRangeOutput
+}
+
+type GetExternalAccessRuleDestinationIpRangeArgs struct {
+	ExternalAddress pulumi.StringInput `pulumi:"externalAddress"`
+	IpAddressRange  pulumi.StringInput `pulumi:"ipAddressRange"`
+}
+
+func (GetExternalAccessRuleDestinationIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalAccessRuleDestinationIpRange)(nil)).Elem()
+}
+
+func (i GetExternalAccessRuleDestinationIpRangeArgs) ToGetExternalAccessRuleDestinationIpRangeOutput() GetExternalAccessRuleDestinationIpRangeOutput {
+	return i.ToGetExternalAccessRuleDestinationIpRangeOutputWithContext(context.Background())
+}
+
+func (i GetExternalAccessRuleDestinationIpRangeArgs) ToGetExternalAccessRuleDestinationIpRangeOutputWithContext(ctx context.Context) GetExternalAccessRuleDestinationIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalAccessRuleDestinationIpRangeOutput)
+}
+
+// GetExternalAccessRuleDestinationIpRangeArrayInput is an input type that accepts GetExternalAccessRuleDestinationIpRangeArray and GetExternalAccessRuleDestinationIpRangeArrayOutput values.
+// You can construct a concrete instance of `GetExternalAccessRuleDestinationIpRangeArrayInput` via:
+//
+//	GetExternalAccessRuleDestinationIpRangeArray{ GetExternalAccessRuleDestinationIpRangeArgs{...} }
+type GetExternalAccessRuleDestinationIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetExternalAccessRuleDestinationIpRangeArrayOutput() GetExternalAccessRuleDestinationIpRangeArrayOutput
+	ToGetExternalAccessRuleDestinationIpRangeArrayOutputWithContext(context.Context) GetExternalAccessRuleDestinationIpRangeArrayOutput
+}
+
+type GetExternalAccessRuleDestinationIpRangeArray []GetExternalAccessRuleDestinationIpRangeInput
+
+func (GetExternalAccessRuleDestinationIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExternalAccessRuleDestinationIpRange)(nil)).Elem()
+}
+
+func (i GetExternalAccessRuleDestinationIpRangeArray) ToGetExternalAccessRuleDestinationIpRangeArrayOutput() GetExternalAccessRuleDestinationIpRangeArrayOutput {
+	return i.ToGetExternalAccessRuleDestinationIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetExternalAccessRuleDestinationIpRangeArray) ToGetExternalAccessRuleDestinationIpRangeArrayOutputWithContext(ctx context.Context) GetExternalAccessRuleDestinationIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalAccessRuleDestinationIpRangeArrayOutput)
+}
+
+type GetExternalAccessRuleDestinationIpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetExternalAccessRuleDestinationIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalAccessRuleDestinationIpRange)(nil)).Elem()
+}
+
+func (o GetExternalAccessRuleDestinationIpRangeOutput) ToGetExternalAccessRuleDestinationIpRangeOutput() GetExternalAccessRuleDestinationIpRangeOutput {
+	return o
+}
+
+func (o GetExternalAccessRuleDestinationIpRangeOutput) ToGetExternalAccessRuleDestinationIpRangeOutputWithContext(ctx context.Context) GetExternalAccessRuleDestinationIpRangeOutput {
+	return o
+}
+
+func (o GetExternalAccessRuleDestinationIpRangeOutput) ExternalAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalAccessRuleDestinationIpRange) string { return v.ExternalAddress }).(pulumi.StringOutput)
+}
+
+func (o GetExternalAccessRuleDestinationIpRangeOutput) IpAddressRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalAccessRuleDestinationIpRange) string { return v.IpAddressRange }).(pulumi.StringOutput)
+}
+
+type GetExternalAccessRuleDestinationIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExternalAccessRuleDestinationIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExternalAccessRuleDestinationIpRange)(nil)).Elem()
+}
+
+func (o GetExternalAccessRuleDestinationIpRangeArrayOutput) ToGetExternalAccessRuleDestinationIpRangeArrayOutput() GetExternalAccessRuleDestinationIpRangeArrayOutput {
+	return o
+}
+
+func (o GetExternalAccessRuleDestinationIpRangeArrayOutput) ToGetExternalAccessRuleDestinationIpRangeArrayOutputWithContext(ctx context.Context) GetExternalAccessRuleDestinationIpRangeArrayOutput {
+	return o
+}
+
+func (o GetExternalAccessRuleDestinationIpRangeArrayOutput) Index(i pulumi.IntInput) GetExternalAccessRuleDestinationIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExternalAccessRuleDestinationIpRange {
+		return vs[0].([]GetExternalAccessRuleDestinationIpRange)[vs[1].(int)]
+	}).(GetExternalAccessRuleDestinationIpRangeOutput)
+}
+
+type GetExternalAccessRuleSourceIpRange struct {
+	IpAddress      string `pulumi:"ipAddress"`
+	IpAddressRange string `pulumi:"ipAddressRange"`
+}
+
+// GetExternalAccessRuleSourceIpRangeInput is an input type that accepts GetExternalAccessRuleSourceIpRangeArgs and GetExternalAccessRuleSourceIpRangeOutput values.
+// You can construct a concrete instance of `GetExternalAccessRuleSourceIpRangeInput` via:
+//
+//	GetExternalAccessRuleSourceIpRangeArgs{...}
+type GetExternalAccessRuleSourceIpRangeInput interface {
+	pulumi.Input
+
+	ToGetExternalAccessRuleSourceIpRangeOutput() GetExternalAccessRuleSourceIpRangeOutput
+	ToGetExternalAccessRuleSourceIpRangeOutputWithContext(context.Context) GetExternalAccessRuleSourceIpRangeOutput
+}
+
+type GetExternalAccessRuleSourceIpRangeArgs struct {
+	IpAddress      pulumi.StringInput `pulumi:"ipAddress"`
+	IpAddressRange pulumi.StringInput `pulumi:"ipAddressRange"`
+}
+
+func (GetExternalAccessRuleSourceIpRangeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalAccessRuleSourceIpRange)(nil)).Elem()
+}
+
+func (i GetExternalAccessRuleSourceIpRangeArgs) ToGetExternalAccessRuleSourceIpRangeOutput() GetExternalAccessRuleSourceIpRangeOutput {
+	return i.ToGetExternalAccessRuleSourceIpRangeOutputWithContext(context.Background())
+}
+
+func (i GetExternalAccessRuleSourceIpRangeArgs) ToGetExternalAccessRuleSourceIpRangeOutputWithContext(ctx context.Context) GetExternalAccessRuleSourceIpRangeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalAccessRuleSourceIpRangeOutput)
+}
+
+// GetExternalAccessRuleSourceIpRangeArrayInput is an input type that accepts GetExternalAccessRuleSourceIpRangeArray and GetExternalAccessRuleSourceIpRangeArrayOutput values.
+// You can construct a concrete instance of `GetExternalAccessRuleSourceIpRangeArrayInput` via:
+//
+//	GetExternalAccessRuleSourceIpRangeArray{ GetExternalAccessRuleSourceIpRangeArgs{...} }
+type GetExternalAccessRuleSourceIpRangeArrayInput interface {
+	pulumi.Input
+
+	ToGetExternalAccessRuleSourceIpRangeArrayOutput() GetExternalAccessRuleSourceIpRangeArrayOutput
+	ToGetExternalAccessRuleSourceIpRangeArrayOutputWithContext(context.Context) GetExternalAccessRuleSourceIpRangeArrayOutput
+}
+
+type GetExternalAccessRuleSourceIpRangeArray []GetExternalAccessRuleSourceIpRangeInput
+
+func (GetExternalAccessRuleSourceIpRangeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExternalAccessRuleSourceIpRange)(nil)).Elem()
+}
+
+func (i GetExternalAccessRuleSourceIpRangeArray) ToGetExternalAccessRuleSourceIpRangeArrayOutput() GetExternalAccessRuleSourceIpRangeArrayOutput {
+	return i.ToGetExternalAccessRuleSourceIpRangeArrayOutputWithContext(context.Background())
+}
+
+func (i GetExternalAccessRuleSourceIpRangeArray) ToGetExternalAccessRuleSourceIpRangeArrayOutputWithContext(ctx context.Context) GetExternalAccessRuleSourceIpRangeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetExternalAccessRuleSourceIpRangeArrayOutput)
+}
+
+type GetExternalAccessRuleSourceIpRangeOutput struct{ *pulumi.OutputState }
+
+func (GetExternalAccessRuleSourceIpRangeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetExternalAccessRuleSourceIpRange)(nil)).Elem()
+}
+
+func (o GetExternalAccessRuleSourceIpRangeOutput) ToGetExternalAccessRuleSourceIpRangeOutput() GetExternalAccessRuleSourceIpRangeOutput {
+	return o
+}
+
+func (o GetExternalAccessRuleSourceIpRangeOutput) ToGetExternalAccessRuleSourceIpRangeOutputWithContext(ctx context.Context) GetExternalAccessRuleSourceIpRangeOutput {
+	return o
+}
+
+func (o GetExternalAccessRuleSourceIpRangeOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalAccessRuleSourceIpRange) string { return v.IpAddress }).(pulumi.StringOutput)
+}
+
+func (o GetExternalAccessRuleSourceIpRangeOutput) IpAddressRange() pulumi.StringOutput {
+	return o.ApplyT(func(v GetExternalAccessRuleSourceIpRange) string { return v.IpAddressRange }).(pulumi.StringOutput)
+}
+
+type GetExternalAccessRuleSourceIpRangeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetExternalAccessRuleSourceIpRangeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetExternalAccessRuleSourceIpRange)(nil)).Elem()
+}
+
+func (o GetExternalAccessRuleSourceIpRangeArrayOutput) ToGetExternalAccessRuleSourceIpRangeArrayOutput() GetExternalAccessRuleSourceIpRangeArrayOutput {
+	return o
+}
+
+func (o GetExternalAccessRuleSourceIpRangeArrayOutput) ToGetExternalAccessRuleSourceIpRangeArrayOutputWithContext(ctx context.Context) GetExternalAccessRuleSourceIpRangeArrayOutput {
+	return o
+}
+
+func (o GetExternalAccessRuleSourceIpRangeArrayOutput) Index(i pulumi.IntInput) GetExternalAccessRuleSourceIpRangeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetExternalAccessRuleSourceIpRange {
+		return vs[0].([]GetExternalAccessRuleSourceIpRange)[vs[1].(int)]
+	}).(GetExternalAccessRuleSourceIpRangeOutput)
+}
+
 type GetNetworkPolicyExternalIp struct {
 	Enabled bool   `pulumi:"enabled"`
 	State   string `pulumi:"state"`
@@ -2809,6 +3227,10 @@ func (o GetSubnetDhcpAddressRangeArrayOutput) Index(i pulumi.IntInput) GetSubnet
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigInput)(nil)).Elem(), ClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodeTypeConfigArrayInput)(nil)).Elem(), ClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalAccessRuleDestinationIpRangeInput)(nil)).Elem(), ExternalAccessRuleDestinationIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalAccessRuleDestinationIpRangeArrayInput)(nil)).Elem(), ExternalAccessRuleDestinationIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalAccessRuleSourceIpRangeInput)(nil)).Elem(), ExternalAccessRuleSourceIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ExternalAccessRuleSourceIpRangeArrayInput)(nil)).Elem(), ExternalAccessRuleSourceIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyExternalIpInput)(nil)).Elem(), NetworkPolicyExternalIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyExternalIpPtrInput)(nil)).Elem(), NetworkPolicyExternalIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NetworkPolicyInternetAccessInput)(nil)).Elem(), NetworkPolicyInternetAccessArgs{})
@@ -2831,6 +3253,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*SubnetDhcpAddressRangeArrayInput)(nil)).Elem(), SubnetDhcpAddressRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigInput)(nil)).Elem(), GetClusterNodeTypeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodeTypeConfigArrayInput)(nil)).Elem(), GetClusterNodeTypeConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalAccessRuleDestinationIpRangeInput)(nil)).Elem(), GetExternalAccessRuleDestinationIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalAccessRuleDestinationIpRangeArrayInput)(nil)).Elem(), GetExternalAccessRuleDestinationIpRangeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalAccessRuleSourceIpRangeInput)(nil)).Elem(), GetExternalAccessRuleSourceIpRangeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetExternalAccessRuleSourceIpRangeArrayInput)(nil)).Elem(), GetExternalAccessRuleSourceIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPolicyExternalIpInput)(nil)).Elem(), GetNetworkPolicyExternalIpArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPolicyExternalIpArrayInput)(nil)).Elem(), GetNetworkPolicyExternalIpArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetNetworkPolicyInternetAccessInput)(nil)).Elem(), GetNetworkPolicyInternetAccessArgs{})
@@ -2853,6 +3279,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetDhcpAddressRangeArrayInput)(nil)).Elem(), GetSubnetDhcpAddressRangeArray{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(ExternalAccessRuleDestinationIpRangeOutput{})
+	pulumi.RegisterOutputType(ExternalAccessRuleDestinationIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(ExternalAccessRuleSourceIpRangeOutput{})
+	pulumi.RegisterOutputType(ExternalAccessRuleSourceIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyExternalIpOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyExternalIpPtrOutput{})
 	pulumi.RegisterOutputType(NetworkPolicyInternetAccessOutput{})
@@ -2875,6 +3305,10 @@ func init() {
 	pulumi.RegisterOutputType(SubnetDhcpAddressRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodeTypeConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetExternalAccessRuleDestinationIpRangeOutput{})
+	pulumi.RegisterOutputType(GetExternalAccessRuleDestinationIpRangeArrayOutput{})
+	pulumi.RegisterOutputType(GetExternalAccessRuleSourceIpRangeOutput{})
+	pulumi.RegisterOutputType(GetExternalAccessRuleSourceIpRangeArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkPolicyExternalIpOutput{})
 	pulumi.RegisterOutputType(GetNetworkPolicyExternalIpArrayOutput{})
 	pulumi.RegisterOutputType(GetNetworkPolicyInternetAccessOutput{})

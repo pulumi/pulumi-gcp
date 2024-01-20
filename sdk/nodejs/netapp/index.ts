@@ -15,6 +15,11 @@ export type BackupVault = import("./backupVault").BackupVault;
 export const BackupVault: typeof import("./backupVault").BackupVault = null as any;
 utilities.lazyLoad(exports, ["BackupVault"], () => require("./backupVault"));
 
+export { KmsconfigArgs, KmsconfigState } from "./kmsconfig";
+export type Kmsconfig = import("./kmsconfig").Kmsconfig;
+export const Kmsconfig: typeof import("./kmsconfig").Kmsconfig = null as any;
+utilities.lazyLoad(exports, ["Kmsconfig"], () => require("./kmsconfig"));
+
 export { StoragePoolArgs, StoragePoolState } from "./storagePool";
 export type StoragePool = import("./storagePool").StoragePool;
 export const StoragePool: typeof import("./storagePool").StoragePool = null as any;
@@ -29,6 +34,8 @@ const _module = {
                 return new ActiveDirectory(name, <any>undefined, { urn })
             case "gcp:netapp/backupVault:BackupVault":
                 return new BackupVault(name, <any>undefined, { urn })
+            case "gcp:netapp/kmsconfig:Kmsconfig":
+                return new Kmsconfig(name, <any>undefined, { urn })
             case "gcp:netapp/storagePool:StoragePool":
                 return new StoragePool(name, <any>undefined, { urn })
             default:
@@ -38,4 +45,5 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "netapp/activeDirectory", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/backupVault", _module)
+pulumi.runtime.registerResourceModule("gcp", "netapp/kmsconfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/storagePool", _module)

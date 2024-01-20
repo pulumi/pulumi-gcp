@@ -55,6 +55,7 @@ class ProviderArgs:
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudbuildv2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 clouddomains_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -255,6 +256,8 @@ class ProviderArgs:
             pulumi.set(__self__, "cloudbuildv2_custom_endpoint", cloudbuildv2_custom_endpoint)
         if clouddeploy_custom_endpoint is not None:
             pulumi.set(__self__, "clouddeploy_custom_endpoint", clouddeploy_custom_endpoint)
+        if clouddomains_custom_endpoint is not None:
+            pulumi.set(__self__, "clouddomains_custom_endpoint", clouddomains_custom_endpoint)
         if cloudfunctions2_custom_endpoint is not None:
             pulumi.set(__self__, "cloudfunctions2_custom_endpoint", cloudfunctions2_custom_endpoint)
         if composer_custom_endpoint is not None:
@@ -855,6 +858,15 @@ class ProviderArgs:
     @clouddeploy_custom_endpoint.setter
     def clouddeploy_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "clouddeploy_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="clouddomainsCustomEndpoint")
+    def clouddomains_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "clouddomains_custom_endpoint")
+
+    @clouddomains_custom_endpoint.setter
+    def clouddomains_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "clouddomains_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="cloudfunctions2CustomEndpoint")
@@ -1955,6 +1967,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudbuildv2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 clouddomains_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2149,6 +2162,7 @@ class Provider(pulumi.ProviderResource):
                  cloud_tasks_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudbuildv2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 clouddomains_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2315,6 +2329,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["cloud_tasks_custom_endpoint"] = cloud_tasks_custom_endpoint
             __props__.__dict__["cloudbuildv2_custom_endpoint"] = cloudbuildv2_custom_endpoint
             __props__.__dict__["clouddeploy_custom_endpoint"] = clouddeploy_custom_endpoint
+            __props__.__dict__["clouddomains_custom_endpoint"] = clouddomains_custom_endpoint
             __props__.__dict__["cloudfunctions2_custom_endpoint"] = cloudfunctions2_custom_endpoint
             __props__.__dict__["composer_custom_endpoint"] = composer_custom_endpoint
             __props__.__dict__["compute_custom_endpoint"] = compute_custom_endpoint
@@ -2638,6 +2653,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="clouddeployCustomEndpoint")
     def clouddeploy_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "clouddeploy_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="clouddomainsCustomEndpoint")
+    def clouddomains_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "clouddomains_custom_endpoint")
 
     @property
     @pulumi.getter(name="cloudfunctions2CustomEndpoint")

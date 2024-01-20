@@ -2588,6 +2588,303 @@ func (o AiFeatureOnlineStoreEmbeddingManagementPtrOutput) Enabled() pulumi.BoolP
 	}).(pulumi.BoolPtrOutput)
 }
 
+type AiFeatureOnlineStoreFeatureviewBigQuerySource struct {
+	// Columns to construct entityId / row keys. Start by supporting 1 only.
+	EntityIdColumns []string `pulumi:"entityIdColumns"`
+	// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+	Uri string `pulumi:"uri"`
+}
+
+// AiFeatureOnlineStoreFeatureviewBigQuerySourceInput is an input type that accepts AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs and AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewBigQuerySourceInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{...}
+type AiFeatureOnlineStoreFeatureviewBigQuerySourceInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewBigQuerySourceOutput() AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput
+	ToAiFeatureOnlineStoreFeatureviewBigQuerySourceOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs struct {
+	// Columns to construct entityId / row keys. Start by supporting 1 only.
+	EntityIdColumns pulumi.StringArrayInput `pulumi:"entityIdColumns"`
+	// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewBigQuerySource)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs) ToAiFeatureOnlineStoreFeatureviewBigQuerySourceOutput() AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewBigQuerySourceOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs) ToAiFeatureOnlineStoreFeatureviewBigQuerySourceOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput)
+}
+
+func (i AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs) ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput() AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs) ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput).ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput is an input type that accepts AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs, AiFeatureOnlineStoreFeatureviewBigQuerySourcePtr and AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput` via:
+//
+//	        AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput() AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput
+	ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput
+}
+
+type aiFeatureOnlineStoreFeatureviewBigQuerySourcePtrType AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs
+
+func AiFeatureOnlineStoreFeatureviewBigQuerySourcePtr(v *AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs) AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput {
+	return (*aiFeatureOnlineStoreFeatureviewBigQuerySourcePtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreFeatureviewBigQuerySourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewBigQuerySource)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewBigQuerySourcePtrType) ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput() AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewBigQuerySourcePtrType) ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewBigQuerySource)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput) ToAiFeatureOnlineStoreFeatureviewBigQuerySourceOutput() AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput) ToAiFeatureOnlineStoreFeatureviewBigQuerySourceOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput) ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput() AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput {
+	return o.ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput) ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreFeatureviewBigQuerySource) *AiFeatureOnlineStoreFeatureviewBigQuerySource {
+		return &v
+	}).(AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput)
+}
+
+// Columns to construct entityId / row keys. Start by supporting 1 only.
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput) EntityIdColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewBigQuerySource) []string { return v.EntityIdColumns }).(pulumi.StringArrayOutput)
+}
+
+// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewBigQuerySource) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewBigQuerySource)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput) ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput() AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput) ToAiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput) Elem() AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewBigQuerySource) AiFeatureOnlineStoreFeatureviewBigQuerySource {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreFeatureviewBigQuerySource
+		return ret
+	}).(AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput)
+}
+
+// Columns to construct entityId / row keys. Start by supporting 1 only.
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput) EntityIdColumns() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewBigQuerySource) []string {
+		if v == nil {
+			return nil
+		}
+		return v.EntityIdColumns
+	}).(pulumi.StringArrayOutput)
+}
+
+// The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+func (o AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewBigQuerySource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewSyncConfig struct {
+	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+	// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+	Cron *string `pulumi:"cron"`
+}
+
+// AiFeatureOnlineStoreFeatureviewSyncConfigInput is an input type that accepts AiFeatureOnlineStoreFeatureviewSyncConfigArgs and AiFeatureOnlineStoreFeatureviewSyncConfigOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewSyncConfigInput` via:
+//
+//	AiFeatureOnlineStoreFeatureviewSyncConfigArgs{...}
+type AiFeatureOnlineStoreFeatureviewSyncConfigInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewSyncConfigOutput() AiFeatureOnlineStoreFeatureviewSyncConfigOutput
+	ToAiFeatureOnlineStoreFeatureviewSyncConfigOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewSyncConfigOutput
+}
+
+type AiFeatureOnlineStoreFeatureviewSyncConfigArgs struct {
+	// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+	// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+	Cron pulumi.StringPtrInput `pulumi:"cron"`
+}
+
+func (AiFeatureOnlineStoreFeatureviewSyncConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfig)(nil)).Elem()
+}
+
+func (i AiFeatureOnlineStoreFeatureviewSyncConfigArgs) ToAiFeatureOnlineStoreFeatureviewSyncConfigOutput() AiFeatureOnlineStoreFeatureviewSyncConfigOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewSyncConfigOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewSyncConfigArgs) ToAiFeatureOnlineStoreFeatureviewSyncConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewSyncConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewSyncConfigOutput)
+}
+
+func (i AiFeatureOnlineStoreFeatureviewSyncConfigArgs) ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput() AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiFeatureOnlineStoreFeatureviewSyncConfigArgs) ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewSyncConfigOutput).ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutputWithContext(ctx)
+}
+
+// AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput is an input type that accepts AiFeatureOnlineStoreFeatureviewSyncConfigArgs, AiFeatureOnlineStoreFeatureviewSyncConfigPtr and AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput values.
+// You can construct a concrete instance of `AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput` via:
+//
+//	        AiFeatureOnlineStoreFeatureviewSyncConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput() AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput
+	ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutputWithContext(context.Context) AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput
+}
+
+type aiFeatureOnlineStoreFeatureviewSyncConfigPtrType AiFeatureOnlineStoreFeatureviewSyncConfigArgs
+
+func AiFeatureOnlineStoreFeatureviewSyncConfigPtr(v *AiFeatureOnlineStoreFeatureviewSyncConfigArgs) AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput {
+	return (*aiFeatureOnlineStoreFeatureviewSyncConfigPtrType)(v)
+}
+
+func (*aiFeatureOnlineStoreFeatureviewSyncConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewSyncConfig)(nil)).Elem()
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewSyncConfigPtrType) ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput() AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput {
+	return i.ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiFeatureOnlineStoreFeatureviewSyncConfigPtrType) ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewSyncConfigOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewSyncConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) ToAiFeatureOnlineStoreFeatureviewSyncConfigOutput() AiFeatureOnlineStoreFeatureviewSyncConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) ToAiFeatureOnlineStoreFeatureviewSyncConfigOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewSyncConfigOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput() AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput {
+	return o.ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiFeatureOnlineStoreFeatureviewSyncConfig) *AiFeatureOnlineStoreFeatureviewSyncConfig {
+		return &v
+	}).(AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput)
+}
+
+// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigOutput) Cron() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiFeatureOnlineStoreFeatureviewSyncConfig) *string { return v.Cron }).(pulumi.StringPtrOutput)
+}
+
+type AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiFeatureOnlineStoreFeatureviewSyncConfig)(nil)).Elem()
+}
+
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput() AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) ToAiFeatureOnlineStoreFeatureviewSyncConfigPtrOutputWithContext(ctx context.Context) AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput {
+	return o
+}
+
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) Elem() AiFeatureOnlineStoreFeatureviewSyncConfigOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewSyncConfig) AiFeatureOnlineStoreFeatureviewSyncConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiFeatureOnlineStoreFeatureviewSyncConfig
+		return ret
+	}).(AiFeatureOnlineStoreFeatureviewSyncConfigOutput)
+}
+
+// Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+// To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+func (o AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput) Cron() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiFeatureOnlineStoreFeatureviewSyncConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cron
+	}).(pulumi.StringPtrOutput)
+}
+
 type AiFeatureOnlineStoreOptimized struct {
 }
 
@@ -7143,6 +7440,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreEmbeddingManagementInput)(nil)).Elem(), AiFeatureOnlineStoreEmbeddingManagementArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreEmbeddingManagementPtrInput)(nil)).Elem(), AiFeatureOnlineStoreEmbeddingManagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewBigQuerySourceInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfigInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewSyncConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreFeatureviewSyncConfigPtrInput)(nil)).Elem(), AiFeatureOnlineStoreFeatureviewSyncConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreOptimizedInput)(nil)).Elem(), AiFeatureOnlineStoreOptimizedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureOnlineStoreOptimizedPtrInput)(nil)).Elem(), AiFeatureOnlineStoreOptimizedArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureStoreEncryptionSpecInput)(nil)).Elem(), AiFeatureStoreEncryptionSpecArgs{})
@@ -7239,6 +7540,10 @@ func init() {
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreEmbeddingManagementOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreEmbeddingManagementPtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewBigQuerySourceOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewBigQuerySourcePtrOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewSyncConfigOutput{})
+	pulumi.RegisterOutputType(AiFeatureOnlineStoreFeatureviewSyncConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreOptimizedOutput{})
 	pulumi.RegisterOutputType(AiFeatureOnlineStoreOptimizedPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureStoreEncryptionSpecOutput{})

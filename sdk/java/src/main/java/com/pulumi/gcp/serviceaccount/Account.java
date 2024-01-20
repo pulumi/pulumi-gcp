@@ -103,6 +103,20 @@ public class Account extends com.pulumi.resources.CustomResource {
         return this.accountId;
     }
     /**
+     * If set to true, skip service account creation if a service account with the same email already exists.
+     * 
+     */
+    @Export(name="createIgnoreAlreadyExists", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> createIgnoreAlreadyExists;
+
+    /**
+     * @return If set to true, skip service account creation if a service account with the same email already exists.
+     * 
+     */
+    public Output<Optional<Boolean>> createIgnoreAlreadyExists() {
+        return Codegen.optional(this.createIgnoreAlreadyExists);
+    }
+    /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
      * 

@@ -121,7 +121,7 @@ export class Workflow extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
      */
     public readonly userEnvVars!: pulumi.Output<{[key: string]: string} | undefined>;
 
@@ -258,7 +258,7 @@ export interface WorkflowState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
      */
     userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
@@ -316,7 +316,7 @@ export interface WorkflowArgs {
      */
     sourceContents?: pulumi.Input<string>;
     /**
-     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+     * User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
      */
     userEnvVars?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

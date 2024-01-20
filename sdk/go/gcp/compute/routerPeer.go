@@ -337,6 +337,9 @@ type RouterPeer struct {
 	Ipv6NexthopAddress pulumi.StringOutput `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer.
 	ManagementType pulumi.StringOutput `pulumi:"managementType"`
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKey RouterPeerMd5AuthenticationKeyPtrOutput `pulumi:"md5AuthenticationKey"`
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which
@@ -452,6 +455,9 @@ type routerPeerState struct {
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
 	// The resource that configures and manages this BGP peer.
 	ManagementType *string `pulumi:"managementType"`
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKey *RouterPeerMd5AuthenticationKey `pulumi:"md5AuthenticationKey"`
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which
@@ -529,6 +535,9 @@ type RouterPeerState struct {
 	Ipv6NexthopAddress pulumi.StringPtrInput
 	// The resource that configures and manages this BGP peer.
 	ManagementType pulumi.StringPtrInput
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKey RouterPeerMd5AuthenticationKeyPtrInput
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which
@@ -608,6 +617,9 @@ type routerPeerArgs struct {
 	// If you do not specify the next hop addresses, Google Cloud automatically
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKey *RouterPeerMd5AuthenticationKey `pulumi:"md5AuthenticationKey"`
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which
@@ -684,6 +696,9 @@ type RouterPeerArgs struct {
 	// If you do not specify the next hop addresses, Google Cloud automatically
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress pulumi.StringPtrInput
+	// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+	// Router.md5_authentication_keys. The field must comply with RFC1035.
+	Md5AuthenticationKey RouterPeerMd5AuthenticationKeyPtrInput
 	// Name of this BGP peer. The name must be 1-63 characters long,
 	// and comply with RFC1035. Specifically, the name must be 1-63 characters
 	// long and match the regular expression `a-z?` which
@@ -878,6 +893,12 @@ func (o RouterPeerOutput) Ipv6NexthopAddress() pulumi.StringOutput {
 // The resource that configures and manages this BGP peer.
 func (o RouterPeerOutput) ManagementType() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.ManagementType }).(pulumi.StringOutput)
+}
+
+// Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+// Router.md5_authentication_keys. The field must comply with RFC1035.
+func (o RouterPeerOutput) Md5AuthenticationKey() RouterPeerMd5AuthenticationKeyPtrOutput {
+	return o.ApplyT(func(v *RouterPeer) RouterPeerMd5AuthenticationKeyPtrOutput { return v.Md5AuthenticationKey }).(RouterPeerMd5AuthenticationKeyPtrOutput)
 }
 
 // Name of this BGP peer. The name must be 1-63 characters long,

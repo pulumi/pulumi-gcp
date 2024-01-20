@@ -14,11 +14,14 @@ import com.pulumi.gcp.dns.inputs.GetManagedZoneArgs;
 import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyArgs;
 import com.pulumi.gcp.dns.inputs.GetManagedZoneIamPolicyPlainArgs;
 import com.pulumi.gcp.dns.inputs.GetManagedZonePlainArgs;
+import com.pulumi.gcp.dns.inputs.GetManagedZonesArgs;
+import com.pulumi.gcp.dns.inputs.GetManagedZonesPlainArgs;
 import com.pulumi.gcp.dns.inputs.GetRecordSetArgs;
 import com.pulumi.gcp.dns.inputs.GetRecordSetPlainArgs;
 import com.pulumi.gcp.dns.outputs.GetKeysResult;
 import com.pulumi.gcp.dns.outputs.GetManagedZoneIamPolicyResult;
 import com.pulumi.gcp.dns.outputs.GetManagedZoneResult;
+import com.pulumi.gcp.dns.outputs.GetManagedZonesResult;
 import com.pulumi.gcp.dns.outputs.GetRecordSetResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -602,6 +605,24 @@ public final class DnsFunctions {
      */
     public static CompletableFuture<GetManagedZoneIamPolicyResult> getManagedZoneIamPolicyPlain(GetManagedZoneIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", TypeShape.of(GetManagedZoneIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetManagedZonesResult> getManagedZones() {
+        return getManagedZones(GetManagedZonesArgs.Empty, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetManagedZonesResult> getManagedZonesPlain() {
+        return getManagedZonesPlain(GetManagedZonesPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    public static Output<GetManagedZonesResult> getManagedZones(GetManagedZonesArgs args) {
+        return getManagedZones(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetManagedZonesResult> getManagedZonesPlain(GetManagedZonesPlainArgs args) {
+        return getManagedZonesPlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetManagedZonesResult> getManagedZones(GetManagedZonesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dns/getManagedZones:getManagedZones", TypeShape.of(GetManagedZonesResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetManagedZonesResult> getManagedZonesPlain(GetManagedZonesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:dns/getManagedZones:getManagedZones", TypeShape.of(GetManagedZonesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Get a DNS record set within Google Cloud DNS

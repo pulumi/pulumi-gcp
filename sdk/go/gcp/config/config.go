@@ -131,6 +131,9 @@ func GetCloudbuildv2CustomEndpoint(ctx *pulumi.Context) string {
 func GetClouddeployCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:clouddeployCustomEndpoint")
 }
+func GetClouddomainsCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:clouddomainsCustomEndpoint")
+}
 func GetCloudfunctions2CustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudfunctions2CustomEndpoint")
 }

@@ -693,7 +693,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Uid { get; private set; } = null!;
 
         /// <summary>
-        /// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        /// Optional. Update settings control the speed and disruption of the node pool update.
         /// </summary>
         [Output("updateSettings")]
         public Output<Outputs.AwsNodePoolUpdateSettings> UpdateSettings { get; private set; } = null!;
@@ -826,7 +826,7 @@ namespace Pulumi.Gcp.Container
         public Input<string> SubnetId { get; set; } = null!;
 
         /// <summary>
-        /// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        /// Optional. Update settings control the speed and disruption of the node pool update.
         /// </summary>
         [Input("updateSettings")]
         public Input<Inputs.AwsNodePoolUpdateSettingsArgs>? UpdateSettings { get; set; }
@@ -958,7 +958,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Uid { get; set; }
 
         /// <summary>
-        /// (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        /// Optional. Update settings control the speed and disruption of the node pool update.
         /// </summary>
         [Input("updateSettings")]
         public Input<Inputs.AwsNodePoolUpdateSettingsGetArgs>? UpdateSettings { get; set; }

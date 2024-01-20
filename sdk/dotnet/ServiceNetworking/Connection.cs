@@ -84,6 +84,13 @@ namespace Pulumi.Gcp.ServiceNetworking
     public partial class Connection : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+        /// failures with CloudSQL. Note: The resource will still exist.
+        /// </summary>
+        [Output("deletionPolicy")]
+        public Output<string?> DeletionPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// Name of VPC network connected with service producers using VPC peering.
         /// </summary>
         [Output("network")]
@@ -158,6 +165,13 @@ namespace Pulumi.Gcp.ServiceNetworking
     public sealed class ConnectionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+        /// failures with CloudSQL. Note: The resource will still exist.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
+        /// <summary>
         /// Name of VPC network connected with service producers using VPC peering.
         /// </summary>
         [Input("network", required: true)]
@@ -193,6 +207,13 @@ namespace Pulumi.Gcp.ServiceNetworking
 
     public sealed class ConnectionState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+        /// failures with CloudSQL. Note: The resource will still exist.
+        /// </summary>
+        [Input("deletionPolicy")]
+        public Input<string>? DeletionPolicy { get; set; }
+
         /// <summary>
         /// Name of VPC network connected with service producers using VPC peering.
         /// </summary>

@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// <summary>
         /// Available taint effects.
         /// Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-        /// 
-        /// &lt;a name="nested_vsphere_config"&gt;&lt;/a&gt;The `vsphere_config` block contains:
         /// </summary>
         [Input("effect")]
         public Input<string>? Effect { get; set; }
