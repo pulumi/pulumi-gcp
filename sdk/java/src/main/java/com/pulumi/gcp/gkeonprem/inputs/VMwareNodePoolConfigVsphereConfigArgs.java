@@ -18,7 +18,6 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
     public static final VMwareNodePoolConfigVsphereConfigArgs Empty = new VMwareNodePoolConfigVsphereConfigArgs();
 
     /**
-     * (Output)
      * The name of the vCenter datastore. Inherited from the user cluster.
      * 
      */
@@ -26,8 +25,7 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
     private @Nullable Output<String> datastore;
 
     /**
-     * @return (Output)
-     * The name of the vCenter datastore. Inherited from the user cluster.
+     * @return The name of the vCenter datastore. Inherited from the user cluster.
      * 
      */
     public Optional<Output<String>> datastore() {
@@ -35,22 +33,31 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
     }
 
     /**
-     * (Output)
+     * Vsphere host groups to apply to all VMs in the node pool
+     * 
+     */
+    @Import(name="hostGroups")
+    private @Nullable Output<List<String>> hostGroups;
+
+    /**
+     * @return Vsphere host groups to apply to all VMs in the node pool
+     * 
+     */
+    public Optional<Output<List<String>>> hostGroups() {
+        return Optional.ofNullable(this.hostGroups);
+    }
+
+    /**
      * Tags to apply to VMs.
      * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
      * 
      */
     @Import(name="tags")
     private @Nullable Output<List<VMwareNodePoolConfigVsphereConfigTagArgs>> tags;
 
     /**
-     * @return (Output)
-     * Tags to apply to VMs.
+     * @return Tags to apply to VMs.
      * Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
      * 
      */
     public Optional<Output<List<VMwareNodePoolConfigVsphereConfigTagArgs>>> tags() {
@@ -61,6 +68,7 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
 
     private VMwareNodePoolConfigVsphereConfigArgs(VMwareNodePoolConfigVsphereConfigArgs $) {
         this.datastore = $.datastore;
+        this.hostGroups = $.hostGroups;
         this.tags = $.tags;
     }
 
@@ -83,8 +91,7 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param datastore (Output)
-         * The name of the vCenter datastore. Inherited from the user cluster.
+         * @param datastore The name of the vCenter datastore. Inherited from the user cluster.
          * 
          * @return builder
          * 
@@ -95,8 +102,7 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param datastore (Output)
-         * The name of the vCenter datastore. Inherited from the user cluster.
+         * @param datastore The name of the vCenter datastore. Inherited from the user cluster.
          * 
          * @return builder
          * 
@@ -106,11 +112,39 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param tags (Output)
-         * Tags to apply to VMs.
-         * Structure is documented below.
+         * @param hostGroups Vsphere host groups to apply to all VMs in the node pool
          * 
-         * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
+         * @return builder
+         * 
+         */
+        public Builder hostGroups(@Nullable Output<List<String>> hostGroups) {
+            $.hostGroups = hostGroups;
+            return this;
+        }
+
+        /**
+         * @param hostGroups Vsphere host groups to apply to all VMs in the node pool
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostGroups(List<String> hostGroups) {
+            return hostGroups(Output.of(hostGroups));
+        }
+
+        /**
+         * @param hostGroups Vsphere host groups to apply to all VMs in the node pool
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hostGroups(String... hostGroups) {
+            return hostGroups(List.of(hostGroups));
+        }
+
+        /**
+         * @param tags Tags to apply to VMs.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -121,11 +155,8 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param tags (Output)
-         * Tags to apply to VMs.
+         * @param tags Tags to apply to VMs.
          * Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
          * 
          * @return builder
          * 
@@ -135,11 +166,8 @@ public final class VMwareNodePoolConfigVsphereConfigArgs extends com.pulumi.reso
         }
 
         /**
-         * @param tags (Output)
-         * Tags to apply to VMs.
+         * @param tags Tags to apply to VMs.
          * Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
          * 
          * @return builder
          * 

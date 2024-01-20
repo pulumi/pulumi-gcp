@@ -135,6 +135,9 @@ namespace Pulumi.Gcp
         [Output("clouddeployCustomEndpoint")]
         public Output<string?> ClouddeployCustomEndpoint { get; private set; } = null!;
 
+        [Output("clouddomainsCustomEndpoint")]
+        public Output<string?> ClouddomainsCustomEndpoint { get; private set; } = null!;
+
         [Output("cloudfunctions2CustomEndpoint")]
         public Output<string?> Cloudfunctions2CustomEndpoint { get; private set; } = null!;
 
@@ -618,6 +621,9 @@ namespace Pulumi.Gcp
 
         [Input("clouddeployCustomEndpoint")]
         public Input<string>? ClouddeployCustomEndpoint { get; set; }
+
+        [Input("clouddomainsCustomEndpoint")]
+        public Input<string>? ClouddomainsCustomEndpoint { get; set; }
 
         [Input("cloudfunctions2CustomEndpoint")]
         public Input<string>? Cloudfunctions2CustomEndpoint { get; set; }

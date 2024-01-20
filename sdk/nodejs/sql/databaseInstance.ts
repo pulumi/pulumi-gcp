@@ -331,7 +331,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
-            resourceInputs["replicaConfiguration"] = args ? args.replicaConfiguration : undefined;
+            resourceInputs["replicaConfiguration"] = args?.replicaConfiguration ? pulumi.secret(args.replicaConfiguration) : undefined;
             resourceInputs["restoreBackupContext"] = args ? args.restoreBackupContext : undefined;
             resourceInputs["rootPassword"] = args?.rootPassword ? pulumi.secret(args.rootPassword) : undefined;
             resourceInputs["settings"] = args ? args.settings : undefined;
@@ -348,7 +348,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["serviceAccountEmailAddress"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
-        const secretOpts = { additionalSecretOutputs: ["rootPassword"] };
+        const secretOpts = { additionalSecretOutputs: ["replicaConfiguration", "rootPassword", "serverCaCerts"] };
         opts = pulumi.mergeOptions(opts, secretOpts);
         super(DatabaseInstance.__pulumiType, name, resourceInputs, opts);
     }

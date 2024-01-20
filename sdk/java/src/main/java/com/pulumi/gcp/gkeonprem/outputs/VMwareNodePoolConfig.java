@@ -72,8 +72,7 @@ public final class VMwareNodePoolConfig {
      */
     private @Nullable List<VMwareNodePoolConfigTaint> taints;
     /**
-     * @return (Output)
-     * Specifies the vSphere config for node pool.
+     * @return Specifies the vSphere config for node pool.
      * Structure is documented below.
      * 
      */
@@ -152,8 +151,7 @@ public final class VMwareNodePoolConfig {
         return this.taints == null ? List.of() : this.taints;
     }
     /**
-     * @return (Output)
-     * Specifies the vSphere config for node pool.
+     * @return Specifies the vSphere config for node pool.
      * Structure is documented below.
      * 
      */

@@ -13,6 +13,13 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     public sealed class FeatureSpecArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Clusterupgrade feature spec.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("clusterupgrade")]
+        public Input<Inputs.FeatureSpecClusterupgradeArgs>? Clusterupgrade { get; set; }
+
+        /// <summary>
         /// Fleet Observability feature spec.
         /// Structure is documented below.
         /// </summary>

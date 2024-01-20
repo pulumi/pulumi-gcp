@@ -145,7 +145,9 @@ namespace Pulumi.Gcp.Sql
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "cert",
                     "privateKey",
+                    "serverCaCert",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -199,11 +201,21 @@ namespace Pulumi.Gcp.Sql
 
     public sealed class SslCertState : global::Pulumi.ResourceArgs
     {
+        [Input("cert")]
+        private Input<string>? _cert;
+
         /// <summary>
         /// The actual certificate data for this client certificate.
         /// </summary>
-        [Input("cert")]
-        public Input<string>? Cert { get; set; }
+        public Input<string>? Cert
+        {
+            get => _cert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _cert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The serial number extracted from the certificate data.
@@ -262,11 +274,21 @@ namespace Pulumi.Gcp.Sql
         [Input("project")]
         public Input<string>? Project { get; set; }
 
+        [Input("serverCaCert")]
+        private Input<string>? _serverCaCert;
+
         /// <summary>
         /// The CA cert of the server this client cert was generated from.
         /// </summary>
-        [Input("serverCaCert")]
-        public Input<string>? ServerCaCert { get; set; }
+        public Input<string>? ServerCaCert
+        {
+            get => _serverCaCert;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _serverCaCert = Output.Tuple<Input<string>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The SHA1 Fingerprint of the certificate.

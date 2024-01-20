@@ -44,7 +44,7 @@ class AwsNodePoolArgs:
         :param pulumi.Input['AwsNodePoolManagementArgs'] management: The Management configuration for this node pool.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input['AwsNodePoolUpdateSettingsArgs'] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input['AwsNodePoolUpdateSettingsArgs'] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
         """
         pulumi.set(__self__, "autoscaling", autoscaling)
         pulumi.set(__self__, "cluster", cluster)
@@ -203,7 +203,7 @@ class AwsNodePoolArgs:
     @pulumi.getter(name="updateSettings")
     def update_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]:
         """
-        (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        Optional. Update settings control the speed and disruption of the node pool update.
         """
         return pulumi.get(self, "update_settings")
 
@@ -256,7 +256,7 @@ class _AwsNodePoolState:
         :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
-        :param pulumi.Input['AwsNodePoolUpdateSettingsArgs'] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input['AwsNodePoolUpdateSettingsArgs'] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
@@ -499,7 +499,7 @@ class _AwsNodePoolState:
     @pulumi.getter(name="updateSettings")
     def update_settings(self) -> Optional[pulumi.Input['AwsNodePoolUpdateSettingsArgs']]:
         """
-        (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        Optional. Update settings control the speed and disruption of the node pool update.
         """
         return pulumi.get(self, "update_settings")
 
@@ -956,7 +956,7 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
         ...
@@ -1481,7 +1481,7 @@ class AwsNodePool(pulumi.CustomResource):
         :param pulumi.Input[str] state: Output only. The lifecycle state of the node pool. Possible values: STATE_UNSPECIFIED, PROVISIONING, RUNNING, RECONCILING, STOPPING, ERROR, DEGRADED
         :param pulumi.Input[str] subnet_id: The subnet where the node pool node run.
         :param pulumi.Input[str] uid: Output only. A globally unique identifier for the node pool.
-        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        :param pulumi.Input[pulumi.InputType['AwsNodePoolUpdateSettingsArgs']] update_settings: Optional. Update settings control the speed and disruption of the node pool update.
         :param pulumi.Input[str] update_time: Output only. The time at which this node pool was last updated.
         :param pulumi.Input[str] version: The Kubernetes version to run on this node pool (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling GetAwsServerConfig.
         """
@@ -1646,7 +1646,7 @@ class AwsNodePool(pulumi.CustomResource):
     @pulumi.getter(name="updateSettings")
     def update_settings(self) -> pulumi.Output['outputs.AwsNodePoolUpdateSettings']:
         """
-        (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+        Optional. Update settings control the speed and disruption of the node pool update.
         """
         return pulumi.get(self, "update_settings")
 

@@ -377,7 +377,9 @@ namespace Pulumi.Gcp.Sql
                 Version = Utilities.Version,
                 AdditionalSecretOutputs =
                 {
+                    "replicaConfiguration",
                     "rootPassword",
+                    "serverCaCerts",
                 },
             };
             var merged = CustomResourceOptions.Merge(defaultOptions, options);
@@ -489,12 +491,22 @@ namespace Pulumi.Gcp.Sql
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("replicaConfiguration")]
+        private Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>? _replicaConfiguration;
+
         /// <summary>
         /// The configuration for replication. The
         /// configuration is detailed below. Valid only for MySQL instances.
         /// </summary>
-        [Input("replicaConfiguration")]
-        public Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>? ReplicaConfiguration { get; set; }
+        public Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>? ReplicaConfiguration
+        {
+            get => _replicaConfiguration;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _replicaConfiguration = Output.Tuple<Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
@@ -680,12 +692,22 @@ namespace Pulumi.Gcp.Sql
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("replicaConfiguration")]
+        private Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>? _replicaConfiguration;
+
         /// <summary>
         /// The configuration for replication. The
         /// configuration is detailed below. Valid only for MySQL instances.
         /// </summary>
-        [Input("replicaConfiguration")]
-        public Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>? ReplicaConfiguration { get; set; }
+        public Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>? ReplicaConfiguration
+        {
+            get => _replicaConfiguration;
+            set
+            {
+                var emptySecret = Output.CreateSecret(0);
+                _replicaConfiguration = Output.Tuple<Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
+            }
+        }
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
@@ -723,7 +745,11 @@ namespace Pulumi.Gcp.Sql
         public InputList<Inputs.DatabaseInstanceServerCaCertGetArgs> ServerCaCerts
         {
             get => _serverCaCerts ?? (_serverCaCerts = new InputList<Inputs.DatabaseInstanceServerCaCertGetArgs>());
-            set => _serverCaCerts = value;
+            set
+            {
+                var emptySecret = Output.CreateSecret(ImmutableArray.Create<Inputs.DatabaseInstanceServerCaCertGetArgs>());
+                _serverCaCerts = Output.All(value, emptySecret).Apply(v => v[0]);
+            }
         }
 
         /// <summary>

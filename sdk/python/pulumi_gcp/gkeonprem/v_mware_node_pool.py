@@ -644,6 +644,23 @@ class VMwareNodePool(pulumi.CustomResource):
                     ),
                 ],
                 labels={},
+                vsphere_configs=[gcp.gkeonprem.VMwareNodePoolConfigVsphereConfigArgs(
+                    datastore="test-datastore",
+                    tags=[
+                        gcp.gkeonprem.VMwareNodePoolConfigVsphereConfigTagArgs(
+                            category="test-category-1",
+                            tag="tag-1",
+                        ),
+                        gcp.gkeonprem.VMwareNodePoolConfigVsphereConfigTagArgs(
+                            category="test-category-2",
+                            tag="tag-2",
+                        ),
+                    ],
+                    host_groups=[
+                        "host1",
+                        "host2",
+                    ],
+                )],
                 enable_load_balancer=True,
             ),
             node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArgs(
@@ -828,6 +845,23 @@ class VMwareNodePool(pulumi.CustomResource):
                     ),
                 ],
                 labels={},
+                vsphere_configs=[gcp.gkeonprem.VMwareNodePoolConfigVsphereConfigArgs(
+                    datastore="test-datastore",
+                    tags=[
+                        gcp.gkeonprem.VMwareNodePoolConfigVsphereConfigTagArgs(
+                            category="test-category-1",
+                            tag="tag-1",
+                        ),
+                        gcp.gkeonprem.VMwareNodePoolConfigVsphereConfigTagArgs(
+                            category="test-category-2",
+                            tag="tag-2",
+                        ),
+                    ],
+                    host_groups=[
+                        "host1",
+                        "host2",
+                    ],
+                )],
                 enable_load_balancer=True,
             ),
             node_pool_autoscaling=gcp.gkeonprem.VMwareNodePoolNodePoolAutoscalingArgs(

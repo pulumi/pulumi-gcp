@@ -1111,7 +1111,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
-            __props__.__dict__["replica_configuration"] = replica_configuration
+            __props__.__dict__["replica_configuration"] = None if replica_configuration is None else pulumi.Output.secret(replica_configuration)
             __props__.__dict__["restore_backup_context"] = restore_backup_context
             __props__.__dict__["root_password"] = None if root_password is None else pulumi.Output.secret(root_password)
             __props__.__dict__["settings"] = settings
@@ -1126,7 +1126,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["self_link"] = None
             __props__.__dict__["server_ca_certs"] = None
             __props__.__dict__["service_account_email_address"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["rootPassword"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["replicaConfiguration", "rootPassword", "serverCaCerts"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(DatabaseInstance, __self__).__init__(
             'gcp:sql/databaseInstance:DatabaseInstance',

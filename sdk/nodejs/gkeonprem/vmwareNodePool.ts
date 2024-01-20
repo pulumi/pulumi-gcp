@@ -131,6 +131,23 @@ import * as utilities from "../utilities";
  *             },
  *         ],
  *         labels: {},
+ *         vsphereConfigs: [{
+ *             datastore: "test-datastore",
+ *             tags: [
+ *                 {
+ *                     category: "test-category-1",
+ *                     tag: "tag-1",
+ *                 },
+ *                 {
+ *                     category: "test-category-2",
+ *                     tag: "tag-2",
+ *                 },
+ *             ],
+ *             hostGroups: [
+ *                 "host1",
+ *                 "host2",
+ *             ],
+ *         }],
  *         enableLoadBalancer: true,
  *     },
  *     nodePoolAutoscaling: {

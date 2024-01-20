@@ -171,6 +171,77 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Policy Controller With Minimal Configuration
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cluster = new gcp.container.Cluster("cluster", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "my-membership",
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
+ *         },
+ *     },
+ * });
+ * const feature = new gcp.gkehub.Feature("feature", {location: "global"});
+ * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ *     location: "global",
+ *     feature: feature.name,
+ *     membership: membership.membershipId,
+ *     policycontroller: {
+ *         policyControllerHubConfig: {
+ *             installSpec: "INSTALL_SPEC_ENABLED",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Policy Controller With Custom Configurations
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const cluster = new gcp.container.Cluster("cluster", {
+ *     location: "us-central1-a",
+ *     initialNodeCount: 1,
+ * });
+ * const membership = new gcp.gkehub.Membership("membership", {
+ *     membershipId: "my-membership",
+ *     endpoint: {
+ *         gkeCluster: {
+ *             resourceLink: pulumi.interpolate`//container.googleapis.com/${cluster.id}`,
+ *         },
+ *     },
+ * });
+ * const feature = new gcp.gkehub.Feature("feature", {location: "global"});
+ * const featureMember = new gcp.gkehub.FeatureMembership("featureMember", {
+ *     location: "global",
+ *     feature: feature.name,
+ *     membership: membership.membershipId,
+ *     policycontroller: {
+ *         policyControllerHubConfig: {
+ *             installSpec: "INSTALL_SPEC_SUSPENDED",
+ *             policyContent: {
+ *                 templateLibrary: {
+ *                     installation: "NOT_INSTALLED",
+ *                 },
+ *             },
+ *             constraintViolationLimit: 50,
+ *             auditIntervalSeconds: 120,
+ *             referentialRulesEnabled: true,
+ *             logDeniesEnabled: true,
+ *             mutationEnabled: true,
+ *         },
+ *         version: "1.17.0",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -249,6 +320,10 @@ export class FeatureMembership extends pulumi.CustomResource {
      */
     public readonly mesh!: pulumi.Output<outputs.gkehub.FeatureMembershipMesh | undefined>;
     /**
+     * Policy Controller-specific spec. Structure is documented below.
+     */
+    public readonly policycontroller!: pulumi.Output<outputs.gkehub.FeatureMembershipPolicycontroller | undefined>;
+    /**
      * The project of the feature
      */
     public readonly project!: pulumi.Output<string>;
@@ -272,6 +347,7 @@ export class FeatureMembership extends pulumi.CustomResource {
             resourceInputs["membership"] = state ? state.membership : undefined;
             resourceInputs["membershipLocation"] = state ? state.membershipLocation : undefined;
             resourceInputs["mesh"] = state ? state.mesh : undefined;
+            resourceInputs["policycontroller"] = state ? state.policycontroller : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
         } else {
             const args = argsOrState as FeatureMembershipArgs | undefined;
@@ -290,6 +366,7 @@ export class FeatureMembership extends pulumi.CustomResource {
             resourceInputs["membership"] = args ? args.membership : undefined;
             resourceInputs["membershipLocation"] = args ? args.membershipLocation : undefined;
             resourceInputs["mesh"] = args ? args.mesh : undefined;
+            resourceInputs["policycontroller"] = args ? args.policycontroller : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -326,6 +403,10 @@ export interface FeatureMembershipState {
      */
     mesh?: pulumi.Input<inputs.gkehub.FeatureMembershipMesh>;
     /**
+     * Policy Controller-specific spec. Structure is documented below.
+     */
+    policycontroller?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontroller>;
+    /**
      * The project of the feature
      */
     project?: pulumi.Input<string>;
@@ -359,6 +440,10 @@ export interface FeatureMembershipArgs {
      * Service mesh specific spec. Structure is documented below.
      */
     mesh?: pulumi.Input<inputs.gkehub.FeatureMembershipMesh>;
+    /**
+     * Policy Controller-specific spec. Structure is documented below.
+     */
+    policycontroller?: pulumi.Input<inputs.gkehub.FeatureMembershipPolicycontroller>;
     /**
      * The project of the feature
      */

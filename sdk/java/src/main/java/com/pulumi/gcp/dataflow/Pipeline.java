@@ -283,14 +283,14 @@ public class Pipeline extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="schedulerServiceAccountEmail", refs={String.class}, tree="[0]")
-    private Output</* @Nullable */ String> schedulerServiceAccountEmail;
+    private Output<String> schedulerServiceAccountEmail;
 
     /**
      * @return Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
      * 
      */
-    public Output<Optional<String>> schedulerServiceAccountEmail() {
-        return Codegen.optional(this.schedulerServiceAccountEmail);
+    public Output<String> schedulerServiceAccountEmail() {
+        return this.schedulerServiceAccountEmail;
     }
     /**
      * The state of the pipeline. When the pipeline is created, the state is set to &#39;PIPELINE_STATE_ACTIVE&#39; by default. State changes can be requested by setting the state to stopping, paused, or resuming. State cannot be changed through pipelines.patch requests.

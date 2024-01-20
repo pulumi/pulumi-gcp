@@ -4,6 +4,7 @@
 package com.pulumi.gcp.gkehub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.gkehub.outputs.FeatureSpecClusterupgrade;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpecFleetobservability;
 import com.pulumi.gcp.gkehub.outputs.FeatureSpecMulticlusteringress;
 import java.util.Objects;
@@ -12,6 +13,12 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureSpec {
+    /**
+     * @return Clusterupgrade feature spec.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable FeatureSpecClusterupgrade clusterupgrade;
     /**
      * @return Fleet Observability feature spec.
      * Structure is documented below.
@@ -26,6 +33,14 @@ public final class FeatureSpec {
     private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
 
     private FeatureSpec() {}
+    /**
+     * @return Clusterupgrade feature spec.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<FeatureSpecClusterupgrade> clusterupgrade() {
+        return Optional.ofNullable(this.clusterupgrade);
+    }
     /**
      * @return Fleet Observability feature spec.
      * Structure is documented below.
@@ -52,15 +67,23 @@ public final class FeatureSpec {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable FeatureSpecClusterupgrade clusterupgrade;
         private @Nullable FeatureSpecFleetobservability fleetobservability;
         private @Nullable FeatureSpecMulticlusteringress multiclusteringress;
         public Builder() {}
         public Builder(FeatureSpec defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.clusterupgrade = defaults.clusterupgrade;
     	      this.fleetobservability = defaults.fleetobservability;
     	      this.multiclusteringress = defaults.multiclusteringress;
         }
 
+        @CustomType.Setter
+        public Builder clusterupgrade(@Nullable FeatureSpecClusterupgrade clusterupgrade) {
+
+            this.clusterupgrade = clusterupgrade;
+            return this;
+        }
         @CustomType.Setter
         public Builder fleetobservability(@Nullable FeatureSpecFleetobservability fleetobservability) {
 
@@ -75,6 +98,7 @@ public final class FeatureSpec {
         }
         public FeatureSpec build() {
             final var _resultValue = new FeatureSpec();
+            _resultValue.clusterupgrade = clusterupgrade;
             _resultValue.fleetobservability = fleetobservability;
             _resultValue.multiclusteringress = multiclusteringress;
             return _resultValue;

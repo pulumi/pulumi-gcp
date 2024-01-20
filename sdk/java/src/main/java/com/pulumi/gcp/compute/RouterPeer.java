@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.RouterPeerArgs;
 import com.pulumi.gcp.compute.inputs.RouterPeerState;
 import com.pulumi.gcp.compute.outputs.RouterPeerAdvertisedIpRange;
 import com.pulumi.gcp.compute.outputs.RouterPeerBfd;
+import com.pulumi.gcp.compute.outputs.RouterPeerMd5AuthenticationKey;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -498,6 +499,22 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<String> managementType() {
         return this.managementType;
+    }
+    /**
+     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * 
+     */
+    @Export(name="md5AuthenticationKey", refs={RouterPeerMd5AuthenticationKey.class}, tree="[0]")
+    private Output</* @Nullable */ RouterPeerMd5AuthenticationKey> md5AuthenticationKey;
+
+    /**
+     * @return Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * 
+     */
+    public Output<Optional<RouterPeerMd5AuthenticationKey>> md5AuthenticationKey() {
+        return Codegen.optional(this.md5AuthenticationKey);
     }
     /**
      * Name of this BGP peer. The name must be 1-63 characters long,

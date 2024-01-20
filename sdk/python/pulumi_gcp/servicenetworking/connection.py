@@ -16,7 +16,8 @@ class ConnectionArgs:
     def __init__(__self__, *,
                  network: pulumi.Input[str],
                  reserved_peering_ranges: pulumi.Input[Sequence[pulumi.Input[str]]],
-                 service: pulumi.Input[str]):
+                 service: pulumi.Input[str],
+                 deletion_policy: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
         :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.
@@ -26,10 +27,14 @@ class ConnectionArgs:
         :param pulumi.Input[str] service: Provider peering service that is managing peering connectivity for a
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
+        :param pulumi.Input[str] deletion_policy: When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+               failures with CloudSQL. Note: The resource will still exist.
         """
         pulumi.set(__self__, "network", network)
         pulumi.set(__self__, "reserved_peering_ranges", reserved_peering_ranges)
         pulumi.set(__self__, "service", service)
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
 
     @property
     @pulumi.getter
@@ -71,16 +76,32 @@ class ConnectionArgs:
     def service(self, value: pulumi.Input[str]):
         pulumi.set(self, "service", value)
 
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+        failures with CloudSQL. Note: The resource will still exist.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
+
 
 @pulumi.input_type
 class _ConnectionState:
     def __init__(__self__, *,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  peering: Optional[pulumi.Input[str]] = None,
                  reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Connection resources.
+        :param pulumi.Input[str] deletion_policy: When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+               failures with CloudSQL. Note: The resource will still exist.
         :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[str] peering: (Computed) The name of the VPC Network Peering connection that was created by the service producer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
@@ -90,6 +111,8 @@ class _ConnectionState:
                service provider organization. For Google services that support this functionality it is
                'servicenetworking.googleapis.com'.
         """
+        if deletion_policy is not None:
+            pulumi.set(__self__, "deletion_policy", deletion_policy)
         if network is not None:
             pulumi.set(__self__, "network", network)
         if peering is not None:
@@ -98,6 +121,19 @@ class _ConnectionState:
             pulumi.set(__self__, "reserved_peering_ranges", reserved_peering_ranges)
         if service is not None:
             pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+        failures with CloudSQL. Note: The resource will still exist.
+        """
+        return pulumi.get(self, "deletion_policy")
+
+    @deletion_policy.setter
+    def deletion_policy(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deletion_policy", value)
 
     @property
     @pulumi.getter
@@ -157,6 +193,7 @@ class Connection(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -216,6 +253,8 @@ class Connection(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deletion_policy: When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+               failures with CloudSQL. Note: The resource will still exist.
         :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
                this service provider. Note that invoking this method with a different range when connection
@@ -298,6 +337,7 @@ class Connection(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 deletion_policy: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
                  reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  service: Optional[pulumi.Input[str]] = None,
@@ -310,6 +350,7 @@ class Connection(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = ConnectionArgs.__new__(ConnectionArgs)
 
+            __props__.__dict__["deletion_policy"] = deletion_policy
             if network is None and not opts.urn:
                 raise TypeError("Missing required property 'network'")
             __props__.__dict__["network"] = network
@@ -330,6 +371,7 @@ class Connection(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            deletion_policy: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
             peering: Optional[pulumi.Input[str]] = None,
             reserved_peering_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -341,6 +383,8 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] deletion_policy: When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+               failures with CloudSQL. Note: The resource will still exist.
         :param pulumi.Input[str] network: Name of VPC network connected with service producers using VPC peering.
         :param pulumi.Input[str] peering: (Computed) The name of the VPC Network Peering connection that was created by the service producer.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] reserved_peering_ranges: Named IP address range(s) of PEERING type reserved for
@@ -354,11 +398,21 @@ class Connection(pulumi.CustomResource):
 
         __props__ = _ConnectionState.__new__(_ConnectionState)
 
+        __props__.__dict__["deletion_policy"] = deletion_policy
         __props__.__dict__["network"] = network
         __props__.__dict__["peering"] = peering
         __props__.__dict__["reserved_peering_ranges"] = reserved_peering_ranges
         __props__.__dict__["service"] = service
         return Connection(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="deletionPolicy")
+    def deletion_policy(self) -> pulumi.Output[Optional[str]]:
+        """
+        When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+        failures with CloudSQL. Note: The resource will still exist.
+        """
+        return pulumi.get(self, "deletion_policy")
 
     @property
     @pulumi.getter

@@ -40,6 +40,11 @@ export type AiFeatureOnlineStore = import("./aiFeatureOnlineStore").AiFeatureOnl
 export const AiFeatureOnlineStore: typeof import("./aiFeatureOnlineStore").AiFeatureOnlineStore = null as any;
 utilities.lazyLoad(exports, ["AiFeatureOnlineStore"], () => require("./aiFeatureOnlineStore"));
 
+export { AiFeatureOnlineStoreFeatureviewArgs, AiFeatureOnlineStoreFeatureviewState } from "./aiFeatureOnlineStoreFeatureview";
+export type AiFeatureOnlineStoreFeatureview = import("./aiFeatureOnlineStoreFeatureview").AiFeatureOnlineStoreFeatureview;
+export const AiFeatureOnlineStoreFeatureview: typeof import("./aiFeatureOnlineStoreFeatureview").AiFeatureOnlineStoreFeatureview = null as any;
+utilities.lazyLoad(exports, ["AiFeatureOnlineStoreFeatureview"], () => require("./aiFeatureOnlineStoreFeatureview"));
+
 export { AiFeatureStoreArgs, AiFeatureStoreState } from "./aiFeatureStore";
 export type AiFeatureStore = import("./aiFeatureStore").AiFeatureStore;
 export const AiFeatureStore: typeof import("./aiFeatureStore").AiFeatureStore = null as any;
@@ -144,6 +149,8 @@ const _module = {
                 return new AiFeatureGroup(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore":
                 return new AiFeatureOnlineStore(name, <any>undefined, { urn })
+            case "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview":
+                return new AiFeatureOnlineStoreFeatureview(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureStore:AiFeatureStore":
                 return new AiFeatureStore(name, <any>undefined, { urn })
             case "gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType":
@@ -182,6 +189,7 @@ pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamMember", _modu
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiEndpointIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStore", _module)
+pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureOnlineStoreFeatureview", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStore", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreEntityType", _module)
 pulumi.runtime.registerResourceModule("gcp", "vertex/aiFeatureStoreEntityTypeFeature", _module)

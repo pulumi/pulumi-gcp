@@ -14,6 +14,9 @@ __all__ = [
     'InstanceFileShares',
     'InstanceFileSharesNfsExportOption',
     'InstanceNetwork',
+    'GetInstanceFileShareResult',
+    'GetInstanceFileShareNfsExportOptionResult',
+    'GetInstanceNetworkResult',
 ]
 
 @pulumi.output_type
@@ -321,6 +324,129 @@ class InstanceNetwork(dict):
         A /29 CIDR block that identifies the range of IP
         addresses reserved for this instance.
         """
+        return pulumi.get(self, "reserved_ip_range")
+
+
+@pulumi.output_type
+class GetInstanceFileShareResult(dict):
+    def __init__(__self__, *,
+                 capacity_gb: int,
+                 name: str,
+                 nfs_export_options: Sequence['outputs.GetInstanceFileShareNfsExportOptionResult'],
+                 source_backup: str):
+        """
+        :param str name: The name of a Filestore instance.
+               
+               - - -
+        """
+        pulumi.set(__self__, "capacity_gb", capacity_gb)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nfs_export_options", nfs_export_options)
+        pulumi.set(__self__, "source_backup", source_backup)
+
+    @property
+    @pulumi.getter(name="capacityGb")
+    def capacity_gb(self) -> int:
+        return pulumi.get(self, "capacity_gb")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of a Filestore instance.
+
+        - - -
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nfsExportOptions")
+    def nfs_export_options(self) -> Sequence['outputs.GetInstanceFileShareNfsExportOptionResult']:
+        return pulumi.get(self, "nfs_export_options")
+
+    @property
+    @pulumi.getter(name="sourceBackup")
+    def source_backup(self) -> str:
+        return pulumi.get(self, "source_backup")
+
+
+@pulumi.output_type
+class GetInstanceFileShareNfsExportOptionResult(dict):
+    def __init__(__self__, *,
+                 access_mode: str,
+                 anon_gid: int,
+                 anon_uid: int,
+                 ip_ranges: Sequence[str],
+                 squash_mode: str):
+        pulumi.set(__self__, "access_mode", access_mode)
+        pulumi.set(__self__, "anon_gid", anon_gid)
+        pulumi.set(__self__, "anon_uid", anon_uid)
+        pulumi.set(__self__, "ip_ranges", ip_ranges)
+        pulumi.set(__self__, "squash_mode", squash_mode)
+
+    @property
+    @pulumi.getter(name="accessMode")
+    def access_mode(self) -> str:
+        return pulumi.get(self, "access_mode")
+
+    @property
+    @pulumi.getter(name="anonGid")
+    def anon_gid(self) -> int:
+        return pulumi.get(self, "anon_gid")
+
+    @property
+    @pulumi.getter(name="anonUid")
+    def anon_uid(self) -> int:
+        return pulumi.get(self, "anon_uid")
+
+    @property
+    @pulumi.getter(name="ipRanges")
+    def ip_ranges(self) -> Sequence[str]:
+        return pulumi.get(self, "ip_ranges")
+
+    @property
+    @pulumi.getter(name="squashMode")
+    def squash_mode(self) -> str:
+        return pulumi.get(self, "squash_mode")
+
+
+@pulumi.output_type
+class GetInstanceNetworkResult(dict):
+    def __init__(__self__, *,
+                 connect_mode: str,
+                 ip_addresses: Sequence[str],
+                 modes: Sequence[str],
+                 network: str,
+                 reserved_ip_range: str):
+        pulumi.set(__self__, "connect_mode", connect_mode)
+        pulumi.set(__self__, "ip_addresses", ip_addresses)
+        pulumi.set(__self__, "modes", modes)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "reserved_ip_range", reserved_ip_range)
+
+    @property
+    @pulumi.getter(name="connectMode")
+    def connect_mode(self) -> str:
+        return pulumi.get(self, "connect_mode")
+
+    @property
+    @pulumi.getter(name="ipAddresses")
+    def ip_addresses(self) -> Sequence[str]:
+        return pulumi.get(self, "ip_addresses")
+
+    @property
+    @pulumi.getter
+    def modes(self) -> Sequence[str]:
+        return pulumi.get(self, "modes")
+
+    @property
+    @pulumi.getter
+    def network(self) -> str:
+        return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="reservedIpRange")
+    def reserved_ip_range(self) -> str:
         return pulumi.get(self, "reserved_ip_range")
 
 

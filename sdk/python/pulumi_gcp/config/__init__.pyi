@@ -90,6 +90,8 @@ cloudbuildv2CustomEndpoint: Optional[str]
 
 clouddeployCustomEndpoint: Optional[str]
 
+clouddomainsCustomEndpoint: Optional[str]
+
 cloudfunctions2CustomEndpoint: Optional[str]
 
 composerCustomEndpoint: Optional[str]

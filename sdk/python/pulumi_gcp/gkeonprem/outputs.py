@@ -6315,8 +6315,7 @@ class VMwareNodePoolConfig(dict):
         :param int replicas: The number of nodes in the node pool.
         :param Sequence['VMwareNodePoolConfigTaintArgs'] taints: The initial taints assigned to nodes of this node pool.
                Structure is documented below.
-        :param Sequence['VMwareNodePoolConfigVsphereConfigArgs'] vsphere_configs: (Output)
-               Specifies the vSphere config for node pool.
+        :param Sequence['VMwareNodePoolConfigVsphereConfigArgs'] vsphere_configs: Specifies the vSphere config for node pool.
                Structure is documented below.
         """
         pulumi.set(__self__, "image_type", image_type)
@@ -6423,7 +6422,6 @@ class VMwareNodePoolConfig(dict):
     @pulumi.getter(name="vsphereConfigs")
     def vsphere_configs(self) -> Optional[Sequence['outputs.VMwareNodePoolConfigVsphereConfig']]:
         """
-        (Output)
         Specifies the vSphere config for node pool.
         Structure is documented below.
         """
@@ -6441,8 +6439,6 @@ class VMwareNodePoolConfigTaint(dict):
         :param str value: Value associated with the effect.
         :param str effect: Available taint effects.
                Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-               
-               <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
         """
         pulumi.set(__self__, "key", key)
         pulumi.set(__self__, "value", value)
@@ -6471,29 +6467,43 @@ class VMwareNodePoolConfigTaint(dict):
         """
         Available taint effects.
         Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-
-        <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
         """
         return pulumi.get(self, "effect")
 
 
 @pulumi.output_type
 class VMwareNodePoolConfigVsphereConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "hostGroups":
+            suggest = "host_groups"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in VMwareNodePoolConfigVsphereConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        VMwareNodePoolConfigVsphereConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        VMwareNodePoolConfigVsphereConfig.__key_warning(key)
+        return super().get(key, default)
+
     def __init__(__self__, *,
                  datastore: Optional[str] = None,
+                 host_groups: Optional[Sequence[str]] = None,
                  tags: Optional[Sequence['outputs.VMwareNodePoolConfigVsphereConfigTag']] = None):
         """
-        :param str datastore: (Output)
-               The name of the vCenter datastore. Inherited from the user cluster.
-        :param Sequence['VMwareNodePoolConfigVsphereConfigTagArgs'] tags: (Output)
-               Tags to apply to VMs.
+        :param str datastore: The name of the vCenter datastore. Inherited from the user cluster.
+        :param Sequence[str] host_groups: Vsphere host groups to apply to all VMs in the node pool
+        :param Sequence['VMwareNodePoolConfigVsphereConfigTagArgs'] tags: Tags to apply to VMs.
                Structure is documented below.
-               
-               
-               <a name="nested_tags"></a>The `tags` block contains:
         """
         if datastore is not None:
             pulumi.set(__self__, "datastore", datastore)
+        if host_groups is not None:
+            pulumi.set(__self__, "host_groups", host_groups)
         if tags is not None:
             pulumi.set(__self__, "tags", tags)
 
@@ -6501,21 +6511,24 @@ class VMwareNodePoolConfigVsphereConfig(dict):
     @pulumi.getter
     def datastore(self) -> Optional[str]:
         """
-        (Output)
         The name of the vCenter datastore. Inherited from the user cluster.
         """
         return pulumi.get(self, "datastore")
 
     @property
+    @pulumi.getter(name="hostGroups")
+    def host_groups(self) -> Optional[Sequence[str]]:
+        """
+        Vsphere host groups to apply to all VMs in the node pool
+        """
+        return pulumi.get(self, "host_groups")
+
+    @property
     @pulumi.getter
     def tags(self) -> Optional[Sequence['outputs.VMwareNodePoolConfigVsphereConfigTag']]:
         """
-        (Output)
         Tags to apply to VMs.
         Structure is documented below.
-
-
-        <a name="nested_tags"></a>The `tags` block contains:
         """
         return pulumi.get(self, "tags")
 
@@ -6526,10 +6539,8 @@ class VMwareNodePoolConfigVsphereConfigTag(dict):
                  category: Optional[str] = None,
                  tag: Optional[str] = None):
         """
-        :param str category: (Output)
-               The Vsphere tag category.
-        :param str tag: (Output)
-               The Vsphere tag name.
+        :param str category: The Vsphere tag category.
+        :param str tag: The Vsphere tag name.
                
                - - -
         """
@@ -6542,7 +6553,6 @@ class VMwareNodePoolConfigVsphereConfigTag(dict):
     @pulumi.getter
     def category(self) -> Optional[str]:
         """
-        (Output)
         The Vsphere tag category.
         """
         return pulumi.get(self, "category")
@@ -6551,7 +6561,6 @@ class VMwareNodePoolConfigVsphereConfigTag(dict):
     @pulumi.getter
     def tag(self) -> Optional[str]:
         """
-        (Output)
         The Vsphere tag name.
 
         - - -

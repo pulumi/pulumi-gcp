@@ -286,11 +286,16 @@ func NewDatabaseInstance(ctx *pulumi.Context,
 	if args.DatabaseVersion == nil {
 		return nil, errors.New("invalid value for required argument 'DatabaseVersion'")
 	}
+	if args.ReplicaConfiguration != nil {
+		args.ReplicaConfiguration = pulumi.ToSecret(args.ReplicaConfiguration).(DatabaseInstanceReplicaConfigurationPtrInput)
+	}
 	if args.RootPassword != nil {
 		args.RootPassword = pulumi.ToSecret(args.RootPassword).(pulumi.StringPtrInput)
 	}
 	secrets := pulumi.AdditionalSecretOutputs([]string{
+		"replicaConfiguration",
 		"rootPassword",
+		"serverCaCerts",
 	})
 	opts = append(opts, secrets)
 	opts = internal.PkgResourceDefaultOpts(opts)

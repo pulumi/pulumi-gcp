@@ -57,6 +57,7 @@ type Provider struct {
 	CloudTasksCustomEndpoint               pulumi.StringPtrOutput `pulumi:"cloudTasksCustomEndpoint"`
 	Cloudbuildv2CustomEndpoint             pulumi.StringPtrOutput `pulumi:"cloudbuildv2CustomEndpoint"`
 	ClouddeployCustomEndpoint              pulumi.StringPtrOutput `pulumi:"clouddeployCustomEndpoint"`
+	ClouddomainsCustomEndpoint             pulumi.StringPtrOutput `pulumi:"clouddomainsCustomEndpoint"`
 	Cloudfunctions2CustomEndpoint          pulumi.StringPtrOutput `pulumi:"cloudfunctions2CustomEndpoint"`
 	ComposerCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"computeCustomEndpoint"`
@@ -243,6 +244,7 @@ type providerArgs struct {
 	CloudTasksCustomEndpoint               *string           `pulumi:"cloudTasksCustomEndpoint"`
 	Cloudbuildv2CustomEndpoint             *string           `pulumi:"cloudbuildv2CustomEndpoint"`
 	ClouddeployCustomEndpoint              *string           `pulumi:"clouddeployCustomEndpoint"`
+	ClouddomainsCustomEndpoint             *string           `pulumi:"clouddomainsCustomEndpoint"`
 	Cloudfunctions2CustomEndpoint          *string           `pulumi:"cloudfunctions2CustomEndpoint"`
 	ComposerCustomEndpoint                 *string           `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint                  *string           `pulumi:"computeCustomEndpoint"`
@@ -404,6 +406,7 @@ type ProviderArgs struct {
 	CloudTasksCustomEndpoint               pulumi.StringPtrInput
 	Cloudbuildv2CustomEndpoint             pulumi.StringPtrInput
 	ClouddeployCustomEndpoint              pulumi.StringPtrInput
+	ClouddomainsCustomEndpoint             pulumi.StringPtrInput
 	Cloudfunctions2CustomEndpoint          pulumi.StringPtrInput
 	ComposerCustomEndpoint                 pulumi.StringPtrInput
 	ComputeCustomEndpoint                  pulumi.StringPtrInput
@@ -714,6 +717,10 @@ func (o ProviderOutput) Cloudbuildv2CustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) ClouddeployCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClouddeployCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ClouddomainsCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ClouddomainsCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) Cloudfunctions2CustomEndpoint() pulumi.StringPtrOutput {

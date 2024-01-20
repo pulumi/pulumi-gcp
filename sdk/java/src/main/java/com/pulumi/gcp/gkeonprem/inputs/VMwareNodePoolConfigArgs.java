@@ -174,7 +174,6 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Output)
      * Specifies the vSphere config for node pool.
      * Structure is documented below.
      * 
@@ -183,8 +182,7 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<List<VMwareNodePoolConfigVsphereConfigArgs>> vsphereConfigs;
 
     /**
-     * @return (Output)
-     * Specifies the vSphere config for node pool.
+     * @return Specifies the vSphere config for node pool.
      * Structure is documented below.
      * 
      */
@@ -442,8 +440,7 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vsphereConfigs (Output)
-         * Specifies the vSphere config for node pool.
+         * @param vsphereConfigs Specifies the vSphere config for node pool.
          * Structure is documented below.
          * 
          * @return builder
@@ -455,8 +452,7 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vsphereConfigs (Output)
-         * Specifies the vSphere config for node pool.
+         * @param vsphereConfigs Specifies the vSphere config for node pool.
          * Structure is documented below.
          * 
          * @return builder
@@ -467,8 +463,7 @@ public final class VMwareNodePoolConfigArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param vsphereConfigs (Output)
-         * Specifies the vSphere config for node pool.
+         * @param vsphereConfigs Specifies the vSphere config for node pool.
          * Structure is documented below.
          * 
          * @return builder

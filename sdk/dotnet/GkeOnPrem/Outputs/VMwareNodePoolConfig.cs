@@ -58,7 +58,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.VMwareNodePoolConfigTaint> Taints;
         /// <summary>
-        /// (Output)
         /// Specifies the vSphere config for node pool.
         /// Structure is documented below.
         /// </summary>

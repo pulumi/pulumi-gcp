@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     {
         [Input("backends")]
         private InputList<string>? _backends;
+
+        /// <summary>
+        /// Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+        /// </summary>
         public InputList<string> Backends
         {
             get => _backends ?? (_backends = new InputList<string>());

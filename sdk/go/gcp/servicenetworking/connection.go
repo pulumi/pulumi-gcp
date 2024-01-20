@@ -98,6 +98,9 @@ import (
 type Connection struct {
 	pulumi.CustomResourceState
 
+	// When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+	// failures with CloudSQL. Note: The resource will still exist.
+	DeletionPolicy pulumi.StringPtrOutput `pulumi:"deletionPolicy"`
 	// Name of VPC network connected with service producers using VPC peering.
 	Network pulumi.StringOutput `pulumi:"network"`
 	// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
@@ -151,6 +154,9 @@ func GetConnection(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Connection resources.
 type connectionState struct {
+	// When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+	// failures with CloudSQL. Note: The resource will still exist.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of VPC network connected with service producers using VPC peering.
 	Network *string `pulumi:"network"`
 	// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
@@ -166,6 +172,9 @@ type connectionState struct {
 }
 
 type ConnectionState struct {
+	// When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+	// failures with CloudSQL. Note: The resource will still exist.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of VPC network connected with service producers using VPC peering.
 	Network pulumi.StringPtrInput
 	// (Computed) The name of the VPC Network Peering connection that was created by the service producer.
@@ -185,6 +194,9 @@ func (ConnectionState) ElementType() reflect.Type {
 }
 
 type connectionArgs struct {
+	// When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+	// failures with CloudSQL. Note: The resource will still exist.
+	DeletionPolicy *string `pulumi:"deletionPolicy"`
 	// Name of VPC network connected with service producers using VPC peering.
 	Network string `pulumi:"network"`
 	// Named IP address range(s) of PEERING type reserved for
@@ -199,6 +211,9 @@ type connectionArgs struct {
 
 // The set of arguments for constructing a Connection resource.
 type ConnectionArgs struct {
+	// When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+	// failures with CloudSQL. Note: The resource will still exist.
+	DeletionPolicy pulumi.StringPtrInput
 	// Name of VPC network connected with service producers using VPC peering.
 	Network pulumi.StringInput
 	// Named IP address range(s) of PEERING type reserved for
@@ -296,6 +311,12 @@ func (o ConnectionOutput) ToConnectionOutput() ConnectionOutput {
 
 func (o ConnectionOutput) ToConnectionOutputWithContext(ctx context.Context) ConnectionOutput {
 	return o
+}
+
+// When set to ABANDON, terraform will abandon management of the resource instead of deleting it. Prevents terraform apply
+// failures with CloudSQL. Note: The resource will still exist.
+func (o ConnectionOutput) DeletionPolicy() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.DeletionPolicy }).(pulumi.StringPtrOutput)
 }
 
 // Name of VPC network connected with service producers using VPC peering.

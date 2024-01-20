@@ -5,6 +5,7 @@ package com.pulumi.gcp.gkehub.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.gkehub.inputs.FeatureSpecClusterupgradeArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecFleetobservabilityArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureSpecMulticlusteringressArgs;
 import java.util.Objects;
@@ -15,6 +16,23 @@ import javax.annotation.Nullable;
 public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final FeatureSpecArgs Empty = new FeatureSpecArgs();
+
+    /**
+     * Clusterupgrade feature spec.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="clusterupgrade")
+    private @Nullable Output<FeatureSpecClusterupgradeArgs> clusterupgrade;
+
+    /**
+     * @return Clusterupgrade feature spec.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureSpecClusterupgradeArgs>> clusterupgrade() {
+        return Optional.ofNullable(this.clusterupgrade);
+    }
 
     /**
      * Fleet Observability feature spec.
@@ -53,6 +71,7 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
     private FeatureSpecArgs() {}
 
     private FeatureSpecArgs(FeatureSpecArgs $) {
+        this.clusterupgrade = $.clusterupgrade;
         this.fleetobservability = $.fleetobservability;
         this.multiclusteringress = $.multiclusteringress;
     }
@@ -73,6 +92,29 @@ public final class FeatureSpecArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(FeatureSpecArgs defaults) {
             $ = new FeatureSpecArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param clusterupgrade Clusterupgrade feature spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterupgrade(@Nullable Output<FeatureSpecClusterupgradeArgs> clusterupgrade) {
+            $.clusterupgrade = clusterupgrade;
+            return this;
+        }
+
+        /**
+         * @param clusterupgrade Clusterupgrade feature spec.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder clusterupgrade(FeatureSpecClusterupgradeArgs clusterupgrade) {
+            return clusterupgrade(Output.of(clusterupgrade));
         }
 
         /**

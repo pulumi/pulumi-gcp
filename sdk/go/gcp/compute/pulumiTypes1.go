@@ -13,6 +13,174 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy struct {
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
+	Abort *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort `pulumi:"abort"`
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
+	Delay *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay `pulumi:"delay"`
+}
+
+// URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs and URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyInput` via:
+//
+//	URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs{...}
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput
+	ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput
+}
+
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs struct {
+	// The specification for how client requests are aborted as part of fault injection.
+	// Structure is documented below.
+	Abort URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrInput `pulumi:"abort"`
+	// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+	// Structure is documented below.
+	Delay URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrInput `pulumi:"delay"`
+}
+
+func (URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput)
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput).ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx)
+}
+
+// URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput is an input type that accepts URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs, URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtr and URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput values.
+// You can construct a concrete instance of `URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput` via:
+//
+//	        URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs{...}
+//
+//	or:
+//
+//	        nil
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput interface {
+	pulumi.Input
+
+	ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput
+	ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput
+}
+
+type urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrType URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs
+
+func URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtr(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput {
+	return (*urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrType)(v)
+}
+
+func (*urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return i.ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (i *urlmapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrType) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(context.Background())
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+		return &v
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput)
+}
+
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) Abort() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+		return v.Abort
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput) Delay() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
+		return v.Delay
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
+type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput struct{ *pulumi.OutputState }
+
+func (URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy)(nil)).Elem()
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) ToURLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutputWithContext(ctx context.Context) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput {
+	return o
+}
+
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) Elem() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy {
+		if v != nil {
+			return *v
+		}
+		var ret URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy
+		return ret
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput)
+}
+
+// The specification for how client requests are aborted as part of fault injection.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) Abort() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort {
+		if v == nil {
+			return nil
+		}
+		return v.Abort
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput)
+}
+
+// The specification for how client requests are delayed as part of fault injection, before being sent to a backend service.
+// Structure is documented below.
+func (o URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput) Delay() URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput {
+	return o.ApplyT(func(v *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicy) *URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelay {
+		if v == nil {
+			return nil
+		}
+		return v.Delay
+	}).(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayPtrOutput)
+}
+
 type URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbort struct {
 	// The HTTP status code used to abort the request.
 	// The value must be between 200 and 599 inclusive.
@@ -20924,6 +21092,8 @@ func (o GetSubnetworkSecondaryIpRangeArrayOutput) Index(i pulumi.IntInput) GetSu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayInput)(nil)).Elem(), URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayArgs{})
@@ -21268,6 +21438,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSnapshotSourceDiskEncryptionKeyArrayInput)(nil)).Elem(), GetSnapshotSourceDiskEncryptionKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyOutput{})
+	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyAbortPtrOutput{})
 	pulumi.RegisterOutputType(URLMapPathMatcherRouteRuleRouteActionFaultInjectionPolicyDelayOutput{})

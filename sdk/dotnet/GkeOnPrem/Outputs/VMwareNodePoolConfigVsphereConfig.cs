@@ -14,17 +14,16 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
     public sealed class VMwareNodePoolConfigVsphereConfig
     {
         /// <summary>
-        /// (Output)
         /// The name of the vCenter datastore. Inherited from the user cluster.
         /// </summary>
         public readonly string? Datastore;
         /// <summary>
-        /// (Output)
+        /// Vsphere host groups to apply to all VMs in the node pool
+        /// </summary>
+        public readonly ImmutableArray<string> HostGroups;
+        /// <summary>
         /// Tags to apply to VMs.
         /// Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_tags"&gt;&lt;/a&gt;The `tags` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.VMwareNodePoolConfigVsphereConfigTag> Tags;
 
@@ -32,9 +31,12 @@ namespace Pulumi.Gcp.GkeOnPrem.Outputs
         private VMwareNodePoolConfigVsphereConfig(
             string? datastore,
 
+            ImmutableArray<string> hostGroups,
+
             ImmutableArray<Outputs.VMwareNodePoolConfigVsphereConfigTag> tags)
         {
             Datastore = datastore;
+            HostGroups = hostGroups;
             Tags = tags;
         }
     }

@@ -329,6 +329,14 @@ Object.defineProperty(exports, "clouddeployCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const clouddomainsCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "clouddomainsCustomEndpoint", {
+    get() {
+        return __config.get("clouddomainsCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const cloudfunctions2CustomEndpoint: string | undefined;
 Object.defineProperty(exports, "cloudfunctions2CustomEndpoint", {
     get() {

@@ -340,6 +340,34 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// ### Gkehub Feature Clusterupgrade
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///         Spec = new Gcp.GkeHub.Inputs.FeatureSpecArgs
+    ///         {
+    ///             Clusterupgrade = new Gcp.GkeHub.Inputs.FeatureSpecClusterupgradeArgs
+    ///             {
+    ///                 PostConditions = new Gcp.GkeHub.Inputs.FeatureSpecClusterupgradePostConditionsArgs
+    ///                 {
+    ///                     Soaking = "60s",
+    ///                 },
+    ///                 UpstreamFleets = new() { },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -39,8 +39,18 @@ __all__ = [
     'FeatureMembershipConfigmanagementPolicyController',
     'FeatureMembershipConfigmanagementPolicyControllerMonitoring',
     'FeatureMembershipMesh',
+    'FeatureMembershipPolicycontroller',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfig',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent',
+    'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary',
     'FeatureResourceState',
     'FeatureSpec',
+    'FeatureSpecClusterupgrade',
+    'FeatureSpecClusterupgradeGkeUpgradeOverride',
+    'FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions',
+    'FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade',
+    'FeatureSpecClusterupgradePostConditions',
     'FeatureSpecFleetobservability',
     'FeatureSpecFleetobservabilityLoggingConfig',
     'FeatureSpecFleetobservabilityLoggingConfigDefaultConfig',
@@ -1772,12 +1782,18 @@ class FeatureMembershipConfigmanagementPolicyController(dict):
 class FeatureMembershipConfigmanagementPolicyControllerMonitoring(dict):
     def __init__(__self__, *,
                  backends: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] backends: Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+        """
         if backends is not None:
             pulumi.set(__self__, "backends", backends)
 
     @property
     @pulumi.getter
     def backends(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+        """
         return pulumi.get(self, "backends")
 
 
@@ -1826,6 +1842,273 @@ class FeatureMembershipMesh(dict):
         Whether to automatically manage Service Mesh. Can either be `MANAGEMENT_AUTOMATIC` or `MANAGEMENT_MANUAL`.
         """
         return pulumi.get(self, "management")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontroller(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "policyControllerHubConfig":
+            suggest = "policy_controller_hub_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipPolicycontroller. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipPolicycontroller.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipPolicycontroller.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 policy_controller_hub_config: 'outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfig',
+                 version: Optional[str] = None):
+        """
+        :param 'FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs' policy_controller_hub_config: Policy Controller configuration for the cluster. Structure is documented below.
+        :param str version: Version of Policy Controller to install. Defaults to the latest version.
+        """
+        pulumi.set(__self__, "policy_controller_hub_config", policy_controller_hub_config)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="policyControllerHubConfig")
+    def policy_controller_hub_config(self) -> 'outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfig':
+        """
+        Policy Controller configuration for the cluster. Structure is documented below.
+        """
+        return pulumi.get(self, "policy_controller_hub_config")
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[str]:
+        """
+        Version of Policy Controller to install. Defaults to the latest version.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "auditIntervalSeconds":
+            suggest = "audit_interval_seconds"
+        elif key == "constraintViolationLimit":
+            suggest = "constraint_violation_limit"
+        elif key == "exemptableNamespaces":
+            suggest = "exemptable_namespaces"
+        elif key == "installSpec":
+            suggest = "install_spec"
+        elif key == "logDeniesEnabled":
+            suggest = "log_denies_enabled"
+        elif key == "mutationEnabled":
+            suggest = "mutation_enabled"
+        elif key == "policyContent":
+            suggest = "policy_content"
+        elif key == "referentialRulesEnabled":
+            suggest = "referential_rules_enabled"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipPolicycontrollerPolicyControllerHubConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipPolicycontrollerPolicyControllerHubConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipPolicycontrollerPolicyControllerHubConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 audit_interval_seconds: Optional[int] = None,
+                 constraint_violation_limit: Optional[int] = None,
+                 exemptable_namespaces: Optional[Sequence[str]] = None,
+                 install_spec: Optional[str] = None,
+                 log_denies_enabled: Optional[bool] = None,
+                 monitoring: Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring'] = None,
+                 mutation_enabled: Optional[bool] = None,
+                 policy_content: Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent'] = None,
+                 referential_rules_enabled: Optional[bool] = None):
+        """
+        :param int audit_interval_seconds: Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        :param int constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
+        :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        :param str install_spec: Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
+        :param bool log_denies_enabled: Logs all denies and dry run failures.
+        :param 'FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoringArgs' monitoring: Specifies the backends Policy Controller should export metrics to. Structure is documented below.
+        :param bool mutation_enabled: Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+        :param 'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs' policy_content: Specifies the desired policy content on the cluster. Structure is documented below.
+        :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        if audit_interval_seconds is not None:
+            pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+        if constraint_violation_limit is not None:
+            pulumi.set(__self__, "constraint_violation_limit", constraint_violation_limit)
+        if exemptable_namespaces is not None:
+            pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+        if install_spec is not None:
+            pulumi.set(__self__, "install_spec", install_spec)
+        if log_denies_enabled is not None:
+            pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+        if monitoring is not None:
+            pulumi.set(__self__, "monitoring", monitoring)
+        if mutation_enabled is not None:
+            pulumi.set(__self__, "mutation_enabled", mutation_enabled)
+        if policy_content is not None:
+            pulumi.set(__self__, "policy_content", policy_content)
+        if referential_rules_enabled is not None:
+            pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+
+    @property
+    @pulumi.getter(name="auditIntervalSeconds")
+    def audit_interval_seconds(self) -> Optional[int]:
+        """
+        Sets the interval for Policy Controller Audit Scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        return pulumi.get(self, "audit_interval_seconds")
+
+    @property
+    @pulumi.getter(name="constraintViolationLimit")
+    def constraint_violation_limit(self) -> Optional[int]:
+        """
+        The maximum number of audit violations to be stored in a constraint. If not set, the  default of 20 will be used.
+        """
+        return pulumi.get(self, "constraint_violation_limit")
+
+    @property
+    @pulumi.getter(name="exemptableNamespaces")
+    def exemptable_namespaces(self) -> Optional[Sequence[str]]:
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        return pulumi.get(self, "exemptable_namespaces")
+
+    @property
+    @pulumi.getter(name="installSpec")
+    def install_spec(self) -> Optional[str]:
+        """
+        Configures the mode of the Policy Controller installation. Must be one of `INSTALL_SPEC_NOT_INSTALLED`, `INSTALL_SPEC_ENABLED`, `INSTALL_SPEC_SUSPENDED` or `INSTALL_SPEC_DETACHED`.
+        """
+        return pulumi.get(self, "install_spec")
+
+    @property
+    @pulumi.getter(name="logDeniesEnabled")
+    def log_denies_enabled(self) -> Optional[bool]:
+        """
+        Logs all denies and dry run failures.
+        """
+        return pulumi.get(self, "log_denies_enabled")
+
+    @property
+    @pulumi.getter
+    def monitoring(self) -> Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring']:
+        """
+        Specifies the backends Policy Controller should export metrics to. Structure is documented below.
+        """
+        return pulumi.get(self, "monitoring")
+
+    @property
+    @pulumi.getter(name="mutationEnabled")
+    def mutation_enabled(self) -> Optional[bool]:
+        """
+        Enables mutation in policy controller. If true, mutation CRDs, webhook, and controller deployment will be deployed to the cluster.
+        """
+        return pulumi.get(self, "mutation_enabled")
+
+    @property
+    @pulumi.getter(name="policyContent")
+    def policy_content(self) -> Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent']:
+        """
+        Specifies the desired policy content on the cluster. Structure is documented below.
+        """
+        return pulumi.get(self, "policy_content")
+
+    @property
+    @pulumi.getter(name="referentialRulesEnabled")
+    def referential_rules_enabled(self) -> Optional[bool]:
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        return pulumi.get(self, "referential_rules_enabled")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfigMonitoring(dict):
+    def __init__(__self__, *,
+                 backends: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] backends: Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+        """
+        if backends is not None:
+            pulumi.set(__self__, "backends", backends)
+
+    @property
+    @pulumi.getter
+    def backends(self) -> Optional[Sequence[str]]:
+        """
+        Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+        """
+        return pulumi.get(self, "backends")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "templateLibrary":
+            suggest = "template_library"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContent.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 template_library: Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary'] = None):
+        """
+        :param 'FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs' template_library: Configures the installation of the Template Library. Structure is documented below.
+        """
+        if template_library is not None:
+            pulumi.set(__self__, "template_library", template_library)
+
+    @property
+    @pulumi.getter(name="templateLibrary")
+    def template_library(self) -> Optional['outputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary']:
+        """
+        Configures the installation of the Template Library. Structure is documented below.
+        """
+        return pulumi.get(self, "template_library")
+
+
+@pulumi.output_type
+class FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary(dict):
+    def __init__(__self__, *,
+                 installation: Optional[str] = None):
+        """
+        :param str installation: Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
+        """
+        if installation is not None:
+            pulumi.set(__self__, "installation", installation)
+
+    @property
+    @pulumi.getter
+    def installation(self) -> Optional[str]:
+        """
+        Configures the manner in which the template library is installed on the cluster. Must be one of `ALL`, `NOT_INSTALLED` or `INSTALLATION_UNSPECIFIED`. Defaults to `ALL`.
+        """
+        return pulumi.get(self, "installation")
 
 
 @pulumi.output_type
@@ -1885,18 +2168,32 @@ class FeatureResourceState(dict):
 @pulumi.output_type
 class FeatureSpec(dict):
     def __init__(__self__, *,
+                 clusterupgrade: Optional['outputs.FeatureSpecClusterupgrade'] = None,
                  fleetobservability: Optional['outputs.FeatureSpecFleetobservability'] = None,
                  multiclusteringress: Optional['outputs.FeatureSpecMulticlusteringress'] = None):
         """
+        :param 'FeatureSpecClusterupgradeArgs' clusterupgrade: Clusterupgrade feature spec.
+               Structure is documented below.
         :param 'FeatureSpecFleetobservabilityArgs' fleetobservability: Fleet Observability feature spec.
                Structure is documented below.
         :param 'FeatureSpecMulticlusteringressArgs' multiclusteringress: Multicluster Ingress-specific spec.
                Structure is documented below.
         """
+        if clusterupgrade is not None:
+            pulumi.set(__self__, "clusterupgrade", clusterupgrade)
         if fleetobservability is not None:
             pulumi.set(__self__, "fleetobservability", fleetobservability)
         if multiclusteringress is not None:
             pulumi.set(__self__, "multiclusteringress", multiclusteringress)
+
+    @property
+    @pulumi.getter
+    def clusterupgrade(self) -> Optional['outputs.FeatureSpecClusterupgrade']:
+        """
+        Clusterupgrade feature spec.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "clusterupgrade")
 
     @property
     @pulumi.getter
@@ -1915,6 +2212,188 @@ class FeatureSpec(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "multiclusteringress")
+
+
+@pulumi.output_type
+class FeatureSpecClusterupgrade(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "upstreamFleets":
+            suggest = "upstream_fleets"
+        elif key == "gkeUpgradeOverrides":
+            suggest = "gke_upgrade_overrides"
+        elif key == "postConditions":
+            suggest = "post_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureSpecClusterupgrade. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureSpecClusterupgrade.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureSpecClusterupgrade.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 upstream_fleets: Sequence[str],
+                 gke_upgrade_overrides: Optional[Sequence['outputs.FeatureSpecClusterupgradeGkeUpgradeOverride']] = None,
+                 post_conditions: Optional['outputs.FeatureSpecClusterupgradePostConditions'] = None):
+        """
+        :param Sequence[str] upstream_fleets: Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+        :param Sequence['FeatureSpecClusterupgradeGkeUpgradeOverrideArgs'] gke_upgrade_overrides: Configuration overrides for individual upgrades.
+               Structure is documented below.
+        :param 'FeatureSpecClusterupgradePostConditionsArgs' post_conditions: Post conditions to override for the specified upgrade.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "upstream_fleets", upstream_fleets)
+        if gke_upgrade_overrides is not None:
+            pulumi.set(__self__, "gke_upgrade_overrides", gke_upgrade_overrides)
+        if post_conditions is not None:
+            pulumi.set(__self__, "post_conditions", post_conditions)
+
+    @property
+    @pulumi.getter(name="upstreamFleets")
+    def upstream_fleets(self) -> Sequence[str]:
+        """
+        Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+        """
+        return pulumi.get(self, "upstream_fleets")
+
+    @property
+    @pulumi.getter(name="gkeUpgradeOverrides")
+    def gke_upgrade_overrides(self) -> Optional[Sequence['outputs.FeatureSpecClusterupgradeGkeUpgradeOverride']]:
+        """
+        Configuration overrides for individual upgrades.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gke_upgrade_overrides")
+
+    @property
+    @pulumi.getter(name="postConditions")
+    def post_conditions(self) -> Optional['outputs.FeatureSpecClusterupgradePostConditions']:
+        """
+        Post conditions to override for the specified upgrade.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "post_conditions")
+
+
+@pulumi.output_type
+class FeatureSpecClusterupgradeGkeUpgradeOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "postConditions":
+            suggest = "post_conditions"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FeatureSpecClusterupgradeGkeUpgradeOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FeatureSpecClusterupgradeGkeUpgradeOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FeatureSpecClusterupgradeGkeUpgradeOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 post_conditions: 'outputs.FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions',
+                 upgrade: 'outputs.FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade'):
+        """
+        :param 'FeatureSpecClusterupgradeGkeUpgradeOverridePostConditionsArgs' post_conditions: Post conditions to override for the specified upgrade.
+               Structure is documented below.
+        :param 'FeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs' upgrade: Which upgrade to override.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "post_conditions", post_conditions)
+        pulumi.set(__self__, "upgrade", upgrade)
+
+    @property
+    @pulumi.getter(name="postConditions")
+    def post_conditions(self) -> 'outputs.FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions':
+        """
+        Post conditions to override for the specified upgrade.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "post_conditions")
+
+    @property
+    @pulumi.getter
+    def upgrade(self) -> 'outputs.FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade':
+        """
+        Which upgrade to override.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "upgrade")
+
+
+@pulumi.output_type
+class FeatureSpecClusterupgradeGkeUpgradeOverridePostConditions(dict):
+    def __init__(__self__, *,
+                 soaking: str):
+        """
+        :param str soaking: Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+        pulumi.set(__self__, "soaking", soaking)
+
+    @property
+    @pulumi.getter
+    def soaking(self) -> str:
+        """
+        Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+        return pulumi.get(self, "soaking")
+
+
+@pulumi.output_type
+class FeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 version: str):
+        """
+        :param str name: Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        :param str version: Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class FeatureSpecClusterupgradePostConditions(dict):
+    def __init__(__self__, *,
+                 soaking: str):
+        """
+        :param str soaking: Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+        pulumi.set(__self__, "soaking", soaking)
+
+    @property
+    @pulumi.getter
+    def soaking(self) -> str:
+        """
+        Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+        return pulumi.get(self, "soaking")
 
 
 @pulumi.output_type

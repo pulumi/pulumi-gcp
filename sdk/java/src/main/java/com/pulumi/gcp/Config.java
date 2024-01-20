@@ -135,6 +135,9 @@ public final class Config {
     public Optional<String> clouddeployCustomEndpoint() {
         return Codegen.stringProp("clouddeployCustomEndpoint").config(config).get();
     }
+    public Optional<String> clouddomainsCustomEndpoint() {
+        return Codegen.stringProp("clouddomainsCustomEndpoint").config(config).get();
+    }
     public Optional<String> cloudfunctions2CustomEndpoint() {
         return Codegen.stringProp("cloudfunctions2CustomEndpoint").config(config).get();
     }

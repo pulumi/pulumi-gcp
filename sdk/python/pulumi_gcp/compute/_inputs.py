@@ -400,6 +400,7 @@ __all__ = [
     'RouterNatSubnetworkArgs',
     'RouterPeerAdvertisedIpRangeArgs',
     'RouterPeerBfdArgs',
+    'RouterPeerMd5AuthenticationKeyArgs',
     'SecurityPolicyAdaptiveProtectionConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
@@ -27425,6 +27426,49 @@ class RouterPeerBfdArgs:
     @multiplier.setter
     def multiplier(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "multiplier", value)
+
+
+@pulumi.input_type
+class RouterPeerMd5AuthenticationKeyArgs:
+    def __init__(__self__, *,
+                 key: pulumi.Input[str],
+                 name: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] name: Name of this BGP peer. The name must be 1-63 characters long,
+               and comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?` which
+               means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "key")
+
+    @key.setter
+    def key(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        Name of this BGP peer. The name must be 1-63 characters long,
+        and comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?` which
+        means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
 
 
 @pulumi.input_type

@@ -909,7 +909,7 @@ class Pipeline(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="schedulerServiceAccountEmail")
-    def scheduler_service_account_email(self) -> pulumi.Output[Optional[str]]:
+    def scheduler_service_account_email(self) -> pulumi.Output[str]:
         """
         Optional. A service account email to be used with the Cloud Scheduler job. If not specified, the default compute engine service account will be used.
         """

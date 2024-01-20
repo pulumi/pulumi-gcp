@@ -49,6 +49,7 @@ __all__ = [
     'GetKeysKeySigningKeyDigestResult',
     'GetKeysZoneSigningKeyResult',
     'GetKeysZoneSigningKeyDigestResult',
+    'GetManagedZonesManagedZoneResult',
 ]
 
 @pulumi.output_type
@@ -2178,5 +2179,66 @@ class GetKeysZoneSigningKeyDigestResult(dict):
         Specifies the algorithm used to calculate this digest. Possible values are `sha1`, `sha256` and `sha384`
         """
         return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetManagedZonesManagedZoneResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 dns_name: str,
+                 id: str,
+                 managed_zone_id: int,
+                 name: str,
+                 name_servers: Sequence[str],
+                 project: str,
+                 visibility: str):
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "dns_name", dns_name)
+        pulumi.set(__self__, "id", id)
+        pulumi.set(__self__, "managed_zone_id", managed_zone_id)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "name_servers", name_servers)
+        pulumi.set(__self__, "project", project)
+        pulumi.set(__self__, "visibility", visibility)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="dnsName")
+    def dns_name(self) -> str:
+        return pulumi.get(self, "dns_name")
+
+    @property
+    @pulumi.getter
+    def id(self) -> str:
+        return pulumi.get(self, "id")
+
+    @property
+    @pulumi.getter(name="managedZoneId")
+    def managed_zone_id(self) -> int:
+        return pulumi.get(self, "managed_zone_id")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="nameServers")
+    def name_servers(self) -> Sequence[str]:
+        return pulumi.get(self, "name_servers")
+
+    @property
+    @pulumi.getter
+    def project(self) -> str:
+        return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter
+    def visibility(self) -> str:
+        return pulumi.get(self, "visibility")
 
 

@@ -768,14 +768,14 @@ public class AwsNodePool extends com.pulumi.resources.CustomResource {
         return this.uid;
     }
     /**
-     * (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * Optional. Update settings control the speed and disruption of the node pool update.
      * 
      */
     @Export(name="updateSettings", refs={AwsNodePoolUpdateSettings.class}, tree="[0]")
     private Output<AwsNodePoolUpdateSettings> updateSettings;
 
     /**
-     * @return (Beta only) Optional. Update settings control the speed and disruption of the node pool update.
+     * @return Optional. Update settings control the speed and disruption of the node pool update.
      * 
      */
     public Output<AwsNodePoolUpdateSettings> updateSettings() {

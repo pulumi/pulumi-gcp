@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipConfigmanagementArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipMeshArgs;
+import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -108,6 +109,21 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Policy Controller-specific spec. Structure is documented below.
+     * 
+     */
+    @Import(name="policycontroller")
+    private @Nullable Output<FeatureMembershipPolicycontrollerArgs> policycontroller;
+
+    /**
+     * @return Policy Controller-specific spec. Structure is documented below.
+     * 
+     */
+    public Optional<Output<FeatureMembershipPolicycontrollerArgs>> policycontroller() {
+        return Optional.ofNullable(this.policycontroller);
+    }
+
+    /**
      * The project of the feature
      * 
      */
@@ -131,6 +147,7 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
         this.membership = $.membership;
         this.membershipLocation = $.membershipLocation;
         this.mesh = $.mesh;
+        this.policycontroller = $.policycontroller;
         this.project = $.project;
     }
 
@@ -276,6 +293,27 @@ public final class FeatureMembershipState extends com.pulumi.resources.ResourceA
          */
         public Builder mesh(FeatureMembershipMeshArgs mesh) {
             return mesh(Output.of(mesh));
+        }
+
+        /**
+         * @param policycontroller Policy Controller-specific spec. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policycontroller(@Nullable Output<FeatureMembershipPolicycontrollerArgs> policycontroller) {
+            $.policycontroller = policycontroller;
+            return this;
+        }
+
+        /**
+         * @param policycontroller Policy Controller-specific spec. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder policycontroller(FeatureMembershipPolicycontrollerArgs policycontroller) {
+            return policycontroller(Output.of(policycontroller));
         }
 
         /**

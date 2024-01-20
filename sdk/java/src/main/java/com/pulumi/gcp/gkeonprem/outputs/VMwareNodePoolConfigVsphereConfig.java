@@ -14,36 +14,40 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VMwareNodePoolConfigVsphereConfig {
     /**
-     * @return (Output)
-     * The name of the vCenter datastore. Inherited from the user cluster.
+     * @return The name of the vCenter datastore. Inherited from the user cluster.
      * 
      */
     private @Nullable String datastore;
     /**
-     * @return (Output)
-     * Tags to apply to VMs.
-     * Structure is documented below.
+     * @return Vsphere host groups to apply to all VMs in the node pool
      * 
-     * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
+     */
+    private @Nullable List<String> hostGroups;
+    /**
+     * @return Tags to apply to VMs.
+     * Structure is documented below.
      * 
      */
     private @Nullable List<VMwareNodePoolConfigVsphereConfigTag> tags;
 
     private VMwareNodePoolConfigVsphereConfig() {}
     /**
-     * @return (Output)
-     * The name of the vCenter datastore. Inherited from the user cluster.
+     * @return The name of the vCenter datastore. Inherited from the user cluster.
      * 
      */
     public Optional<String> datastore() {
         return Optional.ofNullable(this.datastore);
     }
     /**
-     * @return (Output)
-     * Tags to apply to VMs.
-     * Structure is documented below.
+     * @return Vsphere host groups to apply to all VMs in the node pool
      * 
-     * &lt;a name=&#34;nested_tags&#34;&gt;&lt;/a&gt;The `tags` block contains:
+     */
+    public List<String> hostGroups() {
+        return this.hostGroups == null ? List.of() : this.hostGroups;
+    }
+    /**
+     * @return Tags to apply to VMs.
+     * Structure is documented below.
      * 
      */
     public List<VMwareNodePoolConfigVsphereConfigTag> tags() {
@@ -60,11 +64,13 @@ public final class VMwareNodePoolConfigVsphereConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String datastore;
+        private @Nullable List<String> hostGroups;
         private @Nullable List<VMwareNodePoolConfigVsphereConfigTag> tags;
         public Builder() {}
         public Builder(VMwareNodePoolConfigVsphereConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.datastore = defaults.datastore;
+    	      this.hostGroups = defaults.hostGroups;
     	      this.tags = defaults.tags;
         }
 
@@ -73,6 +79,15 @@ public final class VMwareNodePoolConfigVsphereConfig {
 
             this.datastore = datastore;
             return this;
+        }
+        @CustomType.Setter
+        public Builder hostGroups(@Nullable List<String> hostGroups) {
+
+            this.hostGroups = hostGroups;
+            return this;
+        }
+        public Builder hostGroups(String... hostGroups) {
+            return hostGroups(List.of(hostGroups));
         }
         @CustomType.Setter
         public Builder tags(@Nullable List<VMwareNodePoolConfigVsphereConfigTag> tags) {
@@ -86,6 +101,7 @@ public final class VMwareNodePoolConfigVsphereConfig {
         public VMwareNodePoolConfigVsphereConfig build() {
             final var _resultValue = new VMwareNodePoolConfigVsphereConfig();
             _resultValue.datastore = datastore;
+            _resultValue.hostGroups = hostGroups;
             _resultValue.tags = tags;
             return _resultValue;
         }

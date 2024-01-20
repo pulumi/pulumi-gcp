@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RouterPeerAdvertisedIpRangeArgs;
 import com.pulumi.gcp.compute.inputs.RouterPeerBfdArgs;
+import com.pulumi.gcp.compute.inputs.RouterPeerMd5AuthenticationKeyArgs;
 import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
@@ -224,6 +225,23 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * 
+     */
+    @Import(name="md5AuthenticationKey")
+    private @Nullable Output<RouterPeerMd5AuthenticationKeyArgs> md5AuthenticationKey;
+
+    /**
+     * @return Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     * 
+     */
+    public Optional<Output<RouterPeerMd5AuthenticationKeyArgs>> md5AuthenticationKey() {
+        return Optional.ofNullable(this.md5AuthenticationKey);
+    }
+
+    /**
      * Name of this BGP peer. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters
      * long and match the regular expression `a-z?` which
@@ -391,6 +409,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         this.ipAddress = $.ipAddress;
         this.ipv6NexthopAddress = $.ipv6NexthopAddress;
         this.managementType = $.managementType;
+        this.md5AuthenticationKey = $.md5AuthenticationKey;
         this.name = $.name;
         this.peerAsn = $.peerAsn;
         this.peerIpAddress = $.peerIpAddress;
@@ -712,6 +731,29 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder managementType(String managementType) {
             return managementType(Output.of(managementType));
+        }
+
+        /**
+         * @param md5AuthenticationKey Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+         * Router.md5_authentication_keys. The field must comply with RFC1035.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder md5AuthenticationKey(@Nullable Output<RouterPeerMd5AuthenticationKeyArgs> md5AuthenticationKey) {
+            $.md5AuthenticationKey = md5AuthenticationKey;
+            return this;
+        }
+
+        /**
+         * @param md5AuthenticationKey Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+         * Router.md5_authentication_keys. The field must comply with RFC1035.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder md5AuthenticationKey(RouterPeerMd5AuthenticationKeyArgs md5AuthenticationKey) {
+            return md5AuthenticationKey(Output.of(md5AuthenticationKey));
         }
 
         /**

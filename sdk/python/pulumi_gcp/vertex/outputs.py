@@ -28,6 +28,8 @@ __all__ = [
     'AiFeatureOnlineStoreDedicatedServingEndpoint',
     'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfig',
     'AiFeatureOnlineStoreEmbeddingManagement',
+    'AiFeatureOnlineStoreFeatureviewBigQuerySource',
+    'AiFeatureOnlineStoreFeatureviewSyncConfig',
     'AiFeatureOnlineStoreOptimized',
     'AiFeatureStoreEncryptionSpec',
     'AiFeatureStoreEntityTypeIamBindingCondition',
@@ -1075,6 +1077,73 @@ class AiFeatureOnlineStoreEmbeddingManagement(dict):
         Enable embedding management.
         """
         return pulumi.get(self, "enabled")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreFeatureviewBigQuerySource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "entityIdColumns":
+            suggest = "entity_id_columns"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in AiFeatureOnlineStoreFeatureviewBigQuerySource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        AiFeatureOnlineStoreFeatureviewBigQuerySource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        AiFeatureOnlineStoreFeatureviewBigQuerySource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 entity_id_columns: Sequence[str],
+                 uri: str):
+        """
+        :param Sequence[str] entity_id_columns: Columns to construct entityId / row keys. Start by supporting 1 only.
+        :param str uri: The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+        """
+        pulumi.set(__self__, "entity_id_columns", entity_id_columns)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="entityIdColumns")
+    def entity_id_columns(self) -> Sequence[str]:
+        """
+        Columns to construct entityId / row keys. Start by supporting 1 only.
+        """
+        return pulumi.get(self, "entity_id_columns")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class AiFeatureOnlineStoreFeatureviewSyncConfig(dict):
+    def __init__(__self__, *,
+                 cron: Optional[str] = None):
+        """
+        :param str cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+               To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+        """
+        if cron is not None:
+            pulumi.set(__self__, "cron", cron)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> Optional[str]:
+        """
+        Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+        """
+        return pulumi.get(self, "cron")
 
 
 @pulumi.output_type

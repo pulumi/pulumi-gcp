@@ -273,6 +273,11 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public /*out*/ readonly managementType!: pulumi.Output<string>;
     /**
+     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     */
+    public readonly md5AuthenticationKey!: pulumi.Output<outputs.compute.RouterPeerMd5AuthenticationKey | undefined>;
+    /**
      * Name of this BGP peer. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters
      * long and match the regular expression `a-z?` which
@@ -347,6 +352,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["ipv6NexthopAddress"] = state ? state.ipv6NexthopAddress : undefined;
             resourceInputs["managementType"] = state ? state.managementType : undefined;
+            resourceInputs["md5AuthenticationKey"] = state ? state.md5AuthenticationKey : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["peerAsn"] = state ? state.peerAsn : undefined;
             resourceInputs["peerIpAddress"] = state ? state.peerIpAddress : undefined;
@@ -376,6 +382,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["interface"] = args ? args.interface : undefined;
             resourceInputs["ipAddress"] = args ? args.ipAddress : undefined;
             resourceInputs["ipv6NexthopAddress"] = args ? args.ipv6NexthopAddress : undefined;
+            resourceInputs["md5AuthenticationKey"] = args ? args.md5AuthenticationKey : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["peerAsn"] = args ? args.peerAsn : undefined;
             resourceInputs["peerIpAddress"] = args ? args.peerIpAddress : undefined;
@@ -458,6 +465,11 @@ export interface RouterPeerState {
      * The resource that configures and manages this BGP peer.
      */
     managementType?: pulumi.Input<string>;
+    /**
+     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     */
+    md5AuthenticationKey?: pulumi.Input<inputs.compute.RouterPeerMd5AuthenticationKey>;
     /**
      * Name of this BGP peer. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters
@@ -573,6 +585,11 @@ export interface RouterPeerArgs {
      * assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
      */
     ipv6NexthopAddress?: pulumi.Input<string>;
+    /**
+     * Present if MD5 authentication is enabled for the peering. Must be the name of one of the entries in the
+     * Router.md5_authentication_keys. The field must comply with RFC1035.
+     */
+    md5AuthenticationKey?: pulumi.Input<inputs.compute.RouterPeerMd5AuthenticationKey>;
     /**
      * Name of this BGP peer. The name must be 1-63 characters long,
      * and comply with RFC1035. Specifically, the name must be 1-63 characters

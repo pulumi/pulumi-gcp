@@ -173,6 +173,10 @@ export class Policy extends pulumi.CustomResource {
      */
     public readonly dryRunSpec!: pulumi.Output<outputs.orgpolicy.PolicyDryRunSpec | undefined>;
     /**
+     * An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+     */
+    public /*out*/ readonly etag!: pulumi.Output<string>;
+    /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */
     public readonly name!: pulumi.Output<string>;
@@ -203,6 +207,7 @@ export class Policy extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as PolicyState | undefined;
             resourceInputs["dryRunSpec"] = state ? state.dryRunSpec : undefined;
+            resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["spec"] = state ? state.spec : undefined;
@@ -215,6 +220,7 @@ export class Policy extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["parent"] = args ? args.parent : undefined;
             resourceInputs["spec"] = args ? args.spec : undefined;
+            resourceInputs["etag"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Policy.__pulumiType, name, resourceInputs, opts);
@@ -229,6 +235,10 @@ export interface PolicyState {
      * Dry-run policy. Audit-only policy, can be used to monitor how the policy would have impacted the existing and future resources if it's enforced.
      */
     dryRunSpec?: pulumi.Input<inputs.orgpolicy.PolicyDryRunSpec>;
+    /**
+     * An opaque tag indicating the current version of the policy, used for concurrency control. This field is ignored if used in a `CreatePolicy` request. When the policy` is returned from either a `GetPolicy` or a `ListPolicies` request, this `etag` indicates the version of the current policy to use when executing a read-modify-write loop. When the policy is returned from a `GetEffectivePolicy` request, the `etag` will be unset.
+     */
+    etag?: pulumi.Input<string>;
     /**
      * Immutable. The resource name of the Policy. Must be one of the following forms, where constraintName is the name of the constraint which this Policy configures: * `projects/{project_number}/policies/{constraint_name}` * `folders/{folder_id}/policies/{constraint_name}` * `organizations/{organization_id}/policies/{constraint_name}` For example, "projects/123/policies/compute.disableSerialPortAccess". Note: `projects/{project_id}/policies/{constraint_name}` is also an acceptable name for API requests, but responses will return the name using the equivalent project number.
      */

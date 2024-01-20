@@ -197,6 +197,31 @@ namespace Pulumi.Gcp.GkeOnPrem
     ///                 },
     ///             },
     ///             Labels = null,
+    ///             VsphereConfigs = new[]
+    ///             {
+    ///                 new Gcp.GkeOnPrem.Inputs.VMwareNodePoolConfigVsphereConfigArgs
+    ///                 {
+    ///                     Datastore = "test-datastore",
+    ///                     Tags = new[]
+    ///                     {
+    ///                         new Gcp.GkeOnPrem.Inputs.VMwareNodePoolConfigVsphereConfigTagArgs
+    ///                         {
+    ///                             Category = "test-category-1",
+    ///                             Tag = "tag-1",
+    ///                         },
+    ///                         new Gcp.GkeOnPrem.Inputs.VMwareNodePoolConfigVsphereConfigTagArgs
+    ///                         {
+    ///                             Category = "test-category-2",
+    ///                             Tag = "tag-2",
+    ///                         },
+    ///                     },
+    ///                     HostGroups = new[]
+    ///                     {
+    ///                         "host1",
+    ///                         "host2",
+    ///                     },
+    ///                 },
+    ///             },
     ///             EnableLoadBalancer = true,
     ///         },
     ///         NodePoolAutoscaling = new Gcp.GkeOnPrem.Inputs.VMwareNodePoolNodePoolAutoscalingArgs

@@ -15,6 +15,7 @@ __all__ = ['AccountArgs', 'Account']
 class AccountArgs:
     def __init__(__self__, *,
                  account_id: pulumi.Input[str],
+                 create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -25,6 +26,7 @@ class AccountArgs:
                account email address and a stable unique id. It is unique within a project,
                must be 6-30 characters long, and match the regular expression `a-z`
                to comply with RFC1035. Changing this forces a new service account to be created.
+        :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip service account creation if a service account with the same email already exists.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
         :param pulumi.Input[bool] disabled: Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
@@ -35,6 +37,8 @@ class AccountArgs:
                Defaults to the provider project configuration.
         """
         pulumi.set(__self__, "account_id", account_id)
+        if create_ignore_already_exists is not None:
+            pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -58,6 +62,18 @@ class AccountArgs:
     @account_id.setter
     def account_id(self, value: pulumi.Input[str]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, skip service account creation if a service account with the same email already exists.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
+
+    @create_ignore_already_exists.setter
+    def create_ignore_already_exists(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_ignore_already_exists", value)
 
     @property
     @pulumi.getter
@@ -116,6 +132,7 @@ class AccountArgs:
 class _AccountState:
     def __init__(__self__, *,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -130,6 +147,7 @@ class _AccountState:
                account email address and a stable unique id. It is unique within a project,
                must be 6-30 characters long, and match the regular expression `a-z`
                to comply with RFC1035. Changing this forces a new service account to be created.
+        :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip service account creation if a service account with the same email already exists.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
         :param pulumi.Input[bool] disabled: Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
@@ -147,6 +165,8 @@ class _AccountState:
         """
         if account_id is not None:
             pulumi.set(__self__, "account_id", account_id)
+        if create_ignore_already_exists is not None:
+            pulumi.set(__self__, "create_ignore_already_exists", create_ignore_already_exists)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disabled is not None:
@@ -178,6 +198,18 @@ class _AccountState:
     @account_id.setter
     def account_id(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "account_id", value)
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, skip service account creation if a service account with the same email already exists.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
+
+    @create_ignore_already_exists.setter
+    def create_ignore_already_exists(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "create_ignore_already_exists", value)
 
     @property
     @pulumi.getter
@@ -288,6 +320,7 @@ class Account(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -341,6 +374,7 @@ class Account(pulumi.CustomResource):
                account email address and a stable unique id. It is unique within a project,
                must be 6-30 characters long, and match the regular expression `a-z`
                to comply with RFC1035. Changing this forces a new service account to be created.
+        :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip service account creation if a service account with the same email already exists.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
         :param pulumi.Input[bool] disabled: Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
@@ -414,6 +448,7 @@ class Account(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  account_id: Optional[pulumi.Input[str]] = None,
+                 create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -430,6 +465,7 @@ class Account(pulumi.CustomResource):
             if account_id is None and not opts.urn:
                 raise TypeError("Missing required property 'account_id'")
             __props__.__dict__["account_id"] = account_id
+            __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
             __props__.__dict__["description"] = description
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["display_name"] = display_name
@@ -451,6 +487,7 @@ class Account(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             account_id: Optional[pulumi.Input[str]] = None,
+            create_ignore_already_exists: Optional[pulumi.Input[bool]] = None,
             description: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -470,6 +507,7 @@ class Account(pulumi.CustomResource):
                account email address and a stable unique id. It is unique within a project,
                must be 6-30 characters long, and match the regular expression `a-z`
                to comply with RFC1035. Changing this forces a new service account to be created.
+        :param pulumi.Input[bool] create_ignore_already_exists: If set to true, skip service account creation if a service account with the same email already exists.
         :param pulumi.Input[str] description: A text description of the service account.
                Must be less than or equal to 256 UTF-8 bytes.
         :param pulumi.Input[bool] disabled: Whether a service account is disabled or not. Defaults to `false`. This field has no effect during creation.
@@ -490,6 +528,7 @@ class Account(pulumi.CustomResource):
         __props__ = _AccountState.__new__(_AccountState)
 
         __props__.__dict__["account_id"] = account_id
+        __props__.__dict__["create_ignore_already_exists"] = create_ignore_already_exists
         __props__.__dict__["description"] = description
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["display_name"] = display_name
@@ -510,6 +549,14 @@ class Account(pulumi.CustomResource):
         to comply with RFC1035. Changing this forces a new service account to be created.
         """
         return pulumi.get(self, "account_id")
+
+    @property
+    @pulumi.getter(name="createIgnoreAlreadyExists")
+    def create_ignore_already_exists(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to true, skip service account creation if a service account with the same email already exists.
+        """
+        return pulumi.get(self, "create_ignore_already_exists")
 
     @property
     @pulumi.getter

@@ -47,7 +47,7 @@ class WorkflowArgs:
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         if crypto_key_name is not None:
             pulumi.set(__self__, "crypto_key_name", crypto_key_name)
@@ -194,7 +194,7 @@ class WorkflowArgs:
     @pulumi.getter(name="userEnvVars")
     def user_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         return pulumi.get(self, "user_env_vars")
 
@@ -252,7 +252,7 @@ class _WorkflowState:
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -484,7 +484,7 @@ class _WorkflowState:
     @pulumi.getter(name="userEnvVars")
     def user_env_vars(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         return pulumi.get(self, "user_env_vars")
 
@@ -547,7 +547,7 @@ class Workflow(pulumi.CustomResource):
                If not provided, workflow will use the project's default service account.
                Modifying this field for an existing workflow results in a new workflow revision.
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         ...
     @overload
@@ -683,7 +683,7 @@ class Workflow(pulumi.CustomResource):
         :param pulumi.Input[str] source_contents: Workflow code to be executed. The size limit is 32KB.
         :param pulumi.Input[str] state: State of the workflow deployment.
         :param pulumi.Input[str] update_time: The timestamp of when the workflow was last updated in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] user_env_vars: User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -844,7 +844,7 @@ class Workflow(pulumi.CustomResource):
     @pulumi.getter(name="userEnvVars")
     def user_env_vars(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 40KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
+        User-defined environment variables associated with this workflow revision. This map has a maximum length of 20. Each string can take up to 4KiB. Keys cannot be empty strings and cannot start with “GOOGLE” or “WORKFLOWS".
         """
         return pulumi.get(self, "user_env_vars")
 

@@ -158,7 +158,8 @@ type VPNTunnel struct {
 	// peer VPN gateway.
 	// Acceptable IKE versions are 1 or 2. Default version is 2.
 	IkeVersion pulumi.IntPtrOutput `pulumi:"ikeVersion"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this VpnTunnel.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -280,7 +281,8 @@ type vpntunnelState struct {
 	// peer VPN gateway.
 	// Acceptable IKE versions are 1 or 2. Default version is 2.
 	IkeVersion *int `pulumi:"ikeVersion"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this VpnTunnel.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -361,7 +363,8 @@ type VPNTunnelState struct {
 	// peer VPN gateway.
 	// Acceptable IKE versions are 1 or 2. Default version is 2.
 	IkeVersion pulumi.IntPtrInput
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this VpnTunnel.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -676,7 +679,8 @@ func (o VPNTunnelOutput) IkeVersion() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.IntPtrOutput { return v.IkeVersion }).(pulumi.IntPtrOutput)
 }
 
-// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
 func (o VPNTunnelOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *VPNTunnel) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }

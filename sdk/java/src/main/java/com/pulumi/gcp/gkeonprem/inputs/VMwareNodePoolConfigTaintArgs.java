@@ -20,8 +20,6 @@ public final class VMwareNodePoolConfigTaintArgs extends com.pulumi.resources.Re
      * Available taint effects.
      * Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
      * 
-     * &lt;a name=&#34;nested_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
-     * 
      */
     @Import(name="effect")
     private @Nullable Output<String> effect;
@@ -29,8 +27,6 @@ public final class VMwareNodePoolConfigTaintArgs extends com.pulumi.resources.Re
     /**
      * @return Available taint effects.
      * Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-     * 
-     * &lt;a name=&#34;nested_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
      * 
      */
     public Optional<Output<String>> effect() {
@@ -97,8 +93,6 @@ public final class VMwareNodePoolConfigTaintArgs extends com.pulumi.resources.Re
          * @param effect Available taint effects.
          * Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
          * 
-         * &lt;a name=&#34;nested_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
-         * 
          * @return builder
          * 
          */
@@ -110,8 +104,6 @@ public final class VMwareNodePoolConfigTaintArgs extends com.pulumi.resources.Re
         /**
          * @param effect Available taint effects.
          * Possible values are: `EFFECT_UNSPECIFIED`, `NO_SCHEDULE`, `PREFER_NO_SCHEDULE`, `NO_EXECUTE`.
-         * 
-         * &lt;a name=&#34;nested_vsphere_config&#34;&gt;&lt;/a&gt;The `vsphere_config` block contains:
          * 
          * @return builder
          * 

@@ -103,9 +103,9 @@ import (
 //
 // ## Import
 //
-// VpnConnection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vpnConnections` * `{{project}}/{{location}}` * `{{location}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VpnConnection using one of the formats above. For exampletf import {
+// VpnConnection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VpnConnection using one of the formats above. For exampletf import {
 //
-//	id = "projects/{{project}}/locations/{{location}}/vpnConnections"
+//	id = "projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}"
 //
 //	to = google_edgecontainer_vpn_connection.default }
 //
@@ -117,19 +117,19 @@ import (
 //
 // ```sh
 //
-//	$ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections
+//	$ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default projects/{{project}}/locations/{{location}}/vpnConnections/{{name}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{project}}/{{location}}
+//	$ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{project}}/{{location}}/{{name}}
 //
 // ```
 //
 // ```sh
 //
-//	$ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{location}}
+//	$ pulumi import gcp:edgecontainer/vpnConnection:VpnConnection default {{location}}/{{name}}
 //
 // ```
 type VpnConnection struct {

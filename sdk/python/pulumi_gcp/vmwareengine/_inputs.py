@@ -11,6 +11,8 @@ from .. import _utilities
 
 __all__ = [
     'ClusterNodeTypeConfigArgs',
+    'ExternalAccessRuleDestinationIpRangeArgs',
+    'ExternalAccessRuleSourceIpRangeArgs',
     'NetworkPolicyExternalIpArgs',
     'NetworkPolicyInternetAccessArgs',
     'NetworkVpcNetworkArgs',
@@ -80,6 +82,88 @@ class ClusterNodeTypeConfigArgs:
     @custom_core_count.setter
     def custom_core_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "custom_core_count", value)
+
+
+@pulumi.input_type
+class ExternalAccessRuleDestinationIpRangeArgs:
+    def __init__(__self__, *,
+                 external_address: Optional[pulumi.Input[str]] = None,
+                 ip_address_range: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] external_address: The name of an `ExternalAddress` resource.
+               
+               - - -
+        :param pulumi.Input[str] ip_address_range: An IP address range in the CIDR format.
+        """
+        if external_address is not None:
+            pulumi.set(__self__, "external_address", external_address)
+        if ip_address_range is not None:
+            pulumi.set(__self__, "ip_address_range", ip_address_range)
+
+    @property
+    @pulumi.getter(name="externalAddress")
+    def external_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of an `ExternalAddress` resource.
+
+        - - -
+        """
+        return pulumi.get(self, "external_address")
+
+    @external_address.setter
+    def external_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "external_address", value)
+
+    @property
+    @pulumi.getter(name="ipAddressRange")
+    def ip_address_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IP address range in the CIDR format.
+        """
+        return pulumi.get(self, "ip_address_range")
+
+    @ip_address_range.setter
+    def ip_address_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address_range", value)
+
+
+@pulumi.input_type
+class ExternalAccessRuleSourceIpRangeArgs:
+    def __init__(__self__, *,
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 ip_address_range: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip_address: A single IP address.
+        :param pulumi.Input[str] ip_address_range: An IP address range in the CIDR format.
+        """
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if ip_address_range is not None:
+            pulumi.set(__self__, "ip_address_range", ip_address_range)
+
+    @property
+    @pulumi.getter(name="ipAddress")
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
+        """
+        A single IP address.
+        """
+        return pulumi.get(self, "ip_address")
+
+    @ip_address.setter
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="ipAddressRange")
+    def ip_address_range(self) -> Optional[pulumi.Input[str]]:
+        """
+        An IP address range in the CIDR format.
+        """
+        return pulumi.get(self, "ip_address_range")
+
+    @ip_address_range.setter
+    def ip_address_range(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ip_address_range", value)
 
 
 @pulumi.input_type

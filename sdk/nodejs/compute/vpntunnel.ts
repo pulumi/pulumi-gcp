@@ -142,7 +142,8 @@ export class VPNTunnel extends pulumi.CustomResource {
      */
     public readonly ikeVersion!: pulumi.Output<number | undefined>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
@@ -352,7 +353,8 @@ export interface VPNTunnelState {
      */
     ikeVersion?: pulumi.Input<number>;
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**

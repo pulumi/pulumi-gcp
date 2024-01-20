@@ -12,14 +12,12 @@ import javax.annotation.Nullable;
 @CustomType
 public final class VMwareNodePoolConfigVsphereConfigTag {
     /**
-     * @return (Output)
-     * The Vsphere tag category.
+     * @return The Vsphere tag category.
      * 
      */
     private @Nullable String category;
     /**
-     * @return (Output)
-     * The Vsphere tag name.
+     * @return The Vsphere tag name.
      * 
      * ***
      * 
@@ -28,16 +26,14 @@ public final class VMwareNodePoolConfigVsphereConfigTag {
 
     private VMwareNodePoolConfigVsphereConfigTag() {}
     /**
-     * @return (Output)
-     * The Vsphere tag category.
+     * @return The Vsphere tag category.
      * 
      */
     public Optional<String> category() {
         return Optional.ofNullable(this.category);
     }
     /**
-     * @return (Output)
-     * The Vsphere tag name.
+     * @return The Vsphere tag name.
      * 
      * ***
      * 

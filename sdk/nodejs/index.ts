@@ -37,6 +37,7 @@ import * as cloudasset from "./cloudasset";
 import * as cloudbuild from "./cloudbuild";
 import * as cloudbuildv2 from "./cloudbuildv2";
 import * as clouddeploy from "./clouddeploy";
+import * as clouddomains from "./clouddomains";
 import * as cloudfunctions from "./cloudfunctions";
 import * as cloudfunctionsv2 from "./cloudfunctionsv2";
 import * as cloudidentity from "./cloudidentity";
@@ -150,6 +151,7 @@ export {
     cloudbuild,
     cloudbuildv2,
     clouddeploy,
+    clouddomains,
     cloudfunctions,
     cloudfunctionsv2,
     cloudidentity,

@@ -58,6 +58,8 @@ if typing.TYPE_CHECKING:
     cloudbuildv2 = __cloudbuildv2
     import pulumi_gcp.clouddeploy as __clouddeploy
     clouddeploy = __clouddeploy
+    import pulumi_gcp.clouddomains as __clouddomains
+    clouddomains = __clouddomains
     import pulumi_gcp.cloudfunctions as __cloudfunctions
     cloudfunctions = __cloudfunctions
     import pulumi_gcp.cloudfunctionsv2 as __cloudfunctionsv2
@@ -255,6 +257,7 @@ else:
     cloudbuild = _utilities.lazy_import('pulumi_gcp.cloudbuild')
     cloudbuildv2 = _utilities.lazy_import('pulumi_gcp.cloudbuildv2')
     clouddeploy = _utilities.lazy_import('pulumi_gcp.clouddeploy')
+    clouddomains = _utilities.lazy_import('pulumi_gcp.clouddomains')
     cloudfunctions = _utilities.lazy_import('pulumi_gcp.cloudfunctions')
     cloudfunctionsv2 = _utilities.lazy_import('pulumi_gcp.cloudfunctionsv2')
     cloudidentity = _utilities.lazy_import('pulumi_gcp.cloudidentity')
@@ -1631,6 +1634,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.clouddeploy",
   "classes": {
    "gcp:clouddeploy/target:Target": "Target"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "clouddomains/registration",
+  "fqn": "pulumi_gcp.clouddomains",
+  "classes": {
+   "gcp:clouddomains/registration:Registration": "Registration"
   }
  },
  {
@@ -5419,6 +5430,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "netapp/kmsconfig",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/kmsconfig:Kmsconfig": "Kmsconfig"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "netapp/storagePool",
   "fqn": "pulumi_gcp.netapp",
   "classes": {
@@ -6835,6 +6854,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "vertex/aiFeatureOnlineStoreFeatureview",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview": "AiFeatureOnlineStoreFeatureview"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "vertex/aiFeatureStore",
   "fqn": "pulumi_gcp.vertex",
   "classes": {
@@ -6943,6 +6970,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vmwareengine",
   "classes": {
    "gcp:vmwareengine/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vmwareengine/externalAccessRule",
+  "fqn": "pulumi_gcp.vmwareengine",
+  "classes": {
+   "gcp:vmwareengine/externalAccessRule:ExternalAccessRule": "ExternalAccessRule"
   }
  },
  {

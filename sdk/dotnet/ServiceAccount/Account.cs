@@ -72,6 +72,12 @@ namespace Pulumi.Gcp.ServiceAccount
         public Output<string> AccountId { get; private set; } = null!;
 
         /// <summary>
+        /// If set to true, skip service account creation if a service account with the same email already exists.
+        /// </summary>
+        [Output("createIgnoreAlreadyExists")]
+        public Output<bool?> CreateIgnoreAlreadyExists { get; private set; } = null!;
+
+        /// <summary>
         /// A text description of the service account.
         /// Must be less than or equal to 256 UTF-8 bytes.
         /// </summary>
@@ -185,6 +191,12 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string> AccountId { get; set; } = null!;
 
         /// <summary>
+        /// If set to true, skip service account creation if a service account with the same email already exists.
+        /// </summary>
+        [Input("createIgnoreAlreadyExists")]
+        public Input<bool>? CreateIgnoreAlreadyExists { get; set; }
+
+        /// <summary>
         /// A text description of the service account.
         /// Must be less than or equal to 256 UTF-8 bytes.
         /// </summary>
@@ -228,6 +240,12 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         [Input("accountId")]
         public Input<string>? AccountId { get; set; }
+
+        /// <summary>
+        /// If set to true, skip service account creation if a service account with the same email already exists.
+        /// </summary>
+        [Input("createIgnoreAlreadyExists")]
+        public Input<bool>? CreateIgnoreAlreadyExists { get; set; }
 
         /// <summary>
         /// A text description of the service account.

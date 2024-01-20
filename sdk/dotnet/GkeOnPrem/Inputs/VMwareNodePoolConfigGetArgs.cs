@@ -90,7 +90,6 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         private InputList<Inputs.VMwareNodePoolConfigVsphereConfigGetArgs>? _vsphereConfigs;
 
         /// <summary>
-        /// (Output)
         /// Specifies the vSphere config for node pool.
         /// Structure is documented below.
         /// </summary>

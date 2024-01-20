@@ -11,9 +11,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class FeatureMembershipConfigmanagementPolicyControllerMonitoring {
+    /**
+     * @return Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+     * 
+     */
     private @Nullable List<String> backends;
 
     private FeatureMembershipConfigmanagementPolicyControllerMonitoring() {}
+    /**
+     * @return Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+     * 
+     */
     public List<String> backends() {
         return this.backends == null ? List.of() : this.backends;
     }

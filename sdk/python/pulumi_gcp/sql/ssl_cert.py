@@ -368,7 +368,7 @@ class SslCert(pulumi.CustomResource):
             __props__.__dict__["private_key"] = None
             __props__.__dict__["server_ca_cert"] = None
             __props__.__dict__["sha1_fingerprint"] = None
-        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["privateKey"])
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["cert", "privateKey", "serverCaCert"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(SslCert, __self__).__init__(
             'gcp:sql/sslCert:SslCert',

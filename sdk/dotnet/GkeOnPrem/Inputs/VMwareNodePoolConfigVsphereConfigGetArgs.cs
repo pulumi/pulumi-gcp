@@ -13,22 +13,29 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     public sealed class VMwareNodePoolConfigVsphereConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Output)
         /// The name of the vCenter datastore. Inherited from the user cluster.
         /// </summary>
         [Input("datastore")]
         public Input<string>? Datastore { get; set; }
 
+        [Input("hostGroups")]
+        private InputList<string>? _hostGroups;
+
+        /// <summary>
+        /// Vsphere host groups to apply to all VMs in the node pool
+        /// </summary>
+        public InputList<string> HostGroups
+        {
+            get => _hostGroups ?? (_hostGroups = new InputList<string>());
+            set => _hostGroups = value;
+        }
+
         [Input("tags")]
         private InputList<Inputs.VMwareNodePoolConfigVsphereConfigTagGetArgs>? _tags;
 
         /// <summary>
-        /// (Output)
         /// Tags to apply to VMs.
         /// Structure is documented below.
-        /// 
-        /// 
-        /// &lt;a name="nested_tags"&gt;&lt;/a&gt;The `tags` block contains:
         /// </summary>
         public InputList<Inputs.VMwareNodePoolConfigVsphereConfigTagGetArgs> Tags
         {

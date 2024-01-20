@@ -12,6 +12,7 @@ import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
 import com.pulumi.gcp.gkehub.inputs.FeatureMembershipState;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipConfigmanagement;
 import com.pulumi.gcp.gkehub.outputs.FeatureMembershipMesh;
+import com.pulumi.gcp.gkehub.outputs.FeatureMembershipPolicycontroller;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -324,6 +325,147 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Policy Controller With Minimal Configuration
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.FeatureMembership;
+ * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(1)
+ *             .build());
+ * 
+ *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .membershipId(&#34;my-membership&#34;)
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .feature(feature.name())
+ *             .membership(membership.membershipId())
+ *             .policycontroller(FeatureMembershipPolicycontrollerArgs.builder()
+ *                 .policyControllerHubConfig(FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs.builder()
+ *                     .installSpec(&#34;INSTALL_SPEC_ENABLED&#34;)
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Policy Controller With Custom Configurations
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.container.Cluster;
+ * import com.pulumi.gcp.container.ClusterArgs;
+ * import com.pulumi.gcp.gkehub.Membership;
+ * import com.pulumi.gcp.gkehub.MembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointArgs;
+ * import com.pulumi.gcp.gkehub.inputs.MembershipEndpointGkeClusterArgs;
+ * import com.pulumi.gcp.gkehub.Feature;
+ * import com.pulumi.gcp.gkehub.FeatureArgs;
+ * import com.pulumi.gcp.gkehub.FeatureMembership;
+ * import com.pulumi.gcp.gkehub.FeatureMembershipArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs;
+ * import com.pulumi.gcp.gkehub.inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var cluster = new Cluster(&#34;cluster&#34;, ClusterArgs.builder()        
+ *             .location(&#34;us-central1-a&#34;)
+ *             .initialNodeCount(1)
+ *             .build());
+ * 
+ *         var membership = new Membership(&#34;membership&#34;, MembershipArgs.builder()        
+ *             .membershipId(&#34;my-membership&#34;)
+ *             .endpoint(MembershipEndpointArgs.builder()
+ *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
+ *                     .resourceLink(cluster.id().applyValue(id -&gt; String.format(&#34;//container.googleapis.com/%s&#34;, id)))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var feature = new Feature(&#34;feature&#34;, FeatureArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .build());
+ * 
+ *         var featureMember = new FeatureMembership(&#34;featureMember&#34;, FeatureMembershipArgs.builder()        
+ *             .location(&#34;global&#34;)
+ *             .feature(feature.name())
+ *             .membership(membership.membershipId())
+ *             .policycontroller(FeatureMembershipPolicycontrollerArgs.builder()
+ *                 .policyControllerHubConfig(FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs.builder()
+ *                     .installSpec(&#34;INSTALL_SPEC_SUSPENDED&#34;)
+ *                     .policyContent(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs.builder()
+ *                         .templateLibrary(FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs.builder()
+ *                             .installation(&#34;NOT_INSTALLED&#34;)
+ *                             .build())
+ *                         .build())
+ *                     .constraintViolationLimit(50)
+ *                     .auditIntervalSeconds(120)
+ *                     .referentialRulesEnabled(true)
+ *                     .logDeniesEnabled(true)
+ *                     .mutationEnabled(true)
+ *                     .build())
+ *                 .version(&#34;1.17.0&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -435,6 +577,20 @@ public class FeatureMembership extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<FeatureMembershipMesh>> mesh() {
         return Codegen.optional(this.mesh);
+    }
+    /**
+     * Policy Controller-specific spec. Structure is documented below.
+     * 
+     */
+    @Export(name="policycontroller", refs={FeatureMembershipPolicycontroller.class}, tree="[0]")
+    private Output</* @Nullable */ FeatureMembershipPolicycontroller> policycontroller;
+
+    /**
+     * @return Policy Controller-specific spec. Structure is documented below.
+     * 
+     */
+    public Output<Optional<FeatureMembershipPolicycontroller>> policycontroller() {
+        return Codegen.optional(this.policycontroller);
     }
     /**
      * The project of the feature

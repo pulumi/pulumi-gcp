@@ -257,6 +257,117 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// });
     /// ```
+    /// ### Policy Controller With Minimal Configuration
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     {
+    ///         Location = "global",
+    ///         Feature = feature.Name,
+    ///         Membership = membership.MembershipId,
+    ///         Policycontroller = new Gcp.GkeHub.Inputs.FeatureMembershipPolicycontrollerArgs
+    ///         {
+    ///             PolicyControllerHubConfig = new Gcp.GkeHub.Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs
+    ///             {
+    ///                 InstallSpec = "INSTALL_SPEC_ENABLED",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Policy Controller With Custom Configurations
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var cluster = new Gcp.Container.Cluster("cluster", new()
+    ///     {
+    ///         Location = "us-central1-a",
+    ///         InitialNodeCount = 1,
+    ///     });
+    /// 
+    ///     var membership = new Gcp.GkeHub.Membership("membership", new()
+    ///     {
+    ///         MembershipId = "my-membership",
+    ///         Endpoint = new Gcp.GkeHub.Inputs.MembershipEndpointArgs
+    ///         {
+    ///             GkeCluster = new Gcp.GkeHub.Inputs.MembershipEndpointGkeClusterArgs
+    ///             {
+    ///                 ResourceLink = cluster.Id.Apply(id =&gt; $"//container.googleapis.com/{id}"),
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var feature = new Gcp.GkeHub.Feature("feature", new()
+    ///     {
+    ///         Location = "global",
+    ///     });
+    /// 
+    ///     var featureMember = new Gcp.GkeHub.FeatureMembership("featureMember", new()
+    ///     {
+    ///         Location = "global",
+    ///         Feature = feature.Name,
+    ///         Membership = membership.MembershipId,
+    ///         Policycontroller = new Gcp.GkeHub.Inputs.FeatureMembershipPolicycontrollerArgs
+    ///         {
+    ///             PolicyControllerHubConfig = new Gcp.GkeHub.Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigArgs
+    ///             {
+    ///                 InstallSpec = "INSTALL_SPEC_SUSPENDED",
+    ///                 PolicyContent = new Gcp.GkeHub.Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentArgs
+    ///                 {
+    ///                     TemplateLibrary = new Gcp.GkeHub.Inputs.FeatureMembershipPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs
+    ///                     {
+    ///                         Installation = "NOT_INSTALLED",
+    ///                     },
+    ///                 },
+    ///                 ConstraintViolationLimit = 50,
+    ///                 AuditIntervalSeconds = 120,
+    ///                 ReferentialRulesEnabled = true,
+    ///                 LogDeniesEnabled = true,
+    ///                 MutationEnabled = true,
+    ///             },
+    ///             Version = "1.17.0",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -320,6 +431,12 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Output("mesh")]
         public Output<Outputs.FeatureMembershipMesh?> Mesh { get; private set; } = null!;
+
+        /// <summary>
+        /// Policy Controller-specific spec. Structure is documented below.
+        /// </summary>
+        [Output("policycontroller")]
+        public Output<Outputs.FeatureMembershipPolicycontroller?> Policycontroller { get; private set; } = null!;
 
         /// <summary>
         /// The project of the feature
@@ -410,6 +527,12 @@ namespace Pulumi.Gcp.GkeHub
         public Input<Inputs.FeatureMembershipMeshArgs>? Mesh { get; set; }
 
         /// <summary>
+        /// Policy Controller-specific spec. Structure is documented below.
+        /// </summary>
+        [Input("policycontroller")]
+        public Input<Inputs.FeatureMembershipPolicycontrollerArgs>? Policycontroller { get; set; }
+
+        /// <summary>
         /// The project of the feature
         /// </summary>
         [Input("project")]
@@ -458,6 +581,12 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         [Input("mesh")]
         public Input<Inputs.FeatureMembershipMeshGetArgs>? Mesh { get; set; }
+
+        /// <summary>
+        /// Policy Controller-specific spec. Structure is documented below.
+        /// </summary>
+        [Input("policycontroller")]
+        public Input<Inputs.FeatureMembershipPolicycontrollerGetArgs>? Policycontroller { get; set; }
 
         /// <summary>
         /// The project of the feature

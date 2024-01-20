@@ -10,6 +10,8 @@ import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetClusterPlainArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
+import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRulePlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetExternalAddressPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetNetworkArgs;
@@ -27,6 +29,7 @@ import com.pulumi.gcp.vmwareengine.inputs.GetSubnetPlainArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsArgs;
 import com.pulumi.gcp.vmwareengine.inputs.GetVcenterCredentialsPlainArgs;
 import com.pulumi.gcp.vmwareengine.outputs.GetClusterResult;
+import com.pulumi.gcp.vmwareengine.outputs.GetExternalAccessRuleResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetExternalAddressResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkPeeringResult;
 import com.pulumi.gcp.vmwareengine.outputs.GetNetworkPolicyResult;
@@ -201,6 +204,170 @@ public final class VmwareengineFunctions {
      */
     public static CompletableFuture<GetClusterResult> getClusterPlain(GetClusterPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getCluster:getCluster", TypeShape.of(GetClusterResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a external access rule resource.
+     * 
+     * To get more information about external address, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myExternalAccessRule = VmwareengineFunctions.getExternalAccessRule(GetExternalAccessRuleArgs.builder()
+     *             .name(&#34;my-external-access-rule&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/networkPolicies/my-network-policy&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetExternalAccessRuleResult> getExternalAccessRule(GetExternalAccessRuleArgs args) {
+        return getExternalAccessRule(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a external access rule resource.
+     * 
+     * To get more information about external address, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myExternalAccessRule = VmwareengineFunctions.getExternalAccessRule(GetExternalAccessRuleArgs.builder()
+     *             .name(&#34;my-external-access-rule&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/networkPolicies/my-network-policy&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetExternalAccessRuleResult> getExternalAccessRulePlain(GetExternalAccessRulePlainArgs args) {
+        return getExternalAccessRulePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Use this data source to get details about a external access rule resource.
+     * 
+     * To get more information about external address, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myExternalAccessRule = VmwareengineFunctions.getExternalAccessRule(GetExternalAccessRuleArgs.builder()
+     *             .name(&#34;my-external-access-rule&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/networkPolicies/my-network-policy&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static Output<GetExternalAccessRuleResult> getExternalAccessRule(GetExternalAccessRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", TypeShape.of(GetExternalAccessRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get details about a external access rule resource.
+     * 
+     * To get more information about external address, see:
+     * * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
+     * 
+     * ## Example Usage
+     * ```java
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.vmwareengine.VmwareengineFunctions;
+     * import com.pulumi.gcp.vmwareengine.inputs.GetExternalAccessRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myExternalAccessRule = VmwareengineFunctions.getExternalAccessRule(GetExternalAccessRuleArgs.builder()
+     *             .name(&#34;my-external-access-rule&#34;)
+     *             .parent(&#34;project/my-project/locations/us-west1-a/networkPolicies/my-network-policy&#34;)
+     *             .build());
+     * 
+     *     }
+     * }
+     * ```
+     * 
+     */
+    public static CompletableFuture<GetExternalAccessRuleResult> getExternalAccessRulePlain(GetExternalAccessRulePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", TypeShape.of(GetExternalAccessRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to get details about a external address resource.

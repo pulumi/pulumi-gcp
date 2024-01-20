@@ -83,6 +83,10 @@ export class Account extends pulumi.CustomResource {
      */
     public readonly accountId!: pulumi.Output<string>;
     /**
+     * If set to true, skip service account creation if a service account with the same email already exists.
+     */
+    public readonly createIgnoreAlreadyExists!: pulumi.Output<boolean | undefined>;
+    /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
      */
@@ -135,6 +139,7 @@ export class Account extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccountState | undefined;
             resourceInputs["accountId"] = state ? state.accountId : undefined;
+            resourceInputs["createIgnoreAlreadyExists"] = state ? state.createIgnoreAlreadyExists : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["disabled"] = state ? state.disabled : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
@@ -149,6 +154,7 @@ export class Account extends pulumi.CustomResource {
                 throw new Error("Missing required property 'accountId'");
             }
             resourceInputs["accountId"] = args ? args.accountId : undefined;
+            resourceInputs["createIgnoreAlreadyExists"] = args ? args.createIgnoreAlreadyExists : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["disabled"] = args ? args.disabled : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -176,6 +182,10 @@ export interface AccountState {
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
     accountId?: pulumi.Input<string>;
+    /**
+     * If set to true, skip service account creation if a service account with the same email already exists.
+     */
+    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
     /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.
@@ -227,6 +237,10 @@ export interface AccountArgs {
      * to comply with RFC1035. Changing this forces a new service account to be created.
      */
     accountId: pulumi.Input<string>;
+    /**
+     * If set to true, skip service account creation if a service account with the same email already exists.
+     */
+    createIgnoreAlreadyExists?: pulumi.Input<boolean>;
     /**
      * A text description of the service account.
      * Must be less than or equal to 256 UTF-8 bytes.

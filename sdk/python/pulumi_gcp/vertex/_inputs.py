@@ -27,6 +27,8 @@ __all__ = [
     'AiFeatureOnlineStoreDedicatedServingEndpointArgs',
     'AiFeatureOnlineStoreDedicatedServingEndpointPrivateServiceConnectConfigArgs',
     'AiFeatureOnlineStoreEmbeddingManagementArgs',
+    'AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs',
+    'AiFeatureOnlineStoreFeatureviewSyncConfigArgs',
     'AiFeatureOnlineStoreOptimizedArgs',
     'AiFeatureStoreEncryptionSpecArgs',
     'AiFeatureStoreEntityTypeIamBindingConditionArgs',
@@ -973,6 +975,68 @@ class AiFeatureOnlineStoreEmbeddingManagementArgs:
     @enabled.setter
     def enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enabled", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreFeatureviewBigQuerySourceArgs:
+    def __init__(__self__, *,
+                 entity_id_columns: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] entity_id_columns: Columns to construct entityId / row keys. Start by supporting 1 only.
+        :param pulumi.Input[str] uri: The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+        """
+        pulumi.set(__self__, "entity_id_columns", entity_id_columns)
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter(name="entityIdColumns")
+    def entity_id_columns(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Columns to construct entityId / row keys. Start by supporting 1 only.
+        """
+        return pulumi.get(self, "entity_id_columns")
+
+    @entity_id_columns.setter
+    def entity_id_columns(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "entity_id_columns", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        The BigQuery view URI that will be materialized on each sync trigger based on FeatureView.SyncConfig.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
+
+
+@pulumi.input_type
+class AiFeatureOnlineStoreFeatureviewSyncConfigArgs:
+    def __init__(__self__, *,
+                 cron: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cron: Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+               To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+        """
+        if cron is not None:
+            pulumi.set(__self__, "cron", cron)
+
+    @property
+    @pulumi.getter
+    def cron(self) -> Optional[pulumi.Input[str]]:
+        """
+        Cron schedule (https://en.wikipedia.org/wiki/Cron) to launch scheduled runs.
+        To explicitly set a timezone to the cron tab, apply a prefix in the cron tab: "CRON_TZ=${IANA_TIME_ZONE}" or "TZ=${IANA_TIME_ZONE}".
+        """
+        return pulumi.get(self, "cron")
+
+    @cron.setter
+    def cron(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cron", value)
 
 
 @pulumi.input_type

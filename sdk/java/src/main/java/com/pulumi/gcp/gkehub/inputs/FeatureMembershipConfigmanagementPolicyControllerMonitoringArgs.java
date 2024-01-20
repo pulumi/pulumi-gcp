@@ -16,9 +16,17 @@ public final class FeatureMembershipConfigmanagementPolicyControllerMonitoringAr
 
     public static final FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs Empty = new FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs();
 
+    /**
+     * Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+     * 
+     */
     @Import(name="backends")
     private @Nullable Output<List<String>> backends;
 
+    /**
+     * @return Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+     * 
+     */
     public Optional<Output<List<String>>> backends() {
         return Optional.ofNullable(this.backends);
     }
@@ -47,15 +55,33 @@ public final class FeatureMembershipConfigmanagementPolicyControllerMonitoringAr
             $ = new FeatureMembershipConfigmanagementPolicyControllerMonitoringArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param backends Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backends(@Nullable Output<List<String>> backends) {
             $.backends = backends;
             return this;
         }
 
+        /**
+         * @param backends Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backends(List<String> backends) {
             return backends(Output.of(backends));
         }
 
+        /**
+         * @param backends Specifies the list of backends Policy Controller will export to. Must be one of `CLOUD_MONITORING` or `PROMETHEUS`. Defaults to [`CLOUD_MONITORING`, `PROMETHEUS`]. Specifying an empty value `[]` disables metrics export.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backends(String... backends) {
             return backends(List.of(backends));
         }

@@ -401,6 +401,7 @@ __all__ = [
     'RouterNatSubnetwork',
     'RouterPeerAdvertisedIpRange',
     'RouterPeerBfd',
+    'RouterPeerMd5AuthenticationKey',
     'RouterStatusBestRouteResult',
     'RouterStatusBestRoutesForRouterResult',
     'SecurityPolicyAdaptiveProtectionConfig',
@@ -27786,6 +27787,41 @@ class RouterPeerBfd(dict):
         be a value between 5 and 16.
         """
         return pulumi.get(self, "multiplier")
+
+
+@pulumi.output_type
+class RouterPeerMd5AuthenticationKey(dict):
+    def __init__(__self__, *,
+                 key: str,
+                 name: str):
+        """
+        :param str name: Name of this BGP peer. The name must be 1-63 characters long,
+               and comply with RFC1035. Specifically, the name must be 1-63 characters
+               long and match the regular expression `a-z?` which
+               means the first character must be a lowercase letter, and all
+               following characters must be a dash, lowercase letter, or digit,
+               except the last character, which cannot be a dash.
+        """
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of this BGP peer. The name must be 1-63 characters long,
+        and comply with RFC1035. Specifically, the name must be 1-63 characters
+        long and match the regular expression `a-z?` which
+        means the first character must be a lowercase letter, and all
+        following characters must be a dash, lowercase letter, or digit,
+        except the last character, which cannot be a dash.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type
