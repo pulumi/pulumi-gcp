@@ -1,7 +1,7 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Anton Tayanovskyy <anton@pulumi.com>
 Date: Wed, 20 Dec 2023 13:33:12 -0600
-Subject: [PATCH 10/10] docs patching
+Subject: [PATCH 06/10] docs patching
 
 
 diff --git a/website/docs/r/api_gateway_api.html.markdown b/website/docs/r/api_gateway_api.html.markdown
@@ -537,33 +537,32 @@ index 1f417a763..f743a3fdd 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/composer_environment.html.markdown b/website/docs/r/composer_environment.html.markdown
-index c9efd3c5a..8d95c1599 100644
+index 2e2737c5a..34e9f6558 100644
 --- a/website/docs/r/composer_environment.html.markdown
 +++ b/website/docs/r/composer_environment.html.markdown
-@@ -27,17 +27,18 @@ To get more information about Environments, see:
- ~> **Warning:** We **STRONGLY** recommend you read the [GCP
+@@ -27,18 +27,18 @@ To get more information about Environments, see:
+ We **STRONGLY** recommend you read the [GCP
  guides](https://cloud.google.com/composer/docs/how-to) as the Environment resource requires a long
  deployment process and involves several layers of GCP infrastructure, including a Kubernetes Engine
 -cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Terraform
-+cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, this provider
- will not be able to automatically find or manage many of these underlying resources. In particular:
-+
- * It can take up to one hour to create or update an environment resource. In addition, GCP may only
-   detect some errors in configuration when they are used (e.g. ~40-50 minutes into the creation
++cluster, Cloud Storage, and Compute networking resources. Due to limitations of the API, Pulumi
+ will not be able to find or manage many of these underlying resources automatically. In particular:
+ * Creating or updating an environment resource can take up to one hour. In addition, GCP may only
+   detect some errors in the configuration when they are used (e.g., ~40-50 minutes into the creation
    process), and is prone to limited error reporting. If you encounter confusing or uninformative
    errors, please verify your configuration is valid against GCP Cloud Composer before filing bugs
--  against the Terraform provider. * **Environments create Google Cloud Storage buckets that do not get
-+  against the provider. ***Environments create Google Cloud Storage buckets that do not get
-   cleaned up automatically** on environment deletion. [More about Composer's use of Cloud
--  Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage). * Please review the [known
-+Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).* Please review the [known
+-  against the Terraform provider.
++  against the provider.
+ * **Environments create Google Cloud Storage buckets that are not automatically cleaned up** on environment deletion. [More about Composer's use of Cloud
+   Storage](https://cloud.google.com/composer/docs/concepts/cloud-storage).
+ * Please review the [known
    issues](https://cloud.google.com/composer/docs/known-issues) for Composer if you are having
 -  problems.
 +  problems.***
  
  ## Example Usage
  
-@@ -320,7 +321,7 @@ The following arguments are supported:
+@@ -301,7 +301,7 @@ The following arguments are supported:
    dependencies.
  
  * `maintenance_window` -
@@ -572,7 +571,7 @@ index c9efd3c5a..8d95c1599 100644
    The configuration settings for Cloud Composer maintenance windows.
  
  * `master_authorized_networks_config` -
-@@ -396,8 +397,7 @@ The following arguments are supported:
+@@ -377,8 +377,7 @@ The following arguments are supported:
    Cannot be updated.
  
  * `max_pods_per_node` -
@@ -582,7 +581,7 @@ index c9efd3c5a..8d95c1599 100644
    The maximum pods per node in the GKE cluster allocated during environment
    creation. Lowering this value reduces IP address consumption by the Cloud
    Composer Kubernetes cluster. This value can only be set if the environment is VPC-Native.
-@@ -605,7 +605,7 @@ The `web_server_network_access_control` supports:
+@@ -591,7 +590,7 @@ The `web_server_network_access_control` supports:
  
  * `recurrence` -
    (Required)
@@ -591,7 +590,7 @@ index c9efd3c5a..8d95c1599 100644
    The only allowed values for 'FREQ' field are 'FREQ=DAILY' and 'FREQ=WEEKLY;BYDAY=...'.
    Example values: 'FREQ=WEEKLY;BYDAY=TU,WE', 'FREQ=DAILY'.
  
-@@ -615,7 +615,7 @@ The `web_server_network_access_control` supports:
+@@ -601,7 +600,7 @@ The `web_server_network_access_control` supports:
    Whether or not master authorized networks is enabled.
  
  * `cidr_blocks` -
@@ -600,7 +599,7 @@ index c9efd3c5a..8d95c1599 100644
  
  <a name="nested_cidr_blocks"></a>The `cidr_blocks` supports:
  
-@@ -928,7 +928,7 @@ The `ip_allocation_policy` block supports:
+@@ -919,7 +918,7 @@ The `ip_allocation_policy` block supports:
  
  * `recurrence` -
    (Required)
@@ -840,7 +839,7 @@ index c3c7a08e5..afe1e7197 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index 35f71e01f..9d7804b4a 100644
+index afafbfd43..6cccabb24 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -87,7 +87,7 @@ The following arguments are supported:
@@ -995,7 +994,7 @@ index 3f6b49891..6044e7982 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index e67b1b98c..757416b5e 100644
+index bf3dcb2cd..ab09dde68 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1059,7 +1058,7 @@ index e67b1b98c..757416b5e 100644
  
  * `name_prefix` - (Optional) Creates a unique name beginning with the specified
    prefix. Conflicts with `name`.
-@@ -497,7 +497,7 @@ The following arguments are supported:
+@@ -501,7 +501,7 @@ The following arguments are supported:
  * `access_config` - (Optional) Access configurations, i.e. IPs via which this
      instance can be accessed via the Internet. Omit to ensure that the instance
      is not accessible from the Internet (this means that ssh provisioners will
@@ -1068,7 +1067,7 @@ index e67b1b98c..757416b5e 100644
      network (e.g. via tunnel or because it is running on another cloud instance
      on that network). This block can be repeated multiple times. Structure [documented below](#nested_access_config).
  
-@@ -583,7 +583,7 @@ specified, then this instance will have no external IPv6 Internet access. Struct
+@@ -587,7 +587,7 @@ specified, then this instance will have no external IPv6 Internet access. Struct
  
  * `instance_termination_action` - (Optional) Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
  
@@ -1837,7 +1836,7 @@ index d282b9178..376d46e33 100644
  
  * `project` - (Optional) The ID of the project in which the resource belongs. If it
 diff --git a/website/docs/r/compute_vpn_tunnel.html.markdown b/website/docs/r/compute_vpn_tunnel.html.markdown
-index 9db13a01f..145a05e51 100644
+index 20ce807e7..1cf3cbdbb 100644
 --- a/website/docs/r/compute_vpn_tunnel.html.markdown
 +++ b/website/docs/r/compute_vpn_tunnel.html.markdown
 @@ -29,9 +29,8 @@ To get more information about VpnTunnel, see:
@@ -1853,7 +1852,7 @@ index 9db13a01f..145a05e51 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_working_dir=vpn_tunnel_basic&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&open_in_editor=main.tf&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 157bfb70f..4c2f9ca99 100644
+index 7107d81fc..6107ca7c6 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -6,12 +6,6 @@ description: |-
@@ -1958,7 +1957,7 @@ index 157bfb70f..4c2f9ca99 100644
  release channel, but will not unenroll it. Instead, use the `"UNSPECIFIED"`
  channel. Structure is [documented below](#nested_release_channel).
  
-@@ -348,7 +363,7 @@ subnetwork in which the cluster's instances are launched.
+@@ -350,7 +365,7 @@ subnetwork in which the cluster's instances are launched.
  * `enable_intranode_visibility` - (Optional)
      Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
  
@@ -1967,7 +1966,7 @@ index 157bfb70f..4c2f9ca99 100644
      Whether L4ILB Subsetting is enabled for this cluster.
  
  * `enable_multi_networking` - (Optional, [Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html))
-@@ -420,7 +435,7 @@ Fleet configuration for the cluster. Structure is [documented below](#nested_fle
+@@ -425,7 +440,7 @@ Fleet configuration for the cluster. Structure is [documented below](#nested_fle
  
  * `cloudrun_config` - (Optional). Structure is [documented below](#nested_cloudrun_config).
  
@@ -1975,8 +1974,8 @@ index 157bfb70f..4c2f9ca99 100644
 +* `istio_config` - (Optional).
      Structure is [documented below](#nested_istio_config).
  
- * `identity_service_config` - (Optional). Structure is [documented below](#nested_identity_service_config).
-@@ -440,7 +455,7 @@ Fleet configuration for the cluster. Structure is [documented below](#nested_fle
+ * `dns_cache_config` - (Optional).
+@@ -443,7 +458,7 @@ Fleet configuration for the cluster. Structure is [documented below](#nested_fle
  *  `gke_backup_agent_config` -  (Optional).
      The status of the Backup for GKE agent addon. It is disabled by default; Set `enabled = true` to enable.
  
@@ -1985,7 +1984,7 @@ index 157bfb70f..4c2f9ca99 100644
      Configuration for the KALM addon, which manages the lifecycle of k8s. It is disabled by default; Set `enabled = true` to enable.
  
  *  `config_connector_config` -  (Optional).
-@@ -517,7 +532,7 @@ in addition to node auto-provisioning. Structure is [documented below](#nested_r
+@@ -520,7 +535,7 @@ in addition to node auto-provisioning. Structure is [documented below](#nested_r
  GKE Autopilot clusters.
  Structure is [documented below](#nested_auto_provisioning_defaults).
  
@@ -1994,7 +1993,7 @@ index 157bfb70f..4c2f9ca99 100644
  options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
  feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
  when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
-@@ -534,7 +549,7 @@ for a list of types.
+@@ -537,7 +552,7 @@ for a list of types.
  
  <a name="nested_auto_provisioning_defaults"></a>The `auto_provisioning_defaults` block supports:
  
@@ -2003,7 +2002,7 @@ index 157bfb70f..4c2f9ca99 100644
  Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
  specified or newer CPU platform. Applicable values are the friendly names of CPU platforms, such
  as "Intel Haswell" or "Intel Sandy Bridge".
-@@ -842,8 +857,6 @@ gvnic {
+@@ -845,8 +860,6 @@ gvnic {
  
  * `guest_accelerator` - (Optional) List of the type and count of accelerator cards attached to the instance.
      Structure [documented below](#nested_guest_accelerator).
@@ -2012,7 +2011,7 @@ index 157bfb70f..4c2f9ca99 100644
  
  * `image_type` - (Optional) The image type to use for this node. Note that changing the image type
      will delete and recreate all nodes in the node pool.
-@@ -864,7 +877,7 @@ gvnic {
+@@ -867,7 +880,7 @@ gvnic {
  * `metadata` - (Optional) The metadata key/value pairs assigned to instances in
      the cluster. From GKE `1.12` onwards, `disable-legacy-endpoints` is set to
      `true` by the API; if `metadata` is set but that default value is not
@@ -2021,7 +2020,7 @@ index 157bfb70f..4c2f9ca99 100644
      value in your config.
  
  * `min_cpu_platform` - (Optional) Minimum CPU platform to be used by this instance.
-@@ -889,10 +902,7 @@ gvnic {
+@@ -892,10 +905,7 @@ gvnic {
      See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/spot-vms)
      for more information. Defaults to false.
  
@@ -2033,7 +2032,7 @@ index 157bfb70f..4c2f9ca99 100644
  
  * `service_account` - (Optional) The service account to be used by the Node VMs.
      If not specified, the "default" service account is used.
-@@ -902,13 +912,15 @@ gvnic {
+@@ -905,13 +915,15 @@ gvnic {
  * `tags` - (Optional) The list of instance tags applied to all nodes. Tags are used to identify
      valid sources or targets for network firewalls.
  
@@ -2056,7 +2055,7 @@ index 157bfb70f..4c2f9ca99 100644
  
  * `workload_metadata_config` - (Optional) Metadata configuration to expose to workloads on the node pool.
      Structure is [documented below](#nested_workload_metadata_config).
-@@ -957,12 +969,20 @@ sole_tenant_config {
+@@ -960,12 +972,20 @@ sole_tenant_config {
  
  * `threads_per_core` - (Required) The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
  
@@ -2078,7 +2077,7 @@ index 157bfb70f..4c2f9ca99 100644
  <a name="nested_ephemeral_storage_config"></a>The `ephemeral_storage_config` block supports:
  
  * `local_ssd_count` (Required) - Number of local SSDs to use to back ephemeral storage. Uses NVMe interfaces. Each local SSD is 375 GB in size. If zero, it means to disable using local SSDs as ephemeral storage.
-@@ -995,7 +1015,7 @@ sole_tenant_config {
+@@ -998,7 +1018,7 @@ sole_tenant_config {
  * `count` (Required) - The number of the guest accelerator cards exposed to this instance.
  
  * `gpu_driver_installation_config` (Optional) - Configuration for auto installation of GPU driver. Structure is [documented below](#nested_gpu_driver_installation_config).
@@ -2087,7 +2086,7 @@ index 157bfb70f..4c2f9ca99 100644
  * `gpu_partition_size` (Optional) - Size of partitions to create on the GPU. Valid values are described in the NVIDIA mig [user guide](https://docs.nvidia.com/datacenter/tesla/mig-user-guide/#partitioning).
  
  * `gpu_sharing_config` (Optional) - Configuration for GPU sharing. Structure is [documented below](#nested_gpu_sharing_config).
-@@ -1108,7 +1128,7 @@ for more details. This field only applies to private clusters, when
+@@ -1111,7 +1131,7 @@ for more details. This field only applies to private clusters, when
  `enable_private_nodes` is `true`.
  
  * `master_global_access_config` (Optional) - Controls cluster master global
@@ -2096,7 +2095,7 @@ index 157bfb70f..4c2f9ca99 100644
  not modify the previously-set value. Structure is [documented below](#nested_master_global_access_config).
  
  In addition, the `private_cluster_config` allows access to the following read-only fields:
-@@ -1211,9 +1231,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
+@@ -1214,9 +1234,9 @@ Enables monitoring and attestation of the boot integrity of the instance. The at
  
  * `mode` (Required) How to expose the node metadata to the workload running on the node.
      Accepted values are:
@@ -2109,7 +2108,7 @@ index 157bfb70f..4c2f9ca99 100644
  
  <a name="nested_kubelet_config"></a>The `kubelet_config` block supports:
  
-@@ -1339,7 +1359,7 @@ exported:
+@@ -1345,7 +1365,7 @@ exported:
  
  * `node_config.0.effective_taints` - List of kubernetes taints applied to each node. Structure is [documented above](#nested_taint).
  
@@ -2328,7 +2327,7 @@ index b33badf77..d666ca9b3 100644
  * `zone` - (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used.
  * `region` - (Optional) The region in which the created job should run.
 diff --git a/website/docs/r/dataproc_cluster.html.markdown b/website/docs/r/dataproc_cluster.html.markdown
-index 32762397f..2aa46fe44 100644
+index a09753653..61ebf417b 100644
 --- a/website/docs/r/dataproc_cluster.html.markdown
 +++ b/website/docs/r/dataproc_cluster.html.markdown
 @@ -146,7 +146,7 @@ resource "google_dataproc_cluster" "accelerated_cluster" {
@@ -2340,7 +2339,7 @@ index 32762397f..2aa46fe44 100644
        Does not affect auto scaling decomissioning from an autoscaling policy.
        Graceful decommissioning allows removing nodes from the cluster without interrupting jobs in progress.
        Timeout specifies how long to wait for jobs in progress to finish before forcefully removing nodes (and potentially interrupting jobs).
-@@ -633,7 +633,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
+@@ -636,7 +636,6 @@ will be set for you based on whatever was set for the `worker_config.machine_typ
    * PREEMPTIBILITY_UNSPECIFIED
    * NON_PREEMPTIBLE
    * PREEMPTIBLE
@@ -2651,10 +2650,10 @@ index 360abf41b..4da91c6af 100644
  
  * [API documentation](https://firebase.google.com/docs/reference/firebase-management/rest/v1beta1/projects.webApps)
 diff --git a/website/docs/r/gke_hub_membership.html.markdown b/website/docs/r/gke_hub_membership.html.markdown
-index 4d00f7259..8925c5658 100644
+index 246173be4..e66c8e778 100644
 --- a/website/docs/r/gke_hub_membership.html.markdown
 +++ b/website/docs/r/gke_hub_membership.html.markdown
-@@ -119,7 +119,7 @@ The following arguments are supported:
+@@ -125,7 +125,7 @@ The following arguments are supported:
  
  
  * `description` -
@@ -3152,7 +3151,7 @@ index 0347f5f46..85a34f830 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/google_service_account.html.markdown b/website/docs/r/google_service_account.html.markdown
-index 95a409bc8..2ac80dfc4 100644
+index 805ed4382..daf3688f3 100644
 --- a/website/docs/r/google_service_account.html.markdown
 +++ b/website/docs/r/google_service_account.html.markdown
 @@ -16,8 +16,7 @@ Allows management of a Google Cloud service account.
@@ -3444,7 +3443,7 @@ index d29264f82..aa3a631ce 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/kms_crypto_key.html.markdown b/website/docs/r/kms_crypto_key.html.markdown
-index a0f6908d1..9d3328ea9 100644
+index 90d9b93c9..d51c118a5 100644
 --- a/website/docs/r/kms_crypto_key.html.markdown
 +++ b/website/docs/r/kms_crypto_key.html.markdown
 @@ -23,9 +23,9 @@ A `CryptoKey` represents a logical key that can be used for cryptographic operat
@@ -3605,7 +3604,7 @@ index 7be7b3b31..57269fac0 100644
  ## Example Usage
  
 diff --git a/website/docs/r/logging_project_sink.html.markdown b/website/docs/r/logging_project_sink.html.markdown
-index 7aac31384..137e15cbf 100644
+index f9162509e..3ae98350a 100644
 --- a/website/docs/r/logging_project_sink.html.markdown
 +++ b/website/docs/r/logging_project_sink.html.markdown
 @@ -14,7 +14,7 @@ Manages a project-level logging sink. For more information see:
@@ -4075,7 +4074,7 @@ index baff78aae..fa73d8f49 100644
  ## Example Usage
  
 diff --git a/website/docs/r/sql_user.html.markdown b/website/docs/r/sql_user.html.markdown
-index 9b96d4463..6bc7816be 100644
+index faf10f035..b29da5824 100644
 --- a/website/docs/r/sql_user.html.markdown
 +++ b/website/docs/r/sql_user.html.markdown
 @@ -9,8 +9,6 @@ description: |-
