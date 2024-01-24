@@ -10,6 +10,7 @@ func editRules(defaults []tfbridge.DocsEdit) []tfbridge.DocsEdit {
 	return append(defaults,
 		fixupEffectiveLabels,
 		removeSecretsInPlainTextNote,
+		removeBetaFromDescriptionField,
 	)
 }
 
@@ -35,6 +36,34 @@ var removeSecretsInPlainTextNote = tfbridge.DocsEdit{
 	Edit: func(path string, content []byte) ([]byte, error) {
 		for _, r := range secretsInPlainTextNoteRegexps {
 			content = r.ReplaceAllLiteral(content, nil)
+		}
+		return content, nil
+	},
+}
+
+// Some descriptions had a link to google-beta removed as part of link scrubbing by the bridge.
+// This leaves us with the following patterns unique to this provider to remove from the "Description" fields.
+// We have to be somewhat verbose here to avoid removing legitimate use of the term "Beta", e.g "Kubernetes Beta API".
+// "(Optional, Beta, Deprecated)
+// "(Optional, Beta)
+// "(Beta, Deprecated)
+// "(Beta only)
+// "(Optional) Beta
+var betaRegexps = []*regexp.Regexp{
+
+	regexp.MustCompile(`\(Beta\)`),
+	regexp.MustCompile(`\(Optional, Beta\)`),
+	regexp.MustCompile(`\(Optional, Beta, Deprecated\)`),
+	regexp.MustCompile(`\(Beta, Deprecated\)`),
+	regexp.MustCompile(`\(Beta only\)`),
+	regexp.MustCompile(`\(Optional\) Beta `),
+}
+
+var removeBetaFromDescriptionField = tfbridge.DocsEdit{
+	Path: "*",
+	Edit: func(path string, content []byte) ([]byte, error) {
+		for _, betaRegex := range betaRegexps {
+			content = betaRegex.ReplaceAllLiteral(content, nil)
 		}
 		return content, nil
 	},
