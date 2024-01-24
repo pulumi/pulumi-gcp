@@ -23,6 +23,7 @@ import (
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
+	"google.golang.org/api/compute/v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 
@@ -324,6 +325,23 @@ func lowercaseAutoName() *tfbridge.SchemaInfo {
 	})
 }
 
+func getRegionsList(project string) ([]string, error) {
+	computeService, err := compute.NewService(context.Background())
+	if err != nil {
+		return nil, fmt.Errorf("failed to create compute service: %w", err)
+	}
+	regionsService := compute.NewRegionsService(computeService)
+	regionList, err := regionsService.List(project).Do()
+	if err != nil {
+		return nil, fmt.Errorf("failed to list regions: %w", err)
+	}
+	var regions []string
+	for _, region := range regionList.Items {
+		regions = append(regions, region.Name)
+	}
+	return regions, nil
+}
+
 // We should only run the validation once to avoid duplicating the reported errors.
 var credentialsValidationRun atomic.Bool
 
@@ -382,6 +400,20 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 		return fmt.Errorf(
 			"failed to load application credentials.\nTo use your default gcloud credentials, run:\n\t`gcloud auth application-default login`\nSee https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.\nExpanded error message: %w", err)
 	}
+
+	if config.Region != "" {
+		regionList, err := getRegionsList(config.Project)
+		if err != nil {
+			return fmt.Errorf("failed to get regions list: %w", err)
+		}
+		for _, region := range regionList {
+			if region == config.Region {
+				return nil
+			}
+		}
+		return fmt.Errorf("region %q is not available for project %q. Available regions: %q", config.Region, config.Project, regionList)
+	}
+
 	return nil
 }
 
@@ -2394,7 +2426,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
-			//CloudRun Resources
+			// CloudRun Resources
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
 			"google_cloud_run_service":        {Tok: gcpResource(gcpCloudRun, "Service")},
 			"google_cloud_run_service_iam_binding": {
@@ -3109,7 +3141,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
-			//eventarc
+			// eventarc
 			"google_eventarc_channel": {
 				Tok: gcpResource(gcpEventarc, "Channel"),
 			},
