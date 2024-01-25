@@ -23,12 +23,16 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:netapp/activeDirectory:ActiveDirectory":
 		r = &ActiveDirectory{}
+	case "gcp:netapp/backupPolicy:BackupPolicy":
+		r = &BackupPolicy{}
 	case "gcp:netapp/backupVault:BackupVault":
 		r = &BackupVault{}
 	case "gcp:netapp/kmsconfig:Kmsconfig":
 		r = &Kmsconfig{}
 	case "gcp:netapp/storagePool:StoragePool":
 		r = &StoragePool{}
+	case "gcp:netapp/volume:Volume":
+		r = &Volume{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -49,6 +53,11 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"netapp/backupPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"netapp/backupVault",
 		&module{version},
 	)
@@ -60,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"netapp/storagePool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"netapp/volume",
 		&module{version},
 	)
 }

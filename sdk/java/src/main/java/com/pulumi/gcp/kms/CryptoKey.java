@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  * 
  *         var example_key = new CryptoKey(&#34;example-key&#34;, CryptoKeyArgs.builder()        
  *             .keyRing(keyring.id())
- *             .rotationPeriod(&#34;100000s&#34;)
+ *             .rotationPeriod(&#34;7776000s&#34;)
  *             .build());
  * 
  *     }

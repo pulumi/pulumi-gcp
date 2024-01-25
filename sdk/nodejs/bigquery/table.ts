@@ -285,6 +285,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly tableId!: pulumi.Output<string>;
     /**
+     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+     */
+    public readonly tableReplicationInfo!: pulumi.Output<outputs.bigquery.TableTableReplicationInfo | undefined>;
+    /**
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
@@ -340,6 +344,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["tableConstraints"] = state ? state.tableConstraints : undefined;
             resourceInputs["tableId"] = state ? state.tableId : undefined;
+            resourceInputs["tableReplicationInfo"] = state ? state.tableReplicationInfo : undefined;
             resourceInputs["timePartitioning"] = state ? state.timePartitioning : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
             resourceInputs["view"] = state ? state.view : undefined;
@@ -368,6 +373,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["schema"] = args ? args.schema : undefined;
             resourceInputs["tableConstraints"] = args ? args.tableConstraints : undefined;
             resourceInputs["tableId"] = args ? args.tableId : undefined;
+            resourceInputs["tableReplicationInfo"] = args ? args.tableReplicationInfo : undefined;
             resourceInputs["timePartitioning"] = args ? args.timePartitioning : undefined;
             resourceInputs["view"] = args ? args.view : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
@@ -556,6 +562,10 @@ export interface TableState {
      */
     tableId?: pulumi.Input<string>;
     /**
+     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+     */
+    tableReplicationInfo?: pulumi.Input<inputs.bigquery.TableTableReplicationInfo>;
+    /**
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      */
@@ -683,6 +693,10 @@ export interface TableArgs {
      * Changing this forces a new resource to be created.
      */
     tableId: pulumi.Input<string>;
+    /**
+     * Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+     */
+    tableReplicationInfo?: pulumi.Input<inputs.bigquery.TableTableReplicationInfo>;
     /**
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.

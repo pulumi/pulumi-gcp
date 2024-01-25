@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
  * const example_key = new gcp.kms.CryptoKey("example-key", {
  *     keyRing: keyring.id,
- *     rotationPeriod: "100000s",
+ *     rotationPeriod: "7776000s",
  * });
  * ```
  * ### Kms Crypto Key Asymmetric Sign

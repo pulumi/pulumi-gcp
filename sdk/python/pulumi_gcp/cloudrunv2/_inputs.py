@@ -45,6 +45,7 @@ __all__ = [
     'ServiceTemplateContainerLivenessProbeGrpcArgs',
     'ServiceTemplateContainerLivenessProbeHttpGetArgs',
     'ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs',
+    'ServiceTemplateContainerLivenessProbeTcpSocketArgs',
     'ServiceTemplateContainerPortArgs',
     'ServiceTemplateContainerResourcesArgs',
     'ServiceTemplateContainerStartupProbeArgs',
@@ -57,6 +58,8 @@ __all__ = [
     'ServiceTemplateVolumeArgs',
     'ServiceTemplateVolumeCloudSqlInstanceArgs',
     'ServiceTemplateVolumeEmptyDirArgs',
+    'ServiceTemplateVolumeGcsArgs',
+    'ServiceTemplateVolumeNfsArgs',
     'ServiceTemplateVolumeSecretArgs',
     'ServiceTemplateVolumeSecretItemArgs',
     'ServiceTemplateVpcAccessArgs',
@@ -2395,6 +2398,7 @@ class ServiceTemplateContainerLivenessProbeArgs:
                  http_get: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeHttpGetArgs']] = None,
                  initial_delay_seconds: Optional[pulumi.Input[int]] = None,
                  period_seconds: Optional[pulumi.Input[int]] = None,
+                 tcp_socket: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs']] = None,
                  timeout_seconds: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[int] failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -2404,6 +2408,8 @@ class ServiceTemplateContainerLivenessProbeArgs:
                Structure is documented below.
         :param pulumi.Input[int] initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param pulumi.Input[int] period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+        :param pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs'] tcp_socket: TCPSocketAction describes an action based on opening a socket
+               Structure is documented below.
         :param pulumi.Input[int] timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         if failure_threshold is not None:
@@ -2416,6 +2422,8 @@ class ServiceTemplateContainerLivenessProbeArgs:
             pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
             pulumi.set(__self__, "period_seconds", period_seconds)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
@@ -2480,6 +2488,19 @@ class ServiceTemplateContainerLivenessProbeArgs:
     @period_seconds.setter
     def period_seconds(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "period_seconds", value)
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs']]:
+        """
+        TCPSocketAction describes an action based on opening a socket
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tcp_socket")
+
+    @tcp_socket.setter
+    def tcp_socket(self, value: Optional[pulumi.Input['ServiceTemplateContainerLivenessProbeTcpSocketArgs']]):
+        pulumi.set(self, "tcp_socket", value)
 
     @property
     @pulumi.getter(name="timeoutSeconds")
@@ -2634,6 +2655,30 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs:
     @value.setter
     def value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "value", value)
+
+
+@pulumi.input_type
+class ServiceTemplateContainerLivenessProbeTcpSocketArgs:
+    def __init__(__self__, *,
+                 port: pulumi.Input[int]):
+        """
+        :param pulumi.Input[int] port: Port number to access on the container. Must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> pulumi.Input[int]:
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
+
+    @port.setter
+    def port(self, value: pulumi.Input[int]):
+        pulumi.set(self, "port", value)
 
 
 @pulumi.input_type
@@ -3104,10 +3149,16 @@ class ServiceTemplateVolumeArgs:
                  name: pulumi.Input[str],
                  cloud_sql_instance: Optional[pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs']] = None,
                  empty_dir: Optional[pulumi.Input['ServiceTemplateVolumeEmptyDirArgs']] = None,
+                 gcs: Optional[pulumi.Input['ServiceTemplateVolumeGcsArgs']] = None,
+                 nfs: Optional[pulumi.Input['ServiceTemplateVolumeNfsArgs']] = None,
                  secret: Optional[pulumi.Input['ServiceTemplateVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+               Structure is documented below.
+        :param pulumi.Input['ServiceTemplateVolumeGcsArgs'] gcs: Represents a GCS Bucket mounted as a volume.
+               Structure is documented below.
+        :param pulumi.Input['ServiceTemplateVolumeNfsArgs'] nfs: Represents an NFS mount.
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
@@ -3117,6 +3168,10 @@ class ServiceTemplateVolumeArgs:
             pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         if empty_dir is not None:
             pulumi.set(__self__, "empty_dir", empty_dir)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if nfs is not None:
+            pulumi.set(__self__, "nfs", nfs)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
 
@@ -3153,6 +3208,32 @@ class ServiceTemplateVolumeArgs:
     @empty_dir.setter
     def empty_dir(self, value: Optional[pulumi.Input['ServiceTemplateVolumeEmptyDirArgs']]):
         pulumi.set(self, "empty_dir", value)
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional[pulumi.Input['ServiceTemplateVolumeGcsArgs']]:
+        """
+        Represents a GCS Bucket mounted as a volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs")
+
+    @gcs.setter
+    def gcs(self, value: Optional[pulumi.Input['ServiceTemplateVolumeGcsArgs']]):
+        pulumi.set(self, "gcs", value)
+
+    @property
+    @pulumi.getter
+    def nfs(self) -> Optional[pulumi.Input['ServiceTemplateVolumeNfsArgs']]:
+        """
+        Represents an NFS mount.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "nfs")
+
+    @nfs.setter
+    def nfs(self, value: Optional[pulumi.Input['ServiceTemplateVolumeNfsArgs']]):
+        pulumi.set(self, "nfs", value)
 
     @property
     @pulumi.getter
@@ -3201,8 +3282,6 @@ class ServiceTemplateVolumeEmptyDirArgs:
                Default value is `MEMORY`.
                Possible values are: `MEMORY`.
         :param pulumi.Input[str] size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-               
-               - - -
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -3228,14 +3307,107 @@ class ServiceTemplateVolumeEmptyDirArgs:
     def size_limit(self) -> Optional[pulumi.Input[str]]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-
-        - - -
         """
         return pulumi.get(self, "size_limit")
 
     @size_limit.setter
     def size_limit(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "size_limit", value)
+
+
+@pulumi.input_type
+class ServiceTemplateVolumeGcsArgs:
+    def __init__(__self__, *,
+                 bucket: pulumi.Input[str],
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] bucket: GCS Bucket name
+        :param pulumi.Input[bool] read_only: If true, mount the GCS bucket as read-only
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> pulumi.Input[str]:
+        """
+        GCS Bucket name
+        """
+        return pulumi.get(self, "bucket")
+
+    @bucket.setter
+    def bucket(self, value: pulumi.Input[str]):
+        pulumi.set(self, "bucket", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, mount the GCS bucket as read-only
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
+
+
+@pulumi.input_type
+class ServiceTemplateVolumeNfsArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str],
+                 server: pulumi.Input[str],
+                 read_only: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] path: Path that is exported by the NFS server.
+        :param pulumi.Input[str] server: Hostname or IP address of the NFS server
+        :param pulumi.Input[bool] read_only: If true, mount the NFS volume as read only
+               
+               - - -
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "server", server)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Path that is exported by the NFS server.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+    @property
+    @pulumi.getter
+    def server(self) -> pulumi.Input[str]:
+        """
+        Hostname or IP address of the NFS server
+        """
+        return pulumi.get(self, "server")
+
+    @server.setter
+    def server(self, value: pulumi.Input[str]):
+        pulumi.set(self, "server", value)
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, mount the NFS volume as read only
+
+        - - -
+        """
+        return pulumi.get(self, "read_only")
+
+    @read_only.setter
+    def read_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "read_only", value)
 
 
 @pulumi.input_type

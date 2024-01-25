@@ -10,6 +10,21 @@ export type AddressGroup = import("./addressGroup").AddressGroup;
 export const AddressGroup: typeof import("./addressGroup").AddressGroup = null as any;
 utilities.lazyLoad(exports, ["AddressGroup"], () => require("./addressGroup"));
 
+export { AddressGroupIamBindingArgs, AddressGroupIamBindingState } from "./addressGroupIamBinding";
+export type AddressGroupIamBinding = import("./addressGroupIamBinding").AddressGroupIamBinding;
+export const AddressGroupIamBinding: typeof import("./addressGroupIamBinding").AddressGroupIamBinding = null as any;
+utilities.lazyLoad(exports, ["AddressGroupIamBinding"], () => require("./addressGroupIamBinding"));
+
+export { AddressGroupIamMemberArgs, AddressGroupIamMemberState } from "./addressGroupIamMember";
+export type AddressGroupIamMember = import("./addressGroupIamMember").AddressGroupIamMember;
+export const AddressGroupIamMember: typeof import("./addressGroupIamMember").AddressGroupIamMember = null as any;
+utilities.lazyLoad(exports, ["AddressGroupIamMember"], () => require("./addressGroupIamMember"));
+
+export { AddressGroupIamPolicyArgs, AddressGroupIamPolicyState } from "./addressGroupIamPolicy";
+export type AddressGroupIamPolicy = import("./addressGroupIamPolicy").AddressGroupIamPolicy;
+export const AddressGroupIamPolicy: typeof import("./addressGroupIamPolicy").AddressGroupIamPolicy = null as any;
+utilities.lazyLoad(exports, ["AddressGroupIamPolicy"], () => require("./addressGroupIamPolicy"));
+
 export { AuthorizationPolicyArgs, AuthorizationPolicyState } from "./authorizationPolicy";
 export type AuthorizationPolicy = import("./authorizationPolicy").AuthorizationPolicy;
 export const AuthorizationPolicy: typeof import("./authorizationPolicy").AuthorizationPolicy = null as any;
@@ -29,6 +44,16 @@ export { GatewaySecurityPolicyRuleArgs, GatewaySecurityPolicyRuleState } from ".
 export type GatewaySecurityPolicyRule = import("./gatewaySecurityPolicyRule").GatewaySecurityPolicyRule;
 export const GatewaySecurityPolicyRule: typeof import("./gatewaySecurityPolicyRule").GatewaySecurityPolicyRule = null as any;
 utilities.lazyLoad(exports, ["GatewaySecurityPolicyRule"], () => require("./gatewaySecurityPolicyRule"));
+
+export { GetAddressGroupIamPolicyArgs, GetAddressGroupIamPolicyResult, GetAddressGroupIamPolicyOutputArgs } from "./getAddressGroupIamPolicy";
+export const getAddressGroupIamPolicy: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicy = null as any;
+export const getAddressGroupIamPolicyOutput: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAddressGroupIamPolicy","getAddressGroupIamPolicyOutput"], () => require("./getAddressGroupIamPolicy"));
+
+export { SecurityProfileArgs, SecurityProfileState } from "./securityProfile";
+export type SecurityProfile = import("./securityProfile").SecurityProfile;
+export const SecurityProfile: typeof import("./securityProfile").SecurityProfile = null as any;
+utilities.lazyLoad(exports, ["SecurityProfile"], () => require("./securityProfile"));
 
 export { ServerTlsPolicyArgs, ServerTlsPolicyState } from "./serverTlsPolicy";
 export type ServerTlsPolicy = import("./serverTlsPolicy").ServerTlsPolicy;
@@ -52,6 +77,12 @@ const _module = {
         switch (type) {
             case "gcp:networksecurity/addressGroup:AddressGroup":
                 return new AddressGroup(name, <any>undefined, { urn })
+            case "gcp:networksecurity/addressGroupIamBinding:AddressGroupIamBinding":
+                return new AddressGroupIamBinding(name, <any>undefined, { urn })
+            case "gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember":
+                return new AddressGroupIamMember(name, <any>undefined, { urn })
+            case "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy":
+                return new AddressGroupIamPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy":
                 return new AuthorizationPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
@@ -60,6 +91,8 @@ const _module = {
                 return new GatewaySecurityPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
                 return new GatewaySecurityPolicyRule(name, <any>undefined, { urn })
+            case "gcp:networksecurity/securityProfile:SecurityProfile":
+                return new SecurityProfile(name, <any>undefined, { urn })
             case "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy":
                 return new ServerTlsPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy":
@@ -72,10 +105,14 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/authorizationPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/clientTlsPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicyRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfile", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/serverTlsPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/tlsInspectionPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/urlList", _module)

@@ -17,6 +17,8 @@ type EnvironmentConfig struct {
 	AirflowUri                     *string                                          `pulumi:"airflowUri"`
 	DagGcsPrefix                   *string                                          `pulumi:"dagGcsPrefix"`
 	DatabaseConfig                 *EnvironmentConfigDatabaseConfig                 `pulumi:"databaseConfig"`
+	EnablePrivateBuildsOnly        *bool                                            `pulumi:"enablePrivateBuildsOnly"`
+	EnablePrivateEnvironment       *bool                                            `pulumi:"enablePrivateEnvironment"`
 	EncryptionConfig               *EnvironmentConfigEncryptionConfig               `pulumi:"encryptionConfig"`
 	EnvironmentSize                *string                                          `pulumi:"environmentSize"`
 	GkeCluster                     *string                                          `pulumi:"gkeCluster"`
@@ -48,6 +50,8 @@ type EnvironmentConfigArgs struct {
 	AirflowUri                     pulumi.StringPtrInput                                   `pulumi:"airflowUri"`
 	DagGcsPrefix                   pulumi.StringPtrInput                                   `pulumi:"dagGcsPrefix"`
 	DatabaseConfig                 EnvironmentConfigDatabaseConfigPtrInput                 `pulumi:"databaseConfig"`
+	EnablePrivateBuildsOnly        pulumi.BoolPtrInput                                     `pulumi:"enablePrivateBuildsOnly"`
+	EnablePrivateEnvironment       pulumi.BoolPtrInput                                     `pulumi:"enablePrivateEnvironment"`
 	EncryptionConfig               EnvironmentConfigEncryptionConfigPtrInput               `pulumi:"encryptionConfig"`
 	EnvironmentSize                pulumi.StringPtrInput                                   `pulumi:"environmentSize"`
 	GkeCluster                     pulumi.StringPtrInput                                   `pulumi:"gkeCluster"`
@@ -151,6 +155,14 @@ func (o EnvironmentConfigOutput) DagGcsPrefix() pulumi.StringPtrOutput {
 
 func (o EnvironmentConfigOutput) DatabaseConfig() EnvironmentConfigDatabaseConfigPtrOutput {
 	return o.ApplyT(func(v EnvironmentConfig) *EnvironmentConfigDatabaseConfig { return v.DatabaseConfig }).(EnvironmentConfigDatabaseConfigPtrOutput)
+}
+
+func (o EnvironmentConfigOutput) EnablePrivateBuildsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *bool { return v.EnablePrivateBuildsOnly }).(pulumi.BoolPtrOutput)
+}
+
+func (o EnvironmentConfigOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v EnvironmentConfig) *bool { return v.EnablePrivateEnvironment }).(pulumi.BoolPtrOutput)
 }
 
 func (o EnvironmentConfigOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
@@ -264,6 +276,24 @@ func (o EnvironmentConfigPtrOutput) DatabaseConfig() EnvironmentConfigDatabaseCo
 		}
 		return v.DatabaseConfig
 	}).(EnvironmentConfigDatabaseConfigPtrOutput)
+}
+
+func (o EnvironmentConfigPtrOutput) EnablePrivateBuildsOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateBuildsOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+func (o EnvironmentConfigPtrOutput) EnablePrivateEnvironment() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *EnvironmentConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnablePrivateEnvironment
+	}).(pulumi.BoolPtrOutput)
 }
 
 func (o EnvironmentConfigPtrOutput) EncryptionConfig() EnvironmentConfigEncryptionConfigPtrOutput {
@@ -4071,6 +4101,8 @@ type GetEnvironmentConfig struct {
 	AirflowUri                      string                                               `pulumi:"airflowUri"`
 	DagGcsPrefix                    string                                               `pulumi:"dagGcsPrefix"`
 	DatabaseConfigs                 []GetEnvironmentConfigDatabaseConfig                 `pulumi:"databaseConfigs"`
+	EnablePrivateBuildsOnly         bool                                                 `pulumi:"enablePrivateBuildsOnly"`
+	EnablePrivateEnvironment        bool                                                 `pulumi:"enablePrivateEnvironment"`
 	EncryptionConfigs               []GetEnvironmentConfigEncryptionConfig               `pulumi:"encryptionConfigs"`
 	EnvironmentSize                 string                                               `pulumi:"environmentSize"`
 	GkeCluster                      string                                               `pulumi:"gkeCluster"`
@@ -4102,6 +4134,8 @@ type GetEnvironmentConfigArgs struct {
 	AirflowUri                      pulumi.StringInput                                           `pulumi:"airflowUri"`
 	DagGcsPrefix                    pulumi.StringInput                                           `pulumi:"dagGcsPrefix"`
 	DatabaseConfigs                 GetEnvironmentConfigDatabaseConfigArrayInput                 `pulumi:"databaseConfigs"`
+	EnablePrivateBuildsOnly         pulumi.BoolInput                                             `pulumi:"enablePrivateBuildsOnly"`
+	EnablePrivateEnvironment        pulumi.BoolInput                                             `pulumi:"enablePrivateEnvironment"`
 	EncryptionConfigs               GetEnvironmentConfigEncryptionConfigArrayInput               `pulumi:"encryptionConfigs"`
 	EnvironmentSize                 pulumi.StringInput                                           `pulumi:"environmentSize"`
 	GkeCluster                      pulumi.StringInput                                           `pulumi:"gkeCluster"`
@@ -4179,6 +4213,14 @@ func (o GetEnvironmentConfigOutput) DagGcsPrefix() pulumi.StringOutput {
 
 func (o GetEnvironmentConfigOutput) DatabaseConfigs() GetEnvironmentConfigDatabaseConfigArrayOutput {
 	return o.ApplyT(func(v GetEnvironmentConfig) []GetEnvironmentConfigDatabaseConfig { return v.DatabaseConfigs }).(GetEnvironmentConfigDatabaseConfigArrayOutput)
+}
+
+func (o GetEnvironmentConfigOutput) EnablePrivateBuildsOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) bool { return v.EnablePrivateBuildsOnly }).(pulumi.BoolOutput)
+}
+
+func (o GetEnvironmentConfigOutput) EnablePrivateEnvironment() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetEnvironmentConfig) bool { return v.EnablePrivateEnvironment }).(pulumi.BoolOutput)
 }
 
 func (o GetEnvironmentConfigOutput) EncryptionConfigs() GetEnvironmentConfigEncryptionConfigArrayOutput {

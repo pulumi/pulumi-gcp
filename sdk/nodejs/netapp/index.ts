@@ -10,6 +10,11 @@ export type ActiveDirectory = import("./activeDirectory").ActiveDirectory;
 export const ActiveDirectory: typeof import("./activeDirectory").ActiveDirectory = null as any;
 utilities.lazyLoad(exports, ["ActiveDirectory"], () => require("./activeDirectory"));
 
+export { BackupPolicyArgs, BackupPolicyState } from "./backupPolicy";
+export type BackupPolicy = import("./backupPolicy").BackupPolicy;
+export const BackupPolicy: typeof import("./backupPolicy").BackupPolicy = null as any;
+utilities.lazyLoad(exports, ["BackupPolicy"], () => require("./backupPolicy"));
+
 export { BackupVaultArgs, BackupVaultState } from "./backupVault";
 export type BackupVault = import("./backupVault").BackupVault;
 export const BackupVault: typeof import("./backupVault").BackupVault = null as any;
@@ -25,6 +30,11 @@ export type StoragePool = import("./storagePool").StoragePool;
 export const StoragePool: typeof import("./storagePool").StoragePool = null as any;
 utilities.lazyLoad(exports, ["StoragePool"], () => require("./storagePool"));
 
+export { VolumeArgs, VolumeState } from "./volume";
+export type Volume = import("./volume").Volume;
+export const Volume: typeof import("./volume").Volume = null as any;
+utilities.lazyLoad(exports, ["Volume"], () => require("./volume"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -32,18 +42,24 @@ const _module = {
         switch (type) {
             case "gcp:netapp/activeDirectory:ActiveDirectory":
                 return new ActiveDirectory(name, <any>undefined, { urn })
+            case "gcp:netapp/backupPolicy:BackupPolicy":
+                return new BackupPolicy(name, <any>undefined, { urn })
             case "gcp:netapp/backupVault:BackupVault":
                 return new BackupVault(name, <any>undefined, { urn })
             case "gcp:netapp/kmsconfig:Kmsconfig":
                 return new Kmsconfig(name, <any>undefined, { urn })
             case "gcp:netapp/storagePool:StoragePool":
                 return new StoragePool(name, <any>undefined, { urn })
+            case "gcp:netapp/volume:Volume":
+                return new Volume(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "netapp/activeDirectory", _module)
+pulumi.runtime.registerResourceModule("gcp", "netapp/backupPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/backupVault", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/kmsconfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "netapp/storagePool", _module)
+pulumi.runtime.registerResourceModule("gcp", "netapp/volume", _module)

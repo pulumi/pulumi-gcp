@@ -228,6 +228,7 @@ import (
 //				DisableReferentialIntegrity: pulumi.Bool(false),
 //				DisableResourceVersioning:   pulumi.Bool(false),
 //				EnableHistoryImport:         pulumi.Bool(false),
+//				EnableHistoryModifications:  pulumi.Bool(false),
 //				Labels: pulumi.StringMap{
 //					"label1": pulumi.String("labelvalue1"),
 //				},
@@ -311,6 +312,9 @@ type FhirStore struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport pulumi.BoolPtrOutput `pulumi:"enableHistoryImport"`
+	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+	// versions into the FHIR store. If set to false, using history bundles fails with an error.
+	EnableHistoryModifications pulumi.BoolPtrOutput `pulumi:"enableHistoryModifications"`
 	// Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
 	// operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
 	// the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -430,6 +434,9 @@ type fhirStoreState struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport *bool `pulumi:"enableHistoryImport"`
+	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+	// versions into the FHIR store. If set to false, using history bundles fails with an error.
+	EnableHistoryModifications *bool `pulumi:"enableHistoryModifications"`
 	// Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
 	// operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
 	// the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -512,6 +519,9 @@ type FhirStoreState struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport pulumi.BoolPtrInput
+	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+	// versions into the FHIR store. If set to false, using history bundles fails with an error.
+	EnableHistoryModifications pulumi.BoolPtrInput
 	// Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
 	// operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
 	// the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -596,6 +606,9 @@ type fhirStoreArgs struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport *bool `pulumi:"enableHistoryImport"`
+	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+	// versions into the FHIR store. If set to false, using history bundles fails with an error.
+	EnableHistoryModifications *bool `pulumi:"enableHistoryModifications"`
 	// Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
 	// operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
 	// the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -672,6 +685,9 @@ type FhirStoreArgs struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport pulumi.BoolPtrInput
+	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+	// versions into the FHIR store. If set to false, using history bundles fails with an error.
+	EnableHistoryModifications pulumi.BoolPtrInput
 	// Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
 	// operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
 	// the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -854,6 +870,12 @@ func (o FhirStoreOutput) EffectiveLabels() pulumi.StringMapOutput {
 // ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 func (o FhirStoreOutput) EnableHistoryImport() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.BoolPtrOutput { return v.EnableHistoryImport }).(pulumi.BoolPtrOutput)
+}
+
+// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+// versions into the FHIR store. If set to false, using history bundles fails with an error.
+func (o FhirStoreOutput) EnableHistoryModifications() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FhirStore) pulumi.BoolPtrOutput { return v.EnableHistoryModifications }).(pulumi.BoolPtrOutput)
 }
 
 // Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update

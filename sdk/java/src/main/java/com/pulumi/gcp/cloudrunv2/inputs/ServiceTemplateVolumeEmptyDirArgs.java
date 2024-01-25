@@ -37,16 +37,12 @@ public final class ServiceTemplateVolumeEmptyDirArgs extends com.pulumi.resource
     /**
      * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#39;s values are of the &#39;Quantity&#39; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
      * 
-     * ***
-     * 
      */
     @Import(name="sizeLimit")
     private @Nullable Output<String> sizeLimit;
 
     /**
      * @return Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#39;s values are of the &#39;Quantity&#39; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> sizeLimit() {
@@ -106,8 +102,6 @@ public final class ServiceTemplateVolumeEmptyDirArgs extends com.pulumi.resource
         /**
          * @param sizeLimit Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#39;s values are of the &#39;Quantity&#39; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -118,8 +112,6 @@ public final class ServiceTemplateVolumeEmptyDirArgs extends com.pulumi.resource
 
         /**
          * @param sizeLimit Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field&#39;s values are of the &#39;Quantity&#39; k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-         * 
-         * ***
          * 
          * @return builder
          * 

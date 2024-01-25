@@ -18,14 +18,14 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
     public static final PolicySpecRuleArgs Empty = new PolicySpecRuleArgs();
 
     /**
-     * Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+     * Setting this to `&#34;TRUE&#34;` means that all values are allowed. This field can be set only in Policies for list constraints.
      * 
      */
     @Import(name="allowAll")
     private @Nullable Output<String> allowAll;
 
     /**
-     * @return Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+     * @return Setting this to `&#34;TRUE&#34;` means that all values are allowed. This field can be set only in Policies for list constraints.
      * 
      */
     public Optional<Output<String>> allowAll() {
@@ -48,14 +48,14 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+     * Setting this to `&#34;TRUE&#34;` means that all values are denied. This field can be set only in Policies for list constraints.
      * 
      */
     @Import(name="denyAll")
     private @Nullable Output<String> denyAll;
 
     /**
-     * @return Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+     * @return Setting this to `&#34;TRUE&#34;` means that all values are denied. This field can be set only in Policies for list constraints.
      * 
      */
     public Optional<Output<String>> denyAll() {
@@ -63,14 +63,14 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+     * If `&#34;TRUE&#34;`, then the `Policy` is enforced. If `&#34;FALSE&#34;`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
      * 
      */
     @Import(name="enforce")
     private @Nullable Output<String> enforce;
 
     /**
-     * @return If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+     * @return If `&#34;TRUE&#34;`, then the `Policy` is enforced. If `&#34;FALSE&#34;`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
      * 
      */
     public Optional<Output<String>> enforce() {
@@ -121,7 +121,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowAll Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+         * @param allowAll Setting this to `&#34;TRUE&#34;` means that all values are allowed. This field can be set only in Policies for list constraints.
          * 
          * @return builder
          * 
@@ -132,7 +132,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param allowAll Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+         * @param allowAll Setting this to `&#34;TRUE&#34;` means that all values are allowed. This field can be set only in Policies for list constraints.
          * 
          * @return builder
          * 
@@ -163,7 +163,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param denyAll Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+         * @param denyAll Setting this to `&#34;TRUE&#34;` means that all values are denied. This field can be set only in Policies for list constraints.
          * 
          * @return builder
          * 
@@ -174,7 +174,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param denyAll Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+         * @param denyAll Setting this to `&#34;TRUE&#34;` means that all values are denied. This field can be set only in Policies for list constraints.
          * 
          * @return builder
          * 
@@ -184,7 +184,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enforce If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+         * @param enforce If `&#34;TRUE&#34;`, then the `Policy` is enforced. If `&#34;FALSE&#34;`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
          * 
          * @return builder
          * 
@@ -195,7 +195,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param enforce If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+         * @param enforce If `&#34;TRUE&#34;`, then the `Policy` is enforced. If `&#34;FALSE&#34;`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
          * 
          * @return builder
          * 

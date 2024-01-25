@@ -2332,6 +2332,25 @@
                     },
                     "imported_libraries": {
                         "maxItemsOne": false
+                    },
+                    "spark_options": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "archive_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "jar_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "py_file_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -2415,6 +2434,9 @@
                                 }
                             }
                         }
+                    },
+                    "table_replication_info": {
+                        "maxItemsOne": true
                     },
                     "time_partitioning": {
                         "maxItemsOne": true
@@ -3377,6 +3399,9 @@
                                                                     }
                                                                 }
                                                             }
+                                                        },
+                                                        "tcp_socket": {
+                                                            "maxItemsOne": true
                                                         }
                                                     }
                                                 }
@@ -3434,6 +3459,12 @@
                                                 }
                                             },
                                             "empty_dir": {
+                                                "maxItemsOne": true
+                                            },
+                                            "gcs": {
+                                                "maxItemsOne": true
+                                            },
+                                            "nfs": {
                                                 "maxItemsOne": true
                                             },
                                             "secret": {
@@ -18259,6 +18290,10 @@
                     }
                 }
             },
+            "google_netapp_backup_policy": {
+                "current": "gcp:netapp/backupPolicy:BackupPolicy",
+                "majorVersion": 7
+            },
             "google_netapp_backup_vault": {
                 "current": "gcp:netapp/backupVault:BackupVault",
                 "majorVersion": 7
@@ -18270,6 +18305,53 @@
             "google_netapp_storage_pool": {
                 "current": "gcp:netapp/storagePool:StoragePool",
                 "majorVersion": 7
+            },
+            "google_netapp_volume": {
+                "current": "gcp:netapp/volume:Volume",
+                "majorVersion": 7,
+                "fields": {
+                    "export_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "rules": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "mount_options": {
+                        "maxItemsOne": false
+                    },
+                    "protocols": {
+                        "maxItemsOne": false
+                    },
+                    "restricted_actions": {
+                        "maxItemsOne": false
+                    },
+                    "smb_settings": {
+                        "maxItemsOne": false
+                    },
+                    "snapshot_policy": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "daily_schedule": {
+                                    "maxItemsOne": true
+                                },
+                                "hourly_schedule": {
+                                    "maxItemsOne": true
+                                },
+                                "monthly_schedule": {
+                                    "maxItemsOne": true
+                                },
+                                "weekly_schedule": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_network_connectivity_hub": {
                 "current": "gcp:networkconnectivity/hub:Hub",
@@ -18411,6 +18493,31 @@
                     }
                 }
             },
+            "google_network_security_address_group_iam_binding": {
+                "current": "gcp:networksecurity/addressGroupIamBinding:AddressGroupIamBinding",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_network_security_address_group_iam_member": {
+                "current": "gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember",
+                "majorVersion": 7,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_network_security_address_group_iam_policy": {
+                "current": "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy",
+                "majorVersion": 7
+            },
             "google_network_security_authorization_policy": {
                 "current": "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy",
                 "majorVersion": 7,
@@ -18495,6 +18602,25 @@
             "google_network_security_gateway_security_policy_rule": {
                 "current": "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule",
                 "majorVersion": 7
+            },
+            "google_network_security_security_profile": {
+                "current": "gcp:networksecurity/securityProfile:SecurityProfile",
+                "majorVersion": 7,
+                "fields": {
+                    "threat_prevention_profile": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "severity_overrides": {
+                                    "maxItemsOne": false
+                                },
+                                "threat_overrides": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
             },
             "google_network_security_server_tls_policy": {
                 "current": "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy",
@@ -22559,6 +22685,10 @@
                     }
                 }
             },
+            "google_vertex_ai_feature_group_feature": {
+                "current": "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature",
+                "majorVersion": 7
+            },
             "google_vertex_ai_feature_online_store": {
                 "current": "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore",
                 "majorVersion": 7,
@@ -23942,6 +24072,9 @@
                                                                     }
                                                                 }
                                                             }
+                                                        },
+                                                        "tcp_socket": {
+                                                            "maxItemsOne": false
                                                         }
                                                     }
                                                 }
@@ -23999,6 +24132,12 @@
                                                 }
                                             },
                                             "empty_dir": {
+                                                "maxItemsOne": false
+                                            },
+                                            "gcs": {
+                                                "maxItemsOne": false
+                                            },
+                                            "nfs": {
                                                 "maxItemsOne": false
                                             },
                                             "secret": {
@@ -26885,6 +27024,10 @@
                     }
                 }
             },
+            "google_network_security_address_group_iam_policy": {
+                "current": "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy",
+                "majorVersion": 7
+            },
             "google_notebooks_instance_iam_policy": {
                 "current": "gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy",
                 "majorVersion": 7
@@ -28740,19 +28883,25 @@
             "gcp:monitoring/slo:Slo": 0,
             "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": 0,
             "gcp:netapp/activeDirectory:ActiveDirectory": 0,
+            "gcp:netapp/backupPolicy:BackupPolicy": 0,
             "gcp:netapp/backupVault:BackupVault": 0,
             "gcp:netapp/kmsconfig:Kmsconfig": 0,
             "gcp:netapp/storagePool:StoragePool": 0,
+            "gcp:netapp/volume:Volume": 0,
             "gcp:networkconnectivity/hub:Hub": 0,
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": 0,
             "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy": 0,
             "gcp:networkconnectivity/spoke:Spoke": 0,
             "gcp:networkmanagement/connectivityTest:ConnectivityTest": 0,
             "gcp:networksecurity/addressGroup:AddressGroup": 0,
+            "gcp:networksecurity/addressGroupIamBinding:AddressGroupIamBinding": 0,
+            "gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember": 0,
+            "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy": 0,
             "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy": 0,
             "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy": 0,
             "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy": 0,
             "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": 0,
+            "gcp:networksecurity/securityProfile:SecurityProfile": 0,
             "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy": 0,
             "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy": 0,
             "gcp:networksecurity/urlList:UrlList": 0,
@@ -28918,6 +29067,7 @@
             "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember": 0,
             "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": 0,
             "gcp:vertex/aiFeatureGroup:AiFeatureGroup": 0,
+            "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature": 0,
             "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": 0,
             "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview": 0,
             "gcp:vertex/aiFeatureStore:AiFeatureStore": 0,
@@ -29150,6 +29300,7 @@
             "gcp:monitoring/getNotificationChannel:getNotificationChannel": 0,
             "gcp:monitoring/getSecretVersion:getSecretVersion": 0,
             "gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs": 0,
+            "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy": 0,
             "gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy": 0,
             "gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy": 0,
             "gcp:organizations/getActiveFolder:getActiveFolder": 0,
@@ -29874,19 +30025,25 @@
             "gcp:monitoring/slo:Slo": "google_monitoring_slo",
             "gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig": "google_monitoring_uptime_check_config",
             "gcp:netapp/activeDirectory:ActiveDirectory": "google_netapp_active_directory",
+            "gcp:netapp/backupPolicy:BackupPolicy": "google_netapp_backup_policy",
             "gcp:netapp/backupVault:BackupVault": "google_netapp_backup_vault",
             "gcp:netapp/kmsconfig:Kmsconfig": "google_netapp_kmsconfig",
             "gcp:netapp/storagePool:StoragePool": "google_netapp_storage_pool",
+            "gcp:netapp/volume:Volume": "google_netapp_volume",
             "gcp:networkconnectivity/hub:Hub": "google_network_connectivity_hub",
             "gcp:networkconnectivity/policyBasedRoute:PolicyBasedRoute": "google_network_connectivity_policy_based_route",
             "gcp:networkconnectivity/serviceConnectionPolicy:ServiceConnectionPolicy": "google_network_connectivity_service_connection_policy",
             "gcp:networkconnectivity/spoke:Spoke": "google_network_connectivity_spoke",
             "gcp:networkmanagement/connectivityTest:ConnectivityTest": "google_network_management_connectivity_test",
             "gcp:networksecurity/addressGroup:AddressGroup": "google_network_security_address_group",
+            "gcp:networksecurity/addressGroupIamBinding:AddressGroupIamBinding": "google_network_security_address_group_iam_binding",
+            "gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember": "google_network_security_address_group_iam_member",
+            "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy": "google_network_security_address_group_iam_policy",
             "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy": "google_network_security_authorization_policy",
             "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy": "google_network_security_client_tls_policy",
             "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy": "google_network_security_gateway_security_policy",
             "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": "google_network_security_gateway_security_policy_rule",
+            "gcp:networksecurity/securityProfile:SecurityProfile": "google_network_security_security_profile",
             "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy": "google_network_security_server_tls_policy",
             "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy": "google_network_security_tls_inspection_policy",
             "gcp:networksecurity/urlList:UrlList": "google_network_security_url_lists",
@@ -30052,6 +30209,7 @@
             "gcp:vertex/aiEndpointIamMember:AiEndpointIamMember": "google_vertex_ai_endpoint_iam_member",
             "gcp:vertex/aiEndpointIamPolicy:AiEndpointIamPolicy": "google_vertex_ai_endpoint_iam_policy",
             "gcp:vertex/aiFeatureGroup:AiFeatureGroup": "google_vertex_ai_feature_group",
+            "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature": "google_vertex_ai_feature_group_feature",
             "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": "google_vertex_ai_feature_online_store",
             "gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview": "google_vertex_ai_feature_online_store_featureview",
             "gcp:vertex/aiFeatureStore:AiFeatureStore": "google_vertex_ai_featurestore",
@@ -30284,6 +30442,7 @@
             "gcp:monitoring/getNotificationChannel:getNotificationChannel": "google_monitoring_notification_channel",
             "gcp:monitoring/getSecretVersion:getSecretVersion": "google_secret_manager_secret_version_legacy",
             "gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs": "google_monitoring_uptime_check_ips",
+            "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy": "google_network_security_address_group_iam_policy",
             "gcp:notebooks/getInstanceIamPolicy:getInstanceIamPolicy": "google_notebooks_instance_iam_policy",
             "gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy": "google_notebooks_runtime_iam_policy",
             "gcp:organizations/getActiveFolder:getActiveFolder": "google_active_folder",
@@ -31970,6 +32129,16 @@
                 "argumentKind": "argument_kind",
                 "dataType": "data_type"
             },
+            "gcp:bigquery/RoutineSparkOptions:RoutineSparkOptions": {
+                "archiveUris": "archive_uris",
+                "containerImage": "container_image",
+                "fileUris": "file_uris",
+                "jarUris": "jar_uris",
+                "mainClass": "main_class",
+                "mainFileUri": "main_file_uri",
+                "pyFileUris": "py_file_uris",
+                "runtimeVersion": "runtime_version"
+            },
             "gcp:bigquery/TableEncryptionConfiguration:TableEncryptionConfiguration": {
                 "kmsKeyName": "kms_key_name",
                 "kmsKeyVersion": "kms_key_version"
@@ -32032,6 +32201,12 @@
                 "datasetId": "dataset_id",
                 "projectId": "project_id",
                 "tableId": "table_id"
+            },
+            "gcp:bigquery/TableTableReplicationInfo:TableTableReplicationInfo": {
+                "replicationIntervalMs": "replication_interval_ms",
+                "sourceDatasetId": "source_dataset_id",
+                "sourceProjectId": "source_project_id",
+                "sourceTableId": "source_table_id"
             },
             "gcp:bigquery/TableTimePartitioning:TableTimePartitioning": {
                 "expirationMs": "expiration_ms",
@@ -32232,7 +32407,8 @@
                 "returnTableType": "return_table_type",
                 "returnType": "return_type",
                 "routineId": "routine_id",
-                "routineType": "routine_type"
+                "routineType": "routine_type",
+                "sparkOptions": "spark_options"
             },
             "gcp:bigquery/table:Table": {
                 "clusterings": "clustering",
@@ -32256,6 +32432,7 @@
                 "selfLink": "self_link",
                 "tableConstraints": "table_constraints",
                 "tableId": "table_id",
+                "tableReplicationInfo": "table_replication_info",
                 "timePartitioning": "time_partitioning"
             },
             "gcp:bigqueryanalyticshub/ListingDataProvider:ListingDataProvider": {
@@ -34408,6 +34585,7 @@
                 "httpGet": "http_get",
                 "initialDelaySeconds": "initial_delay_seconds",
                 "periodSeconds": "period_seconds",
+                "tcpSocket": "tcp_socket",
                 "timeoutSeconds": "timeout_seconds"
             },
             "gcp:cloudrunv2/ServiceTemplateContainerLivenessProbeHttpGet:ServiceTemplateContainerLivenessProbeHttpGet": {
@@ -34444,6 +34622,12 @@
             },
             "gcp:cloudrunv2/ServiceTemplateVolumeEmptyDir:ServiceTemplateVolumeEmptyDir": {
                 "sizeLimit": "size_limit"
+            },
+            "gcp:cloudrunv2/ServiceTemplateVolumeGcs:ServiceTemplateVolumeGcs": {
+                "readOnly": "read_only"
+            },
+            "gcp:cloudrunv2/ServiceTemplateVolumeNfs:ServiceTemplateVolumeNfs": {
+                "readOnly": "read_only"
             },
             "gcp:cloudrunv2/ServiceTemplateVolumeSecret:ServiceTemplateVolumeSecret": {
                 "defaultMode": "default_mode"
@@ -34601,6 +34785,7 @@
                 "httpGets": "http_get",
                 "initialDelaySeconds": "initial_delay_seconds",
                 "periodSeconds": "period_seconds",
+                "tcpSockets": "tcp_socket",
                 "timeoutSeconds": "timeout_seconds"
             },
             "gcp:cloudrunv2/getServiceTemplateContainerLivenessProbeHttpGet:getServiceTemplateContainerLivenessProbeHttpGet": {
@@ -34639,6 +34824,12 @@
             },
             "gcp:cloudrunv2/getServiceTemplateVolumeEmptyDir:getServiceTemplateVolumeEmptyDir": {
                 "sizeLimit": "size_limit"
+            },
+            "gcp:cloudrunv2/getServiceTemplateVolumeGc:getServiceTemplateVolumeGc": {
+                "readOnly": "read_only"
+            },
+            "gcp:cloudrunv2/getServiceTemplateVolumeNf:getServiceTemplateVolumeNf": {
+                "readOnly": "read_only"
             },
             "gcp:cloudrunv2/getServiceTemplateVolumeSecret:getServiceTemplateVolumeSecret": {
                 "defaultMode": "default_mode"
@@ -34759,6 +34950,8 @@
                 "airflowUri": "airflow_uri",
                 "dagGcsPrefix": "dag_gcs_prefix",
                 "databaseConfig": "database_config",
+                "enablePrivateBuildsOnly": "enable_private_builds_only",
+                "enablePrivateEnvironment": "enable_private_environment",
                 "encryptionConfig": "encryption_config",
                 "environmentSize": "environment_size",
                 "gkeCluster": "gke_cluster",
@@ -34882,6 +35075,8 @@
                 "airflowUri": "airflow_uri",
                 "dagGcsPrefix": "dag_gcs_prefix",
                 "databaseConfigs": "database_config",
+                "enablePrivateBuildsOnly": "enable_private_builds_only",
+                "enablePrivateEnvironment": "enable_private_environment",
                 "encryptionConfigs": "encryption_config",
                 "environmentSize": "environment_size",
                 "gkeCluster": "gke_cluster",
@@ -45236,6 +45431,7 @@
                 "disableResourceVersioning": "disable_resource_versioning",
                 "effectiveLabels": "effective_labels",
                 "enableHistoryImport": "enable_history_import",
+                "enableHistoryModifications": "enable_history_modifications",
                 "enableUpdateCreate": "enable_update_create",
                 "notificationConfig": "notification_config",
                 "notificationConfigs": "notification_configs",
@@ -46719,6 +46915,39 @@
                 "uptimeCheckId": "uptime_check_id",
                 "userLabels": "user_labels"
             },
+            "gcp:netapp/VolumeExportPolicyRule:VolumeExportPolicyRule": {
+                "accessType": "access_type",
+                "allowedClients": "allowed_clients",
+                "hasRootAccess": "has_root_access",
+                "kerberos5ReadOnly": "kerberos5_read_only",
+                "kerberos5ReadWrite": "kerberos5_read_write",
+                "kerberos5iReadOnly": "kerberos5i_read_only",
+                "kerberos5iReadWrite": "kerberos5i_read_write",
+                "kerberos5pReadOnly": "kerberos5p_read_only",
+                "kerberos5pReadWrite": "kerberos5p_read_write"
+            },
+            "gcp:netapp/VolumeMountOption:VolumeMountOption": {
+                "exportFull": "export_full"
+            },
+            "gcp:netapp/VolumeSnapshotPolicy:VolumeSnapshotPolicy": {
+                "dailySchedule": "daily_schedule",
+                "hourlySchedule": "hourly_schedule",
+                "monthlySchedule": "monthly_schedule",
+                "weeklySchedule": "weekly_schedule"
+            },
+            "gcp:netapp/VolumeSnapshotPolicyDailySchedule:VolumeSnapshotPolicyDailySchedule": {
+                "snapshotsToKeep": "snapshots_to_keep"
+            },
+            "gcp:netapp/VolumeSnapshotPolicyHourlySchedule:VolumeSnapshotPolicyHourlySchedule": {
+                "snapshotsToKeep": "snapshots_to_keep"
+            },
+            "gcp:netapp/VolumeSnapshotPolicyMonthlySchedule:VolumeSnapshotPolicyMonthlySchedule": {
+                "daysOfMonth": "days_of_month",
+                "snapshotsToKeep": "snapshots_to_keep"
+            },
+            "gcp:netapp/VolumeSnapshotPolicyWeeklySchedule:VolumeSnapshotPolicyWeeklySchedule": {
+                "snapshotsToKeep": "snapshots_to_keep"
+            },
             "gcp:netapp/activeDirectory:ActiveDirectory": {
                 "aesEncryption": "aes_encryption",
                 "backupOperators": "backup_operators",
@@ -46734,6 +46963,15 @@
                 "pulumiLabels": "terraform_labels",
                 "securityOperators": "security_operators",
                 "stateDetails": "state_details"
+            },
+            "gcp:netapp/backupPolicy:BackupPolicy": {
+                "assignedVolumeCount": "assigned_volume_count",
+                "createTime": "create_time",
+                "dailyBackupLimit": "daily_backup_limit",
+                "effectiveLabels": "effective_labels",
+                "monthlyBackupLimit": "monthly_backup_limit",
+                "pulumiLabels": "terraform_labels",
+                "weeklyBackupLimit": "weekly_backup_limit"
             },
             "gcp:netapp/backupVault:BackupVault": {
                 "createTime": "create_time",
@@ -46757,6 +46995,30 @@
                 "serviceLevel": "service_level",
                 "volumeCapacityGib": "volume_capacity_gib",
                 "volumeCount": "volume_count"
+            },
+            "gcp:netapp/volume:Volume": {
+                "activeDirectory": "active_directory",
+                "capacityGib": "capacity_gib",
+                "effectiveLabels": "effective_labels",
+                "encryptionType": "encryption_type",
+                "exportPolicy": "export_policy",
+                "hasReplication": "has_replication",
+                "kerberosEnabled": "kerberos_enabled",
+                "kmsConfig": "kms_config",
+                "ldapEnabled": "ldap_enabled",
+                "mountOptions": "mount_options",
+                "psaRange": "psa_range",
+                "pulumiLabels": "terraform_labels",
+                "restrictedActions": "restricted_actions",
+                "securityStyle": "security_style",
+                "serviceLevel": "service_level",
+                "shareName": "share_name",
+                "smbSettings": "smb_settings",
+                "snapshotDirectory": "snapshot_directory",
+                "snapshotPolicy": "snapshot_policy",
+                "storagePool": "storage_pool",
+                "unixPermissions": "unix_permissions",
+                "usedGib": "used_gib"
             },
             "gcp:networkconnectivity/PolicyBasedRouteFilter:PolicyBasedRouteFilter": {
                 "destRange": "dest_range",
@@ -46874,6 +47136,13 @@
             "gcp:networksecurity/ClientTlsPolicyServerValidationCaGrpcEndpoint:ClientTlsPolicyServerValidationCaGrpcEndpoint": {
                 "targetUri": "target_uri"
             },
+            "gcp:networksecurity/SecurityProfileThreatPreventionProfile:SecurityProfileThreatPreventionProfile": {
+                "severityOverrides": "severity_overrides",
+                "threatOverrides": "threat_overrides"
+            },
+            "gcp:networksecurity/SecurityProfileThreatPreventionProfileThreatOverride:SecurityProfileThreatPreventionProfileThreatOverride": {
+                "threatId": "threat_id"
+            },
             "gcp:networksecurity/ServerTlsPolicyMtlsPolicy:ServerTlsPolicyMtlsPolicy": {
                 "clientValidationCas": "client_validation_ca",
                 "clientValidationMode": "client_validation_mode",
@@ -46905,6 +47174,9 @@
                 "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
+            "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy": {
+                "policyData": "policy_data"
+            },
             "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy": {
                 "createTime": "create_time",
                 "effectiveLabels": "effective_labels",
@@ -46933,6 +47205,17 @@
                 "selfLink": "self_link",
                 "sessionMatcher": "session_matcher",
                 "tlsInspectionEnabled": "tls_inspection_enabled",
+                "updateTime": "update_time"
+            },
+            "gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy": {
+                "policyData": "policy_data"
+            },
+            "gcp:networksecurity/securityProfile:SecurityProfile": {
+                "createTime": "create_time",
+                "effectiveLabels": "effective_labels",
+                "pulumiLabels": "terraform_labels",
+                "selfLink": "self_link",
+                "threatPreventionProfile": "threat_prevention_profile",
                 "updateTime": "update_time"
             },
             "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy": {
@@ -49941,6 +50224,14 @@
                 "pulumiLabels": "terraform_labels",
                 "updateTime": "update_time"
             },
+            "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature": {
+                "createTime": "create_time",
+                "effectiveLabels": "effective_labels",
+                "featureGroup": "feature_group",
+                "pulumiLabels": "terraform_labels",
+                "updateTime": "update_time",
+                "versionColumnName": "version_column_name"
+            },
             "gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore": {
                 "createTime": "create_time",
                 "dedicatedServingEndpoint": "dedicated_serving_endpoint",
@@ -50455,6 +50746,7 @@
             },
             "gcp:workstations/workstationConfig:WorkstationConfig": {
                 "createTime": "create_time",
+                "disableTcpConnections": "disable_tcp_connections",
                 "displayName": "display_name",
                 "effectiveAnnotations": "effective_annotations",
                 "effectiveLabels": "effective_labels",

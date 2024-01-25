@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.RoutineArgs;
 import com.pulumi.gcp.bigquery.inputs.RoutineState;
 import com.pulumi.gcp.bigquery.outputs.RoutineArgument;
+import com.pulumi.gcp.bigquery.outputs.RoutineSparkOptions;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -176,6 +177,196 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Big Query Routine Pyspark
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionSparkArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineSparkOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;dataset_id&#34;)
+ *             .build());
+ * 
+ *         var testConnection = new Connection(&#34;testConnection&#34;, ConnectionArgs.builder()        
+ *             .connectionId(&#34;connection_id&#34;)
+ *             .location(&#34;US&#34;)
+ *             .spark()
+ *             .build());
+ * 
+ *         var pyspark = new Routine(&#34;pyspark&#34;, RoutineArgs.builder()        
+ *             .datasetId(testDataset.datasetId())
+ *             .routineId(&#34;routine_id&#34;)
+ *             .routineType(&#34;PROCEDURE&#34;)
+ *             .language(&#34;PYTHON&#34;)
+ *             .definitionBody(&#34;&#34;&#34;
+ * from pyspark.sql import SparkSession
+ * 
+ * spark = SparkSession.builder.appName(&#34;spark-bigquery-demo&#34;).getOrCreate()
+ *     
+ * # Load data from BigQuery.
+ * words = spark.read.format(&#34;bigquery&#34;) \
+ *   .option(&#34;table&#34;, &#34;bigquery-public-data:samples.shakespeare&#34;) \
+ *   .load()
+ * words.createOrReplaceTempView(&#34;words&#34;)
+ *     
+ * # Perform word count.
+ * word_count = words.select(&#39;word&#39;, &#39;word_count&#39;).groupBy(&#39;word&#39;).sum(&#39;word_count&#39;).withColumnRenamed(&#34;sum(word_count)&#34;, &#34;sum_word_count&#34;)
+ * word_count.show()
+ * word_count.printSchema()
+ *     
+ * # Saving the data to BigQuery
+ * word_count.write.format(&#34;bigquery&#34;) \
+ *   .option(&#34;writeMethod&#34;, &#34;direct&#34;) \
+ *   .save(&#34;wordcount_dataset.wordcount_output&#34;)
+ *             &#34;&#34;&#34;)
+ *             .sparkOptions(RoutineSparkOptionsArgs.builder()
+ *                 .connection(testConnection.name())
+ *                 .runtimeVersion(&#34;2.1&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Big Query Routine Pyspark Mainfile
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionSparkArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineSparkOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;dataset_id&#34;)
+ *             .build());
+ * 
+ *         var testConnection = new Connection(&#34;testConnection&#34;, ConnectionArgs.builder()        
+ *             .connectionId(&#34;connection_id&#34;)
+ *             .location(&#34;US&#34;)
+ *             .spark()
+ *             .build());
+ * 
+ *         var pysparkMainfile = new Routine(&#34;pysparkMainfile&#34;, RoutineArgs.builder()        
+ *             .datasetId(testDataset.datasetId())
+ *             .routineId(&#34;routine_id&#34;)
+ *             .routineType(&#34;PROCEDURE&#34;)
+ *             .language(&#34;PYTHON&#34;)
+ *             .definitionBody(&#34;&#34;)
+ *             .sparkOptions(RoutineSparkOptionsArgs.builder()
+ *                 .connection(testConnection.name())
+ *                 .runtimeVersion(&#34;2.1&#34;)
+ *                 .mainFileUri(&#34;gs://test-bucket/main.py&#34;)
+ *                 .pyFileUris(&#34;gs://test-bucket/lib.py&#34;)
+ *                 .fileUris(&#34;gs://test-bucket/distribute_in_executor.json&#34;)
+ *                 .archiveUris(&#34;gs://test-bucket/distribute_in_executor.tar.gz&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Big Query Routine Spark Jar
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.bigquery.Dataset;
+ * import com.pulumi.gcp.bigquery.DatasetArgs;
+ * import com.pulumi.gcp.bigquery.Connection;
+ * import com.pulumi.gcp.bigquery.ConnectionArgs;
+ * import com.pulumi.gcp.bigquery.inputs.ConnectionSparkArgs;
+ * import com.pulumi.gcp.bigquery.Routine;
+ * import com.pulumi.gcp.bigquery.RoutineArgs;
+ * import com.pulumi.gcp.bigquery.inputs.RoutineSparkOptionsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var testDataset = new Dataset(&#34;testDataset&#34;, DatasetArgs.builder()        
+ *             .datasetId(&#34;dataset_id&#34;)
+ *             .build());
+ * 
+ *         var testConnection = new Connection(&#34;testConnection&#34;, ConnectionArgs.builder()        
+ *             .connectionId(&#34;connection_id&#34;)
+ *             .location(&#34;US&#34;)
+ *             .spark()
+ *             .build());
+ * 
+ *         var sparkJar = new Routine(&#34;sparkJar&#34;, RoutineArgs.builder()        
+ *             .datasetId(testDataset.datasetId())
+ *             .routineId(&#34;routine_id&#34;)
+ *             .routineType(&#34;PROCEDURE&#34;)
+ *             .language(&#34;SCALA&#34;)
+ *             .definitionBody(&#34;&#34;)
+ *             .sparkOptions(RoutineSparkOptionsArgs.builder()
+ *                 .connection(testConnection.name())
+ *                 .runtimeVersion(&#34;2.1&#34;)
+ *                 .containerImage(&#34;gcr.io/my-project-id/my-spark-image:latest&#34;)
+ *                 .mainClass(&#34;com.google.test.jar.MainClass&#34;)
+ *                 .jarUris(&#34;gs://test-bucket/uberjar_spark_spark3.jar&#34;)
+ *                 .properties(Map.ofEntries(
+ *                     Map.entry(&#34;spark.dataproc.scaling.version&#34;, &#34;2&#34;),
+ *                     Map.entry(&#34;spark.reducer.fetchMigratedShuffle.enabled&#34;, &#34;true&#34;)
+ *                 ))
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 
@@ -318,7 +509,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
     }
     /**
      * The language of the routine.
-     * Possible values are: `SQL`, `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      * 
      */
     @Export(name="language", refs={String.class}, tree="[0]")
@@ -326,7 +517,7 @@ public class Routine extends com.pulumi.resources.CustomResource {
 
     /**
      * @return The language of the routine.
-     * Possible values are: `SQL`, `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      * 
      */
     public Output<Optional<String>> language() {
@@ -443,6 +634,22 @@ public class Routine extends com.pulumi.resources.CustomResource {
      */
     public Output<String> routineType() {
         return this.routineType;
+    }
+    /**
+     * Optional. If language is one of &#34;PYTHON&#34;, &#34;JAVA&#34;, &#34;SCALA&#34;, this field stores the options for spark stored procedure.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="sparkOptions", refs={RoutineSparkOptions.class}, tree="[0]")
+    private Output</* @Nullable */ RoutineSparkOptions> sparkOptions;
+
+    /**
+     * @return Optional. If language is one of &#34;PYTHON&#34;, &#34;JAVA&#34;, &#34;SCALA&#34;, this field stores the options for spark stored procedure.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RoutineSparkOptions>> sparkOptions() {
+        return Codegen.optional(this.sparkOptions);
     }
 
     /**

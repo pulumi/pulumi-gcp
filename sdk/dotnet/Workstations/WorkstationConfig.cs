@@ -656,6 +656,12 @@ namespace Pulumi.Gcp.Workstations
         public Output<bool> Degraded { get; private set; } = null!;
 
         /// <summary>
+        /// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+        /// </summary>
+        [Output("disableTcpConnections")]
+        public Output<bool?> DisableTcpConnections { get; private set; } = null!;
+
+        /// <summary>
         /// Human-readable name for this resource.
         /// </summary>
         [Output("displayName")]
@@ -860,6 +866,12 @@ namespace Pulumi.Gcp.Workstations
         public Input<Inputs.WorkstationConfigContainerArgs>? Container { get; set; }
 
         /// <summary>
+        /// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+        /// </summary>
+        [Input("disableTcpConnections")]
+        public Input<bool>? DisableTcpConnections { get; set; }
+
+        /// <summary>
         /// Human-readable name for this resource.
         /// </summary>
         [Input("displayName")]
@@ -1023,6 +1035,12 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("degraded")]
         public Input<bool>? Degraded { get; set; }
+
+        /// <summary>
+        /// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+        /// </summary>
+        [Input("disableTcpConnections")]
+        public Input<bool>? DisableTcpConnections { get; set; }
 
         /// <summary>
         /// Human-readable name for this resource.

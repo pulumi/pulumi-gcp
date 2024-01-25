@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Alloydb
 {
     /// <summary>
-    /// A managed alloydb cluster.
-    /// 
-    /// To get more information about Cluster, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
-    /// * How-to Guides
-    ///     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
-    /// 
     /// ## Example Usage
     /// ### Alloydb Cluster Basic
     /// 
@@ -59,6 +51,7 @@ namespace Pulumi.Gcp.Alloydb
     ///         ClusterId = "alloydb-cluster-full",
     ///         Location = "us-central1",
     ///         Network = @default.Id,
+    ///         DatabaseVersion = "POSTGRES_15",
     ///         InitialUser = new Gcp.Alloydb.Inputs.ClusterInitialUserArgs
     ///         {
     ///             User = "alloydb-cluster-full",
@@ -377,7 +370,7 @@ namespace Pulumi.Gcp.Alloydb
         public Output<ImmutableArray<Outputs.ClusterContinuousBackupInfo>> ContinuousBackupInfos { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        /// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
@@ -636,6 +629,12 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.ClusterContinuousBackupConfigArgs>? ContinuousBackupConfig { get; set; }
 
         /// <summary>
+        /// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        /// </summary>
+        [Input("databaseVersion")]
+        public Input<string>? DatabaseVersion { get; set; }
+
+        /// <summary>
         /// Policy to determine if the cluster should be deleted forcefully.
         /// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
         /// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -817,7 +816,7 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
-        /// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        /// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }

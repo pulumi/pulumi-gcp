@@ -118,7 +118,7 @@ namespace Pulumi.Gcp.Organizations
     public sealed class GetFoldersResult
     {
         /// <summary>
-        /// A list of projects matching the provided filter. Structure is defined below.
+        /// A list of folders matching the provided filter. Structure is defined below.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetFoldersFolderResult> Folders;
         /// <summary>

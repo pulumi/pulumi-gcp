@@ -135,10 +135,10 @@ class PolicyDryRunSpecRule(dict):
                  enforce: Optional[str] = None,
                  values: Optional['outputs.PolicyDryRunSpecRuleValues'] = None):
         """
-        :param str allow_all: Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+        :param str allow_all: Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         :param 'PolicyDryRunSpecRuleConditionArgs' condition: A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
-        :param str deny_all: Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
-        :param str enforce: If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        :param str deny_all: Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
+        :param str enforce: If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         :param 'PolicyDryRunSpecRuleValuesArgs' values: List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
         """
         if allow_all is not None:
@@ -156,7 +156,7 @@ class PolicyDryRunSpecRule(dict):
     @pulumi.getter(name="allowAll")
     def allow_all(self) -> Optional[str]:
         """
-        Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+        Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         """
         return pulumi.get(self, "allow_all")
 
@@ -172,7 +172,7 @@ class PolicyDryRunSpecRule(dict):
     @pulumi.getter(name="denyAll")
     def deny_all(self) -> Optional[str]:
         """
-        Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+        Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
         """
         return pulumi.get(self, "deny_all")
 
@@ -180,7 +180,7 @@ class PolicyDryRunSpecRule(dict):
     @pulumi.getter
     def enforce(self) -> Optional[str]:
         """
-        If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         """
         return pulumi.get(self, "enforce")
 
@@ -412,10 +412,10 @@ class PolicySpecRule(dict):
                  enforce: Optional[str] = None,
                  values: Optional['outputs.PolicySpecRuleValues'] = None):
         """
-        :param str allow_all: Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+        :param str allow_all: Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         :param 'PolicySpecRuleConditionArgs' condition: A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where key_name and value_name are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
-        :param str deny_all: Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
-        :param str enforce: If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        :param str deny_all: Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
+        :param str enforce: If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         :param 'PolicySpecRuleValuesArgs' values: List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
         """
         if allow_all is not None:
@@ -433,7 +433,7 @@ class PolicySpecRule(dict):
     @pulumi.getter(name="allowAll")
     def allow_all(self) -> Optional[str]:
         """
-        Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+        Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         """
         return pulumi.get(self, "allow_all")
 
@@ -449,7 +449,7 @@ class PolicySpecRule(dict):
     @pulumi.getter(name="denyAll")
     def deny_all(self) -> Optional[str]:
         """
-        Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+        Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
         """
         return pulumi.get(self, "deny_all")
 
@@ -457,7 +457,7 @@ class PolicySpecRule(dict):
     @pulumi.getter
     def enforce(self) -> Optional[str]:
         """
-        If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         """
         return pulumi.get(self, "enforce")
 

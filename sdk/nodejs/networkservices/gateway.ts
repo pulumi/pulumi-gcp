@@ -227,7 +227,7 @@ export class Gateway extends pulumi.CustomResource {
      * an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.
      * Gateways of type 'OPEN_MESH' listen on 0.0.0.0.
      */
-    public readonly addresses!: pulumi.Output<string[] | undefined>;
+    public readonly addresses!: pulumi.Output<string[]>;
     /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.
      * This feature only applies to gateways of type 'SECURE_WEB_GATEWAY'.

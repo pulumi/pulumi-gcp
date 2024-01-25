@@ -65,6 +65,7 @@ __all__ = [
     'JobStatusErrorResult',
     'ReservationAutoscale',
     'RoutineArgument',
+    'RoutineSparkOptions',
     'TableEncryptionConfiguration',
     'TableExternalDataConfiguration',
     'TableExternalDataConfigurationAvroOptions',
@@ -81,6 +82,7 @@ __all__ = [
     'TableTableConstraintsForeignKeyColumnReferences',
     'TableTableConstraintsForeignKeyReferencedTable',
     'TableTableConstraintsPrimaryKey',
+    'TableTableReplicationInfo',
     'TableTimePartitioning',
     'TableView',
     'GetDatasetAccessResult',
@@ -3963,6 +3965,176 @@ class RoutineArgument(dict):
 
 
 @pulumi.output_type
+class RoutineSparkOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "containerImage":
+            suggest = "container_image"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarUris":
+            suggest = "jar_uris"
+        elif key == "mainClass":
+            suggest = "main_class"
+        elif key == "mainFileUri":
+            suggest = "main_file_uri"
+        elif key == "pyFileUris":
+            suggest = "py_file_uris"
+        elif key == "runtimeVersion":
+            suggest = "runtime_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RoutineSparkOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RoutineSparkOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RoutineSparkOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 connection: Optional[str] = None,
+                 container_image: Optional[str] = None,
+                 file_uris: Optional[Sequence[str]] = None,
+                 jar_uris: Optional[Sequence[str]] = None,
+                 main_class: Optional[str] = None,
+                 main_file_uri: Optional[str] = None,
+                 properties: Optional[Mapping[str, str]] = None,
+                 py_file_uris: Optional[Sequence[str]] = None,
+                 runtime_version: Optional[str] = None):
+        """
+        :param Sequence[str] archive_uris: Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+        :param str connection: Fully qualified name of the user-provided Spark connection object.
+               Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+        :param str container_image: Custom container image for the runtime environment.
+        :param Sequence[str] file_uris: Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+        :param Sequence[str] jar_uris: JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
+        :param str main_class: The fully qualified name of a class in jarUris, for example, com.example.wordcount.
+               Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+        :param str main_file_uri: The main file/jar URI of the Spark application.
+               Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
+               Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
+        :param Mapping[str, str] properties: Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
+               For more information, see Apache Spark and the procedure option list.
+               An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param Sequence[str] py_file_uris: Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
+        :param str runtime_version: Runtime version. If not specified, the default runtime version is used.
+        """
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if connection is not None:
+            pulumi.set(__self__, "connection", connection)
+        if container_image is not None:
+            pulumi.set(__self__, "container_image", container_image)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if jar_uris is not None:
+            pulumi.set(__self__, "jar_uris", jar_uris)
+        if main_class is not None:
+            pulumi.set(__self__, "main_class", main_class)
+        if main_file_uri is not None:
+            pulumi.set(__self__, "main_file_uri", main_file_uri)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+        if py_file_uris is not None:
+            pulumi.set(__self__, "py_file_uris", py_file_uris)
+        if runtime_version is not None:
+            pulumi.set(__self__, "runtime_version", runtime_version)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[Sequence[str]]:
+        """
+        Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def connection(self) -> Optional[str]:
+        """
+        Fully qualified name of the user-provided Spark connection object.
+        Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+        """
+        return pulumi.get(self, "connection")
+
+    @property
+    @pulumi.getter(name="containerImage")
+    def container_image(self) -> Optional[str]:
+        """
+        Custom container image for the runtime environment.
+        """
+        return pulumi.get(self, "container_image")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[Sequence[str]]:
+        """
+        Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @property
+    @pulumi.getter(name="jarUris")
+    def jar_uris(self) -> Optional[Sequence[str]]:
+        """
+        JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
+        """
+        return pulumi.get(self, "jar_uris")
+
+    @property
+    @pulumi.getter(name="mainClass")
+    def main_class(self) -> Optional[str]:
+        """
+        The fully qualified name of a class in jarUris, for example, com.example.wordcount.
+        Exactly one of mainClass and main_jar_uri field should be set for Java/Scala language type.
+        """
+        return pulumi.get(self, "main_class")
+
+    @property
+    @pulumi.getter(name="mainFileUri")
+    def main_file_uri(self) -> Optional[str]:
+        """
+        The main file/jar URI of the Spark application.
+        Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
+        Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
+        """
+        return pulumi.get(self, "main_file_uri")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Mapping[str, str]]:
+        """
+        Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
+        For more information, see Apache Spark and the procedure option list.
+        An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "properties")
+
+    @property
+    @pulumi.getter(name="pyFileUris")
+    def py_file_uris(self) -> Optional[Sequence[str]]:
+        """
+        Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
+        """
+        return pulumi.get(self, "py_file_uris")
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> Optional[str]:
+        """
+        Runtime version. If not specified, the default runtime version is used.
+        """
+        return pulumi.get(self, "runtime_version")
+
+
+@pulumi.output_type
 class TableEncryptionConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -5171,6 +5343,63 @@ class TableTableConstraintsPrimaryKey(dict):
         The columns that are composed of the primary key constraint.
         """
         return pulumi.get(self, "columns")
+
+
+@pulumi.output_type
+class TableTableReplicationInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "sourceDatasetId":
+            suggest = "source_dataset_id"
+        elif key == "sourceProjectId":
+            suggest = "source_project_id"
+        elif key == "sourceTableId":
+            suggest = "source_table_id"
+        elif key == "replicationIntervalMs":
+            suggest = "replication_interval_ms"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableTableReplicationInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableTableReplicationInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableTableReplicationInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 source_dataset_id: str,
+                 source_project_id: str,
+                 source_table_id: str,
+                 replication_interval_ms: Optional[int] = None):
+        pulumi.set(__self__, "source_dataset_id", source_dataset_id)
+        pulumi.set(__self__, "source_project_id", source_project_id)
+        pulumi.set(__self__, "source_table_id", source_table_id)
+        if replication_interval_ms is not None:
+            pulumi.set(__self__, "replication_interval_ms", replication_interval_ms)
+
+    @property
+    @pulumi.getter(name="sourceDatasetId")
+    def source_dataset_id(self) -> str:
+        return pulumi.get(self, "source_dataset_id")
+
+    @property
+    @pulumi.getter(name="sourceProjectId")
+    def source_project_id(self) -> str:
+        return pulumi.get(self, "source_project_id")
+
+    @property
+    @pulumi.getter(name="sourceTableId")
+    def source_table_id(self) -> str:
+        return pulumi.get(self, "source_table_id")
+
+    @property
+    @pulumi.getter(name="replicationIntervalMs")
+    def replication_interval_ms(self) -> Optional[int]:
+        return pulumi.get(self, "replication_interval_ms")
 
 
 @pulumi.output_type

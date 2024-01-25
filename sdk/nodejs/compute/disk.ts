@@ -182,8 +182,8 @@ export class Disk extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
     public readonly enableConfidentialCompute!: pulumi.Output<boolean>;
     /**
@@ -507,8 +507,8 @@ export interface DiskState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
     enableConfidentialCompute?: pulumi.Input<boolean>;
     /**
@@ -734,8 +734,8 @@ export interface DiskArgs {
      */
     diskEncryptionKey?: pulumi.Input<inputs.compute.DiskDiskEncryptionKey>;
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
      */
     enableConfidentialCompute?: pulumi.Input<boolean>;
     /**

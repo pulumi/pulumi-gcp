@@ -227,13 +227,13 @@ func (o PolicyDryRunSpecPtrOutput) UpdateTime() pulumi.StringPtrOutput {
 }
 
 type PolicyDryRunSpecRule struct {
-	// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+	// Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
 	AllowAll *string `pulumi:"allowAll"`
 	// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
 	Condition *PolicyDryRunSpecRuleCondition `pulumi:"condition"`
-	// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+	// Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
 	DenyAll *string `pulumi:"denyAll"`
-	// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+	// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 	Enforce *string `pulumi:"enforce"`
 	// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
 	Values *PolicyDryRunSpecRuleValues `pulumi:"values"`
@@ -251,13 +251,13 @@ type PolicyDryRunSpecRuleInput interface {
 }
 
 type PolicyDryRunSpecRuleArgs struct {
-	// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+	// Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
 	AllowAll pulumi.StringPtrInput `pulumi:"allowAll"`
 	// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
 	Condition PolicyDryRunSpecRuleConditionPtrInput `pulumi:"condition"`
-	// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+	// Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
 	DenyAll pulumi.StringPtrInput `pulumi:"denyAll"`
-	// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+	// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 	Enforce pulumi.StringPtrInput `pulumi:"enforce"`
 	// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
 	Values PolicyDryRunSpecRuleValuesPtrInput `pulumi:"values"`
@@ -314,7 +314,7 @@ func (o PolicyDryRunSpecRuleOutput) ToPolicyDryRunSpecRuleOutputWithContext(ctx 
 	return o
 }
 
-// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+// Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
 func (o PolicyDryRunSpecRuleOutput) AllowAll() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyDryRunSpecRule) *string { return v.AllowAll }).(pulumi.StringPtrOutput)
 }
@@ -324,12 +324,12 @@ func (o PolicyDryRunSpecRuleOutput) Condition() PolicyDryRunSpecRuleConditionPtr
 	return o.ApplyT(func(v PolicyDryRunSpecRule) *PolicyDryRunSpecRuleCondition { return v.Condition }).(PolicyDryRunSpecRuleConditionPtrOutput)
 }
 
-// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+// Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
 func (o PolicyDryRunSpecRuleOutput) DenyAll() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyDryRunSpecRule) *string { return v.DenyAll }).(pulumi.StringPtrOutput)
 }
 
-// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 func (o PolicyDryRunSpecRuleOutput) Enforce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyDryRunSpecRule) *string { return v.Enforce }).(pulumi.StringPtrOutput)
 }
@@ -923,13 +923,13 @@ func (o PolicySpecPtrOutput) UpdateTime() pulumi.StringPtrOutput {
 }
 
 type PolicySpecRule struct {
-	// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+	// Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
 	AllowAll *string `pulumi:"allowAll"`
 	// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
 	Condition *PolicySpecRuleCondition `pulumi:"condition"`
-	// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+	// Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
 	DenyAll *string `pulumi:"denyAll"`
-	// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+	// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 	Enforce *string `pulumi:"enforce"`
 	// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
 	Values *PolicySpecRuleValues `pulumi:"values"`
@@ -947,13 +947,13 @@ type PolicySpecRuleInput interface {
 }
 
 type PolicySpecRuleArgs struct {
-	// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+	// Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
 	AllowAll pulumi.StringPtrInput `pulumi:"allowAll"`
 	// A condition which determines whether this rule is used in the evaluation of the policy. When set, the `expression` field in the `Expr' must include from 1 to 10 subexpressions, joined by the "||" or "&&" operators. Each subexpression must be of the form "resource.matchTag('/tag_key_short_name, 'tag_value_short_name')". or "resource.matchTagId('tagKeys/key_id', 'tagValues/value_id')". where keyName and valueName are the resource names for Label Keys and Values. These names are available from the Tag Manager Service. An example expression is: "resource.matchTag('123456789/environment, 'prod')". or "resource.matchTagId('tagKeys/123', 'tagValues/456')".
 	Condition PolicySpecRuleConditionPtrInput `pulumi:"condition"`
-	// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+	// Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
 	DenyAll pulumi.StringPtrInput `pulumi:"denyAll"`
-	// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+	// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 	Enforce pulumi.StringPtrInput `pulumi:"enforce"`
 	// List of values to be used for this PolicyRule. This field can be set only in Policies for list constraints.
 	Values PolicySpecRuleValuesPtrInput `pulumi:"values"`
@@ -1010,7 +1010,7 @@ func (o PolicySpecRuleOutput) ToPolicySpecRuleOutputWithContext(ctx context.Cont
 	return o
 }
 
-// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+// Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
 func (o PolicySpecRuleOutput) AllowAll() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicySpecRule) *string { return v.AllowAll }).(pulumi.StringPtrOutput)
 }
@@ -1020,12 +1020,12 @@ func (o PolicySpecRuleOutput) Condition() PolicySpecRuleConditionPtrOutput {
 	return o.ApplyT(func(v PolicySpecRule) *PolicySpecRuleCondition { return v.Condition }).(PolicySpecRuleConditionPtrOutput)
 }
 
-// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+// Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
 func (o PolicySpecRuleOutput) DenyAll() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicySpecRule) *string { return v.DenyAll }).(pulumi.StringPtrOutput)
 }
 
-// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 func (o PolicySpecRuleOutput) Enforce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicySpecRule) *string { return v.Enforce }).(pulumi.StringPtrOutput)
 }

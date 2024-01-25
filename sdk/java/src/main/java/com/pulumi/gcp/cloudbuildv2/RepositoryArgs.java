@@ -19,7 +19,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -29,7 +28,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -71,6 +69,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The connection for the resource
      * 
+     * ***
+     * 
      */
     @Import(name="parentConnection", required=true)
     private Output<String> parentConnection;
@@ -78,20 +78,24 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The connection for the resource
      * 
+     * ***
+     * 
      */
     public Output<String> parentConnection() {
         return this.parentConnection;
     }
 
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Import(name="project")
     private @Nullable Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Optional<Output<String>> project() {
@@ -101,16 +105,12 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * Required. Git Clone HTTPS URI.
      * 
-     * ***
-     * 
      */
     @Import(name="remoteUri", required=true)
     private Output<String> remoteUri;
 
     /**
      * @return Required. Git Clone HTTPS URI.
-     * 
-     * ***
      * 
      */
     public Output<String> remoteUri() {
@@ -148,7 +148,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Allows clients to store small amounts of arbitrary data.
-         * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -162,7 +161,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Allows clients to store small amounts of arbitrary data.
-         * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -218,6 +216,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parentConnection The connection for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -229,6 +229,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param parentConnection The connection for the resource
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -237,7 +239,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -248,7 +251,8 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param project The project for the resource
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
          * 
          * @return builder
          * 
@@ -260,8 +264,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param remoteUri Required. Git Clone HTTPS URI.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -272,8 +274,6 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param remoteUri Required. Git Clone HTTPS URI.
-         * 
-         * ***
          * 
          * @return builder
          * 

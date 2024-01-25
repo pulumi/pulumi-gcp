@@ -55,8 +55,8 @@ class DiskArgs:
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
-        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-               required when setting to true
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
+               Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -243,8 +243,8 @@ class DiskArgs:
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        required when setting to true
+        Whether this disk is using confidential compute mode.
+        Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -604,8 +604,8 @@ class _DiskState:
                you do not need to provide a key to use the disk later.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-               required when setting to true
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
+               Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input['DiskGuestOsFeatureArgs']]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -861,8 +861,8 @@ class _DiskState:
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        required when setting to true
+        Whether this disk is using confidential compute mode.
+        Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         """
         return pulumi.get(self, "enable_confidential_compute")
 
@@ -1446,8 +1446,8 @@ class Disk(pulumi.CustomResource):
                the disk will be encrypted using an automatically generated key and
                you do not need to provide a key to use the disk later.
                Structure is documented below.
-        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-               required when setting to true
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
+               Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -1801,8 +1801,8 @@ class Disk(pulumi.CustomResource):
                you do not need to provide a key to use the disk later.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-               required when setting to true
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
+               Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['DiskGuestOsFeatureArgs']]]] guest_os_features: A list of features to enable on the guest operating system.
                Applicable only for bootable disks.
                Structure is documented below.
@@ -2006,8 +2006,8 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> pulumi.Output[bool]:
         """
-        Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        required when setting to true
+        Whether this disk is using confidential compute mode.
+        Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         """
         return pulumi.get(self, "enable_confidential_compute")
 

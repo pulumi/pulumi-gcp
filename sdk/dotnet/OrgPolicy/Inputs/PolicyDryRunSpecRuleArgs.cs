@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
     public sealed class PolicyDryRunSpecRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+        /// Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
         /// </summary>
         [Input("allowAll")]
         public Input<string>? AllowAll { get; set; }
@@ -25,13 +25,13 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
         public Input<Inputs.PolicyDryRunSpecRuleConditionArgs>? Condition { get; set; }
 
         /// <summary>
-        /// Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+        /// Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
         /// </summary>
         [Input("denyAll")]
         public Input<string>? DenyAll { get; set; }
 
         /// <summary>
-        /// If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+        /// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         /// </summary>
         [Input("enforce")]
         public Input<string>? Enforce { get; set; }

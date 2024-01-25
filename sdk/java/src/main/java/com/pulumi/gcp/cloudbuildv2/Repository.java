@@ -10,17 +10,22 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudbuildv2.RepositoryArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.RepositoryState;
-import java.lang.Object;
 import java.lang.String;
 import java.util.Map;
 import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * The Cloudbuildv2 Repository resource
+ * A repository associated to a parent connection.
+ * 
+ * To get more information about Repository, see:
+ * 
+ * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/build/docs)
  * 
  * ## Example Usage
- * ### Ghe
+ * ### Cloudbuildv2 Repository Ghe Doc
  * ```java
  * package generated_program;
  * 
@@ -122,8 +127,7 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
- * ### Repository In GitHub Connection
- * Creates a Repository resource inside a Connection to github.com
+ * ### Cloudbuildv2 Repository Github Doc
  * ```java
  * package generated_program;
  * 
@@ -184,7 +188,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var my_connection = new Connection(&#34;my-connection&#34;, ConnectionArgs.builder()        
- *             .location(&#34;us-west1&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .appInstallationId(123123)
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
@@ -194,7 +198,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var my_repository = new Repository(&#34;my-repository&#34;, RepositoryArgs.builder()        
- *             .location(&#34;us-west1&#34;)
+ *             .location(&#34;us-central1&#34;)
  *             .parentConnection(my_connection.name())
  *             .remoteUri(&#34;https://github.com/myuser/myrepo.git&#34;)
  *             .build());
@@ -232,7 +236,6 @@ import javax.annotation.Nullable;
 public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -242,7 +245,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -269,15 +271,15 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * Terraform, other clients and services.
      * 
      */
-    @Export(name="effectiveAnnotations", refs={Map.class,String.class,Object.class}, tree="[0,1,2]")
-    private Output<Map<String,Object>> effectiveAnnotations;
+    @Export(name="effectiveAnnotations", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output<Map<String,String>> effectiveAnnotations;
 
     /**
      * @return All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
      * 
      */
-    public Output<Map<String,Object>> effectiveAnnotations() {
+    public Output<Map<String,String>> effectiveAnnotations() {
         return this.effectiveAnnotations;
     }
     /**
@@ -325,6 +327,8 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * The connection for the resource
      * 
+     * ***
+     * 
      */
     @Export(name="parentConnection", refs={String.class}, tree="[0]")
     private Output<String> parentConnection;
@@ -332,19 +336,23 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * @return The connection for the resource
      * 
+     * ***
+     * 
      */
     public Output<String> parentConnection() {
         return this.parentConnection;
     }
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
     /**
-     * @return The project for the resource
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      * 
      */
     public Output<String> project() {
@@ -353,16 +361,12 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * Required. Git Clone HTTPS URI.
      * 
-     * ***
-     * 
      */
     @Export(name="remoteUri", refs={String.class}, tree="[0]")
     private Output<String> remoteUri;
 
     /**
      * @return Required. Git Clone HTTPS URI.
-     * 
-     * ***
      * 
      */
     public Output<String> remoteUri() {

@@ -20,9 +20,19 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         public readonly Outputs.ServiceTemplateVolumeCloudSqlInstance? CloudSqlInstance;
         public readonly Outputs.ServiceTemplateVolumeEmptyDir? EmptyDir;
         /// <summary>
+        /// Represents a GCS Bucket mounted as a volume.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateVolumeGcs? Gcs;
+        /// <summary>
         /// Volume's name.
         /// </summary>
         public readonly string Name;
+        /// <summary>
+        /// Represents an NFS mount.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ServiceTemplateVolumeNfs? Nfs;
         /// <summary>
         /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
         /// Structure is documented below.
@@ -35,13 +45,19 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             Outputs.ServiceTemplateVolumeEmptyDir? emptyDir,
 
+            Outputs.ServiceTemplateVolumeGcs? gcs,
+
             string name,
+
+            Outputs.ServiceTemplateVolumeNfs? nfs,
 
             Outputs.ServiceTemplateVolumeSecret? secret)
         {
             CloudSqlInstance = cloudSqlInstance;
             EmptyDir = emptyDir;
+            Gcs = gcs;
             Name = name;
+            Nfs = nfs;
             Secret = secret;
         }
     }

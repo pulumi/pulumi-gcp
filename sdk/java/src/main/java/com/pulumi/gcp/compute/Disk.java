@@ -290,16 +290,16 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
      * 
      */
     @Export(name="enableConfidentialCompute", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> enableConfidentialCompute;
 
     /**
-     * @return Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * @return Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
      * 
      */
     public Output<Boolean> enableConfidentialCompute() {

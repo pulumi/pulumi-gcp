@@ -10,6 +10,8 @@ from typing import Any, Mapping, Optional, Sequence, Union, overload
 from .. import _utilities
 
 __all__ = [
+    'AddressGroupIamBindingConditionArgs',
+    'AddressGroupIamMemberConditionArgs',
     'AuthorizationPolicyRuleArgs',
     'AuthorizationPolicyRuleDestinationArgs',
     'AuthorizationPolicyRuleDestinationHttpHeaderMatchArgs',
@@ -20,6 +22,9 @@ __all__ = [
     'ClientTlsPolicyServerValidationCaArgs',
     'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs',
     'ClientTlsPolicyServerValidationCaGrpcEndpointArgs',
+    'SecurityProfileThreatPreventionProfileArgs',
+    'SecurityProfileThreatPreventionProfileSeverityOverrideArgs',
+    'SecurityProfileThreatPreventionProfileThreatOverrideArgs',
     'ServerTlsPolicyMtlsPolicyArgs',
     'ServerTlsPolicyMtlsPolicyClientValidationCaArgs',
     'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstanceArgs',
@@ -28,6 +33,84 @@ __all__ = [
     'ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs',
     'ServerTlsPolicyServerCertificateGrpcEndpointArgs',
 ]
+
+@pulumi.input_type
+class AddressGroupIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+@pulumi.input_type
+class AddressGroupIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
 
 @pulumi.input_type
 class AuthorizationPolicyRuleArgs:
@@ -400,6 +483,151 @@ class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
     @target_uri.setter
     def target_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "target_uri", value)
+
+
+@pulumi.input_type
+class SecurityProfileThreatPreventionProfileArgs:
+    def __init__(__self__, *,
+                 severity_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]] = None,
+                 threat_overrides: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]] severity_overrides: The configuration for overriding threats actions by severity match.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]] threat_overrides: The configuration for overriding threats actions by threat id match.
+               If a threat is matched both by configuration provided in severity overrides
+               and threat overrides, the threat overrides action is applied.
+               Structure is documented below.
+        """
+        if severity_overrides is not None:
+            pulumi.set(__self__, "severity_overrides", severity_overrides)
+        if threat_overrides is not None:
+            pulumi.set(__self__, "threat_overrides", threat_overrides)
+
+    @property
+    @pulumi.getter(name="severityOverrides")
+    def severity_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]]:
+        """
+        The configuration for overriding threats actions by severity match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "severity_overrides")
+
+    @severity_overrides.setter
+    def severity_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileSeverityOverrideArgs']]]]):
+        pulumi.set(self, "severity_overrides", value)
+
+    @property
+    @pulumi.getter(name="threatOverrides")
+    def threat_overrides(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]]:
+        """
+        The configuration for overriding threats actions by threat id match.
+        If a threat is matched both by configuration provided in severity overrides
+        and threat overrides, the threat overrides action is applied.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "threat_overrides")
+
+    @threat_overrides.setter
+    def threat_overrides(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityProfileThreatPreventionProfileThreatOverrideArgs']]]]):
+        pulumi.set(self, "threat_overrides", value)
+
+
+@pulumi.input_type
+class SecurityProfileThreatPreventionProfileSeverityOverrideArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 severity: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] action: Threat action override.
+               Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        :param pulumi.Input[str] severity: Severity level to match.
+               Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        Threat action override.
+        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> pulumi.Input[str]:
+        """
+        Severity level to match.
+        Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: pulumi.Input[str]):
+        pulumi.set(self, "severity", value)
+
+
+@pulumi.input_type
+class SecurityProfileThreatPreventionProfileThreatOverrideArgs:
+    def __init__(__self__, *,
+                 action: pulumi.Input[str],
+                 threat_id: pulumi.Input[str],
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] action: Threat action.
+               Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        :param pulumi.Input[str] threat_id: Vendor-specific ID of a threat to override.
+        :param pulumi.Input[str] type: (Output)
+               Type of threat.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "threat_id", threat_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def action(self) -> pulumi.Input[str]:
+        """
+        Threat action.
+        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        """
+        return pulumi.get(self, "action")
+
+    @action.setter
+    def action(self, value: pulumi.Input[str]):
+        pulumi.set(self, "action", value)
+
+    @property
+    @pulumi.getter(name="threatId")
+    def threat_id(self) -> pulumi.Input[str]:
+        """
+        Vendor-specific ID of a threat to override.
+        """
+        return pulumi.get(self, "threat_id")
+
+    @threat_id.setter
+    def threat_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "threat_id", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Type of threat.
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
 
 
 @pulumi.input_type

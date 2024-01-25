@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerLivenessProbeGrpc;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerLivenessProbeHttpGet;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateContainerLivenessProbeTcpSocket;
 import java.lang.Integer;
 import java.util.List;
 import java.util.Objects;
@@ -18,6 +19,7 @@ public final class GetServiceTemplateContainerLivenessProbe {
     private List<GetServiceTemplateContainerLivenessProbeHttpGet> httpGets;
     private Integer initialDelaySeconds;
     private Integer periodSeconds;
+    private List<GetServiceTemplateContainerLivenessProbeTcpSocket> tcpSockets;
     private Integer timeoutSeconds;
 
     private GetServiceTemplateContainerLivenessProbe() {}
@@ -35,6 +37,9 @@ public final class GetServiceTemplateContainerLivenessProbe {
     }
     public Integer periodSeconds() {
         return this.periodSeconds;
+    }
+    public List<GetServiceTemplateContainerLivenessProbeTcpSocket> tcpSockets() {
+        return this.tcpSockets;
     }
     public Integer timeoutSeconds() {
         return this.timeoutSeconds;
@@ -54,6 +59,7 @@ public final class GetServiceTemplateContainerLivenessProbe {
         private List<GetServiceTemplateContainerLivenessProbeHttpGet> httpGets;
         private Integer initialDelaySeconds;
         private Integer periodSeconds;
+        private List<GetServiceTemplateContainerLivenessProbeTcpSocket> tcpSockets;
         private Integer timeoutSeconds;
         public Builder() {}
         public Builder(GetServiceTemplateContainerLivenessProbe defaults) {
@@ -63,6 +69,7 @@ public final class GetServiceTemplateContainerLivenessProbe {
     	      this.httpGets = defaults.httpGets;
     	      this.initialDelaySeconds = defaults.initialDelaySeconds;
     	      this.periodSeconds = defaults.periodSeconds;
+    	      this.tcpSockets = defaults.tcpSockets;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
 
@@ -113,6 +120,17 @@ public final class GetServiceTemplateContainerLivenessProbe {
             return this;
         }
         @CustomType.Setter
+        public Builder tcpSockets(List<GetServiceTemplateContainerLivenessProbeTcpSocket> tcpSockets) {
+            if (tcpSockets == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateContainerLivenessProbe", "tcpSockets");
+            }
+            this.tcpSockets = tcpSockets;
+            return this;
+        }
+        public Builder tcpSockets(GetServiceTemplateContainerLivenessProbeTcpSocket... tcpSockets) {
+            return tcpSockets(List.of(tcpSockets));
+        }
+        @CustomType.Setter
         public Builder timeoutSeconds(Integer timeoutSeconds) {
             if (timeoutSeconds == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplateContainerLivenessProbe", "timeoutSeconds");
@@ -127,6 +145,7 @@ public final class GetServiceTemplateContainerLivenessProbe {
             _resultValue.httpGets = httpGets;
             _resultValue.initialDelaySeconds = initialDelaySeconds;
             _resultValue.periodSeconds = periodSeconds;
+            _resultValue.tcpSockets = tcpSockets;
             _resultValue.timeoutSeconds = timeoutSeconds;
             return _resultValue;
         }

@@ -520,6 +520,144 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Mount Gcs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultBucket = new Gcp.Storage.Bucket("defaultBucket", new()
+    ///     {
+    ///         Location = "US",
+    ///     });
+    /// 
+    ///     var defaultService = new Gcp.CloudRunV2.Service("defaultService", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             ExecutionEnvironment = "EXECUTION_ENVIRONMENT_GEN2",
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                     VolumeMounts = new[]
+    ///                     {
+    ///                         new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerVolumeMountArgs
+    ///                         {
+    ///                             Name = "bucket",
+    ///                             MountPath = "/var/www",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Volumes = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeArgs
+    ///                 {
+    ///                     Name = "bucket",
+    ///                     Gcs = new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeGcsArgs
+    ///                     {
+    ///                         Bucket = defaultBucket.Name,
+    ///                         ReadOnly = false,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Cloudrunv2 Service Mount Nfs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var defaultInstance = new Gcp.Filestore.Instance("defaultInstance", new()
+    ///     {
+    ///         Location = "us-central1-b",
+    ///         Tier = "BASIC_HDD",
+    ///         FileShares = new Gcp.Filestore.Inputs.InstanceFileSharesArgs
+    ///         {
+    ///             CapacityGb = 1024,
+    ///             Name = "share1",
+    ///         },
+    ///         Networks = new[]
+    ///         {
+    ///             new Gcp.Filestore.Inputs.InstanceNetworkArgs
+    ///             {
+    ///                 Network = "default",
+    ///                 Modes = new[]
+    ///                 {
+    ///                     "MODE_IPV4",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultService = new Gcp.CloudRunV2.Service("defaultService", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         LaunchStage = "BETA",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             ExecutionEnvironment = "EXECUTION_ENVIRONMENT_GEN2",
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello:latest",
+    ///                     VolumeMounts = new[]
+    ///                     {
+    ///                         new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerVolumeMountArgs
+    ///                         {
+    ///                             Name = "nfs",
+    ///                             MountPath = "/mnt/nfs/filestore",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             VpcAccess = new Gcp.CloudRunV2.Inputs.ServiceTemplateVpcAccessArgs
+    ///             {
+    ///                 NetworkInterfaces = new[]
+    ///                 {
+    ///                     new Gcp.CloudRunV2.Inputs.ServiceTemplateVpcAccessNetworkInterfaceArgs
+    ///                     {
+    ///                         Network = "default",
+    ///                         Subnetwork = "default",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             Volumes = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeArgs
+    ///                 {
+    ///                     Name = "nfs",
+    ///                     Nfs = new Gcp.CloudRunV2.Inputs.ServiceTemplateVolumeNfsArgs
+    ///                     {
+    ///                         Server = defaultInstance.Networks.Apply(networks =&gt; networks[0].IpAddresses[0]),
+    ///                         Path = "/share1",
+    ///                         ReadOnly = false,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -23,18 +23,17 @@ class RepositoryArgs:
         """
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] parent_connection: The connection for the resource
-        :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
-               
                
                
                - - -
+        :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
-        :param pulumi.Input[str] project: The project for the resource
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         """
         pulumi.set(__self__, "parent_connection", parent_connection)
         pulumi.set(__self__, "remote_uri", remote_uri)
@@ -52,6 +51,9 @@ class RepositoryArgs:
     def parent_connection(self) -> pulumi.Input[str]:
         """
         The connection for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "parent_connection")
 
@@ -64,10 +66,6 @@ class RepositoryArgs:
     def remote_uri(self) -> pulumi.Input[str]:
         """
         Required. Git Clone HTTPS URI.
-
-
-
-        - - -
         """
         return pulumi.get(self, "remote_uri")
 
@@ -80,7 +78,6 @@ class RepositoryArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Allows clients to store small amounts of arbitrary data.
-
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -118,7 +115,8 @@ class RepositoryArgs:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -132,7 +130,7 @@ class _RepositoryState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
-                 effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+                 effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -143,22 +141,21 @@ class _RepositoryState:
         """
         Input properties used for looking up and filtering Repository resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
         :param pulumi.Input[str] parent_connection: The connection for the resource
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
-               
                
                
                - - -
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
         """
         if annotations is not None:
@@ -187,7 +184,6 @@ class _RepositoryState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Allows clients to store small amounts of arbitrary data.
-
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -211,7 +207,7 @@ class _RepositoryState:
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, Any]]]:
+    def effective_annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
         Terraform, other clients and services.
@@ -219,7 +215,7 @@ class _RepositoryState:
         return pulumi.get(self, "effective_annotations")
 
     @effective_annotations.setter
-    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, Any]]]):
+    def effective_annotations(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_annotations", value)
 
     @property
@@ -263,6 +259,9 @@ class _RepositoryState:
     def parent_connection(self) -> Optional[pulumi.Input[str]]:
         """
         The connection for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "parent_connection")
 
@@ -274,7 +273,8 @@ class _RepositoryState:
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -287,10 +287,6 @@ class _RepositoryState:
     def remote_uri(self) -> Optional[pulumi.Input[str]]:
         """
         Required. Git Clone HTTPS URI.
-
-
-
-        - - -
         """
         return pulumi.get(self, "remote_uri")
 
@@ -324,10 +320,17 @@ class Repository(pulumi.CustomResource):
                  remote_uri: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        The Cloudbuildv2 Repository resource
+        A repository associated to a parent connection.
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/build/docs)
 
         ## Example Usage
-        ### Ghe
+        ### Cloudbuildv2 Repository Ghe Doc
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -377,8 +380,8 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.id,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
-        ### Repository In GitHub Connection
-        Creates a Repository resource inside a Connection to github.com
+        ### Cloudbuildv2 Repository Github Doc
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -399,7 +402,7 @@ class Repository(pulumi.CustomResource):
             secret_id=github_token_secret.secret_id,
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
-            location="us-west1",
+            location="us-central1",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
                 app_installation_id=123123,
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
@@ -407,7 +410,7 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
-            location="us-west1",
+            location="us-central1",
             parent_connection=my_connection.name,
             remote_uri="https://github.com/myuser/myrepo.git")
         ```
@@ -439,18 +442,17 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
         :param pulumi.Input[str] parent_connection: The connection for the resource
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
-               
                
                
                - - -
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
         """
         ...
     @overload
@@ -459,10 +461,17 @@ class Repository(pulumi.CustomResource):
                  args: RepositoryArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        The Cloudbuildv2 Repository resource
+        A repository associated to a parent connection.
+
+        To get more information about Repository, see:
+
+        * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+        * How-to Guides
+            * [Official Documentation](https://cloud.google.com/build/docs)
 
         ## Example Usage
-        ### Ghe
+        ### Cloudbuildv2 Repository Ghe Doc
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -512,8 +521,8 @@ class Repository(pulumi.CustomResource):
             parent_connection=my_connection.id,
             remote_uri="https://ghe.com/hashicorp/terraform-provider-google.git")
         ```
-        ### Repository In GitHub Connection
-        Creates a Repository resource inside a Connection to github.com
+        ### Cloudbuildv2 Repository Github Doc
+
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -534,7 +543,7 @@ class Repository(pulumi.CustomResource):
             secret_id=github_token_secret.secret_id,
             policy_data=p4sa_secret_accessor.policy_data)
         my_connection = gcp.cloudbuildv2.Connection("my-connection",
-            location="us-west1",
+            location="us-central1",
             github_config=gcp.cloudbuildv2.ConnectionGithubConfigArgs(
                 app_installation_id=123123,
                 authorizer_credential=gcp.cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs(
@@ -542,7 +551,7 @@ class Repository(pulumi.CustomResource):
                 ),
             ))
         my_repository = gcp.cloudbuildv2.Repository("my-repository",
-            location="us-west1",
+            location="us-central1",
             parent_connection=my_connection.name,
             remote_uri="https://github.com/myuser/myrepo.git")
         ```
@@ -627,7 +636,7 @@ class Repository(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
-            effective_annotations: Optional[pulumi.Input[Mapping[str, Any]]] = None,
+            effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -643,22 +652,21 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[str] create_time: Output only. Server assigned timestamp for when the connection was created.
-        :param pulumi.Input[Mapping[str, Any]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[str] location: The location for the resource
         :param pulumi.Input[str] name: Name of the repository.
         :param pulumi.Input[str] parent_connection: The connection for the resource
-        :param pulumi.Input[str] project: The project for the resource
-        :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
-               
                
                
                - - -
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
+        :param pulumi.Input[str] remote_uri: Required. Git Clone HTTPS URI.
         :param pulumi.Input[str] update_time: Output only. Server assigned timestamp for when the connection was updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -682,7 +690,6 @@ class Repository(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Allows clients to store small amounts of arbitrary data.
-
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -698,7 +705,7 @@ class Repository(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="effectiveAnnotations")
-    def effective_annotations(self) -> pulumi.Output[Mapping[str, Any]]:
+    def effective_annotations(self) -> pulumi.Output[Mapping[str, str]]:
         """
         All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
         Terraform, other clients and services.
@@ -734,6 +741,9 @@ class Repository(pulumi.CustomResource):
     def parent_connection(self) -> pulumi.Output[str]:
         """
         The connection for the resource
+
+
+        - - -
         """
         return pulumi.get(self, "parent_connection")
 
@@ -741,7 +751,8 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
         """
-        The project for the resource
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
 
@@ -750,10 +761,6 @@ class Repository(pulumi.CustomResource):
     def remote_uri(self) -> pulumi.Output[str]:
         """
         Required. Git Clone HTTPS URI.
-
-
-
-        - - -
         """
         return pulumi.get(self, "remote_uri")
 

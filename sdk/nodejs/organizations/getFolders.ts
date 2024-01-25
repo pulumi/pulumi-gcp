@@ -49,7 +49,7 @@ export interface GetFoldersArgs {
  */
 export interface GetFoldersResult {
     /**
-     * A list of projects matching the provided filter. Structure is defined below.
+     * A list of folders matching the provided filter. Structure is defined below.
      */
     readonly folders: outputs.organizations.GetFoldersFolder[];
     /**

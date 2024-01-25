@@ -595,6 +595,8 @@ type WorkstationConfig struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
 	Degraded pulumi.BoolOutput `pulumi:"degraded"`
+	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	DisableTcpConnections pulumi.BoolPtrOutput `pulumi:"disableTcpConnections"`
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -710,6 +712,8 @@ type workstationConfigState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
 	Degraded *bool `pulumi:"degraded"`
+	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	DisableTcpConnections *bool `pulumi:"disableTcpConnections"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -782,6 +786,8 @@ type WorkstationConfigState struct {
 	CreateTime pulumi.StringPtrInput
 	// Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
 	Degraded pulumi.BoolPtrInput
+	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	DisableTcpConnections pulumi.BoolPtrInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
@@ -851,6 +857,8 @@ type workstationConfigArgs struct {
 	// Container that will be run for each workstation using this configuration when that workstation is started.
 	// Structure is documented below.
 	Container *WorkstationConfigContainer `pulumi:"container"`
+	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	DisableTcpConnections *bool `pulumi:"disableTcpConnections"`
 	// Human-readable name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
@@ -902,6 +910,8 @@ type WorkstationConfigArgs struct {
 	// Container that will be run for each workstation using this configuration when that workstation is started.
 	// Structure is documented below.
 	Container WorkstationConfigContainerPtrInput
+	// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+	DisableTcpConnections pulumi.BoolPtrInput
 	// Human-readable name for this resource.
 	DisplayName pulumi.StringPtrInput
 	// Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
@@ -1058,6 +1068,11 @@ func (o WorkstationConfigOutput) CreateTime() pulumi.StringOutput {
 // Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
 func (o WorkstationConfigOutput) Degraded() pulumi.BoolOutput {
 	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolOutput { return v.Degraded }).(pulumi.BoolOutput)
+}
+
+// Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+func (o WorkstationConfigOutput) DisableTcpConnections() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkstationConfig) pulumi.BoolPtrOutput { return v.DisableTcpConnections }).(pulumi.BoolPtrOutput)
 }
 
 // Human-readable name for this resource.

@@ -5307,6 +5307,55 @@ export namespace bigquery {
         name?: string;
     }
 
+    export interface RoutineSparkOptions {
+        /**
+         * Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+         */
+        archiveUris: string[];
+        /**
+         * Fully qualified name of the user-provided Spark connection object.
+         * Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+         */
+        connection?: string;
+        /**
+         * Custom container image for the runtime environment.
+         */
+        containerImage?: string;
+        /**
+         * Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+         */
+        fileUris: string[];
+        /**
+         * JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
+         */
+        jarUris: string[];
+        /**
+         * The fully qualified name of a class in jarUris, for example, com.example.wordcount.
+         * Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
+         */
+        mainClass?: string;
+        /**
+         * The main file/jar URI of the Spark application.
+         * Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
+         * Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
+         */
+        mainFileUri?: string;
+        /**
+         * Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
+         * For more information, see Apache Spark and the procedure option list.
+         * An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+         */
+        properties: {[key: string]: string};
+        /**
+         * Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
+         */
+        pyFileUris: string[];
+        /**
+         * Runtime version. If not specified, the default runtime version is used.
+         */
+        runtimeVersion?: string;
+    }
+
     export interface TableEncryptionConfiguration {
         /**
          * The self link or full name of a key which should be used to
@@ -5673,6 +5722,13 @@ export namespace bigquery {
          * The columns that are composed of the primary key constraint.
          */
         columns: string[];
+    }
+
+    export interface TableTableReplicationInfo {
+        replicationIntervalMs?: number;
+        sourceDatasetId: string;
+        sourceProjectId: string;
+        sourceTableId: string;
     }
 
     export interface TableTimePartitioning {
@@ -12917,6 +12973,7 @@ export namespace cloudrunv2 {
         httpGets: outputs.cloudrunv2.GetServiceTemplateContainerLivenessProbeHttpGet[];
         initialDelaySeconds: number;
         periodSeconds: number;
+        tcpSockets: outputs.cloudrunv2.GetServiceTemplateContainerLivenessProbeTcpSocket[];
         timeoutSeconds: number;
     }
 
@@ -12937,6 +12994,10 @@ export namespace cloudrunv2 {
          */
         name: string;
         value: string;
+    }
+
+    export interface GetServiceTemplateContainerLivenessProbeTcpSocket {
+        port: number;
     }
 
     export interface GetServiceTemplateContainerPort {
@@ -13002,10 +13063,12 @@ export namespace cloudrunv2 {
     export interface GetServiceTemplateVolume {
         cloudSqlInstances: outputs.cloudrunv2.GetServiceTemplateVolumeCloudSqlInstance[];
         emptyDirs: outputs.cloudrunv2.GetServiceTemplateVolumeEmptyDir[];
+        gcs: outputs.cloudrunv2.GetServiceTemplateVolumeGc[];
         /**
          * The name of the Cloud Run v2 Service.
          */
         name: string;
+        nfs: outputs.cloudrunv2.GetServiceTemplateVolumeNf[];
         secrets: outputs.cloudrunv2.GetServiceTemplateVolumeSecret[];
     }
 
@@ -13016,6 +13079,17 @@ export namespace cloudrunv2 {
     export interface GetServiceTemplateVolumeEmptyDir {
         medium: string;
         sizeLimit: string;
+    }
+
+    export interface GetServiceTemplateVolumeGc {
+        bucket: string;
+        readOnly: boolean;
+    }
+
+    export interface GetServiceTemplateVolumeNf {
+        path: string;
+        readOnly: boolean;
+        server: string;
     }
 
     export interface GetServiceTemplateVolumeSecret {
@@ -13735,6 +13809,11 @@ export namespace cloudrunv2 {
          */
         periodSeconds?: number;
         /**
+         * TCPSocketAction describes an action based on opening a socket
+         * Structure is documented below.
+         */
+        tcpSocket?: outputs.cloudrunv2.ServiceTemplateContainerLivenessProbeTcpSocket;
+        /**
          * Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
          */
         timeoutSeconds?: number;
@@ -13780,6 +13859,14 @@ export namespace cloudrunv2 {
          * The header field value
          */
         value?: string;
+    }
+
+    export interface ServiceTemplateContainerLivenessProbeTcpSocket {
+        /**
+         * Port number to access on the container. Must be in the range 1 to 65535.
+         * If not specified, defaults to the same value as container.ports[0].containerPort.
+         */
+        port: number;
     }
 
     export interface ServiceTemplateContainerPort {
@@ -13922,9 +14009,19 @@ export namespace cloudrunv2 {
         cloudSqlInstance?: outputs.cloudrunv2.ServiceTemplateVolumeCloudSqlInstance;
         emptyDir?: outputs.cloudrunv2.ServiceTemplateVolumeEmptyDir;
         /**
+         * Represents a GCS Bucket mounted as a volume.
+         * Structure is documented below.
+         */
+        gcs?: outputs.cloudrunv2.ServiceTemplateVolumeGcs;
+        /**
          * Volume's name.
          */
         name: string;
+        /**
+         * Represents an NFS mount.
+         * Structure is documented below.
+         */
+        nfs?: outputs.cloudrunv2.ServiceTemplateVolumeNfs;
         /**
          * Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
          * Structure is documented below.
@@ -13948,10 +14045,36 @@ export namespace cloudrunv2 {
         medium?: string;
         /**
          * Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+         */
+        sizeLimit?: string;
+    }
+
+    export interface ServiceTemplateVolumeGcs {
+        /**
+         * GCS Bucket name
+         */
+        bucket: string;
+        /**
+         * If true, mount the GCS bucket as read-only
+         */
+        readOnly?: boolean;
+    }
+
+    export interface ServiceTemplateVolumeNfs {
+        /**
+         * Path that is exported by the NFS server.
+         */
+        path: string;
+        /**
+         * If true, mount the NFS volume as read only
          *
          * - - -
          */
-        sizeLimit?: string;
+        readOnly?: boolean;
+        /**
+         * Hostname or IP address of the NFS server
+         */
+        server: string;
     }
 
     export interface ServiceTemplateVolumeSecret {
@@ -14397,6 +14520,8 @@ export namespace composer {
         airflowUri: string;
         dagGcsPrefix: string;
         databaseConfig: outputs.composer.EnvironmentConfigDatabaseConfig;
+        enablePrivateBuildsOnly: boolean;
+        enablePrivateEnvironment: boolean;
         encryptionConfig: outputs.composer.EnvironmentConfigEncryptionConfig;
         environmentSize: string;
         gkeCluster: string;
@@ -14560,6 +14685,8 @@ export namespace composer {
         airflowUri: string;
         dagGcsPrefix: string;
         databaseConfigs: outputs.composer.GetEnvironmentConfigDatabaseConfig[];
+        enablePrivateBuildsOnly: boolean;
+        enablePrivateEnvironment: boolean;
         encryptionConfigs: outputs.composer.GetEnvironmentConfigEncryptionConfig[];
         environmentSize: string;
         gkeCluster: string;
@@ -18113,7 +18240,8 @@ export namespace compute {
 
     export interface InstanceBootDiskInitializeParams {
         /**
-         * Defines whether the instance should have confidential compute enabled. `onHostMaintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * Whether this disk is using confidential compute mode.
+         * Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true.
          */
         enableConfidentialCompute?: boolean;
         /**
@@ -53867,6 +53995,182 @@ export namespace monitoring {
 
 }
 
+export namespace netapp {
+    export interface VolumeExportPolicy {
+        /**
+         * Export rules (up to 5) control NFS volume access.
+         * Structure is documented below.
+         */
+        rules: outputs.netapp.VolumeExportPolicyRule[];
+    }
+
+    export interface VolumeExportPolicyRule {
+        /**
+         * Defines the access type for clients matching the `allowedClients` specification.
+         * Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
+         */
+        accessType?: string;
+        /**
+         * Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+         */
+        allowedClients?: string;
+        /**
+         * If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
+         */
+        hasRootAccess?: string;
+        /**
+         * If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
+         */
+        kerberos5ReadOnly?: boolean;
+        /**
+         * If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
+         */
+        kerberos5ReadWrite?: boolean;
+        /**
+         * If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode.
+         */
+        kerberos5iReadOnly?: boolean;
+        /**
+         * If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'integrity' kerberos security mode. The 'kerberos5iReadOnly' value is ignored if this is enabled.
+         */
+        kerberos5iReadWrite?: boolean;
+        /**
+         * If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode.
+         */
+        kerberos5pReadOnly?: boolean;
+        /**
+         * If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'privacy' kerberos security mode. The 'kerberos5pReadOnly' value is ignored if this is enabled.
+         */
+        kerberos5pReadWrite?: boolean;
+        /**
+         * Enable to apply the export rule to NFSV3 clients.
+         */
+        nfsv3?: boolean;
+        /**
+         * Enable to apply the export rule to NFSV4.1 clients.
+         */
+        nfsv4?: boolean;
+    }
+
+    export interface VolumeMountOption {
+        /**
+         * (Output)
+         * Export path of the volume.
+         */
+        export: string;
+        /**
+         * (Output)
+         * Full export path of the volume.
+         * Format for NFS volumes: `<export_ip>:/<shareName>`
+         * Format for SMB volumes: `\\\\netbios_prefix-four_random_hex_letters.domain_name\\shareName`
+         */
+        exportFull: string;
+        /**
+         * (Output)
+         * Human-readable mount instructions.
+         */
+        instructions: string;
+        /**
+         * (Output)
+         * Protocol to mount with.
+         */
+        protocol: string;
+    }
+
+    export interface VolumeSnapshotPolicy {
+        /**
+         * Daily schedule policy.
+         * Structure is documented below.
+         */
+        dailySchedule?: outputs.netapp.VolumeSnapshotPolicyDailySchedule;
+        /**
+         * Enables automated snapshot creation according to defined schedule. Default is false.
+         * To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
+         */
+        enabled?: boolean;
+        /**
+         * Hourly schedule policy.
+         * Structure is documented below.
+         */
+        hourlySchedule?: outputs.netapp.VolumeSnapshotPolicyHourlySchedule;
+        /**
+         * Monthly schedule policy.
+         * Structure is documented below.
+         */
+        monthlySchedule?: outputs.netapp.VolumeSnapshotPolicyMonthlySchedule;
+        /**
+         * Weekly schedule policy.
+         * Structure is documented below.
+         */
+        weeklySchedule?: outputs.netapp.VolumeSnapshotPolicyWeeklySchedule;
+    }
+
+    export interface VolumeSnapshotPolicyDailySchedule {
+        /**
+         * Set the hour to create the snapshot (0-23), defaults to midnight (0).
+         */
+        hour?: number;
+        /**
+         * Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+         */
+        minute?: number;
+        /**
+         * The maximum number of snapshots to keep for the daily schedule.
+         */
+        snapshotsToKeep: number;
+    }
+
+    export interface VolumeSnapshotPolicyHourlySchedule {
+        /**
+         * Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+         */
+        minute?: number;
+        /**
+         * The maximum number of snapshots to keep for the hourly schedule.
+         */
+        snapshotsToKeep: number;
+    }
+
+    export interface VolumeSnapshotPolicyMonthlySchedule {
+        /**
+         * Set the day or days of the month to make a snapshot (1-31). Accepts a comma separated number of days. Defaults to '1'.
+         */
+        daysOfMonth?: string;
+        /**
+         * Set the hour to create the snapshot (0-23), defaults to midnight (0).
+         */
+        hour?: number;
+        /**
+         * Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+         */
+        minute?: number;
+        /**
+         * The maximum number of snapshots to keep for the monthly schedule
+         */
+        snapshotsToKeep: number;
+    }
+
+    export interface VolumeSnapshotPolicyWeeklySchedule {
+        /**
+         * Set the day or days of the week to make a snapshot. Accepts a comma separated days of the week. Defaults to 'Sunday'.
+         */
+        day?: string;
+        /**
+         * Set the hour to create the snapshot (0-23), defaults to midnight (0).
+         */
+        hour?: number;
+        /**
+         * Set the minute of the hour to create the snapshot (0-59), defaults to the top of the hour (0).
+         */
+        minute?: number;
+        /**
+         * The maximum number of snapshots to keep for the weekly schedule.
+         */
+        snapshotsToKeep: number;
+    }
+
+}
+
 export namespace networkconnectivity {
     export interface HubRoutingVpc {
         uri: string;
@@ -54149,6 +54453,18 @@ export namespace networkmanagement {
 }
 
 export namespace networksecurity {
+    export interface AddressGroupIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface AddressGroupIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
     export interface AuthorizationPolicyRule {
         /**
          * List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
@@ -54261,6 +54577,51 @@ export namespace networksecurity {
          * The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
          */
         targetUri: string;
+    }
+
+    export interface SecurityProfileThreatPreventionProfile {
+        /**
+         * The configuration for overriding threats actions by severity match.
+         * Structure is documented below.
+         */
+        severityOverrides?: outputs.networksecurity.SecurityProfileThreatPreventionProfileSeverityOverride[];
+        /**
+         * The configuration for overriding threats actions by threat id match.
+         * If a threat is matched both by configuration provided in severity overrides
+         * and threat overrides, the threat overrides action is applied.
+         * Structure is documented below.
+         */
+        threatOverrides?: outputs.networksecurity.SecurityProfileThreatPreventionProfileThreatOverride[];
+    }
+
+    export interface SecurityProfileThreatPreventionProfileSeverityOverride {
+        /**
+         * Threat action override.
+         * Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+         */
+        action: string;
+        /**
+         * Severity level to match.
+         * Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+         */
+        severity: string;
+    }
+
+    export interface SecurityProfileThreatPreventionProfileThreatOverride {
+        /**
+         * Threat action.
+         * Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+         */
+        action: string;
+        /**
+         * Vendor-specific ID of a threat to override.
+         */
+        threatId: string;
+        /**
+         * (Output)
+         * Type of threat.
+         */
+        type: string;
     }
 
     export interface ServerTlsPolicyMtlsPolicy {
@@ -56477,7 +56838,7 @@ export namespace orgpolicy {
 
     export interface PolicyDryRunSpecRule {
         /**
-         * Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+         * Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
          */
         allowAll?: string;
         /**
@@ -56485,11 +56846,11 @@ export namespace orgpolicy {
          */
         condition?: outputs.orgpolicy.PolicyDryRunSpecRuleCondition;
         /**
-         * Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+         * Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
          */
         denyAll?: string;
         /**
-         * If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+         * If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
          */
         enforce?: string;
         /**
@@ -56553,7 +56914,7 @@ export namespace orgpolicy {
 
     export interface PolicySpecRule {
         /**
-         * Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+         * Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
          */
         allowAll?: string;
         /**
@@ -56561,11 +56922,11 @@ export namespace orgpolicy {
          */
         condition?: outputs.orgpolicy.PolicySpecRuleCondition;
         /**
-         * Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+         * Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
          */
         denyAll?: string;
         /**
-         * If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+         * If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
          */
         enforce?: string;
         /**

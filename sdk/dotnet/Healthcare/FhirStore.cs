@@ -199,6 +199,7 @@ namespace Pulumi.Gcp.Healthcare
     ///         DisableReferentialIntegrity = false,
     ///         DisableResourceVersioning = false,
     ///         EnableHistoryImport = false,
+    ///         EnableHistoryModifications = false,
     ///         Labels = 
     ///         {
     ///             { "label1", "labelvalue1" },
@@ -306,6 +307,13 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Output("enableHistoryImport")]
         public Output<bool?> EnableHistoryImport { get; private set; } = null!;
+
+        /// <summary>
+        /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+        /// versions into the FHIR store. If set to false, using history bundles fails with an error.
+        /// </summary>
+        [Output("enableHistoryModifications")]
+        public Output<bool?> EnableHistoryModifications { get; private set; } = null!;
 
         /// <summary>
         /// Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
@@ -497,6 +505,13 @@ namespace Pulumi.Gcp.Healthcare
         public Input<bool>? EnableHistoryImport { get; set; }
 
         /// <summary>
+        /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+        /// versions into the FHIR store. If set to false, using history bundles fails with an error.
+        /// </summary>
+        [Input("enableHistoryModifications")]
+        public Input<bool>? EnableHistoryModifications { get; set; }
+
+        /// <summary>
         /// Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
         /// operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
         /// the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -662,6 +677,13 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         [Input("enableHistoryImport")]
         public Input<bool>? EnableHistoryImport { get; set; }
+
+        /// <summary>
+        /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+        /// versions into the FHIR store. If set to false, using history bundles fails with an error.
+        /// </summary>
+        [Input("enableHistoryModifications")]
+        public Input<bool>? EnableHistoryModifications { get; set; }
 
         /// <summary>
         /// Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update

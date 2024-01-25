@@ -13,6 +13,332 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type AddressGroupIamBindingCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AddressGroupIamBindingConditionInput is an input type that accepts AddressGroupIamBindingConditionArgs and AddressGroupIamBindingConditionOutput values.
+// You can construct a concrete instance of `AddressGroupIamBindingConditionInput` via:
+//
+//	AddressGroupIamBindingConditionArgs{...}
+type AddressGroupIamBindingConditionInput interface {
+	pulumi.Input
+
+	ToAddressGroupIamBindingConditionOutput() AddressGroupIamBindingConditionOutput
+	ToAddressGroupIamBindingConditionOutputWithContext(context.Context) AddressGroupIamBindingConditionOutput
+}
+
+type AddressGroupIamBindingConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AddressGroupIamBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (i AddressGroupIamBindingConditionArgs) ToAddressGroupIamBindingConditionOutput() AddressGroupIamBindingConditionOutput {
+	return i.ToAddressGroupIamBindingConditionOutputWithContext(context.Background())
+}
+
+func (i AddressGroupIamBindingConditionArgs) ToAddressGroupIamBindingConditionOutputWithContext(ctx context.Context) AddressGroupIamBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupIamBindingConditionOutput)
+}
+
+func (i AddressGroupIamBindingConditionArgs) ToAddressGroupIamBindingConditionPtrOutput() AddressGroupIamBindingConditionPtrOutput {
+	return i.ToAddressGroupIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AddressGroupIamBindingConditionArgs) ToAddressGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) AddressGroupIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupIamBindingConditionOutput).ToAddressGroupIamBindingConditionPtrOutputWithContext(ctx)
+}
+
+// AddressGroupIamBindingConditionPtrInput is an input type that accepts AddressGroupIamBindingConditionArgs, AddressGroupIamBindingConditionPtr and AddressGroupIamBindingConditionPtrOutput values.
+// You can construct a concrete instance of `AddressGroupIamBindingConditionPtrInput` via:
+//
+//	        AddressGroupIamBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddressGroupIamBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToAddressGroupIamBindingConditionPtrOutput() AddressGroupIamBindingConditionPtrOutput
+	ToAddressGroupIamBindingConditionPtrOutputWithContext(context.Context) AddressGroupIamBindingConditionPtrOutput
+}
+
+type addressGroupIamBindingConditionPtrType AddressGroupIamBindingConditionArgs
+
+func AddressGroupIamBindingConditionPtr(v *AddressGroupIamBindingConditionArgs) AddressGroupIamBindingConditionPtrInput {
+	return (*addressGroupIamBindingConditionPtrType)(v)
+}
+
+func (*addressGroupIamBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (i *addressGroupIamBindingConditionPtrType) ToAddressGroupIamBindingConditionPtrOutput() AddressGroupIamBindingConditionPtrOutput {
+	return i.ToAddressGroupIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *addressGroupIamBindingConditionPtrType) ToAddressGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) AddressGroupIamBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupIamBindingConditionPtrOutput)
+}
+
+type AddressGroupIamBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (AddressGroupIamBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (o AddressGroupIamBindingConditionOutput) ToAddressGroupIamBindingConditionOutput() AddressGroupIamBindingConditionOutput {
+	return o
+}
+
+func (o AddressGroupIamBindingConditionOutput) ToAddressGroupIamBindingConditionOutputWithContext(ctx context.Context) AddressGroupIamBindingConditionOutput {
+	return o
+}
+
+func (o AddressGroupIamBindingConditionOutput) ToAddressGroupIamBindingConditionPtrOutput() AddressGroupIamBindingConditionPtrOutput {
+	return o.ToAddressGroupIamBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AddressGroupIamBindingConditionOutput) ToAddressGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) AddressGroupIamBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressGroupIamBindingCondition) *AddressGroupIamBindingCondition {
+		return &v
+	}).(AddressGroupIamBindingConditionPtrOutput)
+}
+
+func (o AddressGroupIamBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddressGroupIamBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AddressGroupIamBindingConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressGroupIamBindingCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AddressGroupIamBindingConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressGroupIamBindingCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AddressGroupIamBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AddressGroupIamBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressGroupIamBindingCondition)(nil)).Elem()
+}
+
+func (o AddressGroupIamBindingConditionPtrOutput) ToAddressGroupIamBindingConditionPtrOutput() AddressGroupIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AddressGroupIamBindingConditionPtrOutput) ToAddressGroupIamBindingConditionPtrOutputWithContext(ctx context.Context) AddressGroupIamBindingConditionPtrOutput {
+	return o
+}
+
+func (o AddressGroupIamBindingConditionPtrOutput) Elem() AddressGroupIamBindingConditionOutput {
+	return o.ApplyT(func(v *AddressGroupIamBindingCondition) AddressGroupIamBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AddressGroupIamBindingCondition
+		return ret
+	}).(AddressGroupIamBindingConditionOutput)
+}
+
+func (o AddressGroupIamBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddressGroupIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AddressGroupIamBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddressGroupIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AddressGroupIamBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddressGroupIamBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type AddressGroupIamMemberCondition struct {
+	Description *string `pulumi:"description"`
+	Expression  string  `pulumi:"expression"`
+	Title       string  `pulumi:"title"`
+}
+
+// AddressGroupIamMemberConditionInput is an input type that accepts AddressGroupIamMemberConditionArgs and AddressGroupIamMemberConditionOutput values.
+// You can construct a concrete instance of `AddressGroupIamMemberConditionInput` via:
+//
+//	AddressGroupIamMemberConditionArgs{...}
+type AddressGroupIamMemberConditionInput interface {
+	pulumi.Input
+
+	ToAddressGroupIamMemberConditionOutput() AddressGroupIamMemberConditionOutput
+	ToAddressGroupIamMemberConditionOutputWithContext(context.Context) AddressGroupIamMemberConditionOutput
+}
+
+type AddressGroupIamMemberConditionArgs struct {
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	Expression  pulumi.StringInput    `pulumi:"expression"`
+	Title       pulumi.StringInput    `pulumi:"title"`
+}
+
+func (AddressGroupIamMemberConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (i AddressGroupIamMemberConditionArgs) ToAddressGroupIamMemberConditionOutput() AddressGroupIamMemberConditionOutput {
+	return i.ToAddressGroupIamMemberConditionOutputWithContext(context.Background())
+}
+
+func (i AddressGroupIamMemberConditionArgs) ToAddressGroupIamMemberConditionOutputWithContext(ctx context.Context) AddressGroupIamMemberConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupIamMemberConditionOutput)
+}
+
+func (i AddressGroupIamMemberConditionArgs) ToAddressGroupIamMemberConditionPtrOutput() AddressGroupIamMemberConditionPtrOutput {
+	return i.ToAddressGroupIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i AddressGroupIamMemberConditionArgs) ToAddressGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) AddressGroupIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupIamMemberConditionOutput).ToAddressGroupIamMemberConditionPtrOutputWithContext(ctx)
+}
+
+// AddressGroupIamMemberConditionPtrInput is an input type that accepts AddressGroupIamMemberConditionArgs, AddressGroupIamMemberConditionPtr and AddressGroupIamMemberConditionPtrOutput values.
+// You can construct a concrete instance of `AddressGroupIamMemberConditionPtrInput` via:
+//
+//	        AddressGroupIamMemberConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type AddressGroupIamMemberConditionPtrInput interface {
+	pulumi.Input
+
+	ToAddressGroupIamMemberConditionPtrOutput() AddressGroupIamMemberConditionPtrOutput
+	ToAddressGroupIamMemberConditionPtrOutputWithContext(context.Context) AddressGroupIamMemberConditionPtrOutput
+}
+
+type addressGroupIamMemberConditionPtrType AddressGroupIamMemberConditionArgs
+
+func AddressGroupIamMemberConditionPtr(v *AddressGroupIamMemberConditionArgs) AddressGroupIamMemberConditionPtrInput {
+	return (*addressGroupIamMemberConditionPtrType)(v)
+}
+
+func (*addressGroupIamMemberConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (i *addressGroupIamMemberConditionPtrType) ToAddressGroupIamMemberConditionPtrOutput() AddressGroupIamMemberConditionPtrOutput {
+	return i.ToAddressGroupIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *addressGroupIamMemberConditionPtrType) ToAddressGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) AddressGroupIamMemberConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AddressGroupIamMemberConditionPtrOutput)
+}
+
+type AddressGroupIamMemberConditionOutput struct{ *pulumi.OutputState }
+
+func (AddressGroupIamMemberConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AddressGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (o AddressGroupIamMemberConditionOutput) ToAddressGroupIamMemberConditionOutput() AddressGroupIamMemberConditionOutput {
+	return o
+}
+
+func (o AddressGroupIamMemberConditionOutput) ToAddressGroupIamMemberConditionOutputWithContext(ctx context.Context) AddressGroupIamMemberConditionOutput {
+	return o
+}
+
+func (o AddressGroupIamMemberConditionOutput) ToAddressGroupIamMemberConditionPtrOutput() AddressGroupIamMemberConditionPtrOutput {
+	return o.ToAddressGroupIamMemberConditionPtrOutputWithContext(context.Background())
+}
+
+func (o AddressGroupIamMemberConditionOutput) ToAddressGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) AddressGroupIamMemberConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AddressGroupIamMemberCondition) *AddressGroupIamMemberCondition {
+		return &v
+	}).(AddressGroupIamMemberConditionPtrOutput)
+}
+
+func (o AddressGroupIamMemberConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AddressGroupIamMemberCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+func (o AddressGroupIamMemberConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressGroupIamMemberCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+func (o AddressGroupIamMemberConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v AddressGroupIamMemberCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type AddressGroupIamMemberConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (AddressGroupIamMemberConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AddressGroupIamMemberCondition)(nil)).Elem()
+}
+
+func (o AddressGroupIamMemberConditionPtrOutput) ToAddressGroupIamMemberConditionPtrOutput() AddressGroupIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AddressGroupIamMemberConditionPtrOutput) ToAddressGroupIamMemberConditionPtrOutputWithContext(ctx context.Context) AddressGroupIamMemberConditionPtrOutput {
+	return o
+}
+
+func (o AddressGroupIamMemberConditionPtrOutput) Elem() AddressGroupIamMemberConditionOutput {
+	return o.ApplyT(func(v *AddressGroupIamMemberCondition) AddressGroupIamMemberCondition {
+		if v != nil {
+			return *v
+		}
+		var ret AddressGroupIamMemberCondition
+		return ret
+	}).(AddressGroupIamMemberConditionOutput)
+}
+
+func (o AddressGroupIamMemberConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddressGroupIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AddressGroupIamMemberConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddressGroupIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o AddressGroupIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AddressGroupIamMemberCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
 type AuthorizationPolicyRule struct {
 	// List of attributes for the traffic destination. All of the destinations must match. A destination is a match if a request matches all the specified hosts, ports, methods and headers.
 	// If not set, the action specified in the 'action' field will be applied without any rule checks for the destination.
@@ -1363,6 +1689,415 @@ func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) TargetUri() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type SecurityProfileThreatPreventionProfile struct {
+	// The configuration for overriding threats actions by severity match.
+	// Structure is documented below.
+	SeverityOverrides []SecurityProfileThreatPreventionProfileSeverityOverride `pulumi:"severityOverrides"`
+	// The configuration for overriding threats actions by threat id match.
+	// If a threat is matched both by configuration provided in severity overrides
+	// and threat overrides, the threat overrides action is applied.
+	// Structure is documented below.
+	ThreatOverrides []SecurityProfileThreatPreventionProfileThreatOverride `pulumi:"threatOverrides"`
+}
+
+// SecurityProfileThreatPreventionProfileInput is an input type that accepts SecurityProfileThreatPreventionProfileArgs and SecurityProfileThreatPreventionProfileOutput values.
+// You can construct a concrete instance of `SecurityProfileThreatPreventionProfileInput` via:
+//
+//	SecurityProfileThreatPreventionProfileArgs{...}
+type SecurityProfileThreatPreventionProfileInput interface {
+	pulumi.Input
+
+	ToSecurityProfileThreatPreventionProfileOutput() SecurityProfileThreatPreventionProfileOutput
+	ToSecurityProfileThreatPreventionProfileOutputWithContext(context.Context) SecurityProfileThreatPreventionProfileOutput
+}
+
+type SecurityProfileThreatPreventionProfileArgs struct {
+	// The configuration for overriding threats actions by severity match.
+	// Structure is documented below.
+	SeverityOverrides SecurityProfileThreatPreventionProfileSeverityOverrideArrayInput `pulumi:"severityOverrides"`
+	// The configuration for overriding threats actions by threat id match.
+	// If a threat is matched both by configuration provided in severity overrides
+	// and threat overrides, the threat overrides action is applied.
+	// Structure is documented below.
+	ThreatOverrides SecurityProfileThreatPreventionProfileThreatOverrideArrayInput `pulumi:"threatOverrides"`
+}
+
+func (SecurityProfileThreatPreventionProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileThreatPreventionProfile)(nil)).Elem()
+}
+
+func (i SecurityProfileThreatPreventionProfileArgs) ToSecurityProfileThreatPreventionProfileOutput() SecurityProfileThreatPreventionProfileOutput {
+	return i.ToSecurityProfileThreatPreventionProfileOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileThreatPreventionProfileArgs) ToSecurityProfileThreatPreventionProfileOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileThreatPreventionProfileOutput)
+}
+
+func (i SecurityProfileThreatPreventionProfileArgs) ToSecurityProfileThreatPreventionProfilePtrOutput() SecurityProfileThreatPreventionProfilePtrOutput {
+	return i.ToSecurityProfileThreatPreventionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileThreatPreventionProfileArgs) ToSecurityProfileThreatPreventionProfilePtrOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileThreatPreventionProfileOutput).ToSecurityProfileThreatPreventionProfilePtrOutputWithContext(ctx)
+}
+
+// SecurityProfileThreatPreventionProfilePtrInput is an input type that accepts SecurityProfileThreatPreventionProfileArgs, SecurityProfileThreatPreventionProfilePtr and SecurityProfileThreatPreventionProfilePtrOutput values.
+// You can construct a concrete instance of `SecurityProfileThreatPreventionProfilePtrInput` via:
+//
+//	        SecurityProfileThreatPreventionProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityProfileThreatPreventionProfilePtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfileThreatPreventionProfilePtrOutput() SecurityProfileThreatPreventionProfilePtrOutput
+	ToSecurityProfileThreatPreventionProfilePtrOutputWithContext(context.Context) SecurityProfileThreatPreventionProfilePtrOutput
+}
+
+type securityProfileThreatPreventionProfilePtrType SecurityProfileThreatPreventionProfileArgs
+
+func SecurityProfileThreatPreventionProfilePtr(v *SecurityProfileThreatPreventionProfileArgs) SecurityProfileThreatPreventionProfilePtrInput {
+	return (*securityProfileThreatPreventionProfilePtrType)(v)
+}
+
+func (*securityProfileThreatPreventionProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileThreatPreventionProfile)(nil)).Elem()
+}
+
+func (i *securityProfileThreatPreventionProfilePtrType) ToSecurityProfileThreatPreventionProfilePtrOutput() SecurityProfileThreatPreventionProfilePtrOutput {
+	return i.ToSecurityProfileThreatPreventionProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *securityProfileThreatPreventionProfilePtrType) ToSecurityProfileThreatPreventionProfilePtrOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileThreatPreventionProfilePtrOutput)
+}
+
+type SecurityProfileThreatPreventionProfileOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileThreatPreventionProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileThreatPreventionProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileThreatPreventionProfileOutput) ToSecurityProfileThreatPreventionProfileOutput() SecurityProfileThreatPreventionProfileOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfileOutput) ToSecurityProfileThreatPreventionProfileOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfileOutput) ToSecurityProfileThreatPreventionProfilePtrOutput() SecurityProfileThreatPreventionProfilePtrOutput {
+	return o.ToSecurityProfileThreatPreventionProfilePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileThreatPreventionProfileOutput) ToSecurityProfileThreatPreventionProfilePtrOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfileThreatPreventionProfile) *SecurityProfileThreatPreventionProfile {
+		return &v
+	}).(SecurityProfileThreatPreventionProfilePtrOutput)
+}
+
+// The configuration for overriding threats actions by severity match.
+// Structure is documented below.
+func (o SecurityProfileThreatPreventionProfileOutput) SeverityOverrides() SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput {
+	return o.ApplyT(func(v SecurityProfileThreatPreventionProfile) []SecurityProfileThreatPreventionProfileSeverityOverride {
+		return v.SeverityOverrides
+	}).(SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput)
+}
+
+// The configuration for overriding threats actions by threat id match.
+// If a threat is matched both by configuration provided in severity overrides
+// and threat overrides, the threat overrides action is applied.
+// Structure is documented below.
+func (o SecurityProfileThreatPreventionProfileOutput) ThreatOverrides() SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput {
+	return o.ApplyT(func(v SecurityProfileThreatPreventionProfile) []SecurityProfileThreatPreventionProfileThreatOverride {
+		return v.ThreatOverrides
+	}).(SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput)
+}
+
+type SecurityProfileThreatPreventionProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileThreatPreventionProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileThreatPreventionProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileThreatPreventionProfilePtrOutput) ToSecurityProfileThreatPreventionProfilePtrOutput() SecurityProfileThreatPreventionProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfilePtrOutput) ToSecurityProfileThreatPreventionProfilePtrOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfilePtrOutput) Elem() SecurityProfileThreatPreventionProfileOutput {
+	return o.ApplyT(func(v *SecurityProfileThreatPreventionProfile) SecurityProfileThreatPreventionProfile {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileThreatPreventionProfile
+		return ret
+	}).(SecurityProfileThreatPreventionProfileOutput)
+}
+
+// The configuration for overriding threats actions by severity match.
+// Structure is documented below.
+func (o SecurityProfileThreatPreventionProfilePtrOutput) SeverityOverrides() SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileThreatPreventionProfile) []SecurityProfileThreatPreventionProfileSeverityOverride {
+		if v == nil {
+			return nil
+		}
+		return v.SeverityOverrides
+	}).(SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput)
+}
+
+// The configuration for overriding threats actions by threat id match.
+// If a threat is matched both by configuration provided in severity overrides
+// and threat overrides, the threat overrides action is applied.
+// Structure is documented below.
+func (o SecurityProfileThreatPreventionProfilePtrOutput) ThreatOverrides() SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput {
+	return o.ApplyT(func(v *SecurityProfileThreatPreventionProfile) []SecurityProfileThreatPreventionProfileThreatOverride {
+		if v == nil {
+			return nil
+		}
+		return v.ThreatOverrides
+	}).(SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput)
+}
+
+type SecurityProfileThreatPreventionProfileSeverityOverride struct {
+	// Threat action override.
+	// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+	Action string `pulumi:"action"`
+	// Severity level to match.
+	// Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+	Severity string `pulumi:"severity"`
+}
+
+// SecurityProfileThreatPreventionProfileSeverityOverrideInput is an input type that accepts SecurityProfileThreatPreventionProfileSeverityOverrideArgs and SecurityProfileThreatPreventionProfileSeverityOverrideOutput values.
+// You can construct a concrete instance of `SecurityProfileThreatPreventionProfileSeverityOverrideInput` via:
+//
+//	SecurityProfileThreatPreventionProfileSeverityOverrideArgs{...}
+type SecurityProfileThreatPreventionProfileSeverityOverrideInput interface {
+	pulumi.Input
+
+	ToSecurityProfileThreatPreventionProfileSeverityOverrideOutput() SecurityProfileThreatPreventionProfileSeverityOverrideOutput
+	ToSecurityProfileThreatPreventionProfileSeverityOverrideOutputWithContext(context.Context) SecurityProfileThreatPreventionProfileSeverityOverrideOutput
+}
+
+type SecurityProfileThreatPreventionProfileSeverityOverrideArgs struct {
+	// Threat action override.
+	// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Severity level to match.
+	// Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+	Severity pulumi.StringInput `pulumi:"severity"`
+}
+
+func (SecurityProfileThreatPreventionProfileSeverityOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileThreatPreventionProfileSeverityOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileThreatPreventionProfileSeverityOverrideArgs) ToSecurityProfileThreatPreventionProfileSeverityOverrideOutput() SecurityProfileThreatPreventionProfileSeverityOverrideOutput {
+	return i.ToSecurityProfileThreatPreventionProfileSeverityOverrideOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileThreatPreventionProfileSeverityOverrideArgs) ToSecurityProfileThreatPreventionProfileSeverityOverrideOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileSeverityOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileThreatPreventionProfileSeverityOverrideOutput)
+}
+
+// SecurityProfileThreatPreventionProfileSeverityOverrideArrayInput is an input type that accepts SecurityProfileThreatPreventionProfileSeverityOverrideArray and SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileThreatPreventionProfileSeverityOverrideArrayInput` via:
+//
+//	SecurityProfileThreatPreventionProfileSeverityOverrideArray{ SecurityProfileThreatPreventionProfileSeverityOverrideArgs{...} }
+type SecurityProfileThreatPreventionProfileSeverityOverrideArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput() SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput
+	ToSecurityProfileThreatPreventionProfileSeverityOverrideArrayOutputWithContext(context.Context) SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput
+}
+
+type SecurityProfileThreatPreventionProfileSeverityOverrideArray []SecurityProfileThreatPreventionProfileSeverityOverrideInput
+
+func (SecurityProfileThreatPreventionProfileSeverityOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileThreatPreventionProfileSeverityOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileThreatPreventionProfileSeverityOverrideArray) ToSecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput() SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput {
+	return i.ToSecurityProfileThreatPreventionProfileSeverityOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileThreatPreventionProfileSeverityOverrideArray) ToSecurityProfileThreatPreventionProfileSeverityOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput)
+}
+
+type SecurityProfileThreatPreventionProfileSeverityOverrideOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileThreatPreventionProfileSeverityOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileThreatPreventionProfileSeverityOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileThreatPreventionProfileSeverityOverrideOutput) ToSecurityProfileThreatPreventionProfileSeverityOverrideOutput() SecurityProfileThreatPreventionProfileSeverityOverrideOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfileSeverityOverrideOutput) ToSecurityProfileThreatPreventionProfileSeverityOverrideOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileSeverityOverrideOutput {
+	return o
+}
+
+// Threat action override.
+// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+func (o SecurityProfileThreatPreventionProfileSeverityOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileThreatPreventionProfileSeverityOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Severity level to match.
+// Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+func (o SecurityProfileThreatPreventionProfileSeverityOverrideOutput) Severity() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileThreatPreventionProfileSeverityOverride) string { return v.Severity }).(pulumi.StringOutput)
+}
+
+type SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileThreatPreventionProfileSeverityOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput) ToSecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput() SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput) ToSecurityProfileThreatPreventionProfileSeverityOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput) Index(i pulumi.IntInput) SecurityProfileThreatPreventionProfileSeverityOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileThreatPreventionProfileSeverityOverride {
+		return vs[0].([]SecurityProfileThreatPreventionProfileSeverityOverride)[vs[1].(int)]
+	}).(SecurityProfileThreatPreventionProfileSeverityOverrideOutput)
+}
+
+type SecurityProfileThreatPreventionProfileThreatOverride struct {
+	// Threat action.
+	// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+	Action string `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId string `pulumi:"threatId"`
+	// (Output)
+	// Type of threat.
+	Type *string `pulumi:"type"`
+}
+
+// SecurityProfileThreatPreventionProfileThreatOverrideInput is an input type that accepts SecurityProfileThreatPreventionProfileThreatOverrideArgs and SecurityProfileThreatPreventionProfileThreatOverrideOutput values.
+// You can construct a concrete instance of `SecurityProfileThreatPreventionProfileThreatOverrideInput` via:
+//
+//	SecurityProfileThreatPreventionProfileThreatOverrideArgs{...}
+type SecurityProfileThreatPreventionProfileThreatOverrideInput interface {
+	pulumi.Input
+
+	ToSecurityProfileThreatPreventionProfileThreatOverrideOutput() SecurityProfileThreatPreventionProfileThreatOverrideOutput
+	ToSecurityProfileThreatPreventionProfileThreatOverrideOutputWithContext(context.Context) SecurityProfileThreatPreventionProfileThreatOverrideOutput
+}
+
+type SecurityProfileThreatPreventionProfileThreatOverrideArgs struct {
+	// Threat action.
+	// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+	Action pulumi.StringInput `pulumi:"action"`
+	// Vendor-specific ID of a threat to override.
+	ThreatId pulumi.StringInput `pulumi:"threatId"`
+	// (Output)
+	// Type of threat.
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (SecurityProfileThreatPreventionProfileThreatOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileThreatPreventionProfileThreatOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileThreatPreventionProfileThreatOverrideArgs) ToSecurityProfileThreatPreventionProfileThreatOverrideOutput() SecurityProfileThreatPreventionProfileThreatOverrideOutput {
+	return i.ToSecurityProfileThreatPreventionProfileThreatOverrideOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileThreatPreventionProfileThreatOverrideArgs) ToSecurityProfileThreatPreventionProfileThreatOverrideOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileThreatOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileThreatPreventionProfileThreatOverrideOutput)
+}
+
+// SecurityProfileThreatPreventionProfileThreatOverrideArrayInput is an input type that accepts SecurityProfileThreatPreventionProfileThreatOverrideArray and SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput values.
+// You can construct a concrete instance of `SecurityProfileThreatPreventionProfileThreatOverrideArrayInput` via:
+//
+//	SecurityProfileThreatPreventionProfileThreatOverrideArray{ SecurityProfileThreatPreventionProfileThreatOverrideArgs{...} }
+type SecurityProfileThreatPreventionProfileThreatOverrideArrayInput interface {
+	pulumi.Input
+
+	ToSecurityProfileThreatPreventionProfileThreatOverrideArrayOutput() SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput
+	ToSecurityProfileThreatPreventionProfileThreatOverrideArrayOutputWithContext(context.Context) SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput
+}
+
+type SecurityProfileThreatPreventionProfileThreatOverrideArray []SecurityProfileThreatPreventionProfileThreatOverrideInput
+
+func (SecurityProfileThreatPreventionProfileThreatOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileThreatPreventionProfileThreatOverride)(nil)).Elem()
+}
+
+func (i SecurityProfileThreatPreventionProfileThreatOverrideArray) ToSecurityProfileThreatPreventionProfileThreatOverrideArrayOutput() SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput {
+	return i.ToSecurityProfileThreatPreventionProfileThreatOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileThreatPreventionProfileThreatOverrideArray) ToSecurityProfileThreatPreventionProfileThreatOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput)
+}
+
+type SecurityProfileThreatPreventionProfileThreatOverrideOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileThreatPreventionProfileThreatOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileThreatPreventionProfileThreatOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileThreatPreventionProfileThreatOverrideOutput) ToSecurityProfileThreatPreventionProfileThreatOverrideOutput() SecurityProfileThreatPreventionProfileThreatOverrideOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfileThreatOverrideOutput) ToSecurityProfileThreatPreventionProfileThreatOverrideOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileThreatOverrideOutput {
+	return o
+}
+
+// Threat action.
+// Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+func (o SecurityProfileThreatPreventionProfileThreatOverrideOutput) Action() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileThreatPreventionProfileThreatOverride) string { return v.Action }).(pulumi.StringOutput)
+}
+
+// Vendor-specific ID of a threat to override.
+func (o SecurityProfileThreatPreventionProfileThreatOverrideOutput) ThreatId() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileThreatPreventionProfileThreatOverride) string { return v.ThreatId }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Type of threat.
+func (o SecurityProfileThreatPreventionProfileThreatOverrideOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityProfileThreatPreventionProfileThreatOverride) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityProfileThreatPreventionProfileThreatOverride)(nil)).Elem()
+}
+
+func (o SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput) ToSecurityProfileThreatPreventionProfileThreatOverrideArrayOutput() SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput) ToSecurityProfileThreatPreventionProfileThreatOverrideArrayOutputWithContext(ctx context.Context) SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput {
+	return o
+}
+
+func (o SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput) Index(i pulumi.IntInput) SecurityProfileThreatPreventionProfileThreatOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityProfileThreatPreventionProfileThreatOverride {
+		return vs[0].([]SecurityProfileThreatPreventionProfileThreatOverride)[vs[1].(int)]
+	}).(SecurityProfileThreatPreventionProfileThreatOverrideOutput)
+}
+
 type ServerTlsPolicyMtlsPolicy struct {
 	// Required if the policy is to be used with Traffic Director. For external HTTPS load balancers it must be empty.
 	// Defines the mechanism to obtain the Certificate Authority certificate to validate the client certificate.
@@ -2406,6 +3141,10 @@ func (o ServerTlsPolicyServerCertificateGrpcEndpointPtrOutput) TargetUri() pulum
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupIamBindingConditionInput)(nil)).Elem(), AddressGroupIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupIamBindingConditionPtrInput)(nil)).Elem(), AddressGroupIamBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupIamMemberConditionInput)(nil)).Elem(), AddressGroupIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AddressGroupIamMemberConditionPtrInput)(nil)).Elem(), AddressGroupIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyRuleInput)(nil)).Elem(), AuthorizationPolicyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyRuleArrayInput)(nil)).Elem(), AuthorizationPolicyRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AuthorizationPolicyRuleDestinationInput)(nil)).Elem(), AuthorizationPolicyRuleDestinationArgs{})
@@ -2426,6 +3165,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointPtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfileInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfilePtrInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfileSeverityOverrideInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileSeverityOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfileSeverityOverrideArrayInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileSeverityOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfileThreatOverrideInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileThreatOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfileThreatOverrideArrayInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileThreatOverrideArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyPtrInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyMtlsPolicyClientValidationCaInput)(nil)).Elem(), ServerTlsPolicyMtlsPolicyClientValidationCaArgs{})
@@ -2440,6 +3185,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateCertificateProviderInstancePtrInput)(nil)).Elem(), ServerTlsPolicyServerCertificateCertificateProviderInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpointInput)(nil)).Elem(), ServerTlsPolicyServerCertificateGrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServerTlsPolicyServerCertificateGrpcEndpointPtrInput)(nil)).Elem(), ServerTlsPolicyServerCertificateGrpcEndpointArgs{})
+	pulumi.RegisterOutputType(AddressGroupIamBindingConditionOutput{})
+	pulumi.RegisterOutputType(AddressGroupIamBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(AddressGroupIamMemberConditionOutput{})
+	pulumi.RegisterOutputType(AddressGroupIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyRuleOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyRuleArrayOutput{})
 	pulumi.RegisterOutputType(AuthorizationPolicyRuleDestinationOutput{})
@@ -2460,6 +3209,12 @@ func init() {
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput{})
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointOutput{})
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfileOutput{})
+	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfilePtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfileSeverityOverrideOutput{})
+	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfileSeverityOverrideArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfileThreatOverrideOutput{})
+	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfileThreatOverrideArrayOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyPtrOutput{})
 	pulumi.RegisterOutputType(ServerTlsPolicyMtlsPolicyClientValidationCaOutput{})

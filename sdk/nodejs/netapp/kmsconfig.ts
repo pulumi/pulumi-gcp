@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  *
  * const keyring = new gcp.kms.KeyRing("keyring", {location: "us-central1"});
  * const cryptoKey = new gcp.kms.CryptoKey("cryptoKey", {keyRing: keyring.id});
- * // rotation_period = "100000s"
+ * // rotation_period = "7776000s"
  * const kmsConfig = new gcp.netapp.Kmsconfig("kmsConfig", {
  *     description: "this is a test description",
  *     cryptoKeyName: cryptoKey.id,

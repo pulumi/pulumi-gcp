@@ -209,8 +209,8 @@ type Disk struct {
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrOutput `pulumi:"diskEncryptionKey"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute pulumi.BoolOutput `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -406,8 +406,8 @@ type diskState struct {
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -569,8 +569,8 @@ type DiskState struct {
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -732,8 +732,8 @@ type diskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey *DiskDiskEncryptionKey `pulumi:"diskEncryptionKey"`
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -860,8 +860,8 @@ type DiskArgs struct {
 	// you do not need to provide a key to use the disk later.
 	// Structure is documented below.
 	DiskEncryptionKey DiskDiskEncryptionKeyPtrInput
-	// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-	// required when setting to true
+	// Whether this disk is using confidential compute mode.
+	// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 	EnableConfidentialCompute pulumi.BoolPtrInput
 	// A list of features to enable on the guest operating system.
 	// Applicable only for bootable disks.
@@ -1092,8 +1092,8 @@ func (o DiskOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-// required when setting to true
+// Whether this disk is using confidential compute mode.
+// Note: Only supported on hyperdisk skus, diskEncryptionKey is required when setting to true
 func (o DiskOutput) EnableConfidentialCompute() pulumi.BoolOutput {
 	return o.ApplyT(func(v *Disk) pulumi.BoolOutput { return v.EnableConfidentialCompute }).(pulumi.BoolOutput)
 }

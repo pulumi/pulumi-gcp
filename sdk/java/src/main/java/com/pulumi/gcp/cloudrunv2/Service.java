@@ -538,6 +538,134 @@ import javax.annotation.Nullable;
  *     }
  * }
  * ```
+ * ### Cloudrunv2 Service Mount Gcs
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.storage.Bucket;
+ * import com.pulumi.gcp.storage.BucketArgs;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultBucket = new Bucket(&#34;defaultBucket&#34;, BucketArgs.builder()        
+ *             .location(&#34;US&#34;)
+ *             .build());
+ * 
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .launchStage(&#34;BETA&#34;)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .executionEnvironment(&#34;EXECUTION_ENVIRONMENT_GEN2&#34;)
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello&#34;)
+ *                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
+ *                         .name(&#34;bucket&#34;)
+ *                         .mountPath(&#34;/var/www&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .volumes(ServiceTemplateVolumeArgs.builder()
+ *                     .name(&#34;bucket&#34;)
+ *                     .gcs(ServiceTemplateVolumeGcsArgs.builder()
+ *                         .bucket(defaultBucket.name())
+ *                         .readOnly(false)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
+ * ### Cloudrunv2 Service Mount Nfs
+ * ```java
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.filestore.Instance;
+ * import com.pulumi.gcp.filestore.InstanceArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
+ * import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+ * import com.pulumi.gcp.cloudrunv2.Service;
+ * import com.pulumi.gcp.cloudrunv2.ServiceArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
+ * import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVpcAccessArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var defaultInstance = new Instance(&#34;defaultInstance&#34;, InstanceArgs.builder()        
+ *             .location(&#34;us-central1-b&#34;)
+ *             .tier(&#34;BASIC_HDD&#34;)
+ *             .fileShares(InstanceFileSharesArgs.builder()
+ *                 .capacityGb(1024)
+ *                 .name(&#34;share1&#34;)
+ *                 .build())
+ *             .networks(InstanceNetworkArgs.builder()
+ *                 .network(&#34;default&#34;)
+ *                 .modes(&#34;MODE_IPV4&#34;)
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultService = new Service(&#34;defaultService&#34;, ServiceArgs.builder()        
+ *             .location(&#34;us-central1&#34;)
+ *             .ingress(&#34;INGRESS_TRAFFIC_ALL&#34;)
+ *             .launchStage(&#34;BETA&#34;)
+ *             .template(ServiceTemplateArgs.builder()
+ *                 .executionEnvironment(&#34;EXECUTION_ENVIRONMENT_GEN2&#34;)
+ *                 .containers(ServiceTemplateContainerArgs.builder()
+ *                     .image(&#34;us-docker.pkg.dev/cloudrun/container/hello:latest&#34;)
+ *                     .volumeMounts(ServiceTemplateContainerVolumeMountArgs.builder()
+ *                         .name(&#34;nfs&#34;)
+ *                         .mountPath(&#34;/mnt/nfs/filestore&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .vpcAccess(ServiceTemplateVpcAccessArgs.builder()
+ *                     .networkInterfaces(ServiceTemplateVpcAccessNetworkInterfaceArgs.builder()
+ *                         .network(&#34;default&#34;)
+ *                         .subnetwork(&#34;default&#34;)
+ *                         .build())
+ *                     .build())
+ *                 .volumes(ServiceTemplateVolumeArgs.builder()
+ *                     .name(&#34;nfs&#34;)
+ *                     .nfs(ServiceTemplateVolumeNfsArgs.builder()
+ *                         .server(defaultInstance.networks().applyValue(networks -&gt; networks[0].ipAddresses()[0]))
+ *                         .path(&#34;/share1&#34;)
+ *                         .readOnly(false)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * ```
  * 
  * ## Import
  * 

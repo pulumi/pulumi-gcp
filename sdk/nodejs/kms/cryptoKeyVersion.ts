@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
  * const cryptokey = new gcp.kms.CryptoKey("cryptokey", {
  *     keyRing: keyring.id,
- *     rotationPeriod: "100000s",
+ *     rotationPeriod: "7776000s",
  * });
  * const example_key = new gcp.kms.CryptoKeyVersion("example-key", {cryptoKey: cryptokey.id});
  * ```

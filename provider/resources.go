@@ -2742,6 +2742,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_network_security_gateway_security_policy":      {Tok: gcpResource(gcpNetworkSecurity, "GatewaySecurityPolicy")},
 			"google_network_security_gateway_security_policy_rule": {Tok: gcpResource(gcpNetworkSecurity, "GatewaySecurityPolicyRule")},
 			"google_network_security_url_lists":                    {Tok: gcpResource(gcpNetworkSecurity, "UrlList")},
+			"google_network_security_address_group_iam_binding":    {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_network_security_address_group_iam_member":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_network_security_address_group_iam_policy":     {Docs: &tfbridge.DocInfo{Source: "network_security_address_group_iam.html.markdown"}},
 
 			// Network Services
 			"google_network_services_edge_cache_keyset":  {Tok: gcpResource(gcpNetworkServices, "EdgeCacheKeyset")},

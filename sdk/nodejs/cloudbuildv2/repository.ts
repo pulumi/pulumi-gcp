@@ -5,10 +5,17 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * The Cloudbuildv2 Repository resource
+ * A repository associated to a parent connection.
+ *
+ * To get more information about Repository, see:
+ *
+ * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+ * * How-to Guides
+ *     * [Official Documentation](https://cloud.google.com/build/docs)
  *
  * ## Example Usage
- * ### Ghe
+ * ### Cloudbuildv2 Repository Ghe Doc
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -70,8 +77,8 @@ import * as utilities from "../utilities";
  *     remoteUri: "https://ghe.com/hashicorp/terraform-provider-google.git",
  * });
  * ```
- * ### Repository In GitHub Connection
- * Creates a Repository resource inside a Connection to github.com
+ * ### Cloudbuildv2 Repository Github Doc
+ *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as fs from "fs";
@@ -98,7 +105,7 @@ import * as utilities from "../utilities";
  *     policyData: p4sa_secretAccessor.then(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
  * });
  * const my_connection = new gcp.cloudbuildv2.Connection("my-connection", {
- *     location: "us-west1",
+ *     location: "us-central1",
  *     githubConfig: {
  *         appInstallationId: 123123,
  *         authorizerCredential: {
@@ -107,7 +114,7 @@ import * as utilities from "../utilities";
  *     },
  * });
  * const my_repository = new gcp.cloudbuildv2.Repository("my-repository", {
- *     location: "us-west1",
+ *     location: "us-central1",
  *     parentConnection: my_connection.name,
  *     remoteUri: "https://github.com/myuser/myrepo.git",
  * });
@@ -167,7 +174,6 @@ export class Repository extends pulumi.CustomResource {
 
     /**
      * Allows clients to store small amounts of arbitrary data.
-     *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -180,7 +186,7 @@ export class Repository extends pulumi.CustomResource {
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
      */
-    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: any}>;
+    public /*out*/ readonly effectiveAnnotations!: pulumi.Output<{[key: string]: string}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -195,18 +201,18 @@ export class Repository extends pulumi.CustomResource {
     public readonly name!: pulumi.Output<string>;
     /**
      * The connection for the resource
+     *
+     *
+     * - - -
      */
     public readonly parentConnection!: pulumi.Output<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     public readonly project!: pulumi.Output<string>;
     /**
      * Required. Git Clone HTTPS URI.
-     *
-     *
-     *
-     * - - -
      */
     public readonly remoteUri!: pulumi.Output<string>;
     /**
@@ -267,7 +273,6 @@ export class Repository extends pulumi.CustomResource {
 export interface RepositoryState {
     /**
      * Allows clients to store small amounts of arbitrary data.
-     *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -280,7 +285,7 @@ export interface RepositoryState {
      * All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
      * Terraform, other clients and services.
      */
-    effectiveAnnotations?: pulumi.Input<{[key: string]: any}>;
+    effectiveAnnotations?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
      */
@@ -295,18 +300,18 @@ export interface RepositoryState {
     name?: pulumi.Input<string>;
     /**
      * The connection for the resource
+     *
+     *
+     * - - -
      */
     parentConnection?: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * Required. Git Clone HTTPS URI.
-     *
-     *
-     *
-     * - - -
      */
     remoteUri?: pulumi.Input<string>;
     /**
@@ -321,7 +326,6 @@ export interface RepositoryState {
 export interface RepositoryArgs {
     /**
      * Allows clients to store small amounts of arbitrary data.
-     *
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
      */
@@ -336,18 +340,18 @@ export interface RepositoryArgs {
     name?: pulumi.Input<string>;
     /**
      * The connection for the resource
+     *
+     *
+     * - - -
      */
     parentConnection: pulumi.Input<string>;
     /**
-     * The project for the resource
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
     /**
      * Required. Git Clone HTTPS URI.
-     *
-     *
-     *
-     * - - -
      */
     remoteUri: pulumi.Input<string>;
 }

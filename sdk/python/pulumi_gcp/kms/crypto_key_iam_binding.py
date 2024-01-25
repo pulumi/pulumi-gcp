@@ -246,7 +246,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         keyring = gcp.kms.KeyRing("keyring", location="global")
         key = gcp.kms.CryptoKey("key",
             key_ring=keyring.id,
-            rotation_period="100000s")
+            rotation_period="7776000s")
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],
@@ -387,7 +387,7 @@ class CryptoKeyIAMBinding(pulumi.CustomResource):
         keyring = gcp.kms.KeyRing("keyring", location="global")
         key = gcp.kms.CryptoKey("key",
             key_ring=keyring.id,
-            rotation_period="100000s")
+            rotation_period="7776000s")
         admin = gcp.organizations.get_iam_policy(bindings=[gcp.organizations.GetIAMPolicyBindingArgs(
             role="roles/cloudkms.cryptoKeyEncrypter",
             members=["user:jane@example.com"],

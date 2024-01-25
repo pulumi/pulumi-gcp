@@ -345,7 +345,7 @@ class Kmsconfig(pulumi.CustomResource):
 
         keyring = gcp.kms.KeyRing("keyring", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=keyring.id)
-        # rotation_period = "100000s"
+        # rotation_period = "7776000s"
         kms_config = gcp.netapp.Kmsconfig("kmsConfig",
             description="this is a test description",
             crypto_key_name=crypto_key.id,
@@ -418,7 +418,7 @@ class Kmsconfig(pulumi.CustomResource):
 
         keyring = gcp.kms.KeyRing("keyring", location="us-central1")
         crypto_key = gcp.kms.CryptoKey("cryptoKey", key_ring=keyring.id)
-        # rotation_period = "100000s"
+        # rotation_period = "7776000s"
         kms_config = gcp.netapp.Kmsconfig("kmsConfig",
             description="this is a test description",
             crypto_key_name=crypto_key.id,

@@ -15,6 +15,7 @@ import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfiguration;
 import com.pulumi.gcp.bigquery.outputs.TableMaterializedView;
 import com.pulumi.gcp.bigquery.outputs.TableRangePartitioning;
 import com.pulumi.gcp.bigquery.outputs.TableTableConstraints;
+import com.pulumi.gcp.bigquery.outputs.TableTableReplicationInfo;
 import com.pulumi.gcp.bigquery.outputs.TableTimePartitioning;
 import com.pulumi.gcp.bigquery.outputs.TableView;
 import java.lang.Boolean;
@@ -624,6 +625,20 @@ public class Table extends com.pulumi.resources.CustomResource {
      */
     public Output<String> tableId() {
         return this.tableId;
+    }
+    /**
+     * Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+     * 
+     */
+    @Export(name="tableReplicationInfo", refs={TableTableReplicationInfo.class}, tree="[0]")
+    private Output</* @Nullable */ TableTableReplicationInfo> tableReplicationInfo;
+
+    /**
+     * @return Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+     * 
+     */
+    public Output<Optional<TableTableReplicationInfo>> tableReplicationInfo() {
+        return Codegen.optional(this.tableReplicationInfo);
     }
     /**
      * If specified, configures time-based

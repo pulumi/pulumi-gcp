@@ -1268,7 +1268,7 @@ class Gateway(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def addresses(self) -> pulumi.Output[Optional[Sequence[str]]]:
+    def addresses(self) -> pulumi.Output[Sequence[str]]:
         """
         Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
         an IP from the subnetwork is allocated This field only applies to gateways of type 'SECURE_WEB_GATEWAY'.

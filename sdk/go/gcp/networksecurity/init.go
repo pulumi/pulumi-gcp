@@ -23,6 +23,12 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:networksecurity/addressGroup:AddressGroup":
 		r = &AddressGroup{}
+	case "gcp:networksecurity/addressGroupIamBinding:AddressGroupIamBinding":
+		r = &AddressGroupIamBinding{}
+	case "gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember":
+		r = &AddressGroupIamMember{}
+	case "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy":
+		r = &AddressGroupIamPolicy{}
 	case "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy":
 		r = &AuthorizationPolicy{}
 	case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
@@ -31,6 +37,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GatewaySecurityPolicy{}
 	case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
 		r = &GatewaySecurityPolicyRule{}
+	case "gcp:networksecurity/securityProfile:SecurityProfile":
+		r = &SecurityProfile{}
 	case "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy":
 		r = &ServerTlsPolicy{}
 	case "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy":
@@ -57,6 +65,21 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
+		"networksecurity/addressGroupIamBinding",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/addressGroupIamMember",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/addressGroupIamPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
 		"networksecurity/authorizationPolicy",
 		&module{version},
 	)
@@ -73,6 +96,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/gatewaySecurityPolicyRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/securityProfile",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

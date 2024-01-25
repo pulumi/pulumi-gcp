@@ -460,7 +460,7 @@ class CryptoKey(pulumi.CustomResource):
         keyring = gcp.kms.KeyRing("keyring", location="global")
         example_key = gcp.kms.CryptoKey("example-key",
             key_ring=keyring.id,
-            rotation_period="100000s")
+            rotation_period="7776000s")
         ```
         ### Kms Crypto Key Asymmetric Sign
 
@@ -542,7 +542,7 @@ class CryptoKey(pulumi.CustomResource):
         keyring = gcp.kms.KeyRing("keyring", location="global")
         example_key = gcp.kms.CryptoKey("example-key",
             key_ring=keyring.id,
-            rotation_period="100000s")
+            rotation_period="7776000s")
         ```
         ### Kms Crypto Key Asymmetric Sign
 

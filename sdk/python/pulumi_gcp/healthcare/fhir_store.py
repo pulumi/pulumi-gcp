@@ -22,6 +22,7 @@ class FhirStoreArgs:
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_history_import: Optional[pulumi.Input[bool]] = None,
+                 enable_history_modifications: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -59,6 +60,8 @@ class FhirStoreArgs:
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
+        :param pulumi.Input[bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+               versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
                the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -103,6 +106,8 @@ class FhirStoreArgs:
             pulumi.set(__self__, "disable_resource_versioning", disable_resource_versioning)
         if enable_history_import is not None:
             pulumi.set(__self__, "enable_history_import", enable_history_import)
+        if enable_history_modifications is not None:
+            pulumi.set(__self__, "enable_history_modifications", enable_history_modifications)
         if enable_update_create is not None:
             pulumi.set(__self__, "enable_update_create", enable_update_create)
         if labels is not None:
@@ -211,6 +216,19 @@ class FhirStoreArgs:
     @enable_history_import.setter
     def enable_history_import(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_history_import", value)
+
+    @property
+    @pulumi.getter(name="enableHistoryModifications")
+    def enable_history_modifications(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+        versions into the FHIR store. If set to false, using history bundles fails with an error.
+        """
+        return pulumi.get(self, "enable_history_modifications")
+
+    @enable_history_modifications.setter
+    def enable_history_modifications(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_history_modifications", value)
 
     @property
     @pulumi.getter(name="enableUpdateCreate")
@@ -332,6 +350,7 @@ class _FhirStoreState:
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  enable_history_import: Optional[pulumi.Input[bool]] = None,
+                 enable_history_modifications: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -372,6 +391,8 @@ class _FhirStoreState:
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
+        :param pulumi.Input[bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+               versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
                the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -422,6 +443,8 @@ class _FhirStoreState:
             pulumi.set(__self__, "effective_labels", effective_labels)
         if enable_history_import is not None:
             pulumi.set(__self__, "enable_history_import", enable_history_import)
+        if enable_history_modifications is not None:
+            pulumi.set(__self__, "enable_history_modifications", enable_history_modifications)
         if enable_update_create is not None:
             pulumi.set(__self__, "enable_update_create", enable_update_create)
         if labels is not None:
@@ -546,6 +569,19 @@ class _FhirStoreState:
     @enable_history_import.setter
     def enable_history_import(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_history_import", value)
+
+    @property
+    @pulumi.getter(name="enableHistoryModifications")
+    def enable_history_modifications(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+        versions into the FHIR store. If set to false, using history bundles fails with an error.
+        """
+        return pulumi.get(self, "enable_history_modifications")
+
+    @enable_history_modifications.setter
+    def enable_history_modifications(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_history_modifications", value)
 
     @property
     @pulumi.getter(name="enableUpdateCreate")
@@ -693,6 +729,7 @@ class FhirStore(pulumi.CustomResource):
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_history_import: Optional[pulumi.Input[bool]] = None,
+                 enable_history_modifications: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -812,6 +849,7 @@ class FhirStore(pulumi.CustomResource):
             disable_referential_integrity=False,
             disable_resource_versioning=False,
             enable_history_import=False,
+            enable_history_modifications=False,
             labels={
                 "label1": "labelvalue1",
             },
@@ -873,6 +911,8 @@ class FhirStore(pulumi.CustomResource):
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
+        :param pulumi.Input[bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+               versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
                the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -1023,6 +1063,7 @@ class FhirStore(pulumi.CustomResource):
             disable_referential_integrity=False,
             disable_resource_versioning=False,
             enable_history_import=False,
+            enable_history_modifications=False,
             labels={
                 "label1": "labelvalue1",
             },
@@ -1075,6 +1116,7 @@ class FhirStore(pulumi.CustomResource):
                  disable_referential_integrity: Optional[pulumi.Input[bool]] = None,
                  disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
                  enable_history_import: Optional[pulumi.Input[bool]] = None,
+                 enable_history_modifications: Optional[pulumi.Input[bool]] = None,
                  enable_update_create: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1099,6 +1141,7 @@ class FhirStore(pulumi.CustomResource):
             __props__.__dict__["disable_referential_integrity"] = disable_referential_integrity
             __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
             __props__.__dict__["enable_history_import"] = enable_history_import
+            __props__.__dict__["enable_history_modifications"] = enable_history_modifications
             __props__.__dict__["enable_update_create"] = enable_update_create
             __props__.__dict__["labels"] = labels
             __props__.__dict__["name"] = name
@@ -1128,6 +1171,7 @@ class FhirStore(pulumi.CustomResource):
             disable_resource_versioning: Optional[pulumi.Input[bool]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             enable_history_import: Optional[pulumi.Input[bool]] = None,
+            enable_history_modifications: Optional[pulumi.Input[bool]] = None,
             enable_update_create: Optional[pulumi.Input[bool]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1173,6 +1217,8 @@ class FhirStore(pulumi.CustomResource):
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
+        :param pulumi.Input[bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+               versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
                the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -1220,6 +1266,7 @@ class FhirStore(pulumi.CustomResource):
         __props__.__dict__["disable_resource_versioning"] = disable_resource_versioning
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["enable_history_import"] = enable_history_import
+        __props__.__dict__["enable_history_modifications"] = enable_history_modifications
         __props__.__dict__["enable_update_create"] = enable_update_create
         __props__.__dict__["labels"] = labels
         __props__.__dict__["name"] = name
@@ -1308,6 +1355,15 @@ class FhirStore(pulumi.CustomResource):
         ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
         """
         return pulumi.get(self, "enable_history_import")
+
+    @property
+    @pulumi.getter(name="enableHistoryModifications")
+    def enable_history_modifications(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+        versions into the FHIR store. If set to false, using history bundles fails with an error.
+        """
+        return pulumi.get(self, "enable_history_modifications")
 
     @property
     @pulumi.getter(name="enableUpdateCreate")

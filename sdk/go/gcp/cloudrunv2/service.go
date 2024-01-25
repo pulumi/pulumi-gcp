@@ -523,6 +523,143 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Service Mount Gcs
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultBucket, err := storage.NewBucket(ctx, "defaultBucket", &storage.BucketArgs{
+//				Location: pulumi.String("US"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudrunv2.NewService(ctx, "defaultService", &cloudrunv2.ServiceArgs{
+//				Location:    pulumi.String("us-central1"),
+//				LaunchStage: pulumi.String("BETA"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					ExecutionEnvironment: pulumi.String("EXECUTION_ENVIRONMENT_GEN2"),
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//							VolumeMounts: cloudrunv2.ServiceTemplateContainerVolumeMountArray{
+//								&cloudrunv2.ServiceTemplateContainerVolumeMountArgs{
+//									Name:      pulumi.String("bucket"),
+//									MountPath: pulumi.String("/var/www"),
+//								},
+//							},
+//						},
+//					},
+//					Volumes: cloudrunv2.ServiceTemplateVolumeArray{
+//						&cloudrunv2.ServiceTemplateVolumeArgs{
+//							Name: pulumi.String("bucket"),
+//							Gcs: &cloudrunv2.ServiceTemplateVolumeGcsArgs{
+//								Bucket:   defaultBucket.Name,
+//								ReadOnly: pulumi.Bool(false),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Cloudrunv2 Service Mount Nfs
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v7/go/gcp/filestore"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			defaultInstance, err := filestore.NewInstance(ctx, "defaultInstance", &filestore.InstanceArgs{
+//				Location: pulumi.String("us-central1-b"),
+//				Tier:     pulumi.String("BASIC_HDD"),
+//				FileShares: &filestore.InstanceFileSharesArgs{
+//					CapacityGb: pulumi.Int(1024),
+//					Name:       pulumi.String("share1"),
+//				},
+//				Networks: filestore.InstanceNetworkArray{
+//					&filestore.InstanceNetworkArgs{
+//						Network: pulumi.String("default"),
+//						Modes: pulumi.StringArray{
+//							pulumi.String("MODE_IPV4"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudrunv2.NewService(ctx, "defaultService", &cloudrunv2.ServiceArgs{
+//				Location:    pulumi.String("us-central1"),
+//				Ingress:     pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				LaunchStage: pulumi.String("BETA"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					ExecutionEnvironment: pulumi.String("EXECUTION_ENVIRONMENT_GEN2"),
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello:latest"),
+//							VolumeMounts: cloudrunv2.ServiceTemplateContainerVolumeMountArray{
+//								&cloudrunv2.ServiceTemplateContainerVolumeMountArgs{
+//									Name:      pulumi.String("nfs"),
+//									MountPath: pulumi.String("/mnt/nfs/filestore"),
+//								},
+//							},
+//						},
+//					},
+//					VpcAccess: &cloudrunv2.ServiceTemplateVpcAccessArgs{
+//						NetworkInterfaces: cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArray{
+//							&cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs{
+//								Network:    pulumi.String("default"),
+//								Subnetwork: pulumi.String("default"),
+//							},
+//						},
+//					},
+//					Volumes: cloudrunv2.ServiceTemplateVolumeArray{
+//						&cloudrunv2.ServiceTemplateVolumeArgs{
+//							Name: pulumi.String("nfs"),
+//							Nfs: &cloudrunv2.ServiceTemplateVolumeNfsArgs{
+//								Server: defaultInstance.Networks.ApplyT(func(networks []filestore.InstanceNetwork) (*string, error) {
+//									return &networks[0].IpAddresses[0], nil
+//								}).(pulumi.StringPtrOutput),
+//								Path:     pulumi.String("/share1"),
+//								ReadOnly: pulumi.Bool(false),
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

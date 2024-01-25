@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerLivenessProbeGrpc;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerLivenessProbeHttpGet;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateContainerLivenessProbeTcpSocket;
 import java.lang.Integer;
 import java.util.Objects;
 import java.util.Optional;
@@ -40,6 +41,12 @@ public final class ServiceTemplateContainerLivenessProbe {
      * 
      */
     private @Nullable Integer periodSeconds;
+    /**
+     * @return TCPSocketAction describes an action based on opening a socket
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateContainerLivenessProbeTcpSocket tcpSocket;
     /**
      * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      * 
@@ -85,6 +92,14 @@ public final class ServiceTemplateContainerLivenessProbe {
         return Optional.ofNullable(this.periodSeconds);
     }
     /**
+     * @return TCPSocketAction describes an action based on opening a socket
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateContainerLivenessProbeTcpSocket> tcpSocket() {
+        return Optional.ofNullable(this.tcpSocket);
+    }
+    /**
      * @return Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
      * 
      */
@@ -106,6 +121,7 @@ public final class ServiceTemplateContainerLivenessProbe {
         private @Nullable ServiceTemplateContainerLivenessProbeHttpGet httpGet;
         private @Nullable Integer initialDelaySeconds;
         private @Nullable Integer periodSeconds;
+        private @Nullable ServiceTemplateContainerLivenessProbeTcpSocket tcpSocket;
         private @Nullable Integer timeoutSeconds;
         public Builder() {}
         public Builder(ServiceTemplateContainerLivenessProbe defaults) {
@@ -115,6 +131,7 @@ public final class ServiceTemplateContainerLivenessProbe {
     	      this.httpGet = defaults.httpGet;
     	      this.initialDelaySeconds = defaults.initialDelaySeconds;
     	      this.periodSeconds = defaults.periodSeconds;
+    	      this.tcpSocket = defaults.tcpSocket;
     	      this.timeoutSeconds = defaults.timeoutSeconds;
         }
 
@@ -149,6 +166,12 @@ public final class ServiceTemplateContainerLivenessProbe {
             return this;
         }
         @CustomType.Setter
+        public Builder tcpSocket(@Nullable ServiceTemplateContainerLivenessProbeTcpSocket tcpSocket) {
+
+            this.tcpSocket = tcpSocket;
+            return this;
+        }
+        @CustomType.Setter
         public Builder timeoutSeconds(@Nullable Integer timeoutSeconds) {
 
             this.timeoutSeconds = timeoutSeconds;
@@ -161,6 +184,7 @@ public final class ServiceTemplateContainerLivenessProbe {
             _resultValue.httpGet = httpGet;
             _resultValue.initialDelaySeconds = initialDelaySeconds;
             _resultValue.periodSeconds = periodSeconds;
+            _resultValue.tcpSocket = tcpSocket;
             _resultValue.timeoutSeconds = timeoutSeconds;
             return _resultValue;
         }
