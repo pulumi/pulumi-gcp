@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * const keyring = new gcp.kms.KeyRing("keyring", {location: "global"});
  * const key = new gcp.kms.CryptoKey("key", {
  *     keyRing: keyring.id,
- *     rotationPeriod: "100000s",
+ *     rotationPeriod: "7776000s",
  * });
  * const admin = gcp.organizations.getIAMPolicy({
  *     bindings: [{

@@ -48,6 +48,8 @@ import * as utilities from "../utilities";
  *     location: "us-central1",
  *     instanceId: "my-instance",
  *     kmsKey: cryptoKey.id,
+ * }, {
+ *     dependsOn: [cryptoKeyBinding],
  * });
  * ```
  *

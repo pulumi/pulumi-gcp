@@ -124,6 +124,7 @@ import * as utilities from "../utilities";
  *     disableReferentialIntegrity: false,
  *     disableResourceVersioning: false,
  *     enableHistoryImport: false,
+ *     enableHistoryModifications: false,
  *     labels: {
  *         label1: "labelvalue1",
  *     },
@@ -236,6 +237,11 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly enableHistoryImport!: pulumi.Output<boolean | undefined>;
     /**
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     */
+    public readonly enableHistoryModifications!: pulumi.Output<boolean | undefined>;
+    /**
      * Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
      * operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
      * the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -318,6 +324,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["disableResourceVersioning"] = state ? state.disableResourceVersioning : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["enableHistoryImport"] = state ? state.enableHistoryImport : undefined;
+            resourceInputs["enableHistoryModifications"] = state ? state.enableHistoryModifications : undefined;
             resourceInputs["enableUpdateCreate"] = state ? state.enableUpdateCreate : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -338,6 +345,7 @@ export class FhirStore extends pulumi.CustomResource {
             resourceInputs["disableReferentialIntegrity"] = args ? args.disableReferentialIntegrity : undefined;
             resourceInputs["disableResourceVersioning"] = args ? args.disableResourceVersioning : undefined;
             resourceInputs["enableHistoryImport"] = args ? args.enableHistoryImport : undefined;
+            resourceInputs["enableHistoryModifications"] = args ? args.enableHistoryModifications : undefined;
             resourceInputs["enableUpdateCreate"] = args ? args.enableUpdateCreate : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -410,6 +418,11 @@ export interface FhirStoreState {
      * ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
      */
     enableHistoryImport?: pulumi.Input<boolean>;
+    /**
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     */
+    enableHistoryModifications?: pulumi.Input<boolean>;
     /**
      * Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
      * operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -524,6 +537,11 @@ export interface FhirStoreArgs {
      * ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
      */
     enableHistoryImport?: pulumi.Input<boolean>;
+    /**
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     */
+    enableHistoryModifications?: pulumi.Input<boolean>;
     /**
      * Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
      * operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through

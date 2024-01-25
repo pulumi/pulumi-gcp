@@ -313,6 +313,83 @@ import * as utilities from "../utilities";
  *     provider: google_beta,
  * });
  * ```
+ * ### Cloudrunv2 Service Mount Gcs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultBucket = new gcp.storage.Bucket("defaultBucket", {location: "US"});
+ * const defaultService = new gcp.cloudrunv2.Service("defaultService", {
+ *     location: "us-central1",
+ *     launchStage: "BETA",
+ *     template: {
+ *         executionEnvironment: "EXECUTION_ENVIRONMENT_GEN2",
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *             volumeMounts: [{
+ *                 name: "bucket",
+ *                 mountPath: "/var/www",
+ *             }],
+ *         }],
+ *         volumes: [{
+ *             name: "bucket",
+ *             gcs: {
+ *                 bucket: defaultBucket.name,
+ *                 readOnly: false,
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Cloudrunv2 Service Mount Nfs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const defaultInstance = new gcp.filestore.Instance("defaultInstance", {
+ *     location: "us-central1-b",
+ *     tier: "BASIC_HDD",
+ *     fileShares: {
+ *         capacityGb: 1024,
+ *         name: "share1",
+ *     },
+ *     networks: [{
+ *         network: "default",
+ *         modes: ["MODE_IPV4"],
+ *     }],
+ * });
+ * const defaultService = new gcp.cloudrunv2.Service("defaultService", {
+ *     location: "us-central1",
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     launchStage: "BETA",
+ *     template: {
+ *         executionEnvironment: "EXECUTION_ENVIRONMENT_GEN2",
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello:latest",
+ *             volumeMounts: [{
+ *                 name: "nfs",
+ *                 mountPath: "/mnt/nfs/filestore",
+ *             }],
+ *         }],
+ *         vpcAccess: {
+ *             networkInterfaces: [{
+ *                 network: "default",
+ *                 subnetwork: "default",
+ *             }],
+ *         },
+ *         volumes: [{
+ *             name: "nfs",
+ *             nfs: {
+ *                 server: defaultInstance.networks.apply(networks => networks[0].ipAddresses?.[0]),
+ *                 path: "/share1",
+ *                 readOnly: false,
+ *             },
+ *         }],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

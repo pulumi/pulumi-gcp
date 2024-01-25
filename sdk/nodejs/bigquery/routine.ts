@@ -87,6 +87,108 @@ import * as utilities from "../utilities";
  *     }),
  * });
  * ```
+ * ### Big Query Routine Pyspark
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testDataset = new gcp.bigquery.Dataset("testDataset", {datasetId: "dataset_id"});
+ * const testConnection = new gcp.bigquery.Connection("testConnection", {
+ *     connectionId: "connection_id",
+ *     location: "US",
+ *     spark: {},
+ * });
+ * const pyspark = new gcp.bigquery.Routine("pyspark", {
+ *     datasetId: testDataset.datasetId,
+ *     routineId: "routine_id",
+ *     routineType: "PROCEDURE",
+ *     language: "PYTHON",
+ *     definitionBody: `from pyspark.sql import SparkSession
+ *
+ * spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
+ *     
+ * # Load data from BigQuery.
+ * words = spark.read.format("bigquery") \\
+ *   .option("table", "bigquery-public-data:samples.shakespeare") \\
+ *   .load()
+ * words.createOrReplaceTempView("words")
+ *     
+ * # Perform word count.
+ * word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed("sum(word_count)", "sum_word_count")
+ * word_count.show()
+ * word_count.printSchema()
+ *     
+ * # Saving the data to BigQuery
+ * word_count.write.format("bigquery") \\
+ *   .option("writeMethod", "direct") \\
+ *   .save("wordcount_dataset.wordcount_output")
+ * `,
+ *     sparkOptions: {
+ *         connection: testConnection.name,
+ *         runtimeVersion: "2.1",
+ *     },
+ * });
+ * ```
+ * ### Big Query Routine Pyspark Mainfile
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testDataset = new gcp.bigquery.Dataset("testDataset", {datasetId: "dataset_id"});
+ * const testConnection = new gcp.bigquery.Connection("testConnection", {
+ *     connectionId: "connection_id",
+ *     location: "US",
+ *     spark: {},
+ * });
+ * const pysparkMainfile = new gcp.bigquery.Routine("pysparkMainfile", {
+ *     datasetId: testDataset.datasetId,
+ *     routineId: "routine_id",
+ *     routineType: "PROCEDURE",
+ *     language: "PYTHON",
+ *     definitionBody: "",
+ *     sparkOptions: {
+ *         connection: testConnection.name,
+ *         runtimeVersion: "2.1",
+ *         mainFileUri: "gs://test-bucket/main.py",
+ *         pyFileUris: ["gs://test-bucket/lib.py"],
+ *         fileUris: ["gs://test-bucket/distribute_in_executor.json"],
+ *         archiveUris: ["gs://test-bucket/distribute_in_executor.tar.gz"],
+ *     },
+ * });
+ * ```
+ * ### Big Query Routine Spark Jar
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const testDataset = new gcp.bigquery.Dataset("testDataset", {datasetId: "dataset_id"});
+ * const testConnection = new gcp.bigquery.Connection("testConnection", {
+ *     connectionId: "connection_id",
+ *     location: "US",
+ *     spark: {},
+ * });
+ * const sparkJar = new gcp.bigquery.Routine("sparkJar", {
+ *     datasetId: testDataset.datasetId,
+ *     routineId: "routine_id",
+ *     routineType: "PROCEDURE",
+ *     language: "SCALA",
+ *     definitionBody: "",
+ *     sparkOptions: {
+ *         connection: testConnection.name,
+ *         runtimeVersion: "2.1",
+ *         containerImage: "gcr.io/my-project-id/my-spark-image:latest",
+ *         mainClass: "com.google.test.jar.MainClass",
+ *         jarUris: ["gs://test-bucket/uberjar_spark_spark3.jar"],
+ *         properties: {
+ *             "spark.dataproc.scaling.version": "2",
+ *             "spark.reducer.fetchMigratedShuffle.enabled": "true",
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -178,7 +280,7 @@ export class Routine extends pulumi.CustomResource {
     public readonly importedLibraries!: pulumi.Output<string[] | undefined>;
     /**
      * The language of the routine.
-     * Possible values are: `SQL`, `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      */
     public readonly language!: pulumi.Output<string | undefined>;
     /**
@@ -219,6 +321,11 @@ export class Routine extends pulumi.CustomResource {
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
     public readonly routineType!: pulumi.Output<string>;
+    /**
+     * Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+     * Structure is documented below.
+     */
+    public readonly sparkOptions!: pulumi.Output<outputs.bigquery.RoutineSparkOptions | undefined>;
 
     /**
      * Create a Routine resource with the given unique name, arguments, and options.
@@ -247,6 +354,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["returnType"] = state ? state.returnType : undefined;
             resourceInputs["routineId"] = state ? state.routineId : undefined;
             resourceInputs["routineType"] = state ? state.routineType : undefined;
+            resourceInputs["sparkOptions"] = state ? state.sparkOptions : undefined;
         } else {
             const args = argsOrState as RoutineArgs | undefined;
             if ((!args || args.datasetId === undefined) && !opts.urn) {
@@ -273,6 +381,7 @@ export class Routine extends pulumi.CustomResource {
             resourceInputs["returnType"] = args ? args.returnType : undefined;
             resourceInputs["routineId"] = args ? args.routineId : undefined;
             resourceInputs["routineType"] = args ? args.routineType : undefined;
+            resourceInputs["sparkOptions"] = args ? args.sparkOptions : undefined;
             resourceInputs["creationTime"] = undefined /*out*/;
             resourceInputs["lastModifiedTime"] = undefined /*out*/;
         }
@@ -323,7 +432,7 @@ export interface RoutineState {
     importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The language of the routine.
-     * Possible values are: `SQL`, `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      */
     language?: pulumi.Input<string>;
     /**
@@ -364,6 +473,11 @@ export interface RoutineState {
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
     routineType?: pulumi.Input<string>;
+    /**
+     * Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+     * Structure is documented below.
+     */
+    sparkOptions?: pulumi.Input<inputs.bigquery.RoutineSparkOptions>;
 }
 
 /**
@@ -403,7 +517,7 @@ export interface RoutineArgs {
     importedLibraries?: pulumi.Input<pulumi.Input<string>[]>;
     /**
      * The language of the routine.
-     * Possible values are: `SQL`, `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      */
     language?: pulumi.Input<string>;
     /**
@@ -439,4 +553,9 @@ export interface RoutineArgs {
      * Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
      */
     routineType: pulumi.Input<string>;
+    /**
+     * Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+     * Structure is documented below.
+     */
+    sparkOptions?: pulumi.Input<inputs.bigquery.RoutineSparkOptions>;
 }
