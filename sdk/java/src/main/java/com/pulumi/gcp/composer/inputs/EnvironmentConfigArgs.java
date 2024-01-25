@@ -16,6 +16,7 @@ import com.pulumi.gcp.composer.inputs.EnvironmentConfigSoftwareConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWebServerConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWebServerNetworkAccessControlArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigWorkloadsConfigArgs;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -46,6 +47,20 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
 
     public Optional<Output<EnvironmentConfigDatabaseConfigArgs>> databaseConfig() {
         return Optional.ofNullable(this.databaseConfig);
+    }
+
+    @Import(name="enablePrivateBuildsOnly")
+    private @Nullable Output<Boolean> enablePrivateBuildsOnly;
+
+    public Optional<Output<Boolean>> enablePrivateBuildsOnly() {
+        return Optional.ofNullable(this.enablePrivateBuildsOnly);
+    }
+
+    @Import(name="enablePrivateEnvironment")
+    private @Nullable Output<Boolean> enablePrivateEnvironment;
+
+    public Optional<Output<Boolean>> enablePrivateEnvironment() {
+        return Optional.ofNullable(this.enablePrivateEnvironment);
     }
 
     @Import(name="encryptionConfig")
@@ -152,6 +167,8 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
         this.airflowUri = $.airflowUri;
         this.dagGcsPrefix = $.dagGcsPrefix;
         this.databaseConfig = $.databaseConfig;
+        this.enablePrivateBuildsOnly = $.enablePrivateBuildsOnly;
+        this.enablePrivateEnvironment = $.enablePrivateEnvironment;
         this.encryptionConfig = $.encryptionConfig;
         this.environmentSize = $.environmentSize;
         this.gkeCluster = $.gkeCluster;
@@ -211,6 +228,24 @@ public final class EnvironmentConfigArgs extends com.pulumi.resources.ResourceAr
 
         public Builder databaseConfig(EnvironmentConfigDatabaseConfigArgs databaseConfig) {
             return databaseConfig(Output.of(databaseConfig));
+        }
+
+        public Builder enablePrivateBuildsOnly(@Nullable Output<Boolean> enablePrivateBuildsOnly) {
+            $.enablePrivateBuildsOnly = enablePrivateBuildsOnly;
+            return this;
+        }
+
+        public Builder enablePrivateBuildsOnly(Boolean enablePrivateBuildsOnly) {
+            return enablePrivateBuildsOnly(Output.of(enablePrivateBuildsOnly));
+        }
+
+        public Builder enablePrivateEnvironment(@Nullable Output<Boolean> enablePrivateEnvironment) {
+            $.enablePrivateEnvironment = enablePrivateEnvironment;
+            return this;
+        }
+
+        public Builder enablePrivateEnvironment(Boolean enablePrivateEnvironment) {
+            return enablePrivateEnvironment(Output.of(enablePrivateEnvironment));
         }
 
         public Builder encryptionConfig(@Nullable Output<EnvironmentConfigEncryptionConfigArgs> encryptionConfig) {

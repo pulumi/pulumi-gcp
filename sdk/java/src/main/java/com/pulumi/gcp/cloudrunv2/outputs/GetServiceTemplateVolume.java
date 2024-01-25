@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolumeCloudSqlInstance;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolumeEmptyDir;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolumeGc;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolumeNf;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplateVolumeSecret;
 import java.lang.String;
 import java.util.List;
@@ -16,11 +18,13 @@ import java.util.Objects;
 public final class GetServiceTemplateVolume {
     private List<GetServiceTemplateVolumeCloudSqlInstance> cloudSqlInstances;
     private List<GetServiceTemplateVolumeEmptyDir> emptyDirs;
+    private List<GetServiceTemplateVolumeGc> gcs;
     /**
      * @return The name of the Cloud Run v2 Service.
      * 
      */
     private String name;
+    private List<GetServiceTemplateVolumeNf> nfs;
     private List<GetServiceTemplateVolumeSecret> secrets;
 
     private GetServiceTemplateVolume() {}
@@ -30,12 +34,18 @@ public final class GetServiceTemplateVolume {
     public List<GetServiceTemplateVolumeEmptyDir> emptyDirs() {
         return this.emptyDirs;
     }
+    public List<GetServiceTemplateVolumeGc> gcs() {
+        return this.gcs;
+    }
     /**
      * @return The name of the Cloud Run v2 Service.
      * 
      */
     public String name() {
         return this.name;
+    }
+    public List<GetServiceTemplateVolumeNf> nfs() {
+        return this.nfs;
     }
     public List<GetServiceTemplateVolumeSecret> secrets() {
         return this.secrets;
@@ -52,14 +62,18 @@ public final class GetServiceTemplateVolume {
     public static final class Builder {
         private List<GetServiceTemplateVolumeCloudSqlInstance> cloudSqlInstances;
         private List<GetServiceTemplateVolumeEmptyDir> emptyDirs;
+        private List<GetServiceTemplateVolumeGc> gcs;
         private String name;
+        private List<GetServiceTemplateVolumeNf> nfs;
         private List<GetServiceTemplateVolumeSecret> secrets;
         public Builder() {}
         public Builder(GetServiceTemplateVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudSqlInstances = defaults.cloudSqlInstances;
     	      this.emptyDirs = defaults.emptyDirs;
+    	      this.gcs = defaults.gcs;
     	      this.name = defaults.name;
+    	      this.nfs = defaults.nfs;
     	      this.secrets = defaults.secrets;
         }
 
@@ -86,12 +100,34 @@ public final class GetServiceTemplateVolume {
             return emptyDirs(List.of(emptyDirs));
         }
         @CustomType.Setter
+        public Builder gcs(List<GetServiceTemplateVolumeGc> gcs) {
+            if (gcs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateVolume", "gcs");
+            }
+            this.gcs = gcs;
+            return this;
+        }
+        public Builder gcs(GetServiceTemplateVolumeGc... gcs) {
+            return gcs(List.of(gcs));
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("GetServiceTemplateVolume", "name");
             }
             this.name = name;
             return this;
+        }
+        @CustomType.Setter
+        public Builder nfs(List<GetServiceTemplateVolumeNf> nfs) {
+            if (nfs == null) {
+              throw new MissingRequiredPropertyException("GetServiceTemplateVolume", "nfs");
+            }
+            this.nfs = nfs;
+            return this;
+        }
+        public Builder nfs(GetServiceTemplateVolumeNf... nfs) {
+            return nfs(List.of(nfs));
         }
         @CustomType.Setter
         public Builder secrets(List<GetServiceTemplateVolumeSecret> secrets) {
@@ -108,7 +144,9 @@ public final class GetServiceTemplateVolume {
             final var _resultValue = new GetServiceTemplateVolume();
             _resultValue.cloudSqlInstances = cloudSqlInstances;
             _resultValue.emptyDirs = emptyDirs;
+            _resultValue.gcs = gcs;
             _resultValue.name = name;
+            _resultValue.nfs = nfs;
             _resultValue.secrets = secrets;
             return _resultValue;
         }

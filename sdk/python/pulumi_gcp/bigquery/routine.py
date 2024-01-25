@@ -27,7 +27,8 @@ class RoutineArgs:
                  language: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  return_table_type: Optional[pulumi.Input[str]] = None,
-                 return_type: Optional[pulumi.Input[str]] = None):
+                 return_type: Optional[pulumi.Input[str]] = None,
+                 spark_options: Optional[pulumi.Input['RoutineSparkOptionsArgs']] = None):
         """
         The set of arguments for constructing a Routine resource.
         :param pulumi.Input[str] dataset_id: The ID of the dataset containing this routine
@@ -47,7 +48,7 @@ class RoutineArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
-               Possible values are: `SQL`, `JAVASCRIPT`.
+               Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -63,6 +64,8 @@ class RoutineArgs:
                d the order of values or replaced STRUCT field type with RECORD field type, we currently
                cannot suppress the recurring diff this causes. As a workaround, we recommend using
                the schema as returned by the API.
+        :param pulumi.Input['RoutineSparkOptionsArgs'] spark_options: Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+               Structure is documented below.
         """
         pulumi.set(__self__, "dataset_id", dataset_id)
         pulumi.set(__self__, "definition_body", definition_body)
@@ -84,6 +87,8 @@ class RoutineArgs:
             pulumi.set(__self__, "return_table_type", return_table_type)
         if return_type is not None:
             pulumi.set(__self__, "return_type", return_type)
+        if spark_options is not None:
+            pulumi.set(__self__, "spark_options", spark_options)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -194,7 +199,7 @@ class RoutineArgs:
     def language(self) -> Optional[pulumi.Input[str]]:
         """
         The language of the routine.
-        Possible values are: `SQL`, `JAVASCRIPT`.
+        Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         """
         return pulumi.get(self, "language")
 
@@ -250,6 +255,19 @@ class RoutineArgs:
     def return_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "return_type", value)
 
+    @property
+    @pulumi.getter(name="sparkOptions")
+    def spark_options(self) -> Optional[pulumi.Input['RoutineSparkOptionsArgs']]:
+        """
+        Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spark_options")
+
+    @spark_options.setter
+    def spark_options(self, value: Optional[pulumi.Input['RoutineSparkOptionsArgs']]):
+        pulumi.set(self, "spark_options", value)
+
 
 @pulumi.input_type
 class _RoutineState:
@@ -267,7 +285,8 @@ class _RoutineState:
                  return_table_type: Optional[pulumi.Input[str]] = None,
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
-                 routine_type: Optional[pulumi.Input[str]] = None):
+                 routine_type: Optional[pulumi.Input[str]] = None,
+                 spark_options: Optional[pulumi.Input['RoutineSparkOptionsArgs']] = None):
         """
         Input properties used for looking up and filtering Routine resources.
         :param pulumi.Input[Sequence[pulumi.Input['RoutineArgumentArgs']]] arguments: Input/output argument of a function or a stored procedure.
@@ -286,7 +305,7 @@ class _RoutineState:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
-               Possible values are: `SQL`, `JAVASCRIPT`.
+               Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the
                epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -307,6 +326,8 @@ class _RoutineState:
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
+        :param pulumi.Input['RoutineSparkOptionsArgs'] spark_options: Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+               Structure is documented below.
         """
         if arguments is not None:
             pulumi.set(__self__, "arguments", arguments)
@@ -336,6 +357,8 @@ class _RoutineState:
             pulumi.set(__self__, "routine_id", routine_id)
         if routine_type is not None:
             pulumi.set(__self__, "routine_type", routine_type)
+        if spark_options is not None:
+            pulumi.set(__self__, "spark_options", spark_options)
 
     @property
     @pulumi.getter
@@ -434,7 +457,7 @@ class _RoutineState:
     def language(self) -> Optional[pulumi.Input[str]]:
         """
         The language of the routine.
-        Possible values are: `SQL`, `JAVASCRIPT`.
+        Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         """
         return pulumi.get(self, "language")
 
@@ -528,6 +551,19 @@ class _RoutineState:
     def routine_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "routine_type", value)
 
+    @property
+    @pulumi.getter(name="sparkOptions")
+    def spark_options(self) -> Optional[pulumi.Input['RoutineSparkOptionsArgs']]:
+        """
+        Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spark_options")
+
+    @spark_options.setter
+    def spark_options(self, value: Optional[pulumi.Input['RoutineSparkOptionsArgs']]):
+        pulumi.set(self, "spark_options", value)
+
 
 class Routine(pulumi.CustomResource):
     @overload
@@ -546,6 +582,7 @@ class Routine(pulumi.CustomResource):
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None,
+                 spark_options: Optional[pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']]] = None,
                  __props__=None):
         """
         A user-defined function or a stored procedure that belongs to a Dataset
@@ -626,6 +663,102 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
+        ### Big Query Routine Pyspark
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("testConnection",
+            connection_id="connection_id",
+            location="US",
+            spark=gcp.bigquery.ConnectionSparkArgs())
+        pyspark = gcp.bigquery.Routine("pyspark",
+            dataset_id=test_dataset.dataset_id,
+            routine_id="routine_id",
+            routine_type="PROCEDURE",
+            language="PYTHON",
+            definition_body=\"\"\"from pyspark.sql import SparkSession
+
+        spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
+            
+        # Load data from BigQuery.
+        words = spark.read.format("bigquery") \\
+          .option("table", "bigquery-public-data:samples.shakespeare") \\
+          .load()
+        words.createOrReplaceTempView("words")
+            
+        # Perform word count.
+        word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed("sum(word_count)", "sum_word_count")
+        word_count.show()
+        word_count.printSchema()
+            
+        # Saving the data to BigQuery
+        word_count.write.format("bigquery") \\
+          .option("writeMethod", "direct") \\
+          .save("wordcount_dataset.wordcount_output")
+        \"\"\",
+            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
+                connection=test_connection.name,
+                runtime_version="2.1",
+            ))
+        ```
+        ### Big Query Routine Pyspark Mainfile
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("testConnection",
+            connection_id="connection_id",
+            location="US",
+            spark=gcp.bigquery.ConnectionSparkArgs())
+        pyspark_mainfile = gcp.bigquery.Routine("pysparkMainfile",
+            dataset_id=test_dataset.dataset_id,
+            routine_id="routine_id",
+            routine_type="PROCEDURE",
+            language="PYTHON",
+            definition_body="",
+            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
+                connection=test_connection.name,
+                runtime_version="2.1",
+                main_file_uri="gs://test-bucket/main.py",
+                py_file_uris=["gs://test-bucket/lib.py"],
+                file_uris=["gs://test-bucket/distribute_in_executor.json"],
+                archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
+            ))
+        ```
+        ### Big Query Routine Spark Jar
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("testConnection",
+            connection_id="connection_id",
+            location="US",
+            spark=gcp.bigquery.ConnectionSparkArgs())
+        spark_jar = gcp.bigquery.Routine("sparkJar",
+            dataset_id=test_dataset.dataset_id,
+            routine_id="routine_id",
+            routine_type="PROCEDURE",
+            language="SCALA",
+            definition_body="",
+            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
+                connection=test_connection.name,
+                runtime_version="2.1",
+                container_image="gcr.io/my-project-id/my-spark-image:latest",
+                main_class="com.google.test.jar.MainClass",
+                jar_uris=["gs://test-bucket/uberjar_spark_spark3.jar"],
+                properties={
+                    "spark.dataproc.scaling.version": "2",
+                    "spark.reducer.fetchMigratedShuffle.enabled": "true",
+                },
+            ))
+        ```
 
         ## Import
 
@@ -667,7 +800,7 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
-               Possible values are: `SQL`, `JAVASCRIPT`.
+               Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] return_table_type: Optional. Can be set only if routineType = "TABLE_VALUED_FUNCTION".
@@ -686,6 +819,8 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
+        :param pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']] spark_options: Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+               Structure is documented below.
         """
         ...
     @overload
@@ -772,6 +907,102 @@ class Routine(pulumi.CustomResource):
                 }],
             }))
         ```
+        ### Big Query Routine Pyspark
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("testConnection",
+            connection_id="connection_id",
+            location="US",
+            spark=gcp.bigquery.ConnectionSparkArgs())
+        pyspark = gcp.bigquery.Routine("pyspark",
+            dataset_id=test_dataset.dataset_id,
+            routine_id="routine_id",
+            routine_type="PROCEDURE",
+            language="PYTHON",
+            definition_body=\"\"\"from pyspark.sql import SparkSession
+
+        spark = SparkSession.builder.appName("spark-bigquery-demo").getOrCreate()
+            
+        # Load data from BigQuery.
+        words = spark.read.format("bigquery") \\
+          .option("table", "bigquery-public-data:samples.shakespeare") \\
+          .load()
+        words.createOrReplaceTempView("words")
+            
+        # Perform word count.
+        word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed("sum(word_count)", "sum_word_count")
+        word_count.show()
+        word_count.printSchema()
+            
+        # Saving the data to BigQuery
+        word_count.write.format("bigquery") \\
+          .option("writeMethod", "direct") \\
+          .save("wordcount_dataset.wordcount_output")
+        \"\"\",
+            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
+                connection=test_connection.name,
+                runtime_version="2.1",
+            ))
+        ```
+        ### Big Query Routine Pyspark Mainfile
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("testConnection",
+            connection_id="connection_id",
+            location="US",
+            spark=gcp.bigquery.ConnectionSparkArgs())
+        pyspark_mainfile = gcp.bigquery.Routine("pysparkMainfile",
+            dataset_id=test_dataset.dataset_id,
+            routine_id="routine_id",
+            routine_type="PROCEDURE",
+            language="PYTHON",
+            definition_body="",
+            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
+                connection=test_connection.name,
+                runtime_version="2.1",
+                main_file_uri="gs://test-bucket/main.py",
+                py_file_uris=["gs://test-bucket/lib.py"],
+                file_uris=["gs://test-bucket/distribute_in_executor.json"],
+                archive_uris=["gs://test-bucket/distribute_in_executor.tar.gz"],
+            ))
+        ```
+        ### Big Query Routine Spark Jar
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        test_dataset = gcp.bigquery.Dataset("testDataset", dataset_id="dataset_id")
+        test_connection = gcp.bigquery.Connection("testConnection",
+            connection_id="connection_id",
+            location="US",
+            spark=gcp.bigquery.ConnectionSparkArgs())
+        spark_jar = gcp.bigquery.Routine("sparkJar",
+            dataset_id=test_dataset.dataset_id,
+            routine_id="routine_id",
+            routine_type="PROCEDURE",
+            language="SCALA",
+            definition_body="",
+            spark_options=gcp.bigquery.RoutineSparkOptionsArgs(
+                connection=test_connection.name,
+                runtime_version="2.1",
+                container_image="gcr.io/my-project-id/my-spark-image:latest",
+                main_class="com.google.test.jar.MainClass",
+                jar_uris=["gs://test-bucket/uberjar_spark_spark3.jar"],
+                properties={
+                    "spark.dataproc.scaling.version": "2",
+                    "spark.reducer.fetchMigratedShuffle.enabled": "true",
+                },
+            ))
+        ```
 
         ## Import
 
@@ -824,6 +1055,7 @@ class Routine(pulumi.CustomResource):
                  return_type: Optional[pulumi.Input[str]] = None,
                  routine_id: Optional[pulumi.Input[str]] = None,
                  routine_type: Optional[pulumi.Input[str]] = None,
+                 spark_options: Optional[pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -853,6 +1085,7 @@ class Routine(pulumi.CustomResource):
             if routine_type is None and not opts.urn:
                 raise TypeError("Missing required property 'routine_type'")
             __props__.__dict__["routine_type"] = routine_type
+            __props__.__dict__["spark_options"] = spark_options
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["last_modified_time"] = None
         super(Routine, __self__).__init__(
@@ -878,7 +1111,8 @@ class Routine(pulumi.CustomResource):
             return_table_type: Optional[pulumi.Input[str]] = None,
             return_type: Optional[pulumi.Input[str]] = None,
             routine_id: Optional[pulumi.Input[str]] = None,
-            routine_type: Optional[pulumi.Input[str]] = None) -> 'Routine':
+            routine_type: Optional[pulumi.Input[str]] = None,
+            spark_options: Optional[pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']]] = None) -> 'Routine':
         """
         Get an existing Routine resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -902,7 +1136,7 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[str]]] imported_libraries: Optional. If language = "JAVASCRIPT", this field stores the path of the
                imported JAVASCRIPT libraries.
         :param pulumi.Input[str] language: The language of the routine.
-               Possible values are: `SQL`, `JAVASCRIPT`.
+               Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         :param pulumi.Input[int] last_modified_time: The time when this routine was modified, in milliseconds since the
                epoch.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -923,6 +1157,8 @@ class Routine(pulumi.CustomResource):
         :param pulumi.Input[str] routine_id: The ID of the the routine. The ID must contain only letters (a-z, A-Z), numbers (0-9), or underscores (_). The maximum length is 256 characters.
         :param pulumi.Input[str] routine_type: The type of routine.
                Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
+        :param pulumi.Input[pulumi.InputType['RoutineSparkOptionsArgs']] spark_options: Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -942,6 +1178,7 @@ class Routine(pulumi.CustomResource):
         __props__.__dict__["return_type"] = return_type
         __props__.__dict__["routine_id"] = routine_id
         __props__.__dict__["routine_type"] = routine_type
+        __props__.__dict__["spark_options"] = spark_options
         return Routine(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1013,7 +1250,7 @@ class Routine(pulumi.CustomResource):
     def language(self) -> pulumi.Output[Optional[str]]:
         """
         The language of the routine.
-        Possible values are: `SQL`, `JAVASCRIPT`.
+        Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         """
         return pulumi.get(self, "language")
 
@@ -1078,4 +1315,13 @@ class Routine(pulumi.CustomResource):
         Possible values are: `SCALAR_FUNCTION`, `PROCEDURE`, `TABLE_VALUED_FUNCTION`.
         """
         return pulumi.get(self, "routine_type")
+
+    @property
+    @pulumi.getter(name="sparkOptions")
+    def spark_options(self) -> pulumi.Output[Optional['outputs.RoutineSparkOptions']]:
+        """
+        Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "spark_options")
 

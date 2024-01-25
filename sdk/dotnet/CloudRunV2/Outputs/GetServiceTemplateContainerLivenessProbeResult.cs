@@ -18,6 +18,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
         public readonly ImmutableArray<Outputs.GetServiceTemplateContainerLivenessProbeHttpGetResult> HttpGets;
         public readonly int InitialDelaySeconds;
         public readonly int PeriodSeconds;
+        public readonly ImmutableArray<Outputs.GetServiceTemplateContainerLivenessProbeTcpSocketResult> TcpSockets;
         public readonly int TimeoutSeconds;
 
         [OutputConstructor]
@@ -32,6 +33,8 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             int periodSeconds,
 
+            ImmutableArray<Outputs.GetServiceTemplateContainerLivenessProbeTcpSocketResult> tcpSockets,
+
             int timeoutSeconds)
         {
             FailureThreshold = failureThreshold;
@@ -39,6 +42,7 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
             HttpGets = httpGets;
             InitialDelaySeconds = initialDelaySeconds;
             PeriodSeconds = periodSeconds;
+            TcpSockets = tcpSockets;
             TimeoutSeconds = timeoutSeconds;
         }
     }

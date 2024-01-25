@@ -75,6 +75,12 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///         Location = "us-central1",
     ///         InstanceId = "my-instance",
     ///         KmsKey = cryptoKey.Id,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn = new[]
+    ///         {
+    ///             cryptoKeyBinding,
+    ///         },
     ///     });
     /// 
     /// });

@@ -45,7 +45,7 @@ import (
 //			}
 //			cryptokey, err := kms.NewCryptoKey(ctx, "cryptokey", &kms.CryptoKeyArgs{
 //				KeyRing:        keyring.ID(),
-//				RotationPeriod: pulumi.String("100000s"),
+//				RotationPeriod: pulumi.String("7776000s"),
 //			})
 //			if err != nil {
 //				return err

@@ -194,7 +194,7 @@ class SecretCiphertext(pulumi.CustomResource):
         keyring = gcp.kms.KeyRing("keyring", location="global")
         cryptokey = gcp.kms.CryptoKey("cryptokey",
             key_ring=keyring.id,
-            rotation_period="100000s")
+            rotation_period="7776000s")
         my_password = gcp.kms.SecretCiphertext("myPassword",
             crypto_key=cryptokey.id,
             plaintext="my-secret-password")
@@ -261,7 +261,7 @@ class SecretCiphertext(pulumi.CustomResource):
         keyring = gcp.kms.KeyRing("keyring", location="global")
         cryptokey = gcp.kms.CryptoKey("cryptokey",
             key_ring=keyring.id,
-            rotation_period="100000s")
+            rotation_period="7776000s")
         my_password = gcp.kms.SecretCiphertext("myPassword",
             crypto_key=cryptokey.id,
             plaintext="my-secret-password")

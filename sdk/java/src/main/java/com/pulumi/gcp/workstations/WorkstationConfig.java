@@ -742,6 +742,20 @@ public class WorkstationConfig extends com.pulumi.resources.CustomResource {
         return this.degraded;
     }
     /**
+     * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+     * 
+     */
+    @Export(name="disableTcpConnections", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> disableTcpConnections;
+
+    /**
+     * @return Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+     * 
+     */
+    public Output<Optional<Boolean>> disableTcpConnections() {
+        return Codegen.optional(this.disableTcpConnections);
+    }
+    /**
      * Human-readable name for this resource.
      * 
      */

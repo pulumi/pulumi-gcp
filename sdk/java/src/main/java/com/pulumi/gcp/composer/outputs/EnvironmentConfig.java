@@ -15,6 +15,7 @@ import com.pulumi.gcp.composer.outputs.EnvironmentConfigSoftwareConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWebServerConfig;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWebServerNetworkAccessControl;
 import com.pulumi.gcp.composer.outputs.EnvironmentConfigWorkloadsConfig;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
@@ -26,6 +27,8 @@ public final class EnvironmentConfig {
     private @Nullable String airflowUri;
     private @Nullable String dagGcsPrefix;
     private @Nullable EnvironmentConfigDatabaseConfig databaseConfig;
+    private @Nullable Boolean enablePrivateBuildsOnly;
+    private @Nullable Boolean enablePrivateEnvironment;
     private @Nullable EnvironmentConfigEncryptionConfig encryptionConfig;
     private @Nullable String environmentSize;
     private @Nullable String gkeCluster;
@@ -50,6 +53,12 @@ public final class EnvironmentConfig {
     }
     public Optional<EnvironmentConfigDatabaseConfig> databaseConfig() {
         return Optional.ofNullable(this.databaseConfig);
+    }
+    public Optional<Boolean> enablePrivateBuildsOnly() {
+        return Optional.ofNullable(this.enablePrivateBuildsOnly);
+    }
+    public Optional<Boolean> enablePrivateEnvironment() {
+        return Optional.ofNullable(this.enablePrivateEnvironment);
     }
     public Optional<EnvironmentConfigEncryptionConfig> encryptionConfig() {
         return Optional.ofNullable(this.encryptionConfig);
@@ -106,6 +115,8 @@ public final class EnvironmentConfig {
         private @Nullable String airflowUri;
         private @Nullable String dagGcsPrefix;
         private @Nullable EnvironmentConfigDatabaseConfig databaseConfig;
+        private @Nullable Boolean enablePrivateBuildsOnly;
+        private @Nullable Boolean enablePrivateEnvironment;
         private @Nullable EnvironmentConfigEncryptionConfig encryptionConfig;
         private @Nullable String environmentSize;
         private @Nullable String gkeCluster;
@@ -126,6 +137,8 @@ public final class EnvironmentConfig {
     	      this.airflowUri = defaults.airflowUri;
     	      this.dagGcsPrefix = defaults.dagGcsPrefix;
     	      this.databaseConfig = defaults.databaseConfig;
+    	      this.enablePrivateBuildsOnly = defaults.enablePrivateBuildsOnly;
+    	      this.enablePrivateEnvironment = defaults.enablePrivateEnvironment;
     	      this.encryptionConfig = defaults.encryptionConfig;
     	      this.environmentSize = defaults.environmentSize;
     	      this.gkeCluster = defaults.gkeCluster;
@@ -158,6 +171,18 @@ public final class EnvironmentConfig {
         public Builder databaseConfig(@Nullable EnvironmentConfigDatabaseConfig databaseConfig) {
 
             this.databaseConfig = databaseConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enablePrivateBuildsOnly(@Nullable Boolean enablePrivateBuildsOnly) {
+
+            this.enablePrivateBuildsOnly = enablePrivateBuildsOnly;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enablePrivateEnvironment(@Nullable Boolean enablePrivateEnvironment) {
+
+            this.enablePrivateEnvironment = enablePrivateEnvironment;
             return this;
         }
         @CustomType.Setter
@@ -249,6 +274,8 @@ public final class EnvironmentConfig {
             _resultValue.airflowUri = airflowUri;
             _resultValue.dagGcsPrefix = dagGcsPrefix;
             _resultValue.databaseConfig = databaseConfig;
+            _resultValue.enablePrivateBuildsOnly = enablePrivateBuildsOnly;
+            _resultValue.enablePrivateEnvironment = enablePrivateEnvironment;
             _resultValue.encryptionConfig = encryptionConfig;
             _resultValue.environmentSize = environmentSize;
             _resultValue.gkeCluster = gkeCluster;

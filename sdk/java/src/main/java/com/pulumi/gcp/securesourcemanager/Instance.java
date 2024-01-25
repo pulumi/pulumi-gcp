@@ -76,6 +76,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.securesourcemanager.Instance;
  * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -109,7 +110,9 @@ import javax.annotation.Nullable;
  *             .location(&#34;us-central1&#34;)
  *             .instanceId(&#34;my-instance&#34;)
  *             .kmsKey(cryptoKey.id())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(cryptoKeyBinding)
+ *                 .build());
  * 
  *     }
  * }

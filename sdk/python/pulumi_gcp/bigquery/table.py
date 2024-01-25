@@ -33,6 +33,7 @@ class TableArgs:
                  require_partition_filter: Optional[pulumi.Input[bool]] = None,
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
+                 table_replication_info: Optional[pulumi.Input['TableTableReplicationInfoArgs']] = None,
                  time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
                  view: Optional[pulumi.Input['TableViewArgs']] = None):
         """
@@ -93,6 +94,7 @@ class TableArgs:
                documented above.
         :param pulumi.Input['TableTableConstraintsArgs'] table_constraints: Defines the primary key and foreign keys. 
                Structure is documented below.
+        :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
         :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input['TableViewArgs'] view: If specified, configures this table as a view.
@@ -130,6 +132,8 @@ class TableArgs:
             pulumi.set(__self__, "schema", schema)
         if table_constraints is not None:
             pulumi.set(__self__, "table_constraints", table_constraints)
+        if table_replication_info is not None:
+            pulumi.set(__self__, "table_replication_info", table_replication_info)
         if time_partitioning is not None:
             pulumi.set(__self__, "time_partitioning", time_partitioning)
         if view is not None:
@@ -379,6 +383,18 @@ class TableArgs:
         pulumi.set(self, "table_constraints", value)
 
     @property
+    @pulumi.getter(name="tableReplicationInfo")
+    def table_replication_info(self) -> Optional[pulumi.Input['TableTableReplicationInfoArgs']]:
+        """
+        Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+        """
+        return pulumi.get(self, "table_replication_info")
+
+    @table_replication_info.setter
+    def table_replication_info(self, value: Optional[pulumi.Input['TableTableReplicationInfoArgs']]):
+        pulumi.set(self, "table_replication_info", value)
+
+    @property
     @pulumi.getter(name="timePartitioning")
     def time_partitioning(self) -> Optional[pulumi.Input['TableTimePartitioningArgs']]:
         """
@@ -435,6 +451,7 @@ class _TableState:
                  self_link: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input['TableTableConstraintsArgs']] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
+                 table_replication_info: Optional[pulumi.Input['TableTableReplicationInfoArgs']] = None,
                  time_partitioning: Optional[pulumi.Input['TableTimePartitioningArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  view: Optional[pulumi.Input['TableViewArgs']] = None):
@@ -521,6 +538,7 @@ class _TableState:
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
+        :param pulumi.Input['TableTableReplicationInfoArgs'] table_replication_info: Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
         :param pulumi.Input['TableTimePartitioningArgs'] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] type: The supported types are DAY, HOUR, MONTH, and YEAR,
@@ -582,6 +600,8 @@ class _TableState:
             pulumi.set(__self__, "table_constraints", table_constraints)
         if table_id is not None:
             pulumi.set(__self__, "table_id", table_id)
+        if table_replication_info is not None:
+            pulumi.set(__self__, "table_replication_info", table_replication_info)
         if time_partitioning is not None:
             pulumi.set(__self__, "time_partitioning", time_partitioning)
         if type is not None:
@@ -968,6 +988,18 @@ class _TableState:
         pulumi.set(self, "table_id", value)
 
     @property
+    @pulumi.getter(name="tableReplicationInfo")
+    def table_replication_info(self) -> Optional[pulumi.Input['TableTableReplicationInfoArgs']]:
+        """
+        Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+        """
+        return pulumi.get(self, "table_replication_info")
+
+    @table_replication_info.setter
+    def table_replication_info(self, value: Optional[pulumi.Input['TableTableReplicationInfoArgs']]):
+        pulumi.set(self, "table_replication_info", value)
+
+    @property
     @pulumi.getter(name="timePartitioning")
     def time_partitioning(self) -> Optional[pulumi.Input['TableTimePartitioningArgs']]:
         """
@@ -1029,6 +1061,7 @@ class Table(pulumi.CustomResource):
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
+                 table_replication_info: Optional[pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']]] = None,
                  time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None,
                  __props__=None):
@@ -1175,6 +1208,7 @@ class Table(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']] table_replication_info: Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[pulumi.InputType['TableViewArgs']] view: If specified, configures this table as a view.
@@ -1303,6 +1337,7 @@ class Table(pulumi.CustomResource):
                  schema: Optional[pulumi.Input[str]] = None,
                  table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
                  table_id: Optional[pulumi.Input[str]] = None,
+                 table_replication_info: Optional[pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']]] = None,
                  time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
                  view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None,
                  __props__=None):
@@ -1335,6 +1370,7 @@ class Table(pulumi.CustomResource):
             if table_id is None and not opts.urn:
                 raise TypeError("Missing required property 'table_id'")
             __props__.__dict__["table_id"] = table_id
+            __props__.__dict__["table_replication_info"] = table_replication_info
             __props__.__dict__["time_partitioning"] = time_partitioning
             __props__.__dict__["view"] = view
             __props__.__dict__["creation_time"] = None
@@ -1387,6 +1423,7 @@ class Table(pulumi.CustomResource):
             self_link: Optional[pulumi.Input[str]] = None,
             table_constraints: Optional[pulumi.Input[pulumi.InputType['TableTableConstraintsArgs']]] = None,
             table_id: Optional[pulumi.Input[str]] = None,
+            table_replication_info: Optional[pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']]] = None,
             time_partitioning: Optional[pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']]] = None,
             type: Optional[pulumi.Input[str]] = None,
             view: Optional[pulumi.Input[pulumi.InputType['TableViewArgs']]] = None) -> 'Table':
@@ -1478,6 +1515,7 @@ class Table(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] table_id: A unique ID for the resource.
                Changing this forces a new resource to be created.
+        :param pulumi.Input[pulumi.InputType['TableTableReplicationInfoArgs']] table_replication_info: Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
         :param pulumi.Input[pulumi.InputType['TableTimePartitioningArgs']] time_partitioning: If specified, configures time-based
                partitioning for this table. Structure is documented below.
         :param pulumi.Input[str] type: The supported types are DAY, HOUR, MONTH, and YEAR,
@@ -1516,6 +1554,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["table_constraints"] = table_constraints
         __props__.__dict__["table_id"] = table_id
+        __props__.__dict__["table_replication_info"] = table_replication_info
         __props__.__dict__["time_partitioning"] = time_partitioning
         __props__.__dict__["type"] = type
         __props__.__dict__["view"] = view
@@ -1790,6 +1829,14 @@ class Table(pulumi.CustomResource):
         Changing this forces a new resource to be created.
         """
         return pulumi.get(self, "table_id")
+
+    @property
+    @pulumi.getter(name="tableReplicationInfo")
+    def table_replication_info(self) -> pulumi.Output[Optional['outputs.TableTableReplicationInfo']]:
+        """
+        Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+        """
+        return pulumi.get(self, "table_replication_info")
 
     @property
     @pulumi.getter(name="timePartitioning")

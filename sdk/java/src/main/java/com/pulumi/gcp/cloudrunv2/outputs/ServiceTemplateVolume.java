@@ -7,6 +7,8 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolumeCloudSqlInstance;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolumeEmptyDir;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolumeGcs;
+import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolumeNfs;
 import com.pulumi.gcp.cloudrunv2.outputs.ServiceTemplateVolumeSecret;
 import java.lang.String;
 import java.util.Objects;
@@ -23,10 +25,22 @@ public final class ServiceTemplateVolume {
     private @Nullable ServiceTemplateVolumeCloudSqlInstance cloudSqlInstance;
     private @Nullable ServiceTemplateVolumeEmptyDir emptyDir;
     /**
+     * @return Represents a GCS Bucket mounted as a volume.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateVolumeGcs gcs;
+    /**
      * @return Volume&#39;s name.
      * 
      */
     private String name;
+    /**
+     * @return Represents an NFS mount.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable ServiceTemplateVolumeNfs nfs;
     /**
      * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
      * Structure is documented below.
@@ -47,11 +61,27 @@ public final class ServiceTemplateVolume {
         return Optional.ofNullable(this.emptyDir);
     }
     /**
+     * @return Represents a GCS Bucket mounted as a volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateVolumeGcs> gcs() {
+        return Optional.ofNullable(this.gcs);
+    }
+    /**
      * @return Volume&#39;s name.
      * 
      */
     public String name() {
         return this.name;
+    }
+    /**
+     * @return Represents an NFS mount.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<ServiceTemplateVolumeNfs> nfs() {
+        return Optional.ofNullable(this.nfs);
     }
     /**
      * @return Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -73,14 +103,18 @@ public final class ServiceTemplateVolume {
     public static final class Builder {
         private @Nullable ServiceTemplateVolumeCloudSqlInstance cloudSqlInstance;
         private @Nullable ServiceTemplateVolumeEmptyDir emptyDir;
+        private @Nullable ServiceTemplateVolumeGcs gcs;
         private String name;
+        private @Nullable ServiceTemplateVolumeNfs nfs;
         private @Nullable ServiceTemplateVolumeSecret secret;
         public Builder() {}
         public Builder(ServiceTemplateVolume defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cloudSqlInstance = defaults.cloudSqlInstance;
     	      this.emptyDir = defaults.emptyDir;
+    	      this.gcs = defaults.gcs;
     	      this.name = defaults.name;
+    	      this.nfs = defaults.nfs;
     	      this.secret = defaults.secret;
         }
 
@@ -97,11 +131,23 @@ public final class ServiceTemplateVolume {
             return this;
         }
         @CustomType.Setter
+        public Builder gcs(@Nullable ServiceTemplateVolumeGcs gcs) {
+
+            this.gcs = gcs;
+            return this;
+        }
+        @CustomType.Setter
         public Builder name(String name) {
             if (name == null) {
               throw new MissingRequiredPropertyException("ServiceTemplateVolume", "name");
             }
             this.name = name;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder nfs(@Nullable ServiceTemplateVolumeNfs nfs) {
+
+            this.nfs = nfs;
             return this;
         }
         @CustomType.Setter
@@ -114,7 +160,9 @@ public final class ServiceTemplateVolume {
             final var _resultValue = new ServiceTemplateVolume();
             _resultValue.cloudSqlInstance = cloudSqlInstance;
             _resultValue.emptyDir = emptyDir;
+            _resultValue.gcs = gcs;
             _resultValue.name = name;
+            _resultValue.nfs = nfs;
             _resultValue.secret = secret;
             return _resultValue;
         }

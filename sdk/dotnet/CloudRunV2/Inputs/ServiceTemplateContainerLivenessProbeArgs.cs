@@ -45,6 +45,13 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<int>? PeriodSeconds { get; set; }
 
         /// <summary>
+        /// TCPSocketAction describes an action based on opening a socket
+        /// Structure is documented below.
+        /// </summary>
+        [Input("tcpSocket")]
+        public Input<Inputs.ServiceTemplateContainerLivenessProbeTcpSocketArgs>? TcpSocket { get; set; }
+
+        /// <summary>
         /// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         /// </summary>
         [Input("timeoutSeconds")]

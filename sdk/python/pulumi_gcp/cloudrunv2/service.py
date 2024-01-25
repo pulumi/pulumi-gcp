@@ -1194,6 +1194,80 @@ class Service(pulumi.CustomResource):
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
         ```
+        ### Cloudrunv2 Service Mount Gcs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_bucket = gcp.storage.Bucket("defaultBucket", location="US")
+        default_service = gcp.cloudrunv2.Service("defaultService",
+            location="us-central1",
+            launch_stage="BETA",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                execution_environment="EXECUTION_ENVIRONMENT_GEN2",
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    image="us-docker.pkg.dev/cloudrun/container/hello",
+                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                        name="bucket",
+                        mount_path="/var/www",
+                    )],
+                )],
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                    name="bucket",
+                    gcs=gcp.cloudrunv2.ServiceTemplateVolumeGcsArgs(
+                        bucket=default_bucket.name,
+                        read_only=False,
+                    ),
+                )],
+            ))
+        ```
+        ### Cloudrunv2 Service Mount Nfs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_instance = gcp.filestore.Instance("defaultInstance",
+            location="us-central1-b",
+            tier="BASIC_HDD",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )])
+        default_service = gcp.cloudrunv2.Service("defaultService",
+            location="us-central1",
+            ingress="INGRESS_TRAFFIC_ALL",
+            launch_stage="BETA",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                execution_environment="EXECUTION_ENVIRONMENT_GEN2",
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    image="us-docker.pkg.dev/cloudrun/container/hello:latest",
+                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                        name="nfs",
+                        mount_path="/mnt/nfs/filestore",
+                    )],
+                )],
+                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
+                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
+                        network="default",
+                        subnetwork="default",
+                    )],
+                ),
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                    name="nfs",
+                    nfs=gcp.cloudrunv2.ServiceTemplateVolumeNfsArgs(
+                        server=default_instance.networks[0].ip_addresses[0],
+                        path="/share1",
+                        read_only=False,
+                    ),
+                )],
+            ))
+        ```
 
         ## Import
 
@@ -1545,6 +1619,80 @@ class Service(pulumi.CustomResource):
                 )],
             ),
             opts=pulumi.ResourceOptions(provider=google_beta))
+        ```
+        ### Cloudrunv2 Service Mount Gcs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_bucket = gcp.storage.Bucket("defaultBucket", location="US")
+        default_service = gcp.cloudrunv2.Service("defaultService",
+            location="us-central1",
+            launch_stage="BETA",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                execution_environment="EXECUTION_ENVIRONMENT_GEN2",
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    image="us-docker.pkg.dev/cloudrun/container/hello",
+                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                        name="bucket",
+                        mount_path="/var/www",
+                    )],
+                )],
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                    name="bucket",
+                    gcs=gcp.cloudrunv2.ServiceTemplateVolumeGcsArgs(
+                        bucket=default_bucket.name,
+                        read_only=False,
+                    ),
+                )],
+            ))
+        ```
+        ### Cloudrunv2 Service Mount Nfs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default_instance = gcp.filestore.Instance("defaultInstance",
+            location="us-central1-b",
+            tier="BASIC_HDD",
+            file_shares=gcp.filestore.InstanceFileSharesArgs(
+                capacity_gb=1024,
+                name="share1",
+            ),
+            networks=[gcp.filestore.InstanceNetworkArgs(
+                network="default",
+                modes=["MODE_IPV4"],
+            )])
+        default_service = gcp.cloudrunv2.Service("defaultService",
+            location="us-central1",
+            ingress="INGRESS_TRAFFIC_ALL",
+            launch_stage="BETA",
+            template=gcp.cloudrunv2.ServiceTemplateArgs(
+                execution_environment="EXECUTION_ENVIRONMENT_GEN2",
+                containers=[gcp.cloudrunv2.ServiceTemplateContainerArgs(
+                    image="us-docker.pkg.dev/cloudrun/container/hello:latest",
+                    volume_mounts=[gcp.cloudrunv2.ServiceTemplateContainerVolumeMountArgs(
+                        name="nfs",
+                        mount_path="/mnt/nfs/filestore",
+                    )],
+                )],
+                vpc_access=gcp.cloudrunv2.ServiceTemplateVpcAccessArgs(
+                    network_interfaces=[gcp.cloudrunv2.ServiceTemplateVpcAccessNetworkInterfaceArgs(
+                        network="default",
+                        subnetwork="default",
+                    )],
+                ),
+                volumes=[gcp.cloudrunv2.ServiceTemplateVolumeArgs(
+                    name="nfs",
+                    nfs=gcp.cloudrunv2.ServiceTemplateVolumeNfsArgs(
+                        server=default_instance.networks[0].ip_addresses[0],
+                        path="/share1",
+                        read_only=False,
+                    ),
+                )],
+            ))
         ```
 
         ## Import

@@ -5422,6 +5422,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "netapp/backupPolicy",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/backupPolicy:BackupPolicy": "BackupPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "netapp/backupVault",
   "fqn": "pulumi_gcp.netapp",
   "classes": {
@@ -5442,6 +5450,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.netapp",
   "classes": {
    "gcp:netapp/storagePool:StoragePool": "StoragePool"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "netapp/volume",
+  "fqn": "pulumi_gcp.netapp",
+  "classes": {
+   "gcp:netapp/volume:Volume": "Volume"
   }
  },
  {
@@ -5494,6 +5510,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "networksecurity/addressGroupIamBinding",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/addressGroupIamBinding:AddressGroupIamBinding": "AddressGroupIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/addressGroupIamMember",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember": "AddressGroupIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/addressGroupIamPolicy",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy": "AddressGroupIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "networksecurity/authorizationPolicy",
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
@@ -5522,6 +5562,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": "GatewaySecurityPolicyRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/securityProfile",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/securityProfile:SecurityProfile": "SecurityProfile"
   }
  },
  {
@@ -6842,6 +6890,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.vertex",
   "classes": {
    "gcp:vertex/aiFeatureGroup:AiFeatureGroup": "AiFeatureGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "vertex/aiFeatureGroupFeature",
+  "fqn": "pulumi_gcp.vertex",
+  "classes": {
+   "gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature": "AiFeatureGroupFeature"
   }
  },
  {

@@ -16,6 +16,7 @@ import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigSoftwareConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWebServerConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWebServerNetworkAccessControl;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigWorkloadsConfig;
+import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
@@ -26,6 +27,8 @@ public final class GetEnvironmentConfig {
     private String airflowUri;
     private String dagGcsPrefix;
     private List<GetEnvironmentConfigDatabaseConfig> databaseConfigs;
+    private Boolean enablePrivateBuildsOnly;
+    private Boolean enablePrivateEnvironment;
     private List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs;
     private String environmentSize;
     private String gkeCluster;
@@ -50,6 +53,12 @@ public final class GetEnvironmentConfig {
     }
     public List<GetEnvironmentConfigDatabaseConfig> databaseConfigs() {
         return this.databaseConfigs;
+    }
+    public Boolean enablePrivateBuildsOnly() {
+        return this.enablePrivateBuildsOnly;
+    }
+    public Boolean enablePrivateEnvironment() {
+        return this.enablePrivateEnvironment;
     }
     public List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs() {
         return this.encryptionConfigs;
@@ -106,6 +115,8 @@ public final class GetEnvironmentConfig {
         private String airflowUri;
         private String dagGcsPrefix;
         private List<GetEnvironmentConfigDatabaseConfig> databaseConfigs;
+        private Boolean enablePrivateBuildsOnly;
+        private Boolean enablePrivateEnvironment;
         private List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs;
         private String environmentSize;
         private String gkeCluster;
@@ -126,6 +137,8 @@ public final class GetEnvironmentConfig {
     	      this.airflowUri = defaults.airflowUri;
     	      this.dagGcsPrefix = defaults.dagGcsPrefix;
     	      this.databaseConfigs = defaults.databaseConfigs;
+    	      this.enablePrivateBuildsOnly = defaults.enablePrivateBuildsOnly;
+    	      this.enablePrivateEnvironment = defaults.enablePrivateEnvironment;
     	      this.encryptionConfigs = defaults.encryptionConfigs;
     	      this.environmentSize = defaults.environmentSize;
     	      this.gkeCluster = defaults.gkeCluster;
@@ -168,6 +181,22 @@ public final class GetEnvironmentConfig {
         }
         public Builder databaseConfigs(GetEnvironmentConfigDatabaseConfig... databaseConfigs) {
             return databaseConfigs(List.of(databaseConfigs));
+        }
+        @CustomType.Setter
+        public Builder enablePrivateBuildsOnly(Boolean enablePrivateBuildsOnly) {
+            if (enablePrivateBuildsOnly == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "enablePrivateBuildsOnly");
+            }
+            this.enablePrivateBuildsOnly = enablePrivateBuildsOnly;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enablePrivateEnvironment(Boolean enablePrivateEnvironment) {
+            if (enablePrivateEnvironment == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfig", "enablePrivateEnvironment");
+            }
+            this.enablePrivateEnvironment = enablePrivateEnvironment;
+            return this;
         }
         @CustomType.Setter
         public Builder encryptionConfigs(List<GetEnvironmentConfigEncryptionConfig> encryptionConfigs) {
@@ -316,6 +345,8 @@ public final class GetEnvironmentConfig {
             _resultValue.airflowUri = airflowUri;
             _resultValue.dagGcsPrefix = dagGcsPrefix;
             _resultValue.databaseConfigs = databaseConfigs;
+            _resultValue.enablePrivateBuildsOnly = enablePrivateBuildsOnly;
+            _resultValue.enablePrivateEnvironment = enablePrivateEnvironment;
             _resultValue.encryptionConfigs = encryptionConfigs;
             _resultValue.environmentSize = environmentSize;
             _resultValue.gkeCluster = gkeCluster;

@@ -154,6 +154,23 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * 
+     */
+    @Import(name="enableHistoryModifications")
+    private @Nullable Output<Boolean> enableHistoryModifications;
+
+    /**
+     * @return Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * 
+     */
+    public Optional<Output<Boolean>> enableHistoryModifications() {
+        return Optional.ofNullable(this.enableHistoryModifications);
+    }
+
+    /**
      * Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
      * operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
      * the Create operation and attempts to Update a non-existent resource will return errors. Please treat the audit
@@ -317,6 +334,7 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
         this.disableReferentialIntegrity = $.disableReferentialIntegrity;
         this.disableResourceVersioning = $.disableResourceVersioning;
         this.enableHistoryImport = $.enableHistoryImport;
+        this.enableHistoryModifications = $.enableHistoryModifications;
         this.enableUpdateCreate = $.enableUpdateCreate;
         this.labels = $.labels;
         this.name = $.name;
@@ -510,6 +528,29 @@ public final class FhirStoreArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder enableHistoryImport(Boolean enableHistoryImport) {
             return enableHistoryImport(Output.of(enableHistoryImport));
+        }
+
+        /**
+         * @param enableHistoryModifications Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+         * versions into the FHIR store. If set to false, using history bundles fails with an error.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHistoryModifications(@Nullable Output<Boolean> enableHistoryModifications) {
+            $.enableHistoryModifications = enableHistoryModifications;
+            return this;
+        }
+
+        /**
+         * @param enableHistoryModifications Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+         * versions into the FHIR store. If set to false, using history bundles fails with an error.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableHistoryModifications(Boolean enableHistoryModifications) {
+            return enableHistoryModifications(Output.of(enableHistoryModifications));
         }
 
         /**

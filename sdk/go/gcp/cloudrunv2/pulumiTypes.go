@@ -5254,6 +5254,9 @@ type ServiceTemplateContainerLivenessProbe struct {
 	InitialDelaySeconds *int `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 	PeriodSeconds *int `pulumi:"periodSeconds"`
+	// TCPSocketAction describes an action based on opening a socket
+	// Structure is documented below.
+	TcpSocket *ServiceTemplateContainerLivenessProbeTcpSocket `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds *int `pulumi:"timeoutSeconds"`
 }
@@ -5282,6 +5285,9 @@ type ServiceTemplateContainerLivenessProbeArgs struct {
 	InitialDelaySeconds pulumi.IntPtrInput `pulumi:"initialDelaySeconds"`
 	// How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
 	PeriodSeconds pulumi.IntPtrInput `pulumi:"periodSeconds"`
+	// TCPSocketAction describes an action based on opening a socket
+	// Structure is documented below.
+	TcpSocket ServiceTemplateContainerLivenessProbeTcpSocketPtrInput `pulumi:"tcpSocket"`
 	// Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 	TimeoutSeconds pulumi.IntPtrInput `pulumi:"timeoutSeconds"`
 }
@@ -5394,6 +5400,14 @@ func (o ServiceTemplateContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntP
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *int { return v.PeriodSeconds }).(pulumi.IntPtrOutput)
 }
 
+// TCPSocketAction describes an action based on opening a socket
+// Structure is documented below.
+func (o ServiceTemplateContainerLivenessProbeOutput) TcpSocket() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeTcpSocket {
+		return v.TcpSocket
+	}).(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput)
+}
+
 // Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
 func (o ServiceTemplateContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbe) *int { return v.TimeoutSeconds }).(pulumi.IntPtrOutput)
@@ -5473,6 +5487,17 @@ func (o ServiceTemplateContainerLivenessProbePtrOutput) PeriodSeconds() pulumi.I
 		}
 		return v.PeriodSeconds
 	}).(pulumi.IntPtrOutput)
+}
+
+// TCPSocketAction describes an action based on opening a socket
+// Structure is documented below.
+func (o ServiceTemplateContainerLivenessProbePtrOutput) TcpSocket() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbe) *ServiceTemplateContainerLivenessProbeTcpSocket {
+		if v == nil {
+			return nil
+		}
+		return v.TcpSocket
+	}).(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput)
 }
 
 // Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
@@ -5942,6 +5967,147 @@ func (o ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) Index
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
 		return vs[0].([]ServiceTemplateContainerLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
 	}).(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+type ServiceTemplateContainerLivenessProbeTcpSocket struct {
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port int `pulumi:"port"`
+}
+
+// ServiceTemplateContainerLivenessProbeTcpSocketInput is an input type that accepts ServiceTemplateContainerLivenessProbeTcpSocketArgs and ServiceTemplateContainerLivenessProbeTcpSocketOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerLivenessProbeTcpSocketInput` via:
+//
+//	ServiceTemplateContainerLivenessProbeTcpSocketArgs{...}
+type ServiceTemplateContainerLivenessProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerLivenessProbeTcpSocketOutput() ServiceTemplateContainerLivenessProbeTcpSocketOutput
+	ToServiceTemplateContainerLivenessProbeTcpSocketOutputWithContext(context.Context) ServiceTemplateContainerLivenessProbeTcpSocketOutput
+}
+
+type ServiceTemplateContainerLivenessProbeTcpSocketArgs struct {
+	// Port number to access on the container. Must be in the range 1 to 65535.
+	// If not specified, defaults to the same value as container.ports[0].containerPort.
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (ServiceTemplateContainerLivenessProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i ServiceTemplateContainerLivenessProbeTcpSocketArgs) ToServiceTemplateContainerLivenessProbeTcpSocketOutput() ServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return i.ToServiceTemplateContainerLivenessProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerLivenessProbeTcpSocketArgs) ToServiceTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeTcpSocketOutput)
+}
+
+func (i ServiceTemplateContainerLivenessProbeTcpSocketArgs) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutput() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return i.ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateContainerLivenessProbeTcpSocketArgs) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeTcpSocketOutput).ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateContainerLivenessProbeTcpSocketPtrInput is an input type that accepts ServiceTemplateContainerLivenessProbeTcpSocketArgs, ServiceTemplateContainerLivenessProbeTcpSocketPtr and ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateContainerLivenessProbeTcpSocketPtrInput` via:
+//
+//	        ServiceTemplateContainerLivenessProbeTcpSocketArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateContainerLivenessProbeTcpSocketPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutput() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput
+	ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(context.Context) ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput
+}
+
+type serviceTemplateContainerLivenessProbeTcpSocketPtrType ServiceTemplateContainerLivenessProbeTcpSocketArgs
+
+func ServiceTemplateContainerLivenessProbeTcpSocketPtr(v *ServiceTemplateContainerLivenessProbeTcpSocketArgs) ServiceTemplateContainerLivenessProbeTcpSocketPtrInput {
+	return (*serviceTemplateContainerLivenessProbeTcpSocketPtrType)(v)
+}
+
+func (*serviceTemplateContainerLivenessProbeTcpSocketPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i *serviceTemplateContainerLivenessProbeTcpSocketPtrType) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutput() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return i.ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateContainerLivenessProbeTcpSocketPtrType) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput)
+}
+
+type ServiceTemplateContainerLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) ToServiceTemplateContainerLivenessProbeTcpSocketOutput() ServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) ToServiceTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutput() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o.ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateContainerLivenessProbeTcpSocket) *ServiceTemplateContainerLivenessProbeTcpSocket {
+		return &v
+	}).(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput)
+}
+
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerLivenessProbeTcpSocketOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v ServiceTemplateContainerLivenessProbeTcpSocket) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutput() ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) ToServiceTemplateContainerLivenessProbeTcpSocketPtrOutputWithContext(ctx context.Context) ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) Elem() ServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeTcpSocket) ServiceTemplateContainerLivenessProbeTcpSocket {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateContainerLivenessProbeTcpSocket
+		return ret
+	}).(ServiceTemplateContainerLivenessProbeTcpSocketOutput)
+}
+
+// Port number to access on the container. Must be in the range 1 to 65535.
+// If not specified, defaults to the same value as container.ports[0].containerPort.
+func (o ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput) Port() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateContainerLivenessProbeTcpSocket) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.Port
+	}).(pulumi.IntPtrOutput)
 }
 
 type ServiceTemplateContainerPort struct {
@@ -7359,8 +7525,14 @@ type ServiceTemplateVolume struct {
 	// Structure is documented below.
 	CloudSqlInstance *ServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
 	EmptyDir         *ServiceTemplateVolumeEmptyDir         `pulumi:"emptyDir"`
+	// Represents a GCS Bucket mounted as a volume.
+	// Structure is documented below.
+	Gcs *ServiceTemplateVolumeGcs `pulumi:"gcs"`
 	// Volume's name.
 	Name string `pulumi:"name"`
+	// Represents an NFS mount.
+	// Structure is documented below.
+	Nfs *ServiceTemplateVolumeNfs `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	// Structure is documented below.
 	Secret *ServiceTemplateVolumeSecret `pulumi:"secret"`
@@ -7382,8 +7554,14 @@ type ServiceTemplateVolumeArgs struct {
 	// Structure is documented below.
 	CloudSqlInstance ServiceTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
 	EmptyDir         ServiceTemplateVolumeEmptyDirPtrInput         `pulumi:"emptyDir"`
+	// Represents a GCS Bucket mounted as a volume.
+	// Structure is documented below.
+	Gcs ServiceTemplateVolumeGcsPtrInput `pulumi:"gcs"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
+	// Represents an NFS mount.
+	// Structure is documented below.
+	Nfs ServiceTemplateVolumeNfsPtrInput `pulumi:"nfs"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
 	// Structure is documented below.
 	Secret ServiceTemplateVolumeSecretPtrInput `pulumi:"secret"`
@@ -7450,9 +7628,21 @@ func (o ServiceTemplateVolumeOutput) EmptyDir() ServiceTemplateVolumeEmptyDirPtr
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeEmptyDir { return v.EmptyDir }).(ServiceTemplateVolumeEmptyDirPtrOutput)
 }
 
+// Represents a GCS Bucket mounted as a volume.
+// Structure is documented below.
+func (o ServiceTemplateVolumeOutput) Gcs() ServiceTemplateVolumeGcsPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeGcs { return v.Gcs }).(ServiceTemplateVolumeGcsPtrOutput)
+}
+
 // Volume's name.
 func (o ServiceTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Represents an NFS mount.
+// Structure is documented below.
+func (o ServiceTemplateVolumeOutput) Nfs() ServiceTemplateVolumeNfsPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeNfs { return v.Nfs }).(ServiceTemplateVolumeNfsPtrOutput)
 }
 
 // Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -7624,8 +7814,6 @@ type ServiceTemplateVolumeEmptyDir struct {
 	// Possible values are: `MEMORY`.
 	Medium *string `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-	//
-	// ***
 	SizeLimit *string `pulumi:"sizeLimit"`
 }
 
@@ -7646,8 +7834,6 @@ type ServiceTemplateVolumeEmptyDirArgs struct {
 	// Possible values are: `MEMORY`.
 	Medium pulumi.StringPtrInput `pulumi:"medium"`
 	// Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-	//
-	// ***
 	SizeLimit pulumi.StringPtrInput `pulumi:"sizeLimit"`
 }
 
@@ -7736,8 +7922,6 @@ func (o ServiceTemplateVolumeEmptyDirOutput) Medium() pulumi.StringPtrOutput {
 }
 
 // Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-//
-// ***
 func (o ServiceTemplateVolumeEmptyDirOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolumeEmptyDir) *string { return v.SizeLimit }).(pulumi.StringPtrOutput)
 }
@@ -7779,14 +7963,351 @@ func (o ServiceTemplateVolumeEmptyDirPtrOutput) Medium() pulumi.StringPtrOutput 
 }
 
 // Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-//
-// ***
 func (o ServiceTemplateVolumeEmptyDirPtrOutput) SizeLimit() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateVolumeEmptyDir) *string {
 		if v == nil {
 			return nil
 		}
 		return v.SizeLimit
+	}).(pulumi.StringPtrOutput)
+}
+
+type ServiceTemplateVolumeGcs struct {
+	// GCS Bucket name
+	Bucket string `pulumi:"bucket"`
+	// If true, mount the GCS bucket as read-only
+	ReadOnly *bool `pulumi:"readOnly"`
+}
+
+// ServiceTemplateVolumeGcsInput is an input type that accepts ServiceTemplateVolumeGcsArgs and ServiceTemplateVolumeGcsOutput values.
+// You can construct a concrete instance of `ServiceTemplateVolumeGcsInput` via:
+//
+//	ServiceTemplateVolumeGcsArgs{...}
+type ServiceTemplateVolumeGcsInput interface {
+	pulumi.Input
+
+	ToServiceTemplateVolumeGcsOutput() ServiceTemplateVolumeGcsOutput
+	ToServiceTemplateVolumeGcsOutputWithContext(context.Context) ServiceTemplateVolumeGcsOutput
+}
+
+type ServiceTemplateVolumeGcsArgs struct {
+	// GCS Bucket name
+	Bucket pulumi.StringInput `pulumi:"bucket"`
+	// If true, mount the GCS bucket as read-only
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+}
+
+func (ServiceTemplateVolumeGcsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateVolumeGcs)(nil)).Elem()
+}
+
+func (i ServiceTemplateVolumeGcsArgs) ToServiceTemplateVolumeGcsOutput() ServiceTemplateVolumeGcsOutput {
+	return i.ToServiceTemplateVolumeGcsOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateVolumeGcsArgs) ToServiceTemplateVolumeGcsOutputWithContext(ctx context.Context) ServiceTemplateVolumeGcsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeGcsOutput)
+}
+
+func (i ServiceTemplateVolumeGcsArgs) ToServiceTemplateVolumeGcsPtrOutput() ServiceTemplateVolumeGcsPtrOutput {
+	return i.ToServiceTemplateVolumeGcsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateVolumeGcsArgs) ToServiceTemplateVolumeGcsPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeGcsOutput).ToServiceTemplateVolumeGcsPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateVolumeGcsPtrInput is an input type that accepts ServiceTemplateVolumeGcsArgs, ServiceTemplateVolumeGcsPtr and ServiceTemplateVolumeGcsPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateVolumeGcsPtrInput` via:
+//
+//	        ServiceTemplateVolumeGcsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateVolumeGcsPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateVolumeGcsPtrOutput() ServiceTemplateVolumeGcsPtrOutput
+	ToServiceTemplateVolumeGcsPtrOutputWithContext(context.Context) ServiceTemplateVolumeGcsPtrOutput
+}
+
+type serviceTemplateVolumeGcsPtrType ServiceTemplateVolumeGcsArgs
+
+func ServiceTemplateVolumeGcsPtr(v *ServiceTemplateVolumeGcsArgs) ServiceTemplateVolumeGcsPtrInput {
+	return (*serviceTemplateVolumeGcsPtrType)(v)
+}
+
+func (*serviceTemplateVolumeGcsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateVolumeGcs)(nil)).Elem()
+}
+
+func (i *serviceTemplateVolumeGcsPtrType) ToServiceTemplateVolumeGcsPtrOutput() ServiceTemplateVolumeGcsPtrOutput {
+	return i.ToServiceTemplateVolumeGcsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateVolumeGcsPtrType) ToServiceTemplateVolumeGcsPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeGcsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeGcsPtrOutput)
+}
+
+type ServiceTemplateVolumeGcsOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateVolumeGcsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateVolumeGcs)(nil)).Elem()
+}
+
+func (o ServiceTemplateVolumeGcsOutput) ToServiceTemplateVolumeGcsOutput() ServiceTemplateVolumeGcsOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeGcsOutput) ToServiceTemplateVolumeGcsOutputWithContext(ctx context.Context) ServiceTemplateVolumeGcsOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeGcsOutput) ToServiceTemplateVolumeGcsPtrOutput() ServiceTemplateVolumeGcsPtrOutput {
+	return o.ToServiceTemplateVolumeGcsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateVolumeGcsOutput) ToServiceTemplateVolumeGcsPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeGcsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateVolumeGcs) *ServiceTemplateVolumeGcs {
+		return &v
+	}).(ServiceTemplateVolumeGcsPtrOutput)
+}
+
+// GCS Bucket name
+func (o ServiceTemplateVolumeGcsOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateVolumeGcs) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+// If true, mount the GCS bucket as read-only
+func (o ServiceTemplateVolumeGcsOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVolumeGcs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+type ServiceTemplateVolumeGcsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateVolumeGcsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateVolumeGcs)(nil)).Elem()
+}
+
+func (o ServiceTemplateVolumeGcsPtrOutput) ToServiceTemplateVolumeGcsPtrOutput() ServiceTemplateVolumeGcsPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeGcsPtrOutput) ToServiceTemplateVolumeGcsPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeGcsPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeGcsPtrOutput) Elem() ServiceTemplateVolumeGcsOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeGcs) ServiceTemplateVolumeGcs {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateVolumeGcs
+		return ret
+	}).(ServiceTemplateVolumeGcsOutput)
+}
+
+// GCS Bucket name
+func (o ServiceTemplateVolumeGcsPtrOutput) Bucket() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeGcs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Bucket
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, mount the GCS bucket as read-only
+func (o ServiceTemplateVolumeGcsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeGcs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ServiceTemplateVolumeNfs struct {
+	// Path that is exported by the NFS server.
+	Path string `pulumi:"path"`
+	// If true, mount the NFS volume as read only
+	//
+	// ***
+	ReadOnly *bool `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server
+	Server string `pulumi:"server"`
+}
+
+// ServiceTemplateVolumeNfsInput is an input type that accepts ServiceTemplateVolumeNfsArgs and ServiceTemplateVolumeNfsOutput values.
+// You can construct a concrete instance of `ServiceTemplateVolumeNfsInput` via:
+//
+//	ServiceTemplateVolumeNfsArgs{...}
+type ServiceTemplateVolumeNfsInput interface {
+	pulumi.Input
+
+	ToServiceTemplateVolumeNfsOutput() ServiceTemplateVolumeNfsOutput
+	ToServiceTemplateVolumeNfsOutputWithContext(context.Context) ServiceTemplateVolumeNfsOutput
+}
+
+type ServiceTemplateVolumeNfsArgs struct {
+	// Path that is exported by the NFS server.
+	Path pulumi.StringInput `pulumi:"path"`
+	// If true, mount the NFS volume as read only
+	//
+	// ***
+	ReadOnly pulumi.BoolPtrInput `pulumi:"readOnly"`
+	// Hostname or IP address of the NFS server
+	Server pulumi.StringInput `pulumi:"server"`
+}
+
+func (ServiceTemplateVolumeNfsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateVolumeNfs)(nil)).Elem()
+}
+
+func (i ServiceTemplateVolumeNfsArgs) ToServiceTemplateVolumeNfsOutput() ServiceTemplateVolumeNfsOutput {
+	return i.ToServiceTemplateVolumeNfsOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateVolumeNfsArgs) ToServiceTemplateVolumeNfsOutputWithContext(ctx context.Context) ServiceTemplateVolumeNfsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeNfsOutput)
+}
+
+func (i ServiceTemplateVolumeNfsArgs) ToServiceTemplateVolumeNfsPtrOutput() ServiceTemplateVolumeNfsPtrOutput {
+	return i.ToServiceTemplateVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceTemplateVolumeNfsArgs) ToServiceTemplateVolumeNfsPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeNfsOutput).ToServiceTemplateVolumeNfsPtrOutputWithContext(ctx)
+}
+
+// ServiceTemplateVolumeNfsPtrInput is an input type that accepts ServiceTemplateVolumeNfsArgs, ServiceTemplateVolumeNfsPtr and ServiceTemplateVolumeNfsPtrOutput values.
+// You can construct a concrete instance of `ServiceTemplateVolumeNfsPtrInput` via:
+//
+//	        ServiceTemplateVolumeNfsArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceTemplateVolumeNfsPtrInput interface {
+	pulumi.Input
+
+	ToServiceTemplateVolumeNfsPtrOutput() ServiceTemplateVolumeNfsPtrOutput
+	ToServiceTemplateVolumeNfsPtrOutputWithContext(context.Context) ServiceTemplateVolumeNfsPtrOutput
+}
+
+type serviceTemplateVolumeNfsPtrType ServiceTemplateVolumeNfsArgs
+
+func ServiceTemplateVolumeNfsPtr(v *ServiceTemplateVolumeNfsArgs) ServiceTemplateVolumeNfsPtrInput {
+	return (*serviceTemplateVolumeNfsPtrType)(v)
+}
+
+func (*serviceTemplateVolumeNfsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateVolumeNfs)(nil)).Elem()
+}
+
+func (i *serviceTemplateVolumeNfsPtrType) ToServiceTemplateVolumeNfsPtrOutput() ServiceTemplateVolumeNfsPtrOutput {
+	return i.ToServiceTemplateVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceTemplateVolumeNfsPtrType) ToServiceTemplateVolumeNfsPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeNfsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceTemplateVolumeNfsPtrOutput)
+}
+
+type ServiceTemplateVolumeNfsOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateVolumeNfsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceTemplateVolumeNfs)(nil)).Elem()
+}
+
+func (o ServiceTemplateVolumeNfsOutput) ToServiceTemplateVolumeNfsOutput() ServiceTemplateVolumeNfsOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeNfsOutput) ToServiceTemplateVolumeNfsOutputWithContext(ctx context.Context) ServiceTemplateVolumeNfsOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeNfsOutput) ToServiceTemplateVolumeNfsPtrOutput() ServiceTemplateVolumeNfsPtrOutput {
+	return o.ToServiceTemplateVolumeNfsPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceTemplateVolumeNfsOutput) ToServiceTemplateVolumeNfsPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeNfsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceTemplateVolumeNfs) *ServiceTemplateVolumeNfs {
+		return &v
+	}).(ServiceTemplateVolumeNfsPtrOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o ServiceTemplateVolumeNfsOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateVolumeNfs) string { return v.Path }).(pulumi.StringOutput)
+}
+
+// If true, mount the NFS volume as read only
+//
+// ***
+func (o ServiceTemplateVolumeNfsOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceTemplateVolumeNfs) *bool { return v.ReadOnly }).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server
+func (o ServiceTemplateVolumeNfsOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v ServiceTemplateVolumeNfs) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type ServiceTemplateVolumeNfsPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceTemplateVolumeNfsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceTemplateVolumeNfs)(nil)).Elem()
+}
+
+func (o ServiceTemplateVolumeNfsPtrOutput) ToServiceTemplateVolumeNfsPtrOutput() ServiceTemplateVolumeNfsPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeNfsPtrOutput) ToServiceTemplateVolumeNfsPtrOutputWithContext(ctx context.Context) ServiceTemplateVolumeNfsPtrOutput {
+	return o
+}
+
+func (o ServiceTemplateVolumeNfsPtrOutput) Elem() ServiceTemplateVolumeNfsOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeNfs) ServiceTemplateVolumeNfs {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceTemplateVolumeNfs
+		return ret
+	}).(ServiceTemplateVolumeNfsOutput)
+}
+
+// Path that is exported by the NFS server.
+func (o ServiceTemplateVolumeNfsPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+// If true, mount the NFS volume as read only
+//
+// ***
+func (o ServiceTemplateVolumeNfsPtrOutput) ReadOnly() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeNfs) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.ReadOnly
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Hostname or IP address of the NFS server
+func (o ServiceTemplateVolumeNfsPtrOutput) Server() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceTemplateVolumeNfs) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Server
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11950,12 +12471,13 @@ func (o GetServiceTemplateContainerEnvValueSourceSecretKeyRefArrayOutput) Index(
 }
 
 type GetServiceTemplateContainerLivenessProbe struct {
-	FailureThreshold    int                                               `pulumi:"failureThreshold"`
-	Grpcs               []GetServiceTemplateContainerLivenessProbeGrpc    `pulumi:"grpcs"`
-	HttpGets            []GetServiceTemplateContainerLivenessProbeHttpGet `pulumi:"httpGets"`
-	InitialDelaySeconds int                                               `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       int                                               `pulumi:"periodSeconds"`
-	TimeoutSeconds      int                                               `pulumi:"timeoutSeconds"`
+	FailureThreshold    int                                                 `pulumi:"failureThreshold"`
+	Grpcs               []GetServiceTemplateContainerLivenessProbeGrpc      `pulumi:"grpcs"`
+	HttpGets            []GetServiceTemplateContainerLivenessProbeHttpGet   `pulumi:"httpGets"`
+	InitialDelaySeconds int                                                 `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       int                                                 `pulumi:"periodSeconds"`
+	TcpSockets          []GetServiceTemplateContainerLivenessProbeTcpSocket `pulumi:"tcpSockets"`
+	TimeoutSeconds      int                                                 `pulumi:"timeoutSeconds"`
 }
 
 // GetServiceTemplateContainerLivenessProbeInput is an input type that accepts GetServiceTemplateContainerLivenessProbeArgs and GetServiceTemplateContainerLivenessProbeOutput values.
@@ -11970,12 +12492,13 @@ type GetServiceTemplateContainerLivenessProbeInput interface {
 }
 
 type GetServiceTemplateContainerLivenessProbeArgs struct {
-	FailureThreshold    pulumi.IntInput                                           `pulumi:"failureThreshold"`
-	Grpcs               GetServiceTemplateContainerLivenessProbeGrpcArrayInput    `pulumi:"grpcs"`
-	HttpGets            GetServiceTemplateContainerLivenessProbeHttpGetArrayInput `pulumi:"httpGets"`
-	InitialDelaySeconds pulumi.IntInput                                           `pulumi:"initialDelaySeconds"`
-	PeriodSeconds       pulumi.IntInput                                           `pulumi:"periodSeconds"`
-	TimeoutSeconds      pulumi.IntInput                                           `pulumi:"timeoutSeconds"`
+	FailureThreshold    pulumi.IntInput                                             `pulumi:"failureThreshold"`
+	Grpcs               GetServiceTemplateContainerLivenessProbeGrpcArrayInput      `pulumi:"grpcs"`
+	HttpGets            GetServiceTemplateContainerLivenessProbeHttpGetArrayInput   `pulumi:"httpGets"`
+	InitialDelaySeconds pulumi.IntInput                                             `pulumi:"initialDelaySeconds"`
+	PeriodSeconds       pulumi.IntInput                                             `pulumi:"periodSeconds"`
+	TcpSockets          GetServiceTemplateContainerLivenessProbeTcpSocketArrayInput `pulumi:"tcpSockets"`
+	TimeoutSeconds      pulumi.IntInput                                             `pulumi:"timeoutSeconds"`
 }
 
 func (GetServiceTemplateContainerLivenessProbeArgs) ElementType() reflect.Type {
@@ -12051,6 +12574,12 @@ func (o GetServiceTemplateContainerLivenessProbeOutput) InitialDelaySeconds() pu
 
 func (o GetServiceTemplateContainerLivenessProbeOutput) PeriodSeconds() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) int { return v.PeriodSeconds }).(pulumi.IntOutput)
+}
+
+func (o GetServiceTemplateContainerLivenessProbeOutput) TcpSockets() GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbe) []GetServiceTemplateContainerLivenessProbeTcpSocket {
+		return v.TcpSockets
+	}).(GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput)
 }
 
 func (o GetServiceTemplateContainerLivenessProbeOutput) TimeoutSeconds() pulumi.IntOutput {
@@ -12386,6 +12915,100 @@ func (o GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput) In
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader {
 		return vs[0].([]GetServiceTemplateContainerLivenessProbeHttpGetHttpHeader)[vs[1].(int)]
 	}).(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeTcpSocket struct {
+	Port int `pulumi:"port"`
+}
+
+// GetServiceTemplateContainerLivenessProbeTcpSocketInput is an input type that accepts GetServiceTemplateContainerLivenessProbeTcpSocketArgs and GetServiceTemplateContainerLivenessProbeTcpSocketOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeTcpSocketInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeTcpSocketArgs{...}
+type GetServiceTemplateContainerLivenessProbeTcpSocketInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeTcpSocketOutput() GetServiceTemplateContainerLivenessProbeTcpSocketOutput
+	ToGetServiceTemplateContainerLivenessProbeTcpSocketOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeTcpSocketOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeTcpSocketArgs struct {
+	Port pulumi.IntInput `pulumi:"port"`
+}
+
+func (GetServiceTemplateContainerLivenessProbeTcpSocketArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeTcpSocketArgs) ToGetServiceTemplateContainerLivenessProbeTcpSocketOutput() GetServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeTcpSocketOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeTcpSocketArgs) ToGetServiceTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeTcpSocketOutput)
+}
+
+// GetServiceTemplateContainerLivenessProbeTcpSocketArrayInput is an input type that accepts GetServiceTemplateContainerLivenessProbeTcpSocketArray and GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateContainerLivenessProbeTcpSocketArrayInput` via:
+//
+//	GetServiceTemplateContainerLivenessProbeTcpSocketArray{ GetServiceTemplateContainerLivenessProbeTcpSocketArgs{...} }
+type GetServiceTemplateContainerLivenessProbeTcpSocketArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput() GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput
+	ToGetServiceTemplateContainerLivenessProbeTcpSocketArrayOutputWithContext(context.Context) GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput
+}
+
+type GetServiceTemplateContainerLivenessProbeTcpSocketArray []GetServiceTemplateContainerLivenessProbeTcpSocketInput
+
+func (GetServiceTemplateContainerLivenessProbeTcpSocketArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (i GetServiceTemplateContainerLivenessProbeTcpSocketArray) ToGetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput() GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return i.ToGetServiceTemplateContainerLivenessProbeTcpSocketArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateContainerLivenessProbeTcpSocketArray) ToGetServiceTemplateContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeTcpSocketOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeTcpSocketOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeTcpSocketOutput) ToGetServiceTemplateContainerLivenessProbeTcpSocketOutput() GetServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeTcpSocketOutput) ToGetServiceTemplateContainerLivenessProbeTcpSocketOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeTcpSocketOutput) Port() pulumi.IntOutput {
+	return o.ApplyT(func(v GetServiceTemplateContainerLivenessProbeTcpSocket) int { return v.Port }).(pulumi.IntOutput)
+}
+
+type GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateContainerLivenessProbeTcpSocket)(nil)).Elem()
+}
+
+func (o GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput) ToGetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput() GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput) ToGetServiceTemplateContainerLivenessProbeTcpSocketArrayOutputWithContext(ctx context.Context) GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateContainerLivenessProbeTcpSocketOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateContainerLivenessProbeTcpSocket {
+		return vs[0].([]GetServiceTemplateContainerLivenessProbeTcpSocket)[vs[1].(int)]
+	}).(GetServiceTemplateContainerLivenessProbeTcpSocketOutput)
 }
 
 type GetServiceTemplateContainerPort struct {
@@ -13344,8 +13967,10 @@ func (o GetServiceTemplateScalingArrayOutput) Index(i pulumi.IntInput) GetServic
 type GetServiceTemplateVolume struct {
 	CloudSqlInstances []GetServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstances"`
 	EmptyDirs         []GetServiceTemplateVolumeEmptyDir         `pulumi:"emptyDirs"`
+	Gcs               []GetServiceTemplateVolumeGc               `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Service.
 	Name    string                           `pulumi:"name"`
+	Nfs     []GetServiceTemplateVolumeNf     `pulumi:"nfs"`
 	Secrets []GetServiceTemplateVolumeSecret `pulumi:"secrets"`
 }
 
@@ -13363,8 +13988,10 @@ type GetServiceTemplateVolumeInput interface {
 type GetServiceTemplateVolumeArgs struct {
 	CloudSqlInstances GetServiceTemplateVolumeCloudSqlInstanceArrayInput `pulumi:"cloudSqlInstances"`
 	EmptyDirs         GetServiceTemplateVolumeEmptyDirArrayInput         `pulumi:"emptyDirs"`
+	Gcs               GetServiceTemplateVolumeGcArrayInput               `pulumi:"gcs"`
 	// The name of the Cloud Run v2 Service.
 	Name    pulumi.StringInput                       `pulumi:"name"`
+	Nfs     GetServiceTemplateVolumeNfArrayInput     `pulumi:"nfs"`
 	Secrets GetServiceTemplateVolumeSecretArrayInput `pulumi:"secrets"`
 }
 
@@ -13429,9 +14056,17 @@ func (o GetServiceTemplateVolumeOutput) EmptyDirs() GetServiceTemplateVolumeEmpt
 	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeEmptyDir { return v.EmptyDirs }).(GetServiceTemplateVolumeEmptyDirArrayOutput)
 }
 
+func (o GetServiceTemplateVolumeOutput) Gcs() GetServiceTemplateVolumeGcArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeGc { return v.Gcs }).(GetServiceTemplateVolumeGcArrayOutput)
+}
+
 // The name of the Cloud Run v2 Service.
 func (o GetServiceTemplateVolumeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v GetServiceTemplateVolume) string { return v.Name }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVolumeOutput) Nfs() GetServiceTemplateVolumeNfArrayOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolume) []GetServiceTemplateVolumeNf { return v.Nfs }).(GetServiceTemplateVolumeNfArrayOutput)
 }
 
 func (o GetServiceTemplateVolumeOutput) Secrets() GetServiceTemplateVolumeSecretArrayOutput {
@@ -13650,6 +14285,212 @@ func (o GetServiceTemplateVolumeEmptyDirArrayOutput) Index(i pulumi.IntInput) Ge
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVolumeEmptyDir {
 		return vs[0].([]GetServiceTemplateVolumeEmptyDir)[vs[1].(int)]
 	}).(GetServiceTemplateVolumeEmptyDirOutput)
+}
+
+type GetServiceTemplateVolumeGc struct {
+	Bucket   string `pulumi:"bucket"`
+	ReadOnly bool   `pulumi:"readOnly"`
+}
+
+// GetServiceTemplateVolumeGcInput is an input type that accepts GetServiceTemplateVolumeGcArgs and GetServiceTemplateVolumeGcOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeGcInput` via:
+//
+//	GetServiceTemplateVolumeGcArgs{...}
+type GetServiceTemplateVolumeGcInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeGcOutput() GetServiceTemplateVolumeGcOutput
+	ToGetServiceTemplateVolumeGcOutputWithContext(context.Context) GetServiceTemplateVolumeGcOutput
+}
+
+type GetServiceTemplateVolumeGcArgs struct {
+	Bucket   pulumi.StringInput `pulumi:"bucket"`
+	ReadOnly pulumi.BoolInput   `pulumi:"readOnly"`
+}
+
+func (GetServiceTemplateVolumeGcArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeGc)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeGcArgs) ToGetServiceTemplateVolumeGcOutput() GetServiceTemplateVolumeGcOutput {
+	return i.ToGetServiceTemplateVolumeGcOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeGcArgs) ToGetServiceTemplateVolumeGcOutputWithContext(ctx context.Context) GetServiceTemplateVolumeGcOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeGcOutput)
+}
+
+// GetServiceTemplateVolumeGcArrayInput is an input type that accepts GetServiceTemplateVolumeGcArray and GetServiceTemplateVolumeGcArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeGcArrayInput` via:
+//
+//	GetServiceTemplateVolumeGcArray{ GetServiceTemplateVolumeGcArgs{...} }
+type GetServiceTemplateVolumeGcArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeGcArrayOutput() GetServiceTemplateVolumeGcArrayOutput
+	ToGetServiceTemplateVolumeGcArrayOutputWithContext(context.Context) GetServiceTemplateVolumeGcArrayOutput
+}
+
+type GetServiceTemplateVolumeGcArray []GetServiceTemplateVolumeGcInput
+
+func (GetServiceTemplateVolumeGcArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeGc)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeGcArray) ToGetServiceTemplateVolumeGcArrayOutput() GetServiceTemplateVolumeGcArrayOutput {
+	return i.ToGetServiceTemplateVolumeGcArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeGcArray) ToGetServiceTemplateVolumeGcArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeGcArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeGcArrayOutput)
+}
+
+type GetServiceTemplateVolumeGcOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeGcOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeGc)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeGcOutput) ToGetServiceTemplateVolumeGcOutput() GetServiceTemplateVolumeGcOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeGcOutput) ToGetServiceTemplateVolumeGcOutputWithContext(ctx context.Context) GetServiceTemplateVolumeGcOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeGcOutput) Bucket() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeGc) string { return v.Bucket }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVolumeGcOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeGc) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+type GetServiceTemplateVolumeGcArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeGcArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeGc)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeGcArrayOutput) ToGetServiceTemplateVolumeGcArrayOutput() GetServiceTemplateVolumeGcArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeGcArrayOutput) ToGetServiceTemplateVolumeGcArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeGcArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeGcArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateVolumeGcOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVolumeGc {
+		return vs[0].([]GetServiceTemplateVolumeGc)[vs[1].(int)]
+	}).(GetServiceTemplateVolumeGcOutput)
+}
+
+type GetServiceTemplateVolumeNf struct {
+	Path     string `pulumi:"path"`
+	ReadOnly bool   `pulumi:"readOnly"`
+	Server   string `pulumi:"server"`
+}
+
+// GetServiceTemplateVolumeNfInput is an input type that accepts GetServiceTemplateVolumeNfArgs and GetServiceTemplateVolumeNfOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeNfInput` via:
+//
+//	GetServiceTemplateVolumeNfArgs{...}
+type GetServiceTemplateVolumeNfInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeNfOutput() GetServiceTemplateVolumeNfOutput
+	ToGetServiceTemplateVolumeNfOutputWithContext(context.Context) GetServiceTemplateVolumeNfOutput
+}
+
+type GetServiceTemplateVolumeNfArgs struct {
+	Path     pulumi.StringInput `pulumi:"path"`
+	ReadOnly pulumi.BoolInput   `pulumi:"readOnly"`
+	Server   pulumi.StringInput `pulumi:"server"`
+}
+
+func (GetServiceTemplateVolumeNfArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeNf)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeNfArgs) ToGetServiceTemplateVolumeNfOutput() GetServiceTemplateVolumeNfOutput {
+	return i.ToGetServiceTemplateVolumeNfOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeNfArgs) ToGetServiceTemplateVolumeNfOutputWithContext(ctx context.Context) GetServiceTemplateVolumeNfOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeNfOutput)
+}
+
+// GetServiceTemplateVolumeNfArrayInput is an input type that accepts GetServiceTemplateVolumeNfArray and GetServiceTemplateVolumeNfArrayOutput values.
+// You can construct a concrete instance of `GetServiceTemplateVolumeNfArrayInput` via:
+//
+//	GetServiceTemplateVolumeNfArray{ GetServiceTemplateVolumeNfArgs{...} }
+type GetServiceTemplateVolumeNfArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceTemplateVolumeNfArrayOutput() GetServiceTemplateVolumeNfArrayOutput
+	ToGetServiceTemplateVolumeNfArrayOutputWithContext(context.Context) GetServiceTemplateVolumeNfArrayOutput
+}
+
+type GetServiceTemplateVolumeNfArray []GetServiceTemplateVolumeNfInput
+
+func (GetServiceTemplateVolumeNfArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeNf)(nil)).Elem()
+}
+
+func (i GetServiceTemplateVolumeNfArray) ToGetServiceTemplateVolumeNfArrayOutput() GetServiceTemplateVolumeNfArrayOutput {
+	return i.ToGetServiceTemplateVolumeNfArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceTemplateVolumeNfArray) ToGetServiceTemplateVolumeNfArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeNfArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceTemplateVolumeNfArrayOutput)
+}
+
+type GetServiceTemplateVolumeNfOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeNfOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceTemplateVolumeNf)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeNfOutput) ToGetServiceTemplateVolumeNfOutput() GetServiceTemplateVolumeNfOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeNfOutput) ToGetServiceTemplateVolumeNfOutputWithContext(ctx context.Context) GetServiceTemplateVolumeNfOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeNfOutput) Path() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeNf) string { return v.Path }).(pulumi.StringOutput)
+}
+
+func (o GetServiceTemplateVolumeNfOutput) ReadOnly() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeNf) bool { return v.ReadOnly }).(pulumi.BoolOutput)
+}
+
+func (o GetServiceTemplateVolumeNfOutput) Server() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceTemplateVolumeNf) string { return v.Server }).(pulumi.StringOutput)
+}
+
+type GetServiceTemplateVolumeNfArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceTemplateVolumeNfArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceTemplateVolumeNf)(nil)).Elem()
+}
+
+func (o GetServiceTemplateVolumeNfArrayOutput) ToGetServiceTemplateVolumeNfArrayOutput() GetServiceTemplateVolumeNfArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeNfArrayOutput) ToGetServiceTemplateVolumeNfArrayOutputWithContext(ctx context.Context) GetServiceTemplateVolumeNfArrayOutput {
+	return o
+}
+
+func (o GetServiceTemplateVolumeNfArrayOutput) Index(i pulumi.IntInput) GetServiceTemplateVolumeNfOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceTemplateVolumeNf {
+		return vs[0].([]GetServiceTemplateVolumeNf)[vs[1].(int)]
+	}).(GetServiceTemplateVolumeNfOutput)
 }
 
 type GetServiceTemplateVolumeSecret struct {
@@ -14515,6 +15356,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeHttpGetPtrInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeHttpGetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeTcpSocketInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerLivenessProbeTcpSocketPtrInput)(nil)).Elem(), ServiceTemplateContainerLivenessProbeTcpSocketArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerPortInput)(nil)).Elem(), ServiceTemplateContainerPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerPortArrayInput)(nil)).Elem(), ServiceTemplateContainerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateContainerResourcesInput)(nil)).Elem(), ServiceTemplateContainerResourcesArgs{})
@@ -14539,6 +15382,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeCloudSqlInstancePtrInput)(nil)).Elem(), ServiceTemplateVolumeCloudSqlInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeEmptyDirInput)(nil)).Elem(), ServiceTemplateVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeEmptyDirPtrInput)(nil)).Elem(), ServiceTemplateVolumeEmptyDirArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeGcsInput)(nil)).Elem(), ServiceTemplateVolumeGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeGcsPtrInput)(nil)).Elem(), ServiceTemplateVolumeGcsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeNfsInput)(nil)).Elem(), ServiceTemplateVolumeNfsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeNfsPtrInput)(nil)).Elem(), ServiceTemplateVolumeNfsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeSecretInput)(nil)).Elem(), ServiceTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeSecretPtrInput)(nil)).Elem(), ServiceTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceTemplateVolumeSecretItemInput)(nil)).Elem(), ServiceTemplateVolumeSecretItemArgs{})
@@ -14615,6 +15462,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGetArrayInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeHttpGetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeTcpSocketInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeTcpSocketArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerLivenessProbeTcpSocketArrayInput)(nil)).Elem(), GetServiceTemplateContainerLivenessProbeTcpSocketArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerPortInput)(nil)).Elem(), GetServiceTemplateContainerPortArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerPortArrayInput)(nil)).Elem(), GetServiceTemplateContainerPortArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateContainerResourceInput)(nil)).Elem(), GetServiceTemplateContainerResourceArgs{})
@@ -14639,6 +15488,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeCloudSqlInstanceArrayInput)(nil)).Elem(), GetServiceTemplateVolumeCloudSqlInstanceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeEmptyDirInput)(nil)).Elem(), GetServiceTemplateVolumeEmptyDirArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeEmptyDirArrayInput)(nil)).Elem(), GetServiceTemplateVolumeEmptyDirArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeGcInput)(nil)).Elem(), GetServiceTemplateVolumeGcArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeGcArrayInput)(nil)).Elem(), GetServiceTemplateVolumeGcArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeNfInput)(nil)).Elem(), GetServiceTemplateVolumeNfArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeNfArrayInput)(nil)).Elem(), GetServiceTemplateVolumeNfArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeSecretInput)(nil)).Elem(), GetServiceTemplateVolumeSecretArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeSecretArrayInput)(nil)).Elem(), GetServiceTemplateVolumeSecretArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceTemplateVolumeSecretItemInput)(nil)).Elem(), GetServiceTemplateVolumeSecretItemArgs{})
@@ -14723,6 +15576,8 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeHttpGetPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateContainerLivenessProbeTcpSocketPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerPortOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerPortArrayOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateContainerResourcesOutput{})
@@ -14747,6 +15602,10 @@ func init() {
 	pulumi.RegisterOutputType(ServiceTemplateVolumeCloudSqlInstancePtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeEmptyDirOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeEmptyDirPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateVolumeGcsOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateVolumeGcsPtrOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateVolumeNfsOutput{})
+	pulumi.RegisterOutputType(ServiceTemplateVolumeNfsPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeSecretOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeSecretPtrOutput{})
 	pulumi.RegisterOutputType(ServiceTemplateVolumeSecretItemOutput{})
@@ -14823,6 +15682,8 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeHttpGetArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeTcpSocketOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateContainerLivenessProbeTcpSocketArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerPortOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerPortArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateContainerResourceOutput{})
@@ -14847,6 +15708,10 @@ func init() {
 	pulumi.RegisterOutputType(GetServiceTemplateVolumeCloudSqlInstanceArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVolumeEmptyDirOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVolumeEmptyDirArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeGcOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeGcArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeNfOutput{})
+	pulumi.RegisterOutputType(GetServiceTemplateVolumeNfArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVolumeSecretOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVolumeSecretArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceTemplateVolumeSecretItemOutput{})

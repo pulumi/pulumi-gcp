@@ -21,6 +21,7 @@ class WorkstationConfigArgs:
                  workstation_config_id: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
+                 disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input['WorkstationConfigEncryptionKeyArgs']] = None,
@@ -44,6 +45,7 @@ class WorkstationConfigArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['WorkstationConfigContainerArgs'] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
+        :param pulumi.Input[bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input['WorkstationConfigEncryptionKeyArgs'] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -74,6 +76,8 @@ class WorkstationConfigArgs:
             pulumi.set(__self__, "annotations", annotations)
         if container is not None:
             pulumi.set(__self__, "container", container)
+        if disable_tcp_connections is not None:
+            pulumi.set(__self__, "disable_tcp_connections", disable_tcp_connections)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if enable_audit_agent is not None:
@@ -160,6 +164,18 @@ class WorkstationConfigArgs:
     @container.setter
     def container(self, value: Optional[pulumi.Input['WorkstationConfigContainerArgs']]):
         pulumi.set(self, "container", value)
+
+    @property
+    @pulumi.getter(name="disableTcpConnections")
+    def disable_tcp_connections(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+        """
+        return pulumi.get(self, "disable_tcp_connections")
+
+    @disable_tcp_connections.setter
+    def disable_tcp_connections(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_tcp_connections", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -302,6 +318,7 @@ class _WorkstationConfigState:
                  container: Optional[pulumi.Input['WorkstationConfigContainerArgs']] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  degraded: Optional[pulumi.Input[bool]] = None,
+                 disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -332,6 +349,7 @@ class _WorkstationConfigState:
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
+        :param pulumi.Input[bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
@@ -380,6 +398,8 @@ class _WorkstationConfigState:
             pulumi.set(__self__, "create_time", create_time)
         if degraded is not None:
             pulumi.set(__self__, "degraded", degraded)
+        if disable_tcp_connections is not None:
+            pulumi.set(__self__, "disable_tcp_connections", disable_tcp_connections)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_annotations is not None:
@@ -482,6 +502,18 @@ class _WorkstationConfigState:
     @degraded.setter
     def degraded(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "degraded", value)
+
+    @property
+    @pulumi.getter(name="disableTcpConnections")
+    def disable_tcp_connections(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+        """
+        return pulumi.get(self, "disable_tcp_connections")
+
+    @disable_tcp_connections.setter
+    def disable_tcp_connections(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "disable_tcp_connections", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -737,6 +769,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']]] = None,
+                 disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
@@ -1111,6 +1144,7 @@ class WorkstationConfig(pulumi.CustomResource):
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']] container: Container that will be run for each workstation using this configuration when that workstation is started.
                Structure is documented below.
+        :param pulumi.Input[bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[bool] enable_audit_agent: Whether to enable Linux `auditd` logging on the workstation. When enabled, a service account must also be specified that has `logging.buckets.write` permission on the project. Operating system audit logging is distinct from Cloud Audit Logs.
         :param pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']] encryption_key: Encrypts resources of this workstation configuration using a customer-managed encryption key.
@@ -1516,6 +1550,7 @@ class WorkstationConfig(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']]] = None,
+                 disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  enable_audit_agent: Optional[pulumi.Input[bool]] = None,
                  encryption_key: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigEncryptionKeyArgs']]] = None,
@@ -1540,6 +1575,7 @@ class WorkstationConfig(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["container"] = container
+            __props__.__dict__["disable_tcp_connections"] = disable_tcp_connections
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["enable_audit_agent"] = enable_audit_agent
             __props__.__dict__["encryption_key"] = encryption_key
@@ -1585,6 +1621,7 @@ class WorkstationConfig(pulumi.CustomResource):
             container: Optional[pulumi.Input[pulumi.InputType['WorkstationConfigContainerArgs']]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             degraded: Optional[pulumi.Input[bool]] = None,
+            disable_tcp_connections: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1620,6 +1657,7 @@ class WorkstationConfig(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] create_time: Time when this resource was created.
         :param pulumi.Input[bool] degraded: Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
+        :param pulumi.Input[bool] disable_tcp_connections: Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
         :param pulumi.Input[str] display_name: Human-readable name for this resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_annotations: All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
                Terraform, other clients and services.
@@ -1667,6 +1705,7 @@ class WorkstationConfig(pulumi.CustomResource):
         __props__.__dict__["container"] = container
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["degraded"] = degraded
+        __props__.__dict__["disable_tcp_connections"] = disable_tcp_connections
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1731,6 +1770,14 @@ class WorkstationConfig(pulumi.CustomResource):
         Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
         """
         return pulumi.get(self, "degraded")
+
+    @property
+    @pulumi.getter(name="disableTcpConnections")
+    def disable_tcp_connections(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+        """
+        return pulumi.get(self, "disable_tcp_connections")
 
     @property
     @pulumi.getter(name="displayName")

@@ -5943,7 +5943,8 @@ class InstanceBootDiskInitializeParamsArgs:
                  size: Optional[pulumi.Input[int]] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        :param pulumi.Input[bool] enable_confidential_compute: Whether this disk is using confidential compute mode.
+               Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
         :param pulumi.Input[str] image: The image from which to initialize this disk. This can be
                one of: the image's `self_link`, `projects/{project}/global/images/{image}`,
                `projects/{project}/global/images/family/{family}`, `global/images/{image}`,
@@ -5994,7 +5995,8 @@ class InstanceBootDiskInitializeParamsArgs:
     @pulumi.getter(name="enableConfidentialCompute")
     def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
         """
-        Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        Whether this disk is using confidential compute mode.
+        Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
         """
         return pulumi.get(self, "enable_confidential_compute")
 

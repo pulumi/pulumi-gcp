@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetFoldersResult {
     /**
-     * @return A list of projects matching the provided filter. Structure is defined below.
+     * @return A list of folders matching the provided filter. Structure is defined below.
      * 
      */
     private List<GetFoldersFolder> folders;
@@ -26,7 +26,7 @@ public final class GetFoldersResult {
 
     private GetFoldersResult() {}
     /**
-     * @return A list of projects matching the provided filter. Structure is defined below.
+     * @return A list of folders matching the provided filter. Structure is defined below.
      * 
      */
     public List<GetFoldersFolder> folders() {

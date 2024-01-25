@@ -50,6 +50,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
+//			admin, err := storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
+//				Bucket: reportBucket.Name,
+//				Role:   pulumi.String("roles/storage.admin"),
+//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-storageinsights.iam.gserviceaccount.com", project.Number)),
+//			})
+//			if err != nil {
+//				return err
+//			}
 //			_, err = storage.NewInsightsReportConfig(ctx, "config", &storage.InsightsReportConfigArgs{
 //				DisplayName: pulumi.String("Test Report Config"),
 //				Location:    pulumi.String("us-central1"),
@@ -85,15 +93,9 @@ import (
 //						DestinationPath: pulumi.String("test-insights-reports"),
 //					},
 //				},
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = storage.NewBucketIAMMember(ctx, "admin", &storage.BucketIAMMemberArgs{
-//				Bucket: reportBucket.Name,
-//				Role:   pulumi.String("roles/storage.admin"),
-//				Member: pulumi.String(fmt.Sprintf("serviceAccount:service-%v@gcp-sa-storageinsights.iam.gserviceaccount.com", project.Number)),
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				admin,
+//			}))
 //			if err != nil {
 //				return err
 //			}

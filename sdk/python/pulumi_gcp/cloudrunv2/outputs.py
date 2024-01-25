@@ -46,6 +46,7 @@ __all__ = [
     'ServiceTemplateContainerLivenessProbeGrpc',
     'ServiceTemplateContainerLivenessProbeHttpGet',
     'ServiceTemplateContainerLivenessProbeHttpGetHttpHeader',
+    'ServiceTemplateContainerLivenessProbeTcpSocket',
     'ServiceTemplateContainerPort',
     'ServiceTemplateContainerResources',
     'ServiceTemplateContainerStartupProbe',
@@ -58,6 +59,8 @@ __all__ = [
     'ServiceTemplateVolume',
     'ServiceTemplateVolumeCloudSqlInstance',
     'ServiceTemplateVolumeEmptyDir',
+    'ServiceTemplateVolumeGcs',
+    'ServiceTemplateVolumeNfs',
     'ServiceTemplateVolumeSecret',
     'ServiceTemplateVolumeSecretItem',
     'ServiceTemplateVpcAccess',
@@ -96,6 +99,7 @@ __all__ = [
     'GetServiceTemplateContainerLivenessProbeGrpcResult',
     'GetServiceTemplateContainerLivenessProbeHttpGetResult',
     'GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderResult',
+    'GetServiceTemplateContainerLivenessProbeTcpSocketResult',
     'GetServiceTemplateContainerPortResult',
     'GetServiceTemplateContainerResourceResult',
     'GetServiceTemplateContainerStartupProbeResult',
@@ -108,6 +112,8 @@ __all__ = [
     'GetServiceTemplateVolumeResult',
     'GetServiceTemplateVolumeCloudSqlInstanceResult',
     'GetServiceTemplateVolumeEmptyDirResult',
+    'GetServiceTemplateVolumeGcResult',
+    'GetServiceTemplateVolumeNfResult',
     'GetServiceTemplateVolumeSecretResult',
     'GetServiceTemplateVolumeSecretItemResult',
     'GetServiceTemplateVpcAccessResult',
@@ -2352,6 +2358,8 @@ class ServiceTemplateContainerLivenessProbe(dict):
             suggest = "initial_delay_seconds"
         elif key == "periodSeconds":
             suggest = "period_seconds"
+        elif key == "tcpSocket":
+            suggest = "tcp_socket"
         elif key == "timeoutSeconds":
             suggest = "timeout_seconds"
 
@@ -2372,6 +2380,7 @@ class ServiceTemplateContainerLivenessProbe(dict):
                  http_get: Optional['outputs.ServiceTemplateContainerLivenessProbeHttpGet'] = None,
                  initial_delay_seconds: Optional[int] = None,
                  period_seconds: Optional[int] = None,
+                 tcp_socket: Optional['outputs.ServiceTemplateContainerLivenessProbeTcpSocket'] = None,
                  timeout_seconds: Optional[int] = None):
         """
         :param int failure_threshold: Minimum consecutive failures for the probe to be considered failed after having succeeded. Defaults to 3. Minimum value is 1.
@@ -2381,6 +2390,8 @@ class ServiceTemplateContainerLivenessProbe(dict):
                Structure is documented below.
         :param int initial_delay_seconds: Number of seconds after the container has started before the probe is initiated. Defaults to 0 seconds. Minimum value is 0. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         :param int period_seconds: How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
+        :param 'ServiceTemplateContainerLivenessProbeTcpSocketArgs' tcp_socket: TCPSocketAction describes an action based on opening a socket
+               Structure is documented below.
         :param int timeout_seconds: Number of seconds after which the probe times out. Defaults to 1 second. Minimum value is 1. Maximum value is 3600. Must be smaller than periodSeconds. More info: https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
         """
         if failure_threshold is not None:
@@ -2393,6 +2404,8 @@ class ServiceTemplateContainerLivenessProbe(dict):
             pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         if period_seconds is not None:
             pulumi.set(__self__, "period_seconds", period_seconds)
+        if tcp_socket is not None:
+            pulumi.set(__self__, "tcp_socket", tcp_socket)
         if timeout_seconds is not None:
             pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
@@ -2437,6 +2450,15 @@ class ServiceTemplateContainerLivenessProbe(dict):
         How often (in seconds) to perform the probe. Default to 10 seconds. Minimum value is 1. Maximum value for liveness probe is 3600. Maximum value for startup probe is 240. Must be greater or equal than timeoutSeconds
         """
         return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="tcpSocket")
+    def tcp_socket(self) -> Optional['outputs.ServiceTemplateContainerLivenessProbeTcpSocket']:
+        """
+        TCPSocketAction describes an action based on opening a socket
+        Structure is documented below.
+        """
+        return pulumi.get(self, "tcp_socket")
 
     @property
     @pulumi.getter(name="timeoutSeconds")
@@ -2576,6 +2598,26 @@ class ServiceTemplateContainerLivenessProbeHttpGetHttpHeader(dict):
         The header field value
         """
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ServiceTemplateContainerLivenessProbeTcpSocket(dict):
+    def __init__(__self__, *,
+                 port: int):
+        """
+        :param int port: Port number to access on the container. Must be in the range 1 to 65535.
+               If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        """
+        Port number to access on the container. Must be in the range 1 to 65535.
+        If not specified, defaults to the same value as container.ports[0].containerPort.
+        """
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -3085,10 +3127,16 @@ class ServiceTemplateVolume(dict):
                  name: str,
                  cloud_sql_instance: Optional['outputs.ServiceTemplateVolumeCloudSqlInstance'] = None,
                  empty_dir: Optional['outputs.ServiceTemplateVolumeEmptyDir'] = None,
+                 gcs: Optional['outputs.ServiceTemplateVolumeGcs'] = None,
+                 nfs: Optional['outputs.ServiceTemplateVolumeNfs'] = None,
                  secret: Optional['outputs.ServiceTemplateVolumeSecret'] = None):
         """
         :param str name: Volume's name.
         :param 'ServiceTemplateVolumeCloudSqlInstanceArgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
+               Structure is documented below.
+        :param 'ServiceTemplateVolumeGcsArgs' gcs: Represents a GCS Bucket mounted as a volume.
+               Structure is documented below.
+        :param 'ServiceTemplateVolumeNfsArgs' nfs: Represents an NFS mount.
                Structure is documented below.
         :param 'ServiceTemplateVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
@@ -3098,6 +3146,10 @@ class ServiceTemplateVolume(dict):
             pulumi.set(__self__, "cloud_sql_instance", cloud_sql_instance)
         if empty_dir is not None:
             pulumi.set(__self__, "empty_dir", empty_dir)
+        if gcs is not None:
+            pulumi.set(__self__, "gcs", gcs)
+        if nfs is not None:
+            pulumi.set(__self__, "nfs", nfs)
         if secret is not None:
             pulumi.set(__self__, "secret", secret)
 
@@ -3122,6 +3174,24 @@ class ServiceTemplateVolume(dict):
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional['outputs.ServiceTemplateVolumeEmptyDir']:
         return pulumi.get(self, "empty_dir")
+
+    @property
+    @pulumi.getter
+    def gcs(self) -> Optional['outputs.ServiceTemplateVolumeGcs']:
+        """
+        Represents a GCS Bucket mounted as a volume.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gcs")
+
+    @property
+    @pulumi.getter
+    def nfs(self) -> Optional['outputs.ServiceTemplateVolumeNfs']:
+        """
+        Represents an NFS mount.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "nfs")
 
     @property
     @pulumi.getter
@@ -3179,8 +3249,6 @@ class ServiceTemplateVolumeEmptyDir(dict):
                Default value is `MEMORY`.
                Possible values are: `MEMORY`.
         :param str size_limit: Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
-               
-               - - -
         """
         if medium is not None:
             pulumi.set(__self__, "medium", medium)
@@ -3202,10 +3270,117 @@ class ServiceTemplateVolumeEmptyDir(dict):
     def size_limit(self) -> Optional[str]:
         """
         Limit on the storage usable by this EmptyDir volume. The size limit is also applicable for memory medium. The maximum usage on memory medium EmptyDir would be the minimum value between the SizeLimit specified here and the sum of memory limits of all containers in a pod. This field's values are of the 'Quantity' k8s type: https://kubernetes.io/docs/reference/kubernetes-api/common-definitions/quantity/. The default is nil which means that the limit is undefined. More info: https://kubernetes.io/docs/concepts/storage/volumes/#emptydir.
+        """
+        return pulumi.get(self, "size_limit")
+
+
+@pulumi.output_type
+class ServiceTemplateVolumeGcs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateVolumeGcs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateVolumeGcs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateVolumeGcs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket: str,
+                 read_only: Optional[bool] = None):
+        """
+        :param str bucket: GCS Bucket name
+        :param bool read_only: If true, mount the GCS bucket as read-only
+        """
+        pulumi.set(__self__, "bucket", bucket)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        """
+        GCS Bucket name
+        """
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        If true, mount the GCS bucket as read-only
+        """
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class ServiceTemplateVolumeNfs(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "readOnly":
+            suggest = "read_only"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ServiceTemplateVolumeNfs. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ServiceTemplateVolumeNfs.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ServiceTemplateVolumeNfs.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 path: str,
+                 server: str,
+                 read_only: Optional[bool] = None):
+        """
+        :param str path: Path that is exported by the NFS server.
+        :param str server: Hostname or IP address of the NFS server
+        :param bool read_only: If true, mount the NFS volume as read only
+               
+               - - -
+        """
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "server", server)
+        if read_only is not None:
+            pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        """
+        Path that is exported by the NFS server.
+        """
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter
+    def server(self) -> str:
+        """
+        Hostname or IP address of the NFS server
+        """
+        return pulumi.get(self, "server")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> Optional[bool]:
+        """
+        If true, mount the NFS volume as read only
 
         - - -
         """
-        return pulumi.get(self, "size_limit")
+        return pulumi.get(self, "read_only")
 
 
 @pulumi.output_type
@@ -4685,12 +4860,14 @@ class GetServiceTemplateContainerLivenessProbeResult(dict):
                  http_gets: Sequence['outputs.GetServiceTemplateContainerLivenessProbeHttpGetResult'],
                  initial_delay_seconds: int,
                  period_seconds: int,
+                 tcp_sockets: Sequence['outputs.GetServiceTemplateContainerLivenessProbeTcpSocketResult'],
                  timeout_seconds: int):
         pulumi.set(__self__, "failure_threshold", failure_threshold)
         pulumi.set(__self__, "grpcs", grpcs)
         pulumi.set(__self__, "http_gets", http_gets)
         pulumi.set(__self__, "initial_delay_seconds", initial_delay_seconds)
         pulumi.set(__self__, "period_seconds", period_seconds)
+        pulumi.set(__self__, "tcp_sockets", tcp_sockets)
         pulumi.set(__self__, "timeout_seconds", timeout_seconds)
 
     @property
@@ -4717,6 +4894,11 @@ class GetServiceTemplateContainerLivenessProbeResult(dict):
     @pulumi.getter(name="periodSeconds")
     def period_seconds(self) -> int:
         return pulumi.get(self, "period_seconds")
+
+    @property
+    @pulumi.getter(name="tcpSockets")
+    def tcp_sockets(self) -> Sequence['outputs.GetServiceTemplateContainerLivenessProbeTcpSocketResult']:
+        return pulumi.get(self, "tcp_sockets")
 
     @property
     @pulumi.getter(name="timeoutSeconds")
@@ -4792,6 +4974,18 @@ class GetServiceTemplateContainerLivenessProbeHttpGetHttpHeaderResult(dict):
     @pulumi.getter
     def value(self) -> str:
         return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetServiceTemplateContainerLivenessProbeTcpSocketResult(dict):
+    def __init__(__self__, *,
+                 port: int):
+        pulumi.set(__self__, "port", port)
+
+    @property
+    @pulumi.getter
+    def port(self) -> int:
+        return pulumi.get(self, "port")
 
 
 @pulumi.output_type
@@ -5030,14 +5224,18 @@ class GetServiceTemplateVolumeResult(dict):
     def __init__(__self__, *,
                  cloud_sql_instances: Sequence['outputs.GetServiceTemplateVolumeCloudSqlInstanceResult'],
                  empty_dirs: Sequence['outputs.GetServiceTemplateVolumeEmptyDirResult'],
+                 gcs: Sequence['outputs.GetServiceTemplateVolumeGcResult'],
                  name: str,
+                 nfs: Sequence['outputs.GetServiceTemplateVolumeNfResult'],
                  secrets: Sequence['outputs.GetServiceTemplateVolumeSecretResult']):
         """
         :param str name: The name of the Cloud Run v2 Service.
         """
         pulumi.set(__self__, "cloud_sql_instances", cloud_sql_instances)
         pulumi.set(__self__, "empty_dirs", empty_dirs)
+        pulumi.set(__self__, "gcs", gcs)
         pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "nfs", nfs)
         pulumi.set(__self__, "secrets", secrets)
 
     @property
@@ -5052,11 +5250,21 @@ class GetServiceTemplateVolumeResult(dict):
 
     @property
     @pulumi.getter
+    def gcs(self) -> Sequence['outputs.GetServiceTemplateVolumeGcResult']:
+        return pulumi.get(self, "gcs")
+
+    @property
+    @pulumi.getter
     def name(self) -> str:
         """
         The name of the Cloud Run v2 Service.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def nfs(self) -> Sequence['outputs.GetServiceTemplateVolumeNfResult']:
+        return pulumi.get(self, "nfs")
 
     @property
     @pulumi.getter
@@ -5093,6 +5301,51 @@ class GetServiceTemplateVolumeEmptyDirResult(dict):
     @pulumi.getter(name="sizeLimit")
     def size_limit(self) -> str:
         return pulumi.get(self, "size_limit")
+
+
+@pulumi.output_type
+class GetServiceTemplateVolumeGcResult(dict):
+    def __init__(__self__, *,
+                 bucket: str,
+                 read_only: bool):
+        pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "read_only", read_only)
+
+    @property
+    @pulumi.getter
+    def bucket(self) -> str:
+        return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> bool:
+        return pulumi.get(self, "read_only")
+
+
+@pulumi.output_type
+class GetServiceTemplateVolumeNfResult(dict):
+    def __init__(__self__, *,
+                 path: str,
+                 read_only: bool,
+                 server: str):
+        pulumi.set(__self__, "path", path)
+        pulumi.set(__self__, "read_only", read_only)
+        pulumi.set(__self__, "server", server)
+
+    @property
+    @pulumi.getter
+    def path(self) -> str:
+        return pulumi.get(self, "path")
+
+    @property
+    @pulumi.getter(name="readOnly")
+    def read_only(self) -> bool:
+        return pulumi.get(self, "read_only")
+
+    @property
+    @pulumi.getter
+    def server(self) -> str:
+        return pulumi.get(self, "server")
 
 
 @pulumi.output_type

@@ -8,6 +8,8 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeCloudSqlInstanceArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeEmptyDirArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeGcsArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeNfsArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateVolumeSecretArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -44,6 +46,23 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
     }
 
     /**
+     * Represents a GCS Bucket mounted as a volume.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gcs")
+    private @Nullable Output<ServiceTemplateVolumeGcsArgs> gcs;
+
+    /**
+     * @return Represents a GCS Bucket mounted as a volume.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateVolumeGcsArgs>> gcs() {
+        return Optional.ofNullable(this.gcs);
+    }
+
+    /**
      * Volume&#39;s name.
      * 
      */
@@ -56,6 +75,23 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
      */
     public Output<String> name() {
         return this.name;
+    }
+
+    /**
+     * Represents an NFS mount.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="nfs")
+    private @Nullable Output<ServiceTemplateVolumeNfsArgs> nfs;
+
+    /**
+     * @return Represents an NFS mount.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ServiceTemplateVolumeNfsArgs>> nfs() {
+        return Optional.ofNullable(this.nfs);
     }
 
     /**
@@ -80,7 +116,9 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
     private ServiceTemplateVolumeArgs(ServiceTemplateVolumeArgs $) {
         this.cloudSqlInstance = $.cloudSqlInstance;
         this.emptyDir = $.emptyDir;
+        this.gcs = $.gcs;
         this.name = $.name;
+        this.nfs = $.nfs;
         this.secret = $.secret;
     }
 
@@ -135,6 +173,29 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
         }
 
         /**
+         * @param gcs Represents a GCS Bucket mounted as a volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcs(@Nullable Output<ServiceTemplateVolumeGcsArgs> gcs) {
+            $.gcs = gcs;
+            return this;
+        }
+
+        /**
+         * @param gcs Represents a GCS Bucket mounted as a volume.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gcs(ServiceTemplateVolumeGcsArgs gcs) {
+            return gcs(Output.of(gcs));
+        }
+
+        /**
          * @param name Volume&#39;s name.
          * 
          * @return builder
@@ -153,6 +214,29 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param nfs Represents an NFS mount.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfs(@Nullable Output<ServiceTemplateVolumeNfsArgs> nfs) {
+            $.nfs = nfs;
+            return this;
+        }
+
+        /**
+         * @param nfs Represents an NFS mount.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder nfs(ServiceTemplateVolumeNfsArgs nfs) {
+            return nfs(Output.of(nfs));
         }
 
         /**

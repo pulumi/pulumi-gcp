@@ -30,14 +30,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A managed alloydb cluster.
- * 
- * To get more information about Cluster, see:
- * 
- * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
- * * How-to Guides
- *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
- * 
  * ## Example Usage
  * ### Alloydb Cluster Basic
  * ```java
@@ -113,6 +105,7 @@ import javax.annotation.Nullable;
  *             .clusterId(&#34;alloydb-cluster-full&#34;)
  *             .location(&#34;us-central1&#34;)
  *             .network(default_.id())
+ *             .databaseVersion(&#34;POSTGRES_15&#34;)
  *             .initialUser(ClusterInitialUserArgs.builder()
  *                 .user(&#34;alloydb-cluster-full&#34;)
  *                 .password(&#34;alloydb-cluster-full&#34;)
@@ -495,14 +488,14 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.continuousBackupInfos;
     }
     /**
-     * The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
      * 
      */
     @Export(name="databaseVersion", refs={String.class}, tree="[0]")
     private Output<String> databaseVersion;
 
     /**
-     * @return The database engine major version. This is an output-only field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * @return The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
      * 
      */
     public Output<String> databaseVersion() {

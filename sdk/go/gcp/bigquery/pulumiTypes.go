@@ -10209,6 +10209,338 @@ func (o RoutineArgumentArrayOutput) Index(i pulumi.IntInput) RoutineArgumentOutp
 	}).(RoutineArgumentOutput)
 }
 
+type RoutineSparkOptions struct {
+	// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// Fully qualified name of the user-provided Spark connection object.
+	// Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+	Connection *string `pulumi:"connection"`
+	// Custom container image for the runtime environment.
+	ContainerImage *string `pulumi:"containerImage"`
+	// Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+	FileUris []string `pulumi:"fileUris"`
+	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
+	JarUris []string `pulumi:"jarUris"`
+	// The fully qualified name of a class in jarUris, for example, com.example.wordcount.
+	// Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
+	MainClass *string `pulumi:"mainClass"`
+	// The main file/jar URI of the Spark application.
+	// Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
+	// Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
+	MainFileUri *string `pulumi:"mainFileUri"`
+	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
+	// For more information, see Apache Spark and the procedure option list.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Properties map[string]string `pulumi:"properties"`
+	// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
+	PyFileUris []string `pulumi:"pyFileUris"`
+	// Runtime version. If not specified, the default runtime version is used.
+	RuntimeVersion *string `pulumi:"runtimeVersion"`
+}
+
+// RoutineSparkOptionsInput is an input type that accepts RoutineSparkOptionsArgs and RoutineSparkOptionsOutput values.
+// You can construct a concrete instance of `RoutineSparkOptionsInput` via:
+//
+//	RoutineSparkOptionsArgs{...}
+type RoutineSparkOptionsInput interface {
+	pulumi.Input
+
+	ToRoutineSparkOptionsOutput() RoutineSparkOptionsOutput
+	ToRoutineSparkOptionsOutputWithContext(context.Context) RoutineSparkOptionsOutput
+}
+
+type RoutineSparkOptionsArgs struct {
+	// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// Fully qualified name of the user-provided Spark connection object.
+	// Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+	Connection pulumi.StringPtrInput `pulumi:"connection"`
+	// Custom container image for the runtime environment.
+	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
+	// Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
+	JarUris pulumi.StringArrayInput `pulumi:"jarUris"`
+	// The fully qualified name of a class in jarUris, for example, com.example.wordcount.
+	// Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
+	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
+	// The main file/jar URI of the Spark application.
+	// Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
+	// Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
+	MainFileUri pulumi.StringPtrInput `pulumi:"mainFileUri"`
+	// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
+	// For more information, see Apache Spark and the procedure option list.
+	// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+	Properties pulumi.StringMapInput `pulumi:"properties"`
+	// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
+	PyFileUris pulumi.StringArrayInput `pulumi:"pyFileUris"`
+	// Runtime version. If not specified, the default runtime version is used.
+	RuntimeVersion pulumi.StringPtrInput `pulumi:"runtimeVersion"`
+}
+
+func (RoutineSparkOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineSparkOptions)(nil)).Elem()
+}
+
+func (i RoutineSparkOptionsArgs) ToRoutineSparkOptionsOutput() RoutineSparkOptionsOutput {
+	return i.ToRoutineSparkOptionsOutputWithContext(context.Background())
+}
+
+func (i RoutineSparkOptionsArgs) ToRoutineSparkOptionsOutputWithContext(ctx context.Context) RoutineSparkOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineSparkOptionsOutput)
+}
+
+func (i RoutineSparkOptionsArgs) ToRoutineSparkOptionsPtrOutput() RoutineSparkOptionsPtrOutput {
+	return i.ToRoutineSparkOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i RoutineSparkOptionsArgs) ToRoutineSparkOptionsPtrOutputWithContext(ctx context.Context) RoutineSparkOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineSparkOptionsOutput).ToRoutineSparkOptionsPtrOutputWithContext(ctx)
+}
+
+// RoutineSparkOptionsPtrInput is an input type that accepts RoutineSparkOptionsArgs, RoutineSparkOptionsPtr and RoutineSparkOptionsPtrOutput values.
+// You can construct a concrete instance of `RoutineSparkOptionsPtrInput` via:
+//
+//	        RoutineSparkOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type RoutineSparkOptionsPtrInput interface {
+	pulumi.Input
+
+	ToRoutineSparkOptionsPtrOutput() RoutineSparkOptionsPtrOutput
+	ToRoutineSparkOptionsPtrOutputWithContext(context.Context) RoutineSparkOptionsPtrOutput
+}
+
+type routineSparkOptionsPtrType RoutineSparkOptionsArgs
+
+func RoutineSparkOptionsPtr(v *RoutineSparkOptionsArgs) RoutineSparkOptionsPtrInput {
+	return (*routineSparkOptionsPtrType)(v)
+}
+
+func (*routineSparkOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineSparkOptions)(nil)).Elem()
+}
+
+func (i *routineSparkOptionsPtrType) ToRoutineSparkOptionsPtrOutput() RoutineSparkOptionsPtrOutput {
+	return i.ToRoutineSparkOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *routineSparkOptionsPtrType) ToRoutineSparkOptionsPtrOutputWithContext(ctx context.Context) RoutineSparkOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RoutineSparkOptionsPtrOutput)
+}
+
+type RoutineSparkOptionsOutput struct{ *pulumi.OutputState }
+
+func (RoutineSparkOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RoutineSparkOptions)(nil)).Elem()
+}
+
+func (o RoutineSparkOptionsOutput) ToRoutineSparkOptionsOutput() RoutineSparkOptionsOutput {
+	return o
+}
+
+func (o RoutineSparkOptionsOutput) ToRoutineSparkOptionsOutputWithContext(ctx context.Context) RoutineSparkOptionsOutput {
+	return o
+}
+
+func (o RoutineSparkOptionsOutput) ToRoutineSparkOptionsPtrOutput() RoutineSparkOptionsPtrOutput {
+	return o.ToRoutineSparkOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o RoutineSparkOptionsOutput) ToRoutineSparkOptionsPtrOutputWithContext(ctx context.Context) RoutineSparkOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RoutineSparkOptions) *RoutineSparkOptions {
+		return &v
+	}).(RoutineSparkOptionsPtrOutput)
+}
+
+// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+func (o RoutineSparkOptionsOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified name of the user-provided Spark connection object.
+// Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+func (o RoutineSparkOptionsOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) *string { return v.Connection }).(pulumi.StringPtrOutput)
+}
+
+// Custom container image for the runtime environment.
+func (o RoutineSparkOptionsOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) *string { return v.ContainerImage }).(pulumi.StringPtrOutput)
+}
+
+// Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+func (o RoutineSparkOptionsOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
+func (o RoutineSparkOptionsOutput) JarUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) []string { return v.JarUris }).(pulumi.StringArrayOutput)
+}
+
+// The fully qualified name of a class in jarUris, for example, com.example.wordcount.
+// Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
+func (o RoutineSparkOptionsOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+// The main file/jar URI of the Spark application.
+// Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
+// Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
+func (o RoutineSparkOptionsOutput) MainFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) *string { return v.MainFileUri }).(pulumi.StringPtrOutput)
+}
+
+// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
+// For more information, see Apache Spark and the procedure option list.
+// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o RoutineSparkOptionsOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) map[string]string { return v.Properties }).(pulumi.StringMapOutput)
+}
+
+// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
+func (o RoutineSparkOptionsOutput) PyFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) []string { return v.PyFileUris }).(pulumi.StringArrayOutput)
+}
+
+// Runtime version. If not specified, the default runtime version is used.
+func (o RoutineSparkOptionsOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RoutineSparkOptions) *string { return v.RuntimeVersion }).(pulumi.StringPtrOutput)
+}
+
+type RoutineSparkOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (RoutineSparkOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RoutineSparkOptions)(nil)).Elem()
+}
+
+func (o RoutineSparkOptionsPtrOutput) ToRoutineSparkOptionsPtrOutput() RoutineSparkOptionsPtrOutput {
+	return o
+}
+
+func (o RoutineSparkOptionsPtrOutput) ToRoutineSparkOptionsPtrOutputWithContext(ctx context.Context) RoutineSparkOptionsPtrOutput {
+	return o
+}
+
+func (o RoutineSparkOptionsPtrOutput) Elem() RoutineSparkOptionsOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) RoutineSparkOptions {
+		if v != nil {
+			return *v
+		}
+		var ret RoutineSparkOptions
+		return ret
+	}).(RoutineSparkOptionsOutput)
+}
+
+// Archive files to be extracted into the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+func (o RoutineSparkOptionsPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Fully qualified name of the user-provided Spark connection object.
+// Format: "projects/{projectId}/locations/{locationId}/connections/{connectionId}"
+func (o RoutineSparkOptionsPtrOutput) Connection() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Connection
+	}).(pulumi.StringPtrOutput)
+}
+
+// Custom container image for the runtime environment.
+func (o RoutineSparkOptionsPtrOutput) ContainerImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ContainerImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Files to be placed in the working directory of each executor. For more information about Apache Spark, see Apache Spark.
+func (o RoutineSparkOptionsPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// JARs to include on the driver and executor CLASSPATH. For more information about Apache Spark, see Apache Spark.
+func (o RoutineSparkOptionsPtrOutput) JarUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The fully qualified name of a class in jarUris, for example, com.example.wordcount.
+// Exactly one of mainClass and mainJarUri field should be set for Java/Scala language type.
+func (o RoutineSparkOptionsPtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The main file/jar URI of the Spark application.
+// Exactly one of the definitionBody field and the mainFileUri field must be set for Python.
+// Exactly one of mainClass and mainFileUri field should be set for Java/Scala language type.
+func (o RoutineSparkOptionsPtrOutput) MainFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration properties as a set of key/value pairs, which will be passed on to the Spark application.
+// For more information, see Apache Spark and the procedure option list.
+// An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+func (o RoutineSparkOptionsPtrOutput) Properties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(pulumi.StringMapOutput)
+}
+
+// Python files to be placed on the PYTHONPATH for PySpark application. Supported file types: .py, .egg, and .zip. For more information about Apache Spark, see Apache Spark.
+func (o RoutineSparkOptionsPtrOutput) PyFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PyFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// Runtime version. If not specified, the default runtime version is used.
+func (o RoutineSparkOptionsPtrOutput) RuntimeVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RoutineSparkOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuntimeVersion
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableEncryptionConfiguration struct {
 	// The self link or full name of a key which should be used to
 	// encrypt this table.  Note that the default bigquery service account will need to have
@@ -13288,6 +13620,184 @@ func (o TableTableConstraintsPrimaryKeyPtrOutput) Columns() pulumi.StringArrayOu
 	}).(pulumi.StringArrayOutput)
 }
 
+type TableTableReplicationInfo struct {
+	ReplicationIntervalMs *int   `pulumi:"replicationIntervalMs"`
+	SourceDatasetId       string `pulumi:"sourceDatasetId"`
+	SourceProjectId       string `pulumi:"sourceProjectId"`
+	SourceTableId         string `pulumi:"sourceTableId"`
+}
+
+// TableTableReplicationInfoInput is an input type that accepts TableTableReplicationInfoArgs and TableTableReplicationInfoOutput values.
+// You can construct a concrete instance of `TableTableReplicationInfoInput` via:
+//
+//	TableTableReplicationInfoArgs{...}
+type TableTableReplicationInfoInput interface {
+	pulumi.Input
+
+	ToTableTableReplicationInfoOutput() TableTableReplicationInfoOutput
+	ToTableTableReplicationInfoOutputWithContext(context.Context) TableTableReplicationInfoOutput
+}
+
+type TableTableReplicationInfoArgs struct {
+	ReplicationIntervalMs pulumi.IntPtrInput `pulumi:"replicationIntervalMs"`
+	SourceDatasetId       pulumi.StringInput `pulumi:"sourceDatasetId"`
+	SourceProjectId       pulumi.StringInput `pulumi:"sourceProjectId"`
+	SourceTableId         pulumi.StringInput `pulumi:"sourceTableId"`
+}
+
+func (TableTableReplicationInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableTableReplicationInfo)(nil)).Elem()
+}
+
+func (i TableTableReplicationInfoArgs) ToTableTableReplicationInfoOutput() TableTableReplicationInfoOutput {
+	return i.ToTableTableReplicationInfoOutputWithContext(context.Background())
+}
+
+func (i TableTableReplicationInfoArgs) ToTableTableReplicationInfoOutputWithContext(ctx context.Context) TableTableReplicationInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableTableReplicationInfoOutput)
+}
+
+func (i TableTableReplicationInfoArgs) ToTableTableReplicationInfoPtrOutput() TableTableReplicationInfoPtrOutput {
+	return i.ToTableTableReplicationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i TableTableReplicationInfoArgs) ToTableTableReplicationInfoPtrOutputWithContext(ctx context.Context) TableTableReplicationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableTableReplicationInfoOutput).ToTableTableReplicationInfoPtrOutputWithContext(ctx)
+}
+
+// TableTableReplicationInfoPtrInput is an input type that accepts TableTableReplicationInfoArgs, TableTableReplicationInfoPtr and TableTableReplicationInfoPtrOutput values.
+// You can construct a concrete instance of `TableTableReplicationInfoPtrInput` via:
+//
+//	        TableTableReplicationInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableTableReplicationInfoPtrInput interface {
+	pulumi.Input
+
+	ToTableTableReplicationInfoPtrOutput() TableTableReplicationInfoPtrOutput
+	ToTableTableReplicationInfoPtrOutputWithContext(context.Context) TableTableReplicationInfoPtrOutput
+}
+
+type tableTableReplicationInfoPtrType TableTableReplicationInfoArgs
+
+func TableTableReplicationInfoPtr(v *TableTableReplicationInfoArgs) TableTableReplicationInfoPtrInput {
+	return (*tableTableReplicationInfoPtrType)(v)
+}
+
+func (*tableTableReplicationInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableTableReplicationInfo)(nil)).Elem()
+}
+
+func (i *tableTableReplicationInfoPtrType) ToTableTableReplicationInfoPtrOutput() TableTableReplicationInfoPtrOutput {
+	return i.ToTableTableReplicationInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *tableTableReplicationInfoPtrType) ToTableTableReplicationInfoPtrOutputWithContext(ctx context.Context) TableTableReplicationInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableTableReplicationInfoPtrOutput)
+}
+
+type TableTableReplicationInfoOutput struct{ *pulumi.OutputState }
+
+func (TableTableReplicationInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableTableReplicationInfo)(nil)).Elem()
+}
+
+func (o TableTableReplicationInfoOutput) ToTableTableReplicationInfoOutput() TableTableReplicationInfoOutput {
+	return o
+}
+
+func (o TableTableReplicationInfoOutput) ToTableTableReplicationInfoOutputWithContext(ctx context.Context) TableTableReplicationInfoOutput {
+	return o
+}
+
+func (o TableTableReplicationInfoOutput) ToTableTableReplicationInfoPtrOutput() TableTableReplicationInfoPtrOutput {
+	return o.ToTableTableReplicationInfoPtrOutputWithContext(context.Background())
+}
+
+func (o TableTableReplicationInfoOutput) ToTableTableReplicationInfoPtrOutputWithContext(ctx context.Context) TableTableReplicationInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableTableReplicationInfo) *TableTableReplicationInfo {
+		return &v
+	}).(TableTableReplicationInfoPtrOutput)
+}
+
+func (o TableTableReplicationInfoOutput) ReplicationIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v TableTableReplicationInfo) *int { return v.ReplicationIntervalMs }).(pulumi.IntPtrOutput)
+}
+
+func (o TableTableReplicationInfoOutput) SourceDatasetId() pulumi.StringOutput {
+	return o.ApplyT(func(v TableTableReplicationInfo) string { return v.SourceDatasetId }).(pulumi.StringOutput)
+}
+
+func (o TableTableReplicationInfoOutput) SourceProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v TableTableReplicationInfo) string { return v.SourceProjectId }).(pulumi.StringOutput)
+}
+
+func (o TableTableReplicationInfoOutput) SourceTableId() pulumi.StringOutput {
+	return o.ApplyT(func(v TableTableReplicationInfo) string { return v.SourceTableId }).(pulumi.StringOutput)
+}
+
+type TableTableReplicationInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (TableTableReplicationInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableTableReplicationInfo)(nil)).Elem()
+}
+
+func (o TableTableReplicationInfoPtrOutput) ToTableTableReplicationInfoPtrOutput() TableTableReplicationInfoPtrOutput {
+	return o
+}
+
+func (o TableTableReplicationInfoPtrOutput) ToTableTableReplicationInfoPtrOutputWithContext(ctx context.Context) TableTableReplicationInfoPtrOutput {
+	return o
+}
+
+func (o TableTableReplicationInfoPtrOutput) Elem() TableTableReplicationInfoOutput {
+	return o.ApplyT(func(v *TableTableReplicationInfo) TableTableReplicationInfo {
+		if v != nil {
+			return *v
+		}
+		var ret TableTableReplicationInfo
+		return ret
+	}).(TableTableReplicationInfoOutput)
+}
+
+func (o TableTableReplicationInfoPtrOutput) ReplicationIntervalMs() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *TableTableReplicationInfo) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ReplicationIntervalMs
+	}).(pulumi.IntPtrOutput)
+}
+
+func (o TableTableReplicationInfoPtrOutput) SourceDatasetId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableTableReplicationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceDatasetId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TableTableReplicationInfoPtrOutput) SourceProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableTableReplicationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+func (o TableTableReplicationInfoPtrOutput) SourceTableId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableTableReplicationInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SourceTableId
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableTimePartitioning struct {
 	// Number of milliseconds for which to keep the
 	// storage for a partition.
@@ -14544,6 +15054,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReservationAutoscalePtrInput)(nil)).Elem(), ReservationAutoscaleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentInput)(nil)).Elem(), RoutineArgumentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RoutineArgumentArrayInput)(nil)).Elem(), RoutineArgumentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSparkOptionsInput)(nil)).Elem(), RoutineSparkOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RoutineSparkOptionsPtrInput)(nil)).Elem(), RoutineSparkOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableEncryptionConfigurationInput)(nil)).Elem(), TableEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableEncryptionConfigurationPtrInput)(nil)).Elem(), TableEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationInput)(nil)).Elem(), TableExternalDataConfigurationArgs{})
@@ -14574,6 +15086,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableTableConstraintsForeignKeyReferencedTableInput)(nil)).Elem(), TableTableConstraintsForeignKeyReferencedTableArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableTableConstraintsPrimaryKeyInput)(nil)).Elem(), TableTableConstraintsPrimaryKeyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableTableConstraintsPrimaryKeyPtrInput)(nil)).Elem(), TableTableConstraintsPrimaryKeyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableTableReplicationInfoInput)(nil)).Elem(), TableTableReplicationInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableTableReplicationInfoPtrInput)(nil)).Elem(), TableTableReplicationInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableTimePartitioningInput)(nil)).Elem(), TableTimePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableTimePartitioningPtrInput)(nil)).Elem(), TableTimePartitioningArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableViewInput)(nil)).Elem(), TableViewArgs{})
@@ -14700,6 +15214,8 @@ func init() {
 	pulumi.RegisterOutputType(ReservationAutoscalePtrOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentOutput{})
 	pulumi.RegisterOutputType(RoutineArgumentArrayOutput{})
+	pulumi.RegisterOutputType(RoutineSparkOptionsOutput{})
+	pulumi.RegisterOutputType(RoutineSparkOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationOutput{})
@@ -14730,6 +15246,8 @@ func init() {
 	pulumi.RegisterOutputType(TableTableConstraintsForeignKeyReferencedTableOutput{})
 	pulumi.RegisterOutputType(TableTableConstraintsPrimaryKeyOutput{})
 	pulumi.RegisterOutputType(TableTableConstraintsPrimaryKeyPtrOutput{})
+	pulumi.RegisterOutputType(TableTableReplicationInfoOutput{})
+	pulumi.RegisterOutputType(TableTableReplicationInfoPtrOutput{})
 	pulumi.RegisterOutputType(TableTimePartitioningOutput{})
 	pulumi.RegisterOutputType(TableTimePartitioningPtrOutput{})
 	pulumi.RegisterOutputType(TableViewOutput{})
