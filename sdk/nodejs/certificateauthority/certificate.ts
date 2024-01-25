@@ -278,7 +278,7 @@ import * as utilities from "../utilities";
  *         },
  *         publicKey: {
  *             format: "PEM",
- *             key: Buffer.from(fs.readFileSync("test-fixtures/rsa_public.pem", 'binary')).toString('base64'),
+ *             key: fs.readFileSync("test-fixtures/rsa_public.pem", { encoding: "base64" }),
  *         },
  *     },
  * }, {
