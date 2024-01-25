@@ -116,17 +116,7 @@ import (
 //
 // ## Import
 //
-// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GKE clusters using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}"
-//
-//	to = google_container_cluster.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:container/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GKE clusters can be imported using one of the formats above. For example
-//
-// ```
+// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -208,7 +198,6 @@ type Cluster struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot pulumi.BoolPtrOutput `pulumi:"enableAutopilot"`
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrOutput `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -227,7 +216,6 @@ type Cluster struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrOutput `pulumi:"enableLegacyAbac"`
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking pulumi.BoolPtrOutput `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -376,7 +364,7 @@ type Cluster struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigOutput `pulumi:"notificationConfig"`
 	Operation          pulumi.StringOutput             `pulumi:"operation"`
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrOutput `pulumi:"podSecurityPolicyConfig"`
@@ -388,7 +376,6 @@ type Cluster struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigOutput `pulumi:"protectConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -435,7 +422,6 @@ type Cluster struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingOutput `pulumi:"verticalPodAutoscaling"`
-	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	//
 	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
@@ -534,7 +520,6 @@ type clusterState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot *bool `pulumi:"enableAutopilot"`
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy *bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -553,7 +538,6 @@ type clusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac *bool `pulumi:"enableLegacyAbac"`
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -702,7 +686,7 @@ type clusterState struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
 	Operation          *string                    `pulumi:"operation"`
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -714,7 +698,6 @@ type clusterState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -761,7 +744,6 @@ type clusterState struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling *ClusterVerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
-	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	//
 	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
@@ -831,7 +813,6 @@ type ClusterState struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot pulumi.BoolPtrInput
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -850,7 +831,6 @@ type ClusterState struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrInput
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking pulumi.BoolPtrInput
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -999,7 +979,7 @@ type ClusterState struct {
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigPtrInput
 	Operation          pulumi.StringPtrInput
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
@@ -1011,7 +991,6 @@ type ClusterState struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigPtrInput
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -1058,7 +1037,6 @@ type ClusterState struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrInput
-	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	//
 	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
@@ -1132,7 +1110,6 @@ type clusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot *bool `pulumi:"enableAutopilot"`
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy *bool `pulumi:"enableFqdnNetworkPolicy"`
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -1151,7 +1128,6 @@ type clusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac *bool `pulumi:"enableLegacyAbac"`
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking *bool `pulumi:"enableMultiNetworking"`
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -1291,7 +1267,7 @@ type clusterArgs struct {
 	NodeVersion *string `pulumi:"nodeVersion"`
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig *ClusterNotificationConfig `pulumi:"notificationConfig"`
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig *ClusterPodSecurityPolicyConfig `pulumi:"podSecurityPolicyConfig"`
@@ -1303,7 +1279,6 @@ type clusterArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig *ClusterProtectConfig `pulumi:"protectConfig"`
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -1339,7 +1314,6 @@ type clusterArgs struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling *ClusterVerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
-	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	//
 	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
@@ -1410,7 +1384,6 @@ type ClusterArgs struct {
 	// See the [official documentation](https://cloud.google.com/kubernetes-engine/docs/concepts/autopilot-overview#comparison)
 	// for available features.
 	EnableAutopilot pulumi.BoolPtrInput
-	// )
 	// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 	EnableFqdnNetworkPolicy pulumi.BoolPtrInput
 	// Whether Intra-node visibility is enabled for this cluster. This makes same node pod to pod traffic visible for VPC network.
@@ -1429,7 +1402,6 @@ type ClusterArgs struct {
 	// will have statically granted permissions beyond those provided by the RBAC configuration or IAM.
 	// Defaults to `false`
 	EnableLegacyAbac pulumi.BoolPtrInput
-	// )
 	// Whether multi-networking is enabled for this cluster.
 	EnableMultiNetworking pulumi.BoolPtrInput
 	// Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
@@ -1569,7 +1541,7 @@ type ClusterArgs struct {
 	NodeVersion pulumi.StringPtrInput
 	// Configuration for the [cluster upgrade notifications](https://cloud.google.com/kubernetes-engine/docs/how-to/cluster-upgrade-notifications) feature. Structure is documented below.
 	NotificationConfig ClusterNotificationConfigPtrInput
-	// ) Configuration for the
+	// Configuration for the
 	// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 	// Structure is documented below.
 	PodSecurityPolicyConfig ClusterPodSecurityPolicyConfigPtrInput
@@ -1581,7 +1553,6 @@ type ClusterArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// )
 	// Enable/Disable Protect API features for the cluster. Structure is documented below.
 	ProtectConfig ClusterProtectConfigPtrInput
 	// Configuration options for the [Release channel](https://cloud.google.com/kubernetes-engine/docs/concepts/release-channels)
@@ -1617,7 +1588,6 @@ type ClusterArgs struct {
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrInput
-	// )
 	// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 	//
 	// <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
@@ -1824,7 +1794,6 @@ func (o ClusterOutput) EnableAutopilot() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableAutopilot }).(pulumi.BoolPtrOutput)
 }
 
-// )
 // Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
 func (o ClusterOutput) EnableFqdnNetworkPolicy() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableFqdnNetworkPolicy }).(pulumi.BoolPtrOutput)
@@ -1861,7 +1830,6 @@ func (o ClusterOutput) EnableLegacyAbac() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableLegacyAbac }).(pulumi.BoolPtrOutput)
 }
 
-// )
 // Whether multi-networking is enabled for this cluster.
 func (o ClusterOutput) EnableMultiNetworking() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.EnableMultiNetworking }).(pulumi.BoolPtrOutput)
@@ -2109,7 +2077,7 @@ func (o ClusterOutput) Operation() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Operation }).(pulumi.StringOutput)
 }
 
-// ) Configuration for the
+// Configuration for the
 // [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
 // Structure is documented below.
 func (o ClusterOutput) PodSecurityPolicyConfig() ClusterPodSecurityPolicyConfigPtrOutput {
@@ -2133,7 +2101,6 @@ func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// )
 // Enable/Disable Protect API features for the cluster. Structure is documented below.
 func (o ClusterOutput) ProtectConfig() ClusterProtectConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterProtectConfigOutput { return v.ProtectConfig }).(ClusterProtectConfigOutput)
@@ -2219,7 +2186,6 @@ func (o ClusterOutput) VerticalPodAutoscaling() ClusterVerticalPodAutoscalingOut
 	return o.ApplyT(func(v *Cluster) ClusterVerticalPodAutoscalingOutput { return v.VerticalPodAutoscaling }).(ClusterVerticalPodAutoscalingOutput)
 }
 
-// )
 // Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
 //
 // <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports

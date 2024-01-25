@@ -55,17 +55,7 @@ import (
 //
 // ## Import
 //
-// CapacityCommitment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}` * `{{project}}/{{location}}/{{capacity_commitment_id}}` * `{{location}}/{{capacity_commitment_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CapacityCommitment using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}"
-//
-//	to = google_bigquery_capacity_commitment.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:bigquery/capacityCommitment:CapacityCommitment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CapacityCommitment can be imported using one of the formats above. For example
-//
-// ```
+// CapacityCommitment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/capacityCommitments/{{capacity_commitment_id}}` * `{{project}}/{{location}}/{{capacity_commitment_id}}` * `{{location}}/{{capacity_commitment_id}}` When using the `pulumi import` command, CapacityCommitment can be imported using one of the formats above. For example
 //
 // ```sh
 //

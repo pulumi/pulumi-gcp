@@ -65,15 +65,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Service accounts can be imported using their URI, e.g. * `projects/{{project_id}}/serviceAccounts/{{email}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import service accounts using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project_id}}/serviceAccounts/{{email}}&#34;
- * 
- *  to = google_service_account.default }
- * 
- * ```sh
- *  $ pulumi import gcp:serviceaccount/account:Account When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), service accounts can be imported using one of the formats above. For example
- * ```
+ * Service accounts can be imported using their URI, e.g. * `projects/{{project_id}}/serviceAccounts/{{email}}` When using the `pulumi import` command, service accounts can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:serviceaccount/account:Account default projects/{{project_id}}/serviceAccounts/{{email}}

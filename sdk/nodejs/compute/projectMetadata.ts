@@ -46,15 +46,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Project metadata can be imported using the project ID* `{{project_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project metadata using one of the formats above. For exampletf import {
- *
- *  id = "{{project_id}}"
- *
- *  to = google_compute_project_metadata.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/projectMetadata:ProjectMetadata When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project metadata can be imported using one of the formats above. For example
- * ```
+ * Project metadata can be imported using the project ID* `{{project_id}}` When using the `pulumi import` command, project metadata can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/projectMetadata:ProjectMetadata default {{project_id}}

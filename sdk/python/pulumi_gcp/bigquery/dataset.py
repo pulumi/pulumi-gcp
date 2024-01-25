@@ -85,7 +85,9 @@ class DatasetArgs:
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
-        :param pulumi.Input['DatasetExternalDatasetReferenceArgs'] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
+        :param pulumi.Input['DatasetExternalDatasetReferenceArgs'] external_dataset_reference: (Optional, Beta)
+               Information about the external metadata storage where the dataset is defined.
+               Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
@@ -288,7 +290,9 @@ class DatasetArgs:
     @pulumi.getter(name="externalDatasetReference")
     def external_dataset_reference(self) -> Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']]:
         """
+        (Optional, Beta)
         Information about the external metadata storage where the dataset is defined.
+        Structure is documented below.
         """
         return pulumi.get(self, "external_dataset_reference")
 
@@ -482,7 +486,9 @@ class _DatasetState:
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A hash of the resource.
-        :param pulumi.Input['DatasetExternalDatasetReferenceArgs'] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
+        :param pulumi.Input['DatasetExternalDatasetReferenceArgs'] external_dataset_reference: (Optional, Beta)
+               Information about the external metadata storage where the dataset is defined.
+               Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
@@ -740,7 +746,9 @@ class _DatasetState:
     @pulumi.getter(name="externalDatasetReference")
     def external_dataset_reference(self) -> Optional[pulumi.Input['DatasetExternalDatasetReferenceArgs']]:
         """
+        (Optional, Beta)
         Information about the external metadata storage where the dataset is defined.
+        Structure is documented below.
         """
         return pulumi.get(self, "external_dataset_reference")
 
@@ -1082,15 +1090,7 @@ class Dataset(pulumi.CustomResource):
 
         ## Import
 
-        Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Dataset using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/datasets/{{dataset_id}}"
-
-         to = google_bigquery_dataset.default }
-
-        ```sh
-         $ pulumi import gcp:bigquery/dataset:Dataset When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Dataset can be imported using one of the formats above. For example
-        ```
+        Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
@@ -1157,7 +1157,9 @@ class Dataset(pulumi.CustomResource):
                dataset when destroying the resource; otherwise,
                destroying the resource will fail if tables are present.
         :param pulumi.Input[str] description: A user-friendly description of the dataset
-        :param pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
+        :param pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']] external_dataset_reference: (Optional, Beta)
+               Information about the external metadata storage where the dataset is defined.
+               Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
@@ -1361,15 +1363,7 @@ class Dataset(pulumi.CustomResource):
 
         ## Import
 
-        Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Dataset using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/datasets/{{dataset_id}}"
-
-         to = google_bigquery_dataset.default }
-
-        ```sh
-         $ pulumi import gcp:bigquery/dataset:Dataset When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Dataset can be imported using one of the formats above. For example
-        ```
+        Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
@@ -1543,7 +1537,9 @@ class Dataset(pulumi.CustomResource):
         :param pulumi.Input[str] description: A user-friendly description of the dataset
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A hash of the resource.
-        :param pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']] external_dataset_reference: Information about the external metadata storage where the dataset is defined.
+        :param pulumi.Input[pulumi.InputType['DatasetExternalDatasetReferenceArgs']] external_dataset_reference: (Optional, Beta)
+               Information about the external metadata storage where the dataset is defined.
+               Structure is documented below.
         :param pulumi.Input[str] friendly_name: A descriptive name for the dataset
         :param pulumi.Input[bool] is_case_insensitive: TRUE if the dataset and its table names are case-insensitive, otherwise FALSE.
                By default, this is FALSE, which means the dataset and its table names are
@@ -1740,7 +1736,9 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="externalDatasetReference")
     def external_dataset_reference(self) -> pulumi.Output[Optional['outputs.DatasetExternalDatasetReference']]:
         """
+        (Optional, Beta)
         Information about the external metadata storage where the dataset is defined.
+        Structure is documented below.
         """
         return pulumi.get(self, "external_dataset_reference")
 

@@ -150,15 +150,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkEndpointGroup using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}"
- *
- *  to = google_compute_region_network_endpoint_group.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkEndpointGroup can be imported using one of the formats above. For example
- * ```
+ * RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
@@ -271,8 +263,10 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * (Optional, Beta)
+     * Only valid when networkEndpointType is "SERVERLESS".
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      */
     public readonly serverlessDeployment!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupServerlessDeployment | undefined>;
     /**
@@ -402,8 +396,10 @@ export interface RegionNetworkEndpointGroupState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * (Optional, Beta)
+     * Only valid when networkEndpointType is "SERVERLESS".
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      */
     serverlessDeployment?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupServerlessDeployment>;
     /**
@@ -480,8 +476,10 @@ export interface RegionNetworkEndpointGroupArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * (Optional, Beta)
+     * Only valid when networkEndpointType is "SERVERLESS".
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      */
     serverlessDeployment?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupServerlessDeployment>;
     /**

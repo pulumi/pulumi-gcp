@@ -258,17 +258,7 @@ import (
 //
 // ## Import
 //
-// RouterBgpPeer can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RouterBgpPeer using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}"
-//
-//	to = google_compute_router_peer.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/routerPeer:RouterPeer When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RouterBgpPeer can be imported using one of the formats above. For example
-//
-// ```
+// RouterBgpPeer can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` When using the `pulumi import` command, RouterBgpPeer can be imported using one of the formats above. For example
 //
 // ```sh
 //

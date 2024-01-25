@@ -2883,6 +2883,9 @@ class ServiceTemplateSpecVolumeArgs:
                  secret: Optional[pulumi.Input['ServiceTemplateSpecVolumeSecretArgs']] = None):
         """
         :param pulumi.Input[str] name: Volume's name.
+        :param pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs'] empty_dir: (Optional, Beta)
+               Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+               Structure is documented below.
         :param pulumi.Input['ServiceTemplateSpecVolumeSecretArgs'] secret: The secret's value will be presented as the content of a file whose
                name is defined in the item path. If no items are defined, the name of
                the file is the secret_name.
@@ -2909,6 +2912,11 @@ class ServiceTemplateSpecVolumeArgs:
     @property
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional[pulumi.Input['ServiceTemplateSpecVolumeEmptyDirArgs']]:
+        """
+        (Optional, Beta)
+        Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        Structure is documented below.
+        """
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter

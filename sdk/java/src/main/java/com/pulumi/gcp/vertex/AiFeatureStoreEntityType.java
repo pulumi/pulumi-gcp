@@ -166,15 +166,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FeaturestoreEntitytype can be imported using any of these accepted formats* `{{featurestore}}/entityTypes/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeaturestoreEntitytype using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{featurestore}}/entityTypes/{{name}}&#34;
- * 
- *  to = google_vertex_ai_featurestore_entitytype.default }
- * 
- * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeaturestoreEntitytype can be imported using one of the formats above. For example
- * ```
+ * FeaturestoreEntitytype can be imported using any of these accepted formats* `{{featurestore}}/entityTypes/{{name}}` When using the `pulumi import` command, FeaturestoreEntitytype can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
@@ -310,18 +302,16 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
         return this.name;
     }
     /**
-     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     * (Optional, Beta)
+     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      * 
      */
     @Export(name="offlineStorageTtlDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> offlineStorageTtlDays;
 
     /**
-     * @return Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-     * storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-     * since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     * @return (Optional, Beta)
+     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      * 
      */
     public Output<Optional<Integer>> offlineStorageTtlDays() {

@@ -126,7 +126,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      * 
      */
@@ -134,7 +134,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
     private @Nullable Output<Boolean> enableDisplay;
 
     /**
-     * @return ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      * 
      */
@@ -783,7 +783,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableDisplay ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+         * @param enableDisplay Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
          * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
          * 
          * @return builder
@@ -795,7 +795,7 @@ public final class InstanceTemplateState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param enableDisplay ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+         * @param enableDisplay Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
          * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
          * 
          * @return builder

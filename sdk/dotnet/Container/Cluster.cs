@@ -96,15 +96,7 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ## Import
     /// 
-    /// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GKE clusters using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}"
-    /// 
-    ///  to = google_container_cluster.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:container/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GKE clusters can be imported using one of the formats above. For example
-    /// ```
+    /// GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -250,7 +242,6 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> EnableAutopilot { get; private set; } = null!;
 
         /// <summary>
-        /// )
         /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         /// </summary>
         [Output("enableFqdnNetworkPolicy")]
@@ -293,7 +284,6 @@ namespace Pulumi.Gcp.Container
         public Output<bool?> EnableLegacyAbac { get; private set; } = null!;
 
         /// <summary>
-        /// )
         /// Whether multi-networking is enabled for this cluster.
         /// </summary>
         [Output("enableMultiNetworking")]
@@ -572,7 +562,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Operation { get; private set; } = null!;
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -600,7 +590,6 @@ namespace Pulumi.Gcp.Container
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// )
         /// Enable/Disable Protect API features for the cluster. Structure is documented below.
         /// </summary>
         [Output("protectConfig")]
@@ -699,7 +688,6 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterVerticalPodAutoscaling> VerticalPodAutoscaling { get; private set; } = null!;
 
         /// <summary>
-        /// )
         /// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         /// 
         /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
@@ -888,7 +876,6 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableAutopilot { get; set; }
 
         /// <summary>
-        /// )
         /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         /// </summary>
         [Input("enableFqdnNetworkPolicy")]
@@ -931,7 +918,6 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableLegacyAbac { get; set; }
 
         /// <summary>
-        /// )
         /// Whether multi-networking is enabled for this cluster.
         /// </summary>
         [Input("enableMultiNetworking")]
@@ -1199,7 +1185,7 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterNotificationConfigArgs>? NotificationConfig { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1227,7 +1213,6 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// )
         /// Enable/Disable Protect API features for the cluster. Structure is documented below.
         /// </summary>
         [Input("protectConfig")]
@@ -1309,7 +1294,6 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterVerticalPodAutoscalingArgs>? VerticalPodAutoscaling { get; set; }
 
         /// <summary>
-        /// )
         /// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         /// 
         /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
@@ -1460,7 +1444,6 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableAutopilot { get; set; }
 
         /// <summary>
-        /// )
         /// Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
         /// </summary>
         [Input("enableFqdnNetworkPolicy")]
@@ -1503,7 +1486,6 @@ namespace Pulumi.Gcp.Container
         public Input<bool>? EnableLegacyAbac { get; set; }
 
         /// <summary>
-        /// )
         /// Whether multi-networking is enabled for this cluster.
         /// </summary>
         [Input("enableMultiNetworking")]
@@ -1794,7 +1776,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Operation { get; set; }
 
         /// <summary>
-        /// ) Configuration for the
+        /// Configuration for the
         /// [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
         /// Structure is documented below.
         /// </summary>
@@ -1822,7 +1804,6 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// )
         /// Enable/Disable Protect API features for the cluster. Structure is documented below.
         /// </summary>
         [Input("protectConfig")]
@@ -1927,7 +1908,6 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterVerticalPodAutoscalingGetArgs>? VerticalPodAutoscaling { get; set; }
 
         /// <summary>
-        /// )
         /// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
         /// 
         /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports

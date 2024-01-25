@@ -520,15 +520,7 @@ class Zone(pulumi.CustomResource):
 
         ## Import
 
-        Zone can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}` * `{{project}}/{{location}}/{{lake}}/{{name}}` * `{{location}}/{{lake}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Zone using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}"
-
-         to = google_dataplex_zone.default }
-
-        ```sh
-         $ pulumi import gcp:dataplex/zone:Zone When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Zone can be imported using one of the formats above. For example
-        ```
+        Zone can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}` * `{{project}}/{{location}}/{{lake}}/{{name}}` * `{{location}}/{{lake}}/{{name}}` When using the `pulumi import` command, Zone can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:dataplex/zone:Zone default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}
@@ -600,15 +592,7 @@ class Zone(pulumi.CustomResource):
 
         ## Import
 
-        Zone can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}` * `{{project}}/{{location}}/{{lake}}/{{name}}` * `{{location}}/{{lake}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Zone using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}"
-
-         to = google_dataplex_zone.default }
-
-        ```sh
-         $ pulumi import gcp:dataplex/zone:Zone When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Zone can be imported using one of the formats above. For example
-        ```
+        Zone can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}` * `{{project}}/{{location}}/{{lake}}/{{name}}` * `{{location}}/{{lake}}/{{name}}` When using the `pulumi import` command, Zone can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:dataplex/zone:Zone default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/zones/{{name}}

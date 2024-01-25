@@ -35,15 +35,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GlobalNetworkEndpoint can be imported using any of these accepted formats* `projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}` * `{{project}}/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}` * `{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalNetworkEndpoint using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}"
- *
- *  to = google_compute_global_network_endpoint.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalNetworkEndpoint can be imported using one of the formats above. For example
- * ```
+ * GlobalNetworkEndpoint can be imported using any of these accepted formats* `projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}` * `{{project}}/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}` * `{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}` When using the `pulumi import` command, GlobalNetworkEndpoint can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/globalNetworkEndpoint:GlobalNetworkEndpoint default projects/{{project}}/global/networkEndpointGroups/{{global_network_endpoint_group}}/{{ip_address}}/{{fqdn}}/{{port}}

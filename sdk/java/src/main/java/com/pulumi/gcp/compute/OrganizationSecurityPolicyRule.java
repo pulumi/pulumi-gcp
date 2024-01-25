@@ -93,15 +93,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * OrganizationSecurityPolicyRule can be imported using any of these accepted formats* `{{policy_id}}/priority/{{priority}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OrganizationSecurityPolicyRule using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{policy_id}}/priority/{{priority}}&#34;
- * 
- *  to = google_compute_organization_security_policy_rule.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OrganizationSecurityPolicyRule can be imported using one of the formats above. For example
- * ```
+ * OrganizationSecurityPolicyRule can be imported using any of these accepted formats* `{{policy_id}}/priority/{{priority}}` When using the `pulumi import` command, OrganizationSecurityPolicyRule can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/organizationSecurityPolicyRule:OrganizationSecurityPolicyRule default {{policy_id}}/priority/{{priority}}

@@ -57,15 +57,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * WorkforcePool can be imported using any of these accepted formats* `locations/{{location}}/workforcePools/{{workforce_pool_id}}` * `{{location}}/{{workforce_pool_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkforcePool using one of the formats above. For exampletf import {
- *
- *  id = "locations/{{location}}/workforcePools/{{workforce_pool_id}}"
- *
- *  to = google_iam_workforce_pool.default }
- *
- * ```sh
- *  $ pulumi import gcp:iam/workforcePool:WorkforcePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkforcePool can be imported using one of the formats above. For example
- * ```
+ * WorkforcePool can be imported using any of these accepted formats* `locations/{{location}}/workforcePools/{{workforce_pool_id}}` * `{{location}}/{{workforce_pool_id}}` When using the `pulumi import` command, WorkforcePool can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:iam/workforcePool:WorkforcePool default locations/{{location}}/workforcePools/{{workforce_pool_id}}

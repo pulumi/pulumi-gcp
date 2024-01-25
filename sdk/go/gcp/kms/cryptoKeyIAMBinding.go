@@ -236,17 +236,11 @@ import (
 //
 // ## Import
 //
-// ### Importing IAM policies IAM policy imports use the identifier of the KMS crypto key only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+// ### Importing IAM policies IAM policy imports use the identifier of the KMS crypto key only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
 //	id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
 //
-//	to = google_kms_crypto_key_iam_policy.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-//
-// ```
+//	to = google_kms_crypto_key_iam_policy.default } The `pulumi import` command can also be used
 //
 // ```sh
 //
@@ -256,7 +250,7 @@ import (
 type CryptoKeyIAMBinding struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrOutput `pulumi:"condition"`
 	// The crypto key ID, in the form
@@ -320,7 +314,7 @@ func GetCryptoKeyIAMBinding(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering CryptoKeyIAMBinding resources.
 type cryptoKeyIAMBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *CryptoKeyIAMBindingCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
@@ -346,7 +340,7 @@ type cryptoKeyIAMBindingState struct {
 }
 
 type CryptoKeyIAMBindingState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrInput
 	// The crypto key ID, in the form
@@ -376,7 +370,7 @@ func (CryptoKeyIAMBindingState) ElementType() reflect.Type {
 }
 
 type cryptoKeyIAMBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *CryptoKeyIAMBindingCondition `pulumi:"condition"`
 	// The crypto key ID, in the form
@@ -401,7 +395,7 @@ type cryptoKeyIAMBindingArgs struct {
 
 // The set of arguments for constructing a CryptoKeyIAMBinding resource.
 type CryptoKeyIAMBindingArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition CryptoKeyIAMBindingConditionPtrInput
 	// The crypto key ID, in the form
@@ -511,7 +505,7 @@ func (o CryptoKeyIAMBindingOutput) ToCryptoKeyIAMBindingOutputWithContext(ctx co
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o CryptoKeyIAMBindingOutput) Condition() CryptoKeyIAMBindingConditionPtrOutput {
 	return o.ApplyT(func(v *CryptoKeyIAMBinding) CryptoKeyIAMBindingConditionPtrOutput { return v.Condition }).(CryptoKeyIAMBindingConditionPtrOutput)

@@ -66,15 +66,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * TenantOauthIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}` * `{{project}}/{{tenant}}/{{name}}` * `{{tenant}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TenantOauthIdpConfig using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}&#34;
- * 
- *  to = google_identity_platform_tenant_oauth_idp_config.default }
- * 
- * ```sh
- *  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TenantOauthIdpConfig can be imported using one of the formats above. For example
- * ```
+ * TenantOauthIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}` * `{{project}}/{{tenant}}/{{name}}` * `{{tenant}}/{{name}}` When using the `pulumi import` command, TenantOauthIdpConfig can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:identityplatform/tenantOauthIdpConfig:TenantOauthIdpConfig default projects/{{project}}/tenants/{{tenant}}/oauthIdpConfigs/{{name}}

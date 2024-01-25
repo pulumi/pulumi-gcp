@@ -254,15 +254,7 @@ class Attestor(pulumi.CustomResource):
 
         ## Import
 
-        Attestor can be imported using any of these accepted formats* `projects/{{project}}/attestors/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Attestor using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/attestors/{{name}}"
-
-         to = google_binary_authorization_attestor.default }
-
-        ```sh
-         $ pulumi import gcp:binaryauthorization/attestor:Attestor When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Attestor can be imported using one of the formats above. For example
-        ```
+        Attestor can be imported using any of these accepted formats* `projects/{{project}}/attestors/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Attestor can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:binaryauthorization/attestor:Attestor default projects/{{project}}/attestors/{{name}}
@@ -368,15 +360,7 @@ class Attestor(pulumi.CustomResource):
 
         ## Import
 
-        Attestor can be imported using any of these accepted formats* `projects/{{project}}/attestors/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Attestor using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/attestors/{{name}}"
-
-         to = google_binary_authorization_attestor.default }
-
-        ```sh
-         $ pulumi import gcp:binaryauthorization/attestor:Attestor When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Attestor can be imported using one of the formats above. For example
-        ```
+        Attestor can be imported using any of these accepted formats* `projects/{{project}}/attestors/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Attestor can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:binaryauthorization/attestor:Attestor default projects/{{project}}/attestors/{{name}}

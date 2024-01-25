@@ -188,15 +188,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RouterNat using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}"
- *
- *  to = google_compute_router_nat.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/routerNat:RouterNat When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RouterNat can be imported using one of the formats above. For example
- * ```
+ * RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
@@ -353,9 +345,13 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly tcpTransitoryIdleTimeoutSec!: pulumi.Output<number | undefined>;
     /**
-     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-     * Possible values: ["PUBLIC", "PRIVATE"]
+     * (Optional, Beta)
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      */
     public readonly type!: pulumi.Output<string | undefined>;
     /**
@@ -547,9 +543,13 @@ export interface RouterNatState {
      */
     tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
     /**
-     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-     * Possible values: ["PUBLIC", "PRIVATE"]
+     * (Optional, Beta)
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -673,9 +673,13 @@ export interface RouterNatArgs {
      */
     tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
     /**
-     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-     * Possible values: ["PUBLIC", "PRIVATE"]
+     * (Optional, Beta)
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      */
     type?: pulumi.Input<string>;
     /**

@@ -165,15 +165,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GuestPolicies can be imported using any of these accepted formats* `projects/{{project}}/guestPolicies/{{guest_policy_id}}` * `{{project}}/{{guest_policy_id}}` * `{{guest_policy_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GuestPolicies using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/guestPolicies/{{guest_policy_id}}"
- *
- *  to = google_os_config_guest_policies.default }
- *
- * ```sh
- *  $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GuestPolicies can be imported using one of the formats above. For example
- * ```
+ * GuestPolicies can be imported using any of these accepted formats* `projects/{{project}}/guestPolicies/{{guest_policy_id}}` * `{{project}}/{{guest_policy_id}}` * `{{guest_policy_id}}` When using the `pulumi import` command, GuestPolicies can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:osconfig/guestPolicies:GuestPolicies default projects/{{project}}/guestPolicies/{{guest_policy_id}}

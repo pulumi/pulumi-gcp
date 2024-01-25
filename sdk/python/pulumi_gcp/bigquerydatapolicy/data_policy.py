@@ -303,15 +303,7 @@ class DataPolicy(pulumi.CustomResource):
 
         ## Import
 
-        DataPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}` * `{{project}}/{{location}}/{{data_policy_id}}` * `{{location}}/{{data_policy_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DataPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}"
-
-         to = google_bigquery_datapolicy_data_policy.default }
-
-        ```sh
-         $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DataPolicy can be imported using one of the formats above. For example
-        ```
+        DataPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}` * `{{project}}/{{location}}/{{data_policy_id}}` * `{{location}}/{{data_policy_id}}` When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}
@@ -380,15 +372,7 @@ class DataPolicy(pulumi.CustomResource):
 
         ## Import
 
-        DataPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}` * `{{project}}/{{location}}/{{data_policy_id}}` * `{{location}}/{{data_policy_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DataPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}"
-
-         to = google_bigquery_datapolicy_data_policy.default }
-
-        ```sh
-         $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DataPolicy can be imported using one of the formats above. For example
-        ```
+        DataPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}` * `{{project}}/{{location}}/{{data_policy_id}}` * `{{location}}/{{data_policy_id}}` When using the `pulumi import` command, DataPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:bigquerydatapolicy/dataPolicy:DataPolicy default projects/{{project}}/locations/{{location}}/dataPolicies/{{data_policy_id}}

@@ -49,15 +49,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ResponsePolicyRule using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}"
- *
- *  to = google_dns_response_policy_rule.default }
- *
- * ```sh
- *  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ResponsePolicyRule can be imported using one of the formats above. For example
- * ```
+ * ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
@@ -100,8 +92,8 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
     }
 
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-     * 'bypassResponsePolicy'
+     * (Optional, Beta)
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     public readonly behavior!: pulumi.Output<string | undefined>;
     /**
@@ -178,8 +170,8 @@ export class ResponsePolicyRule extends pulumi.CustomResource {
  */
 export interface ResponsePolicyRuleState {
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-     * 'bypassResponsePolicy'
+     * (Optional, Beta)
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string>;
     /**
@@ -215,8 +207,8 @@ export interface ResponsePolicyRuleState {
  */
 export interface ResponsePolicyRuleArgs {
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-     * 'bypassResponsePolicy'
+     * (Optional, Beta)
+     * Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
      */
     behavior?: pulumi.Input<string>;
     /**

@@ -49,15 +49,7 @@ namespace Pulumi.Gcp.ServiceDirectory
     /// 
     /// ## Import
     /// 
-    /// Namespace can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}` * `{{project}}/{{location}}/{{namespace_id}}` * `{{location}}/{{namespace_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Namespace using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}"
-    /// 
-    ///  to = google_service_directory_namespace.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:servicedirectory/namespace:Namespace When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Namespace can be imported using one of the formats above. For example
-    /// ```
+    /// Namespace can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}` * `{{project}}/{{location}}/{{namespace_id}}` * `{{location}}/{{namespace_id}}` When using the `pulumi import` command, Namespace can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:servicedirectory/namespace:Namespace default projects/{{project}}/locations/{{location}}/namespaces/{{namespace_id}}

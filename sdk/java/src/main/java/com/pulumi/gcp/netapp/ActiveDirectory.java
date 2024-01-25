@@ -80,15 +80,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * activeDirectory can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import activeDirectory using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}&#34;
- * 
- *  to = google_netapp_active_directory.default }
- * 
- * ```sh
- *  $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), activeDirectory can be imported using one of the formats above. For example
- * ```
+ * activeDirectory can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, activeDirectory can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:netapp/activeDirectory:ActiveDirectory default projects/{{project}}/locations/{{location}}/activeDirectories/{{name}}

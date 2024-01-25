@@ -29,7 +29,6 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     public static final InstanceGroupManagerArgs Empty = new InstanceGroupManagerArgs();
 
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
@@ -39,8 +38,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<InstanceGroupManagerAllInstancesConfigArgs> allInstancesConfig;
 
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 
@@ -426,8 +424,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allInstancesConfig )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfig Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 
@@ -440,8 +437,7 @@ public final class InstanceGroupManagerArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param allInstancesConfig )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfig Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 

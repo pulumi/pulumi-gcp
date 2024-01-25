@@ -67,15 +67,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import target pools using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/regions/{{region}}/targetPools/{{name}}&#34;
- * 
- *  to = google_compute_target_pool.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/targetPool:TargetPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), target pools can be imported using one of the formats above. For example
- * ```
+ * Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, target pools can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
@@ -233,14 +225,14 @@ public class TargetPool extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * ) The resource URL for the security policy associated with this target pool.
+     * The resource URL for the security policy associated with this target pool.
      * 
      */
     @Export(name="securityPolicy", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
-     * @return ) The resource URL for the security policy associated with this target pool.
+     * @return The resource URL for the security policy associated with this target pool.
      * 
      */
     public Output<Optional<String>> securityPolicy() {

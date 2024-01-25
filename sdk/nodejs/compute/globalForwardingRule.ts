@@ -142,15 +142,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GlobalForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/global/forwardingRules/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalForwardingRule using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/global/forwardingRules/{{name}}"
- *
- *  to = google_compute_global_forwarding_rule.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalForwardingRule can be imported using one of the formats above. For example
- * ```
+ * GlobalForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/global/forwardingRules/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}
@@ -193,6 +185,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
     }
 
     /**
+     * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
     public readonly allowPscGlobalAccess!: pulumi.Output<boolean | undefined>;
@@ -486,6 +479,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
  */
 export interface GlobalForwardingRuleState {
     /**
+     * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
     allowPscGlobalAccess?: pulumi.Input<boolean>;
@@ -706,6 +700,7 @@ export interface GlobalForwardingRuleState {
  */
 export interface GlobalForwardingRuleArgs {
     /**
+     * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      */
     allowPscGlobalAccess?: pulumi.Input<boolean>;

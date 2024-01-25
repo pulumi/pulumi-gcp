@@ -187,17 +187,7 @@ import (
 //
 // ## Import
 //
-// WorkstationCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}` * `{{location}}/{{workstation_cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import WorkstationCluster using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}"
-//
-//	to = google_workstations_workstation_cluster.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:workstations/workstationCluster:WorkstationCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), WorkstationCluster can be imported using one of the formats above. For example
-//
-// ```
+// WorkstationCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}` * `{{location}}/{{workstation_cluster_id}}` When using the `pulumi import` command, WorkstationCluster can be imported using one of the formats above. For example
 //
 // ```sh
 //

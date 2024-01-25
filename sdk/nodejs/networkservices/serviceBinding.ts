@@ -41,15 +41,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ServiceBinding can be imported using any of these accepted formats* `projects/{{project}}/locations/global/serviceBindings/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServiceBinding using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/global/serviceBindings/{{name}}"
- *
- *  to = google_network_services_service_binding.default }
- *
- * ```sh
- *  $ pulumi import gcp:networkservices/serviceBinding:ServiceBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServiceBinding can be imported using one of the formats above. For example
- * ```
+ * ServiceBinding can be imported using any of these accepted formats* `projects/{{project}}/locations/global/serviceBindings/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ServiceBinding can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:networkservices/serviceBinding:ServiceBinding default projects/{{project}}/locations/global/serviceBindings/{{name}}

@@ -204,15 +204,11 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// ## Import
     /// 
-    /// ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+    /// ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
     /// 
     ///  id = "{{project_id}}/{{location}}/{{key_ring_name}}"
     /// 
-    ///  to = google_kms_key_ring_iam_policy.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-    /// ```
+    ///  to = google_kms_key_ring_iam_policy.default } The `pulumi import` command can also be used
     /// 
     /// ```sh
     ///  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember default {{project_id}}/{{location}}/{{key_ring_name}}
@@ -222,7 +218,7 @@ namespace Pulumi.Gcp.Kms
     public partial class KeyRingIAMMember : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -310,7 +306,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class KeyRingIAMMemberArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -354,7 +350,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class KeyRingIAMMemberState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]

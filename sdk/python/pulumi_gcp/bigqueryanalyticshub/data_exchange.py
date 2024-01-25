@@ -369,15 +369,7 @@ class DataExchange(pulumi.CustomResource):
 
         ## Import
 
-        DataExchange can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}` * `{{project}}/{{location}}/{{data_exchange_id}}` * `{{location}}/{{data_exchange_id}}` * `{{data_exchange_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DataExchange using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}"
-
-         to = google_bigquery_analytics_hub_data_exchange.default }
-
-        ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DataExchange can be imported using one of the formats above. For example
-        ```
+        DataExchange can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}` * `{{project}}/{{location}}/{{data_exchange_id}}` * `{{location}}/{{data_exchange_id}}` * `{{data_exchange_id}}` When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}
@@ -441,15 +433,7 @@ class DataExchange(pulumi.CustomResource):
 
         ## Import
 
-        DataExchange can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}` * `{{project}}/{{location}}/{{data_exchange_id}}` * `{{location}}/{{data_exchange_id}}` * `{{data_exchange_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DataExchange using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}"
-
-         to = google_bigquery_analytics_hub_data_exchange.default }
-
-        ```sh
-         $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DataExchange can be imported using one of the formats above. For example
-        ```
+        DataExchange can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}` * `{{project}}/{{location}}/{{data_exchange_id}}` * `{{location}}/{{data_exchange_id}}` * `{{data_exchange_id}}` When using the `pulumi import` command, DataExchange can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:bigqueryanalyticshub/dataExchange:DataExchange default projects/{{project}}/locations/{{location}}/dataExchanges/{{data_exchange_id}}

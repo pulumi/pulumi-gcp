@@ -633,17 +633,7 @@ import (
 //
 // ## Import
 //
-// Trigger can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}` * `projects/{{project}}/triggers/{{trigger_id}}` * `{{project}}/{{trigger_id}}` * `{{trigger_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Trigger using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}"
-//
-//	to = google_cloudbuild_trigger.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:cloudbuild/trigger:Trigger When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Trigger can be imported using one of the formats above. For example
-//
-// ```
+// Trigger can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/triggers/{{trigger_id}}` * `projects/{{project}}/triggers/{{trigger_id}}` * `{{project}}/{{trigger_id}}` * `{{trigger_id}}` When using the `pulumi import` command, Trigger can be imported using one of the formats above. For example
 //
 // ```sh
 //

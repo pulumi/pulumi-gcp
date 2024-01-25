@@ -49,15 +49,7 @@ namespace Pulumi.Gcp.Logging
     /// 
     /// ## Import
     /// 
-    /// This resource can be imported using the following format* `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import this resource using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}"
-    /// 
-    ///  to = google_logging_organization_bucket_config.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), this resource can be imported using one of the formats above. For example
-    /// ```
+    /// This resource can be imported using the following format* `organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}` When using the `pulumi import` command, this resource can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:logging/organizationBucketConfig:OrganizationBucketConfig default organizations/{{organization}}/locations/{{location}}/buckets/{{bucket_id}}

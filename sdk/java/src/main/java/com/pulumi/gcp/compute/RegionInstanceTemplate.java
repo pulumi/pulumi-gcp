@@ -31,15 +31,7 @@ import javax.annotation.Nullable;
 /**
  * ## Import
  * 
- * Instance templates can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance templates using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}&#34;
- * 
- *  to = google_compute_region_instance_template.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance templates can be imported using one of the formats above. For example
- * ```
+ * Instance templates can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/regionInstanceTemplate:RegionInstanceTemplate default projects/{{project}}/regions/{{region}}/instanceTemplates/{{name}}

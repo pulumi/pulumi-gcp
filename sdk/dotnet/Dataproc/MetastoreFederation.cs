@@ -114,15 +114,7 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// ## Import
     /// 
-    /// Federation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}` * `{{project}}/{{location}}/{{federation_id}}` * `{{location}}/{{federation_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Federation using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/federations/{{federation_id}}"
-    /// 
-    ///  to = google_dataproc_metastore_federation.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Federation can be imported using one of the formats above. For example
-    /// ```
+    /// Federation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/federations/{{federation_id}}` * `{{project}}/{{location}}/{{federation_id}}` * `{{location}}/{{federation_id}}` When using the `pulumi import` command, Federation can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:dataproc/metastoreFederation:MetastoreFederation default projects/{{project}}/locations/{{location}}/federations/{{federation_id}}

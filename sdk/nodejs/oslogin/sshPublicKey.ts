@@ -30,15 +30,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * SSHPublicKey can be imported using any of these accepted formats* `users/{{user}}/sshPublicKeys/{{fingerprint}}` * `{{user}}/{{fingerprint}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SSHPublicKey using one of the formats above. For exampletf import {
- *
- *  id = "users/{{user}}/sshPublicKeys/{{fingerprint}}"
- *
- *  to = google_os_login_ssh_public_key.default }
- *
- * ```sh
- *  $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SSHPublicKey can be imported using one of the formats above. For example
- * ```
+ * SSHPublicKey can be imported using any of these accepted formats* `users/{{user}}/sshPublicKeys/{{fingerprint}}` * `{{user}}/{{fingerprint}}` When using the `pulumi import` command, SSHPublicKey can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:oslogin/sshPublicKey:SshPublicKey default users/{{user}}/sshPublicKeys/{{fingerprint}}

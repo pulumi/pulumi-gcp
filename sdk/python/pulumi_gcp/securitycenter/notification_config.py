@@ -279,15 +279,7 @@ class NotificationConfig(pulumi.CustomResource):
 
         ## Import
 
-        NotificationConfig can be imported using any of these accepted formats* `organizations/{{organization}}/notificationConfigs/{{name}}` * `{{organization}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NotificationConfig using one of the formats above. For exampletf import {
-
-         id = "organizations/{{organization}}/notificationConfigs/{{name}}"
-
-         to = google_scc_notification_config.default }
-
-        ```sh
-         $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NotificationConfig can be imported using one of the formats above. For example
-        ```
+        NotificationConfig can be imported using any of these accepted formats* `organizations/{{organization}}/notificationConfigs/{{name}}` * `{{organization}}/{{name}}` When using the `pulumi import` command, NotificationConfig can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default organizations/{{organization}}/notificationConfigs/{{name}}
@@ -349,15 +341,7 @@ class NotificationConfig(pulumi.CustomResource):
 
         ## Import
 
-        NotificationConfig can be imported using any of these accepted formats* `organizations/{{organization}}/notificationConfigs/{{name}}` * `{{organization}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NotificationConfig using one of the formats above. For exampletf import {
-
-         id = "organizations/{{organization}}/notificationConfigs/{{name}}"
-
-         to = google_scc_notification_config.default }
-
-        ```sh
-         $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NotificationConfig can be imported using one of the formats above. For example
-        ```
+        NotificationConfig can be imported using any of these accepted formats* `organizations/{{organization}}/notificationConfigs/{{name}}` * `{{organization}}/{{name}}` When using the `pulumi import` command, NotificationConfig can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:securitycenter/notificationConfig:NotificationConfig default organizations/{{organization}}/notificationConfigs/{{name}}

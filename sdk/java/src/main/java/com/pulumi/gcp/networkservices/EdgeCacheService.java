@@ -476,15 +476,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * EdgeCacheService can be imported using any of these accepted formats* `projects/{{project}}/locations/global/edgeCacheServices/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EdgeCacheService using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/global/edgeCacheServices/{{name}}&#34;
- * 
- *  to = google_network_services_edge_cache_service.default }
- * 
- * ```sh
- *  $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EdgeCacheService can be imported using one of the formats above. For example
- * ```
+ * EdgeCacheService can be imported using any of these accepted formats* `projects/{{project}}/locations/global/edgeCacheServices/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, EdgeCacheService can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:networkservices/edgeCacheService:EdgeCacheService default projects/{{project}}/locations/global/edgeCacheServices/{{name}}

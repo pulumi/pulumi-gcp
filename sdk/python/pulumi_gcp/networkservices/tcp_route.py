@@ -384,15 +384,7 @@ class TcpRoute(pulumi.CustomResource):
 
         ## Import
 
-        TcpRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/tcpRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TcpRoute using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/global/tcpRoutes/{{name}}"
-
-         to = google_network_services_tcp_route.default }
-
-        ```sh
-         $ pulumi import gcp:networkservices/tcpRoute:TcpRoute When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TcpRoute can be imported using one of the formats above. For example
-        ```
+        TcpRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/tcpRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TcpRoute can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default projects/{{project}}/locations/global/tcpRoutes/{{name}}
@@ -435,15 +427,7 @@ class TcpRoute(pulumi.CustomResource):
 
         ## Import
 
-        TcpRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/tcpRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TcpRoute using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/global/tcpRoutes/{{name}}"
-
-         to = google_network_services_tcp_route.default }
-
-        ```sh
-         $ pulumi import gcp:networkservices/tcpRoute:TcpRoute When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TcpRoute can be imported using one of the formats above. For example
-        ```
+        TcpRoute can be imported using any of these accepted formats* `projects/{{project}}/locations/global/tcpRoutes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TcpRoute can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:networkservices/tcpRoute:TcpRoute default projects/{{project}}/locations/global/tcpRoutes/{{name}}

@@ -312,17 +312,7 @@ import (
 //
 // ## Import
 //
-// Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Dataset using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/datasets/{{dataset_id}}"
-//
-//	to = google_bigquery_dataset.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:bigquery/dataset:Dataset When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Dataset can be imported using one of the formats above. For example
-//
-// ```
+// Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -409,7 +399,9 @@ type Dataset struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag pulumi.StringOutput `pulumi:"etag"`
+	// (Optional, Beta)
 	// Information about the external metadata storage where the dataset is defined.
+	// Structure is documented below.
 	ExternalDatasetReference DatasetExternalDatasetReferencePtrOutput `pulumi:"externalDatasetReference"`
 	// A descriptive name for the dataset
 	FriendlyName pulumi.StringPtrOutput `pulumi:"friendlyName"`
@@ -557,7 +549,9 @@ type datasetState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A hash of the resource.
 	Etag *string `pulumi:"etag"`
+	// (Optional, Beta)
 	// Information about the external metadata storage where the dataset is defined.
+	// Structure is documented below.
 	ExternalDatasetReference *DatasetExternalDatasetReference `pulumi:"externalDatasetReference"`
 	// A descriptive name for the dataset
 	FriendlyName *string `pulumi:"friendlyName"`
@@ -668,7 +662,9 @@ type DatasetState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// A hash of the resource.
 	Etag pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Information about the external metadata storage where the dataset is defined.
+	// Structure is documented below.
 	ExternalDatasetReference DatasetExternalDatasetReferencePtrInput
 	// A descriptive name for the dataset
 	FriendlyName pulumi.StringPtrInput
@@ -776,7 +772,9 @@ type datasetArgs struct {
 	DeleteContentsOnDestroy *bool `pulumi:"deleteContentsOnDestroy"`
 	// A user-friendly description of the dataset
 	Description *string `pulumi:"description"`
+	// (Optional, Beta)
 	// Information about the external metadata storage where the dataset is defined.
+	// Structure is documented below.
 	ExternalDatasetReference *DatasetExternalDatasetReference `pulumi:"externalDatasetReference"`
 	// A descriptive name for the dataset
 	FriendlyName *string `pulumi:"friendlyName"`
@@ -873,7 +871,9 @@ type DatasetArgs struct {
 	DeleteContentsOnDestroy pulumi.BoolPtrInput
 	// A user-friendly description of the dataset
 	Description pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Information about the external metadata storage where the dataset is defined.
+	// Structure is documented below.
 	ExternalDatasetReference DatasetExternalDatasetReferencePtrInput
 	// A descriptive name for the dataset
 	FriendlyName pulumi.StringPtrInput
@@ -1097,7 +1097,9 @@ func (o DatasetOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Dataset) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // Information about the external metadata storage where the dataset is defined.
+// Structure is documented below.
 func (o DatasetOutput) ExternalDatasetReference() DatasetExternalDatasetReferencePtrOutput {
 	return o.ApplyT(func(v *Dataset) DatasetExternalDatasetReferencePtrOutput { return v.ExternalDatasetReference }).(DatasetExternalDatasetReferencePtrOutput)
 }

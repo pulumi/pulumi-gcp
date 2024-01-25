@@ -13,6 +13,11 @@ namespace Pulumi.Gcp.CloudRun.Outputs
     [OutputType]
     public sealed class ServiceTemplateSpecVolume
     {
+        /// <summary>
+        /// (Optional, Beta)
+        /// Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.ServiceTemplateSpecVolumeEmptyDir? EmptyDir;
         /// <summary>
         /// Volume's name.

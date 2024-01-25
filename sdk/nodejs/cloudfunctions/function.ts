@@ -89,15 +89,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g. * `{{project}}/{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Functions using one of the formats above. For exampletf import {
- *
- *  id = "{{project}}/{{region}}/{{name}}"
- *
- *  to = google_cloudfunctions_function.default }
- *
- * ```sh
- *  $ pulumi import gcp:cloudfunctions/function:Function When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Functions can be imported using one of the formats above. For example
- * ```
+ * Functions can be imported using the `name` or `{{project}}/{{region}}/name`, e.g. * `{{project}}/{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Functions can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:cloudfunctions/function:Function default {{project}}/{{region}}/{{name}}

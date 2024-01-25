@@ -17,16 +17,36 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
 
     public static final RepositoryCleanupPolicyMostRecentVersionsArgs Empty = new RepositoryCleanupPolicyMostRecentVersionsArgs();
 
+    /**
+     * (Optional, Beta)
+     * Minimum number of versions to keep.
+     * 
+     */
     @Import(name="keepCount")
     private @Nullable Output<Integer> keepCount;
 
+    /**
+     * @return (Optional, Beta)
+     * Minimum number of versions to keep.
+     * 
+     */
     public Optional<Output<Integer>> keepCount() {
         return Optional.ofNullable(this.keepCount);
     }
 
+    /**
+     * (Optional, Beta)
+     * Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     @Import(name="packageNamePrefixes")
     private @Nullable Output<List<String>> packageNamePrefixes;
 
+    /**
+     * @return (Optional, Beta)
+     * Match versions by package prefix. Applied on any prefix match.
+     * 
+     */
     public Optional<Output<List<String>>> packageNamePrefixes() {
         return Optional.ofNullable(this.packageNamePrefixes);
     }
@@ -56,24 +76,59 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
             $ = new RepositoryCleanupPolicyMostRecentVersionsArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param keepCount (Optional, Beta)
+         * Minimum number of versions to keep.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepCount(@Nullable Output<Integer> keepCount) {
             $.keepCount = keepCount;
             return this;
         }
 
+        /**
+         * @param keepCount (Optional, Beta)
+         * Minimum number of versions to keep.
+         * 
+         * @return builder
+         * 
+         */
         public Builder keepCount(Integer keepCount) {
             return keepCount(Output.of(keepCount));
         }
 
+        /**
+         * @param packageNamePrefixes (Optional, Beta)
+         * Match versions by package prefix. Applied on any prefix match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder packageNamePrefixes(@Nullable Output<List<String>> packageNamePrefixes) {
             $.packageNamePrefixes = packageNamePrefixes;
             return this;
         }
 
+        /**
+         * @param packageNamePrefixes (Optional, Beta)
+         * Match versions by package prefix. Applied on any prefix match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder packageNamePrefixes(List<String> packageNamePrefixes) {
             return packageNamePrefixes(Output.of(packageNamePrefixes));
         }
 
+        /**
+         * @param packageNamePrefixes (Optional, Beta)
+         * Match versions by package prefix. Applied on any prefix match.
+         * 
+         * @return builder
+         * 
+         */
         public Builder packageNamePrefixes(String... packageNamePrefixes) {
             return packageNamePrefixes(List.of(packageNamePrefixes));
         }

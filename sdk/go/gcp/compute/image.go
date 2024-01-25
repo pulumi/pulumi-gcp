@@ -130,17 +130,7 @@ import (
 //
 // ## Import
 //
-// Image can be imported using any of these accepted formats* `projects/{{project}}/global/images/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Image using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/global/images/{{name}}"
-//
-//	to = google_compute_image.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/image:Image When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Image can be imported using one of the formats above. For example
-//
-// ```
+// Image can be imported using any of these accepted formats* `projects/{{project}}/global/images/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Image can be imported using one of the formats above. For example
 //
 // ```sh
 //

@@ -35,15 +35,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * PublicDelegatedPrefix can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import PublicDelegatedPrefix using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}"
- *
- *  to = google_compute_public_delegated_prefix.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), PublicDelegatedPrefix can be imported using one of the formats above. For example
- * ```
+ * PublicDelegatedPrefix can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, PublicDelegatedPrefix can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/publicDelegatedPrefix:PublicDelegatedPrefix default projects/{{project}}/regions/{{region}}/publicDelegatedPrefixes/{{name}}

@@ -144,17 +144,7 @@ import (
 //
 // ## Import
 //
-// FeatureOnlineStore can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeatureOnlineStore using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}"
-//
-//	to = google_vertex_ai_feature_online_store.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeatureOnlineStore can be imported using one of the formats above. For example
-//
-// ```
+// FeatureOnlineStore can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, FeatureOnlineStore can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -187,12 +177,15 @@ type AiFeatureOnlineStore struct {
 	Bigtable AiFeatureOnlineStoreBigtablePtrOutput `pulumi:"bigtable"`
 	// The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-	// need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// (Optional, Beta)
+	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// Structure is documented below.
 	DedicatedServingEndpoint AiFeatureOnlineStoreDedicatedServingEndpointOutput `pulumi:"dedicatedServingEndpoint"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// (Optional, Beta)
 	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// Structure is documented below.
 	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementPtrOutput `pulumi:"embeddingManagement"`
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
@@ -206,8 +199,8 @@ type AiFeatureOnlineStore struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-	// FeatureOnlineStore
+	// (Optional, Beta)
+	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized AiFeatureOnlineStoreOptimizedPtrOutput `pulumi:"optimized"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -263,12 +256,15 @@ type aiFeatureOnlineStoreState struct {
 	Bigtable *AiFeatureOnlineStoreBigtable `pulumi:"bigtable"`
 	// The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime *string `pulumi:"createTime"`
-	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-	// need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// (Optional, Beta)
+	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// Structure is documented below.
 	DedicatedServingEndpoint *AiFeatureOnlineStoreDedicatedServingEndpoint `pulumi:"dedicatedServingEndpoint"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// (Optional, Beta)
 	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// Structure is documented below.
 	EmbeddingManagement *AiFeatureOnlineStoreEmbeddingManagement `pulumi:"embeddingManagement"`
 	// Used to perform consistent read-modify-write updates.
 	Etag *string `pulumi:"etag"`
@@ -282,8 +278,8 @@ type aiFeatureOnlineStoreState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-	// FeatureOnlineStore
+	// (Optional, Beta)
+	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized *AiFeatureOnlineStoreOptimized `pulumi:"optimized"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -305,12 +301,15 @@ type AiFeatureOnlineStoreState struct {
 	Bigtable AiFeatureOnlineStoreBigtablePtrInput
 	// The timestamp of when the feature online store was created in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
 	CreateTime pulumi.StringPtrInput
-	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-	// need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// (Optional, Beta)
+	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// Structure is documented below.
 	DedicatedServingEndpoint AiFeatureOnlineStoreDedicatedServingEndpointPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// (Optional, Beta)
 	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// Structure is documented below.
 	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementPtrInput
 	// Used to perform consistent read-modify-write updates.
 	Etag pulumi.StringPtrInput
@@ -324,8 +323,8 @@ type AiFeatureOnlineStoreState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
-	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-	// FeatureOnlineStore
+	// (Optional, Beta)
+	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized AiFeatureOnlineStoreOptimizedPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -349,10 +348,13 @@ type aiFeatureOnlineStoreArgs struct {
 	// Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
 	// Structure is documented below.
 	Bigtable *AiFeatureOnlineStoreBigtable `pulumi:"bigtable"`
-	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-	// need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// (Optional, Beta)
+	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// Structure is documented below.
 	DedicatedServingEndpoint *AiFeatureOnlineStoreDedicatedServingEndpoint `pulumi:"dedicatedServingEndpoint"`
+	// (Optional, Beta)
 	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// Structure is documented below.
 	EmbeddingManagement *AiFeatureOnlineStoreEmbeddingManagement `pulumi:"embeddingManagement"`
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
@@ -364,8 +366,8 @@ type aiFeatureOnlineStoreArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
-	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-	// FeatureOnlineStore
+	// (Optional, Beta)
+	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized *AiFeatureOnlineStoreOptimized `pulumi:"optimized"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -379,10 +381,13 @@ type AiFeatureOnlineStoreArgs struct {
 	// Settings for Cloud Bigtable instance that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore.
 	// Structure is documented below.
 	Bigtable AiFeatureOnlineStoreBigtablePtrInput
-	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-	// need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// (Optional, Beta)
+	// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+	// Structure is documented below.
 	DedicatedServingEndpoint AiFeatureOnlineStoreDedicatedServingEndpointPtrInput
+	// (Optional, Beta)
 	// The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+	// Structure is documented below.
 	EmbeddingManagement AiFeatureOnlineStoreEmbeddingManagementPtrInput
 	// If set to true, any FeatureViews and Features for this FeatureOnlineStore will also be deleted.
 	ForceDestroy pulumi.BoolPtrInput
@@ -394,8 +399,8 @@ type AiFeatureOnlineStoreArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
-	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-	// FeatureOnlineStore
+	// (Optional, Beta)
+	// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 	Optimized AiFeatureOnlineStoreOptimizedPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -502,8 +507,9 @@ func (o AiFeatureOnlineStoreOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-// need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+// (Optional, Beta)
+// The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+// Structure is documented below.
 func (o AiFeatureOnlineStoreOutput) DedicatedServingEndpoint() AiFeatureOnlineStoreDedicatedServingEndpointOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) AiFeatureOnlineStoreDedicatedServingEndpointOutput {
 		return v.DedicatedServingEndpoint
@@ -515,7 +521,9 @@ func (o AiFeatureOnlineStoreOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
+// (Optional, Beta)
 // The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+// Structure is documented below.
 func (o AiFeatureOnlineStoreOutput) EmbeddingManagement() AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) AiFeatureOnlineStoreEmbeddingManagementPtrOutput {
 		return v.EmbeddingManagement
@@ -546,8 +554,8 @@ func (o AiFeatureOnlineStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-// FeatureOnlineStore
+// (Optional, Beta)
+// Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
 func (o AiFeatureOnlineStoreOutput) Optimized() AiFeatureOnlineStoreOptimizedPtrOutput {
 	return o.ApplyT(func(v *AiFeatureOnlineStore) AiFeatureOnlineStoreOptimizedPtrOutput { return v.Optimized }).(AiFeatureOnlineStoreOptimizedPtrOutput)
 }

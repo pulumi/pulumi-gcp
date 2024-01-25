@@ -151,15 +151,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetInstance using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}&#34;
- * 
- *  to = google_compute_target_instance.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/targetInstance:TargetInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetInstance can be imported using one of the formats above. For example
- * ```
+ * TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
@@ -313,6 +305,7 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      * 
      */
@@ -320,7 +313,8 @@ public class TargetInstance extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
-     * @return The resource URL for the security policy associated with this target instance.
+     * @return (Optional, Beta)
+     * The resource URL for the security policy associated with this target instance.
      * 
      */
     public Output<Optional<String>> securityPolicy() {

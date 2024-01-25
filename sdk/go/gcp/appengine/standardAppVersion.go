@@ -158,17 +158,7 @@ import (
 //
 // ## Import
 //
-// StandardAppVersion can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}/versions/{{version_id}}` * `{{project}}/{{service}}/{{version_id}}` * `{{service}}/{{version_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import StandardAppVersion using one of the formats above. For exampletf import {
-//
-//	id = "apps/{{project}}/services/{{service}}/versions/{{version_id}}"
-//
-//	to = google_app_engine_standard_app_version.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:appengine/standardAppVersion:StandardAppVersion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), StandardAppVersion can be imported using one of the formats above. For example
-//
-// ```
+// StandardAppVersion can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}/versions/{{version_id}}` * `{{project}}/{{service}}/{{version_id}}` * `{{service}}/{{version_id}}` When using the `pulumi import` command, StandardAppVersion can be imported using one of the formats above. For example
 //
 // ```sh
 //

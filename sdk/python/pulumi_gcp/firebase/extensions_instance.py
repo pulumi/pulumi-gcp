@@ -367,15 +367,7 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{instance_id}}` * `{{project}}/{{instance_id}}` * `{{instance_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/instances/{{instance_id}}"
-
-         to = google_firebase_extensions_instance.default }
-
-        ```sh
-         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
-        ```
+        Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{instance_id}}` * `{{project}}/{{instance_id}}` * `{{instance_id}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default projects/{{project}}/instances/{{instance_id}}
@@ -449,15 +441,7 @@ class ExtensionsInstance(pulumi.CustomResource):
 
         ## Import
 
-        Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{instance_id}}` * `{{project}}/{{instance_id}}` * `{{instance_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/instances/{{instance_id}}"
-
-         to = google_firebase_extensions_instance.default }
-
-        ```sh
-         $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
-        ```
+        Instance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{instance_id}}` * `{{project}}/{{instance_id}}` * `{{instance_id}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:firebase/extensionsInstance:ExtensionsInstance default projects/{{project}}/instances/{{instance_id}}

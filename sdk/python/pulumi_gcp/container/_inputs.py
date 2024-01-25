@@ -5574,9 +5574,8 @@ class ClusterNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param pulumi.Input[bool] enable_confidential_storage: )
-               Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
-        :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param pulumi.Input[bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+        :param pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
@@ -5827,7 +5826,6 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="enableConfidentialStorage")
     def enable_confidential_storage(self) -> Optional[pulumi.Input[bool]]:
         """
-        )
         Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         """
         return pulumi.get(self, "enable_confidential_storage")
@@ -5840,7 +5838,7 @@ class ClusterNodeConfigArgs:
     @pulumi.getter(name="ephemeralStorageConfig")
     def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodeConfigEphemeralStorageConfigArgs']]:
         """
-        ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 
         ```python
         import pulumi
@@ -7530,7 +7528,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsArgs:
                  gcfs_config: Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs']] = None,
                  logging_variant: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs'] gcfs_config: ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        :param pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs'] gcfs_config: The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         :param pulumi.Input[str] logging_variant: The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         """
         if gcfs_config is not None:
@@ -7542,7 +7540,7 @@ class ClusterNodePoolDefaultsNodeConfigDefaultsArgs:
     @pulumi.getter(name="gcfsConfig")
     def gcfs_config(self) -> Optional[pulumi.Input['ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs']]:
         """
-        ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+        The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
         """
         return pulumi.get(self, "gcfs_config")
 
@@ -7948,9 +7946,8 @@ class ClusterNodePoolNodeConfigArgs:
                in GB. The smallest allowed disk size is 10GB. Defaults to 100GB.
         :param pulumi.Input[str] disk_type: Type of the disk attached to each node
                (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
-        :param pulumi.Input[bool] enable_confidential_storage: )
-               Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
-        :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        :param pulumi.Input[bool] enable_confidential_storage: Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+        :param pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs'] ephemeral_storage_config: Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
                
                ```python
                import pulumi
@@ -8201,7 +8198,6 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="enableConfidentialStorage")
     def enable_confidential_storage(self) -> Optional[pulumi.Input[bool]]:
         """
-        )
         Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         """
         return pulumi.get(self, "enable_confidential_storage")
@@ -8214,7 +8210,7 @@ class ClusterNodePoolNodeConfigArgs:
     @pulumi.getter(name="ephemeralStorageConfig")
     def ephemeral_storage_config(self) -> Optional[pulumi.Input['ClusterNodePoolNodeConfigEphemeralStorageConfigArgs']]:
         """
-        ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 
         ```python
         import pulumi
@@ -10048,8 +10044,8 @@ class ClusterProtectConfigArgs:
                  workload_config: Optional[pulumi.Input['ClusterProtectConfigWorkloadConfigArgs']] = None,
                  workload_vulnerability_mode: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['ClusterProtectConfigWorkloadConfigArgs'] workload_config: ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
-        :param pulumi.Input[str] workload_vulnerability_mode: ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+        :param pulumi.Input['ClusterProtectConfigWorkloadConfigArgs'] workload_config: WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+        :param pulumi.Input[str] workload_vulnerability_mode: Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         """
         if workload_config is not None:
             pulumi.set(__self__, "workload_config", workload_config)
@@ -10060,7 +10056,7 @@ class ClusterProtectConfigArgs:
     @pulumi.getter(name="workloadConfig")
     def workload_config(self) -> Optional[pulumi.Input['ClusterProtectConfigWorkloadConfigArgs']]:
         """
-        ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+        WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
         """
         return pulumi.get(self, "workload_config")
 
@@ -10072,7 +10068,7 @@ class ClusterProtectConfigArgs:
     @pulumi.getter(name="workloadVulnerabilityMode")
     def workload_vulnerability_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+        Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
         """
         return pulumi.get(self, "workload_vulnerability_mode")
 
@@ -10086,7 +10082,7 @@ class ClusterProtectConfigWorkloadConfigArgs:
     def __init__(__self__, *,
                  audit_mode: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] audit_mode: ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+        :param pulumi.Input[str] audit_mode: Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
         """
         pulumi.set(__self__, "audit_mode", audit_mode)
 
@@ -10094,7 +10090,7 @@ class ClusterProtectConfigWorkloadConfigArgs:
     @pulumi.getter(name="auditMode")
     def audit_mode(self) -> pulumi.Input[str]:
         """
-        ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+        Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
         """
         return pulumi.get(self, "audit_mode")
 

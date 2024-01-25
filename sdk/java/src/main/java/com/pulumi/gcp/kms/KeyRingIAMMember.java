@@ -265,15 +265,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
  * 
  *  id = &#34;{{project_id}}/{{location}}/{{key_ring_name}}&#34;
  * 
- *  to = google_kms_key_ring_iam_policy.default }
- * 
- * ```sh
- *  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
- * ```
+ *  to = google_kms_key_ring_iam_policy.default } The `pulumi import` command can also be used
  * 
  * ```sh
  *  $ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember default {{project_id}}/{{location}}/{{key_ring_name}}
@@ -283,7 +279,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:kms/keyRingIAMMember:KeyRingIAMMember")
 public class KeyRingIAMMember extends com.pulumi.resources.CustomResource {
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -291,7 +287,7 @@ public class KeyRingIAMMember extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ KeyRingIAMMemberCondition> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */

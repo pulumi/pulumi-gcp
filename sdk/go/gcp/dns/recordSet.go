@@ -387,17 +387,7 @@ import (
 //
 // ## Import
 //
-// DNS record sets can be imported using either of these accepted formats* `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}` * `{{project}}/{{zone}}/{{name}}/{{type}}` * `{{zone}}/{{name}}/{{type}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DNS record sets using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}"
-//
-//	to = google_dns_record_set.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:dns/recordSet:RecordSet When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DNS record sets can be imported using one of the formats above. For example
-//
-// ```
+// DNS record sets can be imported using either of these accepted formats* `projects/{{project}}/managedZones/{{zone}}/rrsets/{{name}}/{{type}}` * `{{project}}/{{zone}}/{{name}}/{{type}}` * `{{zone}}/{{name}}/{{type}}` When using the `pulumi import` command, DNS record sets can be imported using one of the formats above. For example
 //
 // ```sh
 //

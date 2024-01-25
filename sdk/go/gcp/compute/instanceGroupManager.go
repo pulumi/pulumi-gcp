@@ -128,17 +128,7 @@ import (
 //
 // ## Import
 //
-// Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}"
-//
-//	to = google_compute_instance_group_manager.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
-//
-// ```
+// Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -166,7 +156,6 @@ import (
 type InstanceGroupManager struct {
 	pulumi.CustomResourceState
 
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -286,7 +275,6 @@ func GetInstanceGroupManager(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering InstanceGroupManager resources.
 type instanceGroupManagerState struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -371,7 +359,6 @@ type instanceGroupManagerState struct {
 }
 
 type InstanceGroupManagerState struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -460,7 +447,6 @@ func (InstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type instanceGroupManagerArgs struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -537,7 +523,6 @@ type instanceGroupManagerArgs struct {
 
 // The set of arguments for constructing a InstanceGroupManager resource.
 type InstanceGroupManagerArgs struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -699,7 +684,6 @@ func (o InstanceGroupManagerOutput) ToInstanceGroupManagerOutputWithContext(ctx 
 	return o
 }
 
-// )
 // Properties to set on all instances in the group. After setting
 // allInstancesConfig on the group, you must update the group's instances to
 // apply the configuration.

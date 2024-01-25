@@ -62,9 +62,19 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
         return Optional.ofNullable(this.localSsdRecoveryTimeouts);
     }
 
+    /**
+     * Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+     * 
+     */
     @Import(name="maintenanceInterval")
     private @Nullable Output<String> maintenanceInterval;
 
+    /**
+     * @return Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+     * 
+     */
     public Optional<Output<String>> maintenanceInterval() {
         return Optional.ofNullable(this.maintenanceInterval);
     }
@@ -265,11 +275,25 @@ public final class InstanceTemplateSchedulingArgs extends com.pulumi.resources.R
             return localSsdRecoveryTimeouts(List.of(localSsdRecoveryTimeouts));
         }
 
+        /**
+         * @param maintenanceInterval Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(@Nullable Output<String> maintenanceInterval) {
             $.maintenanceInterval = maintenanceInterval;
             return this;
         }
 
+        /**
+         * @param maintenanceInterval Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(String maintenanceInterval) {
             return maintenanceInterval(Output.of(maintenanceInterval));
         }

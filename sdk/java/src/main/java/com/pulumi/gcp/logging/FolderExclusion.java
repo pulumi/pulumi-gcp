@@ -65,15 +65,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Folder-level logging exclusions can be imported using their URI, e.g. * `folders/{{folder}}/exclusions/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import folder-level logging exclusions using one of the formats above. For exampletf import {
- * 
- *  id = &#34;folders/{{folder}}/exclusions/{{name}}&#34;
- * 
- *  to = google_logging_folder_exclusion.default }
- * 
- * ```sh
- *  $ pulumi import gcp:logging/folderExclusion:FolderExclusion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), folder-level logging exclusions can be imported using one of the formats above. For example
- * ```
+ * Folder-level logging exclusions can be imported using their URI, e.g. * `folders/{{folder}}/exclusions/{{name}}` When using the `pulumi import` command, folder-level logging exclusions can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:logging/folderExclusion:FolderExclusion default folders/{{folder}}/exclusions/{{name}}

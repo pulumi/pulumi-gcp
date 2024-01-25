@@ -236,17 +236,7 @@ import (
 //
 // ## Import
 //
-// Subscription can be imported using any of these accepted formats* `projects/{{project}}/subscriptions/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subscription using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/subscriptions/{{name}}"
-//
-//	to = google_pubsub_subscription.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:pubsub/subscription:Subscription When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subscription can be imported using one of the formats above. For example
-//
-// ```
+// Subscription can be imported using any of these accepted formats* `projects/{{project}}/subscriptions/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Subscription can be imported using one of the formats above. For example
 //
 // ```sh
 //

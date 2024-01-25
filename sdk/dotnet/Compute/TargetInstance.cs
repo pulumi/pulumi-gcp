@@ -125,15 +125,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetInstance using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}"
-    /// 
-    ///  to = google_compute_target_instance.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/targetInstance:TargetInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetInstance can be imported using one of the formats above. For example
-    /// ```
+    /// TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
@@ -215,6 +207,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Output("securityPolicy")]
@@ -333,6 +326,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Input("securityPolicy")]
@@ -413,6 +407,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Input("securityPolicy")]

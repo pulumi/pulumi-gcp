@@ -18,15 +18,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import target pools using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/regions/{{region}}/targetPools/{{name}}"
-    /// 
-    ///  to = google_compute_target_pool.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/targetPool:TargetPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), target pools can be imported using one of the formats above. For example
-    /// ```
+    /// Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, target pools can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
@@ -108,7 +100,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// ) The resource URL for the security policy associated with this target pool.
+        /// The resource URL for the security policy associated with this target pool.
         /// </summary>
         [Output("securityPolicy")]
         public Output<string?> SecurityPolicy { get; private set; } = null!;
@@ -240,7 +232,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// ) The resource URL for the security policy associated with this target pool.
+        /// The resource URL for the security policy associated with this target pool.
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }
@@ -328,7 +320,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// ) The resource URL for the security policy associated with this target pool.
+        /// The resource URL for the security policy associated with this target pool.
         /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }

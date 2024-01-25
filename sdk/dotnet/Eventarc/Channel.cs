@@ -65,15 +65,7 @@ namespace Pulumi.Gcp.Eventarc
     /// 
     /// ## Import
     /// 
-    /// Channel can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/channels/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Channel using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/channels/{{name}}"
-    /// 
-    ///  to = google_eventarc_channel.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:eventarc/channel:Channel When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Channel can be imported using one of the formats above. For example
-    /// ```
+    /// Channel can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/channels/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Channel can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:eventarc/channel:Channel default projects/{{project}}/locations/{{location}}/channels/{{name}}

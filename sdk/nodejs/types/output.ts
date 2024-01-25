@@ -3680,26 +3680,76 @@ export namespace artifactregistry {
     }
 
     export interface RepositoryCleanupPolicy {
+        /**
+         * (Optional, Beta)
+         * Policy action.
+         * Possible values are: `DELETE`, `KEEP`.
+         */
         action?: string;
+        /**
+         * (Optional, Beta)
+         * Policy condition for matching versions.
+         * Structure is documented below.
+         */
         condition?: outputs.artifactregistry.RepositoryCleanupPolicyCondition;
         /**
          * The identifier for this object. Format specified above.
          */
         id: string;
+        /**
+         * (Optional, Beta)
+         * Policy condition for retaining a minimum number of versions. May only be
+         * specified with a Keep action.
+         * Structure is documented below.
+         */
         mostRecentVersions?: outputs.artifactregistry.RepositoryCleanupPolicyMostRecentVersions;
     }
 
     export interface RepositoryCleanupPolicyCondition {
+        /**
+         * (Optional, Beta)
+         * Match versions newer than a duration.
+         */
         newerThan?: string;
+        /**
+         * (Optional, Beta)
+         * Match versions older than a duration.
+         */
         olderThan?: string;
+        /**
+         * (Optional, Beta)
+         * Match versions by package prefix. Applied on any prefix match.
+         */
         packageNamePrefixes?: string[];
+        /**
+         * (Optional, Beta)
+         * Match versions by tag prefix. Applied on any prefix match.
+         */
         tagPrefixes?: string[];
+        /**
+         * (Optional, Beta)
+         * Match versions by tag status.
+         * Default value is `ANY`.
+         * Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
+         */
         tagState?: string;
+        /**
+         * (Optional, Beta)
+         * Match versions by version name prefix. Applied on any prefix match.
+         */
         versionNamePrefixes?: string[];
     }
 
     export interface RepositoryCleanupPolicyMostRecentVersions {
+        /**
+         * (Optional, Beta)
+         * Minimum number of versions to keep.
+         */
         keepCount?: number;
+        /**
+         * (Optional, Beta)
+         * Match versions by package prefix. Applied on any prefix match.
+         */
         packageNamePrefixes?: string[];
     }
 
@@ -12636,6 +12686,11 @@ export namespace cloudrun {
     }
 
     export interface ServiceTemplateSpecVolume {
+        /**
+         * (Optional, Beta)
+         * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+         * Structure is documented below.
+         */
         emptyDir?: outputs.cloudrun.ServiceTemplateSpecVolumeEmptyDir;
         /**
          * Volume's name.
@@ -13413,6 +13468,11 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         cloudSqlInstance?: outputs.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstance;
+        /**
+         * (Optional, Beta)
+         * Ephemeral storage used as a shared volume.
+         * Structure is documented below.
+         */
         emptyDir?: outputs.cloudrunv2.JobTemplateTemplateVolumeEmptyDir;
         /**
          * Volume's name.
@@ -14007,6 +14067,11 @@ export namespace cloudrunv2 {
          * Structure is documented below.
          */
         cloudSqlInstance?: outputs.cloudrunv2.ServiceTemplateVolumeCloudSqlInstance;
+        /**
+         * (Optional, Beta)
+         * Ephemeral storage used as a shared volume.
+         * Structure is documented below.
+         */
         emptyDir?: outputs.cloudrunv2.ServiceTemplateVolumeEmptyDir;
         /**
          * Represents a GCS Bucket mounted as a volume.
@@ -18618,13 +18683,13 @@ export namespace compute {
 
     export interface InstanceGroupManagerAllInstancesConfig {
         /**
-         * ), The label key-value pairs that you want to patch onto the instance.
+         * , The label key-value pairs that you want to patch onto the instance.
          *
          * - - -
          */
         labels?: {[key: string]: string};
         /**
-         * ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+         * , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
          */
         metadata?: {[key: string]: string};
     }
@@ -18697,7 +18762,6 @@ export namespace compute {
 
     export interface InstanceGroupManagerStatus {
         /**
-         * )
          * Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group's instances to
          * apply the configuration.
@@ -18761,7 +18825,7 @@ export namespace compute {
          */
         maxUnavailablePercent?: number;
         /**
-         * ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+         * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
          */
         minReadySec?: number;
         /**
@@ -18906,6 +18970,9 @@ export namespace compute {
          * be inferred from the subnetwork.
          */
         network: string;
+        /**
+         * Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+         */
         networkAttachment: string;
         /**
          * The private IP address to assign to the instance. If
@@ -18920,6 +18987,9 @@ export namespace compute {
          * The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
          */
         queueCount?: number;
+        /**
+         * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy?: string;
         /**
          * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -18960,6 +19030,9 @@ export namespace compute {
          * records for the external IPv6 ranges..
          */
         publicPtrDomainName?: string;
+        /**
+         * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
     }
 
@@ -19006,6 +19079,9 @@ export namespace compute {
          * records for the external IPv6 ranges..
          */
         publicPtrDomainName?: string;
+        /**
+         * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         */
         securityPolicy: string;
     }
 
@@ -19056,7 +19132,15 @@ export namespace compute {
          */
         instanceTerminationAction?: string;
         localSsdRecoveryTimeout?: outputs.compute.InstanceSchedulingLocalSsdRecoveryTimeout;
+        /**
+         * Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
+         */
         maintenanceInterval?: string;
+        /**
+         * Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
+         * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
+         */
         maxRunDuration?: outputs.compute.InstanceSchedulingMaxRunDuration;
         /**
          * The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
@@ -19206,7 +19290,7 @@ export namespace compute {
          */
         threadsPerCore?: number;
         /**
-         * ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+         * The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
          */
         visibleCoreCount?: number;
     }
@@ -19424,7 +19508,7 @@ export namespace compute {
          */
         network: string;
         /**
-         * ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
          */
         networkAttachment: string;
         /**
@@ -19546,6 +19630,10 @@ export namespace compute {
          */
         instanceTerminationAction?: string;
         localSsdRecoveryTimeouts?: outputs.compute.InstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
+        /**
+         * Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
+         */
         maintenanceInterval?: string;
         /**
          * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
@@ -21352,13 +21440,13 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerAllInstancesConfig {
         /**
-         * ), The label key-value pairs that you want to patch onto the instance.
+         * , The label key-value pairs that you want to patch onto the instance.
          *
          * - - -
          */
         labels?: {[key: string]: string};
         /**
-         * ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+         * , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
          */
         metadata?: {[key: string]: string};
     }
@@ -21430,7 +21518,6 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerStatus {
         /**
-         * )
          * Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group's instances to
          * apply the configuration.
@@ -21498,7 +21585,7 @@ export namespace compute {
          */
         maxUnavailablePercent?: number;
         /**
-         * ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+         * , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
          */
         minReadySec?: number;
         /**
@@ -24028,6 +24115,10 @@ export namespace compute {
          * Possible values are: `COLLOCATED`.
          */
         collocation?: string;
+        /**
+         * (Optional, Beta)
+         * Specifies the number of max logical switches.
+         */
         maxDistance?: number;
         /**
          * Number of VMs in this placement group. Google does not recommend that you use this field
@@ -24301,6 +24392,12 @@ export namespace compute {
          * This field is used for public NAT.
          */
         sourceNatActiveIps?: string[];
+        /**
+         * (Optional, Beta)
+         * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+         * These subnetworks must have purpose set to PRIVATE_NAT.
+         * This field is used for private NAT.
+         */
         sourceNatActiveRanges?: string[];
         /**
          * A list of URLs of the IP resources to be drained.
@@ -24309,6 +24406,12 @@ export namespace compute {
          * This field is used for public NAT.
          */
         sourceNatDrainIps?: string[];
+        /**
+         * (Optional, Beta)
+         * A list of URLs of subnetworks representing source ranges to be drained.
+         * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+         * This field is used for private NAT.
+         */
         sourceNatDrainRanges?: string[];
     }
 
@@ -24452,7 +24555,7 @@ export namespace compute {
 
     export interface SecurityPolicyAdaptiveProtectionConfig {
         /**
-         * ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+         * Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
          *
          * <a name="nestedLayer7DdosDefenseConfig"></a>The `layer7DdosDefenseConfig` block supports:
          */
@@ -24508,7 +24611,7 @@ export namespace compute {
          */
         logLevel: string;
         /**
-         * ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         * An optional list of case-insensitive request header names to use for resolving the callers client IP address.
          */
         userIpRequestHeaders?: string[];
     }
@@ -24549,7 +24652,7 @@ export namespace compute {
          */
         match: outputs.compute.SecurityPolicyRuleMatch;
         /**
-         * ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
+         * Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
          */
         preconfiguredWafConfig?: outputs.compute.SecurityPolicyRulePreconfiguredWafConfig;
         /**
@@ -24732,7 +24835,7 @@ export namespace compute {
          */
         enforceOnKey?: string;
         /**
-         * ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforceOnKeyConfigs` is specified, `enforceOnKey` must be set to an empty string. Structure is documented below.
+         * If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforceOnKeyConfigs` is specified, `enforceOnKey` must be set to an empty string. Structure is documented below.
          *
          * **Note:** To avoid the conflict between `enforceOnKey` and `enforceOnKeyConfigs`, the field `enforceOnKey` needs to be set to an empty string.
          */
@@ -28586,12 +28689,11 @@ export namespace container {
         diskType: string;
         effectiveTaints: outputs.container.ClusterNodeConfigEffectiveTaint[];
         /**
-         * )
          * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
          */
         enableConfidentialStorage?: boolean;
         /**
-         * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
@@ -29140,7 +29242,7 @@ export namespace container {
 
     export interface ClusterNodePoolDefaultsNodeConfigDefaults {
         /**
-         * ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          */
         gcfsConfig?: outputs.container.ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig;
         /**
@@ -29264,12 +29366,11 @@ export namespace container {
         diskType: string;
         effectiveTaints: outputs.container.ClusterNodePoolNodeConfigEffectiveTaint[];
         /**
-         * )
          * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
          */
         enableConfidentialStorage?: boolean;
         /**
-         * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          *
          * ```typescript
          * import * as pulumi from "@pulumi/pulumi";
@@ -29886,18 +29987,18 @@ export namespace container {
 
     export interface ClusterProtectConfig {
         /**
-         * ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+         * WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
          */
         workloadConfig: outputs.container.ClusterProtectConfigWorkloadConfig;
         /**
-         * ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+         * Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
          */
         workloadVulnerabilityMode: string;
     }
 
     export interface ClusterProtectConfigWorkloadConfig {
         /**
-         * ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+         * Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
          */
         auditMode: string;
     }
@@ -39821,6 +39922,10 @@ export namespace dataproc {
          * Structure is documented below.
          */
         consumers: outputs.dataproc.MetastoreServiceNetworkConfigConsumer[];
+        /**
+         * (Optional, Beta)
+         * Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+         */
         customRoutesEnabled?: boolean;
     }
 
@@ -63079,6 +63184,12 @@ export namespace vertex {
          */
         disabled?: boolean;
         /**
+         * (Optional, Beta, Deprecated)
+         * Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         *
+         * > **Warning:** `monitoringInterval` is deprecated and will be removed in a future release.
+         *
          * @deprecated `monitoring_interval` is deprecated and will be removed in a future release.
          */
         monitoringInterval: string;

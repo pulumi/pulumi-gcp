@@ -22,17 +22,7 @@ import (
 //
 // ## Import
 //
-// SharedflowDeployment can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/sharedflows/{{sharedflow_id}}/revisions/{{revision}}/deployments/{{name}}` * `{{org_id}}/{{environment}}/{{sharedflow_id}}/{{revision}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SharedflowDeployment using one of the formats above. For exampletf import {
-//
-//	id = "organizations/{{org_id}}/environments/{{environment}}/sharedflows/{{sharedflow_id}}/revisions/{{revision}}/deployments/{{name}}"
-//
-//	to = google_apigee_flowhook.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:apigee/sharedflowDeployment:SharedflowDeployment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SharedflowDeployment can be imported using one of the formats above. For example
-//
-// ```
+// SharedflowDeployment can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/sharedflows/{{sharedflow_id}}/revisions/{{revision}}/deployments/{{name}}` * `{{org_id}}/{{environment}}/{{sharedflow_id}}/{{revision}}/{{name}}` When using the `pulumi import` command, SharedflowDeployment can be imported using one of the formats above. For example
 //
 // ```sh
 //

@@ -40,15 +40,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Mesh can be imported using any of these accepted formats* `projects/{{project}}/locations/global/meshes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Mesh using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/global/meshes/{{name}}"
- *
- *  to = google_network_services_mesh.default }
- *
- * ```sh
- *  $ pulumi import gcp:networkservices/mesh:Mesh When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Mesh can be imported using one of the formats above. For example
- * ```
+ * Mesh can be imported using any of these accepted formats* `projects/{{project}}/locations/global/meshes/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Mesh can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:networkservices/mesh:Mesh default projects/{{project}}/locations/global/meshes/{{name}}

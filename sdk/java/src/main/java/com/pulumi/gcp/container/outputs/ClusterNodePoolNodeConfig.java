@@ -64,13 +64,12 @@ public final class ClusterNodePoolNodeConfig {
     private @Nullable String diskType;
     private @Nullable List<ClusterNodePoolNodeConfigEffectiveTaint> effectiveTaints;
     /**
-     * @return )
-     * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+     * @return Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
      * 
      */
     private @Nullable Boolean enableConfidentialStorage;
     /**
-     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 
@@ -433,15 +432,14 @@ public final class ClusterNodePoolNodeConfig {
         return this.effectiveTaints == null ? List.of() : this.effectiveTaints;
     }
     /**
-     * @return )
-     * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+     * @return Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
      * 
      */
     public Optional<Boolean> enableConfidentialStorage() {
         return Optional.ofNullable(this.enableConfidentialStorage);
     }
     /**
-     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 

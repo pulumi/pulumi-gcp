@@ -371,15 +371,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkEndpointGroup using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}&#34;
- * 
- *  to = google_compute_region_network_endpoint_group.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkEndpointGroup can be imported using one of the formats above. For example
- * ```
+ * RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
@@ -597,16 +589,20 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return this.selfLink;
     }
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;. Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * (Optional, Beta)
+     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      * 
      */
     @Export(name="serverlessDeployment", refs={RegionNetworkEndpointGroupServerlessDeployment.class}, tree="[0]")
     private Output</* @Nullable */ RegionNetworkEndpointGroupServerlessDeployment> serverlessDeployment;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;. Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * @return (Optional, Beta)
+     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RegionNetworkEndpointGroupServerlessDeployment>> serverlessDeployment() {

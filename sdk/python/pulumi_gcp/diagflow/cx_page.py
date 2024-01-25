@@ -1052,15 +1052,7 @@ class CxPage(pulumi.CustomResource):
 
         ## Import
 
-        Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Page using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/pages/{{name}}"
-
-         to = google_dialogflow_cx_page.default }
-
-        ```sh
-         $ pulumi import gcp:diagflow/cxPage:CxPage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Page can be imported using one of the formats above. For example
-        ```
+        Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` When using the `pulumi import` command, Page can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}
@@ -1698,15 +1690,7 @@ class CxPage(pulumi.CustomResource):
 
         ## Import
 
-        Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Page using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/pages/{{name}}"
-
-         to = google_dialogflow_cx_page.default }
-
-        ```sh
-         $ pulumi import gcp:diagflow/cxPage:CxPage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Page can be imported using one of the formats above. For example
-        ```
+        Page can be imported using any of these accepted formats* `{{parent}}/pages/{{name}}` * `{{parent}}/{{name}}` When using the `pulumi import` command, Page can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:diagflow/cxPage:CxPage default {{parent}}/pages/{{name}}

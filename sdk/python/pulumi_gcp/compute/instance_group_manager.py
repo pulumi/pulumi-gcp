@@ -46,8 +46,7 @@ class InstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
@@ -164,7 +163,6 @@ class InstanceGroupManagerArgs:
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -422,8 +420,7 @@ class _InstanceGroupManagerState:
                  zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering InstanceGroupManager resources.
-        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input['InstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
@@ -534,7 +531,6 @@ class _InstanceGroupManagerState:
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> Optional[pulumi.Input['InstanceGroupManagerAllInstancesConfigArgs']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -952,15 +948,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         ## Import
 
-        Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}"
-
-         to = google_compute_instance_group_manager.default }
-
-        ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
-        ```
+        Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
@@ -980,8 +968,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']] auto_healing_policies: The autohealing policies for this managed instance
@@ -1117,15 +1104,7 @@ class InstanceGroupManager(pulumi.CustomResource):
 
         ## Import
 
-        Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}"
-
-         to = google_compute_instance_group_manager.default }
-
-        ```sh
-         $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
-        ```
+        Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
@@ -1255,8 +1234,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[pulumi.InputType['InstanceGroupManagerAutoHealingPoliciesArgs']] auto_healing_policies: The autohealing policies for this managed instance
@@ -1348,7 +1326,6 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> pulumi.Output[Optional['outputs.InstanceGroupManagerAllInstancesConfig']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.

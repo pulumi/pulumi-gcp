@@ -218,17 +218,7 @@ import (
 //
 // ## Import
 //
-// VmwareNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}` * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}` * `{{location}}/{{vmware_cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VmwareNodePool using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}"
-//
-//	to = google_gkeonprem_vmware_node_pool.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:gkeonprem/vMwareNodePool:VMwareNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VmwareNodePool can be imported using one of the formats above. For example
-//
-// ```
+// VmwareNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{vmware_cluster}}/vmwareNodePools/{{name}}` * `{{project}}/{{location}}/{{vmware_cluster}}/{{name}}` * `{{location}}/{{vmware_cluster}}/{{name}}` When using the `pulumi import` command, VmwareNodePool can be imported using one of the formats above. For example
 //
 // ```sh
 //
