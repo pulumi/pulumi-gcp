@@ -195,15 +195,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Topic can be imported using any of these accepted formats* `projects/{{project}}/topics/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Topic using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/topics/{{name}}&#34;
- * 
- *  to = google_pubsub_topic.default }
- * 
- * ```sh
- *  $ pulumi import gcp:pubsub/topic:Topic When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Topic can be imported using one of the formats above. For example
- * ```
+ * Topic can be imported using any of these accepted formats* `projects/{{project}}/topics/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Topic can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:pubsub/topic:Topic default projects/{{project}}/topics/{{name}}

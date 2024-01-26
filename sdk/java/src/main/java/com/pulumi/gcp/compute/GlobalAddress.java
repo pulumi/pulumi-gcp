@@ -100,15 +100,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalAddress using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/global/addresses/{{name}}&#34;
- * 
- *  to = google_compute_global_address.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/globalAddress:GlobalAddress When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalAddress can be imported using one of the formats above. For example
- * ```
+ * GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
@@ -194,16 +186,16 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * (Beta)
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
     /**
-     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * @return (Beta)
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     public Output<Map<String,String>> effectiveLabels() {
@@ -226,14 +218,18 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipVersion);
     }
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * (Beta)
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
     private Output<String> labelFingerprint;
 
     /**
-     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * @return (Beta)
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     public Output<String> labelFingerprint() {
@@ -346,14 +342,18 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * (Beta)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return (Beta)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {

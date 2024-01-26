@@ -126,15 +126,9 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Policy can be imported using any of these accepted formats* `{{parent}}/policies/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Policy using one of the formats above. For exampletf import {
+ * Policy can be imported using any of these accepted formats* `{{parent}}/policies/{{name}}`
  *
- *  id = "{{parent}}/policies/{{name}}"
- *
- *  to = google_org_policy_policy.default }
- *
- * ```sh
- *  $ pulumi import gcp:orgpolicy/policy:Policy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Policy can be imported using one of the formats above. For example
- * ```
+ * When using the `pulumi import` command, Policy can be imported using one of the formats above. For example:
  *
  * ```sh
  *  $ pulumi import gcp:orgpolicy/policy:Policy default {{parent}}/policies/{{name}}

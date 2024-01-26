@@ -127,7 +127,6 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * )
      * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
      * 
      */
@@ -135,8 +134,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     private @Nullable Output<Boolean> enableConfidentialStorage;
 
     /**
-     * @return )
-     * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+     * @return Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
      * 
      */
     public Optional<Output<Boolean>> enableConfidentialStorage() {
@@ -144,7 +142,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 
@@ -173,7 +171,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
     private @Nullable Output<ClusterNodePoolNodeConfigEphemeralStorageConfigArgs> ephemeralStorageConfig;
 
     /**
-     * @return ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+     * @return Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
      * ```java
      * package generated_program;
      * 
@@ -1118,8 +1116,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enableConfidentialStorage )
-         * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+         * @param enableConfidentialStorage Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
          * 
          * @return builder
          * 
@@ -1130,8 +1127,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param enableConfidentialStorage )
-         * Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
+         * @param enableConfidentialStorage Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
          * 
          * @return builder
          * 
@@ -1141,7 +1137,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ephemeralStorageConfig ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * @param ephemeralStorageConfig Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          * ```java
          * package generated_program;
          * 
@@ -1174,7 +1170,7 @@ public final class ClusterNodePoolNodeConfigArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param ephemeralStorageConfig ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+         * @param ephemeralStorageConfig Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
          * ```java
          * package generated_program;
          * 

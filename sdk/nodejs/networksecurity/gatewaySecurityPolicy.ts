@@ -123,15 +123,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GatewaySecurityPolicy using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}"
- *
- *  to = google_network_security_gateway_security_policy.default }
- *
- * ```sh
- *  $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GatewaySecurityPolicy can be imported using one of the formats above. For example
- * ```
+ * GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}
@@ -206,6 +198,7 @@ export class GatewaySecurityPolicy extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      */
     public readonly tlsInspectionPolicy!: pulumi.Output<string | undefined>;
@@ -290,6 +283,7 @@ export interface GatewaySecurityPolicyState {
      */
     selfLink?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      */
     tlsInspectionPolicy?: pulumi.Input<string>;
@@ -328,6 +322,7 @@ export interface GatewaySecurityPolicyArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      */
     tlsInspectionPolicy?: pulumi.Input<string>;

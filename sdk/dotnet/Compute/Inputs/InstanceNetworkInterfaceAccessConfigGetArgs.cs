@@ -33,6 +33,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("publicPtrDomainName")]
         public Input<string>? PublicPtrDomainName { get; set; }
 
+        /// <summary>
+        /// Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }
 

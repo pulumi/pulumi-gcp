@@ -156,17 +156,7 @@ import (
 //
 // ## Import
 //
-// CustomDomain can be imported using any of these accepted formats* `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}` * `sites/{{site_id}}/customDomains/{{custom_domain}}` * `{{project}}/{{site_id}}/{{custom_domain}}` * `{{site_id}}/{{custom_domain}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CustomDomain using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}"
-//
-//	to = google_firebase_hosting_custom_domain.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:firebase/hostingCustomDomain:HostingCustomDomain When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CustomDomain can be imported using one of the formats above. For example
-//
-// ```
+// CustomDomain can be imported using any of these accepted formats* `projects/{{project}}/sites/{{site_id}}/customDomains/{{custom_domain}}` * `sites/{{site_id}}/customDomains/{{custom_domain}}` * `{{project}}/{{site_id}}/{{custom_domain}}` * `{{site_id}}/{{custom_domain}}` When using the `pulumi import` command, CustomDomain can be imported using one of the formats above. For example
 //
 // ```sh
 //

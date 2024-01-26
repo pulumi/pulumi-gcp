@@ -47,17 +47,7 @@ import (
 //
 // ## Import
 //
-// CertificateMap can be imported using any of these accepted formats* `projects/{{project}}/locations/global/certificateMaps/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CertificateMap using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/global/certificateMaps/{{name}}"
-//
-//	to = google_certificate_manager_certificate_map.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:certificatemanager/certificateMap:CertificateMap When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CertificateMap can be imported using one of the formats above. For example
-//
-// ```
+// CertificateMap can be imported using any of these accepted formats* `projects/{{project}}/locations/global/certificateMaps/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, CertificateMap can be imported using one of the formats above. For example
 //
 // ```sh
 //

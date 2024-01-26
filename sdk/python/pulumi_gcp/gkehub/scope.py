@@ -320,15 +320,7 @@ class Scope(pulumi.CustomResource):
 
         ## Import
 
-        Scope can be imported using any of these accepted formats* `projects/{{project}}/locations/global/scopes/{{scope_id}}` * `{{project}}/{{scope_id}}` * `{{scope_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Scope using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/global/scopes/{{scope_id}}"
-
-         to = google_gke_hub_scope.default }
-
-        ```sh
-         $ pulumi import gcp:gkehub/scope:Scope When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Scope can be imported using one of the formats above. For example
-        ```
+        Scope can be imported using any of these accepted formats* `projects/{{project}}/locations/global/scopes/{{scope_id}}` * `{{project}}/{{scope_id}}` * `{{scope_id}}` When using the `pulumi import` command, Scope can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:gkehub/scope:Scope default projects/{{project}}/locations/global/scopes/{{scope_id}}
@@ -388,15 +380,7 @@ class Scope(pulumi.CustomResource):
 
         ## Import
 
-        Scope can be imported using any of these accepted formats* `projects/{{project}}/locations/global/scopes/{{scope_id}}` * `{{project}}/{{scope_id}}` * `{{scope_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Scope using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/global/scopes/{{scope_id}}"
-
-         to = google_gke_hub_scope.default }
-
-        ```sh
-         $ pulumi import gcp:gkehub/scope:Scope When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Scope can be imported using one of the formats above. For example
-        ```
+        Scope can be imported using any of these accepted formats* `projects/{{project}}/locations/global/scopes/{{scope_id}}` * `{{project}}/{{scope_id}}` * `{{scope_id}}` When using the `pulumi import` command, Scope can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:gkehub/scope:Scope default projects/{{project}}/locations/global/scopes/{{scope_id}}

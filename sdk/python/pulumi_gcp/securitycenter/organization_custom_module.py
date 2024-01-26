@@ -334,15 +334,7 @@ class OrganizationCustomModule(pulumi.CustomResource):
 
         ## Import
 
-        OrganizationCustomModule can be imported using any of these accepted formats* `organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}` * `{{organization}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OrganizationCustomModule using one of the formats above. For exampletf import {
-
-         id = "organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}"
-
-         to = google_scc_organization_custom_module.default }
-
-        ```sh
-         $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OrganizationCustomModule can be imported using one of the formats above. For example
-        ```
+        OrganizationCustomModule can be imported using any of these accepted formats* `organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}` * `{{organization}}/{{name}}` When using the `pulumi import` command, OrganizationCustomModule can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule default organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}
@@ -446,15 +438,7 @@ class OrganizationCustomModule(pulumi.CustomResource):
 
         ## Import
 
-        OrganizationCustomModule can be imported using any of these accepted formats* `organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}` * `{{organization}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OrganizationCustomModule using one of the formats above. For exampletf import {
-
-         id = "organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}"
-
-         to = google_scc_organization_custom_module.default }
-
-        ```sh
-         $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OrganizationCustomModule can be imported using one of the formats above. For example
-        ```
+        OrganizationCustomModule can be imported using any of these accepted formats* `organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}` * `{{organization}}/{{name}}` When using the `pulumi import` command, OrganizationCustomModule can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:securitycenter/organizationCustomModule:OrganizationCustomModule default organizations/{{organization}}/securityHealthAnalyticsSettings/customModules/{{name}}

@@ -88,17 +88,7 @@ import (
 //
 // ## Import
 //
-// BackupSchedule can be imported using any of these accepted formats* `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}` * `{{project}}/{{database}}/{{name}}` * `{{database}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BackupSchedule using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}"
-//
-//	to = google_firestore_backup_schedule.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:firestore/backupSchedule:BackupSchedule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BackupSchedule can be imported using one of the formats above. For example
-//
-// ```
+// BackupSchedule can be imported using any of these accepted formats* `projects/{{project}}/databases/{{database}}/backupSchedules/{{name}}` * `{{project}}/{{database}}/{{name}}` * `{{database}}/{{name}}` When using the `pulumi import` command, BackupSchedule can be imported using one of the formats above. For example
 //
 // ```sh
 //

@@ -46,7 +46,7 @@ class TargetPoolArgs:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
@@ -184,7 +184,7 @@ class TargetPoolArgs:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        ) The resource URL for the security policy associated with this target pool.
+        The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 
@@ -243,7 +243,7 @@ class _TargetPoolState:
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
@@ -384,7 +384,7 @@ class _TargetPoolState:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        ) The resource URL for the security policy associated with this target pool.
+        The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 
@@ -444,15 +444,7 @@ class TargetPool(pulumi.CustomResource):
 
         ## Import
 
-        Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import target pools using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/targetPools/{{name}}"
-
-         to = google_compute_target_pool.default }
-
-        ```sh
-         $ pulumi import gcp:compute/targetPool:TargetPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), target pools can be imported using one of the formats above. For example
-        ```
+        Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, target pools can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
@@ -492,7 +484,7 @@ class TargetPool(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
                "CLIENT\\_IP\\_PROTO" also includes the protocol (default "NONE").
@@ -512,15 +504,7 @@ class TargetPool(pulumi.CustomResource):
 
         ## Import
 
-        Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import target pools using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/targetPools/{{name}}"
-
-         to = google_compute_target_pool.default }
-
-        ```sh
-         $ pulumi import gcp:compute/targetPool:TargetPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), target pools can be imported using one of the formats above. For example
-        ```
+        Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, target pools can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/targetPool:TargetPool default projects/{{project}}/regions/{{region}}/targetPools/{{name}}
@@ -631,7 +615,7 @@ class TargetPool(pulumi.CustomResource):
                is not provided, the provider project is used.
         :param pulumi.Input[str] region: Where the target pool resides. Defaults to project
                region.
-        :param pulumi.Input[str] security_policy: ) The resource URL for the security policy associated with this target pool.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target pool.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: How to distribute load. Options are "NONE" (no
                affinity). "CLIENT\\_IP" (hash of the source/dest addresses / ports), and
@@ -734,7 +718,7 @@ class TargetPool(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        ) The resource URL for the security policy associated with this target pool.
+        The resource URL for the security policy associated with this target pool.
         """
         return pulumi.get(self, "security_policy")
 

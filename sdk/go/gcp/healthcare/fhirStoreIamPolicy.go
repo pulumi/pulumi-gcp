@@ -123,17 +123,11 @@ import (
 //
 // ## Import
 //
-// ### Importing IAM policies IAM policy imports use the identifier of the Healthcare FHIR store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+// ### Importing IAM policies IAM policy imports use the identifier of the Healthcare FHIR store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
 //	id = "{{project_id}}/{{location}}/{{dataset}}/{{fhir_store}}"
 //
-//	to = google_healthcare_fhir_store_iam_policy.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:healthcare/fhirStoreIamPolicy:FhirStoreIamPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-//
-// ```
+//	to = google_healthcare_fhir_store_iam_policy.default } The `pulumi import` command can also be used
 //
 // ```sh
 //

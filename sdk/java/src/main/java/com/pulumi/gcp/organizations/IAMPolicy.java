@@ -306,15 +306,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing Audit Configs An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource&#39;s `org_id` and the `service`, e.g* `&#34;{{org_id}} foo.googleapis.com&#34;` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
+ * ### Importing Audit Configs An audit config can be imported into a `google_organization_iam_audit_config` resource using the resource&#39;s `org_id` and the `service`, e.g* `&#34;{{org_id}} foo.googleapis.com&#34;` An `import` block (Terraform v1.5.0 and later) can be used to import audit configstf import {
  * 
  *  id = &#34;{{org_id}} foo.googleapis.com&#34;
  * 
- *  to = google_organization_iam_audit_config.default }
- * 
- * ```sh
- *  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
- * ```
+ *  to = google_organization_iam_audit_config.default } The `pulumi import` command can also be used
  * 
  * ```sh
  *  $ pulumi import gcp:organizations/iAMPolicy:IAMPolicy default &#34;{{org_id}} foo.googleapis.com&#34;

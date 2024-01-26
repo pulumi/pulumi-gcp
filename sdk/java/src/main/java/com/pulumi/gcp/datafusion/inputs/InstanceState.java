@@ -23,20 +23,20 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     public static final InstanceState Empty = new InstanceState();
 
     /**
-     * List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-     * created with the Options field. Users will need to either manually update their state file to include these diffed
-     * options, or include the field in a [lifecycle ignore changes
-     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * List of accelerators enabled for this CDF instance.
+     * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+     * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+     * Structure is documented below.
      * 
      */
     @Import(name="accelerators")
     private @Nullable Output<List<InstanceAcceleratorArgs>> accelerators;
 
     /**
-     * @return List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-     * created with the Options field. Users will need to either manually update their state file to include these diffed
-     * options, or include the field in a [lifecycle ignore changes
-     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * @return List of accelerators enabled for this CDF instance.
+     * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+     * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InstanceAcceleratorArgs>>> accelerators() {
@@ -381,6 +381,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
@@ -392,7 +393,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return Service account which will be used to access resources in the customer project.
+     * @return (Beta, Deprecated)
+     * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
      * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
@@ -604,10 +606,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-         * created with the Options field. Users will need to either manually update their state file to include these diffed
-         * options, or include the field in a [lifecycle ignore changes
-         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * @param accelerators List of accelerators enabled for this CDF instance.
+         * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+         * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -618,10 +620,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-         * created with the Options field. Users will need to either manually update their state file to include these diffed
-         * options, or include the field in a [lifecycle ignore changes
-         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * @param accelerators List of accelerators enabled for this CDF instance.
+         * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+         * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -631,10 +633,10 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-         * created with the Options field. Users will need to either manually update their state file to include these diffed
-         * options, or include the field in a [lifecycle ignore changes
-         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * @param accelerators List of accelerators enabled for this CDF instance.
+         * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+         * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1107,7 +1109,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount Service account which will be used to access resources in the customer project.
+         * @param serviceAccount (Beta, Deprecated)
+         * Service account which will be used to access resources in the customer project.
          * 
          * @return builder
          * 
@@ -1122,7 +1125,8 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount Service account which will be used to access resources in the customer project.
+         * @param serviceAccount (Beta, Deprecated)
+         * Service account which will be used to access resources in the customer project.
          * 
          * @return builder
          * 

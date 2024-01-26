@@ -461,15 +461,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Flow can be imported using any of these accepted formats* `{{parent}}/flows/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flow using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{parent}}/flows/{{name}}&#34;
- * 
- *  to = google_dialogflow_cx_flow.default }
- * 
- * ```sh
- *  $ pulumi import gcp:diagflow/cxFlow:CxFlow When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flow can be imported using one of the formats above. For example
- * ```
+ * Flow can be imported using any of these accepted formats* `{{parent}}/flows/{{name}}` * `{{parent}}/{{name}}` When using the `pulumi import` command, Flow can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:diagflow/cxFlow:CxFlow default {{parent}}/flows/{{name}}

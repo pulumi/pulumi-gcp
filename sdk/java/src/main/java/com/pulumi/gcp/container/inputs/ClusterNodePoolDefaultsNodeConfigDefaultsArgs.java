@@ -17,14 +17,14 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
     public static final ClusterNodePoolDefaultsNodeConfigDefaultsArgs Empty = new ClusterNodePoolDefaultsNodeConfigDefaultsArgs();
 
     /**
-     * ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     @Import(name="gcfsConfig")
     private @Nullable Output<ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs> gcfsConfig;
 
     /**
-     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     public Optional<Output<ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigArgs>> gcfsConfig() {
@@ -72,7 +72,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
         }
 
         /**
-         * @param gcfsConfig ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * @param gcfsConfig The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          * 
          * @return builder
          * 
@@ -83,7 +83,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaultsArgs extends com.pul
         }
 
         /**
-         * @param gcfsConfig ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+         * @param gcfsConfig The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
          * 
          * @return builder
          * 

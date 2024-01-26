@@ -292,15 +292,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{region}}/instances/{{name}}&#34;
- * 
- *  to = google_data_fusion_instance.default }
- * 
- * ```sh
- *  $ pulumi import gcp:datafusion/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
- * ```
+ * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
@@ -322,20 +314,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:datafusion/instance:Instance")
 public class Instance extends com.pulumi.resources.CustomResource {
     /**
-     * List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-     * created with the Options field. Users will need to either manually update their state file to include these diffed
-     * options, or include the field in a [lifecycle ignore changes
-     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * List of accelerators enabled for this CDF instance.
+     * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+     * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+     * Structure is documented below.
      * 
      */
     @Export(name="accelerators", refs={List.class,InstanceAccelerator.class}, tree="[0,1]")
     private Output</* @Nullable */ List<InstanceAccelerator>> accelerators;
 
     /**
-     * @return List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-     * created with the Options field. Users will need to either manually update their state file to include these diffed
-     * options, or include the field in a [lifecycle ignore changes
-     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * @return List of accelerators enabled for this CDF instance.
+     * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+     * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<InstanceAccelerator>>> accelerators() {
@@ -658,6 +650,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
@@ -669,7 +662,8 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> serviceAccount;
 
     /**
-     * @return Service account which will be used to access resources in the customer project.
+     * @return (Beta, Deprecated)
+     * Service account which will be used to access resources in the customer project.
      * 
      */
     public Output<String> serviceAccount() {

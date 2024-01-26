@@ -52,15 +52,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * VPCSCConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VPCSCConfig using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}&#34;
- * 
- *  to = google_artifact_registry_vpcsc_config.default }
- * 
- * ```sh
- *  $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VPCSCConfig can be imported using one of the formats above. For example
- * ```
+ * VPCSCConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, VPCSCConfig can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:artifactregistry/vpcscConfig:VpcscConfig default projects/{{project}}/locations/{{location}}/vpcscConfig/{{name}}

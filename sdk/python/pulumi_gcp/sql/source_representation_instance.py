@@ -500,15 +500,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
         ## Import
 
-        SourceRepresentationInstance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SourceRepresentationInstance using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/instances/{{name}}"
-
-         to = google_sql_source_representation_instance.default }
-
-        ```sh
-         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SourceRepresentationInstance can be imported using one of the formats above. For example
-        ```
+        SourceRepresentationInstance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}
@@ -592,15 +584,7 @@ class SourceRepresentationInstance(pulumi.CustomResource):
 
         ## Import
 
-        SourceRepresentationInstance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SourceRepresentationInstance using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/instances/{{name}}"
-
-         to = google_sql_source_representation_instance.default }
-
-        ```sh
-         $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SourceRepresentationInstance can be imported using one of the formats above. For example
-        ```
+        SourceRepresentationInstance can be imported using any of these accepted formats* `projects/{{project}}/instances/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, SourceRepresentationInstance can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:sql/sourceRepresentationInstance:SourceRepresentationInstance default projects/{{project}}/instances/{{name}}

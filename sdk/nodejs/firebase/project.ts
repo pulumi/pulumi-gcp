@@ -38,15 +38,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Project can be imported using any of these accepted formats* `projects/{{project}}` * `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Project using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}"
- *
- *  to = google_firebase_project.default }
- *
- * ```sh
- *  $ pulumi import gcp:firebase/project:Project When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Project can be imported using one of the formats above. For example
- * ```
+ * Project can be imported using any of these accepted formats* `projects/{{project}}` * `{{project}}` When using the `pulumi import` command, Project can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:firebase/project:Project default projects/{{project}}

@@ -128,7 +128,8 @@ type LookupInstanceTemplateResult struct {
 	Name *string `pulumi:"name"`
 	// Creates a unique name beginning with the specified
 	// prefix. Conflicts with `name`.
-	NamePrefix        string                                `pulumi:"namePrefix"`
+	NamePrefix string `pulumi:"namePrefix"`
+	// (Optional, Beta) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
 	NetworkInterfaces []GetInstanceTemplateNetworkInterface `pulumi:"networkInterfaces"`
 	// The network performance configuration setting
 	// for the instance, if set. Structure is documented below.
@@ -330,6 +331,7 @@ func (o LookupInstanceTemplateResultOutput) NamePrefix() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) string { return v.NamePrefix }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.  s
 func (o LookupInstanceTemplateResultOutput) NetworkInterfaces() GetInstanceTemplateNetworkInterfaceArrayOutput {
 	return o.ApplyT(func(v LookupInstanceTemplateResult) []GetInstanceTemplateNetworkInterface { return v.NetworkInterfaces }).(GetInstanceTemplateNetworkInterfaceArrayOutput)
 }

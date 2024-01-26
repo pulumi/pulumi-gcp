@@ -29,9 +29,17 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("localSsdRecoveryTimeout")]
         public Input<Inputs.InstanceSchedulingLocalSsdRecoveryTimeoutGetArgs>? LocalSsdRecoveryTimeout { get; set; }
 
+        /// <summary>
+        /// Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        /// &lt;a name="nested_guest_accelerator"&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+        /// </summary>
         [Input("maintenanceInterval")]
         public Input<string>? MaintenanceInterval { get; set; }
 
+        /// <summary>
+        /// Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        /// &lt;a name="nested_max_run_duration"&gt;&lt;/a&gt;The `max_run_duration` block supports:
+        /// </summary>
         [Input("maxRunDuration")]
         public Input<Inputs.InstanceSchedulingMaxRunDurationGetArgs>? MaxRunDuration { get; set; }
 

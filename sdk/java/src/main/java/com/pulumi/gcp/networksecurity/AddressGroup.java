@@ -130,15 +130,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AddressGroup can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/addressGroups/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AddressGroup using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{parent}}/locations/{{location}}/addressGroups/{{name}}&#34;
- * 
- *  to = google_network_security_address_group.default }
- * 
- * ```sh
- *  $ pulumi import gcp:networksecurity/addressGroup:AddressGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AddressGroup can be imported using one of the formats above. For example
- * ```
+ * AddressGroup can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/addressGroups/{{name}}` When using the `pulumi import` command, AddressGroup can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:networksecurity/addressGroup:AddressGroup default {{parent}}/locations/{{location}}/addressGroups/{{name}}

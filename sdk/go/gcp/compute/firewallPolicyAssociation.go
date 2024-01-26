@@ -53,17 +53,7 @@ import (
 //
 // ## Import
 //
-// FirewallPolicyAssociation can be imported using any of these accepted formats* `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}` * `{{firewall_policy}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FirewallPolicyAssociation using one of the formats above. For exampletf import {
-//
-//	id = "locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}"
-//
-//	to = google_compute_firewall_policy_association.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/firewallPolicyAssociation:FirewallPolicyAssociation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FirewallPolicyAssociation can be imported using one of the formats above. For example
-//
-// ```
+// FirewallPolicyAssociation can be imported using any of these accepted formats* `locations/global/firewallPolicies/{{firewall_policy}}/associations/{{name}}` * `{{firewall_policy}}/{{name}}` When using the `pulumi import` command, FirewallPolicyAssociation can be imported using one of the formats above. For example
 //
 // ```sh
 //

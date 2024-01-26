@@ -41,17 +41,7 @@ import (
 //
 // ## Import
 //
-// Runtime Configs can be imported using the `name` or full config name, e.g. * `projects/{{project_id}}/configs/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Runtime Configs using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project_id}}/configs/{{name}}"
-//
-//	to = google_runtimeconfig_config.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:runtimeconfig/config:Config When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Runtime Configs can be imported using one of the formats above. For example
-//
-// ```
+// Runtime Configs can be imported using the `name` or full config name, e.g. * `projects/{{project_id}}/configs/{{name}}` * `{{name}}` When using the `pulumi import` command, Runtime Configs can be imported using one of the formats above. For example
 //
 // ```sh
 //

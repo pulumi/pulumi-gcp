@@ -223,15 +223,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodeGroup using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}&#34;
- * 
- *  to = google_compute_node_group.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/nodeGroup:NodeGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodeGroup can be imported using one of the formats above. For example
- * ```
+ * NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
@@ -315,22 +307,22 @@ public class NodeGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.initialSize);
     }
     /**
-     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-     * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+     * (Optional, Beta)
+     * Specifies the frequency of planned maintenance events. Set to one of the following:
+     * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+     * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+     *   Possible values are: `AS_NEEDED`, `RECURRENT`.
      * 
      */
     @Export(name="maintenanceInterval", refs={String.class}, tree="[0]")
     private Output<String> maintenanceInterval;
 
     /**
-     * @return Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-     * migrations and terminations, on individual VMs. Possible values: [&#34;AS_NEEDED&#34;, &#34;RECURRENT&#34;]
+     * @return (Optional, Beta)
+     * Specifies the frequency of planned maintenance events. Set to one of the following:
+     * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+     * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+     *   Possible values are: `AS_NEEDED`, `RECURRENT`.
      * 
      */
     public Output<String> maintenanceInterval() {

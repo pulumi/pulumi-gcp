@@ -25,18 +25,24 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     public static final RepositoryArgs Empty = new RepositoryArgs();
 
     /**
-     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * (Optional, Beta)
+     * Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      * 
      */
     @Import(name="cleanupPolicies")
     private @Nullable Output<List<RepositoryCleanupPolicyArgs>> cleanupPolicies;
 
     /**
-     * @return Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * @return (Optional, Beta)
+     * Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<RepositoryCleanupPolicyArgs>>> cleanupPolicies() {
@@ -44,14 +50,18 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * (Optional, Beta)
+     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      * 
      */
     @Import(name="cleanupPolicyDryRun")
     private @Nullable Output<Boolean> cleanupPolicyDryRun;
 
     /**
-     * @return If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * @return (Optional, Beta)
+     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      * 
      */
     public Optional<Output<Boolean>> cleanupPolicyDryRun() {
@@ -326,9 +336,12 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-         * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-         * under 128 characters in length.
+         * @param cleanupPolicies (Optional, Beta)
+         * Cleanup policies for this repository. Cleanup policies indicate when
+         * certain package versions can be automatically deleted.
+         * Map keys are policy IDs supplied by users during policy creation. They must
+         * unique within a repository and be under 128 characters in length.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -339,9 +352,12 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-         * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-         * under 128 characters in length.
+         * @param cleanupPolicies (Optional, Beta)
+         * Cleanup policies for this repository. Cleanup policies indicate when
+         * certain package versions can be automatically deleted.
+         * Map keys are policy IDs supplied by users during policy creation. They must
+         * unique within a repository and be under 128 characters in length.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -351,9 +367,12 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-         * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-         * under 128 characters in length.
+         * @param cleanupPolicies (Optional, Beta)
+         * Cleanup policies for this repository. Cleanup policies indicate when
+         * certain package versions can be automatically deleted.
+         * Map keys are policy IDs supplied by users during policy creation. They must
+         * unique within a repository and be under 128 characters in length.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -363,7 +382,9 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this repository.
+         * @param cleanupPolicyDryRun (Optional, Beta)
+         * If true, the cleanup pipeline is prevented from deleting versions in this
+         * repository.
          * 
          * @return builder
          * 
@@ -374,7 +395,9 @@ public final class RepositoryArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this repository.
+         * @param cleanupPolicyDryRun (Optional, Beta)
+         * If true, the cleanup pipeline is prevented from deleting versions in this
+         * repository.
          * 
          * @return builder
          * 

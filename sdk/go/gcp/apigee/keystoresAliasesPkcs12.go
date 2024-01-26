@@ -22,17 +22,7 @@ import (
 //
 // ## Import
 //
-// KeystoresAliasesPkcs12 can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}` * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import KeystoresAliasesPkcs12 using one of the formats above. For exampletf import {
-//
-//	id = "organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}"
-//
-//	to = google_apigee_keystores_aliases_pkcs12.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:apigee/keystoresAliasesPkcs12:KeystoresAliasesPkcs12 When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), KeystoresAliasesPkcs12 can be imported using one of the formats above. For example
-//
-// ```
+// KeystoresAliasesPkcs12 can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/keystores/{{keystore}}/aliases/{{alias}}` * `{{org_id}}/{{environment}}/{{keystore}}/{{alias}}` When using the `pulumi import` command, KeystoresAliasesPkcs12 can be imported using one of the formats above. For example
 //
 // ```sh
 //

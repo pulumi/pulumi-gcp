@@ -213,17 +213,7 @@ import (
 //
 // ## Import
 //
-// GlobalForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/global/forwardingRules/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalForwardingRule using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/global/forwardingRules/{{name}}"
-//
-//	to = google_compute_global_forwarding_rule.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalForwardingRule can be imported using one of the formats above. For example
-//
-// ```
+// GlobalForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/global/forwardingRules/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -245,6 +235,7 @@ import (
 type GlobalForwardingRule struct {
 	pulumi.CustomResourceState
 
+	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess pulumi.BoolPtrOutput `pulumi:"allowPscGlobalAccess"`
 	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
@@ -450,6 +441,7 @@ func GetGlobalForwardingRule(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering GlobalForwardingRule resources.
 type globalForwardingRuleState struct {
+	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess *bool `pulumi:"allowPscGlobalAccess"`
 	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
@@ -618,6 +610,7 @@ type globalForwardingRuleState struct {
 }
 
 type GlobalForwardingRuleState struct {
+	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess pulumi.BoolPtrInput
 	// [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
@@ -790,6 +783,7 @@ func (GlobalForwardingRuleState) ElementType() reflect.Type {
 }
 
 type globalForwardingRuleArgs struct {
+	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess *bool `pulumi:"allowPscGlobalAccess"`
 	// An optional description of this resource. Provide this property when
@@ -943,6 +937,7 @@ type globalForwardingRuleArgs struct {
 
 // The set of arguments for constructing a GlobalForwardingRule resource.
 type GlobalForwardingRuleArgs struct {
+	// (Optional, Beta)
 	// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 	AllowPscGlobalAccess pulumi.BoolPtrInput
 	// An optional description of this resource. Provide this property when
@@ -1181,6 +1176,7 @@ func (o GlobalForwardingRuleOutput) ToGlobalForwardingRuleOutputWithContext(ctx 
 	return o
 }
 
+// (Optional, Beta)
 // This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
 func (o GlobalForwardingRuleOutput) AllowPscGlobalAccess() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.BoolPtrOutput { return v.AllowPscGlobalAccess }).(pulumi.BoolPtrOutput)

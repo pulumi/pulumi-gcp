@@ -529,15 +529,7 @@ class Hl7Store(pulumi.CustomResource):
 
         ## Import
 
-        Hl7V2Store can be imported using any of these accepted formats* `{{dataset}}/hl7V2Stores/{{name}}` * `{{dataset}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Hl7V2Store using one of the formats above. For exampletf import {
-
-         id = "{{dataset}}/hl7V2Stores/{{name}}"
-
-         to = google_healthcare_hl7_v2_store.default }
-
-        ```sh
-         $ pulumi import gcp:healthcare/hl7Store:Hl7Store When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Hl7V2Store can be imported using one of the formats above. For example
-        ```
+        Hl7V2Store can be imported using any of these accepted formats* `{{dataset}}/hl7V2Stores/{{name}}` * `{{dataset}}/{{name}}` When using the `pulumi import` command, Hl7V2Store can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/hl7V2Stores/{{name}}
@@ -728,15 +720,7 @@ class Hl7Store(pulumi.CustomResource):
 
         ## Import
 
-        Hl7V2Store can be imported using any of these accepted formats* `{{dataset}}/hl7V2Stores/{{name}}` * `{{dataset}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Hl7V2Store using one of the formats above. For exampletf import {
-
-         id = "{{dataset}}/hl7V2Stores/{{name}}"
-
-         to = google_healthcare_hl7_v2_store.default }
-
-        ```sh
-         $ pulumi import gcp:healthcare/hl7Store:Hl7Store When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Hl7V2Store can be imported using one of the formats above. For example
-        ```
+        Hl7V2Store can be imported using any of these accepted formats* `{{dataset}}/hl7V2Stores/{{name}}` * `{{dataset}}/{{name}}` When using the `pulumi import` command, Hl7V2Store can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:healthcare/hl7Store:Hl7Store default {{dataset}}/hl7V2Stores/{{name}}

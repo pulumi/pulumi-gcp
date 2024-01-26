@@ -381,15 +381,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         ## Import
 
-        ProjectSettings can be imported using any of these accepted formats* `projects/{{project_id}}/accessApprovalSettings` * `{{project_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ProjectSettings using one of the formats above. For exampletf import {
-
-         id = "projects/{{project_id}}/accessApprovalSettings"
-
-         to = google_project_access_approval_settings.default }
-
-        ```sh
-         $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ProjectSettings can be imported using one of the formats above. For example
-        ```
+        ProjectSettings can be imported using any of these accepted formats* `projects/{{project_id}}/accessApprovalSettings` * `{{project_id}}` When using the `pulumi import` command, ProjectSettings can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings
@@ -481,15 +473,7 @@ class AccessApprovalSettings(pulumi.CustomResource):
 
         ## Import
 
-        ProjectSettings can be imported using any of these accepted formats* `projects/{{project_id}}/accessApprovalSettings` * `{{project_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ProjectSettings using one of the formats above. For exampletf import {
-
-         id = "projects/{{project_id}}/accessApprovalSettings"
-
-         to = google_project_access_approval_settings.default }
-
-        ```sh
-         $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ProjectSettings can be imported using one of the formats above. For example
-        ```
+        ProjectSettings can be imported using any of these accepted formats* `projects/{{project_id}}/accessApprovalSettings` * `{{project_id}}` When using the `pulumi import` command, ProjectSettings can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:projects/accessApprovalSettings:AccessApprovalSettings default projects/{{project_id}}/accessApprovalSettings

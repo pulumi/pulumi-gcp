@@ -1037,6 +1037,9 @@ class JobTemplateTemplateVolumeArgs:
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['JobTemplateTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
+        :param pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs'] empty_dir: (Optional, Beta)
+               Ephemeral storage used as a shared volume.
+               Structure is documented below.
         :param pulumi.Input['JobTemplateTemplateVolumeSecretArgs'] secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
         """
@@ -1076,6 +1079,11 @@ class JobTemplateTemplateVolumeArgs:
     @property
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional[pulumi.Input['JobTemplateTemplateVolumeEmptyDirArgs']]:
+        """
+        (Optional, Beta)
+        Ephemeral storage used as a shared volume.
+        Structure is documented below.
+        """
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter
@@ -3156,6 +3164,9 @@ class ServiceTemplateVolumeArgs:
         :param pulumi.Input[str] name: Volume's name.
         :param pulumi.Input['ServiceTemplateVolumeCloudSqlInstanceArgs'] cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
+        :param pulumi.Input['ServiceTemplateVolumeEmptyDirArgs'] empty_dir: (Optional, Beta)
+               Ephemeral storage used as a shared volume.
+               Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeGcsArgs'] gcs: Represents a GCS Bucket mounted as a volume.
                Structure is documented below.
         :param pulumi.Input['ServiceTemplateVolumeNfsArgs'] nfs: Represents an NFS mount.
@@ -3203,6 +3214,11 @@ class ServiceTemplateVolumeArgs:
     @property
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional[pulumi.Input['ServiceTemplateVolumeEmptyDirArgs']]:
+        """
+        (Optional, Beta)
+        Ephemeral storage used as a shared volume.
+        Structure is documented below.
+        """
         return pulumi.get(self, "empty_dir")
 
     @empty_dir.setter

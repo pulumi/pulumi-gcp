@@ -330,17 +330,7 @@ import (
 //
 // ## Import
 //
-// Instance can be imported using any of these accepted formats* `{{org_id}}/instances/{{name}}` * `{{org_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
-//
-//	id = "{{org_id}}/instances/{{name}}"
-//
-//	to = google_apigee_instance.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:apigee/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
-//
-// ```
+// Instance can be imported using any of these accepted formats* `{{org_id}}/instances/{{name}}` * `{{org_id}}/{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
 //
 // ```sh
 //

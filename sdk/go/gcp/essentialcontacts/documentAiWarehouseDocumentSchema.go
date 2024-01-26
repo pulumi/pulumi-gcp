@@ -540,17 +540,7 @@ import (
 //
 // ## Import
 //
-// DocumentSchema can be imported using any of these accepted formats* `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}` * `{{project_number}}/{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DocumentSchema using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}"
-//
-//	to = google_document_ai_warehouse_document_schema.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:essentialcontacts/documentAiWarehouseDocumentSchema:DocumentAiWarehouseDocumentSchema When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DocumentSchema can be imported using one of the formats above. For example
-//
-// ```
+// DocumentSchema can be imported using any of these accepted formats* `projects/{{project_number}}/locations/{{location}}/documentSchemas/{{name}}` * `{{project_number}}/{{location}}/{{name}}` When using the `pulumi import` command, DocumentSchema can be imported using one of the formats above. For example
 //
 // ```sh
 //

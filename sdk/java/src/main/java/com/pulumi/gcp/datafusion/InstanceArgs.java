@@ -24,20 +24,20 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     public static final InstanceArgs Empty = new InstanceArgs();
 
     /**
-     * List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-     * created with the Options field. Users will need to either manually update their state file to include these diffed
-     * options, or include the field in a [lifecycle ignore changes
-     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * List of accelerators enabled for this CDF instance.
+     * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+     * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+     * Structure is documented below.
      * 
      */
     @Import(name="accelerators")
     private @Nullable Output<List<InstanceAcceleratorArgs>> accelerators;
 
     /**
-     * @return List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-     * created with the Options field. Users will need to either manually update their state file to include these diffed
-     * options, or include the field in a [lifecycle ignore changes
-     * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+     * @return List of accelerators enabled for this CDF instance.
+     * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+     * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<InstanceAcceleratorArgs>>> accelerators() {
@@ -401,10 +401,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-         * created with the Options field. Users will need to either manually update their state file to include these diffed
-         * options, or include the field in a [lifecycle ignore changes
-         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * @param accelerators List of accelerators enabled for this CDF instance.
+         * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+         * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -415,10 +415,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-         * created with the Options field. Users will need to either manually update their state file to include these diffed
-         * options, or include the field in a [lifecycle ignore changes
-         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * @param accelerators List of accelerators enabled for this CDF instance.
+         * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+         * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -428,10 +428,10 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param accelerators List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-         * created with the Options field. Users will need to either manually update their state file to include these diffed
-         * options, or include the field in a [lifecycle ignore changes
-         * block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+         * @param accelerators List of accelerators enabled for this CDF instance.
+         * If accelerators are enabled it is possible a permadiff will be created with the Options field.
+         * Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+         * Structure is documented below.
          * 
          * @return builder
          * 

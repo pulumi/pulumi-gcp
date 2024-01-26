@@ -554,15 +554,7 @@ class RestorePlanIamMember(pulumi.CustomResource):
 
         ## Import
 
-        RestorePlan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RestorePlan using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/restorePlans/{{name}}"
-
-         to = google_gke_backup_restore_plan.default }
-
-        ```sh
-         $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RestorePlan can be imported using one of the formats above. For example
-        ```
+        RestorePlan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}
@@ -920,15 +912,7 @@ class RestorePlanIamMember(pulumi.CustomResource):
 
         ## Import
 
-        RestorePlan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RestorePlan using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/restorePlans/{{name}}"
-
-         to = google_gke_backup_restore_plan.default }
-
-        ```sh
-         $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RestorePlan can be imported using one of the formats above. For example
-        ```
+        RestorePlan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/restorePlans/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, RestorePlan can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:gkebackup/restorePlanIamMember:RestorePlanIamMember default projects/{{project}}/locations/{{location}}/restorePlans/{{name}}

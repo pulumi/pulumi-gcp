@@ -39,15 +39,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Folders can be imported using the folder's id, e.g. * `folders/{{folder_id}}` * `{{folder_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Folders using one of the formats above. For exampletf import {
- *
- *  id = "folders/{{folder_id}}"
- *
- *  to = google_folder.default }
- *
- * ```sh
- *  $ pulumi import gcp:organizations/folder:Folder When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Folders can be imported using one of the formats above. For example
- * ```
+ * Folders can be imported using the folder's id, e.g. * `folders/{{folder_id}}` * `{{folder_id}}` When using the `pulumi import` command, Folders can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:organizations/folder:Folder default {{folder_id}}

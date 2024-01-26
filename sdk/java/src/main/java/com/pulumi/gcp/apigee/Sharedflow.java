@@ -27,15 +27,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * SharedFlow can be imported using any of these accepted formats* `{{org_id}}/sharedflows/{{name}}` * `{{org_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SharedFlow using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{org_id}}/sharedflows/{{name}}&#34;
- * 
- *  to = google_apigee_sharedflow.default }
- * 
- * ```sh
- *  $ pulumi import gcp:apigee/sharedflow:Sharedflow When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SharedFlow can be imported using one of the formats above. For example
- * ```
+ * SharedFlow can be imported using any of these accepted formats* `{{org_id}}/sharedflows/{{name}}` * `{{org_id}}/{{name}}` When using the `pulumi import` command, SharedFlow can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:apigee/sharedflow:Sharedflow default {{org_id}}/sharedflows/{{name}}

@@ -191,15 +191,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * User can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}` * `{{project}}/{{location}}/{{cluster}}/{{user_id}}` * `{{location}}/{{cluster}}/{{user_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import User using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}&#34;
- * 
- *  to = google_alloydb_user.default }
- * 
- * ```sh
- *  $ pulumi import gcp:alloydb/user:User When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), User can be imported using one of the formats above. For example
- * ```
+ * User can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}` * `{{project}}/{{location}}/{{cluster}}/{{user_id}}` * `{{location}}/{{cluster}}/{{user_id}}` When using the `pulumi import` command, User can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:alloydb/user:User default projects/{{project}}/locations/{{location}}/clusters/{{cluster}}/users/{{user_id}}

@@ -18,16 +18,16 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
     public static final ResponsePolicyRuleArgs Empty = new ResponsePolicyRuleArgs();
 
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-     * &#39;bypassResponsePolicy&#39;
+     * (Optional, Beta)
+     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
     @Import(name="behavior")
     private @Nullable Output<String> behavior;
 
     /**
-     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-     * &#39;bypassResponsePolicy&#39;
+     * @return (Optional, Beta)
+     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
     public Optional<Output<String>> behavior() {
@@ -149,8 +149,8 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param behavior Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-         * &#39;bypassResponsePolicy&#39;
+         * @param behavior (Optional, Beta)
+         * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
          * 
          * @return builder
          * 
@@ -161,8 +161,8 @@ public final class ResponsePolicyRuleArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param behavior Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-         * &#39;bypassResponsePolicy&#39;
+         * @param behavior (Optional, Beta)
+         * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
          * 
          * @return builder
          * 

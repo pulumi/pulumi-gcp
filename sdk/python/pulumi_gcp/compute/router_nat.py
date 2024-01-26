@@ -92,9 +92,13 @@ class RouterNatArgs:
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
-        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-               'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-               Possible values: ["PUBLIC", "PRIVATE"]
+        :param pulumi.Input[str] type: (Optional, Beta)
+               Indicates whether this NAT is used for public or private IP translation.
+               If unspecified, it defaults to PUBLIC.
+               If `PUBLIC` NAT used for public IP translation.
+               If `PRIVATE` NAT used for private IP translation.
+               Default value is `PUBLIC`.
+               Possible values are: `PUBLIC`, `PRIVATE`.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         pulumi.set(__self__, "router", router)
@@ -404,9 +408,13 @@ class RouterNatArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-        'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-        Possible values: ["PUBLIC", "PRIVATE"]
+        (Optional, Beta)
+        Indicates whether this NAT is used for public or private IP translation.
+        If unspecified, it defaults to PUBLIC.
+        If `PUBLIC` NAT used for public IP translation.
+        If `PRIVATE` NAT used for private IP translation.
+        Default value is `PUBLIC`.
+        Possible values are: `PUBLIC`, `PRIVATE`.
         """
         return pulumi.get(self, "type")
 
@@ -506,9 +514,13 @@ class _RouterNatState:
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
-        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-               'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-               Possible values: ["PUBLIC", "PRIVATE"]
+        :param pulumi.Input[str] type: (Optional, Beta)
+               Indicates whether this NAT is used for public or private IP translation.
+               If unspecified, it defaults to PUBLIC.
+               If `PUBLIC` NAT used for public IP translation.
+               If `PRIVATE` NAT used for private IP translation.
+               Default value is `PUBLIC`.
+               Possible values are: `PUBLIC`, `PRIVATE`.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         if drain_nat_ips is not None:
@@ -820,9 +832,13 @@ class _RouterNatState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-        'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-        Possible values: ["PUBLIC", "PRIVATE"]
+        (Optional, Beta)
+        Indicates whether this NAT is used for public or private IP translation.
+        If unspecified, it defaults to PUBLIC.
+        If `PUBLIC` NAT used for public IP translation.
+        If `PRIVATE` NAT used for private IP translation.
+        Default value is `PUBLIC`.
+        Possible values are: `PUBLIC`, `PRIVATE`.
         """
         return pulumi.get(self, "type")
 
@@ -1031,15 +1047,7 @@ class RouterNat(pulumi.CustomResource):
 
         ## Import
 
-        RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RouterNat using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}"
-
-         to = google_compute_router_nat.default }
-
-        ```sh
-         $ pulumi import gcp:compute/routerNat:RouterNat When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RouterNat can be imported using one of the formats above. For example
-        ```
+        RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
@@ -1112,9 +1120,13 @@ class RouterNat(pulumi.CustomResource):
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
-        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-               'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-               Possible values: ["PUBLIC", "PRIVATE"]
+        :param pulumi.Input[str] type: (Optional, Beta)
+               Indicates whether this NAT is used for public or private IP translation.
+               If unspecified, it defaults to PUBLIC.
+               If `PUBLIC` NAT used for public IP translation.
+               If `PRIVATE` NAT used for private IP translation.
+               Default value is `PUBLIC`.
+               Possible values are: `PUBLIC`, `PRIVATE`.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         ...
@@ -1284,15 +1296,7 @@ class RouterNat(pulumi.CustomResource):
 
         ## Import
 
-        RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RouterNat using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}"
-
-         to = google_compute_router_nat.default }
-
-        ```sh
-         $ pulumi import gcp:compute/routerNat:RouterNat When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RouterNat can be imported using one of the formats above. For example
-        ```
+        RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
@@ -1471,9 +1475,13 @@ class RouterNat(pulumi.CustomResource):
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
-        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-               'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-               Possible values: ["PUBLIC", "PRIVATE"]
+        :param pulumi.Input[str] type: (Optional, Beta)
+               Indicates whether this NAT is used for public or private IP translation.
+               If unspecified, it defaults to PUBLIC.
+               If `PUBLIC` NAT used for public IP translation.
+               If `PRIVATE` NAT used for private IP translation.
+               Default value is `PUBLIC`.
+               Possible values are: `PUBLIC`, `PRIVATE`.
         :param pulumi.Input[int] udp_idle_timeout_sec: Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1693,9 +1701,13 @@ class RouterNat(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-        'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-        Possible values: ["PUBLIC", "PRIVATE"]
+        (Optional, Beta)
+        Indicates whether this NAT is used for public or private IP translation.
+        If unspecified, it defaults to PUBLIC.
+        If `PUBLIC` NAT used for public IP translation.
+        If `PRIVATE` NAT used for private IP translation.
+        Default value is `PUBLIC`.
+        Possible values are: `PUBLIC`, `PRIVATE`.
         """
         return pulumi.get(self, "type")
 

@@ -127,15 +127,7 @@ namespace Pulumi.Gcp.BinaryAuthorization
     /// 
     /// ## Import
     /// 
-    /// Policy can be imported using any of these accepted formats* `projects/{{project}}` * `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Policy using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}"
-    /// 
-    ///  to = google_binary_authorization_policy.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:binaryauthorization/policy:Policy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Policy can be imported using one of the formats above. For example
-    /// ```
+    /// Policy can be imported using any of these accepted formats* `projects/{{project}}` * `{{project}}` When using the `pulumi import` command, Policy can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:binaryauthorization/policy:Policy default projects/{{project}}

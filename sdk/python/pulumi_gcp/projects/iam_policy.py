@@ -283,15 +283,11 @@ class IAMPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing Audit Configs An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g* `"{{project_id}} foo.googleapis.com"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
+        ### Importing Audit Configs An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g* `"{{project_id}} foo.googleapis.com"` An `import` block (Terraform v1.5.0 and later) can be used to import audit configstf import {
 
          id = "{{project_id}} foo.googleapis.com"
 
-         to = google_project_iam_audit_config.default }
-
-        ```sh
-         $ pulumi import gcp:projects/iAMPolicy:IAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-        ```
+         to = google_project_iam_audit_config.default } The `pulumi import` command can also be used
 
         ```sh
          $ pulumi import gcp:projects/iAMPolicy:IAMPolicy default "{{project_id}} foo.googleapis.com"
@@ -454,15 +450,11 @@ class IAMPolicy(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing Audit Configs An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g* `"{{project_id}} foo.googleapis.com"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
+        ### Importing Audit Configs An audit config can be imported into a `google_project_iam_audit_config` resource using the resource's `project_id` and the `service`, e.g* `"{{project_id}} foo.googleapis.com"` An `import` block (Terraform v1.5.0 and later) can be used to import audit configstf import {
 
          id = "{{project_id}} foo.googleapis.com"
 
-         to = google_project_iam_audit_config.default }
-
-        ```sh
-         $ pulumi import gcp:projects/iAMPolicy:IAMPolicy The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-        ```
+         to = google_project_iam_audit_config.default } The `pulumi import` command can also be used
 
         ```sh
          $ pulumi import gcp:projects/iAMPolicy:IAMPolicy default "{{project_id}} foo.googleapis.com"

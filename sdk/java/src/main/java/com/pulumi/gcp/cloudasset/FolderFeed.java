@@ -30,15 +30,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FolderFeed can be imported using any of these accepted formats* `folders/{{folder_id}}/feeds/{{name}}` * `{{folder_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FolderFeed using one of the formats above. For exampletf import {
- * 
- *  id = &#34;folders/{{folder_id}}/feeds/{{name}}&#34;
- * 
- *  to = google_cloud_asset_folder_feed.default }
- * 
- * ```sh
- *  $ pulumi import gcp:cloudasset/folderFeed:FolderFeed When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FolderFeed can be imported using one of the formats above. For example
- * ```
+ * FolderFeed can be imported using any of these accepted formats* `folders/{{folder_id}}/feeds/{{name}}` * `{{folder_id}}/{{name}}` When using the `pulumi import` command, FolderFeed can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:cloudasset/folderFeed:FolderFeed default folders/{{folder_id}}/feeds/{{name}}

@@ -23,15 +23,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionBackendService using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/regions/{{region}}/backendServices/{{name}}"
-    /// 
-    ///  to = google_compute_region_backend_service.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/regionBackendService:RegionBackendService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionBackendService can be imported using one of the formats above. For example
-    /// ```
+    /// RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
@@ -255,6 +247,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// The security policy associated with this backend service.
         /// </summary>
         [Output("securityPolicy")]
@@ -275,8 +268,9 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        /// and Internal HTTP(S) load balancing.
+        /// (Optional, Beta)
+        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        /// Structure is documented below.
         /// </summary>
         [Output("subsetting")]
         public Output<Outputs.RegionBackendServiceSubsetting?> Subsetting { get; private set; } = null!;
@@ -530,6 +524,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The security policy associated with this backend service.
         /// </summary>
         [Input("securityPolicy")]
@@ -544,8 +539,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        /// and Internal HTTP(S) load balancing.
+        /// (Optional, Beta)
+        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        /// Structure is documented below.
         /// </summary>
         [Input("subsetting")]
         public Input<Inputs.RegionBackendServiceSubsettingArgs>? Subsetting { get; set; }
@@ -774,6 +770,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// The security policy associated with this backend service.
         /// </summary>
         [Input("securityPolicy")]
@@ -794,8 +791,9 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        /// and Internal HTTP(S) load balancing.
+        /// (Optional, Beta)
+        /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        /// Structure is documented below.
         /// </summary>
         [Input("subsetting")]
         public Input<Inputs.RegionBackendServiceSubsettingGetArgs>? Subsetting { get; set; }

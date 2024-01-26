@@ -62,8 +62,10 @@ class RegionNetworkEndpointGroupArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
-        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-               serverlessDeployment may be set.
+        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: (Optional, Beta)
+               Only valid when networkEndpointType is "SERVERLESS".
+               Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+               Structure is documented below.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
@@ -237,8 +239,10 @@ class RegionNetworkEndpointGroupArgs:
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-        serverlessDeployment may be set.
+        (Optional, Beta)
+        Only valid when networkEndpointType is "SERVERLESS".
+        Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        Structure is documented below.
         """
         return pulumi.get(self, "serverless_deployment")
 
@@ -311,8 +315,10 @@ class _RegionNetworkEndpointGroupState:
                
                - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-               serverlessDeployment may be set.
+        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: (Optional, Beta)
+               Only valid when networkEndpointType is "SERVERLESS".
+               Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+               Structure is documented below.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
@@ -501,8 +507,10 @@ class _RegionNetworkEndpointGroupState:
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-        serverlessDeployment may be set.
+        (Optional, Beta)
+        Only valid when networkEndpointType is "SERVERLESS".
+        Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        Structure is documented below.
         """
         return pulumi.get(self, "serverless_deployment")
 
@@ -677,15 +685,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         ## Import
 
-        RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkEndpointGroup using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}"
-
-         to = google_compute_region_network_endpoint_group.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkEndpointGroup can be imported using one of the formats above. For example
-        ```
+        RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
@@ -737,8 +737,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-               serverlessDeployment may be set.
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: (Optional, Beta)
+               Only valid when networkEndpointType is "SERVERLESS".
+               Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+               Structure is documented below.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
@@ -883,15 +885,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
         ## Import
 
-        RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkEndpointGroup using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}"
-
-         to = google_compute_region_network_endpoint_group.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkEndpointGroup can be imported using one of the formats above. For example
-        ```
+        RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup default projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}
@@ -1023,8 +1017,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-               serverlessDeployment may be set.
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: (Optional, Beta)
+               Only valid when networkEndpointType is "SERVERLESS".
+               Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+               Structure is documented below.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
                Optional URL of the subnetwork to which all network endpoints in the NEG belong.
         """
@@ -1161,8 +1157,10 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> pulumi.Output[Optional['outputs.RegionNetworkEndpointGroupServerlessDeployment']]:
         """
-        Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-        serverlessDeployment may be set.
+        (Optional, Beta)
+        Only valid when networkEndpointType is "SERVERLESS".
+        Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+        Structure is documented below.
         """
         return pulumi.get(self, "serverless_deployment")
 

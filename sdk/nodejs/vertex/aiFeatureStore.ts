@@ -85,15 +85,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Featurestore can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featurestores/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Featurestore using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/{{region}}/featurestores/{{name}}"
- *
- *  to = google_vertex_ai_featurestore.default }
- *
- * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Featurestore can be imported using one of the formats above. For example
- * ```
+ * Featurestore can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featurestores/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Featurestore can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default projects/{{project}}/locations/{{region}}/featurestores/{{name}}
@@ -177,10 +169,8 @@ export class AiFeatureStore extends pulumi.CustomResource {
      */
     public readonly onlineServingConfig!: pulumi.Output<outputs.vertex.AiFeatureStoreOnlineServingConfig | undefined>;
     /**
-     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
-     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
-     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
-     * featurestore. If not set, default to 4000 days
+     * (Optional, Beta)
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
      */
     public readonly onlineStorageTtlDays!: pulumi.Output<number | undefined>;
     /**
@@ -293,10 +283,8 @@ export interface AiFeatureStoreState {
      */
     onlineServingConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreOnlineServingConfig>;
     /**
-     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
-     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
-     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
-     * featurestore. If not set, default to 4000 days
+     * (Optional, Beta)
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
      */
     onlineStorageTtlDays?: pulumi.Input<number>;
     /**
@@ -349,10 +337,8 @@ export interface AiFeatureStoreArgs {
      */
     onlineServingConfig?: pulumi.Input<inputs.vertex.AiFeatureStoreOnlineServingConfig>;
     /**
-     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
-     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
-     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
-     * featurestore. If not set, default to 4000 days
+     * (Optional, Beta)
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
      */
     onlineStorageTtlDays?: pulumi.Input<number>;
     /**

@@ -20,6 +20,11 @@ public final class MetastoreServiceNetworkConfig {
      * 
      */
     private List<MetastoreServiceNetworkConfigConsumer> consumers;
+    /**
+     * @return (Optional, Beta)
+     * Enables custom routes to be imported and exported for the Dataproc Metastore service&#39;s peered VPC network.
+     * 
+     */
     private @Nullable Boolean customRoutesEnabled;
 
     private MetastoreServiceNetworkConfig() {}
@@ -31,6 +36,11 @@ public final class MetastoreServiceNetworkConfig {
     public List<MetastoreServiceNetworkConfigConsumer> consumers() {
         return this.consumers;
     }
+    /**
+     * @return (Optional, Beta)
+     * Enables custom routes to be imported and exported for the Dataproc Metastore service&#39;s peered VPC network.
+     * 
+     */
     public Optional<Boolean> customRoutesEnabled() {
         return Optional.ofNullable(this.customRoutesEnabled);
     }

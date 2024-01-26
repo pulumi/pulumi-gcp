@@ -15449,8 +15449,10 @@ func (o MetastoreServiceMetadataIntegrationDataCatalogConfigPtrOutput) Enabled()
 type MetastoreServiceNetworkConfig struct {
 	// The consumer-side network configuration for the Dataproc Metastore instance.
 	// Structure is documented below.
-	Consumers           []MetastoreServiceNetworkConfigConsumer `pulumi:"consumers"`
-	CustomRoutesEnabled *bool                                   `pulumi:"customRoutesEnabled"`
+	Consumers []MetastoreServiceNetworkConfigConsumer `pulumi:"consumers"`
+	// (Optional, Beta)
+	// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+	CustomRoutesEnabled *bool `pulumi:"customRoutesEnabled"`
 }
 
 // MetastoreServiceNetworkConfigInput is an input type that accepts MetastoreServiceNetworkConfigArgs and MetastoreServiceNetworkConfigOutput values.
@@ -15467,8 +15469,10 @@ type MetastoreServiceNetworkConfigInput interface {
 type MetastoreServiceNetworkConfigArgs struct {
 	// The consumer-side network configuration for the Dataproc Metastore instance.
 	// Structure is documented below.
-	Consumers           MetastoreServiceNetworkConfigConsumerArrayInput `pulumi:"consumers"`
-	CustomRoutesEnabled pulumi.BoolPtrInput                             `pulumi:"customRoutesEnabled"`
+	Consumers MetastoreServiceNetworkConfigConsumerArrayInput `pulumi:"consumers"`
+	// (Optional, Beta)
+	// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+	CustomRoutesEnabled pulumi.BoolPtrInput `pulumi:"customRoutesEnabled"`
 }
 
 func (MetastoreServiceNetworkConfigArgs) ElementType() reflect.Type {
@@ -15554,6 +15558,8 @@ func (o MetastoreServiceNetworkConfigOutput) Consumers() MetastoreServiceNetwork
 	return o.ApplyT(func(v MetastoreServiceNetworkConfig) []MetastoreServiceNetworkConfigConsumer { return v.Consumers }).(MetastoreServiceNetworkConfigConsumerArrayOutput)
 }
 
+// (Optional, Beta)
+// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
 func (o MetastoreServiceNetworkConfigOutput) CustomRoutesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v MetastoreServiceNetworkConfig) *bool { return v.CustomRoutesEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -15593,6 +15599,8 @@ func (o MetastoreServiceNetworkConfigPtrOutput) Consumers() MetastoreServiceNetw
 	}).(MetastoreServiceNetworkConfigConsumerArrayOutput)
 }
 
+// (Optional, Beta)
+// Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
 func (o MetastoreServiceNetworkConfigPtrOutput) CustomRoutesEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *MetastoreServiceNetworkConfig) *bool {
 		if v == nil {

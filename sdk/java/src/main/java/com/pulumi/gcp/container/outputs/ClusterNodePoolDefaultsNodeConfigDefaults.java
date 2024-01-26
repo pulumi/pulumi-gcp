@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ClusterNodePoolDefaultsNodeConfigDefaults {
     /**
-     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     private @Nullable ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig gcfsConfig;
@@ -25,7 +25,7 @@ public final class ClusterNodePoolDefaultsNodeConfigDefaults {
 
     private ClusterNodePoolDefaultsNodeConfigDefaults() {}
     /**
-     * @return ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+     * @return The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
      * 
      */
     public Optional<ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig> gcfsConfig() {

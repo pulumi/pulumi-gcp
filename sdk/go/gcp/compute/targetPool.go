@@ -19,17 +19,7 @@ import (
 //
 // ## Import
 //
-// Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import target pools using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/regions/{{region}}/targetPools/{{name}}"
-//
-//	to = google_compute_target_pool.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/targetPool:TargetPool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), target pools can be imported using one of the formats above. For example
-//
-// ```
+// Target pools can be imported using any of the following formats* `projects/{{project}}/regions/{{region}}/targetPools/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, target pools can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -85,7 +75,7 @@ type TargetPool struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
@@ -153,7 +143,7 @@ type targetPoolState struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region *string `pulumi:"region"`
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
@@ -192,7 +182,7 @@ type TargetPoolState struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region pulumi.StringPtrInput
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
@@ -235,7 +225,7 @@ type targetPoolArgs struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region *string `pulumi:"region"`
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// How to distribute load. Options are "NONE" (no
 	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
@@ -273,7 +263,7 @@ type TargetPoolArgs struct {
 	// Where the target pool resides. Defaults to project
 	// region.
 	Region pulumi.StringPtrInput
-	// ) The resource URL for the security policy associated with this target pool.
+	// The resource URL for the security policy associated with this target pool.
 	SecurityPolicy pulumi.StringPtrInput
 	// How to distribute load. Options are "NONE" (no
 	// affinity). "CLIENT\_IP" (hash of the source/dest addresses / ports), and
@@ -420,7 +410,7 @@ func (o TargetPoolOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// ) The resource URL for the security policy associated with this target pool.
+// The resource URL for the security policy associated with this target pool.
 func (o TargetPoolOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetPool) pulumi.StringPtrOutput { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
 }

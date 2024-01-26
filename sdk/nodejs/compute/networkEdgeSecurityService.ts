@@ -22,15 +22,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NetworkEdgeSecurityService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkEdgeSecurityService using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}"
- *
- *  to = google_compute_network_edge_security_service.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkEdgeSecurityService can be imported using one of the formats above. For example
- * ```
+ * NetworkEdgeSecurityService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NetworkEdgeSecurityService can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/networkEdgeSecurityService:NetworkEdgeSecurityService default projects/{{project}}/regions/{{region}}/networkEdgeSecurityServices/{{name}}

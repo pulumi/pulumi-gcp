@@ -67,15 +67,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Document can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Document using one of the formats above. For exampletf import {
- *
- *  id = "{{name}}"
- *
- *  to = google_firestore_document.default }
- *
- * ```sh
- *  $ pulumi import gcp:firestore/document:Document When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Document can be imported using one of the formats above. For example
- * ```
+ * Document can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, Document can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:firestore/document:Document default {{name}}

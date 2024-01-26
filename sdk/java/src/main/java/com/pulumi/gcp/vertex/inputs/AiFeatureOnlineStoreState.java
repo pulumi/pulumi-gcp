@@ -54,16 +54,18 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     }
 
     /**
-     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-     * need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * (Optional, Beta)
+     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * Structure is documented below.
      * 
      */
     @Import(name="dedicatedServingEndpoint")
     private @Nullable Output<AiFeatureOnlineStoreDedicatedServingEndpointArgs> dedicatedServingEndpoint;
 
     /**
-     * @return The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-     * need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * @return (Optional, Beta)
+     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<AiFeatureOnlineStoreDedicatedServingEndpointArgs>> dedicatedServingEndpoint() {
@@ -86,14 +88,18 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Optional, Beta)
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * Structure is documented below.
      * 
      */
     @Import(name="embeddingManagement")
     private @Nullable Output<AiFeatureOnlineStoreEmbeddingManagementArgs> embeddingManagement;
 
     /**
-     * @return The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * @return (Optional, Beta)
+     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<AiFeatureOnlineStoreEmbeddingManagementArgs>> embeddingManagement() {
@@ -169,16 +175,16 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-     * FeatureOnlineStore
+     * (Optional, Beta)
+     * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      * 
      */
     @Import(name="optimized")
     private @Nullable Output<AiFeatureOnlineStoreOptimizedArgs> optimized;
 
     /**
-     * @return Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-     * FeatureOnlineStore
+     * @return (Optional, Beta)
+     * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      * 
      */
     public Optional<Output<AiFeatureOnlineStoreOptimizedArgs>> optimized() {
@@ -347,8 +353,9 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dedicatedServingEndpoint The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-         * need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+         * @param dedicatedServingEndpoint (Optional, Beta)
+         * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -359,8 +366,9 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param dedicatedServingEndpoint The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-         * need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+         * @param dedicatedServingEndpoint (Optional, Beta)
+         * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -391,7 +399,9 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+         * @param embeddingManagement (Optional, Beta)
+         * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -402,7 +412,9 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+         * @param embeddingManagement (Optional, Beta)
+         * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -504,8 +516,8 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param optimized Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-         * FeatureOnlineStore
+         * @param optimized (Optional, Beta)
+         * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
          * 
          * @return builder
          * 
@@ -516,8 +528,8 @@ public final class AiFeatureOnlineStoreState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param optimized Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-         * FeatureOnlineStore
+         * @param optimized (Optional, Beta)
+         * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
          * 
          * @return builder
          * 

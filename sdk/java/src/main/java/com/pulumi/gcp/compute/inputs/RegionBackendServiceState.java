@@ -503,6 +503,7 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     }
 
     /**
+     * (Optional, Beta)
      * The security policy associated with this backend service.
      * 
      */
@@ -510,7 +511,8 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     private @Nullable Output<String> securityPolicy;
 
     /**
-     * @return The security policy associated with this backend service.
+     * @return (Optional, Beta)
+     * The security policy associated with this backend service.
      * 
      */
     public Optional<Output<String>> securityPolicy() {
@@ -552,16 +554,18 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
     }
 
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * (Optional, Beta)
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      * 
      */
     @Import(name="subsetting")
     private @Nullable Output<RegionBackendServiceSubsettingArgs> subsetting;
 
     /**
-     * @return Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * @return (Optional, Beta)
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RegionBackendServiceSubsettingArgs>> subsetting() {
@@ -1267,7 +1271,8 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param securityPolicy The security policy associated with this backend service.
+         * @param securityPolicy (Optional, Beta)
+         * The security policy associated with this backend service.
          * 
          * @return builder
          * 
@@ -1278,7 +1283,8 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param securityPolicy The security policy associated with this backend service.
+         * @param securityPolicy (Optional, Beta)
+         * The security policy associated with this backend service.
          * 
          * @return builder
          * 
@@ -1334,8 +1340,9 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param subsetting Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-         * and Internal HTTP(S) load balancing.
+         * @param subsetting (Optional, Beta)
+         * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -1346,8 +1353,9 @@ public final class RegionBackendServiceState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param subsetting Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-         * and Internal HTTP(S) load balancing.
+         * @param subsetting (Optional, Beta)
+         * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+         * Structure is documented below.
          * 
          * @return builder
          * 

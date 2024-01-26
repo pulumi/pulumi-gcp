@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class SecurityPolicyAdaptiveProtectionConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        /// Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
         /// 
         /// &lt;a name="nested_layer_7_ddos_defense_config"&gt;&lt;/a&gt;The `layer_7_ddos_defense_config` block supports:
         /// </summary>

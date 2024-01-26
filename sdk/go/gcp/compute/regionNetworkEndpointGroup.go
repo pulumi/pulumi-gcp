@@ -254,17 +254,7 @@ import (
 //
 // ## Import
 //
-// RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkEndpointGroup using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}"
-//
-//	to = google_compute_region_network_endpoint_group.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/regionNetworkEndpointGroup:RegionNetworkEndpointGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkEndpointGroup can be imported using one of the formats above. For example
-//
-// ```
+// RegionNetworkEndpointGroup can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkEndpointGroups/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkEndpointGroup can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -335,8 +325,10 @@ type RegionNetworkEndpointGroup struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-	// serverlessDeployment may be set.
+	// (Optional, Beta)
+	// Only valid when networkEndpointType is "SERVERLESS".
+	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+	// Structure is documented below.
 	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrOutput `pulumi:"serverlessDeployment"`
 	// This field is only used for PSC.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -419,8 +411,10 @@ type regionNetworkEndpointGroupState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-	// serverlessDeployment may be set.
+	// (Optional, Beta)
+	// Only valid when networkEndpointType is "SERVERLESS".
+	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+	// Structure is documented below.
 	ServerlessDeployment *RegionNetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
 	// This field is only used for PSC.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -471,8 +465,10 @@ type RegionNetworkEndpointGroupState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-	// serverlessDeployment may be set.
+	// (Optional, Beta)
+	// Only valid when networkEndpointType is "SERVERLESS".
+	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+	// Structure is documented below.
 	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrInput
 	// This field is only used for PSC.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -525,8 +521,10 @@ type regionNetworkEndpointGroupArgs struct {
 	//
 	// ***
 	Region string `pulumi:"region"`
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-	// serverlessDeployment may be set.
+	// (Optional, Beta)
+	// Only valid when networkEndpointType is "SERVERLESS".
+	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+	// Structure is documented below.
 	ServerlessDeployment *RegionNetworkEndpointGroupServerlessDeployment `pulumi:"serverlessDeployment"`
 	// This field is only used for PSC.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -576,8 +574,10 @@ type RegionNetworkEndpointGroupArgs struct {
 	//
 	// ***
 	Region pulumi.StringInput
-	// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-	// serverlessDeployment may be set.
+	// (Optional, Beta)
+	// Only valid when networkEndpointType is "SERVERLESS".
+	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+	// Structure is documented below.
 	ServerlessDeployment RegionNetworkEndpointGroupServerlessDeploymentPtrInput
 	// This field is only used for PSC.
 	// Optional URL of the subnetwork to which all network endpoints in the NEG belong.
@@ -749,8 +749,10 @@ func (o RegionNetworkEndpointGroupOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// Only valid when networkEndpointType is "SERVERLESS". Only one of cloudRun, appEngine, cloudFunction or
-// serverlessDeployment may be set.
+// (Optional, Beta)
+// Only valid when networkEndpointType is "SERVERLESS".
+// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+// Structure is documented below.
 func (o RegionNetworkEndpointGroupOutput) ServerlessDeployment() RegionNetworkEndpointGroupServerlessDeploymentPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) RegionNetworkEndpointGroupServerlessDeploymentPtrOutput {
 		return v.ServerlessDeployment

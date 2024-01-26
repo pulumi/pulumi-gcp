@@ -48,8 +48,7 @@ class RegionInstanceGroupManagerArgs:
         :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerVersionArgs']]] versions: Application versions managed by this instance group. Each
                version deals with a specific instance template, allowing canary release scenarios.
                Structure is documented below.
-        :param pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
@@ -172,7 +171,6 @@ class RegionInstanceGroupManagerArgs:
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -455,8 +453,7 @@ class _RegionInstanceGroupManagerState:
                  wait_for_instances_status: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering RegionInstanceGroupManager resources.
-        :param pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs'] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input['RegionInstanceGroupManagerAutoHealingPoliciesArgs'] auto_healing_policies: The autohealing policies for this managed instance
@@ -571,7 +568,6 @@ class _RegionInstanceGroupManagerState:
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> Optional[pulumi.Input['RegionInstanceGroupManagerAllInstancesConfigArgs']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -1012,15 +1008,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         ## Import
 
-        Instance group managers can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
-
-         id = "{{name}}"
-
-         to = google_compute_region_instance_group_manager.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
-        ```
+        Instance group managers can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager default {{name}}
@@ -1028,8 +1016,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAutoHealingPoliciesArgs']] auto_healing_policies: The autohealing policies for this managed instance
@@ -1173,15 +1160,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
 
         ## Import
 
-        Instance group managers can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
-
-         id = "{{name}}"
-
-         to = google_compute_region_instance_group_manager.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
-        ```
+        Instance group managers can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager default {{name}}
@@ -1303,8 +1282,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAllInstancesConfigArgs']] all_instances_config: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[pulumi.InputType['RegionInstanceGroupManagerAutoHealingPoliciesArgs']] auto_healing_policies: The autohealing policies for this managed instance
@@ -1399,7 +1377,6 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="allInstancesConfig")
     def all_instances_config(self) -> pulumi.Output[Optional['outputs.RegionInstanceGroupManagerAllInstancesConfig']]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.

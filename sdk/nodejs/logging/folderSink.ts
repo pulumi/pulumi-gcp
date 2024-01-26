@@ -38,15 +38,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Folder-level logging sinks can be imported using this format* `folders/{{folder_id}}/sinks/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import folder-level logging sinks using one of the formats above. For exampletf import {
- *
- *  id = "folders/{{folder_id}}/sinks/{{name}}"
- *
- *  to = google_logging_folder_sink.default }
- *
- * ```sh
- *  $ pulumi import gcp:logging/folderSink:FolderSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), folder-level logging sinks can be imported using one of the formats above. For example
- * ```
+ * Folder-level logging sinks can be imported using this format* `folders/{{folder_id}}/sinks/{{name}}` When using the `pulumi import` command, folder-level logging sinks can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:logging/folderSink:FolderSink default folders/{{folder_id}}/sinks/{{name}}

@@ -27,7 +27,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? LogLevel;
         /// <summary>
-        /// ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        /// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         /// </summary>
         public readonly ImmutableArray<string> UserIpRequestHeaders;
 

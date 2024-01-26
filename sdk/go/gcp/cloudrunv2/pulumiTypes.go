@@ -2300,7 +2300,10 @@ type JobTemplateTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *JobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
-	EmptyDir         *JobTemplateTemplateVolumeEmptyDir         `pulumi:"emptyDir"`
+	// (Optional, Beta)
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir *JobTemplateTemplateVolumeEmptyDir `pulumi:"emptyDir"`
 	// Volume's name.
 	Name string `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -2323,7 +2326,10 @@ type JobTemplateTemplateVolumeArgs struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance JobTemplateTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
-	EmptyDir         JobTemplateTemplateVolumeEmptyDirPtrInput         `pulumi:"emptyDir"`
+	// (Optional, Beta)
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir JobTemplateTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
 	// Volume's name.
 	Name pulumi.StringInput `pulumi:"name"`
 	// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
@@ -2390,6 +2396,9 @@ func (o JobTemplateTemplateVolumeOutput) CloudSqlInstance() JobTemplateTemplateV
 	}).(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
+// (Optional, Beta)
+// Ephemeral storage used as a shared volume.
+// Structure is documented below.
 func (o JobTemplateTemplateVolumeOutput) EmptyDir() JobTemplateTemplateVolumeEmptyDirPtrOutput {
 	return o.ApplyT(func(v JobTemplateTemplateVolume) *JobTemplateTemplateVolumeEmptyDir { return v.EmptyDir }).(JobTemplateTemplateVolumeEmptyDirPtrOutput)
 }
@@ -7524,7 +7533,10 @@ type ServiceTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *ServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
-	EmptyDir         *ServiceTemplateVolumeEmptyDir         `pulumi:"emptyDir"`
+	// (Optional, Beta)
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir *ServiceTemplateVolumeEmptyDir `pulumi:"emptyDir"`
 	// Represents a GCS Bucket mounted as a volume.
 	// Structure is documented below.
 	Gcs *ServiceTemplateVolumeGcs `pulumi:"gcs"`
@@ -7553,7 +7565,10 @@ type ServiceTemplateVolumeArgs struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance ServiceTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
-	EmptyDir         ServiceTemplateVolumeEmptyDirPtrInput         `pulumi:"emptyDir"`
+	// (Optional, Beta)
+	// Ephemeral storage used as a shared volume.
+	// Structure is documented below.
+	EmptyDir ServiceTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
 	// Represents a GCS Bucket mounted as a volume.
 	// Structure is documented below.
 	Gcs ServiceTemplateVolumeGcsPtrInput `pulumi:"gcs"`
@@ -7624,6 +7639,9 @@ func (o ServiceTemplateVolumeOutput) CloudSqlInstance() ServiceTemplateVolumeClo
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeCloudSqlInstance { return v.CloudSqlInstance }).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
+// (Optional, Beta)
+// Ephemeral storage used as a shared volume.
+// Structure is documented below.
 func (o ServiceTemplateVolumeOutput) EmptyDir() ServiceTemplateVolumeEmptyDirPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeEmptyDir { return v.EmptyDir }).(ServiceTemplateVolumeEmptyDirPtrOutput)
 }

@@ -111,17 +111,7 @@ import (
 //
 // ## Import
 //
-// ForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ForwardingRule using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}"
-//
-//	to = google_compute_forwarding_rule.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/forwardingRule:ForwardingRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ForwardingRule can be imported using one of the formats above. For example
-//
-// ```
+// ForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/forwardingRules/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ForwardingRule can be imported using one of the formats above. For example
 //
 // ```sh
 //

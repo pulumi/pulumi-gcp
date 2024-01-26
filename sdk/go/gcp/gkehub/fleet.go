@@ -54,17 +54,7 @@ import (
 //
 // ## Import
 //
-// Fleet can be imported using any of these accepted formats* `projects/{{project}}/locations/global/fleets/default` * `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Fleet using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/global/fleets/default"
-//
-//	to = google_gke_hub_fleet.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:gkehub/fleet:Fleet When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Fleet can be imported using one of the formats above. For example
-//
-// ```
+// Fleet can be imported using any of these accepted formats* `projects/{{project}}/locations/global/fleets/default` * `{{project}}` When using the `pulumi import` command, Fleet can be imported using one of the formats above. For example
 //
 // ```sh
 //

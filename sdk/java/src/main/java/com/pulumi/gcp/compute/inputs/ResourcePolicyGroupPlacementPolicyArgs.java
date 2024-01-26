@@ -56,9 +56,19 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
         return Optional.ofNullable(this.collocation);
     }
 
+    /**
+     * (Optional, Beta)
+     * Specifies the number of max logical switches.
+     * 
+     */
     @Import(name="maxDistance")
     private @Nullable Output<Integer> maxDistance;
 
+    /**
+     * @return (Optional, Beta)
+     * Specifies the number of max logical switches.
+     * 
+     */
     public Optional<Output<Integer>> maxDistance() {
         return Optional.ofNullable(this.maxDistance);
     }
@@ -161,11 +171,25 @@ public final class ResourcePolicyGroupPlacementPolicyArgs extends com.pulumi.res
             return collocation(Output.of(collocation));
         }
 
+        /**
+         * @param maxDistance (Optional, Beta)
+         * Specifies the number of max logical switches.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxDistance(@Nullable Output<Integer> maxDistance) {
             $.maxDistance = maxDistance;
             return this;
         }
 
+        /**
+         * @param maxDistance (Optional, Beta)
+         * Specifies the number of max logical switches.
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxDistance(Integer maxDistance) {
             return maxDistance(Output.of(maxDistance));
         }

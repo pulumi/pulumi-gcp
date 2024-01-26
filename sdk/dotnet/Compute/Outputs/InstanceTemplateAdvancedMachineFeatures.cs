@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly int? ThreadsPerCore;
         /// <summary>
-        /// ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        /// The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         /// </summary>
         public readonly int? VisibleCoreCount;
 

@@ -347,15 +347,7 @@ namespace Pulumi.Gcp.GkeOnPrem
     /// 
     /// ## Import
     /// 
-    /// VmwareCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import VmwareCluster using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}"
-    /// 
-    ///  to = google_gkeonprem_vmware_cluster.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), VmwareCluster can be imported using one of the formats above. For example
-    /// ```
+    /// VmwareCluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, VmwareCluster can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:gkeonprem/vMwareCluster:VMwareCluster default projects/{{project}}/locations/{{location}}/vmwareClusters/{{name}}

@@ -44,6 +44,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// be inferred from the subnetwork.
         /// </summary>
         public readonly string? Network;
+        /// <summary>
+        /// Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+        /// </summary>
         public readonly string? NetworkAttachment;
         /// <summary>
         /// The private IP address to assign to the instance. If
@@ -58,6 +61,9 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         /// </summary>
         public readonly int? QueueCount;
+        /// <summary>
+        /// Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        /// </summary>
         public readonly string? SecurityPolicy;
         /// <summary>
         /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.

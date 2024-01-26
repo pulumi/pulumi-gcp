@@ -112,7 +112,8 @@ class InstanceArgs:
                **Note**: `allow_stopping_for_update` must be set to true or your instance must have a `desired_status` of `TERMINATED` in order to update this field.
         :param pulumi.Input[str] name: A unique name for the resource, required by GCE.
                Changing this forces a new resource to be created.
-        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. Structure is
+        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: (Optional, Beta
+               Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -472,6 +473,7 @@ class InstanceArgs:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']]:
         """
+        (Optional, Beta
         Configures network performance settings for the instance. Structure is
         documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
         the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -728,7 +730,8 @@ class _InstanceState:
                be specified multiple times. Structure is documented below.
                
                - - -
-        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: Configures network performance settings for the instance. Structure is
+        :param pulumi.Input['InstanceNetworkPerformanceConfigArgs'] network_performance_config: (Optional, Beta
+               Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -1184,6 +1187,7 @@ class _InstanceState:
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> Optional[pulumi.Input['InstanceNetworkPerformanceConfigArgs']]:
         """
+        (Optional, Beta
         Configures network performance settings for the instance. Structure is
         documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
         the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -1447,15 +1451,7 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instances using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/zones/{{zone}}/instances/{{name}}"
-
-         to = google_compute_instance.default }
-
-        ```sh
-         $ pulumi import gcp:compute/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instances can be imported using one of the formats above. For example
-        ```
+        Instances can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instances can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
@@ -1535,7 +1531,8 @@ class Instance(pulumi.CustomResource):
                be specified multiple times. Structure is documented below.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. Structure is
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: (Optional, Beta
+               Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -1615,15 +1612,7 @@ class Instance(pulumi.CustomResource):
 
         ## Import
 
-        Instances can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instances using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/zones/{{zone}}/instances/{{name}}"
-
-         to = google_compute_instance.default }
-
-        ```sh
-         $ pulumi import gcp:compute/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instances can be imported using one of the formats above. For example
-        ```
+        Instances can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instances can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/instance:Instance default projects/{{project}}/zones/{{zone}}/instances/{{name}}
@@ -1864,7 +1853,8 @@ class Instance(pulumi.CustomResource):
                be specified multiple times. Structure is documented below.
                
                - - -
-        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: Configures network performance settings for the instance. Structure is
+        :param pulumi.Input[pulumi.InputType['InstanceNetworkPerformanceConfigArgs']] network_performance_config: (Optional, Beta
+               Configures network performance settings for the instance. Structure is
                documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
                the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
                in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -2186,6 +2176,7 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="networkPerformanceConfig")
     def network_performance_config(self) -> pulumi.Output[Optional['outputs.InstanceNetworkPerformanceConfig']]:
         """
+        (Optional, Beta
         Configures network performance settings for the instance. Structure is
         documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
         the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)

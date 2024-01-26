@@ -651,15 +651,7 @@ class BareMetalNodePool(pulumi.CustomResource):
 
         ## Import
 
-        BareMetalNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}` * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}` * `{{location}}/{{bare_metal_cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalNodePool using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}"
-
-         to = google_gkeonprem_bare_metal_node_pool.default }
-
-        ```sh
-         $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalNodePool can be imported using one of the formats above. For example
-        ```
+        BareMetalNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}` * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}` * `{{location}}/{{bare_metal_cluster}}/{{name}}` When using the `pulumi import` command, BareMetalNodePool can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}
@@ -883,15 +875,7 @@ class BareMetalNodePool(pulumi.CustomResource):
 
         ## Import
 
-        BareMetalNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}` * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}` * `{{location}}/{{bare_metal_cluster}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BareMetalNodePool using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}"
-
-         to = google_gkeonprem_bare_metal_node_pool.default }
-
-        ```sh
-         $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BareMetalNodePool can be imported using one of the formats above. For example
-        ```
+        BareMetalNodePool can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}` * `{{project}}/{{location}}/{{bare_metal_cluster}}/{{name}}` * `{{location}}/{{bare_metal_cluster}}/{{name}}` When using the `pulumi import` command, BareMetalNodePool can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:gkeonprem/bareMetalNodePool:BareMetalNodePool default projects/{{project}}/locations/{{location}}/bareMetalClusters/{{bare_metal_cluster}}/bareMetalNodePools/{{name}}

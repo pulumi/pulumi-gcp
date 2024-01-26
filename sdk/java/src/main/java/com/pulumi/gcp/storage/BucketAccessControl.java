@@ -79,15 +79,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * BucketAccessControl can be imported using any of these accepted formats* `{{bucket}}/{{entity}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BucketAccessControl using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{bucket}}/{{entity}}&#34;
- * 
- *  to = google_storage_bucket_access_control.default }
- * 
- * ```sh
- *  $ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BucketAccessControl can be imported using one of the formats above. For example
- * ```
+ * BucketAccessControl can be imported using any of these accepted formats* `{{bucket}}/{{entity}}` When using the `pulumi import` command, BucketAccessControl can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:storage/bucketAccessControl:BucketAccessControl default {{bucket}}/{{entity}}

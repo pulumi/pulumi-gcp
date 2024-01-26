@@ -27,15 +27,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ServiceSplitTraffic can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}` * `{{project}}/{{service}}` * `{{service}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServiceSplitTraffic using one of the formats above. For exampletf import {
- * 
- *  id = &#34;apps/{{project}}/services/{{service}}&#34;
- * 
- *  to = google_app_engine_service_split_traffic.default }
- * 
- * ```sh
- *  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServiceSplitTraffic can be imported using one of the formats above. For example
- * ```
+ * ServiceSplitTraffic can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}` * `{{project}}/{{service}}` * `{{service}}` When using the `pulumi import` command, ServiceSplitTraffic can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:appengine/engineSplitTraffic:EngineSplitTraffic default apps/{{project}}/services/{{service}}

@@ -221,15 +221,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Datascan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}` * `{{project}}/{{location}}/{{data_scan_id}}` * `{{location}}/{{data_scan_id}}` * `{{data_scan_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Datascan using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}"
- *
- *  to = google_dataplex_datascan.default }
- *
- * ```sh
- *  $ pulumi import gcp:dataplex/datascan:Datascan When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Datascan can be imported using one of the formats above. For example
- * ```
+ * Datascan can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}` * `{{project}}/{{location}}/{{data_scan_id}}` * `{{location}}/{{data_scan_id}}` * `{{data_scan_id}}` When using the `pulumi import` command, Datascan can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:dataplex/datascan:Datascan default projects/{{project}}/locations/{{location}}/dataScans/{{data_scan_id}}

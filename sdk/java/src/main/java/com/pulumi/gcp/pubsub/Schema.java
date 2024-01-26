@@ -124,15 +124,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Schema can be imported using any of these accepted formats* `projects/{{project}}/schemas/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Schema using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/schemas/{{name}}&#34;
- * 
- *  to = google_pubsub_schema.default }
- * 
- * ```sh
- *  $ pulumi import gcp:pubsub/schema:Schema When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Schema can be imported using one of the formats above. For example
- * ```
+ * Schema can be imported using any of these accepted formats* `projects/{{project}}/schemas/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Schema can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:pubsub/schema:Schema default projects/{{project}}/schemas/{{name}}

@@ -65,15 +65,11 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ### Importing IAM policies IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example* `projects/{project}/regions/{region}/clusters/{cluster}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * ### Importing IAM policies IAM policy imports use the `cluster` identifier of the Dataproc Cluster resource only. For example* `projects/{project}/regions/{region}/clusters/{cluster}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
  *
  *  id = projects/{project}/regions/{region}/clusters/{cluster}
  *
- *  to = google_dataproc_cluster_iam_policy.default }
- *
- * ```sh
- *  $ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
- * ```
+ *  to = google_dataproc_cluster_iam_policy.default } The `pulumi import` command can also be used
  *
  * ```sh
  *  $ pulumi import gcp:dataproc/clusterIAMBinding:ClusterIAMBinding default projects/{project}/regions/{region}/clusters/{cluster}

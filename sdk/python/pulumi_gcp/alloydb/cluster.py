@@ -975,6 +975,18 @@ class Cluster(pulumi.CustomResource):
                  secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
                  __props__=None):
         """
+        A managed alloydb cluster.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+        * How-to Guides
+            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+
+        > **Note:** Users can promote a secondary cluster to a primary cluster with the help of `cluster_type`.
+        To promote, users have to set the `cluster_type` property as `PRIMARY` and remove the `secondary_config` field from cluster configuration.
+        See Example.
+
         ## Example Usage
         ### Alloydb Cluster Basic
 
@@ -1132,15 +1144,7 @@ class Cluster(pulumi.CustomResource):
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}"
-
-         to = google_alloydb_cluster.default }
-
-        ```sh
-         $ pulumi import gcp:alloydb/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
-        ```
+        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -1214,6 +1218,18 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A managed alloydb cluster.
+
+        To get more information about Cluster, see:
+
+        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
+        * How-to Guides
+            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
+
+        > **Note:** Users can promote a secondary cluster to a primary cluster with the help of `cluster_type`.
+        To promote, users have to set the `cluster_type` property as `PRIMARY` and remove the `secondary_config` field from cluster configuration.
+        See Example.
+
         ## Example Usage
         ### Alloydb Cluster Basic
 
@@ -1371,15 +1387,7 @@ class Cluster(pulumi.CustomResource):
 
         ## Import
 
-        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}"
-
-         to = google_alloydb_cluster.default }
-
-        ```sh
-         $ pulumi import gcp:alloydb/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
-        ```
+        Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` * `{{cluster_id}}` When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:alloydb/cluster:Cluster default projects/{{project}}/locations/{{location}}/clusters/{{cluster_id}}

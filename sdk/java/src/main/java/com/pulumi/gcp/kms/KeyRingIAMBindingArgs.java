@@ -19,7 +19,7 @@ public final class KeyRingIAMBindingArgs extends com.pulumi.resources.ResourceAr
     public static final KeyRingIAMBindingArgs Empty = new KeyRingIAMBindingArgs();
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class KeyRingIAMBindingArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<KeyRingIAMBindingConditionArgs> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -128,7 +128,7 @@ public final class KeyRingIAMBindingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder
@@ -140,7 +140,7 @@ public final class KeyRingIAMBindingArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder

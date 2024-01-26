@@ -30,15 +30,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * OrganizationSecurityPolicy can be imported using any of these accepted formats* `locations/global/securityPolicies/{{policy_id}}` * `{{policy_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OrganizationSecurityPolicy using one of the formats above. For exampletf import {
- *
- *  id = "locations/global/securityPolicies/{{policy_id}}"
- *
- *  to = google_compute_organization_security_policy.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OrganizationSecurityPolicy can be imported using one of the formats above. For example
- * ```
+ * OrganizationSecurityPolicy can be imported using any of these accepted formats* `locations/global/securityPolicies/{{policy_id}}` * `{{policy_id}}` When using the `pulumi import` command, OrganizationSecurityPolicy can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/organizationSecurityPolicy:OrganizationSecurityPolicy default locations/global/securityPolicies/{{policy_id}}

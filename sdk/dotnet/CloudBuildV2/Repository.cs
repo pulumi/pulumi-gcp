@@ -189,15 +189,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// ## Import
     /// 
-    /// Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}` * `{{project}}/{{location}}/{{parent_connection}}/{{name}}` * `{{location}}/{{parent_connection}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}"
-    /// 
-    ///  to = google_cloudbuildv2_repository.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:cloudbuildv2/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
-    /// ```
+    /// Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}` * `{{project}}/{{location}}/{{parent_connection}}/{{name}}` * `{{location}}/{{parent_connection}}/{{name}}` When using the `pulumi import` command, Repository can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:cloudbuildv2/repository:Repository default projects/{{project}}/locations/{{location}}/connections/{{parent_connection}}/repositories/{{name}}

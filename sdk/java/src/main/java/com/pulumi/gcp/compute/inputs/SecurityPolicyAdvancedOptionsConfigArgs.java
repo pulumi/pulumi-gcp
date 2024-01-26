@@ -65,14 +65,14 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
     }
 
     /**
-     * ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+     * An optional list of case-insensitive request header names to use for resolving the callers client IP address.
      * 
      */
     @Import(name="userIpRequestHeaders")
     private @Nullable Output<List<String>> userIpRequestHeaders;
 
     /**
-     * @return ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+     * @return An optional list of case-insensitive request header names to use for resolving the callers client IP address.
      * 
      */
     public Optional<Output<List<String>>> userIpRequestHeaders() {
@@ -172,7 +172,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param userIpRequestHeaders ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         * @param userIpRequestHeaders An optional list of case-insensitive request header names to use for resolving the callers client IP address.
          * 
          * @return builder
          * 
@@ -183,7 +183,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param userIpRequestHeaders ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         * @param userIpRequestHeaders An optional list of case-insensitive request header names to use for resolving the callers client IP address.
          * 
          * @return builder
          * 
@@ -193,7 +193,7 @@ public final class SecurityPolicyAdvancedOptionsConfigArgs extends com.pulumi.re
         }
 
         /**
-         * @param userIpRequestHeaders ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+         * @param userIpRequestHeaders An optional list of case-insensitive request header names to use for resolving the callers client IP address.
          * 
          * @return builder
          * 

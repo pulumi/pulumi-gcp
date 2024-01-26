@@ -83,15 +83,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * FeatureOnlineStoreFeatureview can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}` * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}` * `{{region}}/{{feature_online_store}}/{{name}}` * `{{feature_online_store}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeatureOnlineStoreFeatureview using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}"
- *
- *  to = google_vertex_ai_feature_online_store_featureview.default }
- *
- * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example
- * ```
+ * FeatureOnlineStoreFeatureview can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}` * `{{project}}/{{region}}/{{feature_online_store}}/{{name}}` * `{{region}}/{{feature_online_store}}/{{name}}` * `{{feature_online_store}}/{{name}}` When using the `pulumi import` command, FeatureOnlineStoreFeatureview can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:vertex/aiFeatureOnlineStoreFeatureview:AiFeatureOnlineStoreFeatureview default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{feature_online_store}}/featureViews/{{name}}

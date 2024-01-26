@@ -71,17 +71,7 @@ import (
 //
 // ## Import
 //
-// OrganizationSettings can be imported using any of these accepted formats* `organizations/{{organization}}/settings` * `{{organization}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OrganizationSettings using one of the formats above. For exampletf import {
-//
-//	id = "organizations/{{organization}}/settings"
-//
-//	to = google_logging_organization_settings.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:logging/organizationSettings:OrganizationSettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OrganizationSettings can be imported using one of the formats above. For example
-//
-// ```
+// OrganizationSettings can be imported using any of these accepted formats* `organizations/{{organization}}/settings` * `{{organization}}` When using the `pulumi import` command, OrganizationSettings can be imported using one of the formats above. For example
 //
 // ```sh
 //

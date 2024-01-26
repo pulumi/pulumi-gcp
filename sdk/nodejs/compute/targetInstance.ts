@@ -80,15 +80,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetInstance using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}"
- *
- *  to = google_compute_target_instance.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/targetInstance:TargetInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetInstance can be imported using one of the formats above. For example
- * ```
+ * TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
@@ -181,6 +173,7 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
     public readonly securityPolicy!: pulumi.Output<string | undefined>;
@@ -288,6 +281,7 @@ export interface TargetInstanceState {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
     securityPolicy?: pulumi.Input<string>;
@@ -348,6 +342,7 @@ export interface TargetInstanceArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
     securityPolicy?: pulumi.Input<string>;

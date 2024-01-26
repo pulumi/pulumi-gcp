@@ -31,7 +31,8 @@ class GatewaySecurityPolicyArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        :param pulumi.Input[str] tls_inspection_policy: (Optional, Beta)
+               Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         """
         if description is not None:
             pulumi.set(__self__, "description", description)
@@ -102,6 +103,7 @@ class GatewaySecurityPolicyArgs:
     @pulumi.getter(name="tlsInspectionPolicy")
     def tls_inspection_policy(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Beta)
         Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         """
         return pulumi.get(self, "tls_inspection_policy")
@@ -138,7 +140,8 @@ class _GatewaySecurityPolicyState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
-        :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        :param pulumi.Input[str] tls_inspection_policy: (Optional, Beta)
+               Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -244,6 +247,7 @@ class _GatewaySecurityPolicyState:
     @pulumi.getter(name="tlsInspectionPolicy")
     def tls_inspection_policy(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Beta)
         Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         """
         return pulumi.get(self, "tls_inspection_policy")
@@ -385,15 +389,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
 
         ## Import
 
-        GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GatewaySecurityPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}"
-
-         to = google_network_security_gateway_security_policy.default }
-
-        ```sh
-         $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GatewaySecurityPolicy can be imported using one of the formats above. For example
-        ```
+        GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}
@@ -419,7 +415,8 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        :param pulumi.Input[str] tls_inspection_policy: (Optional, Beta)
+               Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         """
         ...
     @overload
@@ -534,15 +531,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
 
         ## Import
 
-        GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GatewaySecurityPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}"
-
-         to = google_network_security_gateway_security_policy.default }
-
-        ```sh
-         $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GatewaySecurityPolicy can be imported using one of the formats above. For example
-        ```
+        GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}
@@ -632,7 +621,8 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: Server-defined URL of this resource.
-        :param pulumi.Input[str] tls_inspection_policy: Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+        :param pulumi.Input[str] tls_inspection_policy: (Optional, Beta)
+               Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         :param pulumi.Input[str] update_time: The timestamp when the resource was updated.
                A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits.
                Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
@@ -711,6 +701,7 @@ class GatewaySecurityPolicy(pulumi.CustomResource):
     @pulumi.getter(name="tlsInspectionPolicy")
     def tls_inspection_policy(self) -> pulumi.Output[Optional[str]]:
         """
+        (Optional, Beta)
         Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         """
         return pulumi.get(self, "tls_inspection_policy")

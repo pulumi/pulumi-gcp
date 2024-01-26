@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Possible values are: `COLLOCATED`.
         /// </summary>
         public readonly string? Collocation;
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the number of max logical switches.
+        /// </summary>
         public readonly int? MaxDistance;
         /// <summary>
         /// Number of VMs in this placement group. Google does not recommend that you use this field

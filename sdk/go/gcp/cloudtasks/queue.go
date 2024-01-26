@@ -87,17 +87,7 @@ import (
 //
 // ## Import
 //
-// Queue can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/queues/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Queue using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{location}}/queues/{{name}}"
-//
-//	to = google_cloud_tasks_queue.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:cloudtasks/queue:Queue When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Queue can be imported using one of the formats above. For example
-//
-// ```
+// Queue can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/queues/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Queue can be imported using one of the formats above. For example
 //
 // ```sh
 //

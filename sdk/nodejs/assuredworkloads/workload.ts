@@ -85,15 +85,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Workload can be imported using any of these accepted formats* `organizations/{{organization}}/locations/{{location}}/workloads/{{name}}` * `{{organization}}/{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Workload using one of the formats above. For exampletf import {
- *
- *  id = "organizations/{{organization}}/locations/{{location}}/workloads/{{name}}"
- *
- *  to = google_assured_workloads_workload.default }
- *
- * ```sh
- *  $ pulumi import gcp:assuredworkloads/workload:Workload When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Workload can be imported using one of the formats above. For example
- * ```
+ * Workload can be imported using any of these accepted formats* `organizations/{{organization}}/locations/{{location}}/workloads/{{name}}` * `{{organization}}/{{location}}/{{name}}` When using the `pulumi import` command, Workload can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:assuredworkloads/workload:Workload default organizations/{{organization}}/locations/{{location}}/workloads/{{name}}

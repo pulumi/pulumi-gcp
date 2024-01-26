@@ -107,15 +107,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * SecurityProfile can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/securityProfiles/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SecurityProfile using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{parent}}/locations/{{location}}/securityProfiles/{{name}}&#34;
- * 
- *  to = google_network_security_security_profile.default }
- * 
- * ```sh
- *  $ pulumi import gcp:networksecurity/securityProfile:SecurityProfile When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SecurityProfile can be imported using one of the formats above. For example
- * ```
+ * SecurityProfile can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/securityProfiles/{{name}}` When using the `pulumi import` command, SecurityProfile can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:networksecurity/securityProfile:SecurityProfile default {{parent}}/locations/{{location}}/securityProfiles/{{name}}

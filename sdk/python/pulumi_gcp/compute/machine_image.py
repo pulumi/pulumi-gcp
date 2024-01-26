@@ -363,15 +363,7 @@ class MachineImage(pulumi.CustomResource):
 
         ## Import
 
-        MachineImage can be imported using any of these accepted formats* `projects/{{project}}/global/machineImages/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import MachineImage using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/global/machineImages/{{name}}"
-
-         to = google_compute_machine_image.default }
-
-        ```sh
-         $ pulumi import gcp:compute/machineImage:MachineImage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), MachineImage can be imported using one of the formats above. For example
-        ```
+        MachineImage can be imported using any of these accepted formats* `projects/{{project}}/global/machineImages/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}
@@ -472,15 +464,7 @@ class MachineImage(pulumi.CustomResource):
 
         ## Import
 
-        MachineImage can be imported using any of these accepted formats* `projects/{{project}}/global/machineImages/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import MachineImage using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/global/machineImages/{{name}}"
-
-         to = google_compute_machine_image.default }
-
-        ```sh
-         $ pulumi import gcp:compute/machineImage:MachineImage When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), MachineImage can be imported using one of the formats above. For example
-        ```
+        MachineImage can be imported using any of these accepted formats* `projects/{{project}}/global/machineImages/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, MachineImage can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/machineImage:MachineImage default projects/{{project}}/global/machineImages/{{name}}

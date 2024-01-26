@@ -1409,15 +1409,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GlobalForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/global/forwardingRules/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalForwardingRule using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/global/forwardingRules/{{name}}&#34;
- * 
- *  to = google_compute_global_forwarding_rule.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalForwardingRule can be imported using one of the formats above. For example
- * ```
+ * GlobalForwardingRule can be imported using any of these accepted formats* `projects/{{project}}/global/forwardingRules/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, GlobalForwardingRule can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/globalForwardingRule:GlobalForwardingRule default projects/{{project}}/global/forwardingRules/{{name}}
@@ -1435,6 +1427,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/globalForwardingRule:GlobalForwardingRule")
 public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
     /**
+     * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      * 
      */
@@ -1442,7 +1435,8 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> allowPscGlobalAccess;
 
     /**
-     * @return This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+     * @return (Optional, Beta)
+     * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      * 
      */
     public Output<Optional<Boolean>> allowPscGlobalAccess() {

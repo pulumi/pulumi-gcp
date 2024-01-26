@@ -213,16 +213,20 @@ public final class RegionNetworkEndpointGroupArgs extends com.pulumi.resources.R
     }
 
     /**
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;. Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * (Optional, Beta)
+     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      * 
      */
     @Import(name="serverlessDeployment")
     private @Nullable Output<RegionNetworkEndpointGroupServerlessDeploymentArgs> serverlessDeployment;
 
     /**
-     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;. Only one of cloudRun, appEngine, cloudFunction or
-     * serverlessDeployment may be set.
+     * @return (Optional, Beta)
+     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<RegionNetworkEndpointGroupServerlessDeploymentArgs>> serverlessDeployment() {
@@ -534,8 +538,10 @@ public final class RegionNetworkEndpointGroupArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serverlessDeployment Only valid when networkEndpointType is &#34;SERVERLESS&#34;. Only one of cloudRun, appEngine, cloudFunction or
-         * serverlessDeployment may be set.
+         * @param serverlessDeployment (Optional, Beta)
+         * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -546,8 +552,10 @@ public final class RegionNetworkEndpointGroupArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param serverlessDeployment Only valid when networkEndpointType is &#34;SERVERLESS&#34;. Only one of cloudRun, appEngine, cloudFunction or
-         * serverlessDeployment may be set.
+         * @param serverlessDeployment (Optional, Beta)
+         * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
+         * Structure is documented below.
          * 
          * @return builder
          * 

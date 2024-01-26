@@ -46,15 +46,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * DiskResourcePolicyAttachment can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}` * `{{project}}/{{zone}}/{{disk}}/{{name}}` * `{{zone}}/{{disk}}/{{name}}` * `{{disk}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DiskResourcePolicyAttachment using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}"
- *
- *  to = google_compute_disk_resource_policy_attachment.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DiskResourcePolicyAttachment can be imported using one of the formats above. For example
- * ```
+ * DiskResourcePolicyAttachment can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}` * `{{project}}/{{zone}}/{{disk}}/{{name}}` * `{{zone}}/{{disk}}/{{name}}` * `{{disk}}/{{name}}` When using the `pulumi import` command, DiskResourcePolicyAttachment can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/diskResourcePolicyAttachment:DiskResourcePolicyAttachment default projects/{{project}}/zones/{{zone}}/disks/{{disk}}/{{name}}

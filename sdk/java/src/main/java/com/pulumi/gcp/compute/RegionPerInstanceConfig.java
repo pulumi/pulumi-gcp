@@ -136,15 +136,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RegionPerInstanceConfig can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}` * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}` * `{{region}}/{{region_instance_group_manager}}/{{name}}` * `{{region_instance_group_manager}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionPerInstanceConfig using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}&#34;
- * 
- *  to = google_compute_region_per_instance_config.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionPerInstanceConfig can be imported using one of the formats above. For example
- * ```
+ * RegionPerInstanceConfig can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}` * `{{project}}/{{region}}/{{region_instance_group_manager}}/{{name}}` * `{{region}}/{{region_instance_group_manager}}/{{name}}` * `{{region_instance_group_manager}}/{{name}}` When using the `pulumi import` command, RegionPerInstanceConfig can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig default projects/{{project}}/regions/{{region}}/instanceGroupManagers/{{region_instance_group_manager}}/{{name}}
