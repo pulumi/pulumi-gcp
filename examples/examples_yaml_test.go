@@ -42,12 +42,11 @@ func TestPulumiLabelsSecretYAML(t *testing.T) {
 func TestWarningsNotDuplicated(t *testing.T) {
 	var outputBuf bytes.Buffer
 	opts := integration.ProgramTestOptions{
-		Dir:           filepath.Join(getCwd(t), "simple-bucket"),
-		Stderr:        &outputBuf,
-		Quick:         true,
-		SkipRefresh:   true,
-		ExpectFailure: true,
-		Env:           []string{"GOOGLE_PROJECT="},
+		Dir:         filepath.Join(getCwd(t), "simple-bucket"),
+		Stderr:      &outputBuf,
+		Quick:       true,
+		SkipRefresh: true,
+		Env:         []string{"GOOGLE_PROJECT="},
 		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
 			assert.Equal(t, 1, strings.Count(outputBuf.String(), "Pulumi will rely on per-resource settings for this operation"))
 		},
