@@ -82,10 +82,12 @@ func TestCloudFunction(t *testing.T) {
 }
 
 func TestNetwork(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	runTest(t, test(t, "test-programs/network"))
 }
 
 func TestCluster(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	runTest(t, test(t, "test-programs/cluster"))
 }
 
