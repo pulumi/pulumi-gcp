@@ -81,9 +81,8 @@ func TestCloudFunction(t *testing.T) {
 	runTest(t, test(t, "test-programs/cloudfunctions-function"))
 }
 
-func TestNetwork(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
-	runTest(t, test(t, "test-programs/network"))
+func TestNetworkUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/network")
 }
 
 func TestCluster(t *testing.T) {
@@ -260,7 +259,7 @@ func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
 	replay.ReplaySequence(t, providerServer(t), `
-	[	
+	[
 		{
 			"method": "/pulumirpc.ResourceProvider/Configure",
 			"request": {

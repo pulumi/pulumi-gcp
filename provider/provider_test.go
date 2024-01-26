@@ -10,13 +10,31 @@ import (
 	"github.com/stretchr/testify/require"
 
 	"github.com/pulumi/providertest"
+	"github.com/pulumi/providertest/optproviderupgrade"
+	"github.com/pulumi/providertest/pulumitest"
+	"github.com/pulumi/providertest/pulumitest/assertpreview"
+	"github.com/pulumi/providertest/pulumitest/opttest"
+
 	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 	pfbridge "github.com/pulumi/pulumi-terraform-bridge/pf/tfbridge"
 	pulumirpc "github.com/pulumi/pulumi/sdk/v3/proto/go"
 )
 
+const (
+	providerName    = "gcp"
+	baselineVersion = "6.67.0"
+	testProject     = "pulumi-development"
+)
+
 func TestUpgradeCoverage(t *testing.T) {
 	providertest.ReportUpgradeCoverage(t)
+}
+
+func testProviderUpgrade(t *testing.T, dir string) {
+	test := pulumitest.NewPulumiTest(t, dir, opttest.DownloadProviderVersion(providerName, baselineVersion))
+	test.SetConfig("gcp:config:project", testProject)
+	result := providertest.PreviewProviderUpgrade(test, providerName, baselineVersion, optproviderupgrade.DisableAttach())
+	assertpreview.HasNoReplacements(t, result)
 }
 
 func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.ProviderTest {
