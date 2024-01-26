@@ -32,7 +32,7 @@ import * as utilities from "../utilities";
  *     openapiDocuments: [{
  *         document: {
  *             path: "spec.yaml",
- *             contents: Buffer.from(fs.readFileSync("test-fixtures/openapi.yaml", 'binary')).toString('base64'),
+ *             contents: fs.readFileSync("test-fixtures/openapi.yaml", { encoding: "base64" }),
  *         },
  *     }],
  * }, {
