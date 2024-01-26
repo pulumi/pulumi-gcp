@@ -31,6 +31,9 @@ func TestUpgradeCoverage(t *testing.T) {
 }
 
 func testProviderUpgrade(t *testing.T, dir string) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
 	test := pulumitest.NewPulumiTest(t, dir, opttest.DownloadProviderVersion(providerName, baselineVersion))
 	test.SetConfig("gcp:config:project", testProject)
 	result := providertest.PreviewProviderUpgrade(test, providerName, baselineVersion, optproviderupgrade.DisableAttach())
