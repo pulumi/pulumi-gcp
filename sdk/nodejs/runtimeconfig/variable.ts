@@ -33,7 +33,7 @@ import * as utilities from "../utilities";
  * const my_runtime_config = new gcp.runtimeconfig.Config("my-runtime-config", {description: "Runtime configuration values for my service"});
  * const my_secret = new gcp.runtimeconfig.Variable("my-secret", {
  *     parent: my_runtime_config.name,
- *     value: Buffer.from(fs.readFileSync("my-encrypted-secret.dat", 'binary')).toString('base64'),
+ *     value: fs.readFileSync("my-encrypted-secret.dat", { encoding: "base64" }),
  * });
  * ```
  *
