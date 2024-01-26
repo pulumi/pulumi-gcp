@@ -42,7 +42,7 @@ func TestPulumiLabelsSecretYAML(t *testing.T) {
 func TestWarningsNotDuplicated(t *testing.T) {
 	var outputBuf bytes.Buffer
 	opts := integration.ProgramTestOptions{
-		Dir:           filepath.Join("test-programs", "simple-bucket"),
+		Dir:           filepath.Join(getCwd(t), "simple-bucket"),
 		Stderr:        &outputBuf,
 		Quick:         true,
 		SkipRefresh:   true,
