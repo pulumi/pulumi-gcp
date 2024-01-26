@@ -18,12 +18,16 @@
 package gcp
 
 import (
+	"bytes"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/pulumi/providertest"
 	"github.com/pulumi/providertest/replay"
+	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestDNSRecordSet(t *testing.T) {
@@ -402,4 +406,20 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
         "name": "gcp"
     }
 }`)
+}
+
+func TestWarningsNotDuplicated(t *testing.T) {
+	var outputBuf bytes.Buffer
+	opts := integration.ProgramTestOptions{
+		Dir:           filepath.Join("test-programs", "simple-bucket"),
+		Stderr:        &outputBuf,
+		Quick:         true,
+		SkipRefresh:   true,
+		ExpectFailure: true,
+		Env:           []string{"GOOGLE_PROJECT="},
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Equal(t, 1, strings.Count(outputBuf.String(), "Pulumi will rely on per-resource settings for this operation"))
+		},
+	}
+	integration.ProgramTest(t, &opts)
 }
