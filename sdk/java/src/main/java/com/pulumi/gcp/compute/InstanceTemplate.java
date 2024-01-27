@@ -395,15 +395,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance templates can be imported using any of these accepted formats* `projects/{{project}}/global/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance templates using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/global/instanceTemplates/{{name}}&#34;
- * 
- *  to = google_compute_instance_template.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance templates can be imported using one of the formats above. For example
- * ```
+ * Instance templates can be imported using any of these accepted formats* `projects/{{project}}/global/instanceTemplates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance templates can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/instanceTemplate:InstanceTemplate default projects/{{project}}/global/instanceTemplates/{{name}}
@@ -511,7 +503,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      * 
      */
@@ -519,7 +511,7 @@ public class InstanceTemplate extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableDisplay;
 
     /**
-     * @return ) Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
+     * @return Enable [Virtual Displays](https://cloud.google.com/compute/docs/instances/enable-instance-virtual-display#verify_display_driver) on this instance.
      * **Note**: `allow_stopping_for_update` must be set to true in order to update this field.
      * 
      */

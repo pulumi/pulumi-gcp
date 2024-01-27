@@ -160,15 +160,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DicomStore can be imported using any of these accepted formats* `{{dataset}}/dicomStores/{{name}}` * `{{dataset}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DicomStore using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{dataset}}/dicomStores/{{name}}&#34;
- * 
- *  to = google_healthcare_dicom_store.default }
- * 
- * ```sh
- *  $ pulumi import gcp:healthcare/dicomStore:DicomStore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DicomStore can be imported using one of the formats above. For example
- * ```
+ * DicomStore can be imported using any of these accepted formats* `{{dataset}}/dicomStores/{{name}}` * `{{dataset}}/{{name}}` When using the `pulumi import` command, DicomStore can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:healthcare/dicomStore:DicomStore default {{dataset}}/dicomStores/{{name}}

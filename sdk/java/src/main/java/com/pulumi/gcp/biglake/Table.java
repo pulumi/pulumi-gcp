@@ -124,15 +124,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Table can be imported using any of these accepted formats* `{{database}}/tables/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Table using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{database}}/tables/{{name}}&#34;
- * 
- *  to = google_biglake_table.default }
- * 
- * ```sh
- *  $ pulumi import gcp:biglake/table:Table When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Table can be imported using one of the formats above. For example
- * ```
+ * Table can be imported using any of these accepted formats* `{{database}}/tables/{{name}}` When using the `pulumi import` command, Table can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:biglake/table:Table default {{database}}/tables/{{name}}

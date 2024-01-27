@@ -73,15 +73,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Organization-level logging sinks can be imported using this format* `organizations/{{organization_id}}/sinks/{{sink_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import organization-level logging sinks using one of the formats above. For exampletf import {
- * 
- *  id = &#34;organizations/{{organization_id}}/sinks/{{sink_id}}&#34;
- * 
- *  to = google_logging_organization_sink.default }
- * 
- * ```sh
- *  $ pulumi import gcp:logging/organizationSink:OrganizationSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), organization-level logging sinks can be imported using one of the formats above. For example
- * ```
+ * Organization-level logging sinks can be imported using this format* `organizations/{{organization_id}}/sinks/{{sink_id}}` When using the `pulumi import` command, organization-level logging sinks can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:logging/organizationSink:OrganizationSink default organizations/{{organization_id}}/sinks/{{sink_id}}

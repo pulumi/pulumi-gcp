@@ -66,9 +66,17 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
         return Optional.ofNullable(this.publicPtrDomainName);
     }
 
+    /**
+     * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     @Import(name="securityPolicy")
     private @Nullable Output<String> securityPolicy;
 
+    /**
+     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     public Optional<Output<String>> securityPolicy() {
         return Optional.ofNullable(this.securityPolicy);
     }
@@ -169,11 +177,23 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
             return publicPtrDomainName(Output.of(publicPtrDomainName));
         }
 
+        /**
+         * @param securityPolicy Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
             $.securityPolicy = securityPolicy;
             return this;
         }
 
+        /**
+         * @param securityPolicy Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicy(String securityPolicy) {
             return securityPolicy(Output.of(securityPolicy));
         }

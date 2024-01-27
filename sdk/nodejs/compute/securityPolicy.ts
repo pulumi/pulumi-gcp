@@ -152,15 +152,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Security policies can be imported using any of these accepted formats* `projects/{{project}}/global/securityPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import security policies using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/global/securityPolicies/{{name}}"
- *
- *  to = google_compute_security_policy.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), security policies can be imported using one of the formats above. For example
- * ```
+ * Security policies can be imported using any of these accepted formats* `projects/{{project}}/global/securityPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, security policies can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/securityPolicy:SecurityPolicy default projects/{{project}}/global/securityPolicies/{{name}}

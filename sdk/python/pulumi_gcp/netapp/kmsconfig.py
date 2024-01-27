@@ -354,15 +354,7 @@ class Kmsconfig(pulumi.CustomResource):
 
         ## Import
 
-        kmsconfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import kmsconfig using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}"
-
-         to = google_netapp_kmsconfig.default }
-
-        ```sh
-         $ pulumi import gcp:netapp/kmsconfig:Kmsconfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), kmsconfig can be imported using one of the formats above. For example
-        ```
+        kmsconfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, kmsconfig can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}
@@ -427,15 +419,7 @@ class Kmsconfig(pulumi.CustomResource):
 
         ## Import
 
-        kmsconfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import kmsconfig using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}"
-
-         to = google_netapp_kmsconfig.default }
-
-        ```sh
-         $ pulumi import gcp:netapp/kmsconfig:Kmsconfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), kmsconfig can be imported using one of the formats above. For example
-        ```
+        kmsconfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, kmsconfig can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:netapp/kmsconfig:Kmsconfig default projects/{{project}}/locations/{{location}}/kmsConfigs/{{name}}

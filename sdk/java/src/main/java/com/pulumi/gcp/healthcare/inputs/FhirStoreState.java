@@ -168,16 +168,18 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * (Optional, Beta)
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+     * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      * 
      */
     @Import(name="enableHistoryModifications")
     private @Nullable Output<Boolean> enableHistoryModifications;
 
     /**
-     * @return Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * @return (Optional, Beta)
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+     * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      * 
      */
     public Optional<Output<Boolean>> enableHistoryModifications() {
@@ -279,14 +281,18 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      * 
      */
     @Import(name="notificationConfigs")
     private @Nullable Output<List<FhirStoreNotificationConfigArgs>> notificationConfigs;
 
     /**
-     * @return A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * @return (Optional, Beta)
+     * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<FhirStoreNotificationConfigArgs>>> notificationConfigs() {
@@ -601,8 +607,9 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableHistoryModifications Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-         * versions into the FHIR store. If set to false, using history bundles fails with an error.
+         * @param enableHistoryModifications (Optional, Beta)
+         * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+         * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
          * 
          * @return builder
          * 
@@ -613,8 +620,9 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableHistoryModifications Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-         * versions into the FHIR store. If set to false, using history bundles fails with an error.
+         * @param enableHistoryModifications (Optional, Beta)
+         * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+         * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
          * 
          * @return builder
          * 
@@ -742,7 +750,9 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfigs A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * @param notificationConfigs (Optional, Beta)
+         * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -753,7 +763,9 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfigs A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * @param notificationConfigs (Optional, Beta)
+         * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -763,7 +775,9 @@ public final class FhirStoreState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param notificationConfigs A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * @param notificationConfigs (Optional, Beta)
+         * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+         * Structure is documented below.
          * 
          * @return builder
          * 

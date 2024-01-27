@@ -155,15 +155,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance group managers can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{name}}&#34;
- * 
- *  to = google_compute_region_instance_group_manager.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
- * ```
+ * Instance group managers can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager default {{name}}
@@ -173,7 +165,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager")
 public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
@@ -183,8 +174,7 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ RegionInstanceGroupManagerAllInstancesConfig> allInstancesConfig;
 
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 

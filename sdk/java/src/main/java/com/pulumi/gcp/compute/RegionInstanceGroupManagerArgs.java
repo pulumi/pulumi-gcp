@@ -29,7 +29,6 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     public static final RegionInstanceGroupManagerArgs Empty = new RegionInstanceGroupManagerArgs();
 
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
@@ -39,8 +38,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     private @Nullable Output<RegionInstanceGroupManagerAllInstancesConfigArgs> allInstancesConfig;
 
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 
@@ -458,8 +456,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param allInstancesConfig )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfig Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 
@@ -472,8 +469,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param allInstancesConfig )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfig Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 

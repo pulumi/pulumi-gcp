@@ -54,14 +54,13 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// )
         /// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
         /// </summary>
         [Input("enableConfidentialStorage")]
         public Input<bool>? EnableConfidentialStorage { get; set; }
 
         /// <summary>
-        /// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+        /// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
         /// 
         /// ```csharp
         /// using System.Collections.Generic;

@@ -249,17 +249,11 @@ import (
 //
 // ## Import
 //
-// ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+// ### Importing IAM policies IAM policy imports use the identifier of the Cloud KMS key ring only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 //
 //	id = "{{project_id}}/{{location}}/{{key_ring_name}}"
 //
-//	to = google_kms_key_ring_iam_policy.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:kms/keyRingIAMMember:KeyRingIAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-//
-// ```
+//	to = google_kms_key_ring_iam_policy.default } The `pulumi import` command can also be used
 //
 // ```sh
 //
@@ -269,7 +263,7 @@ import (
 type KeyRingIAMMember struct {
 	pulumi.CustomResourceState
 
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
@@ -334,7 +328,7 @@ func GetKeyRingIAMMember(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering KeyRingIAMMember resources.
 type keyRingIAMMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *KeyRingIAMMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the key ring's IAM policy.
@@ -361,7 +355,7 @@ type keyRingIAMMemberState struct {
 }
 
 type KeyRingIAMMemberState struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMMemberConditionPtrInput
 	// (Computed) The etag of the key ring's IAM policy.
@@ -392,7 +386,7 @@ func (KeyRingIAMMemberState) ElementType() reflect.Type {
 }
 
 type keyRingIAMMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition *KeyRingIAMMemberCondition `pulumi:"condition"`
 	// The key ring ID, in the form
@@ -418,7 +412,7 @@ type keyRingIAMMemberArgs struct {
 
 // The set of arguments for constructing a KeyRingIAMMember resource.
 type KeyRingIAMMemberArgs struct {
-	// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+	// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 	// Structure is documented below.
 	Condition KeyRingIAMMemberConditionPtrInput
 	// The key ring ID, in the form
@@ -529,7 +523,7 @@ func (o KeyRingIAMMemberOutput) ToKeyRingIAMMemberOutputWithContext(ctx context.
 	return o
 }
 
-// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
 // Structure is documented below.
 func (o KeyRingIAMMemberOutput) Condition() KeyRingIAMMemberConditionPtrOutput {
 	return o.ApplyT(func(v *KeyRingIAMMember) KeyRingIAMMemberConditionPtrOutput { return v.Condition }).(KeyRingIAMMemberConditionPtrOutput)

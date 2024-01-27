@@ -55,15 +55,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}` * `{{project}}/{{location}}/{{instance_id}}` * `{{location}}/{{instance_id}}` * `{{instance_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/{{location}}/instances/{{instance_id}}"
- *
- *  to = google_secure_source_manager_instance.default }
- *
- * ```sh
- *  $ pulumi import gcp:securesourcemanager/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
- * ```
+ * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/instances/{{instance_id}}` * `{{project}}/{{location}}/{{instance_id}}` * `{{location}}/{{instance_id}}` * `{{instance_id}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:securesourcemanager/instance:Instance default projects/{{project}}/locations/{{location}}/instances/{{instance_id}}

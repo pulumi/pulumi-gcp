@@ -134,17 +134,7 @@ import (
 //
 // ## Import
 //
-// TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetInstance using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}"
-//
-//	to = google_compute_target_instance.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/targetInstance:TargetInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetInstance can be imported using one of the formats above. For example
-//
-// ```
+// TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -203,6 +193,7 @@ type TargetInstance struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
@@ -275,6 +266,7 @@ type targetInstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
@@ -315,6 +307,7 @@ type TargetInstanceState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
@@ -357,6 +350,7 @@ type targetInstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// URL of the zone where the target instance resides.
@@ -394,6 +388,7 @@ type TargetInstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// The resource URL for the security policy associated with this target instance.
 	SecurityPolicy pulumi.StringPtrInput
 	// URL of the zone where the target instance resides.
@@ -539,6 +534,7 @@ func (o TargetInstanceOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // The resource URL for the security policy associated with this target instance.
 func (o TargetInstanceOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TargetInstance) pulumi.StringPtrOutput { return v.SecurityPolicy }).(pulumi.StringPtrOutput)

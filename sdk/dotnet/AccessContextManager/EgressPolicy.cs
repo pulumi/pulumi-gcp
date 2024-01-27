@@ -18,15 +18,7 @@ namespace Pulumi.Gcp.AccessContextManager
     /// 
     /// ## Import
     /// 
-    /// EgressPolicy can be imported using any of these accepted formats* `{{egress_policy_name}}/{{resource}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EgressPolicy using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "{{egress_policy_name}}/{{resource}}"
-    /// 
-    ///  to = google_access_context_manager_egress_policy.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:accesscontextmanager/egressPolicy:EgressPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EgressPolicy can be imported using one of the formats above. For example
-    /// ```
+    /// EgressPolicy can be imported using any of these accepted formats* `{{egress_policy_name}}/{{resource}}` When using the `pulumi import` command, EgressPolicy can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:accesscontextmanager/egressPolicy:EgressPolicy default {{egress_policy_name}}/{{resource}}

@@ -196,15 +196,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * EdgeCacheOrigin can be imported using any of these accepted formats* `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EdgeCacheOrigin using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}&#34;
- * 
- *  to = google_network_services_edge_cache_origin.default }
- * 
- * ```sh
- *  $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EdgeCacheOrigin can be imported using one of the formats above. For example
- * ```
+ * EdgeCacheOrigin can be imported using any of these accepted formats* `projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, EdgeCacheOrigin can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin default projects/{{project}}/locations/global/edgeCacheOrigins/{{name}}

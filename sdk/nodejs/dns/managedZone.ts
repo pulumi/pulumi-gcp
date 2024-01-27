@@ -229,15 +229,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ManagedZone can be imported using any of these accepted formats* `projects/{{project}}/managedZones/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ManagedZone using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/managedZones/{{name}}"
- *
- *  to = google_dns_managed_zone.default }
- *
- * ```sh
- *  $ pulumi import gcp:dns/managedZone:ManagedZone When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ManagedZone can be imported using one of the formats above. For example
- * ```
+ * ManagedZone can be imported using any of these accepted formats* `projects/{{project}}/managedZones/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ManagedZone can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:dns/managedZone:ManagedZone default projects/{{project}}/managedZones/{{name}}

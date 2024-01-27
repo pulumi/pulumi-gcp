@@ -538,15 +538,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * HealthCheck can be imported using any of these accepted formats* `projects/{{project}}/global/healthChecks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import HealthCheck using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/global/healthChecks/{{name}}&#34;
- * 
- *  to = google_compute_health_check.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/healthCheck:HealthCheck When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), HealthCheck can be imported using one of the formats above. For example
- * ```
+ * HealthCheck can be imported using any of these accepted formats* `projects/{{project}}/global/healthChecks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, HealthCheck can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/healthCheck:HealthCheck default projects/{{project}}/global/healthChecks/{{name}}

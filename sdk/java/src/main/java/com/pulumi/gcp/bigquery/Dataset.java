@@ -324,15 +324,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Dataset using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/datasets/{{dataset_id}}&#34;
- * 
- *  to = google_bigquery_dataset.default }
- * 
- * ```sh
- *  $ pulumi import gcp:bigquery/dataset:Dataset When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Dataset can be imported using one of the formats above. For example
- * ```
+ * Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
@@ -590,14 +582,18 @@ public class Dataset extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
+     * (Optional, Beta)
      * Information about the external metadata storage where the dataset is defined.
+     * Structure is documented below.
      * 
      */
     @Export(name="externalDatasetReference", refs={DatasetExternalDatasetReference.class}, tree="[0]")
     private Output</* @Nullable */ DatasetExternalDatasetReference> externalDatasetReference;
 
     /**
-     * @return Information about the external metadata storage where the dataset is defined.
+     * @return (Optional, Beta)
+     * Information about the external metadata storage where the dataset is defined.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<DatasetExternalDatasetReference>> externalDatasetReference() {

@@ -45,15 +45,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
     /// 
     /// ## Import
     /// 
-    /// EndpointAttachment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EndpointAttachment using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}"
-    /// 
-    ///  to = google_integration_connectors_endpoint_attachment.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EndpointAttachment can be imported using one of the formats above. For example
-    /// ```
+    /// EndpointAttachment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, EndpointAttachment can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:integrationconnectors/endpointAttachment:EndpointAttachment default projects/{{project}}/locations/{{location}}/endpointAttachments/{{name}}

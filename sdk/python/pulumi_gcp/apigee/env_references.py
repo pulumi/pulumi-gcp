@@ -222,15 +222,7 @@ class EnvReferences(pulumi.CustomResource):
 
         ## Import
 
-        EnvReferences can be imported using any of these accepted formats* `{{env_id}}/references/{{name}}` * `{{env_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EnvReferences using one of the formats above. For exampletf import {
-
-         id = "{{env_id}}/references/{{name}}"
-
-         to = google_apigee_env_references.default }
-
-        ```sh
-         $ pulumi import gcp:apigee/envReferences:EnvReferences When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EnvReferences can be imported using one of the formats above. For example
-        ```
+        EnvReferences can be imported using any of these accepted formats* `{{env_id}}/references/{{name}}` * `{{env_id}}/{{name}}` When using the `pulumi import` command, EnvReferences can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/references/{{name}}
@@ -269,15 +261,7 @@ class EnvReferences(pulumi.CustomResource):
 
         ## Import
 
-        EnvReferences can be imported using any of these accepted formats* `{{env_id}}/references/{{name}}` * `{{env_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import EnvReferences using one of the formats above. For exampletf import {
-
-         id = "{{env_id}}/references/{{name}}"
-
-         to = google_apigee_env_references.default }
-
-        ```sh
-         $ pulumi import gcp:apigee/envReferences:EnvReferences When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), EnvReferences can be imported using one of the formats above. For example
-        ```
+        EnvReferences can be imported using any of these accepted formats* `{{env_id}}/references/{{name}}` * `{{env_id}}/{{name}}` When using the `pulumi import` command, EnvReferences can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:apigee/envReferences:EnvReferences default {{env_id}}/references/{{name}}

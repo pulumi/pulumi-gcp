@@ -937,15 +937,7 @@ class MetastoreService(pulumi.CustomResource):
 
         ## Import
 
-        Service can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/services/{{service_id}}` * `{{project}}/{{location}}/{{service_id}}` * `{{location}}/{{service_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Service using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/services/{{service_id}}"
-
-         to = google_dataproc_metastore_service.default }
-
-        ```sh
-         $ pulumi import gcp:dataproc/metastoreService:MetastoreService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Service can be imported using one of the formats above. For example
-        ```
+        Service can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/services/{{service_id}}` * `{{project}}/{{location}}/{{service_id}}` * `{{location}}/{{service_id}}` When using the `pulumi import` command, Service can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}
@@ -1152,15 +1144,7 @@ class MetastoreService(pulumi.CustomResource):
 
         ## Import
 
-        Service can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/services/{{service_id}}` * `{{project}}/{{location}}/{{service_id}}` * `{{location}}/{{service_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Service using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/services/{{service_id}}"
-
-         to = google_dataproc_metastore_service.default }
-
-        ```sh
-         $ pulumi import gcp:dataproc/metastoreService:MetastoreService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Service can be imported using one of the formats above. For example
-        ```
+        Service can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/services/{{service_id}}` * `{{project}}/{{location}}/{{service_id}}` * `{{location}}/{{service_id}}` When using the `pulumi import` command, Service can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:dataproc/metastoreService:MetastoreService default projects/{{project}}/locations/{{location}}/services/{{service_id}}

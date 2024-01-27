@@ -114,15 +114,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NodeGroup using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}"
- *
- *  to = google_compute_node_group.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/nodeGroup:NodeGroup When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NodeGroup can be imported using one of the formats above. For example
- * ```
+ * NodeGroup can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NodeGroup can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/nodeGroup:NodeGroup default projects/{{project}}/zones/{{zone}}/nodeGroups/{{name}}
@@ -188,11 +180,11 @@ export class NodeGroup extends pulumi.CustomResource {
      */
     public readonly initialSize!: pulumi.Output<number | undefined>;
     /**
-     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-     * migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+     * (Optional, Beta)
+     * Specifies the frequency of planned maintenance events. Set to one of the following:
+     * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+     * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+     * Possible values are: `AS_NEEDED`, `RECURRENT`.
      */
     public readonly maintenanceInterval!: pulumi.Output<string>;
     /**
@@ -314,11 +306,11 @@ export interface NodeGroupState {
      */
     initialSize?: pulumi.Input<number>;
     /**
-     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-     * migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+     * (Optional, Beta)
+     * Specifies the frequency of planned maintenance events. Set to one of the following:
+     * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+     * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+     * Possible values are: `AS_NEEDED`, `RECURRENT`.
      */
     maintenanceInterval?: pulumi.Input<string>;
     /**
@@ -385,11 +377,11 @@ export interface NodeGroupArgs {
      */
     initialSize?: pulumi.Input<number>;
     /**
-     * Specifies the frequency of planned maintenance events. Set to one of the following: - AS_NEEDED: Hosts are eligible to
-     * receive infrastructure and hypervisor updates as they become available. - RECURRENT: Hosts receive planned
-     * infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes
-     * the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live
-     * migrations and terminations, on individual VMs. Possible values: ["AS_NEEDED", "RECURRENT"]
+     * (Optional, Beta)
+     * Specifies the frequency of planned maintenance events. Set to one of the following:
+     * - AS_NEEDED: Hosts are eligible to receive infrastructure and hypervisor updates as they become available.
+     * - RECURRENT: Hosts receive planned infrastructure and hypervisor updates on a periodic basis, but not more frequently than every 28 days. This minimizes the number of planned maintenance operations on individual hosts and reduces the frequency of disruptions, both live migrations and terminations, on individual VMs.
+     * Possible values are: `AS_NEEDED`, `RECURRENT`.
      */
     maintenanceInterval?: pulumi.Input<string>;
     /**

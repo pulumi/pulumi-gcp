@@ -56,15 +56,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     /// 
     /// ## Import
     /// 
-    /// InboundSamlConfig can be imported using any of these accepted formats* `projects/{{project}}/inboundSamlConfigs/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import InboundSamlConfig using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/inboundSamlConfigs/{{name}}"
-    /// 
-    ///  to = google_identity_platform_inbound_saml_config.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), InboundSamlConfig can be imported using one of the formats above. For example
-    /// ```
+    /// InboundSamlConfig can be imported using any of these accepted formats* `projects/{{project}}/inboundSamlConfigs/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, InboundSamlConfig can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:identityplatform/inboundSamlConfig:InboundSamlConfig default projects/{{project}}/inboundSamlConfigs/{{name}}

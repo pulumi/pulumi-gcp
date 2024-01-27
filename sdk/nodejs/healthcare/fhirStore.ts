@@ -140,15 +140,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * FhirStore can be imported using any of these accepted formats* `{{dataset}}/fhirStores/{{name}}` * `{{dataset}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FhirStore using one of the formats above. For exampletf import {
- *
- *  id = "{{dataset}}/fhirStores/{{name}}"
- *
- *  to = google_healthcare_fhir_store.default }
- *
- * ```sh
- *  $ pulumi import gcp:healthcare/fhirStore:FhirStore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FhirStore can be imported using one of the formats above. For example
- * ```
+ * FhirStore can be imported using any of these accepted formats* `{{dataset}}/fhirStores/{{name}}` * `{{dataset}}/{{name}}` When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
@@ -237,8 +229,9 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly enableHistoryImport!: pulumi.Output<boolean | undefined>;
     /**
-     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * (Optional, Beta)
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+     * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
     public readonly enableHistoryModifications!: pulumi.Output<boolean | undefined>;
     /**
@@ -275,7 +268,9 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig | undefined>;
     /**
+     * (Optional, Beta)
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      */
     public readonly notificationConfigs!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig[] | undefined>;
     /**
@@ -419,8 +414,9 @@ export interface FhirStoreState {
      */
     enableHistoryImport?: pulumi.Input<boolean>;
     /**
-     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * (Optional, Beta)
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+     * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
     enableHistoryModifications?: pulumi.Input<boolean>;
     /**
@@ -457,7 +453,9 @@ export interface FhirStoreState {
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
+     * (Optional, Beta)
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
     /**
@@ -538,8 +536,9 @@ export interface FhirStoreArgs {
      */
     enableHistoryImport?: pulumi.Input<boolean>;
     /**
-     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * (Optional, Beta)
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+     * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
     enableHistoryModifications?: pulumi.Input<boolean>;
     /**
@@ -576,7 +575,9 @@ export interface FhirStoreArgs {
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
+     * (Optional, Beta)
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      */
     notificationConfigs?: pulumi.Input<pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>[]>;
     /**

@@ -99,15 +99,7 @@ namespace Pulumi.Gcp.EdgeNetwork
     /// 
     /// ## Import
     /// 
-    /// Subnet can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}` * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}` * `{{location}}/{{zone}}/{{subnet_id}}` * `{{location}}/{{subnet_id}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subnet using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}"
-    /// 
-    ///  to = google_edgenetwork_subnet.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:edgenetwork/subnet:Subnet When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subnet can be imported using one of the formats above. For example
-    /// ```
+    /// Subnet can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}` * `{{project}}/{{location}}/{{zone}}/{{subnet_id}}` * `{{location}}/{{zone}}/{{subnet_id}}` * `{{location}}/{{subnet_id}}` * `{{name}}` When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:edgenetwork/subnet:Subnet default projects/{{project}}/locations/{{location}}/zones/{{zone}}/subnets/{{subnet_id}}

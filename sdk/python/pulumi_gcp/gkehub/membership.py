@@ -470,15 +470,7 @@ class Membership(pulumi.CustomResource):
 
         ## Import
 
-        Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Membership using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}"
-
-         to = google_gke_hub_membership.default }
-
-        ```sh
-         $ pulumi import gcp:gkehub/membership:Membership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Membership can be imported using one of the formats above. For example
-        ```
+        Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` When using the `pulumi import` command, Membership can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}
@@ -606,15 +598,7 @@ class Membership(pulumi.CustomResource):
 
         ## Import
 
-        Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Membership using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}"
-
-         to = google_gke_hub_membership.default }
-
-        ```sh
-         $ pulumi import gcp:gkehub/membership:Membership When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Membership can be imported using one of the formats above. For example
-        ```
+        Membership can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}` * `{{project}}/{{location}}/{{membership_id}}` * `{{location}}/{{membership_id}}` When using the `pulumi import` command, Membership can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:gkehub/membership:Membership default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}

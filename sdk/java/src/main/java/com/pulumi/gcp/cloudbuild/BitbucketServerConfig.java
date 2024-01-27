@@ -118,15 +118,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * BitbucketServerConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}` * `{{project}}/{{location}}/{{config_id}}` * `{{location}}/{{config_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BitbucketServerConfig using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}&#34;
- * 
- *  to = google_cloudbuild_bitbucket_server_config.default }
- * 
- * ```sh
- *  $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BitbucketServerConfig can be imported using one of the formats above. For example
- * ```
+ * BitbucketServerConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}` * `{{project}}/{{location}}/{{config_id}}` * `{{location}}/{{config_id}}` When using the `pulumi import` command, BitbucketServerConfig can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:cloudbuild/bitbucketServerConfig:BitbucketServerConfig default projects/{{project}}/locations/{{location}}/bitbucketServerConfigs/{{config_id}}

@@ -631,15 +631,7 @@ class Automation(pulumi.CustomResource):
 
         ## Import
 
-        Automation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}` * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}` * `{{location}}/{{delivery_pipeline}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Automation using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}"
-
-         to = google_clouddeploy_automation.default }
-
-        ```sh
-         $ pulumi import gcp:clouddeploy/automation:Automation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Automation can be imported using one of the formats above. For example
-        ```
+        Automation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}` * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}` * `{{location}}/{{delivery_pipeline}}/{{name}}` When using the `pulumi import` command, Automation can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}
@@ -774,15 +766,7 @@ class Automation(pulumi.CustomResource):
 
         ## Import
 
-        Automation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}` * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}` * `{{location}}/{{delivery_pipeline}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Automation using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}"
-
-         to = google_clouddeploy_automation.default }
-
-        ```sh
-         $ pulumi import gcp:clouddeploy/automation:Automation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Automation can be imported using one of the formats above. For example
-        ```
+        Automation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}` * `{{project}}/{{location}}/{{delivery_pipeline}}/{{name}}` * `{{location}}/{{delivery_pipeline}}/{{name}}` When using the `pulumi import` command, Automation can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:clouddeploy/automation:Automation default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{delivery_pipeline}}/automations/{{name}}

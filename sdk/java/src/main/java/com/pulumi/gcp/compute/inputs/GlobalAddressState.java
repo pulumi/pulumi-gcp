@@ -90,16 +90,16 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * (Beta)
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
     /**
-     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-     * clients and services.
+     * @return (Beta)
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      * 
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
@@ -124,14 +124,18 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * (Beta)
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     @Import(name="labelFingerprint")
     private @Nullable Output<String> labelFingerprint;
 
     /**
-     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
+     * @return (Beta)
+     * The fingerprint used for optimistic locking of this resource.  Used
+     * internally during updates.
      * 
      */
     public Optional<Output<String>> labelFingerprint() {
@@ -250,14 +254,18 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The combination of labels configured directly on the resource and default labels configured on the provider.
+     * (Beta)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
     private @Nullable Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
+     * @return (Beta)
+     * The combination of labels configured directly on the resource
+     * and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -433,8 +441,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-         * clients and services.
+         * @param effectiveLabels (Beta)
+         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
          * 
          * @return builder
          * 
@@ -445,8 +453,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-         * clients and services.
+         * @param effectiveLabels (Beta)
+         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
          * 
          * @return builder
          * 
@@ -479,7 +487,9 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint (Beta)
+         * The fingerprint used for optimistic locking of this resource.  Used
+         * internally during updates.
          * 
          * @return builder
          * 
@@ -490,7 +500,9 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
+         * @param labelFingerprint (Beta)
+         * The fingerprint used for optimistic locking of this resource.  Used
+         * internally during updates.
          * 
          * @return builder
          * 
@@ -641,7 +653,9 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels (Beta)
+         * The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -652,7 +666,9 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
+         * @param pulumiLabels (Beta)
+         * The combination of labels configured directly on the resource
+         * and default labels configured on the provider.
          * 
          * @return builder
          * 

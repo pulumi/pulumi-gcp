@@ -158,15 +158,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Featurestore can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featurestores/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Featurestore using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{region}}/featurestores/{{name}}&#34;
- * 
- *  to = google_vertex_ai_featurestore.default }
- * 
- * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Featurestore can be imported using one of the formats above. For example
- * ```
+ * Featurestore can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featurestores/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Featurestore can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:vertex/aiFeatureStore:AiFeatureStore default projects/{{project}}/locations/{{region}}/featurestores/{{name}}
@@ -310,20 +302,16 @@ public class AiFeatureStore extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.onlineServingConfig);
     }
     /**
-     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
-     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
-     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
-     * featurestore. If not set, default to 4000 days
+     * (Optional, Beta)
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
      * 
      */
     @Export(name="onlineStorageTtlDays", refs={Integer.class}, tree="[0]")
     private Output</* @Nullable */ Integer> onlineStorageTtlDays;
 
     /**
-     * @return TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage
-     * periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note
-     * that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a
-     * featurestore. If not set, default to 4000 days
+     * @return (Optional, Beta)
+     * TTL in days for feature values that will be stored in online serving storage. The Feature Store online storage periodically removes obsolete feature values older than onlineStorageTtlDays since the feature generation time. Note that onlineStorageTtlDays should be less than or equal to offlineStorageTtlDays for each EntityType under a featurestore. If not set, default to 4000 days
      * 
      */
     public Output<Optional<Integer>> onlineStorageTtlDays() {

@@ -223,15 +223,7 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// ## Import
     /// 
-    /// FhirStore can be imported using any of these accepted formats* `{{dataset}}/fhirStores/{{name}}` * `{{dataset}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FhirStore using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "{{dataset}}/fhirStores/{{name}}"
-    /// 
-    ///  to = google_healthcare_fhir_store.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:healthcare/fhirStore:FhirStore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FhirStore can be imported using one of the formats above. For example
-    /// ```
+    /// FhirStore can be imported using any of these accepted formats* `{{dataset}}/fhirStores/{{name}}` * `{{dataset}}/{{name}}` When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
@@ -309,8 +301,9 @@ namespace Pulumi.Gcp.Healthcare
         public Output<bool?> EnableHistoryImport { get; private set; } = null!;
 
         /// <summary>
-        /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-        /// versions into the FHIR store. If set to false, using history bundles fails with an error.
+        /// (Optional, Beta)
+        /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        /// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         /// </summary>
         [Output("enableHistoryModifications")]
         public Output<bool?> EnableHistoryModifications { get; private set; } = null!;
@@ -357,7 +350,9 @@ namespace Pulumi.Gcp.Healthcare
         public Output<Outputs.FhirStoreNotificationConfig?> NotificationConfig { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        /// Structure is documented below.
         /// </summary>
         [Output("notificationConfigs")]
         public Output<ImmutableArray<Outputs.FhirStoreNotificationConfig>> NotificationConfigs { get; private set; } = null!;
@@ -505,8 +500,9 @@ namespace Pulumi.Gcp.Healthcare
         public Input<bool>? EnableHistoryImport { get; set; }
 
         /// <summary>
-        /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-        /// versions into the FHIR store. If set to false, using history bundles fails with an error.
+        /// (Optional, Beta)
+        /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        /// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         /// </summary>
         [Input("enableHistoryModifications")]
         public Input<bool>? EnableHistoryModifications { get; set; }
@@ -562,7 +558,9 @@ namespace Pulumi.Gcp.Healthcare
         private InputList<Inputs.FhirStoreNotificationConfigArgs>? _notificationConfigs;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FhirStoreNotificationConfigArgs> NotificationConfigs
         {
@@ -679,8 +677,9 @@ namespace Pulumi.Gcp.Healthcare
         public Input<bool>? EnableHistoryImport { get; set; }
 
         /// <summary>
-        /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-        /// versions into the FHIR store. If set to false, using history bundles fails with an error.
+        /// (Optional, Beta)
+        /// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        /// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         /// </summary>
         [Input("enableHistoryModifications")]
         public Input<bool>? EnableHistoryModifications { get; set; }
@@ -736,7 +735,9 @@ namespace Pulumi.Gcp.Healthcare
         private InputList<Inputs.FhirStoreNotificationConfigGetArgs>? _notificationConfigs;
 
         /// <summary>
+        /// (Optional, Beta)
         /// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.FhirStoreNotificationConfigGetArgs> NotificationConfigs
         {

@@ -81,17 +81,7 @@ import (
 //
 // ## Import
 //
-// GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalAddress using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/global/addresses/{{name}}"
-//
-//	to = google_compute_global_address.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/globalAddress:GlobalAddress When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalAddress can be imported using one of the formats above. For example
-//
-// ```
+// GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -127,13 +117,15 @@ type GlobalAddress struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// (Beta)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrOutput `pulumi:"ipVersion"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// (Beta)
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringOutput `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
 	//
@@ -163,7 +155,9 @@ type GlobalAddress struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	// (Beta)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
@@ -222,13 +216,15 @@ type globalAddressState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resource.
 	Description *string `pulumi:"description"`
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// (Beta)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion *string `pulumi:"ipVersion"`
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// (Beta)
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint *string `pulumi:"labelFingerprint"`
 	// Labels to apply to this address.  A list of key->value pairs.
 	//
@@ -258,7 +254,9 @@ type globalAddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	// (Beta)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
@@ -283,13 +281,15 @@ type GlobalAddressState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resource.
 	Description pulumi.StringPtrInput
-	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-	// clients and services.
+	// (Beta)
+	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
 	// The IP Version that will be used by this address. The default value is `IPV4`.
 	// Possible values are: `IPV4`, `IPV6`.
 	IpVersion pulumi.StringPtrInput
-	// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+	// (Beta)
+	// The fingerprint used for optimistic locking of this resource.  Used
+	// internally during updates.
 	LabelFingerprint pulumi.StringPtrInput
 	// Labels to apply to this address.  A list of key->value pairs.
 	//
@@ -319,7 +319,9 @@ type GlobalAddressState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The combination of labels configured directly on the resource and default labels configured on the provider.
+	// (Beta)
+	// The combination of labels configured directly on the resource
+	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// The purpose of the resource. Possible values include:
 	// * VPC_PEERING - for peer networks
@@ -547,8 +549,8 @@ func (o GlobalAddressOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-// clients and services.
+// (Beta)
+// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o GlobalAddressOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
@@ -559,7 +561,9 @@ func (o GlobalAddressOutput) IpVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringPtrOutput { return v.IpVersion }).(pulumi.StringPtrOutput)
 }
 
-// The fingerprint used for optimistic locking of this resource. Used internally during updates.
+// (Beta)
+// The fingerprint used for optimistic locking of this resource.  Used
+// internally during updates.
 func (o GlobalAddressOutput) LabelFingerprint() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.LabelFingerprint }).(pulumi.StringOutput)
 }
@@ -607,7 +611,9 @@ func (o GlobalAddressOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The combination of labels configured directly on the resource and default labels configured on the provider.
+// (Beta)
+// The combination of labels configured directly on the resource
+// and default labels configured on the provider.
 func (o GlobalAddressOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalAddress) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }

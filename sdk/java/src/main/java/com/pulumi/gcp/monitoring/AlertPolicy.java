@@ -222,15 +222,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * AlertPolicy can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AlertPolicy using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{name}}&#34;
- * 
- *  to = google_monitoring_alert_policy.default }
- * 
- * ```sh
- *  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AlertPolicy can be imported using one of the formats above. For example
- * ```
+ * AlertPolicy can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, AlertPolicy can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:monitoring/alertPolicy:AlertPolicy default {{name}}

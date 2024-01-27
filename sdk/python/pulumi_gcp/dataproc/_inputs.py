@@ -5443,6 +5443,8 @@ class MetastoreServiceNetworkConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input['MetastoreServiceNetworkConfigConsumerArgs']]] consumers: The consumer-side network configuration for the Dataproc Metastore instance.
                Structure is documented below.
+        :param pulumi.Input[bool] custom_routes_enabled: (Optional, Beta)
+               Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
         """
         pulumi.set(__self__, "consumers", consumers)
         if custom_routes_enabled is not None:
@@ -5464,6 +5466,10 @@ class MetastoreServiceNetworkConfigArgs:
     @property
     @pulumi.getter(name="customRoutesEnabled")
     def custom_routes_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        (Optional, Beta)
+        Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
+        """
         return pulumi.get(self, "custom_routes_enabled")
 
     @custom_routes_enabled.setter

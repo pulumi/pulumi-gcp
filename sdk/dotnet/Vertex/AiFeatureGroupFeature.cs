@@ -105,15 +105,7 @@ namespace Pulumi.Gcp.Vertex
     /// 
     /// ## Import
     /// 
-    /// FeatureGroupFeature can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}` * `{{project}}/{{region}}/{{feature_group}}/{{name}}` * `{{region}}/{{feature_group}}/{{name}}` * `{{feature_group}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeatureGroupFeature using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}"
-    /// 
-    ///  to = google_vertex_ai_feature_group_feature.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeatureGroupFeature can be imported using one of the formats above. For example
-    /// ```
+    /// FeatureGroupFeature can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}` * `{{project}}/{{region}}/{{feature_group}}/{{name}}` * `{{region}}/{{feature_group}}/{{name}}` * `{{feature_group}}/{{name}}` When using the `pulumi import` command, FeatureGroupFeature can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:vertex/aiFeatureGroupFeature:AiFeatureGroupFeature default projects/{{project}}/locations/{{region}}/featureGroups/{{feature_group}}/features/{{name}}

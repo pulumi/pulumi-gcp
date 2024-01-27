@@ -48,7 +48,8 @@ class TargetInstanceArgs:
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
+        :param pulumi.Input[str] security_policy: (Optional, Beta)
+               The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
         pulumi.set(__self__, "instance", instance)
@@ -161,6 +162,7 @@ class TargetInstanceArgs:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Beta)
         The resource URL for the security policy associated with this target instance.
         """
         return pulumi.get(self, "security_policy")
@@ -222,7 +224,8 @@ class _TargetInstanceState:
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
+        :param pulumi.Input[str] security_policy: (Optional, Beta)
+               The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
@@ -353,6 +356,7 @@ class _TargetInstanceState:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Beta)
         The resource URL for the security policy associated with this target instance.
         """
         return pulumi.get(self, "security_policy")
@@ -465,15 +469,7 @@ class TargetInstance(pulumi.CustomResource):
 
         ## Import
 
-        TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetInstance using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}"
-
-         to = google_compute_target_instance.default }
-
-        ```sh
-         $ pulumi import gcp:compute/targetInstance:TargetInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetInstance can be imported using one of the formats above. For example
-        ```
+        TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
@@ -517,7 +513,8 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
+        :param pulumi.Input[str] security_policy: (Optional, Beta)
+               The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
         ...
@@ -591,15 +588,7 @@ class TargetInstance(pulumi.CustomResource):
 
         ## Import
 
-        TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetInstance using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}"
-
-         to = google_compute_target_instance.default }
-
-        ```sh
-         $ pulumi import gcp:compute/targetInstance:TargetInstance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetInstance can be imported using one of the formats above. For example
-        ```
+        TargetInstance can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{zone}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetInstance can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/targetInstance:TargetInstance default projects/{{project}}/zones/{{zone}}/targetInstances/{{name}}
@@ -713,7 +702,8 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
+        :param pulumi.Input[str] security_policy: (Optional, Beta)
+               The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
@@ -811,6 +801,7 @@ class TargetInstance(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> pulumi.Output[Optional[str]]:
         """
+        (Optional, Beta)
         The resource URL for the security policy associated with this target instance.
         """
         return pulumi.get(self, "security_policy")

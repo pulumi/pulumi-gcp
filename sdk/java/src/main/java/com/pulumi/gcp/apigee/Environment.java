@@ -93,15 +93,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Environment can be imported using any of these accepted formats* `{{org_id}}/environments/{{name}}` * `{{org_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{org_id}}/environments/{{name}}&#34;
- * 
- *  to = google_apigee_environment.default }
- * 
- * ```sh
- *  $ pulumi import gcp:apigee/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
- * ```
+ * Environment can be imported using any of these accepted formats* `{{org_id}}/environments/{{name}}` * `{{org_id}}/{{name}}` When using the `pulumi import` command, Environment can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:apigee/environment:Environment default {{org_id}}/environments/{{name}}

@@ -24,15 +24,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GcpUserAccessBinding can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GcpUserAccessBinding using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{name}}&#34;
- * 
- *  to = google_access_context_manager_gcp_user_access_binding.default }
- * 
- * ```sh
- *  $ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GcpUserAccessBinding can be imported using one of the formats above. For example
- * ```
+ * GcpUserAccessBinding can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, GcpUserAccessBinding can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:accesscontextmanager/gcpUserAccessBinding:GcpUserAccessBinding default {{name}}

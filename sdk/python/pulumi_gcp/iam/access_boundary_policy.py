@@ -194,15 +194,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
 
         ## Import
 
-        AccessBoundaryPolicy can be imported using any of these accepted formats* `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AccessBoundaryPolicy using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/{{name}}"
-
-         to = google_iam_access_boundary_policy.default }
-
-        ```sh
-         $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AccessBoundaryPolicy can be imported using one of the formats above. For example
-        ```
+        AccessBoundaryPolicy can be imported using any of these accepted formats* `{{parent}}/{{name}}` When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy default {{parent}}/{{name}}
@@ -231,15 +223,7 @@ class AccessBoundaryPolicy(pulumi.CustomResource):
 
         ## Import
 
-        AccessBoundaryPolicy can be imported using any of these accepted formats* `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AccessBoundaryPolicy using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/{{name}}"
-
-         to = google_iam_access_boundary_policy.default }
-
-        ```sh
-         $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AccessBoundaryPolicy can be imported using one of the formats above. For example
-        ```
+        AccessBoundaryPolicy can be imported using any of these accepted formats* `{{parent}}/{{name}}` When using the `pulumi import` command, AccessBoundaryPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy default {{parent}}/{{name}}

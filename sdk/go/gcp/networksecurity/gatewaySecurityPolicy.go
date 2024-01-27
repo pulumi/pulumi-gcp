@@ -170,17 +170,7 @@ import (
 //
 // ## Import
 //
-// GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GatewaySecurityPolicy using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}"
-//
-//	to = google_network_security_gateway_security_policy.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GatewaySecurityPolicy can be imported using one of the formats above. For example
-//
-// ```
+// GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -221,6 +211,7 @@ type GatewaySecurityPolicy struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
+	// (Optional, Beta)
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
 	TlsInspectionPolicy pulumi.StringPtrOutput `pulumi:"tlsInspectionPolicy"`
 	// The timestamp when the resource was updated.
@@ -278,6 +269,7 @@ type gatewaySecurityPolicyState struct {
 	Project *string `pulumi:"project"`
 	// Server-defined URL of this resource.
 	SelfLink *string `pulumi:"selfLink"`
+	// (Optional, Beta)
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
 	TlsInspectionPolicy *string `pulumi:"tlsInspectionPolicy"`
 	// The timestamp when the resource was updated.
@@ -306,6 +298,7 @@ type GatewaySecurityPolicyState struct {
 	Project pulumi.StringPtrInput
 	// Server-defined URL of this resource.
 	SelfLink pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
 	TlsInspectionPolicy pulumi.StringPtrInput
 	// The timestamp when the resource was updated.
@@ -332,6 +325,7 @@ type gatewaySecurityPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// (Optional, Beta)
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
 	TlsInspectionPolicy *string `pulumi:"tlsInspectionPolicy"`
 }
@@ -351,6 +345,7 @@ type GatewaySecurityPolicyArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// (Optional, Beta)
 	// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
 	TlsInspectionPolicy pulumi.StringPtrInput
 }
@@ -479,6 +474,7 @@ func (o GatewaySecurityPolicyOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *GatewaySecurityPolicy) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
+// (Optional, Beta)
 // Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
 func (o GatewaySecurityPolicyOutput) TlsInspectionPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *GatewaySecurityPolicy) pulumi.StringPtrOutput { return v.TlsInspectionPolicy }).(pulumi.StringPtrOutput)

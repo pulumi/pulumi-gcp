@@ -140,15 +140,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Snapshot can be imported using any of these accepted formats* `projects/{{project}}/global/snapshots/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Snapshot using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/global/snapshots/{{name}}&#34;
- * 
- *  to = google_compute_snapshot.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/snapshot:Snapshot When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Snapshot can be imported using one of the formats above. For example
- * ```
+ * Snapshot can be imported using any of these accepted formats* `projects/{{project}}/global/snapshots/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Snapshot can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/snapshot:Snapshot default projects/{{project}}/global/snapshots/{{name}}

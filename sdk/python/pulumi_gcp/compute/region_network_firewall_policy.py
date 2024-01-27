@@ -292,15 +292,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
 
         ## Import
 
-        RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkFirewallPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}"
-
-         to = google_compute_region_network_firewall_policy.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
-        ```
+        RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}
@@ -350,15 +342,7 @@ class RegionNetworkFirewallPolicy(pulumi.CustomResource):
 
         ## Import
 
-        RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionNetworkFirewallPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}"
-
-         to = google_compute_region_network_firewall_policy.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
-        ```
+        RegionNetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionNetworkFirewallPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionNetworkFirewallPolicy:RegionNetworkFirewallPolicy default projects/{{project}}/regions/{{region}}/firewallPolicies/{{name}}

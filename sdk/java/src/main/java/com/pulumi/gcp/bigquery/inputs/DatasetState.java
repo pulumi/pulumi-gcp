@@ -274,14 +274,18 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta)
      * Information about the external metadata storage where the dataset is defined.
+     * Structure is documented below.
      * 
      */
     @Import(name="externalDatasetReference")
     private @Nullable Output<DatasetExternalDatasetReferenceArgs> externalDatasetReference;
 
     /**
-     * @return Information about the external metadata storage where the dataset is defined.
+     * @return (Optional, Beta)
+     * Information about the external metadata storage where the dataset is defined.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<DatasetExternalDatasetReferenceArgs>> externalDatasetReference() {
@@ -854,7 +858,9 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalDatasetReference Information about the external metadata storage where the dataset is defined.
+         * @param externalDatasetReference (Optional, Beta)
+         * Information about the external metadata storage where the dataset is defined.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -865,7 +871,9 @@ public final class DatasetState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalDatasetReference Information about the external metadata storage where the dataset is defined.
+         * @param externalDatasetReference (Optional, Beta)
+         * Information about the external metadata storage where the dataset is defined.
+         * Structure is documented below.
          * 
          * @return builder
          * 

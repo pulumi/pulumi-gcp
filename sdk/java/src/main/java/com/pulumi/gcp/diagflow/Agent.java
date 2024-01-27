@@ -75,15 +75,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Agent can be imported using any of these accepted formats* `{{project}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Agent using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{project}}&#34;
- * 
- *  to = google_dialogflow_agent.default }
- * 
- * ```sh
- *  $ pulumi import gcp:diagflow/agent:Agent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Agent can be imported using one of the formats above. For example
- * ```
+ * Agent can be imported using any of these accepted formats* `{{project}}` When using the `pulumi import` command, Agent can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:diagflow/agent:Agent default {{project}}

@@ -204,15 +204,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GatewaySecurityPolicy using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}&#34;
- * 
- *  to = google_network_security_gateway_security_policy.default }
- * 
- * ```sh
- *  $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GatewaySecurityPolicy can be imported using one of the formats above. For example
- * ```
+ * GatewaySecurityPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, GatewaySecurityPolicy can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy default projects/{{project}}/locations/{{location}}/gatewaySecurityPolicies/{{name}}
@@ -328,6 +320,7 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
         return this.selfLink;
     }
     /**
+     * (Optional, Beta)
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      * 
      */
@@ -335,7 +328,8 @@ public class GatewaySecurityPolicy extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> tlsInspectionPolicy;
 
     /**
-     * @return Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * @return (Optional, Beta)
+     * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      * 
      */
     public Output<Optional<String>> tlsInspectionPolicy() {

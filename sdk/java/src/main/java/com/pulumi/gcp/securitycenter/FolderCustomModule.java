@@ -150,15 +150,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FolderCustomModule can be imported using any of these accepted formats* `folders/{{folder}}/securityHealthAnalyticsSettings/customModules/{{name}}` * `{{folder}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FolderCustomModule using one of the formats above. For exampletf import {
- * 
- *  id = &#34;folders/{{folder}}/securityHealthAnalyticsSettings/customModules/{{name}}&#34;
- * 
- *  to = google_scc_folder_custom_module.default }
- * 
- * ```sh
- *  $ pulumi import gcp:securitycenter/folderCustomModule:FolderCustomModule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FolderCustomModule can be imported using one of the formats above. For example
- * ```
+ * FolderCustomModule can be imported using any of these accepted formats* `folders/{{folder}}/securityHealthAnalyticsSettings/customModules/{{name}}` * `{{folder}}/{{name}}` When using the `pulumi import` command, FolderCustomModule can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:securitycenter/folderCustomModule:FolderCustomModule default folders/{{folder}}/securityHealthAnalyticsSettings/customModules/{{name}}

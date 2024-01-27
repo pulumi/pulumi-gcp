@@ -374,18 +374,26 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
-     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * (Optional, Beta)
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      * 
      */
     @Import(name="type")
     private @Nullable Output<String> type;
 
     /**
-     * @return Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
-     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * @return (Optional, Beta)
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -962,9 +970,13 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-         * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
-         * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+         * @param type (Optional, Beta)
+         * Indicates whether this NAT is used for public or private IP translation.
+         * If unspecified, it defaults to PUBLIC.
+         * If `PUBLIC` NAT used for public IP translation.
+         * If `PRIVATE` NAT used for private IP translation.
+         * Default value is `PUBLIC`.
+         * Possible values are: `PUBLIC`, `PRIVATE`.
          * 
          * @return builder
          * 
@@ -975,9 +987,13 @@ public final class RouterNatArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-         * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
-         * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+         * @param type (Optional, Beta)
+         * Indicates whether this NAT is used for public or private IP translation.
+         * If unspecified, it defaults to PUBLIC.
+         * If `PUBLIC` NAT used for public IP translation.
+         * If `PRIVATE` NAT used for private IP translation.
+         * Default value is `PUBLIC`.
+         * Possible values are: `PUBLIC`, `PRIVATE`.
          * 
          * @return builder
          * 

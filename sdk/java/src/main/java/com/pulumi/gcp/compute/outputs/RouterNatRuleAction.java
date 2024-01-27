@@ -18,6 +18,13 @@ public final class RouterNatRuleAction {
      * 
      */
     private @Nullable List<String> sourceNatActiveIps;
+    /**
+     * @return (Optional, Beta)
+     * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+     * These subnetworks must have purpose set to PRIVATE_NAT.
+     * This field is used for private NAT.
+     * 
+     */
     private @Nullable List<String> sourceNatActiveRanges;
     /**
      * @return A list of URLs of the IP resources to be drained.
@@ -27,6 +34,13 @@ public final class RouterNatRuleAction {
      * 
      */
     private @Nullable List<String> sourceNatDrainIps;
+    /**
+     * @return (Optional, Beta)
+     * A list of URLs of subnetworks representing source ranges to be drained.
+     * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+     * This field is used for private NAT.
+     * 
+     */
     private @Nullable List<String> sourceNatDrainRanges;
 
     private RouterNatRuleAction() {}
@@ -39,6 +53,13 @@ public final class RouterNatRuleAction {
     public List<String> sourceNatActiveIps() {
         return this.sourceNatActiveIps == null ? List.of() : this.sourceNatActiveIps;
     }
+    /**
+     * @return (Optional, Beta)
+     * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+     * These subnetworks must have purpose set to PRIVATE_NAT.
+     * This field is used for private NAT.
+     * 
+     */
     public List<String> sourceNatActiveRanges() {
         return this.sourceNatActiveRanges == null ? List.of() : this.sourceNatActiveRanges;
     }
@@ -52,6 +73,13 @@ public final class RouterNatRuleAction {
     public List<String> sourceNatDrainIps() {
         return this.sourceNatDrainIps == null ? List.of() : this.sourceNatDrainIps;
     }
+    /**
+     * @return (Optional, Beta)
+     * A list of URLs of subnetworks representing source ranges to be drained.
+     * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+     * This field is used for private NAT.
+     * 
+     */
     public List<String> sourceNatDrainRanges() {
         return this.sourceNatDrainRanges == null ? List.of() : this.sourceNatDrainRanges;
     }

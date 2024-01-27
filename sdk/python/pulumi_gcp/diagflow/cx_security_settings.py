@@ -617,15 +617,7 @@ class CxSecuritySettings(pulumi.CustomResource):
 
         ## Import
 
-        SecuritySettings can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SecuritySettings using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/securitySettings/{{name}}"
-
-         to = google_dialogflow_cx_security_settings.default }
-
-        ```sh
-         $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SecuritySettings can be imported using one of the formats above. For example
-        ```
+        SecuritySettings can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, SecuritySettings can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default projects/{{project}}/locations/{{location}}/securitySettings/{{name}}
@@ -761,15 +753,7 @@ class CxSecuritySettings(pulumi.CustomResource):
 
         ## Import
 
-        SecuritySettings can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SecuritySettings using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/securitySettings/{{name}}"
-
-         to = google_dialogflow_cx_security_settings.default }
-
-        ```sh
-         $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SecuritySettings can be imported using one of the formats above. For example
-        ```
+        SecuritySettings can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/securitySettings/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, SecuritySettings can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:diagflow/cxSecuritySettings:CxSecuritySettings default projects/{{project}}/locations/{{location}}/securitySettings/{{name}}

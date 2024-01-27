@@ -450,6 +450,23 @@ class CryptoKey(pulumi.CustomResource):
                  version_template: Optional[pulumi.Input[pulumi.InputType['CryptoKeyVersionTemplateArgs']]] = None,
                  __props__=None):
         """
+        A `CryptoKey` represents a logical key that can be used for cryptographic operations.
+
+        > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
+        Destroying a provider-managed CryptoKey will remove it from state
+        and delete all CryptoKeyVersions, rendering the key unusable, but *will
+        not delete the resource from the project.* When the provider destroys these keys,
+        any data previously encrypted with these keys will be irrecoverable.
+        For this reason, it is strongly recommended that you add
+        lifecycle
+        hooks to the resource to prevent accidental destruction.
+
+        To get more information about CryptoKey, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
+        * How-to Guides
+            * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+
         ## Example Usage
         ### Kms Crypto Key Basic
 
@@ -479,15 +496,7 @@ class CryptoKey(pulumi.CustomResource):
 
         ## Import
 
-        CryptoKey can be imported using any of these accepted formats* `{{key_ring}}/cryptoKeys/{{name}}` * `{{key_ring}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CryptoKey using one of the formats above. For exampletf import {
-
-         id = "{{key_ring}}/cryptoKeys/{{name}}"
-
-         to = google_kms_crypto_key.default }
-
-        ```sh
-         $ pulumi import gcp:kms/cryptoKey:CryptoKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CryptoKey can be imported using one of the formats above. For example
-        ```
+        CryptoKey can be imported using any of these accepted formats* `{{key_ring}}/cryptoKeys/{{name}}` * `{{key_ring}}/{{name}}` When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}
@@ -532,6 +541,23 @@ class CryptoKey(pulumi.CustomResource):
                  args: CryptoKeyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A `CryptoKey` represents a logical key that can be used for cryptographic operations.
+
+        > **Note:** CryptoKeys cannot be deleted from Google Cloud Platform.
+        Destroying a provider-managed CryptoKey will remove it from state
+        and delete all CryptoKeyVersions, rendering the key unusable, but *will
+        not delete the resource from the project.* When the provider destroys these keys,
+        any data previously encrypted with these keys will be irrecoverable.
+        For this reason, it is strongly recommended that you add
+        lifecycle
+        hooks to the resource to prevent accidental destruction.
+
+        To get more information about CryptoKey, see:
+
+        * [API documentation](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys)
+        * How-to Guides
+            * [Creating a key](https://cloud.google.com/kms/docs/creating-keys#create_a_key)
+
         ## Example Usage
         ### Kms Crypto Key Basic
 
@@ -561,15 +587,7 @@ class CryptoKey(pulumi.CustomResource):
 
         ## Import
 
-        CryptoKey can be imported using any of these accepted formats* `{{key_ring}}/cryptoKeys/{{name}}` * `{{key_ring}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CryptoKey using one of the formats above. For exampletf import {
-
-         id = "{{key_ring}}/cryptoKeys/{{name}}"
-
-         to = google_kms_crypto_key.default }
-
-        ```sh
-         $ pulumi import gcp:kms/cryptoKey:CryptoKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CryptoKey can be imported using one of the formats above. For example
-        ```
+        CryptoKey can be imported using any of these accepted formats* `{{key_ring}}/cryptoKeys/{{name}}` * `{{key_ring}}/{{name}}` When using the `pulumi import` command, CryptoKey can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:kms/cryptoKey:CryptoKey default {{key_ring}}/cryptoKeys/{{name}}

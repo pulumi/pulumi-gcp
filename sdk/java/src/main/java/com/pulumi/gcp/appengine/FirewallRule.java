@@ -75,15 +75,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FirewallRule can be imported using any of these accepted formats* `apps/{{project}}/firewall/ingressRules/{{priority}}` * `{{project}}/{{priority}}` * `{{priority}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FirewallRule using one of the formats above. For exampletf import {
- * 
- *  id = &#34;apps/{{project}}/firewall/ingressRules/{{priority}}&#34;
- * 
- *  to = google_app_engine_firewall_rule.default }
- * 
- * ```sh
- *  $ pulumi import gcp:appengine/firewallRule:FirewallRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FirewallRule can be imported using one of the formats above. For example
- * ```
+ * FirewallRule can be imported using any of these accepted formats* `apps/{{project}}/firewall/ingressRules/{{priority}}` * `{{project}}/{{priority}}` * `{{priority}}` When using the `pulumi import` command, FirewallRule can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:appengine/firewallRule:FirewallRule default apps/{{project}}/firewall/ingressRules/{{priority}}

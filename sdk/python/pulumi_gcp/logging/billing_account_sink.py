@@ -384,15 +384,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         ## Import
 
-        Billing account logging sinks can be imported using this format* `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import billing account logging sinks using one of the formats above. For exampletf import {
-
-         id = "billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}"
-
-         to = google_logging_billing_account_sink.default }
-
-        ```sh
-         $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), billing account logging sinks can be imported using one of the formats above. For example
-        ```
+        Billing account logging sinks can be imported using this format* `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}` When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}
@@ -454,15 +446,7 @@ class BillingAccountSink(pulumi.CustomResource):
 
         ## Import
 
-        Billing account logging sinks can be imported using this format* `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import billing account logging sinks using one of the formats above. For exampletf import {
-
-         id = "billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}"
-
-         to = google_logging_billing_account_sink.default }
-
-        ```sh
-         $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), billing account logging sinks can be imported using one of the formats above. For example
-        ```
+        Billing account logging sinks can be imported using this format* `billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}` When using the `pulumi import` command, billing account logging sinks can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:logging/billingAccountSink:BillingAccountSink default billingAccounts/{{billing_account_id}}/sinks/{{sink_id}}

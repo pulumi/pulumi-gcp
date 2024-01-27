@@ -141,14 +141,14 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
     }
 
     /**
-     * ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
      * 
      */
     @Import(name="networkAttachment")
     private @Nullable Output<String> networkAttachment;
 
     /**
-     * @return ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+     * @return The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
      * 
      */
     public Optional<Output<String>> networkAttachment() {
@@ -487,7 +487,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param networkAttachment ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * @param networkAttachment The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
          * 
          * @return builder
          * 
@@ -498,7 +498,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param networkAttachment ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+         * @param networkAttachment The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
          * 
          * @return builder
          * 

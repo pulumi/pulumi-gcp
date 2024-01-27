@@ -56,17 +56,7 @@ import (
 //
 // ## Import
 //
-// Network can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}` * `{{project}}/{{location}}/{{zone}}/{{network_id}}` * `{{location}}/{{zone}}/{{network_id}}` * `{{location}}/{{network_id}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Network using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}"
-//
-//	to = google_edgenetwork_network.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:edgenetwork/network:Network When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Network can be imported using one of the formats above. For example
-//
-// ```
+// Network can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/zones/{{zone}}/networks/{{network_id}}` * `{{project}}/{{location}}/{{zone}}/{{network_id}}` * `{{location}}/{{zone}}/{{network_id}}` * `{{location}}/{{network_id}}` * `{{name}}` When using the `pulumi import` command, Network can be imported using one of the formats above. For example
 //
 // ```sh
 //

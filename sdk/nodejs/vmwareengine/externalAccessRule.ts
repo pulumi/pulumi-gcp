@@ -99,15 +99,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ExternalAccessRule can be imported using any of these accepted formats* `{{parent}}/externalAccessRules/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ExternalAccessRule using one of the formats above. For exampletf import {
- *
- *  id = "{{parent}}/externalAccessRules/{{name}}"
- *
- *  to = google_vmwareengine_external_access_rule.default }
- *
- * ```sh
- *  $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ExternalAccessRule can be imported using one of the formats above. For example
- * ```
+ * ExternalAccessRule can be imported using any of these accepted formats* `{{parent}}/externalAccessRules/{{name}}` When using the `pulumi import` command, ExternalAccessRule can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:vmwareengine/externalAccessRule:ExternalAccessRule default {{parent}}/externalAccessRules/{{name}}

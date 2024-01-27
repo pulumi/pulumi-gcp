@@ -114,15 +114,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * LinkedDataset can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import LinkedDataset using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}&#34;
- * 
- *  to = google_logging_linked_dataset.default }
- * 
- * ```sh
- *  $ pulumi import gcp:logging/linkedDataset:LinkedDataset When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), LinkedDataset can be imported using one of the formats above. For example
- * ```
+ * LinkedDataset can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}` When using the `pulumi import` command, LinkedDataset can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:logging/linkedDataset:LinkedDataset default {{parent}}/locations/{{location}}/buckets/{{bucket}}/links/{{link_id}}

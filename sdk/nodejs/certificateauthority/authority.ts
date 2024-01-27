@@ -236,15 +236,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * CertificateAuthority can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}` * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}` * `{{location}}/{{pool}}/{{certificate_authority_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CertificateAuthority using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}"
- *
- *  to = google_privateca_certificate_authority.default }
- *
- * ```sh
- *  $ pulumi import gcp:certificateauthority/authority:Authority When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CertificateAuthority can be imported using one of the formats above. For example
- * ```
+ * CertificateAuthority can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}` * `{{project}}/{{location}}/{{pool}}/{{certificate_authority_id}}` * `{{location}}/{{pool}}/{{certificate_authority_id}}` When using the `pulumi import` command, CertificateAuthority can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:certificateauthority/authority:Authority default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificateAuthorities/{{certificate_authority_id}}

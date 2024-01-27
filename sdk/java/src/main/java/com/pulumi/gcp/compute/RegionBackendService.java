@@ -504,15 +504,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionBackendService using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/regions/{{region}}/backendServices/{{name}}&#34;
- * 
- *  to = google_compute_region_backend_service.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/regionBackendService:RegionBackendService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionBackendService can be imported using one of the formats above. For example
- * ```
+ * RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
@@ -984,6 +976,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
+     * (Optional, Beta)
      * The security policy associated with this backend service.
      * 
      */
@@ -991,7 +984,8 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
-     * @return The security policy associated with this backend service.
+     * @return (Optional, Beta)
+     * The security policy associated with this backend service.
      * 
      */
     public Output<Optional<String>> securityPolicy() {
@@ -1030,16 +1024,18 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return this.sessionAffinity;
     }
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * (Optional, Beta)
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      * 
      */
     @Export(name="subsetting", refs={RegionBackendServiceSubsetting.class}, tree="[0]")
     private Output</* @Nullable */ RegionBackendServiceSubsetting> subsetting;
 
     /**
-     * @return Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * @return (Optional, Beta)
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<RegionBackendServiceSubsetting>> subsetting() {

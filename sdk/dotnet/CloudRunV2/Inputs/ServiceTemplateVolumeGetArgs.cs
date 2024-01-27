@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         [Input("cloudSqlInstance")]
         public Input<Inputs.ServiceTemplateVolumeCloudSqlInstanceGetArgs>? CloudSqlInstance { get; set; }
 
+        /// <summary>
+        /// (Optional, Beta)
+        /// Ephemeral storage used as a shared volume.
+        /// Structure is documented below.
+        /// </summary>
         [Input("emptyDir")]
         public Input<Inputs.ServiceTemplateVolumeEmptyDirGetArgs>? EmptyDir { get; set; }
 

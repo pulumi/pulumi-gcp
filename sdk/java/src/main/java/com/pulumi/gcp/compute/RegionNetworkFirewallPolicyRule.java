@@ -118,15 +118,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NetworkFirewallPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}` * `{{project}}/{{region}}/{{firewall_policy}}/{{priority}}` * `{{region}}/{{firewall_policy}}/{{priority}}` * `{{firewall_policy}}/{{priority}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicyRule using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}&#34;
- * 
- *  to = google_compute_region_network_firewall_policy_rule.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicyRule can be imported using one of the formats above. For example
- * ```
+ * NetworkFirewallPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}` * `{{project}}/{{region}}/{{firewall_policy}}/{{priority}}` * `{{region}}/{{firewall_policy}}/{{priority}}` * `{{firewall_policy}}/{{priority}}` When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/regionNetworkFirewallPolicyRule:RegionNetworkFirewallPolicyRule default projects/{{project}}/regions/{{region}}/firewallPolicies/{{firewall_policy}}/{{priority}}

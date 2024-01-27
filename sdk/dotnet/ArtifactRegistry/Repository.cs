@@ -391,15 +391,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// ## Import
     /// 
-    /// Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}` * `{{project}}/{{location}}/{{repository_id}}` * `{{location}}/{{repository_id}}` * `{{repository_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}"
-    /// 
-    ///  to = google_artifact_registry_repository.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:artifactregistry/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
-    /// ```
+    /// Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}` * `{{project}}/{{location}}/{{repository_id}}` * `{{location}}/{{repository_id}}` * `{{repository_id}}` When using the `pulumi import` command, Repository can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
@@ -421,15 +413,20 @@ namespace Pulumi.Gcp.ArtifactRegistry
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-        /// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-        /// under 128 characters in length.
+        /// (Optional, Beta)
+        /// Cleanup policies for this repository. Cleanup policies indicate when
+        /// certain package versions can be automatically deleted.
+        /// Map keys are policy IDs supplied by users during policy creation. They must
+        /// unique within a repository and be under 128 characters in length.
+        /// Structure is documented below.
         /// </summary>
         [Output("cleanupPolicies")]
         public Output<ImmutableArray<Outputs.RepositoryCleanupPolicy>> CleanupPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// (Optional, Beta)
+        /// If true, the cleanup pipeline is prevented from deleting versions in this
+        /// repository.
         /// </summary>
         [Output("cleanupPolicyDryRun")]
         public Output<bool?> CleanupPolicyDryRun { get; private set; } = null!;
@@ -619,9 +616,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         private InputList<Inputs.RepositoryCleanupPolicyArgs>? _cleanupPolicies;
 
         /// <summary>
-        /// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-        /// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-        /// under 128 characters in length.
+        /// (Optional, Beta)
+        /// Cleanup policies for this repository. Cleanup policies indicate when
+        /// certain package versions can be automatically deleted.
+        /// Map keys are policy IDs supplied by users during policy creation. They must
+        /// unique within a repository and be under 128 characters in length.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RepositoryCleanupPolicyArgs> CleanupPolicies
         {
@@ -630,7 +630,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         }
 
         /// <summary>
-        /// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// (Optional, Beta)
+        /// If true, the cleanup pipeline is prevented from deleting versions in this
+        /// repository.
         /// </summary>
         [Input("cleanupPolicyDryRun")]
         public Input<bool>? CleanupPolicyDryRun { get; set; }
@@ -751,9 +753,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         private InputList<Inputs.RepositoryCleanupPolicyGetArgs>? _cleanupPolicies;
 
         /// <summary>
-        /// Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-        /// deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-        /// under 128 characters in length.
+        /// (Optional, Beta)
+        /// Cleanup policies for this repository. Cleanup policies indicate when
+        /// certain package versions can be automatically deleted.
+        /// Map keys are policy IDs supplied by users during policy creation. They must
+        /// unique within a repository and be under 128 characters in length.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RepositoryCleanupPolicyGetArgs> CleanupPolicies
         {
@@ -762,7 +767,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         }
 
         /// <summary>
-        /// If true, the cleanup pipeline is prevented from deleting versions in this repository.
+        /// (Optional, Beta)
+        /// If true, the cleanup pipeline is prevented from deleting versions in this
+        /// repository.
         /// </summary>
         [Input("cleanupPolicyDryRun")]
         public Input<bool>? CleanupPolicyDryRun { get; set; }

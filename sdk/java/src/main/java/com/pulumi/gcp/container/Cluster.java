@@ -215,15 +215,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GKE clusters using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}&#34;
- * 
- *  to = google_container_cluster.default }
- * 
- * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GKE clusters can be imported using one of the formats above. For example
- * ```
+ * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -529,7 +521,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableAutopilot);
     }
     /**
-     * )
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      * 
      */
@@ -537,8 +528,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableFqdnNetworkPolicy;
 
     /**
-     * @return )
-     * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
+     * @return Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      * 
      */
     public Output<Optional<Boolean>> enableFqdnNetworkPolicy() {
@@ -627,7 +617,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableLegacyAbac);
     }
     /**
-     * )
      * Whether multi-networking is enabled for this cluster.
      * 
      */
@@ -635,8 +624,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> enableMultiNetworking;
 
     /**
-     * @return )
-     * Whether multi-networking is enabled for this cluster.
+     * @return Whether multi-networking is enabled for this cluster.
      * 
      */
     public Output<Optional<Boolean>> enableMultiNetworking() {
@@ -1249,7 +1237,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.operation;
     }
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1258,7 +1246,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ ClusterPodSecurityPolicyConfig> podSecurityPolicyConfig;
 
     /**
-     * @return ) Configuration for the
+     * @return Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      * 
@@ -1313,7 +1301,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
@@ -1321,8 +1308,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<ClusterProtectConfig> protectConfig;
 
     /**
-     * @return )
-     * Enable/Disable Protect API features for the cluster. Structure is documented below.
+     * @return Enable/Disable Protect API features for the cluster. Structure is documented below.
      * 
      */
     public Output<ClusterProtectConfig> protectConfig() {
@@ -1537,7 +1523,6 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.verticalPodAutoscaling;
     }
     /**
-     * )
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      * 
      * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
@@ -1547,8 +1532,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output<ClusterWorkloadAltsConfig> workloadAltsConfig;
 
     /**
-     * @return )
-     * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
+     * @return Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      * 
      * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 

@@ -37,7 +37,7 @@ class CryptoKeyIAMMemberArgs:
                * **domain:{domain}**: A G Suite domain (primary, instead of alias) name that represents all the users of that domain. For example, google.com or example.com.
         :param pulumi.Input[str] role: The role that should be applied. Note that custom roles must be of the format
                `[projects|organizations]/{parent-name}/roles/{role-name}`.
-        :param pulumi.Input['CryptoKeyIAMMemberConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['CryptoKeyIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         """
         pulumi.set(__self__, "crypto_key_id", crypto_key_id)
@@ -96,7 +96,7 @@ class CryptoKeyIAMMemberArgs:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']]:
         """
-        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -116,7 +116,7 @@ class _CryptoKeyIAMMemberState:
                  role: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering CryptoKeyIAMMember resources.
-        :param pulumi.Input['CryptoKeyIAMMemberConditionArgs'] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input['CryptoKeyIAMMemberConditionArgs'] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -150,7 +150,7 @@ class _CryptoKeyIAMMemberState:
     @pulumi.getter
     def condition(self) -> Optional[pulumi.Input['CryptoKeyIAMMemberConditionArgs']]:
         """
-        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")
@@ -329,15 +329,11 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the KMS crypto key only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies IAM policy imports use the identifier of the KMS crypto key only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 
          id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
 
-         to = google_kms_crypto_key_iam_policy.default }
-
-        ```sh
-         $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-        ```
+         to = google_kms_crypto_key_iam_policy.default } The `pulumi import` command can also be used
 
         ```sh
          $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}
@@ -345,7 +341,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -470,15 +466,11 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
 
         ## Import
 
-        ### Importing IAM policies IAM policy imports use the identifier of the KMS crypto key only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+        ### Importing IAM policies IAM policy imports use the identifier of the KMS crypto key only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
 
          id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
 
-         to = google_kms_crypto_key_iam_policy.default }
-
-        ```sh
-         $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-        ```
+         to = google_kms_crypto_key_iam_policy.default } The `pulumi import` command can also be used
 
         ```sh
          $ pulumi import gcp:kms/cryptoKeyIAMMember:CryptoKeyIAMMember default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}
@@ -545,7 +537,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArgs']] condition: ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        :param pulumi.Input[pulumi.InputType['CryptoKeyIAMMemberConditionArgs']] condition: An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
                Structure is documented below.
         :param pulumi.Input[str] crypto_key_id: The crypto key ID, in the form
                `{project_id}/{location_name}/{key_ring_name}/{crypto_key_name}` or
@@ -579,7 +571,7 @@ class CryptoKeyIAMMember(pulumi.CustomResource):
     @pulumi.getter
     def condition(self) -> pulumi.Output[Optional['outputs.CryptoKeyIAMMemberCondition']]:
         """
-        ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         Structure is documented below.
         """
         return pulumi.get(self, "condition")

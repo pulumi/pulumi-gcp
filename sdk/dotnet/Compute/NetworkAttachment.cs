@@ -155,15 +155,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// NetworkAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkAttachment using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}"
-    /// 
-    ///  to = google_compute_network_attachment.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/networkAttachment:NetworkAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkAttachment can be imported using one of the formats above. For example
-    /// ```
+    /// NetworkAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NetworkAttachment can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/networkAttachment:NetworkAttachment default projects/{{project}}/regions/{{region}}/networkAttachments/{{name}}

@@ -52,6 +52,10 @@ public final class InstanceNetworkInterface {
      * 
      */
     private @Nullable String network;
+    /**
+     * @return Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+     * 
+     */
     private @Nullable String networkAttachment;
     /**
      * @return The private IP address to assign to the instance. If
@@ -69,6 +73,10 @@ public final class InstanceNetworkInterface {
      * 
      */
     private @Nullable Integer queueCount;
+    /**
+     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     private @Nullable String securityPolicy;
     /**
      * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -148,6 +156,10 @@ public final class InstanceNetworkInterface {
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
+    /**
+     * @return Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+     * 
+     */
     public Optional<String> networkAttachment() {
         return Optional.ofNullable(this.networkAttachment);
     }
@@ -173,6 +185,10 @@ public final class InstanceNetworkInterface {
     public Optional<Integer> queueCount() {
         return Optional.ofNullable(this.queueCount);
     }
+    /**
+     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     public Optional<String> securityPolicy() {
         return Optional.ofNullable(this.securityPolicy);
     }

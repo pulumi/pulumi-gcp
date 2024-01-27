@@ -149,15 +149,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// BackendService can be imported using any of these accepted formats* `projects/{{project}}/global/backendServices/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BackendService using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/global/backendServices/{{name}}"
-    /// 
-    ///  to = google_compute_backend_service.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/backendService:BackendService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BackendService can be imported using one of the formats above. For example
-    /// ```
+    /// BackendService can be imported using any of these accepted formats* `projects/{{project}}/global/backendServices/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, BackendService can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/backendService:BackendService default projects/{{project}}/global/backendServices/{{name}}

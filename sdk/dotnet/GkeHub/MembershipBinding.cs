@@ -22,15 +22,7 @@ namespace Pulumi.Gcp.GkeHub
     /// 
     /// ## Import
     /// 
-    /// MembershipBinding can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}` * `{{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}` * `{{location}}/{{membership_id}}/{{membership_binding_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import MembershipBinding using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}"
-    /// 
-    ///  to = google_gke_hub_membership_binding.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), MembershipBinding can be imported using one of the formats above. For example
-    /// ```
+    /// MembershipBinding can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}` * `{{project}}/{{location}}/{{membership_id}}/{{membership_binding_id}}` * `{{location}}/{{membership_id}}/{{membership_binding_id}}` When using the `pulumi import` command, MembershipBinding can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:gkehub/membershipBinding:MembershipBinding default projects/{{project}}/locations/{{location}}/memberships/{{membership_id}}/bindings/{{membership_binding_id}}

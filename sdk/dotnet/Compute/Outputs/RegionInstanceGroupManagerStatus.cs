@@ -14,7 +14,6 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class RegionInstanceGroupManagerStatus
     {
         /// <summary>
-        /// )
         /// Properties to set on all instances in the group. After setting
         /// allInstancesConfig on the group, you must update the group's instances to
         /// apply the configuration.

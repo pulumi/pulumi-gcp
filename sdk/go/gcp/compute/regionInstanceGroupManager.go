@@ -135,17 +135,7 @@ import (
 //
 // ## Import
 //
-// Instance group managers can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
-//
-//	id = "{{name}}"
-//
-//	to = google_compute_region_instance_group_manager.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
-//
-// ```
+// Instance group managers can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -155,7 +145,6 @@ import (
 type RegionInstanceGroupManager struct {
 	pulumi.CustomResourceState
 
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -278,7 +267,6 @@ func GetRegionInstanceGroupManager(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering RegionInstanceGroupManager resources.
 type regionInstanceGroupManagerState struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -366,7 +354,6 @@ type regionInstanceGroupManagerState struct {
 }
 
 type RegionInstanceGroupManagerState struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -458,7 +445,6 @@ func (RegionInstanceGroupManagerState) ElementType() reflect.Type {
 }
 
 type regionInstanceGroupManagerArgs struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -539,7 +525,6 @@ type regionInstanceGroupManagerArgs struct {
 
 // The set of arguments for constructing a RegionInstanceGroupManager resource.
 type RegionInstanceGroupManagerArgs struct {
-	// )
 	// Properties to set on all instances in the group. After setting
 	// allInstancesConfig on the group, you must update the group's instances to
 	// apply the configuration.
@@ -705,7 +690,6 @@ func (o RegionInstanceGroupManagerOutput) ToRegionInstanceGroupManagerOutputWith
 	return o
 }
 
-// )
 // Properties to set on all instances in the group. After setting
 // allInstancesConfig on the group, you must update the group's instances to
 // apply the configuration.

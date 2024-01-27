@@ -8432,10 +8432,10 @@ class InstanceGroupManagerAllInstancesConfigArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ), The label key-value pairs that you want to patch onto the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: , The label key-value pairs that you want to patch onto the instance.
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -8446,7 +8446,7 @@ class InstanceGroupManagerAllInstancesConfigArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        ), The label key-value pairs that you want to patch onto the instance.
+        , The label key-value pairs that you want to patch onto the instance.
 
         - - -
         """
@@ -8460,7 +8460,7 @@ class InstanceGroupManagerAllInstancesConfigArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         return pulumi.get(self, "metadata")
 
@@ -8698,8 +8698,7 @@ class InstanceGroupManagerStatusArgs:
                  statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusStatefulArgs']]]] = None,
                  version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusVersionTargetArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]] all_instances_configs: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]] all_instances_configs: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[bool] is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
@@ -8719,7 +8718,6 @@ class InstanceGroupManagerStatusArgs:
     @pulumi.getter(name="allInstancesConfigs")
     def all_instances_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatusAllInstancesConfigArgs']]]]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -8882,7 +8880,7 @@ class InstanceGroupManagerUpdatePolicyArgs:
         :param pulumi.Input[int] max_surge_percent: , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`.
         :param pulumi.Input[int] max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. If neither is set, defaults to 1
         :param pulumi.Input[int] max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`.
-        :param pulumi.Input[int] min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param pulumi.Input[int] min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param pulumi.Input[str] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param pulumi.Input[str] replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                - - -
@@ -8980,7 +8978,7 @@ class InstanceGroupManagerUpdatePolicyArgs:
     @pulumi.getter(name="minReadySec")
     def min_ready_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         """
         return pulumi.get(self, "min_ready_sec")
 
@@ -9346,10 +9344,12 @@ class InstanceNetworkInterfaceArgs:
         :param pulumi.Input[str] network: The name or self_link of the network to attach this interface to.
                Either `network` or `subnetwork` must be provided. If network isn't provided it will
                be inferred from the subnetwork.
+        :param pulumi.Input[str] network_attachment: Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
+        :param pulumi.Input[str] security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: The name or self_link of the subnetwork to attach this
                interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
@@ -9494,6 +9494,9 @@ class InstanceNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+        """
         return pulumi.get(self, "network_attachment")
 
     @network_attachment.setter
@@ -9540,6 +9543,9 @@ class InstanceNetworkInterfaceArgs:
     @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
@@ -9606,6 +9612,7 @@ class InstanceNetworkInterfaceAccessConfigArgs:
                subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6
                records for the external IPv6 ranges..
+        :param pulumi.Input[str] security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -9658,6 +9665,9 @@ class InstanceNetworkInterfaceAccessConfigArgs:
     @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
@@ -9734,6 +9744,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6
                records for the external IPv6 ranges..
+        :param pulumi.Input[str] security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
@@ -9816,6 +9827,9 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
     @property
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
+        """
+        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        """
         return pulumi.get(self, "security_policy")
 
     @security_policy.setter
@@ -9959,6 +9973,10 @@ class InstanceSchedulingArgs:
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        :param pulumi.Input[str] maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
+        :param pulumi.Input['InstanceSchedulingMaxRunDurationArgs'] max_run_duration: Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+               <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param pulumi.Input[int] min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
@@ -10035,6 +10053,10 @@ class InstanceSchedulingArgs:
     @property
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
+        """
         return pulumi.get(self, "maintenance_interval")
 
     @maintenance_interval.setter
@@ -10044,6 +10066,10 @@ class InstanceSchedulingArgs:
     @property
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArgs']]:
+        """
+        Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
+        """
         return pulumi.get(self, "max_run_duration")
 
     @max_run_duration.setter
@@ -10469,7 +10495,7 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
         """
         :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
-        :param pulumi.Input[int] visible_core_count: ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
@@ -10506,7 +10532,7 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
     @pulumi.getter(name="visibleCoreCount")
     def visible_core_count(self) -> Optional[pulumi.Input[int]]:
         """
-        ) The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
+        The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         return pulumi.get(self, "visible_core_count")
 
@@ -11119,7 +11145,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[str] network: The name or self_link of the network to attach this interface to.
                Use `network` attribute for Legacy or Auto subnetted networks and
                `subnetwork` for custom subnetted networks.
-        :param pulumi.Input[str] network_attachment: ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
@@ -11265,7 +11291,7 @@ class InstanceTemplateNetworkInterfaceArgs:
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[pulumi.Input[str]]:
         """
-        ) The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
+        The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         """
         return pulumi.get(self, "network_attachment")
 
@@ -11650,6 +11676,8 @@ class InstanceTemplateSchedulingArgs:
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
+        :param pulumi.Input[str] maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+               <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
@@ -11726,6 +11754,10 @@ class InstanceTemplateSchedulingArgs:
     @property
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
+        """
+        Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
+        """
         return pulumi.get(self, "maintenance_interval")
 
     @maintenance_interval.setter
@@ -17525,10 +17557,10 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: ), The label key-value pairs that you want to patch onto the instance.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: , The label key-value pairs that you want to patch onto the instance.
                
                - - -
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
@@ -17539,7 +17571,7 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        ), The label key-value pairs that you want to patch onto the instance.
+        , The label key-value pairs that you want to patch onto the instance.
 
         - - -
         """
@@ -17553,7 +17585,7 @@ class RegionInstanceGroupManagerAllInstancesConfigArgs:
     @pulumi.getter
     def metadata(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+        , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
         """
         return pulumi.get(self, "metadata")
 
@@ -17789,8 +17821,7 @@ class RegionInstanceGroupManagerStatusArgs:
                  statefuls: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusStatefulArgs']]]] = None,
                  version_targets: Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusVersionTargetArgs']]]] = None):
         """
-        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]] all_instances_configs: )
-               Properties to set on all instances in the group. After setting
+        :param pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]] all_instances_configs: Properties to set on all instances in the group. After setting
                allInstancesConfig on the group, you must update the group's instances to
                apply the configuration.
         :param pulumi.Input[bool] is_stable: A bit indicating whether the managed instance group is in a stable state. A stable state means that: none of the instances in the managed instance group is currently undergoing any type of change (for example, creation, restart, or deletion); no future changes are scheduled for instances in the managed instance group; and the managed instance group itself is not being modified.
@@ -17810,7 +17841,6 @@ class RegionInstanceGroupManagerStatusArgs:
     @pulumi.getter(name="allInstancesConfigs")
     def all_instances_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RegionInstanceGroupManagerStatusAllInstancesConfigArgs']]]]:
         """
-        )
         Properties to set on all instances in the group. After setting
         allInstancesConfig on the group, you must update the group's instances to
         apply the configuration.
@@ -17975,7 +18005,7 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
         :param pulumi.Input[int] max_surge_percent: , The maximum number of instances(calculated as percentage) that can be created above the specified targetSize during the update process. Conflicts with `max_surge_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
         :param pulumi.Input[int] max_unavailable_fixed: , The maximum number of instances that can be unavailable during the update process. Conflicts with `max_unavailable_percent`. It has to be either 0 or at least equal to the number of zones. If fixed values are used, at least one of `max_unavailable_fixed` or `max_surge_fixed` must be greater than 0.
         :param pulumi.Input[int] max_unavailable_percent: , The maximum number of instances(calculated as percentage) that can be unavailable during the update process. Conflicts with `max_unavailable_fixed`. Percent value is only allowed for regional managed instance groups with size at least 10.
-        :param pulumi.Input[int] min_ready_sec: ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        :param pulumi.Input[int] min_ready_sec: , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         :param pulumi.Input[str] most_disruptive_allowed_action: Most disruptive action that is allowed to be taken on an instance. You can specify either NONE to forbid any actions, REFRESH to allow actions that do not need instance restart, RESTART to allow actions that can be applied without instance replacing or REPLACE to allow all possible actions. If the Updater determines that the minimal update action needed is more disruptive than most disruptive allowed action you specify it will not perform the update at all.
         :param pulumi.Input[str] replacement_method: , The instance replacement method for managed instance groups. Valid values are: "RECREATE", "SUBSTITUTE". If SUBSTITUTE (default), the group replaces VM instances with new instances that have randomly generated names. If RECREATE, instance names are preserved.  You must also set max_unavailable_fixed or max_unavailable_percent to be greater than 0.
                - - -
@@ -18087,7 +18117,7 @@ class RegionInstanceGroupManagerUpdatePolicyArgs:
     @pulumi.getter(name="minReadySec")
     def min_ready_sec(self) -> Optional[pulumi.Input[int]]:
         """
-        ), Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
+        , Minimum number of seconds to wait for after a newly created instance becomes available. This value must be from range [0, 3600]
         """
         return pulumi.get(self, "min_ready_sec")
 
@@ -26263,6 +26293,8 @@ class ResourcePolicyGroupPlacementPolicyArgs:
                with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
                attached.
                Possible values are: `COLLOCATED`.
+        :param pulumi.Input[int] max_distance: (Optional, Beta)
+               Specifies the number of max logical switches.
         :param pulumi.Input[int] vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
                exact number of VMs.
@@ -26308,6 +26340,10 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     @property
     @pulumi.getter(name="maxDistance")
     def max_distance(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Optional, Beta)
+        Specifies the number of max logical switches.
+        """
         return pulumi.get(self, "max_distance")
 
     @max_distance.setter
@@ -27163,10 +27199,18 @@ class RouterNatRuleActionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule.
                These IP addresses must be valid static external IP addresses assigned to the project.
                This field is used for public NAT.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_active_ranges: (Optional, Beta)
+               A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+               These subnetworks must have purpose set to PRIVATE_NAT.
+               This field is used for private NAT.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_drain_ips: A list of URLs of the IP resources to be drained.
                These IPs must be valid static external IPs that have been assigned to the NAT.
                These IPs should be used for updating/patching a NAT rule only.
                This field is used for public NAT.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_drain_ranges: (Optional, Beta)
+               A list of URLs of subnetworks representing source ranges to be drained.
+               This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+               This field is used for private NAT.
         """
         if source_nat_active_ips is not None:
             pulumi.set(__self__, "source_nat_active_ips", source_nat_active_ips)
@@ -27194,6 +27238,12 @@ class RouterNatRuleActionArgs:
     @property
     @pulumi.getter(name="sourceNatActiveRanges")
     def source_nat_active_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Optional, Beta)
+        A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+        These subnetworks must have purpose set to PRIVATE_NAT.
+        This field is used for private NAT.
+        """
         return pulumi.get(self, "source_nat_active_ranges")
 
     @source_nat_active_ranges.setter
@@ -27218,6 +27268,12 @@ class RouterNatRuleActionArgs:
     @property
     @pulumi.getter(name="sourceNatDrainRanges")
     def source_nat_drain_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Optional, Beta)
+        A list of URLs of subnetworks representing source ranges to be drained.
+        This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
+        This field is used for private NAT.
+        """
         return pulumi.get(self, "source_nat_drain_ranges")
 
     @source_nat_drain_ranges.setter
@@ -27479,7 +27535,7 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
                  auto_deploy_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']] = None,
                  layer7_ddos_defense_config: Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs']] = None):
         """
-        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs'] auto_deploy_config: ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs'] auto_deploy_config: Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
                
                <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
         :param pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs'] layer7_ddos_defense_config: Configuration for [Google Cloud Armor Adaptive Protection Layer 7 DDoS Defense](https://cloud.google.com/armor/docs/adaptive-protection-overview?hl=en). Structure is documented below.
@@ -27493,7 +27549,7 @@ class SecurityPolicyAdaptiveProtectionConfigArgs:
     @pulumi.getter(name="autoDeployConfig")
     def auto_deploy_config(self) -> Optional[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgs']]:
         """
-        ) Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
+        Configuration for [Automatically deploy Adaptive Protection suggested rules](https://cloud.google.com/armor/docs/adaptive-protection-auto-deploy?hl=en). Structure is documented below.
 
         <a name="nested_layer_7_ddos_defense_config"></a>The `layer_7_ddos_defense_config` block supports:
         """
@@ -27638,7 +27694,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
                `json_parsing` is set to `STANDARD`. Structure is documented below.
         :param pulumi.Input[str] json_parsing: Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
         :param pulumi.Input[str] log_level: Log level to use. Defaults to `NORMAL`.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ip_request_headers: ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] user_ip_request_headers: An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         if json_custom_config is not None:
             pulumi.set(__self__, "json_custom_config", json_custom_config)
@@ -27690,7 +27746,7 @@ class SecurityPolicyAdvancedOptionsConfigArgs:
     @pulumi.getter(name="userIpRequestHeaders")
     def user_ip_request_headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        ) An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+        An optional list of case-insensitive request header names to use for resolving the callers client IP address.
         """
         return pulumi.get(self, "user_ip_request_headers")
 
@@ -27769,7 +27825,7 @@ class SecurityPolicyRuleArgs:
                Rules are evaluated from highest priority (lowest numerically) to lowest priority (highest numerically) in order.
         :param pulumi.Input[str] description: An optional description of this rule. Max size is 64.
         :param pulumi.Input['SecurityPolicyRuleHeaderActionArgs'] header_action: Additional actions that are performed on headers. Structure is documented below.
-        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
+        :param pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs'] preconfigured_waf_config: Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
         :param pulumi.Input[bool] preview: When set to true, the `action` specified above is not enforced.
                Stackdriver logs for requests that trigger a preview action are annotated as such.
         :param pulumi.Input['SecurityPolicyRuleRateLimitOptionsArgs'] rate_limit_options: Must be specified if the `action` is `rate_based_ban` or `throttle`. Cannot be specified for other actions. Structure is documented below.
@@ -27857,7 +27913,7 @@ class SecurityPolicyRuleArgs:
     @pulumi.getter(name="preconfiguredWafConfig")
     def preconfigured_waf_config(self) -> Optional[pulumi.Input['SecurityPolicyRulePreconfiguredWafConfigArgs']]:
         """
-        ) Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
+        Preconfigured WAF configuration to be applied for the rule. If the rule does not evaluate preconfigured WAF rules, i.e., if `evaluatePreconfiguredWaf()` is not used, this field will have no effect. Structure is documented below.
         """
         return pulumi.get(self, "preconfigured_waf_config")
 
@@ -28390,7 +28446,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
                If specified, the key will be banned for the configured `ban_duration_sec` when the number of requests that exceed the `rate_limit_threshold` also
                exceed this `ban_threshold`. Structure is documented below.
         :param pulumi.Input[str] enforce_on_key: Determines the key to enforce the rate_limit_threshold on. If not specified, defaults to `ALL`.
-        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]] enforce_on_key_configs: If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
                
                **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         :param pulumi.Input[str] enforce_on_key_name: Rate limit key name applicable only for the following key types:
@@ -28494,7 +28550,7 @@ class SecurityPolicyRuleRateLimitOptionsArgs:
     @pulumi.getter(name="enforceOnKeyConfigs")
     def enforce_on_key_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyRuleRateLimitOptionsEnforceOnKeyConfigArgs']]]]:
         """
-        ) If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
+        If specified, any combination of values of enforce_on_key_type/enforce_on_key_name is treated as the key on which rate limit threshold/action is enforced. You can specify up to 3 enforce_on_key_configs. If `enforce_on_key_configs` is specified, `enforce_on_key` must be set to an empty string. Structure is documented below.
 
         **Note:** To avoid the conflict between `enforce_on_key` and `enforce_on_key_configs`, the field `enforce_on_key` needs to be set to an empty string.
         """

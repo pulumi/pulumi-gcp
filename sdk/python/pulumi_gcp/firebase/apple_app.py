@@ -371,15 +371,7 @@ class AppleApp(pulumi.CustomResource):
 
         ## Import
 
-        AppleApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/iosApps/{{app_id}}` * `projects/{{project}}/iosApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `iosApps/{{app_id}}` * `{{app_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AppleApp using one of the formats above. For exampletf import {
-
-         id = "{{project}} projects/{{project}}/iosApps/{{app_id}}"
-
-         to = google_firebase_apple_app.default }
-
-        ```sh
-         $ pulumi import gcp:firebase/appleApp:AppleApp When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AppleApp can be imported using one of the formats above. For example
-        ```
+        AppleApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/iosApps/{{app_id}}` * `projects/{{project}}/iosApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `iosApps/{{app_id}}` * `{{app_id}}` When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}
@@ -466,15 +458,7 @@ class AppleApp(pulumi.CustomResource):
 
         ## Import
 
-        AppleApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/iosApps/{{app_id}}` * `projects/{{project}}/iosApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `iosApps/{{app_id}}` * `{{app_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AppleApp using one of the formats above. For exampletf import {
-
-         id = "{{project}} projects/{{project}}/iosApps/{{app_id}}"
-
-         to = google_firebase_apple_app.default }
-
-        ```sh
-         $ pulumi import gcp:firebase/appleApp:AppleApp When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AppleApp can be imported using one of the formats above. For example
-        ```
+        AppleApp can be imported using any of these accepted formats* `{{project}} projects/{{project}}/iosApps/{{app_id}}` * `projects/{{project}}/iosApps/{{app_id}}` * `{{project}}/{{project}}/{{app_id}}` * `iosApps/{{app_id}}` * `{{app_id}}` When using the `pulumi import` command, AppleApp can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:firebase/appleApp:AppleApp default {{project}} projects/{{project}}/iosApps/{{app_id}}

@@ -28,15 +28,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * DefaultSupportedIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}` * `{{project}}/{{idp_id}}` * `{{idp_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DefaultSupportedIdpConfig using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}"
- *
- *  to = google_identity_platform_default_supported_idp_config.default }
- *
- * ```sh
- *  $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DefaultSupportedIdpConfig can be imported using one of the formats above. For example
- * ```
+ * DefaultSupportedIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}` * `{{project}}/{{idp_id}}` * `{{idp_id}}` When using the `pulumi import` command, DefaultSupportedIdpConfig can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:identityplatform/defaultSupportedIdpConfig:DefaultSupportedIdpConfig default projects/{{project}}/defaultSupportedIdpConfigs/{{idp_id}}

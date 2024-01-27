@@ -21,6 +21,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
     public static final GlobalForwardingRuleState Empty = new GlobalForwardingRuleState();
 
     /**
+     * (Optional, Beta)
      * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      * 
      */
@@ -28,7 +29,8 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
     private @Nullable Output<Boolean> allowPscGlobalAccess;
 
     /**
-     * @return This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+     * @return (Optional, Beta)
+     * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
      * 
      */
     public Optional<Output<Boolean>> allowPscGlobalAccess() {
@@ -662,7 +664,8 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowPscGlobalAccess This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+         * @param allowPscGlobalAccess (Optional, Beta)
+         * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
          * 
          * @return builder
          * 
@@ -673,7 +676,8 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param allowPscGlobalAccess This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+         * @param allowPscGlobalAccess (Optional, Beta)
+         * This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
          * 
          * @return builder
          * 

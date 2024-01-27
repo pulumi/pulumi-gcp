@@ -552,15 +552,7 @@ class Workstation(pulumi.CustomResource):
 
         ## Import
 
-        Workstation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}` * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Workstation using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}"
-
-         to = google_workstations_workstation.default }
-
-        ```sh
-         $ pulumi import gcp:workstations/workstation:Workstation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Workstation can be imported using one of the formats above. For example
-        ```
+        Workstation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}` * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}` When using the `pulumi import` command, Workstation can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:workstations/workstation:Workstation default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}
@@ -658,15 +650,7 @@ class Workstation(pulumi.CustomResource):
 
         ## Import
 
-        Workstation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}` * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Workstation using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}"
-
-         to = google_workstations_workstation.default }
-
-        ```sh
-         $ pulumi import gcp:workstations/workstation:Workstation When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Workstation can be imported using one of the formats above. For example
-        ```
+        Workstation can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}` * `{{project}}/{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}` * `{{location}}/{{workstation_cluster_id}}/{{workstation_config_id}}/{{workstation_id}}` When using the `pulumi import` command, Workstation can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:workstations/workstation:Workstation default projects/{{project}}/locations/{{location}}/workstationClusters/{{workstation_cluster_id}}/workstationConfigs/{{workstation_config_id}}/workstations/{{workstation_id}}

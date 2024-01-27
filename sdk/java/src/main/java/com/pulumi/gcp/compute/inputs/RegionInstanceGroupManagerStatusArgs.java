@@ -20,7 +20,6 @@ public final class RegionInstanceGroupManagerStatusArgs extends com.pulumi.resou
     public static final RegionInstanceGroupManagerStatusArgs Empty = new RegionInstanceGroupManagerStatusArgs();
 
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
@@ -30,8 +29,7 @@ public final class RegionInstanceGroupManagerStatusArgs extends com.pulumi.resou
     private @Nullable Output<List<RegionInstanceGroupManagerStatusAllInstancesConfigArgs>> allInstancesConfigs;
 
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 
@@ -113,8 +111,7 @@ public final class RegionInstanceGroupManagerStatusArgs extends com.pulumi.resou
         }
 
         /**
-         * @param allInstancesConfigs )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfigs Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 
@@ -127,8 +124,7 @@ public final class RegionInstanceGroupManagerStatusArgs extends com.pulumi.resou
         }
 
         /**
-         * @param allInstancesConfigs )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfigs Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 
@@ -140,8 +136,7 @@ public final class RegionInstanceGroupManagerStatusArgs extends com.pulumi.resou
         }
 
         /**
-         * @param allInstancesConfigs )
-         * Properties to set on all instances in the group. After setting
+         * @param allInstancesConfigs Properties to set on all instances in the group. After setting
          * allInstancesConfig on the group, you must update the group&#39;s instances to
          * apply the configuration.
          * 

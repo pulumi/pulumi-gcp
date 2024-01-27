@@ -18,7 +18,7 @@ public final class CryptoKeyIAMMemberArgs extends com.pulumi.resources.ResourceA
     public static final CryptoKeyIAMMemberArgs Empty = new CryptoKeyIAMMemberArgs();
 
     /**
-     * ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class CryptoKeyIAMMemberArgs extends com.pulumi.resources.ResourceA
     private @Nullable Output<CryptoKeyIAMMemberConditionArgs> condition;
 
     /**
-     * @return ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+     * @return An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
      * Structure is documented below.
      * 
      */
@@ -125,7 +125,7 @@ public final class CryptoKeyIAMMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder
@@ -137,7 +137,7 @@ public final class CryptoKeyIAMMemberArgs extends com.pulumi.resources.ResourceA
         }
 
         /**
-         * @param condition ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+         * @param condition An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
          * Structure is documented below.
          * 
          * @return builder

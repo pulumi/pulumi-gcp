@@ -555,15 +555,7 @@ class RegionUrlMap(pulumi.CustomResource):
 
         ## Import
 
-        RegionUrlMap can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionUrlMap using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/urlMaps/{{name}}"
-
-         to = google_compute_region_url_map.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionUrlMap can be imported using one of the formats above. For example
-        ```
+        RegionUrlMap can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionUrlMap can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}
@@ -637,15 +629,7 @@ class RegionUrlMap(pulumi.CustomResource):
 
         ## Import
 
-        RegionUrlMap can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionUrlMap using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/urlMaps/{{name}}"
-
-         to = google_compute_region_url_map.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionUrlMap can be imported using one of the formats above. For example
-        ```
+        RegionUrlMap can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/urlMaps/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionUrlMap can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionUrlMap:RegionUrlMap default projects/{{project}}/regions/{{region}}/urlMaps/{{name}}

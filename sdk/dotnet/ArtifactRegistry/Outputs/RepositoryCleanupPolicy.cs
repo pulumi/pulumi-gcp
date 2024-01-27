@@ -13,12 +13,28 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     [OutputType]
     public sealed class RepositoryCleanupPolicy
     {
+        /// <summary>
+        /// (Optional, Beta)
+        /// Policy action.
+        /// Possible values are: `DELETE`, `KEEP`.
+        /// </summary>
         public readonly string? Action;
+        /// <summary>
+        /// (Optional, Beta)
+        /// Policy condition for matching versions.
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.RepositoryCleanupPolicyCondition? Condition;
         /// <summary>
         /// The identifier for this object. Format specified above.
         /// </summary>
         public readonly string Id;
+        /// <summary>
+        /// (Optional, Beta)
+        /// Policy condition for retaining a minimum number of versions. May only be
+        /// specified with a Keep action.
+        /// Structure is documented below.
+        /// </summary>
         public readonly Outputs.RepositoryCleanupPolicyMostRecentVersions? MostRecentVersions;
 
         [OutputConstructor]

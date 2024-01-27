@@ -169,15 +169,7 @@ namespace Pulumi.Gcp.OsConfig
     /// 
     /// ## Import
     /// 
-    /// OSPolicyAssignment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import OSPolicyAssignment using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}"
-    /// 
-    ///  to = google_os_config_os_policy_assignment.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), OSPolicyAssignment can be imported using one of the formats above. For example
-    /// ```
+    /// OSPolicyAssignment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, OSPolicyAssignment can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:osconfig/osPolicyAssignment:OsPolicyAssignment default projects/{{project}}/locations/{{location}}/osPolicyAssignments/{{name}}

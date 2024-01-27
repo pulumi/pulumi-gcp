@@ -253,15 +253,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Subnetwork can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subnetwork using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/regions/{{region}}/subnetworks/{{name}}"
-    /// 
-    ///  to = google_compute_subnetwork.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/subnetwork:Subnetwork When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subnetwork can be imported using one of the formats above. For example
-    /// ```
+    /// Subnetwork can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/subnetworks/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Subnetwork can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/subnetwork:Subnetwork default projects/{{project}}/regions/{{region}}/subnetworks/{{name}}
@@ -283,9 +275,11 @@ namespace Pulumi.Gcp.Compute
     public partial class Subnetwork : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-        /// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-        /// BGP even if their destinations match existing subnet ranges.
+        /// (Optional, Beta)
+        /// Typically packets destined to IPs within the subnetwork range that do not match
+        /// existing resources are dropped and prevented from leaving the VPC.
+        /// Setting this field to true will allow these packets to match dynamic routes injected
+        /// via BGP even if their destinations match existing subnet ranges.
         /// </summary>
         [Output("allowSubnetCidrRoutesOverlap")]
         public Output<bool> AllowSubnetCidrRoutesOverlap { get; private set; } = null!;
@@ -406,15 +400,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
-        /// 'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
-        /// 'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
-        /// set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
-        /// subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
-        /// the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
-        /// subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
-        /// as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
-        /// Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
+        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`(Beta).
+        /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
+        /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
+        /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
+        /// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+        /// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
+        /// If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
         /// </summary>
         [Output("purpose")]
         public Output<string> Purpose { get; private set; } = null!;
@@ -507,9 +499,11 @@ namespace Pulumi.Gcp.Compute
     public sealed class SubnetworkArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-        /// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-        /// BGP even if their destinations match existing subnet ranges.
+        /// (Optional, Beta)
+        /// Typically packets destined to IPs within the subnetwork range that do not match
+        /// existing resources are dropped and prevented from leaving the VPC.
+        /// Setting this field to true will allow these packets to match dynamic routes injected
+        /// via BGP even if their destinations match existing subnet ranges.
         /// </summary>
         [Input("allowSubnetCidrRoutesOverlap")]
         public Input<bool>? AllowSubnetCidrRoutesOverlap { get; set; }
@@ -599,15 +593,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
-        /// 'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
-        /// 'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
-        /// set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
-        /// subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
-        /// the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
-        /// subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
-        /// as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
-        /// Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
+        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`(Beta).
+        /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
+        /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
+        /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
+        /// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+        /// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
+        /// If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -662,9 +654,11 @@ namespace Pulumi.Gcp.Compute
     public sealed class SubnetworkState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Typically packets destined to IPs within the subnetwork range that do not match existing resources are dropped and
-        /// prevented from leaving the VPC. Setting this field to true will allow these packets to match dynamic routes injected via
-        /// BGP even if their destinations match existing subnet ranges.
+        /// (Optional, Beta)
+        /// Typically packets destined to IPs within the subnetwork range that do not match
+        /// existing resources are dropped and prevented from leaving the VPC.
+        /// Setting this field to true will allow these packets to match dynamic routes injected
+        /// via BGP even if their destinations match existing subnet ranges.
         /// </summary>
         [Input("allowSubnetCidrRoutesOverlap")]
         public Input<bool>? AllowSubnetCidrRoutesOverlap { get; set; }
@@ -785,15 +779,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// The purpose of the resource. This field can be either 'PRIVATE_RFC_1918', 'REGIONAL_MANAGED_PROXY',
-        /// 'GLOBAL_MANAGED_PROXY', 'PRIVATE_SERVICE_CONNECT' or
-        /// 'PRIVATE_NAT'([Beta](https://terraform.io/docs/providers/google/guides/provider_versions.html)). A subnet with purpose
-        /// set to 'REGIONAL_MANAGED_PROXY' is a user-created subnetwork that is reserved for regional Envoy-based load balancers. A
-        /// subnetwork in a given region with purpose set to 'GLOBAL_MANAGED_PROXY' is a proxy-only subnet and is shared between all
-        /// the cross-regional Envoy-based load balancers. A subnetwork with purpose set to 'PRIVATE_SERVICE_CONNECT' reserves the
-        /// subnet for hosting a Private Service Connect published service. A subnetwork with purpose set to 'PRIVATE_NAT' is used
-        /// as source range for Private NAT gateways. Note that 'REGIONAL_MANAGED_PROXY' is the preferred setting for all regional
-        /// Envoy load balancers. If unspecified, the purpose defaults to 'PRIVATE_RFC_1918'.
+        /// The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`(Beta).
+        /// A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
+        /// A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
+        /// A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
+        /// A subnetwork with purpose set to `PRIVATE_NAT` is used as source range for Private NAT gateways.
+        /// Note that `REGIONAL_MANAGED_PROXY` is the preferred setting for all regional Envoy load balancers.
+        /// If unspecified, the purpose defaults to `PRIVATE_RFC_1918`.
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

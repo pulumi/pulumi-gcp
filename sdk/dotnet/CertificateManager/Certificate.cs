@@ -383,15 +383,7 @@ namespace Pulumi.Gcp.CertificateManager
     /// 
     /// ## Import
     /// 
-    /// Certificate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/certificates/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Certificate using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/certificates/{{name}}"
-    /// 
-    ///  to = google_certificate_manager_certificate.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:certificatemanager/certificate:Certificate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Certificate can be imported using one of the formats above. For example
-    /// ```
+    /// Certificate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/certificates/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:certificatemanager/certificate:Certificate default projects/{{project}}/locations/{{location}}/certificates/{{name}}

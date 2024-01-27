@@ -238,15 +238,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RegionSecurityPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}` * `{{project}}/{{region}}/{{security_policy}}/{{priority}}` * `{{region}}/{{security_policy}}/{{priority}}` * `{{security_policy}}/{{priority}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionSecurityPolicyRule using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}&#34;
- * 
- *  to = google_compute_region_security_policy_rule.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionSecurityPolicyRule can be imported using one of the formats above. For example
- * ```
+ * RegionSecurityPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}` * `{{project}}/{{region}}/{{security_policy}}/{{priority}}` * `{{region}}/{{security_policy}}/{{priority}}` * `{{security_policy}}/{{priority}}` When using the `pulumi import` command, RegionSecurityPolicyRule can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule default projects/{{project}}/regions/{{region}}/securityPolicies/{{security_policy}}/priority/{{priority}}

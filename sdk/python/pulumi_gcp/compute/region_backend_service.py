@@ -123,12 +123,14 @@ class RegionBackendServiceArgs:
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input[str] security_policy: (Optional, Beta)
+               The security policy associated with this backend service.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-               and Internal HTTP(S) load balancing.
+        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: (Optional, Beta)
+               Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -510,6 +512,7 @@ class RegionBackendServiceArgs:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Beta)
         The security policy associated with this backend service.
         """
         return pulumi.get(self, "security_policy")
@@ -536,8 +539,9 @@ class RegionBackendServiceArgs:
     @pulumi.getter
     def subsetting(self) -> Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]:
         """
-        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        and Internal HTTP(S) load balancing.
+        (Optional, Beta)
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        Structure is documented below.
         """
         return pulumi.get(self, "subsetting")
 
@@ -675,13 +679,15 @@ class _RegionBackendServiceState:
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input[str] security_policy: (Optional, Beta)
+               The security policy associated with this backend service.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-               and Internal HTTP(S) load balancing.
+        :param pulumi.Input['RegionBackendServiceSubsettingArgs'] subsetting: (Optional, Beta)
+               Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1094,6 +1100,7 @@ class _RegionBackendServiceState:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
+        (Optional, Beta)
         The security policy associated with this backend service.
         """
         return pulumi.get(self, "security_policy")
@@ -1132,8 +1139,9 @@ class _RegionBackendServiceState:
     @pulumi.getter
     def subsetting(self) -> Optional[pulumi.Input['RegionBackendServiceSubsettingArgs']]:
         """
-        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        and Internal HTTP(S) load balancing.
+        (Optional, Beta)
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        Structure is documented below.
         """
         return pulumi.get(self, "subsetting")
 
@@ -1201,15 +1209,7 @@ class RegionBackendService(pulumi.CustomResource):
 
         ## Import
 
-        RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionBackendService using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/backendServices/{{name}}"
-
-         to = google_compute_region_backend_service.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionBackendService can be imported using one of the formats above. For example
-        ```
+        RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
@@ -1308,12 +1308,14 @@ class RegionBackendService(pulumi.CustomResource):
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input[str] security_policy: (Optional, Beta)
+               The security policy associated with this backend service.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-               and Internal HTTP(S) load balancing.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: (Optional, Beta)
+               Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1337,15 +1339,7 @@ class RegionBackendService(pulumi.CustomResource):
 
         ## Import
 
-        RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionBackendService using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/backendServices/{{name}}"
-
-         to = google_compute_region_backend_service.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionBackendService:RegionBackendService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionBackendService can be imported using one of the formats above. For example
-        ```
+        RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
@@ -1570,13 +1564,15 @@ class RegionBackendService(pulumi.CustomResource):
                Possible values are: `HTTP`, `HTTPS`, `HTTP2`, `SSL`, `TCP`, `UDP`, `GRPC`, `UNSPECIFIED`.
         :param pulumi.Input[str] region: The Region in which the created backend service should reside.
                If it is not provided, the provider region is used.
-        :param pulumi.Input[str] security_policy: The security policy associated with this backend service.
+        :param pulumi.Input[str] security_policy: (Optional, Beta)
+               The security policy associated with this backend service.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] session_affinity: Type of session affinity to use. The default is NONE. Session affinity is
                not applicable if the protocol is UDP.
                Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
-        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-               and Internal HTTP(S) load balancing.
+        :param pulumi.Input[pulumi.InputType['RegionBackendServiceSubsettingArgs']] subsetting: (Optional, Beta)
+               Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+               Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How many seconds to wait for the backend before considering it a
                failed request. Default is 30 seconds. Valid range is [1, 86400].
         """
@@ -1869,6 +1865,7 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> pulumi.Output[Optional[str]]:
         """
+        (Optional, Beta)
         The security policy associated with this backend service.
         """
         return pulumi.get(self, "security_policy")
@@ -1895,8 +1892,9 @@ class RegionBackendService(pulumi.CustomResource):
     @pulumi.getter
     def subsetting(self) -> pulumi.Output[Optional['outputs.RegionBackendServiceSubsetting']]:
         """
-        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-        and Internal HTTP(S) load balancing.
+        (Optional, Beta)
+        Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+        Structure is documented below.
         """
         return pulumi.get(self, "subsetting")
 

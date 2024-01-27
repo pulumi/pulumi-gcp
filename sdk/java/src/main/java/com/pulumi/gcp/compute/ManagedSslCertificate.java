@@ -134,15 +134,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ManagedSslCertificate can be imported using any of these accepted formats* `projects/{{project}}/global/sslCertificates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ManagedSslCertificate using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/global/sslCertificates/{{name}}&#34;
- * 
- *  to = google_compute_managed_ssl_certificate.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ManagedSslCertificate can be imported using one of the formats above. For example
- * ```
+ * ManagedSslCertificate can be imported using any of these accepted formats* `projects/{{project}}/global/sslCertificates/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ManagedSslCertificate can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/managedSslCertificate:ManagedSslCertificate default projects/{{project}}/global/sslCertificates/{{name}}

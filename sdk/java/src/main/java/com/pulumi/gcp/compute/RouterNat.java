@@ -348,15 +348,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RouterNat using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}&#34;
- * 
- *  to = google_compute_router_nat.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/routerNat:RouterNat When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RouterNat can be imported using one of the formats above. For example
- * ```
+ * RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/routerNat:RouterNat default projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}
@@ -710,18 +702,26 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tcpTransitoryIdleTimeoutSec);
     }
     /**
-     * Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
-     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * (Optional, Beta)
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      * 
      */
     @Export(name="type", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-     * &#39;PUBLIC&#39; NAT used for public IP translation. If &#39;PRIVATE&#39; NAT used for private IP translation. Default value: &#34;PUBLIC&#34;
-     * Possible values: [&#34;PUBLIC&#34;, &#34;PRIVATE&#34;]
+     * @return (Optional, Beta)
+     * Indicates whether this NAT is used for public or private IP translation.
+     * If unspecified, it defaults to PUBLIC.
+     * If `PUBLIC` NAT used for public IP translation.
+     * If `PRIVATE` NAT used for private IP translation.
+     * Default value is `PUBLIC`.
+     * Possible values are: `PUBLIC`, `PRIVATE`.
      * 
      */
     public Output<Optional<String>> type() {

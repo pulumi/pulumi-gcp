@@ -115,15 +115,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * BigQuery tables can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` * `{{project}}/{{dataset_id}}/{{table_id}}` * `{{dataset_id}}/{{table_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import BigQuery tables using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}&#34;
- * 
- *  to = google_bigquery_table.default }
- * 
- * ```sh
- *  $ pulumi import gcp:bigquery/table:Table When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), BigQuery tables can be imported using one of the formats above. For example
- * ```
+ * BigQuery tables can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}` * `{{project}}/{{dataset_id}}/{{table_id}}` * `{{dataset_id}}/{{table_id}}` When using the `pulumi import` command, BigQuery tables can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:bigquery/table:Table default projects/{{project}}/datasets/{{dataset_id}}/tables/{{table_id}}

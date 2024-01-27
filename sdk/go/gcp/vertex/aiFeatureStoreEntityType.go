@@ -141,17 +141,7 @@ import (
 //
 // ## Import
 //
-// FeaturestoreEntitytype can be imported using any of these accepted formats* `{{featurestore}}/entityTypes/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeaturestoreEntitytype using one of the formats above. For exampletf import {
-//
-//	id = "{{featurestore}}/entityTypes/{{name}}"
-//
-//	to = google_vertex_ai_featurestore_entitytype.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeaturestoreEntitytype can be imported using one of the formats above. For example
-//
-// ```
+// FeaturestoreEntitytype can be imported using any of these accepted formats* `{{featurestore}}/entityTypes/{{name}}` When using the `pulumi import` command, FeaturestoreEntitytype can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -184,9 +174,8 @@ type AiFeatureStoreEntityType struct {
 	MonitoringConfig AiFeatureStoreEntityTypeMonitoringConfigPtrOutput `pulumi:"monitoringConfig"`
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	// (Optional, Beta)
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays pulumi.IntPtrOutput `pulumi:"offlineStorageTtlDays"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -258,9 +247,8 @@ type aiFeatureStoreEntityTypeState struct {
 	MonitoringConfig *AiFeatureStoreEntityTypeMonitoringConfig `pulumi:"monitoringConfig"`
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name *string `pulumi:"name"`
-	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	// (Optional, Beta)
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays *int `pulumi:"offlineStorageTtlDays"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -295,9 +283,8 @@ type AiFeatureStoreEntityTypeState struct {
 	MonitoringConfig AiFeatureStoreEntityTypeMonitoringConfigPtrInput
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringPtrInput
-	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	// (Optional, Beta)
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays pulumi.IntPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
@@ -330,9 +317,8 @@ type aiFeatureStoreEntityTypeArgs struct {
 	MonitoringConfig *AiFeatureStoreEntityTypeMonitoringConfig `pulumi:"monitoringConfig"`
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name *string `pulumi:"name"`
-	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	// (Optional, Beta)
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays *int `pulumi:"offlineStorageTtlDays"`
 }
 
@@ -355,9 +341,8 @@ type AiFeatureStoreEntityTypeArgs struct {
 	MonitoringConfig AiFeatureStoreEntityTypeMonitoringConfigPtrInput
 	// The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
 	Name pulumi.StringPtrInput
-	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-	// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-	// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+	// (Optional, Beta)
+	// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 	OfflineStorageTtlDays pulumi.IntPtrInput
 }
 
@@ -497,9 +482,8 @@ func (o AiFeatureStoreEntityTypeOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-// storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-// since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+// (Optional, Beta)
+// Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
 func (o AiFeatureStoreEntityTypeOutput) OfflineStorageTtlDays() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *AiFeatureStoreEntityType) pulumi.IntPtrOutput { return v.OfflineStorageTtlDays }).(pulumi.IntPtrOutput)
 }

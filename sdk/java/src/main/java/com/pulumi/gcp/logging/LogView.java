@@ -67,15 +67,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * LogView can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import LogView using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}&#34;
- * 
- *  to = google_logging_log_view.default }
- * 
- * ```sh
- *  $ pulumi import gcp:logging/logView:LogView When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), LogView can be imported using one of the formats above. For example
- * ```
+ * LogView can be imported using any of these accepted formats* `{{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}` When using the `pulumi import` command, LogView can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:logging/logView:LogView default {{parent}}/locations/{{location}}/buckets/{{bucket}}/views/{{name}}

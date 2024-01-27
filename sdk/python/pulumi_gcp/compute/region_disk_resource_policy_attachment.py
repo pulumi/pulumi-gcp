@@ -233,15 +233,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}` * `{{project}}/{{region}}/{{disk}}/{{name}}` * `{{region}}/{{disk}}/{{name}}` * `{{disk}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionDiskResourcePolicyAttachment using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}"
-
-         to = google_compute_region_disk_resource_policy_attachment.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example
-        ```
+        RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}` * `{{project}}/{{region}}/{{disk}}/{{name}}` * `{{region}}/{{disk}}/{{name}}` * `{{disk}}/{{name}}` When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}
@@ -326,15 +318,7 @@ class RegionDiskResourcePolicyAttachment(pulumi.CustomResource):
 
         ## Import
 
-        RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}` * `{{project}}/{{region}}/{{disk}}/{{name}}` * `{{region}}/{{disk}}/{{name}}` * `{{disk}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionDiskResourcePolicyAttachment using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}"
-
-         to = google_compute_region_disk_resource_policy_attachment.default }
-
-        ```sh
-         $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example
-        ```
+        RegionDiskResourcePolicyAttachment can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}` * `{{project}}/{{region}}/{{disk}}/{{name}}` * `{{region}}/{{disk}}/{{name}}` * `{{disk}}/{{name}}` When using the `pulumi import` command, RegionDiskResourcePolicyAttachment can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/regionDiskResourcePolicyAttachment:RegionDiskResourcePolicyAttachment default projects/{{project}}/regions/{{region}}/disks/{{disk}}/{{name}}

@@ -99,17 +99,7 @@ import (
 //
 // ## Import
 //
-// NetworkPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkPolicy using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}"
-//
-//	to = google_vmwareengine_network_policy.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:vmwareengine/networkPolicy:NetworkPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkPolicy can be imported using one of the formats above. For example
-//
-// ```
+// NetworkPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/networkPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, NetworkPolicy can be imported using one of the formats above. For example
 //
 // ```sh
 //

@@ -255,15 +255,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Key can be imported using any of these accepted formats* `projects/{{project}}/locations/global/keys/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Key using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/global/keys/{{name}}&#34;
- * 
- *  to = google_apikeys_key.default }
- * 
- * ```sh
- *  $ pulumi import gcp:projects/apiKey:ApiKey When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Key can be imported using one of the formats above. For example
- * ```
+ * Key can be imported using any of these accepted formats* `projects/{{project}}/locations/global/keys/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Key can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:projects/apiKey:ApiKey default projects/{{project}}/locations/global/keys/{{name}}

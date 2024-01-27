@@ -182,15 +182,7 @@ namespace Pulumi.Gcp.Container
     /// 
     /// ## Import
     /// 
-    /// Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Cluster using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/azureClusters/{{name}}"
-    /// 
-    ///  to = google_container_azure_cluster.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:container/azureCluster:AzureCluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Cluster can be imported using one of the formats above. For example
-    /// ```
+    /// Cluster can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/azureClusters/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, Cluster can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:container/azureCluster:AzureCluster default projects/{{project}}/locations/{{location}}/azureClusters/{{name}}

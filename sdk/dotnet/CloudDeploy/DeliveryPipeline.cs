@@ -328,15 +328,7 @@ namespace Pulumi.Gcp.CloudDeploy
     /// 
     /// ## Import
     /// 
-    /// DeliveryPipeline can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DeliveryPipeline using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}"
-    /// 
-    ///  to = google_clouddeploy_delivery_pipeline.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DeliveryPipeline can be imported using one of the formats above. For example
-    /// ```
+    /// DeliveryPipeline can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, DeliveryPipeline can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:clouddeploy/deliveryPipeline:DeliveryPipeline default projects/{{project}}/locations/{{location}}/deliveryPipelines/{{name}}

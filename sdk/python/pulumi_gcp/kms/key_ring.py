@@ -176,15 +176,7 @@ class KeyRing(pulumi.CustomResource):
 
         ## Import
 
-        KeyRing can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/keyRings/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import KeyRing using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/keyRings/{{name}}"
-
-         to = google_kms_key_ring.default }
-
-        ```sh
-         $ pulumi import gcp:kms/keyRing:KeyRing When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), KeyRing can be imported using one of the formats above. For example
-        ```
+        KeyRing can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/keyRings/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, KeyRing can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}
@@ -240,15 +232,7 @@ class KeyRing(pulumi.CustomResource):
 
         ## Import
 
-        KeyRing can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/keyRings/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import KeyRing using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/keyRings/{{name}}"
-
-         to = google_kms_key_ring.default }
-
-        ```sh
-         $ pulumi import gcp:kms/keyRing:KeyRing When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), KeyRing can be imported using one of the formats above. For example
-        ```
+        KeyRing can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/keyRings/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, KeyRing can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:kms/keyRing:KeyRing default projects/{{project}}/locations/{{location}}/keyRings/{{name}}
