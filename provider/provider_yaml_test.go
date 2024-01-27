@@ -18,6 +18,7 @@
 package gcp
 
 import (
+	"os"
 	"path/filepath"
 	"testing"
 
@@ -88,6 +89,32 @@ func TestNetwork(t *testing.T) {
 func TestCluster(t *testing.T) {
 	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	runTest(t, test(t, "test-programs/cluster"))
+}
+
+func skipIfNotCI(t *testing.T) {
+	if os.Getenv("GITHUB_ACTIONS") == "" {
+		t.Skipf("Skipping outside of CI - dev accounts do not have permissions to run these.")
+	}
+}
+
+func TestIamBinding(t *testing.T) {
+	skipIfNotCI(t)
+	runTest(t, test(t, "test-programs/iam-binding"))
+}
+
+func TestIamMember(t *testing.T) {
+	skipIfNotCI(t)
+	runTest(t, test(t, "test-programs/iam-member"))
+}
+
+func TestLogSink(t *testing.T) {
+	skipIfNotCI(t)
+	runTest(t, test(t, "test-programs/logsink"))
+}
+
+func TestTopicIamBinding(t *testing.T) {
+	skipIfNotCI(t)
+	runTest(t, test(t, "test-programs/topic-iam-binding"))
 }
 
 // Test programs that were automatically extracted from examples without autocorrection.
