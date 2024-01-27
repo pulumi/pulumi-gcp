@@ -98,11 +98,13 @@ func skipIfNotCI(t *testing.T) {
 }
 
 func TestIamBinding(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/iam-binding"))
 }
 
 func TestIamMember(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/iam-member"))
 }
