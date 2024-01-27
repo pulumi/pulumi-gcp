@@ -208,15 +208,7 @@ namespace Pulumi.Gcp.DataFusion
     /// 
     /// ## Import
     /// 
-    /// Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{region}}/instances/{{name}}"
-    /// 
-    ///  to = google_data_fusion_instance.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:datafusion/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
-    /// ```
+    /// Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:datafusion/instance:Instance default projects/{{project}}/locations/{{region}}/instances/{{name}}
@@ -238,10 +230,10 @@ namespace Pulumi.Gcp.DataFusion
     public partial class Instance : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-        /// created with the Options field. Users will need to either manually update their state file to include these diffed
-        /// options, or include the field in a [lifecycle ignore changes
-        /// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+        /// List of accelerators enabled for this CDF instance.
+        /// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+        /// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+        /// Structure is documented below.
         /// </summary>
         [Output("accelerators")]
         public Output<ImmutableArray<Outputs.InstanceAccelerator>> Accelerators { get; private set; } = null!;
@@ -384,6 +376,7 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
+        /// (Beta, Deprecated)
         /// Service account which will be used to access resources in the customer project.
         /// </summary>
         [Output("serviceAccount")]
@@ -506,10 +499,10 @@ namespace Pulumi.Gcp.DataFusion
         private InputList<Inputs.InstanceAcceleratorArgs>? _accelerators;
 
         /// <summary>
-        /// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-        /// created with the Options field. Users will need to either manually update their state file to include these diffed
-        /// options, or include the field in a [lifecycle ignore changes
-        /// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+        /// List of accelerators enabled for this CDF instance.
+        /// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+        /// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceAcceleratorArgs> Accelerators
         {
@@ -672,10 +665,10 @@ namespace Pulumi.Gcp.DataFusion
         private InputList<Inputs.InstanceAcceleratorGetArgs>? _accelerators;
 
         /// <summary>
-        /// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-        /// created with the Options field. Users will need to either manually update their state file to include these diffed
-        /// options, or include the field in a [lifecycle ignore changes
-        /// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+        /// List of accelerators enabled for this CDF instance.
+        /// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+        /// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.InstanceAcceleratorGetArgs> Accelerators
         {
@@ -853,6 +846,7 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? Region { get; set; }
 
         /// <summary>
+        /// (Beta, Deprecated)
         /// Service account which will be used to access resources in the customer project.
         /// </summary>
         [Input("serviceAccount")]

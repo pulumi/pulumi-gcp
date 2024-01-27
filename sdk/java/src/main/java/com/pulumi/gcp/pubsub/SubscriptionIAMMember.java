@@ -132,15 +132,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ### Importing IAM policies IAM policy imports use the identifier of the Pubsub Subscription resource. For example* `&#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+ * ### Importing IAM policies IAM policy imports use the identifier of the Pubsub Subscription resource. For example* `&#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
  * 
  *  id = &#34;projects/{{project_id}}/subscriptions/{{subscription}}&#34;
  * 
- *  to = google_pubsub_subscription_iam_policy.default }
- * 
- * ```sh
- *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
- * ```
+ *  to = google_pubsub_subscription_iam_policy.default } The `pulumi import` command can also be used
  * 
  * ```sh
  *  $ pulumi import gcp:pubsub/subscriptionIAMMember:SubscriptionIAMMember default projects/{{project_id}}/subscriptions/{{subscription}}

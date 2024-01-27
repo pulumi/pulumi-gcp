@@ -133,17 +133,7 @@ import (
 //
 // ## Import
 //
-// NetworkFirewallPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}` * `{{project}}/{{firewall_policy}}/{{priority}}` * `{{firewall_policy}}/{{priority}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicyRule using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}"
-//
-//	to = google_compute_network_firewall_policy_rule.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/networkFirewallPolicyRule:NetworkFirewallPolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicyRule can be imported using one of the formats above. For example
-//
-// ```
+// NetworkFirewallPolicyRule can be imported using any of these accepted formats* `projects/{{project}}/global/firewallPolicies/{{firewall_policy}}/rules/{{priority}}` * `{{project}}/{{firewall_policy}}/{{priority}}` * `{{firewall_policy}}/{{priority}}` When using the `pulumi import` command, NetworkFirewallPolicyRule can be imported using one of the formats above. For example
 //
 // ```sh
 //

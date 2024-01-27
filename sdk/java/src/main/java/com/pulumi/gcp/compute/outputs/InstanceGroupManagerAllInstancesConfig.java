@@ -12,21 +12,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class InstanceGroupManagerAllInstancesConfig {
     /**
-     * @return ), The label key-value pairs that you want to patch onto the instance.
+     * @return , The label key-value pairs that you want to patch onto the instance.
      * 
      * ***
      * 
      */
     private @Nullable Map<String,String> labels;
     /**
-     * @return ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+     * @return , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
      * 
      */
     private @Nullable Map<String,String> metadata;
 
     private InstanceGroupManagerAllInstancesConfig() {}
     /**
-     * @return ), The label key-value pairs that you want to patch onto the instance.
+     * @return , The label key-value pairs that you want to patch onto the instance.
      * 
      * ***
      * 
@@ -35,7 +35,7 @@ public final class InstanceGroupManagerAllInstancesConfig {
         return this.labels == null ? Map.of() : this.labels;
     }
     /**
-     * @return ), The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+     * @return , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
      * 
      */
     public Map<String,String> metadata() {

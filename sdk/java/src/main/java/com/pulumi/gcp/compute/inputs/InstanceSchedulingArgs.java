@@ -62,16 +62,36 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
         return Optional.ofNullable(this.localSsdRecoveryTimeout);
     }
 
+    /**
+     * Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+     * 
+     */
     @Import(name="maintenanceInterval")
     private @Nullable Output<String> maintenanceInterval;
 
+    /**
+     * @return Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+     * 
+     */
     public Optional<Output<String>> maintenanceInterval() {
         return Optional.ofNullable(this.maintenanceInterval);
     }
 
+    /**
+     * Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+     * 
+     */
     @Import(name="maxRunDuration")
     private @Nullable Output<InstanceSchedulingMaxRunDurationArgs> maxRunDuration;
 
+    /**
+     * @return Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+     * 
+     */
     public Optional<Output<InstanceSchedulingMaxRunDurationArgs>> maxRunDuration() {
         return Optional.ofNullable(this.maxRunDuration);
     }
@@ -261,20 +281,48 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
             return localSsdRecoveryTimeout(Output.of(localSsdRecoveryTimeout));
         }
 
+        /**
+         * @param maintenanceInterval Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(@Nullable Output<String> maintenanceInterval) {
             $.maintenanceInterval = maintenanceInterval;
             return this;
         }
 
+        /**
+         * @param maintenanceInterval Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
+         * 
+         * @return builder
+         * 
+         */
         public Builder maintenanceInterval(String maintenanceInterval) {
             return maintenanceInterval(Output.of(maintenanceInterval));
         }
 
+        /**
+         * @param maxRunDuration Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+         * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRunDuration(@Nullable Output<InstanceSchedulingMaxRunDurationArgs> maxRunDuration) {
             $.maxRunDuration = maxRunDuration;
             return this;
         }
 
+        /**
+         * @param maxRunDuration Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+         * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
+         * 
+         * @return builder
+         * 
+         */
         public Builder maxRunDuration(InstanceSchedulingMaxRunDurationArgs maxRunDuration) {
             return maxRunDuration(Output.of(maxRunDuration));
         }

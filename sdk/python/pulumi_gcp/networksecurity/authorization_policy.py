@@ -425,15 +425,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
 
         ## Import
 
-        AuthorizationPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AuthorizationPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}"
-
-         to = google_network_security_authorization_policy.default }
-
-        ```sh
-         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AuthorizationPolicy can be imported using one of the formats above. For example
-        ```
+        AuthorizationPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}
@@ -527,15 +519,7 @@ class AuthorizationPolicy(pulumi.CustomResource):
 
         ## Import
 
-        AuthorizationPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AuthorizationPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}"
-
-         to = google_network_security_authorization_policy.default }
-
-        ```sh
-         $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AuthorizationPolicy can be imported using one of the formats above. For example
-        ```
+        AuthorizationPolicy can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}` * `{{project}}/{{location}}/{{name}}` * `{{location}}/{{name}}` When using the `pulumi import` command, AuthorizationPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:networksecurity/authorizationPolicy:AuthorizationPolicy default projects/{{project}}/locations/{{location}}/authorizationPolicies/{{name}}

@@ -36,15 +36,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * HttpHealthCheck can be imported using any of these accepted formats* `projects/{{project}}/global/httpHealthChecks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import HttpHealthCheck using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/global/httpHealthChecks/{{name}}"
- *
- *  to = google_compute_http_health_check.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), HttpHealthCheck can be imported using one of the formats above. For example
- * ```
+ * HttpHealthCheck can be imported using any of these accepted formats* `projects/{{project}}/global/httpHealthChecks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, HttpHealthCheck can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/httpHealthCheck:HttpHealthCheck default projects/{{project}}/global/httpHealthChecks/{{name}}

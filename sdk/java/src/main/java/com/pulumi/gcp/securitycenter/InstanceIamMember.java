@@ -286,15 +286,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{region}}/instances/{{name}}&#34;
- * 
- *  to = google_data_fusion_instance.default }
- * 
- * ```sh
- *  $ pulumi import gcp:securitycenter/instanceIamMember:InstanceIamMember When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
- * ```
+ * Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:securitycenter/instanceIamMember:InstanceIamMember default projects/{{project}}/locations/{{region}}/instances/{{name}}

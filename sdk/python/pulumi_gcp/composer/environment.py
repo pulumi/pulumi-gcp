@@ -294,15 +294,7 @@ class Environment(pulumi.CustomResource):
         """
         ## Import
 
-        Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/environments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{region}}/environments/{{name}}"
-
-         to = google_composer_environment.default }
-
-        ```sh
-         $ pulumi import gcp:composer/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
-        ```
+        Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/environments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Environment can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}
@@ -340,15 +332,7 @@ class Environment(pulumi.CustomResource):
         """
         ## Import
 
-        Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/environments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Environment using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{region}}/environments/{{name}}"
-
-         to = google_composer_environment.default }
-
-        ```sh
-         $ pulumi import gcp:composer/environment:Environment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Environment can be imported using one of the formats above. For example
-        ```
+        Environment can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/environments/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Environment can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:composer/environment:Environment default projects/{{project}}/locations/{{region}}/environments/{{name}}

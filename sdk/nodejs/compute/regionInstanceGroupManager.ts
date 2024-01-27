@@ -91,15 +91,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Instance group managers can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
- *
- *  id = "{{name}}"
- *
- *  to = google_compute_region_instance_group_manager.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
- * ```
+ * Instance group managers can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/regionInstanceGroupManager:RegionInstanceGroupManager default {{name}}
@@ -134,7 +126,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     }
 
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
@@ -351,7 +342,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
  */
 export interface RegionInstanceGroupManagerState {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.
@@ -492,7 +482,6 @@ export interface RegionInstanceGroupManagerState {
  */
 export interface RegionInstanceGroupManagerArgs {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group's instances to
      * apply the configuration.

@@ -455,15 +455,7 @@ class CxTestCase(pulumi.CustomResource):
 
         ## Import
 
-        TestCase can be imported using any of these accepted formats* `{{parent}}/testCases/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TestCase using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/testCases/{{name}}"
-
-         to = google_dialogflow_cx_test_case.default }
-
-        ```sh
-         $ pulumi import gcp:diagflow/cxTestCase:CxTestCase When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TestCase can be imported using one of the formats above. For example
-        ```
+        TestCase can be imported using any of these accepted formats* `{{parent}}/testCases/{{name}}` When using the `pulumi import` command, TestCase can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:diagflow/cxTestCase:CxTestCase default {{parent}}/testCases/{{name}}
@@ -634,15 +626,7 @@ class CxTestCase(pulumi.CustomResource):
 
         ## Import
 
-        TestCase can be imported using any of these accepted formats* `{{parent}}/testCases/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TestCase using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/testCases/{{name}}"
-
-         to = google_dialogflow_cx_test_case.default }
-
-        ```sh
-         $ pulumi import gcp:diagflow/cxTestCase:CxTestCase When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TestCase can be imported using one of the formats above. For example
-        ```
+        TestCase can be imported using any of these accepted formats* `{{parent}}/testCases/{{name}}` When using the `pulumi import` command, TestCase can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:diagflow/cxTestCase:CxTestCase default {{parent}}/testCases/{{name}}

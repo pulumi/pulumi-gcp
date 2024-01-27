@@ -119,15 +119,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Tensorboard can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/tensorboards/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Tensorboard using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{region}}/tensorboards/{{name}}&#34;
- * 
- *  to = google_vertex_ai_tensorboard.default }
- * 
- * ```sh
- *  $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Tensorboard can be imported using one of the formats above. For example
- * ```
+ * Tensorboard can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/tensorboards/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Tensorboard can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:vertex/aiTensorboard:AiTensorboard default projects/{{project}}/locations/{{region}}/tensorboards/{{name}}

@@ -80,15 +80,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * InstanceAttachment can be imported using any of these accepted formats* `{{instance_id}}/attachments/{{name}}` * `{{instance_id}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import InstanceAttachment using one of the formats above. For exampletf import {
- *
- *  id = "{{instance_id}}/attachments/{{name}}"
- *
- *  to = google_apigee_instance_attachment.default }
- *
- * ```sh
- *  $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), InstanceAttachment can be imported using one of the formats above. For example
- * ```
+ * InstanceAttachment can be imported using any of these accepted formats* `{{instance_id}}/attachments/{{name}}` * `{{instance_id}}/{{name}}` When using the `pulumi import` command, InstanceAttachment can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:apigee/instanceAttachment:InstanceAttachment default {{instance_id}}/attachments/{{name}}

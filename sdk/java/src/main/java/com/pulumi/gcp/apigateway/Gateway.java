@@ -87,15 +87,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Gateway can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}` * `{{project}}/{{region}}/{{gateway_id}}` * `{{region}}/{{gateway_id}}` * `{{gateway_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Gateway using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}&#34;
- * 
- *  to = google_api_gateway_gateway.default }
- * 
- * ```sh
- *  $ pulumi import gcp:apigateway/gateway:Gateway When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Gateway can be imported using one of the formats above. For example
- * ```
+ * Gateway can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}` * `{{project}}/{{region}}/{{gateway_id}}` * `{{region}}/{{gateway_id}}` * `{{gateway_id}}` When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
@@ -117,22 +109,18 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:apigateway/gateway:Gateway")
 public class Gateway extends com.pulumi.resources.CustomResource {
     /**
-     * Resource name of the API Config for this Gateway. Format:
-     * projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-     * config is a new resource and the
-     * [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule &#39;create_before_destroy&#39; is
-     * set.
+     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+     * When changing api configs please ensure the new config is a new resource and the
+     * lifecycle rule `create_before_destroy` is set.
      * 
      */
     @Export(name="apiConfig", refs={String.class}, tree="[0]")
     private Output<String> apiConfig;
 
     /**
-     * @return Resource name of the API Config for this Gateway. Format:
-     * projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-     * config is a new resource and the
-     * [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule &#39;create_before_destroy&#39; is
-     * set.
+     * @return Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+     * When changing api configs please ensure the new config is a new resource and the
+     * lifecycle rule `create_before_destroy` is set.
      * 
      */
     public Output<String> apiConfig() {

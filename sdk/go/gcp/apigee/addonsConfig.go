@@ -168,17 +168,7 @@ import (
 //
 // ## Import
 //
-// AddonsConfig can be imported using any of these accepted formats* `organizations/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import AddonsConfig using one of the formats above. For exampletf import {
-//
-//	id = "organizations/{{name}}"
-//
-//	to = google_apigee_addons_config.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:apigee/addonsConfig:AddonsConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), AddonsConfig can be imported using one of the formats above. For example
-//
-// ```
+// AddonsConfig can be imported using any of these accepted formats* `organizations/{{name}}` * `{{name}}` When using the `pulumi import` command, AddonsConfig can be imported using one of the formats above. For example
 //
 // ```sh
 //

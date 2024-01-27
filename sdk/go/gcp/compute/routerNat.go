@@ -335,17 +335,7 @@ import (
 //
 // ## Import
 //
-// RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RouterNat using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}"
-//
-//	to = google_compute_router_nat.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:compute/routerNat:RouterNat When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RouterNat can be imported using one of the formats above. For example
-//
-// ```
+// RouterNat can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/routers/{{router}}/{{name}}` * `{{project}}/{{region}}/{{router}}/{{name}}` * `{{region}}/{{router}}/{{name}}` * `{{router}}/{{name}}` When using the `pulumi import` command, RouterNat can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -444,9 +434,13 @@ type RouterNat struct {
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"tcpTransitoryIdleTimeoutSec"`
-	// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-	// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-	// Possible values: ["PUBLIC", "PRIVATE"]
+	// (Optional, Beta)
+	// Indicates whether this NAT is used for public or private IP translation.
+	// If unspecified, it defaults to PUBLIC.
+	// If `PUBLIC` NAT used for public IP translation.
+	// If `PRIVATE` NAT used for private IP translation.
+	// Default value is `PUBLIC`.
+	// Possible values are: `PUBLIC`, `PRIVATE`.
 	Type pulumi.StringPtrOutput `pulumi:"type"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec pulumi.IntPtrOutput `pulumi:"udpIdleTimeoutSec"`
@@ -559,9 +553,13 @@ type routerNatState struct {
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec *int `pulumi:"tcpTransitoryIdleTimeoutSec"`
-	// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-	// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-	// Possible values: ["PUBLIC", "PRIVATE"]
+	// (Optional, Beta)
+	// Indicates whether this NAT is used for public or private IP translation.
+	// If unspecified, it defaults to PUBLIC.
+	// If `PUBLIC` NAT used for public IP translation.
+	// If `PRIVATE` NAT used for private IP translation.
+	// Default value is `PUBLIC`.
+	// Possible values are: `PUBLIC`, `PRIVATE`.
 	Type *string `pulumi:"type"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec *int `pulumi:"udpIdleTimeoutSec"`
@@ -639,9 +637,13 @@ type RouterNatState struct {
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrInput
-	// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-	// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-	// Possible values: ["PUBLIC", "PRIVATE"]
+	// (Optional, Beta)
+	// Indicates whether this NAT is used for public or private IP translation.
+	// If unspecified, it defaults to PUBLIC.
+	// If `PUBLIC` NAT used for public IP translation.
+	// If `PRIVATE` NAT used for private IP translation.
+	// Default value is `PUBLIC`.
+	// Possible values are: `PUBLIC`, `PRIVATE`.
 	Type pulumi.StringPtrInput
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec pulumi.IntPtrInput
@@ -723,9 +725,13 @@ type routerNatArgs struct {
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec *int `pulumi:"tcpTransitoryIdleTimeoutSec"`
-	// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-	// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-	// Possible values: ["PUBLIC", "PRIVATE"]
+	// (Optional, Beta)
+	// Indicates whether this NAT is used for public or private IP translation.
+	// If unspecified, it defaults to PUBLIC.
+	// If `PUBLIC` NAT used for public IP translation.
+	// If `PRIVATE` NAT used for private IP translation.
+	// Default value is `PUBLIC`.
+	// Possible values are: `PUBLIC`, `PRIVATE`.
 	Type *string `pulumi:"type"`
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec *int `pulumi:"udpIdleTimeoutSec"`
@@ -804,9 +810,13 @@ type RouterNatArgs struct {
 	// Timeout (in seconds) for TCP transitory connections.
 	// Defaults to 30s if not set.
 	TcpTransitoryIdleTimeoutSec pulumi.IntPtrInput
-	// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-	// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-	// Possible values: ["PUBLIC", "PRIVATE"]
+	// (Optional, Beta)
+	// Indicates whether this NAT is used for public or private IP translation.
+	// If unspecified, it defaults to PUBLIC.
+	// If `PUBLIC` NAT used for public IP translation.
+	// If `PRIVATE` NAT used for private IP translation.
+	// Default value is `PUBLIC`.
+	// Possible values are: `PUBLIC`, `PRIVATE`.
 	Type pulumi.StringPtrInput
 	// Timeout (in seconds) for UDP connections. Defaults to 30s if not set.
 	UdpIdleTimeoutSec pulumi.IntPtrInput
@@ -1027,9 +1037,13 @@ func (o RouterNatOutput) TcpTransitoryIdleTimeoutSec() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.IntPtrOutput { return v.TcpTransitoryIdleTimeoutSec }).(pulumi.IntPtrOutput)
 }
 
-// Indicates whether this NAT is used for public or private IP translation. If unspecified, it defaults to PUBLIC. If
-// 'PUBLIC' NAT used for public IP translation. If 'PRIVATE' NAT used for private IP translation. Default value: "PUBLIC"
-// Possible values: ["PUBLIC", "PRIVATE"]
+// (Optional, Beta)
+// Indicates whether this NAT is used for public or private IP translation.
+// If unspecified, it defaults to PUBLIC.
+// If `PUBLIC` NAT used for public IP translation.
+// If `PRIVATE` NAT used for private IP translation.
+// Default value is `PUBLIC`.
+// Possible values are: `PUBLIC`, `PRIVATE`.
 func (o RouterNatOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterNat) pulumi.StringPtrOutput { return v.Type }).(pulumi.StringPtrOutput)
 }

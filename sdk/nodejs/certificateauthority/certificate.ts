@@ -288,15 +288,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Certificate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}` * `{{project}}/{{location}}/{{pool}}/{{name}}` * `{{location}}/{{pool}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Certificate using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}"
- *
- *  to = google_privateca_certificate.default }
- *
- * ```sh
- *  $ pulumi import gcp:certificateauthority/certificate:Certificate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Certificate can be imported using one of the formats above. For example
- * ```
+ * Certificate can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}` * `{{project}}/{{location}}/{{pool}}/{{name}}` * `{{location}}/{{pool}}/{{name}}` When using the `pulumi import` command, Certificate can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:certificateauthority/certificate:Certificate default projects/{{project}}/locations/{{location}}/caPools/{{pool}}/certificates/{{name}}

@@ -57,15 +57,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// SslPolicy can be imported using any of these accepted formats* `projects/{{project}}/global/sslPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import SslPolicy using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/global/sslPolicies/{{name}}"
-    /// 
-    ///  to = google_compute_ssl_policy.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), SslPolicy can be imported using one of the formats above. For example
-    /// ```
+    /// SslPolicy can be imported using any of these accepted formats* `projects/{{project}}/global/sslPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, SslPolicy can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/sSLPolicy:SSLPolicy default projects/{{project}}/global/sslPolicies/{{name}}

@@ -120,6 +120,7 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
     }
 
     /**
+     * (Optional, Beta)
      * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      * 
      */
@@ -127,7 +128,8 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
     private @Nullable Output<String> tlsInspectionPolicy;
 
     /**
-     * @return Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+     * @return (Optional, Beta)
+     * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
      * 
      */
     public Optional<Output<String>> tlsInspectionPolicy() {
@@ -325,7 +327,8 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tlsInspectionPolicy Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+         * @param tlsInspectionPolicy (Optional, Beta)
+         * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
          * 
          * @return builder
          * 
@@ -336,7 +339,8 @@ public final class GatewaySecurityPolicyState extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param tlsInspectionPolicy Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
+         * @param tlsInspectionPolicy (Optional, Beta)
+         * Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
          * 
          * @return builder
          * 

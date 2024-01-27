@@ -76,6 +76,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("network")]
         public Input<string>? Network { get; set; }
 
+        /// <summary>
+        /// Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+        /// </summary>
         [Input("networkAttachment")]
         public Input<string>? NetworkAttachment { get; set; }
 
@@ -98,6 +101,9 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("queueCount")]
         public Input<int>? QueueCount { get; set; }
 
+        /// <summary>
+        /// Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        /// </summary>
         [Input("securityPolicy")]
         public Input<string>? SecurityPolicy { get; set; }
 

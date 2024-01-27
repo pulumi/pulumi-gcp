@@ -87,15 +87,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * TargetSslProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetSslProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TargetSslProxy using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/global/targetSslProxies/{{name}}&#34;
- * 
- *  to = google_compute_target_ssl_proxy.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TargetSslProxy can be imported using one of the formats above. For example
- * ```
+ * TargetSslProxy can be imported using any of these accepted formats* `projects/{{project}}/global/targetSslProxies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, TargetSslProxy can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/targetSSLProxy:TargetSSLProxy default projects/{{project}}/global/targetSslProxies/{{name}}

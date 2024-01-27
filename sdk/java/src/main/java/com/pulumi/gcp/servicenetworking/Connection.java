@@ -76,15 +76,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ServiceNetworkingConnection can be imported using any of these accepted formats * `{{peering-network}}:{{service}}` * `projects/{{project}}/global/networks/{{peering-network}}:{{service}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NAME_HERE using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/global/networks/{{peering-network}}:{{service}}&#34;
- * 
- *  to = google_service_networking_connection.default }
- * 
- * ```sh
- *  $ pulumi import gcp:servicenetworking/connection:Connection When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NAME_HERE can be imported using one of the formats above. For example
- * ```
+ * ServiceNetworkingConnection can be imported using any of these accepted formats * `{{peering-network}}:{{service}}` * `projects/{{project}}/global/networks/{{peering-network}}:{{service}}` When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:servicenetworking/connection:Connection default {{peering-network}}:{{service}}

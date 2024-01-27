@@ -109,15 +109,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Intent can be imported using any of these accepted formats* `{{parent}}/intents/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Intent using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{parent}}/intents/{{name}}&#34;
- * 
- *  to = google_dialogflow_cx_intent.default }
- * 
- * ```sh
- *  $ pulumi import gcp:diagflow/cxIntent:CxIntent When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Intent can be imported using one of the formats above. For example
- * ```
+ * Intent can be imported using any of these accepted formats* `{{parent}}/intents/{{name}}` * `{{parent}}/{{name}}` When using the `pulumi import` command, Intent can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:diagflow/cxIntent:CxIntent default {{parent}}/intents/{{name}}

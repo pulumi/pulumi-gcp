@@ -610,15 +610,7 @@ class Registration(pulumi.CustomResource):
 
         ## Import
 
-        Registration can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}` * `{{project}}/{{location}}/{{domain_name}}` * `{{location}}/{{domain_name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Registration using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}"
-
-         to = google_clouddomains_registration.default }
-
-        ```sh
-         $ pulumi import gcp:clouddomains/registration:Registration When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Registration can be imported using one of the formats above. For example
-        ```
+        Registration can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}` * `{{project}}/{{location}}/{{domain_name}}` * `{{location}}/{{domain_name}}` When using the `pulumi import` command, Registration can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}
@@ -730,15 +722,7 @@ class Registration(pulumi.CustomResource):
 
         ## Import
 
-        Registration can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}` * `{{project}}/{{location}}/{{domain_name}}` * `{{location}}/{{domain_name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Registration using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}"
-
-         to = google_clouddomains_registration.default }
-
-        ```sh
-         $ pulumi import gcp:clouddomains/registration:Registration When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Registration can be imported using one of the formats above. For example
-        ```
+        Registration can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}` * `{{project}}/{{location}}/{{domain_name}}` * `{{location}}/{{domain_name}}` When using the `pulumi import` command, Registration can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:clouddomains/registration:Registration default projects/{{project}}/locations/{{location}}/registrations/{{domain_name}}

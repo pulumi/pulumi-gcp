@@ -69,15 +69,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GKE clusters using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}"
- *
- *  to = google_container_cluster.default }
- *
- * ```sh
- *  $ pulumi import gcp:container/cluster:Cluster When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GKE clusters can be imported using one of the formats above. For example
- * ```
+ * GKE clusters can be imported using the `project` , `location`, and `name`. If the project is omitted, the default provider value will be used. Examples* `projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}` * `{{project_id}}/{{location}}/{{cluster_id}}` * `{{location}}/{{cluster_id}}` When using the `pulumi import` command, GKE clusters can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:container/cluster:Cluster default projects/{{project_id}}/locations/{{location}}/clusters/{{cluster_id}}
@@ -214,7 +206,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableAutopilot!: pulumi.Output<boolean | undefined>;
     /**
-     * )
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      */
     public readonly enableFqdnNetworkPolicy!: pulumi.Output<boolean | undefined>;
@@ -245,7 +236,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly enableLegacyAbac!: pulumi.Output<boolean | undefined>;
     /**
-     * )
      * Whether multi-networking is enabled for this cluster.
      */
     public readonly enableMultiNetworking!: pulumi.Output<boolean | undefined>;
@@ -458,7 +448,7 @@ export class Cluster extends pulumi.CustomResource {
     public readonly notificationConfig!: pulumi.Output<outputs.container.ClusterNotificationConfig>;
     public /*out*/ readonly operation!: pulumi.Output<string>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -478,7 +468,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      */
     public readonly protectConfig!: pulumi.Output<outputs.container.ClusterProtectConfig>;
@@ -551,7 +540,6 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.ClusterVerticalPodAutoscaling>;
     /**
-     * )
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      *
      * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
@@ -832,7 +820,6 @@ export interface ClusterState {
      */
     enableAutopilot?: pulumi.Input<boolean>;
     /**
-     * )
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      */
     enableFqdnNetworkPolicy?: pulumi.Input<boolean>;
@@ -863,7 +850,6 @@ export interface ClusterState {
      */
     enableLegacyAbac?: pulumi.Input<boolean>;
     /**
-     * )
      * Whether multi-networking is enabled for this cluster.
      */
     enableMultiNetworking?: pulumi.Input<boolean>;
@@ -1076,7 +1062,7 @@ export interface ClusterState {
     notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     operation?: pulumi.Input<string>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -1096,7 +1082,6 @@ export interface ClusterState {
      */
     project?: pulumi.Input<string>;
     /**
-     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      */
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig>;
@@ -1169,7 +1154,6 @@ export interface ClusterState {
      */
     verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
-     * )
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      *
      * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
@@ -1280,7 +1264,6 @@ export interface ClusterArgs {
      */
     enableAutopilot?: pulumi.Input<boolean>;
     /**
-     * )
      * Whether FQDN Network Policy is enabled on this cluster. Users who enable this feature for existing Standard clusters must restart the GKE Dataplane V2 `anetd` DaemonSet after enabling it. See the [Enable FQDN Network Policy in an existing cluster](https://cloud.google.com/kubernetes-engine/docs/how-to/fqdn-network-policies#enable_fqdn_network_policy_in_an_existing_cluster) for more information.
      */
     enableFqdnNetworkPolicy?: pulumi.Input<boolean>;
@@ -1311,7 +1294,6 @@ export interface ClusterArgs {
      */
     enableLegacyAbac?: pulumi.Input<boolean>;
     /**
-     * )
      * Whether multi-networking is enabled for this cluster.
      */
     enableMultiNetworking?: pulumi.Input<boolean>;
@@ -1509,7 +1491,7 @@ export interface ClusterArgs {
      */
     notificationConfig?: pulumi.Input<inputs.container.ClusterNotificationConfig>;
     /**
-     * ) Configuration for the
+     * Configuration for the
      * [PodSecurityPolicy](https://cloud.google.com/kubernetes-engine/docs/how-to/pod-security-policies) feature.
      * Structure is documented below.
      */
@@ -1529,7 +1511,6 @@ export interface ClusterArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * )
      * Enable/Disable Protect API features for the cluster. Structure is documented below.
      */
     protectConfig?: pulumi.Input<inputs.container.ClusterProtectConfig>;
@@ -1585,7 +1566,6 @@ export interface ClusterArgs {
      */
     verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
-     * )
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      *
      * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports

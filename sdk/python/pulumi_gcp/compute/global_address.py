@@ -265,11 +265,13 @@ class _GlobalAddressState:
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: (Beta)
+               All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: (Beta)
+               The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -294,7 +296,9 @@ class _GlobalAddressState:
                when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Beta)
+               The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
@@ -389,8 +393,8 @@ class _GlobalAddressState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        (Beta)
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -415,7 +419,9 @@ class _GlobalAddressState:
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        (Beta)
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -506,7 +512,9 @@ class _GlobalAddressState:
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        (Beta)
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -594,15 +602,7 @@ class GlobalAddress(pulumi.CustomResource):
 
         ## Import
 
-        GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalAddress using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/global/addresses/{{name}}"
-
-         to = google_compute_global_address.default }
-
-        ```sh
-         $ pulumi import gcp:compute/globalAddress:GlobalAddress When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalAddress can be imported using one of the formats above. For example
-        ```
+        GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
@@ -700,15 +700,7 @@ class GlobalAddress(pulumi.CustomResource):
 
         ## Import
 
-        GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import GlobalAddress using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/global/addresses/{{name}}"
-
-         to = google_compute_global_address.default }
-
-        ```sh
-         $ pulumi import gcp:compute/globalAddress:GlobalAddress When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), GlobalAddress can be imported using one of the formats above. For example
-        ```
+        GlobalAddress can be imported using any of these accepted formats* `projects/{{project}}/global/addresses/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, GlobalAddress can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/globalAddress:GlobalAddress default projects/{{project}}/global/addresses/{{name}}
@@ -815,11 +807,13 @@ class GlobalAddress(pulumi.CustomResource):
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-               clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: (Beta)
+               All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
-        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        :param pulumi.Input[str] label_fingerprint: (Beta)
+               The fingerprint used for optimistic locking of this resource.  Used
+               internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -844,7 +838,9 @@ class GlobalAddress(pulumi.CustomResource):
                when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Beta)
+               The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
                * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
@@ -913,8 +909,8 @@ class GlobalAddress(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
-        clients and services.
+        (Beta)
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -931,7 +927,9 @@ class GlobalAddress(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        The fingerprint used for optimistic locking of this resource. Used internally during updates.
+        (Beta)
+        The fingerprint used for optimistic locking of this resource.  Used
+        internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -998,7 +996,9 @@ class GlobalAddress(pulumi.CustomResource):
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        The combination of labels configured directly on the resource and default labels configured on the provider.
+        (Beta)
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 

@@ -347,15 +347,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * UptimeCheckConfig can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import UptimeCheckConfig using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{name}}&#34;
- * 
- *  to = google_monitoring_uptime_check_config.default }
- * 
- * ```sh
- *  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), UptimeCheckConfig can be imported using one of the formats above. For example
- * ```
+ * UptimeCheckConfig can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, UptimeCheckConfig can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:monitoring/uptimeCheckConfig:UptimeCheckConfig default {{name}}

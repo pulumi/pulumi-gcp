@@ -80,15 +80,7 @@ namespace Pulumi.Gcp.Dns
     /// 
     /// ## Import
     /// 
-    /// ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ResponsePolicyRule using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}"
-    /// 
-    ///  to = google_dns_response_policy_rule.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ResponsePolicyRule can be imported using one of the formats above. For example
-    /// ```
+    /// ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
@@ -106,8 +98,8 @@ namespace Pulumi.Gcp.Dns
     public partial class ResponsePolicyRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-        /// 'bypassResponsePolicy'
+        /// (Optional, Beta)
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         /// </summary>
         [Output("behavior")]
         public Output<string?> Behavior { get; private set; } = null!;
@@ -195,8 +187,8 @@ namespace Pulumi.Gcp.Dns
     public sealed class ResponsePolicyRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-        /// 'bypassResponsePolicy'
+        /// (Optional, Beta)
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         /// </summary>
         [Input("behavior")]
         public Input<string>? Behavior { get; set; }
@@ -246,8 +238,8 @@ namespace Pulumi.Gcp.Dns
     public sealed class ResponsePolicyRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and
-        /// 'bypassResponsePolicy'
+        /// (Optional, Beta)
+        /// Answer this query with a behavior rather than DNS data. Acceptable values are 'behaviorUnspecified', and 'bypassResponsePolicy'
         /// </summary>
         [Input("behavior")]
         public Input<string>? Behavior { get; set; }

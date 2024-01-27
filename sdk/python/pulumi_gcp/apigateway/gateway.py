@@ -22,11 +22,9 @@ class GatewayArgs:
                  region: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Gateway resource.
-        :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format:
-               projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-               config is a new resource and the
-               [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
-               set.
+        :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+               When changing api configs please ensure the new config is a new resource and the
+               lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
                
                
@@ -55,11 +53,9 @@ class GatewayArgs:
     @pulumi.getter(name="apiConfig")
     def api_config(self) -> pulumi.Input[str]:
         """
-        Resource name of the API Config for this Gateway. Format:
-        projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-        config is a new resource and the
-        [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
-        set.
+        Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+        When changing api configs please ensure the new config is a new resource and the
+        lifecycle rule `create_before_destroy` is set.
         """
         return pulumi.get(self, "api_config")
 
@@ -150,11 +146,9 @@ class _GatewayState:
                  region: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Gateway resources.
-        :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format:
-               projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-               config is a new resource and the
-               [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
-               set.
+        :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+               When changing api configs please ensure the new config is a new resource and the
+               lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[str] default_hostname: The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -198,11 +192,9 @@ class _GatewayState:
     @pulumi.getter(name="apiConfig")
     def api_config(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource name of the API Config for this Gateway. Format:
-        projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-        config is a new resource and the
-        [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
-        set.
+        Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+        When changing api configs please ensure the new config is a new resource and the
+        lifecycle rule `create_before_destroy` is set.
         """
         return pulumi.get(self, "api_config")
 
@@ -376,15 +368,7 @@ class Gateway(pulumi.CustomResource):
 
         ## Import
 
-        Gateway can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}` * `{{project}}/{{region}}/{{gateway_id}}` * `{{region}}/{{gateway_id}}` * `{{gateway_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Gateway using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}"
-
-         to = google_api_gateway_gateway.default }
-
-        ```sh
-         $ pulumi import gcp:apigateway/gateway:Gateway When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Gateway can be imported using one of the formats above. For example
-        ```
+        Gateway can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}` * `{{project}}/{{region}}/{{gateway_id}}` * `{{region}}/{{gateway_id}}` * `{{gateway_id}}` When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
@@ -404,11 +388,9 @@ class Gateway(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format:
-               projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-               config is a new resource and the
-               [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
-               set.
+        :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+               When changing api configs please ensure the new config is a new resource and the
+               lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[str] gateway_id: Identifier to assign to the Gateway. Must be unique within scope of the parent resource(project).
                
@@ -465,15 +447,7 @@ class Gateway(pulumi.CustomResource):
 
         ## Import
 
-        Gateway can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}` * `{{project}}/{{region}}/{{gateway_id}}` * `{{region}}/{{gateway_id}}` * `{{gateway_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Gateway using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}"
-
-         to = google_api_gateway_gateway.default }
-
-        ```sh
-         $ pulumi import gcp:apigateway/gateway:Gateway When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Gateway can be imported using one of the formats above. For example
-        ```
+        Gateway can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}` * `{{project}}/{{region}}/{{gateway_id}}` * `{{region}}/{{gateway_id}}` * `{{gateway_id}}` When using the `pulumi import` command, Gateway can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:apigateway/gateway:Gateway default projects/{{project}}/locations/{{region}}/gateways/{{gateway_id}}
@@ -564,11 +538,9 @@ class Gateway(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format:
-               projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-               config is a new resource and the
-               [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
-               set.
+        :param pulumi.Input[str] api_config: Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+               When changing api configs please ensure the new config is a new resource and the
+               lifecycle rule `create_before_destroy` is set.
         :param pulumi.Input[str] default_hostname: The default API Gateway host name of the form {gatewayId}-{hash}.{region_code}.gateway.dev.
         :param pulumi.Input[str] display_name: A user-visible name for the API.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -607,11 +579,9 @@ class Gateway(pulumi.CustomResource):
     @pulumi.getter(name="apiConfig")
     def api_config(self) -> pulumi.Output[str]:
         """
-        Resource name of the API Config for this Gateway. Format:
-        projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-        config is a new resource and the
-        [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule 'create_before_destroy' is
-        set.
+        Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+        When changing api configs please ensure the new config is a new resource and the
+        lifecycle rule `create_before_destroy` is set.
         """
         return pulumi.get(self, "api_config")
 

@@ -240,15 +240,11 @@ namespace Pulumi.Gcp.Folder
     /// 
     /// ## Import
     /// 
-    /// ### Importing Audit Configs An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g* `"folder/{{folder_id}} foo.googleapis.com"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import audit configstf import {
+    /// ### Importing Audit Configs An audit config can be imported into a `google_folder_iam_audit_config` resource using the resource's `folder_id` and the `service`, e.g* `"folder/{{folder_id}} foo.googleapis.com"` An `import` block (Terraform v1.5.0 and later) can be used to import audit configstf import {
     /// 
     ///  id = "folder/{{folder_id}} foo.googleapis.com"
     /// 
-    ///  to = google_folder_iam_audit_config.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-    /// ```
+    ///  to = google_folder_iam_audit_config.default } The `pulumi import` command can also be used
     /// 
     /// ```sh
     ///  $ pulumi import gcp:folder/iamAuditConfig:IamAuditConfig default "folder/{{folder_id}} foo.googleapis.com"

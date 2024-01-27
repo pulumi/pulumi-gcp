@@ -180,15 +180,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Organization Policies can be imported using the `org_id` and the `constraint`, e.g. * `{{org_id}}/constraints/{{constraint}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Organization Policies using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{org_id}}/constraints/{{constraint}}&#34;
- * 
- *  to = google_organization_policy.default }
- * 
- * ```sh
- *  $ pulumi import gcp:organizations/policy:Policy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Organization Policies can be imported using one of the formats above. For example
- * ```
+ * Organization Policies can be imported using the `org_id` and the `constraint`, e.g. * `{{org_id}}/constraints/{{constraint}}` When using the `pulumi import` command, Organization Policies can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:organizations/policy:Policy default {{org_id}}/constraints/{{constraint}}

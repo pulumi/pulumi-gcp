@@ -181,15 +181,7 @@ class ServicePerimeters(pulumi.CustomResource):
 
         ## Import
 
-        ServicePerimeters can be imported using any of these accepted formats* `{{parent}}/servicePerimeters` * `{{parent}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServicePerimeters using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/servicePerimeters"
-
-         to = google_access_context_manager_service_perimeters.default }
-
-        ```sh
-         $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServicePerimeters can be imported using one of the formats above. For example
-        ```
+        ServicePerimeters can be imported using any of these accepted formats* `{{parent}}/servicePerimeters` * `{{parent}}` When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters
@@ -276,15 +268,7 @@ class ServicePerimeters(pulumi.CustomResource):
 
         ## Import
 
-        ServicePerimeters can be imported using any of these accepted formats* `{{parent}}/servicePerimeters` * `{{parent}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ServicePerimeters using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/servicePerimeters"
-
-         to = google_access_context_manager_service_perimeters.default }
-
-        ```sh
-         $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ServicePerimeters can be imported using one of the formats above. For example
-        ```
+        ServicePerimeters can be imported using any of these accepted formats* `{{parent}}/servicePerimeters` * `{{parent}}` When using the `pulumi import` command, ServicePerimeters can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:accesscontextmanager/servicePerimeters:ServicePerimeters default {{parent}}/servicePerimeters

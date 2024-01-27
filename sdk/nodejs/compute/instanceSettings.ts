@@ -28,15 +28,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * InstanceSettings can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceSettings` * `{{project}}/{{zone}}` * `{{zone}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import InstanceSettings using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/zones/{{zone}}/instanceSettings"
- *
- *  to = google_compute_instance_settings.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/instanceSettings:InstanceSettings When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), InstanceSettings can be imported using one of the formats above. For example
- * ```
+ * InstanceSettings can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceSettings` * `{{project}}/{{zone}}` * `{{zone}}` When using the `pulumi import` command, InstanceSettings can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/instanceSettings:InstanceSettings default projects/{{project}}/zones/{{zone}}/instanceSettings

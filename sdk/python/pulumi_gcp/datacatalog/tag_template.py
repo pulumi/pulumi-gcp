@@ -319,15 +319,7 @@ class TagTemplate(pulumi.CustomResource):
 
         ## Import
 
-        TagTemplate can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TagTemplate using one of the formats above. For exampletf import {
-
-         id = "{{name}}"
-
-         to = google_data_catalog_tag_template.default }
-
-        ```sh
-         $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TagTemplate can be imported using one of the formats above. For example
-        ```
+        TagTemplate can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, TagTemplate can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}
@@ -412,15 +404,7 @@ class TagTemplate(pulumi.CustomResource):
 
         ## Import
 
-        TagTemplate can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TagTemplate using one of the formats above. For exampletf import {
-
-         id = "{{name}}"
-
-         to = google_data_catalog_tag_template.default }
-
-        ```sh
-         $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TagTemplate can be imported using one of the formats above. For example
-        ```
+        TagTemplate can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, TagTemplate can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:datacatalog/tagTemplate:TagTemplate default {{name}}

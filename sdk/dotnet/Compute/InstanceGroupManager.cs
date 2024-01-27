@@ -126,15 +126,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// ## Import
     /// 
-    /// Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}"
-    /// 
-    ///  to = google_compute_instance_group_manager.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
-    /// ```
+    /// Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
@@ -156,7 +148,6 @@ namespace Pulumi.Gcp.Compute
     public partial class InstanceGroupManager : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// )
         /// Properties to set on all instances in the group. After setting
         /// allInstancesConfig on the group, you must update the group's instances to
         /// apply the configuration.
@@ -378,7 +369,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupManagerArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// )
         /// Properties to set on all instances in the group. After setting
         /// allInstancesConfig on the group, you must update the group's instances to
         /// apply the configuration.
@@ -571,7 +561,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class InstanceGroupManagerState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// )
         /// Properties to set on all instances in the group. After setting
         /// allInstancesConfig on the group, you must update the group's instances to
         /// apply the configuration.

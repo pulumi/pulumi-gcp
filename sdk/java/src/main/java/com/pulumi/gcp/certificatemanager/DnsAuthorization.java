@@ -57,15 +57,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DnsAuthorization can be imported using any of these accepted formats* `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DnsAuthorization using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/global/dnsAuthorizations/{{name}}&#34;
- * 
- *  to = google_certificate_manager_dns_authorization.default }
- * 
- * ```sh
- *  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DnsAuthorization can be imported using one of the formats above. For example
- * ```
+ * DnsAuthorization can be imported using any of these accepted formats* `projects/{{project}}/locations/global/dnsAuthorizations/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, DnsAuthorization can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:certificatemanager/dnsAuthorization:DnsAuthorization default projects/{{project}}/locations/global/dnsAuthorizations/{{name}}

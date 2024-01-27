@@ -282,15 +282,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// ## Import
     /// 
-    /// Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Dataset using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/datasets/{{dataset_id}}"
-    /// 
-    ///  to = google_bigquery_dataset.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:bigquery/dataset:Dataset When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Dataset can be imported using one of the formats above. For example
-    /// ```
+    /// Dataset can be imported using any of these accepted formats* `projects/{{project}}/datasets/{{dataset_id}}` * `{{project}}/{{dataset_id}}` * `{{dataset_id}}` When using the `pulumi import` command, Dataset can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:bigquery/dataset:Dataset default projects/{{project}}/datasets/{{dataset_id}}
@@ -418,7 +410,9 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
+        /// (Optional, Beta)
         /// Information about the external metadata storage where the dataset is defined.
+        /// Structure is documented below.
         /// </summary>
         [Output("externalDatasetReference")]
         public Output<Outputs.DatasetExternalDatasetReference?> ExternalDatasetReference { get; private set; } = null!;
@@ -653,7 +647,9 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Information about the external metadata storage where the dataset is defined.
+        /// Structure is documented below.
         /// </summary>
         [Input("externalDatasetReference")]
         public Input<Inputs.DatasetExternalDatasetReferenceArgs>? ExternalDatasetReference { get; set; }
@@ -860,7 +856,9 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Etag { get; set; }
 
         /// <summary>
+        /// (Optional, Beta)
         /// Information about the external metadata storage where the dataset is defined.
+        /// Structure is documented below.
         /// </summary>
         [Input("externalDatasetReference")]
         public Input<Inputs.DatasetExternalDatasetReferenceGetArgs>? ExternalDatasetReference { get; set; }

@@ -70,15 +70,7 @@ namespace Pulumi.Gcp.VMwareEngine
     /// 
     /// ## Import
     /// 
-    /// Subnet can be imported using any of these accepted formats* `{{parent}}/subnets/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Subnet using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "{{parent}}/subnets/{{name}}"
-    /// 
-    ///  to = google_vmwareengine_subnet.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:vmwareengine/subnet:Subnet When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Subnet can be imported using one of the formats above. For example
-    /// ```
+    /// Subnet can be imported using any of these accepted formats* `{{parent}}/subnets/{{name}}` When using the `pulumi import` command, Subnet can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:vmwareengine/subnet:Subnet default {{parent}}/subnets/{{name}}

@@ -19330,10 +19330,9 @@ type ClusterNodeConfig struct {
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType        *string                           `pulumi:"diskType"`
 	EffectiveTaints []ClusterNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
-	// )
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage *bool `pulumi:"enableConfidentialStorage"`
-	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
 	// package main
@@ -19549,10 +19548,9 @@ type ClusterNodeConfigArgs struct {
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType        pulumi.StringPtrInput                     `pulumi:"diskType"`
 	EffectiveTaints ClusterNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
-	// )
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage pulumi.BoolPtrInput `pulumi:"enableConfidentialStorage"`
-	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
 	// package main
@@ -19851,13 +19849,12 @@ func (o ClusterNodeConfigOutput) EffectiveTaints() ClusterNodeConfigEffectiveTai
 	return o.ApplyT(func(v ClusterNodeConfig) []ClusterNodeConfigEffectiveTaint { return v.EffectiveTaints }).(ClusterNodeConfigEffectiveTaintArrayOutput)
 }
 
-// )
 // Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 func (o ClusterNodeConfigOutput) EnableConfidentialStorage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *bool { return v.EnableConfidentialStorage }).(pulumi.BoolPtrOutput)
 }
 
-// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 //
 // ```go
 // package main
@@ -20241,7 +20238,6 @@ func (o ClusterNodeConfigPtrOutput) EffectiveTaints() ClusterNodeConfigEffective
 	}).(ClusterNodeConfigEffectiveTaintArrayOutput)
 }
 
-// )
 // Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 func (o ClusterNodeConfigPtrOutput) EnableConfidentialStorage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodeConfig) *bool {
@@ -20252,7 +20248,7 @@ func (o ClusterNodeConfigPtrOutput) EnableConfidentialStorage() pulumi.BoolPtrOu
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 //
 // ```go
 // package main
@@ -24961,7 +24957,7 @@ func (o ClusterNodePoolDefaultsPtrOutput) NodeConfigDefaults() ClusterNodePoolDe
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaults struct {
-	// ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig `pulumi:"gcfsConfig"`
 	// The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
 	LoggingVariant *string `pulumi:"loggingVariant"`
@@ -24979,7 +24975,7 @@ type ClusterNodePoolDefaultsNodeConfigDefaultsInput interface {
 }
 
 type ClusterNodePoolDefaultsNodeConfigDefaultsArgs struct {
-	// ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+	// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 	GcfsConfig ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrInput `pulumi:"gcfsConfig"`
 	// The type of logging agent that is deployed by default for newly created node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
 	LoggingVariant pulumi.StringPtrInput `pulumi:"loggingVariant"`
@@ -25062,7 +25058,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) ToClusterNodePoolDefaul
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput)
 }
 
-// ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsOutput) GcfsConfig() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
 		return v.GcfsConfig
@@ -25098,7 +25094,7 @@ func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) Elem() ClusterNodePo
 	}).(ClusterNodePoolDefaultsNodeConfigDefaultsOutput)
 }
 
-// ) The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
+// The default Google Container Filesystem (GCFS) configuration at the cluster level. e.g. enable [image streaming](https://cloud.google.com/kubernetes-engine/docs/how-to/image-streaming) across all the node pools within the cluster. Structure is documented below.
 func (o ClusterNodePoolDefaultsNodeConfigDefaultsPtrOutput) GcfsConfig() ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolDefaultsNodeConfigDefaults) *ClusterNodePoolDefaultsNodeConfigDefaultsGcfsConfig {
 		if v == nil {
@@ -26221,10 +26217,9 @@ type ClusterNodePoolNodeConfig struct {
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType        *string                                   `pulumi:"diskType"`
 	EffectiveTaints []ClusterNodePoolNodeConfigEffectiveTaint `pulumi:"effectiveTaints"`
-	// )
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage *bool `pulumi:"enableConfidentialStorage"`
-	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
 	// package main
@@ -26440,10 +26435,9 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// (e.g. 'pd-standard', 'pd-balanced' or 'pd-ssd'). If unspecified, the default disk type is 'pd-standard'
 	DiskType        pulumi.StringPtrInput                             `pulumi:"diskType"`
 	EffectiveTaints ClusterNodePoolNodeConfigEffectiveTaintArrayInput `pulumi:"effectiveTaints"`
-	// )
 	// Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 	EnableConfidentialStorage pulumi.BoolPtrInput `pulumi:"enableConfidentialStorage"`
-	// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+	// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 	//
 	// ```go
 	// package main
@@ -26746,13 +26740,12 @@ func (o ClusterNodePoolNodeConfigOutput) EffectiveTaints() ClusterNodePoolNodeCo
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) []ClusterNodePoolNodeConfigEffectiveTaint { return v.EffectiveTaints }).(ClusterNodePoolNodeConfigEffectiveTaintArrayOutput)
 }
 
-// )
 // Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 func (o ClusterNodePoolNodeConfigOutput) EnableConfidentialStorage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *bool { return v.EnableConfidentialStorage }).(pulumi.BoolPtrOutput)
 }
 
-// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 //
 // ```go
 // package main
@@ -27152,7 +27145,6 @@ func (o ClusterNodePoolNodeConfigPtrOutput) EffectiveTaints() ClusterNodePoolNod
 	}).(ClusterNodePoolNodeConfigEffectiveTaintArrayOutput)
 }
 
-// )
 // Enabling Confidential Storage will create boot disk with confidential mode. It is disabled by default.
 func (o ClusterNodePoolNodeConfigPtrOutput) EnableConfidentialStorage() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *bool {
@@ -27163,7 +27155,7 @@ func (o ClusterNodePoolNodeConfigPtrOutput) EnableConfidentialStorage() pulumi.B
 	}).(pulumi.BoolPtrOutput)
 }
 
-// ) Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
+// Parameters for the ephemeral storage filesystem. If unspecified, ephemeral storage is backed by the boot disk. Structure is documented below.
 //
 // ```go
 // package main
@@ -32912,9 +32904,9 @@ func (o ClusterPrivateClusterConfigMasterGlobalAccessConfigPtrOutput) Enabled() 
 }
 
 type ClusterProtectConfig struct {
-	// ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+	// WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
 	WorkloadConfig *ClusterProtectConfigWorkloadConfig `pulumi:"workloadConfig"`
-	// ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+	// Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
 	WorkloadVulnerabilityMode *string `pulumi:"workloadVulnerabilityMode"`
 }
 
@@ -32930,9 +32922,9 @@ type ClusterProtectConfigInput interface {
 }
 
 type ClusterProtectConfigArgs struct {
-	// ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+	// WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
 	WorkloadConfig ClusterProtectConfigWorkloadConfigPtrInput `pulumi:"workloadConfig"`
-	// ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+	// Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
 	WorkloadVulnerabilityMode pulumi.StringPtrInput `pulumi:"workloadVulnerabilityMode"`
 }
 
@@ -33013,12 +33005,12 @@ func (o ClusterProtectConfigOutput) ToClusterProtectConfigPtrOutputWithContext(c
 	}).(ClusterProtectConfigPtrOutput)
 }
 
-// ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+// WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
 func (o ClusterProtectConfigOutput) WorkloadConfig() ClusterProtectConfigWorkloadConfigPtrOutput {
 	return o.ApplyT(func(v ClusterProtectConfig) *ClusterProtectConfigWorkloadConfig { return v.WorkloadConfig }).(ClusterProtectConfigWorkloadConfigPtrOutput)
 }
 
-// ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+// Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
 func (o ClusterProtectConfigOutput) WorkloadVulnerabilityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterProtectConfig) *string { return v.WorkloadVulnerabilityMode }).(pulumi.StringPtrOutput)
 }
@@ -33047,7 +33039,7 @@ func (o ClusterProtectConfigPtrOutput) Elem() ClusterProtectConfigOutput {
 	}).(ClusterProtectConfigOutput)
 }
 
-// ) WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
+// WorkloadConfig defines which actions are enabled for a cluster's workload configurations. Structure is documented below
 func (o ClusterProtectConfigPtrOutput) WorkloadConfig() ClusterProtectConfigWorkloadConfigPtrOutput {
 	return o.ApplyT(func(v *ClusterProtectConfig) *ClusterProtectConfigWorkloadConfig {
 		if v == nil {
@@ -33057,7 +33049,7 @@ func (o ClusterProtectConfigPtrOutput) WorkloadConfig() ClusterProtectConfigWork
 	}).(ClusterProtectConfigWorkloadConfigPtrOutput)
 }
 
-// ) Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
+// Sets which mode to use for Protect workload vulnerability scanning feature. Accepted values are DISABLED, BASIC.
 func (o ClusterProtectConfigPtrOutput) WorkloadVulnerabilityMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterProtectConfig) *string {
 		if v == nil {
@@ -33068,7 +33060,7 @@ func (o ClusterProtectConfigPtrOutput) WorkloadVulnerabilityMode() pulumi.String
 }
 
 type ClusterProtectConfigWorkloadConfig struct {
-	// ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+	// Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
 	AuditMode string `pulumi:"auditMode"`
 }
 
@@ -33084,7 +33076,7 @@ type ClusterProtectConfigWorkloadConfigInput interface {
 }
 
 type ClusterProtectConfigWorkloadConfigArgs struct {
-	// ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+	// Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
 	AuditMode pulumi.StringInput `pulumi:"auditMode"`
 }
 
@@ -33165,7 +33157,7 @@ func (o ClusterProtectConfigWorkloadConfigOutput) ToClusterProtectConfigWorkload
 	}).(ClusterProtectConfigWorkloadConfigPtrOutput)
 }
 
-// ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+// Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
 func (o ClusterProtectConfigWorkloadConfigOutput) AuditMode() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterProtectConfigWorkloadConfig) string { return v.AuditMode }).(pulumi.StringOutput)
 }
@@ -33194,7 +33186,7 @@ func (o ClusterProtectConfigWorkloadConfigPtrOutput) Elem() ClusterProtectConfig
 	}).(ClusterProtectConfigWorkloadConfigOutput)
 }
 
-// ) Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
+// Sets which mode of auditing should be used for the cluster's workloads. Accepted values are DISABLED, BASIC.
 func (o ClusterProtectConfigWorkloadConfigPtrOutput) AuditMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterProtectConfigWorkloadConfig) *string {
 		if v == nil {

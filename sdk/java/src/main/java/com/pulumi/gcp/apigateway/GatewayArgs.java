@@ -18,22 +18,18 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
     public static final GatewayArgs Empty = new GatewayArgs();
 
     /**
-     * Resource name of the API Config for this Gateway. Format:
-     * projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-     * config is a new resource and the
-     * [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule &#39;create_before_destroy&#39; is
-     * set.
+     * Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+     * When changing api configs please ensure the new config is a new resource and the
+     * lifecycle rule `create_before_destroy` is set.
      * 
      */
     @Import(name="apiConfig", required=true)
     private Output<String> apiConfig;
 
     /**
-     * @return Resource name of the API Config for this Gateway. Format:
-     * projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-     * config is a new resource and the
-     * [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule &#39;create_before_destroy&#39; is
-     * set.
+     * @return Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+     * When changing api configs please ensure the new config is a new resource and the
+     * lifecycle rule `create_before_destroy` is set.
      * 
      */
     public Output<String> apiConfig() {
@@ -157,11 +153,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiConfig Resource name of the API Config for this Gateway. Format:
-         * projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-         * config is a new resource and the
-         * [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule &#39;create_before_destroy&#39; is
-         * set.
+         * @param apiConfig Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+         * When changing api configs please ensure the new config is a new resource and the
+         * lifecycle rule `create_before_destroy` is set.
          * 
          * @return builder
          * 
@@ -172,11 +166,9 @@ public final class GatewayArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param apiConfig Resource name of the API Config for this Gateway. Format:
-         * projects/{project}/locations/global/apis/{api}/configs/{apiConfig}. When changing api configs please ensure the new
-         * config is a new resource and the
-         * [lifecycle](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle) rule &#39;create_before_destroy&#39; is
-         * set.
+         * @param apiConfig Resource name of the API Config for this Gateway. Format: projects/{project}/locations/global/apis/{api}/configs/{apiConfig}.
+         * When changing api configs please ensure the new config is a new resource and the
+         * lifecycle rule `create_before_destroy` is set.
          * 
          * @return builder
          * 

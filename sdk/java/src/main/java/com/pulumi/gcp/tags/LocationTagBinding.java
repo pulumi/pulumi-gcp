@@ -135,15 +135,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * LocationTagBinding can be imported using any of these accepted formats* `{{location}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TagBinding using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{location}}/{{name}}&#34;
- * 
- *  to = google_tags_location_tag_binding.default }
- * 
- * ```sh
- *  $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TagBinding can be imported using one of the formats above. For example
- * ```
+ * LocationTagBinding can be imported using any of these accepted formats* `{{location}}/{{name}}` When using the `pulumi import` command, TagBinding can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:tags/locationTagBinding:LocationTagBinding default {{location}}/{{name}}

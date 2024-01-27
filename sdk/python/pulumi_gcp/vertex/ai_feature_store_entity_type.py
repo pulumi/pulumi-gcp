@@ -37,9 +37,8 @@ class AiFeatureStoreEntityTypeArgs:
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-               storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-               since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        :param pulumi.Input[int] offline_storage_ttl_days: (Optional, Beta)
+               Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         """
         pulumi.set(__self__, "featurestore", featurestore)
         if description is not None:
@@ -125,9 +124,8 @@ class AiFeatureStoreEntityTypeArgs:
     @pulumi.getter(name="offlineStorageTtlDays")
     def offline_storage_ttl_days(self) -> Optional[pulumi.Input[int]]:
         """
-        Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-        storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-        since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        (Optional, Beta)
+        Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         """
         return pulumi.get(self, "offline_storage_ttl_days")
 
@@ -169,9 +167,8 @@ class _AiFeatureStoreEntityTypeState:
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-               storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-               since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        :param pulumi.Input[int] offline_storage_ttl_days: (Optional, Beta)
+               Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the EntityType.
@@ -310,9 +307,8 @@ class _AiFeatureStoreEntityTypeState:
     @pulumi.getter(name="offlineStorageTtlDays")
     def offline_storage_ttl_days(self) -> Optional[pulumi.Input[int]]:
         """
-        Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-        storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-        since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        (Optional, Beta)
+        Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         """
         return pulumi.get(self, "offline_storage_ttl_days")
 
@@ -462,15 +458,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
 
         ## Import
 
-        FeaturestoreEntitytype can be imported using any of these accepted formats* `{{featurestore}}/entityTypes/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeaturestoreEntitytype using one of the formats above. For exampletf import {
-
-         id = "{{featurestore}}/entityTypes/{{name}}"
-
-         to = google_vertex_ai_featurestore_entitytype.default }
-
-        ```sh
-         $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeaturestoreEntitytype can be imported using one of the formats above. For example
-        ```
+        FeaturestoreEntitytype can be imported using any of these accepted formats* `{{featurestore}}/entityTypes/{{name}}` When using the `pulumi import` command, FeaturestoreEntitytype can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
@@ -491,9 +479,8 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-               storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-               since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        :param pulumi.Input[int] offline_storage_ttl_days: (Optional, Beta)
+               Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         """
         ...
     @overload
@@ -593,15 +580,7 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
 
         ## Import
 
-        FeaturestoreEntitytype can be imported using any of these accepted formats* `{{featurestore}}/entityTypes/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeaturestoreEntitytype using one of the formats above. For exampletf import {
-
-         id = "{{featurestore}}/entityTypes/{{name}}"
-
-         to = google_vertex_ai_featurestore_entitytype.default }
-
-        ```sh
-         $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeaturestoreEntitytype can be imported using one of the formats above. For example
-        ```
+        FeaturestoreEntitytype can be imported using any of these accepted formats* `{{featurestore}}/entityTypes/{{name}}` When using the `pulumi import` command, FeaturestoreEntitytype can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:vertex/aiFeatureStoreEntityType:AiFeatureStoreEntityType default {{featurestore}}/entityTypes/{{name}}
@@ -698,9 +677,8 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
                If this is populated with [FeaturestoreMonitoringConfig.monitoring_interval] specified, snapshot analysis monitoring is enabled. Otherwise, snapshot analysis monitoring is disabled.
                Structure is documented below.
         :param pulumi.Input[str] name: The name of the EntityType. This value may be up to 60 characters, and valid characters are [a-z0-9_]. The first character cannot be a number.
-        :param pulumi.Input[int] offline_storage_ttl_days: Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-               storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-               since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        :param pulumi.Input[int] offline_storage_ttl_days: (Optional, Beta)
+               Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the EntityType.
@@ -800,9 +778,8 @@ class AiFeatureStoreEntityType(pulumi.CustomResource):
     @pulumi.getter(name="offlineStorageTtlDays")
     def offline_storage_ttl_days(self) -> pulumi.Output[Optional[int]]:
         """
-        Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline
-        storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays
-        since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+        (Optional, Beta)
+        Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
         """
         return pulumi.get(self, "offline_storage_ttl_days")
 

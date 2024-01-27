@@ -55,15 +55,7 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     /// 
     /// ## Import
     /// 
-    /// PrivateConnection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}` * `{{project}}/{{location}}/{{private_connection_id}}` * `{{location}}/{{private_connection_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import PrivateConnection using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}"
-    /// 
-    ///  to = google_database_migration_service_private_connection.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), PrivateConnection can be imported using one of the formats above. For example
-    /// ```
+    /// PrivateConnection can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}` * `{{project}}/{{location}}/{{private_connection_id}}` * `{{location}}/{{private_connection_id}}` When using the `pulumi import` command, PrivateConnection can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:databasemigrationservice/privateConnection:PrivateConnection default projects/{{project}}/locations/{{location}}/privateConnections/{{private_connection_id}}

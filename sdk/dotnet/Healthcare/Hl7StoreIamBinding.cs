@@ -99,15 +99,11 @@ namespace Pulumi.Gcp.Healthcare
     /// 
     /// ## Import
     /// 
-    /// ### Importing IAM policies IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+    /// ### Importing IAM policies IAM policy imports use the identifier of the Google Cloud Healthcare HL7v2 store resource. For example* `"{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
     /// 
     ///  id = "{{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}"
     /// 
-    ///  to = google_healthcare_hl7_v2_store_iam_policy.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-    /// ```
+    ///  to = google_healthcare_hl7_v2_store_iam_policy.default } The `pulumi import` command can also be used
     /// 
     /// ```sh
     ///  $ pulumi import gcp:healthcare/hl7StoreIamBinding:Hl7StoreIamBinding default {{project_id}}/{{location}}/{{dataset}}/{{hl7_v2_store}}

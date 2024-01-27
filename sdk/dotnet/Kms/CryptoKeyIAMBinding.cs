@@ -193,15 +193,11 @@ namespace Pulumi.Gcp.Kms
     /// 
     /// ## Import
     /// 
-    /// ### Importing IAM policies IAM policy imports use the identifier of the KMS crypto key only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}` An [`import` block](https://developer.hashicorp.com/terraform/language/import) (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
+    /// ### Importing IAM policies IAM policy imports use the identifier of the KMS crypto key only. For example* `{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}` An `import` block (Terraform v1.5.0 and later) can be used to import IAM policiestf import {
     /// 
     ///  id = "{{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}"
     /// 
-    ///  to = google_kms_crypto_key_iam_policy.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding The [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import) can also be used
-    /// ```
+    ///  to = google_kms_crypto_key_iam_policy.default } The `pulumi import` command can also be used
     /// 
     /// ```sh
     ///  $ pulumi import gcp:kms/cryptoKeyIAMBinding:CryptoKeyIAMBinding default {{project_id}}/{{location}}/{{key_ring_name}}/{{crypto_key_name}}
@@ -211,7 +207,7 @@ namespace Pulumi.Gcp.Kms
     public partial class CryptoKeyIAMBinding : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Output("condition")]
@@ -298,7 +294,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class CryptoKeyIAMBindingArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]
@@ -346,7 +342,7 @@ namespace Pulumi.Gcp.Kms
     public sealed class CryptoKeyIAMBindingState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// ) An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
+        /// An [IAM Condition](https://cloud.google.com/iam/docs/conditions-overview) for a given binding.
         /// Structure is documented below.
         /// </summary>
         [Input("condition")]

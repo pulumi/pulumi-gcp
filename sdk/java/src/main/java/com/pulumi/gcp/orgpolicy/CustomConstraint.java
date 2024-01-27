@@ -113,15 +113,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * CustomConstraint can be imported using any of these accepted formats* `{{parent}}/customConstraints/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import CustomConstraint using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{parent}}/customConstraints/{{name}}&#34;
- * 
- *  to = google_org_policy_custom_constraint.default }
- * 
- * ```sh
- *  $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), CustomConstraint can be imported using one of the formats above. For example
- * ```
+ * CustomConstraint can be imported using any of these accepted formats* `{{parent}}/customConstraints/{{name}}` When using the `pulumi import` command, CustomConstraint can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:orgpolicy/customConstraint:CustomConstraint default {{parent}}/customConstraints/{{name}}

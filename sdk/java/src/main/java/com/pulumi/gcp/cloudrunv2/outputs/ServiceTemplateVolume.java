@@ -23,6 +23,12 @@ public final class ServiceTemplateVolume {
      * 
      */
     private @Nullable ServiceTemplateVolumeCloudSqlInstance cloudSqlInstance;
+    /**
+     * @return (Optional, Beta)
+     * Ephemeral storage used as a shared volume.
+     * Structure is documented below.
+     * 
+     */
     private @Nullable ServiceTemplateVolumeEmptyDir emptyDir;
     /**
      * @return Represents a GCS Bucket mounted as a volume.
@@ -57,6 +63,12 @@ public final class ServiceTemplateVolume {
     public Optional<ServiceTemplateVolumeCloudSqlInstance> cloudSqlInstance() {
         return Optional.ofNullable(this.cloudSqlInstance);
     }
+    /**
+     * @return (Optional, Beta)
+     * Ephemeral storage used as a shared volume.
+     * Structure is documented below.
+     * 
+     */
     public Optional<ServiceTemplateVolumeEmptyDir> emptyDir() {
         return Optional.ofNullable(this.emptyDir);
     }

@@ -498,15 +498,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}` * `{{project}}/{{location}}/{{repository_id}}` * `{{location}}/{{repository_id}}` * `{{repository_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Repository using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}&#34;
- * 
- *  to = google_artifact_registry_repository.default }
- * 
- * ```sh
- *  $ pulumi import gcp:artifactregistry/repository:Repository When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Repository can be imported using one of the formats above. For example
- * ```
+ * Repository can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}` * `{{project}}/{{location}}/{{repository_id}}` * `{{location}}/{{repository_id}}` * `{{repository_id}}` When using the `pulumi import` command, Repository can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:artifactregistry/repository:Repository default projects/{{project}}/locations/{{location}}/repositories/{{repository_id}}
@@ -528,32 +520,42 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:artifactregistry/repository:Repository")
 public class Repository extends com.pulumi.resources.CustomResource {
     /**
-     * Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * (Optional, Beta)
+     * Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      * 
      */
     @Export(name="cleanupPolicies", refs={List.class,RepositoryCleanupPolicy.class}, tree="[0,1]")
     private Output</* @Nullable */ List<RepositoryCleanupPolicy>> cleanupPolicies;
 
     /**
-     * @return Cleanup policies for this repository. Cleanup policies indicate when certain package versions can be automatically
-     * deleted. Map keys are policy IDs supplied by users during policy creation. They must unique within a repository and be
-     * under 128 characters in length.
+     * @return (Optional, Beta)
+     * Cleanup policies for this repository. Cleanup policies indicate when
+     * certain package versions can be automatically deleted.
+     * Map keys are policy IDs supplied by users during policy creation. They must
+     * unique within a repository and be under 128 characters in length.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<RepositoryCleanupPolicy>>> cleanupPolicies() {
         return Codegen.optional(this.cleanupPolicies);
     }
     /**
-     * If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * (Optional, Beta)
+     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      * 
      */
     @Export(name="cleanupPolicyDryRun", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> cleanupPolicyDryRun;
 
     /**
-     * @return If true, the cleanup pipeline is prevented from deleting versions in this repository.
+     * @return (Optional, Beta)
+     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * repository.
      * 
      */
     public Output<Optional<Boolean>> cleanupPolicyDryRun() {

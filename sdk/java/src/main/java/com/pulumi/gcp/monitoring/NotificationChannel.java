@@ -113,15 +113,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * NotificationChannel can be imported using any of these accepted formats* `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NotificationChannel using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{name}}&#34;
- * 
- *  to = google_monitoring_notification_channel.default }
- * 
- * ```sh
- *  $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NotificationChannel can be imported using one of the formats above. For example
- * ```
+ * NotificationChannel can be imported using any of these accepted formats* `{{name}}` When using the `pulumi import` command, NotificationChannel can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:monitoring/notificationChannel:NotificationChannel default {{name}}

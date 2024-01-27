@@ -96,17 +96,7 @@ import (
 //
 // ## Import
 //
-// Pipeline can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/pipelines/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Pipeline using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{region}}/pipelines/{{name}}"
-//
-//	to = google_data_pipeline_pipeline.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:dataflow/pipeline:Pipeline When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Pipeline can be imported using one of the formats above. For example
-//
-// ```
+// Pipeline can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/pipelines/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Pipeline can be imported using one of the formats above. For example
 //
 // ```sh
 //

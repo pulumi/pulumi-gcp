@@ -265,15 +265,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FhirStore can be imported using any of these accepted formats* `{{dataset}}/fhirStores/{{name}}` * `{{dataset}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FhirStore using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{dataset}}/fhirStores/{{name}}&#34;
- * 
- *  to = google_healthcare_fhir_store.default }
- * 
- * ```sh
- *  $ pulumi import gcp:healthcare/fhirStore:FhirStore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FhirStore can be imported using one of the formats above. For example
- * ```
+ * FhirStore can be imported using any of these accepted formats* `{{dataset}}/fhirStores/{{name}}` * `{{dataset}}/{{name}}` When using the `pulumi import` command, FhirStore can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:healthcare/fhirStore:FhirStore default {{dataset}}/fhirStores/{{name}}
@@ -427,16 +419,18 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.enableHistoryImport);
     }
     /**
-     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * (Optional, Beta)
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+     * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      * 
      */
     @Export(name="enableHistoryModifications", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> enableHistoryModifications;
 
     /**
-     * @return Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
-     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * @return (Optional, Beta)
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+     * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      * 
      */
     public Output<Optional<Boolean>> enableHistoryModifications() {
@@ -533,14 +527,18 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notificationConfig);
     }
     /**
+     * (Optional, Beta)
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      * 
      */
     @Export(name="notificationConfigs", refs={List.class,FhirStoreNotificationConfig.class}, tree="[0,1]")
     private Output</* @Nullable */ List<FhirStoreNotificationConfig>> notificationConfigs;
 
     /**
-     * @return A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * @return (Optional, Beta)
+     * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<List<FhirStoreNotificationConfig>>> notificationConfigs() {

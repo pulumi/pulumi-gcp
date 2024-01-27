@@ -57,15 +57,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Project-level logging exclusions can be imported using their URI, e.g. * `projects/{{project_id}}/exclusions/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import project-level logging exclusions using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project_id}}/exclusions/{{name}}&#34;
- * 
- *  to = google_logging_project_exclusion.default }
- * 
- * ```sh
- *  $ pulumi import gcp:logging/projectExclusion:ProjectExclusion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), project-level logging exclusions can be imported using one of the formats above. For example
- * ```
+ * Project-level logging exclusions can be imported using their URI, e.g. * `projects/{{project_id}}/exclusions/{{name}}` When using the `pulumi import` command, project-level logging exclusions can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:logging/projectExclusion:ProjectExclusion default projects/{{project_id}}/exclusions/{{name}}

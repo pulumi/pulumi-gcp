@@ -238,15 +238,7 @@ class Flowhook(pulumi.CustomResource):
 
         ## Import
 
-        Flowhook can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}` * `{{org_id}}/{{environment}}/{{flow_hook_point}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flowhook using one of the formats above. For exampletf import {
-
-         id = "organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}"
-
-         to = google_apigee_flowhook.default }
-
-        ```sh
-         $ pulumi import gcp:apigee/flowhook:Flowhook When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flowhook can be imported using one of the formats above. For example
-        ```
+        Flowhook can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}` * `{{org_id}}/{{environment}}/{{flow_hook_point}}` When using the `pulumi import` command, Flowhook can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:apigee/flowhook:Flowhook default organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}
@@ -282,15 +274,7 @@ class Flowhook(pulumi.CustomResource):
 
         ## Import
 
-        Flowhook can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}` * `{{org_id}}/{{environment}}/{{flow_hook_point}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Flowhook using one of the formats above. For exampletf import {
-
-         id = "organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}"
-
-         to = google_apigee_flowhook.default }
-
-        ```sh
-         $ pulumi import gcp:apigee/flowhook:Flowhook When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Flowhook can be imported using one of the formats above. For example
-        ```
+        Flowhook can be imported using any of these accepted formats* `organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}` * `{{org_id}}/{{environment}}/{{flow_hook_point}}` When using the `pulumi import` command, Flowhook can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:apigee/flowhook:Flowhook default organizations/{{org_id}}/environments/{{environment}}/flowhooks/{{flow_hook_point}}

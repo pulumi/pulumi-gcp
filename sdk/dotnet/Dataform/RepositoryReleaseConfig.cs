@@ -101,15 +101,7 @@ namespace Pulumi.Gcp.Dataform
     /// 
     /// ## Import
     /// 
-    /// RepositoryReleaseConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}` * `{{project}}/{{region}}/{{repository}}/{{name}}` * `{{region}}/{{repository}}/{{name}}` * `{{repository}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RepositoryReleaseConfig using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}"
-    /// 
-    ///  to = google_dataform_repository_release_config.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RepositoryReleaseConfig can be imported using one of the formats above. For example
-    /// ```
+    /// RepositoryReleaseConfig can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}` * `{{project}}/{{region}}/{{repository}}/{{name}}` * `{{region}}/{{repository}}/{{name}}` * `{{repository}}/{{name}}` When using the `pulumi import` command, RepositoryReleaseConfig can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:dataform/repositoryReleaseConfig:RepositoryReleaseConfig default projects/{{project}}/locations/{{region}}/repositories/{{repository}}/releaseConfigs/{{name}}

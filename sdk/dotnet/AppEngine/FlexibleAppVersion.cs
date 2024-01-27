@@ -160,15 +160,7 @@ namespace Pulumi.Gcp.AppEngine
     /// 
     /// ## Import
     /// 
-    /// FlexibleAppVersion can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}/versions/{{version_id}}` * `{{project}}/{{service}}/{{version_id}}` * `{{service}}/{{version_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FlexibleAppVersion using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "apps/{{project}}/services/{{service}}/versions/{{version_id}}"
-    /// 
-    ///  to = google_app_engine_flexible_app_version.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FlexibleAppVersion can be imported using one of the formats above. For example
-    /// ```
+    /// FlexibleAppVersion can be imported using any of these accepted formats* `apps/{{project}}/services/{{service}}/versions/{{version_id}}` * `{{project}}/{{service}}/{{version_id}}` * `{{service}}/{{version_id}}` When using the `pulumi import` command, FlexibleAppVersion can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:appengine/flexibleAppVersion:FlexibleAppVersion default apps/{{project}}/services/{{service}}/versions/{{version_id}}

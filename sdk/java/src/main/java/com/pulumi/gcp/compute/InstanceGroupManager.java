@@ -152,15 +152,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import instance group managers using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}&#34;
- * 
- *  to = google_compute_instance_group_manager.default }
- * 
- * ```sh
- *  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), instance group managers can be imported using one of the formats above. For example
- * ```
+ * Instance group managers can be imported using any of these accepted formats* `projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}` * `{{project}}/{{zone}}/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, instance group managers can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:compute/instanceGroupManager:InstanceGroupManager default projects/{{project}}/zones/{{zone}}/instanceGroupManagers/{{name}}
@@ -182,7 +174,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/instanceGroupManager:InstanceGroupManager")
 public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     /**
-     * )
      * Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
@@ -192,8 +183,7 @@ public class InstanceGroupManager extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ InstanceGroupManagerAllInstancesConfig> allInstancesConfig;
 
     /**
-     * @return )
-     * Properties to set on all instances in the group. After setting
+     * @return Properties to set on all instances in the group. After setting
      * allInstancesConfig on the group, you must update the group&#39;s instances to
      * apply the configuration.
      * 

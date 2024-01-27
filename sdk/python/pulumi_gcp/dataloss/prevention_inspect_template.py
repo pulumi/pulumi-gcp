@@ -394,15 +394,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
 
         ## Import
 
-        InspectTemplate can be imported using any of these accepted formats* `{{parent}}/inspectTemplates/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import InspectTemplate using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/inspectTemplates/{{name}}"
-
-         to = google_data_loss_prevention_inspect_template.default }
-
-        ```sh
-         $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), InspectTemplate can be imported using one of the formats above. For example
-        ```
+        InspectTemplate can be imported using any of these accepted formats* `{{parent}}/inspectTemplates/{{name}}` * `{{parent}}/{{name}}` When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}
@@ -573,15 +565,7 @@ class PreventionInspectTemplate(pulumi.CustomResource):
 
         ## Import
 
-        InspectTemplate can be imported using any of these accepted formats* `{{parent}}/inspectTemplates/{{name}}` * `{{parent}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import InspectTemplate using one of the formats above. For exampletf import {
-
-         id = "{{parent}}/inspectTemplates/{{name}}"
-
-         to = google_data_loss_prevention_inspect_template.default }
-
-        ```sh
-         $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), InspectTemplate can be imported using one of the formats above. For example
-        ```
+        InspectTemplate can be imported using any of these accepted formats* `{{parent}}/inspectTemplates/{{name}}` * `{{parent}}/{{name}}` When using the `pulumi import` command, InspectTemplate can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:dataloss/preventionInspectTemplate:PreventionInspectTemplate default {{parent}}/inspectTemplates/{{name}}

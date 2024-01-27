@@ -324,15 +324,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
         ## Import
 
-        TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}` * `{{project}}/{{tenant}}/{{idp_id}}` * `{{tenant}}/{{idp_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TenantDefaultSupportedIdpConfig using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}"
-
-         to = google_identity_platform_tenant_default_supported_idp_config.default }
-
-        ```sh
-         $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example
-        ```
+        TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}` * `{{project}}/{{tenant}}/{{idp_id}}` * `{{tenant}}/{{idp_id}}` When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}
@@ -400,15 +392,7 @@ class TenantDefaultSupportedIdpConfig(pulumi.CustomResource):
 
         ## Import
 
-        TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}` * `{{project}}/{{tenant}}/{{idp_id}}` * `{{tenant}}/{{idp_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import TenantDefaultSupportedIdpConfig using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}"
-
-         to = google_identity_platform_tenant_default_supported_idp_config.default }
-
-        ```sh
-         $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example
-        ```
+        TenantDefaultSupportedIdpConfig can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}` * `{{project}}/{{tenant}}/{{idp_id}}` * `{{tenant}}/{{idp_id}}` When using the `pulumi import` command, TenantDefaultSupportedIdpConfig can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:identityplatform/tenantDefaultSupportedIdpConfig:TenantDefaultSupportedIdpConfig default projects/{{project}}/tenants/{{tenant}}/defaultSupportedIdpConfigs/{{idp_id}}

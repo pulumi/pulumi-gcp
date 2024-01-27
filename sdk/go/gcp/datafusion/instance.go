@@ -268,17 +268,7 @@ import (
 //
 // ## Import
 //
-// Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Instance using one of the formats above. For exampletf import {
-//
-//	id = "projects/{{project}}/locations/{{region}}/instances/{{name}}"
-//
-//	to = google_data_fusion_instance.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:datafusion/instance:Instance When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Instance can be imported using one of the formats above. For example
-//
-// ```
+// Instance can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/instances/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Instance can be imported using one of the formats above. For example
 //
 // ```sh
 //
@@ -306,10 +296,10 @@ import (
 type Instance struct {
 	pulumi.CustomResourceState
 
-	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-	// created with the Options field. Users will need to either manually update their state file to include these diffed
-	// options, or include the field in a [lifecycle ignore changes
-	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	// List of accelerators enabled for this CDF instance.
+	// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+	// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+	// Structure is documented below.
 	Accelerators InstanceAcceleratorArrayOutput `pulumi:"accelerators"`
 	// Endpoint on which the REST APIs is accessible.
 	ApiEndpoint pulumi.StringOutput `pulumi:"apiEndpoint"`
@@ -364,6 +354,7 @@ type Instance struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the Data Fusion instance.
 	Region pulumi.StringOutput `pulumi:"region"`
+	// (Beta, Deprecated)
 	// Service account which will be used to access resources in the customer project.
 	//
 	// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
@@ -437,10 +428,10 @@ func GetInstance(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Instance resources.
 type instanceState struct {
-	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-	// created with the Options field. Users will need to either manually update their state file to include these diffed
-	// options, or include the field in a [lifecycle ignore changes
-	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	// List of accelerators enabled for this CDF instance.
+	// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+	// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+	// Structure is documented below.
 	Accelerators []InstanceAccelerator `pulumi:"accelerators"`
 	// Endpoint on which the REST APIs is accessible.
 	ApiEndpoint *string `pulumi:"apiEndpoint"`
@@ -495,6 +486,7 @@ type instanceState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the Data Fusion instance.
 	Region *string `pulumi:"region"`
+	// (Beta, Deprecated)
 	// Service account which will be used to access resources in the customer project.
 	//
 	// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
@@ -531,10 +523,10 @@ type instanceState struct {
 }
 
 type InstanceState struct {
-	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-	// created with the Options field. Users will need to either manually update their state file to include these diffed
-	// options, or include the field in a [lifecycle ignore changes
-	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	// List of accelerators enabled for this CDF instance.
+	// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+	// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+	// Structure is documented below.
 	Accelerators InstanceAcceleratorArrayInput
 	// Endpoint on which the REST APIs is accessible.
 	ApiEndpoint pulumi.StringPtrInput
@@ -589,6 +581,7 @@ type InstanceState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The region of the Data Fusion instance.
 	Region pulumi.StringPtrInput
+	// (Beta, Deprecated)
 	// Service account which will be used to access resources in the customer project.
 	//
 	// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
@@ -629,10 +622,10 @@ func (InstanceState) ElementType() reflect.Type {
 }
 
 type instanceArgs struct {
-	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-	// created with the Options field. Users will need to either manually update their state file to include these diffed
-	// options, or include the field in a [lifecycle ignore changes
-	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	// List of accelerators enabled for this CDF instance.
+	// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+	// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+	// Structure is documented below.
 	Accelerators []InstanceAccelerator `pulumi:"accelerators"`
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 	// Structure is documented below.
@@ -696,10 +689,10 @@ type instanceArgs struct {
 
 // The set of arguments for constructing a Instance resource.
 type InstanceArgs struct {
-	// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-	// created with the Options field. Users will need to either manually update their state file to include these diffed
-	// options, or include the field in a [lifecycle ignore changes
-	// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+	// List of accelerators enabled for this CDF instance.
+	// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+	// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+	// Structure is documented below.
 	Accelerators InstanceAcceleratorArrayInput
 	// The crypto key configuration. This field is used by the Customer-Managed Encryption Keys (CMEK) feature.
 	// Structure is documented below.
@@ -848,10 +841,10 @@ func (o InstanceOutput) ToInstanceOutputWithContext(ctx context.Context) Instanc
 	return o
 }
 
-// List of accelerators enabled for this CDF instance. If accelerators are enabled it is possible a permadiff will be
-// created with the Options field. Users will need to either manually update their state file to include these diffed
-// options, or include the field in a [lifecycle ignore changes
-// block](https://developer.hashicorp.com/terraform/language/meta-arguments/lifecycle#ignore_changes).
+// List of accelerators enabled for this CDF instance.
+// If accelerators are enabled it is possible a permadiff will be created with the Options field.
+// Users will need to either manually update their state file to include these diffed options, or include the field in a lifecycle ignore changes block.
+// Structure is documented below.
 func (o InstanceOutput) Accelerators() InstanceAcceleratorArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceAcceleratorArrayOutput { return v.Accelerators }).(InstanceAcceleratorArrayOutput)
 }
@@ -972,6 +965,7 @@ func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
+// (Beta, Deprecated)
 // Service account which will be used to access resources in the customer project.
 //
 // Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.

@@ -79,15 +79,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * DefaultObjectAccessControl can be imported using any of these accepted formats* `{{bucket}}/{{entity}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import DefaultObjectAccessControl using one of the formats above. For exampletf import {
- * 
- *  id = &#34;{{bucket}}/{{entity}}&#34;
- * 
- *  to = google_storage_default_object_access_control.default }
- * 
- * ```sh
- *  $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), DefaultObjectAccessControl can be imported using one of the formats above. For example
- * ```
+ * DefaultObjectAccessControl can be imported using any of these accepted formats* `{{bucket}}/{{entity}}` When using the `pulumi import` command, DefaultObjectAccessControl can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl default {{bucket}}/{{entity}}

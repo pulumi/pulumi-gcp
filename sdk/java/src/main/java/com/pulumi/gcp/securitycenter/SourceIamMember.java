@@ -62,15 +62,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Source can be imported using any of these accepted formats* `organizations/{{organization}}/sources/{{name}}` * `{{organization}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Source using one of the formats above. For exampletf import {
- * 
- *  id = &#34;organizations/{{organization}}/sources/{{name}}&#34;
- * 
- *  to = google_scc_source.default }
- * 
- * ```sh
- *  $ pulumi import gcp:securitycenter/sourceIamMember:SourceIamMember When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Source can be imported using one of the formats above. For example
- * ```
+ * Source can be imported using any of these accepted formats* `organizations/{{organization}}/sources/{{name}}` * `{{organization}}/{{name}}` When using the `pulumi import` command, Source can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:securitycenter/sourceIamMember:SourceIamMember default organizations/{{organization}}/sources/{{name}}

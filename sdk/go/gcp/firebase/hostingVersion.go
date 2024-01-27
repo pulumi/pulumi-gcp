@@ -210,17 +210,7 @@ import (
 //
 // ## Import
 //
-// Version can be imported using any of these accepted formats* `sites/{{site_id}}/versions/{{version_id}}` * `{{site_id}}/{{version_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Version using one of the formats above. For exampletf import {
-//
-//	id = "sites/{{site_id}}/versions/{{version_id}}"
-//
-//	to = google_firebase_hosting_version.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:firebase/hostingVersion:HostingVersion When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Version can be imported using one of the formats above. For example
-//
-// ```
+// Version can be imported using any of these accepted formats* `sites/{{site_id}}/versions/{{version_id}}` * `{{site_id}}/{{version_id}}` When using the `pulumi import` command, Version can be imported using one of the formats above. For example
 //
 // ```sh
 //

@@ -584,15 +584,7 @@ class Network(pulumi.CustomResource):
 
         ## Import
 
-        Network can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Network using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/global/networks/{{name}}"
-
-         to = google_compute_network.default }
-
-        ```sh
-         $ pulumi import gcp:compute/network:Network When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Network can be imported using one of the formats above. For example
-        ```
+        Network can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Network can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}
@@ -700,15 +692,7 @@ class Network(pulumi.CustomResource):
 
         ## Import
 
-        Network can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Network using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/global/networks/{{name}}"
-
-         to = google_compute_network.default }
-
-        ```sh
-         $ pulumi import gcp:compute/network:Network When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Network can be imported using one of the formats above. For example
-        ```
+        Network can be imported using any of these accepted formats* `projects/{{project}}/global/networks/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Network can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/network:Network default projects/{{project}}/global/networks/{{name}}

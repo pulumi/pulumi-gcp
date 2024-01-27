@@ -132,9 +132,17 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.network);
     }
 
+    /**
+     * Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+     * 
+     */
     @Import(name="networkAttachment")
     private @Nullable Output<String> networkAttachment;
 
+    /**
+     * @return Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+     * 
+     */
     public Optional<Output<String>> networkAttachment() {
         return Optional.ofNullable(this.networkAttachment);
     }
@@ -186,9 +194,17 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
         return Optional.ofNullable(this.queueCount);
     }
 
+    /**
+     * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     @Import(name="securityPolicy")
     private @Nullable Output<String> securityPolicy;
 
+    /**
+     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * 
+     */
     public Optional<Output<String>> securityPolicy() {
         return Optional.ofNullable(this.securityPolicy);
     }
@@ -471,11 +487,23 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
             return network(Output.of(network));
         }
 
+        /**
+         * @param networkAttachment Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkAttachment(@Nullable Output<String> networkAttachment) {
             $.networkAttachment = networkAttachment;
             return this;
         }
 
+        /**
+         * @param networkAttachment Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+         * 
+         * @return builder
+         * 
+         */
         public Builder networkAttachment(String networkAttachment) {
             return networkAttachment(Output.of(networkAttachment));
         }
@@ -545,11 +573,23 @@ public final class InstanceNetworkInterfaceArgs extends com.pulumi.resources.Res
             return queueCount(Output.of(queueCount));
         }
 
+        /**
+         * @param securityPolicy Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicy(@Nullable Output<String> securityPolicy) {
             $.securityPolicy = securityPolicy;
             return this;
         }
 
+        /**
+         * @param securityPolicy Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * 
+         * @return builder
+         * 
+         */
         public Builder securityPolicy(String securityPolicy) {
             return securityPolicy(Output.of(securityPolicy));
         }

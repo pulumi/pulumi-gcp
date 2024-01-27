@@ -171,15 +171,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * FeatureOnlineStore can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import FeatureOnlineStore using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}&#34;
- * 
- *  to = google_vertex_ai_feature_online_store.default }
- * 
- * ```sh
- *  $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), FeatureOnlineStore can be imported using one of the formats above. For example
- * ```
+ * FeatureOnlineStore can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, FeatureOnlineStore can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:vertex/aiFeatureOnlineStore:AiFeatureOnlineStore default projects/{{project}}/locations/{{region}}/featureOnlineStores/{{name}}
@@ -231,16 +223,18 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-     * need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * (Optional, Beta)
+     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * Structure is documented below.
      * 
      */
     @Export(name="dedicatedServingEndpoint", refs={AiFeatureOnlineStoreDedicatedServingEndpoint.class}, tree="[0]")
     private Output<AiFeatureOnlineStoreDedicatedServingEndpoint> dedicatedServingEndpoint;
 
     /**
-     * @return The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only
-     * need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * @return (Optional, Beta)
+     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * Structure is documented below.
      * 
      */
     public Output<AiFeatureOnlineStoreDedicatedServingEndpoint> dedicatedServingEndpoint() {
@@ -261,14 +255,18 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
+     * (Optional, Beta)
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * Structure is documented below.
      * 
      */
     @Export(name="embeddingManagement", refs={AiFeatureOnlineStoreEmbeddingManagement.class}, tree="[0]")
     private Output</* @Nullable */ AiFeatureOnlineStoreEmbeddingManagement> embeddingManagement;
 
     /**
-     * @return The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * @return (Optional, Beta)
+     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * Structure is documented below.
      * 
      */
     public Output<Optional<AiFeatureOnlineStoreEmbeddingManagement>> embeddingManagement() {
@@ -339,16 +337,16 @@ public class AiFeatureOnlineStore extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-     * FeatureOnlineStore
+     * (Optional, Beta)
+     * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      * 
      */
     @Export(name="optimized", refs={AiFeatureOnlineStoreOptimized.class}, tree="[0]")
     private Output</* @Nullable */ AiFeatureOnlineStoreOptimized> optimized;
 
     /**
-     * @return Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this
-     * FeatureOnlineStore
+     * @return (Optional, Beta)
+     * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      * 
      */
     public Output<Optional<AiFeatureOnlineStoreOptimized>> optimized() {

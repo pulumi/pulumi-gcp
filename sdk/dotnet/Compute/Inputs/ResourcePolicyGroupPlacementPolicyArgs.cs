@@ -29,6 +29,10 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("collocation")]
         public Input<string>? Collocation { get; set; }
 
+        /// <summary>
+        /// (Optional, Beta)
+        /// Specifies the number of max logical switches.
+        /// </summary>
         [Input("maxDistance")]
         public Input<int>? MaxDistance { get; set; }
 

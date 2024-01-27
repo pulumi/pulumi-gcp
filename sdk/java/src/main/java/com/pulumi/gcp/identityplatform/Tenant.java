@@ -59,15 +59,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Tenant can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Tenant using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/tenants/{{name}}&#34;
- * 
- *  to = google_identity_platform_tenant.default }
- * 
- * ```sh
- *  $ pulumi import gcp:identityplatform/tenant:Tenant When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Tenant can be imported using one of the formats above. For example
- * ```
+ * Tenant can be imported using any of these accepted formats* `projects/{{project}}/tenants/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Tenant can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:identityplatform/tenant:Tenant default projects/{{project}}/tenants/{{name}}

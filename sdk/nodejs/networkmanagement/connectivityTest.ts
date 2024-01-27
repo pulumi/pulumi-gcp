@@ -108,15 +108,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * ConnectivityTest can be imported using any of these accepted formats* `projects/{{project}}/locations/global/connectivityTests/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ConnectivityTest using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/global/connectivityTests/{{name}}"
- *
- *  to = google_network_management_connectivity_test.default }
- *
- * ```sh
- *  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ConnectivityTest can be imported using one of the formats above. For example
- * ```
+ * ConnectivityTest can be imported using any of these accepted formats* `projects/{{project}}/locations/global/connectivityTests/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, ConnectivityTest can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:networkmanagement/connectivityTest:ConnectivityTest default projects/{{project}}/locations/global/connectivityTests/{{name}}

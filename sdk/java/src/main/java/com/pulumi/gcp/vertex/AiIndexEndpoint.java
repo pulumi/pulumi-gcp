@@ -163,15 +163,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * IndexEndpoint can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import IndexEndpoint using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}&#34;
- * 
- *  to = google_vertex_ai_index_endpoint.default }
- * 
- * ```sh
- *  $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), IndexEndpoint can be imported using one of the formats above. For example
- * ```
+ * IndexEndpoint can be imported using any of these accepted formats* `projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, IndexEndpoint can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:vertex/aiIndexEndpoint:AiIndexEndpoint default projects/{{project}}/locations/{{region}}/indexEndpoints/{{name}}

@@ -9,15 +9,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * Location can be imported using any of these accepted formats* `projects/{{project}}/locations/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Location using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/locations/{{name}}"
- *
- *  to = google_notebooks_location.default }
- *
- * ```sh
- *  $ pulumi import gcp:notebooks/location:Location When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Location can be imported using one of the formats above. For example
- * ```
+ * Location can be imported using any of these accepted formats* `projects/{{project}}/locations/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, Location can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:notebooks/location:Location default projects/{{project}}/locations/{{name}}

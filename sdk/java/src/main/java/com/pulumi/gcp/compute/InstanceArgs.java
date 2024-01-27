@@ -408,6 +408,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Optional, Beta
      * Configures network performance settings for the instance. Structure is
      * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
@@ -419,7 +420,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<InstanceNetworkPerformanceConfigArgs> networkPerformanceConfig;
 
     /**
-     * @return Configures network performance settings for the instance. Structure is
+     * @return (Optional, Beta
+     * Configures network performance settings for the instance. Structure is
      * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
      * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
      * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -1175,7 +1177,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkPerformanceConfig Configures network performance settings for the instance. Structure is
+         * @param networkPerformanceConfig (Optional, Beta
+         * Configures network performance settings for the instance. Structure is
          * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
          * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
          * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`
@@ -1190,7 +1193,8 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param networkPerformanceConfig Configures network performance settings for the instance. Structure is
+         * @param networkPerformanceConfig (Optional, Beta
+         * Configures network performance settings for the instance. Structure is
          * documented below. **Note**: `machine_type` must be a [supported type](https://cloud.google.com/compute/docs/networking/configure-vm-with-high-bandwidth-configuration),
          * the `image` used must include the [`GVNIC`](https://cloud.google.com/compute/docs/networking/using-gvnic#create-instance-gvnic-image)
          * in `guest-os-features`, and `network_interface.0.nic-type` must be `GVNIC`

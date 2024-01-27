@@ -16,23 +16,7 @@ import (
 //
 // ## Import
 //
-// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g. * `{{project_id}}/{{instance}}/{{host}}/{{name}}` SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g. * `{{project_id}}/{{instance}}/{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NAME_HERE using one of the formats above. For exampletf MySQL database import {
-//
-//	id = "{{project_id}}/{{instance}}/{{host}}/{{name}}"
-//
-//	to = google_sql_user.default } PostgreSQL database import {
-//
-//	id = "{{project_id}}/{{instance}}/{{name}}"
-//
-//	to = google_sql_user.default }
-//
-// ```sh
-//
-//	$ pulumi import gcp:sql/user:User When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NAME_HERE can be imported using one of the formats above. For example
-//
-// ```
-//
-//	MySQL database
+// SQL users for MySQL databases can be imported using the `project`, `instance`, `host` and `name`, e.g. * `{{project_id}}/{{instance}}/{{host}}/{{name}}` SQL users for PostgreSQL databases can be imported using the `project`, `instance` and `name`, e.g. * `{{project_id}}/{{instance}}/{{name}}` When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For exampleMySQL database
 //
 // ```sh
 //

@@ -20,15 +20,7 @@ import * as utilities from "../utilities";
  *
  * ## Import
  *
- * RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import RegionBackendService using one of the formats above. For exampletf import {
- *
- *  id = "projects/{{project}}/regions/{{region}}/backendServices/{{name}}"
- *
- *  to = google_compute_region_backend_service.default }
- *
- * ```sh
- *  $ pulumi import gcp:compute/regionBackendService:RegionBackendService When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), RegionBackendService can be imported using one of the formats above. For example
- * ```
+ * RegionBackendService can be imported using any of these accepted formats* `projects/{{project}}/regions/{{region}}/backendServices/{{name}}` * `{{project}}/{{region}}/{{name}}` * `{{region}}/{{name}}` * `{{name}}` When using the `pulumi import` command, RegionBackendService can be imported using one of the formats above. For example
  *
  * ```sh
  *  $ pulumi import gcp:compute/regionBackendService:RegionBackendService default projects/{{project}}/regions/{{region}}/backendServices/{{name}}
@@ -229,6 +221,7 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
+     * (Optional, Beta)
      * The security policy associated with this backend service.
      */
     public readonly securityPolicy!: pulumi.Output<string | undefined>;
@@ -243,8 +236,9 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * (Optional, Beta)
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      */
     public readonly subsetting!: pulumi.Output<outputs.compute.RegionBackendServiceSubsetting | undefined>;
     /**
@@ -491,6 +485,7 @@ export interface RegionBackendServiceState {
      */
     region?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The security policy associated with this backend service.
      */
     securityPolicy?: pulumi.Input<string>;
@@ -505,8 +500,9 @@ export interface RegionBackendServiceState {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * (Optional, Beta)
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      */
     subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
     /**
@@ -666,6 +662,7 @@ export interface RegionBackendServiceArgs {
      */
     region?: pulumi.Input<string>;
     /**
+     * (Optional, Beta)
      * The security policy associated with this backend service.
      */
     securityPolicy?: pulumi.Input<string>;
@@ -676,8 +673,9 @@ export interface RegionBackendServiceArgs {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing
-     * and Internal HTTP(S) load balancing.
+     * (Optional, Beta)
+     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * Structure is documented below.
      */
     subsetting?: pulumi.Input<inputs.compute.RegionBackendServiceSubsetting>;
     /**

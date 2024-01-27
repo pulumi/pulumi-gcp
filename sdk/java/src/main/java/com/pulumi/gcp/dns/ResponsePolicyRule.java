@@ -89,15 +89,7 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import ResponsePolicyRule using one of the formats above. For exampletf import {
- * 
- *  id = &#34;projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}&#34;
- * 
- *  to = google_dns_response_policy_rule.default }
- * 
- * ```sh
- *  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), ResponsePolicyRule can be imported using one of the formats above. For example
- * ```
+ * ResponsePolicyRule can be imported using any of these accepted formats* `projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}` * `{{project}}/{{response_policy}}/{{rule_name}}` * `{{response_policy}}/{{rule_name}}` When using the `pulumi import` command, ResponsePolicyRule can be imported using one of the formats above. For example
  * 
  * ```sh
  *  $ pulumi import gcp:dns/responsePolicyRule:ResponsePolicyRule default projects/{{project}}/responsePolicies/{{response_policy}}/rules/{{rule_name}}
@@ -115,16 +107,16 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dns/responsePolicyRule:ResponsePolicyRule")
 public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
     /**
-     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-     * &#39;bypassResponsePolicy&#39;
+     * (Optional, Beta)
+     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
     @Export(name="behavior", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> behavior;
 
     /**
-     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and
-     * &#39;bypassResponsePolicy&#39;
+     * @return (Optional, Beta)
+     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
     public Output<Optional<String>> behavior() {

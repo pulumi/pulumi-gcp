@@ -22,15 +22,7 @@ namespace Pulumi.Gcp.DataPlex
     /// 
     /// ## Import
     /// 
-    /// Task can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}` * `{{project}}/{{location}}/{{lake}}/{{task_id}}` * `{{location}}/{{lake}}/{{task_id}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import Task using one of the formats above. For exampletf import {
-    /// 
-    ///  id = "projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}"
-    /// 
-    ///  to = google_dataplex_task.default }
-    /// 
-    /// ```sh
-    ///  $ pulumi import gcp:dataplex/task:Task When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), Task can be imported using one of the formats above. For example
-    /// ```
+    /// Task can be imported using any of these accepted formats* `projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}` * `{{project}}/{{location}}/{{lake}}/{{task_id}}` * `{{location}}/{{lake}}/{{task_id}}` When using the `pulumi import` command, Task can be imported using one of the formats above. For example
     /// 
     /// ```sh
     ///  $ pulumi import gcp:dataplex/task:Task default projects/{{project}}/locations/{{location}}/lakes/{{lake}}/tasks/{{task_id}}

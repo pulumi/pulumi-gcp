@@ -259,15 +259,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
 
         ## Import
 
-        NetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/global/firewallPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/global/firewallPolicies/{{name}}"
-
-         to = google_compute_network_firewall_policy.default }
-
-        ```sh
-         $ pulumi import gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicy can be imported using one of the formats above. For example
-        ```
+        NetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/global/firewallPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NetworkFirewallPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy default projects/{{project}}/global/firewallPolicies/{{name}}
@@ -312,15 +304,7 @@ class NetworkFirewallPolicy(pulumi.CustomResource):
 
         ## Import
 
-        NetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/global/firewallPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` In Terraform v1.5.0 and later, use an [`import` block](https://developer.hashicorp.com/terraform/language/import) to import NetworkFirewallPolicy using one of the formats above. For exampletf import {
-
-         id = "projects/{{project}}/global/firewallPolicies/{{name}}"
-
-         to = google_compute_network_firewall_policy.default }
-
-        ```sh
-         $ pulumi import gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy When using the [`terraform import` command](https://developer.hashicorp.com/terraform/cli/commands/import), NetworkFirewallPolicy can be imported using one of the formats above. For example
-        ```
+        NetworkFirewallPolicy can be imported using any of these accepted formats* `projects/{{project}}/global/firewallPolicies/{{name}}` * `{{project}}/{{name}}` * `{{name}}` When using the `pulumi import` command, NetworkFirewallPolicy can be imported using one of the formats above. For example
 
         ```sh
          $ pulumi import gcp:compute/networkFirewallPolicy:NetworkFirewallPolicy default projects/{{project}}/global/firewallPolicies/{{name}}
