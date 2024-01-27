@@ -9,6 +9,7 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
+	"sync/atomic"
 	"unicode"
 
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
@@ -323,8 +324,13 @@ func lowercaseAutoName() *tfbridge.SchemaInfo {
 	})
 }
 
-func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
+// We should only run the validation once to avoid duplicating the reported errors.
+var credentialsValidationRun atomic.Bool
 
+func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
+	if !credentialsValidationRun.CompareAndSwap(false, true) {
+		return nil
+	}
 	project := stringValue(vars, "project", []string{
 		"GOOGLE_PROJECT",
 		"GOOGLE_CLOUD_PROJECT",
