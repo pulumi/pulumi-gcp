@@ -21,6 +21,12 @@ namespace Pulumi.Gcp.Composer.Inputs
         [Input("databaseConfig")]
         public Input<Inputs.EnvironmentConfigDatabaseConfigArgs>? DatabaseConfig { get; set; }
 
+        [Input("enablePrivateBuildsOnly")]
+        public Input<bool>? EnablePrivateBuildsOnly { get; set; }
+
+        [Input("enablePrivateEnvironment")]
+        public Input<bool>? EnablePrivateEnvironment { get; set; }
+
         [Input("encryptionConfig")]
         public Input<Inputs.EnvironmentConfigEncryptionConfigArgs>? EncryptionConfig { get; set; }
 

@@ -5,8 +5,10 @@
 package examples
 
 import (
+	"bytes"
 	"encoding/json"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/pulumi/pulumi/pkg/v3/testing/integration"
@@ -35,4 +37,20 @@ func TestPulumiLabelsSecretYAML(t *testing.T) {
 			assert.Contains(t, outputStr, "ciphertext")
 		},
 	})
+}
+
+func TestWarningsNotDuplicated(t *testing.T) {
+	var outputBuf bytes.Buffer
+	opts := integration.ProgramTestOptions{
+		Dir:           filepath.Join(getCwd(t), "simple-bucket"),
+		Stderr:        &outputBuf,
+		ExpectFailure: true,
+		Quick:         true,
+		SkipRefresh:   true,
+		Env:           []string{"GOOGLE_PROJECT=", "GOOGLE_APPLICATION_CREDENTIALS="},
+		ExtraRuntimeValidation: func(t *testing.T, stackInfo integration.RuntimeValidationStackInfo) {
+			assert.Equal(t, 1, strings.Count(outputBuf.String(), "Pulumi will rely on per-resource settings for this operation"))
+		},
+	}
+	integration.ProgramTest(t, &opts)
 }

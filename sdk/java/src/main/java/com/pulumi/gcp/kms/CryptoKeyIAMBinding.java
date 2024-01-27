@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  * 
  *         var key = new CryptoKey(&#34;key&#34;, CryptoKeyArgs.builder()        
  *             .keyRing(keyring.id())
- *             .rotationPeriod(&#34;100000s&#34;)
+ *             .rotationPeriod(&#34;7776000s&#34;)
  *             .build());
  * 
  *         final var admin = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()

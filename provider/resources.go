@@ -23,9 +23,9 @@ import (
 	tks "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfbridge/tokens"
 	shim "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim"
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
-	"google.golang.org/api/compute/v1"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
+	"google.golang.org/api/compute/v1"
 
 	"github.com/pulumi/pulumi-gcp/provider/v7/pkg/version"
 )
@@ -1739,7 +1739,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_firestore_index":    {Tok: gcpResource(gcpFirestore, "Index")},
 			"google_firestore_document": {Tok: gcpResource(gcpFirestore, "Document")},
 			"google_firestore_database": {Tok: gcpResource(gcpFirestore, "Database")},
-			"google_firestore_field": {Tok: gcpResource(gcpFirestore, "Field"),
+			"google_firestore_field": {
+				Tok: gcpResource(gcpFirestore, "Field"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"field": {
 						CSharpName: "FieldId",
@@ -1835,7 +1836,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_redis_instance": {Tok: gcpResource(gcpRedis, "Instance")},
 
 			// Resource Manager resources
-			"google_resource_manager_lien": {Tok: gcpResource(gcpResourceManager, "Lien"),
+			"google_resource_manager_lien": {
+				Tok: gcpResource(gcpResourceManager, "Lien"),
 				Docs: &tfbridge.DocInfo{
 					Source: "resourcemanager_lien.html.markdown",
 				},
@@ -2780,6 +2782,9 @@ func Provider() tfbridge.ProviderInfo {
 			"google_network_security_gateway_security_policy":      {Tok: gcpResource(gcpNetworkSecurity, "GatewaySecurityPolicy")},
 			"google_network_security_gateway_security_policy_rule": {Tok: gcpResource(gcpNetworkSecurity, "GatewaySecurityPolicyRule")},
 			"google_network_security_url_lists":                    {Tok: gcpResource(gcpNetworkSecurity, "UrlList")},
+			"google_network_security_address_group_iam_binding":    {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_network_security_address_group_iam_member":     {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_network_security_address_group_iam_policy":     {Docs: &tfbridge.DocInfo{Source: "network_security_address_group_iam.html.markdown"}},
 
 			// Network Services
 			"google_network_services_edge_cache_keyset":  {Tok: gcpResource(gcpNetworkServices, "EdgeCacheKeyset")},
@@ -3110,32 +3115,38 @@ func Provider() tfbridge.ProviderInfo {
 			"google_workstations_workstation_cluster": {Tok: gcpResource(gcpWorkstations, "WorkstationCluster")},
 			"google_workstations_workstation_config":  {Tok: gcpResource(gcpWorkstations, "WorkstationConfig")},
 			"google_workstations_workstation":         {Tok: gcpResource(gcpWorkstations, "Workstation")},
-			"google_workstations_workstation_config_iam_binding": {Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamBinding"),
+			"google_workstations_workstation_config_iam_binding": {
+				Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamBinding"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_config_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_config_iam_member": {Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamMember"),
+			"google_workstations_workstation_config_iam_member": {
+				Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamMember"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_config_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_config_iam_policy": {Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamPolicy"),
+			"google_workstations_workstation_config_iam_policy": {
+				Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_config_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_iam_binding": {Tok: gcpResource(gcpWorkstations, "WorkstationIamBinding"),
+			"google_workstations_workstation_iam_binding": {
+				Tok: gcpResource(gcpWorkstations, "WorkstationIamBinding"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_iam_member": {Tok: gcpResource(gcpWorkstations, "WorkstationIamMember"),
+			"google_workstations_workstation_iam_member": {
+				Tok: gcpResource(gcpWorkstations, "WorkstationIamMember"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_iam_policy": {Tok: gcpResource(gcpWorkstations, "WorkstationIamPolicy"),
+			"google_workstations_workstation_iam_policy": {
+				Tok: gcpResource(gcpWorkstations, "WorkstationIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_iam.html.markdown",
 				},
@@ -3908,7 +3919,8 @@ func Provider() tfbridge.ProviderInfo {
 			i := &tfbridge.PythonInfo{
 				Requires: map[string]string{
 					"pulumi": ">=3.0.0,<4.0.0",
-				}}
+				},
+			}
 			i.PyProject.Enabled = true
 			return i
 		})(),

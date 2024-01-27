@@ -12,10 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Cloudbuildv2 Repository resource
+// A repository associated to a parent connection.
+//
+// To get more information about Repository, see:
+//
+// * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+// * How-to Guides
+//   - [Official Documentation](https://cloud.google.com/build/docs)
 //
 // ## Example Usage
-// ### Ghe
+// ### Cloudbuildv2 Repository Ghe Doc
+//
 // ```go
 // package main
 //
@@ -129,8 +136,8 @@ import (
 //	}
 //
 // ```
-// ### Repository In GitHub Connection
-// Creates a Repository resource inside a Connection to github.com
+// ### Cloudbuildv2 Repository Github Doc
+//
 // ```go
 // package main
 //
@@ -192,7 +199,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
-//				Location: pulumi.String("us-west1"),
+//				Location: pulumi.String("us-central1"),
 //				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
 //					AppInstallationId: pulumi.Int(123123),
 //					AuthorizerCredential: &cloudbuildv2.ConnectionGithubConfigAuthorizerCredentialArgs{
@@ -204,7 +211,7 @@ import (
 //				return err
 //			}
 //			_, err = cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
-//				Location:         pulumi.String("us-west1"),
+//				Location:         pulumi.String("us-central1"),
 //				ParentConnection: my_connection.Name,
 //				RemoteUri:        pulumi.String("https://github.com/myuser/myrepo.git"),
 //			})
@@ -252,7 +259,6 @@ type Repository struct {
 	pulumi.CustomResourceState
 
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
@@ -260,7 +266,7 @@ type Repository struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapOutput `pulumi:"effectiveAnnotations"`
+	EffectiveAnnotations pulumi.StringMapOutput `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// The location for the resource
@@ -268,12 +274,13 @@ type Repository struct {
 	// Name of the repository.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The connection for the resource
-	ParentConnection pulumi.StringOutput `pulumi:"parentConnection"`
-	// The project for the resource
-	Project pulumi.StringOutput `pulumi:"project"`
-	// Required. Git Clone HTTPS URI.
 	//
 	// ***
+	ParentConnection pulumi.StringOutput `pulumi:"parentConnection"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
+	// Required. Git Clone HTTPS URI.
 	RemoteUri pulumi.StringOutput `pulumi:"remoteUri"`
 	// Output only. Server assigned timestamp for when the connection was updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -316,7 +323,6 @@ func GetRepository(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
@@ -324,7 +330,7 @@ type repositoryState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
-	EffectiveAnnotations map[string]interface{} `pulumi:"effectiveAnnotations"`
+	EffectiveAnnotations map[string]string `pulumi:"effectiveAnnotations"`
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag *string `pulumi:"etag"`
 	// The location for the resource
@@ -332,12 +338,13 @@ type repositoryState struct {
 	// Name of the repository.
 	Name *string `pulumi:"name"`
 	// The connection for the resource
-	ParentConnection *string `pulumi:"parentConnection"`
-	// The project for the resource
-	Project *string `pulumi:"project"`
-	// Required. Git Clone HTTPS URI.
 	//
 	// ***
+	ParentConnection *string `pulumi:"parentConnection"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// Required. Git Clone HTTPS URI.
 	RemoteUri *string `pulumi:"remoteUri"`
 	// Output only. Server assigned timestamp for when the connection was updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -345,7 +352,6 @@ type repositoryState struct {
 
 type RepositoryState struct {
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
@@ -353,7 +359,7 @@ type RepositoryState struct {
 	CreateTime pulumi.StringPtrInput
 	// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 	// Terraform, other clients and services.
-	EffectiveAnnotations pulumi.MapInput
+	EffectiveAnnotations pulumi.StringMapInput
 	// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
 	Etag pulumi.StringPtrInput
 	// The location for the resource
@@ -361,12 +367,13 @@ type RepositoryState struct {
 	// Name of the repository.
 	Name pulumi.StringPtrInput
 	// The connection for the resource
-	ParentConnection pulumi.StringPtrInput
-	// The project for the resource
-	Project pulumi.StringPtrInput
-	// Required. Git Clone HTTPS URI.
 	//
 	// ***
+	ParentConnection pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// Required. Git Clone HTTPS URI.
 	RemoteUri pulumi.StringPtrInput
 	// Output only. Server assigned timestamp for when the connection was updated.
 	UpdateTime pulumi.StringPtrInput
@@ -378,7 +385,6 @@ func (RepositoryState) ElementType() reflect.Type {
 
 type repositoryArgs struct {
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations map[string]string `pulumi:"annotations"`
@@ -387,19 +393,19 @@ type repositoryArgs struct {
 	// Name of the repository.
 	Name *string `pulumi:"name"`
 	// The connection for the resource
-	ParentConnection string `pulumi:"parentConnection"`
-	// The project for the resource
-	Project *string `pulumi:"project"`
-	// Required. Git Clone HTTPS URI.
 	//
 	// ***
+	ParentConnection string `pulumi:"parentConnection"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
+	// Required. Git Clone HTTPS URI.
 	RemoteUri string `pulumi:"remoteUri"`
 }
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
 	// Allows clients to store small amounts of arbitrary data.
-	//
 	// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 	// Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 	Annotations pulumi.StringMapInput
@@ -408,12 +414,13 @@ type RepositoryArgs struct {
 	// Name of the repository.
 	Name pulumi.StringPtrInput
 	// The connection for the resource
-	ParentConnection pulumi.StringInput
-	// The project for the resource
-	Project pulumi.StringPtrInput
-	// Required. Git Clone HTTPS URI.
 	//
 	// ***
+	ParentConnection pulumi.StringInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
+	// Required. Git Clone HTTPS URI.
 	RemoteUri pulumi.StringInput
 }
 
@@ -505,7 +512,6 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 }
 
 // Allows clients to store small amounts of arbitrary data.
-//
 // **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
 // Please refer to the field `effectiveAnnotations` for all of the annotations present on the resource.
 func (o RepositoryOutput) Annotations() pulumi.StringMapOutput {
@@ -519,8 +525,8 @@ func (o RepositoryOutput) CreateTime() pulumi.StringOutput {
 
 // All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
 // Terraform, other clients and services.
-func (o RepositoryOutput) EffectiveAnnotations() pulumi.MapOutput {
-	return o.ApplyT(func(v *Repository) pulumi.MapOutput { return v.EffectiveAnnotations }).(pulumi.MapOutput)
+func (o RepositoryOutput) EffectiveAnnotations() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.EffectiveAnnotations }).(pulumi.StringMapOutput)
 }
 
 // This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -539,18 +545,19 @@ func (o RepositoryOutput) Name() pulumi.StringOutput {
 }
 
 // The connection for the resource
+//
+// ***
 func (o RepositoryOutput) ParentConnection() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.ParentConnection }).(pulumi.StringOutput)
 }
 
-// The project for the resource
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o RepositoryOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
 // Required. Git Clone HTTPS URI.
-//
-// ***
 func (o RepositoryOutput) RemoteUri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RemoteUri }).(pulumi.StringOutput)
 }

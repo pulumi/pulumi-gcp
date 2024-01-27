@@ -14,7 +14,8 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class InstanceBootDiskInitializeParams
     {
         /// <summary>
-        /// Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+        /// Whether this disk is using confidential compute mode.
+        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
         /// </summary>
         public readonly bool? EnableConfidentialCompute;
         /// <summary>

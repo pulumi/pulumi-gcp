@@ -41,6 +41,8 @@ class EnvironmentConfigArgs:
                  airflow_uri: Optional[pulumi.Input[str]] = None,
                  dag_gcs_prefix: Optional[pulumi.Input[str]] = None,
                  database_config: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']] = None,
+                 enable_private_builds_only: Optional[pulumi.Input[bool]] = None,
+                 enable_private_environment: Optional[pulumi.Input[bool]] = None,
                  encryption_config: Optional[pulumi.Input['EnvironmentConfigEncryptionConfigArgs']] = None,
                  environment_size: Optional[pulumi.Input[str]] = None,
                  gke_cluster: Optional[pulumi.Input[str]] = None,
@@ -61,6 +63,10 @@ class EnvironmentConfigArgs:
             pulumi.set(__self__, "dag_gcs_prefix", dag_gcs_prefix)
         if database_config is not None:
             pulumi.set(__self__, "database_config", database_config)
+        if enable_private_builds_only is not None:
+            pulumi.set(__self__, "enable_private_builds_only", enable_private_builds_only)
+        if enable_private_environment is not None:
+            pulumi.set(__self__, "enable_private_environment", enable_private_environment)
         if encryption_config is not None:
             pulumi.set(__self__, "encryption_config", encryption_config)
         if environment_size is not None:
@@ -116,6 +122,24 @@ class EnvironmentConfigArgs:
     @database_config.setter
     def database_config(self, value: Optional[pulumi.Input['EnvironmentConfigDatabaseConfigArgs']]):
         pulumi.set(self, "database_config", value)
+
+    @property
+    @pulumi.getter(name="enablePrivateBuildsOnly")
+    def enable_private_builds_only(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_private_builds_only")
+
+    @enable_private_builds_only.setter
+    def enable_private_builds_only(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_private_builds_only", value)
+
+    @property
+    @pulumi.getter(name="enablePrivateEnvironment")
+    def enable_private_environment(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "enable_private_environment")
+
+    @enable_private_environment.setter
+    def enable_private_environment(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_private_environment", value)
 
     @property
     @pulumi.getter(name="encryptionConfig")

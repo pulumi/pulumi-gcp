@@ -469,6 +469,10 @@ export class WorkstationConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly degraded!: pulumi.Output<boolean>;
     /**
+     * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+     */
+    public readonly disableTcpConnections!: pulumi.Output<boolean | undefined>;
+    /**
      * Human-readable name for this resource.
      */
     public readonly displayName!: pulumi.Output<string | undefined>;
@@ -581,6 +585,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             resourceInputs["container"] = state ? state.container : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["degraded"] = state ? state.degraded : undefined;
+            resourceInputs["disableTcpConnections"] = state ? state.disableTcpConnections : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveAnnotations"] = state ? state.effectiveAnnotations : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -613,6 +618,7 @@ export class WorkstationConfig extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["container"] = args ? args.container : undefined;
+            resourceInputs["disableTcpConnections"] = args ? args.disableTcpConnections : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["enableAuditAgent"] = args ? args.enableAuditAgent : undefined;
             resourceInputs["encryptionKey"] = args ? args.encryptionKey : undefined;
@@ -671,6 +677,10 @@ export interface WorkstationConfigState {
      * Whether this resource is in degraded mode, in which case it may require user action to restore full functionality. Details can be found in the conditions field.
      */
     degraded?: pulumi.Input<boolean>;
+    /**
+     * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+     */
+    disableTcpConnections?: pulumi.Input<boolean>;
     /**
      * Human-readable name for this resource.
      */
@@ -782,6 +792,10 @@ export interface WorkstationConfigArgs {
      * Structure is documented below.
      */
     container?: pulumi.Input<inputs.workstations.WorkstationConfigContainer>;
+    /**
+     * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+     */
+    disableTcpConnections?: pulumi.Input<boolean>;
     /**
      * Human-readable name for this resource.
      */

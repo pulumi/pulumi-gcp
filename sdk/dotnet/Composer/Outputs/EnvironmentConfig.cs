@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Composer.Outputs
         public readonly string? AirflowUri;
         public readonly string? DagGcsPrefix;
         public readonly Outputs.EnvironmentConfigDatabaseConfig? DatabaseConfig;
+        public readonly bool? EnablePrivateBuildsOnly;
+        public readonly bool? EnablePrivateEnvironment;
         public readonly Outputs.EnvironmentConfigEncryptionConfig? EncryptionConfig;
         public readonly string? EnvironmentSize;
         public readonly string? GkeCluster;
@@ -38,6 +40,10 @@ namespace Pulumi.Gcp.Composer.Outputs
             string? dagGcsPrefix,
 
             Outputs.EnvironmentConfigDatabaseConfig? databaseConfig,
+
+            bool? enablePrivateBuildsOnly,
+
+            bool? enablePrivateEnvironment,
 
             Outputs.EnvironmentConfigEncryptionConfig? encryptionConfig,
 
@@ -70,6 +76,8 @@ namespace Pulumi.Gcp.Composer.Outputs
             AirflowUri = airflowUri;
             DagGcsPrefix = dagGcsPrefix;
             DatabaseConfig = databaseConfig;
+            EnablePrivateBuildsOnly = enablePrivateBuildsOnly;
+            EnablePrivateEnvironment = enablePrivateEnvironment;
             EncryptionConfig = encryptionConfig;
             EnvironmentSize = environmentSize;
             GkeCluster = gkeCluster;

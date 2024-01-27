@@ -20,14 +20,16 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     public static final InstanceBootDiskInitializeParamsArgs Empty = new InstanceBootDiskInitializeParamsArgs();
 
     /**
-     * Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
      * 
      */
     @Import(name="enableConfidentialCompute")
     private @Nullable Output<Boolean> enableConfidentialCompute;
 
     /**
-     * @return Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+     * @return Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
      * 
      */
     public Optional<Output<Boolean>> enableConfidentialCompute() {
@@ -207,7 +209,8 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
+         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
          * 
          * @return builder
          * 
@@ -218,7 +221,8 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param enableConfidentialCompute Defines whether the instance should have confidential compute enabled. `on_host_maintenance` has to be set to TERMINATE or this will fail to create the VM.
+         * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
+         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true.
          * 
          * @return builder
          * 

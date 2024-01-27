@@ -36,7 +36,7 @@ namespace Pulumi.Gcp.Kms
     ///     var key = new Gcp.Kms.CryptoKey("key", new()
     ///     {
     ///         KeyRing = keyring.Id,
-    ///         RotationPeriod = "100000s",
+    ///         RotationPeriod = "7776000s",
     ///     });
     /// 
     ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()

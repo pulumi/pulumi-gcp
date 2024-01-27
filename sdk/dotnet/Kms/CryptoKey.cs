@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Kms
     ///     var example_key = new Gcp.Kms.CryptoKey("example-key", new()
     ///     {
     ///         KeyRing = keyring.Id,
-    ///         RotationPeriod = "100000s",
+    ///         RotationPeriod = "7776000s",
     ///     });
     /// 
     /// });

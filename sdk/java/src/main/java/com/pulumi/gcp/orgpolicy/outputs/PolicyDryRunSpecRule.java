@@ -14,7 +14,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class PolicyDryRunSpecRule {
     /**
-     * @return Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+     * @return Setting this to `&#34;TRUE&#34;` means that all values are allowed. This field can be set only in Policies for list constraints.
      * 
      */
     private @Nullable String allowAll;
@@ -24,12 +24,12 @@ public final class PolicyDryRunSpecRule {
      */
     private @Nullable PolicyDryRunSpecRuleCondition condition;
     /**
-     * @return Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+     * @return Setting this to `&#34;TRUE&#34;` means that all values are denied. This field can be set only in Policies for list constraints.
      * 
      */
     private @Nullable String denyAll;
     /**
-     * @return If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+     * @return If `&#34;TRUE&#34;`, then the `Policy` is enforced. If `&#34;FALSE&#34;`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
      * 
      */
     private @Nullable String enforce;
@@ -41,7 +41,7 @@ public final class PolicyDryRunSpecRule {
 
     private PolicyDryRunSpecRule() {}
     /**
-     * @return Setting this to true means that all values are allowed. This field can be set only in Policies for list constraints.
+     * @return Setting this to `&#34;TRUE&#34;` means that all values are allowed. This field can be set only in Policies for list constraints.
      * 
      */
     public Optional<String> allowAll() {
@@ -55,14 +55,14 @@ public final class PolicyDryRunSpecRule {
         return Optional.ofNullable(this.condition);
     }
     /**
-     * @return Setting this to true means that all values are denied. This field can be set only in Policies for list constraints.
+     * @return Setting this to `&#34;TRUE&#34;` means that all values are denied. This field can be set only in Policies for list constraints.
      * 
      */
     public Optional<String> denyAll() {
         return Optional.ofNullable(this.denyAll);
     }
     /**
-     * @return If `true`, then the `Policy` is enforced. If `false`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
+     * @return If `&#34;TRUE&#34;`, then the `Policy` is enforced. If `&#34;FALSE&#34;`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
      * 
      */
     public Optional<String> enforce() {

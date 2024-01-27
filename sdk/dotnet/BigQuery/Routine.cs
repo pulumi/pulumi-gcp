@@ -139,6 +139,163 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     /// });
     /// ```
+    /// ### Big Query Routine Pyspark
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     {
+    ///         DatasetId = "dataset_id",
+    ///     });
+    /// 
+    ///     var testConnection = new Gcp.BigQuery.Connection("testConnection", new()
+    ///     {
+    ///         ConnectionId = "connection_id",
+    ///         Location = "US",
+    ///         Spark = null,
+    ///     });
+    /// 
+    ///     var pyspark = new Gcp.BigQuery.Routine("pyspark", new()
+    ///     {
+    ///         DatasetId = testDataset.DatasetId,
+    ///         RoutineId = "routine_id",
+    ///         RoutineType = "PROCEDURE",
+    ///         Language = "PYTHON",
+    ///         DefinitionBody = @"from pyspark.sql import SparkSession
+    /// 
+    /// spark = SparkSession.builder.appName(""spark-bigquery-demo"").getOrCreate()
+    ///     
+    /// # Load data from BigQuery.
+    /// words = spark.read.format(""bigquery"") \
+    ///   .option(""table"", ""bigquery-public-data:samples.shakespeare"") \
+    ///   .load()
+    /// words.createOrReplaceTempView(""words"")
+    ///     
+    /// # Perform word count.
+    /// word_count = words.select('word', 'word_count').groupBy('word').sum('word_count').withColumnRenamed(""sum(word_count)"", ""sum_word_count"")
+    /// word_count.show()
+    /// word_count.printSchema()
+    ///     
+    /// # Saving the data to BigQuery
+    /// word_count.write.format(""bigquery"") \
+    ///   .option(""writeMethod"", ""direct"") \
+    ///   .save(""wordcount_dataset.wordcount_output"")
+    /// ",
+    ///         SparkOptions = new Gcp.BigQuery.Inputs.RoutineSparkOptionsArgs
+    ///         {
+    ///             Connection = testConnection.Name,
+    ///             RuntimeVersion = "2.1",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Big Query Routine Pyspark Mainfile
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     {
+    ///         DatasetId = "dataset_id",
+    ///     });
+    /// 
+    ///     var testConnection = new Gcp.BigQuery.Connection("testConnection", new()
+    ///     {
+    ///         ConnectionId = "connection_id",
+    ///         Location = "US",
+    ///         Spark = null,
+    ///     });
+    /// 
+    ///     var pysparkMainfile = new Gcp.BigQuery.Routine("pysparkMainfile", new()
+    ///     {
+    ///         DatasetId = testDataset.DatasetId,
+    ///         RoutineId = "routine_id",
+    ///         RoutineType = "PROCEDURE",
+    ///         Language = "PYTHON",
+    ///         DefinitionBody = "",
+    ///         SparkOptions = new Gcp.BigQuery.Inputs.RoutineSparkOptionsArgs
+    ///         {
+    ///             Connection = testConnection.Name,
+    ///             RuntimeVersion = "2.1",
+    ///             MainFileUri = "gs://test-bucket/main.py",
+    ///             PyFileUris = new[]
+    ///             {
+    ///                 "gs://test-bucket/lib.py",
+    ///             },
+    ///             FileUris = new[]
+    ///             {
+    ///                 "gs://test-bucket/distribute_in_executor.json",
+    ///             },
+    ///             ArchiveUris = new[]
+    ///             {
+    ///                 "gs://test-bucket/distribute_in_executor.tar.gz",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Big Query Routine Spark Jar
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var testDataset = new Gcp.BigQuery.Dataset("testDataset", new()
+    ///     {
+    ///         DatasetId = "dataset_id",
+    ///     });
+    /// 
+    ///     var testConnection = new Gcp.BigQuery.Connection("testConnection", new()
+    ///     {
+    ///         ConnectionId = "connection_id",
+    ///         Location = "US",
+    ///         Spark = null,
+    ///     });
+    /// 
+    ///     var sparkJar = new Gcp.BigQuery.Routine("sparkJar", new()
+    ///     {
+    ///         DatasetId = testDataset.DatasetId,
+    ///         RoutineId = "routine_id",
+    ///         RoutineType = "PROCEDURE",
+    ///         Language = "SCALA",
+    ///         DefinitionBody = "",
+    ///         SparkOptions = new Gcp.BigQuery.Inputs.RoutineSparkOptionsArgs
+    ///         {
+    ///             Connection = testConnection.Name,
+    ///             RuntimeVersion = "2.1",
+    ///             ContainerImage = "gcr.io/my-project-id/my-spark-image:latest",
+    ///             MainClass = "com.google.test.jar.MainClass",
+    ///             JarUris = new[]
+    ///             {
+    ///                 "gs://test-bucket/uberjar_spark_spark3.jar",
+    ///             },
+    ///             Properties = 
+    ///             {
+    ///                 { "spark.dataproc.scaling.version", "2" },
+    ///                 { "spark.reducer.fetchMigratedShuffle.enabled", "true" },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -219,7 +376,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The language of the routine.
-        /// Possible values are: `SQL`, `JAVASCRIPT`.
+        /// Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         /// </summary>
         [Output("language")]
         public Output<string?> Language { get; private set; } = null!;
@@ -273,6 +430,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Output("routineType")]
         public Output<string> RoutineType { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("sparkOptions")]
+        public Output<Outputs.RoutineSparkOptions?> SparkOptions { get; private set; } = null!;
 
 
         /// <summary>
@@ -377,7 +541,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The language of the routine.
-        /// Possible values are: `SQL`, `JAVASCRIPT`.
+        /// Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
@@ -424,6 +588,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("routineType", required: true)]
         public Input<string> RoutineType { get; set; } = null!;
+
+        /// <summary>
+        /// Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sparkOptions")]
+        public Input<Inputs.RoutineSparkOptionsArgs>? SparkOptions { get; set; }
 
         public RoutineArgs()
         {
@@ -497,7 +668,7 @@ namespace Pulumi.Gcp.BigQuery
 
         /// <summary>
         /// The language of the routine.
-        /// Possible values are: `SQL`, `JAVASCRIPT`.
+        /// Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
         /// </summary>
         [Input("language")]
         public Input<string>? Language { get; set; }
@@ -551,6 +722,13 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("routineType")]
         public Input<string>? RoutineType { get; set; }
+
+        /// <summary>
+        /// Optional. If language is one of "PYTHON", "JAVA", "SCALA", this field stores the options for spark stored procedure.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("sparkOptions")]
+        public Input<Inputs.RoutineSparkOptionsGetArgs>? SparkOptions { get; set; }
 
         public RoutineState()
         {

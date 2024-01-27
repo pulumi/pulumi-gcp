@@ -60,6 +60,21 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+     * 
+     */
+    @Import(name="disableTcpConnections")
+    private @Nullable Output<Boolean> disableTcpConnections;
+
+    /**
+     * @return Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+     * 
+     */
+    public Optional<Output<Boolean>> disableTcpConnections() {
+        return Optional.ofNullable(this.disableTcpConnections);
+    }
+
+    /**
      * Human-readable name for this resource.
      * 
      */
@@ -287,6 +302,7 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
     private WorkstationConfigArgs(WorkstationConfigArgs $) {
         this.annotations = $.annotations;
         this.container = $.container;
+        this.disableTcpConnections = $.disableTcpConnections;
         this.displayName = $.displayName;
         this.enableAuditAgent = $.enableAuditAgent;
         this.encryptionKey = $.encryptionKey;
@@ -366,6 +382,27 @@ public final class WorkstationConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder container(WorkstationConfigContainerArgs container) {
             return container(Output.of(container));
+        }
+
+        /**
+         * @param disableTcpConnections Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableTcpConnections(@Nullable Output<Boolean> disableTcpConnections) {
+            $.disableTcpConnections = disableTcpConnections;
+            return this;
+        }
+
+        /**
+         * @param disableTcpConnections Disables support for plain TCP connections in the workstation. By default the service supports TCP connections via a websocket relay. Setting this option to true disables that relay, which prevents the usage of services that require plain tcp connections, such as ssh. When enabled, all communication must occur over https or wss.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder disableTcpConnections(Boolean disableTcpConnections) {
+            return disableTcpConnections(Output.of(disableTcpConnections));
         }
 
         /**

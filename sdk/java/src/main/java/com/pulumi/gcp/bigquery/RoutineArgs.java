@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.RoutineArgumentArgs;
+import com.pulumi.gcp.bigquery.inputs.RoutineSparkOptionsArgs;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -122,7 +123,7 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * The language of the routine.
-     * Possible values are: `SQL`, `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      * 
      */
     @Import(name="language")
@@ -130,7 +131,7 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return The language of the routine.
-     * Possible values are: `SQL`, `JAVASCRIPT`.
+     * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
      * 
      */
     public Optional<Output<String>> language() {
@@ -238,6 +239,23 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
         return this.routineType;
     }
 
+    /**
+     * Optional. If language is one of &#34;PYTHON&#34;, &#34;JAVA&#34;, &#34;SCALA&#34;, this field stores the options for spark stored procedure.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="sparkOptions")
+    private @Nullable Output<RoutineSparkOptionsArgs> sparkOptions;
+
+    /**
+     * @return Optional. If language is one of &#34;PYTHON&#34;, &#34;JAVA&#34;, &#34;SCALA&#34;, this field stores the options for spark stored procedure.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RoutineSparkOptionsArgs>> sparkOptions() {
+        return Optional.ofNullable(this.sparkOptions);
+    }
+
     private RoutineArgs() {}
 
     private RoutineArgs(RoutineArgs $) {
@@ -253,6 +271,7 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
         this.returnType = $.returnType;
         this.routineId = $.routineId;
         this.routineType = $.routineType;
+        this.sparkOptions = $.sparkOptions;
     }
 
     public static Builder builder() {
@@ -435,7 +454,7 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param language The language of the routine.
-         * Possible values are: `SQL`, `JAVASCRIPT`.
+         * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
          * 
          * @return builder
          * 
@@ -447,7 +466,7 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param language The language of the routine.
-         * Possible values are: `SQL`, `JAVASCRIPT`.
+         * Possible values are: `SQL`, `JAVASCRIPT`, `PYTHON`, `JAVA`, `SCALA`.
          * 
          * @return builder
          * 
@@ -585,6 +604,29 @@ public final class RoutineArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder routineType(String routineType) {
             return routineType(Output.of(routineType));
+        }
+
+        /**
+         * @param sparkOptions Optional. If language is one of &#34;PYTHON&#34;, &#34;JAVA&#34;, &#34;SCALA&#34;, this field stores the options for spark stored procedure.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sparkOptions(@Nullable Output<RoutineSparkOptionsArgs> sparkOptions) {
+            $.sparkOptions = sparkOptions;
+            return this;
+        }
+
+        /**
+         * @param sparkOptions Optional. If language is one of &#34;PYTHON&#34;, &#34;JAVA&#34;, &#34;SCALA&#34;, this field stores the options for spark stored procedure.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sparkOptions(RoutineSparkOptionsArgs sparkOptions) {
+            return sparkOptions(Output.of(sparkOptions));
         }
 
         public RoutineArgs build() {

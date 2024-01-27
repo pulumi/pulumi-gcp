@@ -15,10 +15,12 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
     {
         public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeCloudSqlInstanceResult> CloudSqlInstances;
         public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeEmptyDirResult> EmptyDirs;
+        public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeGcResult> Gcs;
         /// <summary>
         /// The name of the Cloud Run v2 Service.
         /// </summary>
         public readonly string Name;
+        public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeNfResult> Nfs;
         public readonly ImmutableArray<Outputs.GetServiceTemplateVolumeSecretResult> Secrets;
 
         [OutputConstructor]
@@ -27,13 +29,19 @@ namespace Pulumi.Gcp.CloudRunV2.Outputs
 
             ImmutableArray<Outputs.GetServiceTemplateVolumeEmptyDirResult> emptyDirs,
 
+            ImmutableArray<Outputs.GetServiceTemplateVolumeGcResult> gcs,
+
             string name,
+
+            ImmutableArray<Outputs.GetServiceTemplateVolumeNfResult> nfs,
 
             ImmutableArray<Outputs.GetServiceTemplateVolumeSecretResult> secrets)
         {
             CloudSqlInstances = cloudSqlInstances;
             EmptyDirs = emptyDirs;
+            Gcs = gcs;
             Name = name;
+            Nfs = nfs;
             Secrets = secrets;
         }
     }

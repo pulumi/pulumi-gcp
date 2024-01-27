@@ -67,7 +67,7 @@ import javax.annotation.Nullable;
  * 
  *         var cryptokey = new CryptoKey(&#34;cryptokey&#34;, CryptoKeyArgs.builder()        
  *             .keyRing(keyring.id())
- *             .rotationPeriod(&#34;100000s&#34;)
+ *             .rotationPeriod(&#34;7776000s&#34;)
  *             .build());
  * 
  *         var myPassword = new SecretCiphertext(&#34;myPassword&#34;, SecretCiphertextArgs.builder()        

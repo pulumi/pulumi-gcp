@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A managed alloydb cluster.
-//
-// To get more information about Cluster, see:
-//
-// * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
-// * How-to Guides
-//   - [AlloyDB](https://cloud.google.com/alloydb/docs/)
-//
 // ## Example Usage
 // ### Alloydb Cluster Basic
 //
@@ -79,9 +71,10 @@ import (
 //				return err
 //			}
 //			_, err = alloydb.NewCluster(ctx, "full", &alloydb.ClusterArgs{
-//				ClusterId: pulumi.String("alloydb-cluster-full"),
-//				Location:  pulumi.String("us-central1"),
-//				Network:   _default.ID(),
+//				ClusterId:       pulumi.String("alloydb-cluster-full"),
+//				Location:        pulumi.String("us-central1"),
+//				Network:         _default.ID(),
+//				DatabaseVersion: pulumi.String("POSTGRES_15"),
 //				InitialUser: &alloydb.ClusterInitialUserArgs{
 //					User:     pulumi.String("alloydb-cluster-full"),
 //					Password: pulumi.String("alloydb-cluster-full"),
@@ -391,7 +384,7 @@ type Cluster struct {
 	// ContinuousBackupInfo describes the continuous backup properties of a cluster.
 	// Structure is documented below.
 	ContinuousBackupInfos ClusterContinuousBackupInfoArrayOutput `pulumi:"continuousBackupInfos"`
-	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -531,7 +524,7 @@ type clusterState struct {
 	// ContinuousBackupInfo describes the continuous backup properties of a cluster.
 	// Structure is documented below.
 	ContinuousBackupInfos []ClusterContinuousBackupInfo `pulumi:"continuousBackupInfos"`
-	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -631,7 +624,7 @@ type ClusterState struct {
 	// ContinuousBackupInfo describes the continuous backup properties of a cluster.
 	// Structure is documented below.
 	ContinuousBackupInfos ClusterContinuousBackupInfoArrayInput
-	// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 	DatabaseVersion pulumi.StringPtrInput
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -729,6 +722,8 @@ type clusterArgs struct {
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 	// Structure is documented below.
 	ContinuousBackupConfig *ClusterContinuousBackupConfig `pulumi:"continuousBackupConfig"`
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -797,6 +792,8 @@ type ClusterArgs struct {
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 	// Structure is documented below.
 	ContinuousBackupConfig ClusterContinuousBackupConfigPtrInput
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	DatabaseVersion pulumi.StringPtrInput
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
 	// Deleting a Secondary cluster with a secondary instance REQUIRES setting deletionPolicy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -977,7 +974,7 @@ func (o ClusterOutput) ContinuousBackupInfos() ClusterContinuousBackupInfoArrayO
 	return o.ApplyT(func(v *Cluster) ClusterContinuousBackupInfoArrayOutput { return v.ContinuousBackupInfos }).(ClusterContinuousBackupInfoArrayOutput)
 }
 
-// The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
 func (o ClusterOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
 }

@@ -10,6 +10,7 @@ import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableMaterializedViewArgs;
 import com.pulumi.gcp.bigquery.inputs.TableRangePartitioningArgs;
 import com.pulumi.gcp.bigquery.inputs.TableTableConstraintsArgs;
+import com.pulumi.gcp.bigquery.inputs.TableTableReplicationInfoArgs;
 import com.pulumi.gcp.bigquery.inputs.TableTimePartitioningArgs;
 import com.pulumi.gcp.bigquery.inputs.TableViewArgs;
 import java.lang.Boolean;
@@ -540,6 +541,21 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+     * 
+     */
+    @Import(name="tableReplicationInfo")
+    private @Nullable Output<TableTableReplicationInfoArgs> tableReplicationInfo;
+
+    /**
+     * @return Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+     * 
+     */
+    public Optional<Output<TableTableReplicationInfoArgs>> tableReplicationInfo() {
+        return Optional.ofNullable(this.tableReplicationInfo);
+    }
+
+    /**
      * If specified, configures time-based
      * partitioning for this table. Structure is documented below.
      * 
@@ -620,6 +636,7 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.tableConstraints = $.tableConstraints;
         this.tableId = $.tableId;
+        this.tableReplicationInfo = $.tableReplicationInfo;
         this.timePartitioning = $.timePartitioning;
         this.type = $.type;
         this.view = $.view;
@@ -1328,6 +1345,27 @@ public final class TableState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder tableId(String tableId) {
             return tableId(Output.of(tableId));
+        }
+
+        /**
+         * @param tableReplicationInfo Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableReplicationInfo(@Nullable Output<TableTableReplicationInfoArgs> tableReplicationInfo) {
+            $.tableReplicationInfo = tableReplicationInfo;
+            return this;
+        }
+
+        /**
+         * @param tableReplicationInfo Replication info of a table created using &#34;AS REPLICA&#34; DDL like: &#34;CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder tableReplicationInfo(TableTableReplicationInfoArgs tableReplicationInfo) {
+            return tableReplicationInfo(Output.of(tableReplicationInfo));
         }
 
         /**

@@ -203,8 +203,8 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        /// required when setting to true
+        /// Whether this disk is using confidential compute mode.
+        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         /// </summary>
         [Output("enableConfidentialCompute")]
         public Output<bool> EnableConfidentialCompute { get; private set; } = null!;
@@ -537,8 +537,8 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.DiskDiskEncryptionKeyArgs>? DiskEncryptionKey { get; set; }
 
         /// <summary>
-        /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        /// required when setting to true
+        /// Whether this disk is using confidential compute mode.
+        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }
@@ -806,8 +806,8 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-        /// required when setting to true
+        /// Whether this disk is using confidential compute mode.
+        /// Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
         /// </summary>
         [Input("enableConfidentialCompute")]
         public Input<bool>? EnableConfidentialCompute { get; set; }

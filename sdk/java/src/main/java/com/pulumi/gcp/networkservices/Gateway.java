@@ -331,7 +331,7 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="addresses", refs={List.class,String.class}, tree="[0,1]")
-    private Output</* @Nullable */ List<String>> addresses;
+    private Output<List<String>> addresses;
 
     /**
      * @return Zero or one IPv4-address on which the Gateway will receive the traffic. When no address is provided,
@@ -339,8 +339,8 @@ public class Gateway extends com.pulumi.resources.CustomResource {
      * Gateways of type &#39;OPEN_MESH&#39; listen on 0.0.0.0.
      * 
      */
-    public Output<Optional<List<String>>> addresses() {
-        return Codegen.optional(this.addresses);
+    public Output<List<String>> addresses() {
+        return this.addresses;
     }
     /**
      * A fully-qualified Certificates URL reference. The proxy presents a Certificate (selected based on SNI) when establishing a TLS connection.

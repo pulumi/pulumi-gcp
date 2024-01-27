@@ -10,10 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.CloudBuildV2
 {
     /// <summary>
-    /// The Cloudbuildv2 Repository resource
+    /// A repository associated to a parent connection.
+    /// 
+    /// To get more information about Repository, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/build/docs/api/reference/rest)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/build/docs)
     /// 
     /// ## Example Usage
-    /// ### Ghe
+    /// ### Cloudbuildv2 Repository Ghe Doc
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -110,8 +117,8 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     /// });
     /// ```
-    /// ### Repository In GitHub Connection
-    /// Creates a Repository resource inside a Connection to github.com
+    /// ### Cloudbuildv2 Repository Github Doc
+    /// 
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.IO;
@@ -159,7 +166,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     ///     var my_connection = new Gcp.CloudBuildV2.Connection("my-connection", new()
     ///     {
-    ///         Location = "us-west1",
+    ///         Location = "us-central1",
     ///         GithubConfig = new Gcp.CloudBuildV2.Inputs.ConnectionGithubConfigArgs
     ///         {
     ///             AppInstallationId = 123123,
@@ -172,7 +179,7 @@ namespace Pulumi.Gcp.CloudBuildV2
     /// 
     ///     var my_repository = new Gcp.CloudBuildV2.Repository("my-repository", new()
     ///     {
-    ///         Location = "us-west1",
+    ///         Location = "us-central1",
     ///         ParentConnection = my_connection.Name,
     ///         RemoteUri = "https://github.com/myuser/myrepo.git",
     ///     });
@@ -209,7 +216,6 @@ namespace Pulumi.Gcp.CloudBuildV2
     {
         /// <summary>
         /// Allows clients to store small amounts of arbitrary data.
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -227,7 +233,7 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// Terraform, other clients and services.
         /// </summary>
         [Output("effectiveAnnotations")]
-        public Output<ImmutableDictionary<string, object>> EffectiveAnnotations { get; private set; } = null!;
+        public Output<ImmutableDictionary<string, string>> EffectiveAnnotations { get; private set; } = null!;
 
         /// <summary>
         /// This checksum is computed by the server based on the value of other fields, and may be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
@@ -249,22 +255,22 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The connection for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("parentConnection")]
         public Output<string> ParentConnection { get; private set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
         /// Required. Git Clone HTTPS URI.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("remoteUri")]
         public Output<string> RemoteUri { get; private set; } = null!;
@@ -326,7 +332,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Allows clients to store small amounts of arbitrary data.
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -350,22 +355,22 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The connection for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parentConnection", required: true)]
         public Input<string> ParentConnection { get; set; } = null!;
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Required. Git Clone HTTPS URI.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("remoteUri", required: true)]
         public Input<string> RemoteUri { get; set; } = null!;
@@ -383,7 +388,6 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// Allows clients to store small amounts of arbitrary data.
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -400,15 +404,15 @@ namespace Pulumi.Gcp.CloudBuildV2
         public Input<string>? CreateTime { get; set; }
 
         [Input("effectiveAnnotations")]
-        private InputMap<object>? _effectiveAnnotations;
+        private InputMap<string>? _effectiveAnnotations;
 
         /// <summary>
         /// All of annotations (key/value pairs) present on the resource in GCP, including the annotations configured through
         /// Terraform, other clients and services.
         /// </summary>
-        public InputMap<object> EffectiveAnnotations
+        public InputMap<string> EffectiveAnnotations
         {
-            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<object>());
+            get => _effectiveAnnotations ?? (_effectiveAnnotations = new InputMap<string>());
             set => _effectiveAnnotations = value;
         }
 
@@ -432,22 +436,22 @@ namespace Pulumi.Gcp.CloudBuildV2
 
         /// <summary>
         /// The connection for the resource
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("parentConnection")]
         public Input<string>? ParentConnection { get; set; }
 
         /// <summary>
-        /// The project for the resource
+        /// The ID of the project in which the resource belongs.
+        /// If it is not provided, the provider project is used.
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
 
         /// <summary>
         /// Required. Git Clone HTTPS URI.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("remoteUri")]
         public Input<string>? RemoteUri { get; set; }

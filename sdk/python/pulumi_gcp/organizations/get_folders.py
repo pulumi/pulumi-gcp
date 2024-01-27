@@ -37,7 +37,7 @@ class GetFoldersResult:
     @pulumi.getter
     def folders(self) -> Sequence['outputs.GetFoldersFolderResult']:
         """
-        A list of projects matching the provided filter. Structure is defined below.
+        A list of folders matching the provided filter. Structure is defined below.
         """
         return pulumi.get(self, "folders")
 

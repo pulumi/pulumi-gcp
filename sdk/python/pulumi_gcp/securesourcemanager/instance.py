@@ -434,7 +434,8 @@ class Instance(pulumi.CustomResource):
         default = gcp.securesourcemanager.Instance("default",
             location="us-central1",
             instance_id="my-instance",
-            kms_key=crypto_key.id)
+            kms_key=crypto_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
 
         ## Import
@@ -527,7 +528,8 @@ class Instance(pulumi.CustomResource):
         default = gcp.securesourcemanager.Instance("default",
             location="us-central1",
             instance_id="my-instance",
-            kms_key=crypto_key.id)
+            kms_key=crypto_key.id,
+            opts=pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
 
         ## Import

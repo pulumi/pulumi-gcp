@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.Netapp
     ///         KeyRing = keyring.Id,
     ///     });
     /// 
-    ///     // rotation_period = "100000s"
+    ///     // rotation_period = "7776000s"
     ///     var kmsConfig = new Gcp.Netapp.Kmsconfig("kmsConfig", new()
     ///     {
     ///         Description = "this is a test description",

@@ -119,6 +119,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * 
+     */
+    @Import(name="databaseVersion")
+    private @Nullable Output<String> databaseVersion;
+
+    /**
+     * @return The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * 
+     */
+    public Optional<Output<String>> databaseVersion() {
+        return Optional.ofNullable(this.databaseVersion);
+    }
+
+    /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
      * Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = &#34;FORCE&#34; otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -363,6 +378,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.clusterId = $.clusterId;
         this.clusterType = $.clusterType;
         this.continuousBackupConfig = $.continuousBackupConfig;
+        this.databaseVersion = $.databaseVersion;
         this.deletionPolicy = $.deletionPolicy;
         this.displayName = $.displayName;
         this.encryptionConfig = $.encryptionConfig;
@@ -517,6 +533,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder continuousBackupConfig(ClusterContinuousBackupConfigArgs continuousBackupConfig) {
             return continuousBackupConfig(Output.of(continuousBackupConfig));
+        }
+
+        /**
+         * @param databaseVersion The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseVersion(@Nullable Output<String> databaseVersion) {
+            $.databaseVersion = databaseVersion;
+            return this;
+        }
+
+        /**
+         * @param databaseVersion The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder databaseVersion(String databaseVersion) {
+            return databaseVersion(Output.of(databaseVersion));
         }
 
         /**

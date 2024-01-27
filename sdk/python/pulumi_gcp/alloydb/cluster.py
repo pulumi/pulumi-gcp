@@ -22,6 +22,7 @@ class ClusterArgs:
                  automated_backup_policy: Optional[pulumi.Input['ClusterAutomatedBackupPolicyArgs']] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  continuous_backup_config: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']] = None,
+                 database_version: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input['ClusterEncryptionConfigArgs']] = None,
@@ -54,6 +55,7 @@ class ClusterArgs:
         :param pulumi.Input['ClusterContinuousBackupConfigArgs'] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -92,6 +94,8 @@ class ClusterArgs:
             pulumi.set(__self__, "cluster_type", cluster_type)
         if continuous_backup_config is not None:
             pulumi.set(__self__, "continuous_backup_config", continuous_backup_config)
+        if database_version is not None:
+            pulumi.set(__self__, "database_version", database_version)
         if deletion_policy is not None:
             pulumi.set(__self__, "deletion_policy", deletion_policy)
         if display_name is not None:
@@ -203,6 +207,18 @@ class ClusterArgs:
     @continuous_backup_config.setter
     def continuous_backup_config(self, value: Optional[pulumi.Input['ClusterContinuousBackupConfigArgs']]):
         pulumi.set(self, "continuous_backup_config", value)
+
+    @property
+    @pulumi.getter(name="databaseVersion")
+    def database_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        """
+        return pulumi.get(self, "database_version")
+
+    @database_version.setter
+    def database_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "database_version", value)
 
     @property
     @pulumi.getter(name="deletionPolicy")
@@ -420,7 +436,7 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
                Structure is documented below.
-        :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -632,7 +648,7 @@ class _ClusterState:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         """
         return pulumi.get(self, "database_version")
 
@@ -943,6 +959,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
+                 database_version: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
@@ -958,14 +975,6 @@ class Cluster(pulumi.CustomResource):
                  secondary_config: Optional[pulumi.Input[pulumi.InputType['ClusterSecondaryConfigArgs']]] = None,
                  __props__=None):
         """
-        A managed alloydb cluster.
-
-        To get more information about Cluster, see:
-
-        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
-        * How-to Guides
-            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
-
         ## Example Usage
         ### Alloydb Cluster Basic
 
@@ -991,6 +1000,7 @@ class Cluster(pulumi.CustomResource):
             cluster_id="alloydb-cluster-full",
             location="us-central1",
             network=default.id,
+            database_version="POSTGRES_15",
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 user="alloydb-cluster-full",
                 password="alloydb-cluster-full",
@@ -1164,6 +1174,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -1203,14 +1214,6 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A managed alloydb cluster.
-
-        To get more information about Cluster, see:
-
-        * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
-        * How-to Guides
-            * [AlloyDB](https://cloud.google.com/alloydb/docs/)
-
         ## Example Usage
         ### Alloydb Cluster Basic
 
@@ -1236,6 +1239,7 @@ class Cluster(pulumi.CustomResource):
             cluster_id="alloydb-cluster-full",
             location="us-central1",
             network=default.id,
+            database_version="POSTGRES_15",
             initial_user=gcp.alloydb.ClusterInitialUserArgs(
                 user="alloydb-cluster-full",
                 password="alloydb-cluster-full",
@@ -1413,6 +1417,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_id: Optional[pulumi.Input[str]] = None,
                  cluster_type: Optional[pulumi.Input[str]] = None,
                  continuous_backup_config: Optional[pulumi.Input[pulumi.InputType['ClusterContinuousBackupConfigArgs']]] = None,
+                 database_version: Optional[pulumi.Input[str]] = None,
                  deletion_policy: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_config: Optional[pulumi.Input[pulumi.InputType['ClusterEncryptionConfigArgs']]] = None,
@@ -1442,6 +1447,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["cluster_id"] = cluster_id
             __props__.__dict__["cluster_type"] = cluster_type
             __props__.__dict__["continuous_backup_config"] = continuous_backup_config
+            __props__.__dict__["database_version"] = database_version
             __props__.__dict__["deletion_policy"] = deletion_policy
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["encryption_config"] = encryption_config
@@ -1459,7 +1465,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["secondary_config"] = secondary_config
             __props__.__dict__["backup_sources"] = None
             __props__.__dict__["continuous_backup_infos"] = None
-            __props__.__dict__["database_version"] = None
             __props__.__dict__["effective_annotations"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["encryption_infos"] = None
@@ -1536,7 +1541,7 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['ClusterContinuousBackupInfoArgs']]]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
                Structure is documented below.
-        :param pulumi.Input[str] database_version: The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -1692,7 +1697,7 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> pulumi.Output[str]:
         """
-        The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
         """
         return pulumi.get(self, "database_version")
 

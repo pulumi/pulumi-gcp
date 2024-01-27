@@ -11,6 +11,8 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'AddressGroupIamBindingCondition',
+    'AddressGroupIamMemberCondition',
     'AuthorizationPolicyRule',
     'AuthorizationPolicyRuleDestination',
     'AuthorizationPolicyRuleDestinationHttpHeaderMatch',
@@ -21,6 +23,9 @@ __all__ = [
     'ClientTlsPolicyServerValidationCa',
     'ClientTlsPolicyServerValidationCaCertificateProviderInstance',
     'ClientTlsPolicyServerValidationCaGrpcEndpoint',
+    'SecurityProfileThreatPreventionProfile',
+    'SecurityProfileThreatPreventionProfileSeverityOverride',
+    'SecurityProfileThreatPreventionProfileThreatOverride',
     'ServerTlsPolicyMtlsPolicy',
     'ServerTlsPolicyMtlsPolicyClientValidationCa',
     'ServerTlsPolicyMtlsPolicyClientValidationCaCertificateProviderInstance',
@@ -29,6 +34,60 @@ __all__ = [
     'ServerTlsPolicyServerCertificateCertificateProviderInstance',
     'ServerTlsPolicyServerCertificateGrpcEndpoint',
 ]
+
+@pulumi.output_type
+class AddressGroupIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class AddressGroupIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
 
 @pulumi.output_type
 class AuthorizationPolicyRule(dict):
@@ -488,6 +547,159 @@ class ClientTlsPolicyServerValidationCaGrpcEndpoint(dict):
         The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
         return pulumi.get(self, "target_uri")
+
+
+@pulumi.output_type
+class SecurityProfileThreatPreventionProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "severityOverrides":
+            suggest = "severity_overrides"
+        elif key == "threatOverrides":
+            suggest = "threat_overrides"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileThreatPreventionProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileThreatPreventionProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileThreatPreventionProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 severity_overrides: Optional[Sequence['outputs.SecurityProfileThreatPreventionProfileSeverityOverride']] = None,
+                 threat_overrides: Optional[Sequence['outputs.SecurityProfileThreatPreventionProfileThreatOverride']] = None):
+        """
+        :param Sequence['SecurityProfileThreatPreventionProfileSeverityOverrideArgs'] severity_overrides: The configuration for overriding threats actions by severity match.
+               Structure is documented below.
+        :param Sequence['SecurityProfileThreatPreventionProfileThreatOverrideArgs'] threat_overrides: The configuration for overriding threats actions by threat id match.
+               If a threat is matched both by configuration provided in severity overrides
+               and threat overrides, the threat overrides action is applied.
+               Structure is documented below.
+        """
+        if severity_overrides is not None:
+            pulumi.set(__self__, "severity_overrides", severity_overrides)
+        if threat_overrides is not None:
+            pulumi.set(__self__, "threat_overrides", threat_overrides)
+
+    @property
+    @pulumi.getter(name="severityOverrides")
+    def severity_overrides(self) -> Optional[Sequence['outputs.SecurityProfileThreatPreventionProfileSeverityOverride']]:
+        """
+        The configuration for overriding threats actions by severity match.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "severity_overrides")
+
+    @property
+    @pulumi.getter(name="threatOverrides")
+    def threat_overrides(self) -> Optional[Sequence['outputs.SecurityProfileThreatPreventionProfileThreatOverride']]:
+        """
+        The configuration for overriding threats actions by threat id match.
+        If a threat is matched both by configuration provided in severity overrides
+        and threat overrides, the threat overrides action is applied.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "threat_overrides")
+
+
+@pulumi.output_type
+class SecurityProfileThreatPreventionProfileSeverityOverride(dict):
+    def __init__(__self__, *,
+                 action: str,
+                 severity: str):
+        """
+        :param str action: Threat action override.
+               Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        :param str severity: Severity level to match.
+               Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "severity", severity)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Threat action override.
+        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> str:
+        """
+        Severity level to match.
+        Possible values are: `CRITICAL`, `HIGH`, `INFORMATIONAL`, `LOW`, `MEDIUM`.
+        """
+        return pulumi.get(self, "severity")
+
+
+@pulumi.output_type
+class SecurityProfileThreatPreventionProfileThreatOverride(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "threatId":
+            suggest = "threat_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileThreatPreventionProfileThreatOverride. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileThreatPreventionProfileThreatOverride.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileThreatPreventionProfileThreatOverride.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 action: str,
+                 threat_id: str,
+                 type: Optional[str] = None):
+        """
+        :param str action: Threat action.
+               Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        :param str threat_id: Vendor-specific ID of a threat to override.
+        :param str type: (Output)
+               Type of threat.
+        """
+        pulumi.set(__self__, "action", action)
+        pulumi.set(__self__, "threat_id", threat_id)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter
+    def action(self) -> str:
+        """
+        Threat action.
+        Possible values are: `ALERT`, `ALLOW`, `DEFAULT_ACTION`, `DENY`.
+        """
+        return pulumi.get(self, "action")
+
+    @property
+    @pulumi.getter(name="threatId")
+    def threat_id(self) -> str:
+        """
+        Vendor-specific ID of a threat to override.
+        """
+        return pulumi.get(self, "threat_id")
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[str]:
+        """
+        (Output)
+        Type of threat.
+        """
+        return pulumi.get(self, "type")
 
 
 @pulumi.output_type

@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A managed alloydb cluster.
- *
- * To get more information about Cluster, see:
- *
- * * [API documentation](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations.clusters/create)
- * * How-to Guides
- *     * [AlloyDB](https://cloud.google.com/alloydb/docs/)
- *
  * ## Example Usage
  * ### Alloydb Cluster Basic
  *
@@ -41,6 +33,7 @@ import * as utilities from "../utilities";
  *     clusterId: "alloydb-cluster-full",
  *     location: "us-central1",
  *     network: _default.id,
+ *     databaseVersion: "POSTGRES_15",
  *     initialUser: {
  *         user: "alloydb-cluster-full",
  *         password: "alloydb-cluster-full",
@@ -285,9 +278,9 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly continuousBackupInfos!: pulumi.Output<outputs.alloydb.ClusterContinuousBackupInfo[]>;
     /**
-     * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
      */
-    public /*out*/ readonly databaseVersion!: pulumi.Output<string>;
+    public readonly databaseVersion!: pulumi.Output<string>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -460,6 +453,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["clusterId"] = args ? args.clusterId : undefined;
             resourceInputs["clusterType"] = args ? args.clusterType : undefined;
             resourceInputs["continuousBackupConfig"] = args ? args.continuousBackupConfig : undefined;
+            resourceInputs["databaseVersion"] = args ? args.databaseVersion : undefined;
             resourceInputs["deletionPolicy"] = args ? args.deletionPolicy : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["encryptionConfig"] = args ? args.encryptionConfig : undefined;
@@ -475,7 +469,6 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["secondaryConfig"] = args ? args.secondaryConfig : undefined;
             resourceInputs["backupSources"] = undefined /*out*/;
             resourceInputs["continuousBackupInfos"] = undefined /*out*/;
-            resourceInputs["databaseVersion"] = undefined /*out*/;
             resourceInputs["effectiveAnnotations"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["encryptionInfos"] = undefined /*out*/;
@@ -537,7 +530,7 @@ export interface ClusterState {
      */
     continuousBackupInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterContinuousBackupInfo>[]>;
     /**
-     * The database engine major version. This is an output-only field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
      */
     databaseVersion?: pulumi.Input<string>;
     /**
@@ -690,6 +683,10 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     continuousBackupConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfig>;
+    /**
+     * The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     */
+    databaseVersion?: pulumi.Input<string>;
     /**
      * Policy to determine if the cluster should be deleted forcefully.
      * Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.

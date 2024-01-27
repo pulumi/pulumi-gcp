@@ -23,10 +23,24 @@ namespace Pulumi.Gcp.CloudRunV2.Inputs
         public Input<Inputs.ServiceTemplateVolumeEmptyDirGetArgs>? EmptyDir { get; set; }
 
         /// <summary>
+        /// Represents a GCS Bucket mounted as a volume.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gcs")]
+        public Input<Inputs.ServiceTemplateVolumeGcsGetArgs>? Gcs { get; set; }
+
+        /// <summary>
         /// Volume's name.
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Represents an NFS mount.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("nfs")]
+        public Input<Inputs.ServiceTemplateVolumeNfsGetArgs>? Nfs { get; set; }
 
         /// <summary>
         /// Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret

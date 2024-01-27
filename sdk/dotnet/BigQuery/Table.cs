@@ -336,6 +336,12 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> TableId { get; private set; } = null!;
 
         /// <summary>
+        /// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+        /// </summary>
+        [Output("tableReplicationInfo")]
+        public Output<Outputs.TableTableReplicationInfo?> TableReplicationInfo { get; private set; } = null!;
+
+        /// <summary>
         /// If specified, configures time-based
         /// partitioning for this table. Structure is documented below.
         /// </summary>
@@ -559,6 +565,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("tableId", required: true)]
         public Input<string> TableId { get; set; } = null!;
+
+        /// <summary>
+        /// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+        /// </summary>
+        [Input("tableReplicationInfo")]
+        public Input<Inputs.TableTableReplicationInfoArgs>? TableReplicationInfo { get; set; }
 
         /// <summary>
         /// If specified, configures time-based
@@ -829,6 +841,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("tableId")]
         public Input<string>? TableId { get; set; }
+
+        /// <summary>
+        /// Replication info of a table created using "AS REPLICA" DDL like: "CREATE MATERIALIZED VIEW mv1 AS REPLICA OF src_mv".
+        /// </summary>
+        [Input("tableReplicationInfo")]
+        public Input<Inputs.TableTableReplicationInfoGetArgs>? TableReplicationInfo { get; set; }
 
         /// <summary>
         /// If specified, configures time-based

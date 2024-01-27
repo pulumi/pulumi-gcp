@@ -92,16 +92,16 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
      * 
      */
     @Import(name="enableConfidentialCompute")
     private @Nullable Output<Boolean> enableConfidentialCompute;
 
     /**
-     * @return Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-     * required when setting to true
+     * @return Whether this disk is using confidential compute mode.
+     * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
      * 
      */
     public Optional<Output<Boolean>> enableConfidentialCompute() {
@@ -661,8 +661,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableConfidentialCompute Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-         * required when setting to true
+         * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
+         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
          * 
          * @return builder
          * 
@@ -673,8 +673,8 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param enableConfidentialCompute Whether this disk is using confidential compute mode. Note: Only supported on hyperdisk skus, disk_encryption_key is
-         * required when setting to true
+         * @param enableConfidentialCompute Whether this disk is using confidential compute mode.
+         * Note: Only supported on hyperdisk skus, disk_encryption_key is required when setting to true
          * 
          * @return builder
          * 

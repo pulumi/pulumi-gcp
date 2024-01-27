@@ -67,7 +67,7 @@ type GetFoldersArgs struct {
 
 // A collection of values returned by getFolders.
 type GetFoldersResult struct {
-	// A list of projects matching the provided filter. Structure is defined below.
+	// A list of folders matching the provided filter. Structure is defined below.
 	Folders []GetFoldersFolder `pulumi:"folders"`
 	// The provider-assigned unique ID for this managed resource.
 	Id       string `pulumi:"id"`
@@ -112,7 +112,7 @@ func (o GetFoldersResultOutput) ToGetFoldersResultOutputWithContext(ctx context.
 	return o
 }
 
-// A list of projects matching the provided filter. Structure is defined below.
+// A list of folders matching the provided filter. Structure is defined below.
 func (o GetFoldersResultOutput) Folders() GetFoldersFolderArrayOutput {
 	return o.ApplyT(func(v GetFoldersResult) []GetFoldersFolder { return v.Folders }).(GetFoldersFolderArrayOutput)
 }

@@ -248,6 +248,7 @@ import javax.annotation.Nullable;
  *             .disableReferentialIntegrity(false)
  *             .disableResourceVersioning(false)
  *             .enableHistoryImport(false)
+ *             .enableHistoryModifications(false)
  *             .labels(Map.of(&#34;label1&#34;, &#34;labelvalue1&#34;))
  *             .notificationConfigs(FhirStoreNotificationConfigArgs.builder()
  *                 .pubsubTopic(topic.id())
@@ -424,6 +425,22 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<Boolean>> enableHistoryImport() {
         return Codegen.optional(this.enableHistoryImport);
+    }
+    /**
+     * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * 
+     */
+    @Export(name="enableHistoryModifications", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> enableHistoryModifications;
+
+    /**
+     * @return Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical resource
+     * versions into the FHIR store. If set to false, using history bundles fails with an error.
+     * 
+     */
+    public Output<Optional<Boolean>> enableHistoryModifications() {
+        return Codegen.optional(this.enableHistoryModifications);
     }
     /**
      * Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update

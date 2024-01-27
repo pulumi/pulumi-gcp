@@ -82,10 +82,12 @@ func TestCloudFunction(t *testing.T) {
 }
 
 func TestNetwork(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	runTest(t, test(t, "test-programs/network"))
 }
 
 func TestCluster(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	runTest(t, test(t, "test-programs/cluster"))
 }
 
@@ -96,21 +98,25 @@ func skipIfNotCI(t *testing.T) {
 }
 
 func TestIamBinding(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/iam-binding"))
 }
 
 func TestIamMember(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/iam-member"))
 }
 
 func TestLogSink(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/logsink"))
 }
 
 func TestTopicIamBinding(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/topic-iam-binding"))
 }
