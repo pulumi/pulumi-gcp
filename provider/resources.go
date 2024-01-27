@@ -345,7 +345,9 @@ func getRegionsList(project string) ([]string, error) {
 // We should only run the validation once to avoid duplicating the reported errors.
 var credentialsValidationRun atomic.Bool
 
-func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
+func preConfigureCallbackWithLogger(
+	ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig,
+) error {
 	if !credentialsValidationRun.CompareAndSwap(false, true) {
 		return nil
 	}
@@ -360,12 +362,10 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 			"Pulumi will rely on per-resource settings for this operation.\n" +
 			"Set the GCP Project by using:\n" +
 			"\t`pulumi config set gcp:project <project>`"
-		host.Log(ctx, diag.Warning, "", msg) // the URN will default to the root stack name which is exactly what we want
-		//return fmt.Errorf("unable to find required configuration setting: GCP Project\n" +
-		//"Set the GCP Project by using:\n" +
-		//"\t`pulumi config set gcp:project <project>`")
-		//
-		return nil
+		if host != nil {
+			// host is nil in tests.
+			host.Log(ctx, diag.Warning, "", msg) // the URN will default to the root stack name which is exactly what we want
+		}
 	}
 
 	config := tpg_transport.Config{
@@ -401,7 +401,7 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 			"failed to load application credentials.\nTo use your default gcloud credentials, run:\n\t`gcloud auth application-default login`\nSee https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.\nExpanded error message: %w", err)
 	}
 
-	if config.Region != "" {
+	if config.Region != "" && config.Project != "" {
 		regionList, err := getRegionsList(config.Project)
 		if err != nil {
 			return fmt.Errorf("failed to get regions list: %w", err)
@@ -411,7 +411,10 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 				return nil
 			}
 		}
-		return fmt.Errorf("region %q is not available for project %q. Available regions: %q", config.Region, config.Project, regionList)
+		return fmt.Errorf(
+			"region %q is not available for project %q. Available regions: %q",
+			config.Region, config.Project, regionList,
+		)
 	}
 
 	return nil

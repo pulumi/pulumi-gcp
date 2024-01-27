@@ -20,6 +20,7 @@ package gcp
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/pulumi/providertest"
@@ -408,4 +409,91 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
         "name": "gcp"
     }
 }`)
+}
+
+func TestNoCredentials(t *testing.T) {
+	os.Unsetenv("GOOGLE_APPLICATION_CREDENTIALS")
+	os.Unsetenv("GOOGLE_GHA_CREDS_PATH")
+	os.Unsetenv("GOOGLE_PROJECT")
+	replay.Replay(t, providerServer(t), strings.ReplaceAll(`
+{
+	"method": "/pulumirpc.ResourceProvider/CheckConfig",
+    "request": {
+        "urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
+        "olds": {
+            "version": "7.6.0"
+        },
+        "news": {
+            "version": "7.6.0"
+        }
+    },
+    "errors": [
+        "failed to load application credentials.\nTo use your default gcloud credentials, run:\n\t$gcloud auth application-default login$\nSee https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.\nExpanded error message: Attempted to load application default credentials since neither $credentials$ nor $access_token$ was set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth application-default login'.  Original error: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"
+    ],
+    "metadata": {
+        "kind": "resource",
+        "mode": "client",
+        "name": "gcp"
+    }
+}
+`, "$", "`"),
+	)
+}
+
+func TestNoRegionErrorWithNoProject(t *testing.T) {
+	os.Unsetenv("GOOGLE_PROJECT")
+	replay.Replay(t, providerServer(t), `
+	{
+		"method": "/pulumirpc.ResourceProvider/CheckConfig",
+		"request": {
+			"urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
+			"olds": {
+				"version": "7.6.0"
+			},
+			"news": {
+				"region": "westus",
+				"version": "7.6.0"
+			}
+		},
+		"response": {
+			"inputs": {
+				"region": "westus",
+				"version": "7.6.0"
+			}
+		},
+		"metadata": {
+			"kind": "resource",
+			"mode": "client",
+			"name": "gcp"
+		}
+	}
+`,
+	)
+}
+
+func TestWrongRegion(t *testing.T) {
+	replay.Replay(t, providerServer(t), `
+	{
+		"method": "/pulumirpc.ResourceProvider/CheckConfig",
+		"request": {
+			"urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
+			"olds": {
+				"version": "7.6.0"
+			},
+			"news": {
+				"region": "westus",
+				"version": "7.6.0"
+			}
+		},
+		"errors": [
+			"rpc error: code = Unknown desc = region \"westus\" is not available for project \"pulumi-development\". Available regions: [\"africa-south1\" \"asia-east1\" \"asia-east2\" \"asia-northeast1\" \"asia-northeast2\" \"asia-northeast3\" \"asia-south1\" \"asia-south2\" \"asia-southeast1\" \"asia-southeast2\" \"australia-southeast1\" \"australia-southeast2\" \"europe-central2\" \"europe-north1\" \"europe-southwest1\" \"europe-west1\" \"europe-west10\" \"europe-west12\" \"europe-west2\" \"europe-west3\" \"europe-west4\" \"europe-west6\" \"europe-west8\" \"europe-west9\" \"me-central1\" \"me-central2\" \"me-west1\" \"northamerica-northeast1\" \"northamerica-northeast2\" \"southamerica-east1\" \"southamerica-west1\" \"us-central1\" \"us-east1\" \"us-east4\" \"us-east5\" \"us-south1\" \"us-west1\" \"us-west2\" \"us-west3\" \"us-west4\"]"
+		],
+		"metadata": {
+			"kind": "resource",
+			"mode": "client",
+			"name": "gcp"
+		}
+	}
+`,
+	)
 }
