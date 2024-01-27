@@ -110,11 +110,13 @@ func TestIamMember(t *testing.T) {
 }
 
 func TestLogSink(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/logsink"))
 }
 
 func TestTopicIamBinding(t *testing.T) {
+	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
 	runTest(t, test(t, "test-programs/topic-iam-binding"))
 }

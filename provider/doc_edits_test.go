@@ -23,7 +23,6 @@ func TestEffectiveLabels(t *testing.T) {
 	for _, tt := range tests {
 		tt := tt
 		t.Run(tt.text, func(t *testing.T) {
-			t.Parallel()
 			actual, err := fixupEffectiveLabels.Edit("doc.md", []byte(tt.text))
 			require.NoError(t, err)
 			assert.Equal(t, tt.expected, string(actual))
