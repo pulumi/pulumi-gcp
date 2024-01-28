@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  *     serviceName: "api-name.endpoints.project-id.cloud.goog",
  *     project: "project-id",
  *     grpcConfig: fs.readFileSync("service_spec.yml", "utf8"),
- *     protocOutputBase64: Buffer.from(fs.readFileSync("compiled_descriptor_file.pb", 'binary')).toString('base64'),
+ *     protocOutputBase64: fs.readFileSync("compiled_descriptor_file.pb", { encoding: "base64" }),
  * });
  * ```
  *
