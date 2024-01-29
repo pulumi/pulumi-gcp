@@ -230,7 +230,6 @@ type RegionDisk struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayOutput `pulumi:"guestOsFeatures"`
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -388,7 +387,6 @@ type regionDiskState struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -509,7 +507,6 @@ type RegionDiskState struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -630,7 +627,6 @@ type regionDiskArgs struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures []RegionDiskGuestOsFeature `pulumi:"guestOsFeatures"`
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -722,7 +718,6 @@ type RegionDiskArgs struct {
 	// Applicable only for bootable disks.
 	// Structure is documented below.
 	GuestOsFeatures RegionDiskGuestOsFeatureArrayInput
-	// (Optional, Deprecated)
 	// Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 	//
 	// > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -921,7 +916,6 @@ func (o RegionDiskOutput) GuestOsFeatures() RegionDiskGuestOsFeatureArrayOutput 
 	return o.ApplyT(func(v *RegionDisk) RegionDiskGuestOsFeatureArrayOutput { return v.GuestOsFeatures }).(RegionDiskGuestOsFeatureArrayOutput)
 }
 
-// (Optional, Deprecated)
 // Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
 //
 // > **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.

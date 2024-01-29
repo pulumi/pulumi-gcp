@@ -263,7 +263,6 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Only valid when networkEndpointType is "SERVERLESS".
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
@@ -396,7 +395,6 @@ export interface RegionNetworkEndpointGroupState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Only valid when networkEndpointType is "SERVERLESS".
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
@@ -476,7 +474,6 @@ export interface RegionNetworkEndpointGroupArgs {
      */
     region: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Only valid when networkEndpointType is "SERVERLESS".
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.

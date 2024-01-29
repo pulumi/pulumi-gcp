@@ -43,7 +43,7 @@ public final class AwsClusterControlPlane {
      */
     private String iamInstanceProfile;
     /**
-     * @return (Beta only) Details of placement information for an instance.
+     * @return Details of placement information for an instance.
      * 
      */
     private @Nullable AwsClusterControlPlaneInstancePlacement instancePlacement;
@@ -123,7 +123,7 @@ public final class AwsClusterControlPlane {
         return this.iamInstanceProfile;
     }
     /**
-     * @return (Beta only) Details of placement information for an instance.
+     * @return Details of placement information for an instance.
      * 
      */
     public Optional<AwsClusterControlPlaneInstancePlacement> instancePlacement() {

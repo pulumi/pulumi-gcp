@@ -448,8 +448,7 @@ class _InstanceState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
-        :param pulumi.Input[str] service_account: (Beta, Deprecated)
-               Service account which will be used to access resources in the customer project.
+        :param pulumi.Input[str] service_account: Service account which will be used to access resources in the customer project.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
                Possible values are: `ENABLED`, `DISABLED`.
@@ -821,7 +820,6 @@ class _InstanceState:
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> Optional[pulumi.Input[str]]:
         """
-        (Beta, Deprecated)
         Service account which will be used to access resources in the customer project.
         """
         warnings.warn("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""", DeprecationWarning)
@@ -1451,8 +1449,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region of the Data Fusion instance.
-        :param pulumi.Input[str] service_account: (Beta, Deprecated)
-               Service account which will be used to access resources in the customer project.
+        :param pulumi.Input[str] service_account: Service account which will be used to access resources in the customer project.
         :param pulumi.Input[str] service_endpoint: Endpoint on which the Data Fusion UI and REST APIs are accessible.
         :param pulumi.Input[str] state: The type of an accelator for a CDF instance.
                Possible values are: `ENABLED`, `DISABLED`.
@@ -1707,7 +1704,6 @@ class Instance(pulumi.CustomResource):
     @pulumi.getter(name="serviceAccount")
     def service_account(self) -> pulumi.Output[str]:
         """
-        (Beta, Deprecated)
         Service account which will be used to access resources in the customer project.
         """
         warnings.warn("""`service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.""", DeprecationWarning)

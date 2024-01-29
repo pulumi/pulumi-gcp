@@ -302,7 +302,6 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
         return this.name;
     }
     /**
-     * (Optional, Beta)
      * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      * 
      */
@@ -310,8 +309,7 @@ public class AiFeatureStoreEntityType extends com.pulumi.resources.CustomResourc
     private Output</* @Nullable */ Integer> offlineStorageTtlDays;
 
     /**
-     * @return (Optional, Beta)
-     * Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
+     * @return Config for data retention policy in offline storage. TTL in days for feature values that will be stored in offline storage. The Feature Store offline storage periodically removes obsolete feature values older than offlineStorageTtlDays since the feature generation time. If unset (or explicitly set to 0), default to 4000 days TTL.
      * 
      */
     public Output<Optional<Integer>> offlineStorageTtlDays() {

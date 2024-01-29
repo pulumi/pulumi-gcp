@@ -20,7 +20,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly Outputs.ClusterClusterAutoscalingAutoProvisioningDefaults? AutoProvisioningDefaults;
         /// <summary>
-        /// ) Configuration
+        /// Configuration
         /// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
         /// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
         /// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.

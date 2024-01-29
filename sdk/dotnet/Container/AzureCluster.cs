@@ -282,7 +282,7 @@ namespace Pulumi.Gcp.Container
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// (Beta only) Logging configuration.
+        /// Logging configuration.
         /// </summary>
         [Output("loggingConfig")]
         public Output<Outputs.AzureClusterLoggingConfig> LoggingConfig { get; private set; } = null!;
@@ -451,7 +451,7 @@ namespace Pulumi.Gcp.Container
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// (Beta only) Logging configuration.
+        /// Logging configuration.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.AzureClusterLoggingConfigArgs>? LoggingConfig { get; set; }
@@ -583,7 +583,7 @@ namespace Pulumi.Gcp.Container
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// (Beta only) Logging configuration.
+        /// Logging configuration.
         /// </summary>
         [Input("loggingConfig")]
         public Input<Inputs.AzureClusterLoggingConfigGetArgs>? LoggingConfig { get; set; }

@@ -241,7 +241,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Output<string> SelfLink { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         /// </summary>
         [Output("tlsInspectionPolicy")]
@@ -332,7 +331,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         /// </summary>
         [Input("tlsInspectionPolicy")]
@@ -391,7 +389,6 @@ namespace Pulumi.Gcp.NetworkSecurity
         public Input<string>? SelfLink { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Name of a TlsInspectionPolicy resource that defines how TLS inspection is performed for any rule that enables it.
         /// </summary>
         [Input("tlsInspectionPolicy")]

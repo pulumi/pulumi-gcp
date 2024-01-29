@@ -77,14 +77,11 @@ class RepositoryCleanupPolicy(dict):
                  most_recent_versions: Optional['outputs.RepositoryCleanupPolicyMostRecentVersions'] = None):
         """
         :param str id: The identifier for this object. Format specified above.
-        :param str action: (Optional, Beta)
-               Policy action.
+        :param str action: Policy action.
                Possible values are: `DELETE`, `KEEP`.
-        :param 'RepositoryCleanupPolicyConditionArgs' condition: (Optional, Beta)
-               Policy condition for matching versions.
+        :param 'RepositoryCleanupPolicyConditionArgs' condition: Policy condition for matching versions.
                Structure is documented below.
-        :param 'RepositoryCleanupPolicyMostRecentVersionsArgs' most_recent_versions: (Optional, Beta)
-               Policy condition for retaining a minimum number of versions. May only be
+        :param 'RepositoryCleanupPolicyMostRecentVersionsArgs' most_recent_versions: Policy condition for retaining a minimum number of versions. May only be
                specified with a Keep action.
                Structure is documented below.
         """
@@ -108,7 +105,6 @@ class RepositoryCleanupPolicy(dict):
     @pulumi.getter
     def action(self) -> Optional[str]:
         """
-        (Optional, Beta)
         Policy action.
         Possible values are: `DELETE`, `KEEP`.
         """
@@ -118,7 +114,6 @@ class RepositoryCleanupPolicy(dict):
     @pulumi.getter
     def condition(self) -> Optional['outputs.RepositoryCleanupPolicyCondition']:
         """
-        (Optional, Beta)
         Policy condition for matching versions.
         Structure is documented below.
         """
@@ -128,7 +123,6 @@ class RepositoryCleanupPolicy(dict):
     @pulumi.getter(name="mostRecentVersions")
     def most_recent_versions(self) -> Optional['outputs.RepositoryCleanupPolicyMostRecentVersions']:
         """
-        (Optional, Beta)
         Policy condition for retaining a minimum number of versions. May only be
         specified with a Keep action.
         Structure is documented below.
@@ -173,20 +167,14 @@ class RepositoryCleanupPolicyCondition(dict):
                  tag_state: Optional[str] = None,
                  version_name_prefixes: Optional[Sequence[str]] = None):
         """
-        :param str newer_than: (Optional, Beta)
-               Match versions newer than a duration.
-        :param str older_than: (Optional, Beta)
-               Match versions older than a duration.
-        :param Sequence[str] package_name_prefixes: (Optional, Beta)
-               Match versions by package prefix. Applied on any prefix match.
-        :param Sequence[str] tag_prefixes: (Optional, Beta)
-               Match versions by tag prefix. Applied on any prefix match.
-        :param str tag_state: (Optional, Beta)
-               Match versions by tag status.
+        :param str newer_than: Match versions newer than a duration.
+        :param str older_than: Match versions older than a duration.
+        :param Sequence[str] package_name_prefixes: Match versions by package prefix. Applied on any prefix match.
+        :param Sequence[str] tag_prefixes: Match versions by tag prefix. Applied on any prefix match.
+        :param str tag_state: Match versions by tag status.
                Default value is `ANY`.
                Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
-        :param Sequence[str] version_name_prefixes: (Optional, Beta)
-               Match versions by version name prefix. Applied on any prefix match.
+        :param Sequence[str] version_name_prefixes: Match versions by version name prefix. Applied on any prefix match.
         """
         if newer_than is not None:
             pulumi.set(__self__, "newer_than", newer_than)
@@ -205,7 +193,6 @@ class RepositoryCleanupPolicyCondition(dict):
     @pulumi.getter(name="newerThan")
     def newer_than(self) -> Optional[str]:
         """
-        (Optional, Beta)
         Match versions newer than a duration.
         """
         return pulumi.get(self, "newer_than")
@@ -214,7 +201,6 @@ class RepositoryCleanupPolicyCondition(dict):
     @pulumi.getter(name="olderThan")
     def older_than(self) -> Optional[str]:
         """
-        (Optional, Beta)
         Match versions older than a duration.
         """
         return pulumi.get(self, "older_than")
@@ -223,7 +209,6 @@ class RepositoryCleanupPolicyCondition(dict):
     @pulumi.getter(name="packageNamePrefixes")
     def package_name_prefixes(self) -> Optional[Sequence[str]]:
         """
-        (Optional, Beta)
         Match versions by package prefix. Applied on any prefix match.
         """
         return pulumi.get(self, "package_name_prefixes")
@@ -232,7 +217,6 @@ class RepositoryCleanupPolicyCondition(dict):
     @pulumi.getter(name="tagPrefixes")
     def tag_prefixes(self) -> Optional[Sequence[str]]:
         """
-        (Optional, Beta)
         Match versions by tag prefix. Applied on any prefix match.
         """
         return pulumi.get(self, "tag_prefixes")
@@ -241,7 +225,6 @@ class RepositoryCleanupPolicyCondition(dict):
     @pulumi.getter(name="tagState")
     def tag_state(self) -> Optional[str]:
         """
-        (Optional, Beta)
         Match versions by tag status.
         Default value is `ANY`.
         Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
@@ -252,7 +235,6 @@ class RepositoryCleanupPolicyCondition(dict):
     @pulumi.getter(name="versionNamePrefixes")
     def version_name_prefixes(self) -> Optional[Sequence[str]]:
         """
-        (Optional, Beta)
         Match versions by version name prefix. Applied on any prefix match.
         """
         return pulumi.get(self, "version_name_prefixes")
@@ -283,10 +265,8 @@ class RepositoryCleanupPolicyMostRecentVersions(dict):
                  keep_count: Optional[int] = None,
                  package_name_prefixes: Optional[Sequence[str]] = None):
         """
-        :param int keep_count: (Optional, Beta)
-               Minimum number of versions to keep.
-        :param Sequence[str] package_name_prefixes: (Optional, Beta)
-               Match versions by package prefix. Applied on any prefix match.
+        :param int keep_count: Minimum number of versions to keep.
+        :param Sequence[str] package_name_prefixes: Match versions by package prefix. Applied on any prefix match.
         """
         if keep_count is not None:
             pulumi.set(__self__, "keep_count", keep_count)
@@ -297,7 +277,6 @@ class RepositoryCleanupPolicyMostRecentVersions(dict):
     @pulumi.getter(name="keepCount")
     def keep_count(self) -> Optional[int]:
         """
-        (Optional, Beta)
         Minimum number of versions to keep.
         """
         return pulumi.get(self, "keep_count")
@@ -306,7 +285,6 @@ class RepositoryCleanupPolicyMostRecentVersions(dict):
     @pulumi.getter(name="packageNamePrefixes")
     def package_name_prefixes(self) -> Optional[Sequence[str]]:
         """
-        (Optional, Beta)
         Match versions by package prefix. Applied on any prefix match.
         """
         return pulumi.get(self, "package_name_prefixes")

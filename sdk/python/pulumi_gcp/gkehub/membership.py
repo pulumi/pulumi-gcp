@@ -33,8 +33,7 @@ class MembershipArgs:
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: (Optional, Deprecated)
-               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input['MembershipEndpointArgs'] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -99,7 +98,6 @@ class MembershipArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 
         > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -187,8 +185,7 @@ class _MembershipState:
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: (Optional, Deprecated)
-               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -253,7 +250,6 @@ class _MembershipState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Deprecated)
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 
         > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -490,8 +486,7 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: (Optional, Deprecated)
-               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[pulumi.InputType['MembershipEndpointArgs']] endpoint: If this Membership is a Kubernetes API server hosted on GKE, this is a self link to its GCP resource.
@@ -688,8 +683,7 @@ class Membership(pulumi.CustomResource):
                See the workload identity documentation for more details:
                https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
                Structure is documented below.
-        :param pulumi.Input[str] description: (Optional, Deprecated)
-               The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+        :param pulumi.Input[str] description: The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
                
                > **Warning:** `description` is deprecated and will be removed in a future major release.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -742,7 +736,6 @@ class Membership(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional, Deprecated)
         The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 
         > **Warning:** `description` is deprecated and will be removed in a future major release.

@@ -976,7 +976,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * (Optional, Beta)
      * The security policy associated with this backend service.
      * 
      */
@@ -984,8 +983,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> securityPolicy;
 
     /**
-     * @return (Optional, Beta)
-     * The security policy associated with this backend service.
+     * @return The security policy associated with this backend service.
      * 
      */
     public Output<Optional<String>> securityPolicy() {
@@ -1024,7 +1022,6 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
         return this.sessionAffinity;
     }
     /**
-     * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      * 
@@ -1033,8 +1030,7 @@ public class RegionBackendService extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionBackendServiceSubsetting> subsetting;
 
     /**
-     * @return (Optional, Beta)
-     * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
+     * @return Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      * 
      */

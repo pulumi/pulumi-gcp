@@ -472,14 +472,12 @@ import (
 type Repository struct {
 	pulumi.CustomResourceState
 
-	// (Optional, Beta)
 	// Cleanup policies for this repository. Cleanup policies indicate when
 	// certain package versions can be automatically deleted.
 	// Map keys are policy IDs supplied by users during policy creation. They must
 	// unique within a repository and be under 128 characters in length.
 	// Structure is documented below.
 	CleanupPolicies RepositoryCleanupPolicyArrayOutput `pulumi:"cleanupPolicies"`
-	// (Optional, Beta)
 	// If true, the cleanup pipeline is prevented from deleting versions in this
 	// repository.
 	CleanupPolicyDryRun pulumi.BoolPtrOutput `pulumi:"cleanupPolicyDryRun"`
@@ -587,14 +585,12 @@ func GetRepository(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering Repository resources.
 type repositoryState struct {
-	// (Optional, Beta)
 	// Cleanup policies for this repository. Cleanup policies indicate when
 	// certain package versions can be automatically deleted.
 	// Map keys are policy IDs supplied by users during policy creation. They must
 	// unique within a repository and be under 128 characters in length.
 	// Structure is documented below.
 	CleanupPolicies []RepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
-	// (Optional, Beta)
 	// If true, the cleanup pipeline is prevented from deleting versions in this
 	// repository.
 	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
@@ -662,14 +658,12 @@ type repositoryState struct {
 }
 
 type RepositoryState struct {
-	// (Optional, Beta)
 	// Cleanup policies for this repository. Cleanup policies indicate when
 	// certain package versions can be automatically deleted.
 	// Map keys are policy IDs supplied by users during policy creation. They must
 	// unique within a repository and be under 128 characters in length.
 	// Structure is documented below.
 	CleanupPolicies RepositoryCleanupPolicyArrayInput
-	// (Optional, Beta)
 	// If true, the cleanup pipeline is prevented from deleting versions in this
 	// repository.
 	CleanupPolicyDryRun pulumi.BoolPtrInput
@@ -741,14 +735,12 @@ func (RepositoryState) ElementType() reflect.Type {
 }
 
 type repositoryArgs struct {
-	// (Optional, Beta)
 	// Cleanup policies for this repository. Cleanup policies indicate when
 	// certain package versions can be automatically deleted.
 	// Map keys are policy IDs supplied by users during policy creation. They must
 	// unique within a repository and be under 128 characters in length.
 	// Structure is documented below.
 	CleanupPolicies []RepositoryCleanupPolicy `pulumi:"cleanupPolicies"`
-	// (Optional, Beta)
 	// If true, the cleanup pipeline is prevented from deleting versions in this
 	// repository.
 	CleanupPolicyDryRun *bool `pulumi:"cleanupPolicyDryRun"`
@@ -805,14 +797,12 @@ type repositoryArgs struct {
 
 // The set of arguments for constructing a Repository resource.
 type RepositoryArgs struct {
-	// (Optional, Beta)
 	// Cleanup policies for this repository. Cleanup policies indicate when
 	// certain package versions can be automatically deleted.
 	// Map keys are policy IDs supplied by users during policy creation. They must
 	// unique within a repository and be under 128 characters in length.
 	// Structure is documented below.
 	CleanupPolicies RepositoryCleanupPolicyArrayInput
-	// (Optional, Beta)
 	// If true, the cleanup pipeline is prevented from deleting versions in this
 	// repository.
 	CleanupPolicyDryRun pulumi.BoolPtrInput
@@ -954,7 +944,6 @@ func (o RepositoryOutput) ToRepositoryOutputWithContext(ctx context.Context) Rep
 	return o
 }
 
-// (Optional, Beta)
 // Cleanup policies for this repository. Cleanup policies indicate when
 // certain package versions can be automatically deleted.
 // Map keys are policy IDs supplied by users during policy creation. They must
@@ -964,7 +953,6 @@ func (o RepositoryOutput) CleanupPolicies() RepositoryCleanupPolicyArrayOutput {
 	return o.ApplyT(func(v *Repository) RepositoryCleanupPolicyArrayOutput { return v.CleanupPolicies }).(RepositoryCleanupPolicyArrayOutput)
 }
 
-// (Optional, Beta)
 // If true, the cleanup pipeline is prevented from deleting versions in this
 // repository.
 func (o RepositoryOutput) CleanupPolicyDryRun() pulumi.BoolPtrOutput {

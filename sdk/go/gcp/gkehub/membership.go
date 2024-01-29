@@ -196,7 +196,6 @@ type Membership struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrOutput `pulumi:"authority"`
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -273,7 +272,6 @@ type membershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -313,7 +311,6 @@ type MembershipState struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -357,7 +354,6 @@ type membershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority *MembershipAuthority `pulumi:"authority"`
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -391,7 +387,6 @@ type MembershipArgs struct {
 	// https://cloud.google.com/kubernetes-engine/docs/how-to/workload-identity
 	// Structure is documented below.
 	Authority MembershipAuthorityPtrInput
-	// (Optional, Deprecated)
 	// The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 	//
 	// > **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -513,7 +508,6 @@ func (o MembershipOutput) Authority() MembershipAuthorityPtrOutput {
 	return o.ApplyT(func(v *Membership) MembershipAuthorityPtrOutput { return v.Authority }).(MembershipAuthorityPtrOutput)
 }
 
-// (Optional, Deprecated)
 // The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
 //
 // > **Warning:** `description` is deprecated and will be removed in a future major release.

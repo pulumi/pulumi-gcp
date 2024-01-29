@@ -22,8 +22,7 @@ public final class JobTemplateTemplateVolume {
      */
     private @Nullable JobTemplateTemplateVolumeCloudSqlInstance cloudSqlInstance;
     /**
-     * @return (Optional, Beta)
-     * Ephemeral storage used as a shared volume.
+     * @return Ephemeral storage used as a shared volume.
      * Structure is documented below.
      * 
      */
@@ -50,8 +49,7 @@ public final class JobTemplateTemplateVolume {
         return Optional.ofNullable(this.cloudSqlInstance);
     }
     /**
-     * @return (Optional, Beta)
-     * Ephemeral storage used as a shared volume.
+     * @return Ephemeral storage used as a shared volume.
      * Structure is documented below.
      * 
      */

@@ -2244,7 +2244,7 @@ type AwsClusterControlPlane struct {
 	DatabaseEncryption AwsClusterControlPlaneDatabaseEncryption `pulumi:"databaseEncryption"`
 	// The name of the AWS IAM instance pofile to assign to each control plane replica.
 	IamInstanceProfile string `pulumi:"iamInstanceProfile"`
-	// (Beta only) Details of placement information for an instance.
+	// Details of placement information for an instance.
 	InstancePlacement *AwsClusterControlPlaneInstancePlacement `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType *string `pulumi:"instanceType"`
@@ -2286,7 +2286,7 @@ type AwsClusterControlPlaneArgs struct {
 	DatabaseEncryption AwsClusterControlPlaneDatabaseEncryptionInput `pulumi:"databaseEncryption"`
 	// The name of the AWS IAM instance pofile to assign to each control plane replica.
 	IamInstanceProfile pulumi.StringInput `pulumi:"iamInstanceProfile"`
-	// (Beta only) Details of placement information for an instance.
+	// Details of placement information for an instance.
 	InstancePlacement AwsClusterControlPlaneInstancePlacementPtrInput `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
@@ -2407,7 +2407,7 @@ func (o AwsClusterControlPlaneOutput) IamInstanceProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) string { return v.IamInstanceProfile }).(pulumi.StringOutput)
 }
 
-// (Beta only) Details of placement information for an instance.
+// Details of placement information for an instance.
 func (o AwsClusterControlPlaneOutput) InstancePlacement() AwsClusterControlPlaneInstancePlacementPtrOutput {
 	return o.ApplyT(func(v AwsClusterControlPlane) *AwsClusterControlPlaneInstancePlacement { return v.InstancePlacement }).(AwsClusterControlPlaneInstancePlacementPtrOutput)
 }
@@ -2521,7 +2521,7 @@ func (o AwsClusterControlPlanePtrOutput) IamInstanceProfile() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Beta only) Details of placement information for an instance.
+// Details of placement information for an instance.
 func (o AwsClusterControlPlanePtrOutput) InstancePlacement() AwsClusterControlPlaneInstancePlacementPtrOutput {
 	return o.ApplyT(func(v *AwsClusterControlPlane) *AwsClusterControlPlaneInstancePlacement {
 		if v == nil {
@@ -4808,9 +4808,9 @@ type AwsNodePoolConfig struct {
 	ConfigEncryption AwsNodePoolConfigConfigEncryption `pulumi:"configEncryption"`
 	// The name of the AWS IAM role assigned to nodes in the pool.
 	IamInstanceProfile string `pulumi:"iamInstanceProfile"`
-	// (Beta only) The OS image type to use on node pool instances.
+	// The OS image type to use on node pool instances.
 	ImageType *string `pulumi:"imageType"`
-	// (Beta only) Details of placement information for an instance.
+	// Details of placement information for an instance.
 	InstancePlacement *AwsNodePoolConfigInstancePlacement `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType *string `pulumi:"instanceType"`
@@ -4822,7 +4822,7 @@ type AwsNodePoolConfig struct {
 	RootVolume *AwsNodePoolConfigRootVolume `pulumi:"rootVolume"`
 	// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
 	SecurityGroupIds []string `pulumi:"securityGroupIds"`
-	// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+	// Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
 	SpotConfig *AwsNodePoolConfigSpotConfig `pulumi:"spotConfig"`
 	// Optional. The SSH configuration.
 	SshConfig *AwsNodePoolConfigSshConfig `pulumi:"sshConfig"`
@@ -4850,9 +4850,9 @@ type AwsNodePoolConfigArgs struct {
 	ConfigEncryption AwsNodePoolConfigConfigEncryptionInput `pulumi:"configEncryption"`
 	// The name of the AWS IAM role assigned to nodes in the pool.
 	IamInstanceProfile pulumi.StringInput `pulumi:"iamInstanceProfile"`
-	// (Beta only) The OS image type to use on node pool instances.
+	// The OS image type to use on node pool instances.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
-	// (Beta only) Details of placement information for an instance.
+	// Details of placement information for an instance.
 	InstancePlacement AwsNodePoolConfigInstancePlacementPtrInput `pulumi:"instancePlacement"`
 	// Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
 	InstanceType pulumi.StringPtrInput `pulumi:"instanceType"`
@@ -4864,7 +4864,7 @@ type AwsNodePoolConfigArgs struct {
 	RootVolume AwsNodePoolConfigRootVolumePtrInput `pulumi:"rootVolume"`
 	// Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
 	SecurityGroupIds pulumi.StringArrayInput `pulumi:"securityGroupIds"`
-	// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+	// Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
 	SpotConfig AwsNodePoolConfigSpotConfigPtrInput `pulumi:"spotConfig"`
 	// Optional. The SSH configuration.
 	SshConfig AwsNodePoolConfigSshConfigPtrInput `pulumi:"sshConfig"`
@@ -4968,12 +4968,12 @@ func (o AwsNodePoolConfigOutput) IamInstanceProfile() pulumi.StringOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) string { return v.IamInstanceProfile }).(pulumi.StringOutput)
 }
 
-// (Beta only) The OS image type to use on node pool instances.
+// The OS image type to use on node pool instances.
 func (o AwsNodePoolConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
 
-// (Beta only) Details of placement information for an instance.
+// Details of placement information for an instance.
 func (o AwsNodePoolConfigOutput) InstancePlacement() AwsNodePoolConfigInstancePlacementPtrOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) *AwsNodePoolConfigInstancePlacement { return v.InstancePlacement }).(AwsNodePoolConfigInstancePlacementPtrOutput)
 }
@@ -5003,7 +5003,7 @@ func (o AwsNodePoolConfigOutput) SecurityGroupIds() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) []string { return v.SecurityGroupIds }).(pulumi.StringArrayOutput)
 }
 
-// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+// Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
 func (o AwsNodePoolConfigOutput) SpotConfig() AwsNodePoolConfigSpotConfigPtrOutput {
 	return o.ApplyT(func(v AwsNodePoolConfig) *AwsNodePoolConfigSpotConfig { return v.SpotConfig }).(AwsNodePoolConfigSpotConfigPtrOutput)
 }
@@ -5077,7 +5077,7 @@ func (o AwsNodePoolConfigPtrOutput) IamInstanceProfile() pulumi.StringPtrOutput 
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Beta only) The OS image type to use on node pool instances.
+// The OS image type to use on node pool instances.
 func (o AwsNodePoolConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfig) *string {
 		if v == nil {
@@ -5087,7 +5087,7 @@ func (o AwsNodePoolConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Beta only) Details of placement information for an instance.
+// Details of placement information for an instance.
 func (o AwsNodePoolConfigPtrOutput) InstancePlacement() AwsNodePoolConfigInstancePlacementPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigInstancePlacement {
 		if v == nil {
@@ -5147,7 +5147,7 @@ func (o AwsNodePoolConfigPtrOutput) SecurityGroupIds() pulumi.StringArrayOutput 
 	}).(pulumi.StringArrayOutput)
 }
 
-// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+// Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
 func (o AwsNodePoolConfigPtrOutput) SpotConfig() AwsNodePoolConfigSpotConfigPtrOutput {
 	return o.ApplyT(func(v *AwsNodePoolConfig) *AwsNodePoolConfigSpotConfig {
 		if v == nil {
@@ -9454,7 +9454,7 @@ func (o AzureNodePoolAutoscalingPtrOutput) MinNodeCount() pulumi.IntPtrOutput {
 }
 
 type AzureNodePoolConfig struct {
-	// (Beta only) The OS image type to use on node pool instances.
+	// The OS image type to use on node pool instances.
 	ImageType *string `pulumi:"imageType"`
 	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels map[string]string `pulumi:"labels"`
@@ -9482,7 +9482,7 @@ type AzureNodePoolConfigInput interface {
 }
 
 type AzureNodePoolConfigArgs struct {
-	// (Beta only) The OS image type to use on node pool instances.
+	// The OS image type to use on node pool instances.
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
 	// Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
@@ -9575,7 +9575,7 @@ func (o AzureNodePoolConfigOutput) ToAzureNodePoolConfigPtrOutputWithContext(ctx
 	}).(AzureNodePoolConfigPtrOutput)
 }
 
-// (Beta only) The OS image type to use on node pool instances.
+// The OS image type to use on node pool instances.
 func (o AzureNodePoolConfigOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AzureNodePoolConfig) *string { return v.ImageType }).(pulumi.StringPtrOutput)
 }
@@ -9634,7 +9634,7 @@ func (o AzureNodePoolConfigPtrOutput) Elem() AzureNodePoolConfigOutput {
 	}).(AzureNodePoolConfigOutput)
 }
 
-// (Beta only) The OS image type to use on node pool instances.
+// The OS image type to use on node pool instances.
 func (o AzureNodePoolConfigPtrOutput) ImageType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AzureNodePoolConfig) *string {
 		if v == nil {
@@ -12984,7 +12984,7 @@ type ClusterClusterAutoscaling struct {
 	// GKE Autopilot clusters.
 	// Structure is documented below.
 	AutoProvisioningDefaults *ClusterClusterAutoscalingAutoProvisioningDefaults `pulumi:"autoProvisioningDefaults"`
-	// ) Configuration
+	// Configuration
 	// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 	// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
 	// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -13015,7 +13015,7 @@ type ClusterClusterAutoscalingArgs struct {
 	// GKE Autopilot clusters.
 	// Structure is documented below.
 	AutoProvisioningDefaults ClusterClusterAutoscalingAutoProvisioningDefaultsPtrInput `pulumi:"autoProvisioningDefaults"`
-	// ) Configuration
+	// Configuration
 	// options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 	// feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
 	// when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -13116,7 +13116,7 @@ func (o ClusterClusterAutoscalingOutput) AutoProvisioningDefaults() ClusterClust
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
-// ) Configuration
+// Configuration
 // options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 // feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
 // when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -13174,7 +13174,7 @@ func (o ClusterClusterAutoscalingPtrOutput) AutoProvisioningDefaults() ClusterCl
 	}).(ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput)
 }
 
-// ) Configuration
+// Configuration
 // options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
 // feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
 // when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.

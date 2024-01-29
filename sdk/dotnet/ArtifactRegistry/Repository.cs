@@ -413,7 +413,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     public partial class Repository : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Cleanup policies for this repository. Cleanup policies indicate when
         /// certain package versions can be automatically deleted.
         /// Map keys are policy IDs supplied by users during policy creation. They must
@@ -424,7 +423,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<ImmutableArray<Outputs.RepositoryCleanupPolicy>> CleanupPolicies { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// If true, the cleanup pipeline is prevented from deleting versions in this
         /// repository.
         /// </summary>
@@ -616,7 +614,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         private InputList<Inputs.RepositoryCleanupPolicyArgs>? _cleanupPolicies;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Cleanup policies for this repository. Cleanup policies indicate when
         /// certain package versions can be automatically deleted.
         /// Map keys are policy IDs supplied by users during policy creation. They must
@@ -630,7 +627,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         }
 
         /// <summary>
-        /// (Optional, Beta)
         /// If true, the cleanup pipeline is prevented from deleting versions in this
         /// repository.
         /// </summary>
@@ -753,7 +749,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         private InputList<Inputs.RepositoryCleanupPolicyGetArgs>? _cleanupPolicies;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Cleanup policies for this repository. Cleanup policies indicate when
         /// certain package versions can be automatically deleted.
         /// Map keys are policy IDs supplied by users during policy creation. They must
@@ -767,7 +762,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         }
 
         /// <summary>
-        /// (Optional, Beta)
         /// If true, the cleanup pipeline is prevented from deleting versions in this
         /// repository.
         /// </summary>

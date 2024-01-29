@@ -3681,13 +3681,11 @@ export namespace artifactregistry {
 
     export interface RepositoryCleanupPolicy {
         /**
-         * (Optional, Beta)
          * Policy action.
          * Possible values are: `DELETE`, `KEEP`.
          */
         action?: string;
         /**
-         * (Optional, Beta)
          * Policy condition for matching versions.
          * Structure is documented below.
          */
@@ -3697,7 +3695,6 @@ export namespace artifactregistry {
          */
         id: string;
         /**
-         * (Optional, Beta)
          * Policy condition for retaining a minimum number of versions. May only be
          * specified with a Keep action.
          * Structure is documented below.
@@ -3707,34 +3704,28 @@ export namespace artifactregistry {
 
     export interface RepositoryCleanupPolicyCondition {
         /**
-         * (Optional, Beta)
          * Match versions newer than a duration.
          */
         newerThan?: string;
         /**
-         * (Optional, Beta)
          * Match versions older than a duration.
          */
         olderThan?: string;
         /**
-         * (Optional, Beta)
          * Match versions by package prefix. Applied on any prefix match.
          */
         packageNamePrefixes?: string[];
         /**
-         * (Optional, Beta)
          * Match versions by tag prefix. Applied on any prefix match.
          */
         tagPrefixes?: string[];
         /**
-         * (Optional, Beta)
          * Match versions by tag status.
          * Default value is `ANY`.
          * Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
          */
         tagState?: string;
         /**
-         * (Optional, Beta)
          * Match versions by version name prefix. Applied on any prefix match.
          */
         versionNamePrefixes?: string[];
@@ -3742,12 +3733,10 @@ export namespace artifactregistry {
 
     export interface RepositoryCleanupPolicyMostRecentVersions {
         /**
-         * (Optional, Beta)
          * Minimum number of versions to keep.
          */
         keepCount?: number;
         /**
-         * (Optional, Beta)
          * Match versions by package prefix. Applied on any prefix match.
          */
         packageNamePrefixes?: string[];
@@ -12687,7 +12676,6 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecVolume {
         /**
-         * (Optional, Beta)
          * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
          * Structure is documented below.
          */
@@ -13469,7 +13457,6 @@ export namespace cloudrunv2 {
          */
         cloudSqlInstance?: outputs.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstance;
         /**
-         * (Optional, Beta)
          * Ephemeral storage used as a shared volume.
          * Structure is documented below.
          */
@@ -14068,7 +14055,6 @@ export namespace cloudrunv2 {
          */
         cloudSqlInstance?: outputs.cloudrunv2.ServiceTemplateVolumeCloudSqlInstance;
         /**
-         * (Optional, Beta)
          * Ephemeral storage used as a shared volume.
          * Structure is documented below.
          */
@@ -16115,7 +16101,7 @@ export namespace compute {
          */
         description: string;
         /**
-         * (Beta only) A map containing IP labels.
+         * A map containing IP labels.
          */
         labels: {[key: string]: string};
         /**
@@ -18971,7 +18957,7 @@ export namespace compute {
          */
         network: string;
         /**
-         * Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+         * The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
          */
         networkAttachment: string;
         /**
@@ -18988,7 +18974,7 @@ export namespace compute {
          */
         queueCount?: number;
         /**
-         * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
          */
         securityPolicy?: string;
         /**
@@ -19031,7 +19017,7 @@ export namespace compute {
          */
         publicPtrDomainName?: string;
         /**
-         * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
          */
         securityPolicy: string;
     }
@@ -19080,7 +19066,7 @@ export namespace compute {
          */
         publicPtrDomainName?: string;
         /**
-         * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
          */
         securityPolicy: string;
     }
@@ -19133,12 +19119,12 @@ export namespace compute {
         instanceTerminationAction?: string;
         localSsdRecoveryTimeout?: outputs.compute.InstanceSchedulingLocalSsdRecoveryTimeout;
         /**
-         * Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
          */
         maintenanceInterval?: string;
         /**
-         * Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
+         * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
          * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
          */
         maxRunDuration?: outputs.compute.InstanceSchedulingMaxRunDuration;
@@ -19631,12 +19617,12 @@ export namespace compute {
         instanceTerminationAction?: string;
         localSsdRecoveryTimeouts?: outputs.compute.InstanceTemplateSchedulingLocalSsdRecoveryTimeout[];
         /**
-         * Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
          */
         maintenanceInterval?: string;
         /**
-         * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
+         * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
          * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
          */
         maxRunDuration?: outputs.compute.InstanceTemplateSchedulingMaxRunDuration;
@@ -24116,7 +24102,6 @@ export namespace compute {
          */
         collocation?: string;
         /**
-         * (Optional, Beta)
          * Specifies the number of max logical switches.
          */
         maxDistance?: number;
@@ -24393,7 +24378,6 @@ export namespace compute {
          */
         sourceNatActiveIps?: string[];
         /**
-         * (Optional, Beta)
          * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
          * These subnetworks must have purpose set to PRIVATE_NAT.
          * This field is used for private NAT.
@@ -24407,7 +24391,6 @@ export namespace compute {
          */
         sourceNatDrainIps?: string[];
         /**
-         * (Optional, Beta)
          * A list of URLs of subnetworks representing source ranges to be drained.
          * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
          * This field is used for private NAT.
@@ -27309,7 +27292,7 @@ export namespace container {
          */
         iamInstanceProfile: string;
         /**
-         * (Beta only) Details of placement information for an instance.
+         * Details of placement information for an instance.
          */
         instancePlacement: outputs.container.AwsClusterControlPlaneInstancePlacement;
         /**
@@ -27523,11 +27506,11 @@ export namespace container {
          */
         iamInstanceProfile: string;
         /**
-         * (Beta only) The OS image type to use on node pool instances.
+         * The OS image type to use on node pool instances.
          */
         imageType: string;
         /**
-         * (Beta only) Details of placement information for an instance.
+         * Details of placement information for an instance.
          */
         instancePlacement: outputs.container.AwsNodePoolConfigInstancePlacement;
         /**
@@ -27551,7 +27534,7 @@ export namespace container {
          */
         securityGroupIds?: string[];
         /**
-         * (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+         * Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
          */
         spotConfig?: outputs.container.AwsNodePoolConfigSpotConfig;
         /**
@@ -27880,7 +27863,7 @@ export namespace container {
 
     export interface AzureNodePoolConfig {
         /**
-         * (Beta only) The OS image type to use on node pool instances.
+         * The OS image type to use on node pool instances.
          */
         imageType: string;
         /**
@@ -28167,7 +28150,7 @@ export namespace container {
          */
         autoProvisioningDefaults: outputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults;
         /**
-         * ) Configuration
+         * Configuration
          * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
          * feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
          * when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -39923,7 +39906,6 @@ export namespace dataproc {
          */
         consumers: outputs.dataproc.MetastoreServiceNetworkConfigConsumer[];
         /**
-         * (Optional, Beta)
          * Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
          */
         customRoutesEnabled?: boolean;
@@ -63184,7 +63166,6 @@ export namespace vertex {
          */
         disabled?: boolean;
         /**
-         * (Optional, Beta, Deprecated)
          * Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
          * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
          *

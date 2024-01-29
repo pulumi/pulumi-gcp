@@ -67,14 +67,14 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
     }
 
     /**
-     * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
      * 
      */
     @Import(name="securityPolicy")
     private @Nullable Output<String> securityPolicy;
 
     /**
-     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
      * 
      */
     public Optional<Output<String>> securityPolicy() {
@@ -178,7 +178,7 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param securityPolicy Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * @param securityPolicy A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
          * 
          * @return builder
          * 
@@ -189,7 +189,7 @@ public final class InstanceNetworkInterfaceAccessConfigArgs extends com.pulumi.r
         }
 
         /**
-         * @param securityPolicy Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * @param securityPolicy A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
          * 
          * @return builder
          * 

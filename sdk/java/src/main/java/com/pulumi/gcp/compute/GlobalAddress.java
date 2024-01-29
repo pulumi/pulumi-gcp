@@ -186,16 +186,16 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * (Beta)
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
      * 
      */
     @Export(name="effectiveLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> effectiveLabels;
 
     /**
-     * @return (Beta)
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
      * 
      */
     public Output<Map<String,String>> effectiveLabels() {
@@ -218,18 +218,14 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.ipVersion);
     }
     /**
-     * (Beta)
-     * The fingerprint used for optimistic locking of this resource.  Used
-     * internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      * 
      */
     @Export(name="labelFingerprint", refs={String.class}, tree="[0]")
     private Output<String> labelFingerprint;
 
     /**
-     * @return (Beta)
-     * The fingerprint used for optimistic locking of this resource.  Used
-     * internally during updates.
+     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
      * 
      */
     public Output<String> labelFingerprint() {
@@ -342,18 +338,14 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * (Beta)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
     @Export(name="pulumiLabels", refs={Map.class,String.class}, tree="[0,1,1]")
     private Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return (Beta)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
     public Output<Map<String,String>> pulumiLabels() {
@@ -362,7 +354,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
      * 
      */
     @Export(name="purpose", refs={String.class}, tree="[0]")
@@ -371,7 +363,7 @@ public class GlobalAddress extends com.pulumi.resources.CustomResource {
     /**
      * @return The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
      * 
      */
     public Output<Optional<String>> purpose() {

@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string IamInstanceProfile;
         /// <summary>
-        /// (Beta only) Details of placement information for an instance.
+        /// Details of placement information for an instance.
         /// </summary>
         public readonly Outputs.AwsClusterControlPlaneInstancePlacement? InstancePlacement;
         /// <summary>

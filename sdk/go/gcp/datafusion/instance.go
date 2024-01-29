@@ -354,7 +354,6 @@ type Instance struct {
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// The region of the Data Fusion instance.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// (Beta, Deprecated)
 	// Service account which will be used to access resources in the customer project.
 	//
 	// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
@@ -486,7 +485,6 @@ type instanceState struct {
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// The region of the Data Fusion instance.
 	Region *string `pulumi:"region"`
-	// (Beta, Deprecated)
 	// Service account which will be used to access resources in the customer project.
 	//
 	// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
@@ -581,7 +579,6 @@ type InstanceState struct {
 	PulumiLabels pulumi.StringMapInput
 	// The region of the Data Fusion instance.
 	Region pulumi.StringPtrInput
-	// (Beta, Deprecated)
 	// Service account which will be used to access resources in the customer project.
 	//
 	// Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
@@ -965,7 +962,6 @@ func (o InstanceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// (Beta, Deprecated)
 // Service account which will be used to access resources in the customer project.
 //
 // Deprecated: `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.

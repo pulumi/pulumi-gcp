@@ -107,7 +107,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:dns/responsePolicyRule:ResponsePolicyRule")
 public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
     /**
-     * (Optional, Beta)
      * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
@@ -115,8 +114,7 @@ public class ResponsePolicyRule extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> behavior;
 
     /**
-     * @return (Optional, Beta)
-     * Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
+     * @return Answer this query with a behavior rather than DNS data. Acceptable values are &#39;behaviorUnspecified&#39;, and &#39;bypassResponsePolicy&#39;
      * 
      */
     public Output<Optional<String>> behavior() {

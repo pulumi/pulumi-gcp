@@ -30,7 +30,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _sourceNatActiveRanges;
 
         /// <summary>
-        /// (Optional, Beta)
         /// A list of URLs of the subnetworks used as source ranges for this NAT Rule.
         /// These subnetworks must have purpose set to PRIVATE_NAT.
         /// This field is used for private NAT.
@@ -60,7 +59,6 @@ namespace Pulumi.Gcp.Compute.Inputs
         private InputList<string>? _sourceNatDrainRanges;
 
         /// <summary>
-        /// (Optional, Beta)
         /// A list of URLs of subnetworks representing source ranges to be drained.
         /// This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
         /// This field is used for private NAT.

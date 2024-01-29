@@ -235,7 +235,7 @@ type AzureCluster struct {
 	Fleet AzureClusterFleetOutput `pulumi:"fleet"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig AzureClusterLoggingConfigOutput `pulumi:"loggingConfig"`
 	// The name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -338,7 +338,7 @@ type azureClusterState struct {
 	Fleet *AzureClusterFleet `pulumi:"fleet"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig *AzureClusterLoggingConfig `pulumi:"loggingConfig"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
@@ -391,7 +391,7 @@ type AzureClusterState struct {
 	Fleet AzureClusterFleetPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig AzureClusterLoggingConfigPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
@@ -439,7 +439,7 @@ type azureClusterArgs struct {
 	Fleet AzureClusterFleet `pulumi:"fleet"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig *AzureClusterLoggingConfig `pulumi:"loggingConfig"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
@@ -474,7 +474,7 @@ type AzureClusterArgs struct {
 	Fleet AzureClusterFleetInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig AzureClusterLoggingConfigPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
@@ -644,7 +644,7 @@ func (o AzureClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AzureCluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// (Beta only) Logging configuration.
+// Logging configuration.
 func (o AzureClusterOutput) LoggingConfig() AzureClusterLoggingConfigOutput {
 	return o.ApplyT(func(v *AzureCluster) AzureClusterLoggingConfigOutput { return v.LoggingConfig }).(AzureClusterLoggingConfigOutput)
 }

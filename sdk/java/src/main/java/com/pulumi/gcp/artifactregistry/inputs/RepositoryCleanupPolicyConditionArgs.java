@@ -17,7 +17,6 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     public static final RepositoryCleanupPolicyConditionArgs Empty = new RepositoryCleanupPolicyConditionArgs();
 
     /**
-     * (Optional, Beta)
      * Match versions newer than a duration.
      * 
      */
@@ -25,8 +24,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     private @Nullable Output<String> newerThan;
 
     /**
-     * @return (Optional, Beta)
-     * Match versions newer than a duration.
+     * @return Match versions newer than a duration.
      * 
      */
     public Optional<Output<String>> newerThan() {
@@ -34,7 +32,6 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     }
 
     /**
-     * (Optional, Beta)
      * Match versions older than a duration.
      * 
      */
@@ -42,8 +39,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     private @Nullable Output<String> olderThan;
 
     /**
-     * @return (Optional, Beta)
-     * Match versions older than a duration.
+     * @return Match versions older than a duration.
      * 
      */
     public Optional<Output<String>> olderThan() {
@@ -51,7 +47,6 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     }
 
     /**
-     * (Optional, Beta)
      * Match versions by package prefix. Applied on any prefix match.
      * 
      */
@@ -59,8 +54,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     private @Nullable Output<List<String>> packageNamePrefixes;
 
     /**
-     * @return (Optional, Beta)
-     * Match versions by package prefix. Applied on any prefix match.
+     * @return Match versions by package prefix. Applied on any prefix match.
      * 
      */
     public Optional<Output<List<String>>> packageNamePrefixes() {
@@ -68,7 +62,6 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     }
 
     /**
-     * (Optional, Beta)
      * Match versions by tag prefix. Applied on any prefix match.
      * 
      */
@@ -76,8 +69,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     private @Nullable Output<List<String>> tagPrefixes;
 
     /**
-     * @return (Optional, Beta)
-     * Match versions by tag prefix. Applied on any prefix match.
+     * @return Match versions by tag prefix. Applied on any prefix match.
      * 
      */
     public Optional<Output<List<String>>> tagPrefixes() {
@@ -85,7 +77,6 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     }
 
     /**
-     * (Optional, Beta)
      * Match versions by tag status.
      * Default value is `ANY`.
      * Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
@@ -95,8 +86,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     private @Nullable Output<String> tagState;
 
     /**
-     * @return (Optional, Beta)
-     * Match versions by tag status.
+     * @return Match versions by tag status.
      * Default value is `ANY`.
      * Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
      * 
@@ -106,7 +96,6 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     }
 
     /**
-     * (Optional, Beta)
      * Match versions by version name prefix. Applied on any prefix match.
      * 
      */
@@ -114,8 +103,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
     private @Nullable Output<List<String>> versionNamePrefixes;
 
     /**
-     * @return (Optional, Beta)
-     * Match versions by version name prefix. Applied on any prefix match.
+     * @return Match versions by version name prefix. Applied on any prefix match.
      * 
      */
     public Optional<Output<List<String>>> versionNamePrefixes() {
@@ -152,8 +140,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param newerThan (Optional, Beta)
-         * Match versions newer than a duration.
+         * @param newerThan Match versions newer than a duration.
          * 
          * @return builder
          * 
@@ -164,8 +151,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param newerThan (Optional, Beta)
-         * Match versions newer than a duration.
+         * @param newerThan Match versions newer than a duration.
          * 
          * @return builder
          * 
@@ -175,8 +161,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param olderThan (Optional, Beta)
-         * Match versions older than a duration.
+         * @param olderThan Match versions older than a duration.
          * 
          * @return builder
          * 
@@ -187,8 +172,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param olderThan (Optional, Beta)
-         * Match versions older than a duration.
+         * @param olderThan Match versions older than a duration.
          * 
          * @return builder
          * 
@@ -198,8 +182,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param packageNamePrefixes (Optional, Beta)
-         * Match versions by package prefix. Applied on any prefix match.
+         * @param packageNamePrefixes Match versions by package prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -210,8 +193,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param packageNamePrefixes (Optional, Beta)
-         * Match versions by package prefix. Applied on any prefix match.
+         * @param packageNamePrefixes Match versions by package prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -221,8 +203,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param packageNamePrefixes (Optional, Beta)
-         * Match versions by package prefix. Applied on any prefix match.
+         * @param packageNamePrefixes Match versions by package prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -232,8 +213,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tagPrefixes (Optional, Beta)
-         * Match versions by tag prefix. Applied on any prefix match.
+         * @param tagPrefixes Match versions by tag prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -244,8 +224,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tagPrefixes (Optional, Beta)
-         * Match versions by tag prefix. Applied on any prefix match.
+         * @param tagPrefixes Match versions by tag prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -255,8 +234,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tagPrefixes (Optional, Beta)
-         * Match versions by tag prefix. Applied on any prefix match.
+         * @param tagPrefixes Match versions by tag prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -266,8 +244,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tagState (Optional, Beta)
-         * Match versions by tag status.
+         * @param tagState Match versions by tag status.
          * Default value is `ANY`.
          * Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
          * 
@@ -280,8 +257,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param tagState (Optional, Beta)
-         * Match versions by tag status.
+         * @param tagState Match versions by tag status.
          * Default value is `ANY`.
          * Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
          * 
@@ -293,8 +269,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param versionNamePrefixes (Optional, Beta)
-         * Match versions by version name prefix. Applied on any prefix match.
+         * @param versionNamePrefixes Match versions by version name prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -305,8 +280,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param versionNamePrefixes (Optional, Beta)
-         * Match versions by version name prefix. Applied on any prefix match.
+         * @param versionNamePrefixes Match versions by version name prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -316,8 +290,7 @@ public final class RepositoryCleanupPolicyConditionArgs extends com.pulumi.resou
         }
 
         /**
-         * @param versionNamePrefixes (Optional, Beta)
-         * Match versions by version name prefix. Applied on any prefix match.
+         * @param versionNamePrefixes Match versions by version name prefix. Applied on any prefix match.
          * 
          * @return builder
          * 

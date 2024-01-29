@@ -48,8 +48,7 @@ class TargetInstanceArgs:
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] security_policy: (Optional, Beta)
-               The resource URL for the security policy associated with this target instance.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
         pulumi.set(__self__, "instance", instance)
@@ -162,7 +161,6 @@ class TargetInstanceArgs:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Beta)
         The resource URL for the security policy associated with this target instance.
         """
         return pulumi.get(self, "security_policy")
@@ -224,8 +222,7 @@ class _TargetInstanceState:
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] security_policy: (Optional, Beta)
-               The resource URL for the security policy associated with this target instance.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
@@ -356,7 +353,6 @@ class _TargetInstanceState:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Beta)
         The resource URL for the security policy associated with this target instance.
         """
         return pulumi.get(self, "security_policy")
@@ -513,8 +509,7 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] security_policy: (Optional, Beta)
-               The resource URL for the security policy associated with this target instance.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
         ...
@@ -702,8 +697,7 @@ class TargetInstance(pulumi.CustomResource):
         :param pulumi.Input[str] network: The URL of the network this target instance uses to forward traffic. If not specified, the traffic will be forwarded to the network that the default network interface belongs to.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] security_policy: (Optional, Beta)
-               The resource URL for the security policy associated with this target instance.
+        :param pulumi.Input[str] security_policy: The resource URL for the security policy associated with this target instance.
         :param pulumi.Input[str] self_link: The URI of the created resource.
         :param pulumi.Input[str] zone: URL of the zone where the target instance resides.
         """
@@ -801,7 +795,6 @@ class TargetInstance(pulumi.CustomResource):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional, Beta)
         The resource URL for the security policy associated with this target instance.
         """
         return pulumi.get(self, "security_policy")

@@ -157,7 +157,6 @@ type RegionBackendService struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringOutput `pulumi:"region"`
-	// (Optional, Beta)
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrOutput `pulumi:"securityPolicy"`
 	// The URI of the created resource.
@@ -166,7 +165,6 @@ type RegionBackendService struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity pulumi.StringOutput `pulumi:"sessionAffinity"`
-	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrOutput `pulumi:"subsetting"`
@@ -310,7 +308,6 @@ type regionBackendServiceState struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
-	// (Optional, Beta)
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// The URI of the created resource.
@@ -319,7 +316,6 @@ type regionBackendServiceState struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
@@ -434,7 +430,6 @@ type RegionBackendServiceState struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
-	// (Optional, Beta)
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
 	// The URI of the created resource.
@@ -443,7 +438,6 @@ type RegionBackendServiceState struct {
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrInput
@@ -557,14 +551,12 @@ type regionBackendServiceArgs struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region *string `pulumi:"region"`
-	// (Optional, Beta)
 	// The security policy associated with this backend service.
 	SecurityPolicy *string `pulumi:"securityPolicy"`
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity *string `pulumi:"sessionAffinity"`
-	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting *RegionBackendServiceSubsetting `pulumi:"subsetting"`
@@ -675,14 +667,12 @@ type RegionBackendServiceArgs struct {
 	// The Region in which the created backend service should reside.
 	// If it is not provided, the provider region is used.
 	Region pulumi.StringPtrInput
-	// (Optional, Beta)
 	// The security policy associated with this backend service.
 	SecurityPolicy pulumi.StringPtrInput
 	// Type of session affinity to use. The default is NONE. Session affinity is
 	// not applicable if the protocol is UDP.
 	// Possible values are: `NONE`, `CLIENT_IP`, `CLIENT_IP_PORT_PROTO`, `CLIENT_IP_PROTO`, `GENERATED_COOKIE`, `HEADER_FIELD`, `HTTP_COOKIE`, `CLIENT_IP_NO_DESTINATION`.
 	SessionAffinity pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 	// Structure is documented below.
 	Subsetting RegionBackendServiceSubsettingPtrInput
@@ -957,7 +947,6 @@ func (o RegionBackendServiceOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.Region }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // The security policy associated with this backend service.
 func (o RegionBackendServiceOutput) SecurityPolicy() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringPtrOutput { return v.SecurityPolicy }).(pulumi.StringPtrOutput)
@@ -975,7 +964,6 @@ func (o RegionBackendServiceOutput) SessionAffinity() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionBackendService) pulumi.StringOutput { return v.SessionAffinity }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
 // Structure is documented below.
 func (o RegionBackendServiceOutput) Subsetting() RegionBackendServiceSubsettingPtrOutput {

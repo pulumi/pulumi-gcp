@@ -2300,7 +2300,6 @@ type JobTemplateTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *JobTemplateTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
-	// (Optional, Beta)
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir *JobTemplateTemplateVolumeEmptyDir `pulumi:"emptyDir"`
@@ -2326,7 +2325,6 @@ type JobTemplateTemplateVolumeArgs struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance JobTemplateTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
-	// (Optional, Beta)
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir JobTemplateTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
@@ -2396,7 +2394,6 @@ func (o JobTemplateTemplateVolumeOutput) CloudSqlInstance() JobTemplateTemplateV
 	}).(JobTemplateTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
-// (Optional, Beta)
 // Ephemeral storage used as a shared volume.
 // Structure is documented below.
 func (o JobTemplateTemplateVolumeOutput) EmptyDir() JobTemplateTemplateVolumeEmptyDirPtrOutput {
@@ -7533,7 +7530,6 @@ type ServiceTemplateVolume struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance *ServiceTemplateVolumeCloudSqlInstance `pulumi:"cloudSqlInstance"`
-	// (Optional, Beta)
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir *ServiceTemplateVolumeEmptyDir `pulumi:"emptyDir"`
@@ -7565,7 +7561,6 @@ type ServiceTemplateVolumeArgs struct {
 	// For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
 	// Structure is documented below.
 	CloudSqlInstance ServiceTemplateVolumeCloudSqlInstancePtrInput `pulumi:"cloudSqlInstance"`
-	// (Optional, Beta)
 	// Ephemeral storage used as a shared volume.
 	// Structure is documented below.
 	EmptyDir ServiceTemplateVolumeEmptyDirPtrInput `pulumi:"emptyDir"`
@@ -7639,7 +7634,6 @@ func (o ServiceTemplateVolumeOutput) CloudSqlInstance() ServiceTemplateVolumeClo
 	return o.ApplyT(func(v ServiceTemplateVolume) *ServiceTemplateVolumeCloudSqlInstance { return v.CloudSqlInstance }).(ServiceTemplateVolumeCloudSqlInstancePtrOutput)
 }
 
-// (Optional, Beta)
 // Ephemeral storage used as a shared volume.
 // Structure is documented below.
 func (o ServiceTemplateVolumeOutput) EmptyDir() ServiceTemplateVolumeEmptyDirPtrOutput {

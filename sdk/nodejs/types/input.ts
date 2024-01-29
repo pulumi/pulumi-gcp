@@ -3519,13 +3519,11 @@ export namespace appengine {
 export namespace artifactregistry {
     export interface RepositoryCleanupPolicy {
         /**
-         * (Optional, Beta)
          * Policy action.
          * Possible values are: `DELETE`, `KEEP`.
          */
         action?: pulumi.Input<string>;
         /**
-         * (Optional, Beta)
          * Policy condition for matching versions.
          * Structure is documented below.
          */
@@ -3535,7 +3533,6 @@ export namespace artifactregistry {
          */
         id: pulumi.Input<string>;
         /**
-         * (Optional, Beta)
          * Policy condition for retaining a minimum number of versions. May only be
          * specified with a Keep action.
          * Structure is documented below.
@@ -3545,34 +3542,28 @@ export namespace artifactregistry {
 
     export interface RepositoryCleanupPolicyCondition {
         /**
-         * (Optional, Beta)
          * Match versions newer than a duration.
          */
         newerThan?: pulumi.Input<string>;
         /**
-         * (Optional, Beta)
          * Match versions older than a duration.
          */
         olderThan?: pulumi.Input<string>;
         /**
-         * (Optional, Beta)
          * Match versions by package prefix. Applied on any prefix match.
          */
         packageNamePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * (Optional, Beta)
          * Match versions by tag prefix. Applied on any prefix match.
          */
         tagPrefixes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * (Optional, Beta)
          * Match versions by tag status.
          * Default value is `ANY`.
          * Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
          */
         tagState?: pulumi.Input<string>;
         /**
-         * (Optional, Beta)
          * Match versions by version name prefix. Applied on any prefix match.
          */
         versionNamePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -3580,12 +3571,10 @@ export namespace artifactregistry {
 
     export interface RepositoryCleanupPolicyMostRecentVersions {
         /**
-         * (Optional, Beta)
          * Minimum number of versions to keep.
          */
         keepCount?: pulumi.Input<number>;
         /**
-         * (Optional, Beta)
          * Match versions by package prefix. Applied on any prefix match.
          */
         packageNamePrefixes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -11500,7 +11489,6 @@ export namespace cloudrun {
 
     export interface ServiceTemplateSpecVolume {
         /**
-         * (Optional, Beta)
          * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
          * Structure is documented below.
          */
@@ -11887,7 +11875,6 @@ export namespace cloudrunv2 {
          */
         cloudSqlInstance?: pulumi.Input<inputs.cloudrunv2.JobTemplateTemplateVolumeCloudSqlInstance>;
         /**
-         * (Optional, Beta)
          * Ephemeral storage used as a shared volume.
          * Structure is documented below.
          */
@@ -12486,7 +12473,6 @@ export namespace cloudrunv2 {
          */
         cloudSqlInstance?: pulumi.Input<inputs.cloudrunv2.ServiceTemplateVolumeCloudSqlInstance>;
         /**
-         * (Optional, Beta)
          * Ephemeral storage used as a shared volume.
          * Structure is documented below.
          */
@@ -15490,7 +15476,7 @@ export namespace compute {
          */
         network?: pulumi.Input<string>;
         /**
-         * Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+         * The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
          */
         networkAttachment?: pulumi.Input<string>;
         /**
@@ -15507,7 +15493,7 @@ export namespace compute {
          */
         queueCount?: pulumi.Input<number>;
         /**
-         * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
          */
         securityPolicy?: pulumi.Input<string>;
         /**
@@ -15550,7 +15536,7 @@ export namespace compute {
          */
         publicPtrDomainName?: pulumi.Input<string>;
         /**
-         * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
          */
         securityPolicy?: pulumi.Input<string>;
     }
@@ -15599,7 +15585,7 @@ export namespace compute {
          */
         publicPtrDomainName?: pulumi.Input<string>;
         /**
-         * Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+         * A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
          */
         securityPolicy?: pulumi.Input<string>;
     }
@@ -15652,12 +15638,12 @@ export namespace compute {
         instanceTerminationAction?: pulumi.Input<string>;
         localSsdRecoveryTimeout?: pulumi.Input<inputs.compute.InstanceSchedulingLocalSsdRecoveryTimeout>;
         /**
-         * Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
          */
         maintenanceInterval?: pulumi.Input<string>;
         /**
-         * Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
+         * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
          * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
          */
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceSchedulingMaxRunDuration>;
@@ -16150,12 +16136,12 @@ export namespace compute {
         instanceTerminationAction?: pulumi.Input<string>;
         localSsdRecoveryTimeouts?: pulumi.Input<pulumi.Input<inputs.compute.InstanceTemplateSchedulingLocalSsdRecoveryTimeout>[]>;
         /**
-         * Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+         * Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
          * <a name="nestedGuestAccelerator"></a>The `guestAccelerator` block supports:
          */
         maintenanceInterval?: pulumi.Input<string>;
         /**
-         * Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
+         * The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instanceTerminationAction`. Only support `DELETE` `instanceTerminationAction` at this point. Structure is documented below.
          * <a name="nestedMaxRunDuration"></a>The `maxRunDuration` block supports:
          */
         maxRunDuration?: pulumi.Input<inputs.compute.InstanceTemplateSchedulingMaxRunDuration>;
@@ -20635,7 +20621,6 @@ export namespace compute {
          */
         collocation?: pulumi.Input<string>;
         /**
-         * (Optional, Beta)
          * Specifies the number of max logical switches.
          */
         maxDistance?: pulumi.Input<number>;
@@ -20912,7 +20897,6 @@ export namespace compute {
          */
         sourceNatActiveIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * (Optional, Beta)
          * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
          * These subnetworks must have purpose set to PRIVATE_NAT.
          * This field is used for private NAT.
@@ -20926,7 +20910,6 @@ export namespace compute {
          */
         sourceNatDrainIps?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * (Optional, Beta)
          * A list of URLs of subnetworks representing source ranges to be drained.
          * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
          * This field is used for private NAT.
@@ -23764,7 +23747,7 @@ export namespace container {
          */
         iamInstanceProfile: pulumi.Input<string>;
         /**
-         * (Beta only) Details of placement information for an instance.
+         * Details of placement information for an instance.
          */
         instancePlacement?: pulumi.Input<inputs.container.AwsClusterControlPlaneInstancePlacement>;
         /**
@@ -23978,11 +23961,11 @@ export namespace container {
          */
         iamInstanceProfile: pulumi.Input<string>;
         /**
-         * (Beta only) The OS image type to use on node pool instances.
+         * The OS image type to use on node pool instances.
          */
         imageType?: pulumi.Input<string>;
         /**
-         * (Beta only) Details of placement information for an instance.
+         * Details of placement information for an instance.
          */
         instancePlacement?: pulumi.Input<inputs.container.AwsNodePoolConfigInstancePlacement>;
         /**
@@ -24006,7 +23989,7 @@ export namespace container {
          */
         securityGroupIds?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
+         * Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instanceType`
          */
         spotConfig?: pulumi.Input<inputs.container.AwsNodePoolConfigSpotConfig>;
         /**
@@ -24335,7 +24318,7 @@ export namespace container {
 
     export interface AzureNodePoolConfig {
         /**
-         * (Beta only) The OS image type to use on node pool instances.
+         * The OS image type to use on node pool instances.
          */
         imageType?: pulumi.Input<string>;
         /**
@@ -24622,7 +24605,7 @@ export namespace container {
          */
         autoProvisioningDefaults?: pulumi.Input<inputs.container.ClusterClusterAutoscalingAutoProvisioningDefaults>;
         /**
-         * ) Configuration
+         * Configuration
          * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
          * feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
          * when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -35602,7 +35585,6 @@ export namespace dataproc {
          */
         consumers: pulumi.Input<pulumi.Input<inputs.dataproc.MetastoreServiceNetworkConfigConsumer>[]>;
         /**
-         * (Optional, Beta)
          * Enables custom routes to be imported and exported for the Dataproc Metastore service's peered VPC network.
          */
         customRoutesEnabled?: pulumi.Input<boolean>;
@@ -57663,7 +57645,6 @@ export namespace vertex {
          */
         disabled?: pulumi.Input<boolean>;
         /**
-         * (Optional, Beta, Deprecated)
          * Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
          * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
          *

@@ -21,7 +21,6 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     public static final SubnetworkArgs Empty = new SubnetworkArgs();
 
     /**
-     * (Optional, Beta)
      * Typically packets destined to IPs within the subnetwork range that do not match
      * existing resources are dropped and prevented from leaving the VPC.
      * Setting this field to true will allow these packets to match dynamic routes injected
@@ -32,8 +31,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> allowSubnetCidrRoutesOverlap;
 
     /**
-     * @return (Optional, Beta)
-     * Typically packets destined to IPs within the subnetwork range that do not match
+     * @return Typically packets destined to IPs within the subnetwork range that do not match
      * existing resources are dropped and prevented from leaving the VPC.
      * Setting this field to true will allow these packets to match dynamic routes injected
      * via BGP even if their destinations match existing subnet ranges.
@@ -240,7 +238,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`(Beta).
+     * The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`.
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
      * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -253,7 +251,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> purpose;
 
     /**
-     * @return The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`(Beta).
+     * @return The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`.
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
      * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -388,8 +386,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowSubnetCidrRoutesOverlap (Optional, Beta)
-         * Typically packets destined to IPs within the subnetwork range that do not match
+         * @param allowSubnetCidrRoutesOverlap Typically packets destined to IPs within the subnetwork range that do not match
          * existing resources are dropped and prevented from leaving the VPC.
          * Setting this field to true will allow these packets to match dynamic routes injected
          * via BGP even if their destinations match existing subnet ranges.
@@ -403,8 +400,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param allowSubnetCidrRoutesOverlap (Optional, Beta)
-         * Typically packets destined to IPs within the subnetwork range that do not match
+         * @param allowSubnetCidrRoutesOverlap Typically packets destined to IPs within the subnetwork range that do not match
          * existing resources are dropped and prevented from leaving the VPC.
          * Setting this field to true will allow these packets to match dynamic routes injected
          * via BGP even if their destinations match existing subnet ranges.
@@ -673,7 +669,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purpose The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`(Beta).
+         * @param purpose The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`.
          * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
          * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
          * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -690,7 +686,7 @@ public final class SubnetworkArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param purpose The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`(Beta).
+         * @param purpose The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`.
          * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
          * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
          * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
