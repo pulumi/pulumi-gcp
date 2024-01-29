@@ -2,25 +2,22 @@ name: network
 runtime: yaml
 description: A minimal Google Cloud Pulumi YAML program
 resources:
-  exampleNetwork:
+  examplenetwork:
     type: gcp:compute/network:Network
     properties:
-      name: pulumi-network
       autoCreateSubnetworks: false  # We'll create our own subnetwork
 
-  exampleSubnetwork:
+  examplesubnetwork:
     type: gcp:compute/subnetwork:Subnetwork
     properties:
-      name: pulumi-subnetwork
-      network: ${exampleNetwork.id}
+      network: ${examplenetwork.id}
       ipCidrRange: "10.2.0.0/16"
       region: us-central1
       
-  exampleRouter:
+  examplerouter:
     type: gcp:compute/router:Router
     properties:
-      name: pulumi-router
-      network: ${exampleNetwork.id}
+      network: ${examplenetwork.id}
       region: us-central1
       bgp:
         asn: 64514

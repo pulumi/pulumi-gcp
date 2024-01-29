@@ -1,0 +1,153 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2024-01-29T22:31:35.801287+02:00",
+            "magic": "79b21111b057cd6762023edb0f73ac137b81a6c92f656b0dc4741a8258329594",
+            "version": "v3.102.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:NESUMnKpvS0=:v1:yPjmASnrtFq7bfqN:h5eaEMJY43YXhR674jUQEdEg3ENcxA=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::pulumi:pulumi:Stack::topic-iam-binding-p-it-venelins-m-topic-iam--c1a9ca11",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2024-01-29T20:31:21.32006Z",
+                "modified": "2024-01-29T20:31:21.32006Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::pulumi:providers:gcp::default",
+                "custom": true,
+                "id": "ec32117b-ee0b-486a-b6b9-4a8acd2472ea",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development"
+                },
+                "outputs": {
+                    "project": "pulumi-development"
+                },
+                "created": "2024-01-29T20:31:22.194162Z",
+                "modified": "2024-01-29T20:31:22.194162Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::gcp:serviceaccount/account:Account::myServiceAccount",
+                "custom": true,
+                "id": "projects/pulumi-development/serviceAccounts/geuhlacvjynx@pulumi-development.iam.gserviceaccount.com",
+                "type": "gcp:serviceaccount/account:Account",
+                "inputs": {
+                    "__defaults": [
+                        "disabled"
+                    ],
+                    "accountId": "geuhlacvjynx",
+                    "disabled": false
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":300000000000}}",
+                    "accountId": "geuhlacvjynx",
+                    "description": "",
+                    "disabled": false,
+                    "displayName": "",
+                    "email": "geuhlacvjynx@pulumi-development.iam.gserviceaccount.com",
+                    "id": "projects/pulumi-development/serviceAccounts/geuhlacvjynx@pulumi-development.iam.gserviceaccount.com",
+                    "member": "serviceAccount:geuhlacvjynx@pulumi-development.iam.gserviceaccount.com",
+                    "name": "projects/pulumi-development/serviceAccounts/geuhlacvjynx@pulumi-development.iam.gserviceaccount.com",
+                    "project": "pulumi-development",
+                    "uniqueId": "110479936914815046371"
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::pulumi:pulumi:Stack::topic-iam-binding-p-it-venelins-m-topic-iam--c1a9ca11",
+                "provider": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::pulumi:providers:gcp::default::ec32117b-ee0b-486a-b6b9-4a8acd2472ea",
+                "propertyDependencies": {
+                    "accountId": null
+                },
+                "created": "2024-01-29T20:31:25.366424Z",
+                "modified": "2024-01-29T20:31:25.366424Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::gcp:pubsub/topic:Topic::myTopic",
+                "custom": true,
+                "id": "projects/pulumi-development/topics/myTopic-b252747",
+                "type": "gcp:pubsub/topic:Topic",
+                "inputs": {
+                    "__defaults": [
+                        "name"
+                    ],
+                    "name": "myTopic-b252747"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1200000000000,\"delete\":1200000000000,\"update\":1200000000000}}",
+                    "effectiveLabels": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "v1:5kCnLMU74XNqgzoA:nXybKRMJER5ucfn7ImGuWlZn"
+                    },
+                    "id": "projects/pulumi-development/topics/myTopic-b252747",
+                    "kmsKeyName": "",
+                    "labels": {},
+                    "messageRetentionDuration": "",
+                    "messageStoragePolicy": null,
+                    "name": "myTopic-b252747",
+                    "project": "pulumi-development",
+                    "pulumiLabels": {
+                        "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                        "ciphertext": "v1:fSBpOc7Z9UWws4B4:YtvTaM3isFCkBIrYgKfOKSLa"
+                    },
+                    "schemaSettings": null
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::pulumi:pulumi:Stack::topic-iam-binding-p-it-venelins-m-topic-iam--c1a9ca11",
+                "provider": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::pulumi:providers:gcp::default::ec32117b-ee0b-486a-b6b9-4a8acd2472ea",
+                "additionalSecretOutputs": [
+                    "effectiveLabels",
+                    "pulumiLabels"
+                ],
+                "created": "2024-01-29T20:31:30.355494Z",
+                "modified": "2024-01-29T20:31:30.355494Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::gcp:pubsub/topicIAMBinding:TopicIAMBinding::myTopicIAMBinding",
+                "custom": true,
+                "id": "projects/pulumi-development/topics/myTopic-b252747/roles/pubsub.publisher",
+                "type": "gcp:pubsub/topicIAMBinding:TopicIAMBinding",
+                "inputs": {
+                    "__defaults": [],
+                    "members": [
+                        "serviceAccount:geuhlacvjynx@pulumi-development.iam.gserviceaccount.com"
+                    ],
+                    "role": "roles/pubsub.publisher",
+                    "topic": "myTopic-b252747"
+                },
+                "outputs": {
+                    "condition": null,
+                    "etag": "BwYQG4f0f8o=",
+                    "id": "projects/pulumi-development/topics/myTopic-b252747/roles/pubsub.publisher",
+                    "members": [
+                        "serviceAccount:geuhlacvjynx@pulumi-development.iam.gserviceaccount.com"
+                    ],
+                    "project": "pulumi-development",
+                    "role": "roles/pubsub.publisher",
+                    "topic": "projects/pulumi-development/topics/myTopic-b252747"
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::pulumi:pulumi:Stack::topic-iam-binding-p-it-venelins-m-topic-iam--c1a9ca11",
+                "dependencies": [
+                    "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::gcp:pubsub/topic:Topic::myTopic",
+                    "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::gcp:serviceaccount/account:Account::myServiceAccount"
+                ],
+                "provider": "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::pulumi:providers:gcp::default::ec32117b-ee0b-486a-b6b9-4a8acd2472ea",
+                "propertyDependencies": {
+                    "members": [
+                        "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::gcp:serviceaccount/account:Account::myServiceAccount"
+                    ],
+                    "role": null,
+                    "topic": [
+                        "urn:pulumi:p-it-venelins-m-topic-iam--c1a9ca11::topic-iam-binding::gcp:pubsub/topic:Topic::myTopic"
+                    ]
+                },
+                "created": "2024-01-29T20:31:35.801141Z",
+                "modified": "2024-01-29T20:31:35.801141Z"
+            }
+        ]
+    }
+}

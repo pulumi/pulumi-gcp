@@ -1,11 +1,15 @@
 name: cluster
 runtime: yaml
 description: A minimal Google Cloud Pulumi YAML program
+config:
+  serviceID:
+    type: string
+    default: service-id-cluster
 resources:
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: service-account-1234
+      accountId: ${serviceID}
       displayName: Service Account
   primary:
     type: gcp:container:Cluster
@@ -19,7 +23,6 @@ resources:
   primarypreemptiblenodes:
     type: gcp:container/nodePool:NodePool
     properties:
-      name: 
       location: us-central1
       cluster: ${primary.name}
       nodeCount: 1

@@ -1,7 +1,10 @@
 name: iam-member
 runtime: yaml
 description: A minimal Pulumi YAML program
-outputs: {}
+config:
+  serviceID:
+    type: string
+    default: service-id-iam-member
 resources:
   customRole:
     type: gcp:projects:IAMCustomRole
@@ -14,7 +17,7 @@ resources:
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: my-service-account-iam-member
+      accountId: ${serviceID}
 
   serviceAccountIAMMember:
     type: gcp:serviceaccount:IAMMember

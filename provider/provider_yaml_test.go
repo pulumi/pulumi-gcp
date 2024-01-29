@@ -18,6 +18,7 @@
 package gcp
 
 import (
+	"math/rand"
 	"os"
 	"path/filepath"
 	"testing"
@@ -82,13 +83,31 @@ func TestCloudFunction(t *testing.T) {
 }
 
 func TestNetwork(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	runTest(t, test(t, "test-programs/network"))
 }
 
+// https://stackoverflow.com/a/22892986
+var letters = []rune("abcdefghijklmnopqrstuvwxyz")
+
+func randSeq(n int) string {
+	b := make([]rune, n)
+	for i := range b {
+		b[i] = letters[rand.Intn(len(letters))]
+	}
+	return string(b)
+}
+
 func TestCluster(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
-	runTest(t, test(t, "test-programs/cluster"))
+	serviceAccountID := randSeq(12)
+	// ServiceAccount requires 7.0
+	runTest(t,
+		test(
+			t,
+			"test-programs/cluster",
+			providertest.WithBaselineVersion("7.0.0"),
+			providertest.WithConfig("serviceID", serviceAccountID),
+		),
+	)
 }
 
 func skipIfNotCI(t *testing.T) {
@@ -98,27 +117,59 @@ func skipIfNotCI(t *testing.T) {
 }
 
 func TestIamBinding(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	runTest(t, test(t, "test-programs/iam-binding"))
+	serviceAccountID := randSeq(12)
+	// ServiceAccount requires 7.0
+	runTest(t,
+		test(
+			t,
+			"test-programs/iam-binding",
+			providertest.WithBaselineVersion("7.0.0"),
+			providertest.WithConfig("serviceID", serviceAccountID),
+		),
+	)
 }
 
 func TestIamMember(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	runTest(t, test(t, "test-programs/iam-member"))
+	serviceAccountID := randSeq(12)
+	// ServiceAccount requires 7.0
+	runTest(t,
+		test(
+			t,
+			"test-programs/iam-member",
+			providertest.WithBaselineVersion("7.0.0"),
+			providertest.WithConfig("serviceID", serviceAccountID),
+		),
+	)
 }
 
 func TestLogSink(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	runTest(t, test(t, "test-programs/logsink"))
+	serviceAccountID := randSeq(12)
+	// ServiceAccount requires 7.0
+	runTest(t,
+		test(
+			t,
+			"test-programs/logsink",
+			providertest.WithBaselineVersion("7.0.0"),
+			providertest.WithConfig("serviceID", serviceAccountID),
+		),
+	)
 }
 
 func TestTopicIamBinding(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	runTest(t, test(t, "test-programs/topic-iam-binding"))
+	serviceAccountID := randSeq(12)
+	// ServiceAccount requires 7.0
+	runTest(t,
+		test(
+			t,
+			"test-programs/topic-iam-binding",
+			providertest.WithBaselineVersion("7.0.0"),
+			providertest.WithConfig("serviceID", serviceAccountID),
+		),
+	)
 }
 
 // Test programs that were automatically extracted from examples without autocorrection.

@@ -1,0 +1,187 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2024-01-29T22:31:11.87941+02:00",
+            "magic": "79b21111b057cd6762023edb0f73ac137b81a6c92f656b0dc4741a8258329594",
+            "version": "v3.102.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:QPxlu+1pzX4=:v1:s8aMxlNlt1CJCrAT:AkN1wG7i8aRDA9dRfwCpz8ElA3EYGQ=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:pulumi:Stack::iam-member-p-it-venelins-m-iam-member-8657d7e7",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2024-01-29T20:30:58.242111Z",
+                "modified": "2024-01-29T20:30:58.242111Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:providers:gcp::default",
+                "custom": true,
+                "id": "4cb6b836-0c7a-494b-8a86-232dd44c23cf",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development"
+                },
+                "outputs": {
+                    "project": "pulumi-development"
+                },
+                "created": "2024-01-29T20:30:59.397088Z",
+                "modified": "2024-01-29T20:30:59.397088Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:serviceaccount/account:Account::serviceAccount",
+                "custom": true,
+                "id": "projects/pulumi-development/serviceAccounts/vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                "type": "gcp:serviceaccount/account:Account",
+                "inputs": {
+                    "__defaults": [
+                        "disabled"
+                    ],
+                    "accountId": "vpcjrmawcece",
+                    "disabled": false
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":300000000000}}",
+                    "accountId": "vpcjrmawcece",
+                    "description": "",
+                    "disabled": false,
+                    "displayName": "",
+                    "email": "vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "id": "projects/pulumi-development/serviceAccounts/vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "member": "serviceAccount:vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "name": "projects/pulumi-development/serviceAccounts/vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "project": "pulumi-development",
+                    "uniqueId": "113948269176976744740"
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:pulumi:Stack::iam-member-p-it-venelins-m-iam-member-8657d7e7",
+                "provider": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:providers:gcp::default::4cb6b836-0c7a-494b-8a86-232dd44c23cf",
+                "propertyDependencies": {
+                    "accountId": null
+                },
+                "created": "2024-01-29T20:31:01.98528Z",
+                "modified": "2024-01-29T20:31:01.98528Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:projects/iAMCustomRole:IAMCustomRole::customRole",
+                "custom": true,
+                "id": "projects/pulumi-development/roles/customRoleId",
+                "type": "gcp:projects/iAMCustomRole:IAMCustomRole",
+                "inputs": {
+                    "__defaults": [
+                        "stage"
+                    ],
+                    "permissions": [
+                        "resourcemanager.projects.get"
+                    ],
+                    "roleId": "customRoleId",
+                    "stage": "GA",
+                    "title": "CustomRole"
+                },
+                "outputs": {
+                    "deleted": false,
+                    "description": "",
+                    "id": "projects/pulumi-development/roles/customRoleId",
+                    "name": "projects/pulumi-development/roles/customRoleId",
+                    "permissions": [
+                        "resourcemanager.projects.get"
+                    ],
+                    "project": "pulumi-development",
+                    "roleId": "customRoleId",
+                    "stage": "GA",
+                    "title": "CustomRole"
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:pulumi:Stack::iam-member-p-it-venelins-m-iam-member-8657d7e7",
+                "provider": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:providers:gcp::default::4cb6b836-0c7a-494b-8a86-232dd44c23cf",
+                "propertyDependencies": {
+                    "permissions": null,
+                    "roleId": null,
+                    "title": null
+                },
+                "created": "2024-01-29T20:31:02.372596Z",
+                "modified": "2024-01-29T20:31:02.372596Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:serviceaccount/iAMMember:IAMMember::serviceAccountIAMMember",
+                "custom": true,
+                "id": "projects/pulumi-development/serviceAccounts/vpcjrmawcece@pulumi-development.iam.gserviceaccount.com/projects/pulumi-development/roles/customRoleId/serviceAccount:vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                "type": "gcp:serviceaccount/iAMMember:IAMMember",
+                "inputs": {
+                    "__defaults": [],
+                    "member": "serviceAccount:vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "role": "projects/pulumi-development/roles/customRoleId",
+                    "serviceAccountId": "projects/pulumi-development/serviceAccounts/vpcjrmawcece@pulumi-development.iam.gserviceaccount.com"
+                },
+                "outputs": {
+                    "condition": null,
+                    "etag": "BwYQG4ZGRqs=",
+                    "id": "projects/pulumi-development/serviceAccounts/vpcjrmawcece@pulumi-development.iam.gserviceaccount.com/projects/pulumi-development/roles/customRoleId/serviceAccount:vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "member": "serviceAccount:vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "role": "projects/pulumi-development/roles/customRoleId",
+                    "serviceAccountId": "projects/pulumi-development/serviceAccounts/vpcjrmawcece@pulumi-development.iam.gserviceaccount.com"
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:pulumi:Stack::iam-member-p-it-venelins-m-iam-member-8657d7e7",
+                "dependencies": [
+                    "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:projects/iAMCustomRole:IAMCustomRole::customRole",
+                    "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:serviceaccount/account:Account::serviceAccount"
+                ],
+                "provider": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:providers:gcp::default::4cb6b836-0c7a-494b-8a86-232dd44c23cf",
+                "propertyDependencies": {
+                    "member": [
+                        "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:serviceaccount/account:Account::serviceAccount"
+                    ],
+                    "role": [
+                        "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:projects/iAMCustomRole:IAMCustomRole::customRole"
+                    ],
+                    "serviceAccountId": [
+                        "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:serviceaccount/account:Account::serviceAccount"
+                    ]
+                },
+                "created": "2024-01-29T20:31:07.684795Z",
+                "modified": "2024-01-29T20:31:07.684795Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:projects/iAMMember:IAMMember::projectIAMMember",
+                "custom": true,
+                "id": "pulumi-development/projects/pulumi-development/roles/customRoleId/serviceAccount:vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                "type": "gcp:projects/iAMMember:IAMMember",
+                "inputs": {
+                    "__defaults": [],
+                    "member": "serviceAccount:vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "project": "pulumi-development",
+                    "role": "projects/pulumi-development/roles/customRoleId"
+                },
+                "outputs": {
+                    "condition": null,
+                    "etag": "BwYQG4aESgU=",
+                    "id": "pulumi-development/projects/pulumi-development/roles/customRoleId/serviceAccount:vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "member": "serviceAccount:vpcjrmawcece@pulumi-development.iam.gserviceaccount.com",
+                    "project": "pulumi-development",
+                    "role": "projects/pulumi-development/roles/customRoleId"
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:pulumi:Stack::iam-member-p-it-venelins-m-iam-member-8657d7e7",
+                "dependencies": [
+                    "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:projects/iAMCustomRole:IAMCustomRole::customRole",
+                    "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:serviceaccount/account:Account::serviceAccount"
+                ],
+                "provider": "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::pulumi:providers:gcp::default::4cb6b836-0c7a-494b-8a86-232dd44c23cf",
+                "propertyDependencies": {
+                    "member": [
+                        "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:serviceaccount/account:Account::serviceAccount"
+                    ],
+                    "project": null,
+                    "role": [
+                        "urn:pulumi:p-it-venelins-m-iam-member-8657d7e7::iam-member::gcp:projects/iAMCustomRole:IAMCustomRole::customRole"
+                    ]
+                },
+                "created": "2024-01-29T20:31:11.879309Z",
+                "modified": "2024-01-29T20:31:11.879309Z"
+            }
+        ]
+    }
+}

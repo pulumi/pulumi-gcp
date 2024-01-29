@@ -1,12 +1,15 @@
 name: iam-binding
 runtime: yaml
 description: A minimal Pulumi YAML program
+config:
+  serviceID:
+    type: string
+    default: service-id-iam-binding
 resources:
   myServiceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: my-service-account-iam-binding
-
+      accountId: ${serviceID}
   viewerBinding:
     type: gcp:projects/iAMBinding:IAMBinding
     properties:

@@ -1,18 +1,21 @@
 name: logsink
 runtime: yaml
 description: A minimal Pulumi YAML program
+config:
+  serviceID:
+    type: string
+    default: service-id-logsink
 resources:
   # Create a service account
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: my-service-account-logsink
+      accountId: ${serviceID}
 
   # Create a GCP storage bucket
   bucket:
     type: gcp:storage:Bucket
     properties:
-      name: pulumi-bucket
       location: EU
 
   # Create a ProjectSink
