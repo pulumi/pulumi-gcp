@@ -29,24 +29,26 @@ func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.P
 	defaultValues := map[string]string{
 		"gcp:config:project": "pulumi-development",
 	}
+	defaultOpts := []providertest.Option{}
 
 	for setting, envVar := range envVars {
 		if envVarValue, ok := os.LookupEnv(envVar); ok {
-			opts = append(opts, providertest.WithConfig(setting, envVarValue))
+			defaultOpts = append(opts, providertest.WithConfig(setting, envVarValue))
 		} else if defValue, ok := defaultValues[setting]; ok {
-			opts = append(opts, providertest.WithConfig(setting, defValue))
+			defaultOpts = append(opts, providertest.WithConfig(setting, defValue))
 		}
 	}
 
-	opts = append(opts,
+	defaultOpts = append(defaultOpts,
 		providertest.WithProviderName("gcp"),
 		providertest.WithBaselineVersion("6.67.0"),
 		providertest.WithResourceProviderServer(providerServer(t)),
 		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_Quick,
 			"TODO[pulumi/providertest#28] Skipping Quick mode because of panics and implicit dependency on Configure"),
 	)
+	defaultOpts = append(defaultOpts, opts...)
 
-	return providertest.NewProviderTest(dir, opts...)
+	return providertest.NewProviderTest(dir, defaultOpts...)
 }
 
 func runTest(t *testing.T, pt *providertest.ProviderTest) {
