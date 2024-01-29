@@ -305,9 +305,9 @@ func lowercaseAutoName() *tfbridge.SchemaInfo {
 	})
 }
 
-func lowercaseAutoNameFields() map[string]*tfbridge.SchemaInfo {
+func nameField(info *tfbridge.SchemaInfo) map[string]*tfbridge.SchemaInfo {
 	return map[string]*tfbridge.SchemaInfo{
-		"name": lowercaseAutoName(),
+		"name": info,
 	}
 }
 
@@ -1110,7 +1110,7 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "compute_backend_service.html.markdown",
 				},
-				Fields: lowercaseAutoNameFields(),
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_backend_service_signed_url_key": {
 				Tok: gcpResource(gcpCompute, "BackendServiceSignedUrlKey"),
@@ -1131,8 +1131,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_global_network_endpoint_group": {Tok: gcpResource(gcpCompute, "GlobalNetworkEndpointGroup")},
 			"google_compute_ha_vpn_gateway":                {Tok: gcpResource(gcpCompute, "HaVpnGateway")},
 			"google_compute_health_check":                  {Tok: gcpResource(gcpCompute, "HealthCheck")},
-			"google_compute_http_health_check":             {Fields: lowercaseAutoNameFields()},
-			"google_compute_https_health_check":            {Fields: lowercaseAutoNameFields()},
+			"google_compute_http_health_check":             {Fields: nameField(lowercaseAutoName())},
+			"google_compute_https_health_check":            {Fields: nameField(lowercaseAutoName())},
 			"google_compute_instance_iam_binding": {
 				Tok: gcpResource(gcpCompute, "InstanceIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -1190,7 +1190,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_network_firewall_policy_rule":   {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyRule")},
 			"google_compute_network_peering":                {Tok: gcpResource(gcpCompute, "NetworkPeering")},
 			"google_compute_network_peering_routes_config":  {Tok: gcpResource(gcpCompute, "NetworkPeeringRoutesConfig")},
-			"google_compute_network":                        {Fields: lowercaseAutoNameFields()},
+			"google_compute_network":                        {Fields: nameField(lowercaseAutoName())},
 			"google_compute_project_default_network_tier":   {Tok: gcpResource(gcpCompute, "ProjectDefaultNetworkTier")},
 			"google_compute_project_metadata":               {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
 			"google_compute_project_metadata_item":          {Tok: gcpResource(gcpCompute, "ProjectMetadataItem")},
@@ -1206,11 +1206,11 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_region_ssl_policy":              {Tok: gcpResource(gcpCompute, "RegionSslPolicy")},
 			"google_compute_resource_policy":                {Tok: gcpResource(gcpCompute, "ResourcePolicy")},
 			"google_compute_route":                          {Tok: gcpResource(gcpCompute, "Route")},
-			"google_compute_router":                         {Fields: lowercaseAutoNameFields()},
+			"google_compute_router":                         {Fields: nameField(lowercaseAutoName())},
 			"google_compute_router_interface":               {Tok: gcpResource(gcpCompute, "RouterInterface")},
 			"google_compute_router_nat": {
 				Tok:    gcpResource(gcpCompute, "RouterNat"),
-				Fields: lowercaseAutoNameFields(),
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_router_peer": {
 				Tok: gcpResource(gcpCompute, "RouterPeer"),
@@ -1243,7 +1243,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_ssl_certificate": {Tok: gcpResource(gcpCompute, "SSLCertificate")},
 			"google_compute_ssl_policy":      {Tok: gcpResource(gcpCompute, "SSLPolicy")},
-			"google_compute_subnetwork":      {Fields: lowercaseAutoNameFields()},
+			"google_compute_subnetwork":      {Fields: nameField(lowercaseAutoName())},
 			"google_compute_subnetwork_iam_binding": {
 				Tok: gcpResource(gcpCompute, "SubnetworkIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -1264,11 +1264,11 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_target_http_proxy": {
 				Tok:    gcpResource(gcpCompute, "TargetHttpProxy"),
-				Fields: lowercaseAutoNameFields(),
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_target_https_proxy": {
 				Tok:    gcpResource(gcpCompute, "TargetHttpsProxy"),
-				Fields: lowercaseAutoNameFields(),
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_target_instance":   {Tok: gcpResource(gcpCompute, "TargetInstance")},
 			"google_compute_target_ssl_proxy":  {Tok: gcpResource(gcpCompute, "TargetSSLProxy")},
@@ -1277,7 +1277,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_target_grpc_proxy": {Tok: gcpResource(gcpCompute, "TargetGrpcProxy")},
 			"google_compute_url_map": {
 				Tok:    gcpResource(gcpCompute, "URLMap"),
-				Fields: lowercaseAutoNameFields(),
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_vpn_gateway":         {Tok: gcpResource(gcpCompute, "VPNGateway")},
 			"google_compute_vpn_tunnel":          {Tok: gcpResource(gcpCompute, "VPNTunnel")},
