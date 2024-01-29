@@ -6,8 +6,7 @@ import (
 	"context"
 	_ "embed"
 	"fmt"
-	"os"
-	"path/filepath"
+	"path"
 	"strings"
 	"sync/atomic"
 	"unicode"
@@ -296,24 +295,6 @@ func gcpResource(mod string, res string) tokens.Type {
 	return gcpType(mod, res)
 }
 
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
-
-// stringValue gets a string value from a property map if present, else ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	for _, env := range envs {
-		val, ok := os.LookupEnv(env)
-		if ok {
-			return val
-		}
-	}
-	return ""
-}
-
 // lowercaseAutoName provides a schema info with autonaming set to lowercase names for resources that don't support capital casing in names.
 // This seems to be the case for many resources where a name ends up being in HTTP URLs.
 func lowercaseAutoName() *tfbridge.SchemaInfo {
@@ -323,6 +304,12 @@ func lowercaseAutoName() *tfbridge.SchemaInfo {
 		Randlen:   7,
 		Transform: strings.ToLower,
 	})
+}
+
+func nameField(info *tfbridge.SchemaInfo) map[string]*tfbridge.SchemaInfo {
+	return map[string]*tfbridge.SchemaInfo{
+		"name": info,
+	}
 }
 
 func getRegionsList(project string) ([]string, error) {
@@ -351,7 +338,7 @@ func preConfigureCallbackWithLogger(
 	if !credentialsValidationRun.CompareAndSwap(false, true) {
 		return nil
 	}
-	project := stringValue(vars, "project", []string{
+	project := tfbridge.ConfigStringValue(vars, "project", []string{
 		"GOOGLE_PROJECT",
 		"GOOGLE_CLOUD_PROJECT",
 		"GCLOUD_PROJECT",
@@ -369,25 +356,25 @@ func preConfigureCallbackWithLogger(
 	}
 
 	config := tpg_transport.Config{
-		AccessToken: stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
-		Credentials: stringValue(vars, "credentials", []string{
+		AccessToken: tfbridge.ConfigStringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
+		Credentials: tfbridge.ConfigStringValue(vars, "credentials", []string{
 			"GOOGLE_CREDENTIALS",
 			"GOOGLE_CLOUD_KEYFILE_JSON",
 			"GCLOUD_KEYFILE_JSON",
 		}),
-		ImpersonateServiceAccount: stringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
-		Project: stringValue(vars, "project", []string{
+		ImpersonateServiceAccount: tfbridge.ConfigStringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
+		Project: tfbridge.ConfigStringValue(vars, "project", []string{
 			"GOOGLE_PROJECT",
 			"GOOGLE_CLOUD_PROJECT",
 			"GCLOUD_PROJECT",
 			"CLOUDSDK_CORE_PROJECT",
 		}),
-		Region: stringValue(vars, "region", []string{
+		Region: tfbridge.ConfigStringValue(vars, "region", []string{
 			"GOOGLE_REGION",
 			"GCLOUD_REGION",
 			"CLOUDSDK_COMPUTE_REGION",
 		}),
-		Zone: stringValue(vars, "zone", []string{
+		Zone: tfbridge.ConfigStringValue(vars, "zone", []string{
 			"GOOGLE_ZONE",
 			"GCLOUD_ZONE",
 			"CLOUDSDK_COMPUTE_ZONE",
@@ -1155,13 +1142,10 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_compute_backend_service": {
-				Tok: gcpResource(gcpCompute, "BackendService"),
 				Docs: &tfbridge.DocInfo{
 					Source: "compute_backend_service.html.markdown",
 				},
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": lowercaseAutoName(),
-				},
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_backend_service_signed_url_key": {
 				Tok: gcpResource(gcpCompute, "BackendServiceSignedUrlKey"),
@@ -1182,24 +1166,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_global_network_endpoint_group": {Tok: gcpResource(gcpCompute, "GlobalNetworkEndpointGroup")},
 			"google_compute_ha_vpn_gateway":                {Tok: gcpResource(gcpCompute, "HaVpnGateway")},
 			"google_compute_health_check":                  {Tok: gcpResource(gcpCompute, "HealthCheck")},
-			"google_compute_http_health_check": {
-				Tok: gcpResource(gcpCompute, "HttpHealthCheck"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": lowercaseAutoName(),
-				},
-			},
-			"google_compute_https_health_check": {
-				Tok: gcpResource(gcpCompute, "HttpsHealthCheck"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": lowercaseAutoName(),
-				},
-			},
-			"google_compute_image":                       {Tok: gcpResource(gcpCompute, "Image")},
-			"google_compute_instance":                    {Tok: gcpResource(gcpCompute, "Instance")},
-			"google_compute_instance_from_template":      {Tok: gcpResource(gcpCompute, "InstanceFromTemplate")},
-			"google_compute_instance_group":              {Tok: gcpResource(gcpCompute, "InstanceGroup")},
-			"google_compute_instance_group_manager":      {Tok: gcpResource(gcpCompute, "InstanceGroupManager")},
-			"google_compute_instance_from_machine_image": {Tok: gcpResource(gcpCompute, "InstanceFromMachineImage")},
+			"google_compute_http_health_check":             {Fields: nameField(lowercaseAutoName())},
+			"google_compute_https_health_check":            {Fields: nameField(lowercaseAutoName())},
 			"google_compute_instance_iam_binding": {
 				Tok: gcpResource(gcpCompute, "InstanceIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -1253,42 +1221,31 @@ func Provider() tfbridge.ProviderInfo {
 					Source: "compute_network_endpoint_group.html.markdown",
 				},
 			},
-			"google_compute_network_firewall_policy":             {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicy")},
-			"google_compute_network_firewall_policy_association": {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyAssociation")},
-			"google_compute_network_firewall_policy_rule":        {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyRule")},
-			"google_compute_network_peering":                     {Tok: gcpResource(gcpCompute, "NetworkPeering")},
-			"google_compute_network_peering_routes_config":       {Tok: gcpResource(gcpCompute, "NetworkPeeringRoutesConfig")},
-			"google_compute_network": {
-				Tok: gcpResource(gcpCompute, "Network"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": lowercaseAutoName(),
-				},
-			},
-			"google_compute_project_default_network_tier":               {Tok: gcpResource(gcpCompute, "ProjectDefaultNetworkTier")},
-			"google_compute_project_metadata":                           {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
-			"google_compute_project_metadata_item":                      {Tok: gcpResource(gcpCompute, "ProjectMetadataItem")},
-			"google_compute_region_autoscaler":                          {Tok: gcpResource(gcpCompute, "RegionAutoscaler")},
-			"google_compute_region_backend_service":                     {Tok: gcpResource(gcpCompute, "RegionBackendService")},
-			"google_compute_region_disk":                                {Tok: gcpResource(gcpCompute, "RegionDisk")},
-			"google_compute_region_instance_group_manager":              {Tok: gcpResource(gcpCompute, "RegionInstanceGroupManager")},
-			"google_compute_region_network_firewall_policy":             {Tok: gcpResource(gcpCompute, "RegionNetworkFirewallPolicy")},
-			"google_compute_region_network_firewall_policy_association": {Tok: gcpResource(gcpCompute, "RegionNetworkFirewallPolicyAssociation")},
-			"google_compute_region_network_firewall_policy_rule":        {Tok: gcpResource(gcpCompute, "RegionNetworkFirewallPolicyRule")},
-			"google_compute_region_ssl_certificate":                     {Tok: gcpResource(gcpCompute, "RegionSslCertificate")},
-			"google_compute_region_target_http_proxy":                   {Tok: gcpResource(gcpCompute, "RegionTargetHttpProxy")},
-			"google_compute_region_target_https_proxy":                  {Tok: gcpResource(gcpCompute, "RegionTargetHttpsProxy")},
-			"google_compute_region_target_tcp_proxy":                    {Tok: gcpResource(gcpCompute, "RegionTargetTcpProxy")},
-			"google_compute_region_network_endpoint_group":              {Tok: gcpResource(gcpCompute, "RegionNetworkEndpointGroup")},
-			"google_compute_region_ssl_policy":                          {Tok: gcpResource(gcpCompute, "RegionSslPolicy")},
-			"google_compute_resource_policy":                            {Tok: gcpResource(gcpCompute, "ResourcePolicy")},
-			"google_compute_route":                                      {Tok: gcpResource(gcpCompute, "Route")},
-			"google_compute_router":                                     {Tok: gcpResource(gcpCompute, "Router")},
-			"google_compute_router_interface":                           {Tok: gcpResource(gcpCompute, "RouterInterface")},
+			"google_compute_network_firewall_policy":        {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicy")},
+			"google_compute_network_firewall_policy_rule":   {Tok: gcpResource(gcpCompute, "NetworkFirewallPolicyRule")},
+			"google_compute_network_peering":                {Tok: gcpResource(gcpCompute, "NetworkPeering")},
+			"google_compute_network_peering_routes_config":  {Tok: gcpResource(gcpCompute, "NetworkPeeringRoutesConfig")},
+			"google_compute_network":                        {Fields: nameField(lowercaseAutoName())},
+			"google_compute_project_default_network_tier":   {Tok: gcpResource(gcpCompute, "ProjectDefaultNetworkTier")},
+			"google_compute_project_metadata":               {Tok: gcpResource(gcpCompute, "ProjectMetadata")},
+			"google_compute_project_metadata_item":          {Tok: gcpResource(gcpCompute, "ProjectMetadataItem")},
+			"google_compute_region_autoscaler":              {Tok: gcpResource(gcpCompute, "RegionAutoscaler")},
+			"google_compute_region_backend_service":         {Tok: gcpResource(gcpCompute, "RegionBackendService")},
+			"google_compute_region_disk":                    {Tok: gcpResource(gcpCompute, "RegionDisk")},
+			"google_compute_region_network_firewall_policy": {Tok: gcpResource(gcpCompute, "RegionNetworkFirewallPolicy")},
+			"google_compute_region_ssl_certificate":         {Tok: gcpResource(gcpCompute, "RegionSslCertificate")},
+			"google_compute_region_target_http_proxy":       {Tok: gcpResource(gcpCompute, "RegionTargetHttpProxy")},
+			"google_compute_region_target_https_proxy":      {Tok: gcpResource(gcpCompute, "RegionTargetHttpsProxy")},
+			"google_compute_region_target_tcp_proxy":        {Tok: gcpResource(gcpCompute, "RegionTargetTcpProxy")},
+			"google_compute_region_network_endpoint_group":  {Tok: gcpResource(gcpCompute, "RegionNetworkEndpointGroup")},
+			"google_compute_region_ssl_policy":              {Tok: gcpResource(gcpCompute, "RegionSslPolicy")},
+			"google_compute_resource_policy":                {Tok: gcpResource(gcpCompute, "ResourcePolicy")},
+			"google_compute_route":                          {Tok: gcpResource(gcpCompute, "Route")},
+			"google_compute_router":                         {Fields: nameField(lowercaseAutoName())},
+			"google_compute_router_interface":               {Tok: gcpResource(gcpCompute, "RouterInterface")},
 			"google_compute_router_nat": {
-				Tok: gcpResource(gcpCompute, "RouterNat"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": lowercaseAutoName(),
-				},
+				Tok:    gcpResource(gcpCompute, "RouterNat"),
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_router_peer": {
 				Tok: gcpResource(gcpCompute, "RouterPeer"),
@@ -1321,7 +1278,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_compute_ssl_certificate": {Tok: gcpResource(gcpCompute, "SSLCertificate")},
 			"google_compute_ssl_policy":      {Tok: gcpResource(gcpCompute, "SSLPolicy")},
-			"google_compute_subnetwork":      {Tok: gcpResource(gcpCompute, "Subnetwork")},
+			"google_compute_subnetwork":      {Fields: nameField(lowercaseAutoName())},
 			"google_compute_subnetwork_iam_binding": {
 				Tok: gcpResource(gcpCompute, "SubnetworkIAMBinding"),
 				Docs: &tfbridge.DocInfo{
@@ -1341,16 +1298,12 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 			"google_compute_target_http_proxy": {
-				Tok: gcpResource(gcpCompute, "TargetHttpProxy"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": lowercaseAutoName(),
-				},
+				Tok:    gcpResource(gcpCompute, "TargetHttpProxy"),
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_target_https_proxy": {
-				Tok: gcpResource(gcpCompute, "TargetHttpsProxy"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": lowercaseAutoName(),
-				},
+				Tok:    gcpResource(gcpCompute, "TargetHttpsProxy"),
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_target_instance":   {Tok: gcpResource(gcpCompute, "TargetInstance")},
 			"google_compute_target_ssl_proxy":  {Tok: gcpResource(gcpCompute, "TargetSSLProxy")},
@@ -1358,10 +1311,8 @@ func Provider() tfbridge.ProviderInfo {
 			"google_compute_target_pool":       {Tok: gcpResource(gcpCompute, "TargetPool")},
 			"google_compute_target_grpc_proxy": {Tok: gcpResource(gcpCompute, "TargetGrpcProxy")},
 			"google_compute_url_map": {
-				Tok: gcpResource(gcpCompute, "URLMap"),
-				Fields: map[string]*tfbridge.SchemaInfo{
-					"name": lowercaseAutoName(),
-				},
+				Tok:    gcpResource(gcpCompute, "URLMap"),
+				Fields: nameField(lowercaseAutoName()),
 			},
 			"google_compute_vpn_gateway":         {Tok: gcpResource(gcpCompute, "VPNGateway")},
 			"google_compute_vpn_tunnel":          {Tok: gcpResource(gcpCompute, "VPNTunnel")},
@@ -1637,7 +1588,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpDNS, "ManagedZone"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"description": {
-						Default: managedByPulumi,
+						Default: tfbridge.ManagedByPulumi,
 					},
 				},
 			},
@@ -3910,7 +3861,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", gcpPackage),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
