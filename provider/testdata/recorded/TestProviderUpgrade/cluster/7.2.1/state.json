@@ -1,0 +1,439 @@
+{
+    "version": 3,
+    "deployment": {
+        "manifest": {
+            "time": "2024-01-29T23:41:38.383684+02:00",
+            "magic": "79b21111b057cd6762023edb0f73ac137b81a6c92f656b0dc4741a8258329594",
+            "version": "v3.102.0"
+        },
+        "secrets_providers": {
+            "type": "passphrase",
+            "state": {
+                "salt": "v1:Thvq52rlo20=:v1:ECCO8SP0W8gtKTl+:kz7JBMFDdin+p1RjQQZrTYhaY8qTQA=="
+            }
+        },
+        "resources": [
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::pulumi:pulumi:Stack::cluster-p-it-venelins-m-cluster-c7fde3b1",
+                "custom": false,
+                "type": "pulumi:pulumi:Stack",
+                "created": "2024-01-29T21:29:20.797927Z",
+                "modified": "2024-01-29T21:29:20.797927Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::pulumi:providers:gcp::default",
+                "custom": true,
+                "id": "c506c7cf-ab0b-46e3-9c89-47308d69c24b",
+                "type": "pulumi:providers:gcp",
+                "inputs": {
+                    "project": "pulumi-development"
+                },
+                "outputs": {
+                    "project": "pulumi-development"
+                },
+                "created": "2024-01-29T21:29:21.695455Z",
+                "modified": "2024-01-29T21:29:21.695455Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::gcp:serviceaccount/account:Account::serviceAccount",
+                "custom": true,
+                "id": "projects/pulumi-development/serviceAccounts/jhznvbojvunt@pulumi-development.iam.gserviceaccount.com",
+                "type": "gcp:serviceaccount/account:Account",
+                "inputs": {
+                    "__defaults": [
+                        "disabled"
+                    ],
+                    "accountId": "jhznvbojvunt",
+                    "disabled": false,
+                    "displayName": "Service Account"
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":300000000000}}",
+                    "accountId": "jhznvbojvunt",
+                    "description": "",
+                    "disabled": false,
+                    "displayName": "Service Account",
+                    "email": "jhznvbojvunt@pulumi-development.iam.gserviceaccount.com",
+                    "id": "projects/pulumi-development/serviceAccounts/jhznvbojvunt@pulumi-development.iam.gserviceaccount.com",
+                    "member": "serviceAccount:jhznvbojvunt@pulumi-development.iam.gserviceaccount.com",
+                    "name": "projects/pulumi-development/serviceAccounts/jhznvbojvunt@pulumi-development.iam.gserviceaccount.com",
+                    "project": "pulumi-development",
+                    "uniqueId": "116691917336465698361"
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::pulumi:pulumi:Stack::cluster-p-it-venelins-m-cluster-c7fde3b1",
+                "provider": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::pulumi:providers:gcp::default::c506c7cf-ab0b-46e3-9c89-47308d69c24b",
+                "propertyDependencies": {
+                    "accountId": null,
+                    "displayName": null
+                },
+                "created": "2024-01-29T21:29:24.875092Z",
+                "modified": "2024-01-29T21:29:24.875092Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::gcp:container/cluster:Cluster::primary",
+                "custom": true,
+                "id": "projects/pulumi-development/locations/us-central1/clusters/primary-d200574",
+                "type": "gcp:container/cluster:Cluster",
+                "inputs": {
+                    "__defaults": [
+                        "enableFqdnNetworkPolicy",
+                        "enableKubernetesAlpha",
+                        "enableL4IlbSubsetting",
+                        "enableLegacyAbac",
+                        "enableMultiNetworking",
+                        "enableShieldedNodes",
+                        "name",
+                        "network"
+                    ],
+                    "deletionProtection": false,
+                    "enableFqdnNetworkPolicy": false,
+                    "enableKubernetesAlpha": false,
+                    "enableL4IlbSubsetting": false,
+                    "enableLegacyAbac": false,
+                    "enableMultiNetworking": false,
+                    "enableShieldedNodes": true,
+                    "initialNodeCount": 1,
+                    "location": "us-central1",
+                    "name": "primary-d200574",
+                    "network": "default",
+                    "removeDefaultNodePool": true
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":2400000000000,\"delete\":2400000000000,\"read\":2400000000000,\"update\":3600000000000},\"schema_version\":\"2\"}",
+                    "addonsConfig": {
+                        "cloudrunConfig": null,
+                        "configConnectorConfig": null,
+                        "dnsCacheConfig": null,
+                        "gcePersistentDiskCsiDriverConfig": {
+                            "enabled": true
+                        },
+                        "gcpFilestoreCsiDriverConfig": null,
+                        "gcsFuseCsiDriverConfig": null,
+                        "gkeBackupAgentConfig": null,
+                        "horizontalPodAutoscaling": null,
+                        "httpLoadBalancing": null,
+                        "istioConfig": null,
+                        "kalmConfig": null,
+                        "networkPolicyConfig": {
+                            "disabled": true
+                        }
+                    },
+                    "authenticatorGroupsConfig": null,
+                    "binaryAuthorization": {
+                        "enabled": false,
+                        "evaluationMode": ""
+                    },
+                    "clusterAutoscaling": {
+                        "autoProvisioningDefaults": null,
+                        "autoscalingProfile": "BALANCED",
+                        "enabled": false,
+                        "resourceLimits": []
+                    },
+                    "clusterIpv4Cidr": "10.52.0.0/14",
+                    "clusterTelemetry": {
+                        "type": "ENABLED"
+                    },
+                    "confidentialNodes": null,
+                    "costManagementConfig": null,
+                    "databaseEncryption": {
+                        "keyName": "",
+                        "state": "DECRYPTED"
+                    },
+                    "datapathProvider": "",
+                    "defaultMaxPodsPerNode": 110,
+                    "defaultSnatStatus": {
+                        "disabled": false
+                    },
+                    "deletionProtection": false,
+                    "description": "",
+                    "dnsConfig": null,
+                    "enableAutopilot": false,
+                    "enableFqdnNetworkPolicy": false,
+                    "enableIntranodeVisibility": false,
+                    "enableK8sBetaApis": null,
+                    "enableKubernetesAlpha": false,
+                    "enableL4IlbSubsetting": false,
+                    "enableLegacyAbac": false,
+                    "enableMultiNetworking": false,
+                    "enableShieldedNodes": true,
+                    "enableTpu": false,
+                    "endpoint": "34.69.74.29",
+                    "fleet": null,
+                    "gatewayApiConfig": null,
+                    "id": "projects/pulumi-development/locations/us-central1/clusters/primary-d200574",
+                    "identityServiceConfig": null,
+                    "initialNodeCount": 1,
+                    "ipAllocationPolicy": {
+                        "additionalPodRangesConfig": null,
+                        "clusterIpv4CidrBlock": "10.52.0.0/14",
+                        "clusterSecondaryRangeName": "gke-primary-d200574-pods-9929334a",
+                        "podCidrOverprovisionConfig": {
+                            "disabled": false
+                        },
+                        "servicesIpv4CidrBlock": "10.56.0.0/20",
+                        "servicesSecondaryRangeName": "gke-primary-d200574-services-9929334a",
+                        "stackType": "IPV4"
+                    },
+                    "labelFingerprint": "a9dc16a7",
+                    "location": "us-central1",
+                    "loggingConfig": {
+                        "enableComponents": [
+                            "SYSTEM_COMPONENTS",
+                            "WORKLOADS"
+                        ]
+                    },
+                    "loggingService": "logging.googleapis.com/kubernetes",
+                    "maintenancePolicy": null,
+                    "masterAuth": {
+                        "clientCertificate": "",
+                        "clientCertificateConfig": {
+                            "issueClientCertificate": false
+                        },
+                        "clientKey": {
+                            "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
+                            "ciphertext": "v1:RfXm3klLoSprZ3/N:s9zzYj1iG1lSgsVmSkAzCnPt"
+                        },
+                        "clusterCaCertificate": "LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUVMVENDQXBXZ0F3SUJBZ0lSQUpFd3ZLN3dRaDBxQ1RoN0twd1dHOWN3RFFZSktvWklodmNOQVFFTEJRQXcKTHpFdE1Dc0dBMVVFQXhNa05tSXdNR0l5TVRndE1XWTJZeTAwWVRka0xXSTJNemN0T1RWak5qaGhaVE15WXpReApNQ0FYRFRJME1ERXlPVEl3TWpreU5Gb1lEekl3TlRRd01USXhNakV5T1RJMFdqQXZNUzB3S3dZRFZRUURFeVEyCllqQXdZakl4T0MweFpqWmpMVFJoTjJRdFlqWXpOeTA1TldNMk9HRmxNekpqTkRFd2dnR2lNQTBHQ1NxR1NJYjMKRFFFQkFRVUFBNElCandBd2dnR0tBb0lCZ1FDMUhRcGFLWWJ5WmJjTkhDRW96V1htdlNpOFd5emYwVmJiSEtNVwo3RysrUGR0MDhrMWFlY05XK3ZnSlR5Sjhmc0c0M3lyVGw4TUU0Uzdqa2tFcVgrdnRjRDlzNk02OC94YzVrQVVWCmxySFNqV1dvcGVrdWNIbjZISkg2aElSYk5aOENPQzF1NnE2dlJMNzZLcVFINDA5Y1ByUmpQcUhlM1NqeU5SNGYKTGtONk5jenpwNitieStyMEpmU1pMdGVxVFhaRThmT2ZOY3RWeG82T3oyRnBZSG1xRVRzb0toQVVjQmFrOFovYgpRQ042QTZZNTdCSTI3Uk8weTNmc2c0dDJSNXhvWnRzNUI2ZHdUdmVOcFIxaEpZYjRTaFFncmdSanZTZ1E3VDVPCmYzU01nYkpBUVZ2S1ZwdVQyd291c0xROWVMSkVOR0llaUhVNzFGTEhwS3RYN2dlWVhRYVlBbHRDOVc3VnU5UmQKWjZPekhtN0dsOEdqaUM5enJXeXVGUHBHY21DVlA1SzVmMm1Sa1NKalkyOFVJM2U0RVcwMGY1Qkp3bVp6d0ZMTAp3VjJXYWM1Wi8zMXhhMUF1OTAzS1pVOUp3SnFJbWZCUmRWUWV3cVBEbjdaUGQrMmI0RXp1N1FBZkx2OXJlak5wCjcrb2pxZjdQSi93WEExcng5SGkyWDREMy9KOENBd0VBQWFOQ01FQXdEZ1lEVlIwUEFRSC9CQVFEQWdJRU1BOEcKQTFVZEV3RUIvd1FGTUFNQkFmOHdIUVlEVlIwT0JCWUVGRmJuZDRDTWg4ODQ2aG5NRldJdEMrb2NEWGgvTUEwRwpDU3FHU0liM0RRRUJDd1VBQTRJQmdRQUhnWDZOdVY4dFhaWDJ5cTdvMHo3bUFxS3FucnJmT0J6WXFDMmxsbXZ2CnVmWjMrVkw3WmZkbDc2RmZWMndxS3ZEZmtWdC83Z0xxN08zeHBhMURvM1lueHdLaXFkeDI2L213bGFUVVlHYTkKYkN2U0o0emxHUmJNUHo2ZTBkYk9BcXJFU1lHYXVLWFlYNmI5MHpIcFhESk5EdEQrdW50ckN3OHhqOGw0cXp2cwptdUllekNzSi8rTkdJVUpjak85UFZVVTh6cGRLTk5IY1MrTysyVmNVZmJlREVJUFR1dENXUlNBRm93NTk0aE5SCmpPN3lSblJrZHdjNGxSY2VkV1RDYVl0aW5MUzBqTGF3ZUVRenhRNHBsL0poSGxZVlRLaDRadEpCS0lLZkFRZzkKV3grMmJZb0h6cHp0MVBTeHVEcHZMdEpRaEc4Q2Z4dWIwRExwaE5PQU9ESHA1SkttZWtYSnZ4cFpLNC9ReTlBbQpwWGRSV3BCMDdHaG5QeGxRYkJLOUJnUFE3Sm5nOEtaQWJTWGFtZG5ueW1HbHF5dmpMWHZRS2xqUG9SWEtzN2JpCi9neVJkWVhwR3EwV0U3dFRNZzZkSmtwYnR5c2FCbnE0M21HU0RFNW0ySFd4NXhTTnl6THBmcXNrYjZITkxDckkKbFd6SzdhaHlDMVZUeFAvWlQyay84Unc9Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K"
+                    },
+                    "masterAuthorizedNetworksConfig": null,
+                    "masterVersion": "1.27.3-gke.100",
+                    "meshCertificates": null,
+                    "monitoringConfig": {
+                        "advancedDatapathObservabilityConfigs": [
+                            {
+                                "enableMetrics": false,
+                                "relayMode": ""
+                            }
+                        ],
+                        "enableComponents": [
+                            "SYSTEM_COMPONENTS"
+                        ],
+                        "managedPrometheus": {
+                            "enabled": true
+                        }
+                    },
+                    "monitoringService": "monitoring.googleapis.com/kubernetes",
+                    "name": "primary-d200574",
+                    "network": "projects/pulumi-development/global/networks/default",
+                    "networkPolicy": {
+                        "enabled": false,
+                        "provider": "PROVIDER_UNSPECIFIED"
+                    },
+                    "networkingMode": "VPC_NATIVE",
+                    "nodeConfig": null,
+                    "nodeLocations": [
+                        "us-central1-b",
+                        "us-central1-f",
+                        "us-central1-a"
+                    ],
+                    "nodePoolAutoConfig": null,
+                    "nodePoolDefaults": {
+                        "nodeConfigDefaults": {
+                            "gcfsConfig": null,
+                            "loggingVariant": "DEFAULT"
+                        }
+                    },
+                    "nodePools": [],
+                    "nodeVersion": "1.27.3-gke.100",
+                    "notificationConfig": {
+                        "pubsub": {
+                            "enabled": false,
+                            "filter": null,
+                            "topic": ""
+                        }
+                    },
+                    "podSecurityPolicyConfig": {
+                        "enabled": false
+                    },
+                    "privateClusterConfig": {
+                        "enablePrivateEndpoint": false,
+                        "enablePrivateNodes": false,
+                        "masterGlobalAccessConfig": {
+                            "enabled": false
+                        },
+                        "masterIpv4CidrBlock": "",
+                        "peeringName": "",
+                        "privateEndpoint": "10.128.0.39",
+                        "privateEndpointSubnetwork": "",
+                        "publicEndpoint": "34.69.74.29"
+                    },
+                    "privateIpv6GoogleAccess": "",
+                    "project": "pulumi-development",
+                    "protectConfig": {
+                        "workloadConfig": {
+                            "auditMode": "BASIC"
+                        },
+                        "workloadVulnerabilityMode": "WORKLOAD_VULNERABILITY_MODE_UNSPECIFIED"
+                    },
+                    "releaseChannel": {
+                        "channel": "REGULAR"
+                    },
+                    "removeDefaultNodePool": true,
+                    "resourceLabels": {},
+                    "resourceUsageExportConfig": null,
+                    "securityPostureConfig": {
+                        "mode": "BASIC",
+                        "vulnerabilityMode": "VULNERABILITY_MODE_UNSPECIFIED"
+                    },
+                    "selfLink": "https://container.googleapis.com/v1beta1/projects/pulumi-development/locations/us-central1/clusters/primary-d200574",
+                    "serviceExternalIpsConfig": {
+                        "enabled": false
+                    },
+                    "servicesIpv4Cidr": "10.56.0.0/20",
+                    "subnetwork": "projects/pulumi-development/regions/us-central1/subnetworks/default",
+                    "tpuIpv4CidrBlock": "",
+                    "verticalPodAutoscaling": null,
+                    "workloadIdentityConfig": null
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::pulumi:pulumi:Stack::cluster-p-it-venelins-m-cluster-c7fde3b1",
+                "provider": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::pulumi:providers:gcp::default::c506c7cf-ab0b-46e3-9c89-47308d69c24b",
+                "propertyDependencies": {
+                    "deletionProtection": null,
+                    "initialNodeCount": null,
+                    "location": null,
+                    "removeDefaultNodePool": null
+                },
+                "created": "2024-01-29T21:40:33.400738Z",
+                "modified": "2024-01-29T21:40:33.400738Z"
+            },
+            {
+                "urn": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::gcp:container/nodePool:NodePool::primarypreemptiblenodes",
+                "custom": true,
+                "id": "projects/pulumi-development/locations/us-central1/clusters/primary-d200574/nodePools/primarypreemptiblenodes-10ec1ea",
+                "type": "gcp:container/nodePool:NodePool",
+                "inputs": {
+                    "__defaults": [
+                        "name"
+                    ],
+                    "cluster": "primary-d200574",
+                    "location": "us-central1",
+                    "name": "primarypreemptiblenodes-10ec1ea",
+                    "nodeConfig": {
+                        "__defaults": [
+                            "spot"
+                        ],
+                        "machineType": "e2-medium",
+                        "oauthScopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                        ],
+                        "preemptible": true,
+                        "serviceAccount": "jhznvbojvunt@pulumi-development.iam.gserviceaccount.com",
+                        "spot": false
+                    },
+                    "nodeCount": 1
+                },
+                "outputs": {
+                    "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":1800000000000,\"delete\":1800000000000,\"update\":1800000000000},\"schema_version\":\"1\"}",
+                    "cluster": "primary-d200574",
+                    "id": "projects/pulumi-development/locations/us-central1/clusters/primary-d200574/nodePools/primarypreemptiblenodes-10ec1ea",
+                    "initialNodeCount": 1,
+                    "instanceGroupUrls": [
+                        "https://www.googleapis.com/compute/v1/projects/pulumi-development/zones/us-central1-a/instanceGroupManagers/gke-primary-d200574-primarypreemptibl-a706b918-grp",
+                        "https://www.googleapis.com/compute/v1/projects/pulumi-development/zones/us-central1-b/instanceGroupManagers/gke-primary-d200574-primarypreemptibl-e21259a6-grp",
+                        "https://www.googleapis.com/compute/v1/projects/pulumi-development/zones/us-central1-f/instanceGroupManagers/gke-primary-d200574-primarypreemptibl-6888fa53-grp"
+                    ],
+                    "location": "us-central1",
+                    "managedInstanceGroupUrls": [
+                        "https://www.googleapis.com/compute/beta/projects/pulumi-development/zones/us-central1-a/instanceGroups/gke-primary-d200574-primarypreemptibl-a706b918-grp",
+                        "https://www.googleapis.com/compute/beta/projects/pulumi-development/zones/us-central1-b/instanceGroups/gke-primary-d200574-primarypreemptibl-e21259a6-grp",
+                        "https://www.googleapis.com/compute/beta/projects/pulumi-development/zones/us-central1-f/instanceGroups/gke-primary-d200574-primarypreemptibl-6888fa53-grp"
+                    ],
+                    "management": {
+                        "autoRepair": true,
+                        "autoUpgrade": true
+                    },
+                    "maxPodsPerNode": 110,
+                    "name": "primarypreemptiblenodes-10ec1ea",
+                    "namePrefix": "",
+                    "networkConfig": {
+                        "additionalNodeNetworkConfigs": [],
+                        "additionalPodNetworkConfigs": [],
+                        "createPodRange": false,
+                        "enablePrivateNodes": false,
+                        "podCidrOverprovisionConfig": null,
+                        "podIpv4CidrBlock": "10.52.0.0/14",
+                        "podRange": "gke-primary-d200574-pods-9929334a"
+                    },
+                    "nodeConfig": {
+                        "advancedMachineFeatures": null,
+                        "bootDiskKmsKey": "",
+                        "confidentialNodes": null,
+                        "diskSizeGb": 100,
+                        "diskType": "pd-balanced",
+                        "effectiveTaints": [],
+                        "enableConfidentialStorage": false,
+                        "ephemeralStorageConfig": null,
+                        "ephemeralStorageLocalSsdConfig": null,
+                        "fastSocket": null,
+                        "gcfsConfig": null,
+                        "guestAccelerators": [],
+                        "gvnic": null,
+                        "hostMaintenancePolicy": null,
+                        "imageType": "COS_CONTAINERD",
+                        "kubeletConfig": null,
+                        "labels": {},
+                        "linuxNodeConfig": null,
+                        "localNvmeSsdBlockConfig": null,
+                        "localSsdCount": 0,
+                        "loggingVariant": "DEFAULT",
+                        "machineType": "e2-medium",
+                        "metadata": {
+                            "disable-legacy-endpoints": "true"
+                        },
+                        "minCpuPlatform": "",
+                        "nodeGroup": "",
+                        "oauthScopes": [
+                            "https://www.googleapis.com/auth/cloud-platform"
+                        ],
+                        "preemptible": true,
+                        "reservationAffinity": null,
+                        "resourceLabels": {},
+                        "sandboxConfig": null,
+                        "serviceAccount": "jhznvbojvunt@pulumi-development.iam.gserviceaccount.com",
+                        "shieldedInstanceConfig": {
+                            "enableIntegrityMonitoring": true,
+                            "enableSecureBoot": false
+                        },
+                        "soleTenantConfig": null,
+                        "spot": false,
+                        "tags": [],
+                        "taints": [],
+                        "workloadMetadataConfig": null
+                    },
+                    "nodeCount": 1,
+                    "nodeLocations": [
+                        "us-central1-b",
+                        "us-central1-f",
+                        "us-central1-a"
+                    ],
+                    "project": "pulumi-development",
+                    "upgradeSettings": {
+                        "blueGreenSettings": null,
+                        "maxSurge": 1,
+                        "maxUnavailable": 0,
+                        "strategy": "SURGE"
+                    },
+                    "version": "1.27.3-gke.100"
+                },
+                "parent": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::pulumi:pulumi:Stack::cluster-p-it-venelins-m-cluster-c7fde3b1",
+                "dependencies": [
+                    "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::gcp:container/cluster:Cluster::primary",
+                    "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::gcp:serviceaccount/account:Account::serviceAccount"
+                ],
+                "provider": "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::pulumi:providers:gcp::default::c506c7cf-ab0b-46e3-9c89-47308d69c24b",
+                "propertyDependencies": {
+                    "cluster": [
+                        "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::gcp:container/cluster:Cluster::primary"
+                    ],
+                    "location": null,
+                    "nodeConfig": [
+                        "urn:pulumi:p-it-venelins-m-cluster-c7fde3b1::cluster::gcp:serviceaccount/account:Account::serviceAccount"
+                    ],
+                    "nodeCount": null
+                },
+                "created": "2024-01-29T21:41:38.383092Z",
+                "modified": "2024-01-29T21:41:38.383092Z"
+            }
+        ]
+    }
+}
