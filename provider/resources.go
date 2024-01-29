@@ -6,8 +6,7 @@ import (
 	"context"
 	_ "embed"
 	"fmt"
-	"os"
-	"path/filepath"
+	"path"
 	"strings"
 	"sync/atomic"
 	"unicode"
@@ -295,24 +294,6 @@ func gcpResource(mod string, res string) tokens.Type {
 	return gcpType(mod, res)
 }
 
-// managedByPulumi is a default used for some managed resources, in the absence of something more meaningful.
-var managedByPulumi = &tfbridge.DefaultInfo{Value: "Managed by Pulumi"}
-
-// stringValue gets a string value from a property map if present, else ""
-func stringValue(vars resource.PropertyMap, prop resource.PropertyKey, envs []string) string {
-	val, ok := vars[prop]
-	if ok && val.IsString() {
-		return val.StringValue()
-	}
-	for _, env := range envs {
-		val, ok := os.LookupEnv(env)
-		if ok {
-			return val
-		}
-	}
-	return ""
-}
-
 // lowercaseAutoName provides a schema info with autonaming set to lowercase names for resources that don't support capital casing in names.
 // This seems to be the case for many resources where a name ends up being in HTTP URLs.
 func lowercaseAutoName() *tfbridge.SchemaInfo {
@@ -337,7 +318,7 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 	if !credentialsValidationRun.CompareAndSwap(false, true) {
 		return nil
 	}
-	project := stringValue(vars, "project", []string{
+	project := tfbridge.ConfigStringValue(vars, "project", []string{
 		"GOOGLE_PROJECT",
 		"GOOGLE_CLOUD_PROJECT",
 		"GCLOUD_PROJECT",
@@ -357,25 +338,25 @@ func preConfigureCallbackWithLogger(ctx context.Context, host *provider.HostClie
 	}
 
 	config := tpg_transport.Config{
-		AccessToken: stringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
-		Credentials: stringValue(vars, "credentials", []string{
+		AccessToken: tfbridge.ConfigStringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
+		Credentials: tfbridge.ConfigStringValue(vars, "credentials", []string{
 			"GOOGLE_CREDENTIALS",
 			"GOOGLE_CLOUD_KEYFILE_JSON",
 			"GCLOUD_KEYFILE_JSON",
 		}),
-		ImpersonateServiceAccount: stringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
-		Project: stringValue(vars, "project", []string{
+		ImpersonateServiceAccount: tfbridge.ConfigStringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
+		Project: tfbridge.ConfigStringValue(vars, "project", []string{
 			"GOOGLE_PROJECT",
 			"GOOGLE_CLOUD_PROJECT",
 			"GCLOUD_PROJECT",
 			"CLOUDSDK_CORE_PROJECT",
 		}),
-		Region: stringValue(vars, "region", []string{
+		Region: tfbridge.ConfigStringValue(vars, "region", []string{
 			"GOOGLE_REGION",
 			"GCLOUD_REGION",
 			"CLOUDSDK_COMPUTE_REGION",
 		}),
-		Zone: stringValue(vars, "zone", []string{
+		Zone: tfbridge.ConfigStringValue(vars, "zone", []string{
 			"GOOGLE_ZONE",
 			"GCLOUD_ZONE",
 			"CLOUDSDK_COMPUTE_ZONE",
@@ -1592,7 +1573,7 @@ func Provider() tfbridge.ProviderInfo {
 				Tok: gcpResource(gcpDNS, "ManagedZone"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"description": {
-						Default: managedByPulumi,
+						Default: tfbridge.ManagedByPulumi,
 					},
 				},
 			},
@@ -3857,7 +3838,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 		},
 		Golang: &tfbridge.GolangInfo{
-			ImportBasePath: filepath.Join(
+			ImportBasePath: path.Join(
 				fmt.Sprintf("github.com/pulumi/pulumi-%[1]s/sdk/", gcpPackage),
 				tfbridge.GetModuleMajorVersion(version.Version),
 				"go",
