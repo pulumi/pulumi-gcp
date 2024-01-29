@@ -33,9 +33,9 @@ func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.P
 
 	for setting, envVar := range envVars {
 		if envVarValue, ok := os.LookupEnv(envVar); ok {
-			defaultOpts = append(opts, providertest.WithConfig(setting, envVarValue))
+			defaultOpts = append(defaultOpts, providertest.WithConfig(setting, envVarValue))
 		} else if defValue, ok := defaultValues[setting]; ok {
-			defaultOpts = append(opts, providertest.WithConfig(setting, defValue))
+			defaultOpts = append(defaultOpts, providertest.WithConfig(setting, defValue))
 		}
 	}
 
