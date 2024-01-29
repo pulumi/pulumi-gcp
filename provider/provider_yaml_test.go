@@ -445,6 +445,7 @@ func TestNoCredentials(t *testing.T) {
 
 func TestNoRegionErrorWithNoProject(t *testing.T) {
 	os.Unsetenv("GOOGLE_PROJECT")
+	os.Unsetenv("GOOGLE_PROJECT_NUMBER")
 	os.Unsetenv("GOOGLE_ZONE")
 	os.Unsetenv("GOOGLE_REGION")
 	credentialsValidationRun.Store(false)
