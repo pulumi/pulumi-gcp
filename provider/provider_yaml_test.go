@@ -447,7 +447,7 @@ func TestCheckConfigNoCredentials(t *testing.T) {
 
 func TestCheckConfigNoRegionErrorWithNoProject(t *testing.T) {
 	if testing.Short() {
-		t.Skip("Only run in short mode, since we want credentials.")
+		t.Skip("Only run in long mode, since we want credentials.")
 	}
 	t.Setenv("GOOGLE_PROJECT", "")
 	t.Setenv("GOOGLE_PROJECT_NUMBER", "")
@@ -469,7 +469,8 @@ func TestCheckConfigNoRegionErrorWithNoProject(t *testing.T) {
 		"response": {
 			"inputs": {
 				"region": "westus",
-				"version": "7.6.0"
+				"version": "7.6.0",
+				"project": "*"
 			}
 		},
 		"metadata": {
@@ -484,10 +485,11 @@ func TestCheckConfigNoRegionErrorWithNoProject(t *testing.T) {
 
 func TestCheckConfigWrongRegion(t *testing.T) {
 	if testing.Short() {
-		t.Skip("Only run in short mode, since we want credentials.")
+		t.Skip("Only run in long mode, since we want credentials.")
 	}
 	t.Setenv("GOOGLE_REGION", "")
 	t.Setenv("GOOGLE_ZONE", "")
+	proj := os.Getenv("GOOGLE_PROJECT")
 	credentialsValidationRun.Store(false)
 	replay.Replay(t, providerServer(t), `
 	{
@@ -502,7 +504,7 @@ func TestCheckConfigWrongRegion(t *testing.T) {
 			}
 		},
 		"errors": [
-			"rpc error: code = Unknown desc = region \"westus\" is not available for project \"pulumi-development\". Available regions: [\"africa-south1\" \"asia-east1\" \"asia-east2\" \"asia-northeast1\" \"asia-northeast2\" \"asia-northeast3\" \"asia-south1\" \"asia-south2\" \"asia-southeast1\" \"asia-southeast2\" \"australia-southeast1\" \"australia-southeast2\" \"europe-central2\" \"europe-north1\" \"europe-southwest1\" \"europe-west1\" \"europe-west10\" \"europe-west12\" \"europe-west2\" \"europe-west3\" \"europe-west4\" \"europe-west6\" \"europe-west8\" \"europe-west9\" \"me-central1\" \"me-central2\" \"me-west1\" \"northamerica-northeast1\" \"northamerica-northeast2\" \"southamerica-east1\" \"southamerica-west1\" \"us-central1\" \"us-east1\" \"us-east4\" \"us-east5\" \"us-south1\" \"us-west1\" \"us-west2\" \"us-west3\" \"us-west4\"]"
+			"region \"westus\" is not available for project \"`+proj+`\". Available regions: [\"africa-south1\" \"asia-east1\" \"asia-east2\" \"asia-northeast1\" \"asia-northeast2\" \"asia-northeast3\" \"asia-south1\" \"asia-south2\" \"asia-southeast1\" \"asia-southeast2\" \"australia-southeast1\" \"australia-southeast2\" \"europe-central2\" \"europe-north1\" \"europe-southwest1\" \"europe-west1\" \"europe-west10\" \"europe-west12\" \"europe-west2\" \"europe-west3\" \"europe-west4\" \"europe-west6\" \"europe-west8\" \"europe-west9\" \"me-central1\" \"me-central2\" \"me-west1\" \"northamerica-northeast1\" \"northamerica-northeast2\" \"southamerica-east1\" \"southamerica-west1\" \"us-central1\" \"us-east1\" \"us-east4\" \"us-east5\" \"us-south1\" \"us-west1\" \"us-west2\" \"us-west3\" \"us-west4\"]"
 		],
 		"metadata": {
 			"kind": "resource",
