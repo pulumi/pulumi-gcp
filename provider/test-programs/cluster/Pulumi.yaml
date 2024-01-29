@@ -20,7 +20,7 @@ resources:
       # node pool and immediately delete it.
       removeDefaultNodePool: true
       initialNodeCount: 1
-      deleteProtection: false
+      deletionProtection: false
   primarypreemptiblenodes:
     type: gcp:container/nodePool:NodePool
     properties:
