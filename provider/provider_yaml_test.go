@@ -415,6 +415,9 @@ func TestNoCredentials(t *testing.T) {
 	os.Unsetenv("GOOGLE_APPLICATION_CREDENTIALS")
 	os.Unsetenv("GOOGLE_GHA_CREDS_PATH")
 	os.Unsetenv("GOOGLE_PROJECT")
+	os.Unsetenv("GOOGLE_ZONE")
+	os.Unsetenv("GOOGLE_REGION")
+	credentialsValidationRun.Store(false)
 	replay.Replay(t, providerServer(t), strings.ReplaceAll(`
 {
 	"method": "/pulumirpc.ResourceProvider/CheckConfig",
@@ -442,6 +445,9 @@ func TestNoCredentials(t *testing.T) {
 
 func TestNoRegionErrorWithNoProject(t *testing.T) {
 	os.Unsetenv("GOOGLE_PROJECT")
+	os.Unsetenv("GOOGLE_ZONE")
+	os.Unsetenv("GOOGLE_REGION")
+	credentialsValidationRun.Store(false)
 	replay.Replay(t, providerServer(t), `
 	{
 		"method": "/pulumirpc.ResourceProvider/CheckConfig",
@@ -472,6 +478,9 @@ func TestNoRegionErrorWithNoProject(t *testing.T) {
 }
 
 func TestWrongRegion(t *testing.T) {
+	os.Unsetenv("GOOGLE_ZONE")
+	os.Unsetenv("GOOGLE_REGION")
+	credentialsValidationRun.Store(false)
 	replay.Replay(t, providerServer(t), `
 	{
 		"method": "/pulumirpc.ResourceProvider/CheckConfig",
