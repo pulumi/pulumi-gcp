@@ -21,14 +21,14 @@ public final class AzureNodePoolConfigArgs extends com.pulumi.resources.Resource
     public static final AzureNodePoolConfigArgs Empty = new AzureNodePoolConfigArgs();
 
     /**
-     * (Beta only) The OS image type to use on node pool instances.
+     * The OS image type to use on node pool instances.
      * 
      */
     @Import(name="imageType")
     private @Nullable Output<String> imageType;
 
     /**
-     * @return (Beta only) The OS image type to use on node pool instances.
+     * @return The OS image type to use on node pool instances.
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -156,7 +156,7 @@ public final class AzureNodePoolConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param imageType (Beta only) The OS image type to use on node pool instances.
+         * @param imageType The OS image type to use on node pool instances.
          * 
          * @return builder
          * 
@@ -167,7 +167,7 @@ public final class AzureNodePoolConfigArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param imageType (Beta only) The OS image type to use on node pool instances.
+         * @param imageType The OS image type to use on node pool instances.
          * 
          * @return builder
          * 

@@ -116,8 +116,8 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// (Beta)
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
@@ -130,9 +130,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> IpVersion { get; private set; } = null!;
 
         /// <summary>
-        /// (Beta)
-        /// The fingerprint used for optimistic locking of this resource.  Used
-        /// internally during updates.
+        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
         /// </summary>
         [Output("labelFingerprint")]
         public Output<string> LabelFingerprint { get; private set; } = null!;
@@ -187,9 +185,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// (Beta)
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
         [Output("pulumiLabels")]
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
@@ -197,7 +193,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
-        /// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+        /// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         /// </summary>
         [Output("purpose")]
         public Output<string?> Purpose { get; private set; } = null!;
@@ -348,7 +344,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
-        /// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+        /// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }
@@ -395,8 +391,8 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _effectiveLabels;
 
         /// <summary>
-        /// (Beta)
-        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        /// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        /// clients and services.
         /// </summary>
         public InputMap<string> EffectiveLabels
         {
@@ -416,9 +412,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? IpVersion { get; set; }
 
         /// <summary>
-        /// (Beta)
-        /// The fingerprint used for optimistic locking of this resource.  Used
-        /// internally during updates.
+        /// The fingerprint used for optimistic locking of this resource. Used internally during updates.
         /// </summary>
         [Input("labelFingerprint")]
         public Input<string>? LabelFingerprint { get; set; }
@@ -482,9 +476,7 @@ namespace Pulumi.Gcp.Compute
         private InputMap<string>? _pulumiLabels;
 
         /// <summary>
-        /// (Beta)
-        /// The combination of labels configured directly on the resource
-        /// and default labels configured on the provider.
+        /// The combination of labels configured directly on the resource and default labels configured on the provider.
         /// </summary>
         public InputMap<string> PulumiLabels
         {
@@ -499,7 +491,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The purpose of the resource. Possible values include:
         /// * VPC_PEERING - for peer networks
-        /// * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+        /// * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         /// </summary>
         [Input("purpose")]
         public Input<string>? Purpose { get; set; }

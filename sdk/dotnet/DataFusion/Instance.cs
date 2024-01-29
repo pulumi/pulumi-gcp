@@ -376,7 +376,6 @@ namespace Pulumi.Gcp.DataFusion
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// (Beta, Deprecated)
         /// Service account which will be used to access resources in the customer project.
         /// </summary>
         [Output("serviceAccount")]
@@ -846,7 +845,6 @@ namespace Pulumi.Gcp.DataFusion
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// (Beta, Deprecated)
         /// Service account which will be used to access resources in the customer project.
         /// </summary>
         [Input("serviceAccount")]

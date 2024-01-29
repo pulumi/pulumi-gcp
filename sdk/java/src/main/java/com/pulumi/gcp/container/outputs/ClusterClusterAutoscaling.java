@@ -23,7 +23,7 @@ public final class ClusterClusterAutoscaling {
      */
     private @Nullable ClusterClusterAutoscalingAutoProvisioningDefaults autoProvisioningDefaults;
     /**
-     * @return ) Configuration
+     * @return Configuration
      * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
      * feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
      * when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -56,7 +56,7 @@ public final class ClusterClusterAutoscaling {
         return Optional.ofNullable(this.autoProvisioningDefaults);
     }
     /**
-     * @return ) Configuration
+     * @return Configuration
      * options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
      * feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
      * when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.

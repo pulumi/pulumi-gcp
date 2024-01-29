@@ -46,7 +46,7 @@ class AzureClusterArgs:
         :param pulumi.Input['AzureClusterAzureServicesAuthenticationArgs'] azure_services_authentication: Azure authentication configuration for management of Azure resources
         :param pulumi.Input[str] client: Name of the AzureClient. The `AzureClient` resource must reside on the same GCP project and region as the `AzureCluster`. `AzureClient` names are formatted as `projects/<project-number>/locations/<region>/azureClients/<client-id>`. See Resource Names (https:cloud.google.com/apis/design/resource_names) for more details on Google Cloud resource names.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         """
@@ -211,7 +211,7 @@ class AzureClusterArgs:
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]:
         """
-        (Beta only) Logging configuration.
+        Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
@@ -289,7 +289,7 @@ class _AzureClusterState:
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AzureClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input['AzureClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AzureClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
@@ -511,7 +511,7 @@ class _AzureClusterState:
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional[pulumi.Input['AzureClusterLoggingConfigArgs']]:
         """
-        (Beta only) Logging configuration.
+        Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
@@ -778,7 +778,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
@@ -1038,7 +1038,7 @@ class AzureCluster(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['AzureClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AzureClusterLoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AzureClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
@@ -1190,7 +1190,7 @@ class AzureCluster(pulumi.CustomResource):
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> pulumi.Output['outputs.AzureClusterLoggingConfig']:
         """
-        (Beta only) Logging configuration.
+        Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 

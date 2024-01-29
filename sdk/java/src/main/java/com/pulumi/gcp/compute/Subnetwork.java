@@ -369,7 +369,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/subnetwork:Subnetwork")
 public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
-     * (Optional, Beta)
      * Typically packets destined to IPs within the subnetwork range that do not match
      * existing resources are dropped and prevented from leaving the VPC.
      * Setting this field to true will allow these packets to match dynamic routes injected
@@ -380,8 +379,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     private Output<Boolean> allowSubnetCidrRoutesOverlap;
 
     /**
-     * @return (Optional, Beta)
-     * Typically packets destined to IPs within the subnetwork range that do not match
+     * @return Typically packets destined to IPs within the subnetwork range that do not match
      * existing resources are dropped and prevented from leaving the VPC.
      * Setting this field to true will allow these packets to match dynamic routes injected
      * via BGP even if their destinations match existing subnet ranges.
@@ -653,7 +651,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`(Beta).
+     * The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`.
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
      * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.
@@ -666,7 +664,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     private Output<String> purpose;
 
     /**
-     * @return The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`(Beta).
+     * @return The purpose of the resource. This field can be either `PRIVATE_RFC_1918`, `REGIONAL_MANAGED_PROXY`, `GLOBAL_MANAGED_PROXY`, `PRIVATE_SERVICE_CONNECT` or `PRIVATE_NAT`.
      * A subnet with purpose set to `REGIONAL_MANAGED_PROXY` is a user-created subnetwork that is reserved for regional Envoy-based load balancers.
      * A subnetwork in a given region with purpose set to `GLOBAL_MANAGED_PROXY` is a proxy-only subnet and is shared between all the cross-regional Envoy-based load balancers.
      * A subnetwork with purpose set to `PRIVATE_SERVICE_CONNECT` reserves the subnet for hosting a Private Service Connect published service.

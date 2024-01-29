@@ -72,14 +72,14 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Beta only) The OS image type to use on node pool instances.
+     * The OS image type to use on node pool instances.
      * 
      */
     @Import(name="imageType")
     private @Nullable Output<String> imageType;
 
     /**
-     * @return (Beta only) The OS image type to use on node pool instances.
+     * @return The OS image type to use on node pool instances.
      * 
      */
     public Optional<Output<String>> imageType() {
@@ -87,14 +87,14 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Beta only) Details of placement information for an instance.
+     * Details of placement information for an instance.
      * 
      */
     @Import(name="instancePlacement")
     private @Nullable Output<AwsNodePoolConfigInstancePlacementArgs> instancePlacement;
 
     /**
-     * @return (Beta only) Details of placement information for an instance.
+     * @return Details of placement information for an instance.
      * 
      */
     public Optional<Output<AwsNodePoolConfigInstancePlacementArgs>> instancePlacement() {
@@ -177,14 +177,14 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
      * 
      */
     @Import(name="spotConfig")
     private @Nullable Output<AwsNodePoolConfigSpotConfigArgs> spotConfig;
 
     /**
-     * @return (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * @return Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
      * 
      */
     public Optional<Output<AwsNodePoolConfigSpotConfigArgs>> spotConfig() {
@@ -337,7 +337,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param imageType (Beta only) The OS image type to use on node pool instances.
+         * @param imageType The OS image type to use on node pool instances.
          * 
          * @return builder
          * 
@@ -348,7 +348,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param imageType (Beta only) The OS image type to use on node pool instances.
+         * @param imageType The OS image type to use on node pool instances.
          * 
          * @return builder
          * 
@@ -358,7 +358,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instancePlacement (Beta only) Details of placement information for an instance.
+         * @param instancePlacement Details of placement information for an instance.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param instancePlacement (Beta only) Details of placement information for an instance.
+         * @param instancePlacement Details of placement information for an instance.
          * 
          * @return builder
          * 
@@ -494,7 +494,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spotConfig (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+         * @param spotConfig Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
          * 
          * @return builder
          * 
@@ -505,7 +505,7 @@ public final class AwsNodePoolConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param spotConfig (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+         * @param spotConfig Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
          * 
          * @return builder
          * 

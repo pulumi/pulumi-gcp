@@ -36,7 +36,6 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Optional, Beta)
      * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
      * These subnetworks must have purpose set to PRIVATE_NAT.
      * This field is used for private NAT.
@@ -46,8 +45,7 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
     private @Nullable Output<List<String>> sourceNatActiveRanges;
 
     /**
-     * @return (Optional, Beta)
-     * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+     * @return A list of URLs of the subnetworks used as source ranges for this NAT Rule.
      * These subnetworks must have purpose set to PRIVATE_NAT.
      * This field is used for private NAT.
      * 
@@ -78,7 +76,6 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
     }
 
     /**
-     * (Optional, Beta)
      * A list of URLs of subnetworks representing source ranges to be drained.
      * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
      * This field is used for private NAT.
@@ -88,8 +85,7 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
     private @Nullable Output<List<String>> sourceNatDrainRanges;
 
     /**
-     * @return (Optional, Beta)
-     * A list of URLs of subnetworks representing source ranges to be drained.
+     * @return A list of URLs of subnetworks representing source ranges to be drained.
      * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
      * This field is used for private NAT.
      * 
@@ -163,8 +159,7 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceNatActiveRanges (Optional, Beta)
-         * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+         * @param sourceNatActiveRanges A list of URLs of the subnetworks used as source ranges for this NAT Rule.
          * These subnetworks must have purpose set to PRIVATE_NAT.
          * This field is used for private NAT.
          * 
@@ -177,8 +172,7 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceNatActiveRanges (Optional, Beta)
-         * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+         * @param sourceNatActiveRanges A list of URLs of the subnetworks used as source ranges for this NAT Rule.
          * These subnetworks must have purpose set to PRIVATE_NAT.
          * This field is used for private NAT.
          * 
@@ -190,8 +184,7 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceNatActiveRanges (Optional, Beta)
-         * A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+         * @param sourceNatActiveRanges A list of URLs of the subnetworks used as source ranges for this NAT Rule.
          * These subnetworks must have purpose set to PRIVATE_NAT.
          * This field is used for private NAT.
          * 
@@ -243,8 +236,7 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceNatDrainRanges (Optional, Beta)
-         * A list of URLs of subnetworks representing source ranges to be drained.
+         * @param sourceNatDrainRanges A list of URLs of subnetworks representing source ranges to be drained.
          * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
          * This field is used for private NAT.
          * 
@@ -257,8 +249,7 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceNatDrainRanges (Optional, Beta)
-         * A list of URLs of subnetworks representing source ranges to be drained.
+         * @param sourceNatDrainRanges A list of URLs of subnetworks representing source ranges to be drained.
          * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
          * This field is used for private NAT.
          * 
@@ -270,8 +261,7 @@ public final class RouterNatRuleActionArgs extends com.pulumi.resources.Resource
         }
 
         /**
-         * @param sourceNatDrainRanges (Optional, Beta)
-         * A list of URLs of subnetworks representing source ranges to be drained.
+         * @param sourceNatDrainRanges A list of URLs of subnetworks representing source ranges to be drained.
          * This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
          * This field is used for private NAT.
          * 

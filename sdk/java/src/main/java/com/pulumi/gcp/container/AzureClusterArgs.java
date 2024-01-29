@@ -165,14 +165,14 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      * 
      */
     @Import(name="loggingConfig")
     private @Nullable Output<AzureClusterLoggingConfigArgs> loggingConfig;
 
     /**
-     * @return (Beta only) Logging configuration.
+     * @return Logging configuration.
      * 
      */
     public Optional<Output<AzureClusterLoggingConfigArgs>> loggingConfig() {
@@ -472,7 +472,7 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingConfig (Beta only) Logging configuration.
+         * @param loggingConfig Logging configuration.
          * 
          * @return builder
          * 
@@ -483,7 +483,7 @@ public final class AzureClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingConfig (Beta only) Logging configuration.
+         * @param loggingConfig Logging configuration.
          * 
          * @return builder
          * 

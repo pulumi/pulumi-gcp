@@ -302,7 +302,6 @@ type FhirStore struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport pulumi.BoolPtrOutput `pulumi:"enableHistoryImport"`
-	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications pulumi.BoolPtrOutput `pulumi:"enableHistoryModifications"`
@@ -331,7 +330,6 @@ type FhirStore struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
-	// (Optional, Beta)
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
 	NotificationConfigs FhirStoreNotificationConfigArrayOutput `pulumi:"notificationConfigs"`
@@ -427,7 +425,6 @@ type fhirStoreState struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport *bool `pulumi:"enableHistoryImport"`
-	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications *bool `pulumi:"enableHistoryModifications"`
@@ -456,7 +453,6 @@ type fhirStoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
-	// (Optional, Beta)
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
 	NotificationConfigs []FhirStoreNotificationConfig `pulumi:"notificationConfigs"`
@@ -515,7 +511,6 @@ type FhirStoreState struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport pulumi.BoolPtrInput
-	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications pulumi.BoolPtrInput
@@ -544,7 +539,6 @@ type FhirStoreState struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
-	// (Optional, Beta)
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
 	NotificationConfigs FhirStoreNotificationConfigArrayInput
@@ -605,7 +599,6 @@ type fhirStoreArgs struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport *bool `pulumi:"enableHistoryImport"`
-	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications *bool `pulumi:"enableHistoryModifications"`
@@ -634,7 +627,6 @@ type fhirStoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig *FhirStoreNotificationConfig `pulumi:"notificationConfig"`
-	// (Optional, Beta)
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
 	NotificationConfigs []FhirStoreNotificationConfig `pulumi:"notificationConfigs"`
@@ -687,7 +679,6 @@ type FhirStoreArgs struct {
 	// ** Changing this property may recreate the FHIR store (removing all data) **
 	// ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
 	EnableHistoryImport pulumi.BoolPtrInput
-	// (Optional, Beta)
 	// Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 	// resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 	EnableHistoryModifications pulumi.BoolPtrInput
@@ -716,7 +707,6 @@ type FhirStoreArgs struct {
 	// A nested object resource
 	// Structure is documented below.
 	NotificationConfig FhirStoreNotificationConfigPtrInput
-	// (Optional, Beta)
 	// A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 	// Structure is documented below.
 	NotificationConfigs FhirStoreNotificationConfigArrayInput
@@ -877,7 +867,6 @@ func (o FhirStoreOutput) EnableHistoryImport() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FhirStore) pulumi.BoolPtrOutput { return v.EnableHistoryImport }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional, Beta)
 // Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
 // resource versions into the FHIR store. If set to false, using history bundles fails with an error.
 func (o FhirStoreOutput) EnableHistoryModifications() pulumi.BoolPtrOutput {
@@ -921,7 +910,6 @@ func (o FhirStoreOutput) NotificationConfig() FhirStoreNotificationConfigPtrOutp
 	return o.ApplyT(func(v *FhirStore) FhirStoreNotificationConfigPtrOutput { return v.NotificationConfig }).(FhirStoreNotificationConfigPtrOutput)
 }
 
-// (Optional, Beta)
 // A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
 // Structure is documented below.
 func (o FhirStoreOutput) NotificationConfigs() FhirStoreNotificationConfigArrayOutput {

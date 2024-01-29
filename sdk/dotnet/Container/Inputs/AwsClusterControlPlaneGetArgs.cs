@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string> IamInstanceProfile { get; set; } = null!;
 
         /// <summary>
-        /// (Beta only) Details of placement information for an instance.
+        /// Details of placement information for an instance.
         /// </summary>
         [Input("instancePlacement")]
         public Input<Inputs.AwsClusterControlPlaneInstancePlacementGetArgs>? InstancePlacement { get; set; }

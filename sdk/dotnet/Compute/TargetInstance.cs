@@ -207,7 +207,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Output("securityPolicy")]
@@ -326,7 +325,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Input("securityPolicy")]
@@ -407,7 +405,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The resource URL for the security policy associated with this target instance.
         /// </summary>
         [Input("securityPolicy")]

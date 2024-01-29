@@ -520,7 +520,6 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:artifactregistry/repository:Repository")
 public class Repository extends com.pulumi.resources.CustomResource {
     /**
-     * (Optional, Beta)
      * Cleanup policies for this repository. Cleanup policies indicate when
      * certain package versions can be automatically deleted.
      * Map keys are policy IDs supplied by users during policy creation. They must
@@ -532,8 +531,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ List<RepositoryCleanupPolicy>> cleanupPolicies;
 
     /**
-     * @return (Optional, Beta)
-     * Cleanup policies for this repository. Cleanup policies indicate when
+     * @return Cleanup policies for this repository. Cleanup policies indicate when
      * certain package versions can be automatically deleted.
      * Map keys are policy IDs supplied by users during policy creation. They must
      * unique within a repository and be under 128 characters in length.
@@ -544,7 +542,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.cleanupPolicies);
     }
     /**
-     * (Optional, Beta)
      * If true, the cleanup pipeline is prevented from deleting versions in this
      * repository.
      * 
@@ -553,8 +550,7 @@ public class Repository extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Boolean> cleanupPolicyDryRun;
 
     /**
-     * @return (Optional, Beta)
-     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * @return If true, the cleanup pipeline is prevented from deleting versions in this
      * repository.
      * 
      */

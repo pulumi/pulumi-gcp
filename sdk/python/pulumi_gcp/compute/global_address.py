@@ -63,7 +63,7 @@ class GlobalAddressArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
-               * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+               * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         """
         if address is not None:
             pulumi.set(__self__, "address", address)
@@ -226,7 +226,7 @@ class GlobalAddressArgs:
         """
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
-        * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+        * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         """
         return pulumi.get(self, "purpose")
 
@@ -265,13 +265,11 @@ class _GlobalAddressState:
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: (Beta)
-               All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
-        :param pulumi.Input[str] label_fingerprint: (Beta)
-               The fingerprint used for optimistic locking of this resource.  Used
-               internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -296,12 +294,10 @@ class _GlobalAddressState:
                when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Beta)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
-               * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+               * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         if address is not None:
@@ -393,8 +389,8 @@ class _GlobalAddressState:
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        (Beta)
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -419,9 +415,7 @@ class _GlobalAddressState:
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
         """
-        (Beta)
-        The fingerprint used for optimistic locking of this resource.  Used
-        internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -512,9 +506,7 @@ class _GlobalAddressState:
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        (Beta)
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+        The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -528,7 +520,7 @@ class _GlobalAddressState:
         """
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
-        * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+        * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         """
         return pulumi.get(self, "purpose")
 
@@ -655,7 +647,7 @@ class GlobalAddress(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
-               * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+               * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         """
         ...
     @overload
@@ -807,13 +799,11 @@ class GlobalAddress(pulumi.CustomResource):
                Possible values are: `EXTERNAL`, `INTERNAL`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: (Beta)
-               All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+               clients and services.
         :param pulumi.Input[str] ip_version: The IP Version that will be used by this address. The default value is `IPV4`.
                Possible values are: `IPV4`, `IPV6`.
-        :param pulumi.Input[str] label_fingerprint: (Beta)
-               The fingerprint used for optimistic locking of this resource.  Used
-               internally during updates.
+        :param pulumi.Input[str] label_fingerprint: The fingerprint used for optimistic locking of this resource. Used internally during updates.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels to apply to this address.  A list of key->value pairs.
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -838,12 +828,10 @@ class GlobalAddress(pulumi.CustomResource):
                when purpose=PRIVATE_SERVICE_CONNECT
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: (Beta)
-               The combination of labels configured directly on the resource
-               and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource and default labels configured on the provider.
         :param pulumi.Input[str] purpose: The purpose of the resource. Possible values include:
                * VPC_PEERING - for peer networks
-               * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+               * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         :param pulumi.Input[str] self_link: The URI of the created resource.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -909,8 +897,8 @@ class GlobalAddress(pulumi.CustomResource):
     @pulumi.getter(name="effectiveLabels")
     def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        (Beta)
-        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+        clients and services.
         """
         return pulumi.get(self, "effective_labels")
 
@@ -927,9 +915,7 @@ class GlobalAddress(pulumi.CustomResource):
     @pulumi.getter(name="labelFingerprint")
     def label_fingerprint(self) -> pulumi.Output[str]:
         """
-        (Beta)
-        The fingerprint used for optimistic locking of this resource.  Used
-        internally during updates.
+        The fingerprint used for optimistic locking of this resource. Used internally during updates.
         """
         return pulumi.get(self, "label_fingerprint")
 
@@ -996,9 +982,7 @@ class GlobalAddress(pulumi.CustomResource):
     @pulumi.getter(name="pulumiLabels")
     def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
         """
-        (Beta)
-        The combination of labels configured directly on the resource
-        and default labels configured on the provider.
+        The combination of labels configured directly on the resource and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
 
@@ -1008,7 +992,7 @@ class GlobalAddress(pulumi.CustomResource):
         """
         The purpose of the resource. Possible values include:
         * VPC_PEERING - for peer networks
-        * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+        * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
         """
         return pulumi.get(self, "purpose")
 

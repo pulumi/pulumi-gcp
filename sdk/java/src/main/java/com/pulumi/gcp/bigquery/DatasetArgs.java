@@ -228,7 +228,6 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      * 
@@ -237,8 +236,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<DatasetExternalDatasetReferenceArgs> externalDatasetReference;
 
     /**
-     * @return (Optional, Beta)
-     * Information about the external metadata storage where the dataset is defined.
+     * @return Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      * 
      */
@@ -692,8 +690,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalDatasetReference (Optional, Beta)
-         * Information about the external metadata storage where the dataset is defined.
+         * @param externalDatasetReference Information about the external metadata storage where the dataset is defined.
          * Structure is documented below.
          * 
          * @return builder
@@ -705,8 +702,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param externalDatasetReference (Optional, Beta)
-         * Information about the external metadata storage where the dataset is defined.
+         * @param externalDatasetReference Information about the external metadata storage where the dataset is defined.
          * Structure is documented below.
          * 
          * @return builder

@@ -702,7 +702,6 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.tcpTransitoryIdleTimeoutSec);
     }
     /**
-     * (Optional, Beta)
      * Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
      * If `PUBLIC` NAT used for public IP translation.
@@ -715,8 +714,7 @@ public class RouterNat extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> type;
 
     /**
-     * @return (Optional, Beta)
-     * Indicates whether this NAT is used for public or private IP translation.
+     * @return Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
      * If `PUBLIC` NAT used for public IP translation.
      * If `PRIVATE` NAT used for private IP translation.

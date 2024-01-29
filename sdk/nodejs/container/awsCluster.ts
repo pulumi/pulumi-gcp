@@ -342,7 +342,7 @@ export class AwsCluster extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      */
     public readonly loggingConfig!: pulumi.Output<outputs.container.AwsClusterLoggingConfig>;
     /**
@@ -516,7 +516,7 @@ export interface AwsClusterState {
      */
     location?: pulumi.Input<string>;
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      */
     loggingConfig?: pulumi.Input<inputs.container.AwsClusterLoggingConfig>;
     /**
@@ -593,7 +593,7 @@ export interface AwsClusterArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      */
     loggingConfig?: pulumi.Input<inputs.container.AwsClusterLoggingConfig>;
     /**

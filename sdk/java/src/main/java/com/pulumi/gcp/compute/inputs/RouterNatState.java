@@ -373,7 +373,6 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
      * If `PUBLIC` NAT used for public IP translation.
@@ -386,8 +385,7 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> type;
 
     /**
-     * @return (Optional, Beta)
-     * Indicates whether this NAT is used for public or private IP translation.
+     * @return Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
      * If `PUBLIC` NAT used for public IP translation.
      * If `PRIVATE` NAT used for private IP translation.
@@ -969,8 +967,7 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type (Optional, Beta)
-         * Indicates whether this NAT is used for public or private IP translation.
+         * @param type Indicates whether this NAT is used for public or private IP translation.
          * If unspecified, it defaults to PUBLIC.
          * If `PUBLIC` NAT used for public IP translation.
          * If `PRIVATE` NAT used for private IP translation.
@@ -986,8 +983,7 @@ public final class RouterNatState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param type (Optional, Beta)
-         * Indicates whether this NAT is used for public or private IP translation.
+         * @param type Indicates whether this NAT is used for public or private IP translation.
          * If unspecified, it defaults to PUBLIC.
          * If `PUBLIC` NAT used for public IP translation.
          * If `PRIVATE` NAT used for private IP translation.
