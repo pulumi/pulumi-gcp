@@ -50,7 +50,6 @@ var removeSecretsInPlainTextNote = tfbridge.DocsEdit{
 // "(Beta only)
 // "(Optional) Beta
 var betaRegexps = []*regexp.Regexp{
-
 	regexp.MustCompile(`\(Beta\)`),
 	regexp.MustCompile(`\(Optional, Beta\)`),
 	regexp.MustCompile(`\(Optional, Beta, Deprecated\)`),
