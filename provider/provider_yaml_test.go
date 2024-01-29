@@ -98,14 +98,13 @@ func randSeq(n int) string {
 }
 
 func TestCluster(t *testing.T) {
-	t.Skip("Not recorded yet, this consistently times out.")
 	serviceAccountID := randSeq(12)
 	// ServiceAccount requires 7.0
 	runTest(t,
 		test(
 			t,
 			"test-programs/cluster",
-			providertest.WithBaselineVersion("7.0.0"),
+			providertest.WithBaselineVersion("7.2.1"),
 			providertest.WithConfig("serviceID", serviceAccountID),
 		),
 	)
