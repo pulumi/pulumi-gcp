@@ -412,11 +412,11 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
 }
 
 func TestNoCredentials(t *testing.T) {
-	os.Unsetenv("GOOGLE_APPLICATION_CREDENTIALS")
-	os.Unsetenv("GOOGLE_GHA_CREDS_PATH")
-	os.Unsetenv("GOOGLE_PROJECT")
-	os.Unsetenv("GOOGLE_ZONE")
-	os.Unsetenv("GOOGLE_REGION")
+	t.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+	t.Setenv("GOOGLE_GHA_CREDS_PATH", "")
+	t.Setenv("GOOGLE_PROJECT", "")
+	t.Setenv("GOOGLE_ZONE", "")
+	t.Setenv("GOOGLE_REGION", "")
 	credentialsValidationRun.Store(false)
 	replay.Replay(t, providerServer(t), strings.ReplaceAll(`
 {
@@ -444,10 +444,10 @@ func TestNoCredentials(t *testing.T) {
 }
 
 func TestNoRegionErrorWithNoProject(t *testing.T) {
-	os.Unsetenv("GOOGLE_PROJECT")
-	os.Unsetenv("GOOGLE_PROJECT_NUMBER")
-	os.Unsetenv("GOOGLE_ZONE")
-	os.Unsetenv("GOOGLE_REGION")
+	t.Setenv("GOOGLE_PROJECT", "")
+	t.Setenv("GOOGLE_PROJECT_NUMBER", "")
+	t.Setenv("GOOGLE_ZONE", "")
+	t.Setenv("GOOGLE_REGION", "")
 	credentialsValidationRun.Store(false)
 	replay.Replay(t, providerServer(t), `
 	{
@@ -479,8 +479,8 @@ func TestNoRegionErrorWithNoProject(t *testing.T) {
 }
 
 func TestWrongRegion(t *testing.T) {
-	os.Unsetenv("GOOGLE_ZONE")
-	os.Unsetenv("GOOGLE_REGION")
+	t.Setenv("GOOGLE_REGION", "")
+	t.Setenv("GOOGLE_ZONE", "")
 	credentialsValidationRun.Store(false)
 	replay.Replay(t, providerServer(t), `
 	{
