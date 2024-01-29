@@ -411,7 +411,10 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
 }`)
 }
 
-func TestNoCredentials(t *testing.T) {
+func TestCheckConfigNoCredentials(t *testing.T) {
+	if !testing.Short() {
+		t.Skip("Only run in short mode, since we want to NOT have credentials.")
+	}
 	t.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "")
 	t.Setenv("GOOGLE_GHA_CREDS_PATH", "")
 	t.Setenv("GOOGLE_PROJECT", "")
@@ -424,7 +427,6 @@ func TestNoCredentials(t *testing.T) {
     "request": {
         "urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
         "olds": {
-            "version": "7.6.0"
         },
         "news": {
             "version": "7.6.0"
@@ -443,7 +445,10 @@ func TestNoCredentials(t *testing.T) {
 	)
 }
 
-func TestNoRegionErrorWithNoProject(t *testing.T) {
+func TestCheckConfigNoRegionErrorWithNoProject(t *testing.T) {
+	if testing.Short() {
+		t.Skip("Only run in short mode, since we want credentials.")
+	}
 	t.Setenv("GOOGLE_PROJECT", "")
 	t.Setenv("GOOGLE_PROJECT_NUMBER", "")
 	t.Setenv("GOOGLE_ZONE", "")
@@ -455,7 +460,6 @@ func TestNoRegionErrorWithNoProject(t *testing.T) {
 		"request": {
 			"urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
 			"olds": {
-				"version": "7.6.0"
 			},
 			"news": {
 				"region": "westus",
@@ -478,7 +482,10 @@ func TestNoRegionErrorWithNoProject(t *testing.T) {
 	)
 }
 
-func TestWrongRegion(t *testing.T) {
+func TestCheckConfigWrongRegion(t *testing.T) {
+	if testing.Short() {
+		t.Skip("Only run in short mode, since we want credentials.")
+	}
 	t.Setenv("GOOGLE_REGION", "")
 	t.Setenv("GOOGLE_ZONE", "")
 	credentialsValidationRun.Store(false)
@@ -488,7 +495,6 @@ func TestWrongRegion(t *testing.T) {
 		"request": {
 			"urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
 			"olds": {
-				"version": "7.6.0"
 			},
 			"news": {
 				"region": "westus",
