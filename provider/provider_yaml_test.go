@@ -469,8 +469,7 @@ func TestCheckConfigNoRegionErrorWithNoProject(t *testing.T) {
 		"response": {
 			"inputs": {
 				"region": "westus",
-				"version": "7.6.0",
-				"project": "*"
+				"version": "7.6.0"
 			}
 		},
 		"metadata": {
