@@ -46,9 +46,9 @@ func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.P
 		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_Quick,
 			"TODO[pulumi/providertest#28] Skipping Quick mode because of panics and implicit dependency on Configure"),
 	)
-	defaultOpts = append(defaultOpts, opts...)
+	allOpts := append(defaultOpts, opts...)
 
-	return providertest.NewProviderTest(dir, defaultOpts...)
+	return providertest.NewProviderTest(dir, allOpts...)
 }
 
 func runTest(t *testing.T, pt *providertest.ProviderTest) {
