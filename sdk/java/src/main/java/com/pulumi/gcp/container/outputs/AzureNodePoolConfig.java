@@ -17,7 +17,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AzureNodePoolConfig {
     /**
-     * @return (Beta only) The OS image type to use on node pool instances.
+     * @return The OS image type to use on node pool instances.
      * 
      */
     private @Nullable String imageType;
@@ -54,7 +54,7 @@ public final class AzureNodePoolConfig {
 
     private AzureNodePoolConfig() {}
     /**
-     * @return (Beta only) The OS image type to use on node pool instances.
+     * @return The OS image type to use on node pool instances.
      * 
      */
     public Optional<String> imageType() {

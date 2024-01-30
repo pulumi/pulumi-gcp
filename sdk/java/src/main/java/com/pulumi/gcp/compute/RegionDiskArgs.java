@@ -110,7 +110,6 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
      * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
@@ -124,8 +123,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> interface_;
 
     /**
-     * @return (Optional, Deprecated)
-     * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+     * @return Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
      * 
      * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
      * 
@@ -553,8 +551,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ (Optional, Deprecated)
-         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
          * 
          * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 
@@ -571,8 +568,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param interface_ (Optional, Deprecated)
-         * Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
+         * @param interface_ Specifies the disk interface to use for attaching this disk, which is either SCSI or NVME. The default is SCSI.
          * 
          * &gt; **Warning:** `interface` is deprecated and will be removed in a future major release. This field is no longer used and can be safely removed from your configurations; disk interfaces are automatically determined on attachment.
          * 

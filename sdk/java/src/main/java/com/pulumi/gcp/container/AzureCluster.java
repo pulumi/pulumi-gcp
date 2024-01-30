@@ -409,14 +409,14 @@ public class AzureCluster extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      * 
      */
     @Export(name="loggingConfig", refs={AzureClusterLoggingConfig.class}, tree="[0]")
     private Output<AzureClusterLoggingConfig> loggingConfig;
 
     /**
-     * @return (Beta only) Logging configuration.
+     * @return Logging configuration.
      * 
      */
     public Output<AzureClusterLoggingConfig> loggingConfig() {

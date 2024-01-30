@@ -36,7 +36,6 @@ public final class MetastoreServiceNetworkConfigArgs extends com.pulumi.resource
     }
 
     /**
-     * (Optional, Beta)
      * Enables custom routes to be imported and exported for the Dataproc Metastore service&#39;s peered VPC network.
      * 
      */
@@ -44,8 +43,7 @@ public final class MetastoreServiceNetworkConfigArgs extends com.pulumi.resource
     private @Nullable Output<Boolean> customRoutesEnabled;
 
     /**
-     * @return (Optional, Beta)
-     * Enables custom routes to be imported and exported for the Dataproc Metastore service&#39;s peered VPC network.
+     * @return Enables custom routes to be imported and exported for the Dataproc Metastore service&#39;s peered VPC network.
      * 
      */
     public Optional<Output<Boolean>> customRoutesEnabled() {
@@ -112,8 +110,7 @@ public final class MetastoreServiceNetworkConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param customRoutesEnabled (Optional, Beta)
-         * Enables custom routes to be imported and exported for the Dataproc Metastore service&#39;s peered VPC network.
+         * @param customRoutesEnabled Enables custom routes to be imported and exported for the Dataproc Metastore service&#39;s peered VPC network.
          * 
          * @return builder
          * 
@@ -124,8 +121,7 @@ public final class MetastoreServiceNetworkConfigArgs extends com.pulumi.resource
         }
 
         /**
-         * @param customRoutesEnabled (Optional, Beta)
-         * Enables custom routes to be imported and exported for the Dataproc Metastore service&#39;s peered VPC network.
+         * @param customRoutesEnabled Enables custom routes to be imported and exported for the Dataproc Metastore service&#39;s peered VPC network.
          * 
          * @return builder
          * 

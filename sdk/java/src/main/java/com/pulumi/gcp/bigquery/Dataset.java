@@ -582,7 +582,6 @@ public class Dataset extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * (Optional, Beta)
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      * 
@@ -591,8 +590,7 @@ public class Dataset extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ DatasetExternalDatasetReference> externalDatasetReference;
 
     /**
-     * @return (Optional, Beta)
-     * Information about the external metadata storage where the dataset is defined.
+     * @return Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      * 
      */

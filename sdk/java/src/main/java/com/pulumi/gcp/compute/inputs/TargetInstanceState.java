@@ -155,7 +155,6 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      * 
      */
@@ -163,8 +162,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<String> securityPolicy;
 
     /**
-     * @return (Optional, Beta)
-     * The resource URL for the security policy associated with this target instance.
+     * @return The resource URL for the security policy associated with this target instance.
      * 
      */
     public Optional<Output<String>> securityPolicy() {
@@ -416,8 +414,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param securityPolicy (Optional, Beta)
-         * The resource URL for the security policy associated with this target instance.
+         * @param securityPolicy The resource URL for the security policy associated with this target instance.
          * 
          * @return builder
          * 
@@ -428,8 +425,7 @@ public final class TargetInstanceState extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param securityPolicy (Optional, Beta)
-         * The resource URL for the security policy associated with this target instance.
+         * @param securityPolicy The resource URL for the security policy associated with this target instance.
          * 
          * @return builder
          * 

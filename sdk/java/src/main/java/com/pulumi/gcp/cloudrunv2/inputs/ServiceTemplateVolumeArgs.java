@@ -39,7 +39,6 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * (Optional, Beta)
      * Ephemeral storage used as a shared volume.
      * Structure is documented below.
      * 
@@ -48,8 +47,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
     private @Nullable Output<ServiceTemplateVolumeEmptyDirArgs> emptyDir;
 
     /**
-     * @return (Optional, Beta)
-     * Ephemeral storage used as a shared volume.
+     * @return Ephemeral storage used as a shared volume.
      * Structure is documented below.
      * 
      */
@@ -176,8 +174,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param emptyDir (Optional, Beta)
-         * Ephemeral storage used as a shared volume.
+         * @param emptyDir Ephemeral storage used as a shared volume.
          * Structure is documented below.
          * 
          * @return builder
@@ -189,8 +186,7 @@ public final class ServiceTemplateVolumeArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param emptyDir (Optional, Beta)
-         * Ephemeral storage used as a shared volume.
+         * @param emptyDir Ephemeral storage used as a shared volume.
          * Structure is documented below.
          * 
          * @return builder

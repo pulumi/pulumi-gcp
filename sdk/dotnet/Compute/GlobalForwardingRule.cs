@@ -229,7 +229,6 @@ namespace Pulumi.Gcp.Compute
     public partial class GlobalForwardingRule : global::Pulumi.CustomResource
     {
         /// <summary>
-        /// (Optional, Beta)
         /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         /// </summary>
         [Output("allowPscGlobalAccess")]
@@ -543,7 +542,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class GlobalForwardingRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         /// </summary>
         [Input("allowPscGlobalAccess")]
@@ -788,7 +786,6 @@ namespace Pulumi.Gcp.Compute
     public sealed class GlobalForwardingRuleState : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         /// </summary>
         [Input("allowPscGlobalAccess")]

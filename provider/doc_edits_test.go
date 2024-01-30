@@ -70,3 +70,56 @@ Some more text.`,
 		})
 	}
 }
+
+func TestBetaDescription(t *testing.T) {
+	t.Parallel()
+	tests := []struct{ text, expected string }{
+		{
+			"(Beta)",
+			"",
+		},
+		{
+			"(Optional, Beta)",
+			"",
+		},
+		{
+			"(Optional, Beta, Deprecated)",
+			"",
+		},
+		{
+			"(Beta, Deprecated)",
+			"",
+		},
+
+		{
+			"(Beta only)",
+			"",
+		},
+		{
+			"(Optional) Beta ",
+			"",
+		},
+		{
+			"Something using Kubernetes Beta API",
+			"Something using Kubernetes Beta API",
+		},
+		{
+			"(Optional, Beta, Something Else)",
+			"(Optional, Beta, Something Else)",
+		},
+		{
+			"(Optional, Beta) Something Else)",
+			" Something Else)",
+		},
+	}
+
+	for _, tt := range tests {
+		tt := tt
+		t.Run(tt.text, func(t *testing.T) {
+			t.Parallel()
+			actual, err := removeBetaFromDescriptionField.Edit("doc.md", []byte(tt.text))
+			require.NoError(t, err)
+			assert.Equal(t, tt.expected, string(actual))
+		})
+	}
+}

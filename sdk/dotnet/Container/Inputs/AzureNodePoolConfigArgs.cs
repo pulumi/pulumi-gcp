@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class AzureNodePoolConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Beta only) The OS image type to use on node pool instances.
+        /// The OS image type to use on node pool instances.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }

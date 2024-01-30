@@ -15,15 +15,13 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RepositoryCleanupPolicy {
     /**
-     * @return (Optional, Beta)
-     * Policy action.
+     * @return Policy action.
      * Possible values are: `DELETE`, `KEEP`.
      * 
      */
     private @Nullable String action;
     /**
-     * @return (Optional, Beta)
-     * Policy condition for matching versions.
+     * @return Policy condition for matching versions.
      * Structure is documented below.
      * 
      */
@@ -34,8 +32,7 @@ public final class RepositoryCleanupPolicy {
      */
     private String id;
     /**
-     * @return (Optional, Beta)
-     * Policy condition for retaining a minimum number of versions. May only be
+     * @return Policy condition for retaining a minimum number of versions. May only be
      * specified with a Keep action.
      * Structure is documented below.
      * 
@@ -44,8 +41,7 @@ public final class RepositoryCleanupPolicy {
 
     private RepositoryCleanupPolicy() {}
     /**
-     * @return (Optional, Beta)
-     * Policy action.
+     * @return Policy action.
      * Possible values are: `DELETE`, `KEEP`.
      * 
      */
@@ -53,8 +49,7 @@ public final class RepositoryCleanupPolicy {
         return Optional.ofNullable(this.action);
     }
     /**
-     * @return (Optional, Beta)
-     * Policy condition for matching versions.
+     * @return Policy condition for matching versions.
      * Structure is documented below.
      * 
      */
@@ -69,8 +64,7 @@ public final class RepositoryCleanupPolicy {
         return this.id;
     }
     /**
-     * @return (Optional, Beta)
-     * Policy condition for retaining a minimum number of versions. May only be
+     * @return Policy condition for retaining a minimum number of versions. May only be
      * specified with a Keep action.
      * Structure is documented below.
      * 

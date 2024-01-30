@@ -40,7 +40,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? PublicPtrDomainName;
         /// <summary>
-        /// Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        /// A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         /// </summary>
         public readonly string? SecurityPolicy;
 

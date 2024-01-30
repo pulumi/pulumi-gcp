@@ -19,7 +19,6 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
     public static final RepositoryCleanupPolicyArgs Empty = new RepositoryCleanupPolicyArgs();
 
     /**
-     * (Optional, Beta)
      * Policy action.
      * Possible values are: `DELETE`, `KEEP`.
      * 
@@ -28,8 +27,7 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
     private @Nullable Output<String> action;
 
     /**
-     * @return (Optional, Beta)
-     * Policy action.
+     * @return Policy action.
      * Possible values are: `DELETE`, `KEEP`.
      * 
      */
@@ -38,7 +36,6 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (Optional, Beta)
      * Policy condition for matching versions.
      * Structure is documented below.
      * 
@@ -47,8 +44,7 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
     private @Nullable Output<RepositoryCleanupPolicyConditionArgs> condition;
 
     /**
-     * @return (Optional, Beta)
-     * Policy condition for matching versions.
+     * @return Policy condition for matching versions.
      * Structure is documented below.
      * 
      */
@@ -72,7 +68,6 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * (Optional, Beta)
      * Policy condition for retaining a minimum number of versions. May only be
      * specified with a Keep action.
      * Structure is documented below.
@@ -82,8 +77,7 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
     private @Nullable Output<RepositoryCleanupPolicyMostRecentVersionsArgs> mostRecentVersions;
 
     /**
-     * @return (Optional, Beta)
-     * Policy condition for retaining a minimum number of versions. May only be
+     * @return Policy condition for retaining a minimum number of versions. May only be
      * specified with a Keep action.
      * Structure is documented below.
      * 
@@ -120,8 +114,7 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param action (Optional, Beta)
-         * Policy action.
+         * @param action Policy action.
          * Possible values are: `DELETE`, `KEEP`.
          * 
          * @return builder
@@ -133,8 +126,7 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param action (Optional, Beta)
-         * Policy action.
+         * @param action Policy action.
          * Possible values are: `DELETE`, `KEEP`.
          * 
          * @return builder
@@ -145,8 +137,7 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param condition (Optional, Beta)
-         * Policy condition for matching versions.
+         * @param condition Policy condition for matching versions.
          * Structure is documented below.
          * 
          * @return builder
@@ -158,8 +149,7 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param condition (Optional, Beta)
-         * Policy condition for matching versions.
+         * @param condition Policy condition for matching versions.
          * Structure is documented below.
          * 
          * @return builder
@@ -191,8 +181,7 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mostRecentVersions (Optional, Beta)
-         * Policy condition for retaining a minimum number of versions. May only be
+         * @param mostRecentVersions Policy condition for retaining a minimum number of versions. May only be
          * specified with a Keep action.
          * Structure is documented below.
          * 
@@ -205,8 +194,7 @@ public final class RepositoryCleanupPolicyArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param mostRecentVersions (Optional, Beta)
-         * Policy condition for retaining a minimum number of versions. May only be
+         * @param mostRecentVersions Policy condition for retaining a minimum number of versions. May only be
          * specified with a Keep action.
          * Structure is documented below.
          * 

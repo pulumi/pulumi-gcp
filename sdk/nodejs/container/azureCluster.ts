@@ -217,7 +217,7 @@ export class AzureCluster extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      */
     public readonly loggingConfig!: pulumi.Output<outputs.container.AzureClusterLoggingConfig>;
     /**
@@ -406,7 +406,7 @@ export interface AzureClusterState {
      */
     location?: pulumi.Input<string>;
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      */
     loggingConfig?: pulumi.Input<inputs.container.AzureClusterLoggingConfig>;
     /**
@@ -491,7 +491,7 @@ export interface AzureClusterArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      */
     loggingConfig?: pulumi.Input<inputs.container.AzureClusterLoggingConfig>;
     /**

@@ -41,7 +41,6 @@ public final class MembershipArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Deprecated)
      * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      * 
      * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
@@ -55,8 +54,7 @@ public final class MembershipArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> description;
 
     /**
-     * @return (Optional, Deprecated)
-     * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+     * @return The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
      * 
      * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
      * 
@@ -218,8 +216,7 @@ public final class MembershipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description (Optional, Deprecated)
-         * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+         * @param description The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
          * 
          * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
          * 
@@ -236,8 +233,7 @@ public final class MembershipArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description (Optional, Deprecated)
-         * The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
+         * @param description The name of this entity type to be displayed on the console. This field is unavailable in v1 of the API.
          * 
          * &gt; **Warning:** `description` is deprecated and will be removed in a future major release.
          * 

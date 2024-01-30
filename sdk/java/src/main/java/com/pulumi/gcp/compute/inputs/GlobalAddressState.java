@@ -90,16 +90,16 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * (Beta)
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
      * 
      */
     @Import(name="effectiveLabels")
     private @Nullable Output<Map<String,String>> effectiveLabels;
 
     /**
-     * @return (Beta)
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * @return All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
      * 
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
@@ -124,18 +124,14 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * (Beta)
-     * The fingerprint used for optimistic locking of this resource.  Used
-     * internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      * 
      */
     @Import(name="labelFingerprint")
     private @Nullable Output<String> labelFingerprint;
 
     /**
-     * @return (Beta)
-     * The fingerprint used for optimistic locking of this resource.  Used
-     * internally during updates.
+     * @return The fingerprint used for optimistic locking of this resource. Used internally during updates.
      * 
      */
     public Optional<Output<String>> labelFingerprint() {
@@ -254,18 +250,14 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * (Beta)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
     @Import(name="pulumiLabels")
     private @Nullable Output<Map<String,String>> pulumiLabels;
 
     /**
-     * @return (Beta)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * @return The combination of labels configured directly on the resource and default labels configured on the provider.
      * 
      */
     public Optional<Output<Map<String,String>>> pulumiLabels() {
@@ -275,7 +267,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
      * 
      */
     @Import(name="purpose")
@@ -284,7 +276,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
     /**
      * @return The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
      * 
      */
     public Optional<Output<String>> purpose() {
@@ -441,8 +433,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param effectiveLabels (Beta)
-         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
          * 
          * @return builder
          * 
@@ -453,8 +445,8 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param effectiveLabels (Beta)
-         * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+         * @param effectiveLabels All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+         * clients and services.
          * 
          * @return builder
          * 
@@ -487,9 +479,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labelFingerprint (Beta)
-         * The fingerprint used for optimistic locking of this resource.  Used
-         * internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
          * 
          * @return builder
          * 
@@ -500,9 +490,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param labelFingerprint (Beta)
-         * The fingerprint used for optimistic locking of this resource.  Used
-         * internally during updates.
+         * @param labelFingerprint The fingerprint used for optimistic locking of this resource. Used internally during updates.
          * 
          * @return builder
          * 
@@ -653,9 +641,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pulumiLabels (Beta)
-         * The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -666,9 +652,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param pulumiLabels (Beta)
-         * The combination of labels configured directly on the resource
-         * and default labels configured on the provider.
+         * @param pulumiLabels The combination of labels configured directly on the resource and default labels configured on the provider.
          * 
          * @return builder
          * 
@@ -680,7 +664,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param purpose The purpose of the resource. Possible values include:
          * * VPC_PEERING - for peer networks
-         * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+         * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
          * 
          * @return builder
          * 
@@ -693,7 +677,7 @@ public final class GlobalAddressState extends com.pulumi.resources.ResourceArgs 
         /**
          * @param purpose The purpose of the resource. Possible values include:
          * * VPC_PEERING - for peer networks
-         * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+         * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
          * 
          * @return builder
          * 

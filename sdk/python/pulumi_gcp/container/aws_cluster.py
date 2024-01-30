@@ -42,7 +42,7 @@ class AwsClusterArgs:
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['AwsClusterBinaryAuthorizationArgs'] binary_authorization: Configuration options for the Binary Authorization feature.
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
-        :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
         """
@@ -180,7 +180,7 @@ class AwsClusterArgs:
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]:
         """
-        (Beta only) Logging configuration.
+        Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
@@ -255,7 +255,7 @@ class _AwsClusterState:
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input['AwsClusterFleetArgs'] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input['AwsClusterLoggingConfigArgs'] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input['AwsClusterNetworkingArgs'] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
@@ -460,7 +460,7 @@ class _AwsClusterState:
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> Optional[pulumi.Input['AwsClusterLoggingConfigArgs']]:
         """
-        (Beta only) Logging configuration.
+        Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 
@@ -841,7 +841,7 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[str] description: Optional. A human readable description of this cluster. Cannot be longer than 255 UTF-8 encoded bytes.
         :param pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
@@ -1220,7 +1220,7 @@ class AwsCluster(pulumi.CustomResource):
         :param pulumi.Input[str] etag: Allows clients to perform consistent read-modify-writes through optimistic concurrency control. May be sent on update and delete requests to ensure the client has an up-to-date value before proceeding.
         :param pulumi.Input[pulumi.InputType['AwsClusterFleetArgs']] fleet: Fleet configuration.
         :param pulumi.Input[str] location: The location for the resource
-        :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: (Beta only) Logging configuration.
+        :param pulumi.Input[pulumi.InputType['AwsClusterLoggingConfigArgs']] logging_config: Logging configuration.
         :param pulumi.Input[str] name: The name of this resource.
         :param pulumi.Input[pulumi.InputType['AwsClusterNetworkingArgs']] networking: Cluster-wide networking configuration.
         :param pulumi.Input[str] project: The number of the Fleet host project where this cluster will be registered.
@@ -1361,7 +1361,7 @@ class AwsCluster(pulumi.CustomResource):
     @pulumi.getter(name="loggingConfig")
     def logging_config(self) -> pulumi.Output['outputs.AwsClusterLoggingConfig']:
         """
-        (Beta only) Logging configuration.
+        Logging configuration.
         """
         return pulumi.get(self, "logging_config")
 

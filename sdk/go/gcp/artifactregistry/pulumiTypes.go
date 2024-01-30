@@ -14,17 +14,14 @@ import (
 var _ = internal.GetEnvOrDefault
 
 type RepositoryCleanupPolicy struct {
-	// (Optional, Beta)
 	// Policy action.
 	// Possible values are: `DELETE`, `KEEP`.
 	Action *string `pulumi:"action"`
-	// (Optional, Beta)
 	// Policy condition for matching versions.
 	// Structure is documented below.
 	Condition *RepositoryCleanupPolicyCondition `pulumi:"condition"`
 	// The identifier for this object. Format specified above.
 	Id string `pulumi:"id"`
-	// (Optional, Beta)
 	// Policy condition for retaining a minimum number of versions. May only be
 	// specified with a Keep action.
 	// Structure is documented below.
@@ -43,17 +40,14 @@ type RepositoryCleanupPolicyInput interface {
 }
 
 type RepositoryCleanupPolicyArgs struct {
-	// (Optional, Beta)
 	// Policy action.
 	// Possible values are: `DELETE`, `KEEP`.
 	Action pulumi.StringPtrInput `pulumi:"action"`
-	// (Optional, Beta)
 	// Policy condition for matching versions.
 	// Structure is documented below.
 	Condition RepositoryCleanupPolicyConditionPtrInput `pulumi:"condition"`
 	// The identifier for this object. Format specified above.
 	Id pulumi.StringInput `pulumi:"id"`
-	// (Optional, Beta)
 	// Policy condition for retaining a minimum number of versions. May only be
 	// specified with a Keep action.
 	// Structure is documented below.
@@ -111,14 +105,12 @@ func (o RepositoryCleanupPolicyOutput) ToRepositoryCleanupPolicyOutputWithContex
 	return o
 }
 
-// (Optional, Beta)
 // Policy action.
 // Possible values are: `DELETE`, `KEEP`.
 func (o RepositoryCleanupPolicyOutput) Action() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicy) *string { return v.Action }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Policy condition for matching versions.
 // Structure is documented below.
 func (o RepositoryCleanupPolicyOutput) Condition() RepositoryCleanupPolicyConditionPtrOutput {
@@ -130,7 +122,6 @@ func (o RepositoryCleanupPolicyOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicy) string { return v.Id }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // Policy condition for retaining a minimum number of versions. May only be
 // specified with a Keep action.
 // Structure is documented below.
@@ -161,24 +152,18 @@ func (o RepositoryCleanupPolicyArrayOutput) Index(i pulumi.IntInput) RepositoryC
 }
 
 type RepositoryCleanupPolicyCondition struct {
-	// (Optional, Beta)
 	// Match versions newer than a duration.
 	NewerThan *string `pulumi:"newerThan"`
-	// (Optional, Beta)
 	// Match versions older than a duration.
 	OlderThan *string `pulumi:"olderThan"`
-	// (Optional, Beta)
 	// Match versions by package prefix. Applied on any prefix match.
 	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
-	// (Optional, Beta)
 	// Match versions by tag prefix. Applied on any prefix match.
 	TagPrefixes []string `pulumi:"tagPrefixes"`
-	// (Optional, Beta)
 	// Match versions by tag status.
 	// Default value is `ANY`.
 	// Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
 	TagState *string `pulumi:"tagState"`
-	// (Optional, Beta)
 	// Match versions by version name prefix. Applied on any prefix match.
 	VersionNamePrefixes []string `pulumi:"versionNamePrefixes"`
 }
@@ -195,24 +180,18 @@ type RepositoryCleanupPolicyConditionInput interface {
 }
 
 type RepositoryCleanupPolicyConditionArgs struct {
-	// (Optional, Beta)
 	// Match versions newer than a duration.
 	NewerThan pulumi.StringPtrInput `pulumi:"newerThan"`
-	// (Optional, Beta)
 	// Match versions older than a duration.
 	OlderThan pulumi.StringPtrInput `pulumi:"olderThan"`
-	// (Optional, Beta)
 	// Match versions by package prefix. Applied on any prefix match.
 	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
-	// (Optional, Beta)
 	// Match versions by tag prefix. Applied on any prefix match.
 	TagPrefixes pulumi.StringArrayInput `pulumi:"tagPrefixes"`
-	// (Optional, Beta)
 	// Match versions by tag status.
 	// Default value is `ANY`.
 	// Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
 	TagState pulumi.StringPtrInput `pulumi:"tagState"`
-	// (Optional, Beta)
 	// Match versions by version name prefix. Applied on any prefix match.
 	VersionNamePrefixes pulumi.StringArrayInput `pulumi:"versionNamePrefixes"`
 }
@@ -294,31 +273,26 @@ func (o RepositoryCleanupPolicyConditionOutput) ToRepositoryCleanupPolicyConditi
 	}).(RepositoryCleanupPolicyConditionPtrOutput)
 }
 
-// (Optional, Beta)
 // Match versions newer than a duration.
 func (o RepositoryCleanupPolicyConditionOutput) NewerThan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) *string { return v.NewerThan }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Match versions older than a duration.
 func (o RepositoryCleanupPolicyConditionOutput) OlderThan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) *string { return v.OlderThan }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Match versions by package prefix. Applied on any prefix match.
 func (o RepositoryCleanupPolicyConditionOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
 }
 
-// (Optional, Beta)
 // Match versions by tag prefix. Applied on any prefix match.
 func (o RepositoryCleanupPolicyConditionOutput) TagPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) []string { return v.TagPrefixes }).(pulumi.StringArrayOutput)
 }
 
-// (Optional, Beta)
 // Match versions by tag status.
 // Default value is `ANY`.
 // Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
@@ -326,7 +300,6 @@ func (o RepositoryCleanupPolicyConditionOutput) TagState() pulumi.StringPtrOutpu
 	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) *string { return v.TagState }).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Match versions by version name prefix. Applied on any prefix match.
 func (o RepositoryCleanupPolicyConditionOutput) VersionNamePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicyCondition) []string { return v.VersionNamePrefixes }).(pulumi.StringArrayOutput)
@@ -356,7 +329,6 @@ func (o RepositoryCleanupPolicyConditionPtrOutput) Elem() RepositoryCleanupPolic
 	}).(RepositoryCleanupPolicyConditionOutput)
 }
 
-// (Optional, Beta)
 // Match versions newer than a duration.
 func (o RepositoryCleanupPolicyConditionPtrOutput) NewerThan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) *string {
@@ -367,7 +339,6 @@ func (o RepositoryCleanupPolicyConditionPtrOutput) NewerThan() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Match versions older than a duration.
 func (o RepositoryCleanupPolicyConditionPtrOutput) OlderThan() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) *string {
@@ -378,7 +349,6 @@ func (o RepositoryCleanupPolicyConditionPtrOutput) OlderThan() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Match versions by package prefix. Applied on any prefix match.
 func (o RepositoryCleanupPolicyConditionPtrOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) []string {
@@ -389,7 +359,6 @@ func (o RepositoryCleanupPolicyConditionPtrOutput) PackageNamePrefixes() pulumi.
 	}).(pulumi.StringArrayOutput)
 }
 
-// (Optional, Beta)
 // Match versions by tag prefix. Applied on any prefix match.
 func (o RepositoryCleanupPolicyConditionPtrOutput) TagPrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) []string {
@@ -400,7 +369,6 @@ func (o RepositoryCleanupPolicyConditionPtrOutput) TagPrefixes() pulumi.StringAr
 	}).(pulumi.StringArrayOutput)
 }
 
-// (Optional, Beta)
 // Match versions by tag status.
 // Default value is `ANY`.
 // Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
@@ -413,7 +381,6 @@ func (o RepositoryCleanupPolicyConditionPtrOutput) TagState() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-// (Optional, Beta)
 // Match versions by version name prefix. Applied on any prefix match.
 func (o RepositoryCleanupPolicyConditionPtrOutput) VersionNamePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RepositoryCleanupPolicyCondition) []string {
@@ -425,10 +392,8 @@ func (o RepositoryCleanupPolicyConditionPtrOutput) VersionNamePrefixes() pulumi.
 }
 
 type RepositoryCleanupPolicyMostRecentVersions struct {
-	// (Optional, Beta)
 	// Minimum number of versions to keep.
 	KeepCount *int `pulumi:"keepCount"`
-	// (Optional, Beta)
 	// Match versions by package prefix. Applied on any prefix match.
 	PackageNamePrefixes []string `pulumi:"packageNamePrefixes"`
 }
@@ -445,10 +410,8 @@ type RepositoryCleanupPolicyMostRecentVersionsInput interface {
 }
 
 type RepositoryCleanupPolicyMostRecentVersionsArgs struct {
-	// (Optional, Beta)
 	// Minimum number of versions to keep.
 	KeepCount pulumi.IntPtrInput `pulumi:"keepCount"`
-	// (Optional, Beta)
 	// Match versions by package prefix. Applied on any prefix match.
 	PackageNamePrefixes pulumi.StringArrayInput `pulumi:"packageNamePrefixes"`
 }
@@ -530,13 +493,11 @@ func (o RepositoryCleanupPolicyMostRecentVersionsOutput) ToRepositoryCleanupPoli
 	}).(RepositoryCleanupPolicyMostRecentVersionsPtrOutput)
 }
 
-// (Optional, Beta)
 // Minimum number of versions to keep.
 func (o RepositoryCleanupPolicyMostRecentVersionsOutput) KeepCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicyMostRecentVersions) *int { return v.KeepCount }).(pulumi.IntPtrOutput)
 }
 
-// (Optional, Beta)
 // Match versions by package prefix. Applied on any prefix match.
 func (o RepositoryCleanupPolicyMostRecentVersionsOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v RepositoryCleanupPolicyMostRecentVersions) []string { return v.PackageNamePrefixes }).(pulumi.StringArrayOutput)
@@ -566,7 +527,6 @@ func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) Elem() RepositoryCle
 	}).(RepositoryCleanupPolicyMostRecentVersionsOutput)
 }
 
-// (Optional, Beta)
 // Minimum number of versions to keep.
 func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) KeepCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RepositoryCleanupPolicyMostRecentVersions) *int {
@@ -577,7 +537,6 @@ func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) KeepCount() pulumi.I
 	}).(pulumi.IntPtrOutput)
 }
 
-// (Optional, Beta)
 // Match versions by package prefix. Applied on any prefix match.
 func (o RepositoryCleanupPolicyMostRecentVersionsPtrOutput) PackageNamePrefixes() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *RepositoryCleanupPolicyMostRecentVersions) []string {

@@ -60,8 +60,7 @@ class FhirStoreArgs:
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
-        :param pulumi.Input[bool] enable_history_modifications: (Optional, Beta)
-               Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        :param pulumi.Input[bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
                resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -84,8 +83,7 @@ class FhirStoreArgs:
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]] notification_configs: (Optional, Beta)
-               A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['FhirStoreStreamConfigArgs']]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -224,7 +222,6 @@ class FhirStoreArgs:
     @pulumi.getter(name="enableHistoryModifications")
     def enable_history_modifications(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional, Beta)
         Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
         resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         """
@@ -303,7 +300,6 @@ class FhirStoreArgs:
     @pulumi.getter(name="notificationConfigs")
     def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]:
         """
-        (Optional, Beta)
         A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
         Structure is documented below.
         """
@@ -397,8 +393,7 @@ class _FhirStoreState:
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
-        :param pulumi.Input[bool] enable_history_modifications: (Optional, Beta)
-               Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        :param pulumi.Input[bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
                resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -421,8 +416,7 @@ class _FhirStoreState:
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input['FhirStoreNotificationConfigArgs'] notification_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]] notification_configs: (Optional, Beta)
-               A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -583,7 +577,6 @@ class _FhirStoreState:
     @pulumi.getter(name="enableHistoryModifications")
     def enable_history_modifications(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional, Beta)
         Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
         resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         """
@@ -662,7 +655,6 @@ class _FhirStoreState:
     @pulumi.getter(name="notificationConfigs")
     def notification_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['FhirStoreNotificationConfigArgs']]]]:
         """
-        (Optional, Beta)
         A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
         Structure is documented below.
         """
@@ -915,8 +907,7 @@ class FhirStore(pulumi.CustomResource):
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
-        :param pulumi.Input[bool] enable_history_modifications: (Optional, Beta)
-               Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        :param pulumi.Input[bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
                resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -939,8 +930,7 @@ class FhirStore(pulumi.CustomResource):
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: (Optional, Beta)
-               A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreStreamConfigArgs']]]] stream_configs: A list of streaming configs that configure the destinations of streaming export for every resource mutation in
                this FHIR store. Each store is allowed to have up to 10 streaming configs. After a new config is added, the next
@@ -1216,8 +1206,7 @@ class FhirStore(pulumi.CustomResource):
                will fail with an error.
                ** Changing this property may recreate the FHIR store (removing all data) **
                ** This property can be changed manually in the Google Cloud Healthcare admin console without recreating the FHIR store **
-        :param pulumi.Input[bool] enable_history_modifications: (Optional, Beta)
-               Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
+        :param pulumi.Input[bool] enable_history_modifications: Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
                resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         :param pulumi.Input[bool] enable_update_create: Whether this FHIR store has the updateCreate capability. This determines if the client can use an Update
                operation to create a new resource with a client-specified ID. If false, all IDs are server-assigned through
@@ -1240,8 +1229,7 @@ class FhirStore(pulumi.CustomResource):
                ** Changing this property may recreate the FHIR store (removing all data) **
         :param pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']] notification_config: A nested object resource
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: (Optional, Beta)
-               A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['FhirStoreNotificationConfigArgs']]]] notification_configs: A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
@@ -1362,7 +1350,6 @@ class FhirStore(pulumi.CustomResource):
     @pulumi.getter(name="enableHistoryModifications")
     def enable_history_modifications(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional, Beta)
         Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
         resource versions into the FHIR store. If set to false, using history bundles fails with an error.
         """
@@ -1421,7 +1408,6 @@ class FhirStore(pulumi.CustomResource):
     @pulumi.getter(name="notificationConfigs")
     def notification_configs(self) -> pulumi.Output[Optional[Sequence['outputs.FhirStoreNotificationConfig']]]:
         """
-        (Optional, Beta)
         A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
         Structure is documented below.
         """

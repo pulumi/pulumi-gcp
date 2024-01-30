@@ -410,7 +410,6 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Etag { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Information about the external metadata storage where the dataset is defined.
         /// Structure is documented below.
         /// </summary>
@@ -647,7 +646,6 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Description { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Information about the external metadata storage where the dataset is defined.
         /// Structure is documented below.
         /// </summary>
@@ -856,7 +854,6 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Etag { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Information about the external metadata storage where the dataset is defined.
         /// Structure is documented below.
         /// </summary>

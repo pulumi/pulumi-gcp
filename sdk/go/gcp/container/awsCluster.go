@@ -386,7 +386,7 @@ type AwsCluster struct {
 	Fleet AwsClusterFleetOutput `pulumi:"fleet"`
 	// The location for the resource
 	Location pulumi.StringOutput `pulumi:"location"`
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig AwsClusterLoggingConfigOutput `pulumi:"loggingConfig"`
 	// The name of this resource.
 	Name pulumi.StringOutput `pulumi:"name"`
@@ -482,7 +482,7 @@ type awsClusterState struct {
 	Fleet *AwsClusterFleet `pulumi:"fleet"`
 	// The location for the resource
 	Location *string `pulumi:"location"`
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig *AwsClusterLoggingConfig `pulumi:"loggingConfig"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
@@ -531,7 +531,7 @@ type AwsClusterState struct {
 	Fleet AwsClusterFleetPtrInput
 	// The location for the resource
 	Location pulumi.StringPtrInput
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig AwsClusterLoggingConfigPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
@@ -575,7 +575,7 @@ type awsClusterArgs struct {
 	Fleet AwsClusterFleet `pulumi:"fleet"`
 	// The location for the resource
 	Location string `pulumi:"location"`
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig *AwsClusterLoggingConfig `pulumi:"loggingConfig"`
 	// The name of this resource.
 	Name *string `pulumi:"name"`
@@ -606,7 +606,7 @@ type AwsClusterArgs struct {
 	Fleet AwsClusterFleetInput
 	// The location for the resource
 	Location pulumi.StringInput
-	// (Beta only) Logging configuration.
+	// Logging configuration.
 	LoggingConfig AwsClusterLoggingConfigPtrInput
 	// The name of this resource.
 	Name pulumi.StringPtrInput
@@ -767,7 +767,7 @@ func (o AwsClusterOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *AwsCluster) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// (Beta only) Logging configuration.
+// Logging configuration.
 func (o AwsClusterOutput) LoggingConfig() AwsClusterLoggingConfigOutput {
 	return o.ApplyT(func(v *AwsCluster) AwsClusterLoggingConfigOutput { return v.LoggingConfig }).(AwsClusterLoggingConfigOutput)
 }

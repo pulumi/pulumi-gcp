@@ -247,7 +247,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Region { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// The security policy associated with this backend service.
         /// </summary>
         [Output("securityPolicy")]
@@ -268,7 +267,6 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SessionAffinity { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         /// Structure is documented below.
         /// </summary>
@@ -524,7 +522,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The security policy associated with this backend service.
         /// </summary>
         [Input("securityPolicy")]
@@ -539,7 +536,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         /// Structure is documented below.
         /// </summary>
@@ -770,7 +766,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Region { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// The security policy associated with this backend service.
         /// </summary>
         [Input("securityPolicy")]
@@ -791,7 +786,6 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SessionAffinity { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
         /// Structure is documented below.
         /// </summary>

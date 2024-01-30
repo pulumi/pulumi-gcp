@@ -30,7 +30,7 @@ public final class InstanceNetworkInterfaceAccessConfig {
      */
     private @Nullable String publicPtrDomainName;
     /**
-     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
      * 
      */
     private @Nullable String securityPolicy;
@@ -61,7 +61,7 @@ public final class InstanceNetworkInterfaceAccessConfig {
         return Optional.ofNullable(this.publicPtrDomainName);
     }
     /**
-     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
      * 
      */
     public Optional<String> securityPolicy() {

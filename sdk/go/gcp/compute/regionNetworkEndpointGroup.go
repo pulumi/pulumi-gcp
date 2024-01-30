@@ -325,7 +325,6 @@ type RegionNetworkEndpointGroup struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// (Optional, Beta)
 	// Only valid when networkEndpointType is "SERVERLESS".
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -411,7 +410,6 @@ type regionNetworkEndpointGroupState struct {
 	Region *string `pulumi:"region"`
 	// The URI of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// (Optional, Beta)
 	// Only valid when networkEndpointType is "SERVERLESS".
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -465,7 +463,6 @@ type RegionNetworkEndpointGroupState struct {
 	Region pulumi.StringPtrInput
 	// The URI of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// (Optional, Beta)
 	// Only valid when networkEndpointType is "SERVERLESS".
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -521,7 +518,6 @@ type regionNetworkEndpointGroupArgs struct {
 	//
 	// ***
 	Region string `pulumi:"region"`
-	// (Optional, Beta)
 	// Only valid when networkEndpointType is "SERVERLESS".
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -574,7 +570,6 @@ type RegionNetworkEndpointGroupArgs struct {
 	//
 	// ***
 	Region pulumi.StringInput
-	// (Optional, Beta)
 	// Only valid when networkEndpointType is "SERVERLESS".
 	// Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 	// Structure is documented below.
@@ -749,7 +744,6 @@ func (o RegionNetworkEndpointGroupOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// (Optional, Beta)
 // Only valid when networkEndpointType is "SERVERLESS".
 // Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
 // Structure is documented below.
