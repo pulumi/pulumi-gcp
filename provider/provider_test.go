@@ -5,6 +5,7 @@ package gcp
 import (
 	"context"
 	"os"
+	"path/filepath"
 	"testing"
 
 	"github.com/stretchr/testify/require"
@@ -34,10 +35,15 @@ func testProviderUpgrade(t *testing.T, dir, baselineVersion string) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
 	if baselineVersion == "" {
 		baselineVersion = defaultBaselineVersion
 	}
-	test := pulumitest.NewPulumiTest(t, dir, opttest.DownloadProviderVersion(providerName, baselineVersion))
+	test := pulumitest.NewPulumiTest(t, dir,
+		opttest.DownloadProviderVersion(providerName, baselineVersion),
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
+	)
 	test.SetConfig("gcp:config:project", testProject)
 	result := providertest.PreviewProviderUpgrade(test, providerName, baselineVersion, optproviderupgrade.DisableAttach())
 	assertpreview.HasNoReplacements(t, result)

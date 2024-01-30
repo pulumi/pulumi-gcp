@@ -1,7 +1,7 @@
 //go:build !go && !nodejs && !python && !dotnet
 // +build !go,!nodejs,!python,!dotnet
 
-// Copyright 2016-2023, Pulumi Corporation.
+// Copyright 2016-2024, Pulumi Corporation.
 //
 // Licensed under the Apache License, Version 2.0 (the "License")
 // you may not use this file except in compliance with the License.
@@ -22,7 +22,6 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/pulumi/providertest"
 	"github.com/pulumi/providertest/replay"
 )
 
@@ -34,47 +33,36 @@ func TestPubSubSubscriptionUpgrade(t *testing.T) {
 	testProviderUpgrade(t, "test-programs/pubsub-subscription", "")
 }
 
-func TestPubSubTopic(t *testing.T) {
-	runTest(t, test(t, "test-programs/pubsub-topic",
-		providertest.WithDiffValidation(providertest.NoReplacements()),
-	))
+func TestPubSubTopicUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/pubsub-topic", "")
 }
 
-func TestStorageBucket(t *testing.T) {
-	runTest(t, test(t, "test-programs/storage-bucket",
-		providertest.WithDiffValidation(providertest.NoReplacements()),
-	))
+func TestStorageBucketUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/storage-bucket", "")
 }
 
-func TestStorageBucketObject(t *testing.T) {
-	t.Skipf("TODO[pulumi/providertest#2] skipping because Assets are not working yet")
-	runTest(t, test(t, "test-programs/storage-bucketobject"))
+func TestStorageBucketObjectUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/storage-bucketobject", "")
 }
 
-func TestSecretManagerSecret(t *testing.T) {
-	runTest(t, test(t, "test-programs/secretmanager-secret",
-		providertest.WithDiffValidation(providertest.NoReplacements())))
+func TestSecretManagerSecretUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/secretmanager-secret", "")
 }
 
-func TestSqlUser(t *testing.T) {
-	runTest(t, test(t, "test-programs/sql-user",
-		providertest.WithDiffValidation(providertest.NoReplacements())))
+func TestSqlUserUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/sql-user", "")
 }
 
-func TestBigQueryTable(t *testing.T) {
-	runTest(t, test(t, "test-programs/bigquery-table",
-		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_PreviewOnly,
-			"TODO[pulumi/providertest#7] PreviewOnly is confused about stack names"),
-	))
+func TestBigQueryTableUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/bigquery-table", "")
 }
 
 func TestComputeFirewallUpgrade(t *testing.T) {
 	testProviderUpgrade(t, "test-programs/compute-firewall", "")
 }
 
-func TestCloudFunction(t *testing.T) {
-	t.Skipf("TODO[pulumi/providertest#2] skipping because Assets are not working yet")
-	runTest(t, test(t, "test-programs/cloudfunctions-function"))
+func TestCloudFunctionUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/cloudfunctions-function", "")
 }
 
 func TestNetworkUpgrade(t *testing.T) {
@@ -116,7 +104,7 @@ func TestTopicIamBinding(t *testing.T) {
 }
 
 // Test programs that were automatically extracted from examples without autocorrection.
-func TestAutoExtractedPrograms(t *testing.T) {
+func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 	type testCase struct {
 		program string
 	}
@@ -137,9 +125,8 @@ func TestAutoExtractedPrograms(t *testing.T) {
 	for _, tc := range testCases {
 		tc := tc
 		t.Run(tc.program, func(t *testing.T) {
-			runTest(t, test(t, filepath.Join("test-programs", tc.program),
-				providertest.WithDiffValidation(providertest.NoReplacements()),
-			))
+			d := filepath.Join("test-programs", tc.program)
+			testProviderUpgrade(t, d, "")
 		})
 	}
 }
