@@ -5,7 +5,7 @@ resources:
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: service-id-cluster
+      accountId: service-id-cluster-1
       displayName: Service Account
   primary:
     type: gcp:container:Cluster
