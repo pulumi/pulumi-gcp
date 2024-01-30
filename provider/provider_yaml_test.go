@@ -30,10 +30,8 @@ func TestDNSRecordSetUpgrade(t *testing.T) {
 	testProviderUpgrade(t, "test-programs/dns-recordset", "")
 }
 
-func TestPubSubSubscription(t *testing.T) {
-	runTest(t, test(t, "test-programs/pubsub-subscription",
-		providertest.WithDiffValidation(providertest.NoReplacements()),
-	))
+func TestPubSubSubscriptionUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/pubsub-subscription", "")
 }
 
 func TestPubSubTopic(t *testing.T) {
