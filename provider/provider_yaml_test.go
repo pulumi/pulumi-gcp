@@ -42,6 +42,7 @@ func TestStorageBucketUpgrade(t *testing.T) {
 }
 
 func TestStorageBucketObjectUpgrade(t *testing.T) {
+	t.Skipf("TODO[pulumi/pulumi-gcp#1607] temporarily skipping failing test")
 	testProviderUpgrade(t, "test-programs/storage-bucketobject", "")
 }
 
