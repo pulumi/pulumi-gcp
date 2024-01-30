@@ -1,17 +1,13 @@
 name: topic-iam-binding
 runtime: yaml
 description: A minimal Pulumi YAML program
-config:
-  serviceID:
-    type: string
-    default: service-id-iam-binding
 resources:
   myTopic:
     type: gcp:pubsub/topic:Topic
   myServiceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: ${serviceID}
+      accountId: service-id-iam-binding-1
   myTopicIAMBinding:
     type: gcp:pubsub/topicIAMBinding:TopicIAMBinding
     properties:

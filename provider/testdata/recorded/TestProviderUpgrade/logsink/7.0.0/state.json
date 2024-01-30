@@ -2,33 +2,33 @@
     "version": 3,
     "deployment": {
         "manifest": {
-            "time": "2024-01-29T22:31:25.367457+02:00",
+            "time": "2024-01-30T12:00:02.185205+02:00",
             "magic": "79b21111b057cd6762023edb0f73ac137b81a6c92f656b0dc4741a8258329594",
             "version": "v3.102.0"
         },
         "secrets_providers": {
             "type": "passphrase",
             "state": {
-                "salt": "v1:1Bb7D0P9kX8=:v1:wOMDxiT2vbtTWTR5:oeX1Hc5wC5SWzgghnjZqSePWxXV8gg=="
+                "salt": "v1:6Dqs/GEOrl0=:v1:MG0oCdOOU2MEJL+T:iMUG+YinuRaUPcPUPYccUuOqjiOCVQ=="
             }
         },
         "resources": [
             {
-                "urn": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-b7c42990",
+                "urn": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-d4dd6f05",
                 "custom": false,
                 "type": "pulumi:pulumi:Stack",
                 "outputs": {
-                    "bucketName": "bucket-013e22f",
+                    "bucketName": "bucket-5c6160b",
                     "logSinkWriterIdentity": "serviceAccount:service-921927215178@gcp-sa-logging.iam.gserviceaccount.com",
-                    "serviceAccountEmail": "khuhlswamfmn@pulumi-development.iam.gserviceaccount.com"
+                    "serviceAccountEmail": "service-id-logsink@pulumi-development.iam.gserviceaccount.com"
                 },
-                "created": "2024-01-29T20:31:14.24262Z",
-                "modified": "2024-01-29T20:31:14.24262Z"
+                "created": "2024-01-30T09:59:52.155563Z",
+                "modified": "2024-01-30T09:59:52.155563Z"
             },
             {
-                "urn": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:providers:gcp::default",
+                "urn": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:providers:gcp::default",
                 "custom": true,
-                "id": "3655f665-54cf-4436-bdb2-9ac6cf8320c4",
+                "id": "be767db4-3c14-47a2-834a-6b97c02d4c33",
                 "type": "pulumi:providers:gcp",
                 "inputs": {
                     "project": "pulumi-development"
@@ -36,13 +36,13 @@
                 "outputs": {
                     "project": "pulumi-development"
                 },
-                "created": "2024-01-29T20:31:15.549647Z",
-                "modified": "2024-01-29T20:31:15.549647Z"
+                "created": "2024-01-30T09:59:53.144218Z",
+                "modified": "2024-01-30T09:59:53.144218Z"
             },
             {
-                "urn": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:storage/bucket:Bucket::bucket",
+                "urn": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:storage/bucket:Bucket::bucket",
                 "custom": true,
-                "id": "bucket-013e22f",
+                "id": "bucket-5c6160b",
                 "type": "gcp:storage/bucket:Bucket",
                 "inputs": {
                     "__defaults": [
@@ -52,7 +52,7 @@
                     ],
                     "forceDestroy": false,
                     "location": "EU",
-                    "name": "bucket-013e22f",
+                    "name": "bucket-5c6160b",
                     "storageClass": "STANDARD"
                 },
                 "outputs": {
@@ -63,33 +63,33 @@
                     "defaultEventBasedHold": false,
                     "effectiveLabels": {
                         "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                        "ciphertext": "v1:d2o7y3apRKVwyDpT:ZRIOnOeL3hlXTxXLhuJ7pJdh"
+                        "ciphertext": "v1:WyIvB6c4pmTht3cf:5mXIfwTOxX65ykWn56oi5FP/"
                     },
                     "encryption": null,
                     "forceDestroy": false,
-                    "id": "bucket-013e22f",
+                    "id": "bucket-5c6160b",
                     "labels": {},
                     "lifecycleRules": [],
                     "location": "EU",
                     "logging": null,
-                    "name": "bucket-013e22f",
+                    "name": "bucket-5c6160b",
                     "project": "pulumi-development",
                     "publicAccessPrevention": "inherited",
                     "pulumiLabels": {
                         "4dabf18193072939515e22adb298388d": "1b47061264138c4ac30d75fd1eb44270",
-                        "ciphertext": "v1:MEnYLkIOTYR/4OGa:OtniklHMS663BC3Lir1m2T5R"
+                        "ciphertext": "v1:zHhSnxr49PcN4l+M:ghRrIXx2FMuUmN2VvpS6wwEy"
                     },
                     "requesterPays": false,
                     "retentionPolicy": null,
-                    "selfLink": "https://www.googleapis.com/storage/v1/b/bucket-013e22f",
+                    "selfLink": "https://www.googleapis.com/storage/v1/b/bucket-5c6160b",
                     "storageClass": "STANDARD",
                     "uniformBucketLevelAccess": false,
-                    "url": "gs://bucket-013e22f",
+                    "url": "gs://bucket-5c6160b",
                     "versioning": null,
                     "website": null
                 },
-                "parent": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-b7c42990",
-                "provider": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:providers:gcp::default::3655f665-54cf-4436-bdb2-9ac6cf8320c4",
+                "parent": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-d4dd6f05",
+                "provider": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:providers:gcp::default::be767db4-3c14-47a2-834a-6b97c02d4c33",
                 "propertyDependencies": {
                     "location": null
                 },
@@ -97,44 +97,44 @@
                     "effectiveLabels",
                     "pulumiLabels"
                 ],
-                "created": "2024-01-29T20:31:18.215041Z",
-                "modified": "2024-01-29T20:31:18.215041Z"
+                "created": "2024-01-30T09:59:55.538114Z",
+                "modified": "2024-01-30T09:59:55.538114Z"
             },
             {
-                "urn": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:serviceaccount/account:Account::serviceAccount",
+                "urn": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:serviceaccount/account:Account::serviceAccount",
                 "custom": true,
-                "id": "projects/pulumi-development/serviceAccounts/khuhlswamfmn@pulumi-development.iam.gserviceaccount.com",
+                "id": "projects/pulumi-development/serviceAccounts/service-id-logsink@pulumi-development.iam.gserviceaccount.com",
                 "type": "gcp:serviceaccount/account:Account",
                 "inputs": {
                     "__defaults": [
                         "disabled"
                     ],
-                    "accountId": "khuhlswamfmn",
+                    "accountId": "service-id-logsink",
                     "disabled": false
                 },
                 "outputs": {
                     "__meta": "{\"e2bfb730-ecaa-11e6-8f88-34363bc7c4c0\":{\"create\":300000000000}}",
-                    "accountId": "khuhlswamfmn",
+                    "accountId": "service-id-logsink",
                     "description": "",
                     "disabled": false,
                     "displayName": "",
-                    "email": "khuhlswamfmn@pulumi-development.iam.gserviceaccount.com",
-                    "id": "projects/pulumi-development/serviceAccounts/khuhlswamfmn@pulumi-development.iam.gserviceaccount.com",
-                    "member": "serviceAccount:khuhlswamfmn@pulumi-development.iam.gserviceaccount.com",
-                    "name": "projects/pulumi-development/serviceAccounts/khuhlswamfmn@pulumi-development.iam.gserviceaccount.com",
+                    "email": "service-id-logsink@pulumi-development.iam.gserviceaccount.com",
+                    "id": "projects/pulumi-development/serviceAccounts/service-id-logsink@pulumi-development.iam.gserviceaccount.com",
+                    "member": "serviceAccount:service-id-logsink@pulumi-development.iam.gserviceaccount.com",
+                    "name": "projects/pulumi-development/serviceAccounts/service-id-logsink@pulumi-development.iam.gserviceaccount.com",
                     "project": "pulumi-development",
-                    "uniqueId": "113341949489715951751"
+                    "uniqueId": "116476877694580224216"
                 },
-                "parent": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-b7c42990",
-                "provider": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:providers:gcp::default::3655f665-54cf-4436-bdb2-9ac6cf8320c4",
+                "parent": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-d4dd6f05",
+                "provider": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:providers:gcp::default::be767db4-3c14-47a2-834a-6b97c02d4c33",
                 "propertyDependencies": {
                     "accountId": null
                 },
-                "created": "2024-01-29T20:31:18.653571Z",
-                "modified": "2024-01-29T20:31:18.653571Z"
+                "created": "2024-01-30T09:59:55.551849Z",
+                "modified": "2024-01-30T09:59:55.551849Z"
             },
             {
-                "urn": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:logging/projectSink:ProjectSink::logSink",
+                "urn": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:logging/projectSink:ProjectSink::logSink",
                 "custom": true,
                 "id": "projects/pulumi-development/sinks/pulumi-log-sink",
                 "type": "gcp:logging/projectSink:ProjectSink",
@@ -142,7 +142,7 @@
                     "__defaults": [
                         "uniqueWriterIdentity"
                     ],
-                    "destination": "storage.googleapis.com/bucket-013e22f",
+                    "destination": "storage.googleapis.com/bucket-5c6160b",
                     "filter": "severity>=DEBUG",
                     "name": "pulumi-log-sink",
                     "uniqueWriterIdentity": true
@@ -150,7 +150,7 @@
                 "outputs": {
                     "bigqueryOptions": null,
                     "description": "",
-                    "destination": "storage.googleapis.com/bucket-013e22f",
+                    "destination": "storage.googleapis.com/bucket-5c6160b",
                     "disabled": false,
                     "exclusions": [],
                     "filter": "severity>=DEBUG",
@@ -160,57 +160,57 @@
                     "uniqueWriterIdentity": true,
                     "writerIdentity": "serviceAccount:service-921927215178@gcp-sa-logging.iam.gserviceaccount.com"
                 },
-                "parent": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-b7c42990",
+                "parent": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-d4dd6f05",
                 "dependencies": [
-                    "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:storage/bucket:Bucket::bucket"
+                    "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:storage/bucket:Bucket::bucket"
                 ],
-                "provider": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:providers:gcp::default::3655f665-54cf-4436-bdb2-9ac6cf8320c4",
+                "provider": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:providers:gcp::default::be767db4-3c14-47a2-834a-6b97c02d4c33",
                 "propertyDependencies": {
                     "destination": [
-                        "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:storage/bucket:Bucket::bucket"
+                        "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:storage/bucket:Bucket::bucket"
                     ],
                     "filter": null,
                     "name": null
                 },
-                "created": "2024-01-29T20:31:22.936529Z",
-                "modified": "2024-01-29T20:31:22.936529Z"
+                "created": "2024-01-30T09:59:58.559904Z",
+                "modified": "2024-01-30T09:59:58.559904Z"
             },
             {
-                "urn": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:storage/bucketIAMMember:BucketIAMMember::bucketIAMMember",
+                "urn": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:storage/bucketIAMMember:BucketIAMMember::bucketIAMMember",
                 "custom": true,
-                "id": "b/bucket-013e22f/roles/storage.objectAdmin/serviceAccount:khuhlswamfmn@pulumi-development.iam.gserviceaccount.com",
+                "id": "b/bucket-5c6160b/roles/storage.objectAdmin/serviceAccount:service-id-logsink@pulumi-development.iam.gserviceaccount.com",
                 "type": "gcp:storage/bucketIAMMember:BucketIAMMember",
                 "inputs": {
                     "__defaults": [],
-                    "bucket": "bucket-013e22f",
-                    "member": "serviceAccount:khuhlswamfmn@pulumi-development.iam.gserviceaccount.com",
+                    "bucket": "bucket-5c6160b",
+                    "member": "serviceAccount:service-id-logsink@pulumi-development.iam.gserviceaccount.com",
                     "role": "roles/storage.objectAdmin"
                 },
                 "outputs": {
-                    "bucket": "b/bucket-013e22f",
+                    "bucket": "b/bucket-5c6160b",
                     "condition": null,
                     "etag": "CAI=",
-                    "id": "b/bucket-013e22f/roles/storage.objectAdmin/serviceAccount:khuhlswamfmn@pulumi-development.iam.gserviceaccount.com",
-                    "member": "serviceAccount:khuhlswamfmn@pulumi-development.iam.gserviceaccount.com",
+                    "id": "b/bucket-5c6160b/roles/storage.objectAdmin/serviceAccount:service-id-logsink@pulumi-development.iam.gserviceaccount.com",
+                    "member": "serviceAccount:service-id-logsink@pulumi-development.iam.gserviceaccount.com",
                     "role": "roles/storage.objectAdmin"
                 },
-                "parent": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-b7c42990",
+                "parent": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:pulumi:Stack::logsink-p-it-venelins-m-logsink-d4dd6f05",
                 "dependencies": [
-                    "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:serviceaccount/account:Account::serviceAccount",
-                    "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:storage/bucket:Bucket::bucket"
+                    "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:serviceaccount/account:Account::serviceAccount",
+                    "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:storage/bucket:Bucket::bucket"
                 ],
-                "provider": "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::pulumi:providers:gcp::default::3655f665-54cf-4436-bdb2-9ac6cf8320c4",
+                "provider": "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::pulumi:providers:gcp::default::be767db4-3c14-47a2-834a-6b97c02d4c33",
                 "propertyDependencies": {
                     "bucket": [
-                        "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:storage/bucket:Bucket::bucket"
+                        "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:storage/bucket:Bucket::bucket"
                     ],
                     "member": [
-                        "urn:pulumi:p-it-venelins-m-logsink-b7c42990::logsink::gcp:serviceaccount/account:Account::serviceAccount"
+                        "urn:pulumi:p-it-venelins-m-logsink-d4dd6f05::logsink::gcp:serviceaccount/account:Account::serviceAccount"
                     ],
                     "role": null
                 },
-                "created": "2024-01-29T20:31:25.36737Z",
-                "modified": "2024-01-29T20:31:25.36737Z"
+                "created": "2024-01-30T10:00:02.185157Z",
+                "modified": "2024-01-30T10:00:02.185157Z"
             }
         ]
     }

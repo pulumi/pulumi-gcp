@@ -1,15 +1,11 @@
 name: cluster
 runtime: yaml
 description: A minimal Google Cloud Pulumi YAML program
-config:
-  serviceID:
-    type: string
-    default: service-id-cluster
 resources:
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: ${serviceID}
+      accountId: service-id-cluster
       displayName: Service Account
   primary:
     type: gcp:container:Cluster

@@ -18,7 +18,6 @@
 package gcp
 
 import (
-	"math/rand"
 	"os"
 	"path/filepath"
 	"testing"
@@ -86,27 +85,10 @@ func TestNetwork(t *testing.T) {
 	runTest(t, test(t, "test-programs/network"))
 }
 
-// https://stackoverflow.com/a/22892986
-var letters = []rune("abcdefghijklmnopqrstuvwxyz")
-
-func randSeq(n int) string {
-	b := make([]rune, n)
-	for i := range b {
-		b[i] = letters[rand.Intn(len(letters))]
-	}
-	return string(b)
-}
-
 func TestCluster(t *testing.T) {
-	serviceAccountID := randSeq(12)
 	// ServiceAccount requires 7.0
 	runTest(t,
-		test(
-			t,
-			"test-programs/cluster",
-			providertest.WithBaselineVersion("7.2.1"),
-			providertest.WithConfig("serviceID", serviceAccountID),
-		),
+		test(t, "test-programs/cluster", providertest.WithBaselineVersion("7.2.1")),
 	)
 }
 
@@ -118,58 +100,32 @@ func skipIfNotCI(t *testing.T) {
 
 func TestIamBinding(t *testing.T) {
 	skipIfNotCI(t)
-	serviceAccountID := randSeq(12)
 	// ServiceAccount requires 7.0
 	runTest(t,
-		test(
-			t,
-			"test-programs/iam-binding",
-			providertest.WithBaselineVersion("7.0.0"),
-			providertest.WithConfig("serviceID", serviceAccountID),
-		),
+		test(t, "test-programs/iam-binding", providertest.WithBaselineVersion("7.0.0")),
 	)
 }
 
 func TestIamMember(t *testing.T) {
 	skipIfNotCI(t)
-	serviceAccountID := randSeq(12)
 	// ServiceAccount requires 7.0
 	runTest(t,
-		test(
-			t,
-			"test-programs/iam-member",
-			providertest.WithBaselineVersion("7.0.0"),
-			providertest.WithConfig("serviceID", serviceAccountID),
-		),
+		test(t, "test-programs/iam-member", providertest.WithBaselineVersion("7.0.0")),
 	)
 }
 
 func TestLogSink(t *testing.T) {
 	skipIfNotCI(t)
-	serviceAccountID := randSeq(12)
 	// ServiceAccount requires 7.0
 	runTest(t,
-		test(
-			t,
-			"test-programs/logsink",
-			providertest.WithBaselineVersion("7.0.0"),
-			providertest.WithConfig("serviceID", serviceAccountID),
-		),
+		test(t, "test-programs/logsink", providertest.WithBaselineVersion("7.0.0")),
 	)
 }
 
 func TestTopicIamBinding(t *testing.T) {
 	skipIfNotCI(t)
-	serviceAccountID := randSeq(12)
 	// ServiceAccount requires 7.0
-	runTest(t,
-		test(
-			t,
-			"test-programs/topic-iam-binding",
-			providertest.WithBaselineVersion("7.0.0"),
-			providertest.WithConfig("serviceID", serviceAccountID),
-		),
-	)
+	runTest(t, test(t, "test-programs/topic-iam-binding", providertest.WithBaselineVersion("7.0.0")))
 }
 
 // Test programs that were automatically extracted from examples without autocorrection.
