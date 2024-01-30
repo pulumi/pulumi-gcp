@@ -445,44 +445,6 @@ func TestCheckConfigNoCredentials(t *testing.T) {
 	)
 }
 
-func TestCheckConfigNoRegionErrorWithNoProject(t *testing.T) {
-	t.Skip("Skipping since I can't get rid of the project config in CI.")
-	if testing.Short() {
-		t.Skip("Only run in long mode, since we want credentials.")
-	}
-	t.Setenv("GOOGLE_PROJECT", "")
-	t.Setenv("GOOGLE_PROJECT_NUMBER", "")
-	t.Setenv("GOOGLE_ZONE", "")
-	t.Setenv("GOOGLE_REGION", "")
-	credentialsValidationRun.Store(false)
-	replay.Replay(t, providerServer(t), `
-	{
-		"method": "/pulumirpc.ResourceProvider/CheckConfig",
-		"request": {
-			"urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
-			"olds": {
-			},
-			"news": {
-				"region": "westus",
-				"version": "7.6.0"
-			}
-		},
-		"response": {
-			"inputs": {
-				"region": "westus",
-				"version": "7.6.0"
-			}
-		},
-		"metadata": {
-			"kind": "resource",
-			"mode": "client",
-			"name": "gcp"
-		}
-	}
-`,
-	)
-}
-
 func TestCheckConfigWrongRegion(t *testing.T) {
 	if testing.Short() {
 		t.Skip("Only run in long mode, since we want credentials.")
