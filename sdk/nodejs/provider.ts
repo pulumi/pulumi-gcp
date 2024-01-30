@@ -203,7 +203,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["artifactRegistryCustomEndpoint"] = args ? args.artifactRegistryCustomEndpoint : undefined;
             resourceInputs["assuredWorkloadsCustomEndpoint"] = args ? args.assuredWorkloadsCustomEndpoint : undefined;
             resourceInputs["backupDrCustomEndpoint"] = args ? args.backupDrCustomEndpoint : undefined;
-            resourceInputs["batching"] = pulumi.output(args ? args.batching : undefined).apply(JSON.stringify);
+            resourceInputs["batching"] = args ? args.batching : undefined;
             resourceInputs["beyondcorpCustomEndpoint"] = args ? args.beyondcorpCustomEndpoint : undefined;
             resourceInputs["bigQueryCustomEndpoint"] = args ? args.bigQueryCustomEndpoint : undefined;
             resourceInputs["biglakeCustomEndpoint"] = args ? args.biglakeCustomEndpoint : undefined;
@@ -254,11 +254,11 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["dataprocMetastoreCustomEndpoint"] = args ? args.dataprocMetastoreCustomEndpoint : undefined;
             resourceInputs["datastoreCustomEndpoint"] = args ? args.datastoreCustomEndpoint : undefined;
             resourceInputs["datastreamCustomEndpoint"] = args ? args.datastreamCustomEndpoint : undefined;
-            resourceInputs["defaultLabels"] = pulumi.output(args ? args.defaultLabels : undefined).apply(JSON.stringify);
+            resourceInputs["defaultLabels"] = args ? args.defaultLabels : undefined;
             resourceInputs["deploymentManagerCustomEndpoint"] = args ? args.deploymentManagerCustomEndpoint : undefined;
             resourceInputs["dialogflowCustomEndpoint"] = args ? args.dialogflowCustomEndpoint : undefined;
             resourceInputs["dialogflowCxCustomEndpoint"] = args ? args.dialogflowCxCustomEndpoint : undefined;
-            resourceInputs["disableGooglePartnerName"] = pulumi.output(args ? args.disableGooglePartnerName : undefined).apply(JSON.stringify);
+            resourceInputs["disableGooglePartnerName"] = args ? args.disableGooglePartnerName : undefined;
             resourceInputs["dnsCustomEndpoint"] = args ? args.dnsCustomEndpoint : undefined;
             resourceInputs["documentAiCustomEndpoint"] = args ? args.documentAiCustomEndpoint : undefined;
             resourceInputs["documentAiWarehouseCustomEndpoint"] = args ? args.documentAiWarehouseCustomEndpoint : undefined;
@@ -289,7 +289,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["iapCustomEndpoint"] = args ? args.iapCustomEndpoint : undefined;
             resourceInputs["identityPlatformCustomEndpoint"] = args ? args.identityPlatformCustomEndpoint : undefined;
             resourceInputs["impersonateServiceAccount"] = args ? args.impersonateServiceAccount : undefined;
-            resourceInputs["impersonateServiceAccountDelegates"] = pulumi.output(args ? args.impersonateServiceAccountDelegates : undefined).apply(JSON.stringify);
+            resourceInputs["impersonateServiceAccountDelegates"] = args ? args.impersonateServiceAccountDelegates : undefined;
             resourceInputs["integrationConnectorsCustomEndpoint"] = args ? args.integrationConnectorsCustomEndpoint : undefined;
             resourceInputs["kmsCustomEndpoint"] = args ? args.kmsCustomEndpoint : undefined;
             resourceInputs["loggingCustomEndpoint"] = args ? args.loggingCustomEndpoint : undefined;
@@ -321,7 +321,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["resourceManagerV3CustomEndpoint"] = args ? args.resourceManagerV3CustomEndpoint : undefined;
             resourceInputs["runtimeConfigCustomEndpoint"] = args ? args.runtimeConfigCustomEndpoint : undefined;
             resourceInputs["runtimeconfigCustomEndpoint"] = args ? args.runtimeconfigCustomEndpoint : undefined;
-            resourceInputs["scopes"] = pulumi.output(args ? args.scopes : undefined).apply(JSON.stringify);
+            resourceInputs["scopes"] = args ? args.scopes : undefined;
             resourceInputs["secretManagerCustomEndpoint"] = args ? args.secretManagerCustomEndpoint : undefined;
             resourceInputs["secureSourceManagerCustomEndpoint"] = args ? args.secureSourceManagerCustomEndpoint : undefined;
             resourceInputs["securityCenterCustomEndpoint"] = args ? args.securityCenterCustomEndpoint : undefined;
@@ -341,7 +341,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["tpuCustomEndpoint"] = args ? args.tpuCustomEndpoint : undefined;
             resourceInputs["tpuV2CustomEndpoint"] = args ? args.tpuV2CustomEndpoint : undefined;
             resourceInputs["universeDomain"] = args ? args.universeDomain : undefined;
-            resourceInputs["userProjectOverride"] = pulumi.output(args ? args.userProjectOverride : undefined).apply(JSON.stringify);
+            resourceInputs["userProjectOverride"] = args ? args.userProjectOverride : undefined;
             resourceInputs["vertexAiCustomEndpoint"] = args ? args.vertexAiCustomEndpoint : undefined;
             resourceInputs["vmwareengineCustomEndpoint"] = args ? args.vmwareengineCustomEndpoint : undefined;
             resourceInputs["vpcAccessCustomEndpoint"] = args ? args.vpcAccessCustomEndpoint : undefined;
