@@ -26,10 +26,8 @@ import (
 	"github.com/pulumi/providertest/replay"
 )
 
-func TestDNSRecordSet(t *testing.T) {
-	runTest(t, test(t, "test-programs/dns-recordset",
-		providertest.WithDiffValidation(providertest.NoReplacements()),
-	))
+func TestDNSRecordSetUpgrade(t *testing.T) {
+	testProviderUpgrade(t, "test-programs/dns-recordset", "")
 }
 
 func TestPubSubSubscription(t *testing.T) {
