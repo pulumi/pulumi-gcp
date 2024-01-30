@@ -32,6 +32,10 @@ func TestUpgradeCoverage(t *testing.T) {
 }
 
 func testProviderUpgrade(t *testing.T, dir, baselineVersion string) {
+	testProviderUpgradeWithConfig(t, dir, baselineVersion, nil)
+}
+
+func testProviderUpgradeWithConfig(t *testing.T, dir, baselineVersion string, config map[string]string) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
 	}
@@ -45,6 +49,11 @@ func testProviderUpgrade(t *testing.T, dir, baselineVersion string) {
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")),
 	)
 	test.SetConfig("gcp:config:project", testProject)
+	if config != nil {
+		for k, v := range config {
+			test.SetConfig(k, v)
+		}
+	}
 	result := providertest.PreviewProviderUpgrade(test, providerName, baselineVersion, optproviderupgrade.DisableAttach())
 	assertpreview.HasNoReplacements(t, result)
 }

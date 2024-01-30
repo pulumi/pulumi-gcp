@@ -1,6 +1,9 @@
 name: test
 runtime:
     name: yaml
+config:
+  datasetID:
+    type: string
 resources:
     provider:
         type: pulumi:providers:gcp
@@ -32,14 +35,7 @@ resources:
         options:
             provider: ${provider}
         properties:
-            datasetId:
-              fn::invoke:
-                function: str:replace
-                arguments:
-                  old: "-"
-                  new: ""
-                  string: ds-${pulumi.stack}
-                return: result
+            datasetId: ${datasetID}
             defaultTableExpirationMs: 3.6e+06
             description: This is a test description
             friendlyName: test

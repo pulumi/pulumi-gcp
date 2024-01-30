@@ -55,7 +55,9 @@ func TestSqlUserUpgrade(t *testing.T) {
 }
 
 func TestBigQueryTableUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/bigquery-table", "")
+	testProviderUpgradeWithConfig(t, "test-programs/bigquery-table", "", map[string]string{
+		"datasetID": "dspitrunnerbigqueryt4b22ee25",
+	})
 }
 
 func TestComputeFirewallUpgrade(t *testing.T) {
