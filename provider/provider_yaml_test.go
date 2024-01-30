@@ -73,7 +73,7 @@ func TestBigQueryTable(t *testing.T) {
 }
 
 func TestComputeFirewallUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/compute-firewall")
+	testProviderUpgrade(t, "test-programs/compute-firewall", "")
 }
 
 func TestCloudFunction(t *testing.T) {
@@ -82,11 +82,11 @@ func TestCloudFunction(t *testing.T) {
 }
 
 func TestNetworkUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/network")
+	testProviderUpgrade(t, "test-programs/network", "")
 }
 
 func TestClusterUpgrade(t *testing.T) {
-	testProviderUpgrade(t, "test-programs/cluster")
+	testProviderUpgrade(t, "test-programs/cluster", "7.2.1" /* test upgrading from this version */)
 }
 
 func skipIfNotCI(t *testing.T) {

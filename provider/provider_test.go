@@ -21,18 +21,21 @@ import (
 )
 
 const (
-	providerName    = "gcp"
-	baselineVersion = "6.67.0"
-	testProject     = "pulumi-development"
+	providerName           = "gcp"
+	defaultBaselineVersion = "6.67.0"
+	testProject            = "pulumi-development"
 )
 
 func TestUpgradeCoverage(t *testing.T) {
 	providertest.ReportUpgradeCoverage(t)
 }
 
-func testProviderUpgrade(t *testing.T, dir string) {
+func testProviderUpgrade(t *testing.T, dir, baselineVersion string) {
 	if testing.Short() {
 		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+	if baselineVersion == "" {
+		baselineVersion = defaultBaselineVersion
 	}
 	test := pulumitest.NewPulumiTest(t, dir, opttest.DownloadProviderVersion(providerName, baselineVersion))
 	test.SetConfig("gcp:config:project", testProject)

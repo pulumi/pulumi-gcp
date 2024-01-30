@@ -5,7 +5,7 @@ resources:
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: service-account-1234
+      accountId: service-id-cluster-1
       displayName: Service Account
   primary:
     type: gcp:container:Cluster
@@ -16,10 +16,10 @@ resources:
       # node pool and immediately delete it.
       removeDefaultNodePool: true
       initialNodeCount: 1
+      deletionProtection: false
   primarypreemptiblenodes:
     type: gcp:container/nodePool:NodePool
     properties:
-      name: 
       location: us-central1
       cluster: ${primary.name}
       nodeCount: 1
