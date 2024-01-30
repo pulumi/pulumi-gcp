@@ -227,7 +227,6 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
-     * (Optional, Beta)
      * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
@@ -237,8 +236,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     private @Nullable Output<RegionNetworkEndpointGroupServerlessDeploymentArgs> serverlessDeployment;
 
     /**
-     * @return (Optional, Beta)
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 
@@ -574,8 +572,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param serverlessDeployment (Optional, Beta)
-         * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param serverlessDeployment Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
          * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 
@@ -588,8 +585,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         }
 
         /**
-         * @param serverlessDeployment (Optional, Beta)
-         * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+         * @param serverlessDeployment Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
          * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
          * Structure is documented below.
          * 

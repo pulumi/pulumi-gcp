@@ -2653,7 +2653,7 @@ type GetAddressesAddress struct {
 	AddressType string `pulumi:"addressType"`
 	// The IP address description.
 	Description string `pulumi:"description"`
-	// (Beta only) A map containing IP labels.
+	// A map containing IP labels.
 	Labels map[string]string `pulumi:"labels"`
 	// The IP address name.
 	Name string `pulumi:"name"`
@@ -2684,7 +2684,7 @@ type GetAddressesAddressArgs struct {
 	AddressType pulumi.StringInput `pulumi:"addressType"`
 	// The IP address description.
 	Description pulumi.StringInput `pulumi:"description"`
-	// (Beta only) A map containing IP labels.
+	// A map containing IP labels.
 	Labels pulumi.StringMapInput `pulumi:"labels"`
 	// The IP address name.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -2763,7 +2763,7 @@ func (o GetAddressesAddressOutput) Description() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAddressesAddress) string { return v.Description }).(pulumi.StringOutput)
 }
 
-// (Beta only) A map containing IP labels.
+// A map containing IP labels.
 func (o GetAddressesAddressOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v GetAddressesAddress) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
 }

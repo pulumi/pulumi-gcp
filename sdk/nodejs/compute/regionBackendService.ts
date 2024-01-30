@@ -221,7 +221,6 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * The security policy associated with this backend service.
      */
     public readonly securityPolicy!: pulumi.Output<string | undefined>;
@@ -236,7 +235,6 @@ export class RegionBackendService extends pulumi.CustomResource {
      */
     public readonly sessionAffinity!: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      */
@@ -485,7 +483,6 @@ export interface RegionBackendServiceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * The security policy associated with this backend service.
      */
     securityPolicy?: pulumi.Input<string>;
@@ -500,7 +497,6 @@ export interface RegionBackendServiceState {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      */
@@ -662,7 +658,6 @@ export interface RegionBackendServiceArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * The security policy associated with this backend service.
      */
     securityPolicy?: pulumi.Input<string>;
@@ -673,7 +668,6 @@ export interface RegionBackendServiceArgs {
      */
     sessionAffinity?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Subsetting configuration for this BackendService. Currently this is applicable only for Internal TCP/UDP load balancing and Internal HTTP(S) load balancing.
      * Structure is documented below.
      */

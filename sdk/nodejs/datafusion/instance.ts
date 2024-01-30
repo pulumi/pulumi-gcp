@@ -279,7 +279,6 @@ export class Instance extends pulumi.CustomResource {
      */
     public readonly region!: pulumi.Output<string>;
     /**
-     * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      *
      * @deprecated `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
@@ -527,7 +526,6 @@ export interface InstanceState {
      */
     region?: pulumi.Input<string>;
     /**
-     * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      *
      * @deprecated `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.

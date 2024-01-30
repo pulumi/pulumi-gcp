@@ -18,7 +18,6 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
     public static final RepositoryCleanupPolicyMostRecentVersionsArgs Empty = new RepositoryCleanupPolicyMostRecentVersionsArgs();
 
     /**
-     * (Optional, Beta)
      * Minimum number of versions to keep.
      * 
      */
@@ -26,8 +25,7 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
     private @Nullable Output<Integer> keepCount;
 
     /**
-     * @return (Optional, Beta)
-     * Minimum number of versions to keep.
+     * @return Minimum number of versions to keep.
      * 
      */
     public Optional<Output<Integer>> keepCount() {
@@ -35,7 +33,6 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
     }
 
     /**
-     * (Optional, Beta)
      * Match versions by package prefix. Applied on any prefix match.
      * 
      */
@@ -43,8 +40,7 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
     private @Nullable Output<List<String>> packageNamePrefixes;
 
     /**
-     * @return (Optional, Beta)
-     * Match versions by package prefix. Applied on any prefix match.
+     * @return Match versions by package prefix. Applied on any prefix match.
      * 
      */
     public Optional<Output<List<String>>> packageNamePrefixes() {
@@ -77,8 +73,7 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
         }
 
         /**
-         * @param keepCount (Optional, Beta)
-         * Minimum number of versions to keep.
+         * @param keepCount Minimum number of versions to keep.
          * 
          * @return builder
          * 
@@ -89,8 +84,7 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
         }
 
         /**
-         * @param keepCount (Optional, Beta)
-         * Minimum number of versions to keep.
+         * @param keepCount Minimum number of versions to keep.
          * 
          * @return builder
          * 
@@ -100,8 +94,7 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
         }
 
         /**
-         * @param packageNamePrefixes (Optional, Beta)
-         * Match versions by package prefix. Applied on any prefix match.
+         * @param packageNamePrefixes Match versions by package prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -112,8 +105,7 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
         }
 
         /**
-         * @param packageNamePrefixes (Optional, Beta)
-         * Match versions by package prefix. Applied on any prefix match.
+         * @param packageNamePrefixes Match versions by package prefix. Applied on any prefix match.
          * 
          * @return builder
          * 
@@ -123,8 +115,7 @@ public final class RepositoryCleanupPolicyMostRecentVersionsArgs extends com.pul
         }
 
         /**
-         * @param packageNamePrefixes (Optional, Beta)
-         * Match versions by package prefix. Applied on any prefix match.
+         * @param packageNamePrefixes Match versions by package prefix. Applied on any prefix match.
          * 
          * @return builder
          * 

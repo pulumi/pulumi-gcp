@@ -38,12 +38,12 @@ public final class AwsNodePoolConfig {
      */
     private String iamInstanceProfile;
     /**
-     * @return (Beta only) The OS image type to use on node pool instances.
+     * @return The OS image type to use on node pool instances.
      * 
      */
     private @Nullable String imageType;
     /**
-     * @return (Beta only) Details of placement information for an instance.
+     * @return Details of placement information for an instance.
      * 
      */
     private @Nullable AwsNodePoolConfigInstancePlacement instancePlacement;
@@ -73,7 +73,7 @@ public final class AwsNodePoolConfig {
      */
     private @Nullable List<String> securityGroupIds;
     /**
-     * @return (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * @return Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
      * 
      */
     private @Nullable AwsNodePoolConfigSpotConfig spotConfig;
@@ -116,14 +116,14 @@ public final class AwsNodePoolConfig {
         return this.iamInstanceProfile;
     }
     /**
-     * @return (Beta only) The OS image type to use on node pool instances.
+     * @return The OS image type to use on node pool instances.
      * 
      */
     public Optional<String> imageType() {
         return Optional.ofNullable(this.imageType);
     }
     /**
-     * @return (Beta only) Details of placement information for an instance.
+     * @return Details of placement information for an instance.
      * 
      */
     public Optional<AwsNodePoolConfigInstancePlacement> instancePlacement() {
@@ -165,7 +165,7 @@ public final class AwsNodePoolConfig {
         return this.securityGroupIds == null ? List.of() : this.securityGroupIds;
     }
     /**
-     * @return (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+     * @return Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
      * 
      */
     public Optional<AwsNodePoolConfigSpotConfig> spotConfig() {

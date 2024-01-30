@@ -173,7 +173,6 @@ export class TargetInstance extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
     public readonly securityPolicy!: pulumi.Output<string | undefined>;
@@ -281,7 +280,6 @@ export interface TargetInstanceState {
      */
     project?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
     securityPolicy?: pulumi.Input<string>;
@@ -342,7 +340,6 @@ export interface TargetInstanceArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * The resource URL for the security policy associated with this target instance.
      */
     securityPolicy?: pulumi.Input<string>;

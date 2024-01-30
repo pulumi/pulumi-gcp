@@ -31,13 +31,13 @@ public final class InstanceTemplateScheduling {
     private @Nullable String instanceTerminationAction;
     private @Nullable List<InstanceTemplateSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
     /**
-     * @return Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
      * 
      */
     private @Nullable String maintenanceInterval;
     /**
-     * @return Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
      * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
      * 
      */
@@ -95,7 +95,7 @@ public final class InstanceTemplateScheduling {
         return this.localSsdRecoveryTimeouts == null ? List.of() : this.localSsdRecoveryTimeouts;
     }
     /**
-     * @return Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+     * @return Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
      * &lt;a name=&#34;nested_guest_accelerator&#34;&gt;&lt;/a&gt;The `guest_accelerator` block supports:
      * 
      */
@@ -103,7 +103,7 @@ public final class InstanceTemplateScheduling {
         return Optional.ofNullable(this.maintenanceInterval);
     }
     /**
-     * @return Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+     * @return The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
      * &lt;a name=&#34;nested_max_run_duration&#34;&gt;&lt;/a&gt;The `max_run_duration` block supports:
      * 
      */

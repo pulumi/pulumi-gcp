@@ -229,7 +229,6 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly enableHistoryImport!: pulumi.Output<boolean | undefined>;
     /**
-     * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
@@ -268,7 +267,6 @@ export class FhirStore extends pulumi.CustomResource {
      */
     public readonly notificationConfig!: pulumi.Output<outputs.healthcare.FhirStoreNotificationConfig | undefined>;
     /**
-     * (Optional, Beta)
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
      * Structure is documented below.
      */
@@ -414,7 +412,6 @@ export interface FhirStoreState {
      */
     enableHistoryImport?: pulumi.Input<boolean>;
     /**
-     * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
@@ -453,7 +450,6 @@ export interface FhirStoreState {
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
-     * (Optional, Beta)
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
      * Structure is documented below.
      */
@@ -536,7 +532,6 @@ export interface FhirStoreArgs {
      */
     enableHistoryImport?: pulumi.Input<boolean>;
     /**
-     * (Optional, Beta)
      * Whether to allow the ExecuteBundle API to accept history bundles, and directly insert and overwrite historical
      * resource versions into the FHIR store. If set to false, using history bundles fails with an error.
      */
@@ -575,7 +570,6 @@ export interface FhirStoreArgs {
      */
     notificationConfig?: pulumi.Input<inputs.healthcare.FhirStoreNotificationConfig>;
     /**
-     * (Optional, Beta)
      * A list of notifcation configs that configure the notification for every resource mutation in this FHIR store.
      * Structure is documented below.
      */

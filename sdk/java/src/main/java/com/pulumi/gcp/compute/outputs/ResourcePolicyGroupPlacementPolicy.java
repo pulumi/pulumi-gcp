@@ -28,8 +28,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
      */
     private @Nullable String collocation;
     /**
-     * @return (Optional, Beta)
-     * Specifies the number of max logical switches.
+     * @return Specifies the number of max logical switches.
      * 
      */
     private @Nullable Integer maxDistance;
@@ -62,8 +61,7 @@ public final class ResourcePolicyGroupPlacementPolicy {
         return Optional.ofNullable(this.collocation);
     }
     /**
-     * @return (Optional, Beta)
-     * Specifies the number of max logical switches.
+     * @return Specifies the number of max logical switches.
      * 
      */
     public Optional<Integer> maxDistance() {

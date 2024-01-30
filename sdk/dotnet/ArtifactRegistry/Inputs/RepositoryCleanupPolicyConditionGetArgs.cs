@@ -13,14 +13,12 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
     public sealed class RepositoryCleanupPolicyConditionGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Match versions newer than a duration.
         /// </summary>
         [Input("newerThan")]
         public Input<string>? NewerThan { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Match versions older than a duration.
         /// </summary>
         [Input("olderThan")]
@@ -30,7 +28,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         private InputList<string>? _packageNamePrefixes;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Match versions by package prefix. Applied on any prefix match.
         /// </summary>
         public InputList<string> PackageNamePrefixes
@@ -43,7 +40,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         private InputList<string>? _tagPrefixes;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Match versions by tag prefix. Applied on any prefix match.
         /// </summary>
         public InputList<string> TagPrefixes
@@ -53,7 +49,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Match versions by tag status.
         /// Default value is `ANY`.
         /// Possible values are: `TAGGED`, `UNTAGGED`, `ANY`.
@@ -65,7 +60,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         private InputList<string>? _versionNamePrefixes;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Match versions by version name prefix. Applied on any prefix match.
         /// </summary>
         public InputList<string> VersionNamePrefixes

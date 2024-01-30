@@ -27,7 +27,6 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Collocation;
         /// <summary>
-        /// (Optional, Beta)
         /// Specifies the number of max logical switches.
         /// </summary>
         public readonly int? MaxDistance;

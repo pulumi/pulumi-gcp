@@ -109,8 +109,8 @@ export class GlobalAddress extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * (Beta)
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
@@ -119,9 +119,7 @@ export class GlobalAddress extends pulumi.CustomResource {
      */
     public readonly ipVersion!: pulumi.Output<string | undefined>;
     /**
-     * (Beta)
-     * The fingerprint used for optimistic locking of this resource.  Used
-     * internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
     public /*out*/ readonly labelFingerprint!: pulumi.Output<string>;
     /**
@@ -164,15 +162,13 @@ export class GlobalAddress extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * (Beta)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
      */
     public readonly purpose!: pulumi.Output<string | undefined>;
     /**
@@ -260,8 +256,8 @@ export interface GlobalAddressState {
      */
     description?: pulumi.Input<string>;
     /**
-     * (Beta)
-     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+     * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Terraform, other
+     * clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
@@ -270,9 +266,7 @@ export interface GlobalAddressState {
      */
     ipVersion?: pulumi.Input<string>;
     /**
-     * (Beta)
-     * The fingerprint used for optimistic locking of this resource.  Used
-     * internally during updates.
+     * The fingerprint used for optimistic locking of this resource. Used internally during updates.
      */
     labelFingerprint?: pulumi.Input<string>;
     /**
@@ -315,15 +309,13 @@ export interface GlobalAddressState {
      */
     project?: pulumi.Input<string>;
     /**
-     * (Beta)
-     * The combination of labels configured directly on the resource
-     * and default labels configured on the provider.
+     * The combination of labels configured directly on the resource and default labels configured on the provider.
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
      */
     purpose?: pulumi.Input<string>;
     /**
@@ -401,7 +393,7 @@ export interface GlobalAddressArgs {
     /**
      * The purpose of the resource. Possible values include:
      * * VPC_PEERING - for peer networks
-     * * PRIVATE_SERVICE_CONNECT - for Private Service Connect networks
+     * * PRIVATE_SERVICE_CONNECT - for  Private Service Connect networks
      */
     purpose?: pulumi.Input<string>;
 }

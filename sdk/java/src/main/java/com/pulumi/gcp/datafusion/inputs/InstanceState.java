@@ -381,7 +381,6 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
@@ -393,8 +392,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> serviceAccount;
 
     /**
-     * @return (Beta, Deprecated)
-     * Service account which will be used to access resources in the customer project.
+     * @return Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
      * `service_account` is deprecated and will be removed in a future major release. Instead, use `tenant_project_id` to extract the tenant project ID.
@@ -1109,8 +1107,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount (Beta, Deprecated)
-         * Service account which will be used to access resources in the customer project.
+         * @param serviceAccount Service account which will be used to access resources in the customer project.
          * 
          * @return builder
          * 
@@ -1125,8 +1122,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param serviceAccount (Beta, Deprecated)
-         * Service account which will be used to access resources in the customer project.
+         * @param serviceAccount Service account which will be used to access resources in the customer project.
          * 
          * @return builder
          * 

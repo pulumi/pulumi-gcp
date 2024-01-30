@@ -650,7 +650,6 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.region;
     }
     /**
-     * (Beta, Deprecated)
      * Service account which will be used to access resources in the customer project.
      * 
      * @deprecated
@@ -662,8 +661,7 @@ public class Instance extends com.pulumi.resources.CustomResource {
     private Output<String> serviceAccount;
 
     /**
-     * @return (Beta, Deprecated)
-     * Service account which will be used to access resources in the customer project.
+     * @return Service account which will be used to access resources in the customer project.
      * 
      */
     public Output<String> serviceAccount() {

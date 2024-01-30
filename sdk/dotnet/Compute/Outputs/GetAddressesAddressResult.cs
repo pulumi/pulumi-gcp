@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string Description;
         /// <summary>
-        /// (Beta only) A map containing IP labels.
+        /// A map containing IP labels.
         /// </summary>
         public readonly ImmutableDictionary<string, string> Labels;
         /// <summary>

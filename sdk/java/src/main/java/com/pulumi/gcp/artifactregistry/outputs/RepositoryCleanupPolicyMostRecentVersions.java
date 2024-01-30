@@ -14,30 +14,26 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RepositoryCleanupPolicyMostRecentVersions {
     /**
-     * @return (Optional, Beta)
-     * Minimum number of versions to keep.
+     * @return Minimum number of versions to keep.
      * 
      */
     private @Nullable Integer keepCount;
     /**
-     * @return (Optional, Beta)
-     * Match versions by package prefix. Applied on any prefix match.
+     * @return Match versions by package prefix. Applied on any prefix match.
      * 
      */
     private @Nullable List<String> packageNamePrefixes;
 
     private RepositoryCleanupPolicyMostRecentVersions() {}
     /**
-     * @return (Optional, Beta)
-     * Minimum number of versions to keep.
+     * @return Minimum number of versions to keep.
      * 
      */
     public Optional<Integer> keepCount() {
         return Optional.ofNullable(this.keepCount);
     }
     /**
-     * @return (Optional, Beta)
-     * Match versions by package prefix. Applied on any prefix match.
+     * @return Match versions by package prefix. Applied on any prefix match.
      * 
      */
     public List<String> packageNamePrefixes() {

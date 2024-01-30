@@ -31,13 +31,13 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<string> IamInstanceProfile { get; set; } = null!;
 
         /// <summary>
-        /// (Beta only) The OS image type to use on node pool instances.
+        /// The OS image type to use on node pool instances.
         /// </summary>
         [Input("imageType")]
         public Input<string>? ImageType { get; set; }
 
         /// <summary>
-        /// (Beta only) Details of placement information for an instance.
+        /// Details of placement information for an instance.
         /// </summary>
         [Input("instancePlacement")]
         public Input<Inputs.AwsNodePoolConfigInstancePlacementArgs>? InstancePlacement { get; set; }
@@ -85,7 +85,7 @@ namespace Pulumi.Gcp.Container.Inputs
         }
 
         /// <summary>
-        /// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+        /// Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
         /// </summary>
         [Input("spotConfig")]
         public Input<Inputs.AwsNodePoolConfigSpotConfigArgs>? SpotConfig { get; set; }

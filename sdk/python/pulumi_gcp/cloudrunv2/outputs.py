@@ -1090,8 +1090,7 @@ class JobTemplateTemplateVolume(dict):
         :param str name: Volume's name.
         :param 'JobTemplateTemplateVolumeCloudSqlInstanceArgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
-        :param 'JobTemplateTemplateVolumeEmptyDirArgs' empty_dir: (Optional, Beta)
-               Ephemeral storage used as a shared volume.
+        :param 'JobTemplateTemplateVolumeEmptyDirArgs' empty_dir: Ephemeral storage used as a shared volume.
                Structure is documented below.
         :param 'JobTemplateTemplateVolumeSecretArgs' secret: Secret represents a secret that should populate this volume. More info: https://kubernetes.io/docs/concepts/storage/volumes#secret
                Structure is documented below.
@@ -1125,7 +1124,6 @@ class JobTemplateTemplateVolume(dict):
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional['outputs.JobTemplateTemplateVolumeEmptyDir']:
         """
-        (Optional, Beta)
         Ephemeral storage used as a shared volume.
         Structure is documented below.
         """
@@ -3142,8 +3140,7 @@ class ServiceTemplateVolume(dict):
         :param str name: Volume's name.
         :param 'ServiceTemplateVolumeCloudSqlInstanceArgs' cloud_sql_instance: For Cloud SQL volumes, contains the specific instances that should be mounted. Visit https://cloud.google.com/sql/docs/mysql/connect-run for more information on how to connect Cloud SQL and Cloud Run.
                Structure is documented below.
-        :param 'ServiceTemplateVolumeEmptyDirArgs' empty_dir: (Optional, Beta)
-               Ephemeral storage used as a shared volume.
+        :param 'ServiceTemplateVolumeEmptyDirArgs' empty_dir: Ephemeral storage used as a shared volume.
                Structure is documented below.
         :param 'ServiceTemplateVolumeGcsArgs' gcs: Represents a GCS Bucket mounted as a volume.
                Structure is documented below.
@@ -3185,7 +3182,6 @@ class ServiceTemplateVolume(dict):
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional['outputs.ServiceTemplateVolumeEmptyDir']:
         """
-        (Optional, Beta)
         Ephemeral storage used as a shared volume.
         Structure is documented below.
         """

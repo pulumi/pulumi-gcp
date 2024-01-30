@@ -4143,7 +4143,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigNumericalThresholdConfigPtrOutpu
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis struct {
 	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
 	Disabled *bool `pulumi:"disabled"`
-	// (Optional, Beta, Deprecated)
 	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	//
@@ -4172,7 +4171,6 @@ type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisInput interface {
 type AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs struct {
 	// The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
 	Disabled pulumi.BoolPtrInput `pulumi:"disabled"`
-	// (Optional, Beta, Deprecated)
 	// Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
 	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	//
@@ -4269,7 +4267,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisOutput) Disabled
 	return o.ApplyT(func(v AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysis) *bool { return v.Disabled }).(pulumi.BoolPtrOutput)
 }
 
-// (Optional, Beta, Deprecated)
 // Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 //
@@ -4325,7 +4322,6 @@ func (o AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisPtrOutput) Disab
 	}).(pulumi.BoolPtrOutput)
 }
 
-// (Optional, Beta, Deprecated)
 // Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
 // A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 //

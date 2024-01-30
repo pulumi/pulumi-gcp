@@ -9443,12 +9443,12 @@ class InstanceNetworkInterface(dict):
         :param str network: The name or self_link of the network to attach this interface to.
                Either `network` or `subnetwork` must be provided. If network isn't provided it will
                be inferred from the subnetwork.
-        :param str network_attachment: Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+        :param str network_attachment: The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
         :param str network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param str nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
         :param int queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
-        :param str security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param str security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param str stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param str subnetwork: The name or self_link of the subnetwork to attach this
                interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
@@ -9562,7 +9562,7 @@ class InstanceNetworkInterface(dict):
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[str]:
         """
-        Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+        The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
         """
         return pulumi.get(self, "network_attachment")
 
@@ -9595,7 +9595,7 @@ class InstanceNetworkInterface(dict):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[str]:
         """
-        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         return pulumi.get(self, "security_policy")
 
@@ -9670,7 +9670,7 @@ class InstanceNetworkInterfaceAccessConfig(dict):
                subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         :param str public_ptr_domain_name: The domain name to be used when creating DNSv6
                records for the external IPv6 ranges..
-        :param str security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param str security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -9712,7 +9712,7 @@ class InstanceNetworkInterfaceAccessConfig(dict):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[str]:
         """
-        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         return pulumi.get(self, "security_policy")
 
@@ -9822,7 +9822,7 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
                Changing this forces a new resource to be created.
         :param str public_ptr_domain_name: The domain name to be used when creating DNSv6
                records for the external IPv6 ranges..
-        :param str security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param str security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
@@ -9886,7 +9886,7 @@ class InstanceNetworkInterfaceIpv6AccessConfig(dict):
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[str]:
         """
-        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         return pulumi.get(self, "security_policy")
 
@@ -10087,9 +10087,9 @@ class InstanceScheduling(dict):
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
         :param str instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param str maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
                <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
-        :param 'InstanceSchedulingMaxRunDurationArgs' max_run_duration: Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param 'InstanceSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param int min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param Sequence['InstanceSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
@@ -10156,7 +10156,7 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[str]:
         """
-        Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         """
         return pulumi.get(self, "maintenance_interval")
@@ -10165,7 +10165,7 @@ class InstanceScheduling(dict):
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional['outputs.InstanceSchedulingMaxRunDuration']:
         """
-        Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         """
         return pulumi.get(self, "max_run_duration")
@@ -11787,9 +11787,9 @@ class InstanceTemplateScheduling(dict):
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param str maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        :param str maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
                <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
-        :param 'InstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param 'InstanceTemplateSchedulingMaxRunDurationArgs' max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param Sequence['InstanceTemplateSchedulingNodeAffinityArgs'] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
@@ -11854,7 +11854,7 @@ class InstanceTemplateScheduling(dict):
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[str]:
         """
-        Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         """
         return pulumi.get(self, "maintenance_interval")
@@ -11863,7 +11863,7 @@ class InstanceTemplateScheduling(dict):
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional['outputs.InstanceTemplateSchedulingMaxRunDuration']:
         """
-        Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         """
         return pulumi.get(self, "max_run_duration")
@@ -26598,8 +26598,7 @@ class ResourcePolicyGroupPlacementPolicy(dict):
                with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
                attached.
                Possible values are: `COLLOCATED`.
-        :param int max_distance: (Optional, Beta)
-               Specifies the number of max logical switches.
+        :param int max_distance: Specifies the number of max logical switches.
         :param int vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
                exact number of VMs.
@@ -26638,7 +26637,6 @@ class ResourcePolicyGroupPlacementPolicy(dict):
     @pulumi.getter(name="maxDistance")
     def max_distance(self) -> Optional[int]:
         """
-        (Optional, Beta)
         Specifies the number of max logical switches.
         """
         return pulumi.get(self, "max_distance")
@@ -27572,16 +27570,14 @@ class RouterNatRuleAction(dict):
         :param Sequence[str] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule.
                These IP addresses must be valid static external IP addresses assigned to the project.
                This field is used for public NAT.
-        :param Sequence[str] source_nat_active_ranges: (Optional, Beta)
-               A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+        :param Sequence[str] source_nat_active_ranges: A list of URLs of the subnetworks used as source ranges for this NAT Rule.
                These subnetworks must have purpose set to PRIVATE_NAT.
                This field is used for private NAT.
         :param Sequence[str] source_nat_drain_ips: A list of URLs of the IP resources to be drained.
                These IPs must be valid static external IPs that have been assigned to the NAT.
                These IPs should be used for updating/patching a NAT rule only.
                This field is used for public NAT.
-        :param Sequence[str] source_nat_drain_ranges: (Optional, Beta)
-               A list of URLs of subnetworks representing source ranges to be drained.
+        :param Sequence[str] source_nat_drain_ranges: A list of URLs of subnetworks representing source ranges to be drained.
                This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
                This field is used for private NAT.
         """
@@ -27608,7 +27604,6 @@ class RouterNatRuleAction(dict):
     @pulumi.getter(name="sourceNatActiveRanges")
     def source_nat_active_ranges(self) -> Optional[Sequence[str]]:
         """
-        (Optional, Beta)
         A list of URLs of the subnetworks used as source ranges for this NAT Rule.
         These subnetworks must have purpose set to PRIVATE_NAT.
         This field is used for private NAT.
@@ -27630,7 +27625,6 @@ class RouterNatRuleAction(dict):
     @pulumi.getter(name="sourceNatDrainRanges")
     def source_nat_drain_ranges(self) -> Optional[Sequence[str]]:
         """
-        (Optional, Beta)
         A list of URLs of subnetworks representing source ranges to be drained.
         This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
         This field is used for private NAT.
@@ -36769,7 +36763,7 @@ class GetAddressesAddressResult(dict):
         :param str address: The IP address (for example `1.2.3.4`).
         :param str address_type: The IP address type, can be `EXTERNAL` or `INTERNAL`.
         :param str description: The IP address description.
-        :param Mapping[str, str] labels: (Beta only) A map containing IP labels.
+        :param Mapping[str, str] labels: A map containing IP labels.
         :param str name: The IP address name.
         :param str region: Region that should be considered to search addresses.
                All regions are considered if missing.
@@ -36813,7 +36807,7 @@ class GetAddressesAddressResult(dict):
     @pulumi.getter
     def labels(self) -> Mapping[str, str]:
         """
-        (Beta only) A map containing IP labels.
+        A map containing IP labels.
         """
         return pulumi.get(self, "labels")
 

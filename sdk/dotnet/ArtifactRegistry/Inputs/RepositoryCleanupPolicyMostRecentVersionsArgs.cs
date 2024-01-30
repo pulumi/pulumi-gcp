@@ -13,7 +13,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
     public sealed class RepositoryCleanupPolicyMostRecentVersionsArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Minimum number of versions to keep.
         /// </summary>
         [Input("keepCount")]
@@ -23,7 +22,6 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         private InputList<string>? _packageNamePrefixes;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Match versions by package prefix. Applied on any prefix match.
         /// </summary>
         public InputList<string> PackageNamePrefixes

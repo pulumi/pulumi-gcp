@@ -1039,7 +1039,7 @@ class AwsClusterControlPlane(dict):
         :param str iam_instance_profile: The name of the AWS IAM instance pofile to assign to each control plane replica.
         :param Sequence[str] subnet_ids: The list of subnets where control plane replicas will run. A replica will be provisioned on each subnet and up to three values can be provided. Each subnet must be in a different AWS Availability Zone (AZ).
         :param str version: The Kubernetes version to run on control plane replicas (e.g. `1.19.10-gke.1000`). You can list all supported versions on a given Google Cloud region by calling .
-        :param 'AwsClusterControlPlaneInstancePlacementArgs' instance_placement: (Beta only) Details of placement information for an instance.
+        :param 'AwsClusterControlPlaneInstancePlacementArgs' instance_placement: Details of placement information for an instance.
         :param str instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param 'AwsClusterControlPlaneMainVolumeArgs' main_volume: Optional. Configuration related to the main volume provisioned for each control plane replica. The main volume is in charge of storing all of the cluster's etcd state. Volumes will be provisioned in the availability zone associated with the corresponding subnet. When unspecified, it defaults to 8 GiB with the GP2 volume type.
         :param 'AwsClusterControlPlaneProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
@@ -1123,7 +1123,7 @@ class AwsClusterControlPlane(dict):
     @pulumi.getter(name="instancePlacement")
     def instance_placement(self) -> Optional['outputs.AwsClusterControlPlaneInstancePlacement']:
         """
-        (Beta only) Details of placement information for an instance.
+        Details of placement information for an instance.
         """
         return pulumi.get(self, "instance_placement")
 
@@ -1919,14 +1919,14 @@ class AwsNodePoolConfig(dict):
         :param 'AwsNodePoolConfigConfigEncryptionArgs' config_encryption: The ARN of the AWS KMS key used to encrypt node pool configuration.
         :param str iam_instance_profile: The name of the AWS IAM role assigned to nodes in the pool.
         :param 'AwsNodePoolConfigAutoscalingMetricsCollectionArgs' autoscaling_metrics_collection: Optional. Configuration related to CloudWatch metrics collection on the Auto Scaling group of the node pool. When unspecified, metrics collection is disabled.
-        :param str image_type: (Beta only) The OS image type to use on node pool instances.
-        :param 'AwsNodePoolConfigInstancePlacementArgs' instance_placement: (Beta only) Details of placement information for an instance.
+        :param str image_type: The OS image type to use on node pool instances.
+        :param 'AwsNodePoolConfigInstancePlacementArgs' instance_placement: Details of placement information for an instance.
         :param str instance_type: Optional. The AWS instance type. When unspecified, it defaults to `m5.large`.
         :param Mapping[str, str] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param 'AwsNodePoolConfigProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param 'AwsNodePoolConfigRootVolumeArgs' root_volume: Optional. Template for the root volume provisioned for node pool nodes. Volumes will be provisioned in the availability zone assigned to the node pool subnet. When unspecified, it defaults to 32 GiB with the GP2 volume type.
         :param Sequence[str] security_group_ids: Optional. The IDs of additional security groups to add to nodes in this pool. The manager will automatically create security groups with minimum rules needed for a functioning cluster.
-        :param 'AwsNodePoolConfigSpotConfigArgs' spot_config: (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+        :param 'AwsNodePoolConfigSpotConfigArgs' spot_config: Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
         :param 'AwsNodePoolConfigSshConfigArgs' ssh_config: Optional. The SSH configuration.
         :param Mapping[str, str] tags: Optional. Key/value metadata to assign to each underlying AWS resource. Specify at most 50 pairs containing alphanumerics, spaces, and symbols (.+-=_:@/). Keys can be up to 127 Unicode characters. Values can be up to 255 Unicode characters.
         :param Sequence['AwsNodePoolConfigTaintArgs'] taints: Optional. The initial taints assigned to nodes of this node pool.
@@ -1986,7 +1986,7 @@ class AwsNodePoolConfig(dict):
     @pulumi.getter(name="imageType")
     def image_type(self) -> Optional[str]:
         """
-        (Beta only) The OS image type to use on node pool instances.
+        The OS image type to use on node pool instances.
         """
         return pulumi.get(self, "image_type")
 
@@ -1994,7 +1994,7 @@ class AwsNodePoolConfig(dict):
     @pulumi.getter(name="instancePlacement")
     def instance_placement(self) -> Optional['outputs.AwsNodePoolConfigInstancePlacement']:
         """
-        (Beta only) Details of placement information for an instance.
+        Details of placement information for an instance.
         """
         return pulumi.get(self, "instance_placement")
 
@@ -2042,7 +2042,7 @@ class AwsNodePoolConfig(dict):
     @pulumi.getter(name="spotConfig")
     def spot_config(self) -> Optional['outputs.AwsNodePoolConfigSpotConfig']:
         """
-        (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+        Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
         """
         return pulumi.get(self, "spot_config")
 
@@ -3391,7 +3391,7 @@ class AzureNodePoolConfig(dict):
                  vm_size: Optional[str] = None):
         """
         :param 'AzureNodePoolConfigSshConfigArgs' ssh_config: SSH configuration for how to access the node pool machines.
-        :param str image_type: (Beta only) The OS image type to use on node pool instances.
+        :param str image_type: The OS image type to use on node pool instances.
         :param Mapping[str, str] labels: Optional. The initial labels assigned to nodes of this node pool. An object containing a list of "key": value pairs. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
         :param 'AzureNodePoolConfigProxyConfigArgs' proxy_config: Proxy configuration for outbound HTTP(S) traffic.
         :param 'AzureNodePoolConfigRootVolumeArgs' root_volume: Optional. Configuration related to the root volume provisioned for each node pool machine. When unspecified, it defaults to a 32-GiB Azure Disk.
@@ -3424,7 +3424,7 @@ class AzureNodePoolConfig(dict):
     @pulumi.getter(name="imageType")
     def image_type(self) -> Optional[str]:
         """
-        (Beta only) The OS image type to use on node pool instances.
+        The OS image type to use on node pool instances.
         """
         return pulumi.get(self, "image_type")
 
@@ -4320,7 +4320,7 @@ class ClusterClusterAutoscaling(dict):
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsArgs' auto_provisioning_defaults: Contains defaults for a node pool created by NAP. A subset of fields also apply to
                GKE Autopilot clusters.
                Structure is documented below.
-        :param str autoscaling_profile: ) Configuration
+        :param str autoscaling_profile: Configuration
                options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
                feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
                when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.
@@ -4354,7 +4354,7 @@ class ClusterClusterAutoscaling(dict):
     @pulumi.getter(name="autoscalingProfile")
     def autoscaling_profile(self) -> Optional[str]:
         """
-        ) Configuration
+        Configuration
         options for the [Autoscaling profile](https://cloud.google.com/kubernetes-engine/docs/concepts/cluster-autoscaler#autoscaling_profiles)
         feature, which lets you choose whether the cluster autoscaler should optimize for resource utilization or resource availability
         when deciding to remove nodes from a cluster. Can be `BALANCED` or `OPTIMIZE_UTILIZATION`. Defaults to `BALANCED`.

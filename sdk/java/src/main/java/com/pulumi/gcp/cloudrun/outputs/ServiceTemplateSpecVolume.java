@@ -15,8 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ServiceTemplateSpecVolume {
     /**
-     * @return (Optional, Beta)
-     * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+     * @return Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
      * Structure is documented below.
      * 
      */
@@ -37,8 +36,7 @@ public final class ServiceTemplateSpecVolume {
 
     private ServiceTemplateSpecVolume() {}
     /**
-     * @return (Optional, Beta)
-     * Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+     * @return Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
      * Structure is documented below.
      * 
      */

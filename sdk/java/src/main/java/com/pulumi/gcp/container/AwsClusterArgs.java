@@ -150,14 +150,14 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      * 
      */
     @Import(name="loggingConfig")
     private @Nullable Output<AwsClusterLoggingConfigArgs> loggingConfig;
 
     /**
-     * @return (Beta only) Logging configuration.
+     * @return Logging configuration.
      * 
      */
     public Optional<Output<AwsClusterLoggingConfigArgs>> loggingConfig() {
@@ -419,7 +419,7 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingConfig (Beta only) Logging configuration.
+         * @param loggingConfig Logging configuration.
          * 
          * @return builder
          * 
@@ -430,7 +430,7 @@ public final class AwsClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param loggingConfig (Beta only) Logging configuration.
+         * @param loggingConfig Logging configuration.
          * 
          * @return builder
          * 

@@ -41,14 +41,12 @@ class RepositoryArgs:
                - - -
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: (Optional, Beta)
-               Cleanup policies for this repository. Cleanup policies indicate when
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
                unique within a repository and be under 128 characters in length.
                Structure is documented below.
-        :param pulumi.Input[bool] cleanup_policy_dry_run: (Optional, Beta)
-               If true, the cleanup pipeline is prevented from deleting versions in this
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
                repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input['RepositoryDockerConfigArgs'] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
@@ -142,7 +140,6 @@ class RepositoryArgs:
     @pulumi.getter(name="cleanupPolicies")
     def cleanup_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]]:
         """
-        (Optional, Beta)
         Cleanup policies for this repository. Cleanup policies indicate when
         certain package versions can be automatically deleted.
         Map keys are policy IDs supplied by users during policy creation. They must
@@ -159,7 +156,6 @@ class RepositoryArgs:
     @pulumi.getter(name="cleanupPolicyDryRun")
     def cleanup_policy_dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional, Beta)
         If true, the cleanup pipeline is prevented from deleting versions in this
         repository.
         """
@@ -333,14 +329,12 @@ class _RepositoryState:
                  virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: (Optional, Beta)
-               Cleanup policies for this repository. Cleanup policies indicate when
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
                unique within a repository and be under 128 characters in length.
                Structure is documented below.
-        :param pulumi.Input[bool] cleanup_policy_dry_run: (Optional, Beta)
-               If true, the cleanup pipeline is prevented from deleting versions in this
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
                repository.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
@@ -431,7 +425,6 @@ class _RepositoryState:
     @pulumi.getter(name="cleanupPolicies")
     def cleanup_policies(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]]]:
         """
-        (Optional, Beta)
         Cleanup policies for this repository. Cleanup policies indicate when
         certain package versions can be automatically deleted.
         Map keys are policy IDs supplied by users during policy creation. They must
@@ -448,7 +441,6 @@ class _RepositoryState:
     @pulumi.getter(name="cleanupPolicyDryRun")
     def cleanup_policy_dry_run(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional, Beta)
         If true, the cleanup pipeline is prevented from deleting versions in this
         repository.
         """
@@ -981,14 +973,12 @@ class Repository(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: (Optional, Beta)
-               Cleanup policies for this repository. Cleanup policies indicate when
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
                unique within a repository and be under 128 characters in length.
                Structure is documented below.
-        :param pulumi.Input[bool] cleanup_policy_dry_run: (Optional, Beta)
-               If true, the cleanup pipeline is prevented from deleting versions in this
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
                repository.
         :param pulumi.Input[str] description: The user-provided description of the repository.
         :param pulumi.Input[pulumi.InputType['RepositoryDockerConfigArgs']] docker_config: Docker repository config contains repository level configuration for the repositories of docker type.
@@ -1402,14 +1392,12 @@ class Repository(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: (Optional, Beta)
-               Cleanup policies for this repository. Cleanup policies indicate when
+        :param pulumi.Input[Sequence[pulumi.Input[pulumi.InputType['RepositoryCleanupPolicyArgs']]]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
                unique within a repository and be under 128 characters in length.
                Structure is documented below.
-        :param pulumi.Input[bool] cleanup_policy_dry_run: (Optional, Beta)
-               If true, the cleanup pipeline is prevented from deleting versions in this
+        :param pulumi.Input[bool] cleanup_policy_dry_run: If true, the cleanup pipeline is prevented from deleting versions in this
                repository.
         :param pulumi.Input[str] create_time: The time when the repository was created.
         :param pulumi.Input[str] description: The user-provided description of the repository.
@@ -1486,7 +1474,6 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter(name="cleanupPolicies")
     def cleanup_policies(self) -> pulumi.Output[Optional[Sequence['outputs.RepositoryCleanupPolicy']]]:
         """
-        (Optional, Beta)
         Cleanup policies for this repository. Cleanup policies indicate when
         certain package versions can be automatically deleted.
         Map keys are policy IDs supplied by users during policy creation. They must
@@ -1499,7 +1486,6 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter(name="cleanupPolicyDryRun")
     def cleanup_policy_dry_run(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional, Beta)
         If true, the cleanup pipeline is prevented from deleting versions in this
         repository.
         """
