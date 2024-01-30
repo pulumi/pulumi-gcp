@@ -1,4 +1,4 @@
-// Copyright 2016-2023, Pulumi Corporation.  All rights reserved.
+// Copyright 2016-2024, Pulumi Corporation.  All rights reserved.
 
 package gcp
 
@@ -56,45 +56,6 @@ func testProviderUpgradeWithConfig(t *testing.T, dir, baselineVersion string, co
 	}
 	result := providertest.PreviewProviderUpgrade(test, providerName, baselineVersion, optproviderupgrade.DisableAttach())
 	assertpreview.HasNoReplacements(t, result)
-}
-
-func test(t *testing.T, dir string, opts ...providertest.Option) *providertest.ProviderTest {
-	envVars := map[string]string{
-		"gcp:config:project": "GOOGLE_PROJECT",
-		"gcp:config:zone":    "GOOGLE_ZONE",
-		"gcp:config:region":  "GOOGLE_REGION",
-	}
-
-	defaultValues := map[string]string{
-		"gcp:config:project": "pulumi-development",
-	}
-	defaultOpts := []providertest.Option{}
-
-	for setting, envVar := range envVars {
-		if envVarValue, ok := os.LookupEnv(envVar); ok {
-			defaultOpts = append(defaultOpts, providertest.WithConfig(setting, envVarValue))
-		} else if defValue, ok := defaultValues[setting]; ok {
-			defaultOpts = append(defaultOpts, providertest.WithConfig(setting, defValue))
-		}
-	}
-
-	defaultOpts = append(defaultOpts,
-		providertest.WithProviderName("gcp"),
-		providertest.WithBaselineVersion("6.67.0"),
-		providertest.WithResourceProviderServer(providerServer(t)),
-		providertest.WithSkippedUpgradeTestMode(providertest.UpgradeTestMode_Quick,
-			"TODO[pulumi/providertest#28] Skipping Quick mode because of panics and implicit dependency on Configure"),
-	)
-	allOpts := append(defaultOpts, opts...)
-
-	return providertest.NewProviderTest(dir, allOpts...)
-}
-
-func runTest(t *testing.T, pt *providertest.ProviderTest) {
-	if testing.Short() {
-		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
-	}
-	pt.Run(t)
 }
 
 func providerServer(t *testing.T) pulumirpc.ResourceProviderServer {

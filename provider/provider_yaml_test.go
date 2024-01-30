@@ -85,25 +85,25 @@ func skipIfNotCI(t *testing.T) {
 func TestIamBinding(t *testing.T) {
 	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	runTest(t, test(t, "test-programs/iam-binding"))
+	// runTest(t, test(t, "test-programs/iam-binding"))
 }
 
 func TestIamMember(t *testing.T) {
 	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	runTest(t, test(t, "test-programs/iam-member"))
+	// runTest(t, test(t, "test-programs/iam-member"))
 }
 
 func TestLogSink(t *testing.T) {
 	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	runTest(t, test(t, "test-programs/logsink"))
+	// runTest(t, test(t, "test-programs/logsink"))
 }
 
 func TestTopicIamBinding(t *testing.T) {
 	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	runTest(t, test(t, "test-programs/topic-iam-binding"))
+	// runTest(t, test(t, "test-programs/topic-iam-binding"))
 }
 
 // Test programs that were automatically extracted from examples without autocorrection.
