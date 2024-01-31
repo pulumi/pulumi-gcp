@@ -6,13 +6,12 @@ resources:
   serviceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: my-service-account-logsink
+      accountId: service-id-logsink
 
   # Create a GCP storage bucket
   bucket:
     type: gcp:storage:Bucket
     properties:
-      name: pulumi-bucket
       location: EU
 
   # Create a ProjectSink

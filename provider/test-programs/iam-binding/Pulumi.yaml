@@ -5,8 +5,7 @@ resources:
   myServiceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: my-service-account-iam-binding
-
+      accountId: service-id-iam-binding
   viewerBinding:
     type: gcp:projects/iAMBinding:IAMBinding
     properties:

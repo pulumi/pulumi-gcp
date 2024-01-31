@@ -4,12 +4,10 @@ description: A minimal Pulumi YAML program
 resources:
   myTopic:
     type: gcp:pubsub/topic:Topic
-
   myServiceAccount:
     type: gcp:serviceaccount:Account
     properties:
-      accountId: my-service-account-topic
-
+      accountId: service-id-iam-binding-1
   myTopicIAMBinding:
     type: gcp:pubsub/topicIAMBinding:TopicIAMBinding
     properties:

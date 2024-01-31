@@ -83,27 +83,27 @@ func skipIfNotCI(t *testing.T) {
 }
 
 func TestIamBinding(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	// runTest(t, test(t, "test-programs/iam-binding"))
+	// ServiceAccount requires 7.0
+	testProviderUpgrade(t, "test-programs/iam-binding", "7.0.0")
 }
 
 func TestIamMember(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	// runTest(t, test(t, "test-programs/iam-member"))
+	// ServiceAccount requires 7.0
+	testProviderUpgrade(t, "test-programs/iam-member", "7.0.0")
 }
 
 func TestLogSink(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	// runTest(t, test(t, "test-programs/logsink"))
+	// ServiceAccount requires 7.0
+	testProviderUpgrade(t, "test-programs/logsink", "7.0.0")
 }
 
 func TestTopicIamBinding(t *testing.T) {
-	t.Skipf("skipping due to https://github.com/pulumi/pulumi-gcp/issues/1577")
 	skipIfNotCI(t)
-	// runTest(t, test(t, "test-programs/topic-iam-binding"))
+	// ServiceAccount requires 7.0
+	testProviderUpgrade(t, "test-programs/topic-iam-binding", "7.0.0")
 }
 
 // Test programs that were automatically extracted from examples without autocorrection.

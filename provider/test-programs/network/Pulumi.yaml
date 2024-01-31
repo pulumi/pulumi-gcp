@@ -16,7 +16,7 @@ resources:
         #   return: result
       autoCreateSubnetworks: false  # We'll create our own subnetwork
 
-  exampleSubnetwork:
+  examplesubnetwork:
     type: gcp:compute/subnetwork:Subnetwork
     properties:
       name: pulumi-subnetwork2
