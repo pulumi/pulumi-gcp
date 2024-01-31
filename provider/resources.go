@@ -1695,8 +1695,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_firestore_index":    {Tok: gcpResource(gcpFirestore, "Index")},
 			"google_firestore_document": {Tok: gcpResource(gcpFirestore, "Document")},
 			"google_firestore_database": {Tok: gcpResource(gcpFirestore, "Database")},
-			"google_firestore_field": {
-				Tok: gcpResource(gcpFirestore, "Field"),
+			"google_firestore_field": {Tok: gcpResource(gcpFirestore, "Field"),
 				Fields: map[string]*tfbridge.SchemaInfo{
 					"field": {
 						CSharpName: "FieldId",
@@ -1792,8 +1791,7 @@ func Provider() tfbridge.ProviderInfo {
 			"google_redis_instance": {Tok: gcpResource(gcpRedis, "Instance")},
 
 			// Resource Manager resources
-			"google_resource_manager_lien": {
-				Tok: gcpResource(gcpResourceManager, "Lien"),
+			"google_resource_manager_lien": {Tok: gcpResource(gcpResourceManager, "Lien"),
 				Docs: &tfbridge.DocInfo{
 					Source: "resourcemanager_lien.html.markdown",
 				},
@@ -2384,7 +2382,7 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
-			// CloudRun Resources
+			//CloudRun Resources
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
 			"google_cloud_run_service":        {Tok: gcpResource(gcpCloudRun, "Service")},
 			"google_cloud_run_service_iam_binding": {
@@ -3071,44 +3069,38 @@ func Provider() tfbridge.ProviderInfo {
 			"google_workstations_workstation_cluster": {Tok: gcpResource(gcpWorkstations, "WorkstationCluster")},
 			"google_workstations_workstation_config":  {Tok: gcpResource(gcpWorkstations, "WorkstationConfig")},
 			"google_workstations_workstation":         {Tok: gcpResource(gcpWorkstations, "Workstation")},
-			"google_workstations_workstation_config_iam_binding": {
-				Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamBinding"),
+			"google_workstations_workstation_config_iam_binding": {Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamBinding"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_config_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_config_iam_member": {
-				Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamMember"),
+			"google_workstations_workstation_config_iam_member": {Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamMember"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_config_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_config_iam_policy": {
-				Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamPolicy"),
+			"google_workstations_workstation_config_iam_policy": {Tok: gcpResource(gcpWorkstations, "WorkstationConfigIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_config_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_iam_binding": {
-				Tok: gcpResource(gcpWorkstations, "WorkstationIamBinding"),
+			"google_workstations_workstation_iam_binding": {Tok: gcpResource(gcpWorkstations, "WorkstationIamBinding"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_iam_member": {
-				Tok: gcpResource(gcpWorkstations, "WorkstationIamMember"),
+			"google_workstations_workstation_iam_member": {Tok: gcpResource(gcpWorkstations, "WorkstationIamMember"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_iam.html.markdown",
 				},
 			},
-			"google_workstations_workstation_iam_policy": {
-				Tok: gcpResource(gcpWorkstations, "WorkstationIamPolicy"),
+			"google_workstations_workstation_iam_policy": {Tok: gcpResource(gcpWorkstations, "WorkstationIamPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "workstations_workstation_iam.html.markdown",
 				},
 			},
 
-			// eventarc
+			//eventarc
 			"google_eventarc_channel": {
 				Tok: gcpResource(gcpEventarc, "Channel"),
 			},
@@ -3875,8 +3867,7 @@ func Provider() tfbridge.ProviderInfo {
 			i := &tfbridge.PythonInfo{
 				Requires: map[string]string{
 					"pulumi": ">=3.0.0,<4.0.0",
-				},
-			}
+				}}
 			i.PyProject.Enabled = true
 			return i
 		})(),
