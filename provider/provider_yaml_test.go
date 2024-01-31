@@ -420,7 +420,6 @@ func TestCheckConfigNoCredentials(t *testing.T) {
 	t.Setenv("GOOGLE_PROJECT", "")
 	t.Setenv("GOOGLE_ZONE", "")
 	t.Setenv("GOOGLE_REGION", "")
-	credentialsValidationRun.Store(false)
 	replay.Replay(t, providerServer(t), strings.ReplaceAll(`
 {
 	"method": "/pulumirpc.ResourceProvider/CheckConfig",
@@ -452,7 +451,6 @@ func TestCheckConfigWrongRegion(t *testing.T) {
 	t.Setenv("GOOGLE_REGION", "")
 	t.Setenv("GOOGLE_ZONE", "")
 	proj := os.Getenv("GOOGLE_PROJECT")
-	credentialsValidationRun.Store(false)
 	replay.Replay(t, providerServer(t), `
 	{
 		"method": "/pulumirpc.ResourceProvider/CheckConfig",
