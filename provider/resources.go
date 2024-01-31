@@ -329,6 +329,15 @@ func getRegionsList(project string) ([]string, error) {
 	return regions, nil
 }
 
+//go:embed errors/no_credentials.txt
+var noCredentialsErr string
+
+//go:embed errors/wrong_region.txt
+var wrongRegionErr string
+
+//go:embed errors/no_project.txt
+var noProjectErr string
+
 // We should only run the validation once to avoid duplicating the reported errors.
 var credentialsValidationRun atomic.Bool
 
@@ -345,13 +354,9 @@ func preConfigureCallbackWithLogger(
 		"CLOUDSDK_CORE_PROJECT",
 	})
 	if project == "" {
-		msg := "unable to detect a global setting for GCP Project;\n" +
-			"Pulumi will rely on per-resource settings for this operation.\n" +
-			"Set the GCP Project by using:\n" +
-			"\t`pulumi config set gcp:project <project>`"
 		if host != nil {
 			// host is nil in tests.
-			host.Log(ctx, diag.Warning, "", msg) // the URN will default to the root stack name which is exactly what we want
+			host.Log(ctx, diag.Warning, "", noProjectErr) // the URN will default to the root stack name which is exactly what we want
 		}
 	}
 
@@ -384,8 +389,7 @@ func preConfigureCallbackWithLogger(
 	// validate the gcloud config
 	err := config.LoadAndValidate(context.Background())
 	if err != nil {
-		return fmt.Errorf(
-			"failed to load application credentials.\nTo use your default gcloud credentials, run:\n\t`gcloud auth application-default login`\nSee https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.\nExpanded error message: %w", err)
+		return fmt.Errorf(noCredentialsErr, err)
 	}
 
 	if config.Region != "" && config.Project != "" {
@@ -398,10 +402,7 @@ func preConfigureCallbackWithLogger(
 				return nil
 			}
 		}
-		return fmt.Errorf(
-			"region %q is not available for project %q. Available regions: %q",
-			config.Region, config.Project, regionList,
-		)
+		return fmt.Errorf(wrongRegionErr, config.Region, config.Project)
 	}
 
 	return nil
