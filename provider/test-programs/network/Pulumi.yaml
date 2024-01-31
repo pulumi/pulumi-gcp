@@ -2,22 +2,33 @@ name: network
 runtime: yaml
 description: A minimal Google Cloud Pulumi YAML program
 resources:
-  examplenetwork:
+  exampleNetwork:
     type: gcp:compute/network:Network
     properties:
+      name: mynetwork2
+        # Randomizing the name fails with "  warning: Error downloading plugin: unknown version for plugin str"
+        # fn::invoke:
+        #   function: str:replace
+        #   arguments:
+        #     old: "-"
+        #     new: ""
+        #     string: network-${pulumi.stack}
+        #   return: result
       autoCreateSubnetworks: false  # We'll create our own subnetwork
 
   examplesubnetwork:
     type: gcp:compute/subnetwork:Subnetwork
     properties:
-      network: ${examplenetwork.id}
+      name: pulumi-subnetwork2
+      network: ${exampleNetwork.id}
       ipCidrRange: "10.2.0.0/16"
       region: us-central1
-      
-  examplerouter:
+
+  exampleRouter:
     type: gcp:compute/router:Router
     properties:
-      network: ${examplenetwork.id}
+      name: pulumi-router2
+      network: ${exampleNetwork.id}
       region: us-central1
       bgp:
         asn: 64514
