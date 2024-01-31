@@ -14,6 +14,7 @@ import (
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 
+	"github.com/hashicorp/terraform-plugin-sdk/v2/helper/schema"
 	gcpPFProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/fwprovider"
 	gcpProvider "github.com/hashicorp/terraform-provider-google-beta/google-beta/provider"
 	tpg_transport "github.com/hashicorp/terraform-provider-google-beta/google-beta/transport"
@@ -466,10 +467,18 @@ func Provider() tfbridge.ProviderInfo {
 					},
 				},
 			},
+		},
+		ExtraConfig: map[string]*tfbridge.ConfigInfo{
 			"skipRegionValidation": {
-				Default: &tfbridge.DefaultInfo{
-					Value:   false,
-					EnvVars: []string{"PULUMI_GCP_SKIP_REGION_VALIDATION"},
+				Schema: shimv2.NewSchema(&schema.Schema{
+					Type:     schema.TypeBool,
+					Optional: true,
+				}),
+				Info: &tfbridge.SchemaInfo{
+					Default: &tfbridge.DefaultInfo{
+						Value:   false,
+						EnvVars: []string{"PULUMI_GCP_SKIP_REGION_VALIDATION"},
+					},
 				},
 			},
 		},

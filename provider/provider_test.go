@@ -55,6 +55,8 @@ func testProviderUpgradeWithConfig(t *testing.T, dir, baselineVersion string, co
 			test.SetConfig(k, v)
 		}
 	}
+	// The SetConfig above does not seem to be working here.
+	test.T().Setenv("PULUMI_GCP_SKIP_REGION_VALIDATION", "true")
 	result := providertest.PreviewProviderUpgrade(test, providerName, baselineVersion, optproviderupgrade.DisableAttach())
 	assertpreview.HasNoReplacements(t, result)
 }
