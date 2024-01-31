@@ -1121,6 +1121,14 @@ Object.defineProperty(exports, "serviceUsageCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const skipRegionValidation: boolean;
+Object.defineProperty(exports, "skipRegionValidation", {
+    get() {
+        return __config.getObject<boolean>("skipRegionValidation") ?? (utilities.getEnvBoolean("PULUMI_GCP_SKIP_REGION_VALIDATION") || false);
+    },
+    enumerable: true,
+});
+
 export declare const sourceRepoCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "sourceRepoCustomEndpoint", {
     get() {

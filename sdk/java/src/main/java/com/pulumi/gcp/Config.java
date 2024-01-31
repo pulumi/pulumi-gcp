@@ -432,6 +432,9 @@ public final class Config {
     public Optional<String> serviceUsageCustomEndpoint() {
         return Codegen.stringProp("serviceUsageCustomEndpoint").config(config).get();
     }
+    public Optional<Boolean> skipRegionValidation() {
+        return Codegen.booleanProp("skipRegionValidation").config(config).env("PULUMI_GCP_SKIP_REGION_VALIDATION").def(false).get();
+    }
     public Optional<String> sourceRepoCustomEndpoint() {
         return Codegen.stringProp("sourceRepoCustomEndpoint").config(config).get();
     }

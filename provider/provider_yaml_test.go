@@ -20,6 +20,7 @@ package gcp
 import (
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 
 	"github.com/pulumi/providertest/replay"
@@ -392,4 +393,69 @@ func TestOrganizationsProjectAutoNaming(t *testing.T) {
         "name": "gcp"
     }
 }`)
+}
+
+func TestCheckConfigNoCredentials(t *testing.T) {
+	if !testing.Short() {
+		t.Skip("Only run in short mode, since we want to NOT have credentials.")
+	}
+	t.Setenv("GOOGLE_APPLICATION_CREDENTIALS", "")
+	t.Setenv("GOOGLE_GHA_CREDS_PATH", "")
+	t.Setenv("GOOGLE_PROJECT", "")
+	t.Setenv("GOOGLE_ZONE", "")
+	t.Setenv("GOOGLE_REGION", "")
+	replay.Replay(t, providerServer(t), strings.ReplaceAll(`
+{
+	"method": "/pulumirpc.ResourceProvider/CheckConfig",
+    "request": {
+        "urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
+        "olds": {
+        },
+        "news": {
+            "version": "7.6.0"
+        }
+    },
+    "errors": [
+        "failed to load application credentials.\nTo use your default gcloud credentials, run:\n\t$gcloud auth application-default login$\nSee https://www.pulumi.com/registry/packages/gcp/installation-configuration/ for details.\nExpanded error message: Attempted to load application default credentials since neither $credentials$ nor $access_token$ was set in the provider block.  No credentials loaded. To use your gcloud credentials, run 'gcloud auth application-default login'.  Original error: google: could not find default credentials. See https://cloud.google.com/docs/authentication/external/set-up-adc for more information"
+    ],
+    "metadata": {
+        "kind": "resource",
+        "mode": "client",
+        "name": "gcp"
+    }
+}
+`, "$", "`"),
+	)
+}
+
+func TestCheckConfigWrongRegion(t *testing.T) {
+	if testing.Short() {
+		t.Skip("Only run in long mode, since we want credentials.")
+	}
+	t.Setenv("GOOGLE_REGION", "")
+	t.Setenv("GOOGLE_ZONE", "")
+	proj := os.Getenv("GOOGLE_PROJECT")
+	replay.Replay(t, providerServer(t), `
+	{
+		"method": "/pulumirpc.ResourceProvider/CheckConfig",
+		"request": {
+			"urn": "urn:pulumi:dev::gcp_vm::pulumi:providers:gcp::default_7_6_0",
+			"olds": {
+			},
+			"news": {
+				"region": "westus",
+				"version": "7.6.0"
+			}
+		},
+		"errors": [
+			"region \"westus\" is not available for project \"`+proj+`\".\nPlease see https://cloud.google.com/compute/docs/regions-zones/viewing-regions-zones#viewing_a_list_of_available_regions for a list of available regions"
+		],
+		"metadata": {
+			"kind": "resource",
+			"mode": "client",
+			"name": "gcp"
+		}
+	}
+`,
+	)
 }
