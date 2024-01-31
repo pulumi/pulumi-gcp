@@ -388,7 +388,11 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool) func(
 			return fmt.Errorf(noCredentialsErr, err)
 		}
 
-		if config.Region != "" && config.Project != "" {
+		skipRegionValidation := tfbridge.ConfigBoolValue(
+			vars, "skipRegionValidation", []string{"PULUMI_GCP_SKIP_REGION_VALIDATION"},
+		)
+
+		if !skipRegionValidation && config.Region != "" && config.Project != "" {
 			regionList, err := getRegionsList(config.Project)
 			if err != nil {
 				return fmt.Errorf("failed to get regions list: %w", err)
@@ -460,6 +464,12 @@ func Provider() tfbridge.ProviderInfo {
 						"GCLOUD_ZONE",
 						"CLOUDSDK_COMPUTE_ZONE",
 					},
+				},
+			},
+			"skipRegionValidation": {
+				Default: &tfbridge.DefaultInfo{
+					Value:   false,
+					EnvVars: []string{"PULUMI_GCP_SKIP_REGION_VALIDATION"},
 				},
 			},
 		},
