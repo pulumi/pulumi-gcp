@@ -351,11 +351,9 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool) func(
 			"GCLOUD_PROJECT",
 			"CLOUDSDK_CORE_PROJECT",
 		})
-		if project == "" {
-			if host != nil {
-				// host is nil in tests.
-				host.Log(ctx, diag.Warning, "", noProjectErr) // the URN will default to the root stack name which is exactly what we want
-			}
+		// host is nil in tests.
+		if project == "" && host != nil {
+			host.Log(ctx, diag.Warning, "", noProjectErr) // the URN will default to the root stack name which is exactly what we want
 		}
 
 		config := tpg_transport.Config{
