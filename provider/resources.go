@@ -338,74 +338,73 @@ var wrongRegionErr string
 //go:embed errors/no_project.txt
 var noProjectErr string
 
-// We should only run the validation once to avoid duplicating the reported errors.
-var credentialsValidationRun atomic.Bool
-
-func preConfigureCallbackWithLogger(
+func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool) func(
 	ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig,
 ) error {
-	if !credentialsValidationRun.CompareAndSwap(false, true) {
-		return nil
-	}
-	project := tfbridge.ConfigStringValue(vars, "project", []string{
-		"GOOGLE_PROJECT",
-		"GOOGLE_CLOUD_PROJECT",
-		"GCLOUD_PROJECT",
-		"CLOUDSDK_CORE_PROJECT",
-	})
-	if project == "" {
-		if host != nil {
-			// host is nil in tests.
-			host.Log(ctx, diag.Warning, "", noProjectErr) // the URN will default to the root stack name which is exactly what we want
+	return func(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig) error {
+		if !credentialsValidationRun.CompareAndSwap(false, true) {
+			return nil
 		}
-	}
-
-	config := tpg_transport.Config{
-		AccessToken: tfbridge.ConfigStringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
-		Credentials: tfbridge.ConfigStringValue(vars, "credentials", []string{
-			"GOOGLE_CREDENTIALS",
-			"GOOGLE_CLOUD_KEYFILE_JSON",
-			"GCLOUD_KEYFILE_JSON",
-		}),
-		ImpersonateServiceAccount: tfbridge.ConfigStringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
-		Project: tfbridge.ConfigStringValue(vars, "project", []string{
+		project := tfbridge.ConfigStringValue(vars, "project", []string{
 			"GOOGLE_PROJECT",
 			"GOOGLE_CLOUD_PROJECT",
 			"GCLOUD_PROJECT",
 			"CLOUDSDK_CORE_PROJECT",
-		}),
-		Region: tfbridge.ConfigStringValue(vars, "region", []string{
-			"GOOGLE_REGION",
-			"GCLOUD_REGION",
-			"CLOUDSDK_COMPUTE_REGION",
-		}),
-		Zone: tfbridge.ConfigStringValue(vars, "zone", []string{
-			"GOOGLE_ZONE",
-			"GCLOUD_ZONE",
-			"CLOUDSDK_COMPUTE_ZONE",
-		}),
-	}
-
-	// validate the gcloud config
-	err := config.LoadAndValidate(context.Background())
-	if err != nil {
-		return fmt.Errorf(noCredentialsErr, err)
-	}
-
-	if config.Region != "" && config.Project != "" {
-		regionList, err := getRegionsList(config.Project)
-		if err != nil {
-			return fmt.Errorf("failed to get regions list: %w", err)
-		}
-		for _, region := range regionList {
-			if region == config.Region {
-				return nil
+		})
+		if project == "" {
+			if host != nil {
+				// host is nil in tests.
+				host.Log(ctx, diag.Warning, "", noProjectErr) // the URN will default to the root stack name which is exactly what we want
 			}
 		}
-		return fmt.Errorf(wrongRegionErr, config.Region, config.Project)
-	}
 
-	return nil
+		config := tpg_transport.Config{
+			AccessToken: tfbridge.ConfigStringValue(vars, "accessToken", []string{"GOOGLE_OAUTH_ACCESS_TOKEN"}),
+			Credentials: tfbridge.ConfigStringValue(vars, "credentials", []string{
+				"GOOGLE_CREDENTIALS",
+				"GOOGLE_CLOUD_KEYFILE_JSON",
+				"GCLOUD_KEYFILE_JSON",
+			}),
+			ImpersonateServiceAccount: tfbridge.ConfigStringValue(vars, "impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
+			Project: tfbridge.ConfigStringValue(vars, "project", []string{
+				"GOOGLE_PROJECT",
+				"GOOGLE_CLOUD_PROJECT",
+				"GCLOUD_PROJECT",
+				"CLOUDSDK_CORE_PROJECT",
+			}),
+			Region: tfbridge.ConfigStringValue(vars, "region", []string{
+				"GOOGLE_REGION",
+				"GCLOUD_REGION",
+				"CLOUDSDK_COMPUTE_REGION",
+			}),
+			Zone: tfbridge.ConfigStringValue(vars, "zone", []string{
+				"GOOGLE_ZONE",
+				"GCLOUD_ZONE",
+				"CLOUDSDK_COMPUTE_ZONE",
+			}),
+		}
+
+		// validate the gcloud config
+		err := config.LoadAndValidate(context.Background())
+		if err != nil {
+			return fmt.Errorf(noCredentialsErr, err)
+		}
+
+		if config.Region != "" && config.Project != "" {
+			regionList, err := getRegionsList(config.Project)
+			if err != nil {
+				return fmt.Errorf("failed to get regions list: %w", err)
+			}
+			for _, region := range regionList {
+				if region == config.Region {
+					return nil
+				}
+			}
+			return fmt.Errorf(wrongRegionErr, config.Region, config.Project)
+		}
+
+		return nil
+	}
 }
 
 //go:embed cmd/pulumi-resource-gcp/bridge-metadata.json
@@ -417,6 +416,10 @@ func Provider() tfbridge.ProviderInfo {
 		context.Background(),
 		shimv2.NewProvider(gcpProvider.Provider(), shimv2.WithDiffStrategy(shimv2.PlanState)),
 		gcpPFProvider.New(version.Version)) // this probably should be TF version but it does not seem to matter
+
+	// We should only run the validation once to avoid duplicating the reported errors.
+	var credentialsValidationRun atomic.Bool
+
 	prov := tfbridge.ProviderInfo{
 		P:                           p,
 		Name:                        "google-beta",
@@ -468,7 +471,7 @@ func Provider() tfbridge.ProviderInfo {
 			// See: https://registry.terraform.io/providers/hashicorp/google-beta/latest/docs/data-sources/data_source_dataproc_metastore_service
 			"google_dataproc_metastore_service",
 		},
-		PreConfigureCallbackWithLogger: preConfigureCallbackWithLogger,
+		PreConfigureCallbackWithLogger: preConfigureCallbackWithLogger(&credentialsValidationRun),
 		Resources: map[string]*tfbridge.ResourceInfo{
 			// Access Context Manager
 			"google_access_context_manager_access_level": {
