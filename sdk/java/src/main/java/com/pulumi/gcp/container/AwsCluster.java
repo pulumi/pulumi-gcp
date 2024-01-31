@@ -553,14 +553,14 @@ public class AwsCluster extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * (Beta only) Logging configuration.
+     * Logging configuration.
      * 
      */
     @Export(name="loggingConfig", refs={AwsClusterLoggingConfig.class}, tree="[0]")
     private Output<AwsClusterLoggingConfig> loggingConfig;
 
     /**
-     * @return (Beta only) Logging configuration.
+     * @return Logging configuration.
      * 
      */
     public Output<AwsClusterLoggingConfig> loggingConfig() {

@@ -92,8 +92,7 @@ class RouterNatArgs:
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
-        :param pulumi.Input[str] type: (Optional, Beta)
-               Indicates whether this NAT is used for public or private IP translation.
+        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation.
                If unspecified, it defaults to PUBLIC.
                If `PUBLIC` NAT used for public IP translation.
                If `PRIVATE` NAT used for private IP translation.
@@ -408,7 +407,6 @@ class RouterNatArgs:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Beta)
         Indicates whether this NAT is used for public or private IP translation.
         If unspecified, it defaults to PUBLIC.
         If `PUBLIC` NAT used for public IP translation.
@@ -514,8 +512,7 @@ class _RouterNatState:
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
-        :param pulumi.Input[str] type: (Optional, Beta)
-               Indicates whether this NAT is used for public or private IP translation.
+        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation.
                If unspecified, it defaults to PUBLIC.
                If `PUBLIC` NAT used for public IP translation.
                If `PRIVATE` NAT used for private IP translation.
@@ -832,7 +829,6 @@ class _RouterNatState:
     @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Beta)
         Indicates whether this NAT is used for public or private IP translation.
         If unspecified, it defaults to PUBLIC.
         If `PUBLIC` NAT used for public IP translation.
@@ -1120,8 +1116,7 @@ class RouterNat(pulumi.CustomResource):
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
-        :param pulumi.Input[str] type: (Optional, Beta)
-               Indicates whether this NAT is used for public or private IP translation.
+        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation.
                If unspecified, it defaults to PUBLIC.
                If `PUBLIC` NAT used for public IP translation.
                If `PRIVATE` NAT used for private IP translation.
@@ -1475,8 +1470,7 @@ class RouterNat(pulumi.CustomResource):
                Defaults to 120s if not set.
         :param pulumi.Input[int] tcp_transitory_idle_timeout_sec: Timeout (in seconds) for TCP transitory connections.
                Defaults to 30s if not set.
-        :param pulumi.Input[str] type: (Optional, Beta)
-               Indicates whether this NAT is used for public or private IP translation.
+        :param pulumi.Input[str] type: Indicates whether this NAT is used for public or private IP translation.
                If unspecified, it defaults to PUBLIC.
                If `PUBLIC` NAT used for public IP translation.
                If `PRIVATE` NAT used for private IP translation.
@@ -1701,7 +1695,6 @@ class RouterNat(pulumi.CustomResource):
     @pulumi.getter
     def type(self) -> pulumi.Output[Optional[str]]:
         """
-        (Optional, Beta)
         Indicates whether this NAT is used for public or private IP translation.
         If unspecified, it defaults to PUBLIC.
         If `PUBLIC` NAT used for public IP translation.

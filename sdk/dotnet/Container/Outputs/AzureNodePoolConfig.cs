@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class AzureNodePoolConfig
     {
         /// <summary>
-        /// (Beta only) The OS image type to use on node pool instances.
+        /// The OS image type to use on node pool instances.
         /// </summary>
         public readonly string? ImageType;
         /// <summary>

@@ -53,7 +53,7 @@ public final class InstanceNetworkInterface {
      */
     private @Nullable String network;
     /**
-     * @return Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+     * @return The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
      * 
      */
     private @Nullable String networkAttachment;
@@ -74,7 +74,7 @@ public final class InstanceNetworkInterface {
      */
     private @Nullable Integer queueCount;
     /**
-     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
      * 
      */
     private @Nullable String securityPolicy;
@@ -157,7 +157,7 @@ public final class InstanceNetworkInterface {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+     * @return The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
      * 
      */
     public Optional<String> networkAttachment() {
@@ -186,7 +186,7 @@ public final class InstanceNetworkInterface {
         return Optional.ofNullable(this.queueCount);
     }
     /**
-     * @return Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+     * @return A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
      * 
      */
     public Optional<String> securityPolicy() {

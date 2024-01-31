@@ -39,7 +39,6 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Optional, Beta)
      * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      * 
@@ -48,8 +47,7 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<AiFeatureOnlineStoreDedicatedServingEndpointArgs> dedicatedServingEndpoint;
 
     /**
-     * @return (Optional, Beta)
-     * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+     * @return The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
      * Structure is documented below.
      * 
      */
@@ -58,7 +56,6 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Optional, Beta)
      * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
      * Structure is documented below.
      * 
@@ -67,8 +64,7 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<AiFeatureOnlineStoreEmbeddingManagementArgs> embeddingManagement;
 
     /**
-     * @return (Optional, Beta)
-     * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+     * @return The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
      * Structure is documented below.
      * 
      */
@@ -130,7 +126,6 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * (Optional, Beta)
      * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      * 
      */
@@ -138,8 +133,7 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
     private @Nullable Output<AiFeatureOnlineStoreOptimizedArgs> optimized;
 
     /**
-     * @return (Optional, Beta)
-     * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+     * @return Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
      * 
      */
     public Optional<Output<AiFeatureOnlineStoreOptimizedArgs>> optimized() {
@@ -234,8 +228,7 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dedicatedServingEndpoint (Optional, Beta)
-         * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+         * @param dedicatedServingEndpoint The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
          * Structure is documented below.
          * 
          * @return builder
@@ -247,8 +240,7 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param dedicatedServingEndpoint (Optional, Beta)
-         * The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
+         * @param dedicatedServingEndpoint The dedicated serving endpoint for this FeatureOnlineStore, which is different from common vertex service endpoint. Only need to set when you choose Optimized storage type or enable EmbeddingManagement. Will use public endpoint by default.
          * Structure is documented below.
          * 
          * @return builder
@@ -259,8 +251,7 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param embeddingManagement (Optional, Beta)
-         * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
          * Structure is documented below.
          * 
          * @return builder
@@ -272,8 +263,7 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param embeddingManagement (Optional, Beta)
-         * The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
+         * @param embeddingManagement The settings for embedding management in FeatureOnlineStore. Embedding management can only be used with BigTable.
          * Structure is documented below.
          * 
          * @return builder
@@ -355,8 +345,7 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param optimized (Optional, Beta)
-         * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+         * @param optimized Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
          * 
          * @return builder
          * 
@@ -367,8 +356,7 @@ public final class AiFeatureOnlineStoreArgs extends com.pulumi.resources.Resourc
         }
 
         /**
-         * @param optimized (Optional, Beta)
-         * Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
+         * @param optimized Settings for the Optimized store that will be created to serve featureValues for all FeatureViews under this FeatureOnlineStore
          * 
          * @return builder
          * 

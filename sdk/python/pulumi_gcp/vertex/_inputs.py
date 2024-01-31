@@ -1328,8 +1328,7 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
                  staleness_days: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] disabled: The monitoring schedule for snapshot analysis. For EntityType-level config: unset / disabled = true indicates disabled by default for Features under it; otherwise by default enable snapshot analysis monitoring with monitoringInterval for Features under it.
-        :param pulumi.Input[str] monitoring_interval: (Optional, Beta, Deprecated)
-               Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
+        :param pulumi.Input[str] monitoring_interval: Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
                A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
                
                > **Warning:** `monitoring_interval` is deprecated and will be removed in a future release.
@@ -1365,7 +1364,6 @@ class AiFeatureStoreEntityTypeMonitoringConfigSnapshotAnalysisArgs:
     @pulumi.getter(name="monitoringInterval")
     def monitoring_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        (Optional, Beta, Deprecated)
         Configuration of the snapshot analysis based monitoring pipeline running interval. The value is rolled up to full day.
         A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 

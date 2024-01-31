@@ -24,7 +24,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     public static final RepositoryState Empty = new RepositoryState();
 
     /**
-     * (Optional, Beta)
      * Cleanup policies for this repository. Cleanup policies indicate when
      * certain package versions can be automatically deleted.
      * Map keys are policy IDs supplied by users during policy creation. They must
@@ -36,8 +35,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<RepositoryCleanupPolicyArgs>> cleanupPolicies;
 
     /**
-     * @return (Optional, Beta)
-     * Cleanup policies for this repository. Cleanup policies indicate when
+     * @return Cleanup policies for this repository. Cleanup policies indicate when
      * certain package versions can be automatically deleted.
      * Map keys are policy IDs supplied by users during policy creation. They must
      * unique within a repository and be under 128 characters in length.
@@ -49,7 +47,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * (Optional, Beta)
      * If true, the cleanup pipeline is prevented from deleting versions in this
      * repository.
      * 
@@ -58,8 +55,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Boolean> cleanupPolicyDryRun;
 
     /**
-     * @return (Optional, Beta)
-     * If true, the cleanup pipeline is prevented from deleting versions in this
+     * @return If true, the cleanup pipeline is prevented from deleting versions in this
      * repository.
      * 
      */
@@ -419,8 +415,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicies (Optional, Beta)
-         * Cleanup policies for this repository. Cleanup policies indicate when
+         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when
          * certain package versions can be automatically deleted.
          * Map keys are policy IDs supplied by users during policy creation. They must
          * unique within a repository and be under 128 characters in length.
@@ -435,8 +430,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicies (Optional, Beta)
-         * Cleanup policies for this repository. Cleanup policies indicate when
+         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when
          * certain package versions can be automatically deleted.
          * Map keys are policy IDs supplied by users during policy creation. They must
          * unique within a repository and be under 128 characters in length.
@@ -450,8 +444,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicies (Optional, Beta)
-         * Cleanup policies for this repository. Cleanup policies indicate when
+         * @param cleanupPolicies Cleanup policies for this repository. Cleanup policies indicate when
          * certain package versions can be automatically deleted.
          * Map keys are policy IDs supplied by users during policy creation. They must
          * unique within a repository and be under 128 characters in length.
@@ -465,8 +458,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicyDryRun (Optional, Beta)
-         * If true, the cleanup pipeline is prevented from deleting versions in this
+         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this
          * repository.
          * 
          * @return builder
@@ -478,8 +470,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param cleanupPolicyDryRun (Optional, Beta)
-         * If true, the cleanup pipeline is prevented from deleting versions in this
+         * @param cleanupPolicyDryRun If true, the cleanup pipeline is prevented from deleting versions in this
          * repository.
          * 
          * @return builder

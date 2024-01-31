@@ -485,7 +485,6 @@ namespace Pulumi.Gcp.Compute
         public Output<int?> TcpTransitoryIdleTimeoutSec { get; private set; } = null!;
 
         /// <summary>
-        /// (Optional, Beta)
         /// Indicates whether this NAT is used for public or private IP translation.
         /// If unspecified, it defaults to PUBLIC.
         /// If `PUBLIC` NAT used for public IP translation.
@@ -721,7 +720,6 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Indicates whether this NAT is used for public or private IP translation.
         /// If unspecified, it defaults to PUBLIC.
         /// If `PUBLIC` NAT used for public IP translation.
@@ -919,7 +917,6 @@ namespace Pulumi.Gcp.Compute
         public Input<int>? TcpTransitoryIdleTimeoutSec { get; set; }
 
         /// <summary>
-        /// (Optional, Beta)
         /// Indicates whether this NAT is used for public or private IP translation.
         /// If unspecified, it defaults to PUBLIC.
         /// If `PUBLIC` NAT used for public IP translation.

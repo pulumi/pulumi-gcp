@@ -37,7 +37,6 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     }
 
     /**
-     * (Optional, Beta)
      * Ephemeral storage used as a shared volume.
      * Structure is documented below.
      * 
@@ -46,8 +45,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
     private @Nullable Output<JobTemplateTemplateVolumeEmptyDirArgs> emptyDir;
 
     /**
-     * @return (Optional, Beta)
-     * Ephemeral storage used as a shared volume.
+     * @return Ephemeral storage used as a shared volume.
      * Structure is documented below.
      * 
      */
@@ -138,8 +136,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emptyDir (Optional, Beta)
-         * Ephemeral storage used as a shared volume.
+         * @param emptyDir Ephemeral storage used as a shared volume.
          * Structure is documented below.
          * 
          * @return builder
@@ -151,8 +148,7 @@ public final class JobTemplateTemplateVolumeArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param emptyDir (Optional, Beta)
-         * Ephemeral storage used as a shared volume.
+         * @param emptyDir Ephemeral storage used as a shared volume.
          * Structure is documented below.
          * 
          * @return builder

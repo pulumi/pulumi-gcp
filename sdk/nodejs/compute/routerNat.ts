@@ -345,7 +345,6 @@ export class RouterNat extends pulumi.CustomResource {
      */
     public readonly tcpTransitoryIdleTimeoutSec!: pulumi.Output<number | undefined>;
     /**
-     * (Optional, Beta)
      * Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
      * If `PUBLIC` NAT used for public IP translation.
@@ -543,7 +542,6 @@ export interface RouterNatState {
      */
     tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
     /**
-     * (Optional, Beta)
      * Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
      * If `PUBLIC` NAT used for public IP translation.
@@ -673,7 +671,6 @@ export interface RouterNatArgs {
      */
     tcpTransitoryIdleTimeoutSec?: pulumi.Input<number>;
     /**
-     * (Optional, Beta)
      * Indicates whether this NAT is used for public or private IP translation.
      * If unspecified, it defaults to PUBLIC.
      * If `PUBLIC` NAT used for public IP translation.

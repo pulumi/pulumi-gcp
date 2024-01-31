@@ -9344,12 +9344,12 @@ class InstanceNetworkInterfaceArgs:
         :param pulumi.Input[str] network: The name or self_link of the network to attach this interface to.
                Either `network` or `subnetwork` must be provided. If network isn't provided it will
                be inferred from the subnetwork.
-        :param pulumi.Input[str] network_attachment: Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+        :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
         :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
-        :param pulumi.Input[str] security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: The name or self_link of the subnetwork to attach this
                interface to. Either `network` or `subnetwork` must be provided. If network isn't provided
@@ -9495,7 +9495,7 @@ class InstanceNetworkInterfaceArgs:
     @pulumi.getter(name="networkAttachment")
     def network_attachment(self) -> Optional[pulumi.Input[str]]:
         """
-        Beta The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
+        The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
         """
         return pulumi.get(self, "network_attachment")
 
@@ -9544,7 +9544,7 @@ class InstanceNetworkInterfaceArgs:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         return pulumi.get(self, "security_policy")
 
@@ -9612,7 +9612,7 @@ class InstanceNetworkInterfaceAccessConfigArgs:
                subnet has an external subnet. Only PREMIUM or STANDARD tier is valid for IPv6.
         :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6
                records for the external IPv6 ranges..
-        :param pulumi.Input[str] security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         if nat_ip is not None:
             pulumi.set(__self__, "nat_ip", nat_ip)
@@ -9666,7 +9666,7 @@ class InstanceNetworkInterfaceAccessConfigArgs:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         return pulumi.get(self, "security_policy")
 
@@ -9744,7 +9744,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
                Changing this forces a new resource to be created.
         :param pulumi.Input[str] public_ptr_domain_name: The domain name to be used when creating DNSv6
                records for the external IPv6 ranges..
-        :param pulumi.Input[str] security_policy: Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         pulumi.set(__self__, "network_tier", network_tier)
         if external_ipv6 is not None:
@@ -9828,7 +9828,7 @@ class InstanceNetworkInterfaceIpv6AccessConfigArgs:
     @pulumi.getter(name="securityPolicy")
     def security_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        Beta A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
+        A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         """
         return pulumi.get(self, "security_policy")
 
@@ -9973,9 +9973,9 @@ class InstanceSchedulingArgs:
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param pulumi.Input[str] maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
                <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
-        :param pulumi.Input['InstanceSchedulingMaxRunDurationArgs'] max_run_duration: Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param pulumi.Input['InstanceSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param pulumi.Input[int] min_node_cpus: The minimum number of virtual CPUs this instance will consume when running on a sole-tenant node.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
@@ -10054,7 +10054,7 @@ class InstanceSchedulingArgs:
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         """
         return pulumi.get(self, "maintenance_interval")
@@ -10067,7 +10067,7 @@ class InstanceSchedulingArgs:
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional[pulumi.Input['InstanceSchedulingMaxRunDurationArgs']]:
         """
-        Beta The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         """
         return pulumi.get(self, "max_run_duration")
@@ -11676,9 +11676,9 @@ class InstanceTemplateSchedulingArgs:
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
         :param pulumi.Input[str] instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
-        :param pulumi.Input[str] maintenance_interval: Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        :param pulumi.Input[str] maintenance_interval: Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
                <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
-        :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        :param pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs'] max_run_duration: The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
                <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceTemplateSchedulingNodeAffinityArgs']]] node_affinities: Specifies node affinities or anti-affinities
                to determine which sole-tenant nodes your instances and managed instance
@@ -11755,7 +11755,7 @@ class InstanceTemplateSchedulingArgs:
     @pulumi.getter(name="maintenanceInterval")
     def maintenance_interval(self) -> Optional[pulumi.Input[str]]:
         """
-        Beta Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
+        Specifies the frequency of planned maintenance events. The accepted values are: `PERIODIC`.
         <a name="nested_guest_accelerator"></a>The `guest_accelerator` block supports:
         """
         return pulumi.get(self, "maintenance_interval")
@@ -11768,7 +11768,7 @@ class InstanceTemplateSchedulingArgs:
     @pulumi.getter(name="maxRunDuration")
     def max_run_duration(self) -> Optional[pulumi.Input['InstanceTemplateSchedulingMaxRunDurationArgs']]:
         """
-        Beta - The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
+        The duration of the instance. Instance will run and be terminated after then, the termination action could be defined in `instance_termination_action`. Only support `DELETE` `instance_termination_action` at this point. Structure is documented below.
         <a name="nested_max_run_duration"></a>The `max_run_duration` block supports:
         """
         return pulumi.get(self, "max_run_duration")
@@ -26293,8 +26293,7 @@ class ResourcePolicyGroupPlacementPolicyArgs:
                with a COLLOCATED policy, then exactly `vm_count` instances must be created at the same time with the resource policy
                attached.
                Possible values are: `COLLOCATED`.
-        :param pulumi.Input[int] max_distance: (Optional, Beta)
-               Specifies the number of max logical switches.
+        :param pulumi.Input[int] max_distance: Specifies the number of max logical switches.
         :param pulumi.Input[int] vm_count: Number of VMs in this placement group. Google does not recommend that you use this field
                unless you use a compact policy and you want your policy to work only if it contains this
                exact number of VMs.
@@ -26341,7 +26340,6 @@ class ResourcePolicyGroupPlacementPolicyArgs:
     @pulumi.getter(name="maxDistance")
     def max_distance(self) -> Optional[pulumi.Input[int]]:
         """
-        (Optional, Beta)
         Specifies the number of max logical switches.
         """
         return pulumi.get(self, "max_distance")
@@ -27199,16 +27197,14 @@ class RouterNatRuleActionArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_active_ips: A list of URLs of the IP resources used for this NAT rule.
                These IP addresses must be valid static external IP addresses assigned to the project.
                This field is used for public NAT.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_active_ranges: (Optional, Beta)
-               A list of URLs of the subnetworks used as source ranges for this NAT Rule.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_active_ranges: A list of URLs of the subnetworks used as source ranges for this NAT Rule.
                These subnetworks must have purpose set to PRIVATE_NAT.
                This field is used for private NAT.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_drain_ips: A list of URLs of the IP resources to be drained.
                These IPs must be valid static external IPs that have been assigned to the NAT.
                These IPs should be used for updating/patching a NAT rule only.
                This field is used for public NAT.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_drain_ranges: (Optional, Beta)
-               A list of URLs of subnetworks representing source ranges to be drained.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] source_nat_drain_ranges: A list of URLs of subnetworks representing source ranges to be drained.
                This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
                This field is used for private NAT.
         """
@@ -27239,7 +27235,6 @@ class RouterNatRuleActionArgs:
     @pulumi.getter(name="sourceNatActiveRanges")
     def source_nat_active_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (Optional, Beta)
         A list of URLs of the subnetworks used as source ranges for this NAT Rule.
         These subnetworks must have purpose set to PRIVATE_NAT.
         This field is used for private NAT.
@@ -27269,7 +27264,6 @@ class RouterNatRuleActionArgs:
     @pulumi.getter(name="sourceNatDrainRanges")
     def source_nat_drain_ranges(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        (Optional, Beta)
         A list of URLs of subnetworks representing source ranges to be drained.
         This is only supported on patch/update, and these subnetworks must have previously been used as active ranges in this NAT Rule.
         This field is used for private NAT.

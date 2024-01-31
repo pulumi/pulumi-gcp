@@ -26,11 +26,11 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly string IamInstanceProfile;
         /// <summary>
-        /// (Beta only) The OS image type to use on node pool instances.
+        /// The OS image type to use on node pool instances.
         /// </summary>
         public readonly string? ImageType;
         /// <summary>
-        /// (Beta only) Details of placement information for an instance.
+        /// Details of placement information for an instance.
         /// </summary>
         public readonly Outputs.AwsNodePoolConfigInstancePlacement? InstancePlacement;
         /// <summary>
@@ -54,7 +54,7 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SecurityGroupIds;
         /// <summary>
-        /// (Beta only) Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
+        /// Optional. When specified, the node pool will provision Spot instances from the set of spot_config.instance_types. This field is mutually exclusive with `instance_type`
         /// </summary>
         public readonly Outputs.AwsNodePoolConfigSpotConfig? SpotConfig;
         /// <summary>

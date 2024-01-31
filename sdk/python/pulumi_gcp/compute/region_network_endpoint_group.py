@@ -62,8 +62,7 @@ class RegionNetworkEndpointGroupArgs:
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] psc_target_service: The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
-        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: (Optional, Beta)
-               Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
@@ -239,7 +238,6 @@ class RegionNetworkEndpointGroupArgs:
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]:
         """
-        (Optional, Beta)
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         Structure is documented below.
@@ -315,8 +313,7 @@ class _RegionNetworkEndpointGroupState:
                
                - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: (Optional, Beta)
-               Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs'] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
@@ -507,7 +504,6 @@ class _RegionNetworkEndpointGroupState:
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']]:
         """
-        (Optional, Beta)
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         Structure is documented below.
@@ -737,8 +733,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: (Optional, Beta)
-               Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
@@ -1017,8 +1012,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] self_link: The URI of the created resource.
-        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: (Optional, Beta)
-               Only valid when networkEndpointType is "SERVERLESS".
+        :param pulumi.Input[pulumi.InputType['RegionNetworkEndpointGroupServerlessDeploymentArgs']] serverless_deployment: Only valid when networkEndpointType is "SERVERLESS".
                Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
                Structure is documented below.
         :param pulumi.Input[str] subnetwork: This field is only used for PSC.
@@ -1157,7 +1151,6 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
     @pulumi.getter(name="serverlessDeployment")
     def serverless_deployment(self) -> pulumi.Output[Optional['outputs.RegionNetworkEndpointGroupServerlessDeployment']]:
         """
-        (Optional, Beta)
         Only valid when networkEndpointType is "SERVERLESS".
         Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
         Structure is documented below.

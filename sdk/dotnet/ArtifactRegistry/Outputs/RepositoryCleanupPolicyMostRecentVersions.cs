@@ -14,12 +14,10 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class RepositoryCleanupPolicyMostRecentVersions
     {
         /// <summary>
-        /// (Optional, Beta)
         /// Minimum number of versions to keep.
         /// </summary>
         public readonly int? KeepCount;
         /// <summary>
-        /// (Optional, Beta)
         /// Match versions by package prefix. Applied on any prefix match.
         /// </summary>
         public readonly ImmutableArray<string> PackageNamePrefixes;

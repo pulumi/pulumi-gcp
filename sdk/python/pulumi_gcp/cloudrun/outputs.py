@@ -2799,8 +2799,7 @@ class ServiceTemplateSpecVolume(dict):
                  secret: Optional['outputs.ServiceTemplateSpecVolumeSecret'] = None):
         """
         :param str name: Volume's name.
-        :param 'ServiceTemplateSpecVolumeEmptyDirArgs' empty_dir: (Optional, Beta)
-               Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
+        :param 'ServiceTemplateSpecVolumeEmptyDirArgs' empty_dir: Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
                Structure is documented below.
         :param 'ServiceTemplateSpecVolumeSecretArgs' secret: The secret's value will be presented as the content of a file whose
                name is defined in the item path. If no items are defined, the name of
@@ -2825,7 +2824,6 @@ class ServiceTemplateSpecVolume(dict):
     @pulumi.getter(name="emptyDir")
     def empty_dir(self) -> Optional['outputs.ServiceTemplateSpecVolumeEmptyDir']:
         """
-        (Optional, Beta)
         Ephemeral storage which can be backed by real disks (HD, SSD), network storage or memory (i.e. tmpfs). For now only in memory (tmpfs) is supported. It is ephemeral in the sense that when the sandbox is taken down, the data is destroyed with it (it does not persist across sandbox runs).
         Structure is documented below.
         """

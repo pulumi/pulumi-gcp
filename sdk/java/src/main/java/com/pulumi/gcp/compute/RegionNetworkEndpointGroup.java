@@ -589,7 +589,6 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
         return this.selfLink;
     }
     /**
-     * (Optional, Beta)
      * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
@@ -599,8 +598,7 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
     private Output</* @Nullable */ RegionNetworkEndpointGroupServerlessDeployment> serverlessDeployment;
 
     /**
-     * @return (Optional, Beta)
-     * Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
+     * @return Only valid when networkEndpointType is &#34;SERVERLESS&#34;.
      * Only one of cloudRun, appEngine, cloudFunction or serverlessDeployment may be set.
      * Structure is documented below.
      * 

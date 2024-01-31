@@ -49,8 +49,7 @@ class GlobalForwardingRuleArgs:
                
                
                - - -
-        :param pulumi.Input[bool] allow_psc_global_access: (Optional, Beta)
-               This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[bool] allow_psc_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
@@ -233,7 +232,6 @@ class GlobalForwardingRuleArgs:
     @pulumi.getter(name="allowPscGlobalAccess")
     def allow_psc_global_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional, Beta)
         This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         """
         return pulumi.get(self, "allow_psc_global_access")
@@ -555,8 +553,7 @@ class _GlobalForwardingRuleState:
                  target: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering GlobalForwardingRule resources.
-        :param pulumi.Input[bool] allow_psc_global_access: (Optional, Beta)
-               This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[bool] allow_psc_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -752,7 +749,6 @@ class _GlobalForwardingRuleState:
     @pulumi.getter(name="allowPscGlobalAccess")
     def allow_psc_global_access(self) -> Optional[pulumi.Input[bool]]:
         """
-        (Optional, Beta)
         This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         """
         return pulumi.get(self, "allow_psc_global_access")
@@ -1311,8 +1307,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_psc_global_access: (Optional, Beta)
-               This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[bool] allow_psc_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
@@ -1692,8 +1687,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[bool] allow_psc_global_access: (Optional, Beta)
-               This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
+        :param pulumi.Input[bool] allow_psc_global_access: This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         :param pulumi.Input[str] base_forwarding_rule: [Output Only] The URL for the corresponding base Forwarding Rule. By base Forwarding Rule, we mean the Forwarding Rule that has the same IP address, protocol, and port settings with the current Forwarding Rule, but without sourceIPRanges specified. Always empty if the current Forwarding Rule does not have sourceIPRanges specified.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
@@ -1870,7 +1864,6 @@ class GlobalForwardingRule(pulumi.CustomResource):
     @pulumi.getter(name="allowPscGlobalAccess")
     def allow_psc_global_access(self) -> pulumi.Output[Optional[bool]]:
         """
-        (Optional, Beta)
         This is used in PSC consumer ForwardingRule to control whether the PSC endpoint can be accessed from another region.
         """
         return pulumi.get(self, "allow_psc_global_access")

@@ -87,14 +87,14 @@ public final class AwsClusterControlPlaneArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * (Beta only) Details of placement information for an instance.
+     * Details of placement information for an instance.
      * 
      */
     @Import(name="instancePlacement")
     private @Nullable Output<AwsClusterControlPlaneInstancePlacementArgs> instancePlacement;
 
     /**
-     * @return (Beta only) Details of placement information for an instance.
+     * @return Details of placement information for an instance.
      * 
      */
     public Optional<Output<AwsClusterControlPlaneInstancePlacementArgs>> instancePlacement() {
@@ -358,7 +358,7 @@ public final class AwsClusterControlPlaneArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param instancePlacement (Beta only) Details of placement information for an instance.
+         * @param instancePlacement Details of placement information for an instance.
          * 
          * @return builder
          * 
@@ -369,7 +369,7 @@ public final class AwsClusterControlPlaneArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param instancePlacement (Beta only) Details of placement information for an instance.
+         * @param instancePlacement Details of placement information for an instance.
          * 
          * @return builder
          * 

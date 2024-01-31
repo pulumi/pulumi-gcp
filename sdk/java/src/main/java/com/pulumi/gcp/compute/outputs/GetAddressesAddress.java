@@ -27,7 +27,7 @@ public final class GetAddressesAddress {
      */
     private String description;
     /**
-     * @return (Beta only) A map containing IP labels.
+     * @return A map containing IP labels.
      * 
      */
     private Map<String,String> labels;
@@ -76,7 +76,7 @@ public final class GetAddressesAddress {
         return this.description;
     }
     /**
-     * @return (Beta only) A map containing IP labels.
+     * @return A map containing IP labels.
      * 
      */
     public Map<String,String> labels() {

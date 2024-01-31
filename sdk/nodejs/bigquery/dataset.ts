@@ -315,7 +315,6 @@ export class Dataset extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * (Optional, Beta)
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      */
@@ -545,7 +544,6 @@ export interface DatasetState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      */
@@ -693,7 +691,6 @@ export interface DatasetArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * (Optional, Beta)
      * Information about the external metadata storage where the dataset is defined.
      * Structure is documented below.
      */
